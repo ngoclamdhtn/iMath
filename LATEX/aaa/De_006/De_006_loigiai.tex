@@ -1,0 +1,286 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2.0cm, right=1.5cm] {geometry}
+\usepackage{amsmath,amssymb,txfonts}
+\usepackage{tkz-euclide}
+\usepackage{setspace}
+\usepackage{lastpage}
+
+\usepackage{tikz,tkz-tab}
+%\usepackage[solcolor]{ex_test}
+%\usepackage[dethi]{ex_test} % Chỉ hiển thị đề thi
+\usepackage[loigiai]{ex_test} % Hiển thị lời giải
+%\usepackage[color]{ex_test} % Khoanh các đáp án
+\everymath{\displaystyle}
+
+\def\colorEX{\color{purple}}
+%\def\colorEX{}%Không tô màu đáp án đúng trong tùy chọn loigiai
+\renewtheorem{ex}{\color{violet}Câu}
+\renewcommand{\FalseEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+\renewcommand{\TrueEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+
+%---------- Khai báo viết tắt, in đáp án
+\newcommand{\hoac}[1]{ %hệ hoặc
+    \left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{ %hệ và
+    \left\{\begin{aligned}#1\end{aligned}\right.}
+
+%Tiêu đề
+\newcommand{\tenso}{iMath}
+\newcommand{\tentruong}{Phần mềm Tạo đề ngẫu nhiên}
+\newcommand{\tenkythi}{ĐỀ ÔN TẬP}
+\newcommand{\tenmonthi}{Môn thi: Toán}
+\newcommand{\thoigian}{}
+\newcommand{\tieude}[1]{
+   \begin{tabular}{cm{3cm}cm{3cm}cm{3cm}}
+    {\bf \tenso} & & {\bf \tenkythi} \\
+    {\bf \tentruong} & & {\bf \tenmonthi}\\
+    && {\bf Thời gian: \bf \thoigian \, phút}\\
+    && { \fbox{\bf Mã đề: #1}}
+   \end{tabular}\\\\
+    
+   {Họ tên HS: \dotfill Số báo danh \dotfill}\\
+}
+\newcommand{\chantrang}[2]{\rfoot{Trang \thepage $-$ Mã đề #2}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+%Thiết lập giãn dọng 1.5cm 
+%\setlength{\lineskip}{1.5em}
+%Nội dung trắc nghiệm bắt đầu ở đây
+
+
+\tieude{006}
+\chantrang{\pageref{LastPage}}{006}
+\setcounter{page}{1}
+{\bf PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans006-1]
+\begin{ex}
+ Đổi số đo của góc $330^\circ$ sang radian ta được kết quả bằng\\ 
+\choice
+{ $\frac{17 \pi}{9}$ }
+   { $\frac{31 \pi}{18}$ }
+     { \True $\frac{11 \pi}{6}$ }
+    { $2 \pi$ }
+\loigiai{ 
+ Áp dụng công thức chuyển đổi: $330^\circ=\dfrac{330.\pi}{180}=\frac{11 \pi}{6}$. 
+ }\end{ex}
+
+\begin{ex}
+ Tính $\sin\frac{103 \pi}{3}$.\\ 
+\choice
+{ $ \frac{\sqrt{3}}{3} $ }
+   { $ \sqrt{3} $ }
+     { \True $ \frac{\sqrt{3}}{2} $ }
+    { $ \frac{1}{2} $ }
+\loigiai{ 
+  
+ }\end{ex}
+
+\begin{ex}
+ Cho ${\alpha}$ là góc lượng giác. Tìm khẳng định đúng trong các khẳng định sau.\ 
+\choice
+{ \True $\sin \left(\frac{\pi}{2}-\alpha\right)=\cos \alpha$ }
+   { $\cos (-\alpha)=\sin \alpha$ }
+     { $\sin (\pi-\alpha)=-\sin \alpha$ }
+    { $\cot \left(\frac{\pi}{2}-\alpha\right)=\cot \alpha$ }
+\loigiai{ 
+ $\sin \left(\frac{\pi}{2}-\alpha\right)=\cos \alpha$ là khẳng định đúng. 
+ }\end{ex}
+
+\begin{ex}
+ Cho ${\gamma}$ là góc lượng giác. Tìm khẳng định đúng trong các khẳng định sau.\ 
+\choice
+{ $\tan 2\gamma=\dfrac{\tan \gamma}{1-2\tan^2 \gamma}$ }
+   { $\sin 2\gamma=2\sin \gamma$ }
+     { \True $\cos 2\gamma=2\cos^2 \gamma-1$ }
+    { $\cos 2\gamma=2\sin^2 \gamma-1$ }
+\loigiai{ 
+ $\cos 2\gamma=2\cos^2 \gamma-1$ là khẳng định đúng. 
+ }\end{ex}
+
+\begin{ex}
+ Cho ${\alpha,\beta}$ là các góc lượng giác. Tìm khẳng định đúng trong các khẳng định sau.\ 
+\choice
+{ $\sin \alpha \cos \beta=\dfrac 1 2[\cos(\alpha+\beta) - \cos(\alpha-\beta)]$ }
+   { $\cos \alpha \cos \beta=-\dfrac 1 2[\cos(\alpha+\beta) + \cos(\alpha-\beta)]$ }
+     { $\sin \alpha \sin \beta=\dfrac 1 2[\cos(\alpha+\beta) - \cos(\alpha-\beta)]$ }
+    { \True $\sin \alpha \sin \beta=\dfrac 1 2[\cos(\alpha-\beta) - \cos(\alpha+\beta)]$ }
+\loigiai{ 
+ $\sin \alpha \sin \beta=\dfrac 1 2[\cos(\alpha-\beta) - \cos(\alpha+\beta)]$ là khẳng định đúng. 
+ }\end{ex}
+
+\begin{ex}
+ Cho $\sin \alpha=\frac{9}{10}$ với $\alpha\in \left( 2\pi;\frac{5 \pi}{2} \right)$. Tính $\sin\left(\alpha- \frac{5 \pi}{6}\right)$.\ 
+\choice
+{ \True $- \frac{9 \sqrt{3}}{20} - \frac{\sqrt{19}}{20}$ }
+   { $\frac{\sqrt{19}}{10} + \frac{9}{10}$ }
+     { $- \frac{9}{20} - \frac{\sqrt{57}}{20}$ }
+    { $- \frac{9 \sqrt{3}}{20} + \frac{\sqrt{19}}{20}$ }
+\loigiai{ 
+ Vì $\alpha \in \left( 2\pi;\frac{5 \pi}{2} \right)$ nên $\cos \alpha > 0$.
+
+$\cos \alpha =\sqrt{1-\frac{81}{100}}=\frac{\sqrt{19}}{10}$.
+
+$\sin\left(\alpha- \frac{5 \pi}{6}\right)=\sin \alpha\cos (- \frac{5 \pi}{6})+\cos \alpha \sin (- \frac{5 \pi}{6})=$$\frac{9}{10}.(- \frac{\sqrt{3}}{2})+\frac{\sqrt{19}}{10}.(- \frac{1}{2})=- \frac{9 \sqrt{3}}{20} - \frac{\sqrt{19}}{20}$. 
+ }\end{ex}
+
+\begin{ex}
+ Tìm tập xác định của hàm số $y=\tan(8x-5\pi)$.\\ 
+\choice
+{ \True $D=\mathbb{R}\backslash\{ \frac{11}{16}\pi + k \frac{1}{8}\pi\}$ }
+   { $D=\mathbb{R}\backslash\{ \frac{11}{8}\pi + k \frac{1}{8}\pi\}$ }
+     { $D=\mathbb{R}\backslash\{ \frac{3}{8}\pi + k \frac{1}{8}\pi\}$ }
+    { $D=\mathbb{R}\backslash\{ \frac{3}{4}\pi + k \frac{1}{8}\pi\}$ }
+\loigiai{ 
+  
+ }\end{ex}
+
+\begin{ex}
+ Nghiệm của phương trình $\cos\left(4 x + \frac{\pi}{3}\right)=\sin\left(- 2 x - \frac{\pi}{4}\right)$ là\ 
+\choice
+{ $x=\frac{17 \pi}{72}+k2 \pi, x=- \frac{5 \pi}{24}+k2 \pi (k\in \mathbb{Z})$ }
+   { \True $x=\frac{5 \pi}{24}+k\pi, x=- \frac{13 \pi}{72}+k\frac{\pi}{3} (k\in \mathbb{Z})$ }
+     { $x=\frac{17 \pi}{72}+k\pi, x=- \frac{5 \pi}{24}+k\frac{\pi}{3} (k\in \mathbb{Z})$ }
+    { $x=\frac{5 \pi}{24}+k\frac{\pi}{6}, x=- \frac{13 \pi}{72}+k\frac{\pi}{2} (k\in \mathbb{Z})$ }
+\loigiai{ 
+ $\cos\left(4 x + \frac{\pi}{3}\right)=\sin\left(- 2 x - \frac{\pi}{4}\right) \Leftrightarrow \cos\left(4 x + \frac{\pi}{3}\right)=\cos\left(2 x + \frac{3 \pi}{4}\right)$
+
+$\Leftrightarrow \left[ \begin{array}{l} 
+        4 x + \frac{\pi}{3}=2 x + \frac{3 \pi}{4} +k2 \pi \\ 
+        4 x + \frac{\pi}{3}=- 2 x - \frac{3 \pi}{4}+k2 \pi
+        \end{array} \right.$
+
+$\Leftrightarrow \left[ \begin{array}{l} 
+        2 x=\frac{5 \pi}{12} +k2 \pi \\ 
+        6 x=- \frac{13 \pi}{12}+k2 \pi
+        \end{array} \right. $
+
+$\Leftrightarrow \left[ \begin{array}{l} 
+        x=\frac{5 \pi}{24} + k\pi \\ 
+        x=- \frac{13 \pi}{72}+ k\frac{\pi}{3}
+        \end{array} \right. , k\in \mathbb{Z} $
+
+ 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+{\bf PHẦN II. Câu trắc nghiệm đúng sai.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans006-2]
+\begin{ex}
+ Cho $\sin x=\frac{\sqrt{7}}{9}, x\in \left( \frac{\pi}{2};\pi \right)$. Xét tính đúng-sai của các khẳng định sau.
+\choiceTFt
+{ $\cos x=\frac{\sqrt{74}}{9}$ }
+   { $\sin 2\gamma=- \frac{\sqrt{518}}{81}$  }
+     { $\cos 2\gamma=- \frac{67}{81}$  }
+    { \True $\sin\left(\gamma+\frac{3 \pi}{4}\right)=- \frac{\sqrt{37}}{9} - \frac{\sqrt{14}}{18}$ }
+\loigiai{ 
+ 
+
+ a) Khẳng định đã cho là khẳng định sai.
+
+ Vì $x \in \left( \frac{\pi}{2};\pi \right)$ nên $\cos x < 0$.
+
+$\cos x =-\sqrt{1-\frac{7}{81}}=- \frac{\sqrt{74}}{9}$.
+
+b) Khẳng định đã cho là khẳng định sai.
+
+ $\sin 2\gamma=2\sin \gamma \cos \gamma=2.\frac{\sqrt{7}}{9}.(- \frac{\sqrt{74}}{9})=- \frac{2 \sqrt{518}}{81}$.
+
+c) Khẳng định đã cho là khẳng định sai.
+
+ $\cos 2\gamma=1-2\sin^2 \gamma=1-2.\frac{7}{81}=\frac{67}{81}$
+
+d) Khẳng định đã cho là khẳng định đúng.
+
+ $\sin\left(\gamma+\frac{3 \pi}{4}\right)=\sin \gamma\cos (\frac{3 \pi}{4})+\cos \gamma \sin (\frac{3 \pi}{4})=$$\frac{\sqrt{7}}{9}.(- \frac{\sqrt{2}}{2})+(- \frac{\sqrt{74}}{9}).(\frac{\sqrt{2}}{2})=- \frac{\sqrt{37}}{9} - \frac{\sqrt{14}}{18}$.
+
+ 
+ }\end{ex}
+
+\begin{ex}
+ Cho hàm số $y=6 \cos{\left(8 x \right)} - 2$ . Xét tính đúng-sai của các khẳng định sau. 
+\choiceTFt
+{ \True  Tập xác định của hàm số là $D=\mathbb{R}$ }
+   { Hàm số đã cho là hàm số lẻ }
+     { \True  Tập giá trị của hàm số đã cho là $T={[-8;-8]}$ }
+    { \True  Đồ thị cắt trục tung tại điểm có tung độ bằng ${4}$ }
+\loigiai{ 
+ 
+
+ a) Khẳng định đã cho là khẳng định đúng.
+
+ Tập xác định của hàm số là $D=\mathbb{R}$.
+
+b) Khẳng định đã cho là khẳng định sai.
+
+ Ta có: Với mọi $x\in \mathbb{R}$ thì $-x\in \mathbb{R}$.
+
+$f(-x)=6 \cos{\left(8 x \right)} - 2=6 \cos{\left(8 x \right)} - 2$. Vậy hàm số $y=6 \cos{\left(8 x \right)} - 2$ là hàm số chẵn.
+
+c) Khẳng định đã cho là khẳng định đúng.
+
+ Ta có: $-8 \le 6 \cos{\left(8 x \right)} - 2 \le -8$ nên tập giá trị là ${[-8;-8]}$
+
+d) Khẳng định đã cho là khẳng định đúng.
+
+ Cho $x=0\Rightarrow y=4$. Suy ra đồ thị cắt trục tung tại điểm có tung độ bằng ${4}$.
+
+ 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+{\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans006-3]
+\begin{ex}
+ Một bánh xe của một loại xe có bán kính ${56}$ cm và quay được 7 vòng trong 3 giây. Tính độ dài quãng đường (theo đơn vị mét) xe đi được trong 4 giây (kết quả làm tròn đến hàng phần mười). 
+\shortans[oly]{35,2}
+
+\loigiai{ 
+ Một giây bánh xe quay được số vòng là: $\frac{7}{3}$.
+
+Một vòng quay ứng với quãng đường là $2\pi.0,6=1,2\pi$.
+
+Sau ${4}$ giây quãng đường đi được là: $\frac{7}{3}.4.1,2\pi=35,2$:
+
+ 
+ }\end{ex}
+
+\begin{ex}
+ Số nghiệm thuộc đoạn $[- 5 \pi;5 \pi]$ của phương trình $\tan \left(2 x + \frac{\pi}{2}\right)=\sqrt{3}$ là
+\shortans[oly]{20}
+
+\loigiai{ 
+ $\tan \left(2 x + \frac{\pi}{2}\right)=\sqrt{3} \Leftrightarrow 2 x + \frac{\pi}{2} =\frac{\pi}{3}+ k\pi \Leftrightarrow x=- \frac{\pi}{12}+k\frac{\pi}{2}, k\in \mathbb{Z}$.
+
+Do $x\in [- 5 \pi;5 \pi]$ nên $- 5 \pi\le - \frac{\pi}{12}+k\frac{\pi}{2} \le 5 \pi \Rightarrow - \frac{59}{6}\le k \le \frac{61}{6}$.
+
+Có ${20}$ số k thỏa mãn nên phương trình có ${20}$ nghiệm. 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+
+ \begin{center}
+-----HẾT-----
+\end{center}
+
+ %\newpage 
+%\begin{center}
+%{\bf BẢNG ĐÁP ÁN MÃ ĐỀ 6 }
+%\end{center}
+%{\bf Phần 1 }
+% \inputansbox{6}{ans006-1}
+%{\bf Phần 2 }
+% \inputansbox{2}{ans006-2}
+%{\bf Phần 3 }
+% \inputansbox{6}{ans006-3}
+\newpage 
+
+
+
+\end{document}

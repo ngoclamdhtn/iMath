@@ -1,0 +1,363 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2.0cm, right=1.5cm] {geometry}
+\usepackage{amsmath,amssymb,txfonts}
+\usepackage{tkz-euclide}
+\usepackage{setspace}
+\usepackage{lastpage}
+
+\usepackage{tikz,tkz-tab}
+%\usepackage[solcolor]{ex_test}
+%\usepackage[dethi]{ex_test} % Chỉ hiển thị đề thi
+\usepackage[loigiai]{ex_test} % Hiển thị lời giải
+%\usepackage[color]{ex_test} % Khoanh các đáp án
+\everymath{\displaystyle}
+
+\def\colorEX{\color{purple}}
+%\def\colorEX{}%Không tô màu đáp án đúng trong tùy chọn loigiai
+\renewtheorem{ex}{\color{violet}Câu}
+\renewcommand{\FalseEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+\renewcommand{\TrueEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+
+%---------- Khai báo viết tắt, in đáp án
+\newcommand{\hoac}[1]{ %hệ hoặc
+    \left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{ %hệ và
+    \left\{\begin{aligned}#1\end{aligned}\right.}
+
+%Tiêu đề
+\newcommand{\tenso}{iMath}
+\newcommand{\tentruong}{Phần mềm tạo đề tự động}
+\newcommand{\tenkythi}{ĐỀ ÔN TẬP TOÁN 12}
+\newcommand{\tenmonthi}{Môn thi: Toán}
+\newcommand{\thoigian}{}
+\newcommand{\tieude}[2]{
+    \noindent
+    %Trái
+    \begin{minipage}[b]{7cm}
+        \centerline{\textbf{\fontsize{13}{0}\selectfont \tenso}}
+        \centerline{\textbf{\fontsize{13}{0}\selectfont \tentruong}}
+        \centerline{(\textit{Đề thi có #1\ trang})}
+    \end{minipage}\hspace{1.5cm}
+    %Phải
+    \begin{minipage}[b]{9cm}
+        \centerline{\textbf{\fontsize{13}{0}\selectfont \tenkythi}}
+        \centerline{\textbf{\fontsize{13}{0}\selectfont \tenmonthi}}
+        \centerline{\textit{\fontsize{12}{0}\selectfont Thời gian làm bài: \thoigian\ phút}}
+    \end{minipage}
+    \begin{minipage}[b]{10cm}
+        \textbf{Họ và tên HS: }{\tiny\dotfill}
+    \end{minipage}
+    \begin{minipage}[b]{8cm}
+        \hspace*{4cm}\fbox{\bf Mã đề: #2}
+    \end{minipage}\vspace{3pt}
+}
+\newcommand{\chantrang}[2]{\rfoot{Trang \thepage $-$ Mã đề #2}}
+\pagestyle{fancy}
+\fancyhf{}
+\begin{document}
+%Thiết lập giãn dọng 1.5cm 
+%\setlength{\lineskip}{1.5em}
+%Nội dung trắc nghiệm bắt đầu ở đây
+
+
+\tieude{\pageref{LastPage}}{003}
+
+\chantrang{\pageref{LastPage}}{003}
+
+\setcounter{page}{1}
+
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans003]
+\begin{ex}
+ Trong mặt phẳng ${Oxy}$, phương trình đường tròn ${(C)}$ có tâm ${H(3;1)}$ và đi qua điểm $D(4;0)$ là
+ 
+\choice
+{ $\left(x - 4\right)^{2}+y^{2}=2$ }
+   { $\left(x + 4\right)^{2}+y^{2}=2$ }
+     { $\left(x + 3\right)^{2}+\left(y + 1\right)^{2}=2$ }
+    { \True $\left(x - 3\right)^{2}+\left(y - 1\right)^{2}=2$ }
+\loigiai{ 
+
+ Đường tròn ${(C)}$ có bán kính là ${HD}=\sqrt{(4-3)^2+(0-1)^2}=\sqrt{2}$.
+
+Đường tròn ${(C)}$ có phương trình là: $\left(x - 3\right)^{2}+\left(y - 1\right)^{2}=2$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong mặt phẳng ${Oxy}$, cho đường thẳng $\Delta: 2 x - 4 y - 3=0$ và điểm ${B(-5;-5)}$. Đường tròn ${(C)}$ có tâm ${B}$ và tiếp xúc với đường thẳng $\Delta$ có phương trình là
+ 
+\choice
+{ $\left(x - 5\right)^{2}+\left(y - 5\right)^{2}=\frac{49}{20}$ }
+   { $\left(x + 5\right)^{2}+\left(y + 5\right)^{2}=49$ }
+     { $\left(x + 5\right)^{2}+\left(y + 5\right)^{2}=\frac{7 \sqrt{5}}{10}$ }
+    { \True $\left(x + 5\right)^{2}+\left(y + 5\right)^{2}=\frac{49}{20}$ }
+\loigiai{ 
+
+ Đường tròn ${(C)}$ có bán kính là: $R=d(B,\Delta)=\dfrac{|2.(-5)+(-4).(-5)-3|}{ \sqrt{4+16} }=\frac{7 \sqrt{5}}{10}$.
+
+Đường tròn ${(C)}$ có phương trình là: $\left(x + 5\right)^{2}+\left(y + 5\right)^{2}=\frac{49}{20}$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho vectơ $\overrightarrow{c}=(-6;-1;-3)$. Độ dài vectơ $\overrightarrow{c}$ bằng.\\ 
+\choice
+{ ${10}$ }
+   { ${46}$ }
+     { \True ${\sqrt{46}}$ }
+    { ${47}$ }
+\loigiai{ 
+ $|\overrightarrow{c}|=\sqrt{36+1+9}=\sqrt{46}$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong hệ trục tọa độ ${Oxyz}$, cho hai véctơ $\overrightarrow{u}(-1;-1;10)$ và $\overrightarrow{w}(-4;0;-2)$. Tọa độ tích có hướng $\left[\overrightarrow{u},\overrightarrow{w}\right]$ là\\ 
+\choice
+{ $\left[\overrightarrow{u},\overrightarrow{w}\right]=(-1;-39;-7)$ }
+   { \True $\left[\overrightarrow{u},\overrightarrow{w}\right]= (2;-42;-4)$ }
+     { $\left[\overrightarrow{u},\overrightarrow{w}\right]=(2;-39;-9)$ }
+    { $\left[\overrightarrow{u},\overrightarrow{w}\right]=(3;-46;-2)$ }
+\loigiai{ 
+ $\left[\overrightarrow{u}.\overrightarrow{w}\right]=(2;-42;-4)$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho mặt phẳng ${(\alpha)}$ có phương trình $- 9 x + 4 z + 14=0$. Mặt phẳng ${(\alpha)}$ nhận vectơ nào trong các vectơ sau làm véctơ pháp tuyến.
+ 
+\choice
+{ $\overrightarrow{n_1}=(9;0;4)$ }
+   { $\overrightarrow{n_1}=(-9;0;14)$ }
+     { \True $\overrightarrow{n_1}=(36;0;-16)$ }
+    { $\overrightarrow{n_1}=(-9;0;14)$ }
+\loigiai{ 
+
+ Mặt phẳng ${(\alpha)}$ có một véctơ pháp tuyến là $\overrightarrow{n}=(-9;0;4)$.
+
+ Do đó, mặt phẳng ${(\alpha)}$ cũng nhận vectơ $\overrightarrow{n_1}=(36;0;-16)$ làm véctơ pháp tuyến. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho mặt phẳng ${(P)}$ có phương trình $57 x + 67 y - 28 z + 3=0$. Điểm nào trong các điểm sau thuộc mặt phẳng ${(P)}$?
+ 
+\choice
+{ $G(7;-8;5)$ }
+   { \True $D(7;-6;0)$ }
+     { $H(4;8;-6)$ }
+    { $E(-3;0;6)$ }
+\loigiai{ 
+
+ Thay tọa độ các điểm vào phương trình mặt phẳng ${(P)}$ta thấy chỉ có điểm $D(7;-6;0)$ thỏa mãn.
+ 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho mặt phẳng ${(R)}$ có phương trình $- 7 x - 59 y + 11 z - 47=0$. Điểm nào trong các điểm sau không thuộc mặt phẳng ${(R)}$?
+ 
+\choice
+{ \True $D(9;-3;3)$ }
+   { $H(7;-2;-2)$ }
+     { $I(6;-3;-8)$ }
+    { $N(-2;0;3)$ }
+\loigiai{ 
+
+ Thay tọa độ các điểm vào phương trình mặt phẳng ${(R)}$ta thấy điểm $D(7;-2;-2)$ không thỏa mãn phương trình nên điểm ${D}$ không thuộc mặt phẳng ${(R)}$.
+ 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, đường thẳng ${d}$ đi qua điểm ${C(-5;2;-6)}$ và nhận vectơ $\vec{u}=(3;4;-2)$ làm véctơ chỉ phương có phương trình là
+ 
+\choice
+{ $\left\{ \begin{array}{l}x = 5+3t\\ y = -2+4t\\z = 6-2t\end{array} \right.$ }
+   { \True $\left\{ \begin{array}{l}x = -5+3t\\ y = 2+4t\\z = -6-2t\end{array} \right.$ }
+     { $\left\{ \begin{array}{l}x = 3-5t\\ y = 4+2t\\z = -2-6t\end{array} \right.$ }
+    { $\left\{ \begin{array}{l}x = -5+3t\\ y = -2-4t\\z = -6-2t\end{array} \right.$ }
+\loigiai{ 
+
+ Đường thẳng ${d}$ đi qua điểm ${C(-5;2;-6)}$ nhận vectơ $\vec{u}=(3;4;-2)$ làm véctơ chỉ phương có phương có phương trình là: $\left\{ \begin{array}{l}x = -5+3t\\ y = 2+4t\\z = -6-2t\end{array} \right.$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, đường thẳng ${d}$ đi qua điểm ${I(-3;2;1)}$ và nhận vectơ $\overrightarrow{BK}$ làm véctơ chỉ phương với $B(-5;0;5)$ và $K(-7;7;12)$ có phương trình là
+ 
+\choice
+{ $\left\{ \begin{array}{l}x = -2-3t\\ y = 7+2t\\z = 7+t\end{array} \right.$ }
+   { $\left\{ \begin{array}{l}x = 3-2t\\ y = -2+7t\\z = -1+7t\end{array} \right.$ }
+     { $\left\{ \begin{array}{l}x = -3-2t\\ y = -2-7t\\z = 1+7t\end{array} \right.$ }
+    { \True $\left\{ \begin{array}{l}x = -3-2t\\ y = 2+7t\\z = 1+7t\end{array} \right.$ }
+\loigiai{ 
+
+ Ta có: $\overrightarrow{BK}=(-2;7;7)$.
+
+Đường thẳng ${d}$ đi qua điểm ${I(-3;2;1)}$ nhận vectơ $\overrightarrow{BK}=(-2;7;7)$ làm véctơ chỉ phương có phương trình là: $\left\{ \begin{array}{l}x = -3-2t\\ y = 2+7t\\z = 1+7t\end{array} \right.$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, đường thẳng ${d}$ đi qua điểm ${N(-3;-7;8)}$ và song song với đường thẳng $d':\dfrac{x + 5}{10}=\dfrac{y + 9}{18}=\dfrac{z - 4}{-14}$ có phương trình là
+ 
+\choice
+{ $\left\{ \begin{array}{l}x = 5-3t\\ y = 9-7t\\z = -7+8t\end{array} \right.$ }
+   { $\left\{ \begin{array}{l}x = 3+5t\\ y = 7+9t\\z = -8-7t\end{array} \right.$ }
+     { \True $\left\{ \begin{array}{l}x = -3+5t\\ y = -7+9t\\z = 8-7t\end{array} \right.$ }
+    { $\left\{ \begin{array}{l}x = -3+5t\\ y = 7-9t\\z = 8-7t\end{array} \right.$ }
+\loigiai{ 
+
+ Đường thẳng ${d'}$ có véctơ chỉ phương là $\overrightarrow{u_1}=(10;18;-14)$.
+
+Đường thẳng ${d}$ song song với ${d'}$ nên có một véctơ chỉ phương là vectơ $\vec{u}=(5;9;-7)$.
+
+Đường thẳng ${d}$ đi qua điểm ${N(-3;-7;8)}$ nhận vectơ $\vec{u}=(5;9;-7)$ làm véctơ chỉ phương có phương có phương trình là: $\left\{ \begin{array}{l}x = -3+5t\\ y = -7+9t\\z = 8-7t\end{array} \right.$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${d}: \dfrac{x - 4}{-3}=\dfrac{y - 5}{5}=\dfrac{z - 5}{1}$. Phương trình tham số của đường thẳng ${d}$ là
+ 
+\choice
+{ $\left\{ \begin{array}{l}x = -3+4t\\ y = 5+5t\\z = 1+5t\end{array} \right.$ }
+   { \True $\left\{ \begin{array}{l}x = 4-3t\\ y = 5+5t\\z = 5+t\end{array} \right.$ }
+     { $\left\{ \begin{array}{l}x = 4-3t\\ y = -5-5t\\z = 5+t\end{array} \right.$ }
+    { $\left\{ \begin{array}{l}x = -4-3t\\ y = -5+5t\\z = -5+t\end{array} \right.$ }
+\loigiai{ 
+
+ Đường thẳng ${d}$ đi qua điểm ${A(4;5;5)}$ nhận vectơ $\vec{u}=(-3;5;1)$ làm véctơ chỉ phương có phương có phương trình là: $\left\{ \begin{array}{l}x = 4-3t\\ y = 5+5t\\z = 5+t\end{array} \right.$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${d}:\left\{ \begin{array}{l}x = -6+4t\\ y = -4+5t\\z = -4+7t\end{array} \right.$. Phương trình chính tắc của đường thẳng ${d}$ là
+ 
+\choice
+{ $\dfrac{x - 4}{-6}=\dfrac{y - 5}{-4}=\dfrac{z - 7}{-4}$ }
+   { \True $\dfrac{x + 6}{4}=\dfrac{y + 4}{5}=\dfrac{z + 4}{7}$ }
+     { $\dfrac{x - 6}{4}=\dfrac{y - 4}{5}=\dfrac{z - 4}{7}$ }
+    { $\dfrac{x + 4}{-6}=\dfrac{y + 5}{-4}=\dfrac{z + 7}{-4}$ }
+\loigiai{ 
+
+ Đường thẳng ${d}$ đi qua điểm ${C(-6;-4;-4)}$ nhận vectơ $\vec{u}=(4;5;7)$ làm véctơ chỉ phương có phương có phương trình là: $\dfrac{x + 6}{4}=\dfrac{y + 4}{5}=\dfrac{z + 4}{7}$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${\Delta}:\left\{ \begin{array}{l}x = 8+t\\ y = 1-5t\\z = -2+t\end{array} \right.$. Đường thẳng ${\Delta}$ nhận vectơ nào sau đây làm véctơ chỉ phương?
+ 
+\choice
+{ $\overrightarrow{u_2}=(8;1;-2)$ }
+   { \True $\overrightarrow{u_4}=(2;-10;2)$ }
+     { $\overrightarrow{u_1}=(-8;-1;2)$ }
+    { $\overrightarrow{u_3}=(-1;-5;-1)$ }
+\loigiai{ 
+
+ Đường thẳng ${\Delta}$ nhận vectơ $\vec{u}=(1;-5;1)$ làm véctơ chỉ phương nên cũng nhận vectơ $\overrightarrow{u_4}=(2;-10;2)$ làm véctơ chỉ phương. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${\Delta}:\left\{ \begin{array}{l}x = 3+4t\\ y = 1+t\\z = 4+5t\end{array} \right.$. Đường thẳng ${\Delta}$ đi qua điểm nào trong các điểm sau?
+ 
+\choice
+{ \True $D=(3;1;4)$ }
+   { $C=(-3;-1;-4)$ }
+     { $B=(6;-2;-5)$ }
+    { $A=(4;1;5)$ }
+\loigiai{ 
+
+ Tồn tại $t=0 \Rightarrow x=3,y=1,z=4$ nên đường thẳng ${\Delta}$ đi qua $D=(3;1;4)$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${d}:\dfrac{x + 6}{-3}=\dfrac{y - 6}{-9}=\dfrac{z}{2}$. Đường thẳng ${d}$ nhận vectơ nào sau đây làm véctơ chỉ phương?
+ 
+\choice
+{ $\overrightarrow{u_1}=(-6;6;0)$ }
+   { \True $\overrightarrow{u_4}=(-6;-18;4)$ }
+     { $\overrightarrow{u_3}=(3;-9;-2)$ }
+    { $\overrightarrow{u_2}=(6;-6;0)$ }
+\loigiai{ 
+
+ Đường thẳng ${d}$ nhận vectơ $\vec{u}=(-3;-9;2)$ làm véctơ chỉ phương nên cũng nhận vectơ $\overrightarrow{u_4}=(-6;-18;4)$ làm véctơ chỉ phương. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${\Delta}:\dfrac{x + 7}{-4}=\dfrac{y - 4}{3}=\dfrac{z - 4}{-3}$. Đường thẳng ${\Delta}$ đi qua điểm nào trong các điểm sau?
+ 
+\choice
+{ \True $B=(-3;1;7)$ }
+   { $D=(7;-4;-4)$ }
+     { $A=(-2;-4;3)$ }
+    { $C=(-4;3;-3)$ }
+\loigiai{ 
+
+ Đường thẳng ${\Delta}$ có phương trình tham số là $\left\{ \begin{array}{l}x = -7-4t\\ y = 4+3t\\z = 4-3t\end{array} \right.$.
+
+Tồn tại $t=-1 \Rightarrow x=-3,y=1,z=7$ nên đường thẳng ${\Delta}$ đi qua $B=(-3;1;7)$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, tọa độ giao điểm của đường thẳng ${\Delta}:\dfrac{x + 8}{-7}=\dfrac{y + 8}{-6}=\dfrac{z - 7}{7}$ và mặt phẳng $(\gamma):2 x - 6 y - z - 10=0$ là điểm $H(a;b;c)$. Tính $P=a+b+c$.
+ 
+\choice
+{ ${1}$ }
+   { ${-7}$ }
+     { ${-5}$ }
+    { \True ${-3}$ }
+\loigiai{ 
+
+ Đường thẳng ${\Delta}$ có phương trình tham số là $\left\{ \begin{array}{l}x = -8-7t\\ y = -8-6t\\z = 7+7t\end{array} \right.$.
+
+Xét phương trình $2(- 7 t - 8)-6(- 6 t - 8)-1(7 t + 7)-10=0\Rightarrow t=-1$.
+
+Tọa độ giao điểm của ${\Delta}$ và ${(\gamma)}$ là $H(-1;-2;0)$.
+
+ Vậy $P=-1-2+0=-3$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho đường thẳng ${\Delta}:\dfrac{x + 3}{-6}=\dfrac{y - 8}{-1}=\dfrac{z + 7}{5}$ và điểm $M(-3;-6;1)$.
+
+ Hình chiếu vuông góc của điểm $M$ trên đường thẳng ${\Delta}$ là điểm $H(a;b;c)$. Tính $P=a+b+c$.
+ 
+\choice
+{ ${- \frac{380}{31}}$ }
+   { ${\frac{48}{31}}$ }
+     { ${- \frac{640}{31}}$ }
+    { \True ${- \frac{116}{31}}$ }
+\loigiai{ 
+
+ Đường thẳng ${\Delta}$ có véctơ chỉ phương là $\vec{u}=(-6;-1;5)$.
+
+Gọi $H(-3-6t;8-1t;-7+5t)$.
+
+$\overrightarrow{MH}=(- 6 t;14 - t;5 t - 8)$.
+
+$\overrightarrow{MH}.\overrightarrow{u}=0\Leftrightarrow -6(- 6 t)-1(14 - t)+5(5 t - 8)=0$$\Rightarrow t=\frac{27}{31}$. 
+
+Tọa độ điểm $H(- \frac{255}{31};\frac{221}{31};- \frac{82}{31})$. Vậy $P=- \frac{255}{31}+\frac{221}{31}- \frac{82}{31}=- \frac{116}{31}$. 
+ }\end{ex}
+
+\begin{ex}
+ Trong không gian ${Oxyz}$, cho hai điểm $M(7;-2;8),N(-3;-10;8)$. Mặt cầu ${(S)}$ có đường kính ${MN}$ có phương trình là
+ 
+\choice
+{ $\left(x + 2\right)^{2}+\left(y - 6\right)^{2}+\left(z + 8\right)^{2}=\sqrt{41}$ }
+   { $\left(x - 2\right)^{2}+\left(y + 6\right)^{2}+\left(z - 8\right)^{2}=164$ }
+     { $\left(x + 2\right)^{2}+\left(y - 6\right)^{2}+\left(z + 8\right)^{2}=41$ }
+    { \True $\left(x - 2\right)^{2}+\left(y + 6\right)^{2}+\left(z - 8\right)^{2}=41$ }
+\loigiai{ 
+
+ Mặt cầu ${(S)}$ có tâm ${I(2;-6;8)}$ là trung điểm của đoạn thẳng ${MN}$. 
+
+${MN}=\sqrt{\left(-3-7\right)^2 + \left(-10-(-2)\right)^2 + \left(8-8\right)^2}= 2 \sqrt{41}$.
+
+ ${(S)}$ có bán kính $R=\dfrac{MN}{2}=\sqrt{41}$.
+
+Phương trình mặt cầu: $\left(x - 2\right)^{2}+\left(y + 6\right)^{2}+\left(z - 8\right)^{2}=41$. 
+ }\end{ex}
+
+
+ \begin{center}
+-----HẾT-----
+\end{center}
+
+ \Closesolutionfile{ans}
+% \newpage
+% BẢNG ĐÁP ÁN MÃ ĐỀ 003
+% \inputansbox{2}{ans/ans003}
+
+
+\end{document}

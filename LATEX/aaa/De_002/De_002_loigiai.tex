@@ -1,0 +1,286 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2.0cm, right=1.5cm] {geometry}
+\usepackage{amsmath,amssymb,txfonts}
+\usepackage{tkz-euclide}
+\usepackage{setspace}
+\usepackage{lastpage}
+
+\usepackage{tikz,tkz-tab}
+%\usepackage[solcolor]{ex_test}
+%\usepackage[dethi]{ex_test} % Chỉ hiển thị đề thi
+\usepackage[loigiai]{ex_test} % Hiển thị lời giải
+%\usepackage[color]{ex_test} % Khoanh các đáp án
+\everymath{\displaystyle}
+
+\def\colorEX{\color{purple}}
+%\def\colorEX{}%Không tô màu đáp án đúng trong tùy chọn loigiai
+\renewtheorem{ex}{\color{violet}Câu}
+\renewcommand{\FalseEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+\renewcommand{\TrueEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+
+%---------- Khai báo viết tắt, in đáp án
+\newcommand{\hoac}[1]{ %hệ hoặc
+    \left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{ %hệ và
+    \left\{\begin{aligned}#1\end{aligned}\right.}
+
+%Tiêu đề
+\newcommand{\tenso}{iMath}
+\newcommand{\tentruong}{Phần mềm Tạo đề ngẫu nhiên}
+\newcommand{\tenkythi}{ĐỀ ÔN TẬP}
+\newcommand{\tenmonthi}{Môn thi: Toán}
+\newcommand{\thoigian}{}
+\newcommand{\tieude}[1]{
+   \begin{tabular}{cm{3cm}cm{3cm}cm{3cm}}
+    {\bf \tenso} & & {\bf \tenkythi} \\
+    {\bf \tentruong} & & {\bf \tenmonthi}\\
+    && {\bf Thời gian: \bf \thoigian \, phút}\\
+    && { \fbox{\bf Mã đề: #1}}
+   \end{tabular}\\\\
+    
+   {Họ tên HS: \dotfill Số báo danh \dotfill}\\
+}
+\newcommand{\chantrang}[2]{\rfoot{Trang \thepage $-$ Mã đề #2}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+%Thiết lập giãn dọng 1.5cm 
+%\setlength{\lineskip}{1.5em}
+%Nội dung trắc nghiệm bắt đầu ở đây
+
+
+\tieude{002}
+\chantrang{\pageref{LastPage}}{002}
+\setcounter{page}{1}
+{\bf PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans002-1]
+\begin{ex}
+ Đổi số đo của góc $720^\circ$ sang radian ta được kết quả bằng\\ 
+\choice
+{ \True $4 \pi$ }
+   { $\frac{25 \pi}{6}$ }
+     { $\frac{73 \pi}{18}$ }
+    { $\frac{35 \pi}{9}$ }
+\loigiai{ 
+ Áp dụng công thức chuyển đổi: $720^\circ=\dfrac{720.\pi}{180}=4 \pi$. 
+ }\end{ex}
+
+\begin{ex}
+ Tính $\cos\frac{2 \pi}{3}$.\\ 
+\choice
+{ $ - \sqrt{3} $ }
+   { \True $ - \frac{1}{2} $ }
+     { $ - \frac{\sqrt{3}}{3} $ }
+    { $ \frac{\sqrt{3}}{2} $ }
+\loigiai{ 
+  
+ }\end{ex}
+
+\begin{ex}
+ Cho ${x}$ là góc lượng giác. Tìm khẳng định đúng trong các khẳng định sau.\ 
+\choice
+{ $\tan (\pi-x)=\cot x$ }
+   { $\cos (\pi-x)=\cos x$ }
+     { \True $\sin (\pi-x)=\sin x$ }
+    { $\sin (\pi-x)=\cos x$ }
+\loigiai{ 
+ $\sin (\pi-x)=\sin x$ là khẳng định đúng. 
+ }\end{ex}
+
+\begin{ex}
+ Cho ${x}$ là góc lượng giác. Tìm khẳng định đúng trong các khẳng định sau.\ 
+\choice
+{ \True $\cos 2x=2\cos^2 x-1$ }
+   { $\cos 2x=\sin^2 x-\cos^2 x$ }
+     { $\sin 2x=\sin x\cos x$ }
+    { $\tan 2x=\dfrac{\tan x}{1-\tan^2 x}$ }
+\loigiai{ 
+ $\cos 2x=2\cos^2 x-1$ là khẳng định đúng. 
+ }\end{ex}
+
+\begin{ex}
+ Cho ${u,v}$ là các góc lượng giác. Tìm khẳng định đúng trong các khẳng định sau.\ 
+\choice
+{ $\cos u \cos v=-\dfrac 1 2[\cos(u+v) + \cos(u-v)]$ }
+   { $\sin u \sin v=\dfrac 1 2[\cos(u+v) - \cos(u-v)]$ }
+     { $\sin u \cos v=\dfrac 1 2[\sin(u+v) - \sin(u-v)]$ }
+    { \True $\sin u \sin v=\dfrac 1 2[\cos(u-v) - \cos(u+v)]$ }
+\loigiai{ 
+ $\sin u \sin v=\dfrac 1 2[\cos(u-v) - \cos(u+v)]$ là khẳng định đúng. 
+ }\end{ex}
+
+\begin{ex}
+ Cho $\sin \alpha=\frac{4}{7}$ với $\alpha\in \left( 0;\frac{\pi}{2} \right)$. Tính $\sin\left(\alpha- \frac{\pi}{4}\right)$.\ 
+\choice
+{ $\frac{4}{7} + \frac{\sqrt{33}}{7}$ }
+   { \True $- \frac{\sqrt{66}}{14} + \frac{2 \sqrt{2}}{7}$ }
+     { $- \frac{2 \sqrt{2}}{7} + \frac{\sqrt{66}}{14}$ }
+    { $\frac{2 \sqrt{2}}{7} + \frac{\sqrt{66}}{14}$ }
+\loigiai{ 
+ Vì $\alpha \in \left( 0;\frac{\pi}{2} \right)$ nên $\cos \alpha > 0$.
+
+$\cos \alpha =\sqrt{1-\frac{16}{49}}=\frac{\sqrt{33}}{7}$.
+
+$\sin\left(\alpha- \frac{\pi}{4}\right)=\sin \alpha\cos (- \frac{\pi}{4})+\cos \alpha \sin (- \frac{\pi}{4})=$$\frac{4}{7}.(\frac{\sqrt{2}}{2})+\frac{\sqrt{33}}{7}.(- \frac{\sqrt{2}}{2})=- \frac{\sqrt{66}}{14} + \frac{2 \sqrt{2}}{7}$. 
+ }\end{ex}
+
+\begin{ex}
+ Tìm tập xác định của hàm số $y=\tan(7x-5\pi)$.\\ 
+\choice
+{ $D=\mathbb{R}\backslash\{ \frac{6}{7}\pi + k \frac{1}{7}\pi\}$ }
+   { \True $D=\mathbb{R}\backslash\{ \frac{11}{14}\pi + k \frac{1}{7}\pi\}$ }
+     { $D=\mathbb{R}\backslash\{ \frac{11}{7}\pi + k \frac{1}{7}\pi\}$ }
+    { $D=\mathbb{R}\backslash\{ \frac{3}{7}\pi + k \frac{1}{7}\pi\}$ }
+\loigiai{ 
+  
+ }\end{ex}
+
+\begin{ex}
+ Nghiệm của phương trình $\cos\left(6 x - \frac{\pi}{2}\right)=\sin\left(- 3 x + \frac{5 \pi}{4}\right)$ là\ 
+\choice
+{ $x=- \frac{7 \pi}{36}+k\frac{2 \pi}{3}, x=\frac{\pi}{12}+k\frac{2 \pi}{9} (k\in \mathbb{Z})$ }
+   { $x=- \frac{7 \pi}{36}+k2 \pi, x=\frac{\pi}{12}+k2 \pi (k\in \mathbb{Z})$ }
+     { \True $x=- \frac{\pi}{12}+k\frac{2 \pi}{3}, x=\frac{5 \pi}{36}+k\frac{2 \pi}{9} (k\in \mathbb{Z})$ }
+    { $x=- \frac{\pi}{12}+k\frac{\pi}{9}, x=\frac{5 \pi}{36}+k\frac{\pi}{3} (k\in \mathbb{Z})$ }
+\loigiai{ 
+ $\cos\left(6 x - \frac{\pi}{2}\right)=\sin\left(- 3 x + \frac{5 \pi}{4}\right) \Leftrightarrow \cos\left(6 x - \frac{\pi}{2}\right)=\cos\left(3 x - \frac{3 \pi}{4}\right)$
+
+$\Leftrightarrow \left[ \begin{array}{l} 
+        6 x - \frac{\pi}{2}=3 x - \frac{3 \pi}{4} +k2 \pi \\ 
+        6 x - \frac{\pi}{2}=- 3 x + \frac{3 \pi}{4}+k2 \pi
+        \end{array} \right.$
+
+$\Leftrightarrow \left[ \begin{array}{l} 
+        3 x=- \frac{\pi}{4} +k2 \pi \\ 
+        9 x=\frac{5 \pi}{4}+k2 \pi
+        \end{array} \right. $
+
+$\Leftrightarrow \left[ \begin{array}{l} 
+        x=- \frac{\pi}{12} + k\frac{2 \pi}{3} \\ 
+        x=\frac{5 \pi}{36}+ k\frac{2 \pi}{9}
+        \end{array} \right. , k\in \mathbb{Z} $
+
+ 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+{\bf PHẦN II. Câu trắc nghiệm đúng sai.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans002-2]
+\begin{ex}
+ Cho $\sin x=\frac{\sqrt{6}}{7}, x\in \left( \frac{5 \pi}{2};3\pi \right)$. Xét tính đúng-sai của các khẳng định sau.
+\choiceTFt
+{ $\cos x=\frac{\sqrt{43}}{7}$ }
+   { \True $\sin 2x=- \frac{2 \sqrt{258}}{49}$ }
+     { $\cos 2x=- \frac{37}{49}$  }
+    { \True $\sin\left(x- \frac{3 \pi}{4}\right)=- \frac{\sqrt{3}}{7} + \frac{\sqrt{86}}{14}$ }
+\loigiai{ 
+ 
+
+ a) Khẳng định đã cho là khẳng định sai.
+
+ Vì $x \in \left( \frac{5 \pi}{2};3\pi \right)$ nên $\cos x < 0$.
+
+$\cos x =-\sqrt{1-\frac{6}{49}}=- \frac{\sqrt{43}}{7}$.
+
+b) Khẳng định đã cho là khẳng định đúng.
+
+ $\sin 2x=2\sin x \cos x=2.\frac{\sqrt{6}}{7}.(- \frac{\sqrt{43}}{7})=- \frac{2 \sqrt{258}}{49}$.
+
+c) Khẳng định đã cho là khẳng định sai.
+
+ $\cos 2x=1-2\sin^2 x=1-2.\frac{6}{49}=\frac{37}{49}$
+
+d) Khẳng định đã cho là khẳng định đúng.
+
+ $\sin\left(x- \frac{3 \pi}{4}\right)=\sin x\cos (- \frac{3 \pi}{4})+\cos x \sin (- \frac{3 \pi}{4})=$$\frac{\sqrt{6}}{7}.(- \frac{\sqrt{2}}{2})+(- \frac{\sqrt{43}}{7}).(- \frac{\sqrt{2}}{2})=- \frac{\sqrt{3}}{7} + \frac{\sqrt{86}}{14}$.
+
+ 
+ }\end{ex}
+
+\begin{ex}
+ Cho hàm số $y=6 \cos{\left(4 x \right)} - 2$ . Xét tính đúng-sai của các khẳng định sau. 
+\choiceTFt
+{ Tập xác định của hàm số là $D=[-6;6]$ }
+   { Hàm số đã cho là hàm số lẻ }
+     { \True  Tập giá trị của hàm số đã cho là $T={[-8;-8]}$ }
+    {  Đồ thị cắt trục tung tại điểm có tung độ bằng ${6}$ }
+\loigiai{ 
+ 
+
+ a) Khẳng định đã cho là khẳng định sai.
+
+ Tập xác định của hàm số là $D=\mathbb{R}$.
+
+b) Khẳng định đã cho là khẳng định sai.
+
+ Ta có: Với mọi $x\in \mathbb{R}$ thì $-x\in \mathbb{R}$.
+
+$f(-x)=6 \cos{\left(4 x \right)} - 2=6 \cos{\left(4 x \right)} - 2$. Vậy hàm số $y=6 \cos{\left(4 x \right)} - 2$ là hàm số chẵn.
+
+c) Khẳng định đã cho là khẳng định đúng.
+
+ Ta có: $-8 \le 6 \cos{\left(4 x \right)} - 2 \le -8$ nên tập giá trị là ${[-8;-8]}$
+
+d) Khẳng định đã cho là khẳng định sai.
+
+ Cho $x=0\Rightarrow y=4$. Suy ra đồ thị cắt trục tung tại điểm có tung độ bằng ${4}$.
+
+ 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+{\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans002-3]
+\begin{ex}
+ Một bánh xe của một loại xe có bán kính ${44}$ cm và quay được 8 vòng trong 6 giây. Tính độ dài quãng đường (theo đơn vị mét) xe đi được trong 5 giây (kết quả làm tròn đến hàng phần mười). 
+\shortans[oly]{16,8}
+
+\loigiai{ 
+ Một giây bánh xe quay được số vòng là: $\frac{4}{3}$.
+
+Một vòng quay ứng với quãng đường là $2\pi.0,4=0,8\pi$.
+
+Sau ${5}$ giây quãng đường đi được là: $\frac{4}{3}.5.0,8\pi=16,8$:
+
+ 
+ }\end{ex}
+
+\begin{ex}
+ Số nghiệm thuộc khoảng $(- \pi;\pi)$ của phương trình $\tan \left(4 x - \frac{\pi}{2}\right)=0$ là
+\shortans[oly]{8}
+
+\loigiai{ 
+ $\tan \left(4 x - \frac{\pi}{2}\right)=0 \Leftrightarrow 4 x - \frac{\pi}{2} =0+ k\pi \Leftrightarrow x=\frac{\pi}{8}+k\frac{\pi}{4}, k\in \mathbb{Z}$.
+
+Do $x\in (- \pi;\pi)$ nên $- \pi< \frac{\pi}{8}+k\frac{\pi}{4} < \pi \Rightarrow - \frac{9}{2}< k < \frac{7}{2}$.
+
+Có ${8}$ số k thỏa mãn nên phương trình có ${8}$ nghiệm. 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+
+ \begin{center}
+-----HẾT-----
+\end{center}
+
+ %\newpage 
+%\begin{center}
+%{\bf BẢNG ĐÁP ÁN MÃ ĐỀ 2 }
+%\end{center}
+%{\bf Phần 1 }
+% \inputansbox{6}{ans002-1}
+%{\bf Phần 2 }
+% \inputansbox{2}{ans002-2}
+%{\bf Phần 3 }
+% \inputansbox{6}{ans002-3}
+\newpage 
+
+
+
+\end{document}
