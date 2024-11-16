@@ -234,6 +234,73 @@ def ucln_ba_so(a, b, c):
         ucln_abc = 1
     return ucln_abc
 
+def tao_3dinh_tamgiac():
+	#Tạo bậc ngẫu nhiên
+	
+	a = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+	b = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+	c = random.choice([random.randint(-3, -1), random.randint(1, 3)])   
+
+	t_uc=ucln_ba_so(a,b,c)
+	a,b,c=int(a/t_uc),int(b/t_uc),int(c/t_uc)
+
+	x_0,y_0,z_0 = [random.randint(-2,2) for i in range(3)]
+	if x_0==y_0==z_0==0:
+		x_0= random.choice([i for i in range(-2, 2) if i!=0])
+		y_0= random.choice([i for i in range(-2, 2) if i!=0])
+
+	t1=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+	x_1 = x_0+a*t1
+	y_1 = y_0+b*t1
+	z_1 = z_0+c*t1
+
+	t2=t1+random.randint(1,2)
+	x_2 = x_0+a*t2
+	y_2 = y_0+b*t2
+	z_2 = z_0+c*t2
+
+	t3=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+	x_3 = x_0+a*(t3+random.randint(1,2))
+	y_3 = y_0+b*t3
+	z_3 = z_0+c*(t3-random.randint(1,2))
+
+	x=(x_1,y_1,z_1)
+	y=(x_2,y_2,z_2)
+	z=(x_3,y_3,z_3)
+	return x,y,z
+
+def tao_3dinh_tamgiacvuong():
+    while True:
+        # Tạo ngẫu nhiên ba điểm A, B, C trong khoảng [-6, 6]
+        A = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+        B = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+        C = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+
+        # Kiểm tra các điểm không trùng nhau
+        if any([A[0]==B[0],A[1]==B[1],A[2]==B[2],
+        	A[0]==C[0],A[1]==C[1],A[2]==C[2],
+        	B[0]==C[0],B[1]==C[1],B[2]==C[2]]):
+            continue
+
+        # Tính các vectơ
+        AB = (B[0] - A[0], B[1] - A[1], B[2] - A[2])
+        AC = (C[0] - A[0], C[1] - A[1], C[2] - A[2])
+        BC = (C[0] - B[0], C[1] - B[1], C[2] - B[2])
+
+        # Tính tích vô hướng của các cặp vectơ
+        dot_AB_AC = AB[0]*AC[0] + AB[1]*AC[1] + AB[2]*AC[2]
+        dot_AB_BC = AB[0]*BC[0] + AB[1]*BC[1] + AB[2]*BC[2]
+        dot_AC_BC = AC[0]*BC[0] + AC[1]*BC[1] + AC[2]*BC[2]
+
+        # Kiểm tra tam giác vuông
+        if dot_AB_AC == 0:  # Vuông tại A
+            return A, B, C, "A"
+        elif dot_AB_BC == 0:  # Vuông tại B
+            return A, B, C, "B"
+        elif dot_AC_BC == 0:  # Vuông tại C
+            return A, B, C, "C"
+
+
 #Bài 1 - Véc tơ và các phép toán trong không gian
 #[D12_C2_B1_01]-M2. Cho hình hộp. Tìm vectơ bằng vectơ cho trước
 def mnj_34_jkl_L12_C2_B1_01():	
@@ -4397,40 +4464,6 @@ def mnj_34_jkl_L12_C2_B3_15():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-def tao_3dinh_tamgiac():
-	#Tạo bậc ngẫu nhiên
-	
-	a = random.choice([random.randint(-3, -1), random.randint(1, 3)])
-	b = random.choice([random.randint(-3, -1), random.randint(1, 3)])
-	c = random.choice([random.randint(-3, -1), random.randint(1, 3)])   
-
-	t_uc=ucln_ba_so(a,b,c)
-	a,b,c=int(a/t_uc),int(b/t_uc),int(c/t_uc)
-
-	x_0,y_0,z_0 = [random.randint(-2,2) for i in range(3)]
-	if x_0==y_0==z_0==0:
-		x_0= random.choice([i for i in range(-2, 2) if i!=0])
-		y_0= random.choice([i for i in range(-2, 2) if i!=0])
-
-	t1=random.choice([random.randint(-3, -1), random.randint(1, 3)])
-	x_1 = x_0+a*t1
-	y_1 = y_0+b*t1
-	z_1 = z_0+c*t1
-
-	t2=t1+random.randint(1,2)
-	x_2 = x_0+a*t2
-	y_2 = y_0+b*t2
-	z_2 = z_0+c*t2
-
-	t3=random.choice([random.randint(-3, -1), random.randint(1, 3)])
-	x_3 = x_0+a*(t3+random.randint(1,2))
-	y_3 = y_0+b*t3
-	z_3 = z_0+c*(t3-random.randint(1,2))
-
-	x=(x_1,y_1,z_1)
-	y=(x_2,y_2,z_2)
-	z=(x_3,y_3,z_3)
-	return x,y,z
 
 
 #[D12_C2_B3_16]-M2. Cho tam giác ABC. Tìm tọa độ trọng tâm.
@@ -4805,9 +4838,7 @@ def mnj_34_jkl_L12_C2_B3_20():
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
 	kq3=pa_kotrung[2]
-	kq4=pa_kotrung[3]
-
-	
+	kq4=pa_kotrung[3]	
 
 	pa_A= f"*${latex(kq)}$"
 	pa_B= f"${latex(kq2)}$"
@@ -4839,4 +4870,137 @@ def mnj_34_jkl_L12_C2_B3_20():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D12_C2_B3_21]-M3. Cho A,B,C(a;y_C;b),G(x_G;c;z_G). Tính a+b+c
+def mnj_34_jkl_L12_C2_B3_21():
+
+	ten=["A","B","C","D","E","M","N","P"]
+	random.shuffle(ten)
+	A,B,C=ten[0:3]
+	G=random.choice(["G", "H", "I", "K" ])
+	bo_toa_do=tao_3dinh_tamgiac()
+	a1,a2,a3=bo_toa_do[0]
+	b1,b2,b3=bo_toa_do[1]
+	c1,c2,c3=bo_toa_do[2]
+	
+	g1,g2,g3=(a1+b1+c1)/3,(a2+b2+c2)/3,(a3+b3+c3)/3	
+	x_G,y_G,z_G=phan_so(g1),phan_so(g2),phan_so(g3)
+
+	if c1+c3+g2==int(c1+c3+g2):
+		dap_an=int(c1+c3+g2)
+		noi_dung=(
+		f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}(a;{c2};b)$."
+		f" Tam giác ${{{A}{B}{C}}}$ có trọng tâm ${G}({x_G};c;{z_G})$. Tính $a+b+c$."
+		)
+	else:
+
+		dap_an=f"{round(c1+c3+g2,1):.1f}".replace(".",",")
+		noi_dung=(
+		f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}(a;{c2};b)$."
+		f" Tam giác ${{{A}{B}{C}}}$ có trọng tâm ${G}({x_G};c;{z_G})$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
+		)
+
+	noi_dung_loigiai=(
+	f"Do ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên ta có:\n\n"
+	f"${a1}+{b1}+a=3.{x_G} \\Rightarrow a={c1}$.\n\n"
+	f"${a2}+{b2}+{c2}=3.c \\Rightarrow c={phan_so(g2)}$.\n\n"
+	f"${a3}+{b3}+b=3.{z_G} \\Rightarrow b={c3}$.\n\n"
+	f"Vậy $a+b+c={c1}+{c3}+{phan_so(g2)}={phan_so(c1+c3+g2)}$.\n\n"
+	f"Đáp án: {dap_an}"	)
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C2_B3_22]-M3. Tìm m để ba điểm lập thành tam giác vuông
+def mnj_34_jkl_L12_C2_B3_22():
+
+	ten=["A","B","C","D","E","M","N","P"]
+	random.shuffle(ten)
+	A,B,C=ten[0:3]
+	G=random.choice(["G", "H", "I", "K" ])
+	bo_toa_do=tao_3dinh_tamgiacvuong()
+	a1,a2,a3=bo_toa_do[0]
+	b1,b2,b3=bo_toa_do[1]
+	c1,c2,c3=bo_toa_do[2]	
+	
+	m=sp.symbols("m")
+
+	d1 = random.choice([i for i in range(-5, 6) if i!=0])
+	d2 = random.choice([i for i in range(-5, 6) if i!=0])
+	if (c1-d2)/d1==int((c1-d2)/d1):
+		dap_an=int((c1-d2)/d1)
+	else:
+		dap_an=f"{round((c1-d2)/d1,1):.1f}".replace(".",",")
+
+	if bo_toa_do[3]=="A":
+		vitri=f"{A}"
+		noi_dung_loigiai=(
+		f"${vec(f"{A}{B}")}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
+		f"${vec(f"{A}{C}")}=({latex(d1*m+d2-a1)};{c2-a2};{c3-a3})$.\n\n"
+		f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ khi ${vec(f"{A}{B}")}.{vec(f"{A}{C}")}=0$\n\n"
+		f"$\\Rightarrow {b1-a1}.({latex(d1*m+d2-a1)})+{b2-a2}.{tao_ngoac(c2-a2)}+{b3-a3}.{tao_ngoac(c3-a3)}=0$\n\n"
+		f"$\\Rightarrow {latex((b1-a1)*(d1*m+d2-a1)+(b2-a2)*(c2-a2)+(b3-a3)*(c3-a3))}=0$\n\n"
+		f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
+
+	if bo_toa_do[3]=="B":
+		vitri=f"{B}"
+		noi_dung_loigiai=(
+		f"${vec(f"{B}{A}")}=({a1-b1};{a2-b2};{a3-b3})$.\n\n"
+		f"${vec(f"{B}{C}")}=({latex(d1*m+d2-b1)};{c2-b2};{c3-b3})$.\n\n"
+		f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{B}}}$ khi ${vec(f"{B}{A}")}.{vec(f"{B}{C}")}=0$\n\n"
+		f"$\\Rightarrow {a1-b1}.({latex(d1*m+d2-b1)})+{a2-b2}.{tao_ngoac(c2-b2)}+{a3-b3}.{tao_ngoac(c3-b3)}=0$\n\n"
+		f"$\\Rightarrow {latex((a1-b1)*(d1*m+d2-b1)+(a2-b2)*(c2-b2)+(a3-b3)*(c3-b3))}=0$\n\n"
+		f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
+
+	if bo_toa_do[3]=="C":
+		vitri=f"{B}"
+		noi_dung_loigiai=(
+		f"${vec(f"{B}{A}")}=({a1-b1};{a2-b2};{a3-b3})$.\n\n"
+		f"${vec(f"{B}{C}")}=({latex(d1*m+d2-b1)};{c2-b2};{c3-b3})$.\n\n"
+		f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{B}}}$ khi ${vec(f"{B}{A}")}.{vec(f"{B}{C}")}=0$\n\n"
+		f"$\\Rightarrow {a1-b1}.({latex(d1*m+d2-b1)})+{a2-b2}.{tao_ngoac(c2-b2)}+{a3-b3}.{tao_ngoac(c3-b3)}=0$\n\n"
+		f"$\\Rightarrow {latex((a1-b1)*(d1*m+d2-b1)+(a2-b2)*(c2-b2)+(a3-b3)*(c3-b3))}=0$\n\n"
+		f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
+
+	chon=random.randint(1,3)
+	if chon==1:
+		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({latex(d1*m+d2)};{c2};{c3})$."
+	
+	if chon==2:
+		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}),{C}({latex(d1*m+d2)};{c2};{c3})$, {B}({b1};{b2};{b3})."
+
+	if chon==3:
+		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${C}({latex(d1*m+d2)};{c2};{c3})$, {A}({a1};{a2};{a3}),{B}({b1};{b2};{b3})."
+
+	if (c1-d2)/d1==int((c1-d2)/d1):	
+		
+		noi_dung+=f" Tìm giá trị của ${{m}}$ để tam giác ${{{A}{B}{C}}}$ vuông tại ${{{vitri}}}$."
+		
+	else:
+		noi_dung+=f" Tìm giá trị của ${{m}}$ để tam giác ${{{A}{B}{C}}}$ vuông tại ${{{vitri}}}$ (kết quả làm tròn đến hàng phần mười)."
+
+	noi_dung_loigiai+=f"Đáp án: {dap_an}"
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 

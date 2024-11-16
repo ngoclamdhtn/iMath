@@ -5679,10 +5679,9 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_18]-M3. Cho A,B,G. Tìm C để ABC nhận G làm trọng tâm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)          
 
                 
-
                 L12_C2_B3_2 = QTreeWidgetItem(L12_C2_B3, ["Đúng-Sai"])
                 L12_C2_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C2_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5712,6 +5711,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_14]-TL-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_21]-TL-M3. Cho A,B,C(a;y_C;b),G(x_G;c;z_G). Tính a+b+c."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_22]-TL-M3. Tìm m để ba điểm lập thành tam giác vuông"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7211,6 +7218,14 @@ class Ui_MainWindow(object):
                                             #[D12_C2_B3_20]-M2. Cho A,B. Tính độ dài đoạn thẳng AB
                                                 if dang_toan == "[D12_C2_B3_20]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_20()
+                                            
+                                            #[D12_C2_B3_21]-M3. Cho A,B,C(a;y_C;b),G(x_G;c;z_G). Tính a+b+c
+                                                if dang_toan == "[D12_C2_B3_21]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_21()
+
+                                            #[D12_C2_B3_22]-M3. Tìm m để ba điểm lập thành tam giác vuông
+                                                if dang_toan == "[D12_C2_B3_22]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_22()
 
 
                                         #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->
