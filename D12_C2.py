@@ -5151,4 +5151,6 @@ def mnj_34_jkl_L12_C2_B3_23():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+a
+
 
