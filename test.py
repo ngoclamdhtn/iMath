@@ -35,8 +35,8 @@ import pyperclip
 
 #Test tự luận
 test, test_latex="",""
-for i in range(5):
-	debai_word,loigiai_word,latex_tuluan,dap_an = D12_C2.mnj_34_jkl_L12_C2_B3_22()
+for i in range(1):
+	debai_word,loigiai_word,latex_tuluan,dap_an = D12_C2.mnj_34_jkl_L12_C2_B3_23()
 	#print(debai)
 	#print(loigiai_word)
 	test=test + f"{debai_word}\n{loigiai_word}\n"

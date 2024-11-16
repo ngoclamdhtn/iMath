@@ -5722,6 +5722,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_23]-TL-M3. Bài toán liên quan trung điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
         #Lớp 12 - Chương 3 - Các số đặc trưng đo mức độ phân tán cho mẫu số liệu ghép nhóm            
 
                 L12_C3 = QTreeWidgetItem(L12, ["Chương 3 - Các số đặc trưng đo mức độ phân tán cho mẫu số liệu ghép nhóm"])
@@ -7219,13 +7223,17 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D12_C2_B3_20]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_20()
                                             
-                                            #[D12_C2_B3_21]-M3. Cho A,B,C(a;y_C;b),G(x_G;c;z_G). Tính a+b+c
+                                            #[D12_C2_B3_21]-TL-M3. Cho A,B,C(a;y_C;b),G(x_G;c;z_G). Tính a+b+c
                                                 if dang_toan == "[D12_C2_B3_21]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_21()
 
-                                            #[D12_C2_B3_22]-M3. Tìm m để ba điểm lập thành tam giác vuông
+                                            #[D12_C2_B3_22]-TL-M3. Tìm m để ba điểm lập thành tam giác vuông
                                                 if dang_toan == "[D12_C2_B3_22]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_22()
+
+                                            #[D12_C2_B3_23]-TL-M3. Bài toán liên quan trung điểm (VDT)
+                                                if dang_toan == "[D12_C2_B3_23]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_23()
 
 
                                         #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->

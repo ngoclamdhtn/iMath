@@ -1330,7 +1330,10 @@ def mnj_34_jkl_L12_C2_B1_09():
 	code = my_module.moi_truong_anh_latex(code_hinh_loigiai)
 	file_name_dapan=my_module.pdftoimage_timename(code)
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai}\n{file_name_dapan}\n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai}\n{file_name_dapan}\n"
+		f"Đáp án: {dap_an}\n"
+		)
+		
 	
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
@@ -2853,7 +2856,8 @@ def mnj_34_jkl_L12_C2_B2_07():
 		
 	debai_word= f"{noi_dung}\n{file_name}\n"
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"		
+		f"Đáp án: {dap_an}\n")
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
@@ -4212,12 +4216,14 @@ def mnj_34_jkl_L12_C2_B3_11():
 		f"${m}{vec_a}+{n}{vec_x}={p}{vec_b}\\Rightarrow {n}{vec_x}={p}{vec_b}-{m}{vec_a}=({p*b1-m*a1};{p*b2-m*a2};{p*b3-m*a3})$.\n\n"
 		f"$\\Rightarrow {vec_x}={phan_so(1/n)}({p*b1-m*a1};{p*b2-m*a2};{p*b3-m*a3})=({phan_so(a)};{phan_so(b)};{phan_so(c)})$.\n\n"
 		f"$\\Rightarrow a+b+c={dap_an}$.\n\n"
-		f"Đáp án: {dap_an}")
+		)
 	noi_dung_loigiai=noi_dung_loigiai.replace("$1","$").replace("+1","+").replace("+-","-").replace("1(","(").replace("-1\\","-\\").replace("1\\","\\")
 		
 	debai_word= f"{noi_dung}\n"
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+		)
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
@@ -4329,10 +4335,12 @@ def mnj_34_jkl_L12_C2_B3_13():
 		f" $y_{diem_C}=2y_{diem_B}-y_{diem_A}={show_tich(2,b2)}-{tao_ngoac(a2)}={c2}$.\n\n"
 		f" $z_{diem_C}=2z_{diem_B}-z_{diem_A}={show_tich(2,b3)}-{tao_ngoac(a3)}={c3}$.\n\n"
 		f"Vậy ${{{diem_C}=({c1};{c2};{c3})}}$.\n\n"
-		f"Đáp án: {dap_an}")
+		)
 		
 	debai_word= f"{noi_dung}\n"
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+		)
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\shortans[oly]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
@@ -4374,12 +4382,14 @@ def mnj_34_jkl_L12_C2_B3_14():
 
 	noi_dung_loigiai=(f"${vt_A}\\bot {vt_B} \\Leftrightarrow {vt_A}.{vt_B}=0$"
 	f"$\\displaystyle \\Leftrightarrow ({latex(a1*m + a2)}).{tao_ngoac(b1)} + {tao_ngoac(a3)}({latex(b2*m + b3)}) +{show_tich(a4,b4)}=0\\Leftrightarrow m={latex(x_0)}$.\n\n"
-	f"Đáp án: {dap_an}")	
+	)	
 
 
 	debai_word= f"{noi_dung}\n"
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+		)
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\shortans[oly]{{{dap_an}}}\n\n"\
@@ -4907,7 +4917,7 @@ def mnj_34_jkl_L12_C2_B3_21():
 	f"${a2}+{b2}+{c2}=3.c \\Rightarrow c={phan_so(g2)}$.\n\n"
 	f"${a3}+{b3}+b=3.{z_G} \\Rightarrow b={c3}$.\n\n"
 	f"Vậy $a+b+c={c1}+{c3}+{phan_so(g2)}={phan_so(c1+c3+g2)}$.\n\n"
-	f"Đáp án: {dap_an}"	)
+		)
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
 		
 	debai_word= f"{noi_dung}\n"
@@ -4989,14 +4999,152 @@ def mnj_34_jkl_L12_C2_B3_22():
 	else:
 		noi_dung+=f" Tìm giá trị của ${{m}}$ để tam giác ${{{A}{B}{C}}}$ vuông tại ${{{vitri}}}$ (kết quả làm tròn đến hàng phần mười)."
 
-	noi_dung_loigiai+=f"Đáp án: {dap_an}"
+	
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
 		
 	debai_word= f"{noi_dung}\n"
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+		)
 
 
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C2_B3_23]-TL-M3. Bài toán liên quan trung điểm (VDT)
+def mnj_34_jkl_L12_C2_B3_23():
+	
+	A=random.choice(["A","C", "E", "P"])
+	B=random.choice(["B","D", "F"])
+	M=random.choice(["M","N", "K"])
+
+	I=random.choice(["I","H","G"])
+
+	chon=random.randint(1,2)
+	if chon==1:
+		a1 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		a2 = 0
+		a3 = 0
+
+		b1=0
+		b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b3= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		
+		m1,m2,m3=(a1+b1)/2, (a2+b2)/2, (a3+b3)/2
+
+		x,y,z=(b1+m1)/2, (b2+m2)/2, (b3+m3)/2
+
+		noi_dung=(f"Trong không gian ${{Oxyz}}$, cho điểm ${M}({phan_so(m1)};{phan_so(m2)};{phan_so(m3)})$."
+			f" Biết điểm ${{{A}}}$ thuộc trục ${{Ox}}$ và điểm ${{{B}}}$ thuộc mặt phẳng ${{(Oyz)}}$"
+			f" sao cho ${{{M}}}$ là trung điểm của đoạn thẳng ${{{A}{B}}}$."
+			f" Gọi ${{{I}(m;n;p)}}$ là trung điểm của ${{{B}{M}}}$.")
+
+		if x+y+z==int(x+y+z):
+			dap_an=int(m1+m2+m3)
+			noi_dung+=f"Tính $m+n+p$."
+		else:
+			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
+			noi_dung+=f"Tính $m+n+p$((kết quả làm tròn đến hàng phần mười)."
+
+		noi_dung_loigiai=(
+			f"Gọi ${A}(a;0;0), {B}(0;b;c)$.\n\n"
+			f"Vì ${{{M}}}$ là trung điểm của đoạn thẳng ${{{A}{B}}}$ nên"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			\\dfrac{{a}}{{2}}={phan_so(m1)} \\\\ \n\
+			\\dfrac{{b}}{{2}}={phan_so(m2)} \\\\ \n\
+			\\dfrac{{c}}{{2}}={phan_so(m3)}\n\
+			\\end{{array}} \\right. \\Rightarrow a={a1},b={b2},c={b3}$.\n\n"
+			f"Suy ra ${B}({b1};{b2};{b3})$.\n\n"
+			f"${{{I}}}$ là trung điểm của ${{{B}{M}}} \\Rightarrow $"
+			f"${I}({phan_so(x)};{phan_so(y)};{phan_so(z)})$.\n\n"
+			f"$m+n+p={phan_so(x)}+{phan_so(y)}+{phan_so(z)}={phan_so(x+y+z)}$.\n\n")
+	if chon==2:
+		a1 = 0
+		a2 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		a3 = 0
+
+		b1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b2= 0
+		b3= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		
+
+		m1,m2,m3=(a1+b1)/2, (a2+b2)/2, (a3+b3)/2
+
+		x,y,z=(b1+m1)/2, (b2+m2)/2, (b3+m3)/2
+
+		noi_dung=(f"Trong không gian ${{Oxyz}}$, cho điểm ${M}({phan_so(m1)};{phan_so(m2)};{phan_so(m3)})$."
+			f" Biết điểm ${{{A}}}$ thuộc trục ${{Oy}}$ và điểm ${{{B}}}$ thuộc mặt phẳng ${{(Oxz)}}$"
+			f" sao cho ${{{M}}}$ là trung điểm của đoạn thẳng ${{{A}{B}}}$."
+			f" Gọi ${{{I}(m;n;p)}}$ là trung điểm của ${{{B}{M}}}$.")
+
+		if x+y+z==int(x+y+z):
+			dap_an=int(m1+m2+m3)
+			noi_dung+=f" Tính $m+n+p$."
+		else:
+			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
+			noi_dung+=f" Tính $m+n+p$ (kết quả làm tròn đến hàng phần mười)."
+
+		noi_dung_loigiai=(
+			f"Gọi ${A}(0;a;0), {B}(b;0;c)$.\n\n"
+			f"Vì ${{{M}}}$ là trung điểm của đoạn thẳng ${{{A}{B}}}$ nên"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			\\dfrac{{b}}{{2}}={phan_so(m1)} \\\\ \n\
+			\\dfrac{{a}}{{2}}={phan_so(m2)} \\\\ \n\
+			\\dfrac{{c}}{{2}}={phan_so(m3)}\n\
+			\\end{{array}} \\right. \\Rightarrow a={a2},b={b1},c={b3}$.\n\n"
+			f"Suy ra ${B}({b1};{b2};{b3})$.\n\n"
+			f"${{{I}}}$ là trung điểm của ${{{B}{M}}} \\Rightarrow $"
+			f"${I}({phan_so(x)};{phan_so(y)};{phan_so(z)})$.\n\n"
+			f"$m+n+p={phan_so(x)}+{phan_so(y)}+{phan_so(z)}={phan_so(x+y+z)}$.\n\n")
+
+	if chon==3:
+		a1 = 0
+		a2 = 0
+		a3 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+
+		b1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b3= 0		
+
+		m1,m2,m3=(a1+b1)/2, (a2+b2)/2, (a3+b3)/2
+
+		x,y,z=(b1+m1)/2, (b2+m2)/2, (b3+m3)/2
+
+		noi_dung=(f"Trong không gian ${{Oxyz}}$, cho điểm ${M}({phan_so(m1)};{phan_so(m2)};{phan_so(m3)})$."
+			f" Biết điểm ${{{A}}}$ thuộc trục ${{Oz}}$ và điểm ${{{B}}}$ thuộc mặt phẳng ${{(Oxy)}}$"
+			f" sao cho ${{{M}}}$ là trung điểm của đoạn thẳng ${{{A}{B}}}$."
+			f" Gọi ${{{I}(m;n;p)}}$ là trung điểm của ${{{B}{M}}}$.")
+
+		if x+y+z==int(x+y+z):
+			dap_an=int(m1+m2+m3)
+			noi_dung+=f" Tính $m+n+p$."
+		else:
+			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
+			noi_dung+=f" Tính $m+n+p$ (kết quả làm tròn đến hàng phần mười)."
+
+		noi_dung_loigiai=(
+			f"Gọi ${A}(0;0;a), {B}(b;c;0)$.\n\n"
+			f"Vì ${{{M}}}$ là trung điểm của đoạn thẳng ${{{A}{B}}}$ nên"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			\\dfrac{{b}}{{2}}={phan_so(m1)} \\\\ \n\
+			\\dfrac{{c}}{{2}}={phan_so(m2)} \\\\ \n\
+			\\dfrac{{a}}{{2}}={phan_so(m3)}\n\
+			\\end{{array}} \\right. \\Rightarrow a={a3},b={b1},c={b2}$.\n\n"
+			f"Suy ra ${B}({b1};{b2};{b3})$.\n\n"
+			f"${{{I}}}$ là trung điểm của ${{{B}{M}}} \\Rightarrow $"
+			f"${I}({phan_so(x)};{phan_so(y)};{phan_so(z)})$.\n\n"
+			f"$m+n+p={phan_so(x)}+{phan_so(y)}+{phan_so(z)}={phan_so(x+y+z)}$.\n\n")
+
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+		
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+		)
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\shortans[oly]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
