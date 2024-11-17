@@ -5054,7 +5054,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 
 	I=random.choice(["I","H","G"])
 
-	chon=random.randint(1,2)
+	chon=random.randint(1,3)
 	if chon==1:
 		a1 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
 		a2 = 0
@@ -5192,7 +5192,7 @@ def mnj_34_jkl_L12_C2_B3_24():
 	# Lấy ngẫu nhiên ba số đôi một khác nhau
 	result = random.sample(numbers, 3)
 	a1,a2,a3=result
-	chon=random.randint(1,2)
+	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung=(
 		f"Trong không gian ${{Oxyz}}$, cho điểm ${A}({a1};{a2};{a3})$."
@@ -5293,7 +5293,7 @@ def mnj_34_jkl_L12_C2_B3_25():
 	# Lấy ngẫu nhiên ba số đôi một khác nhau
 	result = random.sample(numbers, 3)
 	a1,a2,a3=result
-	chon=random.randint(1,2)
+	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung=(
 		f"Trong không gian ${{Oxyz}}$, cho điểm ${A}({a1};{a2};{a3})$."
@@ -5395,7 +5395,7 @@ def mnj_34_jkl_L12_C2_B3_26():
 	# Lấy ngẫu nhiên ba số đôi một khác nhau
 	result = random.sample(numbers, 3)
 	a1,a2,a3=result
-	chon=random.randint(1,2)
+	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung=(
 		f"Trong không gian ${{Oxyz}}$, cho điểm ${A}({a1};{a2};{a3})$."
@@ -5501,7 +5501,7 @@ def mnj_34_jkl_L12_C2_B3_27():
 	# Lấy ngẫu nhiên ba số đôi một khác nhau
 	result = random.sample(numbers, 3)
 	a1,a2,a3=result
-	chon=random.randint(1,2)
+	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung=(
 		f"Trong không gian ${{Oxyz}}$, cho điểm ${A}({a1};{a2};{a3})$."
@@ -5683,7 +5683,7 @@ def mnj_34_jkl_L12_C2_B3_28():
 
 	#Phương án 4
 	chon=random.randint(1,3)
-	chon=3
+	
 	if chon==1:
 		R=sqrt(x_BC**2+y_BC**2+z_BC**2)/2
 		R_false=random.choice([sqrt(x_AC**2+y_AC**2+z_AC**2)/2,sqrt(x_AB**2+y_AB**2+z_AB**2)/2])
