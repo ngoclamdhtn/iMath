@@ -870,8 +870,8 @@ def yy3yy_L10_C4_B2_09():
 
     cosB=(l_a**2+l_c**2-l_b**2)/(2*l_a*l_c)
     cosB_false=(l_a**2+l_c**2-l_b**2)/(4*l_a*l_c)
-    goc_B=f"{math.degrees(asin(cosB)):.2f}".replace(".",",")
-    goc_B_false=f"{math.degrees(asin(cosB_false)):.2f}".replace(".",",")
+    goc_B=f"{math.degrees(acos(cosB)):.2f}".replace(".",",")
+    goc_B_false=f"{math.degrees(acos(cosB_false)):.2f}".replace(".",",")
 
     kq3_T=f"*$\\widehat{{{B}}}={goc_B}^\\circ$" 
     kq3_F=f"$\\widehat{{{B}}}={goc_B_false}^\\circ$"
@@ -1291,19 +1291,24 @@ def yy3yy_L10_C4_B2_12():
         f" Độ dài cạnh ${{{c}}}$ bằng "
     )    
 
-    kq=l_c
-    kq2=l_b_false
-    kq3=l_b
-    kq4=l_c_false
+    kq=l_a*sin(goc_C)/sin(goc_A)
+    kq2=2*l_a*sin(goc_C)/sin(goc_C)
+    kq3=l_a*sin(goc_B)/sin(goc_A)
+    kq4=l_a*sin(goc_A)/sin(goc_B)
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
     noi_dung_loigiai=(f"$\\widehat{{{C}}}=180^\\circ-{goc_A_degree}^\\circ-{goc_B_degree}^\\circ={goc_C_degree}^\\circ$.\n\n"
         f"$\\dfrac{{{c}}}{{\\sin {C}}}=\\dfrac{{{a}}}{{\\sin {A}}}\\Rightarrow {c}=\\dfrac{{{a}\\sin {C}}}{{\\sin {A}}}={l_c}$."
         )
 
-    pa_A= f"*${{{kq}}}$"
-    pa_B= f"${{{kq2}}}$"
-    pa_C= f"${{{kq3}}}$"
-    pa_D= f"${{{kq4}}}$"
+    pa_A= f"*${{{round(kq,2):.1f}}}$".replace(".",",")
+    pa_B= f"${{{round(kq2,2):.1f}}}$".replace(".",",")
+    pa_C= f"${{{round(kq3,2):.1f}}}$".replace(".",",")
+    pa_D= f"${{{round(kq4,2):.1f}}}$".replace(".",",")
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)

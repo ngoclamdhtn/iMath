@@ -180,7 +180,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92023 ver 11.11.2024")
+                self.label.setText(f"iMath\u00A92023 ver 17.11.2024")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
                 self.label.setGeometry(QtCore.QRect(400, 120, 800, 20))
@@ -5525,7 +5525,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B1_2, ["[D12_C2_B1_10]-TF-M2. Cho tứ diện. Xét Đ-S: Tích vô hướng, phép toán vectơ, độ dài."])
+                item = QTreeWidgetItem(L12_C2_B1_2, ["[D12_C2_B1_10]-TF-M2. Cho hình chóp. Xét Đ-S: Tích vô hướng, phép toán vectơ, độ dài."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5661,6 +5661,22 @@ class Ui_MainWindow(object):
                 L12_C2_B3_1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C2_B3_1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_24]-M1. Tìm hình chiếu lên trục tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_25]-M1. Tìm hình chiếu lên mặt phẳng tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_26]-M2. Tìm điểm đối xứng qua tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_27]-M2. Tìm điểm đối xứng qua mặt phẳng tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_15]-M1. Cho hai điểm A,B. Tìm tọa độ trung điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5691,6 +5707,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_10]-TF-M2. Cho hai vectơ. Xét Đ-S: tổng, hiệu, độ dài, cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_28]-TF-M2. Cho tam giác. Xét Đ-S: Độ dài, tọa độ vectơ, R, S."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7234,6 +7254,27 @@ class Ui_MainWindow(object):
                                             #[D12_C2_B3_23]-TL-M3. Bài toán liên quan trung điểm (VDT)
                                                 if dang_toan == "[D12_C2_B3_23]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_23()
+
+                                            #[D12_C2_B3_24]-M2. Tìm hình chiếu của điểm lên trục tọa độ
+                                                if dang_toan == "[D12_C2_B3_24]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_24()
+
+                                            #[D12_C2_B3_25]-M2. Tìm hình chiếu của điểm lên mặt phẳng tọa độ
+                                                if dang_toan == "[D12_C2_B3_25]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_25()
+
+                                            #[D12_C2_B3_26]-M2. Tìm điểm đối xứng của điểm qua trục tọa độ
+                                                if dang_toan == "[D12_C2_B3_26]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_26()
+
+                                            #[D12_C2_B3_27]-M2. Tìm điểm đối xứng của điểm qua mặt phẳng tọa độ
+                                                if dang_toan == "[D12_C2_B3_27]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_27()
+
+                                            #[D12_C2_B3_28]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài, tọa độ vectơ, R, S.
+                                                if dang_toan == "[D12_C2_B3_28]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_28()
+
 
 
                                         #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->

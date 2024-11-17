@@ -1108,10 +1108,10 @@ def mn8mn_L11_C2_B2_11():
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* Dãy số $(u_n)$ là một cấp số cộng có công sai $d={-d}$"
-    kq2_F=f"Dãy số $(u_n)$ là một cấp số cộng có công sai $d={d}$"
+    kq2_T=f"* Dãy số $(u_n)$ là một cấp số cộng có công sai $d={d}$"
+    kq2_F=f"Dãy số $(u_n)$ là một cấp số cộng có công sai $d={-d}$"
     kq2=random.choice([kq2_T, kq2_F])
-    HDG=f"Dãy số $(u_n)$ là một cấp số cộng có công sai $d={-d}$."
+    HDG=f"Dãy số $(u_n)$ là một cấp số cộng có công sai $d={d}$."
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -1139,8 +1139,8 @@ def mn8mn_L11_C2_B2_11():
     else:
         so_nam=int(solution[0])
 
-    kq4_T=f"* Sau ít nhất {so_nam} thì giá chiếc máy nhỏ hơn một nữa giá trị ban đầu"
-    kq4_F=f"Sau ít nhất {so_nam-random.randint(2,3)} thì giá chiếc máy nhỏ một nữa giá trị ban đầu" 
+    kq4_T=f"* Sau ít nhất {so_nam} năm thì giá chiếc máy nhỏ hơn một nữa giá trị ban đầu"
+    kq4_F=f"Sau ít nhất {so_nam-random.randint(2,3)} năm thì giá chiếc máy nhỏ một nữa giá trị ban đầu" 
     kq4=random.choice([kq4_T, kq4_F])
     HDG=(
     f"Ta có: $u_n<{phan_so(u1/2)}\\Rightarrow {u1}+({n-1}).({d})<{phan_so(u1/2)} \\Rightarrow n>{so_nam_goc}$.\n\n"

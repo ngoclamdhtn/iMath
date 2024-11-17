@@ -1017,7 +1017,7 @@ def bch_12_L10_C2_B1_09():
         b=random.randint(9,20)
 
         noi_dung=(f"Bạn {ten} có {tien} nghìn đồng để mua {vat_1} và {vat_2}."
-    f" Nga mua ${{x}}$ {vat_1} với giá {a} nghìn đồng một {vat_1} và mua ${{y}}$ {vat_2} với giá {b} nghìn đồng một cái {vat_2}."
+    f" {ten} mua ${{x}}$ {vat_1} với giá {a} nghìn đồng một {vat_1} và mua ${{y}}$ {vat_2} với giá {b} nghìn đồng một cái {vat_2}."
     f" Bất phương trình nào sau đây mô tả điều kiện ràng buộc đối với ${{x}}$ và ${{y}}$.")
     
     if chon==2:
@@ -1027,7 +1027,7 @@ def bch_12_L10_C2_B1_09():
         vat_1="bánh bao"
         vat_2="mì ly"
         noi_dung=(f"Bạn {ten} có {tien} nghìn đồng để mua {vat_1} và {vat_2}."
-    f" Nga mua ${{x}}$ cái {vat_1} với giá {a} nghìn đồng một cái {vat_1} và mua ${{y}}$ hộp {vat_2} với giá {b} nghìn đồng một hộp {vat_2}."
+    f" {ten} mua ${{x}}$ cái {vat_1} với giá {a} nghìn đồng một cái {vat_1} và mua ${{y}}$ hộp {vat_2} với giá {b} nghìn đồng một hộp {vat_2}."
     f" Bất phương trình nào sau đây mô tả điều kiện ràng buộc đối với ${{x}}$ và ${{y}}$.")
 
     if chon==3:

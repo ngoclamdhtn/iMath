@@ -120,7 +120,7 @@ def ghj_7_jkl_L11_C4_B1_01():
 	random.shuffle(list_PA)
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 
-	debai= f"{noi_dung}\n{file_name}\n"
+	debai= f"{noi_dung}\n\n{file_name}\n"
 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
@@ -1401,7 +1401,7 @@ def ghj_7_jkl_L11_C4_B4_07():
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
-	noi_dung = f"Cho hình lăng trụ ${{{ten_langtru}}}$.{de_MN} Tìm khẳng định đúng."
+	noi_dung = f"Cho hình hộp ${{{ten_langtru}}}$.{de_MN} Tìm khẳng định đúng."
 	debai= f"{noi_dung}\n\n"\
 	    f"{file_name}\n"
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t   C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
@@ -1475,7 +1475,7 @@ def ghj_7_jkl_L11_C4_B4_08():
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
-	noi_dung = f"Cho hình lăng trụ ${{{ten_langtru}}}$. Gọi ${{M,N,P}}$ lần lượt là các trung điểm của các cạnh ${{AB,AD,CD}}$. Tìm khẳng định đúng."
+	noi_dung = f"Cho hình hộp ${{{ten_langtru}}}$. Gọi ${{M,N,P}}$ lần lượt là các trung điểm của các cạnh ${{AB,AD,CD}}$. Tìm khẳng định đúng."
 	debai= f"{noi_dung}\n\n"\
 	    f"{file_name}\n"
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t   C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"

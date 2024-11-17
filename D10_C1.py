@@ -3080,7 +3080,7 @@ def mjulk_L10_C1_B3_13():
 	n_lop=n_A+n_B-n_A_giao_B
 
 
-	noi_dung = f"Mỗi học sinh của lớp {lop} đều {ten_A} và {ten_B}. Biết rằng lớp có ${{{n_A}}}$ bạn {ten_A} (trong số này có các bạn {ten_B}),"\
+	noi_dung = f"Mỗi học sinh của lớp {lop} đều {ten_A} hoặc {ten_B}. Biết rằng lớp có ${{{n_A}}}$ bạn {ten_A} (trong số này có các bạn {ten_B}),"\
 	f" có ${{{n_B}}}$ bạn {ten_B} (trong số này có các bạn {ten_A}) và có ${{{n_A_giao_B}}}$ bạn {ten_A} và {ten_B}. Hỏi lớp {lop} có tổng cộng bao nhiêu học sinh?"
 
 	noi_dung_loigiai=f"Gọi ${{A}}$ là tập hợp các bạn {ten_A}, ta có: $n(A)={n_A}$.\n\n"\

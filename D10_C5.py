@@ -135,8 +135,7 @@ def y7y7u_L10_C5_B1_02():
 	kq3=random.choice([f'{vec(f"{A}{D}")}={vec(f"{B}{C}")}', f'{vec(f"{D}{A}")}={vec(f"{C}{B}")}',
 	f'{vec(f"{A}{B}")}={vec(f"{D}{C}")}'])
 
-	kq4=random.choice([f'{vec(f"{B}{A}")}={vec(f"{C}{D}")}',
-	f'|{vec(f"{A}{C}")}|=|{vec(f"{B}{D}")}|', f'|{vec(f"{C}{A}")}|=|{vec(f"{D}{B}")}|'])
+	kq4=random.choice([f'{vec(f"{B}{A}")}={vec(f"{C}{D}")}'])
 
 	noi_dung_loigiai=f"${kq}$ là khẳng định sai."
 
@@ -347,7 +346,7 @@ def y7y7u_L10_C5_B1_04():
 #[D10_C5_B1_05]-M2. Cho 3 điểm. Tìm khẳng định về hướng và phương.
 def y7y7u_L10_C5_B1_05():
 	A=random.choice(["A","M","O","B", "I"])
-	B=random.choice(["B","N","E","G", "C"])
+	B=random.choice(["B","N","E","G"])
 	C=random.choice(["C","D","F","H","K"])
 
 	chon=random.randint(1,2)

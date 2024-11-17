@@ -3800,7 +3800,7 @@ def ngh_kjg_L11_C1_B4_07():
             loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
         t_min=min(a+b,-a+b)
-        t_max=min(a+b,-a+b)
+        t_max=max(a+b,-a+b)
 
         kq3_T=f"* Tập giá trị của hàm số đã cho là $T={{[{t_min};{t_max}]}}$" 
         kq3_F=f"Tập giá trị của hàm số đã cho là $T={{[{t_min-random.randint(1,5)};{t_max+random.randint(1,5)}]}}$"
