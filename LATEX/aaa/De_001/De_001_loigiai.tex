@@ -56,43 +56,49 @@
 \chantrang{\pageref{LastPage}}{001}
 \setcounter{page}{1}
 \begin{ex}
-	Cho các điểm $A(5;2;-1), P(1;-4;2), E(2;6;3)$. Xét tính đúng-sai của các khẳng định sau:
-	\choiceTFt
-	{ Độ dài đoạn thẳng ${AP}$ bằng $3 \sqrt{7}$ }
-	{ Tọa độ vectơ $\overrightarrow{b}=2 \overrightarrow{AP} + 2 \overrightarrow{AE}$ là $(-15;-4;16)$ }
-	{ \True  Vectơ $\overrightarrow{w}$ thỏa mãn $\overrightarrow{AP} - \overrightarrow{AE} - 2 \overrightarrow{w}=- 3 \overrightarrow{PE}$ thì tọa độ vectơ $\overrightarrow{w}$ là $(1;10;1)$ }
-	{ Gọi ${I}$ là chân đường cao hạ từ của ${A}$ của tam giác ${APE}$. Độ dài ${AI}$ bằng ${\frac{\sqrt{257603}}{103}}$ }
-	\loigiai{ 
+	Cho hình chóp ${S.BCDE}$ có đáy là hình vuông tâm ${I}$. Gọi ${P,Q}$ lần lượt là trung điểm của ${SD,SE}$. Giao tuyến của hai mặt phẳng $(IPQ)$ và $(BCDE)$ là 
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick]
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (2,-2);
+			\coordinate (E) at (5,0);
+			\coordinate (D) at ($(C)+(E)-(B)$);
+			\coordinate (O) at ($(B)!0.5!(D)$);
+			\coordinate (S) at ($(O)+(0,7)$);
+			\draw(S)--(B) (S)--(C) (S)--(D) (B)--(C) (C)--(D);
+			\draw[dashed,thin](B)--(D) (B)--(E) (D)--(E) (S)--(E) (C)--(E);
+			\foreach \i/\g in {S/90,B/180,C/-90,D/-90,E/0}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{};}
+		\end{tikzpicture}
 		
-		
-		a) Khẳng định đã cho là khẳng định sai.
-		
-		$\overrightarrow{AP}=(-4;-6;3)\Rightarrow $$AP=\sqrt{16+36+9}=\sqrt{61}$.
-		
-		b) Khẳng định đã cho là khẳng định sai.
-		
-		$\overrightarrow{AP}=(-4;-6;3)$, $\overrightarrow{AE}=(-3;4;4)$
-		
-		$\overrightarrow{b}=2 \overrightarrow{AP} + 2 \overrightarrow{AE}=(-14;-4;14)$.
-		
-		c) Khẳng định đã cho là khẳng định đúng.
-		
-		$\overrightarrow{AP} - \overrightarrow{AE} - 2 \overrightarrow{w}=- 3 \overrightarrow{PE}\Rightarrow \overrightarrow{w}=- \frac{1}{2}(- \overrightarrow{AP} + \overrightarrow{AE} - 3 \overrightarrow{PE})=(1;10;1)$
-		
-		d) Khẳng định đã cho là khẳng định sai.
-		
-		$\overrightarrow{AP}=(-4;-6;3),\overrightarrow{AE}=(-3;4;4) \Rightarrow AP=\sqrt{61},AE=\sqrt{41}$.
-		
-		$\overrightarrow{AP}.\overrightarrow{AE}=0\Rightarrow $ tam giác ${APE}$ vuông tại ${A}$.
-		
-		$AI=\dfrac{AP.AE}{\sqrt{AP^2+AE^2}}=\dfrac{\sqrt{61}.\sqrt{41}}{\sqrt{61+61}}=\frac{\sqrt{255102}}{102}$.
-		
-		
+	\end{center}
+	\choice
+	{ đường thẳng qua ${S}$ và song song với ${CD}$ }
+	{ \True đường thẳng qua ${I}$ và song song với ${DE}$ }
+	{ đường thẳng qua ${S}$ và song song với ${BC}$ }
+	{ đường thẳng qua ${S}$ và song song với ${BE}$ }
+	\loigiai{\begin{center}
+			\begin{tikzpicture}[line join=round, line cap=round,thick]
+				\coordinate (B) at (0,0);
+				\coordinate (C) at (2,-2);
+				\coordinate (E) at (5,0);
+				\coordinate (D) at ($(C)+(E)-(B)$);
+				\coordinate (I) at ($(B)!0.5!(D)$);
+				\coordinate (S) at ($(I)+(0,7)$);
+				\coordinate (P) at ($(S)!0.5!(D)$);
+				\coordinate (Q) at ($(S)!0.5!(E)$);
+				\draw(S)--(B) (S)--(C) (S)--(D) (B)--(C) (C)--(D) (P)--(Q);
+				\draw[dashed,thin](B)--(D) (B)--(E) (D)--(E) (S)--(E) (C)--(E);
+				\draw[dashed,thin](I)--(P) (I)--(Q) ;
+				\foreach \i/\g in {S/90,B/180,C/-90,D/-90,E/0,I/-90,P/180,Q/0}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+			\end{tikzpicture}
+			
+		\end{center}
+		$\left\{ \begin{array}{l} 
+			PQ\subset (IPQ) \\ 
+			DE\subset (BCDE)\\ 
+			PQ // DE 
+		\end{array} \right.$$\Rightarrow (IPQ) \cap (BCDE)=Ix // DE //PQ //BC$. 
 }\end{ex}
-
-
-	
-
 
 
 

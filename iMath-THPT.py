@@ -20,6 +20,7 @@ import requests, webbrowser
 from bs4 import BeautifulSoup
 from openpyxl import Workbook, load_workbook
 import hashlib, winreg, psutil, subprocess, base64, glob
+import qrcode
 from cryptography.fernet import Fernet
 from datetime import datetime
 
@@ -3660,7 +3661,35 @@ class Ui_MainWindow(object):
                 L11_C4_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_01]-M2. Cho hình chóp-hbh. Xét hai đường thẳng song song - đường trung bình."])
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_04]-M2. Cho a nằm trong (P) và b cắt (P) tại M. Tìm khẳng định đúng hoặc sai."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_01]-M1. Cho hình chóp-hbh. Tìm cặp đường song song."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_06]-M2. Cho hình chóp tam giác. Tìm cặp đường song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_07]-M2. Cho hình chóp-hbh. Tìm cặp đường song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_02]-M2. Cho tứ diện. Xét quan hệ song song, chéo nhau, cắt nhau."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_05]-M3. Cho hình chóp tam giác. Xét quan hệ song song, chéo nhau, cắt nhau."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến chứa 2 đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
           
@@ -6470,7 +6499,7 @@ class Ui_MainWindow(object):
                                         if not os.path.exists(new_folder_path):
                                                 os.makedirs(new_folder_path)
                                         name_thu_muc=new_folder_path
-                                print(name_thu_muc)         
+                                         
                             
                             #Tạo list mã đề ngẫu nhiên
                             unique_digits_set = set()
@@ -6487,6 +6516,7 @@ class Ui_MainWindow(object):
                             list_tonghop=""
                             list_tonghop_HDG=""
                             list_dapan_word=[]
+                            chuoi_QR="{"
 
                             for j in range(self.spin_soluong_de.value()):
                                 self.text_taode.setText("")
@@ -6532,7 +6562,7 @@ class Ui_MainWindow(object):
                                 list_ma_de.append(name_de)
 
                                 #Tao_qrcode
-                                st_qrcode=""
+                                chuoi_QR+=f'"{name_de}":"'
                                                         
                                 socau_daxuli=0
                                 self.label_dangxuli.setText("Chương trình đang xử lý. Vui lòng đợi...")                                        
@@ -8588,9 +8618,37 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B1_06()
 
                                     #Bài 2: HAI ĐƯỜNG THẲNG SONG SONG
-                                                #[D11_C4_B2_01]. Cho hình chóp. Xét hai đường thẳng song song - đường trung bình.
+                                                #[D11_C4_B2_01]-M2. Cho hình chóp. Xét hai đường thẳng song song - đường trung bình.
                                                 if dang_toan == "[D11_C4_B2_01]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_01()
+
+                                                #[D11_C4_B2_02]-M2. Cho hình chóp. Xét hai đường thẳng song song - đường trung bình.
+                                                if dang_toan == "[D11_C4_B2_02]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_02()
+
+                                                #[D11_C4_B2_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai
+                                                if dang_toan == "[D11_C4_B2_03]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_03()
+
+                                                #[D11_C4_B2_04]-M2. Cho a nằm trong (P) và b cắt (P) tại M. Tìm khẳng định đúng hoặc sai
+                                                if dang_toan == "[D11_C4_B2_04]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_04()
+
+                                                #[D11_C4_B2_05]-M2. Cho hình chóp tam giác. Tìm khẳng định đúng về song song, cắt nhau, chéo nhau
+                                                if dang_toan == "[D11_C4_B2_05]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_05()
+
+                                                #[D11_C4_B2_06]-M2. Cho hình chóp tam giác. Tìm cặp đường song song
+                                                if dang_toan == "[D11_C4_B2_06]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_06()
+
+                                                #[D11_C4_B2_07]-M2. Cho hình chóp-hbh. Tìm cặp đường song song
+                                                if dang_toan == "[D11_C4_B2_07]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_07()
+
+                                                #[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến của 2 mặt chứa 2 đường song song
+                                                if dang_toan == "[D11_C4_B2_08]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_08()
 
                                     #Bài 3: ĐƯỜNG THẲNG SONG SONG MẶT PHẲNG
                                     #[D11_C4_B3_01]. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
@@ -11377,6 +11435,9 @@ class Ui_MainWindow(object):
                                         #Lấy danh sách đáp án word:
                                         for phan_tu in list_dapan_TN:
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                        chuoi_QR+="#"
 
                                     if len(list_dungsai)>0:
                                         list_noi_dung+=f'\n {{\\bf PHẦN II. Câu trắc nghiệm đúng sai.}}\n'
@@ -11386,8 +11447,14 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_dungsai_HDG[chi_so])}\n'
 
                                         #Lấy danh sách đáp án word:
-                                        for phan_tu in list_dapan_TF:
+                                        for i in range(len(list_dapan_TF)):
+                                                phan_tu=list_dapan_TF[i]
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+='_'
+
+                                        chuoi_QR+="#" 
 
                                     if len(list_tuluan)>0:
                                         list_noi_dung+=f'\n {{\\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}}\n'
@@ -11397,8 +11464,14 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'{{\\bf Câu {chi_so+1}.}} {str(list_tuluan_HDG[chi_so])}\n'
 
                                         #Lấy danh sách đáp án word:
-                                        for phan_tu in list_dapan_TL:
+                                        for i in range(len(list_dapan_TL)):
+                                                phan_tu=list_dapan_TL[i]
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+='_'
+
+                                        chuoi_QR+="#"
 
                                     list_noi_dung+=f"{{\\bf -----HẾT-----}} \n"
                                     list_noi_dung_HDG+=f"{{\\bf -----HẾT-----}} \n"
@@ -11419,17 +11492,27 @@ class Ui_MainWindow(object):
                                         #Lấy danh sách đáp án word:
                                         for phan_tu in list_dapan_TN:
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                        chuoi_QR+="#"
 
                                     if len(list_dungsai)>0:
                                         list_noi_dung+=f'\n PHẦN II. Câu trắc nghiệm đúng sai.\n'
                                         list_noi_dung_HDG+=f'\n PHẦN II. Câu trắc nghiệm đúng sai.\n' 
                                         for chi_so in range(len(list_dungsai)):
                                             list_noi_dung+=f'Câu {chi_so+1}. {str(list_dungsai[chi_so])}\n'
-                                            list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_dungsai_HDG[chi_so])}\n'
+                                            list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_dungsai_HDG[chi_so])}\n'                                        
 
                                         #Lấy danh sách đáp án word:
-                                        for phan_tu in list_dapan_TF:
+                                        for i in range(len(list_dapan_TF)):
+                                                phan_tu=list_dapan_TF[i]
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+='_'                                       
+
+                                        chuoi_QR+="#"                                        
+                                                
 
                                     if len(list_tuluan)>0:
                                         list_noi_dung+=f'\n PHẦN III. Câu trắc nghiệm trả lời ngắn.\n'
@@ -11439,8 +11522,14 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_tuluan_HDG[chi_so])}\n'
 
                                         #Lấy danh sách đáp án word:
-                                        for phan_tu in list_dapan_TL:
+                                        for i in range(len(list_dapan_TL)):
+                                                phan_tu=list_dapan_TL[i]
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+='_'
+
+                                        chuoi_QR+="#"
 
                                     list_noi_dung+=f" -----HẾT-----\n"
                                     list_noi_dung_HDG+=f"-----HẾT-----\n"
@@ -11465,6 +11554,9 @@ class Ui_MainWindow(object):
                                         #Lấy danh sách đáp án word:
                                         for phan_tu in list_dapan_TN:
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                        chuoi_QR+="#"
 
                                     if len(list_dungsai)>0:
                                         ghep_dungsai='\n'.join(list_dungsai)
@@ -11474,9 +11566,16 @@ class Ui_MainWindow(object):
                                         f'{ghep_dungsai}\n'
                                         f"\\Closesolutionfile{{ans}}\n")
 
+
                                         #Lấy danh sách đáp án word:
-                                        for phan_tu in list_dapan_TF:
+                                        for i in range(len(list_dapan_TF)):
+                                                phan_tu=list_dapan_TF[i]
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+='_'
+
+                                        chuoi_QR+="#" 
                                         
 
                                     if len(list_tuluan)>0:
@@ -11488,8 +11587,14 @@ class Ui_MainWindow(object):
                                         f"\\Closesolutionfile{{ans}}\n")
 
                                         #Lấy danh sách đáp án word:
-                                        for phan_tu in list_dapan_TL:
+                                        for i in range(len(list_dapan_TF)):
+                                                phan_tu=list_dapan_TL[i]
                                                 list_dapan_word.append(phan_tu)
+                                                #Add vào chuỗi QR
+                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+='_'
+
+                                        chuoi_QR+="#" 
                                     
 
                                     list_noi_dung+=(f"\n \\begin{{center}}\n-----HẾT-----\n\\end{{center}}\n"
@@ -11547,12 +11652,41 @@ class Ui_MainWindow(object):
 
                                     self.text_taode.append(list_noi_dung)
 
+                                #Kết thúc đáp án của mã đề hiện tại cho chuỗi QR
+                                chuoi_QR+='",'
+
                             #end
 
                             self.timer.stop()
                             self.progress_bar.setValue(100)
                             self.label_dangxuli.setText("")
-                            self.label_nhapmade.setText("")                           
+                            self.label_nhapmade.setText("")
+
+                            #Kết thúc chuỗi QR
+                            chuoi_QR+='"success":true,"type":5}'
+                            chuoi_QR=chuoi_QR.replace('#"','"').replace('_"','"').replace('_#','#')                            
+                            #Tạo ảnh QRcode
+
+
+                            # Tạo đối tượng QRCode
+                            qr = qrcode.QRCode(
+                                version=1,  # Độ lớn của mã QR (tùy chọn)
+                                error_correction=qrcode.constants.ERROR_CORRECT_L,  # Mức độ sửa lỗi (tùy chọn)
+                                box_size=10,  # Kích thước mỗi ô vuông (tùy chọn)
+                                border=4,  # Độ dày viền (tùy chọn)
+                            )
+
+                            # Thêm dữ liệu vào mã QR
+                            qr.add_data(chuoi_QR)
+
+                            # Tạo hình ảnh mã QR
+                            qr.make(fit=True)
+
+                            # Tạo đối tượng hình ảnh
+                            img = qr.make_image(fill_color="black", back_color="white")
+
+                            # Lưu hình ảnh
+                            img.save(f"{name_thu_muc}\\QRcode_TNMaker.png")          
 
 
 
@@ -11564,7 +11698,7 @@ class Ui_MainWindow(object):
                                 # new_folder_path = os.path.join(doc_folder_path, name_thu_muc)                               
                                 self.tao_bang_dap_an_latex(name_thu_muc,code_bang_dap_an)
 
-                                #self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)                            
+                                self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)                        
 
                                 self.tao_tnmaker_latex(name_thu_muc, list_ma_de,len(list_tracnghiem),len(list_dungsai),len(list_tuluan))
                                 name_thu_muc=name_thu_muc.replace("/","\\")
@@ -13238,7 +13372,7 @@ class Ui_MainWindow(object):
                                 for line in file:                                
                                         line = line.strip()
                                         if "Solution" not in line:
-                                                dapan=line.replace("$","").replace("{","").replace("}","")
+                                                dapan=line.replace("$","").replace("{","").replace("}","").replace(f"\\dapsoSA","")
                                                 data.append(dapan)
                         
                         t=1       
@@ -13250,7 +13384,7 @@ class Ui_MainWindow(object):
             so_cau=socau_TN+socau_DS+socau_TLN
             for i in range(1, so_cau+1):
                 ws.cell(row=i+1, column=1, value=i)            
-            wb.save(f"{goc_foler_path}\\QR_TNMaker_SmartTest.xlsx")
+            wb.save(f"{goc_foler_path}\\TNMaker_2025_SmartTest.xlsx")
             return
 
         #Tạo đáp án tnmaker cho word

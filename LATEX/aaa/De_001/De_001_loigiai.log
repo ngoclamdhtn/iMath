@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.14)  17 NOV 2024 15:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.14)  20 NOV 2024 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1611,11 +1611,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--59
 
 {c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2024/
 texmf-dist/fonts/enc/dvips/vntex/t5.enc}{c:/texlive/2024/texmf-dist/fonts/enc/d
-vips/base/8r.enc}]
+vips/base/8r.enc}] [2]
 \tf@thm=\write7
 \openout7 = `De_001_loigiai.thm'.
 
- 
+
+
 enddocument/afterlastpage: lastpage setting LastPage.
 (./De_001_loigiai.aux)
  ***********
@@ -1624,13 +1625,13 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 25819 strings out of 474116
- 529555 string characters out of 5747716
- 1956190 words of memory out of 5000000
- 47517 multiletter control sequences out of 15000+600000
- 577323 words of font info for 78 fonts, out of 8000000 for 9000
+ 25946 strings out of 474116
+ 531894 string characters out of 5747716
+ 1941190 words of memory out of 5000000
+ 47646 multiletter control sequences out of 15000+600000
+ 576007 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 119i,21n,123p,1182b,402s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 119i,12n,123p,1182b,912s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb><c:/texlive/
 2024/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb><c:/texlive/2024/texmf-dist
 /fonts/type1/public/txfonts/txex.pfb><c:/texlive/2024/texmf-dist/fonts/type1/pu
@@ -1638,10 +1639,10 @@ blic/txfonts/txsy.pfb><c:/texlive/2024/texmf-dist/fonts/type1/vntex/urwvn/utmb8
 v.pfb><c:/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/
 2024/texmf-dist/fonts/type1/vntex/urwvn/utmr8v.pfb><c:/texlive/2024/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on De_001_loigiai.pdf (1 page, 71023 bytes).
+Output written on De_001_loigiai.pdf (2 pages, 64566 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 56 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
