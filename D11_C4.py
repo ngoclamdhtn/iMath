@@ -20,7 +20,7 @@ def code_hinh_tu_dien(s,a,b,c):
 \\end{{tikzpicture}}\n"
     return code
 
-def code_tu_dien_noname(s,a,b,c):
+def code_hinh_tu_dien_noname(s,a,b,c):
     code=f"\\begin{{tikzpicture}}[scale=0.7]\n\
 \\coordinate ({a}) at (0,0);\n\
 \\coordinate ({b}) at (1,-2);\n\
@@ -1494,7 +1494,7 @@ def ghj_7_jkl_L11_C4_B2_06():
 	random.shuffle(trung_diem)
 	M,N=trung_diem[0:2]
 
-	code_hinh=code_tu_dien_noname(S,A,B,C)
+	code_hinh=code_hinh_tu_dien_noname(S,A,B,C)
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
 	
@@ -1830,7 +1830,7 @@ def ghj_7_jkl_L11_C4_B2_08():
 	
 	code_hinh=code_hinh_chop_deu_noname(S,A,B,C,D)
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	file_name=my_module.pdftoimage_timename(code)	
+	file_name=my_module.pdftoimage_timename(code)
 	
 	chon=random.randint(1,6)
 	
@@ -2063,8 +2063,7 @@ def ghj_7_jkl_L11_C4_B2_08():
 			{C}{D}\\subset ({A}{B}{C}{D})\\\\ \n\
 			{M}{N} // {C}{D} \n\
 			\\end{{array}} \\right.$"
-			f"$\\Rightarrow ({O}{M}{N}) \\cap ({A}{B}{C}{D})={O}x // {C}{D} //{M}{N} //{A}{B}$."
-			)
+			f"$\\Rightarrow ({O}{M}{N}) \\cap ({A}{B}{C}{D})={O}x // {C}{D} //{M}{N} //{A}{B}$.")
 
 
 	#Xử lí phương án	
@@ -2077,20 +2076,239 @@ def ghj_7_jkl_L11_C4_B2_08():
 		pa_C= f"${{{kq3}}}$"
 		pa_D= f"${{{kq4}}}$"
 
+		list_PA =[pa_A, pa_B, pa_C, pa_D]
+		random.shuffle(list_PA)
+		dap_an=my_module.tra_ve_dap_an(list_PA)		
+		phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
 	if chon in [3,4,5,6]:
 		pa_A= f"*{kq}"
 		pa_B= f"{kq2}"
 		pa_C= f"{kq3}"
 		pa_D= f"{kq4}"
+
+		list_PA =[pa_A, pa_B, pa_C, pa_D]
+		random.shuffle(list_PA)
+		dap_an=my_module.tra_ve_dap_an(list_PA)		
+		phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
 	
+	#Trộn các phương án
+	
+
+	debai= f"{noi_dung}\n{file_name}\n"	
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {file_name_LG}\n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B2_09]-M2. Cho hình chóp tam giác. Tìm giao tuyến của 2 mặt chứa 2 đường song song
+def ghj_7_jkl_L11_C4_B2_09():	
+	vertex=random.choice([
+		["A","B","C","D"],["S","A","B","C"],["B","C","D","E"], 
+		["S","C","D","E"], ["A","B","E","F"], ["B","C","E","F"],["C","D","E","F"] ])
+	
+	A,B,C,D=vertex
+
+	M=random.choice(["M", "I", "P"])
+	N=random.choice(["N", "J", "Q" ])
+	G=random.choice(["G", "O", "K"])
+
+	code_hinh=code_hinh_tu_dien_noname(A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+	chon=random.randint(1,4)
+	if chon==1:
+		noi_dung=(
+		f"Cho tứ diện ${{{A}{B}{C}{D}}}$. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{A}{B},{A}{D}}}$."
+		f" Giao tuyến của hai mặt phẳng $({C}{M}{N})$ và $({B}{C}{D})$ là"
+		)	
+
+		kq=random.choice([
+			f"đường thẳng qua ${{{C}}}$ và song song với ${{{B}{D}}}$",
+			f"đường thẳng qua ${{{C}}}$ và song song với ${{{M}{N}}}$"])
+		kq_false=[
+			f"đường thẳng qua ${{{B}}}$ và song song với ${{{C}{N}}}$",
+			f"đường thẳng qua ${{{C}}}$ và song song với ${{{D}{M}}}$",
+			f"đường thẳng qua ${{{M}}}$ và song song với ${{{C}{D}}}$",
+			f"đường thẳng qua ${{{N}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{M}{N}}}$",]
+
+		code_hinh_LG=(f"\\begin{{tikzpicture}}[scale=0.7]\n\
+		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({A}) at (1,3)   node at ({A}) [above] {{${A}$}};\n\
+		\\coordinate ({M}) at ($({A})!0.5!({B})$) node at ({M}) [left] {{${M}$}};\n\
+		\\coordinate ({N}) at ($({A})!0.5!({D})$) node at ({N}) [right] {{${N}$}};\n\
+		\\draw [dashed] ({B})--({D}) ({M})--({N}); \n\
+		\\draw ({B})--({C}) ({C})--({D}) ({A})--({B}) ({A})--({C}) ({A})--({D}) ({C})--({M}) ({C})--({N}) ;\n\
+		\\end{{tikzpicture}}\n")
+		code = my_module.moi_truong_anh_latex(code_hinh_LG)
+		file_name_LG=my_module.pdftoimage_timename(code)
+
+		noi_dung_loigiai=(
+				f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+				{M}{N}\\subset ({C}{M}{N}) \\\\ \n\
+				{B}{D}\\subset ({B}{C}{D})\\\\ \n\
+				{M}{N} // {B}{D} \n\
+				\\end{{array}} \\right.$"
+				f"$\\Rightarrow ({C}{M}{N}) \\cap ({A}{B}{C})={C}x // {M}{N} //{B}{D}$.")
+		
+	if chon==2:
+		noi_dung=(
+		f"Cho tứ diện ${{{A}{B}{C}{D}}}$. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{A}{B},{A}{D}}}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{B}{C}{D}}}$"
+		f"Giao tuyến của hai mặt phẳng $({G}{M}{N})$ và $({B}{C}{D})$ là"
+		)	
+
+		kq=random.choice([
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{B}{D}}}$",
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{M}{N}}}$"])
+		kq_false=[
+			f"đường thẳng qua ${{{B}}}$ và song song với ${{{C}{N}}}$",
+			f"đường thẳng qua ${{{C}}}$ và song song với ${{{D}{M}}}$",
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{C}{D}}}$",
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{M}{N}}}$",]
+
+		code_hinh_LG=(f"\\begin{{tikzpicture}}[scale=0.7]\n\
+		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({A}) at (1,3)   node at ({A}) [above] {{${A}$}};\n\
+		\\coordinate ({M}) at ($({A})!0.5!({B})$) node at ({M}) [left] {{${M}$}};\n\
+		\\coordinate ({N}) at ($({A})!0.5!({D})$) node at ({N}) [right] {{${N}$}};\n\
+		\\coordinate ({G}) at (5/3,-2/3)   node at ({G}) [right] {{${G}$}};\n\
+		\\draw [dashed] ({B})--({D}) ({M})--({N}) ({G})--({M}) ({G})--({N}); \n\
+		\\draw ({B})--({C}) ({C})--({D}) ({A})--({B}) ({A})--({C}) ({A})--({D})  ;\n\
+		\\end{{tikzpicture}}\n")
+		code = my_module.moi_truong_anh_latex(code_hinh_LG)
+		file_name_LG=my_module.pdftoimage_timename(code)
+
+		noi_dung_loigiai=(
+				f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+				{M}{N}\\subset ({C}{M}{N}) \\\\ \n\
+				{B}{D}\\subset ({B}{C}{D})\\\\ \n\
+				{M}{N} // {B}{D} \n\
+				\\end{{array}} \\right.$"
+				f"$\\Rightarrow ({C}{M}{N}) \\cap ({A}{B}{C})={G}x // {M}{N} //{B}{D}$."
+				)
+	
+	if chon==3:
+		noi_dung=(
+		f"Cho tứ diện ${{{A}{B}{C}{D}}}$. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{A}{C},{A}{D}}}$."
+		f" Giao tuyến của hai mặt phẳng $({B}{M}{N})$ và $({B}{C}{D})$ là"
+		)	
+
+		kq=random.choice([
+			f"đường thẳng qua ${{{B}}}$ và song song với ${{{C}{D}}}$",
+			f"đường thẳng qua ${{{B}}}$ và song song với ${{{M}{N}}}$"])
+		kq_false=[
+			f"đường thẳng qua ${{{B}}}$ và song song với ${{{C}{N}}}$",
+			f"đường thẳng qua ${{{C}}}$ và song song với ${{{D}{M}}}$",
+			f"đường thẳng qua ${{{M}}}$ và song song với ${{{C}{D}}}$",
+			f"đường thẳng qua ${{{N}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{C}{N}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{M}{N}}}$",]
+
+		code_hinh_LG=(f"\\begin{{tikzpicture}}[scale=0.7]\n\
+		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({A}) at (1,3)   node at ({A}) [above] {{${A}$}};\n\
+		\\coordinate ({M}) at ($({A})!0.5!({C})$) node at ({M}) [right] {{${M}$}};\n\
+		\\coordinate ({N}) at ($({A})!0.5!({D})$) node at ({N}) [right] {{${N}$}};\n\
+		\\draw [dashed] ({B})--({D})  ({B})--({N}) ; \n\
+		\\draw ({B})--({C}) ({C})--({D}) ({A})--({B}) ({A})--({C}) ({A})--({D}) ({B})--({M}) ({M})--({N});\n\
+		\\end{{tikzpicture}}\n")
+		code = my_module.moi_truong_anh_latex(code_hinh_LG)
+		file_name_LG=my_module.pdftoimage_timename(code)
+
+		noi_dung_loigiai=(
+				f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+				{M}{N}\\subset ({B}{M}{N}) \\\\ \n\
+				{C}{D}\\subset ({B}{C}{D})\\\\ \n\
+				{M}{N} // {C}{D} \n\
+				\\end{{array}} \\right.$"
+				f"$\\Rightarrow ({B}{M}{N}) \\cap ({B}{C}{D})={B}x // {M}{N} //{C}{D}$.")
+
+	
+
+	if chon==4:
+		t=random.randint(2,3)
+		noi_dung=(
+		f"Cho tứ diện ${{{A}{B}{C}{D}}}$. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{A}{B},{A}{D}}}$."
+		f" Gọi ${{{G}}}$ là điểm thuộc cạnh ${{{B}{C}}}$ sao cho ${G}{B}={t}{G}{C}$."
+		f"Giao tuyến của hai mặt phẳng $({G}{M}{N})$ và $({B}{C}{D})$ là"
+		)	
+
+		kq=random.choice([
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{B}{D}}}$",
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{M}{N}}}$"])
+		kq_false=[
+			f"đường thẳng qua ${{{B}}}$ và song song với ${{{C}{N}}}$",
+			f"đường thẳng qua ${{{C}}}$ và song song với ${{{D}{M}}}$",
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{C}{D}}}$",
+			f"đường thẳng qua ${{{G}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{B}{C}}}$",
+			f"đường thẳng qua ${{{D}}}$ và song song với ${{{M}{N}}}$",]
+
+		code_hinh_LG=(f"\\begin{{tikzpicture}}[scale=0.7]\n\
+		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({A}) at (1,3)   node at ({A}) [above] {{${A}$}};\n\
+		\\coordinate ({M}) at ($({A})!0.5!({B})$) node at ({M}) [left] {{${M}$}};\n\
+		\\coordinate ({N}) at ($({A})!0.5!({D})$) node at ({N}) [right] {{${N}$}};\n\
+		\\coordinate ({G}) at ($({B})!{t/(t+1)}!({C})$) node at ({G}) [left] {{${G}$}};\n\
+		\\draw [dashed] ({B})--({D}) ({M})--({N}) ({G})--({N}); \n\
+		\\draw ({B})--({C}) ({C})--({D}) ({A})--({B}) ({A})--({C}) ({A})--({D})  ({G})--({M});\n\
+		\\end{{tikzpicture}}\n")
+		code = my_module.moi_truong_anh_latex(code_hinh_LG)
+		file_name_LG=my_module.pdftoimage_timename(code)
+
+		noi_dung_loigiai=(
+				f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+				{M}{N}\\subset ({C}{M}{N}) \\\\ \n\
+				{B}{D}\\subset ({B}{C}{D})\\\\ \n\
+				{M}{N} // {B}{D} \n\
+				\\end{{array}} \\right.$"
+				f"$\\Rightarrow ({C}{M}{N}) \\cap ({A}{B}{C})={G}x // {M}{N} //{B}{D}$.")
+
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 
 	debai= f"{noi_dung}\n{file_name}\n"
-
+	
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
 	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {file_name_LG}\n {noi_dung_loigiai} \n"
@@ -2112,6 +2330,148 @@ def ghj_7_jkl_L11_C4_B2_08():
 	f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B2_10]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song
+def ghj_7_jkl_L11_C4_B2_10():
+	S="S"
+	vertex=random.choice([
+		["A","B","C","D"],["A","B","C","E"],["B","C","D","E"], 
+		["C","D","E","F"], ["A","B","E","F"], ["B","C","E","F"]])
+	A,B,C,D=vertex
+
+	M=random.choice(["M", "G", "P"])
+	N=random.choice(["N", "H", "Q" ])
+	O=random.choice(["O", "I", "J" ])
+
+	name_bottom=random.choice(["hình bình hành", "hình chữ nhật", "hình thoi", "hình vuông" ])
+	
+	code_hinh=code_hinh_chop_deu_noname(S,A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ là {name_bottom} tâm ${{{O}}}$. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{S}{A},{S}{B}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau. "		
+	
+
+	duong=random.choice([f"{B}{C}", f"{C}{D}", f"{B}{D}", f"{D}{N}", f"{C}{N}",  f"{O}{N}"])
+	kq1_T=f"* ${{{S}{A}}}$ và ${{{duong}}}$ chéo nhau" 
+	kq1_F=f"${{{S}{A}}}$ và ${{{duong}}}$ {random.choice(["cắt nhau", "song song"])}"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"${{{S}{A}}}$ và ${{{duong}}}$ chéo nhau."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	duong_1=[f"{M}{N}", f"{M}{N}", f"{O}{M}", f"{O}{N}"]
+	duong_2=[f"{A}{B}", f"{C}{D}", f"{S}{C}", f"{S}{D}"]
+	i=random.randint(0,3)
+	duong_1,duong_2=duong_1[i],duong_2[i]
+	kq2_T=f"* ${{{duong_1}}}$ và ${{{duong_2}}}$ song song"
+	kq2_F=f"${{{duong_1}}}$ và ${{{duong_2}}}$ {random.choice(["cắt nhau", "chéo nhau"])}"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"${{{duong_1}}}$ và ${{{duong_2}}}$ song song."
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	duong_1=[f"{D}{M}", f"{O}{D}", f"{O}{B}", f"{O}{A}", f"{O}{C}"]
+	duong_2=[f"{C}{N}", f"{A}{B}", f"{A}{D}", f"{C}{D}", f"{A}{D}" ]
+	i=random.randint(0,3)
+	duong_1,duong_2=duong_1[i],duong_2[i]
+
+	kq3_T=f"* ${{{duong_1}}}$ và ${{{duong_2}}}$ cắt nhau" 
+	kq3_F=f"${{{duong_1}}}$ và ${{{duong_2}}}$ {random.choice(["song song", "chéo nhau"])}"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"${{{duong_1}}}$ và ${{{duong_2}}}$ cắt nhau."
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,4)
+	if chon==1:
+		duong=random.choice([f"{S}{A}", f"{S}{C}", f"{A}{C}", f"{O}{A}", f"{O}{C}"])
+		kq4_T=f"* Giao điểm của ${{{D}{N}}}$ và mặt phẳng $({S}{A}{C})$ là giao điểm giữa ${{{D}{N}}}$ và ${{{S}{O}}}$"
+		kq4_F=f"Giao điểm của ${{{D}{N}}}$ và mặt phẳng $({S}{A}{C})$ là giao điểm giữa ${{{D}{N}}}$ và ${{{duong}}}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Giao điểm của ${{{D}{N}}}$ và mặt phẳng $({S}{A}{C})$ là giao điểm giữa ${{{D}{N}}}$ và ${{{S}{O}}}$."
+	
+	if chon==2:
+		duong=random.choice([f"{S}{B}", f"{S}{D}", f"{B}{D}", f"{O}{D}", f"{O}{B}" ])
+		kq4_T=f"* Giao điểm của ${{{C}{M}}}$ và mặt phẳng $({S}{B}{D})$ là giao điểm giữa ${{{C}{M}}}$ và ${{{S}{O}}}$"
+		kq4_F=f"Giao điểm của ${{{C}{M}}}$ và mặt phẳng $({S}{B}{D})$ là giao điểm giữa ${{{C}{M}}}$ và ${{{duong}}}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Giao điểm của ${{{C}{M}}}$ và mặt phẳng $({S}{B}{D})$ là giao điểm giữa ${{{C}{M}}}$ và ${{{S}{O}}}$."
+
+	if chon==3:
+		duong=random.choice([f"{S}{B}", f"{S}{C}", f"{B}{C}", f"{A}{C}", f"{S}{O}" ])
+		kq4_T=f"* Giao điểm của ${{{D}{M}}}$ và mặt phẳng $({S}{B}{C})$ là giao điểm giữa ${{{D}{M}}}$ và ${{{C}{N}}}$"
+		kq4_F=f"Giao điểm của ${{{D}{M}}}$ và mặt phẳng $({S}{B}{C})$ là giao điểm giữa ${{{D}{M}}}$ và ${{{duong}}}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Giao điểm của ${{{D}{M}}}$ và mặt phẳng $({S}{B}{C})$ là giao điểm giữa ${{{D}{M}}}$ và ${{{C}{N}}}$."
+
+	if chon==4:
+		duong=random.choice([f"{S}{A}", f"{S}{C}", f"{A}{D}", f"{B}{D}", f"{S}{O}" ])
+		kq4_T=f"* Giao điểm của ${{{C}{N}}}$ và mặt phẳng $({S}{A}{D})$ là giao điểm giữa ${{{C}{N}}}$ và ${{{D}{M}}}$"
+		kq4_F=f"Giao điểm của ${{{C}{N}}}$ và mặt phẳng $({S}{A}{D})$ là giao điểm giữa ${{{C}{N}}}$ và ${{{duong}}}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Giao điểm của ${{{C}{N}}}$ và mặt phẳng $({S}{A}{D})$ là giao điểm giữa ${{{C}{N}}}$ và ${{{D}{M}}}$."
+
+
+	
+	
+	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 
 #Bài 3 - Đường thẳng song song với mặt phẳng 
 

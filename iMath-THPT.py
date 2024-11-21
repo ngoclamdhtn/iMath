@@ -3661,37 +3661,49 @@ class Ui_MainWindow(object):
                 L11_C4_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai."])
+                L11_C4_B2_1 = QTreeWidgetItem(L11_C4, ["Trắc nghiệm"])
+                L11_C4_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_04]-M2. Cho a nằm trong (P) và b cắt (P) tại M. Tìm khẳng định đúng hoặc sai."])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_04]-M2. Cho a nằm trong (P) và b cắt (P) tại M. Tìm khẳng định đúng hoặc sai."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_01]-M1. Cho hình chóp-hbh. Tìm cặp đường song song."])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_01]-M1. Cho hình chóp-hbh. Tìm cặp đường song song."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_06]-M2. Cho hình chóp tam giác. Tìm cặp đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_06]-M2. Cho hình chóp tam giác. Tìm cặp đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_07]-M2. Cho hình chóp-hbh. Tìm cặp đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_07]-M2. Cho hình chóp-hbh. Tìm cặp đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_02]-M2. Cho tứ diện. Xét quan hệ song song, chéo nhau, cắt nhau."])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_02]-M2. Cho tứ diện. Xét quan hệ song song, chéo nhau, cắt nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_05]-M3. Cho hình chóp tam giác. Xét quan hệ song song, chéo nhau, cắt nhau."])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_05]-M3. Cho hình chóp tam giác. Xét quan hệ song song, chéo nhau, cắt nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2, ["[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến chứa 2 đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến chứa 2 đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_09]-M2. Cho hình chóp tam giác. Tìm giao tuyến chứa 2 đường song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C4_B2_2 = QTreeWidgetItem(L11_C4_B2, ["Đúng-Sai"])
+                L11_C4_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
           
 
 
@@ -8649,6 +8661,10 @@ class Ui_MainWindow(object):
                                                 #[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến của 2 mặt chứa 2 đường song song
                                                 if dang_toan == "[D11_C4_B2_08]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_08()
+
+                                                #[D11_C4_B2_09]-M2. Cho hình chóp tam giác. Tìm giao tuyến của 2 mặt chứa 2 đường song song
+                                                if dang_toan == "[D11_C4_B2_09]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_09()
 
                                     #Bài 3: ĐƯỜNG THẲNG SONG SONG MẶT PHẲNG
                                     #[D11_C4_B3_01]. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
