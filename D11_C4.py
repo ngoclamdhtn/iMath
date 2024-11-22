@@ -2549,17 +2549,18 @@ def ghj_7_jkl_L11_C4_B2_11():
 		["C","D","E","F"], ["A","B","E","F"], ["B","C","E","F"]])
 	A,B,C,D=vertex
 
-	list_point=["M","N","P","Q","G","H","K"]
+	list_point=["M","N","P","G","H","K","I","J","K"]
 	random.shuffle(list_point)
-	M,N,P=list_point[0:3]
+	M,N,P,I,J=list_point[0:5]
 	
-	O=random.choice(["O", "I", "J" ])
+	O=random.choice(["O"])
 
 	name_bottom=random.choice(["hình bình hành", "hình chữ nhật", "hình thoi", "hình vuông" ])
 	
 	code_hinh=code_hinh_chop_deu_noname(S,A,B,C,D)
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	file_name=my_module.pdftoimage_timename(code)
+	#file_name=my_module.pdftoimage_timename(code)
+	file_name=""
 
 	code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
 \\coordinate ({A}) at (0,0);\n\
@@ -2575,7 +2576,8 @@ def ghj_7_jkl_L11_C4_B2_11():
 \\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/-90, {M}/180, {N}/0, {O}/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
 \\end{{tikzpicture}}\n"
 	code = my_module.moi_truong_anh_latex(code_hinh_LG)
-	file_name_LG=my_module.pdftoimage_timename(code)
+	#file_name_LG=my_module.pdftoimage_timename(code)
+	file_name_LG=""
 
 	noi_dung = (f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ là {name_bottom} tâm ${{{O}}}$."	
 	f" Gọi ${{{M}}}$ là điểm tùy ý thuộc cạnh ${{{S}{A}}}$ không trùng với ${{{S}}}$ và ${{{A}}}$.")
@@ -2590,7 +2592,7 @@ def ghj_7_jkl_L11_C4_B2_11():
 		\\coordinate ({O}) at ($({A})!0.5!({C})$);\n\
 		\\coordinate ({S}) at ($({O})+(0,7)$);\n\
 		\\coordinate ({M}) at ($({S})!0.5!({A})$);\n\
-		\\coordinate ({N}) at ($({A})!0.5!({B})$);\n\
+		\\coordinate ({N}) at ($({B})!0.5!({A})$);\n\
 		\\coordinate ({P}) at ($({B})!0.5!({C})$);\n\
 		\\draw ({S})--({A}) ({S})--({D}) ({S})--({C}) ({A})--({D}) ({C})--({D});\n\
 		\\draw[dashed,thin]({S})--({B}) ({A})--({B}) ({B})--({C}) ({A})--({C}) ({B})--({D}) ({S})--({O}) ({M})--({N}) ({N})--({P}) ({M})--({P});\n\
@@ -2608,7 +2610,7 @@ def ghj_7_jkl_L11_C4_B2_11():
 		\\coordinate ({O}) at ($({A})!0.5!({C})$);\n\
 		\\coordinate ({S}) at ($({O})+(0,7)$);\n\
 		\\coordinate ({M}) at ($({S})!0.5!({A})$);\n\
-		\\coordinate ({N}) at ($({A})!{t/(t+1)}!({B})$);\n\
+		\\coordinate ({N}) at ($({B})!{t/(t+1)}!({A})$);\n\
 		\\coordinate ({P}) at ($({B})!{t/(t+1)}!({C})$);\n\
 		\\draw ({S})--({A}) ({S})--({D}) ({S})--({C}) ({A})--({D}) ({C})--({D});\n\
 		\\draw[dashed,thin]({S})--({B}) ({A})--({B}) ({B})--({C}) ({A})--({C}) ({B})--({D}) ({S})--({O}) ({M})--({N}) ({N})--({P}) ({M})--({P});\n\
@@ -2661,24 +2663,64 @@ def ghj_7_jkl_L11_C4_B2_11():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=f"* "
-	kq2_F=f" "
+	chon=random.randint(1,2)
+	if chon==1:
+		duong=random.choice([f"{A}{D}", f"{B}{C}"])
+		duong_false=random.choice([f"{A}{B}", f"{C}{D}"])
+
+		kq2_T=f"* Giao tuyến của $({M}{B}{C})$ và $({S}{A}{D})$ là đường thẳng qua {M} và song song với ${{{duong}}}$"
+		kq2_F=f"Giao tuyến của $({M}{B}{C})$ và $({S}{A}{D})$ là đường thẳng qua {M} và song song với ${{{duong_false}}}$"
+		
+		HDG=(f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+		{M} \\in ({M}{B}{C})\\cap ({S}{A}{D})\\\\ \n\
+		{B}{C} \\subset ({M}{B}{C})\\\\ \n\
+		{A}{D} \\subset ({S}{A}{D}) \n\
+		\\end{{array}} \\right.\\Rightarrow ({M}{B}{C}) \\cap ({S}{A}{D}) ={M}x//{B}{C}//{A}{D}$.")	
+	if chon==2:
+		duong=random.choice([f"{A}{C}", f"{N}{P}"])
+		duong_false=random.choice([f"{A}{B}",f"{B}{C}", f"{C}{D}", f"{B}{D}"])
+		kq2_T=f"* Giao tuyến của $({M}{N}{P})$ và $({S}{A}{C})$ là đường thẳng qua {M} và song song với ${{{duong}}}$"
+		kq2_F=f"Giao tuyến của $({M}{N}{P})$ và $({S}{A}{C})$ là đường thẳng qua {M} và song song với ${{{duong_false}}}$"
+		
+		HDG=(f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+		{M} \\in ({M}{N}{P})\\cap ({S}{A}{C})\\\\ \n\
+		{N}{P} \\subset ({M}{N}{P})\\\\ \n\
+		{A}{C} \\subset ({S}{A}{C}) \n\
+		\\end{{array}} \\right.\\Rightarrow ({M}{N}{P}) \\cap ({S}{A}{C})={M}x//{N}{P}//{A}{C}$.")
+
 	kq2=random.choice([kq2_T, kq2_F])
-	HDG=f""
+	
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq3_T=f"* " 
-	kq3_F=f" "
+	chon=random.randint(1,2)
+	if chon==1:
+		duong=random.choice([f"{C}{D}",f"{S}{A}", f"{S}{D}", f"{B}{D}"])
+		kq3_T=f"* Giao tuyến của $({S}{N}{P})$ và $({S}{A}{D})$ là đường thẳng qua {S}{I} với ${I}={N}{P}\\cap {A}{D}$" 
+		kq3_F=f"Giao tuyến của $({S}{N}{P})$ và $({S}{A}{D})$ là đường thẳng qua {S}{I} với ${I}={N}{P}\\cap {duong}$"		
+		HDG=(f"${S}\\in ({S}{N}{P}) \\cap ({S}{A}{D})$.\n\n"
+			f"${I}={N}{P}\\cap {A}{D}\\Rightarrow {I}\\in ({S}{N}{P}) \\cap ({S}{A}{D})$\n\n"
+			f"$\\Rightarrow ({S}{N}{P}) \\cap ({S}{A}{D})={S}{I}$.")
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	
+	if chon==2:
+		duong=random.choice([f"{A}{D}",f"{S}{C}", f"{S}{D}", f"{B}{D}"])
+		kq3_T=f"* Giao tuyến của $({S}{N}{P})$ và $({S}{C}{D})$ là đường thẳng qua {S}{I} với ${I}={N}{P}\\cap {C}{D}$" 
+		kq3_F=f"Giao tuyến của $({S}{N}{P})$ và $({S}{C}{D})$ là đường thẳng qua {S}{I} với ${I}={N}{P}\\cap {duong}$"
+		
+		HDG=(f"${S}\\in ({S}{N}{P}) \\cap ({S}{C}{D})$.\n\n"
+			f"${I}={N}{P}\\cap {C}{D}\\Rightarrow {I}\\in ({S}{N}{P}) \\cap ({S}{C}{D})$\n\n"
+			f"$\\Rightarrow ({S}{N}{P}) \\cap ({S}{C}{D})={S}{I}$.")
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=f""
-	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"* "
-	kq4_F=f" " 
+	duong=random.choice([f"{S}{B}",f"{S}{D}", f"{B}{D}"])
+	kq4_T=f"* Giao điểm của ${{{C}{M}}}$ và $({S}{B}{D})$ là điểm ${{{J}}}$ với ${J}={C}{M}\\cap {S}{O}$"
+	kq4_F=f"Giao điểm của ${{{C}{M}}}$ và $({S}{B}{D})$ là điểm ${{{J}}}$ với ${J}={C}{M}\\cap {S}{O}$" 
 	kq4=random.choice([kq4_T, kq4_F])
 	HDG=f""
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
