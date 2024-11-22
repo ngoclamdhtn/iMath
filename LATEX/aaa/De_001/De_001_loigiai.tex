@@ -56,48 +56,63 @@
 \chantrang{\pageref{LastPage}}{001}
 \setcounter{page}{1}
 \begin{ex}
-	Cho hình chóp ${S.BCDE}$ có đáy là hình vuông tâm ${I}$. Gọi ${P,Q}$ lần lượt là trung điểm của ${SD,SE}$. Giao tuyến của hai mặt phẳng $(IPQ)$ và $(BCDE)$ là 
+	Cho hình chóp ${S.ABEF}$ là hình bình hành tâm ${I}$. Gọi ${H}$ là điểm tùy ý thuộc cạnh ${SA}$ không trùng với ${S}$ và ${A}$. Gọi ${Q,G}$ là các điểm lần lượt thuộc ${AB,BE}$ sao cho $BQ=3QA,BG=3GE$. Xét tính đúng-sai của các khẳng định sau: 
 	\begin{center}
 		\begin{tikzpicture}[line join=round, line cap=round,thick]
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (2,-2);
-			\coordinate (E) at (5,0);
-			\coordinate (D) at ($(C)+(E)-(B)$);
-			\coordinate (O) at ($(B)!0.5!(D)$);
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (2,-2);
+			\coordinate (F) at (5,0);
+			\coordinate (E) at ($(B)+(F)-(A)$);
+			\coordinate (O) at ($(A)!0.5!(E)$);
 			\coordinate (S) at ($(O)+(0,7)$);
-			\draw(S)--(B) (S)--(C) (S)--(D) (B)--(C) (C)--(D);
-			\draw[dashed,thin](B)--(D) (B)--(E) (D)--(E) (S)--(E) (C)--(E);
-			\foreach \i/\g in {S/90,B/180,C/-90,D/-90,E/0}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{};}
+			\draw(S)--(A) (S)--(B) (S)--(E) (A)--(B) (B)--(E);
+			\draw[dashed,thin](A)--(E) (A)--(F) (E)--(F) (S)--(F) (B)--(F);
+			\foreach \i/\g in {S/90,A/180,B/-90,E/-90,F/0}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{};}
 		\end{tikzpicture}
 		
 	\end{center}
-	\choice
-	{ đường thẳng qua ${S}$ và song song với ${CD}$ }
-	{ \True đường thẳng qua ${I}$ và song song với ${DE}$ }
-	{ đường thẳng qua ${S}$ và song song với ${BC}$ }
-	{ đường thẳng qua ${S}$ và song song với ${BE}$ }
+	\choiceTFt
+	{ \True  ${QG}$ và ${SA}$ chéo nhau }
+	{ \True   }
+	{   }
+	{ \True   }
 	\loigiai{\begin{center}
 			\begin{tikzpicture}[line join=round, line cap=round,thick]
-				\coordinate (B) at (0,0);
-				\coordinate (C) at (2,-2);
-				\coordinate (E) at (5,0);
-				\coordinate (D) at ($(C)+(E)-(B)$);
-				\coordinate (I) at ($(B)!0.5!(D)$);
+				\coordinate (A) at (0,0);
+				\coordinate (F) at (2,-2);
+				\coordinate (B) at (5,0);
+				\coordinate (E) at ($(B)+(F)-(A)$);
+				\coordinate (I) at ($(A)!0.5!(E)$);
 				\coordinate (S) at ($(I)+(0,7)$);
-				\coordinate (P) at ($(S)!0.5!(D)$);
-				\coordinate (Q) at ($(S)!0.5!(E)$);
-				\draw(S)--(B) (S)--(C) (S)--(D) (B)--(C) (C)--(D) (P)--(Q);
-				\draw[dashed,thin](B)--(D) (B)--(E) (D)--(E) (S)--(E) (C)--(E);
-				\draw[dashed,thin](I)--(P) (I)--(Q) ;
-				\foreach \i/\g in {S/90,B/180,C/-90,D/-90,E/0,I/-90,P/180,Q/0}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+				\coordinate (H) at ($(S)!0.5!(A)$);
+				\coordinate (Q) at ($(A)!0.75!(B)$);
+				\coordinate (G) at ($(B)!0.75!(E)$);
+				\draw (S)--(A) (S)--(F) (S)--(E) (A)--(F) (E)--(F);
+				\draw[dashed,thin](S)--(B) (A)--(B) (B)--(E) (A)--(E) (B)--(F) (S)--(I) (H)--(Q) (Q)--(G) (H)--(G);
+				\foreach \i/\g in {S/90,A/180,B/-90,E/-90,F/-90, H/180, Q/0,G/-90, I/-90}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
 			\end{tikzpicture}
 			
 		\end{center}
-		$\left\{ \begin{array}{l} 
-			PQ\subset (IPQ) \\ 
-			DE\subset (BCDE)\\ 
-			PQ // DE 
-		\end{array} \right.$$\Rightarrow (IPQ) \cap (BCDE)=Ix // DE //PQ //BC$. 
+		
+		
+		
+		a) Khẳng định đã cho là khẳng định đúng.
+		
+		${QG}$ và ${SA}$ chéo nhau.
+		
+		b) Khẳng định đã cho là khẳng định đúng.
+		
+		
+		
+		c) Khẳng định đã cho là khẳng định đúng.
+		
+		
+		
+		d) Khẳng định đã cho là khẳng định sai.
+		
+		
+		
+		
 }\end{ex}
 
 

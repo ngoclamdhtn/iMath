@@ -3661,7 +3661,7 @@ class Ui_MainWindow(object):
                 L11_C4_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C4_B2_1 = QTreeWidgetItem(L11_C4, ["Trắc nghiệm"])
+                L11_C4_B2_1 = QTreeWidgetItem(L11_C4_B2, ["Trắc nghiệm"])
                 L11_C4_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3704,6 +3704,10 @@ class Ui_MainWindow(object):
                 L11_C4_B2_2 = QTreeWidgetItem(L11_C4_B2, ["Đúng-Sai"])
                 L11_C4_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_10]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
           
 
 
@@ -8665,6 +8669,10 @@ class Ui_MainWindow(object):
                                                 #[D11_C4_B2_09]-M2. Cho hình chóp tam giác. Tìm giao tuyến của 2 mặt chứa 2 đường song song
                                                 if dang_toan == "[D11_C4_B2_09]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_09()
+                                                
+                                                #[D11_C4_B2_10]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt 
+                                                if dang_toan == "[D11_C4_B2_10]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_10()
 
                                     #Bài 3: ĐƯỜNG THẲNG SONG SONG MẶT PHẲNG
                                     #[D11_C4_B3_01]. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
