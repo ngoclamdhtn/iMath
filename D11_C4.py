@@ -3142,6 +3142,8 @@ def ghj_7_jkl_L11_C4_B3_05():
 		["S","C","D","E"], ["A","B","E","F"], ["B","C","E","F"],["C","D","E","F"] ])
 	
 	A,B,C,D=vertex
+	ten_hinhchop=random.choice([f"tứ diện ${{{A}{B}{C}{D}}}$", f"hình chóp ${{{A}.{B}{C}{D}}}$"])
+
 	name_points=["M","N","P","Q", "I","J"]
 	random.shuffle(name_points)
 	M,N,P=name_points[0:3]
@@ -3168,7 +3170,7 @@ def ghj_7_jkl_L11_C4_B3_05():
 		\\end{{tikzpicture}}\n"
 
 		noi_dung=(
-		f"Cho tứ diện ${{{A}{B}{C}{D}}}$. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{A}{B},{A}{C}}}$."
+		f"Cho {ten_hinhchop}. Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{A}{B},{A}{C}}}$."
 		f"Gọi ${{{P}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${P}{A}={t}{P}{D}$"
 		f" Đường thẳng ${{{M},{N}}}$ song song với mặt phẳng nào sau đây?"
 		)	
@@ -3185,7 +3187,6 @@ def ghj_7_jkl_L11_C4_B3_05():
 		f"${M}{N}//{B}{C}\\subset {kq},{M}{N} \\not \\subset {kq} \\Rightarrow {M}{N}//{kq}$."
 		)
 	if chon==2:
-		t=random.randint(2,3)		
 		code_hinh_LG=f"\\begin{{tikzpicture}}[scale=0.7]\n\
 		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
 		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
@@ -3200,7 +3201,7 @@ def ghj_7_jkl_L11_C4_B3_05():
 		\\end{{tikzpicture}}\n"
 
 		noi_dung=(
-		f"Cho tứ diện ${{{A}{B}{C}{D}}}$. Gọi ${{{M},{N},{P}}}$ lần lượt là trung điểm của ${{{A}{B},{B}{C},{A}{D}}}$."		
+		f"Cho {ten_hinhchop}. Gọi ${{{M},{N},{P}}}$ lần lượt là trung điểm của ${{{A}{B},{B}{C},{A}{D}}}$."		
 		f" Khẳng định nào sau đây là khẳng định đúng?"
 		)	
 
@@ -3217,9 +3218,80 @@ def ghj_7_jkl_L11_C4_B3_05():
 		f"{M}{N}//({A}{B}{C})", f"{M}{P}//({A}{B}{D})", f"{C}{D}//({M}{N}{P})",
 		f"{B}{C}//({M}{N}{P})", f"{M}{D}//({A}{B}{C})",
 		f"{C}{M}//({A}{N}{D})", f"{D}{N}//({A}{B}{C})",
-		f"{B}{D}//({A}{N}{P})", f"{C}{D}//({A}{M}{N})",		
+		f"{B}{D}//({A}{N}{P})", f"{C}{D}//({A}{M}{N})",
 		]
-		noi_dung_loigiai=(f"${kq}$ là khẳng định đúng."	)
+		noi_dung_loigiai=(f"${kq}$ là khẳng định đúng.")
+
+	if chon==4:		
+		code_hinh_LG=f"\\begin{{tikzpicture}}[scale=0.7]\n\
+		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({A}) at (1,3)   node at ({A}) [above] {{${A}$}};\n\
+		\\coordinate ({M}) at ($({A})!0.5!({B})$);\n\
+		\\coordinate ({N}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({P}) at ($({A})!0.5!({D})$);\n\
+		\\draw [dashed] ({B})--({D}) ({M})--({P}) ({N})--({P}); \n\
+		\\draw ({B})--({C}) ({C})--({D}) ({A})--({B}) ({A})--({C}) ({A})--({D}) ({M})--({N}) ;\n\
+		\\foreach \\i/\\g in {{{M}/180, {N}/0,{P}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"
+
+		noi_dung=(
+		f"Cho {ten_hinhchop}. Gọi ${{{M},{N},{P}}}$ lần lượt là trung điểm của ${{{A}{B},{B}{C},{A}{D}}}$."		
+		f" Khẳng định nào sau đây là khẳng định sai?"
+		)	
+
+		kq=[
+		f"{M}{N}//({A}{B}{C})", f"{M}{P}//({A}{B}{D})", f"{C}{D}//({M}{N}{P})",
+		f"{B}{C}//({M}{N}{P})", f"{M}{D}//({A}{B}{C})",
+		f"{C}{M}//({A}{N}{D})", f"{D}{N}//({A}{B}{C})",
+		f"{B}{D}//({A}{N}{P})", f"{C}{D}//({A}{M}{N})",
+
+		
+		]
+		random.shuffle(kq)
+		kq=kq[0]
+
+		kq_false=[
+		f"{M}{N}//({A}{C}{D})", f"{M}{N}//({P}{C}{D})", f"{M}{N}//({A}{P}{C})", 
+		f"{M}{P}//({B}{C}{D})", f"{M}{P}//({N}{C}{D})",	f"{M}{P}//({B}{D}{N})", f"{M}{P}//({D}{N}{C})",
+		f"{A}{C}//({M}{N}{P})", f"{A}{C}//({D}{M}{N})",
+		f"{B}{D}//({M}{N}{P})", f"{B}{D}//({C}{M}{P})",		
+		]
+		noi_dung_loigiai=(f"${kq}$ là khẳng định sai.")
+
+	if chon==5:
+		code_hinh_LG=f"\\begin{{tikzpicture}}[scale=0.7]\n\
+		\\coordinate ({B}) at (0,0)   node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (1,-2) node at ({C}) [below] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({A}) at (1,3)   node at ({A}) [above] {{${A}$}};\n\
+		\\coordinate ({M}) at ($({A})!0.5!({B})$);\n\
+		\\coordinate ({N}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({P}) at ($({B})!0.5!({D})$);\n\
+		\\draw [dashed] ({B})--({D}) ({M})--({P}) ({N})--({P}); \n\
+		\\draw ({B})--({C}) ({C})--({D}) ({A})--({B}) ({A})--({C}) ({A})--({D}) ({M})--({N}) ;\n\
+		\\foreach \\i/\\g in {{{M}/180, {N}/-90,{P}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"
+
+		noi_dung=(
+		f"Cho {ten_hinhchop}. Gọi ${{{M},{N},{P}}}$ lần lượt là trung điểm của ${{{A}{B},{B}{C},{B}{D}}}$."		
+		f" Khẳng định nào sau đây là khẳng định đúng?"
+		)	
+
+		kq=[
+		f"{M}{N}//({A}{C}{D})", f"{A}{C}//({M}{N}{P})", f"{A}{C}//({M}{N}{D})", 
+		f"{M}{P}//({A}{C}{D})", f"{M}{P}//({N}{A}{D})",
+		f"{N}{P}//({A}{C}{D})", f"{C}{D}//({M}{N}{P})", f"{A}{D}//({M}{N}{P})",
+		]
+		random.shuffle(kq)
+		kq=kq[0]
+
+		kq_false=[
+		
+		
+		]
+		noi_dung_loigiai=(f"${kq}$ là khẳng định đúng.")
 
 	random.shuffle(kq_false)
 	kq2,kq3,kq4=kq_false[0:3]
