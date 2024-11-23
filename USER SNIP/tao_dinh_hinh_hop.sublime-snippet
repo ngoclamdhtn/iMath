@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+A1=["A'","A_1","E"]
+B1=["B'","B_1","F"]
+C1=["C'","C_1","G"]
+D1=["D'","D_1","H"]
+i=random.randint(0,2)
+A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+ten_hop = f"ABCD.{A1}{B1}{C1}{D1}"
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tao_dinh_hinh_hop</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

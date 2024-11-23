@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+n=sp.symbols("n")
+]]></content>
+	<tabTrigger>kihieu</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+random.randint(1,2)
+]]></content>
+	<tabTrigger>r_int</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

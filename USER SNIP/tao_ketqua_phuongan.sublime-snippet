@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+    kq=f" "
+    kq2=f" "
+    kq3=f" "
+    kq4=f" "
+    pa_A= f"*{kq}."
+    pa_B= f"{kq2}."
+    pa_C= f"{kq3}."
+    pa_D= f"{kq4}."
+]]></content>
+
+<tabTrigger>tao_ketqua_phuongan</tabTrigger> 
+<scope>source.python</scope>
+</snippet>

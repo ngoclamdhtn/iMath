@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+\\\\mathop{{\\\\lim}}\\\\limits_{{x \\\\to  x_0}} {{y}}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+<tabTrigger>limf</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

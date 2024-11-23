@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+	kq2_T=f"* "
+	kq2_F=f" "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f""
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+<tabTrigger>tf2</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+chon=random.choice(["+","-"])
+if chon=="+":
+if chon=="-":
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rand_dau</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

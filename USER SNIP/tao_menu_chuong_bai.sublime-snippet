@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+L9_C4 = QTreeWidgetItem(L9, ["Chương 4 -  "])
+L9_C4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+L9_C4.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+L9_C4_B1 = QTreeWidgetItem(L9_C4, ["Bài 1 - "])
+L9_C4_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+L9_C4_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+L09_C4_B1_1 = QTreeWidgetItem(L9_C4_B1, ["Trắc nghiệm"])
+L09_C4_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+L09_C4_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+L09_C4_B1_3 = QTreeWidgetItem(L9_C4_B1, ["Trả lời ngắn"])
+L09_C4_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+L09_C4_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+<tabTrigger>tao_menu_chuong_bai</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1105,22 +1105,22 @@ def ghj_7_jkl_L11_C4_B2_02():
 
 #[D11_C4_B2_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai
 def ghj_7_jkl_L11_C4_B2_03():
-	a=random.choice(["a","m","d"])
-	b=random.choice(["b","n","\\Delta" ])
+	name_lines=["a","m","d","b","n","\\Delta"]
+	random.shuffle(name_lines)
+	a,b=nam_lines[0:2]
 	P=random.choice(["(P)","(Q)","(R)", "(\\alpha)", "(\\beta)", "(\\gamma)"])
 	M=random.choice(["A","B","M","N", "E","F","I","H",])
 	chon=random.randint(1,2)
 	if chon==1:
 		noi_dung=(
 		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
-		f" đường thẳng ${{{b}}}$ song song với mặt phẳng ${{{P}}}$"
-		f" và điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$."
+		f" điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$,"
+		f" đường thẳng ${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung."		
 		f" Tìm khẳng định đúng trong các khẳng định sau."
 		)	
 
 		kq=random.choice([
-		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",
-		f"${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung",
+		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",		
 		f"Điểm ${{{M}}}$ không thuộc đường thẳng ${{{b}}}$",
 		f"Điểm ${{{M}}}$ và ${{{a}}}$ cùng nằm trong một mặt phẳng",
 		f"Có duy nhất một mặt phẳng chứa điểm ${{{b}}}$ và song song với ${{{a}}}$"
@@ -1147,8 +1147,8 @@ def ghj_7_jkl_L11_C4_B2_03():
 	if chon==2:
 		noi_dung=(
 		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
-		f" đường thẳng ${{{b}}}$ song song với mặt phẳng ${{{P}}}$"
-		f" và điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$."
+		f" điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$,"
+		f" đường thẳng ${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung."
 		f" Tìm khẳng định sai trong các khẳng định sau."
 		)	
 
@@ -1165,8 +1165,7 @@ def ghj_7_jkl_L11_C4_B2_03():
 		
 		 ])
 		kq_false=[
-		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",
-		f"${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung",
+		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",		
 		f"Điểm ${{{M}}}$ không thuộc đường thẳng ${{{b}}}$",
 		f"Điểm ${{{M}}}$ và ${{{a}}}$ cùng nằm trong một mặt phẳng",
 		f"Có duy nhất một mặt phẳng chứa điểm ${{{b}}}$ và song song với ${{{a}}}$",
@@ -1212,7 +1211,7 @@ def ghj_7_jkl_L11_C4_B2_03():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C4_B2_04]-M2. Cho a nằm trong (P) và b cắt (P) tại M. Tìm khẳng định đúng hoặc sai
+
 def ghj_7_jkl_L11_C4_B2_04():
 	a=random.choice(["a","m","d"])
 	b=random.choice(["b","n","\\Delta" ])
@@ -2549,7 +2548,7 @@ def ghj_7_jkl_L11_C4_B2_11():
 		["C","D","E","F"], ["A","B","E","F"], ["B","C","E","F"]])
 	A,B,C,D=vertex
 
-	list_point=["M","N","P","G","H","K","I","J","K"]
+	list_point=["M","N","P","G","H","I","J","K"]
 	random.shuffle(list_point)
 	M,N,P,I,J=list_point[0:5]
 	
@@ -2559,25 +2558,8 @@ def ghj_7_jkl_L11_C4_B2_11():
 	
 	code_hinh=code_hinh_chop_deu_noname(S,A,B,C,D)
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	#file_name=my_module.pdftoimage_timename(code)
-	file_name=""
-
-	code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
-\\coordinate ({A}) at (0,0);\n\
-\\coordinate ({D}) at (2,-2);\n\
-\\coordinate ({B}) at (5,0);\n\
-\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
-\\coordinate ({O}) at ($({A})!0.5!({C})$);\n\
-\\coordinate ({S}) at ($({O})+(0,7)$);\n\
-\\coordinate ({M}) at ($({S})!0.5!({A})$);\n\
-\\coordinate ({N}) at ($({S})!0.5!({B})$);\n\
-\\draw ({S})--({A}) ({S})--({D}) ({S})--({C}) ({A})--({D}) ({C})--({D})  ({D})--({M});\n\
-\\draw[dashed,thin]({S})--({B}) ({A})--({B}) ({B})--({C}) ({A})--({C})   ({B})--({D}) ({C})--({N}) ({S})--({O}) ({M})--({N});\n\
-\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/-90, {M}/180, {N}/0, {O}/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
-\\end{{tikzpicture}}\n"
-	code = my_module.moi_truong_anh_latex(code_hinh_LG)
-	#file_name_LG=my_module.pdftoimage_timename(code)
-	file_name_LG=""
+	file_name=my_module.pdftoimage_timename(code)
+	
 
 	noi_dung = (f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ là {name_bottom} tâm ${{{O}}}$."	
 	f" Gọi ${{{M}}}$ là điểm tùy ý thuộc cạnh ${{{S}{A}}}$ không trùng với ${{{S}}}$ và ${{{A}}}$.")
@@ -2633,6 +2615,10 @@ def ghj_7_jkl_L11_C4_B2_11():
 		\\draw[dashed,thin]({S})--({B}) ({A})--({B}) ({B})--({C}) ({A})--({C}) ({B})--({D}) ({S})--({O}) ({M})--({N}) ({N})--({P}) ({M})--({P});\n\
 		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/-90, {M}/180, {N}/-90,{P}/-90, {O}/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
 		\\end{{tikzpicture}}\n"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
 	noi_dung +=f" Xét tính đúng-sai của các khẳng định sau: "
 	debai_word= f"{noi_dung}\n"
 
@@ -2640,7 +2626,7 @@ def ghj_7_jkl_L11_C4_B2_11():
 	if chon==1:
 		duong=random.choice([f"{S}{A}", f"{S}{B}", f"{S}{C}", f"{S}{D}", f"{B}{M}", f"{C}{M}", f"{D}{M}" ])	
 		kq1_T=f"* ${{{N}{P}}}$ và ${{{duong}}}$ chéo nhau" 
-		kq1_F=f"${{{N}{P}}}$ và ${{{duong}}}$ {random.choice(["song song", "cắt nhau" ])}"	
+		kq1_F=f"${{{N}{P}}}$ và ${{{duong}}}$ {random.choice(["song song", "cắt nhau"])}"	
 		HDG=f"${{{N}{P}}}$ và ${{{duong}}}$ chéo nhau."
 	
 	if chon==2:
@@ -2663,7 +2649,7 @@ def ghj_7_jkl_L11_C4_B2_11():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	chon=random.randint(1,2)
+	chon=random.randint(1,4)
 	if chon==1:
 		duong=random.choice([f"{A}{D}", f"{B}{C}"])
 		duong_false=random.choice([f"{A}{B}", f"{C}{D}"])
@@ -2687,6 +2673,31 @@ def ghj_7_jkl_L11_C4_B2_11():
 		{N}{P} \\subset ({M}{N}{P})\\\\ \n\
 		{A}{C} \\subset ({S}{A}{C}) \n\
 		\\end{{array}} \\right.\\Rightarrow ({M}{N}{P}) \\cap ({S}{A}{C})={M}x//{N}{P}//{A}{C}$.")
+
+	if chon==3:
+		duong=random.choice([f"{A}{D}", f"{B}{C}"])
+		duong_false=random.choice([f"{A}{B}",f"{B}{C}", f"{C}{D}", f"{B}{D}"])
+		kq2_T=f"* Giao tuyến của $({S}{A}{D})$ và $({S}{B}{C})$ là đường thẳng qua {S} và song song với ${{{duong}}}$"
+		kq2_F=f"Giao tuyến của $({S}{A}{D})$ và $({S}{B}{C})$ là đường thẳng qua {M} và song song với ${{{duong}}}$"
+		
+		HDG=(f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+		{S} \\in ({S}{A}{D})\\cap ({S}{B}{C})\\\\ \n\
+		{A}{D} \\subset ({S}{A}{D})\\\\ \n\
+		{B}{C} \\subset ({S}{B}{C}) \n\
+		\\end{{array}} \\right.\\Rightarrow ({S}{A}{D}) \\cap ({S}{B}{C})={S}x//{A}{D}//{B}{C}$.")
+
+	if chon==4:
+		duong=random.choice([f"{A}{B}", f"{C}{D}"])
+		duong_false=random.choice([f"{A}{C}",f"{B}{D}", f"{B}{C}", f"{A}{D}"])
+		kq2_T=f"* Giao tuyến của $({S}{A}{B})$ và $({S}{C}{D})$ là đường thẳng qua {S} và song song với ${{{duong}}}$"
+		kq2_F=f"Giao tuyến của $({S}{A}{B})$ và $({S}{C}{D})$ là đường thẳng qua {S} và song song với ${{{duong_false}}}$"
+		
+		HDG=(f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+		{S} \\in ({S}{A}{B})\\cap ({S}{C}{D})\\\\ \n\
+		{A}{B} \\subset ({S}{A}{B})\\\\ \n\
+		{C}{D} \\subset ({S}{C}{D}) \n\
+		\\end{{array}} \\right.\\Rightarrow ({S}{A}{B}) \\cap ({S}{C}{D})={S}x//{A}{B}//{C}{D}$.")
+
 
 	kq2=random.choice([kq2_T, kq2_F])
 	
@@ -2718,18 +2729,47 @@ def ghj_7_jkl_L11_C4_B2_11():
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	duong=random.choice([f"{S}{B}",f"{S}{D}", f"{B}{D}"])
-	kq4_T=f"* Giao điểm của ${{{C}{M}}}$ và $({S}{B}{D})$ là điểm ${{{J}}}$ với ${J}={C}{M}\\cap {S}{O}$"
-	kq4_F=f"Giao điểm của ${{{C}{M}}}$ và $({S}{B}{D})$ là điểm ${{{J}}}$ với ${J}={C}{M}\\cap {S}{O}$" 
+	chon=random.randint(1,4)
+	if chon==1:
+		duong=random.choice([f"{S}{B}",f"{S}{D}", f"{B}{D}"])
+		kq4_T=f"* Giao điểm của ${{{C}{M}}}$ và $({S}{B}{D})$ là điểm ${{{J}}}$ với ${J}={C}{M}\\cap {S}{O}$"
+		kq4_F=f"Giao điểm của ${{{C}{M}}}$ và $({S}{B}{D})$ là điểm ${{{J}}}$ với ${J}={C}{M}\\cap {duong}$"
+
+		HDG=(f"${J}={C}{M}\\cap {S}{O}\\Rightarrow {J}\\in {C}{M}, {J}\\in {S}{O} \\subset ({S}{B}{D})$.\n\n"
+			f"$\\Rightarrow {C}{M}\\cap ({S}{B}{D}) ={J}$."	)
+	
+	if chon==2:
+		duong=random.choice([f"{M}{C}",f"{M}{D}", f"{B}{D}"])
+		kq4_T=f"* Giao điểm của ${{{A}{P}}}$ và $({M}{C}{D})$ là điểm ${{{J}}}$ với ${J}={A}{P}\\cap {C}{D}$"
+		kq4_F=f"Giao điểm của ${{{A}{P}}}$ và $({M}{C}{D})$ là điểm ${{{J}}}$ với ${J}={A}{P}\\cap {duong}$"
+		
+		HDG=(f"${J}={A}{P}\\cap {C}{D}\\Rightarrow {J}\\in {A}{P}, {J}\\in {C}{D} \\subset ({M}{C}{D})$.\n\n"
+			f"$\\Rightarrow {A}{P}\\cap ({M}{C}{D}) ={J}$.")
+
+	if chon==3:
+		duong=random.choice([f"{M}{N}",f"{M}{P}", f"{A}{P}"])
+		kq4_T=f"* Giao điểm của ${{{C}{D}}}$ và $({M}{N}{P})$ là điểm ${{{J}}}$ với ${J}={C}{D}\\cap {N}{P}$"
+		kq4_F=f"Giao điểm của ${{{C}{D}}}$ và $({M}{N}{P})$ là điểm ${{{J}}}$ với ${J}={C}{D}\\cap {duong}$"
+		
+		HDG=(f"${J}={C}{D}\\cap {N}{P}\\Rightarrow {J}\\in {C}{D}, {J}\\in {N}{P} \\subset ({M}{N}{P})$.\n\n"
+			f"$\\Rightarrow {C}{D}\\cap ({M}{N}{P}) ={J}$.")
+
+	if chon==4:
+		duong=random.choice([f"{M}{N}",f"{M}{P}", f"{A}{P}"])
+		kq4_T=f"* Giao điểm của ${{{A}{D}}}$ và $({M}{N}{P})$ là điểm ${{{J}}}$ với ${J}={A}{D}\\cap {N}{P}$"
+		kq4_F=f"Giao điểm của ${{{A}{D}}}$ và $({M}{N}{P})$ là điểm ${{{J}}}$ với ${J}={A}{D}\\cap {duong}$"
+		
+		HDG=(f"${J}={A}{D}\\cap {N}{P}\\Rightarrow {J}\\in {A}{D}, {J}\\in {N}{P} \\subset ({M}{N}{P})$.\n\n"
+			f"$\\Rightarrow {A}{D}\\cap ({M}{N}{P}) ={J}$.")	
+
 	kq4=random.choice([kq4_T, kq4_F])
-	HDG=f""
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
 		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 	#Trộn các phương án
 	list_PA =[kq1, kq2, kq3, kq4]
-	#random.shuffle(list_PA)
+	random.shuffle(list_PA)
 	list_TF=my_module.tra_ve_TF(list_PA)
 
 	debai= f"{noi_dung}\n{file_name}\n"\
@@ -2914,6 +2954,185 @@ def ghj_7_jkl_L11_C4_B3_02():
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B3_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai
+def ghj_7_jkl_L11_C4_B3_03():
+	name_lines=["a","m","d","b","n","\\Delta"]
+	random.shuffle(name_lines)
+	a,b=nam_lines[0:2]
+	P=random.choice(["(P)","(Q)","(R)", "(\\alpha)", "(\\beta)", "(\\gamma)"])
+	M=random.choice(["A","B","M","N", "E","F","I","H",])
+	chon=random.randint(1,2)
+	if chon==1:
+		noi_dung=(
+		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
+		f" đường thẳng ${{{b}}}$ song song với mặt phẳng ${{{P}}}$"
+		f" và điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$."
+		f" Tìm khẳng định đúng trong các khẳng định sau."
+		)	
+
+		kq=random.choice([
+		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",
+		f"${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung",
+		f"Điểm ${{{M}}}$ không thuộc đường thẳng ${{{b}}}$",
+		f"Điểm ${{{M}}}$ và ${{{a}}}$ cùng nằm trong một mặt phẳng",
+		f"Có duy nhất một mặt phẳng chứa điểm ${{{b}}}$ và song song với ${{{a}}}$"
+		 ])
+		kq_false=[
+		f"${{{a}}}$ và ${{{b}}}$ song song",
+		f"${{{a}}}$ và ${{{b}}}$ chéo nhau",
+		f"${{{a}}}$ và ${{{b}}}$ cắt nhau",
+		f"Điểm ${{{M}}}$ thuộc đường thẳng ${{{a}}}$",
+		f"${{{a}}}$ và ${{{b}}}$ cùng thuộc một mặt phẳng",
+		f"Điểm ${{{M}}}$ và ${{{b}}}$ cùng nằm trong một mặt phẳng",
+		f"Có duy nhất một mặt phẳng chứa điểm ${{{M}}}$ và song song với ${{{b}}}$",
+		f"Có vô số đường thẳng đi qua ${{{M}}}$ và song song với ${{{a}}}$",
+		f"Có vô số đường thẳng đi qua ${{{M}}}$ và song song với ${{{b}}}$"
+
+		]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+
+		noi_dung_loigiai=(
+		f"{kq} là khẳng định đúng."
+		)
+	
+	if chon==2:
+		noi_dung=(
+		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
+		f" đường thẳng ${{{b}}}$ song song với mặt phẳng ${{{P}}}$"
+		f" và điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$."
+		f" Tìm khẳng định sai trong các khẳng định sau."
+		)	
+
+		kq=random.choice([
+		f"${{{a}}}$ và ${{{b}}}$ song song",
+		f"${{{a}}}$ và ${{{b}}}$ chéo nhau",
+		f"${{{a}}}$ và ${{{b}}}$ cắt nhau",
+		f"Điểm ${{{M}}}$ thuộc đường thẳng ${{{a}}}$",
+		f"${{{a}}}$ và ${{{b}}}$ cùng thuộc một mặt phẳng",
+		f"Điểm ${{{M}}}$ và ${{{b}}}$ cùng nằm trong một mặt phẳng",
+		f"Có duy nhất một mặt phẳng chứa điểm ${{{M}}}$ và song song với ${{{b}}}$",
+		f"Có vô số đường thẳng đi qua ${{{M}}}$ và song song với ${{{a}}}$",
+		f"Có vô số đường thẳng đi qua ${{{M}}}$ và song song với ${{{b}}}$"
+		
+		 ])
+		kq_false=[
+		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",
+		f"${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung",
+		f"Điểm ${{{M}}}$ không thuộc đường thẳng ${{{b}}}$",
+		f"Điểm ${{{M}}}$ và ${{{a}}}$ cùng nằm trong một mặt phẳng",
+		f"Có duy nhất một mặt phẳng chứa điểm ${{{b}}}$ và song song với ${{{a}}}$",
+		]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+
+		noi_dung_loigiai=(
+		f"{kq} là khẳng định sai.")	
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B3_04]-M2. Câu hỏi lý thuyết về quan hệ song song giữa đường-mặt
+def ghj_7_jkl_L11_C4_B3_04():
+	name_lines=["a","m","d","b","n","l","\\Delta"]
+	random.shuffle(name_lines)
+	a,b,c=name_lines[0:3]
+
+	name_planes=(["(P)","(Q)","(R)", "(\\alpha)", "(\\beta)", "(\\gamma)"])
+	random.shuffle(name_planes)
+	mp_P,mp_Q=name_planes[0:2]
+
+	M=random.choice(["A","B","M","N", "E","F","I","H",])
+	noi_dung=(f"Cho các đường thẳng ${{{a},{b}}}$ và các mặt phẳng ${{{mp_P}, {mp_Q}}}$. Khẳng định nào sau đây là khẳng định đúng?")	
+
+	kq=random.choice([
+	f"${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ khi và chỉ khi ${{{a}}}$ và ${{{mp_P}}}$ không có điểm chung",
+	f"Nếu ${mp_P}\\cap {mp_Q}={a}$ và ${{{b}}}$ song song với cả hai mặt phẳng ${{{mp_P}, {mp_Q}}}$ thì ${{{a}}}$ song song ${{{b}}}$",
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ và ${b}\\subset {mp_P}$ thì ${{{a}}}$ song song ${{{b}}}$ hoặc ${{{a},{b}}}$ chéo nhau",
+	f"Cho ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$. Nếu mặt phẳng ${{{mp_Q}}}$ chứa ${{{a}}}$ cắt ${{{mp_P}}}$ theo giao tuyến ${{{c}}}$ thì ${{{c}}}$ song song với ${{{a}}}$",
+	f"Nếu đường thẳng ${{{a}}}$ không nằm trong mặt phẳng ${{{mp_P}}}$ và song song với một đường thẳng nào đó nằm trong ${{{mp_P}}}$ thì ${{{a}}}$ song song với ${{{mp_P}}}$",
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ và ${b}\\subset {mp_P}$ thì ${{{a}}}$ và ${{{b}}}$ không có điểm chung",
+	f"Nếu ${{{a}}}$ song song với ${{{b}}}$ và ${{{b}}}$ song song với ${{{c}}}$ thì ${{{a}}}$ song song với ${{{c}}}$ hoặc ${{{a},{c}}}$ chéo nhau",
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ thì có vô số đường thẳng nằm trong ${{{mp_P}}}$ và song song với ${{{a}}}$",
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ thì có một đường thẳng ${{{c}}}$ nằm trong ${{{mp_P}}}$ sao ${{{a}}}$ và ${{{c}}}$ đồng phẳng",
+	])
+
+	kq_false=[
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ thì ${{{a}}}$ song song với mọi đường thẳng nằm trên mặt phẳng ${{{mp_P}}}$",
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ thì mọi mặt phẳng chứa ${{{a}}}$ đều song song với mặt phẳng ${{{mp_P}}}$",
+	f"Nếu ${{{a}}}$ song song với ${{{b}}}$ và ${{{b}}}$ song song với mặt phẳng ${{{mp_P}}}$ thì ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$",
+	f"Nếu ${{{a}}}$ song song với mặt phẳng ${{{mp_P}}}$ và ${b}\\subset {mp_P}$ thì ${{{a},{b}}}$ chéo nhau",
+	f"Nếu ${{{a}}}$ song song với ${{{b}}}$ và ${b}\\subset {mp_P}$ thì ${{{a}}}$ song song với ${{{mp_P}}}$",
+	f"Nếu hai đường thẳng phân biệt ${{{a},{b}}}$ cùng song song với mặt phẳng ${{{mp_P}}}$ thì ${{{a},{b}}}$ song song nhau",
+	f"Nếu đường thẳng ${{{a}}}$ không nằm trong mặt phẳng ${{{mp_P}}}$ thì ${{{a}}}$ song song với ${{{mp_P}}}$",
+	f"Nếu đường thẳng ${{{a}}}$ song song với một đường thẳng ${{{b}}}$ nào đó nằm trong ${{{mp_P}}}$ thì ${{{a}}}$ song song với ${{{mp_P}}}$",
+	f"Qua một điểm ${{{M}}}$ nằm ngoài mặt phẳng ${{{mp_P}}}$ có một và chỉ một đường thẳng song song với mặt phẳng ${{{mp_P}}}$",
+	f"Nếu ${{{a}}}$ song song với ${{{b}}}$ và ${{{b}}}$ song song với ${{{c}}}$ thì ${{{a}}}$ song song với ${{{c}}}$"
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(f"{kq} là khẳng định đúng.")
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #Bài 4 - Hai mặt phẳng song song

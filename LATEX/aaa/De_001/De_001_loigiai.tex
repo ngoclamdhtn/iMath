@@ -56,64 +56,115 @@
 \chantrang{\pageref{LastPage}}{001}
 \setcounter{page}{1}
 \begin{ex}
-	Cho hình chóp ${S.ABEF}$ là hình bình hành tâm ${I}$. Gọi ${H}$ là điểm tùy ý thuộc cạnh ${SA}$ không trùng với ${S}$ và ${A}$. Gọi ${Q,G}$ là các điểm lần lượt thuộc ${AB,BE}$ sao cho $BQ=3QA,BG=3GE$. Xét tính đúng-sai của các khẳng định sau: 
-	\begin{center}
-		\begin{tikzpicture}[line join=round, line cap=round,thick]
-			\coordinate (A) at (0,0);
-			\coordinate (B) at (2,-2);
-			\coordinate (F) at (5,0);
-			\coordinate (E) at ($(B)+(F)-(A)$);
-			\coordinate (O) at ($(A)!0.5!(E)$);
-			\coordinate (S) at ($(O)+(0,7)$);
-			\draw(S)--(A) (S)--(B) (S)--(E) (A)--(B) (B)--(E);
-			\draw[dashed,thin](A)--(E) (A)--(F) (E)--(F) (S)--(F) (B)--(F);
-			\foreach \i/\g in {S/90,A/180,B/-90,E/-90,F/0}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{};}
-		\end{tikzpicture}
-		
-	\end{center}
-	\choiceTFt
-	{ \True  ${QG}$ và ${SA}$ chéo nhau }
-	{ \True   }
-	{   }
-	{ \True   }
-	\loigiai{\begin{center}
-			\begin{tikzpicture}[line join=round, line cap=round,thick]
-				\coordinate (A) at (0,0);
-				\coordinate (F) at (2,-2);
-				\coordinate (B) at (5,0);
-				\coordinate (E) at ($(B)+(F)-(A)$);
-				\coordinate (I) at ($(A)!0.5!(E)$);
-				\coordinate (S) at ($(I)+(0,7)$);
-				\coordinate (H) at ($(S)!0.5!(A)$);
-				\coordinate (Q) at ($(A)!0.75!(B)$);
-				\coordinate (G) at ($(B)!0.75!(E)$);
-				\draw (S)--(A) (S)--(F) (S)--(E) (A)--(F) (E)--(F);
-				\draw[dashed,thin](S)--(B) (A)--(B) (B)--(E) (A)--(E) (B)--(F) (S)--(I) (H)--(Q) (Q)--(G) (H)--(G);
-				\foreach \i/\g in {S/90,A/180,B/-90,E/-90,F/-90, H/180, Q/0,G/-90, I/-90}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
-			\end{tikzpicture}
-			
-		\end{center}
-		
-		
-		
-		a) Khẳng định đã cho là khẳng định đúng.
-		
-		${QG}$ và ${SA}$ chéo nhau.
-		
-		b) Khẳng định đã cho là khẳng định đúng.
-		
-		
-		
-		c) Khẳng định đã cho là khẳng định đúng.
-		
-		
-		
-		d) Khẳng định đã cho là khẳng định sai.
-		
-		
-		
-		
+	Cho các đường thẳng ${\Delta,b}$ và các mặt phẳng ${(\beta), (R)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Qua một điểm ${A}$ nằm ngoài mặt phẳng ${(\beta)}$ có một và chỉ một đường thẳng song song với mặt phẳng ${(\beta)}$ }
+	{ \True Nếu đường thẳng ${\Delta}$ không nằm trong mặt phẳng ${(\beta)}$ và song song với một đường thẳng nào đó nằm trong ${(\beta)}$ thì ${\Delta}$ song song với ${(\beta)}$ }
+	{ Nếu ${\Delta}$ song song với ${b}$ và $b\subset (\beta)$ thì ${\Delta}$ song song với ${(\beta)}$ }
+	{ Nếu ${\Delta}$ song song với mặt phẳng ${(\beta)}$ thì ${\Delta}$ song song với mọi đường thẳng nằm trên mặt phẳng ${(\beta)}$ }
+	\loigiai{ 
+		Nếu đường thẳng ${\Delta}$ không nằm trong mặt phẳng ${(\beta)}$ và song song với một đường thẳng nào đó nằm trong ${(\beta)}$ thì ${\Delta}$ song song với ${(\beta)}$ là khẳng định đúng. 
 }\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${n,d}$ và các mặt phẳng ${(Q), (R)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu ${n}$ song song với mặt phẳng ${(Q)}$ thì ${n}$ song song với mọi đường thẳng nằm trên mặt phẳng ${(Q)}$ }
+	{ Nếu đường thẳng ${n}$ không nằm trong mặt phẳng ${(Q)}$ thì ${n}$ song song với ${(Q)}$ }
+	{ Nếu ${n}$ song song với mặt phẳng ${(Q)}$ thì mọi mặt phẳng chứa ${n}$ đều song song với mặt phẳng ${(Q)}$ }
+	{ \True ${n}$ song song với mặt phẳng ${(Q)}$ khi và chỉ khi ${n}$ và ${(Q)}$ không có điểm chung }
+	\loigiai{ 
+		${n}$ song song với mặt phẳng ${(Q)}$ khi và chỉ khi ${n}$ và ${(Q)}$ không có điểm chung là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${b,n}$ và các mặt phẳng ${(Q), (\alpha)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu ${b}$ song song với ${n}$ và ${n}$ song song với mặt phẳng ${(Q)}$ thì ${b}$ song song với mặt phẳng ${(Q)}$ }
+	{ \True Nếu ${b}$ song song với mặt phẳng ${(Q)}$ và $n\subset (Q)$ thì ${b}$ song song ${n}$ hoặc ${b,n}$ chéo nhau }
+	{ Nếu ${b}$ song song với mặt phẳng ${(Q)}$ và $n\subset (Q)$ thì ${b,n}$ chéo nhau }
+	{ Qua một điểm ${N}$ nằm ngoài mặt phẳng ${(Q)}$ có một và chỉ một đường thẳng song song với mặt phẳng ${(Q)}$ }
+	\loigiai{ 
+		Nếu ${b}$ song song với mặt phẳng ${(Q)}$ và $n\subset (Q)$ thì ${b}$ song song ${n}$ hoặc ${b,n}$ chéo nhau là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${n,a}$ và các mặt phẳng ${(R), (\beta)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu đường thẳng ${n}$ không nằm trong mặt phẳng ${(R)}$ thì ${n}$ song song với ${(R)}$ }
+	{ Nếu ${n}$ song song với mặt phẳng ${(R)}$ thì ${n}$ song song với mọi đường thẳng nằm trên mặt phẳng ${(R)}$ }
+	{ \True Nếu đường thẳng ${n}$ không nằm trong mặt phẳng ${(R)}$ và song song với một đường thẳng nào đó nằm trong ${(R)}$ thì ${n}$ song song với ${(R)}$ }
+	{ Nếu ${n}$ song song với ${a}$ và ${a}$ song song với ${d}$ thì ${n}$ song song với ${d}$ }
+	\loigiai{ 
+		Nếu đường thẳng ${n}$ không nằm trong mặt phẳng ${(R)}$ và song song với một đường thẳng nào đó nằm trong ${(R)}$ thì ${n}$ song song với ${(R)}$ là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${a,m}$ và các mặt phẳng ${(R), (\alpha)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu ${a}$ song song với ${m}$ và $m\subset (R)$ thì ${a}$ song song với ${(R)}$ }
+	{ Nếu đường thẳng ${a}$ song song với một đường thẳng ${m}$ nào đó nằm trong ${(R)}$ thì ${a}$ song song với ${(R)}$ }
+	{ Nếu đường thẳng ${a}$ không nằm trong mặt phẳng ${(R)}$ thì ${a}$ song song với ${(R)}$ }
+	{ \True ${a}$ song song với mặt phẳng ${(R)}$ khi và chỉ khi ${a}$ và ${(R)}$ không có điểm chung }
+	\loigiai{ 
+		${a}$ song song với mặt phẳng ${(R)}$ khi và chỉ khi ${a}$ và ${(R)}$ không có điểm chung là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${a,m}$ và các mặt phẳng ${(\alpha), (R)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu ${a}$ song song với ${m}$ và ${m}$ song song với mặt phẳng ${(\alpha)}$ thì ${a}$ song song với mặt phẳng ${(\alpha)}$ }
+	{ Nếu hai đường thẳng phân biệt ${a,m}$ cùng song song với mặt phẳng ${(\alpha)}$ thì ${a,m}$ song song nhau }
+	{ Nếu đường thẳng ${a}$ song song với một đường thẳng ${m}$ nào đó nằm trong ${(\alpha)}$ thì ${a}$ song song với ${(\alpha)}$ }
+	{ \True Nếu ${a}$ song song với mặt phẳng ${(\alpha)}$ thì có một đường thẳng ${b}$ nằm trong ${(\alpha)}$ sao ${a}$ và ${a}$ đồng phẳng }
+	\loigiai{ 
+		Nếu ${a}$ song song với mặt phẳng ${(\alpha)}$ thì có một đường thẳng ${b}$ nằm trong ${(\alpha)}$ sao ${a}$ và ${a}$ đồng phẳng là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${a,b}$ và các mặt phẳng ${(Q), (\gamma)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu ${a}$ song song với ${b}$ và ${b}$ song song với ${d}$ thì ${a}$ song song với ${d}$ }
+	{ Nếu ${a}$ song song với mặt phẳng ${(Q)}$ thì mọi mặt phẳng chứa ${a}$ đều song song với mặt phẳng ${(Q)}$ }
+	{ Nếu ${a}$ song song với ${b}$ và ${b}$ song song với mặt phẳng ${(Q)}$ thì ${a}$ song song với mặt phẳng ${(Q)}$ }
+	{ \True Nếu ${a}$ song song với mặt phẳng ${(Q)}$ thì có một đường thẳng ${d}$ nằm trong ${(Q)}$ sao ${a}$ và ${a}$ đồng phẳng }
+	\loigiai{ 
+		Nếu ${a}$ song song với mặt phẳng ${(Q)}$ thì có một đường thẳng ${d}$ nằm trong ${(Q)}$ sao ${a}$ và ${a}$ đồng phẳng là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${n,b}$ và các mặt phẳng ${(\beta), (P)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ \True Nếu ${n}$ song song với mặt phẳng ${(\beta)}$ và $b\subset (\beta)$ thì ${n}$ và ${b}$ không có điểm chung }
+	{ Nếu ${n}$ song song với mặt phẳng ${(\beta)}$ thì mọi mặt phẳng chứa ${n}$ đều song song với mặt phẳng ${(\beta)}$ }
+	{ Nếu ${n}$ song song với mặt phẳng ${(\beta)}$ thì ${n}$ song song với mọi đường thẳng nằm trên mặt phẳng ${(\beta)}$ }
+	{ Nếu ${n}$ song song với ${b}$ và $b\subset (\beta)$ thì ${n}$ song song với ${(\beta)}$ }
+	\loigiai{ 
+		Nếu ${n}$ song song với mặt phẳng ${(\beta)}$ và $b\subset (\beta)$ thì ${n}$ và ${b}$ không có điểm chung là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${a,d}$ và các mặt phẳng ${(R), (\beta)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ \True ${a}$ song song với mặt phẳng ${(R)}$ khi và chỉ khi ${a}$ và ${(R)}$ không có điểm chung }
+	{ Nếu ${a}$ song song với ${d}$ và ${d}$ song song với mặt phẳng ${(R)}$ thì ${a}$ song song với mặt phẳng ${(R)}$ }
+	{ Nếu đường thẳng ${a}$ không nằm trong mặt phẳng ${(R)}$ thì ${a}$ song song với ${(R)}$ }
+	{ Qua một điểm ${B}$ nằm ngoài mặt phẳng ${(R)}$ có một và chỉ một đường thẳng song song với mặt phẳng ${(R)}$ }
+	\loigiai{ 
+		${a}$ song song với mặt phẳng ${(R)}$ khi và chỉ khi ${a}$ và ${(R)}$ không có điểm chung là khẳng định đúng. 
+}\end{ex}
+
+\begin{ex}
+	Cho các đường thẳng ${a,\Delta}$ và các mặt phẳng ${(Q), (\gamma)}$. Khẳng định nào sau đây là khẳng định đúng? 
+	\choice
+	{ Nếu ${a}$ song song với ${\Delta}$ và ${\Delta}$ song song với mặt phẳng ${(Q)}$ thì ${a}$ song song với mặt phẳng ${(Q)}$ }
+	{ \True Nếu ${a}$ song song với mặt phẳng ${(Q)}$ thì có một đường thẳng ${d}$ nằm trong ${(Q)}$ sao ${a}$ và ${a}$ đồng phẳng }
+	{ Nếu đường thẳng ${a}$ không nằm trong mặt phẳng ${(Q)}$ thì ${a}$ song song với ${(Q)}$ }
+	{ Nếu ${a}$ song song với mặt phẳng ${(Q)}$ thì ${a}$ song song với mọi đường thẳng nằm trên mặt phẳng ${(Q)}$ }
+	\loigiai{ 
+		Nếu ${a}$ song song với mặt phẳng ${(Q)}$ thì có một đường thẳng ${d}$ nằm trong ${(Q)}$ sao ${a}$ và ${a}$ đồng phẳng là khẳng định đúng. 
+}\end{ex}
+
 
 
 

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+kq=f" "
+kq2=f" "
+kq3=f" "
+kq4=f" "
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+<tabTrigger>ketqua</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+item.setToolTip(0, ' ')
+]]></content>
+
+<tabTrigger>tip</tabTrigger> 
+<scope>source.python</scope>
+</snippet>

@@ -3708,6 +3708,10 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_10]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_11]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau-song song, giao tuyến, giao điểm đường-mặt"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
           
 
 
@@ -3716,15 +3720,26 @@ class Ui_MainWindow(object):
                 L11_C4_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B3, ["[D11_C4_B3_01]-M2. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                ##item.setToolTip(0, 'Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.')
+                L11_C4_B3_1 = QTreeWidgetItem(L11_C4_B3, ["Trắc nghiệm"])
+                L11_C4_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B3, ["[D11_C4_B3_02]-M2. Cho hình chóp đáy h.thang. Xét sự song song của một đường thẳng với các mp."])
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_04]-M2. Câu hỏi lý thuyết về quan hệ song song giữa đường-mặt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                ##item.setToolTip(0, 'Cho hình chóp đáy h.thang. Xét sự song song của một đường thẳng với các mp.')
+
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_03]-M2. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_01]-M2. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
+
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_02]-M2. Cho hình chóp đáy h.thang. Xét sự song song của một đường thẳng với các mp."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+              
 
                 #Bài 4 - Hai mặt phẳng song song.
                 L11_C4_B4 = QTreeWidgetItem(L11_C4, ["Bài 4 - Hai mặt phẳng song song."])
@@ -8674,14 +8689,26 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C4_B2_10]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_10()
 
-                                    #Bài 3: ĐƯỜNG THẲNG SONG SONG MẶT PHẲNG
-                                    #[D11_C4_B3_01]. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
+                                                #[D11_C4_B2_11]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt 
+                                                if dang_toan == "[D11_C4_B2_11]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_11()
+
+                                                #Bài 3: ĐƯỜNG THẲNG SONG SONG MẶT PHẲNG
+                                                #[D11_C4_B3_01]. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
                                                 if dang_toan == "[D11_C4_B3_01]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_01()
 
-                                    #[D11_C4_B3_02]. Cho hình chóp đáy hình thang. Xét sự song song của một đường thẳng với các mp.
+                                                #[D11_C4_B3_02]. Cho hình chóp đáy hình thang. Xét sự song song của một đường thẳng với các mp.
                                                 if dang_toan == "[D11_C4_B3_02]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_02()
+
+                                                #[D11_C4_B3_03]. Cho a nằm trong (P) và b//(P). Tìm khẳng định đúng hoặc sai
+                                                if dang_toan == "[D11_C4_B3_03]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_03()
+
+                                                #[D11_C4_B3_04]-M2. Câu hỏi lý thuyết về quan hệ song song giữa đường-mặt
+                                                if dang_toan == "[D11_C4_B3_04]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_04()
 
                                     #Bài 4: HAI MẶT PHẲNG SONG SONG
 

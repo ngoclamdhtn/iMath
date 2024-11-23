@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+#[D11_C1_B1_06]-M2. 
+	if dang_toan == "[D11_C1_B1_06]":
+		debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.D11_C1_B1_06()
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>run_code_tracnghiem</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

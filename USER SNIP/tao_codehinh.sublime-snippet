@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+	code_hinh=f""
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+]]></content>
+	<tabTrigger>codehinh</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

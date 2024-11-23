@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+A=["A","B","O","S","S","S"]
+B=["B","C","A","A","B","O"]
+C=["C","D","B","B","C","A"]
+D=["D","E","C","C","D","B"]
+i=random.randint(0,5)
+A, B, C, D = A[i], B[i], C[i], D[i]
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tao_dinh_hinh_chop_tam_giac</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

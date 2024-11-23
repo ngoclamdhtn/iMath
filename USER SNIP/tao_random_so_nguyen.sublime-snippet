@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+chon=random.randint(1,2)
+if chon==1:
+
+if chon==2:
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>r_chon_if</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
