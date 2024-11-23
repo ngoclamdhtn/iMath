@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+code_hinh_LG=
+code = my_module.moi_truong_anh_latex(code_hinh_LG)
+file_name=my_module.pdftoimage_timename(code)
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>code_hinh_LG</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+f"\\\\loigiai{{\\\\begin{{center}}\n{code_hinh_LG}\n\\\\end{{center}}\n {noi_dung_loigiai} \n }}"
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>center_codehinh_LG</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
