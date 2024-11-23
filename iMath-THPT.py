@@ -3732,11 +3732,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_05]-M2. Cho hình chóp tam giác. Tìm đường song song-mặt phẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_01]-M2. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
 
                 item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_02]-M2. Cho hình chóp đáy h.thang. Xét sự song song của một đường thẳng với các mp."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_06]-M2. Cho hình chóp tam giác. Xét quan hệ: thuộc, song song, chứa trong"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
               
@@ -8709,6 +8717,14 @@ class Ui_MainWindow(object):
                                                 #[D11_C4_B3_04]-M2. Câu hỏi lý thuyết về quan hệ song song giữa đường-mặt
                                                 if dang_toan == "[D11_C4_B3_04]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_04()
+
+                                                #[D11_C4_B3_05]-M2. Cho hình chóp tam giác. Tìm đường song song-mặt phẳng
+                                                if dang_toan == "[D11_C4_B3_05]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_05()
+
+                                                #[D11_C4_B3_06]-M2. Cho hình chóp tam giác. Xé quan hệ: thuộc, song song, chứa trong
+                                                if dang_toan == "[D11_C4_B3_06]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_06()
 
                                     #Bài 4: HAI MẶT PHẲNG SONG SONG
 
