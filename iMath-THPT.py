@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92023 ver 17.11.2024")
+                self.label.setText(f"iMath\u00A92023 ver 24.11.2024")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
                 self.label.setGeometry(QtCore.QRect(400, 120, 800, 20))
@@ -3673,15 +3673,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_01]-M1. Cho hình chóp-hbh. Tìm cặp đường song song."])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_01]-M1. Cho h.chóp-hbh. Tìm cặp đường song song."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_06]-M2. Cho hình chóp tam giác. Tìm cặp đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_06]-M2. Cho h.chóp tam giác. Tìm cặp đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_07]-M2. Cho hình chóp-hbh. Tìm cặp đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_07]-M2. Cho h.chóp-hbh. Tìm cặp đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3689,15 +3689,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_05]-M3. Cho hình chóp tam giác. Xét quan hệ song song, chéo nhau, cắt nhau."])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_05]-M3. Cho h.chóp tam giác. Xét quan hệ song song, chéo nhau, cắt nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến chứa 2 đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_08]-M2. Cho h.chóp-hbh. Tìm giao tuyến chứa 2 đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_09]-M2. Cho hình chóp tam giác. Tìm giao tuyến chứa 2 đường song song"])
+                item = QTreeWidgetItem(L11_C4_B2_1, ["[D11_C4_B2_09]-M2. Cho h.chóp tam giác. Tìm giao tuyến chứa 2 đường song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3705,11 +3705,11 @@ class Ui_MainWindow(object):
                 L11_C4_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_10]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt"])
+                item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_10]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_11]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau-song song, giao tuyến, giao điểm đường-mặt"])
+                item = QTreeWidgetItem(L11_C4_B2_2, ["[D11_C4_B2_11]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:chéo nhau-song song, giao tuyến, giao điểm đường-mặt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
           
@@ -3732,19 +3732,31 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_05]-M2. Cho hình chóp tam giác. Tìm đường song song-mặt phẳng."])
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_05]-M2. Cho h.chóp tam giác. Tìm đường song song-mặt phẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_01]-M2. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp."])
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_01]-M2. Cho h.chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
 
-                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_02]-M2. Cho hình chóp đáy h.thang. Xét sự song song của một đường thẳng với các mp."])
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_02]-M2. Cho h.chóp đáy h.thang. Xét sự song song của một đường thẳng với các mp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_06]-M2. Cho hình chóp tam giác. Xét quan hệ: thuộc, song song, chứa trong"])
+                item = QTreeWidgetItem(L11_C4_B3_1, ["[D11_C4_B3_06]-M2. Cho h.chóp tam giác. Xét quan hệ: thuộc, song song, chứa trong"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C4_B3_2 = QTreeWidgetItem(L11_C4_B3, ["Đúng-Sai"])
+                L11_C4_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B3_2, ["[D11_C4_B3_07]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, song song, giao điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B3_2, ["[D11_C4_B3_08]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:chứa trong, chéo-cắt, giao tuyến"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
               
@@ -5555,7 +5567,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B1_1, ["[D12_C2_B1_11]-M2. Cho hình chóp có đáy h.b.h. Tìm khẳng định sai về phép toán vectơ."])
+                item = QTreeWidgetItem(L12_C2_B1_1, ["[D12_C2_B1_11]-M2. Cho h.chóp có đáy h.b.h. Tìm khẳng định sai về phép toán vectơ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5593,7 +5605,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B1_2, ["[D12_C2_B1_10]-TF-M2. Cho hình chóp. Xét Đ-S: Tích vô hướng, phép toán vectơ, độ dài."])
+                item = QTreeWidgetItem(L12_C2_B1_2, ["[D12_C2_B1_10]-TF-M2. Cho h.chóp. Xét Đ-S: Tích vô hướng, phép toán vectơ, độ dài."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6538,6 +6550,9 @@ class Ui_MainWindow(object):
                                         if not os.path.exists(new_folder_path):
                                                 os.makedirs(new_folder_path)
                                         name_thu_muc=new_folder_path
+                            else:
+                                name_thu_muc=""
+
                                          
                             
                             #Tạo list mã đề ngẫu nhiên
@@ -7142,7 +7157,7 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D12_C2_B1_10]": 
                                                         debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_10()
 
-                                                #[D12_C2_B1_11]-M2. Cho hình chóp có đáy h.b.h. Tìm khẳng định sai về phép toán vectơ 
+                                                #[D12_C2_B1_11]-M2. Cho h.chóp có đáy h.b.h. Tìm khẳng định sai về phép toán vectơ 
                                                 if dang_toan == "[D12_C2_B1_11]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_11()
 
@@ -8636,11 +8651,11 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C4_B1_01]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B1_01()
 
-                                                #[D11_C4_B1_02]-M2. Cho hình chóp đáy là h.b.h. Xét quan hệ giữa điểm - đường thẳng - mặt phẳng
+                                                #[D11_C4_B1_02]-M2. Cho h.chóp đáy là h.b.h. Xét quan hệ giữa điểm - đường thẳng - mặt phẳng
                                                 if dang_toan == "[D11_C4_B1_02]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B1_02()
 
-                                                #[D11_C4_B1_03]-M2. Cho hình chóp đáy là h.b.h. Xét quan hệ giữa điểm - đường thẳng - mặt phẳng
+                                                #[D11_C4_B1_03]-M2. Cho h.chóp đáy là h.b.h. Xét quan hệ giữa điểm - đường thẳng - mặt phẳng
                                                 if dang_toan == "[D11_C4_B1_03]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B1_03()
 
@@ -8652,16 +8667,16 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C4_B1_05]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B1_05()
 
-                                                #[D11_C4_B1_06]-M2. Cho hình chóp đáy là h.b.h.Tìm giao điểm đường thẳng - mặt phẳng
+                                                #[D11_C4_B1_06]-M2. Cho h.chóp đáy là h.b.h.Tìm giao điểm đường thẳng - mặt phẳng
                                                 if dang_toan == "[D11_C4_B1_06]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B1_06()
 
                                     #Bài 2: HAI ĐƯỜNG THẲNG SONG SONG
-                                                #[D11_C4_B2_01]-M2. Cho hình chóp. Xét hai đường thẳng song song - đường trung bình.
+                                                #[D11_C4_B2_01]-M2. Cho h.chóp. Xét hai đường thẳng song song - đường trung bình.
                                                 if dang_toan == "[D11_C4_B2_01]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_01()
 
-                                                #[D11_C4_B2_02]-M2. Cho hình chóp. Xét hai đường thẳng song song - đường trung bình.
+                                                #[D11_C4_B2_02]-M2. Cho h.chóp. Xét hai đường thẳng song song - đường trung bình.
                                                 if dang_toan == "[D11_C4_B2_02]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_02()
 
@@ -8673,40 +8688,40 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C4_B2_04]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_04()
 
-                                                #[D11_C4_B2_05]-M2. Cho hình chóp tam giác. Tìm khẳng định đúng về song song, cắt nhau, chéo nhau
+                                                #[D11_C4_B2_05]-M2. Cho h.chóp tam giác. Tìm khẳng định đúng về song song, cắt nhau, chéo nhau
                                                 if dang_toan == "[D11_C4_B2_05]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_05()
 
-                                                #[D11_C4_B2_06]-M2. Cho hình chóp tam giác. Tìm cặp đường song song
+                                                #[D11_C4_B2_06]-M2. Cho h.chóp tam giác. Tìm cặp đường song song
                                                 if dang_toan == "[D11_C4_B2_06]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_06()
 
-                                                #[D11_C4_B2_07]-M2. Cho hình chóp-hbh. Tìm cặp đường song song
+                                                #[D11_C4_B2_07]-M2. Cho h.chóp-hbh. Tìm cặp đường song song
                                                 if dang_toan == "[D11_C4_B2_07]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_07()
 
-                                                #[D11_C4_B2_08]-M2. Cho hình chóp-hbh. Tìm giao tuyến của 2 mặt chứa 2 đường song song
+                                                #[D11_C4_B2_08]-M2. Cho h.chóp-hbh. Tìm giao tuyến của 2 mặt chứa 2 đường song song
                                                 if dang_toan == "[D11_C4_B2_08]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_08()
 
-                                                #[D11_C4_B2_09]-M2. Cho hình chóp tam giác. Tìm giao tuyến của 2 mặt chứa 2 đường song song
+                                                #[D11_C4_B2_09]-M2. Cho h.chóp tam giác. Tìm giao tuyến của 2 mặt chứa 2 đường song song
                                                 if dang_toan == "[D11_C4_B2_09]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_09()
                                                 
-                                                #[D11_C4_B2_10]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt 
+                                                #[D11_C4_B2_10]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt 
                                                 if dang_toan == "[D11_C4_B2_10]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_10()
 
-                                                #[D11_C4_B2_11]-TF-M2. Cho hình chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt 
+                                                #[D11_C4_B2_11]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:chéo nhau, cắt nhau, song song, giao điểm đường-mặt 
                                                 if dang_toan == "[D11_C4_B2_11]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B2_11()
 
                                                 #Bài 3: ĐƯỜNG THẲNG SONG SONG MẶT PHẲNG
-                                                #[D11_C4_B3_01]. Cho hình chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
+                                                #[D11_C4_B3_01]. Cho h.chóp đáy h.b.h. Xét sự song song của một đường thẳng với các mp.
                                                 if dang_toan == "[D11_C4_B3_01]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_01()
 
-                                                #[D11_C4_B3_02]. Cho hình chóp đáy hình thang. Xét sự song song của một đường thẳng với các mp.
+                                                #[D11_C4_B3_02]. Cho h.chóp đáy hình thang. Xét sự song song của một đường thẳng với các mp.
                                                 if dang_toan == "[D11_C4_B3_02]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_02()
 
@@ -8718,13 +8733,21 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C4_B3_04]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_04()
 
-                                                #[D11_C4_B3_05]-M2. Cho hình chóp tam giác. Tìm đường song song-mặt phẳng
+                                                #[D11_C4_B3_05]-M2. Cho h.chóp tam giác. Tìm đường song song-mặt phẳng
                                                 if dang_toan == "[D11_C4_B3_05]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_05()
 
-                                                #[D11_C4_B3_06]-M2. Cho hình chóp tam giác. Xé quan hệ: thuộc, song song, chứa trong
+                                                #[D11_C4_B3_06]-M2. Cho h.chóp tam giác. Xé quan hệ: thuộc, song song, chứa trong
                                                 if dang_toan == "[D11_C4_B3_06]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_06()
+
+                                                #[D11_C4_B3_07]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, chứa trong, song song, giao điểm 
+                                                if dang_toan == "[D11_C4_B3_07]": 
+                                                   debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_07()
+
+                                                #[D11_C4_B3_08]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, chứa trong, song song, giao tuyến
+                                                if dang_toan == "[D11_C4_B3_08]": 
+                                                   debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_08()
 
                                     #Bài 4: HAI MẶT PHẲNG SONG SONG
 
@@ -9572,22 +9595,22 @@ class Ui_MainWindow(object):
 
 
                                     #Bài 4 - Khoảng cách trong không gian 
-                                                #[D11_C8_B6_01]. Cho hình chóp có diện tích đáy và chiều cao. Tính thể tích.
+                                                #[D11_C8_B6_01]. Cho h.chóp có diện tích đáy và chiều cao. Tính thể tích.
                                                 if dang_toan == "[D11_C8_B6_01]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B6_01()                                     
                                                     
 
-                                                #[D11_C8_B6_02]. Cho hình chóp có đáy là tam giác đều và chiều cao. Tính thể tích.
+                                                #[D11_C8_B6_02]. Cho h.chóp có đáy là tam giác đều và chiều cao. Tính thể tích.
                                                 if dang_toan == "[D11_C8_B6_02]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B6_02()                                     
                                                     
 
-                                                #[D11_C8_B6_03]. Cho hình chóp có đáy là tam giác vuông và chiều cao. Tính thể tích.
+                                                #[D11_C8_B6_03]. Cho h.chóp có đáy là tam giác vuông và chiều cao. Tính thể tích.
                                                 if dang_toan == "[D11_C8_B6_03]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B6_03()                                     
                                                     
 
-                                                #[D11_C8_B6_04]. Cho hình chóp có đáy là tam giác đều và góc giữa cạnh bên và đáy. Tính thể tích.
+                                                #[D11_C8_B6_04]. Cho h.chóp có đáy là tam giác đều và góc giữa cạnh bên và đáy. Tính thể tích.
                                                 if dang_toan == "[D11_C8_B6_04]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B6_04()                                     
                                                     

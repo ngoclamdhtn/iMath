@@ -345,9 +345,9 @@ def y7y7u_L10_C5_B1_04():
 
 #[D10_C5_B1_05]-M2. Cho 3 điểm. Tìm khẳng định về hướng và phương.
 def y7y7u_L10_C5_B1_05():
-	A=random.choice(["A","M","O","B", "I"])
-	B=random.choice(["B","N","E","G"])
-	C=random.choice(["C","D","F","H","K"])
+	letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+	random.shuffle(letters)
+	A,B,C=letters[0:3]
 
 	chon=random.randint(1,2)
 	if chon==1:
@@ -640,8 +640,8 @@ def y7y7u_L10_C5_B2_02():
 	chon=random.randint(1,7)	
 
 	if chon==1:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{E}")}$."	
+		noi_dung= (f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính tổng ${vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{E}")}$.")	
 
 		kq=f"${vec(f"{A}{E}")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
@@ -650,8 +650,8 @@ def y7y7u_L10_C5_B2_02():
 		noi_dung_loigiai=f"${vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{E}")}={vec(f"{A}{E}")}$."
 	
 	if chon==2:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{A}")}$."	
+		noi_dung=(f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính tổng ${vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{A}")}$.")	
 
 		kq=f"${vec(f"0")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
@@ -660,19 +660,20 @@ def y7y7u_L10_C5_B2_02():
 		noi_dung_loigiai=f"${vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{A}")}={vec(f"{A}{A}")}={vec(f"0")}$."
 
 	if chon==3:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{A}{B}")}-{vec(f"{C}{B}")}+{vec(f"{C}{D}")}-{vec(f"{E}{D}")}$."	
+		noi_dung=(f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính ${vec(f"{A}{B}")}-{vec(f"{C}{B}")}+{vec(f"{C}{D}")}-{vec(f"{E}{D}")}$.")
 
 		kq=f"${vec(f"{A}{E}")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
 		kq3=f"${vec(f"0")}$"
 		kq4=random.choice([f"${vec(f"{D}{A}")}$",f"${vec(f"{E}{A}")}$", f"${vec(f"{E}{D}")}$"])
-		noi_dung_loigiai=f"${vec(f"{A}{B}")}-{vec(f"{C}{B}")}+{vec(f"{C}{D}")}-{vec(f"{E}{D}")}="\
-		f"{vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{E}")}={vec(f"{A}{E}")}$."
+
+		noi_dung_loigiai=(f"${vec(f"{A}{B}")}-{vec(f"{C}{B}")}+{vec(f"{C}{D}")}-{vec(f"{E}{D}")}="
+		f"{vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{E}")}={vec(f"{A}{E}")}$.")
 
 	if chon==4:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{A}{B}")}-{vec(f"{C}{B}")}-{vec(f"{D}{C}")}-{vec(f"{E}{D}")}$."	
+		noi_dung=(f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính ${vec(f"{A}{B}")}-{vec(f"{C}{B}")}-{vec(f"{D}{C}")}-{vec(f"{E}{D}")}$.")
 
 		kq=f"${vec(f"{A}{E}")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
@@ -682,8 +683,8 @@ def y7y7u_L10_C5_B2_02():
 		f"{vec(f"{A}{B}")}+{vec(f"{B}{C}")}+{vec(f"{C}{D}")}+{vec(f"{D}{E}")}={vec(f"{A}{E}")}$."
 	
 	if chon==5:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{A}{C}")}-{vec(f"{A}{B}")}+{vec(f"{E}{A}")}-{vec(f"{E}{C}")}$."
+		noi_dung=(f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính ${vec(f"{A}{C}")}-{vec(f"{A}{B}")}+{vec(f"{E}{A}")}-{vec(f"{E}{C}")}$.")
 
 		kq=f"${vec(f"{B}{A}")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
@@ -694,20 +695,20 @@ def y7y7u_L10_C5_B2_02():
 		f"{vec(f"{B}{C}")}+{vec(f"{C}{A}")}={vec(f"{B}{A}")}$."
 	
 	if chon==6:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{A}{C}")}-{vec(f"{A}{B}")}-{vec(f"{E}{C}")}$+{vec(f"{E}{A}")}."
+		noi_dung=(f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính ${vec(f"{A}{C}")}-{vec(f"{A}{B}")}-{vec(f"{E}{C}")}+{vec(f"{E}{A}")}$.")
 
 		kq=f"${vec(f"{B}{A}")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
 		kq3=random.choice([f"${vec(f"0")}$", f"${vec(f"{A}{B}")}$"])
 		kq4=random.choice([f"${vec(f"{D}{A}")}$",f"${vec(f"{E}{A}")}$", f"${vec(f"{E}{D}")}$"])
 
-		noi_dung_loigiai=f"${vec(f"{A}{C}")}-{vec(f"{A}{B}")}-{vec(f"{E}{C}")}+{vec(f"{E}{A}")}="\
-		f"{vec(f"{B}{C}")}+{vec(f"{C}{A}")}={vec(f"{B}{A}")}$."
+		noi_dung_loigiai=(f"${vec(f"{A}{C}")}-{vec(f"{A}{B}")}-{vec(f"{E}{C}")}+{vec(f"{E}{A}")}="
+		f"{vec(f"{B}{C}")}+{vec(f"{C}{A}")}={vec(f"{B}{A}")}$.")
 
 	if chon==7:
-		noi_dung=f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."\
-	f" Tính tổng ${vec(f"{E}{A}")}+{vec(f"{A}{C}")}-{vec(f"{A}{B}")}-{vec(f"{E}{C}")}$."
+		noi_dung=(f"Cho các điểm ${{{A},{B},{C},{D},{E}}}$."
+	f" Tính tổng ${vec(f"{E}{A}")}+{vec(f"{A}{C}")}-{vec(f"{A}{B}")}-{vec(f"{E}{C}")}$.")
 
 		kq=f"${vec(f"{B}{A}")}$"
 		kq2=random.choice([f"${vec(f"{A}{D}")}$", f"${vec(f"{A}{C}")}$", f"${vec(f"{B}{D}")}$", f"${vec(f"{B}{E}")}$"])
@@ -891,28 +892,71 @@ def y7y7u_L10_C5_B2_05():
 	i=random.randint(0,3)
 	S,A, B, C, D =S[i], A[i], B[i], C[i], D[i]
 	tam=random.choice(["O", "I"])
-	noi_dung=f"Cho hình bình hành ${{{A}{B}{C}{D}}}$ và điểm ${{{S}}}$ tùy ý. Tìm mệnh đề sai trong các mệnh đề sau."
-	
-	kq=random.choice([f"${vec(f"{A}{B}")}+{vec(f"{C}{B}")}={vec(f"{A}{C}")}$",
-		f"${vec(f"{A}{C}")}+{vec(f"{B}{C}")}={vec(f"{A}{B}")}$",
-		f"${vec(f"{C}{A}")}+{vec(f"{B}{A}")}={vec(f"{C}{B}")}$",
-		f"${vec(f"{S}{D}")}+{vec(f"{B}{D}")}={vec(f"{S}{B}")}$",
-		f"${vec(f"{S}{D}")}-{vec(f"{D}{B}")}={vec(f"{S}{B}")}$",
-		f"${vec(f"{S}{A}")}-{vec(f"{A}{B}")}={vec(f"{S}{B}")}$",
-		f"${vec(f"{S}{C}")}-{vec(f"{B}{C}")}={vec(f"{B}{S}")}$"
-		])
-	kq2=f"${vec(f"{S}{A}")}-{vec(f"{S}{B}")}={vec(f"{S}{D}")}-{vec(f"{S}{C}")}$"
-	kq3=f"${vec(f"{S}{B}")}-{vec(f"{S}{C}")}={vec(f"{S}{A}")}-{vec(f"{S}{D}")}$"
-	kq4=random.choice([f"${vec(f"{A}{B}")}+{vec(f"{A}{D}")}={vec(f"{A}{C}")}$",
-		f"${vec(f"{A}{B}")}-{vec(f"{D}{A}")}={vec(f"{A}{C}")}$",
-		f"${vec(f"{B}{A}")}+{vec(f"{B}{C}")}={vec(f"{B}{D}")}$",
-		f"${vec(f"{B}{A}")}-{vec(f"{C}{B}")}={vec(f"{B}{D}")}$",
-		f"${vec(f"{D}{A}")}+{vec(f"{D}{C}")}={vec(f"{D}{B}")}$",
-		f"${vec(f"{D}{A}")}-{vec(f"{C}{D}")}={vec(f"{D}{B}")}$",
-		f"${vec(f"{C}{D}")}+{vec(f"{C}{B}")}={vec(f"{C}{A}")}$",
-		f"${vec(f"{C}{D}")}-{vec(f"{B}{C}")}={vec(f"{C}{A}")}$"])
+	chon=random.randint(1,2)
+	if chon==1:
+		noi_dung=f"Cho hình bình hành ${{{A}{B}{C}{D}}}$ và điểm ${{{S}}}$ tùy ý. Tìm mệnh đề sai trong các mệnh đề sau."
+		
+		kq=random.choice([
+			f"${vec(f"{A}{B}")}+{vec(f"{C}{B}")}={vec(f"{A}{C}")}$",
+			f"${vec(f"{A}{C}")}+{vec(f"{B}{C}")}={vec(f"{A}{B}")}$",
 
-	noi_dung_loigiai=f"{kq} là mệnh đề sai."
+			f"${vec(f"{C}{A}")}+{vec(f"{B}{A}")}={vec(f"{C}{B}")}$",
+			f"${vec(f"{S}{D}")}+{vec(f"{B}{D}")}={vec(f"{S}{B}")}$",
+			f"${vec(f"{S}{D}")}-{vec(f"{D}{B}")}={vec(f"{S}{B}")}$",
+			f"${vec(f"{S}{A}")}-{vec(f"{A}{B}")}={vec(f"{S}{B}")}$",
+			f"${vec(f"{S}{C}")}-{vec(f"{B}{C}")}={vec(f"{B}{S}")}$"
+			])
+		kq_false=[
+			f"${vec(f"{S}{A}")}-{vec(f"{S}{B}")}={vec(f"{S}{D}")}-{vec(f"{S}{C}")}$",
+			f"${vec(f"{S}{B}")}-{vec(f"{S}{C}")}={vec(f"{S}{A}")}-{vec(f"{S}{D}")}$",
+
+			f"${vec(f"{A}{B}")}+{vec(f"{A}{D}")}={vec(f"{A}{C}")}$",
+			f"${vec(f"{A}{B}")}-{vec(f"{D}{A}")}={vec(f"{A}{C}")}$",
+
+			f"${vec(f"{B}{A}")}+{vec(f"{B}{C}")}={vec(f"{B}{D}")}$",
+			f"${vec(f"{B}{A}")}-{vec(f"{C}{B}")}={vec(f"{B}{D}")}$",
+
+			f"${vec(f"{D}{A}")}+{vec(f"{D}{C}")}={vec(f"{D}{B}")}$",
+			f"${vec(f"{D}{A}")}-{vec(f"{C}{D}")}={vec(f"{D}{B}")}$",
+
+			f"${vec(f"{C}{D}")}+{vec(f"{C}{B}")}={vec(f"{C}{A}")}$",
+			f"${vec(f"{C}{D}")}-{vec(f"{B}{C}")}={vec(f"{C}{A}")}$"]
+		noi_dung_loigiai=f"{kq} là mệnh đề sai."
+	
+	if chon==2:
+		noi_dung=f"Cho hình bình hành ${{{A}{B}{C}{D}}}$ và điểm ${{{S}}}$ tùy ý. Tìm mệnh đề đúng trong các mệnh đề sau."
+		
+		kq=random.choice([
+			f"${vec(f"{S}{A}")}-{vec(f"{S}{B}")}={vec(f"{S}{D}")}-{vec(f"{S}{C}")}$",
+			f"${vec(f"{S}{B}")}-{vec(f"{S}{C}")}={vec(f"{S}{A}")}-{vec(f"{S}{D}")}$",
+
+			f"${vec(f"{A}{B}")}+{vec(f"{A}{D}")}={vec(f"{A}{C}")}$",
+			f"${vec(f"{A}{B}")}-{vec(f"{D}{A}")}={vec(f"{A}{C}")}$",
+
+			f"${vec(f"{B}{A}")}+{vec(f"{B}{C}")}={vec(f"{B}{D}")}$",
+			f"${vec(f"{B}{A}")}-{vec(f"{C}{B}")}={vec(f"{B}{D}")}$",
+
+			f"${vec(f"{D}{A}")}+{vec(f"{D}{C}")}={vec(f"{D}{B}")}$",
+			f"${vec(f"{D}{A}")}-{vec(f"{C}{D}")}={vec(f"{D}{B}")}$",
+
+			f"${vec(f"{C}{D}")}+{vec(f"{C}{B}")}={vec(f"{C}{A}")}$",
+			f"${vec(f"{C}{D}")}-{vec(f"{B}{C}")}={vec(f"{C}{A}")}$"	
+			
+			])
+		kq_false=[
+			f"${vec(f"{A}{B}")}+{vec(f"{C}{B}")}={vec(f"{A}{C}")}$",
+			f"${vec(f"{A}{C}")}+{vec(f"{B}{C}")}={vec(f"{A}{B}")}$",
+
+			f"${vec(f"{C}{A}")}+{vec(f"{B}{A}")}={vec(f"{C}{B}")}$",
+			f"${vec(f"{S}{D}")}+{vec(f"{B}{D}")}={vec(f"{S}{B}")}$",
+			f"${vec(f"{S}{D}")}-{vec(f"{D}{B}")}={vec(f"{S}{B}")}$",
+			f"${vec(f"{S}{A}")}-{vec(f"{A}{B}")}={vec(f"{S}{B}")}$",
+			f"${vec(f"{S}{C}")}-{vec(f"{B}{C}")}={vec(f"{B}{S}")}$"
+			]
+		noi_dung_loigiai=f"{kq} là mệnh đề đúng."	
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]	
 
 	pa_A= f"*{kq}"
 	pa_B= f"{kq2}"
@@ -971,7 +1015,7 @@ def y7y7u_L10_C5_B2_06():
 			])
 		noi_dung=f"Cho hình bình hành ${{{A}{B}{C}{D}}}$. Tính ${phep_toan}$."
 		
-		kq=f"{vec(f"{C}{D}")}"
+		kq=f"{vec(f"{C}{D}")}"		
 		kq2=random.choice([
 			f"{vec(f"{B}{C}")}",
 			f"{vec(f"{C}{B}")}"
@@ -2685,7 +2729,7 @@ def y7y7u_L10_C5_B4_02():
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-	noi_dung= f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai véctơ ${vt_a}$ và ${vt_b}$ có $|{vt_a}|={dodai_a}$, $|{vt_b}|={dodai_b}$ và ${vt_a}.{vt_b}={tich_vh}$ . Tìm góc ${{({vt_a},{vt_b})}}$."
+	noi_dung= f"Cho hai véctơ ${vt_a}$ và ${vt_b}$ có $|{vt_a}|={dodai_a}$, $|{vt_b}|={dodai_b}$ và ${vt_a}.{vt_b}={tich_vh}$. Tìm góc ${{({vt_a},{vt_b})}}$."
 	debai= f"{noi_dung} \n"
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA) 

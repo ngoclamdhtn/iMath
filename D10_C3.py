@@ -322,7 +322,7 @@ def npl_mk_L10_C3_B1_05():
         kq3 = f"\\left(-\\infty; {latex(my_module.hien_phan_so(-b/a))}\\right]"
         kq4= f"\\left[{d};{latex(my_module.hien_phan_so(-b/a))}\\right]"
         noi_dung_loigiai=f"Hàm số xác định khi ${latex(a*x+b)}\\ge 0$ và $x\\ne {-d}$. Suy ra $x \\ge {latex(my_module.hien_phan_so(-b/a))}$."
-    kq2= f"\\mathbb{{R}} \\backslash \\left[\\{{{latex(my_module.hien_phan_so(-d))}\\right\\}}"
+    kq2= f"\\mathbb{{R}} \\backslash \\{{{latex(my_module.hien_phan_so(-d))}\\right\\}}"
     
     pa_A= f"*${{{kq}}}$"
     pa_B= f"${{{kq2}}}$"

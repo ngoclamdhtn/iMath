@@ -987,7 +987,7 @@ def mn8mn_L11_C2_B2_10():
         st_d=f"({d})"
 
     kq1_T=f"* $d={d}$" 
-    kq1_F=random.choice([f"d={d+random.randint(1,5)}",f"d={d-random.randint(1,5)}" ])
+    kq1_F=random.choice([f"$d={d+random.randint(1,5)}$",f"$d={d-random.randint(1,5)}$" ])
     kq1=random.choice([kq1_T, kq1_F])
     HDG=(f"$S_{{{i}}}={phan_so(i/2)}[2{st_u1}+{i-1}.{st_d}]={phan_so(S_i)}\\Rightarrow d={d}.$"
     )
@@ -1017,8 +1017,8 @@ def mn8mn_L11_C2_B2_10():
     Sn=n*(2*u1+(n-1)*d)/2
     Sn_false=n*(u1+(n-1)*d)/2
 
-    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn)}$" 
-    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn_false)}$"
+    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn)}}}$" 
+    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn_false)}}}$"
     kq3=random.choice([kq3_T, kq3_F])    
         
     HDG=f"$S_{{{n}}}={phan_so(n/2)}[2.{st_u1}+{n-1}.{st_d}]={phan_so(Sn)}$."
@@ -1119,8 +1119,8 @@ def mn8mn_L11_C2_B2_11():
     n=random.randint(5,15)
     u_n=u1+(n-1)*d
 
-    kq3_T=f"* Giá chiếc máy sau ${{{n}}}$ năm sử dụng nhỏ hơn ${u_n+random.randint(10,20)}$ triệu đồng" 
-    kq3_F=f"Giá chiếc máy sau ${{{n}}}$ năm sử dụng nhỏ hơn ${u_n-random.randint(10,20)}$ triệu đồng"
+    kq3_T=f"* Giá chiếc máy sau ${{{n}}}$ năm sử dụng nhỏ hơn ${{{u_n+random.randint(10,20)}}}$ triệu đồng" 
+    kq3_F=f"Giá chiếc máy sau ${{{n}}}$ năm sử dụng nhỏ hơn ${{{u_n-random.randint(10,20)}}}$ triệu đồng"
     kq3=random.choice([kq3_T, kq3_F])
     HDG=(f"Giá chiếc máy sau ${{{n}}}$ năm sử dụng là: $u_{n+1}={u1}+{n}.({d})={u_n}$.\n\n"
         )

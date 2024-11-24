@@ -4119,13 +4119,14 @@ def mnj_34_jkl_L12_C2_B3_10():
 	n=random.choice([random.randint(-5,-1), random.randint(2,5)])
 
 	x,y,z=m*a1+n*b1, m*a2+n*b2, m*a3+n*b3
-	kq_false=random.choice([f"({x};{y+random.randint(1,2)};{z})",
+	kq_false=random.choice([
+		f"({x};{y+random.randint(1,2)};{z})",
 		f"({x};{y};{z+random.randint(1,2)})",
 		f"({x+random.randint(1,2)};{y};{z})"
 		])
 
 	kq2_T=f"* ${m}{vec_a}+{n}{vec_b}=({x};{y};{z})$".replace("$1","$").replace("-1\\","-\\").replace("+1","+").replace("+-","-").replace("1\\","\\")
-	kq2_F=f"${m}{vec_a}+{n}{vec_b}=({x};{y};{z})$".replace("$1","$").replace("-1\\","-\\").replace("+1","+").replace("+-","-").replace("1\\","\\")
+	kq2_F=f"${m}{vec_a}+{n}{vec_b}={kq_false}$".replace("$1","$").replace("-1\\","-\\").replace("+1","+").replace("+-","-").replace("1\\","\\")
 	kq2=random.choice([kq2_T, kq2_F])
 	HDG=f"${m}{vec_a}+{n}{vec_b}=({x};{y};{z})$".replace("$1","$").replace("-1\\","-\\").replace("+1","+").replace("+-","-").replace("1\\","\\")
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -4763,9 +4764,9 @@ def mnj_34_jkl_L12_C2_B3_18():
 
 #[D12_C2_B3_19]-M1. Cho A,B. Tìm tọa độ vectơ AB
 def mnj_34_jkl_L12_C2_B3_19():
-	ten=["A","B","C","D","E","M","N","P"]
-	random.shuffle(ten)
-	A,B,C=ten[0:3]	
+	letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+	random.shuffle(letters)	
+	A,B,C=letters[0:3]	
 	a1,a2,a3=[random.randint(-7,7) for i in range(3)]
 	b1,b2,b3=[random.randint(-7,7) for i in range(3)]
 	while any([all([a1==0,a2==0,a3==0]),all([b1==0,b2==0,b3==0]),a1==b1,a2==b2,a3==b3]):
@@ -4790,26 +4791,15 @@ def mnj_34_jkl_L12_C2_B3_19():
 		noi_dung_loigiai=(f"${vec(f"{B}{A}")}=({a1}-{b1};{a2}-{b2};{a3}-{b3})=({x};{y};{z})$.")	
 
 	kq_false=[
-	[-x, -y, -z],
-	[x, y+random.randint(1,3), z],
-	[x+random.randint(1,3), y, z],
-	[x, y, z+random.randint(1,3)],
-	[x+random.randint(1,3), y, z+random.randint(1,3)],
-	[x+random.randint(1,3), y-random.randint(1,3), z-random.randint(1,3)],
-	[x-random.randint(1,3), y+random.randint(1,3), z],
-	[x-random.randint(1,3), y-random.randint(1,3), z+random.randint(1,3)],	
-	[x-random.randint(1,3), y+random.randint(1,3), z-random.randint(1,3)],
+	(-x, -y, -z),
+	(x, y+random.randint(1,3), z),
+	(x+random.randint(1,3), y, z),
+	(x, y, z+random.randint(1,3)),
 	]	
 	random.shuffle(kq_false)
 
 	kq=f"({x}; {y}; {z})"
 	kq2,kq3,kq4=kq_false[0:3]
-	x2,y2,z2=kq2
-	x3,y3,z3=kq3
-	x4,y4,z4=kq4
-	kq2=f"({phan_so(x2)}; {phan_so(y2)}; {phan_so(x2)})"
-	kq3=f"({phan_so(x3)}; {phan_so(y3)}; {phan_so(x3)})"
-	kq4=f"({phan_so(x4)}; {phan_so(y4)}; {phan_so(x4)})"
 
 	
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
@@ -5336,12 +5326,12 @@ def mnj_34_jkl_L12_C2_B3_25():
 		f" Gọi ${{{H}}}$ là hình chiếu vuông góc của điểm ${{{A}}}$ lên mặt phẳng ${{(Oyz)}}$."
 		f" Tọa độ điểm ${{{H}}}$ là")		
 
-		kq=f"({a1};{a2};0)"
+		kq=f"(0;{a2};{a3})"
 		kq_false=[
 		f"(0;0;{a3})",
 		f"({a1};0;0)",
 		f"(0;{a2};0)",
-		f"(0;{a2};{a3})",
+		f"({a1};{a2};0)",
 		f"({a1};0;{a3})"]
 
 		noi_dung_loigiai=(

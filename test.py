@@ -12,8 +12,8 @@ import pyperclip
 
 #Test trắc nghiệm
 test, test_latex="",""
-for i in range(2):
-	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B3_06()
+for i in range(3):
+	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_19()
 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
 	test_latex=test_latex + f"{debai_latex}\n"
 	#print(test)
@@ -24,8 +24,8 @@ for i in range(2):
 
 #Test đúng sai
 # test, test_latex="",""
-# for i in range(5):
-# 	debai,debai_latex,loigiai_word,dap_an =D11_C4.ghj_7_jkl_L11_C4_B2_11()
+# for i in range(1):
+# 	debai,debai_latex,loigiai_word,dap_an =D11_C4.ghj_7_jkl_L11_C4_B3_08()
 # 	#print(debai)
 # 	#print(loigiai_word)
 # 	test=test + f"{debai}\n{loigiai_word}\n"
