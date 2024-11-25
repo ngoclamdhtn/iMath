@@ -418,44 +418,44 @@ def zz8zz_L11_C3_B1_07():
 #[D11_C3_B2_01]. Tính giới hạn tại điểm - thay số trực tiếp
 def zz8zz_L11_C3_B2_01():
     x = symbols('x')
-    #Tạo list chứa các hệ số
-    a = [random.randint(-10, 10) for _ in range(5)]
-    for i in range (5):
-        if a[i] == 0:
-            a[i] = random.randint(1,5)
-    #Tạo list random dạng hàm
-    ham = random.choice([1,2,3])
-    if  ham == 1:
-        f=a[0]*x**2+a[1]*x+a[2]    
-    if  ham == 2:
-        f=(a[0]*x+a[1])/(a[2]*x+a[3])
-    if  ham == 3:
-        f=(a[0]*x**2+a[1]*x+a[2])/(a[3]*x+a[4])
-    dau_ngoac_mo = ""
-    dau_ngoac_dong = ""
-    if ham==1:
-        dau_ngoac_mo = "("
-        dau_ngoac_dong = ")"
-    x_0=random.randint(-6,6)
-    kq= limit(f, x, x_0)
-    kq2=a[0]/a[2]
-    kq3=a[1]/a[2]
-    kq4=a[2]/a[1]
-    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-    kq2=pa_kotrung[1]
-    kq3=pa_kotrung[2]
-    kq4=pa_kotrung[3]
+    chon=random.randint(1,2)
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c= random.choice([i for i in range(-5, 6) if i!=0])
+    d= random.choice([i for i in range(-5, 6) if i!=0])
+
+    chon=random.randint(1,2)
+    if chon==1:
+        x_0=random.randint(-5,5)
+        f=a*x**2+b*x+c
+        noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {x_0}}} ({latex(f)})$." 
+    if chon==2:
+        if a*d-b*c==0: d=d+random.randint(1,2)
+        f=(a*x+b)/(c*x+d)
+        x_0=random.choice([random.randint(int(-d/c)-6, int(-d/c)-1), random.randint(int(-d/c)+2, int(-d/c)+5)])
+        noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {x_0}}} {latex(f)}$." 
+    if chon==3:        
+        f=a/(c*x+d)
+        x_0=random.choice([random.randint(int(-d/c)-6, int(-d/c)-1), random.randint(int(-d/c)+2, int(-d/c)+5)])
+        noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {x_0}}} {latex(f)}$." 
+
+    kq=f.subs(x,x_0)
+    kq2=random.choice(["+\\infty","-\\infty"])
+    kq_false=[kq+random.randint(1,3),kq+random.randint(4,5),kq-random.randint(4,5),kq-random.randint(1,2)]
+    random.shuffle(kq_false)
+    kq3,kq4=kq_false[0:2]
+
   
     #Trộn các phương án
 
     pa_A= f"*${{{latex(my_module.hien_phan_so(kq))}}}$"
-    pa_B= f"${{{latex(my_module.hien_phan_so(kq2))}}}$"
+    pa_B= f"${kq2}$"
     pa_C= f"${{{latex(my_module.hien_phan_so(kq3))}}}$"
     pa_D= f"${{{latex(my_module.hien_phan_so(kq4))}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
-    noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {x_0}}} {dau_ngoac_mo }{latex(f)}{dau_ngoac_dong} $."
+    
 
     noi_dung_loigiai=f""
     #Trộn các phương án
@@ -784,34 +784,44 @@ def zz8zz_L11_C3_B2_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_07]. Tính giới hạn x-->00: Căn(A)/B
-def zz8zz_L11_C3_B2_07():        
-    f, heso_bac_f, heso_tudo_f = my_module.random_dathuc_bac2_luon_duong("x")[0:3]
-    g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",2)[0:3]
+def zz8zz_L11_C3_B2_07():
+    x=sp.symbols("x")
+    x_0= random.choice([i for i in range(-5, 6) if i!=0])
+    a= random.randint(2,3)
+    b= random.randint(1,5)
+    b=-2*a*x_0
+    c=a*x_0**2+b
+    f=a*x**2-2*a*x_0*x+a*x_0**2+b
 
-    if heso_tudo_g==0:
-        heso_tudo_g=heso_bac_f+1      
+    m = random.choice([i for i in range(-5, 6) if i!=0 and i!=1 and i!=-1])
+    n = random.choice([i for i in range(-5, 6) if i!=0 and i!=1 and i!=-1])
+    if n==m:n=n+random.randint(1,3)
+    if n==0: n=n+random.randint(1,3)
+    g=m*x+n
 
     dau = random.choice(["+","-"])
-    vo_cung=dau + "oo"
-    kq=limit(sqrt(f)/g,"x",vo_cung)
-    kq1=heso_bac_g/heso_bac_f
-    kq2=heso_tudo_f/heso_tudo_g
-    if kq1==kq:
-        kq1=kq+random.randint(1,10)
-    if kq2==kq:
-        kq2=kq-random.randint(1,10)
-    if kq1==kq2:
-        kq1=kq+2
-        kq2=kq-2 
+    vo_cung=f"{dau}\\infty"
+    
+    if dau=="+":
+        kq=f"{latex(sqrt(a)/m)}"
+        kq2=f"{latex(-sqrt(a)/m)}"
+        kq3=random.choice([0,"+\\infty","-\\infty"])
+        kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}"
 
-    pa_A= f"*${{{latex(kq)}}}$"
-    pa_B= f"${{{latex(my_module.hien_phan_so(kq1))}}}$"
-    pa_C= f"${{{latex(my_module.hien_phan_so(kq2))}}}$"
-    pa_D= f"${{{dau}\\infty}}$"
+    else:
+        kq=f"{latex(sqrt(a)/m)}"
+        kq2=f"{latex(-sqrt(a)/m)}"
+        kq3=random.choice([0,"+\\infty","-\\infty"])
+        kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}" 
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"*${{{kq2}}}$"
+    pa_C= f"*${{{kq3}}}$"
+    pa_D= f"*${{{kq4}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
-    noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {dau}\\infty}} {latex(sqrt(f)/g)}$."
+    noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {vo_cung}}} {latex(sqrt(f)/g)}$."
     noi_dung_loigiai=f""
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -899,17 +909,13 @@ def zz8zz_L11_C3_B2_08():
 
 #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
 def zz8zz_L11_C3_B2_09():
-    x_0 = random.randint(-5,5)
-    lim_f = random.randint(-10,10)
-    if lim_f == 0:
-        lim_f=random.randint(-10,-2)
+    x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+    lim_f = random.choice([i for i in range(-5, 6) if i!=0])
 
-    lim_g = random.randint(-10,10)
-    if lim_g == 0:
-        lim_g=random.randint(2,10)
+    lim_g = random.choice([i for i in range(-5, 6) if i!=0])
 
     if lim_g==lim_f:
-        lim_g=x_0*lim_f        
+        lim_g=x_0*lim_f      
 
     dau = random.choice(["*","/"])
     if dau=="*":
