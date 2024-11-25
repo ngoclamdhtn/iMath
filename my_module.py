@@ -291,7 +291,7 @@ def random_polynomial(st,k):
         x = sp.symbols('n')  
 
     # Tạo đa thức với các hệ số
-    coefficients = [random.randint(-15, 15) for _ in range(k)]
+    coefficients = [random.choice([random.randint(-10, -1),random.randint(1, 8) ]) for _ in range(k)]
     if coefficients[k-1]==0:
         coefficients[k-1] += 1
         

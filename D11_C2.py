@@ -2261,6 +2261,52 @@ def mn8mn_L11_C2_B3_08():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
+#[D11_C2_B3_09]-TL-M2. Tìm vị trí của số hạng trong cấp số nhân
+def mn8mn_L11_C2_B3_09():
+    chon=random.randint(1,2)
+    chon=4
+    if chon==1:
+        u1=random.choice([1/2,-1/2,3/2])
+        q=random.choice([2,-2,4,-4])             
+    if chon==2:
+        u1=random.choice([1/3,-1/3,2/3,4/3])
+        q=random.choice([3,-3,6,-6])
 
+    if chon==3:
+        u1=random.choice([1/4,-1/4,3/4,5/4])
+        q=random.choice([4,-4])
+
+    if chon==4:
+        u1=random.choice([1/5,-1/5,3/5,2/5])
+        q=random.choice([5,-5])
+
+    
+    if q>0:
+        st_q=q
+    else:
+        st_q=f"({q})"
+    k=random.randint(8,15)
+    uk=u1*q**(k-1)
+
+    noi_dung = (
+    f"Cho cấp số nhân $(u_n)$ có $u_1={phan_so(u1)},q={q}$. Số ${{{phan_so(uk)}}}$ là số hạng thứ mấy?")
+    dap_an=k
+
+    noi_dung_loigiai=(
+    f"$u_n={phan_so(uk)}\\Rightarrow u_1.q^{{n-1}}={phan_so(uk)}\\Rightarrow {phan_so(u1)}.{st_q}^{{n-1}}={phan_so(uk)}$\n\n"
+    f"$\\Rightarrow {st_q}^{{n-1}} = {phan_so(uk/u1)} \\Rightarrow n-1={k-1} \\Rightarrow n={k}$.\n\n"    
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 

@@ -3445,8 +3445,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L11_C2_B3_1, ["[D11_C2_B3_01]-M1. Cho u_1 và q. Tìm u_k"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)            
-
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)        
 
                 item = QTreeWidgetItem(L11_C2_B3_1, ["[D11_C2_B3_02]-M1. Cho u_n và u_(n+1). Tìm q"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -3465,20 +3464,19 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
 
-
-                # item = QTreeWidgetItem(L11_C2_B3_1, ["[D11_C2_B3_05]-M2. Tính số virut tạo ra sau một số khoảng thời gian."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
-
-                # item = QTreeWidgetItem(L11_C2_B3_1, ["[D11_C2_B3_06]-M2. Tính số virut tạo ra sau một số khoảng thời gian."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
                 L11_C2_B3_2 = QTreeWidgetItem(L11_C2_B3, ["Đúng-Sai"])
                 L11_C2_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C2_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C2_B3_2, ["[D11_C2_B3_07]-TF-M2. Cho CSN có un,u_m. Xét Đ-S: q, u_k, S_k, u_n"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C2_B3_3 = QTreeWidgetItem(L11_C2_B3, ["Trả lời ngắn"])
+                L11_C2_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C2_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_09]-TL-M2. Tìm vị trí của số hạng trong cấp số nhân"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -8541,6 +8539,10 @@ class Ui_MainWindow(object):
                                                 #[D11_C2_B3_08]-M2. Nhận dạng dãy số hữu hạn là 1 cấp số nhân
                                                 if dang_toan == "[D11_C2_B3_08]": 
                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C2.mn8mn_L11_C2_B3_08()
+
+                                                #[D11_C2_B3_09]-TL-M2. Tìm vị trí của số hạng trong cấp số nhân
+                                                if dang_toan == "[D11_C2_B3_09]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_09()
 
                                                 
 
