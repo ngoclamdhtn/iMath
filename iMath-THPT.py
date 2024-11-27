@@ -3484,7 +3484,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_12]-TL-M3. Cho uk,q hoặc uk,um và S_n, Tìm n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_11]-TL-M3. Thả quả bóng. Tính tổng quảng đường đến khi dừng hẳn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_13]-TL-M3. Cho số dân (mức lương) và tỉ lệ tăng trưởng. Tính số dân (mức lương) sau n năm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -8559,6 +8567,14 @@ class Ui_MainWindow(object):
                                                 #[D11_C2_B3_11]-TL-M3. Thả quả bóng. Tính tổng quảng đường đến khi dừng hẳn.
                                                 if dang_toan == "[D11_C2_B3_11]": 
                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_11()
+
+                                                #[D11_C2_B3_12]-TL-M3. Cho uk,q hoặc uk,um và S_n, Tìm n. 
+                                                if dang_toan == "[D11_C2_B3_12]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_12()
+
+                                                #[D11_C2_B3_13]-TL-M3. Cho số dân và tỉ lệ tăng trưởng. Tính số dân sau n năm.
+                                                if dang_toan == "[D11_C2_B3_13]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_13()
 
                                                 
 

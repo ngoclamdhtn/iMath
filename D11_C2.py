@@ -2,6 +2,7 @@ import random
 import math
 import my_module
 from sympy import *
+import datetime
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -2419,10 +2420,7 @@ def mn8mn_L11_C2_B3_10():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-def is_integer_number(num):
-    if isinstance(num, float):
-        return num.is_integer()
-    return isinstance(num, int)
+
 #[D11_C2_B3_11]-TL-M3. Thả quả bóng. Tính tổng quảng đường đến khi dừng hẳn.
 def mn8mn_L11_C2_B3_11():
     h=random.randint(7,16)
@@ -2430,6 +2428,7 @@ def mn8mn_L11_C2_B3_11():
     ten=random.choice(["Minh An", "Khánh Linh", "Bảo Ngọc", "Hà Anh", "Quang Minh", "Thanh Phong", "Anh Thư", "Thiên Ân", "Trung Kiên", "Hoàng Lan"])
     S=h/(1-q)
     kq=2*S-h
+
     if int(kq)==kq:
         noi_dung = (
         f"Bạn {ten} thả quả bóng cao su từ độ cao ${{{h}}}$ m theo phương thẳng đứng."
@@ -2461,5 +2460,196 @@ def mn8mn_L11_C2_B3_11():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B3_12]-TL-M3. Cho uk,q hoặc uk,um và S_n, Tìm n. 
+def mn8mn_L11_C2_B3_12():
+
+    u1=random.choice([random.randint(-5,-2), random.randint(2,5)])
+    q=random.choice([random.randint(-4,-2), random.randint(2,4)])
+
+    if q>0:
+        st_q=q
+    else:
+        st_q=f"({q})"
+    
+    n=random.randint(6,12)    
+    Sn=u1*(q**n-1)/(q-1)
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        k=random.randint(4,7)
+        uk=u1*q**(k-1)
+
+        noi_dung = (
+        f"Cho cấp số nhân $(u_n)$ có $u_{k}={uk},q={q},S_n={phan_so(Sn)}$. Tìm ${{n}}$.")
+        dap_an=n
+
+        noi_dung_loigiai=(
+        f" $u_{k}={uk}\\Rightarrow u_1.q^{k-1}={uk}\\Rightarrow u_1.{st_q}^{k-1}={uk}\\Rightarrow u_1={u1}$.\n\n"
+        f" $S_n=u_1\\dfrac{{1-q^n}}{{1-q}}={u1}\\dfrac{{1-{st_q}^n}}{{1-{st_q}}}={phan_so(Sn)}$"
+        f" $\\Rightarrow 1-{st_q}^n={phan_so(Sn*(1-q)/u1)}$\n\n $\\Rightarrow {st_q}^n={phan_so(1-Sn*(1-q)/u1)}={st_q}^{{{n}}} \\Rightarrow n={n}$." ) 
+
+    if chon==2:
+        k=random.randint(4,7)
+        uk=u1*q**(k-1)
+        m=k+3
+        um=u1*q**(m-1)
+
+        noi_dung = (
+        f"Cho cấp số nhân $(u_n)$ có $u_{k}={uk},u_{{{m}}}={um},S_n={phan_so(Sn)}$. Tìm ${{n}}$.")
+        dap_an=n
+
+        noi_dung_loigiai=(
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        u_{k}={uk} \\\\ \n\
+        u_{{{m}}}={um}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1.q^{k-1}={uk} \\\\ \n\
+        u_1.q^{{{m-1}}}={um}\n\
+        \\end{{array}} \\right.$"
+        f"$\\Rightarrow q^3={phan_so(um/uk)} \\Rightarrow q={q}$.\n\n"
+
+        f" $ u_1.q^{k-1}={uk}\\Rightarrow u_1.{st_q}^{k-1}={uk}\\Rightarrow u_1={u1}$.\n\n"
+        f" $S_n=u_1\\dfrac{{1-q^n}}{{1-q}}={u1}\\dfrac{{1-{st_q}^n}}{{1-{st_q}}}={phan_so(Sn)}$"
+        f" $\\Rightarrow 1-{st_q}^n={phan_so(Sn*(1-q)/u1)}$\n\n $\\Rightarrow {st_q}^n={phan_so(1-Sn*(1-q)/u1)}={st_q}^{{{n}}} \\Rightarrow n={n}$." ) 
+   
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B3_13]-TL-M3. Cho số dân và tỉ lệ tăng trưởng. Tính số dân sau n năm.
+def mn8mn_L11_C2_B3_13():
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        a= random.randint(100,300)/100
+        a_phay=str(a)
+        a_phay= a_phay.replace(".",",")
+        r=random.randint(8,16)/10
+        r_phay=str(r)
+        r_phay=r_phay.replace(".",",")
+
+        # Lấy ngày và thời gian hiện tại
+        ngay_hien_tai = datetime.datetime.now()
+
+        nam=random.randint(2019,ngay_hien_tai.year)
+        thang=ngay_hien_tai.month
+
+        n=random.randint(3,10)
+        nam_ketthuc=nam+n
+        name_city=random.choice(["A", "B", "C", "X", "Y","Z"])
+        
+        noi_dung= (f"Biết rằng vào ngày 01/{thang}/{nam}, dân số của thành phố {name_city} có khoảng {a_phay} (triệu người)." 
+                f" Nếu tỉ lệ tăng dân số của thành phố {name_city} là {r_phay}\\%/năm và giữ ổn định qua các năm thì vào ngày 01/{thang}/{nam_ketthuc}, dân số của thành phố {name_city} là"
+                f"(kết quả làm tròn đến hàng phần mười)") 
+
+        kq=a*(1+r/100)**n
+        dap_an=f"{round(kq,1):.1f}".replace(".",",")
+        noi_dung_loigiai=(f"Dân số của thành phố {name_city} sau {n} năm là:\n\n"\
+                        f"$S={a_phay}\\left(1+{r_phay}\\%\\right)^{{{n}}}={dap_an}$ (triệu người).")
+    
+    if chon==2:
+        a= random.randint(500,900)/100
+        a_phay=str(a)
+        a_phay= a_phay.replace(".",",")
+        r=random.randint(30,40)
+        r_phay=str(r)
+        r_phay=r_phay.replace(".",",")
+
+        # Lấy ngày và thời gian hiện tại
+        ngay_hien_tai = datetime.datetime.now()      
+
+        nam=random.randint(2020,ngay_hien_tai.year)
+        thang=ngay_hien_tai.month
+
+        n=random.randint(10, 25)
+        so_nam=random.randint(2,3)
+        so_lan=int(n/so_nam)
+        
+        name_cv=random.choice(["công nhân", "nhân viên văn phòng", "kế toán", "kỹ sư", "nhân viên giao hàng","nhân viên bán hàng"])
+        
+        noi_dung= f"Một người {name_cv} làm việc trong một công ty với mức lương khởi điểm là {a_phay} triệu đồng/tháng." \
+                f" Cứ sau {so_nam} năm thì mức lương tăng lên thêm {r_phay}\\%/năm so với mức lương cũ."\
+                f" Nếu {name_cv} này làm việc liên tục trong {n} năm thì mức lương hàng tháng của năm thứ {n} là bao nhiêu triệu đồng (kết quả làm tròn đến hàng phần mười)?"        
+
+        kq=a*(1+r/100)**(so_lan)
+        dap_an=f"{round(kq,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=f"Số lần được tăng lương sau {n} năm là: {so_lan-1}.\n\n"\
+                        f"Mức lương của người {name_cv} sau {n} năm là:\n\n"\
+                        f"$S={a_phay}\\left(1+{r_phay}\\%\\right)^{{{so_lan}}}={dap_an}$ (triệu đồng)."   
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B3_13]-TL-M3.Bài toán lát gạch cho tòa tháp
+def mn8mn_L11_C2_B3_13():
+    n=random.randint(5,8)
+    S1=random.choice([40,45,50,55,60,65])
+
+    size=random.choice([40,50,60,80,100])
+    st_size=f"{size/100:.1f}".replace(".",",")
+
+    q=random.choice([0.6, 0.65, 0.7, 0.75, 0.8 ])
+    st_q=f"{int(q*100)}"
+    S=S1*(1-q**n)/(1-q)
+    dien_tich=f"{round(S,3):.3f}".replace(".",",")
+    so_gach=S/(size**2/10000)
+    if int(so_gach)<so_gach:
+        dap_an=int(so_gach)+1
+    else:
+        dap_an=int(so_gach)
+
+
+    noi_dung = (
+    f"Một đội thợ công nhân dùng gạch cỡ {size}x{size}cm để lát nền cho một toà tháp gồm {n} tầng theo cấu trúc"
+    f" diện tích mặt sàn của tầng trên bằng {st_q}\\% diện tích mặt sàn của tầng dưới."
+    f" Biết diện tích mặt đáy của tháp là {S1} ${{m^2}}$. Hỏi đội công nhân dự định dùng tối thiểu khoảng bao nhiêu viên gạch?"
+    )
+    
+
+    noi_dung_loigiai=(
+    f"Giả sử diện tích mặt sàn tầng 1 là $S_1(m^2)$.\n\n"
+    f"Suy ra, diện tích mặt sàn tầng 2 là $S_2={phan_so(q)}S_1$.\n\n"
+    f"Diện tích mặt sàn tầng 3 là $S_3={phan_so(q)}S_2={phan_so(q**2)}S_1$.\n\n"
+    f"..........\n\n"
+    f"Diện tích mặt sàn tầng {n} là $S_{n}=\\left({phan_so(q)}\\right)^{n-1}S_1$.\n\n"
+    f"Tổng diện tích mặt sàn của toà tháp là:\n\n"
+    f"$S=S_1+S_2+...+s_{n}={S1}.\\dfrac{{1-\\left({phan_so(q)}\\right)^{n} }}{{1-{phan_so(q)}}}={dien_tich}(m^2)$.\n\n"
+    f"Số viên gạch cần dùng là: ${dien_tich}:({st_size}.{st_size})={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
 
 
