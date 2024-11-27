@@ -6618,7 +6618,7 @@ def zz8zz_L11_C8_B7_02():
 	kq4=random.choice([kq4_T, kq4_F])
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n"\
 	f"Gọi M là trung điểm của ${{{A1}{C1}}}, {B1}M={latex(AB*sqrt(3)/2)}a$.\n\n"\
-	f"{B1}M\\bot {A1}{C1},{B1}M\\bot S{A1} \\Rightarrow {B1}M \\bot (S{A1}{C1})$.\n\n"\
+	f"${B1}M\\bot {A1}{C1},{B1}M\\bot S{A1} \\Rightarrow {B1}M \\bot (S{A1}{C1})$.\n\n"\
 	f"$d({B1},(S{A1}{C1}))={B1}M={latex(BM)}a$."
 	if kq4==kq4_F:
 	    loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n"\

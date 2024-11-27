@@ -845,7 +845,7 @@ def gghik_L10_CX_B0_12():
 	c2 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
 	if a1==a2: a1=a1+random.randint(1,4)
 	if a1==a2 and b1==b2: a2=a2+random.randint(1,4)
-	if a1*c1+a2*c2==0: b2=b2+random.randint(1,4)
+	if a1*c1+a2*c2==0: c2=c2+random.randint(1,4)
 	
 	vt_A=random.choice(["a","u", "n", "d"])
 	vt_B=random.choice(["b","c", "v", "w"])

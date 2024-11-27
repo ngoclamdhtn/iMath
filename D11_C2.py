@@ -1262,7 +1262,7 @@ def mn8mn_L11_C2_B2_12():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1340,7 +1340,7 @@ def mn8mn_L11_C2_B2_13():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1395,7 +1395,7 @@ def mn8mn_L11_C2_B2_14():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1426,7 +1426,7 @@ def mn8mn_L11_C2_B2_15():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1470,7 +1470,7 @@ def mn8mn_L11_C2_B2_16():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1557,7 +1557,7 @@ def mn8mn_L11_C2_B2_17():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1631,7 +1631,7 @@ def mn8mn_L11_C2_B2_18():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1685,7 +1685,7 @@ def mn8mn_L11_C2_B2_19():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1771,7 +1771,7 @@ def mn8mn_L11_C2_B2_20():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -2260,11 +2260,47 @@ def mn8mn_L11_C2_B3_08():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-
 #[D11_C2_B3_09]-TL-M2. Tìm vị trí của số hạng trong cấp số nhân
 def mn8mn_L11_C2_B3_09():
-    chon=random.randint(1,2)
-    chon=4
+       
+    u1=random.choice([random.randint(-5,-2), random.randint(2,5)])
+    q=random.choice([random.randint(-4,-2), random.randint(2,4)])
+
+    if q>0:
+        st_q=q
+    else:
+        st_q=f"({q})"
+
+    chon=random.randint(1,4) 
+    
+    
+    k=random.randint(8,15)
+    uk=u1*q**(k-1)
+
+    noi_dung = (
+    f"Cho cấp số nhân $(u_n)$ có $u_1={phan_so(u1)},q={q}$. Số ${{{phan_so(uk)}}}$ là số hạng thứ mấy?")
+    dap_an=k
+
+    noi_dung_loigiai=(
+    f"$u_n={phan_so(uk)}\\Rightarrow u_1.q^{{n-1}}={phan_so(uk)}\\Rightarrow {phan_so(u1)}.{st_q}^{{n-1}}={phan_so(uk)}$\n\n"
+    f"$\\Rightarrow {st_q}^{{n-1}} = {phan_so(uk/u1)} \\Rightarrow n-1={k-1} \\Rightarrow n={k}$.\n\n"    
+    )   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B3_10]-TL-M2. Cho hệ điều kiện. Tìm vị trí của số hạng trong cấp số nhân
+def mn8mn_L11_C2_B3_10():
+    chon=random.randint(1,4)    
     if chon==1:
         u1=random.choice([1/2,-1/2,3/2])
         q=random.choice([2,-2,4,-4])             
@@ -2279,22 +2315,139 @@ def mn8mn_L11_C2_B3_09():
     if chon==4:
         u1=random.choice([1/5,-1/5,3/5,2/5])
         q=random.choice([5,-5])
-
     
     if q>0:
         st_q=q
     else:
         st_q=f"({q})"
-    k=random.randint(8,15)
+    k=random.randint(7,14)
     uk=u1*q**(k-1)
 
-    noi_dung = (
-    f"Cho cấp số nhân $(u_n)$ có $u_1={phan_so(u1)},q={q}$. Số ${{{phan_so(uk)}}}$ là số hạng thứ mấy?")
-    dap_an=k
+    chon=random.randint(1,3)
+    
+    if chon==1:
+        t_15=u1+u1*q**4
+        t_26=u1*q+u1*q**5
+        noi_dung = (
+        f"Cho cấp số nhân $(u_n)$ có $u_1+u_5={phan_so(t_15)},u_2+u_6={phan_so(t_26)}$. Số ${{{phan_so(uk)}}}$ là số hạng thứ mấy?")
+        dap_an=k
+
+        noi_dung_loigiai=(
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1+u_5={phan_so(t_15)} \\\\ \n\
+        u_2+u_6={phan_so(t_26)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1(1+q^4)={phan_so(t_15)} \\\\ \n\
+        u_1q(1+q^4)={phan_so(t_26)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        q={phan_so(q)} \\\\ \n\
+        u_1={phan_so(u1)}\n\
+        \\end{{array}} \\right.$\n\n")
+    
+    if chon==2:
+        t_14=u1+u1*q**3
+        t_25=u1*q+u1*q**4
+        noi_dung = (
+        f"Cho cấp số nhân $(u_n)$ có $u_1+u_4={phan_so(t_14)},u_2+u_5={phan_so(t_25)}$. Số ${{{phan_so(uk)}}}$ là số hạng thứ mấy?")
+        dap_an=k
+
+        noi_dung_loigiai=(
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1+u_4={phan_so(t_14)} \\\\ \n\
+        u_2+u_5={phan_so(t_25)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1(1+q^3)={phan_so(t_14)} \\\\ \n\
+        u_1q(1+q^3)={phan_so(t_25)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        q={phan_so(q)} \\\\ \n\
+        u_1={phan_so(u1)}\n\
+        \\end{{array}} \\right.$\n\n")
+    
+    if chon==3:
+        m=random.randint(3,5)
+        um=u1*q**(m-1)
+        n=random.randint(4,7)
+        ti_so=u1*q**(n+3)/(u1*q**n)
+
+        noi_dung = (
+        f"Cho cấp số nhân $(u_n)$ có $u_{m}={phan_so(um)},u_{{{n+4}}}={phan_so(ti_so)}u_{{{n+1}}}$. Số ${{{phan_so(uk)}}}$ là số hạng thứ mấy?")
+        dap_an=k
+
+        noi_dung_loigiai=(
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        u_{m}={phan_so(um)} \\\\ \n\
+        u_{{{n+4}}}={phan_so(ti_so)}u_{{{n+1}}}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1.q^{m-1}={phan_so(um)} \\\\ \n\
+        u_1.q^{{{n+3}}}={phan_so(ti_so)}u_1.q^{n}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1.q^{m-1}={phan_so(um)} \\\\ \n\
+        q^3={phan_so(ti_so)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        q={phan_so(q)} \\\\ \n\
+        u_1={phan_so(u1)}\n\
+        \\end{{array}} \\right.$\n\n")
+    
+    noi_dung_loigiai+=(f"$u_n={phan_so(uk)}\\Rightarrow u_1.q^{{n-1}}={phan_so(uk)}\\Rightarrow {phan_so(u1)}.{st_q}^{{n-1}}={phan_so(uk)}$\n\n"
+        f"$\\Rightarrow {st_q}^{{n-1}} = {phan_so(uk/u1)} \\Rightarrow n-1={k-1} \\Rightarrow n={k}$.\n\n" )
+    
+
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+def is_integer_number(num):
+    if isinstance(num, float):
+        return num.is_integer()
+    return isinstance(num, int)
+#[D11_C2_B3_11]-TL-M3. Thả quả bóng. Tính tổng quảng đường đến khi dừng hẳn.
+def mn8mn_L11_C2_B3_11():
+    h=random.randint(7,16)
+    q=random.choice([3/4,3/5,2/3,1/2,1/3])
+    ten=random.choice(["Minh An", "Khánh Linh", "Bảo Ngọc", "Hà Anh", "Quang Minh", "Thanh Phong", "Anh Thư", "Thiên Ân", "Trung Kiên", "Hoàng Lan"])
+    S=h/(1-q)
+    kq=2*S-h
+    if int(kq)==kq:
+        noi_dung = (
+        f"Bạn {ten} thả quả bóng cao su từ độ cao ${{{h}}}$ m theo phương thẳng đứng."
+        f" Mỗi khi chạm đất nó lại nảy lên theo phương thẳng đứng có độ cao bằng ${{{phan_so(q)}}}$ độ cao trước đó."
+        f" Tính tổng quãng đường bóng đi được đến khi bóng dừng hẳn.")
+        dap_an=int(kq)       
+    else:
+        noi_dung = (
+        f"Bạn {ten} thả quả bóng cao su từ độ cao ${{{h}}}$ m theo phương thẳng đứng."
+        f" Mỗi khi chạm đất nó lại nảy lên theo phương thẳng đứng có độ cao bằng ${{{phan_so(q)}}}$ độ cao trước đó."
+        f" Tính tổng quãng đường bóng đi được đến khi bóng dừng hẳn (kết quả làm tròn đến hàng phần mười).")   
+        dap_an=f"{round(kq,1):.1f}".replace(".",",")
+
 
     noi_dung_loigiai=(
-    f"$u_n={phan_so(uk)}\\Rightarrow u_1.q^{{n-1}}={phan_so(uk)}\\Rightarrow {phan_so(u1)}.{st_q}^{{n-1}}={phan_so(uk)}$\n\n"
-    f"$\\Rightarrow {st_q}^{{n-1}} = {phan_so(uk/u1)} \\Rightarrow n-1={k-1} \\Rightarrow n={k}$.\n\n"    
+    f"Các quãng đường khi bóng đi xuống tạo thành một cấp số nhân lùi vô hạn có $u_1={h},q={phan_so(q)}$.\n\n"
+    f"Tổng các quãng đường khi bóng đi xuống là: $S=\\dfrac{{u_1}}{{1-q}}=\\dfrac{{{h}}}{{1-{phan_so(q)}}}={phan_so(S)}$.\n\n"
+    f"Tổng quãng đường bóng đi được đến khi bóng dừng hẳn: $2S-{h}=2.{phan_so(S)}-{h}={phan_so(2*S-h)}$."
     )    
         
     debai_word= f"{noi_dung}\n"
@@ -2304,7 +2457,7 @@ def mn8mn_L11_C2_B3_09():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an

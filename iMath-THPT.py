@@ -3476,7 +3476,15 @@ class Ui_MainWindow(object):
                 L11_C2_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C2_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_09]-TL-M2. Tìm vị trí của số hạng trong cấp số nhân"])
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_09]-TL-M2. Cho u1,q. Tìm vị trí của số hạng trong cấp số nhân"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_10]-TL-M2. Cho hệ điều kiện. Tìm vị trí của số hạng trong cấp số nhân"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_11]-TL-M3. Thả quả bóng. Tính tổng quảng đường đến khi dừng hẳn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -8543,6 +8551,14 @@ class Ui_MainWindow(object):
                                                 #[D11_C2_B3_09]-TL-M2. Tìm vị trí của số hạng trong cấp số nhân
                                                 if dang_toan == "[D11_C2_B3_09]": 
                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_09()
+
+                                                #[D11_C2_B3_10]-TL-M2. Cho hệ điều kiện. Tìm vị trí của số hạng trong cấp số nhân
+                                                if dang_toan == "[D11_C2_B3_10]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_10()
+
+                                                #[D11_C2_B3_11]-TL-M3. Thả quả bóng. Tính tổng quảng đường đến khi dừng hẳn.
+                                                if dang_toan == "[D11_C2_B3_11]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_11()
 
                                                 
 
