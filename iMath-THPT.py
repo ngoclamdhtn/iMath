@@ -11571,8 +11571,7 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_dungsai_HDG[chi_so])}\n'
 
                                         #Lấy danh sách đáp án word:
-                                        for i in range(len(list_dapan_TF)):
-                                                phan_tu=list_dapan_TF[i]
+                                        for phan_tu in list_dapan_TF:
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
@@ -11588,8 +11587,7 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'{{\\bf Câu {chi_so+1}.}} {str(list_tuluan_HDG[chi_so])}\n'
 
                                         #Lấy danh sách đáp án word:
-                                        for i in range(len(list_dapan_TL)):
-                                                phan_tu=list_dapan_TL[i]
+                                        for phan_tu in list_dapan_TL:
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
@@ -11628,8 +11626,7 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_dungsai_HDG[chi_so])}\n'                                        
 
                                         #Lấy danh sách đáp án word:
-                                        for i in range(len(list_dapan_TF)):
-                                                phan_tu=list_dapan_TF[i]
+                                        for phan_tu in list_dapan_TF:
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
@@ -11646,9 +11643,8 @@ class Ui_MainWindow(object):
                                             list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_tuluan_HDG[chi_so])}\n'
 
                                         #Lấy danh sách đáp án word:
-                                        for i in range(len(list_dapan_TL)):
-                                                phan_tu=list_dapan_TL[i]
-                                                list_dapan_word.append(phan_tu)
+                                        for phan_tu in list_dapan_TL:
+                                                list_dapan_word.append(phan_tu)                                                
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
                                                 chuoi_QR+='_'
@@ -11692,8 +11688,7 @@ class Ui_MainWindow(object):
 
 
                                         #Lấy danh sách đáp án word:
-                                        for i in range(len(list_dapan_TF)):
-                                                phan_tu=list_dapan_TF[i]
+                                        for phan_tu in list_dapan_TF:
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
@@ -11711,8 +11706,7 @@ class Ui_MainWindow(object):
                                         f"\\Closesolutionfile{{ans}}\n")
 
                                         #Lấy danh sách đáp án word:
-                                        for i in range(len(list_dapan_TF)):
-                                                phan_tu=list_dapan_TL[i]
+                                        for phan_tu in list_dapan_TL:
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
