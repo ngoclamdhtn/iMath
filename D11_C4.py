@@ -32,13 +32,13 @@ def code_hinh_tu_dien_noname(s,a,b,c):
     return code
 
 def code_hinh_chop_deu(S,A,B,C,D):
-	code=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+	code=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
 \\coordinate ({A}) at (0,0);\n\
 \\coordinate ({B}) at (2,-2);\n\
 \\coordinate ({D}) at (5,0);\n\
 \\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
 \\coordinate (O) at ($({A})!0.5!({C})$);\n\
-\\coordinate ({S}) at ($(O)+(0,7)$);\n\
+\\coordinate ({S}) at ($(O)+(0,5)$);\n\
 \\draw({S})--({A}) ({S})--({B}) ({S})--({C}) ({A})--({B}) ({B})--({C});\n\
 \\draw[dashed,thin]({A})--({C}) ({A})--({D}) ({C})--({D}) ({S})--({D}) ({B})--({D});\n\
 \\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
@@ -46,13 +46,13 @@ def code_hinh_chop_deu(S,A,B,C,D):
 	return code
 
 def code_hinh_chop_deu_noname(S,A,B,C,D):
-	code=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+	code=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
 \\coordinate ({A}) at (0,0);\n\
 \\coordinate ({B}) at (2,-2);\n\
 \\coordinate ({D}) at (5,0);\n\
 \\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
 \\coordinate (O) at ($({A})!0.5!({C})$);\n\
-\\coordinate ({S}) at ($(O)+(0,7)$);\n\
+\\coordinate ({S}) at ($(O)+(0,5)$);\n\
 \\draw({S})--({A}) ({S})--({B}) ({S})--({C}) ({A})--({B}) ({B})--({C});\n\
 \\draw[dashed,thin]({A})--({C}) ({A})--({D}) ({C})--({D}) ({S})--({D}) ({B})--({D});\n\
 \\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{}};}}\n\

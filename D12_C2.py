@@ -4968,10 +4968,10 @@ def mnj_34_jkl_L12_C2_B3_22():
 
 	d1 = random.choice([i for i in range(-5, 6) if i!=0])
 	d2 = random.choice([i for i in range(-5, 6) if i!=0])
-	if (c1-d2)/d1==int((c1-d2)/d1):
+	if (c1-d2)/d1==N((c1-d2)/d1,0):
 		dap_an=int((c1-d2)/d1)
 	else:
-		dap_an=f"{round((c1-d2)/d1,1):.1f}".replace(".",",")
+		dap_an=f"{N((c1-d2)/d1,1):.1f}".replace(".",",")
 
 	if bo_toa_do[3]=="A":
 		vitri=f"{A}"
@@ -5013,7 +5013,7 @@ def mnj_34_jkl_L12_C2_B3_22():
 	if chon==3:
 		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${C}({latex(d1*m+d2)};{c2};{c3})$, {A}({a1};{a2};{a3}),{B}({b1};{b2};{b3})."
 
-	if (c1-d2)/d1==int((c1-d2)/d1):	
+	if (c1-d2)/d1==N((c1-d2)/d1,0):	
 		
 		noi_dung+=f" Tìm giá trị của ${{m}}$ để tam giác ${{{A}{B}{C}}}$ vuông tại ${{{vitri}}}$."
 		
