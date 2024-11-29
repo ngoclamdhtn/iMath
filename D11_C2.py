@@ -2601,7 +2601,7 @@ def mn8mn_L11_C2_B3_13():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D11_C2_B3_13]-TL-M3.Bài toán lát gạch cho tòa tháp
+#[D11_C2_B3_13]-TL-M3. Bài toán lát gạch cho tòa tháp
 def mn8mn_L11_C2_B3_13():
     n=random.randint(5,8)
     S1=random.choice([40,45,50,55,60,65])
@@ -2619,13 +2619,11 @@ def mn8mn_L11_C2_B3_13():
     else:
         dap_an=int(so_gach)
 
-
     noi_dung = (
     f"Một đội thợ công nhân dùng gạch cỡ {size}x{size}cm để lát nền cho một toà tháp gồm {n} tầng theo cấu trúc"
     f" diện tích mặt sàn của tầng trên bằng {st_q}\\% diện tích mặt sàn của tầng dưới."
     f" Biết diện tích mặt đáy của tháp là {S1} ${{m^2}}$. Hỏi đội công nhân dự định dùng tối thiểu khoảng bao nhiêu viên gạch?"
-    )
-    
+    )    
 
     noi_dung_loigiai=(
     f"Giả sử diện tích mặt sàn tầng 1 là $S_1(m^2)$.\n\n"

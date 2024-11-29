@@ -3507,40 +3507,55 @@ class Ui_MainWindow(object):
                 L11_C3_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C3_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_07]-M1. Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu."])
+                L11_C3_B1_1 = QTreeWidgetItem(L11_C3_B1, ["Trắc nghiệm"])
+                L11_C3_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_07]-M1. Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, 'Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu')
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_01]-M2. Giới hạn dãy số bậc tử = bậc mẫu"])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_01]-M2. Giới hạn dãy số bậc tử = bậc mẫu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, 'Giới hạn dãy số bậc tử = bậc mẫu')
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_02]-M2. Giới hạn dãy số bậc tử < bậc mẫu"])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_02]-M2. Giới hạn dãy số bậc tử < bậc mẫu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, 'Giới hạn dãy số bậc tử < bậc mẫu')
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_03]-M2. Tính giới hạn phân thức can(an^2+bn+c)/(dn+e)."])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_03]-M2. Tính giới hạn phân thức can(an^2+bn+c)/(dn+e)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, 'Tính giới hạn phân thức can(an^2+bn+c)/(dn+e)')
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_04]-M2. Tính giới hạn phân thức chứa lũy thừa."])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_04]-M2. Tính giới hạn phân thức chứa lũy thừa."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, 'Tính giới hạn phân thức chứa lũy thừa')
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_05]-M2. Tính tổng cấp số nhân lùi vô hạn có u_1=1."])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_05]-M2. Tính tổng cấp số nhân lùi vô hạn có u_1=1."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, 'Tính tổng cấp số nhân lùi vô hạn có u_1=1')
 
-                item = QTreeWidgetItem(L11_C3_B1, ["[D11_C3_B1_06]-M2. Tính tổng cấp số nhân lùi vô hạn có u_1 tùy ý."])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_06]-M2. Tính tổng cấp số nhân lùi vô hạn có u_1 tùy ý."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tính tổng cấp số nhân lùi vô hạn có u_1 tùy ý ')
+                
+                L11_C3_B1_2 = QTreeWidgetItem(L11_C3_B1, ["Đúng-Sai"])
+                L11_C3_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_08]-TF-M3. Cho (u_n) và (v_n). Xét Đ-S: lim(u/v), lim(u/v^2), lim(u^2/v), lim (u+m)/(v+n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_09]-TF-M3. Xét Đ-S: lim a/n^k, lim q^n, lim P(n)/Q(n), lim (u+m)/(v+n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 #Bài 2 - Giới hạn hàm số
                 L11_C3_B2 = QTreeWidgetItem(L11_C3, ["Bài 2 - Giới hạn hàm số"])
@@ -8585,98 +8600,106 @@ class Ui_MainWindow(object):
 
                                                 #[D11_C3_B1_01]. Tính giới hạn phân thức bậc tử = mẫu.
                                                 if dang_toan == "[D11_C3_B1_01]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_01()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_01()
 
                                                 #[D11_C3_B1_02]. Tính giới hạn phân thức bậc tử < mẫu.
                                                 if dang_toan == "[D11_C3_B1_02]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_02()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_02()
 
                                                 #[D11_C3_B1_03]. Tính giới hạn phân thức can(an^2+bn+c)/(dn+e).
                                                 if dang_toan == "[D11_C3_B1_03]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_03()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_03()
 
                                                 #[D11_C3_B1_04]. Tính giới hạn phân thức chứa lũy thừa.
                                                 if dang_toan == "[D11_C3_B1_04]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_04()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_04()
 
                                                 #[D11_C3_B1_05]. Tính tổng cấp số nhân lùi vô hạn có u1=1.
                                                 if dang_toan == "[D11_C3_B1_05]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_05()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_05()
 
                                                 #[D11_C3_B1_06]. Tính tổng cấp số nhân lùi vô hạn có u1 tùy ý.
                                                 if dang_toan == "[D11_C3_B1_06]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_06()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_06()
 
                                                 #[D11_C3_B1_07]. Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu.
                                                 if dang_toan == "[D11_C3_B1_07]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B1_07()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_07()
+
+                                                #[D11_C3_B1_08]-TF-M3. Cho (u_n) và (v_n). Xét Đ-S: lim(u/v), lim(u/v^2), lim(u^2/v), lim (u+m)/(v+n)
+                                                if dang_toan == "[D11_C3_B1_08]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_08()
+
+                                                #[D11_C3_B1_09]-TF-M2. Xét Đ-S: lim a/n^k, lim q^n, lim P(n)/Q(n), lim (u+m)/(v+n)
+                                                if dang_toan == "[D11_C3_B1_09]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_09()
 
                                                 #Bài 2: GIỚI HẠN HÀM SỐ
                                                 #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
                                                 if dang_toan == "[D11_C3_B2_09]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_09()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_09()
 
                                                 #[D11_C3_B2_01]. Tính giới hạn tại điểm - thay số trực tiếp
                                                 if dang_toan == "[D11_C3_B2_01]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_01()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_01()
 
                                                 #[D11_C3_B2_02]. Tính giới hạn dạng 0/0 - Bậc 2/Bậc 1
                                                 if dang_toan == "[D11_C3_B2_02]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_02()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_02()
 
                                                 #[D11_C3_B2_03]. Tính giới hạn dạng 0/0 - Bậc 2/Bậc 2
                                                 if dang_toan == "[D11_C3_B2_03]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_03()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_03()
 
                                                 #[D11_C3_B2_04]. Tính giới hạn dạng 0/0 - [Căn(ax+b)-c]/(a[2]x+d)
                                                 if dang_toan == "[D11_C3_B2_04]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_04()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_04()
 
                                                 #[D11_C3_B2_05]. Tính giới hạn x-->00 Bậc tử = Bậc mẫu
                                                 if dang_toan == "[D11_C3_B2_05]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_05()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_05()
 
                                                 #[D11_C3_B2_06]. Tính giới hạn x-->00 Bậc tử < Bậc mẫu
                                                 if dang_toan == "[D11_C3_B2_06]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_06()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_06()
 
                                                 #[D11_C3_B2_07]. Tính giới hạn x-->00: Căn(A)/B
                                                 if dang_toan == "[D11_C3_B2_07]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_07()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_07()
 
                                                 #[D11_C3_B2_08]. Tính giới hạn x-->00: A/Căn(B)
                                                 if dang_toan == "[D11_C3_B2_08]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_08()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_08()
 
                                                 #[D11_C3_B2_10]. Tính giới hạn x-->00: Đa thức
                                                 if dang_toan == "[D11_C3_B2_10]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_10()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_10()
 
                                                 #[D11_C3_B2_11]. Tính giới hạn dạng 0/0 - Bậc 1/Bậc 2
                                                 if dang_toan == "[D11_C3_B2_11]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B2_11()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B2_11()
 
                                                 #Bài 3: HÀM SỐ LIÊN TỤC
 
                                                 #[D11_C3_B3_01]. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm.
                                                 if dang_toan == "[D11_C3_B3_01]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B3_01()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_01()
 
                                                 #[D11_C3_B3_02]. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục.
                                                 if dang_toan == "[D11_C3_B3_02]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B3_02()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_02()
 
                                                 #[D11_C3_B3_03]. Cho f(x) có >=,<. Xét tính liên tục tại điểm.
                                                 if dang_toan == "[D11_C3_B3_03]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B3_03()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_03()
 
                                                 #[D11_C3_B3_04]. Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0.
                                                 if dang_toan == "[D11_C3_B3_04]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B3_04()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_04()
 
                                                 #[D11_C3_B3_05]. Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0.
                                                 if dang_toan == "[D11_C3_B3_05]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.zz8zz_L11_C3_B3_05()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_05()
 
                                     ######### Toán 11_ Chương 4-QUAN HỆ SONG SONG ########
 

@@ -13,7 +13,7 @@ def phan_so(t):
 ################ Bài 1: GIỚI HẠN DÃY SỐ #################
 
 #[D11_C3_B1_01]. Tính giới hạn phân thức bậc tử bằng mẫu.
-def zz8zz_L11_C3_B1_01():
+def gh11gh_L11_C3_B1_01():
     #Tạo bậc ngẫu nhiên
     bac = random.randint(2,5)
     #Tạo hai đa thức biến n với bậc ngẫu nhiên
@@ -67,7 +67,7 @@ def zz8zz_L11_C3_B1_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B1_02]. Tính giới hạn phân thức bậc tử nhỏ hơn mẫu.
-def zz8zz_L11_C3_B1_02():
+def gh11gh_L11_C3_B1_02():
     #Tạo bậc ngẫu nhiên
     bac = random.randint(3,5)
     k= random.randint(2, bac-1)
@@ -128,7 +128,7 @@ def zz8zz_L11_C3_B1_02():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 #[D11_C3_B1_03]. Tính giới hạn phân thức có tử chứa căn.
-def zz8zz_L11_C3_B1_03():
+def gh11gh_L11_C3_B1_03():
 
     #Tạo hai đa thức biến n với bậc ngẫu nhiên
     f, heso_bac_f, heso_tudo_f= my_module.random_dathuc_bac2_luon_duong("n")[0:3] 
@@ -185,7 +185,7 @@ def zz8zz_L11_C3_B1_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B1_04]. Tính giới hạn phân thức chứa lũy thừa.
-def zz8zz_L11_C3_B1_04():
+def gh11gh_L11_C3_B1_04():
     #Tạo list chứa các hệ số
     a = [random.randint(-10, 10) for _ in range(4)]
     for i in range (4):
@@ -246,7 +246,7 @@ def zz8zz_L11_C3_B1_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B1_05]. Tính tổng cấp số nhân lùi vô hạn có u1=1.
-def zz8zz_L11_C3_B1_05():
+def gh11gh_L11_C3_B1_05():
     #Tạo list chứa các hệ số
     a =random.choice([random.randint(-10, -2),random.randint(2, 10)])
     q=1/a
@@ -294,7 +294,7 @@ def zz8zz_L11_C3_B1_05():
     
 
 #[D11_C3_B1_06]. Tính tổng cấp số nhân lùi vô hạn có u1 tùy ý.
-def zz8zz_L11_C3_B1_06():
+def gh11gh_L11_C3_B1_06():
     n = symbols('n')
     b = random.randint(2,9)
     q=1/b
@@ -351,7 +351,7 @@ def zz8zz_L11_C3_B1_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B1_07]. Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu.
-def zz8zz_L11_C3_B1_07():
+def gh11gh_L11_C3_B1_07():
     #Tạo list chứa các hệ số
     u_n = random.randint(-10,15)
     if u_n ==0:
@@ -412,11 +412,276 @@ def zz8zz_L11_C3_B1_07():
         f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B1_08]-TF-M3. Cho (u_n) và (v_n). Xét Đ-S: lim(u/v), lim(u/v^2), lim(u^2/v), lim (u+m)/(v+n)
+def gh11gh_L11_C3_B1_08():
+    n=sp.symbols("n")
+    a1 = random.choice([i for i in range(-5, 5) if i!=0])
+    b1 = random.choice([i for i in range(-8, 8) if i!=0])
+    c1 = random.choice([i for i in range(-7, 7) if i!=0])
+    u=a1*n**2+b1*n+c1
+
+    a2 = random.choice([i for i in range(-5, 5) if i!=0])    
+    b2 = random.randint(-8,8)
+    c2 = random.choice([i for i in range(-8, 8) if i!=0])
+    v=a2*n**2+b2*n+c2
+
+
+    noi_dung = f"Cho hay dãy số $(u_n)$ và $(v_n)$ có $u_n={latex(u)},v_n={latex(v)}$. Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"* $\\lim \\dfrac{{u_n}}{{v_n}}={phan_so(a1/a2)}$"
+    if c1/c2!=a1/a2:
+        kq1_F=f"$\\lim \\dfrac{{u_n}}{{v_n}}={phan_so(c1/c2)}$"
+    else:
+        kq1_F=f"$\\lim \\dfrac{{u_n}}{{v_n}}={phan_so(a1/a2+random.randint(1,2))}$"
+
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=(f" $\\lim \\dfrac{{u_n}}{{v_n}}=\\lim \\dfrac{{{latex(u)}}}{{{latex(v)}}}\n"
+    f"=\\lim \\dfrac{{{latex(a1+b1/n+c1/n**2)}}}{{{latex(a2+b2/n+c2/n**2)}}}={phan_so(a1/a2)}$.")
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $\\lim \\dfrac{{u_n}}{{(v_n)^2}}={phan_so(a1/a2**2)}$"
+    kq2_F=f"$\\lim \\dfrac{{u_n}}{{(v_n)^2}}={phan_so((a1+random.randint(1,2))/a2**2)}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=(f"$\\lim \\dfrac{{u_n}}{{(v_n)^2}}=\\lim \\dfrac{{{latex(u)}}}{{{latex(v**2)}}}$\n"
+        f"$=\\lim \\dfrac{{{latex(n**2*(a1+b1/n+c1/n**2))}}}{{{latex(n**2*(a2+b2/n+c2/n**2)**2)}}}$\n"
+        f"$=\\lim \\dfrac{{{latex((a1+b1/n+c1/n**2))}}}{{{latex((a2+b2/n+c2/n**2)**2)}}}={phan_so(a1/a2**2)}$.")
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        m=random.choice([i for i in range(-5, 6) if i!=0])
+        if a1+m==0: m=m+random.randint(1,2)
+        if m==0:m=m+1
+
+        kq3_T=f"*$\\lim \\dfrac{{u_n+{latex(m*n**2)}}}{{v_n}}={phan_so((a1+m)/a2)}$".replace("+-","-")
+        kq3_F=f"$\\lim \\dfrac{{u_n+{latex(m*n**2)}}}{{v_n}}={phan_so((a1+m**2)/a2)}$".replace("+-","-")
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f"$\\lim \\dfrac{{u_n+{latex(m*n**2)}}}{{v_n}}=\\lim \\dfrac{{{latex(u)}+{latex(m*n**2)}}}{{{latex(v)}}}$\n"
+            f"$=\\lim \\dfrac{{{latex(u+m*n**2)}}}{{{latex(v)}}}$\n"
+             f"$=\\lim \\dfrac{{{latex(a1+m+b1/n+c1/n**2)}}}{{{latex(a2+b2/n+c2/n**2)}}}={phan_so((a1+m)/a2)}$.")
+
+    if chon==2:
+        m=random.choice([i for i in range(-5, 6) if i!=0])
+        if a2+m==0: m=m+random.randint(1,2)
+        if m==0:m=m+1
+
+        kq3_T=f"*$\\lim \\dfrac{{u_n}}{{v_n+{latex(m*n**2)}}}={phan_so(a1/(a2+m))}$".replace("+-","-")
+        kq3_F=f"$\\lim \\dfrac{{u_n}}{{v_n+{latex(m*n**2)}}}={phan_so((a1+m)/a2)}$".replace("+-","-")
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f"$\\lim \\dfrac{{u_n}}{{v_n+{latex(m*n**2)}}}=\\lim \\dfrac{{{latex(u)}}}{{{latex(v)}+{latex(m*n**2)}}}$\n"
+            f" $=\\lim \\dfrac{{{latex(u)}}}{{{latex(v+m*n**2)}}}$\n"
+             f"$=\\lim \\dfrac{{{latex(a1+b1/n+c1/n**2)}}}{{{latex(a2+m+b2/n+c2/n**2)}}}={phan_so(a1/(a2+m))}$.")
+    
+    
+    HDG=HDG.replace("+-","-")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    if a1+m==0: m=m+random.randint(1,2)
+    if m==0:m=m+1
+    k1=random.choice([i for i in range(-5, 6) if i!=0])
+    k2=random.choice([i for i in range(-5, 6) if i!=0])
+    t=random.choice([i for i in range(-7, 7) if i!=0])
+
+    kq4_T=f"*Với $m={m}$ thì $\\lim \\dfrac{{u_n+mn^2+{k1}}}{{v_n+{k2}}}={phan_so((a1+m)/a2)}$".replace("+-","-")
+    kq4_F=f"Với $m={m+random.randint(1,5)}$ thì $\\lim \\dfrac{{u_n+mn^2+{k1}}}{{v_n+{k2}}}={phan_so((a1+m)/a2)}$".replace("+-","-") 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f"$\\lim \\dfrac{{u_n+mn^2+{k1}}}{{v_n+{k2}}}={phan_so((a1+m)/a2)}$\n"
+        f"$\\Rightarrow \\lim \\dfrac{{{latex(u)}+mn^2+{k1}}}{{{latex(v)}+{k2}}}={phan_so((a1+m)/a2)}$\n"
+        f"$\\Rightarrow \\dfrac{{{a1}+m}}{{{a2}}}={phan_so((a1+m)/a2)}$\n"
+        f"$\\Rightarrow m={m}$."
+        )
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B1_09]-TF-M2. Xét Đ-S: lim a/n^k, lim q^n, lim P(n)/Q(n), lim (u+m)/(v+n)
+def gh11gh_L11_C3_B1_09():
+    n=sp.symbols("n")
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    a = random.choice([i for i in range(-100, 100) if i!=0])
+    k=random.randint(1,5)
+
+    kq1_T=f"* $\\lim \\left({latex(a/n**k)}\\right)=0$" 
+    kq1_F=f"$\\lim \\left({latex(a/n**k)}\\right)={random.choice([a,-a,phan_so(a/k)])}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\lim \\left({latex(a/n**k)}\\right)=\\lim \\left({a}.{latex(1/n**k)}\\right)=0$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a=random.randint(1,15)
+    b=a+random.randint(1,7)
+    q=a/b
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* $\\lim \\left({phan_so(q)}\\right)^n=0$"
+        kq2_F=f"$\\lim \\left({phan_so(q)}\\right)^n={random.choice(["+\\infty","-\\infty", phan_so(q)])}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"$\\lim \\left({phan_so(q)}\\right)^n=0$ vì $-1<{phan_so(q)}<1$."
+    
+    if chon==2:
+        kq2_T=f"* $\\lim \\left({phan_so(-q)}\\right)^n=0$"
+        kq2_F=f"$\\lim \\left({phan_so(-q)}\\right)^n={random.choice(["+\\infty","-\\infty", phan_so(-q), phan_so(q)])}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"$\\lim \\left({phan_so(-q)}\\right)^n=0$ vì $-1<{phan_so(-q)}<1$."
+
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a1 = random.choice([i for i in range(-5, 5) if i!=0])
+    b1 = random.choice([i for i in range(-8, 8) if i!=0])
+    c1 = random.choice([i for i in range(-7, 7) if i!=0])
+    u=a1*n**2+b1*n+c1
+
+    a2 = random.choice([i for i in range(-5, 5) if i!=0])    
+    b2 = random.randint(-8,8)
+    c2 = random.choice([i for i in range(-8, 8) if i!=0])
+    v=a2*n**2+b2*n+c2   
+    
+
+    kq3_T=f"* $\\lim \\dfrac{{{latex(u)}}}{{{latex(v)}}}={phan_so(a1/a2)}$"
+    if c1/c2!=a1/a2:
+        kq3_F=f"$\\lim \\dfrac{{{latex(u)}}}{{{latex(v)}}}={phan_so(c1/c2)}$"
+    else:
+        kq3_F=f"$\\lim \\dfrac{{{latex(u)}}}{{{latex(v)}}}={phan_so(a1/a2+random.randint(1,2))}$"
+
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=(f" $\\lim \\dfrac{{{latex(u)}}}{{{latex(v)}}}\n"
+    f"=\\lim \\dfrac{{{latex(a1+b1/n+c1/n**2)}}}{{{latex(a2+b2/n+c2/n**2)}}}={phan_so(a1/a2)}$.")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    b=random.randint(2,4)
+    c=b+random.randint(1,2)
+    a=b+random.randint(3,4)
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    p = random.choice([i for i in range(-5, 6) if i!=0])
+
+    f=(m*a**n+b**n)/(p*a**n+c**n)
+
+    kq4_T=f"* $\\lim {latex(f)}={phan_so(m/p)}$"
+    kq4_F=f"$\\lim {latex(f)}={phan_so(m/p+random.randint(1,2))}$" 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=f"$\\lim {latex(f)}=\\lim \\dfrac{{{m}+\\left({phan_so(b/a)}\\right)^n}}{{{p}+\\left({phan_so(c/a)}\\right)^n}}={phan_so(m/p)}$."
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
  
 ########################### BÀI 2 - GIỚI HẠN HÀM SỐ ###########################
 
 #[D11_C3_B2_01]. Tính giới hạn tại điểm - thay số trực tiếp
-def zz8zz_L11_C3_B2_01():
+def gh11gh_L11_C3_B2_01():
     x = symbols('x')
     chon=random.randint(1,2)
     a = random.choice([i for i in range(-5, 6) if i!=0])
@@ -486,7 +751,7 @@ def zz8zz_L11_C3_B2_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_02]. Tính giới hạn dạng 0/0 - Bậc 2/Bậc 1
-def zz8zz_L11_C3_B2_02():
+def gh11gh_L11_C3_B2_02():
     x = symbols('x')
     x_0 = random.choice([random.randint(-5, -1),random.randint(1, 5)])
     a = random.choice([random.randint(-10, -1),random.randint(1, 10)])
@@ -542,7 +807,7 @@ def zz8zz_L11_C3_B2_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_03]. Tính giới hạn dạng 0/0 - Bậc 2/Bậc 2
-def zz8zz_L11_C3_B2_03():
+def gh11gh_L11_C3_B2_03():
     x = symbols('x')
     x_0 = random.randint(-5, 5)
     if x_0==0:
@@ -604,7 +869,7 @@ def zz8zz_L11_C3_B2_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_04]. Tính giới hạn dạng 0/0: [Căn(ax+b)-c]/(dx+e)
-def zz8zz_L11_C3_B2_04():
+def gh11gh_L11_C3_B2_04():
     x = symbols('x')
     x_0 = random.randint(-5, 5)
 
@@ -671,7 +936,7 @@ def zz8zz_L11_C3_B2_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_05]. Tính giới hạn x-->00: Bậc tử = Bậc mẫu
-def zz8zz_L11_C3_B2_05():
+def gh11gh_L11_C3_B2_05():
     bac = random.randint(2,4)
     f, heso_bac_f, heso_tudo_f = my_module.random_polynomial("x",bac)[0:3]
     g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",bac)[0:3]
@@ -728,7 +993,7 @@ def zz8zz_L11_C3_B2_05():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_06]. Tính giới hạn x-->00: Bậc tử < Bậc mẫu
-def zz8zz_L11_C3_B2_06():
+def gh11gh_L11_C3_B2_06():
     bac = random.randint(3,4)
     f, heso_bac_f, heso_tudo_f = my_module.random_polynomial("x",bac-1)[0:3]
     g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",bac)[0:3]
@@ -784,7 +1049,7 @@ def zz8zz_L11_C3_B2_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_07]. Tính giới hạn x-->00: Căn(A)/B
-def zz8zz_L11_C3_B2_07():
+def gh11gh_L11_C3_B2_07():
     x=sp.symbols("x")
     x_0= random.choice([i for i in range(-5, 6) if i!=0])
     a= random.randint(2,3)
@@ -851,7 +1116,7 @@ def zz8zz_L11_C3_B2_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_08]. Tính giới hạn x-->00: A/căn(B)
-def zz8zz_L11_C3_B2_08():
+def gh11gh_L11_C3_B2_08():
        
     f, heso_bac_f, heso_tudo_f = my_module.random_dathuc_bac2_luon_duong("x")[0:3]
     g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",2)[0:3]
@@ -908,7 +1173,7 @@ def zz8zz_L11_C3_B2_08():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
-def zz8zz_L11_C3_B2_09():
+def gh11gh_L11_C3_B2_09():
     x_0 = random.choice([i for i in range(-5, 6) if i!=0])
     lim_f = random.choice([i for i in range(-5, 6) if i!=0])
 
@@ -973,7 +1238,7 @@ def zz8zz_L11_C3_B2_09():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_10]. Tính giới hạn x-->00: Đa thức
-def zz8zz_L11_C3_B2_10():
+def gh11gh_L11_C3_B2_10():
     bac=random.randint(3,5)
     f, heso_bac_f, heso_tudo_f  = my_module.random_polynomial("x",bac)[0:3]      
 
@@ -1032,7 +1297,7 @@ def zz8zz_L11_C3_B2_10():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B2_11]. Tính giới hạn dạng 0/0 - Bậc 1/Bậc 2
-def zz8zz_L11_C3_B2_11():
+def gh11gh_L11_C3_B2_11():
     x = symbols('x')
     x_0 = random.choice([i for i in range(-6, 6) if i!=0])
     a = random.choice([i for i in range(-5, 5) if i!=0])
@@ -1095,7 +1360,7 @@ def zz8zz_L11_C3_B2_11():
 
 ############# BÀI 3 - HÀM SỐ LIÊN TỤC 
 #[D11_C3_B3_01]. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm.
-def zz8zz_L11_C3_B3_01():
+def gh11gh_L11_C3_B3_01():
        
     x = sp.symbols('x')
     a= random.choice([random.randint(-8, -1), random.randint(1, 8)])   
@@ -1162,7 +1427,7 @@ def zz8zz_L11_C3_B3_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B3_02]. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục.
-def zz8zz_L11_C3_B3_02():
+def gh11gh_L11_C3_B3_02():
     x = sp.symbols('x')
     a = random.randint(-8,8)
     if a==0:
@@ -1235,7 +1500,7 @@ def zz8zz_L11_C3_B3_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B3_03]. Cho f(x) có >=,<. Xét tính liên tục tại điểm.
-def zz8zz_L11_C3_B3_03():
+def gh11gh_L11_C3_B3_03():
     #Tạo hàm thứ nhất
     a = random.randint(-3,3)
     if a==0:
@@ -1320,7 +1585,7 @@ def zz8zz_L11_C3_B3_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B3_04]. Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0.
-def zz8zz_L11_C3_B3_04():
+def gh11gh_L11_C3_B3_04():
     #Tạo hàm thứ nhất
     x = sp.symbols('x')
     x_0 = random.randint(-4,4)
@@ -1401,7 +1666,7 @@ mx{dau}{b2} \\text{{          khi  }} x = {x_0}  \n \
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C3_B3_05]. Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0.
-def zz8zz_L11_C3_B3_05():
+def gh11gh_L11_C3_B3_05():
     x = symbols('x')
     x_0 = random.randint(-5, 5)
     if x_0==0:
