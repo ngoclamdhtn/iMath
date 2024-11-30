@@ -294,11 +294,11 @@ def tao_3dinh_tamgiacvuong():
 
         # Kiểm tra tam giác vuông
         if dot_AB_AC == 0:  # Vuông tại A
-            return A, B, C, "A"
+            return A, B, C
         elif dot_AB_BC == 0:  # Vuông tại B
-            return A, B, C, "B"
+            return B, C, A
         elif dot_AC_BC == 0:  # Vuông tại C
-            return A, B, C, "C"
+            return C, A, B
 
 def tao_3dinh_tamgiacvuong_2():
     while True:
@@ -4973,45 +4973,19 @@ def mnj_34_jkl_L12_C2_B3_22():
 	else:
 		dap_an=f"{N((c1-d2)/d1,1):.1f}".replace(".",",")
 
-	if bo_toa_do[3]=="A":
-		vitri=f"{A}"
-		noi_dung_loigiai=(
-		f"${vec(f"{A}{B}")}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
-		f"${vec(f"{A}{C}")}=({latex(d1*m+d2-a1)};{c2-a2};{c3-a3})$.\n\n"
-		f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ khi ${vec(f"{A}{B}")}.{vec(f"{A}{C}")}=0$\n\n"
-		f"$\\Rightarrow {b1-a1}.({latex(d1*m+d2-a1)})+{b2-a2}.{tao_ngoac(c2-a2)}+{b3-a3}.{tao_ngoac(c3-a3)}=0$\n\n"
-		f"$\\Rightarrow {latex((b1-a1)*(d1*m+d2-a1)+(b2-a2)*(c2-a2)+(b3-a3)*(c3-a3))}=0$\n\n"
-		f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
-
-	if bo_toa_do[3]=="B":
-		vitri=f"{B}"
-		noi_dung_loigiai=(
-		f"${vec(f"{B}{A}")}=({a1-b1};{a2-b2};{a3-b3})$.\n\n"
-		f"${vec(f"{B}{C}")}=({latex(d1*m+d2-b1)};{c2-b2};{c3-b3})$.\n\n"
-		f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{B}}}$ khi ${vec(f"{B}{A}")}.{vec(f"{B}{C}")}=0$\n\n"
-		f"$\\Rightarrow {a1-b1}.({latex(d1*m+d2-b1)})+{a2-b2}.{tao_ngoac(c2-b2)}+{a3-b3}.{tao_ngoac(c3-b3)}=0$\n\n"
-		f"$\\Rightarrow {latex((a1-b1)*(d1*m+d2-b1)+(a2-b2)*(c2-b2)+(a3-b3)*(c3-b3))}=0$\n\n"
-		f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
-
-	if bo_toa_do[3]=="C":
-		vitri=f"{B}"
-		noi_dung_loigiai=(
-		f"${vec(f"{B}{A}")}=({a1-b1};{a2-b2};{a3-b3})$.\n\n"
-		f"${vec(f"{B}{C}")}=({latex(d1*m+d2-b1)};{c2-b2};{c3-b3})$.\n\n"
-		f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{B}}}$ khi ${vec(f"{B}{A}")}.{vec(f"{B}{C}")}=0$\n\n"
-		f"$\\Rightarrow {a1-b1}.({latex(d1*m+d2-b1)})+{a2-b2}.{tao_ngoac(c2-b2)}+{a3-b3}.{tao_ngoac(c3-b3)}=0$\n\n"
-		f"$\\Rightarrow {latex((a1-b1)*(d1*m+d2-b1)+(a2-b2)*(c2-b2)+(a3-b3)*(c3-b3))}=0$\n\n"
-		f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
-
-	chon=random.randint(1,3)
-	if chon==1:
-		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({latex(d1*m+d2)};{c2};{c3})$."
 	
-	if chon==2:
-		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}),{C}({latex(d1*m+d2)};{c2};{c3})$, {B}({b1};{b2};{b3})."
+	vitri=f"{A}"
+	noi_dung_loigiai=(
+	f"${vec(f"{A}{B}")}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
+	f"${vec(f"{A}{C}")}=({latex(d1*m+d2-a1)};{c2-a2};{c3-a3})$.\n\n"
+	f"Tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ khi ${vec(f"{A}{B}")}.{vec(f"{A}{C}")}=0$\n\n"
+	f"$\\Rightarrow {b1-a1}.({latex(d1*m+d2-a1)})+{b2-a2}.{tao_ngoac(c2-a2)}+{b3-a3}.{tao_ngoac(c3-a3)}=0$\n\n"
+	f"$\\Rightarrow {latex((b1-a1)*(d1*m+d2-a1)+(b2-a2)*(c2-a2)+(b3-a3)*(c3-a3))}=0$\n\n"
+	f"$\\Rightarrow m={phan_so((c1-d2)/d1)}$.\n\n")
+	
 
-	if chon==3:
-		noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${C}({latex(d1*m+d2)};{c2};{c3})$, {A}({a1};{a2};{a3}),{B}({b1};{b2};{b3})."
+	noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({latex(d1*m+d2)};{c2};{c3})$."
+	
 
 	if (c1-d2)/d1==N((c1-d2)/d1,0):	
 		
