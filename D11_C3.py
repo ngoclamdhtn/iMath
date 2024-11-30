@@ -555,11 +555,9 @@ def gh11gh_L11_C3_B1_08():
 #[D11_C3_B1_09]-TF-M2. Xét Đ-S: lim a/n^k, lim q^n, lim P(n)/Q(n), lim (u+m)/(v+n)
 def gh11gh_L11_C3_B1_09():
     n=sp.symbols("n")
-
     noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
     debai_word= f"{noi_dung}\n"
-    chon=random.randint(1,2)
-    chon=2
+    chon=random.randint(1,2)    
     if chon==1:
         a = random.choice([i for i in range(-100, 100) if i!=0])
         k=random.randint(1,5)
@@ -735,32 +733,67 @@ def gh11gh_L11_C3_B1_09():
 
     return debai,debai_latex,loigiai_word,dap_an
 
-#[D12_C1_B1_01]-TF-M2. 
-def D12_C1_B1_01():
-
-    noi_dung = f" . Xét tính đúng-sai của các khẳng định sau. "        
+#[D11_C3_B1_10]-TF-M2. Xét Đ-S: lim q^n, lim P(n)
+def gh11gh_L11_C3_B1_10():
+    chon=random.randint(1,2)
+    if chon==1:
+        q=random.choice([sqrt(i) for i in range(2,100)])     
+    if chon==2:
+        q=random.randint(1,5)*pi   
+    
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
     debai_word= f"{noi_dung}\n"
     
-    kq1_T=f"*" 
-    kq1_F=f" "
+    
+    kq1_T=f"* $\\lim ({latex(q)})^n=+\\infty$" 
+    kq1_F=f"$\\lim ({latex(q)})^n={random.choice(["-\\infty", 0, latex(q)])}$"
     kq1=random.choice([kq1_T, kq1_F])
-    HDG=f" "
+    HDG=f"$\\lim ({latex(q)})^n=+\\infty$ vì ${latex(q)}>1$."
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* "
-    kq2_F=f" "
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(-5,5)
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+    n=sp.symbols("n")
+
+    u=a*n**3+b*n**2+c*n+d
+
+    if a>0:
+        kq2_T=f"* $\\lim ({latex(u)})=+\\infty$"
+        kq2_F=f"$\\lim ({latex(u)})={random.choice(["-\\infty", 0, latex(q)])}$"    
+        HDG=(f"$\\lim ({latex(u)})=\\lim n^3({latex(a+b/n+c/n**2+d/n**3)})= +\\infty$"
+            f" vì $\\lim n^3=+\\infty$ và $\\lim ({latex(a+b/n+c/n**2+d/n**3)})={a}>0$.")
+    else:
+        kq2_T=f"* $\\lim ({latex(u)})=-\\infty$"
+        kq2_F=f"$\\lim ({latex(u)})={random.choice(["+\\infty", 0, latex(q)])}$"    
+        HDG=(f"$\\lim ({latex(u)})=\\lim n^3({latex(a+b/n+c/n**2+d/n**3)})= +\\infty$"
+            f" vì $\\lim n^3=+\\infty$ và $\\lim ({latex(a+b/n+c/n**2+d/n**3)})={a}<0$.")
+
+
     kq2=random.choice([kq2_T, kq2_F])
-    HDG=f""
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq3_T=f"* " 
-    kq3_F=f" "
+    a = random.randint(1,4)
+    x_0=random.choice([i for i in range(-3, 3) if i!=0])
+    b=random.randint(1,4)
+    
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+
+    u=f"\\sqrt{{{latex(expand(a*(n-x_0)**2))}"
+    v=c*n+d
+
+
+
+    kq3_T=f"* $\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a)/c)}$" 
+    kq3_F=f"$\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a+random.randint(1,2))/c)}$"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f""
+    HDG=f"$\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a)/c)}$."
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

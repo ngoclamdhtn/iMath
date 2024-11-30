@@ -2792,11 +2792,7 @@ def mnj_34_jkl_L12_C2_B2_07():
 	ten_hop = f"{{ABCD.{A1}{B1}{C1}{D1}}}"
 	code_hinh=code_hinh_lapphuong_hetruc_gocA(A1,B1,C1,D1)
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	file_name=my_module.pdftoimage_timename(code)	
-
-	l_A1=random.randint(1,7)
-	l_B=random.randint(1,7)
-	l_D=random.randint(1,7)
+	file_name=my_module.pdftoimage_timename(code)
 
 	
 	I=random.choice(["I", "K"])
@@ -2807,7 +2803,10 @@ def mnj_34_jkl_L12_C2_B2_07():
 	n=random.choice([i for i in range(-3, 3) if i!=0])
 	p=random.choice([i for i in range(-3, 3) if i!=0])
 	a,b,c=sp.symbols("a b c")
-	
+
+	l_A1=random.randint(1,7)
+	l_B=random.randint(1,7)
+	l_D=random.randint(1,7)	
 	x_A,y_A,z_A=0,0,0
 	x_B,y_B,z_B=l_B,0,0
 	x_C,y_C,z_C=l_B,l_D,0
@@ -2818,7 +2817,6 @@ def mnj_34_jkl_L12_C2_B2_07():
 	x_D1,y_D1,z_D1=0,l_D,l_A1
 
 	chon=random.randint(1,5)
-	chon=1
 
 	if chon==1:
 		noi_dung=(
@@ -2877,8 +2875,8 @@ def mnj_34_jkl_L12_C2_B2_07():
 		)
 		
 		x_M, y_M, z_M=(x_A1+x_C)/2, (y_A1+y_C)/2, (z_A1+z_C)/2
-
-	dap_an=f"{round(m*x_M+n*y_M+p*z_M,1)}".replace(".",",")
+	t=m*x_M+n*y_M+p*z_M
+	dap_an=f"{round(t,1)}".replace(".",",")
 
 	noi_dung_loigiai=(
 		f"Ta có: $A(0;0;0), B({x_B};0;0), C({x_C};{y_C};0), D(0;{y_D};0), $.\n\n"
@@ -4968,10 +4966,10 @@ def mnj_34_jkl_L12_C2_B3_22():
 
 	d1 = random.choice([i for i in range(-5, 6) if i!=0])
 	d2 = random.choice([i for i in range(-5, 6) if i!=0])
-	if (c1-d2)/d1==N((c1-d2)/d1,0):
+	if (c1-d2)/d1==round((c1-d2)/d1,0):
 		dap_an=int((c1-d2)/d1)
 	else:
-		dap_an=f"{N((c1-d2)/d1,1):.1f}".replace(".",",")
+		dap_an=f"{round((c1-d2)/d1,1):.1f}".replace(".",",")
 
 	
 	vitri=f"{A}"
@@ -4987,7 +4985,7 @@ def mnj_34_jkl_L12_C2_B3_22():
 	noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({latex(d1*m+d2)};{c2};{c3})$."
 	
 
-	if (c1-d2)/d1==N((c1-d2)/d1,0):	
+	if (c1-d2)/d1==round((c1-d2)/d1,0):	
 		
 		noi_dung+=f" Tìm giá trị của ${{m}}$ để tam giác ${{{A}{B}{C}}}$ vuông tại ${{{vitri}}}$."
 		
