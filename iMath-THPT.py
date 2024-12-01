@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92023 ver 25.11.2024")
+                self.label.setText(f"iMath\u00A92023 ver 01.12.2024")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
                 self.label.setGeometry(QtCore.QRect(400, 120, 800, 20))
@@ -3557,6 +3557,34 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_10]-TF-M3. Xét Đ-S: lim q^n, lim P(n), lim căn(P)/Q, lim csc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_12]-TF-M3. Xét Đ-S: lim q^n, lim P(n), lim căn(P)/Q, lim csn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_11]-TF-M3. Xét Đ-S: lim a, lim (an+b)/(cn+d), lim un/vn, Tổng CSN lùi vô hạn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C3_B1_2 = QTreeWidgetItem(L11_C3_B1, ["Trả lời ngắn"])
+                L11_C3_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_13]-TL-M3. Tính lim P(n)/Q(n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_14]-TL-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số cộng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_15]-TL-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số nhân"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 #Bài 2 - Giới hạn hàm số
                 L11_C3_B2 = QTreeWidgetItem(L11_C3, ["Bài 2 - Giới hạn hàm số"])
                 L11_C3_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -5614,11 +5642,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B1_1, ["[D12_C2_B1_13]-M2. Cho hai vectơ có độ dài và tích vô hướng. Tính góc giữa 2 vectơ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C2_B1_1, ["[D12_C2_B1_14]-M3. Cho hai vectơ a,b có độ dài và tích vô hướng. Tính |ma+nb|."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
 
 
 
@@ -5647,6 +5671,10 @@ class Ui_MainWindow(object):
                 L12_C2_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B1_3, ["[D12_C2_B1_09]-TL-M3. Cho 3 lực đôi một vuông góc. Tính tổng hợp lực."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B1_3, ["[D12_C2_B1_14]-TL-M3. Cho hai vectơ a,b có độ dài và tích vô hướng. Tính |ma+nb|."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7199,8 +7227,9 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_13()
 
                                                 #[D12_C2_B1_14]-M2. Cho hai vectơ a,b có độ dài và tích vô hướng. Tính |ma+nb|.
-                                                if dang_toan == "[D12_C2_B1_14]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_14()
+                                                if dang_toan == "[D12_C2_B1_14]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_14()
+
 
                                                 #[D12_C2_B1_15]-M2. Cho hai vectơ a,b và độ dài |ma+nb|. Tính cos(a,b)
                                                 if dang_toan == "[D12_C2_B1_15]": 
@@ -8537,6 +8566,10 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C2_B2_19]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_19()
 
+                                                #[D11_C2_B2_20]-TL-M3. Bài toán tính số hàng khi xếp đồ vật và tăng dần theo cấp số cộng
+                                                if dang_toan == "[D11_C2_B2_20]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_20()
+
                                               
                                                  ####################### Bài 3 ######################
                                                 #D11_C2_B3_01. Cho cấp số nhân có u1, q. Tìm số hạng thứ k
@@ -8633,6 +8666,30 @@ class Ui_MainWindow(object):
                                                 #[D11_C3_B1_09]-TF-M2. Xét Đ-S: lim a/n^k, lim q^n, lim P(n)/Q(n), lim (u+m)/(v+n)
                                                 if dang_toan == "[D11_C3_B1_09]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_09()
+
+                                                #[D11_C3_B1_10]-TF-M2. Xét Đ-S: lim q^n, lim P(n), lim căn(P)/Q, lim csc
+                                                if dang_toan == "[D11_C3_B1_10]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_10()
+
+                                                #[D11_C3_B1_11]-TF-M2. Xét Đ-S: lim a, lim (an+b)/(cn+d), lim un/vn, Tổng CSN lùi vô hạn
+                                                if dang_toan == "[D11_C3_B1_11]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_11()
+
+                                                #[D11_C3_B1_12]-TF-M2. Xét Đ-S: lim q^n, lim P(n), lim căn(P)/Q, lim csn
+                                                if dang_toan == "[D11_C3_B1_12]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_12()
+
+                                                #[D11_C3_B1_13]-TL-M3. Tính lim P(n)/Q(n)
+                                                if dang_toan == "[D11_C3_B1_13]": 
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_13()
+
+                                                #[D11_C3_B1_14]-TL-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số cộng
+                                                if dang_toan == "[D11_C3_B1_14]": 
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_14()
+
+                                                #[D11_C3_B1_15]-TL-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số nhân
+                                                if dang_toan == "[D11_C3_B1_15]": 
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_15()
 
                                                 #Bài 2: GIỚI HẠN HÀM SỐ
                                                 #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
@@ -11493,34 +11550,34 @@ class Ui_MainWindow(object):
                                                 if loai_cau=="TN":
                                                     if self.combo_taode.currentText() in ["Tạo đề Word - Equation",  "Tạo đề Word - MathType"]:
                                                         list_tracnghiem.append(f'{debai_word}\n{phuongan}\n')
-                                                        list_tracnghiem_HDG.append(f'{debai_word}\n{phuongan}\n{loigiai_word}\n')
-                                                        list_dapan_TN.append(f'{dap_an}')                                                       
+                                                        list_tracnghiem_HDG.append(f'{debai_word}\n{phuongan}\n{loigiai_word}\n')                                                                                                              
                                                         
                                                     else:                                                       
                                                         list_tracnghiem.append(debai_latex)
                                                         list_tracnghiem_HDG.append(debai_latex)
-                                                        list_dapan_TN.append('')
+                                                    list_dapan_TN.append(f'{dap_an}')
+                                                        
 
                                                 if loai_cau=="Đ-S":
                                                     if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                          
                                                         list_dungsai.append(debai_latex)
-                                                        list_dungsai_HDG.append(debai_latex)
-                                                        list_dapan_TF.append('')
+                                                        list_dungsai_HDG.append(debai_latex)                                                        
                                                     else:                                                           
                                                         list_dungsai.append(f'{debai_word}\n')
                                                         list_dungsai_HDG.append(f'{debai_word}\n{loigiai_word}\n')
-                                                        list_dapan_TF.append(f'{dap_an}')
+                                                    list_dapan_TF.append(f'{dap_an}')
+                                                        
                                                     
                                            
                                                 if loai_cau=="TL":
                                                     if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
                                                         list_tuluan.append(latex_tuluan)
                                                         list_tuluan_HDG.append(latex_tuluan)
-                                                        list_dapan_TL.append('')
+                                                        
                                                     else:                                                                                                       
                                                         list_tuluan.append(f'{debai_word}\n')                                                    
                                                         list_tuluan_HDG.append(f'{debai_word}\n{loigiai_word}\n')
-                                                        list_dapan_TL.append(f'{dap_an}')
+                                                    list_dapan_TL.append(f'{dap_an}')
 
                                                                                                                             
  

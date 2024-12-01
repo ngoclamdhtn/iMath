@@ -733,7 +733,7 @@ def gh11gh_L11_C3_B1_09():
 
     return debai,debai_latex,loigiai_word,dap_an
 
-#[D11_C3_B1_10]-TF-M2. Xét Đ-S: lim q^n, lim P(n)
+#[D11_C3_B1_10]-TF-M2. Xét Đ-S: lim q^n, lim P(n), lim căn(P)/Q, lim csc
 def gh11gh_L11_C3_B1_10():
     chon=random.randint(1,2)
     if chon==1:
@@ -741,14 +741,19 @@ def gh11gh_L11_C3_B1_10():
     if chon==2:
         q=random.randint(1,5)*pi   
     
-    noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau:"        
     debai_word= f"{noi_dung}\n"
     
-    
-    kq1_T=f"* $\\lim ({latex(q)})^n=+\\infty$" 
-    kq1_F=f"$\\lim ({latex(q)})^n={random.choice(["-\\infty", 0, latex(q)])}$"
-    kq1=random.choice([kq1_T, kq1_F])
-    HDG=f"$\\lim ({latex(q)})^n=+\\infty$ vì ${latex(q)}>1$."
+    if q<10:
+        kq1_T=f"* $\\lim {latex(q)}^n=+\\infty$" 
+        kq1_F=f"$\\lim {latex(q)}^n={random.choice(["-\\infty", 0, latex(q)])}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"$\\lim {latex(q)}^n=+\\infty$ vì ${latex(q)}>1$."
+    else:    
+        kq1_T=f"* $\\lim ({latex(q)})^n=+\\infty$" 
+        kq1_F=f"$\\lim ({latex(q)})^n={random.choice(["-\\infty", 0, latex(q)])}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"$\\lim ({latex(q)})^n=+\\infty$ vì ${latex(q)}>1$."
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -769,9 +774,9 @@ def gh11gh_L11_C3_B1_10():
     else:
         kq2_T=f"* $\\lim ({latex(u)})=-\\infty$"
         kq2_F=f"$\\lim ({latex(u)})={random.choice(["+\\infty", 0, latex(q)])}$"    
-        HDG=(f"$\\lim ({latex(u)})=\\lim n^3({latex(a+b/n+c/n**2+d/n**3)})= +\\infty$"
-            f" vì $\\lim n^3=+\\infty$ và $\\lim ({latex(a+b/n+c/n**2+d/n**3)})={a}<0$.")
-
+        HDG=(f"Vì $\\lim n^3=+\\infty$ và $\\lim ({latex(a+b/n+c/n**2+d/n**3)})={a}<0$ nên\n\n"
+            f"$\\lim ({latex(u)})=\\lim n^3({latex(a+b/n+c/n**2+d/n**3)})= +\\infty$."
+            )
 
     kq2=random.choice([kq2_T, kq2_F])
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -785,23 +790,42 @@ def gh11gh_L11_C3_B1_10():
     c = random.choice([i for i in range(-5, 6) if i!=0])
     d = random.choice([i for i in range(-5, 6) if i!=0])
 
-    u=f"\\sqrt{{{latex(expand(a*(n-x_0)**2))}"
-    v=c*n+d
-
-
+    u=f"\\sqrt{{{latex(expand(a*(n-x_0)**2))}}}"
+    v=f"{latex(c*n+d)}"
 
     kq3_T=f"* $\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a)/c)}$" 
     kq3_F=f"$\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a+random.randint(1,2))/c)}$"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f"$\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a)/c)}$."
+    HDG=f"$\\lim \\dfrac{{{u}}} {{{v}}}=\\lim \\dfrac{{\\sqrt{{{latex(expand(a*(1-x_0/n)**2))}}}}} {{{latex(c+d/n)}}} ={latex(sqrt(a)/c)}$."
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq4_T=f"* "
-    kq4_F=f" " 
+    u1= random.choice([i for i in range(-5, 6) if i!=0])
+    du= random.choice([i for i in range(-5, 6) if i!=0])
+    un=f"{latex(expand(u1+(n-1)*du))}"
+    u2=u1+du
+    u3=u2+du
+    u4=u3+du
+    S1=f"{latex(n/2*(2*u1+(n-1)*du))}"
+
+    v1=u1+random.randint(3,4)
+    if v1==0:v1=random.randint(1,3)
+    dv= random.choice([i for i in range(-5, 6) if i!=0])
+    vn=f"{latex(expand(v1+(n-1)*du))}"
+    v2=v1+dv
+    v3=v2+dv
+    v4=v3+dv
+    S2=f"{latex(n/2*(2*v1+(n-1)*dv))}"
+
+    kq4_T=f"* $\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}={phan_so(du/dv)}$".replace("+-","-")
+    kq4_F=f"$\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}={phan_so(du/dv+random.randint(1,3))}$".replace("+-","-")
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=f""
+    HDG=(f"${u1},{u2},{u3},...,{un}$ lập thành cấp số cộng có $u_1={u1},d={du}$.\n\n"
+        f"${v1},{v2},{v3},...,{vn}$ lập thành cấp số cộng có $v_1={v1},d={dv}$.\n\n"
+        f"$\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn}}}$\n"
+        f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}=\\lim \\dfrac{{{latex(expand(2*u1+(n-1)*du))}}}{{{latex(expand(2*v1+(n-1)*dv))}}}={phan_so(du/dv)}$")
+    HDG=HDG.replace("+-","-")
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -854,6 +878,468 @@ def gh11gh_L11_C3_B1_10():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B1_11]-TF-M2. Xét Đ-S: lim a, lim (an+b)/(cn+d), lim un/vn, Tổng CSN lùi vô hạn
+def gh11gh_L11_C3_B1_11():
+    n=sp.symbols("n")
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau:"        
+    debai_word= f"{noi_dung}\n"
+
+    a=random.choice([i for i in range(-150, 200) if i!=0])
+    
+    kq1_T=f"* $\\lim {a}={a}$" 
+    kq1_F=f"$\\lim {a}={random.choice(["+\\infty","-\\infty"])}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\lim {a}={a}$."
+    if a<0:
+        kq1_T=f"* $\\lim ({a})={a}$" 
+        kq1_F=f"$\\lim ({a})={random.choice(["+\\infty","-\\infty"])}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"$\\lim ({a})={a}$."
+
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    a,b,c,d = [random.choice([i for i in range(-5, 6) if i!=0]) for _ in range(4)]
+    if a*d-b*c==0: d=d+random.randint(1,2)
+    u=(a*n+b)/(c*n+d)
+
+    kq2_T=f"* $\\lim {latex(u)}={phan_so(a/c)}$"
+    kq2_F=f"$\\lim {latex(u)}={phan_so(a/c+random.randint(1,2))}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"$\\lim {latex(u)}=\\lim {latex((a+b/n)/(c+d/n))}= {phan_so(a/c)}$."
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a,b,c,d,e,f = [random.choice([i for i in range(-5, 6) if i!=0]) for _ in range(6)]
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        u=(a*n**4+b*n**3+c*n+d)/(e*n**2+f)**2
+
+        kq3_T=f"* $\\lim {latex(u)}={phan_so(a/e**2)}$"
+        if a/e!=a/e**2:
+            kq3_F=f"$\\lim {latex(u)}={phan_so(a/e)}$"
+        else:
+            kq3_F=f"$\\lim {latex(u)}={random.choice(["+\\infty","-\\infty",phan_so((a+random.randint(1,2))/e**2)])}$"
+
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n+c/n**3+d/n**4)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**2)}$."
+
+    if chon==2:
+        u=(e*n**2+f)**2/(a*n**4+b*n**3+c*n+d)
+
+        kq3_T=f"* $\\lim {latex(u)}={phan_so(e**2/a)}$"        
+        kq3_F=f"$\\lim {latex(u)}={random.choice(["+\\infty","-\\infty",phan_so(e**2/a+random.randint(1,2))])}$"
+
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n+c/n**3+d/n**4)} }}= {phan_so(e**2/a)}$."
+    
+    if chon==3:
+        u=(a*n**6+b*n**4+c*n**3+d)/(e*n**2+f)**3
+
+        kq3_T=f"* $\\lim {latex(u)}={phan_so(a/e**3)}$"
+        kq3_F=f"$\\lim {latex(u)}={random.choice(["+\\infty","-\\infty",phan_so((a+random.randint(1,2))/e**3)])}$"
+
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n**2+c/n**3+d/n**6)} }}{{{latex((e+f/n**2)**3)} }}={phan_so(a/e**3)}$."
+
+    if chon==4:
+        u=(e*n**2+f)**3/(a*n**6+b*n**4+c*n**3+d)
+
+        kq3_T=f"* $\\lim {latex(u)}={phan_so(e**3/a)}$"
+        kq3_F=f"$\\lim {latex(u)}={random.choice(["+\\infty","-\\infty",phan_so(e**3/a+random.randint(1,2))])}$"
+
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e*n**2+f)**3)}}}{{{latex(a+b/n**2+c/n**3+d/n**6)}}}= {phan_so(e**3/a)}$."
+    
+    
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    a=random.randint(1,8)
+    b=a+random.randint(1,8)
+    u1= random.choice([i for i in range(-3, 4) if i!=0])
+    q=a/b
+    S=u1/(1-q)
+    kq4_T=f"* $S={phan_so(u1)}+{phan_so(u1*q)}+{phan_so(u1*q**2)}+...+{u1}\\left({phan_so(q)}\\right)^{{n-1}}+...={phan_so(S)}$".replace("+-","-")
+    kq4_F=f"$S={phan_so(u1)}+{phan_so(u1*q)}+{phan_so(u1*q**2)}+...+{u1}\\left({phan_so(q)}\\right)^{{n-1}}+...={phan_so(S+random.randint(1,3))}$".replace("+-","-")
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f"${phan_so(u1)}, {phan_so(u1*q)}, {phan_so(u1*q**2)},...$ lập thành cấp số nhân với $u_1={u1},q={phan_so(q)}$.\n\n"
+        f"$S={phan_so(u1)}+{phan_so(u1*q)}+{phan_so(u1*q**2)}+...+{u1}\\left({phan_so(q)}\\right)^{{n-1}}+...=\\dfrac{{{u1}}}{{1-{phan_so(q)}}}={phan_so(S)}$."
+        )
+    HDG=HDG.replace("+-","-")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B1_12]-TF-M2. Xét Đ-S: lim q^n, lim P(n), lim căn(P)/Q, lim csn
+def gh11gh_L11_C3_B1_12():    
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau:"        
+    debai_word= f"{noi_dung}\n"
+
+    a=random.randint(1,9)
+    b=a+random.randint(1,9)
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        q=a/b  
+    if chon==2:
+        q=-a/b    
+
+    kq1_T=f"* $\\lim \\left({phan_so(q)}\\right)^n=0$" 
+    kq1_F=f"$\\lim\\left({phan_so(q)}\\right)^n={random.choice(["+\\infty","-\\infty", phan_so(q)])}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\lim ({phan_so(q)})^n=0$ vì $-1<{phan_so(q)}<1$."
+
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(-5,5)
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+    n=sp.symbols("n")
+
+    u=a*n**3+b*n**2+c*n+d
+
+    if a>0:
+        kq2_T=f"* $\\lim ({latex(u)})=+\\infty$"
+        kq2_F=f"$\\lim ({latex(u)})={random.choice(["-\\infty", 0, latex(q)])}$"    
+        HDG=(f"$\\lim ({latex(u)})=\\lim n^3({latex(a+b/n+c/n**2+d/n**3)})= +\\infty$"
+            f" vì $\\lim n^3=+\\infty$ và $\\lim ({latex(a+b/n+c/n**2+d/n**3)})={a}>0$.")
+    else:
+        kq2_T=f"* $\\lim ({latex(u)})=-\\infty$"
+        kq2_F=f"$\\lim ({latex(u)})={random.choice(["+\\infty", 0, latex(q)])}$"    
+        HDG=(f"Vì $\\lim n^3=+\\infty$ và $\\lim ({latex(a+b/n+c/n**2+d/n**3)})={a}<0$ nên\n\n"
+            f"$\\lim ({latex(u)})=\\lim n^3({latex(a+b/n+c/n**2+d/n**3)})= +\\infty$."
+            )
+        
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a = random.randint(1,4)
+    x_0=random.choice([i for i in range(-3, 3) if i!=0])
+    b=random.randint(1,4)
+    
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+
+    u=f"\\sqrt{{{latex(expand(a*(n-x_0)**2))}}}"
+    v=f"{latex(c*n+d)}"
+
+    kq3_T=f"* $\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a)/c)}$" 
+    kq3_F=f"$\\lim \\dfrac{{{u}}} {{{v}}}={latex(sqrt(a+random.randint(1,2))/c)}$"
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"$\\lim \\dfrac{{{u}}} {{{v}}}=\\lim \\dfrac{{\\sqrt{{{latex(expand(a*(1-x_0/n)**2))}}}}} {{{latex(c+d/n)}}} ={latex(sqrt(a)/c)}$."
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        u1= random.choice([i for i in range(-5, 6) if i!=0])
+        q= random.randint(2,4)
+        un=f"{latex(u1*q**(n-1))}"
+        u2=u1*q
+        u3=u2*q
+        u4=u3*q
+        S1=f"{latex(u1*(1-q**(n))/(1-q))}"
+
+        v1=u1+random.randint(1,4)
+        if v1==0:v1=random.randint(1,3)
+        p= q
+        vn=f"{latex(v1*p**(n-1))}"
+        v2=v1*p
+        v3=v2*p
+        v4=v3*p
+        S2=f"{latex(v1*(1-p**(n))/(1-p))}"
+
+        kq,kp=phan_so(u1/1-q),phan_so(v1/1-p)
+
+        kq4_T=f"* $\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}={phan_so(u1/v1)}$".replace("+-","-").replace("--","+")
+        kq4_F=f"$\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}={phan_so(u1/v1+random.randint(1,2))}$".replace("+-","-").replace("--","+")
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f"${u1},{u2},...,{un}$ lập thành cấp số nhân có $u_1={u1},q={q}$.\n\n"
+            f"${v1},{v2},...,{vn}$ lập thành cấp số nhân có $v_1={v1},q={p}$.\n\n"
+            f"$\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+...+{vn}}}$\n"
+            f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}={phan_so(u1/v1)}$.\n"
+            )
+    
+    if chon==2:
+        u1= random.choice([i for i in range(-5, 6) if i!=0])
+        q= random.randint(2,4)
+        un=f"{latex(u1*q**(n-1))}"
+        u2=u1*q
+        u3=u2*q
+        u4=u3*q
+        S1=f"{latex(u1*(1-q**(n))/(1-q))}"
+
+        v1=u1+random.randint(1,4)
+        if v1==0:v1=random.randint(1,3)
+        p= q+random.randint(1,3)
+        vn=f"{latex(v1*p**(n-1))}"
+        v2=v1*p
+        v3=v2*p
+        v4=v3*p
+        S2=f"{latex(v1*(1-p**(n))/(1-p))}"
+
+        kq,kp=phan_so(u1/1-q),phan_so(v1/1-p)
+
+        kq4_T=f"* $\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}=0$".replace("+-","-").replace("--","+")
+        kq4_F=f"$\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}={phan_so(u1/v1)}$".replace("+-","-").replace("--","+")
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f"${u1},{u2},...,{un}$ lập thành cấp số nhân có $u_1={u1},q={q}$.\n\n"
+            f"${v1},{v2},...,{vn}$ lập thành cấp số nhân có $v_1={v1},q={p}$.\n\n"
+            f"$\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+...+{vn}}}$\n"
+            f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}=0$.\n"
+            )   
+
+ 
+    HDG=HDG.replace("+-","-").replace("--","+")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B1_13]-TL-M3. Tính lim P(n)/Q(n)
+def gh11gh_L11_C3_B1_13():
+    n=sp.symbols("n")
+    a,b,c,d,e,f = [random.choice([i for i in range(-5, 6) if i!=0]) for _ in range(6)]
+    chon=random.randint(1,4)        
+    if chon==1:
+        u=(a*n**4+b*n**3+c*n+d)/(e*n**2+f)**2
+        kq=a/e**2
+        if kq<=-9.9:
+            noi_dung=f"Tính $\\lim {latex(u)}={phan_so(a/e**2)}$ (kết quả làm tròn đến hàng đơn vị)."
+            dap_an=f"{N(a/e**2,1)}".replace(".",",")
+        else:
+            noi_dung=f"Tính $\\lim {latex(u)}={phan_so(a/e**2)}$ (kết quả làm tròn đến hàng phần trăm)."
+            dap_an=f"{N(a/e**2,3):.2f}".replace(".",",")
+
+        noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n+c/n**3+d/n**4)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**2)}$."
+        
+
+    if chon==2:
+        u=(e*n**2+f)**2/(a*n**4+b*n**3+c*n+d)
+
+        noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
+
+        noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n+c/n**3+d/n**4)} }}= {phan_so(e**2/a)}$."
+        dap_an=f"{N(e**2/a,2):.1f}".replace(".",",")
+    
+    if chon==3:
+        u=(a*n**6+b*n**4+c*n**3+d)/(e*n**2+f)**3
+        noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
+        noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n**2+c/n**3+d/n**6)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**3)}$."
+        dap_an=f"{N(a/e**3,2):.1f}".replace(".",",")
+
+    if chon==4:
+        u=(e*n**2+f)**3/(a*n**6+b*n**4+c*n**3+d)
+
+        noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
+
+        noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n**2+c/n**3+d/n**6)}}}= {phan_so(e**3/a)}$."
+        dap_an=f"{N(e**3/a,2):.1f}".replace(".",",") 
+      
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B1_14]-TL-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số cộng
+def gh11gh_L11_C3_B1_14():
+    n=sp.symbols("n")
+    u1= random.choice([i for i in range(-5, 6) if i!=0])
+    du= random.choice([i for i in range(-5, 6) if i!=0])
+
+    un=f"{latex(expand(u1+(n-1)*du))}"
+    u2=u1+du
+    u3=u2+du
+    u4=u3+du
+    S1=f"{latex(n/2*(2*u1+(n-1)*du))}"
+
+    v1=u1+random.randint(3,4)
+    if v1==0:v1=random.randint(1,3)
+    dv= random.choice([i for i in range(-5, 6) if i!=0])
+    vn=f"{latex(expand(v1+(n-1)*du))}"
+    v2=v1+dv
+    v3=v2+dv
+    v4=v3+dv
+    S2=f"{latex(n/2*(2*v1+(n-1)*dv))}"
+
+    noi_dung=f"Tính $\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}$ (kết quả làm tròn đến hàng phần mười).".replace("+-","-")
+
+    noi_dung_loigiai=(f"${u1},{u2},{u3},...,{un}$ lập thành cấp số cộng có $u_1={u1},d={du}$.\n\n"
+        f"${v1},{v2},{v3},...,{vn}$ lập thành cấp số cộng có $v_1={v1},d={dv}$.\n\n"
+        f"$\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn}}}$\n"
+        f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}=\\lim \\dfrac{{{latex(expand(2*u1+(n-1)*du))}}}{{{latex(expand(2*v1+(n-1)*dv))}}}={phan_so(du/dv)}$")
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+    dap_an=f"{N(du/dv,2):.1f}".replace(".",",") 
+    
+    debai_word= f"{noi_dung}\n"
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B1_15]-TL-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số nhân
+def gh11gh_L11_C3_B1_15():
+    n=sp.symbols("n")
+    u1= random.choice([i for i in range(-5, 6) if i!=0])
+    q= random.randint(2,4)
+    un=f"{latex(u1*q**(n-1))}"
+    u2=u1*q
+    u3=u2*q
+    u4=u3*q
+    S1=f"{latex(u1*(1-q**(n))/(1-q))}"
+
+    v1=u1+random.randint(1,4)
+    if v1==0:v1=random.randint(1,3)
+    p= q
+    vn=f"{latex(v1*p**(n-1))}"
+    v2=v1*p
+    v3=v2*p
+    v4=v3*p
+    S2=f"{latex(v1*(1-p**(n))/(1-p))}"
+
+    kq,kp=phan_so(u1/1-q),phan_so(v1/1-p)
+
+    noi_dung=f"Tính $\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}$(kết quả làm tròn đến hàng phần mười).".replace("+-","-").replace("--","+")   
+
+    noi_dung_loigiai=(f"${u1},{u2},...,{un}$ lập thành cấp số nhân có $u_1={u1},q={q}$.\n\n"
+        f"${v1},{v2},...,{vn}$ lập thành cấp số nhân có $v_1={v1},q={p}$.\n\n"
+        f"$\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+...+{vn}}}$\n"
+        f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}={phan_so(u1/v1)}$.\n" )
+
+    dap_an=f"{N(u1/v1,2):.1f}".replace(".",",") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+    
  
 ########################### BÀI 2 - GIỚI HẠN HÀM SỐ ###########################
 
@@ -1551,16 +2037,16 @@ def gh11gh_L11_C3_B3_01():
         x_2=random.randint(int(-b/a)+6,int(-b/a)+20)
 
         #Tạo điểm gián đoạn
-        x_3=random.randint(int(-b/a)-15,int(-b/a))
-        x_4=-b/a            
+        x_3=random.randint(int(-b/a)-9,int(-b/a))
+        x_4=random.randint(int(-b/a)-15,int(-b/a)-10)           
     else:
         #Tạo điểm liên tục 
         x_1=random.randint(int(-b/a)-5,int(-b/a)-1)
         x_2=random.randint(int(-b/a)-20,int(-b/a)-6)
 
         #Tạo điểm gián đoạn
-        x_3=random.randint(int(-b/a)+1,int(-b/a)+10)
-        x_4=-b/a
+        x_3=random.randint(int(-b/a)+1,int(-b/a)+9)
+        x_4=random.randint(int(-b/a)+10,int(-b/a)+15)
 
     kq=f"Hàm số liên tục tại điểm $x={x_1}$"            
     kq2=f"Hàm số gián đoạn tại điểm $x={x_2}$"

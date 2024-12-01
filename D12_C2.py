@@ -1305,9 +1305,14 @@ def mnj_34_jkl_L12_C2_B1_09():
 
 	noi_dung = (f"Ba lực $\\vec{{F_1}}$, $\\vec{{F_2}}$, $\\vec{{F_3}}$ cùng tác động vào một vật có phương đôi một vuông góc nhau và "
 	f"có độ lớn lần lượt là ${a1}$ N, ${a2}$ N, ${a3}$ N. Tính độ lớn hợp lực của ba lực đã cho.")
-
-	kq=f"{round(sqrt(a1**2+a2**2+a3**2),1)}"
-	kq=kq.replace(".",",")
+	kq=sqrt(a1**2+a2**2+a3**2)
+	if kq>=100:
+		noi_dung+="(kết quả làm tròn đến hàng đơn vị)"
+		kq=f"{round(sqrt(a1**2+a2**2+a3**2),0)}".replace(".",",")
+	else:
+		noi_dung+="(kết quả làm tròn đến hàng phần mười)"
+		kq=f"{round(sqrt(a1**2+a2**2+a3**2),1):.1f}".replace(".",",")
+	
 	noi_dung_loigiai=(f" Dựng các hình chữ nhật ${{OBEC}}$ và ${{OEFA}}$ thì ta có:\
 				$\\overrightarrow{{OB}}+\\overrightarrow{{OC}}=\\overrightarrow{{OE}}, \\overrightarrow{{OA}}+\\overrightarrow{{OE}}=\\overrightarrow{{OF}}.$\n\n\
 				Do đó $\\overrightarrow{{F_1}}+\\overrightarrow{{F_2}}+\\overrightarrow{{F_3}}=\\overrightarrow{{OA}}+\\overrightarrow{{OB}}+\\overrightarrow{{OC}}=\\overrightarrow{{OA}}+\\overrightarrow{{OE}}=\\overrightarrow{{OF}}.$\n\n\
@@ -1364,15 +1369,13 @@ def mnj_34_jkl_L12_C2_B1_09():
 
 	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai}\n{file_name_dapan}\n"
 		f"Đáp án: {dap_an}\n"
-		)
-		
-	
+		)	
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh_de}\n\\end{{center}}\n"\
 	f"\\shortans[oly]{{{kq}}}\n\n"\
-	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-	f"\\begin{{center}}\n{code_hinh_loigiai}\n\\end{{center}}\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n "\
+	f"\\begin{{center}}\n{code_hinh_loigiai}\n\\end{{center}} }}\n"\
 	f"\\end{{ex}}\n"
 	
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1768,12 +1771,12 @@ def mnj_34_jkl_L12_C2_B1_13():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C2_B1_14]-M2. Cho hai vectơ a,b có độ dài và tích vô hướng. Tính |ma+nb|.
-def mnj_34_jkl_L12_C2_B1_14():	
-	
+#[D12_C2_B1_14]-TL-M2. Cho hai vectơ a,b có độ dài và tích vô hướng. Tính |ma+nb|.
+def mnj_34_jkl_L12_C2_B1_14():
 	a=random.randint(1,5)
 	b=random.randint(1,5)
-	tich_vh=random.choice([i for i in range(-8, 8) if i!=0])
+	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
+	tich_vh=a*b*cos	
 
 	m=random.randint(1,5)
 	n=random.choice([i for i in range(-5, 5) if i!=0])
@@ -1784,64 +1787,38 @@ def mnj_34_jkl_L12_C2_B1_14():
 	vec_a=f"{vec(f"{ten_a}")}"
 	vec_b=f"{vec(f"{ten_b}")}"
 	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và ${vec_a}.{vec_b}={tich_vh}$."
-	f" Tính $|{m}{vec_a}+{n}{vec_b}|$."
+	f" Tính $|{m}{vec_a}+{n}{vec_b}|$(kết quả làm tròn đến hàng phần mười)."
 	)
 	noi_dung=noi_dung.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
 
 	kq=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)
-	kq2=sqrt((m*a)**2+(n*b)**2+abs(m*n*tich_vh))
-	kq3=sqrt(abs(m*a+n*b))
-	kq4=sqrt(a+b)
+	dap_an=f"{round(kq,1):.1f}".replace(".",",")
 
-	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-	kq2=pa_kotrung[1]
-	kq3=pa_kotrung[2]
-	kq4=pa_kotrung[3]
 	if tich_vh>0:
 		noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.{tich_vh}+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
-		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={latex(kq)}$.")
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
 	else:
 		noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.({tich_vh})+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
-		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={latex(kq)}$.")
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
 
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
 
-	pa_A= f"*${{{latex(kq)}}}$"
-	pa_B= f"${{{latex(kq2)}}}$"
-	pa_C= f"${{{latex(kq3)}}}$"
-	pa_D= f"${{{latex(kq4)}}}$"
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)
-	dap_an=my_module.tra_ve_dap_an(list_PA)
+			
+	debai_word= f"{noi_dung}\n"
 
-	debai= f"{noi_dung}\n".replace("+-","-")
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
-	kq=f"{round(kq,1)}".replace(".",",")
-	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-	loigiai_traloingan=(f"Lời giải:\n {noi_dung_loigiai} \n"
-	f"Đáp án: {kq}")
 
-	#Tạo đề latex
-	for i in range(4):
-		list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-	f"\\choice\n"\
-		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-		f"\\end{{ex}}\n"
-	
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-		f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C2_B1_15]-TL-M3. Cho hai vectơ a,b và độ dài |ma+nb|. Tính cos(a,b)
 def mnj_34_jkl_L12_C2_B1_15():
@@ -1849,7 +1826,7 @@ def mnj_34_jkl_L12_C2_B1_15():
 	b=random.randint(1,5)
 
 	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
-	tich_vh=int(a*b*cos)
+	tich_vh=a*b*cos
 
 	m=random.choice([i for i in range(-5, 5) if i!=0])
 	n=random.choice([i for i in range(-5, 5) if i!=0])
@@ -3031,8 +3008,8 @@ def mnj_34_jkl_L12_C2_B2_08():
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 	x_I,y_I,z_I=(x_A1+x_C1)/2,(y_A1+y_C1)/2,(z_A1+z_C1)/2
-	kq4_T=f"* Tọa độ tâm ${{I}}$ của hình bình hành ${A1}{B1}{C1}{D1}$ là $I\\left({phan_so(x_I)};{phan_so(y_I)};{phan_so(z_I)}\\right)$"
-	kq4_F=f"Tọa độ tâm ${{I}}$ của hình bình hành ${A1}{B1}{C1}{D1}$ là $I\\left({phan_so(x_I+random.randint(1,2))};{phan_so(y_I+random.randint(-1,1))};{phan_so(z_I+random.randint(-1,1))}\\right)$" 
+	kq4_T=f"* Tọa độ tâm ${{I}}$ của hình bình hành ${{{A1}{B1}{C1}{D1}}}$ là $I\\left({phan_so(x_I)};{phan_so(y_I)};{phan_so(z_I)}\\right)$"
+	kq4_F=f"Tọa độ tâm ${{I}}$ của hình bình hành ${{{A1}{B1}{C1}{D1}}}$ là $I\\left({phan_so(x_I+random.randint(1,2))};{phan_so(y_I+random.randint(-1,1))};{phan_so(z_I+random.randint(-1,1))}\\right)$" 
 	kq4=random.choice([kq4_T, kq4_F])
 	HDG=f" Tâm $I\\left({phan_so(x_I)};{phan_so(y_I)};{phan_so(z_I)}\\right)$."
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -3309,7 +3286,7 @@ def mnj_34_jkl_L12_C2_B2_10():
 
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
-	#file_name=""
+	
 
 	l_M=random.randint(40,60)
 	goc_HOA=random.randint(50,70)

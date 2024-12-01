@@ -1211,7 +1211,7 @@ def mn8mn_L11_C2_B2_12():
     n=random.randint(15,35)
     u_n= u1+(n-1)*d
 
-    while any([u_n<-9, u_n>9999]):
+    while any([u_n<-9, u_n>9999,n==m,n==k]):
         u1 = random.choice([random.randint(-150, -8), random.randint(1, 10)])
         d = random.choice([random.randint(-20, -3), random.randint(3, 10)])
         k = random.randint(3,10)
