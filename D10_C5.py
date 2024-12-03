@@ -43,6 +43,17 @@ def code_latex_hinhchunhat(A,B,C,D):
 \\end{{tikzpicture}}\n"
 	return code
 
+def code_latex_hinhchunhat_noname(A,B,C,D):
+	code=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+\\coordinate ({A}) at (0,3);\n\
+\\coordinate ({B}) at (5,3);\n\
+\\coordinate ({D}) at (0,0);\n\
+\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
+\\draw({A})--({B})--({C})--({D})--cycle;\n\
+\\foreach \\i/\\g in {{{A}/90,{B}/90,{C}/-90,{D}/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{}};}}\n\
+\\end{{tikzpicture}}\n"
+	return code
+
 def code_latex_hinhbinhhanh(a,b,c,d):
     code=rf"""\begin{{tikzpicture}}[line join=round, line cap=round,thick]
 \coordinate ({a}) at (1,3);
@@ -53,6 +64,36 @@ def code_latex_hinhbinhhanh(a,b,c,d):
 \foreach \i/\g in {{{a}/90,{b}/90,{c}/-90,{d}/-90}}{{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{{$\i$}};}}
 \end{{tikzpicture}}"""
     return code
+
+def code_latex_tamgiacvuong(A,B,C):
+	code=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+\\coordinate ({A}) at (0,0);\n\
+\\coordinate ({B}) at (4,0);\n\
+\\coordinate ({C}) at (0,3);\n\
+\\draw({A})--({B})--({C})--cycle;\n\
+\\foreach \\i/\\g in {{{A}/-180,{B}/0,{C}/90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+\\end{{tikzpicture}}\n"
+	return code
+
+def code_latex_tamgiacvuong_noname(A,B,C):
+	code=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+\\coordinate ({A}) at (0,0);\n\
+\\coordinate ({B}) at (4,0);\n\
+\\coordinate ({C}) at (0,3);\n\
+\\draw({A})--({B})--({C})--cycle;\n\
+\\foreach \\i/\\g in {{{A}/-180,{B}/0,{C}/90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{}};}}\n\
+\\end{{tikzpicture}}\n"
+	return code
+
+def code_latex_tamgiacdeu(A,B,C):
+	code=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=1.4]\n\
+\\coordinate ({A}) at (0,1.73);\n\
+\\coordinate ({B}) at (-1,0);\n\
+\\coordinate ({C}) at (1,0);\n\
+\\draw({A})--({B})--({C})--cycle;\n\
+\\foreach \\i/\\g in {{{A}/90,{B}/-180,{C}/0}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+\\end{{tikzpicture}}\n"
+	return code
 
 
 #Bài 1 - Các định nghĩa véctơ
@@ -2040,10 +2081,7 @@ def y7y7u_L10_C5_B2_13():
 		f"={vec(f"{D}{B}")}+{vec(f"{D}{C}")}={vec(f"{D}K")}$.\n\n"
 		f"$|{vec(f"{ten_vt}")}|=|{vec(f"{D}K")}|=\\sqrt{{{D}{A}^2+{A}K^2}}=\\sqrt{{{l_AD}^2+{l_AB*2}^2}}={latex(DK)}$.\n\n"
 		
-		f"Đáp án: {dap_an}"	)
-	
-
-	
+		f"Đáp án: {dap_an}"	)	
 		
 	debai_word= f"{noi_dung}\n{file_name}\n"
 
@@ -2056,6 +2094,68 @@ def y7y7u_L10_C5_B2_13():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C5_B2_14]-SA-M2. Cho tam giác vuông. Tính độ dài tổng-hiệu các vectơ
+def y7y7u_L10_C5_B2_14():
+	points = [chr(i) for i in range(ord('A'), ord('F') + 1)]
+	random.shuffle(points)
+	A,B,C=points[0:3]
+	AB=random.randint(1,6)
+	AC=random.randint(1,6)
+	if AB==AC:AC=AC+random.randint(1,2)
+	BC=sqrt(AB**2+AC**2)
+	vec_AB=vec(f"{A}{B}")
+	vec_BA=vec(f"{B}{A}")
+	vec_AC=vec(f"{A}{C}")
+	vec_BC=vec(f"{B}{C}")
+	vec_CB=vec(f"{C}{B}")
+
+	chon=random.randint(1,3)
+		
+	if chon==1:
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ có ${A}{B}={AB},{A}{C}={AC}$. Tính độ dài của vectơ ${vec_AB}-{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"$|{vec_AB}-{vec_AC}|=|{vec_CB}|=\\sqrt{{{AB}^2+{AC}^2}}={latex(sqrt(AB**2+AC**2))}={dap_an}$.")
+	
+	if chon==2:
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ có ${A}{B}={AB},{B}{C}={latex(BC)}$. Tính độ dài của vectơ ${vec_BC}-{vec_BA}$."
+		)
+		dap_an=AC
+
+		noi_dung_loigiai=(
+		f"$|{vec_BC}-{vec_BA}|=|{vec_AC}|=\\sqrt{{({latex(BC)})^2-{AB}^2}}={AC}$."
+		)
+
+	if chon==3:
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ có ${A}{B}={AB},{A}{C}={AC}$. Tính độ dài của vectơ ${vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+			f"Dựng hình chữ nhật ${{{A}{B}M{C}}}$.\n\n"
+		f"$|{vec_AB}+{vec_AC}|=|{vec(f"{A}M")}|=\\sqrt{{{AB}^2+{AC}^2}}={latex(sqrt(AB**2+AC**2))}={dap_an}$.")
+	
+
+	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #--------------------------------------------------------------------------->
 #Bài 3 - Tích vectơ với một số
 #[D10_C5_B3_01]-M2. Cho tứ giác. Tìm khẳng định đúng về quy tắc cộng trừ.
@@ -2425,9 +2525,12 @@ def y7y7u_L10_C5_B3_04():
 
 #[D10_C5_B3_05]-TF-M3. Cho hình bình hành. Xét đúng sai các đẳng thức vectơ
 def y7y7u_L10_C5_B3_05():
-	danh_sach=["A","B","C","D"]
-	random.shuffle(danh_sach)
-	A,B,C,D=danh_sach
+	points = [chr(i) for i in range(ord('A'), ord('F') + 1)]
+	random.shuffle(points)
+	points=points[0:4]
+	points.sort()
+	A,B,C,D=points
+
 	I=random.choice(["O","I"])
 	G=random.choice(["G","H","J"])
 	M=random.choice(["M","N","P"])
@@ -2570,7 +2673,6 @@ def y7y7u_L10_C5_B3_05():
 			f"=\\dfrac{{3}}{{2}}{vec(f"{G}{A}")}-\\dfrac{{3}}{{2}}{vec(f"{C}{G}")}$."
 			)
 	
-
 	
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
@@ -2626,6 +2728,329 @@ def y7y7u_L10_C5_B3_05():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+ 
+#[D10_C5_B3_06]-SA-M3. Cho tam giác. Tính độ dài vectơ tổng-hiệu
+def y7y7u_L10_C5_B3_06():
+
+	points = [chr(i) for i in range(ord('A'), ord('F') + 1)]
+	random.shuffle(points)
+	points=points[0:3]
+	points.sort()
+	A,B,C=points
+
+	points = [chr(i) for i in range(ord('G'), ord('N') + 1)]
+	random.shuffle(points)
+	G,M=points[0:2]
+
+	AB=random.randint(1,6)
+	AC=random.randint(1,6)
+	if AB==AC:AC=AC+random.randint(1,2)
+	BC=sqrt(AB**2+AC**2)
+	vec_AB=vec(f"{A}{B}")
+	vec_BA=vec(f"{B}{A}")
+	vec_AC=vec(f"{A}{C}")
+	vec_CA=vec(f"{C}{A}")
+	vec_BC=vec(f"{B}{C}")
+	vec_CB=vec(f"{C}{B}")
+
+	vec_GB=vec(f"{G}{B}")
+	vec_GC=vec(f"{G}{C}")
+	vec_GM=vec(f"{G}{M}")
+	vec_AM=vec(f"{A}{M}")
+	vec_u=vec(random.choice(["u","v","a","b"]))
+
+	chon=random.randint(1,5)	
+		
+	if chon==1:
+		code_hinh=code_latex_tamgiacvuong_noname(A,B,C)
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)
+
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ có ${A}{B}={AB},{A}{C}={AC}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+		f" Tính độ dài của vectơ ${vec_u}={vec_GB}+{vec_GC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(4/3*sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+		\\coordinate ({A}) at (0,0);\n\
+		\\coordinate ({B}) at (4,0);\n\
+		\\coordinate ({C}) at (0,3);\n\
+		\\coordinate ({M}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({G}) at ($({A})!{2/3}!({M})$);\n\
+		\\draw({A})--({B})--({C})--cycle;\n\
+		\\draw({A})--({M}) ({G})--({B}) ({G})--({C});\n\
+		\\foreach \\i/\\g in {{{A}/-180,{B}/0,{C}/90,{M}/0,{G}/90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"$|{vec_u}|=|{vec_GB}+{vec_GC}|=|2{vec_GM}|=2.{phan_so(2/3)}{A}{M}={phan_so(4/3)}\\dfrac{{{B}{C}}}{{2}}$\n"
+		f"$={phan_so(4/3)}\\sqrt{{{AB}^2+{AC}^2 }}={latex(nsimplify(4/3*BC))}={dap_an}$.")
+	
+	if chon==2:
+		AB=random.choice([random.randint(1,8)])
+		code_hinh=code_latex_tamgiacdeu(A,B,C)
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=1.4]\n\
+		\\coordinate ({A}) at (0,1.73);\n\
+		\\coordinate ({B}) at (-1,0);\n\
+		\\coordinate ({C}) at (1,0);\n\
+		\\coordinate ({M}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({G}) at ($({A})!{2/3}!({M})$);\n\
+		\\draw({A})--({B})--({C})--cycle;\n\
+		\\draw({A})--({M}) ({G})--({B}) ({G})--({C});\n\
+		\\foreach \\i/\\g in {{{A}/90,{B}/-180,{C}/0,{M}/-90,{G}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"
+
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có ${A}{B}={AB}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+		f" Tính độ dài của vectơ ${vec_u}={vec_GB}+{vec_GC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(AB*sqrt(3)/3,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${A}{M}=\\dfrac{{{AB}\\sqrt{{3}}}}{{2}}={latex(nsimplify(AB*sqrt(3)/2))}$.\n\n"
+		f"$|{vec_u}|=|{vec_GB}+{vec_GC}|=|2{vec_GM}|=2.{phan_so(1/3)}{A}{M}$\n"
+		f"$={phan_so(2/3)}{latex(nsimplify(AB*sqrt(3)/2))}={latex(nsimplify(AB*sqrt(3)/3))}={dap_an}$.")
+
+	if chon==3:
+		AB=random.randint(1,8)
+		code_hinh=code_latex_tamgiacdeu(A,B,C)
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=1.4]\n\
+		\\coordinate ({A}) at (0,1.73);\n\
+		\\coordinate ({B}) at (-1,0);\n\
+		\\coordinate ({C}) at (1,0);\n\
+		\\coordinate ({M}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({G}) at ($({A})!{2/3}!({M})$);\n\
+		\\draw({A})--({B})--({C})--cycle;\n\
+		\\draw({A})--({M}) ({G})--({B}) ({G})--({C});\n\
+		\\foreach \\i/\\g in {{{A}/90,{B}/-180,{C}/0,{M}/-90,{G}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"		
+
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có ${A}{B}={AB}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+		f" Tính độ dài của vectơ ${vec_u}={vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(AB*sqrt(3),1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${A}{M}=\\dfrac{{{AB}\\sqrt{{3}}}}{{2}}={latex(nsimplify(AB*sqrt(3)/2))}$.\n\n"
+		f"$|{vec_u}|=|{vec_AB}+{vec_AC}|=|2{vec_AM}|$\n"
+		f"$=2.{latex(nsimplify(AB*sqrt(3)/2))}={latex(nsimplify(AB*sqrt(3)))}={dap_an}$.")
+
+	if chon==4:
+		AB=random.choice([random.randint(1,5)*sqrt(2),random.randint(1,5)*sqrt(3)])
+		code_hinh=code_latex_tamgiacdeu(A,B,C)
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=1.4]\n\
+		\\coordinate ({A}) at (0,1.73);\n\
+		\\coordinate ({B}) at (-1,0);\n\
+		\\coordinate ({C}) at (1,0);\n\
+		\\coordinate ({M}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({G}) at ($({A})!{2/3}!({M})$);\n\
+		\\draw({A})--({B})--({C})--cycle;\n\
+		\\draw({A})--({M}) ({G})--({B}) ({G})--({C});\n\
+		\\foreach \\i/\\g in {{{A}/90,{B}/-180,{C}/0,{M}/-90,{G}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"
+
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có ${A}{B}={latex(AB)}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+		f" Tính độ dài của vectơ ${vec_u}={vec_GB}+{vec_GC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(AB*sqrt(3)/3,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${A}{M}=\\dfrac{{{latex(AB)}\\sqrt{{3}}}}{{2}}={latex(nsimplify(AB*sqrt(3)/2))}$.\n\n"
+		f"$|{vec_u}|=|{vec_GB}+{vec_GC}|=|2{vec_GM}|=2.{phan_so(1/3)}{A}{M}$\n"
+		f"$={phan_so(2/3)}{latex(nsimplify(AB*sqrt(3)/2))}={latex(nsimplify(AB*sqrt(3)/3))}={dap_an}$.")
+
+	if chon==5:
+		AB=random.choice([random.randint(1,5)*sqrt(2),random.randint(1,5)*sqrt(3)])
+		code_hinh=code_latex_tamgiacdeu(A,B,C)
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=1.4]\n\
+		\\coordinate ({A}) at (0,1.73);\n\
+		\\coordinate ({B}) at (-1,0);\n\
+		\\coordinate ({C}) at (1,0);\n\
+		\\coordinate ({M}) at ($({B})!0.5!({C})$);\n\
+		\\coordinate ({G}) at ($({A})!{2/3}!({M})$);\n\
+		\\draw({A})--({B})--({C})--cycle;\n\
+		\\draw({A})--({M}) ({G})--({B}) ({G})--({C});\n\
+		\\foreach \\i/\\g in {{{A}/90,{B}/-180,{C}/0,{M}/-90,{G}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}\n"		
+
+		noi_dung = (
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có ${A}{B}={latex(AB)}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+		f" Tính độ dài của vectơ ${vec_u}={vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(AB*sqrt(3),1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${A}{M}=\\dfrac{{{latex(AB)}\\sqrt{{3}}}}{{2}}={latex(nsimplify(AB*sqrt(3)/2))}$.\n\n"
+		f"$|{vec_u}|=|{vec_AB}+{vec_AC}|=|2{vec_AM}|$\n"
+		f"$=2.{latex(nsimplify(AB*sqrt(3)/2))}={latex(nsimplify(AB*sqrt(3)))}={dap_an}$.")
+
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name_LG}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C5_B3_07]-SA-M3. Cho hình chữ nhật. Tính độ dài vectơ tổng-hiệu
+def y7y7u_L10_C5_B3_07():
+	points = [chr(i) for i in range(ord('A'), ord('F') + 1)]
+	random.shuffle(points)
+	points=points[0:4]
+	points.sort()
+	A,B,C,D=points
+
+	points = ["G","H","M","N","P"]
+	random.shuffle(points)
+	M,N=points[0:2]
+	O=random.choice(["O","I"])
+
+	AB=random.randint(1,6)
+	AD=AB+random.randint(1,5)	
+	
+	vec_AB=vec(f"{A}{B}")
+	vec_BA=vec(f"{B}{A}")
+	vec_AC=vec(f"{A}{C}")
+	vec_CA=vec(f"{C}{A}")
+	vec_BC=vec(f"{B}{C}")
+	vec_CB=vec(f"{C}{B}")
+	vec_AD=vec(f"{A}{D}")
+	vec_BD=vec(f"{B}{D}")
+	vec_OC=vec(f"{O}{C}")
+	vec_OD=vec(f"{O}{D}")
+	vec_ON=vec(f"{O}{N}")
+	vec_AM=vec(f"{A}{M}")
+	vec_AN=vec(f"{A}{N}")
+	vec_u=vec(random.choice(["u","v","a","b"]))
+
+	code_hinh=code_latex_hinhchunhat_noname(A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	chon=random.randint(1,3)
+	
+	if chon==1:
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate ({A}) at (0,3);\n\
+			\\coordinate ({B}) at (5,3);\n\
+			\\coordinate ({D}) at (0,0);\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
+			\\coordinate ({M}) at ($({B})!0.5!({C})$);\n\
+			\\draw({A})--({B})--({C})--({D})--cycle;\n\
+			\\draw({A})--({M}) ({A})--({C});\n\
+			\\foreach \\i/\\g in {{{A}/90,{B}/90,{C}/-90,{D}/-90,{M}/0}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+			\\end{{tikzpicture}}\n"		
+
+		noi_dung = (
+		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
+		f" Tính độ dài vectơ ${vec_u}={vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"$|{vec_u}|=|{vec_AB}+{vec_AC}|=|2{vec_AM}|=2\\sqrt{{{A}{B}^2+{B}{M}^2}}$\n"
+		f"$=2\\sqrt{{{AB}^2+{AD/2}^2}}={latex(nsimplify(2*sqrt(AB**2+AD**2/4)))}={dap_an}$."
+		)
+	if chon==2:
+		noi_dung = (
+		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
+		f" Tính độ dài vectơ ${vec_u}={vec_AC}+{vec_BD}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{2*AD}"
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate ({A}) at (0,3);\n\
+			\\coordinate ({B}) at (5,3);\n\
+			\\coordinate ({D}) at (0,0);\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
+			\\coordinate ({O}) at ($({A})!0.5!({C})$);\n\
+			\\coordinate ({N}) at ($({C})!0.5!({D})$);\n\
+			\\draw({A})--({B})--({C})--({D})--cycle;\n\
+			\\draw({B})--({D}) ({A})--({C}) ({O})--({N}) ;\n\
+			\\foreach \\i/\\g in {{{A}/90,{B}/90,{C}/-90,{D}/-90,{O}/0,{N}/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+			\\end{{tikzpicture}}\n"
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{O}}}$ là tâm của ${{{A}{B}{C}{D}}}$.\n\n"
+		f"$|{vec_u}|=|{vec_AC}+{vec_BD}|=|2{vec_OC}+2{vec_OD}|=2|{vec_OC}+{vec_OD}|$\n"
+		f"$=2|2{O}{N}|=2.{AD}={dap_an}$."
+		)
+	if chon==3:
+		noi_dung = (
+		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
+		f" Tính độ dài vectơ ${vec_u}={vec_AB}+2{vec_AD}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(AD**2+AB**2/4,1):.1f}".replace(".",",")
+
+		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate ({A}) at (0,3);\n\
+			\\coordinate ({B}) at (5,3);\n\
+			\\coordinate ({D}) at (0,0);\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
+			\\coordinate ({M}) at ($({A})!2!({D})$);\n\
+			\\coordinate ({N}) at ($({C})!0.5!({D})$);\n\
+			\\draw({A})--({B})--({C})--({D})--cycle;\n\
+			\\draw ({B})--({M}) ({D})--({M}) ;\n\
+			\\foreach \\i/\\g in {{{A}/90,{B}/90,{C}/-90,{D}/-90,{M}/0,{N}/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+			\\end{{tikzpicture}}\n"
+
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ điểm đối xứng với ${{{A}}}$ qua ${{{D}}}$.\n\n"
+		f"Gọi ${{{N}}}$ là trung điểm của ${{{C}{D}}}$.\n\n"
+		f"$|{vec_u}|=|{vec_AB}+2{vec_AD}|=|{vec_AB}+{vec_AM}|=2|{vec_AN}|$\n"
+		f"$=2\\sqrt{{{AD}^2+{AB/2}^2}}={latex(nsimplify(AD**2+AB**2/4))}={dap_an}$."
+		)
+
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name_LG}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 #------------------------------------------------------------------------>
 
 #Bài 4 - Tích vô hướng của 2 vectơ 
@@ -3307,6 +3732,205 @@ def y7y7u_L10_C5_B4_06():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C5_B4_07]-TL-M2. Cho hai vectơ a,b có độ dài và tích vô hướng. Tính |ma+nb|.
+def y7y7u_L10_C5_B4_07():
+	a=random.randint(1,5)
+	b=random.randint(1,5)
+	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
+	tich_vh=a*b*cos	
+
+	m=random.randint(1,5)
+	n=random.choice([i for i in range(-5, 5) if i!=0])
+
+	ten_a=random.choice(["a","m","u"])
+	ten_b=random.choice(["b","n","v"])
+
+	vec_a=f"{vec(f"{ten_a}")}"
+	vec_b=f"{vec(f"{ten_b}")}"
+	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và ${vec_a}.{vec_b}={tich_vh}$."
+	f" Tính $|{m}{vec_a}+{n}{vec_b}|$(kết quả làm tròn đến hàng phần mười)."
+	)
+	noi_dung=noi_dung.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
+
+	kq=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)
+	dap_an=f"{round(kq,1):.1f}".replace(".",",")
+
+	if tich_vh>0:
+		noi_dung_loigiai=(
+		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
+		f"$={m**2}.{a}^2+{2*m*n}.{tich_vh}+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
+	else:
+		noi_dung_loigiai=(
+		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
+		f"$={m**2}.{a}^2+{2*m*n}.({tich_vh})+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
+
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
+
+			
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C5_B4_08]-TL-M3. Cho hai vectơ a,b và độ dài |ma+nb|. Tính cos(a,b)
+def y7y7u_L10_C5_B4_08():
+	a=random.randint(1,5)
+	b=random.randint(1,5)
+
+	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
+	tich_vh=a*b*cos
+
+	m=random.choice([i for i in range(-5, 5) if i!=0])
+	n=random.choice([i for i in range(-5, 5) if i!=0])
+
+	ten_a=["a","m","u"]
+	ten_b=["b","n","v"]
+	i=random.randint(0,2)
+	ten_a, ten_b=ten_a[i], ten_b[i]
+
+	vec_a=f"{vec(f"{ten_a}")}"
+	vec_b=f"{vec(f"{ten_b}")}"
+	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
+
+	kq=f"{round(tich_vh/(a*b),1)}".replace(".",",")
+	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và $|{m}{vec_a}+{n}{vec_b}|={latex(nsimplify(modun))}$."
+	f" Tính $\\cos({vec_a},{vec_b})$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	noi_dung=noi_dung.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
+
+	
+	noi_dung_loigiai=(
+		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
+		f"$={m**2}.{a}^2+{2*m*n}.{vec_a}{vec_b}+{n**2}.{b}^2={(m*a)**2+(n*b)**2}+{2*m*n}.{vec_a}{vec_b}$.\n\n"
+		f"Ta có: $|{m}{vec_a}+{n}{vec_b}|^2={modun**2}\\Rightarrow {(m*a)**2+(n*b)**2}+{2*m*n}.{vec_a}{vec_b}={modun**2}$.\n\n"
+		f"$\\Rightarrow {vec_a}.{vec_b}={tich_vh}$.\n\n"
+		f"$\\cos({vec_a},{vec_b})=\\dfrac{{{vec_a}.{vec_b}}}{{|{vec_a}|.|{vec_b}|}}=\\dfrac{{{tich_vh}}}{{{a}.{b}}}={phan_so(tich_vh/(a*b))}$.\n\n"
+		f"Đáp án: {kq}"
+		)
+	
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}\n"\
+	f"\\end{{ex}}\n"
+	dap_an=kq
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D10_C5_B4_09]-TL-M3. Cho hai vectơ a,b có |a|, |b|, ab. Đặt x=ma+nb, y=pa+qb. Tính cos(x,y)
+def y7y7u_L10_C5_B4_09():
+	a=random.randint(1,5)
+	b=random.randint(1,5)
+	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
+	tich_vh=int(a*b*cos)
+
+	m=random.choice([i for i in range(-3, 3) if i!=0])
+	n=random.choice([i for i in range(-3, 3) if i!=0])
+
+	p=random.choice([i for i in range(-3, 3) if i!=0])
+	q=random.choice([i for i in range(-3, 3) if i!=0])
+	xy=m*p*a**2+n*q*b**2+(m*q+n*p)*tich_vh
+	kq=xy/(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh))*sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))
+	while math.isnan(kq):
+		a=random.randint(1,5)
+		b=random.randint(1,5)
+		cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])	
+
+		m=random.choice([i for i in range(-3, 3) if i!=0])
+		n=random.choice([i for i in range(-3, 3) if i!=0])
+
+		p=random.choice([i for i in range(-3, 3) if i!=0])
+		q=random.choice([i for i in range(-3, 3) if i!=0])		
+
+	ten_a=["a","m","u"]
+	ten_b=["b","n","v"]
+	i=random.randint(0,2)
+	ten_a, ten_b=ten_a[i], ten_b[i]
+
+	vec_a=f"{vec(f"{ten_a}")}"
+	vec_b=f"{vec(f"{ten_b}")}"
+	vec_x=f"{vec("x")}"
+	vec_y=f"{vec("y")}"
+	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
+
+	kq=f"{round(tich_vh/(a*b),1)}".replace(".",",")
+	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và ${vec_a}.{vec_b}={tich_vh}$."
+	f" Xét hai vectơ ${vec_x}={m}{vec_a}+{n}{vec_b}$ và ${vec_y}={p}{vec_a}+{q}{vec_b}$. Tính $\\cos({vec_x},{vec_y})$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	noi_dung=noi_dung.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
+
+	
+	modun_x=f"{latex(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh)))}"
+	modun_y=f"{latex(sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))}"
+	kq=xy/(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh))*sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))
+	kq=f"{round(kq,1)}".replace(".",",")
+	if tich_vh>0:
+		noi_dung_loigiai=(
+			f"${vec_x}.{vec_y}=({m}{vec_a}+{n}{vec_b}).({p}{vec_a}+{q}{vec_b})={m*p}{vec_a}^2+{n*q}{vec_b}^2+{m*q+n*p}{vec_a}.{vec_b}"
+			f"={m*p}.{a}^2+{n*q}.{b}^2++{m*q+n*p}.{tich_vh}"
+			f"={m*p*a**2+n*q*b**2+(m*q+n*p)*tich_vh}$.\n\n"
+
+			f"$|{vec_x}|=\\sqrt{{{vec_x}^2}}=\\sqrt{{({m}{vec_a}+{n}{vec_b})^2}}=\\sqrt{{{m**2}{vec_a}^2+{n**2}{vec_b}^2+{2*m*n}.{vec_a}.{vec_b}}}"
+			f"=\\sqrt{{{m**2}.{a}^2+{n**2}.{b}^2+{2*m*n}.{tich_vh}}}"
+			f"={latex(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh)))}$.\n\n"
+
+			f"$|{vec_y}|=\\sqrt{{{vec_y}^2}}=\\sqrt{{({p}{vec_a}+{q}{vec_b})^2}}=\\sqrt{{{p**2}{vec_a}^2+{q**2}{vec_b}^2+{2*p*q}.{vec_a}.{vec_b}}}"
+			f"=\\sqrt{{{p**2}.{a}^2+{q**2}.{b}^2+{2*p*q}.{tich_vh}}}"
+			f"={latex(sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))}$.\n\n"
+
+			f"$\\cos({vec_x},{vec_y})=\\dfrac{{{vec_x}.{vec_y}}}{{|{vec_x}|.|{vec_y}|}}=\\dfrac{{{xy}}}{{{modun_x}.{modun_y}}}\\approx {kq}$\n\n"
+
+			f"Đáp án: {kq}"
+			)
+	else:
+		noi_dung_loigiai=(
+			f"${vec_x}.{vec_y}=({m}{vec_a}+{n}{vec_b}).({p}{vec_a}+{q}{vec_b})={m*p}{vec_a}^2+{n*q}{vec_b}^2+{m*q+n*p}{vec_a}.{vec_b}"
+			f"={m*p}.{a}^2+{n*q}.{b}^2++{m*q+n*p}.({tich_vh})"
+			f"={m*p*a**2+n*q*b**2+(m*q+n*p)*tich_vh}$.\n\n"
+
+			f"$|{vec_x}|=\\sqrt{{{vec_x}^2}}=\\sqrt{{({m}{vec_a}+{n}{vec_b})^2}}=\\sqrt{{{m**2}{vec_a}^2+{n**2}{vec_b}^2+{2*m*n}.{vec_a}.{vec_b}}}"
+			f"=\\sqrt{{{m**2}.{a}^2+{n**2}.{b}^2+{2*m*n}.({tich_vh})}}"
+			f"={latex(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh)))}$.\n\n"
+
+			f"$|{vec_y}|=\\sqrt{{{vec_y}^2}}=\\sqrt{{({p}{vec_a}+{q}{vec_b})^2}}=\\sqrt{{{p**2}{vec_a}^2+{q**2}{vec_b}^2+{2*p*q}.{vec_a}.{vec_b}}}"
+			f"=\\sqrt{{{p**2}.{a}^2+{q**2}.{b}^2+{2*p*q}.({tich_vh})}}"
+			f"={latex(sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))}$.\n\n"
+
+			f"$\\cos({vec_x},{vec_y})=\\dfrac{{{vec_x}.{vec_y}}}{{|{vec_x}|.|{vec_y}|}}=\\dfrac{{{xy}}}{{{modun_x}.{modun_y}}}\\approx {kq}$\n\n"
+
+			f"Đáp án: {kq}"
+			)
+
+	
+	noi_dung_loigiai=noi_dung_loigiai.replace("++","+").replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[oly]{{{kq}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}\n"
+	f"\\end{{ex}}\n")
+
+	dap_an=kq
+
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 	

@@ -10,6 +10,11 @@ def hien_phan_so(t):
     m=latex(Rational(t).limit_denominator(1000000000000))
     return m
 
+#Trả về dạng phân số 
+def phan_so(t):
+    m=latex(Rational(t).limit_denominator(10000000000000))
+    return m
+
 def tao_dau(a):
     dau="+"
     if a<0 or a==0:
@@ -1671,3 +1676,239 @@ def npl_mk_L10_C3_B2_13():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")      
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C3_B2_14]-SA-M2. Tìm hệ số của hàm bậc hai có đồ thị qua 2 điểm.
+def npl_mk_L10_C3_B2_14():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-7, 7) if i!=0])
+    c = random.choice([i for i in range(-7, 7) if i!=0])
+    f=a*x**2+b*x+c
+
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    points=points[0:2]
+    points.sort()
+    A,B=points
+
+    x_1=random.randint(-5,6)
+    x_2=random.choice([x for x in range(-5, 6) if x != a])
+    y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
+
+    m = random.choice([i for i in range(1, 3) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+    ta,tb,tc=sp.symbols("a b c")
+
+    chon=random.randint(1,3)
+    
+    if chon==1:        
+        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+bx+{c}$ đi qua các điểm ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$."
+        f" Tính $P={latex(m*ta+n*tb)}$."
+        )
+        dap_an=m*a+n*b
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1+c)}={y_1} \\\\ \n\
+        {latex(ta*x_2**2+tb*x_2+c)}={y_2}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1)}={y_1-c} \\\\ \n\
+        {latex(ta*x_2**2+tb*x_2)}={y_2-c}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        b={b}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*ta+n*tb)}={dap_an}$." )    
+    
+    if chon==2:
+        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y={latex(a*x**2)}+bx+c$ đi qua các điểm ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$."
+        f" Tính $P={latex(m*tb+n*tc)}$."
+        )
+        dap_an=m*b+n*c
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(a*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(a*x_2**2+tb*x_2+tc)}={y_2}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(tb*x_1+tc)}={y_1-a*x_1**2} \\\\ \n\
+        {latex(tb*x_2+tc)}={y_2-a*x_2**2}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        b={b} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*tb+n*tc)}={dap_an}$." )
+
+    if chon==3:        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+{latex(b*x)}+c$ đi qua các điểm ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$."
+        f" Tính $P={latex(m*ta+n*tc)}$."
+        )
+
+        dap_an=m*a+n*c
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+b*x_1+tc)}={y_1} \\\\ \n\
+        {latex(ta*x_2**2+b*x_2+tc)}={y_2}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tc)}={y_1-b*x_1} \\\\ \n\
+        {latex(ta*x_2**2+tc)}={y_2-b*x_2}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*ta+n*tc)}={dap_an}$." )
+
+    noi_dung=noi_dung.replace("+-","-")
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B2_15]-SA-M2. Tìm hệ số của hàm bậc hai có đồ thị qua điểm và có trục đối xứng.
+def npl_mk_L10_C3_B2_15():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-7, 7) if i!=0])
+    c = random.choice([i for i in range(-7, 7) if i!=0])
+    f=a*x**2+b*x+c
+
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    points=points[0:2]
+    points.sort()
+    A,B=points
+
+    x_1=random.randint(-5,6)
+    x_2=random.choice([x for x in range(-5, 6) if x != a])
+    y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
+
+    m = random.choice([i for i in range(1, 3) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+    ta,tb,tc=sp.symbols("a b c")
+
+    x_0=-b/(2*a)
+
+    chon=random.randint(1,2)    
+    
+    if chon==1:
+        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+bx+{c}$ đi qua điểm ${A}({x_1};{y_1})$ và nhận đường thẳng $x={phan_so(x_0)}$ làm trục đối xứng."
+        f" Tính $P={latex(m*ta+n*tb)}$."
+        )
+        dap_an=m*a+n*b
+
+        noi_dung_loigiai=(
+        f"Theo đề bài nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1+c)}={y_1} \\\\ \n\
+        {latex(-tb/(2*ta))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1)}={y_1-c} \\\\ \n\
+        {latex(-2*ta*x_0-tb)}=0\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        b={b}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*ta+n*tb)}={dap_an}$." )    
+    
+    if chon==2:
+        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y={latex(a*x**2)}+bx+c$ đi qua điểm ${A}({x_1};{y_1})$ và nhận đường thẳng $x={phan_so(x_0)}$ làm trục đối xứng."
+        f" Tính $P={latex(m*tb+n*tc)}$."
+        )
+        dap_an=m*b+n*c
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(a*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(-tb/(2*a))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(tb*x_1+tc)}={y_1-a*x_1**2} \\\\ \n\
+        b={b}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        b={b} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*tb+n*tc)}={dap_an}$." )
+
+    if chon==3:        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+{latex(b*x)}+c$ đi qua điểm ${A}({x_1};{y_1})$ và nhận đường thẳng $x={phan_so(x_0)}$ làm trục đối xứng."
+        f" Tính $P={latex(m*ta+n*tc)}$."
+        )
+
+        dap_an=m*a+n*c
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+b*x_1+tc)}={y_1} \\\\ \n\
+        {latex(-b/(2*ta))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tc)}={y_1-b*x_1} \\\\ \n\
+        a={a}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*ta+n*tc)}={dap_an}$." )
+
+    noi_dung=noi_dung.replace("+-","-")
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

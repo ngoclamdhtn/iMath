@@ -812,7 +812,7 @@ def gh11gh_L11_C3_B1_10():
     v1=u1+random.randint(3,4)
     if v1==0:v1=random.randint(1,3)
     dv= random.choice([i for i in range(-5, 6) if i!=0])
-    vn=f"{latex(expand(v1+(n-1)*du))}"
+    vn=f"{latex(expand(v1+(n-1)*dv))}"
     v2=v1+dv
     v3=v2+dv
     v4=v3+dv
@@ -1270,9 +1270,9 @@ def gh11gh_L11_C3_B1_14():
     S1=f"{latex(n/2*(2*u1+(n-1)*du))}"
 
     v1=u1+random.randint(3,4)
-    if v1==0:v1=random.randint(1,3)
+    if v1==0: v1=random.randint(1,3)
     dv= random.choice([i for i in range(-5, 6) if i!=0])
-    vn=f"{latex(expand(v1+(n-1)*du))}"
+    vn=f"{latex(expand(v1+(n-1)*dv))}"
     v2=v1+dv
     v3=v2+dv
     v4=v3+dv
@@ -1743,9 +1743,9 @@ def gh11gh_L11_C3_B2_07():
         kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}" 
 
     pa_A= f"*${{{kq}}}$"
-    pa_B= f"*${{{kq2}}}$"
-    pa_C= f"*${{{kq3}}}$"
-    pa_D= f"*${{{kq4}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
