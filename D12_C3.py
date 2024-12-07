@@ -535,7 +535,7 @@ def ytrzz_L12_C3_B1_04():
 	Q3_false_round=f"{round(Q3_false,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,1):.1f}".replace(".",",")
+	Delta_Q_round=f"{round(Delta_Q,1):.2f}".replace(".",",")
 
 	Delta_Q_false=Delta_Q+random.randint(1,2)
 	Delta_Q_false_round=f"{round(Delta_Q_false,2):.2f}".replace(".",",")
@@ -546,7 +546,7 @@ def ytrzz_L12_C3_B1_04():
 	file_name=my_module.pdftoimage_timename(code)	
 
 	noi_dung=( f"Cho bảng số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như hình dưới đây."
-		f" Xét tính đúng-sai của các khẳng định sau:")	
+		f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")	
 
 	kq=gia_tri[so_nhom-1] - gia_tri[0]
 	
@@ -1259,8 +1259,8 @@ def ytrzz_L12_C3_B2_05():
 	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,1):.1f}".replace(".",",")
-	Delta_Q_false_round=f"{round(Delta_Q+random.randint(1,2),1):.1f}".replace(".",",")
+	Delta_Q_round=f"{round(Delta_Q,2):.2f}".replace(".",",")
+	Delta_Q_false_round=f"{round(Delta_Q+random.randint(1,2),2):.2f}".replace(".",",")
 
 	#@@@# Tính thủ công:
 
@@ -1297,7 +1297,7 @@ def ytrzz_L12_C3_B2_05():
 	file_name=my_module.pdftoimage_timename(code)
 	
 	noi_dung=( f"Cho bảng số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như hình dưới đây."
-		f" Xét tính đúng-sai của các khẳng định sau:")	
+		f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")	
 
 
 	so_trung_binh=f"{round(weighted_mean,2)}".replace(".",",")
@@ -1322,8 +1322,8 @@ def ytrzz_L12_C3_B2_05():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	dolech_round=f"{round(sqrt(variance),2):.1f}".replace(".",",")
-	dolech_false_round=f"{round(sqrt(variance)+random.choice([0.5,0.6,0.8,1]),2):.1f}".replace(".",",")
+	dolech_round=f"{round(sqrt(variance),2):.2f}".replace(".",",")
+	dolech_false_round=f"{round(sqrt(variance)+random.choice([0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 
 	kq3_T=f"* Độ lệch chuẩn của mẫu số liệu bằng ${{{dolech_round}}}$" 
 	kq3_F=f"Độ lệch chuẩn của mẫu số liệu bằng ${{{dolech_false_round}}}$"
@@ -1340,7 +1340,7 @@ def ytrzz_L12_C3_B2_05():
 	HDG=(f"Tổng tần số là: $N={N}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_1$:\n\n"	
-		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,2)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
 		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
@@ -1351,7 +1351,7 @@ def ytrzz_L12_C3_B2_05():
 		f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={phan_so(Q1)}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_3$:\n\n"
-		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,2)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
 		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"

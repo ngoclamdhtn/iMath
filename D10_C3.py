@@ -12,7 +12,7 @@ def hien_phan_so(t):
 
 #Trả về dạng phân số 
 def phan_so(t):
-    m=latex(Rational(t).limit_denominator(10000000000000))
+    m=latex(Rational(t).limit_denominator(1000000000000))
     return m
 
 def tao_dau(a):
@@ -1692,7 +1692,7 @@ def npl_mk_L10_C3_B2_14():
     A,B=points
 
     x_1=random.randint(-5,6)
-    x_2=random.choice([x for x in range(-5, 6) if x != a])
+    x_2=random.choice([x for x in range(-5, 6) if x != x_1])
     y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
 
     m = random.choice([i for i in range(1, 3) if i!=0])
@@ -1809,7 +1809,7 @@ def npl_mk_L10_C3_B2_15():
     A,B=points
 
     x_1=random.randint(-5,6)
-    x_2=random.choice([x for x in range(-5, 6) if x != a])
+    x_2=random.choice([x for x in range(-5, 6) if x != x_1])
     y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
 
     m = random.choice([i for i in range(1, 3) if i!=0])
@@ -1818,7 +1818,7 @@ def npl_mk_L10_C3_B2_15():
 
     x_0=-b/(2*a)
 
-    chon=random.randint(1,2)    
+    chon=random.randint(1,3)    
     
     if chon==1:
         
@@ -1912,3 +1912,393 @@ def npl_mk_L10_C3_B2_15():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B2_16]-SA-M2. Tìm hệ số của hàm bậc hai có tọa độ đỉnh
+def npl_mk_L10_C3_B2_16():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-7, 7) if i!=0])
+    c = random.choice([i for i in range(-7, 7) if i!=0])
+    f=a*x**2+b*x+c
+
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    points=points[0:2]
+    points.sort()
+    A,B=points
+
+    x_1=random.randint(-5,6)
+    x_2=random.choice([x for x in range(-5, 6) if x != x_1])
+    y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
+
+    m = random.choice([i for i in range(1, 3) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+    ta,tb,tc=sp.symbols("a b c")
+
+    x_0=-b/(2*a)
+    y_0=f.subs(x,x_0)
+
+    chon=random.randint(1,3)    
+    
+    if chon==1:
+        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+bx+{c}$ có đỉnh là điểm $I({phan_so(x_0)};{phan_so(y_0)})$."
+        f" Tính $P={latex(m*ta+n*tb)}$."
+        )
+        dap_an=m*a+n*b
+
+        noi_dung_loigiai=(
+        f"Theo đề bài nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1+c)}={y_1} \\\\ \n\
+        {latex(-tb/(2*ta))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1)}={y_1-c} \\\\ \n\
+        {latex(-2*ta*x_0-tb)}=0\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        b={b}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*ta+n*tb)}={dap_an}$." )    
+    
+    if chon==2:
+        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y={latex(a*x**2)}+bx+c$ có đỉnh là điểm $I({phan_so(x_0)};{phan_so(y_0)})$."
+        f" Tính $P={latex(m*tb+n*tc)}$."
+        )
+        dap_an=m*b+n*c
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(a*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(-tb/(2*a))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(tb*x_1+tc)}={y_1-a*x_1**2} \\\\ \n\
+        b={b}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        b={b} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*tb+n*tc)}={dap_an}$." )
+
+    if chon==3:        
+        noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+{latex(b*x)}+c$ có đỉnh là điểm $I({phan_so(x_0)};{phan_so(y_0)})$."
+        f" Tính $P={latex(m*ta+n*tc)}$."
+        )
+
+        dap_an=m*a+n*c
+
+        noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+b*x_1+tc)}={y_1} \\\\ \n\
+        {latex(-b/(2*ta))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tc)}={y_1-b*x_1} \\\\ \n\
+        a={a}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+        f"$P={latex(m*ta+n*tc)}={dap_an}$." )
+
+    noi_dung=noi_dung.replace("+-","-")    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B2_17]-SA-M2. Tìm 3 hệ số của hàm bậc hai có đồ thị đi qua 3 điểm.
+def npl_mk_L10_C3_B2_17():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.choice([i for i in range(-5, 5) if i!=0])
+    c = random.choice([i for i in range(-7, 7) if i!=0])
+    f=a*x**2+b*x+c
+
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    points=points[0:3]
+    points.sort()
+    A,B,C=points
+
+    x_1=random.randint(-4,4)
+    x_2=random.choice([x for x in range(-5, 4) if x != x_1])
+    x_3=random.choice([x for x in range(-5, 5) if x != x_1 and x != x_2])
+    y_1,y_2,y_3=f.subs(x,x_1), f.subs(x,x_2), f.subs(x,x_3)
+
+    m = random.choice([i for i in range(1, 3) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+    p = random.choice([i for i in range(-3, 3) if i!=0])
+    ta,tb,tc=sp.symbols("a b c")
+
+    noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+bx+c$ đi qua các điểm ${A}({x_1};{y_1})$, ${B}({x_2};{y_2})$ và ${C}({x_3};{y_3})$."
+        f" Tính $P={latex(m*ta+n*tb+p*tc)}$.")
+    dap_an=m*a+n*b+p*c
+
+    noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$, ${B}({x_2};{y_2})$ và ${C}({x_3};{y_3})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(ta*x_2**2+tb*x_2+tc)}={y_2}\\\\ \n\
+        {latex(ta*x_3**2+tb*x_3+tc)}={y_3}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow\\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        b={b} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+
+        f"Vậy $P={latex(m*ta+n*tb+p*tc)}={dap_an}$." )
+
+    noi_dung=noi_dung.replace("+-","-")    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B2_18]-SA-M3. Tìm 3 hệ số của hàm bậc hai có đỉnh và đồ thị đi qua 1 điểm.
+def npl_mk_L10_C3_B2_18():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.choice([2,4])*a
+    c = random.choice([i for i in range(-7, 7) if i!=0])
+    f=a*x**2+b*x+c
+
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    A=points[0]  
+ 
+    x_0=int(-b/(2*a))
+    x_1=random.choice([i for i in range(-5, 5) if i!=x_0])
+
+    y_0,y_1=f.subs(x,x_0), f.subs(x,x_1)
+
+    m = random.choice([i for i in range(1, 3) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+    p = random.choice([i for i in range(-3, 3) if i!=0])
+    ta,tb,tc=sp.symbols("a b c")
+
+    noi_dung = (
+        f"Biết đồ thị hàm số $y=ax^2+bx+c$ đi qua điểm ${A}({x_1};{y_1})$ và có đỉnh $I({phan_so(x_0)};{phan_so(y_0)})$."
+        f" Tính $P={latex(m*ta+n*tb+p*tc)}$.")
+    dap_an=m*a+n*b+p*c
+
+    noi_dung_loigiai=(
+        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và có đỉnh $I({phan_so(x_0)};{phan_so(y_0)})$ nên ta có:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(ta*x_0**2+tb*x_0+tc)}={phan_so(y_0)}\\\\ \n\
+        {latex(-tb/(2*ta))}={phan_so(x_0)}\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(ta*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(ta*x_0**2+tb*x_0+tc)}={phan_so(y_0)}\\\\ \n\
+        {latex(-2*ta*x_0+tb)}=0\n\
+        \\end{{array}} \\right.$"
+
+        f"$\\Rightarrow\\left\\{{ \\begin{{array}}{{l}} \n\
+        a={a} \\\\ \n\
+        b={b} \\\\ \n\
+        c={c}\n\
+        \\end{{array}} \\right.$\n\n"
+
+        f"Vậy $P={latex(m*ta+n*tb+p*tc)}={dap_an}$." )
+
+    noi_dung=noi_dung.replace("+-","-")    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B2_19]-SA-M3. Bài toán thực tế tìm tiền lãi lớn nhất
+def npl_mk_L10_C3_B2_19():
+    x=sp.symbols("x")
+    
+    t = random.randint(20, 40)
+    p = t+random.randint(5,20)
+    
+    while (t + p) % 2 != 0:       
+        
+        t = random.randint(20, 40)
+        p = t+random.randint(5,20)
+
+    f=(p-x)*(x-t)
+    a,b,c=-1, t+p, -t*p
+    x_0=int(-b/(2*a))
+    y_0=f.subs(x,x_0)
+
+    ten=random.choice(["A","B","X","Y","Z"])
+    code_hinh=(f"\\begin{{tikzpicture}} \n\
+                \\tkzTabInit[nocadre=false, lgt=1, espcl=1.5] \n\
+                {{$x$ /1,$y$ /2}}\n\
+                {{$0$, ${x_0}$, $+\\infty$}} \n\
+                \\tkzTabVar{{-/$-\\infty$ , +/ ${y_0}$ /, -/$-\\infty$ /}} \n\
+                \\end{{tikzpicture}}\n")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Một cửa hàng nhập một sản phẩm {ten} với giá là ${{{t}}}(USD)$ ."
+    f" Cửa hàng ước tính rằng nếu sản phẩm này được bán với giá ${{x}}(USD)$ thì mỗi tháng khách hàng sẽ mua $({p}-x)$ sản phẩm."
+    f" Hỏi cửa hàng bán sản phẩm {ten} giá bao nhiêu thì thu được nhiều lãi nhất?"
+    )
+    dap_an=x_0
+
+    noi_dung_loigiai=(
+    f"Gọi ${{y}}$ là số tiền lãi. Khi đó:\n\n"
+    f"$y=({p}-x)(x-{t})={latex(expand(f))}$.\n\n"
+    f"Bảng biến thiên:\n {file_name}\n"
+    f"Ta thấy $y_{{max}}={phan_so(y_0)}$ khi $x={x_0}$."
+    )
+
+    noi_dung_loigiai_latex=(
+    f"Gọi ${{y}}$ là số tiền lãi. Khi đó:\n\n"
+    f"$y=({p}-x)(x-{t})={latex(expand(f))}$.\n\n"
+    f"Bảng biến thiên:\n\n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"Ta thấy $y_{{max}}={phan_so(y_0)}$ khi $x={x_0}$."
+    )  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B2_20]-SA-M3. Bài toán đường đi quả bóng
+def npl_mk_L10_C3_B2_20():
+    t=sp.symbols("t")
+    m=random.randint(-2,-1)
+    n=random.randint(5,6)   
+
+    c=random.choice([0.4, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2])
+    st_c=f"{c}".replace(".",",")
+    k=c/(m*n)
+
+    f=k*(t-m)*(t-n)
+    a,b=k, -k*m-k*n    
+
+    t1=random.choice([0.5, 0.6, 0.8, 1, 1.2, 1.3, 1.5 ])
+    t2=t1+random.choice([0.5, 1, 0.8, 2, 2.2, 2.5, 3.5])
+
+    st_1=f"{t1}".replace(".",",")
+    st_2=f"{t2}".replace(".",",")
+
+    h1, h2 = f.subs(t,t1), f.subs(t,t2)
+
+    chon=random.randint(1,2)
+
+    noi_dung_loigiai=(
+    f"Giả sử $h(t)=at^2+bt+c$ là độ cao của quả bóng theo thời gian ${{t}}$.\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    h(0)={st_c} \\\\ \n\
+    h({st_1})={phan_so(h1)}\\\\ \n\
+    h({st_2})={phan_so(h2)}\n\
+    \\end{{array}} \\right.$"
+
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    c={st_c} \\\\ \n\
+    a.{st_1}^2+b.{st_1}+{st_c}={phan_so(h1)}\\\\ \n\
+    a.{st_2}^2+b.{st_2}+{st_c}={phan_so(h2)}\n\
+    \\end{{array}} \\right.$ \n"
+
+    f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    a={phan_so(a)} \\\\ \n\
+    b={phan_so(b)} \\\\ \n\
+    c={phan_so(c)}\n\
+    \\end{{array}} \\right.$\n\n"
+
+    f"$h(t)={phan_so(a)}t^2+{phan_so(b)}t+{phan_so(c)}$.\n\n" )
+    
+    if chon==1:
+        x_0=-b/(2*a)
+        y_0=f.subs(t,x_0)
+        noi_dung = (
+    f"Một quả bóng được cầu thủ sút lên rồi rơi xuống theo quỹ đạo là một parabol."
+    f" Biết rằng ban đầu quả bóng được sút lên từ độ cao {st_c} m,"
+    f" sau đó {st_1} giây quả bóng đạt độ cao ${phan_so(h1)}$ m và sau {st_2} giây quả bóng đạt độ cao ${phan_so(h2)}$ m."
+    f" Hỏi độ cao cao nhất mà quả bóng đạt được là bao nhiêu mét (kết quả làm tròn đến hàng phần mười)?"
+    )
+        dap_an=f"{round(y_0,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai+=f"Độ cao của quả bóng đạt được bằng $h_{{max}}={phan_so(y_0)}={dap_an}$ m khi $t={phan_so(x_0)}$."
+    
+    if chon==2:
+        t0=1+random.randint(1,10)/10
+        while t0==t1 or t0==t2:
+            t0=random.choice([1+random.randint(1,10)/10, 2+random.randint(1,10)/10, 3+random.randint(1,10)/10])
+
+        st_t0=f"{round(t0,1):.1f}".replace(".",",")
+        dap_an=f"{round(f.subs(t,t0),1):.1f}".replace(".",",")
+
+        noi_dung = (
+    f"Một quả bóng được cầu thủ sút lên rồi rơi xuống theo quỹ đạo là một parabol."
+    f" Biết rằng ban đầu quả bóng được sút lên từ độ cao {st_c} m,"
+    f" sau đó {st_1} giây quả bóng đạt độ cao ${phan_so(h1)}$ m và sau {st_2} giây quả bóng đạt độ cao ${phan_so(h2)}$ m."
+    f" Tìm độ cao mà quả bóng đạt được sau {st_t0} giây kể từ khi sút bóng (kết quả làm tròn đến hàng phần mười)?"
+    )
+        noi_dung_loigiai+=f"Độ cao của quả bóng đạt được khi $t={st_t0}$ là $h={dap_an}$ m."  
+
+     
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+

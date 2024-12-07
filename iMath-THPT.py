@@ -1684,6 +1684,22 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_16]-SA-M2. Tìm y=ax^2+bx+c có tọa độ đỉnh."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_17]-SA-M2. Tìm hệ số của hàm bậc 2 có đồ thị đi qua 3 điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_18]-SA-M2. Tìm hệ số của hàm bậc 2 đồ thị có đỉnh + qua 1 điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_19]-SA-M3. Bài toán thực tế tìm tiền lãi lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 # LỚP 10 - CHƯƠNG 4 - HỆ THỨC LƯỢNG TRONG TAM GIÁC
                 L10_C4 = QTreeWidgetItem(L10, ["Chương 4 - Hệ thức lượng trong tam giác"])
                 L10_C4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -10433,11 +10449,28 @@ class Ui_MainWindow(object):
 
                                                 #[D10_C3_B2_14]-SA-M2. Tìm y=ax^2+bx+c có đồ thị qua 2 điểm. 
                                                 if dang_toan == "[D10_C3_B2_14]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C3.npl_mk_L10_C3_B2_14()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_14()
 
                                                 #[D10_C3_B2_15]-SA-M2. Tìm y=ax^2+bx+c có đồ thị qua điểm và có trục đối xứng.
                                                 if dang_toan == "[D10_C3_B2_15]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C3.npl_mk_L10_C3_B2_15()                                   
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_15()
+
+                                                #[D10_C3_B2_16]-SA-M2. Tìm hệ số của hàm bậc hai có tọa độ đỉnh
+                                                if dang_toan == "[D10_C3_B2_16]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_16()
+
+                                                #[D10_C3_B2_17]-SA-M2. Tìm 3 hệ số của hàm bậc hai có đồ thị đi qua 3 điểm.
+                                                if dang_toan == "[D10_C3_B2_17]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_17()
+
+                                                #[D10_C3_B2_18]-SA-M3. Tìm 3 hệ số của hàm bậc hai có đỉnh và đồ thị đi qua 1 điểm.
+                                                if dang_toan == "[D10_C3_B2_18]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_18()
+
+                                                #[D10_C3_B2_19]-SA-M3. Bài toán thực tế tìm tiền lãi cao nhất
+                                                if dang_toan == "[D10_C3_B2_19]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_19()
+                                                                             
 
 
                                             #CHƯƠNG 4 - HỆ THỨC LƯỢNG TRONG TAM GIÁC 

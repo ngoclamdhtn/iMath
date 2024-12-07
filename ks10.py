@@ -257,8 +257,8 @@ def D10_C3_B2_14():
 
 
 
-#[D10_C3_B2_05]-TL-M3. Toán thực tế ứng dụng bpt bậc nhất 2 ẩn
-def D10_C3_B2_05():
+#[D10_C2_B2_05]-TL-M3. Toán thực tế ứng dụng bpt bậc nhất 2 ẩn
+def D10_C2_B2_05():
     a1=random.randint(1,5)
     a2=random.choice([i for i in range(1,5) if i!=a1])
     x0=random.randint(1,5)
@@ -502,8 +502,8 @@ def D10_C3_B2_16():
 
 
 
-#[D10_C15_B3_06]-TL-M4. Bài tổng hợp 
-def D10_C15_B3_06():
+#[D10_C5_B3_06]-TL-M4. Bài tổng hợp 
+def D10_C5_B3_06():
     a=random.randint(2,8)
     c=random.randint(1,5)
     b=(a+1)*c
@@ -549,7 +549,7 @@ def D10_C15_B3_06():
 
 
 
-#[D10_CX_B0_14]-TL-M3. Tổng hợp
+#[D10_CX_B0_14]-TF-M3. Tổng hợp(tìm toạ độ trực tâm)
 def D10_CX_B0_14():
 
 
@@ -611,10 +611,24 @@ def D10_CX_B0_14():
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq3_T=f"* $\\cos{{A}}= {latex( ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) )}$" 
-    kq3_F=f"$\\cos{{A}}= {latex( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1)+0.5)/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) )}$ "
-    kq3=random.choice([kq3_T, kq3_F])
-    HDG=f"$\\cos{{A}}= {latex( ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) )}$"
+    if ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) <0:
+    
+        m=round( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 ) 
+        m=str(m).replace(".",",")
+
+        kq3_T=f"* $\\widehat{{A}}$ là góc tù" 
+        kq3_F=f"$\\widehat{{A}}$ là góc nhọn"
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=f"$\\cos{{A}}\\approx {m} < 0$ nên $\\widehat{{A}}$ là góc tù " 
+    if ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) >0:
+    
+        m=round( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 ) 
+        m=str(m).replace(".",",")
+
+        kq3_T=f"* $\\widehat{{A}}$ là góc nhọn" 
+        kq3_F=f"$\\widehat{{A}}$ là góc tù"
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=f"$\\cos{{A}}\\approx {round( ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 )} > 0$ nên $\\widehat{{A}}$ là góc nhọn "
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -625,8 +639,8 @@ def D10_CX_B0_14():
 
     truc_tam_x, truc_tam_y = tim_truc_tam(A, B, C)
     debai_word= f"{noi_dung}\n"
-    kq4_T=f"*Trực tâm tam giác $H\\left({phan_so(truc_tam_x)}, {phan_so(truc_tam_y)}\\right)$ "
-    kq4_F=f"Trực tâm tam giác $H\\left({phan_so(truc_tam_x+random.randint(1,2))}, {phan_so(truc_tam_y+random.randint(1,2))}\\right)$  " 
+    kq4_T=f"*Toạ độ trực tâm tam giác là $H\\left({phan_so(truc_tam_x)}, {phan_so(truc_tam_y)}\\right)$ "
+    kq4_F=f"Toạ độ trực tâm tam giác là $H\\left({phan_so(truc_tam_x+random.randint(1,2))}, {phan_so(truc_tam_y+random.randint(1,2))}\\right)$  " 
     kq4=random.choice([kq4_T, kq4_F])
     HDG=f"Trực tâm tam giác $H\\left({phan_so(truc_tam_x)}, {phan_so(truc_tam_y)}\\right)$"
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -682,5 +696,367 @@ def D10_CX_B0_14():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+
+#[D10_C5_B3_06]-TF-M3. Tổng hợp vecto
+def D10_C5_B3_06():
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    points=points[0:6]
+    points.sort()
+    A,B,C,M, G, I=points 
+    k =random.choice([i for i in range(3,6)])
+    a=random.choice([i for i in range(1,6) if i!=3])
+    b=random.choice([i for i in range(1,6) if i!=3])
+    if a==b==1: a=a+random.randint(1,2)
+    noi_dung = f"Cho tam giác ${{{A}{B}{C}}}$ có điểm ${{{M}}}$ là trung điểm của ${{{B}{C}}}$, điểm ${{{G}}}$ là trọng tâm của tam giác. Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"*$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{C}{B}}}= \\overrightarrow{{{A}{C}}} $" 
+    kq1_F=f"$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{C}{B}}}= \\overrightarrow{{{C}{A}}} $ "
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{C}{B}}}= \\overrightarrow{{{A}{C}}} $ "
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*$\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}= 2\\overrightarrow{{{A}{M}}} $ "
+    kq2_F=random.choice([f" $\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}= {k}\\overrightarrow{{{A}{M}}} $", f" $\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}=\\overrightarrow{{{A}{M}}} $"])
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"$\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}= 2\\overrightarrow{{{A}{M}}} $"
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $\\overrightarrow{{{A}{G}}}= {phan_so(1/3)} \\overrightarrow{{{A}{C}}}+ {phan_so(1/3)}   \\overrightarrow{{{A}{B}}} $" 
+    kq3_F=f"$\\overrightarrow{{{A}{G}}}= {phan_so(a/3)}  \\overrightarrow{{{A}{C}}}+ {phan_so(b/3)} \\overrightarrow{{{A}{B}}} $ "
+    kq3=random.choice([kq3_T, kq3_F])
+
+    HDG=(f"$\\overrightarrow{{{A}{G}}}  ={phan_so(2/3)} \\overrightarrow{{{A}{M}}}  = {phan_so(2/3)} \\left( {phan_so(1/2)}\\overrightarrow{{{A}{C}}}+{phan_so(1/2)}\\overrightarrow{{{A}{B}}} \\right)  "
+    f"= {phan_so(1/3)}\\overrightarrow{{{A}{C}}}+ {phan_so(1/3)}\\overrightarrow{{{A}{B}}} $")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trung điểm của đoạn ${{{A}{G}}}$  "
+    kq4_F=random.choice([f"Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trung điểm của đoạn ${{{M}{G}}}$", f"Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trung điểm của đoạn ${{{A}{M}}}$", f"Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trọng tâm của tam giác ${{{A}{B}{M}}}$" ]) 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f" $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ {{4}}\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ \n\n "
+        f"$2\\overrightarrow{{{I}{M}}}+ {{4}}\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$\n\n "
+        f" $\\overrightarrow{{{I}{M}}}={{-2}}\\overrightarrow{{{I}{A}}} $ \n\n"
+        f" Vậy ${{{I}}}$ là trung điểm của đoạn ${{{A}{G}}}$.")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+#[D10_C2_B2_06]-M3. Tìm m để hệ bất phương trình vô nghiệm
+def D10_C2_B2_06():
+
+    x1=random.randint(-5,5)
+    x2=x1+random.randint(1,5) 
+    c=random.randint(1,5)
+    x, m=symbols("x, m")
+    a=random.randint(1,5) 
+    b=random.randint(1,5) 
+
+    chon=random.randint(1,4) 
+    if chon ==1:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} < 0 \\\\ \n\
+            {latex(a*x-b*m)}<0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} < 0$ suy ra $x \\in ({x1}; {x2})$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)}<0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right)$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} \\le {x1}$ hay $m \\le {phan_so(x1*a/b)}$")
+
+        kq=f" $m \\le {phan_so(x1*a/b)}$"
+        kq2=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+    if chon ==2:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} \\le 0 \\\\ \n\
+            {latex(a*x-b*m)} \\le 0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} \\le 0$ suy ra $x \\in \\left[ {x1}; {x2} \\right]$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)} \\le 0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right ]$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} < {x1}$ hay $m < {phan_so(x1*a/b)}$")
+
+        kq2=f" $m \\le {phan_so(x1*a/b)}$"
+        kq=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+
+    if chon ==3:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} \\le 0 \\\\ \n\
+            {latex(a*x-b*m)}<0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} \\le 0$ suy ra $x \\in \\left[{x1}; {x2} \\right]$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)}<0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right)$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} \\le {x1}$ hay $m \\le {phan_so(x1*a/b)}$")
+
+        kq=f" $m \\le {phan_so(x1*a/b)}$"
+        kq2=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+    if chon ==4:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} < 0 \\\\ \n\
+            {latex(a*x-b*m)} \\le 0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} < 0$ suy ra $x \\in ({x1}; {x2})$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)} \\le 0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right]$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} \\le {x1}$ hay $m \\le {phan_so(x1*a/b)}$")
+
+        kq=f" $m \\le {phan_so(x1*a/b)}$"
+        kq2=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan
+
+
+
+#[D10_C3_B2_17]-TL-M4. Tìm m để phương trình f(|x|)=m có nhiều nghiệm nhất
+def D10_C3_B2_17():
+    x=symbols("x")
+    a=random.randint(1,5)
+    x1=random.randint(1,4) 
+    x2=x1+random.randint(1,4)
+    u= (-a*(x2-x1)**2)/4
+    v=a*x1*x2   
+    kq=len([x for x in range(int(u+1), int(v)) if u < x < v])
+
+    noi_dung = f"Có bao nhiêu giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất."
+
+    noi_dung_loigiai=(f" Vẽ đồ thị hàm số $y={latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}$ \n\n"
+    f" Khi ${phan_so(u)}<m < {phan_so(v)}$ thì đường thẳng ${{y=m}}$ cắt đồ thị hàm số tại nhiều điểm nhất. \n\n"
+    f"Có ${{{kq}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất.")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an    
+
+
+
+
+#[D10_C3_B2_18]-TF-M4. Tìm m để phương trình f(|x|)=m có nghiệm thoả đk  
+def D10_C3_B2_18():
+    x=symbols("x")
+    a=random.randint(1,5)
+    x1=random.randint(1,4) 
+    x2=x1+random.randint(1,4)
+    x3=random.choice([i for i in range(-6,6) if i!=x1 and i!=x2])
+    f= a*(x3-x1)*(x3-x2)
+    u= (-a*(x2-x1)**2)/4
+    v=a*x1*x2   
+    kq=len([x for x in range(int(u+1), int(v)) if u < x < v])
+    noi_dung = f"Cho hàm số $y=f(x)={latex(expand(a*(x-x1)*(x-x2)))}$ có đồ thị là parabol ${{(P)}}$ . Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+    
+    kq3_T=f"*Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1+x2)/2)}; {phan_so(u)})$" 
+    kq3_F=f"Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1-x2)/2)}; {phan_so(u)})$ "
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1+x2)/2)}; {phan_so(u)})$ "
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*${{(P)}}$ cắt trục hoành tại hai điểm phân biệt là ${{({x1};0)}}$ và ${{({x2};0)}}$ "
+    kq2_F=random.choice([f"${{(P)}}$ cắt trục hoành tại hai điểm phân biệt là ${{({x1-1};0)}}$ và ${{({x2};0)}}$", f"${{(P)}}$ nằm hoàn toàn phía trên trục hoành", f"${{(P)}}$ nằm hoàn toàn phía dưới trục hoành" ])
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"${{(P)}}$ cắt trục hoành tại hai điểm phân biệt là ${{({x1};0)}}$ và ${{({x2};0)}}$  "
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq1_T=f"* ${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f)})$" 
+    kq1_F=f"${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f+1)})$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f)})$ "
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*Có ${{{kq}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất "
+    kq4_F=f"Có ${{{kq+random.randint(1,2)}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất " 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f" Vẽ đồ thị hàm số $y={latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}$ \n\n"
+    f" Khi ${phan_so(u)} <m < {phan_so(v)}$ thì đường thẳng ${{y=m}}$ cắt đồ thị hàm số tại nhiều điểm nhất. \n\n"
+    f"Có ${{{kq}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C3_B2_19]-TL-M3. Tính chiều cao của cổng Parabol
+def D10_C3_B2_19():
+    A=random.choice(["Nam", "Lam","Nghĩa", "Hà", "Khôi", "Quân", "Xuân", "Tâm", "Hoàng"])
+    x1=random.randint(5,20)
+    a= random.randint(-5, -1)
+    b=-x1*a 
+    x2=random.choice([0.5, 1, 1.5, 1.2, 1.3, 1.4, 1.6])
+    x=symbols("x")
+
+    c=a*x2**2+b*x2 
+    x0=-b/(2*a) 
+    y0=a*x0**2+b*x0 
+
+    x2=str(x2).replace(".",",")
+    c=str(round(c,2)).replace(".",",").replace(",0","")
+    y0=str(round(y0,1)).replace(".",",").replace(",0","")
+    kq=y0
+
+    noi_dung = f" Bạn {A} muốn đo chiều cao của một cái cổng hình Parabol. Biết khoảng cách giữa hai chân cổng là ${{{x1}}}$ mét, chiều cao của cổng tính từ điểm trên mặt đất cách chân cổng ${{{x2}}}$m là ${{{c}}}$m. Em hãy giúp {A} tính xem chiều cao của cổng là bao nhiêu. (Chỉ được làm tròn kết quả cuối cùng đến hàng phần mười)."
+
+    noi_dung_loigiai=(f" Chọn hệ trục toạ độ ${{Oxy}}$ sao cho một chân của cổng trùng gốc toạ độ, chân còn lại trên tia ${{Ox}}$. Khi đó cổng là một phần của Parabol có dạng ${{y=ax^{{2}}+bx }}$ \n\n"
+    f" Parabol đi qua các điểm có toạ độ $({x2}; {c})$ và $({x1}; 0)$ \n\n nên ta tìm được phương trình là $y={latex(a*x**2+b*x)}$.\n\n"
+    f" Chiều cao của cổng chính là $f \\left(\\dfrac{{-b}}{{2a}} \\right)= {kq}$ mét")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an    
 
 
