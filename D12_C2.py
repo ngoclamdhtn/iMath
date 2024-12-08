@@ -5016,7 +5016,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 			f" Gọi ${{{I}(m;n;p)}}$ là trung điểm của ${{{B}{M}}}$.")
 
 		if x+y+z==int(x+y+z):
-			dap_an=int(m1+m2+m3)
+			dap_an=int(x+y+z)
 			noi_dung+=f"Tính $m+n+p$."
 		else:
 			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
@@ -5054,7 +5054,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 			f" Gọi ${{{I}(m;n;p)}}$ là trung điểm của ${{{B}{M}}}$.")
 
 		if x+y+z==int(x+y+z):
-			dap_an=int(m1+m2+m3)
+			dap_an=int(x+y+z)
 			noi_dung+=f" Tính $m+n+p$."
 		else:
 			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
@@ -5092,7 +5092,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 			f" Gọi ${{{I}(m;n;p)}}$ là trung điểm của ${{{B}{M}}}$.")
 
 		if x+y+z==int(x+y+z):
-			dap_an=int(m1+m2+m3)
+			dap_an=int(x+y+z)
 			noi_dung+=f" Tính $m+n+p$."
 		else:
 			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
