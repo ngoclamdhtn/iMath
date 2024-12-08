@@ -797,7 +797,7 @@ def y7y7u_L10_C5_B2_03():
 	B1=random.choice(["B", "N", "Q", "G", "K"])
 	C1=random.choice(["C", "E", "D", "H ", "L"])	
 	
-	noi_dung=f"Cho các điểm ${A1}, {B1},{C1}$. Tìm khẳng định đúng."
+	noi_dung=f"Cho các điểm ${{{A1}, {B1},{C1}}}$. Tìm khẳng định đúng."
 
 	chon=random.randint(1,3)
 	if chon==1:
@@ -3051,6 +3051,157 @@ def y7y7u_L10_C5_B3_07():
 	f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+
+#[D10_C5_B3_08]-SA-M4. Cho điểm thỏa mãn hệ thức vectơ. Tính khoảng cách max.
+def y7y7u_L10_C5_B3_08():
+    a=random.randint(2,8)
+    c=random.randint(1,5)
+    b=(a+1)*c
+    e=str(round((sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)),1)).replace(".", ",").replace(".0", "")
+    
+    M=random.choice(["H ", "G", "D", "K", "O", "J", "E", "F", "N"])
+
+
+    chon=random.randint(1,2) 
+    if chon ==1:
+        noi_dung = (f" Cho tam giác ${{ABC}}$ đều cạnh bằng ${{{b}}}$ cm. ${{{M}}}$ là điểm thoả mãn hệ thức \n\n"
+        f" $\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid $."
+        f" Tính khoảng cách lớn nhất từ điểm ${{C}}$ đến điểm ${{{M}}}$ (kết quả làm tròn đến hàng phần mười).")
+
+        kq=str(round(sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)+c,1 )).replace(".", ",").replace(".0", "")
+        noi_dung_loigiai=(f" Gọi ${{I}}$ là điểm sao cho $\\overrightarrow{{IA}}+{a}\\overrightarrow{{IB}} = \\overrightarrow{{0}}$ \n\n"
+        f"$\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid  $\n\n "
+            f"  $\\mid {1+a}\\overrightarrow{{{M}I}} \\mid = \\mid \\overrightarrow{{BC}} \\mid $ \n\n"
+            f" ${M}I= {c} $ \n\n"
+            f" Ta có $AI={a*c} $ \n\n "
+            f" Áp dụng định lí cô sin ta có $IC=\\sqrt{{ IA^{{2}}+AC^{{2}} -2 \\cdot IA \\cdot AC \\cos{{60^{{\\circ}}}} }} \\approx {e}$ \n\n"
+            f" Khoảng cách lớn nhất từ ${{C}}$ đến ${{M}}$ là $IC+I{M}\\approx {kq}$")
+    if chon ==2:
+        noi_dung = (f" Cho tam giác ${{ABC}}$ đều cạnh bằng ${{{b}}}$ cm. ${{{M}}}$ là điểm thoả mãn hệ thức \n\n"
+        f" $\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid$."
+        f" Tính khoảng cách nhỏ nhất từ điểm ${{C}}$ đến điểm ${{{M}}}$ là (kết quả làm tròn đến hàng phần mười).")
+
+        kq=str(round(abs(sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)-c),1 )).replace(".", ",").replace(".0", "")
+        noi_dung_loigiai=(f" Gọi ${{I}}$ là điểm sao cho $\\overrightarrow{{IA}}+{a}\\overrightarrow{{IB}} = \\overrightarrow{{0}}$ \n\n"
+        f"$\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid  $\n\n "
+            f"  $\\mid {1+a}\\overrightarrow{{{M}I}} \\mid = \\mid \\overrightarrow{{BC}} \\mid $ \n\n"
+            f" ${M}I= {c} $ \n\n"
+            f" Ta có $AI={a*c} $ \n\n "
+            f" Áp dụng định lí cô sin ta có $IC=\\sqrt{{ IA^{{2}}+AC^{{2}} -2 \\cdot IA \\cdot AC \\cos{{60^{{\\circ}}}} }} \\approx {e}$ \n\n"
+            f" Khoảng cách nhỏ nhất từ ${{C}}$ đến ${{M}}$ là $IC-I{M}\\approx {kq}$")
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[only]{{{kq}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq 
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C5_B3_09]-TF-M4. Xét Đ_S: tổng hiệu vectơ, điểm thỏa mãn hệ thức vectơ
+def y7y7u_L10_C5_B3_09():
+
+    points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+    random.shuffle(points)
+    points=points[0:6]
+    points.sort()
+    A,B,C,M, G, I=points 
+    k =random.choice([i for i in range(3,6)])
+    a=random.choice([i for i in range(1,6) if i!=3])
+    b=random.choice([i for i in range(1,6) if i!=3])
+    if a==b==1: a=a+random.randint(1,2)
+    noi_dung = f"Cho tam giác ${{{A}{B}{C}}}$ có điểm ${{{M}}}$ là trung điểm của ${{{B}{C}}}$, điểm ${{{G}}}$ là trọng tâm của tam giác. Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"*$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{C}{B}}}= \\overrightarrow{{{A}{C}}} $" 
+    kq1_F=f"$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{C}{B}}}= \\overrightarrow{{{C}{A}}} $ "
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{C}{B}}}= \\overrightarrow{{{A}{C}}} $ "
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*$\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}= 2\\overrightarrow{{{A}{M}}} $ "
+    kq2_F=random.choice([f" $\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}= {k}\\overrightarrow{{{A}{M}}} $", f" $\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}=\\overrightarrow{{{A}{M}}} $"])
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"$\\overrightarrow{{{A}{B}}}+\\overrightarrow{{{A}{C}}}= 2\\overrightarrow{{{A}{M}}} $"
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $\\overrightarrow{{{A}{G}}}= {phan_so(1/3)} \\overrightarrow{{{A}{C}}}+ {phan_so(1/3)}   \\overrightarrow{{{A}{B}}} $" 
+    kq3_F=f"$\\overrightarrow{{{A}{G}}}= {phan_so(a/3)}  \\overrightarrow{{{A}{C}}}+ {phan_so(b/3)} \\overrightarrow{{{A}{B}}} $ "
+    kq3=random.choice([kq3_T, kq3_F])
+
+    HDG=(f"$\\overrightarrow{{{A}{G}}}  ={phan_so(2/3)} \\overrightarrow{{{A}{M}}}  = {phan_so(2/3)} \\left( {phan_so(1/2)}\\overrightarrow{{{A}{C}}}+{phan_so(1/2)}\\overrightarrow{{{A}{B}}} \\right)  "
+    f"= {phan_so(1/3)}\\overrightarrow{{{A}{C}}}+ {phan_so(1/3)}\\overrightarrow{{{A}{B}}} $")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trung điểm của đoạn ${{{A}{G}}}$  "
+    kq4_F=random.choice([f"Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trung điểm của đoạn ${{{M}{G}}}$", f"Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trung điểm của đoạn ${{{A}{M}}}$", f"Điểm ${{{I}}}$ thoả mãn hệ thức $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ 4\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ là trọng tâm của tam giác ${{{A}{B}{M}}}$" ]) 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f" $\\overrightarrow{{{I}{B}}}+\\overrightarrow{{{I}{C}}}+ {{4}}\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$ \n\n "
+        f"$2\\overrightarrow{{{I}{M}}}+ {{4}}\\overrightarrow{{{I}{A}}} =\\overrightarrow{{0}}$\n\n "
+        f" $\\overrightarrow{{{I}{M}}}={{-2}}\\overrightarrow{{{I}{A}}} $ \n\n"
+        f" Vậy ${{{I}}}$ là trung điểm của đoạn ${{{A}{G}}}$.")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 #------------------------------------------------------------------------>
 
 #Bài 4 - Tích vô hướng của 2 vectơ 

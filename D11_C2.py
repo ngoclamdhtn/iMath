@@ -1832,15 +1832,19 @@ def mn8mn_L11_C2_B3_02():
         u2=u1 + random.randint(1,6)
     n = random.randint(1,10)
     
-    kq=latex(my_module.hien_phan_so(u2/u1))
-    kq2=latex(my_module.hien_phan_so(u1/u2))
-    kq3=latex(my_module.hien_phan_so(u2-u1))
-    kq4=latex(my_module.hien_phan_so(u1-u2))
+    kq=u2/u1
+    kq2=u1/u2
+    kq3=u2-u1
+    kq4=u1-u2
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
-    pa_A= f"*${{q={kq}}}$"
-    pa_B= f"${{q={kq2}}}$"
-    pa_C= f"${{q={kq3}}}$"
-    pa_D= f"${{q={kq4}}}$"
+    pa_A= f"*${{q={phan_so(kq)}}}$"
+    pa_B= f"${{q={phan_so(kq2)}}}$"
+    pa_C= f"${{q={phan_so(kq3)}}}$"
+    pa_D= f"${{q={phan_so(kq4)}}}$"
     #Trộn các phương án
 
     noi_dung= f"Cho cấp số nhân $(u_n)$ có  ${{u_{{{n}}}={u1}}}$ và ${{u_{{{n+1}}}={u2}}}$. Tìm công bội $q$ cấp số nhân đã cho."
@@ -1881,10 +1885,20 @@ def mn8mn_L11_C2_B3_03():
     k_1 = random.randint(2,4)            
     k_2 = random.randint(5,7)    
     k_3 = random.randint(8,10)
-    pa_A= f"*$S= {u1*q**(k_1-1) + u1*q**(k_2-1) + u1*q**(k_3-1)}$"
-    pa_B= f"$S= {u1*q**(k_1) + u1*q**(k_2) + u1*q**(k_3)}$"
-    pa_C= f"$S= {u1 +(k_1-1)*q + u1 +(k_2-1)*q + u1 +(k_3-1)*q}$"
-    pa_D= f"$S= {u1*(q**(k_3-1)-1)/(q-1)}$"
+    kq= u1*q**(k_1-1) + u1*q**(k_2-1) + u1*q**(k_3-1)
+    kq2= u1*q**(k_1) + u1*q**(k_2) + u1*q**(k_3)
+    kq3= u1 +(k_1-1)*q + u1 +(k_2-1)*q + u1 +(k_3-1)*q
+    kq4= u1*(q**(k_3-1)-1)/(q-1)
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    pa_A= f"*${{S={kq}}}$"
+    pa_B= f"${{S={kq2}}}$"
+    pa_C= f"${{S={kq3}}}$"
+    pa_D= f"${{S={kq4}}}$"
+
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
     noi_dung= f"Cho cấp số nhân $(u_n)$ có số hạng đầu $u_1={u1}$" \

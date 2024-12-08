@@ -1302,7 +1302,7 @@ def bch_12_L10_C2_B2_02():
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
 
 #[D10_C2_B2_03]-M2. Cho Hệ 3 BPT ax+by+c>0 (<0). Tìm cặp số là nghiệm của hệ.
 def bch_12_L10_C2_B2_03():
@@ -1567,3 +1567,156 @@ def bch_12_L10_C2_B2_04():
         f"\\end{{ex}}\n"
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C2_B2_05]-SA-M3. Toán thực tế ứng dụng bpt bậc nhất 2 ẩn
+def bch_12_L10_C2_B2_05():
+    a1=random.randint(1,5)
+    a2=random.choice([i for i in range(1,5) if i!=a1])
+    x0=random.randint(1,5)
+    y0=random.randint(1,5) 
+    b1=random.randint(1,5)
+    b2=random.choice([i for i in range(1,5) if i!=a1])
+    if a1*b2==a2*b1: a1=a1+1
+    c1=a1*x0+b1*y0
+    c2=a2*x0+b2*y0
+    a3=random.randint(5,20)
+    if (c1/a1) < (c2/a2):
+        b3_min = max(int((((c1/a1) - x0) / (y0/a3))), 1)  # Đảm bảo b3 >= 1
+        b3_max = int((((c2/a2) - x0) / (y0/a3))-1)
+        b3 = b3_max  # Chọn b3 lớn nhất có thể để tối ưu E
+        E = a3 * x0 + b3 * y0
+        A = b3 * (c2 / b2)
+        B = b3 * (c1 / b1)
+        C = a3 * (c1 / a1)
+        D = a3 * (c2 / a2)
+        kq = phan_so(E)  # Vì đã tối ưu E, không cần so sánh thêm
+    if (c1/a1) > (c2/a2):
+        b3_min = max(int((((c2/a2) - x0) / (y0/a3))), 1)
+        b3_max = int((((c1/a1) - x0) / (y0/a3))-1)
+        b3 = b3_max  # Chọn b3 lớn nhất để tối ưu E
+        E = a3 * x0 + b3 * y0
+        A = b3 * (c2 / b2)
+        B = b3 * (c1 / b1)
+        C = a3 * (c1 / a1)
+        D = a3 * (c2 / a2)
+        kq = phan_so(E)
+    x, y=symbols("x, y")
+
+    noi_dung = f" Một xưởng sản xuất có ${{2}}$ máy đặc chủng ${{A}}$ và ${{B}}$ để sản xuất ${{2}}$ loại sản phẩm ${{X}}$ và ${{Y}}$. Để sản xuất $ {{1}} $ tấn sản phẩm loại ${{X}}$ cần dùng máy ${{A}} $ trong $ {{{a1}}} $ giờ và dùng máy $ {{B}}$ trong $ {{{a2}}} $ giờ. Để sản xuất $ {{1}} $ tấn sản phẩm loại ${{Y}}  $ cần dùng máy $ {{A}} $ trong ${{{b1}}} $ giờ và dùng máy $B$ trong ${{{b2}}}$ giờ. Cho biết mỗi máy không thể sản xuất đồng thời ${{2}}$ loại sản phẩm. Máy ${{A}}$ làm việc không quá ${{{c1}}}$ giờ cho một lần hoạt động, máy ${{B}}$ làm việc không quá ${{{c2}}} $ giờ cho một lần hoạt động. Một tấn sản phẩm loại ${{X}}$ lãi ${{{a3}}} $ triệu đồng và $ {{1}} $ tấn sản phẩm loại ${{Y}}$ lãi ${{{b3}}}$ triệu đồng. Số tiền lãi thu được lớn nhất là:"
+
+    noi_dung_loigiai=(f"Gọi ${{x}}$, ${{y}}$ là số tấn sản phẩm loại ${{X}}$, ${{Y}}$ cần sản xuất ($ {{x,y\\ge 0 }}$).\n\n"
+            f"Theo giả thiết bài toán ta có $\\left\\{{ \\begin{{array}}{{l}}\n\
+             x \\ge 0 \\\\ \n\
+            y \\ge 0 \\\\ \n\
+                   {latex(a1*x+b1*y)} \\le {c1} \\\\ \n\
+                     {latex(a2*x+b2*y)} \\le {c2} \n\
+             \\end{{array}} \\right.$\n\n"
+
+             f"Số tiền lãi thu về là $ F(x;y) ={a3}x+{b3}y $ (triệu đồng).\n\n "
+             f"Số tiền lãi lớn nhất là ${{{kq}}}$ (triệu đồng) ")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[only]{{{kq}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C2_B2_06]-M3. Tìm m để hệ bất phương trình vô nghiệm
+def bch_12_L10_C2_B2_06():
+    x1=random.randint(-5,5)
+    x2=x1+random.randint(1,5) 
+    c=random.randint(1,5)
+    x, m=symbols("x, m")
+    a=random.randint(1,5) 
+    b=random.randint(1,5) 
+
+    chon=random.randint(1,4) 
+    if chon ==1:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} < 0 \\\\ \n\
+            {latex(a*x-b*m)}<0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} < 0$ suy ra $x \\in ({x1}; {x2})$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)}<0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right)$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} \\le {x1}$ hay $m \\le {phan_so(x1*a/b)}$")
+
+        kq=f" $m \\le {phan_so(x1*a/b)}$"
+        kq2=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+    if chon ==2:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} \\le 0 \\\\ \n\
+            {latex(a*x-b*m)} \\le 0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} \\le 0$ suy ra $x \\in \\left[ {x1}; {x2} \\right]$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)} \\le 0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right ]$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} < {x1}$ hay $m < {phan_so(x1*a/b)}$")
+
+        kq2=f" $m \\le {phan_so(x1*a/b)}$"
+        kq=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+
+    if chon ==3:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} \\le 0 \\\\ \n\
+            {latex(a*x-b*m)}<0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} \\le 0$ suy ra $x \\in \\left[{x1}; {x2} \\right]$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)}<0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right)$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} \\le {x1}$ hay $m \\le {phan_so(x1*a/b)}$")
+
+        kq=f" $m \\le {phan_so(x1*a/b)}$"
+        kq2=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+    if chon ==4:
+        noi_dung=f"Hệ bất phương trình $\\left\\{{ \\begin{{array}}{{l}}\n\
+            {latex(expand(c*(x-x1)*(x-x2)))} < 0 \\\\ \n\
+            {latex(a*x-b*m)} \\le 0 \n\
+            \\end{{array}} \\right.$ vô nghiệm khi  "
+        noi_dung_loigiai=(f"Từ ${latex(expand(c*(x-x1)*(x-x2)))} < 0$ suy ra $x \\in ({x1}; {x2})$ \n\n"
+                        f" Từ $ {latex(a*x-b*m)} \\le 0$ suy ra $x \\in \\left( -\\infty; {latex(b*m/a)} \\right]$ \n\n"
+                        f" Hệ vô nghiệm khi hai tập hợp trên giao nhau bằng rỗng tức là $ {latex(b*m/a)} \\le {x1}$ hay $m \\le {phan_so(x1*a/b)}$")
+
+        kq=f" $m \\le {phan_so(x1*a/b)}$"
+        kq2=f"$m < {phan_so(x1*a/b)}$ "
+        kq3=f"$m \\ge {phan_so(x1*a/b)}$ "
+        kq4=f"$m > {phan_so(x1*a/b)}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an

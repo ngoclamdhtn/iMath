@@ -1997,8 +1997,8 @@ def mnj_34_jkl_L12_C2_B1_17():
 		vecto=random.choice([f"{vec(f"AB")}", f"{vec(f"{A1}{B1}")}", f"{vec(f"AD")}", f"{vec(f"{A1}{D1}")}", 
 			f"{vec(f"{B1}{C1}")}", f"{vec(f"BC")}", f"{vec(f"CD")}", f"{vec(f"{C1}{D1}")}" ])
 		huong=random.choice([f"cùng hướng", "bằng" ])
-		kq1_T=f"* Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{3}}$" 
-		kq1_F=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{{random.choice([1,2,4,5,6])}}}$"
+		kq1_T=f"* Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{3}}$" 
+		kq1_F=f"Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{{random.choice([1,2,4,5,6])}}}$"
 		kq1=random.choice([kq1_T, kq1_F])
 		HDG=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{3}}$."
 
@@ -2007,8 +2007,8 @@ def mnj_34_jkl_L12_C2_B1_17():
 		vecto=random.choice([f"{vec(f"AB")}", f"{vec(f"{A1}{B1}")}", f"{vec(f"AD")}", f"{vec(f"{A1}{D1}")}", 
 			f"{vec(f"{B1}{C1}")}", f"{vec(f"BC")}", f"{vec(f"CD")}", f"{vec(f"{C1}{D1}")}" ])
 		huong=random.choice([f"ngược hướng"])
-		kq1_T=f"* Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{4}}$" 
-		kq1_F=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{{random.choice([1,2,3,5,6])}}}$"
+		kq1_T=f"* Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{4}}$" 
+		kq1_F=f"Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{{random.choice([1,2,3,5,6])}}}$"
 		kq1=random.choice([kq1_T, kq1_F])
 		HDG=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {huong} với vectơ ${vecto}$ là ${{4}}$."
 
@@ -2017,8 +2017,8 @@ def mnj_34_jkl_L12_C2_B1_17():
 		vecto=random.choice([f"{vec(f"AB")}", f"{vec(f"{A1}{B1}")}", f"{vec(f"AD")}", f"{vec(f"{A1}{D1}")}", 
 			f"{vec(f"{B1}{C1}")}", f"{vec(f"BC")}", f"{vec(f"CD")}", f"{vec(f"{C1}{D1}")}" ])
 		phuong="cùng phương"
-		kq1_T=f"* Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{7}}$" 
-		kq1_F=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{{random.randint(1,6)}}}$"
+		kq1_T=f"* Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{7}}$" 
+		kq1_F=f"Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{{random.randint(1,6)}}}$"
 		kq1=random.choice([kq1_T, kq1_F])
 		HDG=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{7}}$."
 
@@ -2027,8 +2027,8 @@ def mnj_34_jkl_L12_C2_B1_17():
 		vecto=random.choice([f"{vec(f"AC")}", f"{vec(f"{A1}{C1}")}", f"{vec(f"BD")}", f"{vec(f"{B1}{D1}")}", 
 			f"{vec(f"{A1}D")}", f"{vec(f"B{C1}")}", f"{vec(f"C{D1}")}", f"{vec(f"{C1}D")}" ])
 		phuong="cùng phương"
-		kq1_T=f"* Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{3}}$" 
-		kq1_F=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{{random.choice([1,2,4,5,6])}}}$"
+		kq1_T=f"* Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{3}}$" 
+		kq1_F=f"Số vectơ khác vectơ-không có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{{random.choice([1,2,4,5,6])}}}$"
 		kq1=random.choice([kq1_T, kq1_F])
 		HDG=f"Số vectơ có điểm đầu và điểm cuối là các đỉnh của hình lập phương {phuong} với vectơ ${vecto}$ là ${{3}}$."
 	
@@ -2604,7 +2604,7 @@ def mnj_34_jkl_L12_C2_B2_04():
 	random.shuffle(list_PA)
 	dap_an=my_module.tra_ve_dap_an(list_PA)	  
 
-	noi_dung=f"Trong không gian với hệ tọa độ ${{Oxyz}}$, cho hai điểm ${{{diem_A}({a1};{a2};{a3})}}$ và vectơ ${{\\overrightarrow{{{ten_vt}}}=({u1};{u2};{u3})}}$.\n"\
+	noi_dung=f"Trong không gian với hệ tọa độ ${{Oxyz}}$, cho điểm ${{{diem_A}({a1};{a2};{a3})}}$ và vectơ ${{\\overrightarrow{{{ten_vt}}}=({u1};{u2};{u3})}}$.\n"\
 			f"Tìm tọa độ điểm ${{{diem_B}}}$ biết $\\overrightarrow{{{diem_A}{diem_B}}}=\\overrightarrow{{{ten_vt}}}$."
 
 	debai= f"{noi_dung}\n"
@@ -2618,13 +2618,13 @@ def mnj_34_jkl_L12_C2_B2_04():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 		f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -3115,7 +3115,7 @@ def mnj_34_jkl_L12_C2_B2_09():
 	chon=random.randint(1,2)
 	if chon==1:
 		kq1_T=f"* Tọa độ điểm ${C1}=(0;{latex(y_C1)};{z_C1})$" 
-		kq1_F=f"Tọa độ điểm ${C1}=(0;{latex(y_C1)};{z_C1})$"
+		kq1_F=f"Tọa độ điểm ${C1}=(0;{latex(-y_C1)};{-z_C1})$"
 		kq1=random.choice([kq1_T, kq1_F])
 		HDG=f"${C1}=(0;{latex(y_C1)};{z_C1})$."
 		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -3298,7 +3298,7 @@ def mnj_34_jkl_L12_C2_B2_10():
 	noi_dung = (f"Ở một sân bay, vị trí của máy bay được xác định bởi điểm ${{{M}}}$ trong không gian ${{Oxyz}}$ như hình vẽ."
 	f" Gọi ${{{H}}}$ là hình chiếu vuông góc của ${{{M}}}(a;b;c)$ xuống mặt phẳng $(Oxy)$.\n\n"
 	f" Cho biết $O{M} = {l_M}$, $\\left({vec(f"i")},{vec(f"O{H}")}\\right) = {goc_HOA}^\\circ$,"
-	f" $\\left({vec(f"O{H}")},{vec(f"O{M}")}\\right) = {goc_HOM}^\\circ$. Tính $a+b+c$ (làm tròn đến hàng phần mười).")
+	f" $\\left({vec(f"O{H}")},{vec(f"O{M}")}\\right) = {goc_HOM}^\\circ$. Tính $a+b+c$ (làm tròn đến hàng đơn vị).")
 
 	OH=l_M*cos(goc_HOM_rad)
 	OC=l_M*sin(goc_HOM_rad)
@@ -3310,7 +3310,7 @@ def mnj_34_jkl_L12_C2_B2_10():
 	r_OB=f"{round(OB,2):.2f}".replace(".",",")
 	r_OC=f"{round(OC,2):.2f}".replace(".",",")
 
-	dap_an=f"{round(OA+OB+OC,1):.1f}".replace(".",",")
+	dap_an=f"{round(OA+OB+OC,0)}".replace(".",",")
 
 	noi_dung_loigiai=(
 	f"Ta có: $O{H}=O{M}\\cos {goc_HOM}^\\circ={r_OH}$\n\n"
@@ -3813,8 +3813,8 @@ def mnj_34_jkl_L12_C2_B3_08():
 	)	
 	debai_word= f"{noi_dung}\n"
 	
-	kq1_T=f"* Tọa độ vectơ ${vec(f"{B}{C}")}=({x_C-x_B};{y_C-y_B};{z_C-z_B})$" 
-	kq1_F=f"Tọa độ vectơ ${vec(f"{B}{C}")}=({x_B-x_C};{y_B-y_C};{z_B-z_C})$"
+	kq1_T=f"* Tọa độ vectơ ${vec(f"{B}{C}")}=\\left({x_C-x_B};{y_C-y_B};{z_C-z_B}\\right)$" 
+	kq1_F=f"Tọa độ vectơ ${vec(f"{B}{C}")}=\\left({x_B-x_C};{y_B-y_C};{z_B-z_C}\\right)$"
 	kq1=random.choice([kq1_T, kq1_F])
 	HDG=f"${vec(f"{B}{C}")}=({x_C-x_B};{y_C-y_B};{z_C-z_B})$."
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -3832,10 +3832,10 @@ def mnj_34_jkl_L12_C2_B3_08():
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 	x_D,y_D,z_D = x_C+x_A-x_B, y_C+y_A-y_B, z_C+z_A-z_B
 
-	kq3_T=f"* Tọa độ điểm ${D}({x_D};{y_D};{z_D})$" 
-	kq3_F=f" Tọa độ điểm ${D}({x_D+random.randint(1,2)};{y_D+random.randint(-2,2)};{z_D+random.randint(-2,2)})$"
+	kq3_T=f"* Tọa độ điểm ${D}\\left({x_D};{y_D};{z_D}\\right)$" 
+	kq3_F=f" Tọa độ điểm ${D}\\left({x_D+random.randint(1,2)};{y_D+random.randint(-2,2)};{z_D+random.randint(-2,2)}\\right)$"
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=(f"Gọi ${D}(x;y;z)$.\n\n Ta có: ${vec(f"{A}{B}")}=({x_B-x_A};{y_B-y_A};{z_B-z_A})$\n\n"
+	HDG=(f"Gọi ${D}(x;y;z)$.\n\n Ta có: ${vec(f"{A}{B}")}=\\left({x_B-x_A};{y_B-y_A};{z_B-z_A}\\right)$\n\n"
 		f"${vec(f"{D}{C}")}=({x_C}-x;{y_C}-y;{z_C}-z)$.\n\n"
 		f"${vec(f"{A}{B}")}={vec(f"{D}{C}")}\\Rightarrow x={x_D},y={y_D},z={z_D}$."
 		)
@@ -4410,14 +4410,19 @@ def mnj_34_jkl_L12_C2_B3_15():
 	a1 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
 	a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 	a3= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	if a2==a1: a2=a1+random.randint(1,5)
 
 	b1=random.randint(-10,10)
 	b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 	b3= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	
-	if b1==a1:
-		b1=a1+random.randint(1,4)
+	while any([a1+b1==0, a2+b2==0, a3+b3==0, a1==a2, a1==b1]):
+		a1 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		a3= random.choice([random.randint(-10, -1), random.randint(1, 10)])		
+
+		b1=random.randint(-10,10)
+		b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b3= random.choice([random.randint(-10, -1), random.randint(1, 10)])	
+
 	diem_A=random.choice(["A","M", "E", "G"])
 	diem_B=random.choice(["B","N", "F", "H"])
 	diem_C=random.choice(["C","P", "D", "K"])
@@ -4509,9 +4514,6 @@ def mnj_34_jkl_L12_C2_B3_16():
 	[x, y, z+random.randint(1,3)],
 	[x+random.randint(1,3), y, z+random.randint(1,3)],
 	[x+random.randint(1,3), y-random.randint(1,3), z-random.randint(1,3)],
-	[x-random.randint(1,3), y+random.randint(1,3), z],
-	[x-random.randint(1,3), y-random.randint(1,3), z+random.randint(1,3)],	
-	[x-random.randint(1,3), y+random.randint(1,3), z-random.randint(1,3)],
 	]	
 	random.shuffle(kq_false)
 

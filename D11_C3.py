@@ -9,7 +9,8 @@ import my_module
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
     return m
-
+def st_lim(x_0):
+    return f"\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}}"
 ################ Bài 1: GIỚI HẠN DÃY SỐ #################
 
 #[D11_C3_B1_01]. Tính giới hạn phân thức bậc tử bằng mẫu.
@@ -2411,4 +2412,485 @@ mx{dau}{b2} \\text{{          khi  }} x = {x_0}  \n \
         f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B2_12]-TF-M3. Cho hàm số kép. Xét Đ-S: lim x->a, giới hạn 1 bên, giới hạn tại x_0
+def gh11gh_L11_C3_B2_12():
+    x=sp.symbols("x")    
+    chon=random.randint(1,2)    
+    if chon==1:
+        x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+        a = random.choice([i for i in range(-10, 10) if i!=0])
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        f=a*x+b
+
+        m = random.choice([i for i in range(-2, 3) if i!=0])
+        n = random.choice([i for i in range(-4, 4) if i!=0])
+        p = random.choice([i for i in range(1, 5) if i!=0])
+        g=sqrt(m**2*x**2+2*m*n*x+n**2+p)
+        
+    
+    if chon==2:
+        a = random.choice([i for i in range(-10, 10) if i!=0])
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        if a>0:
+            x_0 = random.randint(int(-b/a)+2,int(-b/a)+7)
+        else:
+            x_0 = random.randint(int(-b/a)-6,int(-b/a)-2)
+
+        f=a*x+b
+        y_0=f.subs(x,x_0)        
+      
+        m =  y_0**2-x_0**2
+        g=sqrt(x**2+m)    
+    
+
+    chon=random.randint(1,2)
+    if chon==1:
+        ham=f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} \\text{{ khi }} x \\ge {x_0} \\\\ \n\
+        {latex(g)} \\text{{ khi }} x < {x_0} \n\
+        \\end{{array}} \\right.$"
+    
+    if chon==2:
+        ham=f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(g)} \\text{{ khi }} x < {x_0} \\\\ \n\
+        {latex(f)} \\text{{ khi }} x \\ge {x_0} \n\
+        \\end{{array}} \\right.$" 
+
+    
+    noi_dung = f"Cho hàm số {ham}. Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    
+    x_1 = random.randint(x_0+1,x_0+6)
+    f_1=f.subs(x,x_1)
+    g_1=g.subs(x,x_1)
+    if g_1==f_1: g_1=f_1+random.randint(1,3)
+    kq1_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}={f_1}$" 
+    kq1_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}={latex(g_1)}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} ({latex(f)})={f_1}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x_2 = random.randint(x_0-6,x_0-1)    
+    g_2=g.subs(x,x_2)
+    f_2=f.subs(x,x_2)
+    if f_2==g_2: f_2=f_2+random.randint(1,2)
+
+    kq2_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}={latex(g_2)}$"
+    kq2_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}={f_2}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} ({latex(g)})={latex(g_2)}$."
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    f_0=f.subs(x,x_0)
+    g_0=g.subs(x,x_0)
+    chon=random.randint(1,2)
+
+    if chon==1:
+        
+        kq3_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={f_0}$" 
+        kq3_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={f_0+random.randint(1,3)}$"        
+        HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$."
+    
+    if chon==2:
+        
+        kq3_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}={latex(g_0)}$" 
+        kq3_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={latex(g_0+random.randint(1,2))}$"        
+        HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(f)}) = {latex(g_0)}$."    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if f_0==g_0:
+        kq4_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$"
+        kq4_F=f" Hàm số không tồn tại giới hạn tại ${{{x_0}}}$" 
+    
+        HDG=(f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(g)}) = {latex(g_0)}$.\n\n"
+        f"Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}$"
+        f" nên $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$."
+        )
+    else:
+        kq4_T=f"*Hàm số không tồn tại giới hạn tại ${{{x_0}}}$"
+        kq4_F=f"  Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$"
+
+        HDG=(f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(g)}) = {latex(g_0)}$.\n\n"
+        f"Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}\\ne \\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}$"
+        f" nên hàm số không tồn tại giới hạn tại ${{{x_0}}}$."
+        )
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B2_13]-TF-M3. Cho f(x)=ax+b và mx^2+nx+p. Xét Đ-S: lim x->a, giới hạn 1 bên, giới hạn tại x_0
+def gh11gh_L11_C3_B2_13():
+    x=sp.symbols("x")    
+    chon=random.randint(1,2)
+       
+    if chon==1:
+        x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+        a = random.choice([i for i in range(-10, 10) if i!=0])
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        f=a*x+b
+
+        m = random.choice([i for i in range(-2, 3) if i!=0])
+        n = random.choice([i for i in range(-4, 4) if i!=0])
+        p = random.choice([i for i in range(1, 5) if i!=0])
+        g=m**2*x**2+2*m*n*x+n**2+p
+        
+    
+    if chon==2:
+        a = random.choice([i for i in range(-10, 10) if i!=0])
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        if a>0:
+            x_0 = random.randint(int(-b/a)+2,int(-b/a)+7)
+        else:
+            x_0 = random.randint(int(-b/a)-6,int(-b/a)-2)
+
+        f=a*x+b
+        y_0=f.subs(x,x_0)        
+      
+        m = random.choice([i for i in range(-2, 3) if i!=0])
+        n = random.choice([i for i in range(-4, 4) if i!=0])
+        p=y_0-m*x_0**2-n*x_0
+        g=m*x**2+n*x+p
+    
+
+    chon=random.randint(1,2)
+    if chon==1:
+        ham=f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} \\text{{ khi }} x \\ge {x_0} \\\\ \n\
+        {latex(g)} \\text{{ khi }} x < {x_0} \n\
+        \\end{{array}} \\right.$"
+    
+    if chon==2:
+        ham=f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(g)} \\text{{ khi }} x < {x_0} \\\\ \n\
+        {latex(f)} \\text{{ khi }} x \\ge {x_0} \n\
+        \\end{{array}} \\right.$" 
+
+    
+    noi_dung = f"Cho hàm số {ham}. Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    
+    x_1 = random.randint(x_0+1,x_0+6)
+    f_1=f.subs(x,x_1)
+    g_1=g.subs(x,x_1)
+    if g_1==f_1: g_1=f_1+random.randint(1,3)
+    kq1_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}={f_1}$" 
+    kq1_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}={latex(g_1)}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} ({latex(f)})={f_1}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x_2 = random.randint(x_0-6,x_0-1)    
+    g_2=g.subs(x,x_2)
+    f_2=f.subs(x,x_2)
+    if f_2==g_2: f_2=f_2+random.randint(1,2)
+
+    kq2_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}={latex(g_2)}$"
+    kq2_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}={f_2}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} ({latex(g)})={latex(g_2)}$."
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    f_0=f.subs(x,x_0)
+    g_0=g.subs(x,x_0)
+    chon=random.randint(1,2)
+
+    if chon==1:
+        
+        kq3_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={f_0}$" 
+        kq3_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={f_0+random.randint(1,3)}$"        
+        HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$."
+    
+    if chon==2:
+        
+        kq3_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}={latex(g_0)}$" 
+        kq3_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={latex(g_0+random.randint(1,2))}$"        
+        HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(f)}) = {latex(g_0)}$."    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if f_0==g_0:
+        kq4_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$"
+        kq4_F=f" Hàm số không tồn tại giới hạn tại ${{{x_0}}}$" 
+    
+        HDG=(f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(g)}) = {latex(g_0)}$.\n\n"
+        f"Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}$"
+        f" nên $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$."
+        )
+    else:
+        kq4_T=f"*Hàm số không tồn tại giới hạn tại ${{{x_0}}}$"
+        kq4_F=f"  Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$"
+
+        HDG=(f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(g)}) = {latex(g_0)}$.\n\n"
+        f"Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}\\ne \\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}$"
+        f" nên hàm số không tồn tại giới hạn tại ${{{x_0}}}$."
+        )
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B2_14]-TF-M3. Cho f(x)=(ax^2+bx+c)/(dx+e). Xét Đ-S: lim x->a, khử vô định, giới hạn tại x_0
+def gh11gh_L11_C3_B2_14():
+    x=sp.symbols("x")    
+    x_1 = random.choice([i for i in range(-7, 7) if i!=0])
+    x_2 = random.choice([i for i in range(-7,7) if i != x_1  and i!=0])
+
+    a = random.choice([i for i in range(-3, 3) if i!=0])
+    b,c=-a*(x_1+x_2),a*x_1*x_2
+
+    f_tu=latex(a*x**2+b*x+c)
+    m = random.choice([i for i in range(-5, 5) if i!=0 and i!=1])
+    f_mau=latex(m*(x-x_1))
+
+    g=a*(x-x_2)/m
+
+    ham=f"\\dfrac{{{f_tu}}}{{{f_mau}}}"
+
+    noi_dung = f"Cho hàm số $f(x)={ham}$. Xét tính đúng-sai của các khẳng định sau:"        
+    debai_word= f"{noi_dung}\n"
+
+    x_0 = random.choice([i for i in range(-7,7) if i != x_1  and i != x_2])
+    kq=g.subs(x,x_0)
+
+    kq1_T=f"* ${st_lim(x_0)} {ham}= {phan_so(kq)}$" 
+    kq1_F=f"${st_lim(x_0)} {ham}= {phan_so(kq+random.randint(1,2))}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"${st_lim(x_0)} {ham}= {phan_so(kq)}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    kq=g.subs(x,x_1)
+    kq2_T=f"* ${st_lim(x_1)} {ham}= {phan_so(kq)}$"
+    kq2_F=f"${st_lim(x_1)} {ham}= {phan_so(kq+random.randint(1,2))}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=(f"${st_lim(x_1)} {ham}={st_lim(x_1)} \\dfrac{{{a}({latex(x-x_1)})({latex(x-x_2)})}}{{{m}({latex(x-x_1)})}}$"
+    f"$={st_lim(x_1)} \\dfrac{{{a}({latex(x-x_2)})}}{{{m}}}={phan_so(kq)}$.")
+    HDG=HDG.replace("-1(","-1(").replace("1(","(")
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    chon=random.randint(1,2)
+
+    if chon==1:
+        if a/m>0:
+            kq3_T=f"* ${st_lim("+\\infty")} {ham}=+\\infty$" 
+            kq3_F=f"${st_lim("+\\infty")} {ham}=-\\infty$"
+            HDG=(f"${st_lim("+\\infty")} {ham}= {st_lim("+\\infty")} \\dfrac{{{a}({latex(x-x_2)})}}{{{m}}}=+\\infty$.\n\n"
+        f"Vì: ${st_lim("+\\infty")} {phan_so(a/m)}>0$ và ${st_lim("+\\infty")}({latex(x-x_2)})=+\\infty$.")
+        else:
+            kq3_T=f"* ${st_lim("+\\infty")} {ham}=-\\infty$" 
+            kq3_F=f"${st_lim("+\\infty")} {ham}=+\\infty$"
+            HDG=(f"${st_lim("+\\infty")} {ham}= {st_lim("+\\infty")} \\dfrac{{{a}({latex(x-x_2)})}}{{{m}}}=-\\infty$.\n\n"
+        f"Vì: ${st_lim("+\\infty")} {phan_so(a/m)}<0$ và ${st_lim("+\\infty")}({latex(x-x_2)})=+\\infty$.")
+    
+    if chon==2:
+        if a/m>0:
+            kq3_T=f"* ${st_lim("-\\infty")} {ham}=-\\infty$" 
+            kq3_F=f"${st_lim("-\\infty")} {ham}=+\\infty$"
+            HDG=(f"${st_lim("-\\infty")} {ham}= {st_lim("-\\infty")} \\dfrac{{{a}({latex(x-x_2)})}}{{{m}}}=-\\infty$.\n\n"
+        f"Vì: ${st_lim("-\\infty")} {phan_so(a/m)}>0$ và ${st_lim("-\\infty")}({latex(x-x_2)})=-\\infty$.")
+        else:
+            kq3_T=f"* ${st_lim("-\\infty")} {ham}=+\\infty$" 
+            kq3_F=f"${st_lim("-\\infty")} {ham}=-\\infty$"
+            HDG=(f"${st_lim("-\\infty")} {ham}= {st_lim("-\\infty")} \\dfrac{{{a}({latex(x-x_2)})}}{{{m}}}=+\\infty$.\n\n"
+        f"Vì: ${st_lim("-\\infty")} {phan_so(a/m)}<0$ và ${st_lim("-\\infty")}({latex(x-x_2)})=-\\infty$.")
+    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=HDG.replace("-1(","-1(").replace("1(","(")
+    
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    p= random.choice([i for i in range(-10, 10) if i!=0])
+    t_p=sp.symbols("a")
+    x_4 = random.choice([i for i in range(-7,7) if i!=x_1 and i!=x_0])
+
+    d= random.choice([i for i in range(-5, 6) if i!=0])
+    e= random.choice([i for i in range(-5, 6) if i!=0])
+
+
+    kq4_T=f"* Biết ${st_lim(x_4)} \\left[{ham}-a\\right]={g.subs(x,x_4)-p}$. Khi đó ${latex(d*t_p+e)}={d*p+e}$"
+    kq4_F=f"Biết ${st_lim(x_4)} \\left[{ham}-a\\right]={g.subs(x,x_4)-p}$. Khi đó ${latex(d*t_p+e)}={d*p+e+random.randint(1,2)}$" 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f"${st_lim(x_4)} \\left[{ham}-a\\right]={st_lim(x_4)} {ham}-a={g.subs(x,x_4)}-a$\n\n"
+        f"Suy ra ${g.subs(x,x_4)}-a={g.subs(x,x_4)-p}$"
+    f"$\\Rightarrow a={p} \\Rightarrow {latex(d*t_p+e)}={d*p+e}$.")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
 

@@ -2550,26 +2550,31 @@ def thay_the_ngoac_log(st):
     str_thaythe=str_thaythe.replace(f"\\right)}}",f"|")       
     return str_thaythe
 
+
 def tu_phan_vi(sample_data):
-    # Tính tứ phân vị cho số lượng chẵn    
-    sorted_data  = np.sort(sample_data)
+    # Sắp xếp dữ liệu
+    sorted_data = np.sort(sample_data)
+    t = len(sorted_data)
 
-    #Lấy vị trí chính giữa
-    t=len(sample_data)
+    # Tìm vị trí trung tâm
+    t1 = t // 2
 
-    if t%2==0:
-        t1=int(len(sorted_data)/2)
-        sorted_data_right=sorted_data[t1+1:]
+    if t % 2 == 0:
+        # Nếu số phần tử chẵn
+        sorted_data_left = sorted_data[:t1]  # Lấy nửa trái
+        sorted_data_right = sorted_data[t1:]  # Lấy nửa phải (bao gồm phần tử trung vị)
     else:
-        t1=int((len(sorted_data)-1)/2)
-        sorted_data_right=sorted_data[t1+1:]
-    sorted_data_left=sorted_data[:t1]
+        # Nếu số phần tử lẻ
+        sorted_data_left = sorted_data[:t1]  # Lấy nửa trái
+        sorted_data_right = sorted_data[t1+1:]  # Lấy nửa phải (bỏ phần tử trung vị)
 
-    # Tìm tứ phân vị thứ nhất, thứ hai và thứ ba
-    Q1 = np.percentile(sorted_data_left, 50)
-    Q2 = np.percentile(sorted_data, 50)
-    Q3 = np.percentile(sorted_data_right, 50)
-    return Q1,Q2,Q3
+    # Tính các tứ phân vị
+    Q1 = np.percentile(sorted_data_left, 50)  # Median của nửa trái
+    Q2 = np.percentile(sorted_data, 50)  # Median của toàn bộ
+    Q3 = np.percentile(sorted_data_right, 50)  # Median của nửa phải
+
+    return Q1, Q2, Q3
+
 
 #Nhóm code liên quan hình học
 def trung_diem(x_1,y_1,x_2,y_2):

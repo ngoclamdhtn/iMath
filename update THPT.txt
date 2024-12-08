@@ -13,7 +13,8 @@
 [D10_C2_B2_06]-M3. Tìm m để hệ bất phương trình vô nghiệm
 
 
-[D10_C5_B3_06]-TL-M4. Bài tổng hợp 
+[D10_C5_B3_06]-TL-M4. Bài tổng hợp
+
 
 [D10_CX_B0_14]-TF-M3. Tổng hợp(tìm toạ độ trực tâm)
 

@@ -879,13 +879,17 @@ def ytrzz_L12_C3_B2_02():
 	
 	kq_fasle=[
 	variance+random.randint(1,3),
-	variance-random.choice([0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.25 ]),
-	variance+random.choice([0.25,0.34,0.46,0.57,0.62,0.71,0.83,0.91]),
+	variance-random.choice([0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.25]),
+	variance+random.choice([0.34,0.46,0.57,0.62,0.71,0.83,0.91]),
 	sqrt(weighted_mean),
 	sqrt(weighted_mean)+random.choice([0.25,0.34,0.46,0.57,0.62,0.71,0.83,0.91])
 	]
 	random.shuffle(kq_fasle)
 	kq2,kq3,kq4=kq_fasle[0:3]
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
 	variance_round=f"{round(variance,2):.2f}".replace(".",",")
 
 	kq=f"{round(sqrt(variance),2):.2f}".replace(".",",")
@@ -1006,8 +1010,8 @@ def ytrzz_L12_C3_B2_03():
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
 		st_b=f"{b}".replace(".",",")
 
-		st_dai_dien_x_tan_so+=f"{st_b}.{a}+"
-		st_dai_dien_square_x_tan_so+=f"{st_b}.{a}^2+"
+		st_dai_dien_x_tan_so+=f"{a}.{st_b}+"
+		st_dai_dien_square_x_tan_so+=f"{a}.{st_b}^2+"
 
 	st_dai_dien_x_tan_so=st_dai_dien_x_tan_so[0:len(st_dai_dien_x_tan_so)-1]
 	st_dai_dien_square_x_tan_so=st_dai_dien_square_x_tan_so[0:len(st_dai_dien_square_x_tan_so)-1]
@@ -1283,8 +1287,8 @@ def ytrzz_L12_C3_B2_05():
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
 		st_b=f"{b}".replace(".",",")
 
-		st_dai_dien_x_tan_so+=f"{st_b}.{a}+"
-		st_dai_dien_square_x_tan_so+=f"{st_b}.{a}^2+"
+		st_dai_dien_x_tan_so+=f"{a}.{st_b}+"
+		st_dai_dien_square_x_tan_so+=f"{a}.{st_b}^2+"
 
 	st_dai_dien_x_tan_so=st_dai_dien_x_tan_so[0:len(st_dai_dien_x_tan_so)-1]
 	st_dai_dien_square_x_tan_so=st_dai_dien_square_x_tan_so[0:len(st_dai_dien_square_x_tan_so)-1]

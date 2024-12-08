@@ -1389,5 +1389,91 @@ def yy3yy_L10_C4_B2_13():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D10_C4_B2_14]-TL-M3. Ứng dụng hệ thức lượng trong tam giác
+def yy3yy_L10_C4_B2_14():
+    a=random.choice([1.7, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ])
+    a1=str(a).replace(".",",")
+    h=random.randint(10,30)
+    x=random.randint(20,35)
+    y=x+random.randint(35,40)
+    AC1= (h*math.sin(math.radians(90+x)))/math.sin(math.radians(y-x))
+    e=round(AC1)
+    kq=round(AC1*sin(math.radians(y)) )
+    code_hinh=r"""
+    \begin{tikzpicture}[scale=.8,font=\footnotesize,line cap=round,line join=round,>=stealth]
+    \draw (0,0) coordinate(O)grid (2,6);
+    \draw (2,6)--(2,6.5) coordinate(A) (2,.5) coordinate(B);
+    \path[shift={(B)}] (75:1) coordinate(b);
+    \path[shift={(A)}] (35:1) coordinate(a);
+    \path (intersection of A--a and B--b) coordinate(C) ($(A)!.8!(C)$) coordinate(D) ($(O)!(C)!(5,0)$) coordinate(H) ($(C)!(A)!(H)$) coordinate(I) ($(C)!(B)!(H)$) coordinate(J);
+    \path[shift={(C)}] (65:.4) coordinate(E) (140:1) coordinate(F) ($(C)!.6!(F)$) coordinate(G);
+    \fill[cyan!80] (C)--(D) .. controls + (130:.5) and +(-100:.3) .. (F) .. controls +(10:.3) and +(120:.4) ..(E) .. controls +(-120:.3) and +(70:.2) .. cycle;
+    \fill[blue!80!black] (C)--(G) .. controls +(50:.3) and +(130:.2) .. (E) .. controls +(-120:.3) and +(70:.2) .. cycle;
+    \fill[blue!80!black] (D) .. controls + (130:.5) and +(-100:.3) .. (F) -- (G) .. controls +(-130:.3) and +(110:.2) .. cycle;
+    \draw[color=blue!80!red] (C) .. controls +(-10:.6) and +(150:.5) .. (5,7);
+    \draw[color=blue!80!red] (C) .. controls +(-15:.6) and +(150:.5) .. (4.8,6.9);
+    \draw (A)--(C)--(B) (2,0)--(H);
+    \draw[dashed] (C)--(H) (A)--(I) (B)--(J);
+    \path (O)--(0,6) node[midway,left]{$h$} (A) node[shift={(180:.3)}]{$A$} (B) node[shift={(-45:.3)}]{$B$};
+    \begin{scope}
+        \clip (C)--(A)--(I);
+        \draw (A) circle(.4) node[shift={(15:.5)}]{$\alpha$};
+    \end{scope}
+    \begin{scope}
+        \clip (C)--(B)--(J);
+        \draw[double] (B) circle(.4) node[shift={(35:.55)}]{$\beta$};
+    \end{scope}
+    
+\end{tikzpicture}
+    """
+    code_hinh1=r"""
+\begin{tikzpicture}[scale=.8,font=\footnotesize,line cap=round,line join=round,>=stealth]
+    \path (0,0) coordinate(B) (0,6) coordinate(A) + (35:1) coordinate(a) (75:1) coordinate(b) (intersection of A--a and B--b) coordinate(C) ($(B)!(C)!(1,0)$) coordinate(H) ($(C)!(A)!(H)$) coordinate(K);
+    \draw (A)--(B)--(C)--cycle (C)--(H)--(B) (A)--(K);
+    \foreach \d/\g in {A/180, B/-135, C/45, H/-45, K/0}
+    \fill (\d) circle(1pt) node[shift={(\g:.3)}]{$\d$};
+    \path pic[draw,angle radius=.15cm]{right angle=A--K--C} pic[draw,angle radius=.15cm]{right angle=B--H--C};
+       
+    
+\end{tikzpicture}
+    """
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    code1 = my_module.moi_truong_anh_latex(code_hinh1)
+    file_name1=my_module.pdftoimage_timename(code1)
+    A=random.choice(["Hiếu", "Hoàng", "Lam", "Minh", "Khôi", "Quân", "Nghĩa"])
+    B=random.choice(["Hồng", "Hà", "Lan", "Mạnh", "Khánh", "Quyên", "Nga"])
+    noi_dung = f"   Bạn {A} đứng ở đỉnh của tòa nhà và quan sát chiếc diều, nhận thấy góc nâng (góc nghiêng giữa phương từ mắt của bạn {A} tới chiếc diều và phương nằm ngang) là $\\alpha={x}^{{\\circ}}$; khoảng cách từ đỉnh tòa nhà tới mắt bạn {A} là ${{{a1}}}$m. Cùng lúc đó ở dưới chân tòa nhà, bạn {B} cũng quan sát chiếc diều và thấy góc nâng là $\\beta={y}^{{\\circ}}$; khoảng cách từ mặt đất tới mắt bạn {B} cũng là ${{{a1}}}$m. Biết chiều cao của tòa nhà là $h={{{h}}}m$ (minh họa ở hình bên). Chiếc diều bay cao bao nhiêu mét so với mặt đất (làm tròn kết quả đến hàng đơn vị)?"
+
+    noi_dung_loigiai=(f"Kí hiệu ${{C}}$ là vị trí của chiếc diều.\n\n"
+             f"Từ điểm ${{B}}$ vẽ đường thẳng $Bx$ vuông góc với ${{AB}}$.\n\n"
+             f"Từ điểm ${{C}}$ kẻ $CH\\perp Bx$ (${{H}}$ thuộc ${{Bx}}$).\n\n"
+           f"Từ điểm ${{A}}$ kẻ $AK\\perp CH$ (${{K}}$ thuộc ${{CH}}$).\n\n"
+             f"Khi đó $\\widehat{{CAK}}=\\alpha$ và $\\widehat{{CBH}}=\\beta$.\n\n" 
+            f"Chiều cao của diều so với mặt đất chính là độ dài đoạn thẳng ${{CH}}$.\n\n"
+            f"Vì khoảng cách từ đỉnh tòa nhà tới mắt bạn ${{A}}$ và khoảng cách từ mặt đất tới mắt bạn ${{B}}$ đều là ${{{a1}}}$m nên ${{AB=h={h}}}$m.\n\n"
+            f"Tứ giác ${{ABHK}}$ là hình chữ nhật.\n\n"
+             f"$\\widehat{{CAB}} = \\widehat{{CAK}}+\\widehat{{KAB}} = {x}^{{\\circ}} + 90^{{\\circ}} = {90+x}^{{\\circ}}$.\n\n"
+            f"$\\widehat{{CBA}} = \\widehat{{ABH}}-\\widehat{{CBH}} = 90^{{\\circ}}-{y}^{{\\circ}} = {90-y}^{{\\circ}}$.\n\n"
+             f"Trong tam giác ${{ABC}}$ ta có \n\n"
+            f"$\\widehat{{C}}= 180^{{\\circ}} - \\left(\\widehat{{A}}+\\widehat{{B}}\\right) = 180^{{\\circ}} - \\left({90+x}^{{\\circ}}+{90-y}^{{\\circ}}\\right) = {y-x}^{{\\circ}}$."
+            f"Áp dụng định lí sin trong tam giác ${{ABC}}$ ta có\n\n"
+         f"$\\dfrac{{AB}}{{ \\sin C}} = \\dfrac{{BC}}{{\\sin A }} \\Rightarrow BC = \\dfrac{{AB\\sin A}}{{\\sin C}} = \\dfrac{{ {h}\\sin {90+x}^{{\\circ}} }}{{\\sin {y-x}^{{\\circ}} }} \\approx {e}$\n\n"
+         f"Trong tam giác ${{CBH}}$ vuông tại ${{H}}$ ta có \n\n"
+         f"$CH=BC\\sin B  \\approx {e}\\sin{{ {y}^{{\\circ}} }}\\approx {kq}$ m\n\n"
+        f"Vậy chiếc diều bay cao khoảng ${{{kq}}}$ mét so với mặt đất.")
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n{file_name1} \n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n{code_hinh1} \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
 
 

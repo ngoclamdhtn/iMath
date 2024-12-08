@@ -2302,3 +2302,459 @@ def npl_mk_L10_C3_B2_20():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+
+
+#[D10_C3_B2_21]-SA-M3. Bài toán thực tế về đồ thị bậc 2
+def npl_mk_L10_C3_B2_21():
+    a=random.choice([  1/3,  1/4, 1/5 , 2/3,  3/8, 3/10, 2/5, 2/7, 1/6, 1/8, 1/12, 1/7]) 
+    a1=random.randint(3,8)
+    b=phan_so(a*a1**2)
+    c=a1-random.randint(1,2)
+
+    a2=phan_so(a)
+    x=symbols("x")
+    code_hinh=r"""
+        \begin{tikzpicture}
+            
+            % Vẽ parabol
+            \draw[thick, blue] 
+            plot[domain=-4:4, samples=100] (\x, {0.12*\x*\x}); % Parabol y = -0.5x^2 + 4
+            % Đánh dấu và ghi nhãn hai chân cổng
+            \fill[green] (-4, 1.92) circle(2pt); % Chân trái (x = -sqrt(8))
+            \node[below left] at (-4, 1.92) {\( A \)}; % Nhãn chân trái là A
+            
+            \fill[green] (4, 1.92) circle(2pt); % Chân phải (x = sqrt(8))
+            \node[below right] at (4, 1.92) {\( B \)}; % Nhãn chân phải là B
+            
+            % Nối hai chân cổng bằng nét đứt
+                \draw[dashed, gray] (-4, 1.92) -- (-2, 0.48);
+                    \draw[dashed, gray] (4, 1.92) -- (2, 0.48);  % 
+            \draw[thick](-4, 0) -- (4, 0); %
+            \draw[thick](-4, 0) -- (4, 0); % 
+                \draw[thick](-4, 1.92) -- (-4, 0); %
+                \draw[thick](4, 1.92) -- (4, 0); %
+                    \fill[green] (-4, 0) circle(2pt); % Chân trái (x = -sqrt(8))
+                \node[below left] at (-4, 0) {\( C \)}; % Nhãn chân trái là A
+                
+                \fill[green] (4, 0) circle(2pt); % Chân phải (x = sqrt(8))
+                \node[below right] at (4, 0) {\( D \)}; % Nhãn chân phải là B
+                    \draw[dashed, gray] (-2, 0.48) -- (2, 0.48); % 
+                            \fill[green] (-2, 0.48) circle(2pt); % Chân trái (x = -sqrt(8))
+                    \node[below left] at (-2, 0.48) {\( M \)}; % Nhãn chân trái là A
+                    
+                    \fill[green] (2, 0.48) circle(2pt); % Chân phải (x = sqrt(8))
+                    \node[below right] at (2, 0.48) {\(N \)}; % Nhãn chân phải là B
+        \end{tikzpicture}
+    """
+    code_hinh1=r"""
+        \begin{tikzpicture}
+            \draw[->] (-4.5,0) -- (4.5, 0) node[right] {\( x \)}; % Trục Ox
+            \draw[->] (0, -1) -- (0, 5) node[above] {\( y \)};    % Trục Oy
+        % Vẽ parabol
+        \draw[thick, blue] 
+        plot[domain=-4:4, samples=100] (\x, {0.12*\x*\x}); % Parabol y = -0.5x^2 + 4
+        % Đánh dấu và ghi nhãn hai chân cổng
+        \fill[green] (-4, 1.92) circle(2pt); % Chân trái (x = -sqrt(8))
+        \node[below left] at (-4, 1.92) {\( A \)}; % Nhãn chân trái là A
+        
+        \fill[green] (4, 1.92) circle(2pt); % Chân phải (x = sqrt(8))
+        \node[below right] at (4, 1.92) {\( B \)}; % Nhãn chân phải là B
+        
+        % Nối hai chân cổng bằng nét đứt
+            \draw[dashed, gray] (-4, 1.92) -- (-2, 0.48);
+                    \draw[dashed, gray] (4, 1.92) -- (2, 0.48);
+        \draw[thick](-4, 0) -- (4, 0); % 
+        \draw[dashed, gray](-4, 1.92) -- (4, 1.92); % 
+        \draw[thick](-4, 1.92) -- (-4, 0); %
+        \draw[thick](4, 1.92) -- (4, 0); %
+        \fill[green] (-4, 0) circle(2pt); % Chân trái (x = -sqrt(8))
+        \node[below left] at (-4, 0) {\( C \)}; % Nhãn chân trái là A
+        
+        \fill[green] (4, 0) circle(2pt); % Chân phải (x = sqrt(8))
+        \node[below right] at (4, 0) {\( D \)}; % Nhãn chân phải là B
+        \draw[dashed, gray] (-2, 0.48) -- (2, 0.48); % 
+        \fill[green] (-2, 0.48) circle(2pt); % Chân trái (x = -sqrt(8))
+        \node[below left] at (-2, 0.48) {\( M \)}; % Nhãn chân trái là A
+        
+        \fill[green] (2, 0.48) circle(2pt); % Chân phải (x = sqrt(8))
+        \node[below right] at (2, 0.48) {\(N \)}; % Nhãn chân phải là B
+    \end{tikzpicture}
+    """
+    noi_dung = (f"Một mô hình mô phỏng cây cầu treo có trụ tháp đôi cao $BD=AC={phan_so(a*a1**2)}$ m và cách nhau $AB={2*a1}$ m. "
+                f"Các dây cáp có dạng đồ thị là một Parabol như hình. Một dây nối hai điểm ${{M}}$ và ${{N}}$ trên dây cáp như hình. Biết dây nối cách mặt của cây cầu là ${{{phan_so(a*(c/2)**2)}}}$. Người ta muốn chăng một đoạn dây đèn trang trí nối thẳng từ điểm ${{A}}$ đến ${{M}}$ đến ${{N}}$ đến ${{B}}$. Chiều dài đoạn dây đèn là bao nhiêu. (Chỉ làm tròn kết quả cuối cùng đến chữ số thập phân thứ nhất) ")
+    t1=a*a1**2 
+    t2=a*(c/2)**2
+    kq=round(  abs(c)+ 2*sqrt( (a1-(c/2))**2+(t2-t1)**2 ), 1)
+    kq=str(kq).replace(".",",")
+    noi_dung_loigiai=(f" Đặt hệ trục toạ độ Oxy vào hình vẽ sao cho đỉnh Parabol trùng với gốc toạ độ. \n\n"
+                    f" Parabol đi qua điểm $B\\left({a1}; {b}\\right)$ nên tìm được hệ số $a={a2}$ \n\n"
+                    f"Điểm ${{M}}$, ${{N}}$ có tung độ là ${{{phan_so(a*(c/2)**2)}}}$ suy ra hoành độ của ${{N}}$ là ${{{phan_so(c/2)}}}$ và hoành độ của ${{M}}$ là ${{{phan_so(-c/2)}}}$\n\n"
+                  f" Độ dài $MN={abs(c)}$m, $AM=BN= \\sqrt{{ \\left({a1}-{phan_so(c/2)} \\right)^{{2}}+ \\left({b}-{phan_so(a*(c/2)**2)} \\right)^{{2}} }}$ \n\n"
+                  f" Chiều dài dây đèn là $MN+AM+BN \\approx {kq} $" 
+                  )
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    code1 = my_module.moi_truong_anh_latex(code_hinh1)
+    file_name1=my_module.pdftoimage_timename(code1)
+    loigiai_word=f"Lời giải:\n {file_name1} \n\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n{code_hinh1} \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C3_B2_22]-M3. Toán thực tế ứng dụng đồ thị hàm số bậc hai tìm lợi nhuận lớn nhất
+def npl_mk_L10_C3_B2_22():
+    x=symbols("x")
+    chon =random.randint(1,2)
+    if chon ==1:
+        x1=random.randint(4,8)
+        c=x1*3
+    if chon ==2:
+        x1=2*random.randint(3,4)
+        c=x1*4
+    a=random.randint(10,30)
+    B=2*a*(x1-random.randint(1,2))
+    e=B+a*c 
+    x2=e/a
+    x0=(x1+x2)/2 
+    
+    if x0==c: 
+        c=x1+2*random.randint(1,4)
+        e=B+a*c 
+        x2=e/a
+        x0=(x1+x2)/2 
+    kq= phan_so((e-a*x0)*(x0-x1))
+    noi_dung = f"Lợi nhuận bán sách ${{X}}$ của một cửa hàng là một hàm số bậc hai $P(x)={{{latex(expand( (e-a*x)*(x-x1)))}}}$ (USD) với ${{x}}$ (USD) là giá bán một quyển sách ${{X}}$. Lợi nhuận cao nhất mà của hàng đạt được là:"
+
+    noi_dung_loigiai=(
+    f"Đồ thị ${{P(x)}}$ là một parabol có đỉnh $I({phan_so(x0)};{kq})$.\n\n"
+    f"Do đó lợi nhuận cao nhất là ${{{kq}}}$ USD khi giá một cuốn sách bán ra là ${{{phan_so(x0)}}}$ USD.")
+
+    kq=f" ${{{kq}}}$ (USD)"
+    ds=[f" ${{{phan_so((e-a*x0)*(x0-x1)-random.randint(1,2))}}}$ (USD)",
+    f" ${{{phan_so((e-a*x0)*(x0-x1)+random.randint(1,2))}}}$ (USD)",
+    f" ${{{phan_so((e-a*x0)*(x0-x1)-random.randint(3,4))}}}$ (USD)",
+    f" ${{{phan_so((e-a*x0)*(x0-x1)+random.randint(3,4))}}}$ (USD)",
+    f" ${{{phan_so((e-a*x0)*(x0-x1)-random.randint(5,6))}}}$ (USD)", 
+    f" ${{{phan_so((e-a*x0)*(x0-x1)+random.randint(5,6))}}}$ (USD)" ]
+    kq2,kq3,kq4=random.sample(ds, 3)
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+#[D10_C3_B2_23]-M3. Toán thực tế ứng dụng tìm giá bán để lợi nhuận thoả điều kiện cho trước
+def npl_mk_L10_C3_B2_23():
+    x=symbols("x")
+    chon =random.randint(1,2)
+    if chon ==1:
+        x1=random.randint(4,8)
+        c=x1*3
+    if chon ==2:
+        x1=2*random.randint(3,4)
+        c=x1*4
+    a=random.randint(10,30)
+    B=2*a*(x1-random.randint(1,2))
+    e=B+a*c 
+    x2=e/a
+    x0=(x1+x2)/2 
+    
+
+    x4=random.choice([i for i in range(x1+1,int(x0-1))]) 
+    x5 =phan_so(2*x0-x4) 
+    f4 =phan_so((e-a*x4)*(x4-x1))
+    x0=phan_so(x0)
+    x2=phan_so(x2)
+    noi_dung = f"Lợi nhuận bán sách ${{X}}$ của một cửa hàng là một hàm số bậc hai $P(x)={{{latex(expand( (e-a*x)*(x-x1)))}}}$ (USD) với ${{x}}$ (USD) là giá bán một quyển sách ${{X}}$. Muốn lợi nhuận thu được lớn hơn ${{{f4}}}$ USD thì giá bán sách phải trong phạm vi:"
+
+    noi_dung_loigiai=(f" Giải bất phương trình $P(x)={{{latex(expand( (e-a*x)*(x-x1)))}}} \\ge {f4}$ \n\n"
+                        f" Ta được $ x \\in ({x4};{x5})$ \n\n"
+    f"Muốn tổng lợi nhuận thu được lớn hơn ${{{f4}}}$ USD thì giá bán mới phải thuộc khoảng $({x4};{x5})$ ")
+
+    kq=f" $({x4};{x5})$ (USD)"
+    ds=[f"$({phan_so(x1)};{x5})$ (USD)", 
+    f" $({phan_so(x1)};{x0})$ (USD)", 
+    f" $({phan_so(x1)};{x4})$ (USD)", 
+    f" $({x0};{x2})$ (USD)",
+    f" $({phan_so(x4)};{x2})$ (USD)" ]
+    kq2,kq3,kq4=random.sample(ds, 3)
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+def thay_cong_tru(st):
+    return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y")
+    
+#[D10_C3_B2_24]-M3. Tìm trục đối xứng của Parabol khi biết toạ độ giao điểm của nó với trục hoành.
+def npl_mk_L10_C3_B2_24():
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    x1=random.randint(-10,10)
+    x2=random.choice([i for i in range(-10,10) if i!=x1])
+    x0=(x1+x2)/2 
+    x0=phan_so(x0)
+    x=symbols("x")
+    noi_dung=f" Biết đồ thị hàm số bậc hai $y=f(x)=ax^{{2}}+bx+x$ ($ a \\ne 0$) cắt trục hoành tại hai điểm $A({x1};0)$ và $B({x2};0)$. Trục đối xứng của đồ thị là đường thẳng nào?"
+    noi_dung_loigiai=f" Trục đối xứng là đường thẳng $x= \\dfrac{{{x1}+{x2}}}{{2}}={x0}$"
+
+    kq=f" $x={x0}$"
+    kq2=f"$x={phan_so(x1+x2 )}$ "
+    kq3=f"$x={phan_so((x1+x2)/3)}$"
+    kq4=f"$x={phan_so((x1+x2)/4)}$ "
+    noi_dung_loigiai=thay_cong_tru(noi_dung_loigiai)
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+#[D10_C3_B2_25]-TL-M4. Tìm m để phương trình f(|x|)=m có nhiều nghiệm nhất
+def npl_mk_L10_C3_B2_25():
+    x=symbols("x")
+    a=random.randint(1,5)
+    x1=random.randint(1,4) 
+    x2=x1+random.randint(1,4)
+    u= (-a*(x2-x1)**2)/4
+    v=a*x1*x2   
+    kq=len([x for x in range(int(u+1), int(v)) if u < x < v])
+
+    noi_dung = f"Có bao nhiêu giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất."
+
+    noi_dung_loigiai=(f" Vẽ đồ thị hàm số $y={latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}$ \n\n"
+    f" Khi ${phan_so(u)}<m < {phan_so(v)}$ thì đường thẳng ${{y=m}}$ cắt đồ thị hàm số tại nhiều điểm nhất. \n\n"
+    f"Có ${{{kq}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất.")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C3_B2_26]-TF-M4. Tìm m để phương trình f(|x|)=m có nghiệm thoả đk
+def npl_mk_L10_C3_B2_26():
+    x=symbols("x")
+    a=random.randint(1,5)
+    x1=random.randint(1,4) 
+    x2=x1+random.randint(1,4)
+    x3=random.choice([i for i in range(-6,6) if i!=x1 and i!=x2])
+    f= a*(x3-x1)*(x3-x2)
+    u= (-a*(x2-x1)**2)/4
+    v=a*x1*x2   
+    kq=len([x for x in range(int(u+1), int(v)) if u < x < v])
+    noi_dung = f"Cho hàm số $y=f(x)={latex(expand(a*(x-x1)*(x-x2)))}$ có đồ thị là parabol ${{(P)}}$ . Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+    
+    kq3_T=f"*Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1+x2)/2)}; {phan_so(u)})$" 
+    kq3_F=f"Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1-x2)/2)}; {phan_so(u)})$ "
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1+x2)/2)}; {phan_so(u)})$ "
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*${{(P)}}$ cắt trục hoành tại hai điểm phân biệt là ${{({x1};0)}}$ và ${{({x2};0)}}$ "
+    kq2_F=random.choice([f"${{(P)}}$ cắt trục hoành tại hai điểm phân biệt là ${{({x1-1};0)}}$ và ${{({x2};0)}}$", f"${{(P)}}$ nằm hoàn toàn phía trên trục hoành", f"${{(P)}}$ nằm hoàn toàn phía dưới trục hoành" ])
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"${{(P)}}$ cắt trục hoành tại hai điểm phân biệt là ${{({x1};0)}}$ và ${{({x2};0)}}$  "
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq1_T=f"* ${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f)})$" 
+    kq1_F=f"${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f+1)})$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f)})$ "
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*Có ${{{kq}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất "
+    kq4_F=f"Có ${{{kq+random.randint(1,2)}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất " 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f" Vẽ đồ thị hàm số $y={latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}$ \n\n"
+    f" Khi ${phan_so(u)} <m < {phan_so(v)}$ thì đường thẳng ${{y=m}}$ cắt đồ thị hàm số tại nhiều điểm nhất. \n\n"
+    f"Có ${{{kq}}}$ giá trị nguyên của ${{m}}$ để phương trình ${latex(expand(a*(abs(x)-x1)*(abs(x)-x2)))}=m$ có nhiều nghiệm nhất")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C3_B2_27]-SA-M3. Tính chiều cao của cổng Parabol
+def npl_mk_L10_C3_B2_27():
+    A=random.choice(["Nam", "Lam","Nghĩa", "Hà", "Khôi", "Quân", "Xuân", "Tâm", "Hoàng"])
+    x1=random.randint(5,20)
+    a= random.randint(-5, -1)
+    b=-x1*a 
+    x2=random.choice([0.5, 1, 1.5, 1.2, 1.3, 1.4, 1.6])
+    x=symbols("x")
+
+    c=a*x2**2+b*x2 
+    x0=-b/(2*a) 
+    y0=a*x0**2+b*x0 
+
+    x2=str(x2).replace(".",",")
+    c=str(round(c,2)).replace(".",",").replace(",0","")
+    y0=str(round(y0,1)).replace(".",",").replace(",0","")
+    kq=y0
+
+    noi_dung = f" Bạn {A} muốn đo chiều cao của một cái cổng hình Parabol. Biết khoảng cách giữa hai chân cổng là ${{{x1}}}$ mét, chiều cao của cổng tính từ điểm trên mặt đất cách chân cổng ${{{x2}}}$m là ${{{c}}}$m. Em hãy giúp {A} tính xem chiều cao của cổng là bao nhiêu. (Chỉ được làm tròn kết quả cuối cùng đến hàng phần mười)."
+
+    noi_dung_loigiai=(f" Chọn hệ trục toạ độ ${{Oxy}}$ sao cho một chân của cổng trùng gốc toạ độ, chân còn lại trên tia ${{Ox}}$. Khi đó cổng là một phần của Parabol có dạng ${{y=ax^{{2}}+bx }}$ \n\n"
+    f" Parabol đi qua các điểm có toạ độ $({x2}; {c})$ và $({x1}; 0)$ \n\n nên ta tìm được phương trình là $y={latex(a*x**2+b*x)}$.\n\n"
+    f" Chiều cao của cổng chính là $f \\left(\\dfrac{{-b}}{{2a}} \\right)= {kq}$ mét")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an    
+
