@@ -713,8 +713,8 @@ def ytrzz_L12_C3_B2_01():
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
 		st_b=f"{b}".replace(".",",")
 
-		st_dai_dien_x_tan_so+=f"{st_b}.{a}+"
-		st_dai_dien_square_x_tan_so+=f"{st_b}.{a}^2+"
+		st_dai_dien_x_tan_so+=f"{a}.{st_b}+"
+		st_dai_dien_square_x_tan_so+=f"{a}.{st_b}^2+"
 
 	st_dai_dien_x_tan_so=st_dai_dien_x_tan_so[0:len(st_dai_dien_x_tan_so)-1]
 	st_dai_dien_square_x_tan_so=st_dai_dien_square_x_tan_so[0:len(st_dai_dien_square_x_tan_so)-1]
@@ -885,6 +885,7 @@ def ytrzz_L12_C3_B2_02():
 	sqrt(weighted_mean)+random.choice([0.25,0.34,0.46,0.57,0.62,0.71,0.83,0.91])
 	]
 	random.shuffle(kq_fasle)
+	kq=sqrt(variance)
 	kq2,kq3,kq4=kq_fasle[0:3]
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
