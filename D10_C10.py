@@ -946,7 +946,7 @@ def gghik_L10_CX_B0_13():
 	random.shuffle(list_PA)  
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung=f"Tìm tọa độ điểm ${diem_A} \\in Ox$ sao cho ${diem_A}{diem_B}={latex(r)}$ với ${diem_B}({a};{b})$."
-	noi_dung_loigiai=f"Gọi $A(x;0)\\in Ox$. Khi đó: $AB={latex(sqrt((a-x)**2+b**2))}={latex(r)}$"\
+	noi_dung_loigiai=f"Gọi ${diem_A}(x;0)\\in Ox$. Khi đó: ${diem_A}{diem_B}={latex(sqrt((a-x)**2+b**2))}={latex(r)}$"\
 	f"$\\Leftrightarrow {latex((a-x)**2+b**2)}={r**2}\\Rightarrow x={x_0}$."
 
 	debai= f"{noi_dung}\n"	   

@@ -8,7 +8,8 @@ import my_module
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
     return m
-
+def thay_cong_tru(st):
+    return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y")
 def code_latex_hinhbinhhanh(a,b,c,d):
     code=rf"""\begin{{tikzpicture}}[line join=round, line cap=round,thick]
 \coordinate ({a}) at (1,3);
@@ -152,6 +153,367 @@ def yy3yy_L10_C4_B1_02():
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[D10_C4_B1_03]-M2 Cho sin tìm cos
+def yy3yy_L10_C4_B1_03():
+    triples = [(a, b, c) for a in range(1, 100) 
+                       for b in range(a + 1, 100) 
+                       for c in range(b + 1, 100)
+                       if a**2 + b**2 == c**2]
+    
+    # Chọn một bộ ba ngẫu nhiên từ danh sách
+    a, b, c = random.choice(triples)
+    u=phan_so(a/c) 
+    v=phan_so(b/c)
+    chon =random.randint(1,2)
+    if chon ==1:
+        noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\cos \\alpha$ là: "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\cos \\alpha ={v}$ "
+                
+        kq=f" ${{{v}}}$"
+        ds=[f"${{{phan_so((b+1)/c)}}}$",
+        f"${{{phan_so((b+2)/c)}}}$",
+        f"${{{phan_so((b-1)/c)}}}$",
+    f"${{{phan_so((b-2)/c)}}}$",
+        f"${{{phan_so((b-3)/c)}}}$",
+    f"${{{phan_so((b+3)/c)}}}$"]
+    if chon ==2:
+        noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 90^{{\\circ}} <\\alpha < 180^{{\\circ}}$, giá trị $\\cos \\alpha$ là: "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}}< \\alpha < 180^{{\\circ}}$ nên $\\cos \\alpha ={phan_so(-b/c)}$ "
+                
+        kq=f" ${{{phan_so(-b/c)}}}$"
+        ds=[f"${{{phan_so((-b+1)/c)}}}$",
+        f"${{{phan_so((-b+2)/c)}}}$",
+        f"${{{phan_so((-b-1)/c)}}}$",
+    f"${{{phan_so((-b-2)/c)}}}$",
+        f"${{{phan_so((-b-3)/c)}}}$",
+    f"${{{phan_so((-b+3)/c)}}}$"]
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+#[D10_C4_B1_04]-M2 Cho sin tìm tan
+def yy3yy_L10_C4_B1_04():
+    triples = [(a, b, c) for a in range(1, 100) 
+                       for b in range(a + 1, 100) 
+                       for c in range(b + 1, 100)
+                       if a**2 + b**2 == c**2]
+    
+    # Chọn một bộ ba ngẫu nhiên từ danh sách
+    a, b, c = random.choice(triples)
+    u=phan_so(a/c) 
+    v=phan_so(b/c) 
+    z=phan_so(a/b)
+    chon =random.randint(1,2)
+    if chon ==1:
+        noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\cos \\alpha ={v}$ suy ra $\\tan \\alpha ={z}$"
+                
+        kq=f" ${{{z}}}$"
+        ds=[f"${{{phan_so((a+1)/b)}}}$",
+        f"${{{phan_so((a+2)/b)}}}$",
+        f"${{{phan_so((a-1)/b)}}}$",
+    f"${{{phan_so((a-2)/c)}}}$",
+        f"${{{phan_so((a-3)/c)}}}$",
+    f"${{{phan_so((a+3)/c)}}}$"]
+    if chon ==2:
+        noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 90^{{\\circ}} <\\alpha < 180^{{\\circ}}$, giá trị $\\cos \\alpha$ là: "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}}< \\alpha < 180^{{\\circ}}$ nên $\\cos \\alpha ={phan_so(-b/c)}$ suy ra $\\tan \\alpha ={phan_so(-a/b)}$"
+                
+        kq=f" ${{{phan_so(-a/b)}}}$"
+        ds=[f"${{{phan_so((-a+1)/b)}}}$",
+        f"${{{phan_so((-a+2)/b)}}}$",
+        f"${{{phan_so((-a-1)/b)}}}$",
+    f"${{{phan_so((-a-2)/c)}}}$",
+        f"${{{phan_so((-a-3)/c)}}}$",
+    f"${{{phan_so((-a+3)/c)}}}$"]
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+#[D10_C4_B1_05]-M2 Cho cos tìm sin
+def yy3yy_L10_C4_B1_05():
+    triples = [(a, b, c) for a in range(1, 100) 
+                       for b in range(a + 1, 100) 
+                       for c in range(b + 1, 100)
+                       if a**2 + b**2 == c**2]
+    
+    # Chọn một bộ ba ngẫu nhiên từ danh sách
+    a, b, c = random.choice(triples)
+    u=phan_so(a/c) 
+    v=phan_so(b/c)
+    chon =random.randint(1,2)
+    if chon ==1:
+        noi_dung=f"Cho $\\cos \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\sin \\alpha$ là: "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ "
+                
+        kq=f" ${{{v}}}$"
+        ds=[f"${{{phan_so((b+1)/c)}}}$",
+        f"${{{phan_so((b+2)/c)}}}$",
+        f"${{{phan_so((b-1)/c)}}}$",
+    f"${{{phan_so((b-2)/c)}}}$",
+        f"${{{phan_so((b-3)/c)}}}$",
+    f"${{{phan_so((b+3)/c)}}}$"]
+    if chon ==2:
+        noi_dung=f"Cho $\\cos \\alpha = {phan_so(-a/c)}$ và $ 90^{{\\circ}}<\\alpha < 180^{{\\circ}}$, giá trị $\\sin \\alpha$ là: "
+
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}} < \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ "
+                
+        kq=f" ${{{v}}}$"
+        ds=[f"${{{phan_so((b+1)/c)}}}$",
+        f"${{{phan_so((b+2)/c)}}}$",
+        f"${{{phan_so((b-1)/c)}}}$",
+    f"${{{phan_so((b-2)/c)}}}$",
+        f"${{{phan_so((b-3)/c)}}}$",
+    f"${{{phan_so((b+3)/c)}}}$"]
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+#[D10_C4_B1_06]-M2 Cho cos tìm tan
+def yy3yy_L10_C4_B1_06():
+    triples = [(a, b, c) for a in range(1, 100) 
+                       for b in range(a + 1, 100) 
+                       for c in range(b + 1, 100)
+                       if a**2 + b**2 == c**2]
+    
+    # Chọn một bộ ba ngẫu nhiên từ danh sách
+    a, b, c = random.choice(triples)
+    u=phan_so(a/c) 
+    v=phan_so(b/c)
+    chon =random.randint(1,2)
+    if chon ==1:
+        noi_dung=f"Cho $\\cos \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(a/b)}$ "
+                
+        kq=f" ${{{phan_so(a/b)}}}$"
+        ds=[f"${{{phan_so((a+1)/b)}}}$",
+        f"${{{phan_so((a+2)/b)}}}$",
+        f"${{{phan_so((a-1)/b)}}}$",
+    f"${{{phan_so((a-2)/c)}}}$",
+        f"${{{phan_so((a-3)/c)}}}$",
+    f"${{{phan_so((a+3)/c)}}}$"]
+    if chon ==2:
+        noi_dung=f"Cho $\\cos \\alpha = {phan_so(-a/c)}$ và $ 90^{{\\circ}}<\\alpha < 180^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
+
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}} < \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(-a/b)}$ "
+                
+        kq=f" ${{{phan_so(-a/b)}}}$"
+        ds=[f"${{{phan_so((-a+1)/b)}}}$",
+        f"${{{phan_so((-a+2)/b)}}}$",
+        f"${{{phan_so((-a-1)/b)}}}$",
+    f"${{{phan_so((-a-2)/c)}}}$",
+        f"${{{phan_so((-a-3)/c)}}}$",
+    f"${{{phan_so((-a+3)/c)}}}$"]
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+#[D10_C4_B1_07]-M2 Cho tan tính giá trị của biểu thức 
+def yy3yy_L10_C4_B1_07():
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0]) 
+
+    b1=random.choice([i for i in range(-5,5) if i!=0]) 
+    e=random.choice([i for i in range(-5,5) if i!=0 ])
+    c1=e-b1*a
+    if c1==0: 
+        c1+random.randint(1,4)
+
+    ds= (b*a+c) /(b1*a+c1)
+
+
+    noi_dung=f"Cho $\\tan \\alpha = {a}$, giá trị của biểu thức $A= \\dfrac {{ {b}\\sin\\alpha+{c}\\cos\\alpha }}{{ {b1}\\sin\\alpha+{c1}\\cos\\alpha }}$ "
+    noi_dung_loigiai=f"$A= \\dfrac {{ {b}\\tan\\alpha+{c} }}{{ {b1}\\tan\\alpha+{c1}}} ={phan_so(ds)}$"
+    kq=f"${{{phan_so(ds)}}}$"
+    kqs=[ f"${{{phan_so(ds+1)}}}$",f"${{{phan_so(ds-1)}}}$",f"${{{phan_so(ds+2)}}}$",f"${{{phan_so(ds-2)}}}$" ]
+    kq2, kq3, kq4 = random.sample(kqs, 3)  
+    
+    noi_dung=noi_dung.replace("+-1\\cos\\alpha"," -\\cos\\alpha").replace("+-1\\sin\\alpha"," -\\sin\\alpha").replace("1\\cos\\alpha"," \\cos\\alpha").replace("1\\sin\\alpha"," \\sin\\alpha")
+    noi_dung=thay_cong_tru(noi_dung)
+    noi_dung_loigiai=noi_dung_loigiai.replace("-1\\tan\\alpha"," -\\tan\\alpha").replace("1\\tan\\alpha"," -\\tan\\alpha")
+
+    noi_dung_loigiai=thay_cong_tru(noi_dung_loigiai)
+    
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #BÀI 2 - ĐỊNH LÍ COSIN VÀ ĐỊNH LÍ SIN
 
@@ -1477,3 +1839,172 @@ def yy3yy_L10_C4_B2_14():
 
 
 
+
+
+#[D10_C4_B2_15]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 2
+def yy3yy_L10_C4_B2_15():
+    a=random.choice([2.7, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 3, 3.2, 3.4, 3.5, 3.6 ])
+    a1=str(a).replace(".",",")
+    
+    x=random.randint(40,50)
+    y=x+random.randint(60,65)
+    c= (a*math.sin(math.radians(x)))/math.sin(math.radians(180-y-x))
+    
+    kq=f"{round(0.5*a*c*math.sin(math.radians(y)),1):.1f}".replace(".",",")
+    c=round(c)
+    code_hinh=fr"""
+
+    \begin{{tikzpicture}}[smooth,font=\footnotesize,scale=0.5]
+    \path
+    (0,0) coordinate (A)
+    (0.5,-1) coordinate (B)
+    (7,-1) coordinate (C)
+    (8.5,0.6) coordinate (D)
+    ($(A)!0.45!(D)$)coordinate (O)
+    ($(O)+(0,6.5)$)coordinate (O')
+    ($(O)!0.1!(O')$)coordinate (M)
+    ($(O)!0.8!(O')$)coordinate (N)
+    ($(M)+(-0.1,0)$)coordinate (M1)
+    ($(N)+(-0.1,0)$)coordinate (N1)
+    ($(A)!0.85!(D)$)coordinate (O2)
+    ($(M)+(+0.1,0)$)coordinate (M2)
+    ($(N)+(+0.1,0)$)coordinate (N2)
+    %
+    ($(O)!0.85!(O')$)coordinate (C1)
+    ($(O)!0.95!(O')$)coordinate (C2)
+    ($(C1)!0.5!(C2)$)coordinate (C0)
+    ($(C0)+(-2,0)$)coordinate (C3)
+    ;
+    %\coordinate (S) at ($(A)+(0,3)$);
+    %\coordinate (M) at ($(B)!0.5!(C)$);
+    \draw[line width=1pt,gray] (A)--(B)--(C)--(D)--cycle;
+    \fill[red](C1)--(C3)--(C2);
+    \fill[ball color=gray!50](A)--(B)--(C)--(D)--cycle;
+    \draw[line width=3pt,brown] (O)--(O');
+    \fill[cyan!40] (A)--(M1)--(N1)--cycle;
+    \fill[ball color=yellow!50] (O2)--(M2)--(N2)--cycle;
+    \draw (A)--(M1)--(N1)--cycle (O2)--(M2)--(N2)--cycle
+    pic[draw, angle radius=7mm]{{angle=M1--A--N1}}
+    pic["\scriptsize ${x}^\circ$",angle radius=16mm]{{angle=M1--A--N1}}
+    pic[draw, angle radius=4mm]{{angle=N1--M1--A}}
+    pic["\scriptsize ${y}^\circ$",angle radius=12mm]{{angle=N1--M1--A}}
+    ;
+    \path (A)--(M1) node[below,midway,sloped,scale=.8]{{\scriptsize ${a1}$m }}
+    ;
+\end{{tikzpicture}}
+
+    """
+    code_hinh1=fr"""
+\begin{{tikzpicture}}[line join=round, line cap=round, >=stealth,scale=1]     
+    \path (0,0)     coordinate(A)
+    ++(10:3)coordinate(B)
+    +(90:3)coordinate(C);
+    \draw
+    (A)--(B)--(C)--cycle    
+    (A)+(30:1)node[scale=.7]{{${x}^\circ$}}
+    (B)+(135:.7)node[scale=.7]{{${y}^\circ$}}
+    
+    ;
+    \path
+    (A)--(B)node[midway,below,scale=0.7]{{${a1}$ m}}
+    
+    
+    
+    ;   
+    \foreach \x/\g in {{C/90,A/210,B/-30}} \draw (\x)+(\g:0.3)node{{$\x$}};
+\end{{tikzpicture}}
+
+
+    """
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    code1 = my_module.moi_truong_anh_latex(code_hinh1)
+    file_name1=my_module.pdftoimage_timename(code1)
+
+    noi_dung = f" Tính diện tích một cánh buồm hình tam giác. Biết cánh buồm đó có chiều dài một cạnh là ${{{a1}}}$ m và hai góc kề cạnh đó có số đo là ${x}^{{\\circ}}$ và ${y}^{{\\circ}}$. Làm tròn kết quả đến hàng phần mười."
+
+    noi_dung_loigiai=(f"Cánh buồn có dạng hình tam giác ${{ABC}}$ như hình vẽ bên.\n\n"
+            f"Ta có $\\widehat{{C}}=180^{{\\circ}}-\\left( \\widehat{{A}}+\\widehat{{B}}\\right)=180^{{\\circ}}-({x}^{{\\circ}}+{y}^{{\\circ}}) ={180-x-y}^{{\\circ}}$.\n\n"
+            f"Áp dụng hệ quả định lý sin cho tam giác ${{ABC}}$, ta được \n\n" 
+            f"$BC=\\dfrac{{AB\\cdot \\sin A}}{{\\sin C}}=\\dfrac{{{a1}\\cdot \\sin {x}^{{\\circ}}}}{{\\sin {180-y-x}^{{\\circ}} }}\\approx    {c}m$\n\n"
+            f"Vậy diện tích của cánh buồm là \n\n"
+            f"$S=\\dfrac{{1}}{{2}}\\cdot BA\\cdot BC\\cdot \\sin B=\\dfrac{{1}}{{2}}\\cdot {a1}\\cdot {c}\\cdot \\sin {y}^{{\\circ}}\\approx {kq} m^{{2}}$")
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n{file_name1} \n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n{code_hinh1} \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C4_B2_16]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 3
+def yy3yy_L10_C4_B2_16():
+    a=random.randint(60,80)
+    a1=str(a).replace(".",",")
+    
+    x=random.randint(40,50)
+    y=x+random.randint(10,20)
+    
+    
+    kq=f"{round(a*math.sin(math.radians(y))*math.sin(math.radians(x))/math.sin(math.radians(y-x)),1):.1f}".replace(".",",")
+    
+    code_hinh=fr"""
+    \begin{{tikzpicture}}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+    \path
+    (1,0) coordinate (A)
+    (2,0) coordinate (B)
+    (4,3.5) coordinate (C)
+    (4,0) coordinate (H)
+    (3.75,0) coordinate (U)
+    (4.25,0) coordinate (V)
+    ;
+    \draw[thick] (U)--(C)--(V); 
+    \draw (B)--(C)--(A)--(V) ;
+    \draw[dashed] (C)--(H) ;  
+    \draw  
+    ($(C)!{1}!(U)$)--($(C)!{{0.9}}!(V)$)
+    --($(C)!{{0.8}}!(U)$)--($(C)!{{0.7}}!(V)$)
+    --($(C)!{{0.6}}!(U)$)--($(C)!{{0.5}}!(V)$)
+    --($(C)!{{0.4}}!(U)$)--($(C)!{{0.3}}!(V)$)
+    --($(C)!{{0.2}}!(U)$)--($(C)!{{0.1}}!(V)$)
+    ;
+    
+    \tkzMarkAngle[arc=l, size=0.6,mark=0](H,A,C)
+    \tkzLabelAngle[pos=1](H,A,C) {{${x}^\circ$}}
+    \tkzMarkAngle[arc=ll, size=0.6,mark=0](H,B,C)
+    \tkzLabelAngle[pos=1](H,B,C) {{${y}^\circ$}}
+    \foreach \x/\g in {{A/-90,B/-90,C/90,H/-90}} 
+    \fill[black] (\x) circle (1pt)+(\g:3mm) node {{$\x$}};
+\end{{tikzpicture}}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+    noi_dung = f"Để đo chiều cao ${{CH}}$ của một tháp truyền hình, người ta chọn hai điểm quan sát ${{A}}$, ${{B}}$ trên mặt đất (hình vẽ).  Biết $\\widehat{{CAH}} ={x}^{{\\circ}}$, $\\widehat{{CBH}} ={y}^{{\\circ}}$ và $AB={a}m$, tính chiều cao của tháp. Làm tròn kết quả đến hàng phần mười."
+
+    noi_dung_loigiai=(f"    Ta có $\\widehat{{ACB}}=\\widehat{{CBH}} - \\widehat{{CAH}}=  {y}^{{\\circ}} -{x}^{{\\circ}}= {y-x}^{{\\circ}}$. \n\n"
+        f"Áp dụng định lí sin ta có \n\n"
+        f"$\\dfrac{{AB}}{{\\sin \\widehat{{ACB}}}} = \\dfrac{{BC}}{{\\sin \\widehat{{CAH}} }} \\Rightarrow BC = \\dfrac{{AB\\sin \\widehat{{CAH}} }}{{\\sin \\widehat{{ACB}} }}  = \\dfrac{{{a}\\sin {x}^{{\\circ}}}}{{\\sin {y-x}^{{\\circ}}}}$\n\n"
+        f"Suy ra $CH =BC\\sin \\widehat{{CBH}} = \\dfrac{{{a} \\sin {x}^{{\\circ}} \\sin {y}^{{\\circ}}}}{{\\sin {y-x}^{{\\circ}} }}\\approx {kq}m$.")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an

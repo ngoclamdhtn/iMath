@@ -444,12 +444,12 @@ def gh11gh_L11_C3_B1_08():
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* $\\lim \\dfrac{{u_n}}{{(v_n)^2}}={phan_so(a1/a2**2)}$"
-    kq2_F=f"$\\lim \\dfrac{{u_n}}{{(v_n)^2}}={phan_so((a1+random.randint(1,2))/a2**2)}$"
+    kq2_T=f"* $\\lim \\dfrac{{u_n}}{{(v_n)^2}}=0$"
+    kq2_F=f"$\\lim \\dfrac{{u_n}}{{(v_n)^2}}={phan_so(a1/a2**2)}$"
     kq2=random.choice([kq2_T, kq2_F])
     HDG=(f"$\\lim \\dfrac{{u_n}}{{(v_n)^2}}=\\lim \\dfrac{{{latex(u)}}}{{{latex(v**2)}}}$\n"
         f"$=\\lim \\dfrac{{{latex(n**2*(a1+b1/n+c1/n**2))}}}{{{latex(n**2*(a2+b2/n+c2/n**2)**2)}}}$\n"
-        f"$=\\lim \\dfrac{{{latex((a1+b1/n+c1/n**2))}}}{{{latex((a2+b2/n+c2/n**2)**2)}}}={phan_so(a1/a2**2)}$.")
+        f"$=\\lim \\dfrac{{{latex((a1+b1/n+c1/n**2))}}}{{{latex((a2+b2/n+c2/n**2)**2)}}}=0$.")
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

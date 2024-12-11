@@ -659,6 +659,236 @@ def ytrzz_L12_C3_B1_04():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C3_B1_05]-TF-M3. Xét Đ-S: Khoảng biến thiên, Q1, Q3, giá trị ngoại lệ.
+def ytrzz_L12_C3_B1_05():
+
+	so_nhom = random.randint(6,7)
+	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
+	
+	#Tạo code latex chứa các khoảng giá trị và các tần số
+	gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
+
+	# Given data from the table
+	class_intervals, frequencies=[],[]
+	for i in range(1,so_nhom):
+		class_intervals.append((gia_tri[i-1],gia_tri[i]))
+		frequencies.append(tan_so[i-1])
+	# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
+	# frequencies=[3,12,15,24,2]
+
+	# Calculating total number of students
+	N = sum(frequencies)
+
+	# Setting the desired positions for Q1 and Q3
+	Q1_position = N / 4
+	Q2_position = N / 2
+	Q3_position = 3 * N / 4
+
+	# Initializing cumulative frequency
+	cumulative_frequency = 0
+	Q1_class =Q2_class= Q3_class = None
+
+	for i, (interval, freq) in enumerate(zip(class_intervals, frequencies)):
+	    cumulative_frequency += freq
+	    # Determine Q1 class
+	    if not Q1_class and cumulative_frequency >= Q1_position:
+	        Q1_class = (interval, freq, cumulative_frequency - freq)
+
+	    # Determine Q2 class
+	    if not Q2_class and cumulative_frequency >= Q2_position:
+	        Q2_class = (interval, freq, cumulative_frequency - freq)
+
+	    # Determine Q3 class
+	    if not Q3_class and cumulative_frequency >= Q3_position:
+	        Q3_class = (interval, freq, cumulative_frequency - freq)
+
+	# Calculating Q1
+	L_Q1 = Q1_class[0][0]
+	R_Q1 = Q1_class[0][1]
+	F_Q1 = Q1_class[2]
+	f_Q1 = Q1_class[1]
+	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
+	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
+	Q1_round=f"{round(Q1,2):.2f}".replace(".",",")
+	Q1_false=Q1+random.randint(1,2)
+	Q1_false_round=f"{round(Q1_false,2):.2f}".replace(".",",")
+	
+
+	# Calculating Q2
+	L_Q2 = Q2_class[0][0]
+	R_Q2 = Q2_class[0][1]
+	F_Q2 = Q2_class[2]
+	f_Q2 = Q2_class[1]
+	h_Q2 = Q2_class[0][1] - Q2_class[0][0]
+	Q2 = calculate_quantile(L_Q2, F_Q2, f_Q2, h_Q2, Q2_position)
+
+	# Calculating Q3
+	L_Q3 = Q3_class[0][0]
+	R_Q3 = Q3_class[0][1]
+	F_Q3 = Q3_class[2]
+	f_Q3 = Q3_class[1]
+	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
+	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
+	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
+	Q3_false=Q1+random.randint(1,2)
+	Q3_false_round=f"{round(Q3_false,2):.2f}".replace(".",",")
+
+	Delta_Q=Q3-Q1
+	Delta_Q_round=f"{round(Delta_Q,1):.2f}".replace(".",",")
+
+	Delta_Q_false=Delta_Q+random.randint(1,2)
+	Delta_Q_false_round=f"{round(Delta_Q_false,2):.2f}".replace(".",",")
+
+	#Code latex
+	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
+	code=my_module.moi_truong_anh_latex(code_hinh)	
+	file_name=my_module.pdftoimage_timename(code)	
+
+	noi_dung=( f"Cho bảng số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như hình dưới đây."
+		f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")	
+
+	kq=gia_tri[so_nhom-1] - gia_tri[0]
+	
+	kq1_T=f"* Khoảng biến thiên của mẫu số liệu là {kq}" 
+	kq1_F=f"Khoảng biến thiên của mẫu số liệu là {kq+random.randint(1,2)}"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Khoảng biến thiên của mẫu số liệu là: ${gia_tri[so_nhom-1]} - {gia_tri[0]}$."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Tứ phân vị thứ nhất bằng ${{{Q1_round}}}$"
+	kq2_F=f"Tứ phân vị thứ nhất bằng ${{{Q1_false_round}}}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=(
+		f"Tìm tứ phân vị $Q_1$:\n\n"
+		f"Tổng tần số là: $N={N}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,1)}$.\n\n"
+		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
+		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
+		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
+		f" Tổng tần số của các lớp trước lớp chứa $Q_1$: $F={F_Q1}$\n\n"
+		f" Tần số của lớp chứa $Q_1$: $f={f_Q1}$.\n\n"
+		f" Độ rộng lớp chứa $Q_1$: $h={Q1_class[0][1]} - {Q1_class[0][0]}={h_Q1}$.\n\n"
+		f"Áp dụng công thức: $Q_1=L+\\left(\\dfrac{{ \\dfrac{{N}}{{4}}-F }}{{f}}\\right).h"
+		f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={Q1_round}$.\n\n")
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Tứ phân vị thứ ba bằng ${{{Q3_round}}}$" 
+	kq3_F=f"Tứ phân vị thứ ba bằng ${{{Q3_false_round}}}$"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"Tìm tứ phân vị $Q_3$:\n\n"
+		f"Tổng tần số là: $N={N}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,1)}$.\n\n"
+		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
+		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
+		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"
+		f" Tổng tần số của các lớp trước lớp chứa $Q_3$: $F={F_Q3}$\n\n"
+		f" Tần số của lớp chứa $Q_3$: $f={f_Q3}$.\n\n"
+		f" Độ rộng lớp chứa $Q_3$: $h={Q3_class[0][1]} - {Q3_class[0][0]}={h_Q3}$.\n\n"
+		f"Áp dụng công thức: $Q_3=L+\\left(\\dfrac{{ \\dfrac{{3N}}{{4}}-F }}{{f}}\\right).h"
+		f"={L_Q3}+\\left(\\dfrac{{ \\dfrac{{3.{N}}}{{4}}-{F_Q3} }}{{{f_Q3}}}\\right).{h_Q3}={Q3_round}$.\n\n")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	a,b=Q1-1.5*Delta_Q, Q3+1.5*Delta_Q
+	a_round=f"{round(a,2):.2f}".replace(".",",")
+	b_round=f"{round(b,2):.2f}".replace(".",",")
+	
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x=random.choice([Q1-random.randint(1,14)/10*Delta_Q, Q3+Delta_Q, Q3+random.randint(1,14)/10*Delta_Q])
+		x_round=f"{round(x,2):.2f}".replace(".",",")		
+
+		kq4_T=f"* ${{{x_round}}}$ không phải là giá trị ngoại lệ của mẫu số liệu"
+		kq4_F=f"${{{x_round}}}$ là giá trị ngoại lệ của mẫu số liệu" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f" $Q_1=L+\\left(\\dfrac{{ \\dfrac{{N}}{{4}}-F }}{{f}}\\right).h"
+			f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={phan_so(Q1)}$.\n\n"
+			f"$Q_3=L+\\left(\\dfrac{{ \\dfrac{{3N}}{{4}}-F }}{{f}}\\right).h"
+			f"={L_Q3}+\\left(\\dfrac{{ \\dfrac{{3.{N}}}{{4}}-{F_Q3} }}{{{f_Q3}}}\\right).{h_Q3}={phan_so(Q3)}$.\n\n"
+			f"Khoảng tứ phân vị là: $\\Delta_Q={phan_so(Q3)}-{phan_so(Q1)}={phan_so(Q3-Q1)}={Delta_Q_round}$.\n\n"
+			f"Ta có: $Q_1-1,5.\\Delta_Q={a_round}, Q_3+1,5.\\Delta_Q={b_round}$.\n\n"
+			f"Vì ${a_round}<{x_round}<{b_round}$ nên ${{{x_round}}}$ không phải là giá trị ngoại lệ của mẫu số liệu."
+			)
+	
+	if chon==2:
+		x=random.choice([Q3+random.randint(16,20)/10*Delta_Q])
+		x_round=f"{round(x,2):.2f}".replace(".",",")		
+
+		kq4_T=f"* ${{{x_round}}}$ là giá trị ngoại lệ của mẫu số liệu"
+		kq4_F=f"${{{x_round}}}$ không phải là giá trị ngoại lệ của mẫu số liệu" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f" $Q_1=L+\\left(\\dfrac{{ \\dfrac{{N}}{{4}}-F }}{{f}}\\right).h"
+			f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={phan_so(Q1)}$.\n\n"
+			f"$Q_3=L+\\left(\\dfrac{{ \\dfrac{{3N}}{{4}}-F }}{{f}}\\right).h"
+			f"={L_Q3}+\\left(\\dfrac{{ \\dfrac{{3.{N}}}{{4}}-{F_Q3} }}{{{f_Q3}}}\\right).{h_Q3}={phan_so(Q3)}$.\n\n"
+			f"Khoảng tứ phân vị là: $\\Delta_Q={phan_so(Q3)}-{phan_so(Q1)}={phan_so(Q3-Q1)}={Delta_Q_round}$.\n\n"
+			f"Ta có: $Q_1-1,5.\\Delta_Q={a_round}, Q_3+1,5.\\Delta_Q={b_round}$.\n\n"
+			f"Vì ${x_round}>{b_round}$ nên ${{{x_round}}}$ là giá trị ngoại lệ của mẫu số liệu."
+			)
+	
+	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f" Xét tính đúng sai của các khẳng định sau.\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
 #-------------------------Bài 2: Phương sai và Độ lệch chuẩn------------------------>
 #[D12_C3_B2_01]-TF-M2. Tính phương sai của mẫu số liệu ghép nhóm.
 def ytrzz_L12_C3_B2_01():
@@ -686,7 +916,7 @@ def ytrzz_L12_C3_B2_01():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -831,7 +1061,7 @@ def ytrzz_L12_C3_B2_02():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -984,7 +1214,7 @@ def ytrzz_L12_C3_B2_03():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1093,7 +1323,7 @@ def ytrzz_L12_C3_B2_04():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
 	variance_round=f"{round(variance,2):.1f}".replace(".",",")
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1203,7 +1433,7 @@ def ytrzz_L12_C3_B2_05():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
 	variance_round=f"{round(variance,2):.1f}".replace(".",",")
 	variance_false_round=f"{round(variance+random.choice([0.5,0.6,0.8,1]),2):.1f}".replace(".",",")
 

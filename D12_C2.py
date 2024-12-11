@@ -5719,7 +5719,7 @@ def mnj_34_jkl_L12_C2_B3_28():
 def mnj_34_jkl_L12_C2_B3_29():
 	ten=["A","B","C","D","E","M","N","P"]
 	random.shuffle(ten)
-	A,B,C,P=ten[0:4]	
+	A,B,C,P=ten[0:4]
 	
 	bo_toa_do=tao_3dinh_tamgiac()
 	a1,a2,a3=bo_toa_do[0]
@@ -5997,5 +5997,98 @@ def mnj_34_jkl_L12_C2_B3_29():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+
+#[D12_C2_B3_30]-SA-M3. Cho tọa độ 2 vị trí. Tìm tọa độ của máy bay sau một khoảng thời gian
+def mnj_34_jkl_L12_C2_B3_30():
+	ten=["A","B","C","D","E","F","M","N","P"]
+	random.shuffle(ten)
+	M,N,Q=ten[0:3]
+
+	k=random.randint(3,7)
+
+	#Tạo thời gian di chuyển từ N đến Q
+	t_NQ=random.randint(4,7)
+	
+	#Tạo thời gian di chuyển từ M đến N
+	t_MN=k*t_NQ
+
+	#Tạo tọa độ M:
+	m1=random.randint(50,300)
+	m2=random.randint(50,300)
+	m3=random.randint(6,10)
+
+	#Tạo vận tốc:
+	v1=random.randint(200,300)
+	v2=random.randint(200,300)
+	v3=random.randint(3,7)
+
+	#Tạo tọa độ N:
+	n1=random.randint(200,300)
+	n2=random.randint(200,300)
+	n3=random.randint(3,7)
+
+	x_MN,y_MN,z_MN=n1-m1,n2-m2,n3-m3
+	a,b,c=1/k*x_MN+n1, 1/k*y_MN+n2, 1/k*z_MN+n3
+	a_round=f"{round(a,2):.2f}".replace(".",",")
+	b_round=f"{round(b,2):.2f}".replace(".",",")
+	c_round=f"{round(c,2):.2f}".replace(".",",")
+
+	code_hinh=f"\\begin{{tikzpicture}}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]\n\
+			\\draw[dashed] (0,0) node[shift={{(-158:5mm)}}, rotate=-25]{{\\color{{cyan}}\\Huge \\faPlane}}--(4,1.5);\n\
+			\\draw[->] (4,1.5)--(5,1.875);\n\
+			\\fill (0,0) node[above]{{${M}$}} circle (1pt) (4,1.5)node[above]{{${N}$}} circle (1pt) (5,1.875)node[above]{{${Q}$}};\n\
+		\\end{{tikzpicture}} \n" 
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+
+	noi_dung = (
+	f"Trong không gian chọn hệ trục tọa độ cho trước, đơn vị đo là kilômét,"
+	f" một máy bay chiến đấu di chuyển với vận tốc và hướng không đổi từ điểm ${M}({m1};{m2};{m3})$ đến điểm ${N}({n1};{n2};{n3})$ trong {t_MN} phút."
+	f" Nếu máy bay tiếp tục giữ nguyên vận tốc và hướng bay sau ${t_NQ}$ phút tiếp theo thì tọa độ của máy bay lúc này là ${Q}(a;b;c)$."
+	f" Kết quả của phép tính $\\dfrac{{a+b+c}}{{2025}}$ (làm tròn đến hàng phần mười) bằng bao nhiêu?"
+	)
+	dap_an=f"{round((a+b+c)/2025,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"${vec2(M,N)}=({x_MN};{y_MN};{z_MN}), {vec2(N,Q)}=(a-{n1};b-{n2};c-{n3})$.\n\n"
+	f"Vì máy bay giữ nguyên hướng bay nên ${vec2(M,N)}$ và ${vec2(N,Q)}$ cùng hướng.\n\n"
+	f"Do máy bay tiếp tục giữ nguyên vận tốc và thời gian bay từ ${{{M}}}$ đến ${{{N}}}$"
+	f" gấp ${{{k}}}$ lần thời gian bay từ ${{{N}}}$ đến ${{{Q}}}$ nên ${vec2(M,N)}={k}{vec2(N,Q)}$.\n\n"
+	f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+	{x_MN}={k}(a-{n1}) \\\\ \n\
+	{y_MN}={k}(b-{n2}) \\\\ \n\
+	{z_MN}={k}(c-{n3})\n\
+	\\end{{array}} \\right.$"
+
+	f"$\\Rightarrow\\left\\{{ \\begin{{array}}{{l}} \n\
+	a={phan_so(1/k)}.{x_MN}+{n1} \\\\ \n\
+	b={phan_so(1/k)}.{y_MN}+{n2} \\\\ \n\
+	c={phan_so(1/k)}.{tao_ngoac(z_MN)}+{n3}\n\
+	\\end{{array}} \\right.$"
+
+	f"$\\Rightarrow\\left\\{{ \\begin{{array}}{{l}} \n\
+	a={a_round} \\\\ \n\
+	b={b_round} \\\\ \n\
+	c={c_round}\n\
+	\\end{{array}} \\right.$\n\n"
+	f"Sau {t_NQ} phút tọa độ của máy bay là ${Q}=({a_round};{b_round};{c_round})$.\n\n"
+	f"$\\dfrac{{a+b+c}}{{2025}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 

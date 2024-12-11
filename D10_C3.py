@@ -2758,3 +2758,471 @@ def npl_mk_L10_C3_B2_27():
     dap_an= kq
     return debai_word, loigiai_word, latex_tuluan, dap_an    
 
+
+#[D10_C3_B2_28]-SA-M3. Tính chiều cao của cổng Parabol 2
+def npl_mk_L10_C3_B2_28():
+    x1=random.randint(5,20)
+    A= random.choice([-0.25, -1/3, -0.2, -0.4])
+    c=random.randint(4,8)
+    
+    a=int(sqrt(-c/A))-1
+    
+    x=symbols("x")
+    b=A*(a/2)**2+c
+    
+    y0=f"{round(2*sqrt(-c/A),1):.1f}".replace(".",",").replace(",0","")
+    kq=y0
+    code_hinh=r"""
+
+\begin{tikzpicture}[scale=0.5,thick,>=stealth,font=\footnotesize,cyan]
+        \draw[line width=3pt,magenta,smooth,samples=100,domain=-4:4] plot(\x,{-0.25*(\x)^2});
+        \draw[dashed,thin](2,-1)node[above]{ E};
+        \draw[dashed,thin](-2,-1)node[above]{F};
+        \draw[dashed,thin](-4,-4)node[below]{ A};
+        \draw[dashed,thin](4,-4)node[below]{B};
+        \draw[thick](2,-1)--(-2,-1)--(-2,-4)node[below]{ C}--(2,-4)node[below]{D}--(2,-1);
+        \draw[thick](-4,-4)--(4,-4);
+        \draw (0,0) node[above] { $G$};
+        \end{tikzpicture}
+    """
+    noi_dung = f"   Một chiếc cổng hình Parabol bao gồm một cửa chính hình chữ nhật ở giữa và hai cánh cửa phụ hai bên như hình vẽ. Biết chiều cao cổng Parabol là ${{{c}}}$ m còn kích thước cửa ở giữa là $CD={{{phan_so(a)}}}$m $DE={{{phan_so(b)}}}$ m. Khoảng cách giữa hai điểm ${{A}}$ và ${{B}}$ là: \n\n(Làm tròn kết quả đến hàng phần mười)."
+
+    noi_dung_loigiai=(f" Chọn hệ trục toạ độ ${{Oxy}}$ sao cho gốc toạ độ là trung điểm của ${{AB}}$, ${{Ox}}$ trùng với đường thẳng ${{AB}}$. Khi đó cổng là một phần của Parabol có dạng ${{y=ax^{{2}}+c}}$ \n\n"
+    f" Parabol đi qua các điểm có toạ độ $\\left({phan_so(a/2)}; {phan_so(b)}\\right)$ và $\\left( 0; {c} \\right)$ \n\n nên ta tìm được phương trình là $y={latex(nsimplify(A*x**2+c))}$.\n\n"
+    f" Toạ độ $B\\left( {latex(nsimplify(sqrt(-c/A)))}; 0 \\right)$ \n\n"
+    f" Khoảng cách $AB= {latex(nsimplify(2*sqrt(-c/A)))} \\approx {kq}$ mét.")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)            
+    debai_word= f"{noi_dung}\n {file_name}"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an    
+
+
+
+
+
+#[D10_C3_B2_29]-TF-M3. Các câu hỏi về chuyển động của vật khi biết v(t) là hàm số bậc hai. 
+def npl_mk_L10_C3_B2_29():
+    t=symbols("t")
+    a=random.randint(-5,-1)
+    x1=2*random.randint(10,20)
+    x2=x1-2*random.randint(2,6)
+    t3=x1+random.randint(3,10)
+    t0=x1-random.randint(3,16)
+    t01=(x1-x2)/2
+    t5=random.randint(x1-random.randint(4,16),x1)
+
+    noi_dung = f" Một vật chuyển động có hàm vận tốc $v(t)={latex(expand(a*(t-x1)*(t+x2)))}$ (m/t) với ${{t}}$ là thời gian tính bằng giây. Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"* Tại thời điểm $t={t0}$ giây thì vận tốc của vật là ${{{phan_so(a*(t0-x1)*(t0+x2))}}}$ m/s" 
+    kq1_F=f" Tại thời điểm $t={t0}$ giây thì vận tốc của vật là ${{{phan_so(a*(t0-x1)*(t0+x2)+random.randint(5,10))}}}$ m/s"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"Tại thời điểm $t={t0}$ giây thì vận tốc của vật là ${{{phan_so(a*(t0-x1)*(t0+x2))}}}$ m/s "
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*Sau ${{{x1}}}$ giây thì vật ngừng chuyển động "
+    kq2_F=f"Sau ${{{t3}}}$ giây thì vật ngừng chuyển động  "
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"Tại thời điểm vật ngừng chuyển động là khi ${{v=0}}$. Giải phương trình ta tìm được sau ${{{x1}}}$ giây thì vật ngừng chuyển động "
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"*Vận tốc lớn nhất mà vật đạt được trong cả quá trình chuyển động là ${{{phan_so(a*(t01-x1)*(t01+x2))}}}$ m/s " 
+    kq3_F=f"Vận tốc lớn nhất mà vật đạt được trong cả quá trình chuyển động là ${{{phan_so(a*(t01-x1)*(t01+x2)+random.randint(5,10) )}}}$ m/s "
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f" Vận tốc lớn nhất mà vật đạt được trong cả quá trình chuyển động là ${{{phan_so(a*(t01-x1)*(t01+x2) )}}}$ m/s"
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    if t5 > t01:
+
+        kq4_T=f"*Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t01-x1)*(t01+x2))}}}$ m/s  "
+        kq4_F=f"Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t5-x1)*(t5+x2))}}}$ m/s " 
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" $v(t) $ là hàm số bậc hai đồng biến trên khoảng $(-\\infty; {phan_so(t01)})$ và nghịch biến trên khoảng $({phan_so(t01)};+\\infty)$\n\n "
+            f"Vì ${{{phan_so(t5)}}} > {phan_so(t01)}$ nên \n\n"
+            f"Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t01-x1)*(t01+x2))}}}$ m/s ")
+
+
+    if t5==t01:
+        t6=t5+random.randint(1,5)
+        kq4_T=f"*Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t01-x1)*(t01+x2))}}}$ m/s  "
+        kq4_F=f"Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t6-x1)*(t6+x2))}}}$ m/s " 
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" $v(t) $ là hàm số bậc hai đồng biến trên khoảng $(-\\infty; {phan_so(t01)})$ và nghịch biến trên khoảng $({phan_so(t01)};+\\infty)$\n\n "
+            f"Vì ${{{phan_so(t5)}}} = {phan_so(t01)}$ nên \n\n"
+        f"Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t01-x1)*(t01+x2))}}}$ m/s ")
+
+    if t5< t01: 
+        kq4_F=f"Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t01-x1)*(t01+x2))}}}$ m/s  "
+        kq4_T=f"*Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  ${{{phan_so(a*(t5-x1)*(t5+x2))}}}$ m/s " 
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" $v(t) $ là hàm số bậc hai đồng biến trên khoảng $(-\\infty; {phan_so(t01)})$ và nghịch biến trên khoảng $({phan_so(t01)};+\\infty)$\n\n "
+            f"Vì ${{{phan_so(t5)}}} < {phan_so(t01)}$ nên \n\n"
+        f"Trong ${{{t5}}}$ giây đầu tiên, vận tốc lớn nhất của vật là  $v({t5})={{{phan_so(a*(t5-x1)*(t5+x2))}}}$ m/s ")
+
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+#[D10_C3_B2_30]-M3. Tìm m để hàm số bậc hai đồng biến, nghịch biến trên khoảng K
+def npl_mk_L10_C3_B2_30():
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    c=random.randint(-10,10)
+    u=random.choice([i for i in range(-5,5)])
+    v=u+random.randint(1,10)
+
+    x, m=symbols("x m")
+    
+    if a>0: 
+        noi_dung=f" Cho hàm số bậc hai $y={latex(a*x**2-2*m*x+c)}$, với giá trị nào của ${{m}}$ thì hàm số đồng biến trên khoảng $({u}; {v})$?"
+        noi_dung_loigiai=f" Hàm số đồng biến trên khoảng $\\left({latex(m/a)}; +\\infty \\right)$ nên để hàm số đồng biến trên khoảng $({u}; {v})$ thì ${latex(m/a)} \\le {u}$ suy ra $m \\le {phan_so(a*u)} $"
+
+        kq=f" $m \\le {phan_so(a*u)}$"
+        kq2=f"$m < {phan_so(a*u)}$ "
+        kq3=f"$m \\ge {phan_so(a*u)}$"
+        kq4=f"$m > {phan_so(a*u)}$ "
+
+
+    if a>0: 
+        noi_dung=f" Cho hàm số bậc hai $y={latex(a*x**2-2*m*x+c)}$, với giá trị nào của ${{m}}$ thì hàm số nghịch biến trên khoảng $({u}; {v})$?"
+        noi_dung_loigiai=f" Hàm số nghịch biến trên khoảng $\\left( -\\infty; {latex(m/a)} \\right)$ nên để hàm số nghịch biến trên khoảng $({u}; {v})$ thì ${latex(m/a)} \\ge {v}$ suy ra $m \\ge {phan_so(a*v)}$ "
+
+        kq3=f" $m \\le {phan_so(a*v)}$"
+        kq2=f"$m < {phan_so(a*v)}$ "
+        kq=f"$m \\ge {phan_so(a*v)}$"
+        kq4=f"$m > {phan_so(a*v)}$ "
+
+    if a<0: 
+        noi_dung=f" Cho hàm số bậc hai $y={latex(a*x**2-2*m*x+c)}$, với giá trị nào của ${{m}}$ thì hàm số đồng biến trên khoảng $({u}; {v})$?"
+        noi_dung_loigiai=f" Hàm số đồng biến trên khoảng $\\left({latex(m/a)}; +\\infty \\right)$ nên để hàm số đồng biến trên khoảng $({u}; {v})$ thì ${latex(m/a)} \\ge {v}$ suy ra $m \\le {phan_so(a*v)} $"
+
+        kq=f" $m \\le {phan_so(a*v)}$"
+        kq2=f"$m < {phan_so(a*v)}$ "
+        kq3=f"$m \\ge {phan_so(a*u)}$"
+        kq4=f"$m > {phan_so(a*u)}$ "
+
+
+    if a<0: 
+        noi_dung=f" Cho hàm số bậc hai $y={latex(a*x**2-2*m*x+c)}$, với giá trị nào của ${{m}}$ thì hàm số nghịch biến trên khoảng $({u}; {v})$?"
+        noi_dung_loigiai=f" Hàm số nghịch biến trên khoảng $\\left( -\\infty; {latex(m/a)} \\right)$ nên để hàm số nghịch biến trên khoảng $({u}; {v})$ thì ${latex(m/a)} \\le {u}$ suy ra $m \\ge {phan_so(a*u)}$" 
+
+        kq3=f" $m \\le {phan_so(a*v)}$"
+        kq2=f"$m < {phan_so(a*v)}$ "
+        kq=f"$m \\ge {phan_so(a*u)}$"
+        kq4=f"$m > {phan_so(a*v)}$ "
+
+
+    noi_dung_loigiai=thay_cong_tru(noi_dung_loigiai)
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+
+
+#[D10_C3_B2_31]-M3. Tìm m để hàm số xác định trên đoạn [a,b]
+def npl_mk_L10_C3_B2_31():
+    a=random.choice([i for i in range(1,5) if i!=0])
+    a1=random.choice([i for i in range(-5,5) if i!=0])
+    b=random.choice([i for i in range(-5,5) if i!=0])
+    u=random.choice([i for i in range(-5,5)])
+    v=u+random.randint(1,10)
+    x0=-b/(2*a)
+    z=a*x0**2+b*x0
+    z1=a*u**2+b*u
+    z2=a*v**2+b*v 
+    x, m =symbols("x m")
+    noi_dung=f"Giá trị của tham số ${{m}}$ để hàm số $y=\\dfrac{{{a1}}}{{\\sqrt {{ {latex(a*x**2+b*x-m)}}}}}$ xác định trên $\\left[ {u}; {v} \\right]$ là: "
+    if a>0 and u<x0<v:
+        noi_dung_loigiai=(f" DKXD là ${latex(a*x**2+b*x-m)} > 0$ với mọi $x \\in \\left[ {u}; {v} \\right]$ \n\n"
+
+                        f" Vẽ BBT của hàm số bậc hai $y={latex(a*x**2+b*x-m)}$ ta có GTNN của hàm số trên $\\left[ {u}; {v} \\right]$ là  ${latex(nsimplify(a*x0**2+b*x0-m))}$ \n\n"
+                        f" ${latex(nsimplify(a*x0**2+b*x0-m))} > 0 $ suy ra $m < {phan_so(z)}$")
+
+
+        pa_A= f"*$m < {phan_so(z)}$"
+        pa_B= f"$m > {phan_so(z)}$"
+        pa_C= f"$m \\le {phan_so(z)}$"
+        pa_D= f"$m \\ge {phan_so(z)}$"
+
+    if a>0 and x0>=v:
+        noi_dung_loigiai=(f" DKXD là ${latex(a*x**2+b*x-m)} > 0$ với mọi $x \\in \\left[ {u}; {v} \\right]$ \n\n"
+                        f"  Vẽ BBT của hàm số bậc hai $y={latex(a*x**2+b*x-m)}$ ta có GTNN của hàm số trên $\\left[ {u}; {v} \\right]$ là  ${latex(nsimplify(a*v**2+b*v-m))}$ \n\n"
+                        f" ${latex(nsimplify(a*v**2+b*v-m))} > 0 $ suy ra $m < {phan_so(z2)}$")
+
+
+        pa_A= f"*$m < {phan_so(z1)}$"
+        pa_B= f"$m > {phan_so(z1)}$"
+        pa_C= f"$m \\le {phan_so(z1)}$"
+        pa_D= f"$m \\ge {phan_so(z1)}$"
+
+
+    if a>0 and x0<=u:
+        noi_dung_loigiai=(f" DKXD là ${latex(a*x**2+b*x-m)} > 0$ với mọi $x \\in \\left[ {u}; {v} \\right]$ \n\n"
+                        f"  Vẽ BBT của hàm số bậc hai $y={latex(a*x**2+b*x-m)}$ ta có  GTNN của hàm số trên $\\left[ {u}; {v} \\right]$ là  ${latex(nsimplify(a*u**2+b*u-m))}$ \n\n"
+                        f" ${latex(nsimplify(a*u**2+b*u-m))} > 0 $ suy ra $m < {phan_so(z1)}$")
+
+
+        pa_A= f"*$m < {phan_so(z1)}$"
+        pa_B= f"$m > {phan_so(z1)}$"
+        pa_C= f"$m \\le {phan_so(z1)}$"
+        pa_D= f"$m \\ge {phan_so(z1)}$"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+
+#[D10_C3_B2_32]-TF-M3. Bài tổng hợp về diện tích mảnh vườn
+def npl_mk_L10_C3_B2_32():
+    A=random.choice(["Xuân", "Thu", "Đông", "Hà", "Mai", "Giang"])
+    a=2*random.randint(5,15)
+    x=symbols("x")
+    x0=a/2 
+    x1=x0-random.randint(2,6)
+    x2= 2*x0-x1
+    u=x1*(a-x1)
+    d1=x0*(a-x0)
+    e=random.randint(int(d1)-random.randint(1,5),int(d1)+random.randint(1,6) )
+    x0=phan_so(x0)
+    d=phan_so(d1)
+    x1=phan_so(x1)
+    x2=phan_so(x2)
+    noi_dung = f"Bác {A} dùng ${{{2*a}}}$ mét lưới thép gai rào một mảnh vườn hình chữ nhật để trồng rau. Gọi ${{x}}$ là chiều rộng của mảnh vườn hình chữ nhật. Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+
+
+    kq1_T=f"*Diện tích mảnh vườn $S(x)={latex(expand(x*(a-x)))}$ "
+    kq1_F=f"Diện tích mảnh vườn $S(x)={latex(expand(x*(2*a-x)))}$ "
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"Diện tích mảnh vườn $S(x)={latex(expand(x*(a-x)))}$"
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    if 0<e <= d1: 
+        kq2_T=f"* Bác {A} có thể rào mảnh vườn có diện tích là ${{{e}}}m^{{2}}$ " 
+        kq2_F=f"Bác {A} không thể rào mảnh vườn có diện tích là ${{{e}}}m^{{2}}$  "
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Bác {A} có thể rào mảnh vườn có diện tích là ${{{e}}}m^{{2}}$ vì phương trình có nghiệm dương "
+    if e > d1 : 
+        kq2_T=f"* Bác {A} không thể rào mảnh vườn có diện tích là ${{{e}}}m^{{2}}$ " 
+        kq2_F=f"Bác {A} có thể rào mảnh vườn có diện tích là ${{{e}}}m^{{2}}$  "
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Bác {A} không thể rào mảnh vườn có diện tích là ${{{e}}}m^{{2}}$ vì phương trình vô nghiệm"
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+    kq3_T=f"Muốn diện tích lớn hơn ${{{phan_so(u)}}}m^{{2}}$ thì chiều rộng phải thuộc khoảng $\\left({x1};{x0}  \\right]$  " 
+    kq3_F=f"Muốn diện tích lớn hơn ${{{phan_so(u)}}}m^{{2}}$ thì chiều rộng phải thuộc khoảng $\\left({x1};{x2}  \\right]$ "
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"${latex(expand(x*(a-x)))} > {phan_so(u)}$ \n\n ${latex(nsimplify(expand(x*(a-x)-u)))} > 0$ \n\n ${x1}<x< {x2}$ \n\n Vì $x \\le {x0}$ nên $x\\in \\left({x1};{x0}  \\right].$ "
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*Mảnh vườn có diện tích lớn nhất nếu chiều rộng là ${{{x0}}}$ m  "
+    kq4_F=f"Mảnh vườn có diện tích lớn nhất nếu chiều rộng là ${{{phan_so((a/2)+random.randint(2,10))}}}$ m  " 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=f"Mảnh vườn có diện tích lớn nhất nếu chiều rộng là ${{{x0}}}$ m "
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[D10_C3_B2_33]-TL-M4. Toán thực tế uốn cong miếng tôn 
+def npl_mk_L10_C3_B2_33():
+    x=symbols("x")
+    a=random.randint(7,15)
+    x=symbols("x")
+    kq=a
+    noi_dung = f"Một miếng tôn có bề ngang ${{{4*a}}}$ cm được uốn cong tạo thành máng dẫn nước bằng chia tấm tôn thành ba phần rồi gấp 2 bên lại theo một góc vuông. Hỏi cần gấp hai đầu cùng một đoạn bao nhiêu để tạo ra máng có diện tích bề ngang lớn nhất cho nước chảy qua được nhiều nhất?"
+
+    noi_dung_loigiai=(f" Gọi ${{x}}$ là độ dài hai đầu gấp tấm tôn \n\n"
+    f" Diện tích bề ngang là $S(x)={latex(expand((4*a-2*x)*x))}$\n\n"
+    f"${{S(x)}}$ lớn nhất khi $x={a}$ cm")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an

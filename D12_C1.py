@@ -8079,10 +8079,10 @@ def prt_34_L12_C1_B3_07():
 		lim_vc_phai=f"$\\mathop{{\\lim}}\\limits_{{x \\to +\\infty }} {{f(x)}}={a}$"
 		lim_vc=random.choice([lim_vc_trai, lim_vc_phai])
 		
-		noi_dung = f"Cho hàm số $y=f(x)$ có {lim_x1} và {lim_vc}."\
-		f" Khẳng định nào sau đây đúng?"
+		noi_dung = (f"Cho hàm số $y=f(x)$ có {lim_x1} và {lim_vc}."
+		f" Khẳng định nào sau đây đúng?")
 
-		kq=f"Đồ thị hàm số có một tiệm cận đứng và một tiệm cận ngang"
+		kq=f"Đồ thị hàm số có ít nhất một tiệm cận đứng và ít nhất một tiệm cận ngang"
 		kq2=f"Đồ thị hàm số có hai tiệm cận đứng"
 		kq3=f"Đồ thị hàm số có hai tiệm cận ngang"
 		kq4=random.choice([f"Đồ thị hàm số không có tiệm cận đứng",f"Đồ thị hàm số không có tiệm cận ngang"])
@@ -9679,11 +9679,12 @@ def prt_34_L12_C1_B4_06():
 	code_dothi=code_dothi_bac_3(a,b,c,d)
 	code = my_module.moi_truong_anh_latex(code_dothi)
 	file_name=my_module.pdftoimage_timename(code)
+	file_name_dothi_HGD=my_module.pdftoimage_timename(code)
 
 	code_dothi_false=code_dothi_bac_3(-a,-b,-c,-d)
 	code = my_module.moi_truong_anh_latex(code_dothi_false)
 	file_name_false=my_module.pdftoimage_timename(code)
-	file_name_dothi_HGD=my_module.pdftoimage_timename(code)
+	
 
 	kq4_T=f"*Hàm số có đồ thị là\n\n"\
 	f"{file_name}"

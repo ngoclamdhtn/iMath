@@ -2445,11 +2445,12 @@ def y7y7u_L10_C5_B3_04():
 	f"{vec(f"{A}{B}")}+{vec(f"{A}{C}")}+{vec(f"{A}{D}")}=3{vec(f"{A}{G}")}",
 	f"{vec(f"{I}{A}")}+{vec(f"{I}{B}")}+{vec(f"{I}{C}")}+{vec(f"{I}{D}")}={vec(f"0")}",
 	f"{vec(f"{A}{B}")}+{vec(f"{A}{C}")}+{vec(f"{A}{D}")}=3{vec(f"{A}{G}")}",
-	f"{vec(f"{A}{B}")}+{vec(f"{A}{C}")}+{vec(f"{A}{D}")}=3{vec(f"{A}{C}")}",
+	f"{vec(f"{A}{B}")}+{vec(f"{A}{C}")}+{vec(f"{A}{D}")}=2{vec(f"{A}{C}")}",
 	f"{vec(f"{A}{B}")}+{k}{vec(f"{A}{C}")}+{vec(f"{A}{D}")}={k+1}{vec(f"{A}{C}")}",
 	f"{vec(f"{A}{B}")}-{k}{vec(f"{A}{C}")}+{vec(f"{A}{D}")}={1-k}{vec(f"{A}{C}")}",
 	f"{vec(f"{I}{A}")}+{vec(f"{I}{B}")}={vec(f"{D}{A}")}",
 	f"{vec(f"{I}{A}")}+{vec(f"{I}{B}")}={vec(f"{C}{B}")}",
+	f"{vec(f"{A}{I}")}=-\\dfrac{{1}}{{2}}{vec(f"{C}{A}")}",
 	f"{vec(f"{G}{A}")}=-2{vec(f"{G}{C}")}",
 	f"{vec(f"{G}{A}")}=2{vec(f"{C}{G}")}",
 	f"{vec(f"{A}{C}")}=-3{vec(f"{C}{G}")}",
@@ -2472,8 +2473,7 @@ def y7y7u_L10_C5_B3_04():
 	f"{vec(f"{A}{C}")}=3{vec(f"{A}{G}")}",
 	f"{vec(f"{B}{D}")}=2{vec(f"{D}{I}")}",
 	f"{vec(f"{G}{A}")}=3{vec(f"{G}{I}")}",
-	f"{vec(f"{I}{C}")}=-3{vec(f"{I}{G}")}",
-	f"{vec(f"{A}{I}")}=-\\dfrac{{1}}{{2}}{vec(f"{C}{A}")}",
+	f"{vec(f"{I}{C}")}=-3{vec(f"{I}{G}")}",	
 	f"{vec(f"{A}{B}")}+{vec(f"{B}{I}")}=-\\dfrac{{1}}{{2}}{vec(f"{B}{D}")}",
 	f"{vec(f"{D}{C}")}+{vec(f"{I}{A}")}=-\\dfrac{{1}}{{2}}{vec(f"{D}{B}")}",
 	f"{vec(f"{C}{D}")}+{vec(f"{C}{A}")}+{vec(f"{C}{B}")}=3{vec(f"{C}{A}")}",
@@ -3533,11 +3533,11 @@ def y7y7u_L10_C5_B4_05():
 		if kq2==kq2_F:
 			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-		kq3_T=f"*${vec(f"{B}{C}")}.{vec(f"{A}{D}")}=0$" 
-		kq3_F=f"${vec(f"{B}{C}")}.{vec(f"{A}{D}")}={latex(random.randint(1,4)*m*a**2)}$"
+		kq3_T=f"*${vec(f"{B}{C}")}.{vec(f"{A}{D}")}={latex(m**2*a**2)}$" 
+		kq3_F=f"${vec(f"{B}{C}")}.{vec(f"{A}{D}")}={latex(-m**2*a**2)}$"
 		kq3=random.choice([kq3_T, kq3_F])
-		HDG=f"${B}{C}\\bot {A}{M}, {B}{C}\\bot {D}{M} \\Rightarrow  {B}{C}\\bot ({A}{D}{M}) \\Rightarrow {B}{C}\\bot {A}{D}$.\n\n"\
-		f"Vậy ${vec(f"{B}{C}")}.{vec(f"{A}{D}")}=0$. "
+		HDG=(f"${vec(f"{B}{C}")}$ và ${vec(f"{A}{D}")}$ cùng hướng nên góc giữa chúng là $0^\\circ$."
+		f"Vậy ${vec(f"{B}{C}")}.{vec(f"{A}{D}")}={latex(m*a)}.{latex(m*a)}.\\cos 0^\\circ={latex(m**2*a**2)}$.")
 		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 		if kq3==kq3_F:
 			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

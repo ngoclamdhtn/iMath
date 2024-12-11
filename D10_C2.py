@@ -1620,7 +1620,7 @@ def bch_12_L10_C2_B2_05():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[only]{{{kq}}}\n\n"\
+    f"\\shortans[4]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an= kq
