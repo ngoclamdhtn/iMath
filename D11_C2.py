@@ -2145,8 +2145,8 @@ def mn8mn_L11_C2_B3_07():
     Sn=u1*(q**n-1)/(q-1)
     Sn_false=u1*(q**n-1)/(q+1)
 
-    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn)}$" 
-    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn_false)}$"
+    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn)}}}$" 
+    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn_false)}}}$"
     kq3=random.choice([kq3_T, kq3_F])    
         
     HDG=f"$S_{{{n}}}={st_u1}\\dfrac{{{st_q}^{{{n}}}-1}}{{{st_q}-1}}={phan_so(Sn)}$."

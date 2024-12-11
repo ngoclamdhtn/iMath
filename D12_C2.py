@@ -204,6 +204,9 @@ def tich_co_huong(a,b):
 def vec(st):
 	return f"\\overrightarrow{{{st}}}"
 
+def vec2(A,B):
+	return f"\\overrightarrow{{{A}{B}}}"
+
 def tinh_tan(a):
     goc_rad = rad(a)       
     kq = tan(goc_rad)        
@@ -5188,10 +5191,7 @@ def mnj_34_jkl_L12_C2_B3_24():
 	
 	
 	random.shuffle(kq_false)
-	kq2,kq3,kq4=kq_false[0:3]
-
-
-	
+	kq2,kq3,kq4=kq_false[0:3]	
 
 	pa_A= f"*${H}{kq}$"
 	pa_B= f"${H}{kq2}$"
@@ -5290,10 +5290,7 @@ def mnj_34_jkl_L12_C2_B3_25():
 	)
 	
 	random.shuffle(kq_false)
-	kq2,kq3,kq4=kq_false[0:3]
-
-
-	
+	kq2,kq3,kq4=kq_false[0:3]	
 
 	pa_A= f"*${H}{kq}$"
 	pa_B= f"${H}{kq2}$"
@@ -5713,6 +5710,289 @@ def mnj_34_jkl_L12_C2_B3_28():
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C2_B3_29]-TF-M3. Cho tam giác. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm điểm.
+def mnj_34_jkl_L12_C2_B3_29():
+	ten=["A","B","C","D","E","M","N","P"]
+	random.shuffle(ten)
+	A,B,C,P=ten[0:4]	
+	
+	bo_toa_do=tao_3dinh_tamgiac()
+	a1,a2,a3=bo_toa_do[0]
+	b1,b2,b3=bo_toa_do[1]
+	c1,c2,c3=bo_toa_do[2]
+
+	chon=random.randint(1,3)
+	if chon==1:
+		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
+		f" Xét tính đúng-sai của các khẳng định sau:")
+	
+	if chon==2:
+		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${B}({b1};{b2};{b3}), {A}({a1};{a2};{a3}), {C}({c1};{c2};{c3})$."
+		f" Xét tính đúng-sai của các khẳng định sau:")
+
+	if chon==3:
+		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${C}({c1};{c2};{c3}), {B}({b1};{b2};{b3}), {A}({a1};{a2};{a3})$."
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
+	
+		
+	x_AB,y_AB,z_AB=b1-a1,b2-a2,b3-a3
+	x_BA,y_BA,z_BA=-x_AB,-y_AB,-z_AB
+	x_AC,y_AC,z_AC=c1-a1,c2-a2,c3-a3
+	x_BC,y_BC,z_BC=c1-b1,c2-b2,c3-b3
+
+	vec_AB=f"{vec(f"{A}{B}")}"
+	vec_BA=f"{vec(f"{B}{A}")}"
+	vec_AC=f"{vec(f"{A}{C}")}"
+	vec_BC=f"{vec(f"{B}{C}")}"	
+
+	chon=random.randint(1,4)
+	if chon==1:
+		kq1_T=f"* ${vec_AB}=({x_AB};{y_AB};{z_AB})$" 
+		kq1_F=random.choice([
+			f"${vec_AB}=({-x_AB};{-y_AB};{z_AB+random.randint(1,2)})$",
+			f"${vec_AB}=({x_AB+random.randint(1,2)};{-y_AB};{-z_AB})$",
+			])
+		HDG=(f"${vec_AB}=({x_AB};{y_AB};{z_AB})$.")
+	
+	if chon==2:
+		kq1_T=f"* ${vec_AC}=({x_AC};{y_AC};{z_AC})$" 
+		kq1_F=random.choice([
+			f"${vec_AC}=({-x_AC};{-y_AC};{z_AC+random.randint(1,2)})$",
+			f"${vec_AC}=({x_AC+random.randint(1,2)};{-y_AC};{-z_AC})$",
+			])
+		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$.")
+
+	if chon==3:
+		kq1_T=f"* ${vec_BC}=({x_BC};{y_BC};{z_BC})$" 
+		kq1_F=random.choice([
+			f"${vec_BC}=({-x_BC};{-y_BC};{z_BC+random.randint(1,2)})$",
+			f"${vec_BC}=({x_BC+random.randint(1,2)};{-y_BC};{-z_BC})$",
+			])
+		HDG=(f"${vec_BC}=({x_BC};{y_BC};{z_BC})$.")
+
+	if chon==4:
+		kq1_T=f"* ${vec_BA}=({x_BA};{y_BA};{z_BA})$" 
+		kq1_F=random.choice([
+			f"${vec_BA}=({-x_BA};{-y_BA};{z_BA+random.randint(1,2)})$",
+			f"${vec_BA}=({x_BA+random.randint(1,2)};{-y_BA};{-z_BA})$",
+			])
+		HDG=(f"${vec_BA}=({x_BA};{y_BA};{z_BA})$.")
+
+	kq1=random.choice([kq1_T, kq1_F])	
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Tính |vec_AB+_vec_BC|=|vec_AC|
+	AC=sqrt(x_AC**2+y_AC**2+z_AC**2)
+	AC_false=sqrt(x_AC**2+y_AC**2+z_AC**2+random.randint(1,3))
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq2_T=f"*$|{vec_BC}+{vec_AB}|={latex(AC)}$"
+		kq2_F=f" $|{vec_BC}+{vec_AB}|={latex(AC_false)}$"		
+		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
+			f"$|{vec_BC}+{vec_AB}|=|{vec_AB}+{vec_BC}|=|{vec_AC}|={latex(AC)}$.")	
+	if chon==2:
+		kq2_T=f"*$|{vec(f"{B}{C}")}-{vec(f"{B}{A}")}|={latex(AC)}$"
+		kq2_F=f" $|{vec(f"{B}{C}")}-{vec(f"{B}{A}")}|={latex(AC_false)}$"		
+		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
+			f"$|{vec(f"{B}{C}")}-{vec(f"{B}{A}")}|=|{vec_AC}|={latex(AC)}$.")	
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	AB=sqrt(x_AB**2+y_AB**2+z_AB**2)
+	AC=sqrt(x_AC**2+y_AC**2+z_AC**2)
+	tichvh=x_AB*x_AC+y_AB*y_AC+z_AB*z_AC
+	tinh_cos=tichvh/(AB*AC)
+	goc_rad=acos(tinh_cos)
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		goc_deg=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		kq3_T=f"* Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg}^\\circ$" 
+		kq3_F=f"Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg_false}^\\circ$"
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=(
+			f"${vec_AB}=({x_AB};{y_AB};{z_AB}),{vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
+			f"${vec_AB}.{vec_AC}={tichvh}$.\n\n"
+			f"${A}{B}={latex(AB)},{A}{C}={latex(AC)}$.\n\n"
+			f"$\\cos({vec_AB},{vec_AC})=\\dfrac{{{tichvh}}}{{{latex(AB)}.{latex(AC)}}}={latex(nsimplify(tinh_cos))}$.\n\n"
+			f"$({vec_AB},{vec_AC})={goc_deg}^\\circ$."
+			)
+	
+	if chon==2:
+		goc_deg=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
+		kq3_T=f"* Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg}^\\circ$" 
+		kq3_F=f"Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg_false}^\\circ$"
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=(
+			f"${vec_AB}=({x_AB};{y_AB};{z_AB}),{vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
+			f"${vec_AB}.{vec_AC}={tichvh}$.\n\n"
+			f"${A}{B}={latex(AB)},{A}{C}={latex(AC)}$.\n\n"
+			f"$\\cos({vec_AB},{vec_AC})=\\dfrac{{{tichvh}}}{{{latex(AB)}.{latex(AC)}}}={latex(nsimplify(tinh_cos))}$.\n\n"
+			f"$({vec_AB},{vec_AC})={goc_deg_false}^\\circ \\Rightarrow ({vec2(A,B)},{vec2(C,A)})={goc_deg}^\\circ$."
+			)
+	
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x_A,y_A,z_A=a1,a2,a3
+	x_B,y_B,z_B=b1,b2,b3
+	chon=random.randint(1,2)
+
+	if chon==1:
+		x_P = random.choice([i for i in range(-5, 6) if i!=0])
+		if x_P==x_A: x_P=x_P+random.randint(1,2)
+		y_P,z_P=0,0
+		AP=sqrt((x_P-x_A)**2+y_A**2+z_A**2)
+		t=AP**2-y_A**2-z_A**2
+		x_P1=latex(x_A+sqrt(t))
+		x_P2=latex(x_A-sqrt(t))
+
+		kq4_T=(f"* Các điểm ${{{P}}}$ thuộc trục ${{Ox}}$ thỏa mãn ${A}{P}={latex(AP)}$."
+		f" Tổng hoành độ của các điểm ${{{P}}}$ bằng ${2*x_A}$")
+
+		kq4_F=(f"* Các điểm ${{{P}}}$ thuộc trục ${{Ox}}$ thỏa mãn ${A}{P}={latex(AP)}$."
+		f" Tổng hoành độ của các điểm ${{{P}}}$ bằng ${2*x_A+random.randint(1,2)}$")
+		kq4=random.choice([kq4_T, kq4_F])
+
+		
+		HDG=(f"Gọi ${P}=(a;0;0)$.\n\n Ta có: ${A}{P}=\\sqrt{{(a-{x_A})^2+({-y_A})^2+({-z_A})^2}}={latex(AP)}$\n"
+			f"$\\Rightarrow (a-{x_A})^2={AP**2-y_A**2-z_A**2}$\n\n"
+			f"$\\left[ \\begin{{array}}{{l}} \n\
+			a-{x_A}={latex(sqrt(t))} \\\\ \n\
+			a-{x_A}={latex(-sqrt(t))}\n\
+			\\end{{array}} \\right.$"
+
+			f"$\\left[ \\begin{{array}}{{l}} \n\
+			a={latex(x_A+sqrt(t))} \\\\ \n\
+			a={latex(x_A-sqrt(t))}\n\
+			\\end{{array}} \\right.$\n\n"
+			f"Suy ra ${P}({latex(x_A+sqrt(t))};0;0)$ hoặc ${P}({latex(x_A-sqrt(t))};0;0)$.\n\n"
+			f"Tổng hoành độ của các điểm ${{{P}}}$ bằng ${2*x_A}$.")
+	
+	if chon==2:
+		t=random.randint(2,4)
+		k=-t/(t+1)
+		a, b, c=x_A+k*x_AB, y_A+k*y_AB, z_A+k*z_AB
+		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+
+		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${A}{B}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
+		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${A}{B}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"${vec_AB}=({x_AB};{y_AB};{z_AB}), {vec2(P,A)}=({x_A}-a;{y_A}-b;{z_A}-c)$.\n\n"
+			f"${P}{A}={t}{P}{B} \\Rightarrow {vec2(P,A)}={phan_so(k)}{vec_AB}$.\n\n"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			a={x_A}+({phan_so(k)}).{tao_ngoac(x_AB)}={phan_so(a)} \\\\ \n\
+			b={y_A}+({phan_so(k)}).{tao_ngoac(y_AB)}={phan_so(b)} \\\\ \n\
+			c={z_A}+({phan_so(k)}).{tao_ngoac(z_AB)}={phan_so(c)} \n\
+			\\end{{array}} \\right.$\n\n"
+			f"Suy ra: $a+b+c={phan_so(a+b+c)}={kq}$."
+			)
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	
+	if chon==3:
+		m=random.randint(2,3)
+		n = random.choice([i for i in range(-3, 3) if i!=0])
+		q = random.choice([i for i in range(-2, 2) if i!=0])
+		vec_AP, vec_AB, vec_AC=sp.symbols("vecAP vecAB vecAC")
+
+		a=x_A+q/m*x_AC-n/m*x_AB
+		b=y_A+q/m*y_AC-n/m*y_AB
+		c=z_A+q/m*z_AC-n/m*z_AB
+		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+
+		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq}$"
+		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq_false}$" 
+		kq4_T=kq4_T.replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C)).replace("-+","-").replace("--","+").replace("+-","-")
+		kq4_F=kq4_F.replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C)).replace("-+","-").replace("--","+").replace("+-","-")
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"${vec_AB}=({x_AB};{y_AB};{z_AB}),{vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
+			f"${vec_AP}=(a-{x_A};b-{y_A};c-{z_A})$.\n\n"
+			f"${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)} \\Rightarrow$"
+			f"${latex(m*vec_AP)}={latex(q*vec_AC)}-{latex(n*vec_AB)}$\n\n"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			a-{x_A}={phan_so(q/m)}.{tao_ngoac(x_AC)}-{phan_so(n/m)}.{tao_ngoac(x_AB)} \\\\ \n\
+			b-{y_A}={phan_so(q/m)}.{tao_ngoac(y_AC)}-{phan_so(n/m)}.{tao_ngoac(y_AB)} \\\\ \n\
+			c-{z_A}={phan_so(q/m)}.{tao_ngoac(z_AC)}-{phan_so(n/m)}.{tao_ngoac(z_AB)}\n\
+			\\end{{array}} \\right.$"
+			f"$\\Rightarrow\\left\\{{ \\begin{{array}}{{l}} \n\
+			a={phan_so(a)} \\\\ \n\
+			b={phan_so(b)} \\\\ \n\
+			c={phan_so(c)}\n\
+			\\end{{array}} \\right.$\n\n"
+			f"Suy ra: $a+b+c={phan_so(a+b+c)}={kq}$.")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	
+
+	HDG=HDG.replace("-+","-").replace("--","+").replace("+-","-").replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C))
+
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
 
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 

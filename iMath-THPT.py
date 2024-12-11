@@ -5371,11 +5371,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_22]-SA-M2. Cho hàm bậc 3 có điểm cực trị x_1,x_2. Tính P=ax_1 + bx_2."])
+                item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_22]-SA-M2. Hàm bậc 3 có điểm cực trị x_1,x_2. Tính P=ax_1 + bx_2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_23]-SA-M2. Cho hàm bậc 3 có giá trị cực trị y_1,y_2. Tính P=ay_1 + by_2."])
+                item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_23]-SA-M2. Hàm bậc 3 có cực trị y_1,y_2. Tính P=ay_1 + by_2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5385,7 +5385,15 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_25]-SA-M2. Cho y=(ax^2+bx+c)/(dx+e) có giá trị cực trị y_1,y_2. Tính P=ay_1 + by_2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_36]-SA-M2. Hàm bậc 3 có đường thẳng qua hai cực trị là y=ax+b. Tính bài toán liên quan."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B1_3, ["[D12_C1_B1_37]-SA-M2. Hàm bậc 2/bậc 1 có đường thẳng qua hai cực trị là y=ax+b. Tính bài toán liên quan."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)       
 
 
                 # BÀI 3: GIÁ TRỊ LỚN NHẤT - GIÁ TRỊ NHỎ NHẤT  
@@ -5675,6 +5683,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B4_2, ["[D12_C1_B4_19]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: TXĐ, y', TCĐ, Tâm đối xứng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B4_3 = QTreeWidgetItem(L12_C1_B4, ["Trả lời ngắn"])
                 L12_C1_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5686,6 +5698,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C1_B4_3, ["[D12_C1_B4_18]-SA-M2. Cho đồ thị hàm y=(ax+b)/(cx+d). Tính tổng các hệ số"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 # BÀI 5: TOÁN THỰC TẾ
 
@@ -5979,7 +5993,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_28]-TF-M2. Cho tam giác. Xét Đ-S: Độ dài, tọa độ vectơ, R, S."])
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_28]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài, tọa độ vectơ, R, S."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_29]-TF-M3. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7034,7 +7052,15 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C1_B1_35]-M2. Cho đồ thị f'(x). Tìm điểm cực trị
                                                 if dang_toan == "[D12_C1_B1_35]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B1_35()                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B1_35()
+
+                                                #[D12_C1_B1_36]-SA-M3. Hàm bậc 3 có đường thẳng qua hai cực trị là y=ax+b. Tính bài toán liên quan.
+                                                if dang_toan == "[D12_C1_B1_36]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B1_36()
+
+                                                #[D12_C1_B1_37]-SA-M3. Hàm bậc 2/bậc 1 có đường thẳng qua hai cực trị là y=ax+b. Tính bài toán liên quan.
+                                                if dang_toan == "[D12_C1_B1_37]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B1_37()                                 
 
                                         #Bài 2. GIÁ TRỊ LỚN NHẤT  - GIÁ TRỊ NHỎ NHẤT
                                                 #[D12_C1_B2_01]-M2. Tìm GTLN-GTNN của hàm bậc 3 trên đoạn
@@ -7283,6 +7309,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C1_B4_18]-SA-M3. Cho đồ thị hàm y=(ax+b)/(cx+d). Tính tổng các hệ số
                                                 if dang_toan == "[D12_C1_B4_18]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B4_18()
+
+                                                #[D12_C1_B4_19]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: TXĐ, y', TCĐ, Tâm đối xứng
+                                                if dang_toan == "[D12_C1_B4_19]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B4_19()
 
                                                 #Toán 12 - Chương 1 - Bài 5------------------------------------------------->
                                                 #[D12_C1_B5_01]-SA-M3. Bài toán thực tế tìm chi phí thấp nhất
@@ -7548,6 +7578,10 @@ class Ui_MainWindow(object):
                                             #[D12_C2_B3_28]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài, tọa độ vectơ, R, S.
                                                 if dang_toan == "[D12_C2_B3_28]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_28()
+
+                                            #[D12_C2_B3_29]-TF-M3. Cho tam giác. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm điểm.
+                                                if dang_toan == "[D12_C2_B3_29]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_29()
 
 
 

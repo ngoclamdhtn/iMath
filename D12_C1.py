@@ -4628,7 +4628,116 @@ def prt_34_L12_C1_B1_35():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
+#[D12_C1_B1_36]-SA-M3. Hàm bậc 3 có đường thẳng qua hai cực trị là y=ax+b. Tính bài toán liên quan.
+def prt_34_L12_C1_B1_36():
+	x=sp.symbols("x")
+	x_1 = random.randint(-5,5)
+	x_2 = x_1 + random.randint(1,3)
+	a, b=-(x_1+x_2), x_1*x_2	
+	m=random.choice([1,-1,3,-3])
+	f_dh= m*(x**2+a*x+b)
+	f=integrate(f_dh,x)+random.randint(-3,3)
+	y_1,y_2=f.subs(x,x_1), f.subs(x,x_2)
 
+	p = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+	q = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+
+	st_a,st_b=sp.symbols("a b")
+			
+	noi_dung =(f"Đồ thị hàm số $y=f(x)={latex(f)}$ có các điểm cực trị là $A,B$."
+	f" Đường thẳng đi qua ${{A}}$ và ${{B}}$ có phương trình $y=ax+b$. Tính ${latex(p*st_a+q*st_b)}$ (kết quả làm tròn đến hàng phần mười).")
+
+	
+	k_a=(y_2-y_1)/(x_2-x_1)
+	k_b=-k_a*x_1+y_1
+	dap_an=f"{round(p*k_a + q*k_b,1)}".replace(".",",")
+
+	noi_dung_loigiai=(f"$f'(x)={latex(f_dh)}$.\n\n"
+		f"$f'(x)=0 \\Leftrightarrow x={x_1}$ hoặc $x={x_2}$.\n\n"
+		f"Hàm số đạt cực trị tại các điểm $x_1={x_1}$, $x_2={x_2}$.\n\n"
+		f"$y_1=f({x_1})={phan_so(y_1)}, y_2=f({x_2})={phan_so(y_2)}$.\n\n"
+		f"Đường thẳng ${{d}}$ đi qua các điểm $A\\left({x_1};{phan_so(y_1)}\\right), B\\left({x_2};{phan_so(y_2)}\\right)$ có hệ số góc là:\n\n"
+		f"$k=\\dfrac{{{phan_so(y_2)}-{phan_so(y_1)}}}{{{x_2}-{x_1}}}={phan_so(k_a)}$.\n\n"
+		f"Phương trình ${{d}}$: $y={phan_so(k_a)}(x-{x_1})+{phan_so(y_1)}$"
+		f"$\\Leftrightarrow y={phan_so(k_a)}x+{phan_so(k_b)}$.\n\n"
+		f"Ta có: $a={phan_so(k_a)},b={phan_so(k_b)}\\Rightarrow {latex(p*st_a+q*st_b)}={dap_an}$."
+		
+		)
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+").replace("-+","-")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n Đáp án: {dap_an}"
+	
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	f"\\shortans[oly]{{${dap_an}$}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B1_37]-SA-M3. Hàm bậc 2/bậc 1 có đường thẳng qua hai cực trị là y=ax+b. Tính bài toán liên quan.
+def prt_34_L12_C1_B1_37():
+	x=sp.symbols("x")
+	x_1=random.choice([2*i for i in range(-10,10)])
+	i=random.randint(1,5)
+	x_2=x_1+2*i
+	b, c, =(x_1+x_2), x_1*x_2 
+	x_0=int(b/2)
+
+	#Tạo hàm số g là đạo hàm của f
+	g=(x**2-b*x+c)/((x-x_0)**2)
+	g1=(x**2-b*x+x_0**2)/((x-x_0)**2)
+	c2=x_0**2-c
+
+	#Tìm hàm f là nguyên hàm của g
+	f=integrate(g,x)
+	f1=integrate(g1,x)
+	
+	a=random.choice([-1,1,-2,2])
+	f_ok=a*(f1*x-f1*x_0+c2)/(x-x_0)
+
+	y_1=f_ok.subs(x,x_1)
+	y_2=f_ok.subs(x,x_2)
+
+	p = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+	q = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+
+	st_a,st_b=sp.symbols("a b")
+			
+	noi_dung =(f"Đồ thị hàm số $y=f(x)={latex(f_ok)}$ có các điểm cực trị là $A,B$."
+	f" Đường thẳng đi qua ${{A}}$ và ${{B}}$ có phương trình $y=ax+b$. Tính ${latex(p*st_a+q*st_b)}$ (kết quả làm tròn đến hàng phần mười).")
+
+	
+	k_a=(y_2-y_1)/(x_2-x_1)
+	k_b=-k_a*x_1+y_1
+	dap_an=f"{round(p*k_a + q*k_b,1)}".replace(".",",")
+
+	noi_dung_loigiai=(f"$f'(x)={latex(a*g)}$.\n\n"
+		f"$f'(x)=0 \\Leftrightarrow x={x_1}$ hoặc $x={x_2}$.\n\n"
+		f"Lập bảng biến thiên.\n\n"\
+		f"Hàm số đạt cực trị tại $x_1={x_1}$, $x_2={x_2}$.\n\n"
+		f"$y_1=f({x_1})={phan_so(y_1)}, y_2=f({x_2})={phan_so(y_2)}$.\n\n"
+
+		f"Đường thẳng ${{d}}$ đi qua các điểm $A\\left({x_1};{phan_so(y_1)}\\right), B\\left({x_2};{phan_so(y_2)}\\right)$ có hệ số góc là:\n\n"
+		f"$k=\\dfrac{{{phan_so(y_2)}-{phan_so(y_1)}}}{{{x_2}-{x_1}}}={phan_so(k_a)}$.\n\n"
+		f"Phương trình ${{d}}$: $y={phan_so(k_a)}(x-{x_1})+{phan_so(y_1)}$"
+		f"$\\Leftrightarrow y={phan_so(k_a)}x+{phan_so(k_b)}$.\n\n"
+		f"Ta có: $a={phan_so(k_a)},b={phan_so(k_b)}\\Rightarrow {latex(p*st_a+q*st_b)}={dap_an}$."	
+		
+		)
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+").replace("-+","-")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n Đáp án: {dap_an}"
+	
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	f"\\shortans[oly]{{${dap_an}$}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 #BÀI 2: GIÁ TRỊ LỚN NHẤT- GIÁ TRỊ NHỎ NHẤT
 
 #[D12_C1_B2_01]-M2. Tìm GTLN-GTNN của hàm bậc 3 trên đoạn
@@ -10936,7 +11045,126 @@ def prt_34_L12_C1_B4_18():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
-#-------------------------------------------------------------------#
+
+#[D12_C1_B4_19]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: TXĐ, y', TCĐ, Tâm đối xứng
+def prt_34_L12_C1_B4_19():
+	x=sp.symbols("x")
+	d = random.choice([random.randint(1,4),random.randint(-3,-1) ])
+	a = random.randint(1,2)*d
+	if d not in [-1,1]: a=2*d
+	b = random.randint(-5, 5)
+	c = random.choice([i for i in range(-6, 6) if i!=0])    
+	e = random.choice([i for i in range(-6, 6) if i!=0])
+	
+	g, h = div(a * x**2 + b * x + c, d * x + e, x)
+	if h==0:
+		c=c+random.randint(1,2)
+	f=(a*x**2+b*x+c)/(d*x+e)
+	g, h = div(a * x**2 + b * x + c, d * x + e, x)
+	x_0=-e/d
+	y_0=g.subs(x,x_0)
+
+
+	noi_dung = f"Cho hàm số ${latex(f)}$ . Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tập xác định của hàm số là $D=\\mathbb{{R}} \\backslash \\left\\{{{phan_so(-e/d)}\\right\\}}$" 
+	kq1_F=f"Tập xác định của hàm số là $D=\\mathbb{{R}}\\backslash \\left\\{{{phan_so(e/d)}\\right\\}}$"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=(f"Hàm số xác định khi ${latex(d*x+e)}\\ne 0 \\Leftrightarrow x \\ne {phan_so(-e/d)}$.\n"
+		f"Tập xác định là: $D=\\mathbb{{R}}\\backslash \\left\\{{{phan_so(-e/d)}\\right\\}}$.")
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	f_dh=(2*a*d*x**2+2*a*e*x+b*e-c*d)/(d*x+e)**2
+	f_dh_false=(2*a*d*x**2-2*a*e*x+b*e-c*d+random.randint(1,2))/(d*x+e)**2
+
+	kq2_T=f"* Đạo hàm của hàm số là $y'={latex(f_dh)}$"
+	kq2_F=f"Đạo hàm của hàm số là $y'={latex(f_dh_false)}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Đạo hàm của hàm số là $y'={latex(f_dh)}$."
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Tiệm cận đứng của đồ thị hàm số là đường thẳng $x={phan_so(-e/d)}$"
+	kq3_F=random.choice([
+		f"Tiệm cận đứng của đồ thị hàm số là đường thẳng $x={phan_so(e/d)}$",
+		f"Tiệm cận đứng của đồ thị hàm số là đường thẳng $y={phan_so(-e/d)}$",
+		f"Tiệm cận đứng của đồ thị hàm số là đường thẳng $x={phan_so(a/d)}$"])	
+	kq3=random.choice([kq3_T, kq3_F])
+
+	HDG=f"Tiệm cận đứng của đồ thị hàm số là đường thẳng $x={phan_so(-e/d)}$."
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Đồ thị hàm số có tâm đối xứng là điểm $I\\left({phan_so(x_0)};{phan_so(y_0)}\\right)$"
+	kq4_F=f"Đồ thị hàm số có tâm đối xứng là điểm $I\\left({phan_so(e/d)};{phan_so(y_0)}\\right)$" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Tiệm cận đứng của đồ thị hàm số là đường thẳng $x={phan_so(-e/d)}$.\n\n"
+		f"$y={latex(f)}={latex(g)}+\\dfrac{{{latex(h)}}}{{{latex(d*x+e)}}}$.\n\n"
+		f"Tiệm cận xiên của đồ thị hàm số là đường thẳng $y={latex(g)}$.\n\n"
+		f"Tâm đối xứng của đồ thị là giao điểm của hai tiệm cận: $I\\left({phan_so(x_0)};{phan_so(y_0)}\\right)$."
+		)
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+	
+
+
+
+#----------------------------BÀI 5 - TOÁN THỰC TẾ---------------------------------------#
 
 #[D12_C1_B5_01]-TL-M4. Bài toán thực tế tìm chi phí thấp nhất
 def prt_34_L12_C1_B5_01():

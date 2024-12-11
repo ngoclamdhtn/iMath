@@ -3096,7 +3096,7 @@ def y7y7u_L10_C5_B3_08():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[only]{{{kq}}}\n\n"\
+    f"\\shortans[oly]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq 
@@ -3976,7 +3976,7 @@ def y7y7u_L10_C5_B4_08():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}\n"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
