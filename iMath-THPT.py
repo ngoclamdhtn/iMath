@@ -2130,7 +2130,11 @@ class Ui_MainWindow(object):
                 L10_C6_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B1, ["[D10_C6_B1_01]-M2. Viết số quy tròn của số nguyên có độ chính xác cho trước."])
+                item = QTreeWidgetItem(L10_C6_B1, ["[D10_C6_B1_01]-M2. Quy tròn số nguyên có độ chính xác cho trước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B1, ["[D10_C6_B1_02]-M2. Quy tròn số thập phân có độ chính xác cho trước."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11077,9 +11081,13 @@ class Ui_MainWindow(object):
 
                                     #Chương 6- Thống kê
                                             #Bài 1: Số gần đúng
-                                            #[D10_C6_B1_01]. Cho dãy số liệu. Tính số trung bình.
+                                            #[D10_C6_B1_01]. Quy tròn số nguyên với độ chính xác
                                                 if dang_toan == "[D10_C6_B1_01]":           
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B1_01()
+
+                                            #[D10_C6_B1_01]. Quy tròn số thập phân với độ chính xác
+                                                if dang_toan == "[D10_C6_B1_02]":           
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B1_02()
 
                                             #Bài 3:Các số đặc trưng đo xu thế trung tâm của mẫu số liệu
                                             #[D10_C6_B3_01]. Cho dãy số liệu. Tính số trung bình.

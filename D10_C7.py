@@ -773,6 +773,7 @@ def aaa_pry_L10_C7_B1_11():
 	    f"\\end{{ex}}\n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	f"\\begin{{center}}\n{code_bxd}\n\\end{{center}}\n"\
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an

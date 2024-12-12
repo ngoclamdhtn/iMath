@@ -8,7 +8,6 @@ import my_module
 
 #Chương 6 - Bài 1: Số gần đúng và sai số
 #[D10_C6_B1_01]-M2. Viết số quy tròn của số nguyên có độ chính xác cho trước.
-
 def tktk_L10_C6_B1_01():
 	# Tạo một mẫu số liệu ngẫu nhiên gồm 100 số nguyên dương
 	a = random.randint(1100, 1000000)	
@@ -37,6 +36,86 @@ def tktk_L10_C6_B1_01():
 	noi_dung_1=f"Cho số gần đúng $a={a}$ với độ chính xác $d={d}$. Hãy viết số quy tròn của số $a$."
 	noi_dung_2=f"Hãy viết số quy tròn của số gần đúng $a={a}\\pm {d}$."
 	noi_dung=random.choice([noi_dung_1,noi_dung_2])
+
+	noi_dung_loigiai=f""
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+	debai= f"{noi_dung}\n"      
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#Quy tròn số thập phân với sai số
+#[D10_C6_B1_02]-M2. Viết số quy tròn của số thập phân có độ chính xác cho trước.
+def tktk_L10_C6_B1_02():
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		b = random.randint(10120, 998877)
+		a=b/10000
+		st_a=f"{round(a,5):.4f}".replace(".",",")
+
+
+		d=random.randint(1,6)/100
+		st_d=f"{round(d,2):.2f}".replace(".",",")
+
+		kq=f"{round(a, 1):.1f}".replace(".",",")
+		kq2=f"{round(a, 2):.2f}".replace(".",",")
+		kq3=f"{round(a, 3):.3f}".replace(".",",")
+		kq4=f"{round(a+random.choice([0.4,0.5,0.2]), 1):.1f}".replace(".",",")
+	
+	if chon==2:
+		b = random.randint(101205, 998877)
+		chon=random.randint(1,2)
+		if chon==1:
+			a=b/100000
+			st_a=f"{round(a,5):.5f}".replace(".",",")
+		
+		if chon==2:
+			a=b/10000
+			st_a=f"{round(a,4):.4f}".replace(".",",")	
+		
+
+		d=random.randint(1,6)/1000
+		st_d=f"{round(d,3):.3f}".replace(".",",")
+
+		kq=f"{round(a, 2):.2f}".replace(".",",")
+		kq2=f"{round(a, 4):.4f}".replace(".",",")
+		kq3=f"{round(a, 3):.3f}".replace(".",",")
+		kq4=f"{round(a+random.choice([0.4,0.5,0.2]), 2):.2f}".replace(".",",")
+	
+	ten=random.choice(["a","b","c","m","e" ])
+	noi_dung_1=f"Cho số gần đúng ${ten}={st_a}$ với độ chính xác $d={st_d}$. Hãy viết số quy tròn của số $a$."
+	noi_dung_2=f"Hãy viết số quy tròn của số gần đúng ${ten}={st_a}\\pm {st_d}$."
+	noi_dung=random.choice([noi_dung_1,noi_dung_2])
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
 
 	noi_dung_loigiai=f""
 	#Trộn các phương án

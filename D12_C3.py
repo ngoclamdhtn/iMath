@@ -916,7 +916,7 @@ def ytrzz_L12_C3_B2_01():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1061,7 +1061,7 @@ def ytrzz_L12_C3_B2_02():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1214,7 +1214,7 @@ def ytrzz_L12_C3_B2_03():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1323,7 +1323,7 @@ def ytrzz_L12_C3_B2_04():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
 	variance_round=f"{round(variance,2):.1f}".replace(".",",")
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1433,7 +1433,7 @@ def ytrzz_L12_C3_B2_05():
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
 	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies)-1)
+	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
 	variance_round=f"{round(variance,2):.1f}".replace(".",",")
 	variance_false_round=f"{round(variance+random.choice([0.5,0.6,0.8,1]),2):.1f}".replace(".",",")
 
