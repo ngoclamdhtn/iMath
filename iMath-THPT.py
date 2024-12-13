@@ -2149,27 +2149,47 @@ class Ui_MainWindow(object):
                 L10_C6_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3, ["[D10_C6_B3_01]-M2. Cho dãy số liệu. Tính số trung bình."])
+                L10_C6_B3_1 = QTreeWidgetItem(L10_C6_B3, ["Trắc nghiệm"])
+                L10_C6_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C6_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_01]-M2. Cho dãy số liệu. Tính số trung bình."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3, ["[D10_C6_B3_02]-M2. Cho dãy số liệu. Tính số trung vị."])
+                item = QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_02]-M2. Cho dãy số liệu. Tính số trung vị."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3, ["[D10_C6_B3_03]-M2. Cho dãy số liệu. Tính mốt."])
+                item = QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_03]-M2. Cho dãy số liệu. Tính mốt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3, ["[D10_C6_B3_04]-M2. Cho dãy số liệu. Tính tứ phân vị thứ nhất"])
+                item = QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_04]-M2. Cho dãy số liệu. Tính tứ phân vị thứ nhất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3, ["[D10_C6_B3_05]-M2. Cho dãy số liệu. Tính tứ phân vị thứ hai"])
+                item = QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_05]-M2. Cho dãy số liệu. Tính tứ phân vị thứ hai"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3, ["[D10_C6_B3_06]-M2. Cho dãy số liệu. Tính tứ phân vị thứ ba"])
+                item = QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_06]-M2. Cho dãy số liệu. Tính tứ phân vị thứ ba"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C6_B3_2 = QTreeWidgetItem(L10_C6_B3, ["Đúng-Sai"])
+                L10_C6_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C6_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_2, ["[D10_C6_B3_07]-TF-M2. Cho dãy số liệu. Xét Đ-S: số trung bình, trung vị, mốt, khoảng tứ phân vị"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C6_B3_3 = QTreeWidgetItem(L10_C6_B3, ["Trả lời ngắn"])
+                L10_C6_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C6_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_08]-SA-M2. Cho dãy số liệu. Tính khoảng tứ phân vị"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2178,13 +2198,30 @@ class Ui_MainWindow(object):
                 L10_C6_B4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B4, ["[D10_C6_B4_01]-M2. Cho dãy số liệu. Tính độ lệch chuẩn"])
+                L10_C6_B4_1 = QTreeWidgetItem(L10_C6_B4, ["Trắc nghiệm"])
+                L10_C6_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C6_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_03]-M2. Cho dãy số liệu. Tính khoảng biến thiên"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B4, ["[D10_C6_B4_02]-M2. Cho dãy số liệu. Tính phương sai"])
+                item = QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_01]-M2. Cho dãy số liệu. Tính độ lệch chuẩn"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_02]-M2. Cho dãy số liệu. Tính phương sai"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C6_B4_2 = QTreeWidgetItem(L10_C6_B4, ["Đúng-Sai"])
+                L10_C6_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C6_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_2, ["[D10_C6_B4_04]-TF-M2. Cho dãy số liệu. Xét Đ-S: khoảng biến thiên, độ lệch chuẩn, phương sai, khoảng tứ phân vị"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
         #Lớp 10 - Chương 7
                 L10_C7 = QTreeWidgetItem(L10, ["Chương 7 - Bất phương trình bậc 2 một ẩn"])
@@ -11102,7 +11139,7 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D10_C6_B3_03]":           
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_03()
 
-                                            #[D10_C6_B4_04]. Cho dãy số liệu. Tính tứ phân vị thứ nhất
+                                            #[D10_C6_B3_04]. Cho dãy số liệu. Tính tứ phân vị thứ nhất
                                                 if dang_toan == "[D10_C6_B3_04]":           
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_04()
 
@@ -11114,6 +11151,14 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D10_C6_B3_06]":           
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_06()
 
+                                            #[D10_C6_B3_07]-TF-M2. Cho dãy số liệu. Xét Đ-S: số trung bình, trung vị, mốt, khoảng tứ phân vị    
+                                                if dang_toan == "[D10_C6_B3_07]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C6.tktk_L10_C6_B3_07()
+
+                                            #[D10_C6_B3_08]-SA-M2. Cho dãy số liệu. Tính khoảng tứ phân vị.
+                                                if dang_toan == "[D10_C6_B3_08]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_08()
+
                                             #Bài 4
                                             #[D10_C6_B4_01]. Cho dãy số liệu. Tính độ lệch chuẩn.
                                                 if dang_toan == "[D10_C6_B4_01]":           
@@ -11122,6 +11167,14 @@ class Ui_MainWindow(object):
                                             #[D10_C6_B4_02]. Cho dãy số liệu. Tính phương sai.
                                                 if dang_toan == "[D10_C6_B4_02]":           
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B4_02()
+
+                                            #[D10_C6_B4_03]-M2. Cho dãy số liệu. Tính khoảng biến thiên
+                                                if dang_toan == "[D10_C6_B4_03]":           
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B4_03()
+
+                                            #[D10_C6_B4_04]-TF-M2. Cho dãy số liệu. Xét Đ-S: khoảng biến thiên, độ lệch chuẩn, phương sai, khoảng tứ phân vị
+                                                if dang_toan == "[D10_C6_B4_04]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C6.tktk_L10_C6_B4_04()
 
                                             
                                     #Toán 10- Chương 7- Bất phương trình bậc 2 một ẩn
