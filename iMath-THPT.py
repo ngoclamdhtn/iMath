@@ -2185,6 +2185,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C6_B3_2, ["[D10_C6_B3_09]-TF-M2. Cho dãy số liệu. Xét Đ-S: trung vị, Q1-Q3, khoảng tứ phân vị, giá trị ngoại lệ"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C6_B3_3 = QTreeWidgetItem(L10_C6_B3, ["Trả lời ngắn"])
                 L10_C6_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -2219,6 +2223,18 @@ class Ui_MainWindow(object):
                 L10_C6_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C6_B4_2, ["[D10_C6_B4_04]-TF-M2. Cho dãy số liệu. Xét Đ-S: khoảng biến thiên, độ lệch chuẩn, phương sai, khoảng tứ phân vị"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C6_B4_3 = QTreeWidgetItem(L10_C6_B4, ["Trả lời ngắn"])
+                L10_C6_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_3, ["[D10_C6_B4_05]-SA-M2. Cho dãy số liệu. Tính phương sai."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_3, ["[D10_C6_B4_06]-SA-M2. Cho dãy số liệu. Tính độ lệch chuẩn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2725,76 +2741,113 @@ class Ui_MainWindow(object):
                 L10_C10_B0.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L10_C10_B0_1 = QTreeWidgetItem(L10_C10_B0, ["1. Tọa độ vectơ"])
+                L10_C10_B0_1 = QTreeWidgetItem(L10_C10_B0, ["Trắc nghiệm"])
                 L10_C10_B0_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1, ["[D10_CX_B0_01]-M1. Cho 2 điểm. Tìm tọa độ vectơ."])
+                L10_C10_B0_1_1 = QTreeWidgetItem(L10_C10_B0_1, ["1. Tọa độ vectơ"])
+                L10_C10_B0_1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C10_B0_1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_01]-M1. Cho 2 điểm. Tìm tọa độ vectơ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1, ["[D10_CX_B0_02]-M1. Cho 2 vectơ. Tìm tọa độ vectơ tổng."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_02]-M1. Cho 2 vectơ. Tìm tọa độ vectơ tổng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1, ["[D10_CX_B0_03]-M1. Cho 2 vectơ. Tìm tọa độ vectơ hiệu."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_03]-M1. Cho 2 vectơ. Tìm tọa độ vectơ hiệu."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L10_C10_B0_1, ["[D10_CX_B0_05]-M1. Cho 1 vectơ. Tính độ dài."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_05]-M1. Cho 1 vectơ. Tính độ dài."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1, ["[D10_CX_B0_11]-M2. Cho hai véctơ. Tìm m để 2 vectơ cùng phương."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_16]-M2. Cho 2 điểm. Tính độ dài vectơ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_15]-M2. Cho 2 vectơ. Tìm tọa độ m.vec_a + nvec_b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_11]-M2. Cho hai véctơ. Tìm m để 2 vectơ cùng phương."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
 
-                L10_C10_B0_2 = QTreeWidgetItem(L10_C10_B0, ["2. Tọa độ điểm"])
+                L10_C10_B0_1_2 = QTreeWidgetItem(L10_C10_B0_1, ["2. Tọa độ điểm"])
+                L10_C10_B0_1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C10_B0_1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_17]-M1. Tìm hình chiếu của điểm lên trục tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_18]-M2. Tìm điểm đối xứng của điểm qua trục tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_06]-M1. Cho 2 điểm. Tính độ dài đoạn thẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_07]-M1. Cho hai điểm. Tìm tọa độ trung điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_08]-M1. Cho tam giác. Tìm tọa độ trọng tâm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_09]-M2. Cho hai điểm A,B. Tìm C để AC nhận B làm trung điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_10]-M2. Cho ba điểm A,B,G. Tìm tọa độ C để ABC nhận G làm trọng tâm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_13]-M3. Tìm A thuộc Ox cách B một khoảng cho trước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C10_B0_1_3 = QTreeWidgetItem(L10_C10_B0_1, ["3. Biểu thức tọa độ tích vô hướng"])
+                L10_C10_B0_1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C10_B0_1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_04]-M1. Cho 2 vectơ. Cho hai véctơ tính tích vô hướng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_12]-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C10_B0_2 = QTreeWidgetItem(L10_C10_B0, ["Đúng-Sai"])
                 L10_C10_B0_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_06]-M1. Cho 2 điểm. Tính độ dài đoạn thẳng."])
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_14]-TF-M2. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_07]-M1. Cho hai điểm. Tìm tọa độ trung điểm."])
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_20]-TF-M3. Xét Đ-S: Tổng vectơ, hiệu vectơ, độ dài, cos."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_08]-M1. Cho tam giác. Tìm tọa độ trọng tâm."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_09]-M2. Cho hai điểm A,B. Tìm C để AC nhận B làm trung điểm."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_10]-M2. Cho ba điểm A,B,G. Tìm tọa độ C để ABC nhận G làm trọng tâm."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_13]-M3. Tìm A thuộc Ox cách B một khoảng cho trước."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L10_C10_B0_3 = QTreeWidgetItem(L10_C10_B0, ["3. Biểu thức tọa độ tích vô hướng"])
+                L10_C10_B0_3 = QTreeWidgetItem(L10_C10_B0, ["Trả lời ngắn"])
                 L10_C10_B0_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_04]-M1. Cho 2 vectơ. Cho hai véctơ tính tích vô hướng."])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_19]-SA-M3. Tìm vectơ x để m.vec(a)+nvec(x)=p.vec(b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_12]-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L10_C10_B0_4 = QTreeWidgetItem(L10_C10_B0, ["Đúng-Sai"])
-                L10_C10_B0_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L10_C10_B0_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L10_C10_B0_4, ["[D10_CX_B0_14]-TF-M3. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_21]-SA-M3. Cho hai điểm A,B. Tìm điểm M thỏa mãn MA=kMB"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6052,7 +6105,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_26]-M2. Tìm điểm đối xứng qua tọa độ."])
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_26]-M2. Tìm điểm đối xứng qua trục tọa độ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11087,33 +11140,61 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_08()                                     
                                                     
 
-                                            #[D10_CX_B0_09]-M2. Cho hai điểm A,B. Tìm tọa độ C để AC nhận B làm trung điểm.
+                                                #[D10_CX_B0_09]-M2. Cho hai điểm A,B. Tìm tọa độ C để AC nhận B làm trung điểm.
                                                 if dang_toan == "[D10_CX_B0_09]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_09()                                     
                                                     
 
-                                            #[D10_CX_B0_10]-M2. Cho ba điểm A,B,G. Tìm tọa độ C để ABC nhận G làm trọng tâm.
+                                                #[D10_CX_B0_10]-M2. Cho ba điểm A,B,G. Tìm tọa độ C để ABC nhận G làm trọng tâm.
                                                 if dang_toan == "[D10_CX_B0_10]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_10()                                     
                                                     
 
-                                            #[D10_CX_B0_11]-M2. Cho hai véctơ. Tìm m để 2 vectơ cùng phương.
+                                                #[D10_CX_B0_11]-M2. Cho hai véctơ. Tìm m để 2 vectơ cùng phương.
                                                 if dang_toan == "[D10_CX_B0_11]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_11()                                     
                                                     
 
-                                            #[D10_CX_B0_12]-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc.
+                                                #[D10_CX_B0_12]-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc.
                                                 if dang_toan == "[D10_CX_B0_12]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_12()                                
                                                     
 
-                                            #[D10_CX_B0_13]-M2. Tìm A thuộc Ox cách B một khoảng cho trước.
+                                                #[D10_CX_B0_13]-M2. Tìm A thuộc Ox cách B một khoảng cho trước.
                                                 if dang_toan == "[D10_CX_B0_13]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_13()
 
                                                 #[D10_CX_B0_14]-TF-M3. Tổng hợp(tìm toạ độ trực tâm)
                                                 if dang_toan == "[D10_CX_B0_14]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_14()                                   
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_14()
+
+                                                #[D10_CX_B0_15]-M2. Cho 2 vectơ. Tìm tọa độ m.vec_a + nvec_b
+                                                if dang_toan == "[D10_CX_B0_15]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_15()
+
+                                                #[D10_CX_B0_16]-M2. Cho A,B. Tính độ dài đoạn thẳng AB
+                                                if dang_toan == "[D10_CX_B0_16]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_16()
+
+                                                #[D10_CX_B0_17]-M2. Tìm hình chiếu của điểm lên trục tọa độ
+                                                if dang_toan == "[D10_CX_B0_17]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_17()
+
+                                                #[D10_CX_B0_18]-M2. Tìm điểm đối xứng của điểm qua trục tọa độ
+                                                if dang_toan == "[D10_CX_B0_18]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_18()
+                                                
+                                                #[D10_CX_B0_19]-SA-M2. Tìm vectơ x để m.vec(a)+nvec(x)=p.vec(b)
+                                                if dang_toan == "[D10_CX_B0_19]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_19()
+
+                                                #[D10_CX_B0_20]-TF-M2. Cho hai vectơ. Xét Đ-S: tổng, hiệu, độ dài, cos
+                                                if dang_toan == "[D10_CX_B0_20]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_20()
+
+                                                #[D10_CX_B0_21]-SA-M2. Cho hai điểm A,B. Tìm điểm M thỏa mãn MA=kMB
+                                                if dang_toan == "[D10_CX_B0_21]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_21()    
                                                     
 
                                     #Chương 6- Thống kê
@@ -11159,6 +11240,10 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D10_C6_B3_08]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_08()
 
+                                            #[D10_C6_B3_09]-TF-M2. Cho dãy số liệu. Xét Đ-S: trung vị, Q1-Q3, khoảng tứ phân vị, giá trị ngoại lệ   
+                                                if dang_toan == "[D10_C6_B3_09]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C6.tktk_L10_C6_B3_09()
+
                                             #Bài 4
                                             #[D10_C6_B4_01]. Cho dãy số liệu. Tính độ lệch chuẩn.
                                                 if dang_toan == "[D10_C6_B4_01]":           
@@ -11175,6 +11260,14 @@ class Ui_MainWindow(object):
                                             #[D10_C6_B4_04]-TF-M2. Cho dãy số liệu. Xét Đ-S: khoảng biến thiên, độ lệch chuẩn, phương sai, khoảng tứ phân vị
                                                 if dang_toan == "[D10_C6_B4_04]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D10_C6.tktk_L10_C6_B4_04()
+
+                                            #[D10_C6_B4_05]-M2. Cho dãy số liệu. Tính phương sai
+                                                if dang_toan == "[D10_C6_B4_05]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B4_05()
+
+                                            #[D10_C6_B4_06]-M2. Cho dãy số liệu. Tính độ lệch chuẩn
+                                                if dang_toan == "[D10_C6_B4_06]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B4_06()
 
                                             
                                     #Toán 10- Chương 7- Bất phương trình bậc 2 một ẩn

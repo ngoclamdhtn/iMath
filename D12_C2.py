@@ -1376,7 +1376,7 @@ def mnj_34_jkl_L12_C2_B1_09():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh_de}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n "\
 	f"\\begin{{center}}\n{code_hinh_loigiai}\n\\end{{center}} }}\n"\
 	f"\\end{{ex}}\n"
@@ -1706,7 +1706,7 @@ def mnj_34_jkl_L12_C2_B1_12():
 		f"\\end{{ex}}\n"
 	
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -1769,7 +1769,7 @@ def mnj_34_jkl_L12_C2_B1_13():
 		f"\\end{{ex}}\n"
 	
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -1866,7 +1866,7 @@ def mnj_34_jkl_L12_C2_B1_15():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}\n"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -1964,7 +1964,7 @@ def mnj_34_jkl_L12_C2_B1_16():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
-	f"\\shortans[oly]{{{kq}}}\n\n"
+	f"\\shortans[4]{{{kq}}}\n\n"
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}\n"
 	f"\\end{{ex}}\n")
 
@@ -2871,7 +2871,7 @@ def mnj_34_jkl_L12_C2_B2_07():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word, loigiai_word, latex_tuluan, dap_an
@@ -3330,7 +3330,7 @@ def mnj_34_jkl_L12_C2_B2_10():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4043,7 +4043,7 @@ def mnj_34_jkl_L12_C2_B3_09():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word, loigiai_word, latex_tuluan, dap_an
@@ -4238,7 +4238,7 @@ def mnj_34_jkl_L12_C2_B3_11():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4353,7 +4353,7 @@ def mnj_34_jkl_L12_C2_B3_13():
 		f"Đáp án: {dap_an}\n"
 		)
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4403,7 +4403,7 @@ def mnj_34_jkl_L12_C2_B3_14():
 		)
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4928,7 +4928,7 @@ def mnj_34_jkl_L12_C2_B3_21():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4985,7 +4985,7 @@ def mnj_34_jkl_L12_C2_B3_22():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -5121,7 +5121,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 		f"Đáp án: {dap_an}\n"
 		)
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -5323,7 +5323,7 @@ def mnj_34_jkl_L12_C2_B3_25():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C2_B3_26]-TL-M3. Tìm điểm đối xứng của điểm qua trục tọa độ
+#[D12_C2_B3_26]-M2. Tìm điểm đối xứng của điểm qua trục tọa độ
 def mnj_34_jkl_L12_C2_B3_26():
 	A=random.choice(["A","B","C","D","E","F","M","N","P"])	
 	H=random.choice(["I","H","G","K"])
@@ -5748,7 +5748,7 @@ def mnj_34_jkl_L12_C2_B3_29():
 	vec_AB=f"{vec(f"{A}{B}")}"
 	vec_BA=f"{vec(f"{B}{A}")}"
 	vec_AC=f"{vec(f"{A}{C}")}"
-	vec_BC=f"{vec(f"{B}{C}")}"	
+	vec_BC=f"{vec(f"{B}{C}")}"
 
 	chon=random.randint(1,4)
 	if chon==1:
@@ -5882,23 +5882,24 @@ def mnj_34_jkl_L12_C2_B3_29():
 			\\end{{array}} \\right.$\n\n"
 			f"Suy ra ${P}({latex(x_A+sqrt(t))};0;0)$ hoặc ${P}({latex(x_A-sqrt(t))};0;0)$.\n\n"
 			f"Tổng hoành độ của các điểm ${{{P}}}$ bằng ${2*x_A}$.")
+
 	
 	if chon==2:
 		t=random.randint(2,4)
 		k=-t/(t+1)
-		a, b, c=x_A+k*x_AB, y_A+k*y_AB, z_A+k*z_AB
+		a, b, c=x_A-k*x_AB, y_A-k*y_AB, z_A-k*z_AB
 		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
 		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
-		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${A}{B}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
-		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${A}{B}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
+		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
+		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
 		kq4=random.choice([kq4_T, kq4_F])
 		HDG=(f"${vec_AB}=({x_AB};{y_AB};{z_AB}), {vec2(P,A)}=({x_A}-a;{y_A}-b;{z_A}-c)$.\n\n"
 			f"${P}{A}={t}{P}{B} \\Rightarrow {vec2(P,A)}={phan_so(k)}{vec_AB}$.\n\n"
 			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
-			a={x_A}+({phan_so(k)}).{tao_ngoac(x_AB)}={phan_so(a)} \\\\ \n\
-			b={y_A}+({phan_so(k)}).{tao_ngoac(y_AB)}={phan_so(b)} \\\\ \n\
-			c={z_A}+({phan_so(k)}).{tao_ngoac(z_AB)}={phan_so(c)} \n\
+			a={x_A}-({phan_so(k)}).{tao_ngoac(x_AB)}={phan_so(a)} \\\\ \n\
+			b={y_A}-({phan_so(k)}).{tao_ngoac(y_AB)}={phan_so(b)} \\\\ \n\
+			c={z_A}-({phan_so(k)}).{tao_ngoac(z_AB)}={phan_so(c)} \n\
 			\\end{{array}} \\right.$\n\n"
 			f"Suy ra: $a+b+c={phan_so(a+b+c)}={kq}$."
 			)
