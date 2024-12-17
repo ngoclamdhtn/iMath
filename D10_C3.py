@@ -470,7 +470,7 @@ def npl_mk_L10_C3_B1_07():
 
     x_1, x_2 =-b/a, -d/c
     if x_1==x_2:
-        d==d+random(1,3)
+        d==d+random.randint(1,3)
 
     t_1=latex(my_module.hien_phan_so(x_1))
     t_2=latex(my_module.hien_phan_so(x_2))     
@@ -3215,21 +3215,39 @@ def npl_mk_L10_C3_B2_33():
     a=random.randint(7,15)
     x=symbols("x")
     kq=a
+    code_hinh=fr"""
+        \begin{{tikzpicture}}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+    \draw (0,0)--(4,0)--++(60:5)--++(180:4)--(0,0);
+    \draw (1,0)--++(60:5) (3,0)--++(60:5);
+    \draw[stealth-stealth,yshift=-.5cm] (0,0)--(4,0) node[midway,fill=white] {{${4*a}$ cm}};
+    \draw[stealth-stealth,yshift=.5cm] (60:5)--++(0:1) node[midway,fill=white] {{$x$ cm}};
+    \draw[stealth-stealth,yshift=.5cm] ($(4,0)+(60:5)$)--++(180:1) node[midway,fill=white] {{$x$ cm}};
+    \draw[stealth-stealth,yshift=.2cm] (60:5)--++(0:1);
+    \draw[stealth-stealth,yshift=.2cm] ($(4,0)+(60:5)$)--++(180:1);
+    \draw (8,0)--(10,0)--++(60:5)--++(180:2)--(8,0);
+    \draw (8,0)--(8,1)--++(60:5)--++(-90:1);
+    \draw (10,0)--(10,1)--++(60:5)--++(-90:1);
+ \end{{tikzpicture}}  
+ """
     noi_dung = f"Một miếng tôn có bề ngang ${{{4*a}}}$ cm được uốn cong tạo thành máng dẫn nước bằng chia tấm tôn thành ba phần rồi gấp 2 bên lại theo một góc vuông. Hỏi cần gấp hai đầu cùng một đoạn bao nhiêu để tạo ra máng có diện tích bề ngang lớn nhất cho nước chảy qua được nhiều nhất?"
 
     noi_dung_loigiai=(f" Gọi ${{x}}$ là độ dài hai đầu gấp tấm tôn \n\n"
     f" Diện tích bề ngang là $S(x)={latex(expand((4*a-2*x)*x))}$\n\n"
     f"${{S(x)}}$ lớn nhất khi $x={a}$ cm")
-        
-    debai_word= f"{noi_dung}\n"
 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
         f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
-            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
-    dap_an= kq
+    dap_an=kq
     return debai_word, loigiai_word, latex_tuluan, dap_an
 
 

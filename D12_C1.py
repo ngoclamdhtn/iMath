@@ -1274,7 +1274,7 @@ def prt_34_L12_C1_B1_09():
 	    don_dieu="nghịch biến"
 
 	f=thay_heso_1x(f"{a}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)})")
-	g=thay_heso_1x(f"{phan_so(a/3)}x^3 + \\left(\\dfrac{{{m+b}}}{{2}}\\right)x^2 + \\left({latex(a_m*m+c)}\\right)x+{latex(random.randint(-7,7)*m+random.randint(-7,-1))}")
+	g=thay_heso_1x(f"{phan_so(a/3)}x^3 + \\left(\\dfrac{{{m+b}}}{{2}}\\right)x^2 + \\left({latex(a_m*m+c)}\\right)x+({latex(random.randint(-7,7)*m+random.randint(-7,-1))})")
 
 	delta= (m+b)**2-4*a*(a_m*m+c)
 
@@ -9603,7 +9603,7 @@ def prt_34_L12_C1_B4_06():
 			f=a*x**3+b*x**2+c*x+d
 		if chon==3:
 			a,b,c,d=-1/3,-3/2,-2,random.randint(-3,3)
-			x_1,x_2=1,2
+			x_1,x_2=-2,-1
 			f=-x**3/3-3*x**2/2-2*x+d
 		if chon==4:
 			a,b,c,d=-1/3,2,-3,random.randint(-3,3)
@@ -11285,7 +11285,7 @@ def prt_34_L12_C1_B5_02():
 	#file_name=""
 	noi_dung = (
 	f" Tại một xưởng sản xuất sản phẩm từ {random.choice(["gỗ", "đá", "bêtông", "cát"])}, chi phí để sản xuất ${{x}} (m^3)$ sản phẩm mỗi tháng là"
-	f" $C(x)={a}+{st_b}x+{st_c}x^2$ (triệu đồng) với $0\\le x \\le {x_max}$."
+	f" $C(x)={a}+{st_b}x+{st_c}x^2$ (triệu đồng) với $0\\le x \\le {x_max}$. Chi phí trung bình là $\\overline{{C}}(x)=\\dfrac{{C(x)}}{{x}}$."
 	f" Mỗi tháng xưởng sản xuất bao nhiêu mét khối sản phẩm thì chi phí trung bình để sản xuất là thấp nhất"
 	f"(làm tròn đến hàng phần mười)"
 	)
@@ -11459,9 +11459,9 @@ def prt_34_L12_C1_B5_04():
 	#file_name=""
 
 	noi_dung = (
-	f"Giả sử chi phí tiền xăng ${{C}}$ (ngàn đồng) phụ thuộc tốc độ trung bình $v(km/h)$ theo công thức\n\n"
+	f"Giả sử chi phí tiền xăng ${{C}}$ (ngàn đồng) phụ thuộc vào tốc độ trung bình $v(km/h)$, được tính theo công thức\n\n"
 	f" $$C(v)={latex(m*v/n)}+{latex(m*a**2/(n*v))},0\\le v \\le {v_max}$$.\n\n"
-	f" Tính tốc độ trung bình để chi phí tiền xăng là thấp nhất."
+	f" Tài xế xe tải lái xe với tốc độ trung bình (đơn vị: km/h) là bao nhiêu để tiết kiệm tiền xăng nhất?"
 	)
 
 	noi_dung_loigiai=(

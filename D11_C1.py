@@ -3087,8 +3087,8 @@ def ngh_kjg_L11_C1_B3_13():
         noi_dung = f"Cho $\\sin x={sin_value_latex}, x\\in {cung}$. Xét tính đúng-sai của các khẳng định sau."
         debai_word= f"{noi_dung}\n"      
 
-        kq1_T=f"*$\\cos x={cos_value_latex}$"
-        kq1_F=f"$\\cos x={latex(cos_value_false)}$"
+        kq1_T=f"*$\\cos {x}={cos_value_latex}$"
+        kq1_F=f"$\\cos {x}={latex(cos_value_false)}$"
         kq1=random.choice([kq1_T, kq1_F])
         HDG=f"Vì $x \\in {cung}$ nên $\\cos x < 0$.\n\n"\
                 f"$\\cos x =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."  
@@ -5212,4 +5212,655 @@ def ngh_kjg_L11_C1_B5_15():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C1_B5_16]-TF-M3. Cho sinax=m. Xét Đ-S: sinax=sinv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
+def ngh_kjg_L11_C1_B5_16():
+    x=sp.symbols("x")
+    a=random.randint(2,8)
+    m=random.choice([1,-1,0])     
+    x_0=asin(m)
+
+    noi_dung = f"Cho phương trình $\\sin {a}x={m}$ (1). Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+
+    if m==1:    
+        kq1_T=f"* Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin {latex(x_0+random.randint(0,2)*2*pi)}$"
+
+    if m==-1:    
+        kq1_T=f"* Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin \\left({latex(x_0+random.randint(0,2)*2*pi)}\\right)$"
+
+    if m==0:    
+        kq1_T=f"* Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin {latex(x_0+random.randint(0,2)*2*pi)}$"
+
+    kq1_F=random.choice([
+        f"Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin {latex(random.choice([pi/random.randint(3,8)]))}$",
+        f"Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin \\left({latex(random.choice([-pi/random.randint(3,8)]))}\\right)$",
+         f"Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin {latex(x_0+pi)}$"
+        ])
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"Phương trình (1) $\\Leftrightarrow \\sin {a}x=\\sin {latex(x_0)}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Phương án 2:
+
+    kq2_T=f"*Phương trình (1) có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+    kq2_F=f"Phương trình (1) có nghiệm là $x={latex(x_0/(2*a))}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+    HDG=f"$(1)\\Leftrightarrow {a}x={latex(x_0)}+k2\\pi \\Leftrightarrow x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$"
+
+    if m==0:
+         kq2_T=f"*Phương trình (1) có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$."
+         kq2_F=f"Phương trình (1) có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+         HDG=f"$(1)\\Leftrightarrow {a}x=k\\pi \\Leftrightarrow x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$"
+    
+    kq2=random.choice([kq2_T, kq2_F])    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Tìm các cận của k
+    b=random.randint(1,3)
+
+    eq=Eq(x_0/a+x*2*pi/a,0)
+    sol= solve(eq , x)
+    x_1=sol[0]
+
+    eq=Eq(x_0/a+x*2*pi/a,b*pi)
+    sol= solve(eq , x)
+    x_2=sol[0]
+
+    #Đếm các số k: x_1<k<x_2
+    dem=0
+    for k in range(int(x_1)-1,int(x_2+1)):
+        if x_1<k and k<x_2:
+            dem+=1
+
+    kq3_T=f"* Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem}}}$" 
+    kq3_F=f"Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem+random.randint(1,2)}}}$"
+    
+    HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+        f"Xét: $0<{latex(x_0/a)}+k{latex(2*pi/a)}<{latex(b*pi)}$"
+        f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+        f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+    if m==0:
+        #Tìm các cận của k
+        b=random.randint(1,3)
+
+        eq=Eq(x*pi/a,0)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        #Đếm các số k: x_1<k<x_2
+        dem=0
+        for k in range(int(x_1)-1,int(x_2+1)):
+            if x_1<k and k<x_2:
+                dem+=1
+
+        kq3_T=f"* Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem}}}$" 
+        kq3_F=f"Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem+random.randint(1,2)}}}$"
+        
+        HDG=(f"$(1)$ có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+            f"Xét: $0<k{latex(pi/a)}<{latex(b*pi)}$"
+            f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+            f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    kq3=random.choice([kq3_T, kq3_F])
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # Phương án 4:
+    chon=random.randint(1,2)
+    # Tìm nghiệm âm lớn nhất
+    if chon==1:
+        if m==0:
+            kq4_T=f"* Nghiệm âm lớn nhất của phương trình là $x={latex(-pi/a)}$"
+            kq4_F=f" Nghiệm âm lớn nhất của phương trình là $x={latex(-pi/(random.randint(2,3)*a))}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k=-1$. Khi đó $x={latex(-pi/a)}$.")               
+
+        if m in [-1,1]:
+            k = 5    
+            while True:                
+                x = x_0/a+k*2*pi/a
+                k-=1                
+                if x < 0:
+                    break
+            max_am,k=x,k+1       
+
+            kq4_T=f"* Nghiệm âm lớn nhất của phương trình là $x={latex(max_am)}$"
+            kq4_F=f" Nghiệm âm lớn nhất của phương trình là $x={latex(max_am-random.randint(1,2)*pi)}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k={k}$. Khi đó $x={latex(max_am)}$.")
+    
+    #Tìm nghiệm dương nhỏ nhất    
+    if chon==2:
+        if m==0:
+            kq4_T=f"* Nghiệm dương nhỏ nhất của phương trình là $x={latex(pi/a)}$"
+            kq4_F=f" Nghiệm âm nhỏ nhất của phương trình là $x={latex(pi/(random.randint(2,3)*a))}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k=1$. Khi đó $x={latex(pi/a)}$.")    
+        if m in [-1,1]:
+            k = -5    
+            while True:
+                # Tính giá trị x cho k
+                x = x_0/a+k*2*pi/a
+                k+=1
+                
+                if x > 0:
+                    break
+            max_duong,k=x,k-1       
+
+            kq4_T=f"* Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong)}$"
+            kq4_F=f" Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong+random.randint(1,2)*pi)}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm dương nhỏ nhất ứng với $k={k}$. Khi đó $x={latex(max_duong)}$.") 
+   
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C1_B5_17]-TF-M3. Cho cosax=m. Xét Đ-S: cosax=cosv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
+def ngh_kjg_L11_C1_B5_17():
+    x=sp.symbols("x")
+    a=random.randint(2,8)
+    m=random.choice([1,-1,0])    
+    x_0=acos(m)
+
+    noi_dung = f"Cho phương trình $\\cos {a}x={m}$ (1). Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+
+       
+    kq1_T=f"* Phương trình (1) $\\Leftrightarrow \\cos {a}x=\\cos {latex(x_0+random.randint(0,2)*2*pi)}$"  
+    kq1_F=random.choice([
+        f"Phương trình (1) $\\Leftrightarrow \\cos {a}x=\\cos {latex(random.choice([pi/random.randint(3,8)]))}$",
+        f"Phương trình (1) $\\Leftrightarrow \\cos {a}x=\\cos \\left({latex(random.choice([-pi/random.randint(3,8)]))}\\right)$",
+         f"Phương trình (1) $\\Leftrightarrow \\cos {a}x=\\cos {latex(x_0+pi)}$"
+        ])
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"Phương trình (1) $\\Leftrightarrow \\cos {a}x=\\cos {latex(x_0)}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Phương án 2:
+
+    kq2_T=f"*Phương trình (1) có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+    kq2_F=f"Phương trình (1) có nghiệm là $x={latex(x_0/(2*a))}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+    HDG=f"$(1)\\Leftrightarrow {a}x={latex(x_0)}+k2\\pi \\Leftrightarrow x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$"
+
+    if m==1:
+        kq2_T=f"*Phương trình (1) có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+        kq2_F=f"Phương trình (1) có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+        HDG=f"$(1)\\Leftrightarrow {a}x=k2\\pi \\Leftrightarrow x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$"
+
+    if m==0:
+         kq2_T=f"*Phương trình (1) có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$."
+         kq2_F=f"Phương trình (1) có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+         HDG=f"$(1)\\Leftrightarrow {a}x={latex(x_0)}+k\\pi \\Leftrightarrow x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$"
+    
+    kq2=random.choice([kq2_T, kq2_F])    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Tìm các cận của k
+    b=random.randint(1,3)
+
+    eq=Eq(x_0/a+x*2*pi/a,0)
+    sol= solve(eq , x)
+    x_1=sol[0]
+
+    eq=Eq(x_0/a+x*2*pi/a,b*pi)
+    sol= solve(eq , x)
+    x_2=sol[0]
+
+    #Đếm các số k: x_1<k<x_2
+    dem=0
+    for k in range(int(x_1)-1,int(x_2+1)):
+        if x_1<k and k<x_2:
+            dem+=1
+
+    kq3_T=f"* Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem}}}$" 
+    kq3_F=f"Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem+random.randint(1,2)}}}$" 
+
+    HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+        f"Xét: $0<{latex(x_0/a)}+k{latex(2*pi/a)}<{latex(b*pi)}$"
+        f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+        f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+    if m==1:
+        HDG=(f"$(1)$ có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+        f"Xét: $0<k{latex(2*pi/a)}<{latex(b*pi)}$"
+        f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+        f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+
+
+    if m==0:
+        #Tìm các cận của k
+        b=random.randint(1,3)
+
+        eq=Eq(x_0/a+x*pi/a,0)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(x_0/a+x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        #Đếm các số k: x_1<k<x_2
+        dem=0
+        for k in range(int(x_1)-1,int(x_2+1)):
+            if x_1<k and k<x_2:
+                dem+=1
+
+        kq3_T=f"* Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem}}}$" 
+        kq3_F=f"Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem+random.randint(1,2)}}}$"
+        
+        HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+            f"Xét: $0<{latex(x_0/a)}+k{latex(pi/a)}<{latex(b*pi)}$"
+            f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+            f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    kq3=random.choice([kq3_T, kq3_F])
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # Phương án 4:
+    chon=random.randint(1,2)
+
+    # Tìm nghiệm âm lớn nhất
+    if chon==1:        
+        if m==0:            
+            k = 5    
+            while True:                
+                x = x_0/a+k*pi/a
+                k-=1                    
+                if x < 0:
+                    break                    
+            max_am,k=x,k+1
+
+            kq4_T=f"* Nghiệm âm lớn nhất của phương trình là $x={latex(max_am)}$"
+            kq4_F=f" Nghiệm âm lớn nhất của phương trình là $x={latex(max_am-random.randint(1,2)*pi)}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k={k}$. Khi đó $x={latex(max_am)}$.")
+
+            
+
+        if m in [-1,1]:
+            
+            k = 5    
+            while True:                
+                x = x_0/a+k*2*pi/a
+                k-=1
+                
+                if x < 0:
+                    break
+                    
+            max_am,k=x,k+1       
+
+            kq4_T=f"* Nghiệm âm lớn nhất của phương trình là $x={latex(max_am)}$"
+            kq4_F=f" Nghiệm âm lớn nhất của phương trình là $x={latex(max_am-random.randint(1,2)*pi)}$"            
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k={k}$. Khi đó $x={latex(max_am)}$.")
+            if m==1:
+                HDG=(f"$(1)$ có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                    f" Nghiệm âm lớn nhất ứng với $k={k}$. Khi đó $x={latex(max_am)}$.")
+    
+    #Tìm nghiệm dương nhỏ nhất    
+    if chon==2:
+        if m==0:
+            
+            k = -5    
+            while True:
+                # Tính giá trị x cho k
+                x = x_0/a+k*pi/a
+                k+=1
+                
+                if x > 0:
+                    break
+            max_duong,k=x,k-1
+            kq4_T=f"* Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong)}$"
+            kq4_F=f" Nghiệm âm nhỏ nhất của phương trình là $x={latex(max_duong+random.randint(1,2)*pi)}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k={k}$. Khi đó $x={latex(max_duong)}$.")        
+
+        if m in [-1,1]:
+            
+            k = -5    
+            while True:
+                # Tính giá trị x cho k
+                x = x_0/a+k*2*pi/a
+                k+=1                    
+                if x > 0:
+                    break
+            max_duong,k=x,k-1       
+
+            kq4_T=f"* Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong)}$"
+            kq4_F=f" Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong+random.randint(1,2)*pi)}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm dương nhỏ nhất ứng với $k={k}$. Khi đó $x={latex(max_duong)}$.")
+            if m==1:
+                HDG=(f"$(1)$ có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm dương nhỏ nhất ứng với $k={k}$. Khi đó $x={latex(max_duong)}$.")
+   
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C1_B5_18]-TF-M3. Cho tanax=m. Xét Đ-S: tanx=tanv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
+def ngh_kjg_L11_C1_B5_18():
+    x=sp.symbols("x")
+    a=random.randint(2,8)
+    m=random.choice([sqrt(3),-sqrt(3),1,-1,0,sqrt(3)/3,-sqrt(3)/3])     
+    x_0=atan(m)
+
+    noi_dung = f"Cho phương trình $\\tan {a}x={latex(m)}$ (1). Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Phương trình (1) $\\Leftrightarrow \\tan {a}x=\\tan {latex(x_0+random.randint(0,2)*pi)}$"  
+    kq1_F=f"Phương trình (1) $\\Leftrightarrow \\tan {a}x=\\tan {latex(x_0+pi/2)}$"
+    HDG=f"Phương trình (1) $\\Leftrightarrow \\tan {a}x=\\tan {latex(x_0)}$."
+    if x_0<0:
+        kq1_T=f"* Phương trình (1) $\\Leftrightarrow \\tan {a}x=\\tan \\left({latex(x_0+random.randint(0,2)*pi)}\\right)$"  
+        kq1_F=f"Phương trình (1) $\\Leftrightarrow \\tan {a}x=\\tan \\left({latex(x_0+pi/2)}\\right)$"
+        HDG=f"Phương trình (1) $\\Leftrightarrow \\tan {a}x=\\tan \\left({latex(x_0)}\\right)$."
+
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Phương án 2:
+
+    kq2_T=f"*Phương trình (1) có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$."
+    kq2_F=f"Phương trình (1) có nghiệm là $x={latex(x_0/a)}+k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+    HDG=f"$(1)\\Leftrightarrow {a}x={latex(x_0)}+k\\pi \\Leftrightarrow x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$"
+
+    if m==0:
+         kq2_T=f"*Phương trình (1) có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$."
+         kq2_F=f"Phương trình (1) có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+         HDG=f"$(1)\\Leftrightarrow {a}x=k\\pi \\Leftrightarrow x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$"
+    
+    kq2=random.choice([kq2_T, kq2_F])    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Tìm các cận của k
+    b=random.randint(1,3)
+
+    eq=Eq(x_0/a+x*pi/a,0)
+    sol= solve(eq , x)
+    x_1=sol[0]
+
+    eq=Eq(x_0/a+x*pi/a,b*pi)
+    sol= solve(eq , x)
+    x_2=sol[0]
+
+    #Đếm các số k: x_1<k<x_2
+    dem=0
+    for k in range(int(x_1)-1,int(x_2+1)):
+        if x_1<k and k<x_2:
+            dem+=1
+
+    kq3_T=f"* Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem}}}$" 
+    kq3_F=f"Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem+random.randint(1,2)}}}$" 
+
+    HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+        f"Xét: $0<{latex(x_0/a)}+k{latex(pi/a)}<{latex(b*pi)}$"
+        f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+        f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+
+    if m==0:
+        #Tìm các cận của k
+        b=random.randint(1,3)
+
+        eq=Eq(x*pi/a,0)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        #Đếm các số k: x_1<k<x_2
+        dem=0
+        for k in range(int(x_1)-1,int(x_2+1)):
+            if x_1<k and k<x_2:
+                dem+=1
+
+        kq3_T=f"* Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem}}}$" 
+        kq3_F=f"Số nghiệm thuộc khoảng $(0;{latex(b*pi)})$ là ${{{dem+random.randint(1,2)}}}$"
+        
+        HDG=(f"$(1)$ có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+            f"Xét: $0<k{latex(pi/a)}<{latex(b*pi)}$"
+            f"$\\Rightarrow {latex(x_1)}<k<{latex(x_2)}$. \n\n"
+            f"Có ${{{dem}}}$ số nguyên ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm thuộc khoảng $(0;{latex(b*pi)})$.")
+
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    kq3=random.choice([kq3_T, kq3_F])
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # Phương án 4:
+    chon=random.randint(1,2)
+    # Tìm nghiệm âm lớn nhất
+    if chon==1:
+        if m==0:
+            kq4_T=f"* Nghiệm âm lớn nhất của phương trình là $x={latex(-pi/a)}$"
+            kq4_F=f" Nghiệm âm lớn nhất của phương trình là $x={latex(-pi/(random.randint(2,3)*a))}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k=-1$. Khi đó $x={latex(-pi/a)}$.")            
+
+        else:            
+            k = 5    
+            while True:                
+                x = x_0/a+k*pi/a
+                k-=1
+                
+                if x < 0:
+                    break
+            max_am,k=x,k+1      
+
+            kq4_T=f"* Nghiệm âm lớn nhất của phương trình là $x={latex(max_am)}$"
+            kq4_F=f" Nghiệm âm lớn nhất của phương trình là $x={latex(max_am-random.randint(1,2)*pi)}$"            
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k={k}$. Khi đó $x={latex(max_am)}$.")
+    
+    #Tìm nghiệm dương nhỏ nhất    
+    if chon==2:
+        if m==0:
+            kq4_T=f"* Nghiệm dương nhỏ nhất của phương trình là $x={latex(pi/a)}$"
+            kq4_F=f" Nghiệm âm nhỏ nhất của phương trình là $x={latex(pi/(random.randint(2,3)*a))}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm âm lớn nhất ứng với $k=1$. Khi đó $x={latex(pi/a)}$.")
+
+        else:            
+            k = -5    
+            while True:
+                # Tính giá trị x cho k
+                x = x_0/a+k*pi/a
+                k+=1
+                
+                if x > 0:
+                    break
+            max_duong,k=x,k-1     
+
+            kq4_T=f"* Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong)}$"
+            kq4_F=f" Nghiệm dương nhỏ nhất của phương trình là $x={latex(max_duong+random.randint(1,2)*pi)}$" 
+        
+            HDG=(f"$(1)$ có nghiệm là $x={latex(x_0/a)}+k{latex(pi/a)},k\\in \\mathbb{{Z}}$.\n\n"
+                f" Nghiệm dương nhỏ nhất ứng với $k={k}$. Khi đó $x={latex(max_duong)}$.") 
+   
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 

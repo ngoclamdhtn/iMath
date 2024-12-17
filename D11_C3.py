@@ -1738,8 +1738,8 @@ def gh11gh_L11_C3_B2_07():
         kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}"
 
     else:
-        kq=f"{latex(sqrt(a)/m)}"
-        kq2=f"{latex(-sqrt(a)/m)}"
+        kq=f"{latex(-sqrt(a)/m)}"
+        kq2=f"{latex(sqrt(a)/m)}"
         kq3=random.choice([0,"+\\infty","-\\infty"])
         kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}" 
 

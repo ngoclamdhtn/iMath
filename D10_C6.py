@@ -40,6 +40,10 @@ def tktk_L10_C6_B1_01():
 	kq2=round(a, decimal_position+1)
 	kq3=round(a, decimal_position-1)
 	kq4=a
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
 
 	pa_A= f"*${{{kq}}}$"
 	pa_B= f"${{{kq2}}}$"

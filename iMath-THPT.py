@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92023 ver 12.12.2024")
+                self.label.setText(f"iMath\u00A92023 ver 18.12.2024")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
                 self.label.setGeometry(QtCore.QRect(400, 120, 800, 20))
@@ -1894,17 +1894,59 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_14]-SA-M3. Bài toán thực tế trong tam giác"])
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_24]-SA-M3. Toán thực tế: Tạo ngẫu nhiên đề bài"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_15]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 2"])
+                item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_14]-SA-M3. Toán thực tế: Chiều cao chiếc diều"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_16]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 3"])
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_15]-SA-M3. Toán thực tế: Diện tích cánh buồm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_16]-SA-M3. Toán thực tế: Chiều cao tháp truyền hình"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_17]-SA-M3. Toán thực tế: Khoảng cách cái ao"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_18]-SA-M3. Toán thực tế: Chiều rộng khúc sông"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_19]-SA-M3. Toán thực tế: Khoảng cách 2 con tàu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_20]-SA-M2. Toán thực tế: Bán kính chiếc đĩa"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_21]-SA-M2. Toán thực tế: Khoảng cách đầm lầy"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_22]-SA-M2. Toán thực tế: Khoảng cách từ gốc cây đến cù lao"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_23]-SA-M3. Toán thực tế: Chiều cao ngọn đồi"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
+
+
+
+
+
+
+
 
         #Lớp 10 - Chương 5
                 L10_C5 = QTreeWidgetItem(L10, ["Chương 5 - Véctơ"])
@@ -2121,6 +2163,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C5_B4_3, ["[D10_C5_B4_09]-SA-M3. Cho hai vectơ a,b có |a|, |b|, ab. Đặt x=ma+nb, y=pa+qb. Tính cos(x,y)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B4_3, ["[D10_C5_B4_10]-SA-M3. Quỹ tích điểm M thỏa mãn đằng thức vecto"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3567,6 +3613,22 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
     
                 item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_04]-M3. Tìm m để phương trình sin, cos có nghiệm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C1_B5_2 = QTreeWidgetItem(L11_C1_B5, ["Đúng-Sai"])
+                L11_C1_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C1_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_2, ["[D11_C1_B5_16]-TF-M3. Cho sinax=m. Xét Đ-S: sinax=sinv, nghiệm, số nghiệm thuộc khoảng, nghiệm âm_max, dương_min"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_2, ["[D11_C1_B5_17]-TF-M3. Cho cosax=m. Xét Đ-S: cosax=sinv, nghiệm, số nghiệm thuộc khoảng, nghiệm âm_max, dương_min"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_2, ["[D11_C1_B5_18]-TF-M3. Cho cosax=m. Xét Đ-S: tanax=tanv, nghiệm, số nghiệm thuộc khoảng, nghiệm âm_max, dương_min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8812,15 +8874,28 @@ class Ui_MainWindow(object):
 
                                                 #[D11_C1_B5_13]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của sinu=m
                                                 if dang_toan == "[D11_C1_B5_13]": 
-                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_13()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_13()
 
                                                 #[D11_C1_B5_14]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của sinu=m
                                                 if dang_toan == "[D11_C1_B5_14]": 
-                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_14()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_14()
 
                                                 #[D11_C1_B5_15]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của tanu=m
                                                 if dang_toan == "[D11_C1_B5_15]": 
-                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_15()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_15()
+
+                                                #[D11_C1_B5_16]-TF-M3. Cho sinax=m. Xét Đ-S: sinax=sinv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
+                                                if dang_toan == "[D11_C1_B5_16]": 
+                                                   debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B5_16()
+
+                                                #[D11_C1_B5_17]-TF-M3. Cho cosax=m. Xét Đ-S: cosax=cosv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
+                                                if dang_toan == "[D11_C1_B5_17]": 
+                                                   debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B5_17()
+
+                                                #[D11_C1_B5_18]-TF-M3. Cho tanax=m. Xét Đ-S: tanax=tanv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
+                                                if dang_toan == "[D11_C1_B5_17]": 
+                                                   debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B5_18()
+                                                
 
                                     ######### Toán 11_ Chương 2 _ Dãy số _ Cấp số cộng _ Cấp số nhân ########
                                                 #---------------------- Bài 1 - Dãy số -------------------------->
@@ -10949,11 +11024,49 @@ class Ui_MainWindow(object):
 
                                                 #[D10_C4_B2_15]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 2
                                                 if dang_toan =="[D10_C4_B2_15]":
-                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_15()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_15()
 
                                                 #[D10_C4_B2_16]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 3
                                                 if dang_toan =="[D10_C4_B2_16]":
-                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_16()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_16()
+
+                                                #[D10_C4_B2_17]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 4
+                                                if dang_toan =="[D10_C4_B2_17]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_17()
+
+                                                #[D10_C4_B2_18]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 5
+                                                if dang_toan =="[D10_C4_B2_18]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_18()
+
+                                                #[D10_C4_B2_19]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 6
+                                                if dang_toan =="[D10_C4_B2_19]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_19()
+
+                                                #[D10_C4_B2_20]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 7
+                                                if dang_toan =="[D10_C4_B2_20]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_20()
+
+                                                #[D10_C4_B2_21]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 8
+                                                if dang_toan =="[D10_C4_B2_21]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_21()
+
+                                                #[D10_C4_B2_22]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 9
+                                                if dang_toan =="[D10_C4_B2_22]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_22()
+
+                                                #[D10_C4_B2_23]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 10
+                                                if dang_toan =="[D10_C4_B2_23]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_23()
+
+                                                #[D10_C4_B2_24]-SA-M3. Toán thực tế: Tạo ngẫu nhiên đề bài
+                                                if dang_toan =="[D10_C4_B2_24]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_24()
+
+
+
+
+
+
 
                                          
 
@@ -11119,7 +11232,11 @@ class Ui_MainWindow(object):
 
                                                 #[D10_C5_B4_09]-SA-M3. Cho hai vectơ a,b có |a|, |b|, ab. Đặt x=ma+nb, y=pa+qb. Tính cos(x,y)
                                                 if dang_toan == "[D10_C5_B4_09]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_09()                      
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_09()
+
+                                                #[D10_C5_B4_10]-SA-M3. Quỹ tích điểm M thảo mãn đằng thức vecto
+                                                if dang_toan == "[D10_C5_B4_10]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_10()                 
                                                     
 
                                     #Bài 5 - Tọa độ vectơ

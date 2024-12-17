@@ -1839,8 +1839,6 @@ def yy3yy_L10_C4_B2_14():
 
 
 
-
-
 #[D10_C4_B2_15]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 2
 def yy3yy_L10_C4_B2_15():
     a=random.choice([2.7, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 3, 3.2, 3.4, 3.5, 3.6 ])
@@ -1913,10 +1911,8 @@ def yy3yy_L10_C4_B2_15():
     ;   
     \tkzMarkAngles[size=.4](B,A,C C,B,A)
     \foreach \x/\g in {{C/90,A/210,B/-30}} \draw (\x)+(\g:0.3)node{{$\x$}};
-\end{{tikzpicture}}
+\end{{tikzpicture}} """
 
-
-    """
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
     code1 = my_module.moi_truong_anh_latex(code_hinh1)
@@ -1945,7 +1941,7 @@ def yy3yy_L10_C4_B2_15():
 
 
 
-#[D10_C4_B2_16]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 3
+#[D10_C4_B2_16]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 3
 def yy3yy_L10_C4_B2_16():
     a=random.randint(60,80)
     a1=str(a).replace(".",",")
@@ -2009,3 +2005,407 @@ def yy3yy_L10_C4_B2_16():
     f"\\end{{ex}}\n"
     dap_an=kq
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C4_B2_17]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 4
+def yy3yy_L10_C4_B2_17():
+    ten=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    a=random.randint(60,70)
+    b=a+random.randint(5,12)
+
+    c=random.randint(20,30)
+    
+    
+    
+    kq=f"{round(c*math.sin(math.radians(b))/math.sin(math.radians(180-a-b)),1):.1f}".replace(".",",")
+    
+    code_hinh=fr"""
+  \begin{{tikzpicture}}[scale=1,font=\footnotesize,line cap=round,line join=round,>=stealth]
+    \def\a{{3.75}}
+    \path (0:0) coordinate(A) (59.95:1) coordinate(a) (0:\a) coordinate(C)  + (97.85:1) coordinate(c)  (intersection of A--a and C--c) coordinate(B);
+    \fill[cyan!60] (-.5,2) .. controls +(-70:2) and +(150:1) .. (2.5,1) .. controls +(-15:2) and +(-30:1) .. (4.5,3.5) .. controls +(150:1) and +(40:1) .. (2,4) .. controls +(-150:1.5) and +(100:2) .. cycle;
+    \draw (A)--(B)--(C)--cycle;
+    \foreach \d/\g in {{A/-135, B/90, C/-45}}
+    \fill (\d) circle(1pt) node[shift={{(\g:.3)}}]{{$\d$}};
+    \path (A)--(C) node[midway,below]{{${c}$ m}} pic[draw,angle radius=.3cm]{{angle=C--A--B}} (A) node[shift={{(20:.8)}}]{{${a}^\circ$}} pic[draw,angle radius=.3cm]{{angle=B--C--A}} pic[draw,angle radius=.35cm]{{angle=B--C--A}} (C) node[shift={{(150:.7)}}]{{${b}^\circ$}};
+    
+ \end{{tikzpicture}}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+    noi_dung = f"   Để đo khoảng cách từ vị trí ${{A}}$ đến vị trí ${{B}}$ ở hai bên bờ một cái ao, bạn {ten} đi dọc bờ ao từ vị trí ${{A}}$ đến vị trí ${{C}}$ và tiến hành đo các góc ${{BAC}}$, ${{BCA}}$. Biết ${{AC={c} m}}$, $\\widehat{{BAC}}={a}^{{\\circ}}$, $\\widehat{{BCA}}={b}^{{\\circ}}$ (hình vẽ bên). Hỏi khoảng cách từ vị trí ${{A}}$ đến vị trí ${{B}}$ là bao nhiêu mét (làm tròn kết quả đến hàng đơn vị)?"
+
+    noi_dung_loigiai=(f"Trong tam giác ${{ABC}}$ ta có\n\n"
+        f"$\\widehat{{A}}+\\widehat{{B}}+\\widehat{{C}}=180^{{\\circ}} \\Rightarrow \\widehat{{B}}=180^{{\\circ}} - \\left(\\widehat{{A}}+\\widehat{{C}}\\right) \\Rightarrow \\widehat{{B}} = 180^{{\\circ}} - \\left({a}^{{\\circ}} + {b}^{{\\circ}}\\right) = {180-a-b}^{{\\circ}}$ \n\n"
+        f"Áp dụng định lí sin trong tam giác ${{ABC}}$ ta có\n\n"
+        f"$\\dfrac{{AB}}{{\\sin C}} = \\dfrac{{AC}}{{\\sin B}} \\Rightarrow AB = \\dfrac{{AC\\sin C}}{{\\sin B}} = \\dfrac{{{c}\\sin {b}^\\circ}}{{\\sin {180-a-b}^{{\\circ}} }} \\approx {kq} m$ \n\n"
+        f"Vậy khoảng cách từ vị trí ${{A}}$ đến vị trí ${{B}}$ gần bằng ${{{kq}}}$ mét.")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C4_B2_18]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 5
+def yy3yy_L10_C4_B2_18():
+    ten=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    a=random.randint(20,30)
+    b=random.randint(100,120)
+
+    c=random.randint(150,300)
+    
+    kq=f"{round(c*math.sin(math.radians(a))/math.sin(math.radians(180-a-b)),1):.1f}".replace(".",",")
+    
+    code_hinh=r"""
+    \begin{tikzpicture}[scale=1]
+            \coordinate (X) at (1,1);
+            \foreach \i in {0,...,6}
+            \foreach \j  in {0,...,2}  
+            \draw[blue] ($(X)+({\i+0.5},{0.6*(\j)+0.4})$)--($(X)+({\i+0.7},{0.6*(\j)+0.4})$);
+            \coordinate [label=above left:$A$](A) at (3,3);
+            \coordinate [label=below left:$B$](B) at (3,1);
+            \coordinate [label=right:$C$](C) at (5,0.5);
+            \draw (X)--(8,1) (8,3)--(1,3) (A)--(B)--(C)--(A);
+            \foreach \i in {A,B,C} \draw[fill=black] (\i) circle(1.2pt);
+        \end{tikzpicture}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+    noi_dung = f"Để đo chiều rộng ${{AB}}$ của một khúc sông, người ta chọn điểm ${{C}}$.  Sau đó,  đo khoảng cách ${{BC}}$, các góc ${{B}}$ và ${{C}}$. Biết rằng ${{BC = {c}}}$ m, $\\widehat{{B}} = {b}^{{\\circ}}$,  $\\widehat{{C}} = {a}^{{\\circ}}$. Tìm chiều rộng ${{AB}}$ của khúc sông đó (làm tròn đến chữ số thập phân thứ nhất)."
+
+    noi_dung_loigiai=( f" Ta có $\\widehat{{A}}= 180^{{\\circ}} -  \\widehat{{B}} -\\widehat{{C}} =180^{{\\circ}}- {b}^{{\\circ}} - {c}^{{\\circ}}={180-b-a}^{{\\circ}}$. \n\n"
+       f" Áp dụng định lí sin ta có \n\n" 
+        f"$\\dfrac{{AB}}{{\\sin C}} = \\dfrac{{BC}}{{\\sin A}} \\Rightarrow AB = \\dfrac{{BC\\sin C}}{{\\sin A}}  = \\dfrac{{{c}\\sin {a}^{{\\circ}}}}{{\\sin {180-b-a}^{{\\circ}}}} \\approx {kq} m $.")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+#[D10_C4_B2_19]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 6
+def yy3yy_L10_C4_B2_19():
+    ten=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    a=random.randint(20,30)
+    b=random.randint(10,20)
+    t=random.randint(2,4)
+    c=random.choice([i for i in range(15,30) if i!=b])
+    
+    kq1=f"{round((t*b)**2+(t*c)**2-2*t*b*t*c*math.sin(math.radians(a)),1):.1f}".replace(".",",")
+    kq=f"{round(sqrt((t*b)**2+(t*c)**2-2*t*b*t*c*math.sin(math.radians(a))),1):.1f}".replace(".",",")    
+    code_hinh=r"""
+    \begin{tikzpicture}[line join=round, line cap=round,>=stealth,scale=0.75]
+            \foreach \x in {1,2,3}
+            \foreach \y in {0,1,2,3,4,5}
+            \draw(0.25+\y,\x-0.25)--(\y,\x-0.25) ;
+            \foreach \x in {1,2,3}
+            \foreach \y in {0,1,2,3,4,5}
+            \draw(-0.25+\y,\x-0.75)--(\y,\x-0.75) ;
+            \tkzDefPoints{0/0/A,4/0/B,1.5/2.5/C}
+            \tkzDrawPoints[fill=black](A,B,C)
+            \tkzDrawSegments(A,B A,C)
+            \fill plot [smooth cycle] coordinates{(3.75,0)(4.25,0)(4.3,0.2)(4.15,0.2)(4.15,0.3)(4.05,0.3)(4.05,0.4)(3.95,0.4)(3.95,0.3)(3.85,0.3)(3.85,0.2)(3.7,0.2)} ;
+            \fill plot [smooth cycle] coordinates{(1.25,2.5)(1.75,2.5)(1.8,2.7)(1.65,2.7)(1.65,2.8)(1.55,2.8)(1.55,2.9)(1.45,2.9)(1.45,2.8)(1.35,2.8)(1.35,2.7)(1.2,2.7)} ;
+            \tkzLabelPoints[below](A,B,C)
+        
+        \end{tikzpicture}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    noi_dung = f"Hai chiếc tàu thủy cùng xuất phát từ một vị trí $ {{A}}$, đi thẳng theo hai hướng tạo với nhau góc ${a}^{{\\circ}}$. Tàu $ {{B}}$ chạy với tốc độ ${{{b}}}$ hải lí một giờ. Tàu ${{C}}$ chạy với tốc độ ${{{c}}}$ hải lí một giờ. Hỏi sau ${{{t}}}$ giờ, hai tàu cách nhau bao nhiêu hải lí?"
+
+    noi_dung_loigiai=( f"Sau ${{{t}}}$ giờ tàu ${{B}}$ đi được ${{{phan_so(t*b)}}}$ hải lí, tàu ${{C}}$ đi được ${{{phan_so(t*c)}}}$ hải lí. \n\n"
+        f"Vậy tam giác ${{ABC}}$ có ${{AB={phan_so(t*b)}}}$, ${{AC={phan_so(t*c)}}}$ và $ \\widehat{{A}}={a}^{{\\circ}}$. \n\n"
+        f"Áp dụng định lí cô-sin vào tam giác $ {{ABC}}$, ta có \n\n"
+        f"$ {{a^2=b^2+c^2-2bc\\cdot\\cos A={phan_so(t*b)}^{{2}}+ {phan_so(t*c)}^{{2}}-2\\cdot {phan_so(t*c)}\\cdot {phan_so(t*b)}\\cdot \\cos {a}^{{\\circ}}= {kq1}\\Rightarrow a\\approx  {kq} }}$ \n\n" 
+       f" Vậy sau ${{{t}}}$ giờ, hai tàu cách nhau khoảng ${kq}$ hải lí.")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+#[D10_C4_B2_20]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 7
+def yy3yy_L10_C4_B2_20():
+
+    b=random.randint(10,20)
+    c=Fraction(random.randint(50,150), 10)
+
+    kq=f"{round(c/(2*math.sin(math.radians(b))),1):.1f}".replace(".",",").replace(",0"," ")
+    c="{:g}".format(float(c)).replace(".",",").replace(".0", " ")
+    code_hinh=r"""
+        \begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+            \coordinate (O) at (0,0); 
+            \coordinate (A) at ($(O)+(131.4:3)$) ; 
+            \coordinate (B) at ($(O)+(101.6:3)$) ; 
+            \coordinate (C) at ($(O)+(41.7:3)$) ; 
+            \coordinate (D) at ($(O)+(140:3)$) ; 
+            \coordinate (E) at ($(O)+(90:1)$) ; 
+            \coordinate (F) at ($(O)+(18:3)$) ; 
+            \draw
+            (D) 
+            .. controls ++(0:0.5) and ++(150:0.5) .. (E)
+            .. controls ++(180:-0.5) and ++(160: 0.5) .. (F)
+            ;
+            \draw (A)--(B)--(C)--(A)  ; 
+            \draw  (F) arc (18:140:3);
+            \foreach \x/\g in {A/140,B/90,C/60} 
+            \fill[black] (\x) circle (1.1pt)+(\g:3mm) node {$\x$};
+        \end{tikzpicture}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    noi_dung = f"Để đo bán kính của một chiếc đĩa cổ chỉ còn lại một phần, các nhà khảo cổ chọn ${{3}}$ điểm trên chiếc đĩa (hình vẽ) và tiến hành đo được kết quả như sau: $\\widehat{{A}}={b}^{{\\circ}}$, $BC={c}cm$. Tính bán kính của chiếc đĩa (làm tròn kết quả đến hàng phần mười)."
+
+    noi_dung_loigiai=( f"   Áp dụng định lí sin suy ra bán kính của chiếc đĩa là\n\n"
+        f"$R = \\dfrac{{BC}}{{2\\sin A}} = \\dfrac{{{c}}}{{2\\sin {b}^{{\\circ}}}} \\approx {kq} $cm")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C4_B2_21]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 8
+def yy3yy_L10_C4_B2_21():
+
+    b=random.randint(100,120)
+    c=random.randint(100,110)
+    g=random.randint(50,80)
+    kq1=f"{round((b)**2+(c)**2-2*b*c*math.sin(math.radians(g)),1):.1f}".replace(".",",")
+    kq=f"{round(sqrt((b)**2+(c)**2-2*b*c*math.sin(math.radians(g))),1):.1f}".replace(".",",").replace(",0"," ")    
+    code_hinh=r"""
+  \begin{tikzpicture}[scale=1, font=\footnotesize, line join = round, line cap = round]
+        \tkzDefPoints{0/0/A,5/0/B,2/3/C,1/0/M,4/0/N}
+        \tkzDrawPoints[](A,B,C)
+        \tkzDrawSegments(C,A C,B A,M N,B)
+        \tkzLabelPoints[below](A,B)
+        \tkzLabelPoints[above](C)
+        \draw plot [smooth cycle] coordinates{(1,0)(1.5,1.2) (2,1) (3,1.5) (4,0)(3,-1.2) (2.5,-0.75) (2,-1)};
+        \fill[pattern=north east lines,opacity=0.5] plot [smooth cycle] coordinates{(1,0)(1.5,1.2) (2,1) (3,1.5) (4,0)(3,-1.2) (2.5,-0.75) (2,-1)};
+\end{tikzpicture}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    noi_dung = f"Khoảng cách từ ${{A}}$ đến ${{B}}$ không thể đo trực tiếp được vì phải qua một đầm lầy. Người ta xác định được một điểm ${{C}}$ mà từ đó có thể nhìn được ${{A}}$ và ${{B}}$ dưới một góc ${g}^{{\\circ}}$. Biết ${{CA={b}}}$ m, ${{CB={c}}}$ m. Khoảng cách ${{AB}}$ bằng bao nhiêu?(Làm trong đến hàng phần mười)"
+
+    noi_dung_loigiai=( f"  $ AB^{{2}}=CA^{{2}}+CB^{{2}}-2\\cdot CA\\cdot CB\\cdot \\cos {g}^{{\\circ}} \\Rightarrow AB={kq}$ m")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C4_B2_22]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 9
+def yy3yy_L10_C4_B2_22():
+
+    b=random.randint(30,45)
+    c=random.randint(65,80)
+    a=random.randint(50,80)
+    kq=f"{round(a*math.sin(math.radians(c))/math.sin(math.radians(180-b-c)),1):.1f}".replace(".",",").replace(",0"," ")
+   
+    code_hinh=fr"""
+    \begin{{tikzpicture}}[scale=0.7, font=\footnotesize, line join = round, line cap = round,>=stealth]
+    \clip (-4.39,3.2) rectangle (4,-4);
+    \draw[pattern=north east lines,opacity=0.3] plot[smooth] coordinates{{(-4.39,1.43)(-2.43,1.46) (-1.48,1.67)(1.43,2.12)(2.01,2.09)(4,1.64) (4.1,-1.06)(3.02,-0.77)(1.85,-1.38)(0.95,-1.48)(0.13,-1.72)(-1.48,-1.67)(-2.46,-1.51)(-3.57,-0.98)(-4.37,-1.08)}};
+    \draw[opacity=3] plot[smooth] coordinates{{(-4.39,1.43)(-2.43,1.46) (-1.48,1.67)(1.43,2.12)(2.01,2.09)(4,1.64) (4.1,-1.06)(3.02,-0.77)(1.85,-1.38)(0.95,-1.48)(0.13,-1.72)(-1.48,-1.67)(-2.46,-1.51)(-3.57,-0.98)(-4.37,-1.08)}};
+    \draw[fill=white] plot[smooth  cycle] coordinates{{(-2.75,-0.08)(-1.83,0.32) (-0.03,0.42) (1,0) (0.24,-0.48)(-0.58,-0.79)(-1.38,-0.77)(-1.91,-0.71)}};
+    \draw[fill=black!70]  plot[smooth  cycle] coordinates{{(-2.14,0.58)(-2.09,0.24)(-2.33,-0.13) (-1.19,-0.13) (-1.38,-0.13) (-1.69,0.21)(-1.75,0.53)}};
+    \draw[fill=blue!30]  plot[smooth  cycle] coordinates{{(-1.75,0.53)(-1.46,0.79) (-1.01,0.58) (-1.08,1.06) (-0.64,1.08)(-0.93,1.59)(-0.53,1.85)(-0.93,2.2)(-1.38,2.7)(-2.04,3.18)(-2.49,2.91)(-3.07,2.91)(-3.2,2.22)(-3.73,1.96)(-3.1,1.3)(-3.31,1.01)(-2.83,1.01)(-2.99,0.69)(-2.14,0.58)}};
+    \tkzDefPoints{{-1.38/-0.13/C,-2/-3/B,3/-2/A}}
+    \tkzDrawPoints[fill=black](A,B,C)
+    \tkzDrawPolygon(A,B,C)
+    \tkzDefMidPoint(A,B) 
+    \tkzLabelPoints[below](A,B)
+    \tkzLabelPoints[above right](C)
+    \tkzMarkAngles[size=1cm,arc=l,mark=|](C,A,B)
+    \tkzMarkAngles[size=1cm,arc=l,mark=||](A,B,C)
+    \tkzLabelAngles[left=1cm,pos=0.5,rotate=-20](B,A,C){{\footnotesize$\alpha$}}
+    \tkzLabelAngles[right,pos=1](A,B,C){{\footnotesize$\beta$}}
+ \end{{tikzpicture}}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    noi_dung = f"   Để đo khoảng cách từ một điểm ${{A}}$ trên bờ sông đến gốc cây ${{C}}$ trên cù lao giữa sông, người ta chọn một điểm ${{B}}$ cùng ở trên bờ với ${{A}}$ sao cho từ ${{A}}$ và ${{B}}$ có thể nhìn thấy điểm ${{C}}$. Ta đo được khoảng cách $ {{AB={a}}}$ m, $ \\widehat{{CAB}}={b}^{{\\circ}}$ và $ \\widehat{{CBA}}={c}^{{\\circ}}$. Tính độ dài ${{AC}}$ (Làm tròn kết quả đến hàng phần mười)."
+
+    noi_dung_loigiai=( f"$\\widehat{{C}}=180^{{\\circ}}-(\\widehat{{A}}+\\widehat{{B}})={180-b-c}^{{\\circ}}$.\n\n"
+        f"Áp dụng định lí sin vào tam giác ${{ABC}}$, ta có \n\n"
+        f"$ \\dfrac{{AC}}{{\\sin B}}=\\dfrac{{AB}}{{\\sin C}}\\Rightarrow AC=\\dfrac{{AB\\cdot \\sin B}}{{\\sin C}}=\\dfrac{{{a}\\cdot \\sin {c}^\\circ}}{{\\sin {180-b-c}^{{\\circ}}}}\\approx  {kq} m$")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C4_B2_23]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 10
+def yy3yy_L10_C4_B2_23():
+
+    c=random.randint(30,45)
+    b=c+random.randint(25,35)
+    a=random.randint(50,80)
+    kq=f"{round(a*math.sin(math.radians(c))**math.sin(math.radians(90-b))/math.sin(math.radians(b-c)),1):.1f}".replace(".",",").replace(",0"," ")
+   
+    code_hinh=fr"""
+    \begin{{tikzpicture}}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \path 
+            (0,0) coordinate (X)
+            (1.1,2) coordinate (Y)
+            (2,2) coordinate (Z)
+            (5,0) coordinate (A)
+            (1.5,5) coordinate (B)
+            (1.5,2) coordinate (C)
+            (1.5,0) coordinate (K)
+            (1.3,2) coordinate (U)
+            (1.8,2) coordinate (V) 
+            (5,2) coordinate (H);
+            \draw  
+            ($(B)!{1}!(U)$)--($(B)!{{0.9}}!(V)$)
+            --($(B)!{{0.8}}!(U)$)--($(B)!{{0.7}}!(V)$)
+            --($(B)!{{0.6}}!(U)$)--($(B)!{{0.5}}!(V)$)
+            --($(B)!{{0.4}}!(U)$)--($(B)!{{0.3}}!(V)$)
+            --($(B)!{{0.2}}!(U)$)--($(B)!{{0.1}}!(V)$)
+            ;
+            \draw[thick]  (X)--(A)--(Z)--(Y)--(X);
+            \draw (A)--(B)  (U)--(B)--(V) (Y)--($(Y)!{{1.2}}!(H)$)  (X)--($(X)!{{1.2}}!(A)$);
+            \draw[->] (A)--(H) ; 
+            \draw ($(A)!0.5!(H)$) node[right]{{$h$}};
+            \draw[dashed](B)--(K) (A)--(C);
+            
+            \tkzMarkAngle[arc=l, size=0.6,mark=0](K,C,A)
+            \tkzLabelAngle[pos=0.9](K,C,A) {{${b}^{{\circ}}$}}
+            \tkzMarkAngle[arc=ll, size=0.7,mark=0](K,B,A)
+            \tkzLabelAngle[pos=1.1](V,B,A) {{${c}^{{\circ}}$}}
+            \foreach \x/\g in{{A/-90,B/90,C/-130,H/90}}
+            \fill[black](\x) ($(\x)+(\g:3mm)$)node{{$\x$}}; 
+        \end{{tikzpicture}}
+    """
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    noi_dung = f"Trên ngọn đồi có một cái tháp cao ${{{a}}}$m. Đỉnh tháp ${{B}}$ và chân tháp ${{C}}$ nhìn điểm ${{A}}$ ở chân đồi dưới các góc tương ứng bằng ${c}^{{\\circ}}$ và ${b}^{{\\circ}}$ so với phương thẳng đứng. Xác định chiều cao ${{HA}}$ của ngọn đồi. (Làm tròn đến phần mười)."
+
+    noi_dung_loigiai=(f"Ta có $\\widehat{{BAC}} = {b}^{{\\circ}} - {c}^{{\\circ}} ={b-c}^{{\\circ}};  \\widehat{{ACH}} = 90^{{\\circ}} - {b}^{{\\circ}} ={90-b}^{{\\circ}} $\n\n"
+        f"Áp dụng định lí sin ta có \n\n"
+        f"$\\dfrac{{AC}}{{\\sin \\widehat{{ABC}} }} = \\dfrac{{BC}}{{\\sin \\widehat{{BAC}} }}\\Rightarrow AC =  \\dfrac{{BC\\sin \\widehat{{ABC}} }}{{\\sin \\widehat{{BAC}}}}=\\dfrac{{{a}\\sin {c}^{{\\circ}}}}{{\\sin {b-c}^{{\\circ}}}}$.\n\n"
+        f"Suy ra $AH =AC \\sin \\widehat{{ACH}} = \\dfrac{{{a} \\sin {90-b}^{{\\circ}} \\sin {c}^{{\\circ }} }} {{\\sin {b-c}^{{\\circ}}}} \\approx {kq}m$")
+
+
+    debai_word= f"{noi_dung}\n"\
+    f"{file_name}\n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C4_B2_24]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 10
+def yy3yy_L10_C4_B2_24():
+    chon=random.randint(1,10)
+    if chon==1:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_14()    
+    if chon==2:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_15()
+    if chon==3:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_16()
+    if chon==4:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_17()
+    if chon==5:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_18()
+    if chon==6:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_19()
+    if chon==7:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_20()
+    if chon==8:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_21()
+    if chon==9:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_22()
+    if chon==10:
+        debai_word, loigiai_word, latex_tuluan, dap_an=yy3yy_L10_C4_B2_23()
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+    

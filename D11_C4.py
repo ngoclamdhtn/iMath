@@ -1416,12 +1416,12 @@ def ghj_7_jkl_L11_C4_B2_05():
 			f"${{{A}{N}}}$ và ${{{C}{M}}}$ chéo nhau",
 			f"${{{C}{K}}}$ và ${{{B}{N}}}$ chéo nhau",
 			f"${{{B}{C}}}$ và ${{{S}{K}}}$ chéo nhau",
+			f"${{{M}{N}}}$ và ${{{A}{C}}}$ song song",
 			
 			])
 		kq_false=[
 			f"${{{G}{K}}}$ và ${{{A}{C}}}$ song song",
-			f"${{{G}{K}}}$ và ${{{M}{N}}}$ song song",
-			f"${{{M}{N}}}$ và ${{{A}{C}}}$ song song",
+			f"${{{G}{K}}}$ và ${{{M}{N}}}$ song song",			
 
 			f"${{{G}{M}}}$ và ${{{N}{K}}}$ cắt nhau",
 			f"${{{G}{N}}}$ và ${{{M}{K}}}$ cắt nhau",

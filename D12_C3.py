@@ -129,7 +129,7 @@ def ytrzz_L12_C3_B1_01():
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
 	code=my_module.moi_truong_anh_latex(code_hinh)	
 	file_name=my_module.pdftoimage_timename(code)
-	#file_name=""
+
 	
 
 	#Tạo các phương án
@@ -914,6 +914,7 @@ def ytrzz_L12_C3_B2_01():
 
 	# Tính trung bình trọng số của mẫu
 	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+	
 
 	# Tính phương sai
 	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
@@ -938,8 +939,7 @@ def ytrzz_L12_C3_B2_01():
 	st_dai_dien_x_tan_so=""
 	st_dai_dien_square_x_tan_so=""
 
-	for a, b in zip(tan_so,gia_tri_dai_dien):		
-		tich.append(a*b)
+	for a, b in zip(tan_so,gia_tri_dai_dien):
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
 		st_b=f"{b}".replace(".",",")
 
@@ -1434,8 +1434,8 @@ def ytrzz_L12_C3_B2_05():
 
 	# Tính phương sai
 	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
-	variance_round=f"{round(variance,2):.1f}".replace(".",",")
-	variance_false_round=f"{round(variance+random.choice([0.5,0.6,0.8,1]),2):.1f}".replace(".",",")
+	variance_round=f"{round(variance,2):.2f}".replace(".",",")
+	variance_false_round=f"{round(variance+random.choice([0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1535,8 +1535,8 @@ def ytrzz_L12_C3_B2_05():
 		f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")	
 
 
-	so_trung_binh=f"{round(weighted_mean,2)}".replace(".",",")
-	so_trung_binh_false=f"{round(weighted_mean+random.choice([0.2,0.5,0.6,0.8,1]),2)}".replace(".",",")
+	so_trung_binh=f"{round(weighted_mean,2):.2f}".replace(".",",")
+	so_trung_binh_false=f"{round(weighted_mean+random.choice([0.2,0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 	
 	kq1_T=f"* Số trung bình của mẫu số liệu bằng ${{{so_trung_binh}}}$" 
 	kq1_F=f"Số trung bình của mẫu số liệu bằng ${{{so_trung_binh_false}}}$"

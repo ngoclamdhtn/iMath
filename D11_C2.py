@@ -755,26 +755,26 @@ def mn8mn_L11_C2_B2_08():
     d = random.choice([i for i in range(-8, 8) if i!=0])
     u1,u2,u3,u4=[u1+(i-1)*d for i in range(4)]
 
-    kq=f"${u1};{u2};{u3};{u4}$"
+    kq=f"${{{u1};{u2};{u3};{u4}}}$"
     noi_dung_loigiai=f"{kq} là một cấp số cộng với $u_1={u1},d={d}$."
 
     u1 = random.choice([i for i in range(-5, 5) if i!=0])
     d = random.choice([i for i in range(2, 4) if i!=0])
     u1,u2,u3,u4=[u1*d**i for i in range(4)]
 
-    kq2=f"${u1};{u2};{u3};{u4}$"
+    kq2=f"${{{u1};{u2};{u3};{u4}}}$"
 
     u1 = random.choice([i for i in range(-10, 10) if i!=0])
     d = random.choice([i for i in range(-3, -2) if i!=0])
     u1,u2,u3,u4=[u1+d**i for i in range(4)]
 
-    kq3=f"${u1};{u2};{u3};{u4}$"
+    kq3=f"${{{u1};{u2};{u3};{u4}}}$"
 
     u1 = random.choice([i for i in range(-5, 5) if i!=0])
     d = random.choice([i for i in range(2, 3) if i!=0])
     u1,u2,u3,u4=[u1-d**i for i in range(4)]
 
-    kq4=f"${u1};{u2};{u3};{u4}$"
+    kq4=f"${{{u1};{u2};{u3};{u4}}}$"
 
     pa_A= f"*{kq}"
     pa_B= f"{kq2}"
@@ -1118,12 +1118,12 @@ def mn8mn_L11_C2_B2_11():
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     n=random.randint(5,15)
-    u_n=u1+(n-1)*d
+    u_n=u1+n*d
 
     kq3_T=f"* Giá chiếc máy sau ${{{n}}}$ năm sử dụng nhỏ hơn ${{{u_n+random.randint(10,20)}}}$ triệu đồng" 
     kq3_F=f"Giá chiếc máy sau ${{{n}}}$ năm sử dụng nhỏ hơn ${{{u_n-random.randint(10,20)}}}$ triệu đồng"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=(f"Giá chiếc máy sau ${{{n}}}$ năm sử dụng là: $u_{n+1}={u1}+{n}.({d})={u_n}$.\n\n"
+    HDG=(f"Giá chiếc máy sau ${{{n}}}$ năm sử dụng là: $u_{{{n+1}}}={u1}+{n}.({d})={u_n}$.\n\n"
         )
 
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -2223,26 +2223,26 @@ def mn8mn_L11_C2_B3_08():
     q = random.choice([i for i in range(-4, 4) if i!=0])
     u1,u2,u3,u4=[u1*q**i for i in range(4)]
 
-    kq=f"${u1};{u2};{u3};{u4}$"
+    kq=f"${{{u1};{u2};{u3};{u4}}}$"
     noi_dung_loigiai=f"{kq} là một cấp số nhân với $u_1={u1},q={q}$."
 
     u1 = random.choice([i for i in range(-5, 5) if i!=0])
     q = random.choice([i for i in range(2, 4) if i!=0])
     u1,u2,u3,u4=[u1+i*q for i in range(4)]
 
-    kq2=f"${u1};{u2};{u3};{u4}$"
+    kq2=f"${{{u1};{u2};{u3};{u4}}}$"
 
     u1 = random.choice([i for i in range(-10, 10) if i!=0])
     q = random.choice([i for i in range(-3, -2) if i!=0])
     u1,u2,u3,u4=[i+q**i for i in range(4)]
 
-    kq3=f"${u1};{u2};{u3};{u4}$"
+    kq3=f"${{{u1};{u2};{u3};{u4}}}$"
 
     u1 = random.choice([i for i in range(-5, 5) if i!=0])
     q = random.choice([i for i in range(2, 3) if i!=0])
     u1,u2,u3,u4=[u1*q**(i+1) for i in range(4)]
 
-    kq4=f"${u1};{u2};{u3};{u4+1}$"
+    kq4=f"${{{u1};{u2};{u3};{u4+1}}}$"
 
     pa_A= f"*{kq}"
     pa_B= f"{kq2}"
