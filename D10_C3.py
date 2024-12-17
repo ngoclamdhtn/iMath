@@ -660,7 +660,7 @@ def npl_mk_L10_C3_B2_01():
     pa_C= f"${{I\\left({x_2};{y_2}\\right)}}$"
     pa_D= f"${{I\\left({x_3};{y_3}\\right)}}$"
     #Trộn các phương án
-    noi_dung = f"Tìm tọa độ đỉnh $I$ của đồ thị hàm số $y={latex(f)}$."
+    noi_dung = f"Tìm tọa độ đỉnh ${{I}}$ của đồ thị hàm số $y={latex(f)}$."
 
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -2559,7 +2559,7 @@ def npl_mk_L10_C3_B2_24():
     x0=(x1+x2)/2 
     x0=phan_so(x0)
     x=symbols("x")
-    noi_dung=f" Biết đồ thị hàm số bậc hai $y=f(x)=ax^{{2}}+bx+x$ ($ a \\ne 0$) cắt trục hoành tại hai điểm $A({x1};0)$ và $B({x2};0)$. Trục đối xứng của đồ thị là đường thẳng nào?"
+    noi_dung=f" Biết đồ thị hàm số bậc hai $y=f(x)=ax^{{2}}+bx+c$ ($ a \\ne 0$) cắt trục hoành tại hai điểm $A({x1};0)$ và $B({x2};0)$. Trục đối xứng của đồ thị là đường thẳng nào?"
     noi_dung_loigiai=f" Trục đối xứng là đường thẳng $x= \\dfrac{{{x1}+{x2}}}{{2}}={x0}$"
 
     kq=f" $x={x0}$"
@@ -2640,10 +2640,10 @@ def npl_mk_L10_C3_B2_26():
     noi_dung = f"Cho hàm số $y=f(x)={latex(expand(a*(x-x1)*(x-x2)))}$ có đồ thị là parabol ${{(P)}}$ . Xét tính đúng-sai của các khẳng định sau. "     
     debai_word= f"{noi_dung}\n"
     
-    kq3_T=f"*Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1+x2)/2)}; {phan_so(u)})$" 
-    kq3_F=f"Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1-x2)/2)}; {phan_so(u)})$ "
+    kq3_T=f"*Đỉnh của ${{(P)}}$ có toạ độ là $\\left({phan_so( (x1+x2)/2)}; {phan_so(u)} \\right)$" 
+    kq3_F=f"Đỉnh của ${{(P)}}$ có toạ độ là $\\left({phan_so( (x1-x2)/2)}; {phan_so(u)} \\right)$ "
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f"Đỉnh của ${{(P)}}$ có toạ độ là $({phan_so( (x1+x2)/2)}; {phan_so(u)})$ "
+    HDG=f"Đỉnh của ${{(P)}}$ có toạ độ là $\\left({phan_so( (x1+x2)/2)}; {phan_so(u)} \\right)$ "
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2656,10 +2656,10 @@ def npl_mk_L10_C3_B2_26():
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq1_T=f"* ${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f)})$" 
-    kq1_F=f"${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f+1)})$"
+    kq1_T=f"* ${{P}}$ đi qua điểm có toạ độ $\\left({x3}; {phan_so(f)} \\right)$" 
+    kq1_F=f"${{P}}$ đi qua điểm có toạ độ $\\left({x3}; {phan_so(f+1)} \\right)$"
     kq1=random.choice([kq1_T, kq1_F])
-    HDG=f"${{P}}$ đi qua điểm có toạ độ $({x3}; {phan_so(f)})$ "
+    HDG=f"${{P}}$ đi qua điểm có toạ độ $\\left({x3}; {phan_so(f)} \\right)$ "
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2785,7 +2785,7 @@ def npl_mk_L10_C3_B2_28():
         \draw (0,0) node[above] { $G$};
         \end{tikzpicture}
     """
-    noi_dung = f"   Một chiếc cổng hình Parabol bao gồm một cửa chính hình chữ nhật ở giữa và hai cánh cửa phụ hai bên như hình vẽ. Biết chiều cao cổng Parabol là ${{{c}}}$ m còn kích thước cửa ở giữa là $CD={{{phan_so(a)}}}$m $DE={{{phan_so(b)}}}$ m. Khoảng cách giữa hai điểm ${{A}}$ và ${{B}}$ là: \n\n(Làm tròn kết quả đến hàng phần mười)."
+    noi_dung = f"   Một chiếc cổng hình Parabol bao gồm một cửa chính hình chữ nhật ở giữa và hai cánh cửa phụ hai bên như hình vẽ. Biết chiều cao cổng Parabol là ${{{c}}}$ m còn kích thước cửa ở giữa là $CD={{{phan_so(a)}}}$m; $DE={{{phan_so(b)}}}$ m. Khoảng cách giữa hai điểm ${{A}}$ và ${{B}}$ là: \n\n(Làm tròn kết quả đến hàng phần mười)."
 
     noi_dung_loigiai=(f" Chọn hệ trục toạ độ ${{Oxy}}$ sao cho gốc toạ độ là trung điểm của ${{AB}}$, ${{Ox}}$ trùng với đường thẳng ${{AB}}$. Khi đó cổng là một phần của Parabol có dạng ${{y=ax^{{2}}+c}}$ \n\n"
     f" Parabol đi qua các điểm có toạ độ $\\left({phan_so(a/2)}; {phan_so(b)}\\right)$ và $\\left( 0; {c} \\right)$ \n\n nên ta tìm được phương trình là $y={latex(nsimplify(A*x**2+c))}$.\n\n"
@@ -2927,6 +2927,11 @@ def npl_mk_L10_C3_B2_29():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
 
 
 #[D10_C3_B2_30]-M3. Tìm m để hàm số bậc hai đồng biến, nghịch biến trên khoảng K
@@ -3204,7 +3209,7 @@ def npl_mk_L10_C3_B2_32():
 
 
 
-#[D10_C3_B2_33]-TL-M4. Toán thực tế uốn cong miếng tôn 
+#[D10_C3_B2_33]-SA-M4. Toán thực tế uốn cong miếng tôn 
 def npl_mk_L10_C3_B2_33():
     x=symbols("x")
     a=random.randint(7,15)
@@ -3226,3 +3231,89 @@ def npl_mk_L10_C3_B2_33():
     f"\\end{{ex}}\n"
     dap_an= kq
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C3_B2_34]-SA-M4. Toán thực tế về định giá sản phẩm
+def npl_mk_L10_C3_B2_34():
+    x=symbols("x")
+    a=random.randint(6,12)
+    x0=random.randint(1,int(a/2)-1)
+    b=random.randint(150,300)
+    A=(a-2*x0)*b
+    m=random.randint(10,30)
+    n=m+a
+    x=symbols("x")
+    kq=phan_so(n-x0) 
+    A1=phan_so(A)
+    noi_dung = (f"Một cửa hàng kinh doạnh mặt hàng A với chi phí sản xuất là ${{{m}}}$ triệu đồng và dự định bán ra với giá là ${{{n}}}$ triệu đồng. Với giá bán đó, số sản phẩm mà bên khách hàng đối tác sẽ mua trong một năm là ${{{A1}}}$ sản phẩm. "
+                f" Nhằm mục đích đẩy mạnh sản xuất và tiêu thụ sản phẩm này, chủ cửa hàng dự định giảm giá bán và ước tính rằng nếu cứ giảm ${{1}}$ triệu đồng mỗi sản phẩm thì số lượng sản phẩm bán ra trong một năm sẽ tăng thêm ${{{b}}}$ sản phẩm. Cửa hàng phải định giá bán mới của sản phẩm là bao nhiêu, để sau khi thực hiện giảm giá, lợi nhuận thu được sẽ là cao nhất.")
+
+    noi_dung_loigiai=(f" Gọi ${{x}}$ (triệu đồng) là số tiền dự định giảm giá của sản phẩm ($0 \\le x \\le {a}$) \n\n"
+    f" Lợi nhuận thu được khi bán mỗi sản phẩm là ${n}-x-{m}={a}-x$\n\n"
+    f" Số sản phẩm mà cửa hàng bán ra trong một năm là ${A}+{b}x$ \n\n"
+    f"Lợi nhuận mà cửa hàng thu được trong một năm là \n\n $f(x)={latex((a-x)*(A+b*x))}= {latex(nsimplify(expand((a-x)*(A+b*x))))}$ \n\n"
+    f"${{f(x)}}$ lớn nhất khi $x={x0}$ \n\n"
+    f" Vậy giá bán mới của mỗi sản phẩm A là ${{{n-x0}}}$ triệu đồng thì lợi nhuận thu được cao nhất.")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+            f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an= kq
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C3_B2_35]-M1. Tìm điểm thuộc đồ thị hàm số
+def npl_mk_L10_C3_B2_35():
+    x=symbols("x")
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0 and i!=a])
+    x0=random.choice([i for i in range(-5,5) if i!=0]) 
+    x1=random.choice([i for i in range(-5,5) if i!=0]) 
+    x2=random.choice([i for i in range(-5,5) if i!=0]) 
+    x4=random.choice([i for i in range(-5,5) if i!=0])
+
+    noi_dung=f" Cho hàm số bậc hai $y={latex(a*x**2+b*x+c)}$ có đồ thị là Parabol ${{(P)}}$, trong các điểm sau điểm nào thuộc đồ thị hàm số?"
+
+    noi_dung_loigiai=f" Điểm thuộc đồ thị hàm số là $\\left( {x0};{phan_so(a*x0**2+b*x0+c)} \\right)$"
+
+
+    pa_A= f"*$\\left( {x0};{phan_so(a*x0**2+b*x0+c)} \\right)$"
+    pa_B= f"$\\left( {x1};{phan_so(a*x1**2+b*x1)} \\right)$"
+    pa_C= f"$\\left( {x2};{phan_so(a*x2**2+b*x2)} \\right)$"
+    pa_D= f"$\\left( {x4};{phan_so(a*x4**2+b*x4)} \\right)$"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an

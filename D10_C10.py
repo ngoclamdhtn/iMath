@@ -1710,7 +1710,7 @@ def gghik_L10_CX_B0_21():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D10_CX_B0_22]-SA-M3. Cho ba điểm A,B. Tìm điểm M thỏa mãn mAM+nAB=pAC
+#[D10_CX_B0_22]-SA-M3. Cho A,B,C. Tìm điểm M thỏa mãn mAM+nAB=pAC
 def gghik_L10_CX_B0_22():
 	ten=["A","B","C","D","E","M","N","P"]
 	random.shuffle(ten)
@@ -1733,9 +1733,6 @@ def gghik_L10_CX_B0_22():
 
 	if chon==3:
 		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${C}({c1};{c2}), {B}({b1};{b2}), {A}({a1};{a2})$.")
-
-	noi_dung+=f" Điểm ${{{P}}}(a;b)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
-	
 		
 	x_AB,y_AB=b1-a1,b2-a2
 	x_BA,y_BA=-x_AB,-y_AB
@@ -1749,19 +1746,124 @@ def gghik_L10_CX_B0_22():
 	vec_AC=f"{vec(f"{A}{C}")}"
 	vec_BC=f"{vec(f"{B}{C}")}"
 
-	
-	a, b=x_A-k*x_AB, y_A-k*y_AB
+	m=random.randint(2,3)
+	n = random.choice([i for i in range(-3, 3) if i!=0])
+	q = random.choice([i for i in range(-2, 2) if i!=0])
+	vec_AP, vec_AB, vec_AC=sp.symbols("vecAP vecAB vecAC")
+
+	noi_dung+=f" Điểm ${{{P}}}(a;b)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+	noi_dung=noi_dung.replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C)).replace("-+","-").replace("--","+").replace("+-","-")
+
+	a=x_A+q/m*x_AC-n/m*x_AB
+	b=y_A+q/m*y_AC-n/m*y_AB	
 	dap_an=f"{round(a+b,1):.1f}".replace(".",",")
 
 	noi_dung_loigiai=(
-	f"${vec_AB}=({x_AB};{y_AB}), {vec2(P,A)}=({x_A}-a;{y_A}-b)$.\n\n"
-			f"${P}{A}={t}{P}{B} \\Rightarrow {vec2(P,A)}={phan_so(k)}{vec_AB}$.\n\n"
-			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
-			a={x_A}-({phan_so(k)}).{tao_ngoac(x_AB)}={phan_so(a)} \\\\ \n\
-			b={y_A}-({phan_so(k)}).{tao_ngoac(y_AB)}={phan_so(b)} \n\
-			\\end{{array}} \\right.$\n\n"
-			f"Suy ra: $a+b={phan_so(a+b)}={dap_an}$."
-	)	
+		f"${vec_AB}=({x_AB};{y_AB}),{vec_AC}=({x_AC};{y_AC})$.\n\n"
+		f"${vec_AP}=(a-{x_A};b-{y_A})$.\n\n"
+		f"${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)} \\Rightarrow$"
+		f"${latex(m*vec_AP)}={latex(q*vec_AC)}-{latex(n*vec_AB)}$\n\n"
+		f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+		a-{x_A}={phan_so(q/m)}.{tao_ngoac(x_AC)}-{phan_so(n/m)}.{tao_ngoac(x_AB)} \\\\ \n\
+		b-{y_A}={phan_so(q/m)}.{tao_ngoac(y_AC)}-{phan_so(n/m)}.{tao_ngoac(y_AB)} \n\
+		\\end{{array}} \\right.$"
+		f"$\\Rightarrow\\left\\{{ \\begin{{array}}{{l}} \n\
+		a={phan_so(a)} \\\\ \n\
+		b={phan_so(b)} \n\
+		\\end{{array}} \\right.$\n\n"
+		f"Suy ra: $a+b={phan_so(a+b)}={dap_an}$."
+	
+	)
+	noi_dung_loigiai=noi_dung_loigiai.replace("-+","-").replace("--","+").replace("+-","-").replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C))
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB
+def gghik_L10_CX_B0_23():
+	ten=["A","B","C","D","E","F", "M","N","P"]
+	random.shuffle(ten)
+	A,B,M=ten[0:3]
+	
+	bo_toa_do=tao_3dinh_tamgiac()
+	a1,a2=bo_toa_do[0]
+	b1,b2=bo_toa_do[1]
+	c1,c2=bo_toa_do[2]
+	x_A,y_A=a1,a2
+	x_B,y_B=b1,b2
+	
+	a,b=sp.symbols("a b")
+
+	chon=random.randint(1,2)
+	if chon==1:
+		eq=Eq((a-x_A)**2+(-y_A)**2,(a-x_B)**2+(-y_B)**2)
+		tap_nghiem=solve(eq,a)
+		x_M=tap_nghiem[0]
+		if x_M<0: 
+			m=random.randint(-3,-1)
+		else:
+			m=random.randint(1,3)
+
+		n = random.choice([i for i in range(1, 3) if i!=0])
+		dap_an=f"{round(m*x_M,1):.1f}".replace(".",",")
+
+		chon=random.randint(1,2)
+		if chon==1:
+			noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}), {B}({b1};{b2})$."
+				f" Điểm ${M}(a;b)$ thuộc trục hoành thỏa mãn cách đều hai điểm ${{{A}}}$ và ${{{B}}}$."
+				f" Tính ${latex(m*a+n*b)}$ (kết quả làm tròn đến hàng phần mười).")	
+		if chon==2:
+			noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}), {B}({b1};{b2})$."
+				f" Điểm ${M}(a;b)$ thuộc trục hoành sao cho tam giác ${{{M}{A}{B}}}$ cân tại ${{{M}}}$."
+				f" Tính ${latex(m*a+n*b)}$ (kết quả làm tròn đến hàng phần mười).")
+
+		noi_dung_loigiai=(
+			f"Do ${M}\\in Ox$ nên ${M}(a;0)$.\n\n"
+			f"Ta có ${A}{M}={latex(sqrt((a-x_A)**2+(-y_A)**2))}, {B}{M}={latex(sqrt((a-x_B)**2+(-y_B)**2))}$.\n\n"
+			f"${A}{M}={B}{M}\\Rightarrow {latex((a-x_A)**2+(-y_A)**2)} = {latex((a-x_B)**2+(-y_B)**2)}$"
+			f"$\\Rightarrow a={phan_so(x_M)}$.\n\n"
+			f"${latex(m*a+n*b)}={phan_so(m*x_M)}={dap_an}$.")
+	if chon==2:
+		eq=Eq((-x_A)**2+(b-y_A)**2,(-x_B)**2+(b-y_B)**2)
+		tap_nghiem=solve(eq,b)
+		y_M=tap_nghiem[0]
+		if y_M<0: 
+			n=random.randint(-3,-1)
+		else:
+			n=random.randint(1,3)
+
+		m = random.choice([i for i in range(1, 3) if i!=0])
+		dap_an=f"{round(n*y_M,1):.1f}".replace(".",",")
+
+		chon=random.randint(1,2)
+		if chon==1:
+			noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}), {B}({b1};{b2})$."
+				f" Điểm ${M}(a;b)$ thuộc trục tung thỏa mãn cách đều hai điểm ${{{A}}}$ và ${{{B}}}$."
+				f" Tính ${latex(m*a+n*b)}$ (kết quả làm tròn đến hàng phần mười).")	
+		if chon==2:
+			noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}), {B}({b1};{b2})$."
+				f" Điểm ${M}(a;b)$ thuộc trục tung sao cho tam giác ${{{M}{A}{B}}}$ cân tại ${{{M}}}$."
+				f" Tính ${latex(m*a+n*b)}$ (kết quả làm tròn đến hàng phần mười).")
+
+		noi_dung_loigiai=(
+			f"Do ${M}\\in Oy$ nên ${M}(0;b)$.\n\n"
+			f"Ta có ${A}{M}={latex(sqrt((-x_A)**2+(a-y_A)**2))}, {B}{M}={latex(sqrt((-x_B)**2+(b-y_B)**2))}$.\n\n"
+			f"${A}{M}={B}{M}\\Rightarrow {latex((-x_A)**2+(b-y_A)**2)} = {latex((-x_B)**2+(b-y_B)**2)}$"
+			f"$\\Rightarrow b={phan_so(y_M)}$.\n\n"
+			f"${latex(m*a+n*b)}={phan_so(n*y_M)}={dap_an}$.")
+	
+
+	
+	noi_dung_loigiai=noi_dung_loigiai.replace("-+","-").replace("--","+").replace("+-","-")
 		
 	debai_word= f"{noi_dung}\n"
 

@@ -460,7 +460,7 @@ def yy3yy_L10_C4_B1_07():
     kqs=[ f"${{{phan_so(ds+1)}}}$",f"${{{phan_so(ds-1)}}}$",f"${{{phan_so(ds+2)}}}$",f"${{{phan_so(ds-2)}}}$" ]
     kq2, kq3, kq4 = random.sample(kqs, 3)  
     
-    noi_dung=noi_dung.replace("+-1\\cos\\alpha"," -\\cos\\alpha").replace("+-1\\sin\\alpha"," -\\sin\\alpha").replace("1\\cos\\alpha"," \\cos\\alpha").replace("1\\sin\\alpha"," \\sin\\alpha")
+    noi_dung=noi_dung.replace("1\\cos\\alpha"," \\cos\\alpha").replace("1\\sin\\alpha"," \\sin\\alpha").replace("-1\\cos\\alpha"," -\\cos\\alpha").replace("-1\\sin\\alpha"," -\\sin\\alpha")
     noi_dung=thay_cong_tru(noi_dung)
     noi_dung_loigiai=noi_dung_loigiai.replace("-1\\tan\\alpha"," -\\tan\\alpha").replace("1\\tan\\alpha"," -\\tan\\alpha")
 
@@ -526,14 +526,14 @@ def yy3yy_L10_C4_B2_01():
     C= math.radians(C_degree)
     ten_goc =random.choice(["A", "B", "C"])
     if ten_goc == "A":
-        ten_canh1="b"
-        ten_canh2="c"
+        ten_canh1="AC"
+        ten_canh2="AB"
     elif ten_goc == "B":
-        ten_canh1="a"
-        ten_canh2="c"
+        ten_canh1="BC"
+        ten_canh2="BA"
     else:
-        ten_canh1="a"
-        ten_canh2="b" 
+        ten_canh1="CB"
+        ten_canh2="CA" 
     #Tìm công thức nghiệm và nghiệm ảo
     
     kq=1/2*a*b*sin(C)
@@ -547,13 +547,13 @@ def yy3yy_L10_C4_B2_01():
     kq4=pa_kotrung[3]
 
     #Tạo các phương án
-    pa_A=f"*${{{round(kq,2):.2f}}}$".replace(".",",")
-    pa_B=f"${{{round(kq2,2):.2f}}}$".replace(".",",")
-    pa_C=f"${{{round(kq3,2):.2f}}}$".replace(".",",")
-    pa_D=f"${{{round(kq4,2):.2f}}}$".replace(".",",")
+    pa_A=f"*${{{round(kq,2):.2f}}}cm^{{2}}$".replace(".",",").replace(",00","")
+    pa_B=f"${{{round(kq2,2):.2f}}}cm^{{2}}$".replace(".",",").replace(",00","")
+    pa_C=f"${{{round(kq3,2):.2f}}}cm^{{2}}$".replace(".",",").replace(",00","")
+    pa_D=f"${{{round(kq4,2):.2f}}}cm^{{2}}$".replace(".",",").replace(",00","")
 
 
-    noi_dung=(f"Cho tam giác ${{ABC}}$ có ${ten_canh1}={a},{ten_canh2}={b},\\widehat{{{ten_goc}}}={C_degree}^\\circ$. Tính diện tích tam giác ${{ABC}}$"
+    noi_dung=(f"Cho tam giác ${{ABC}}$ có ${ten_canh1}={a}cm;{ten_canh2}={b}cm;\\widehat{{{ten_goc}}}={C_degree}^\\circ$. Tính diện tích tam giác ${{ABC}}$"
     f" (kết quả làm tròn đến hàng phần trăm)."
     )#Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -565,7 +565,7 @@ def yy3yy_L10_C4_B2_01():
     debai= f"{noi_dung}\n"             
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     dap_an=my_module.tra_ve_dap_an(list_PA)
-    noi_dung_loigiai=f"$S=\\dfrac{{1}}{{2}}.{a}.{b}.\\sin {C_degree}^\\circ={st_kq}$."          
+    noi_dung_loigiai=f"$S=\\dfrac{{1}}{{2}}.{a}.{b}.\\sin {C_degree}^\\circ={st_kq}cm^{{2}}$."          
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
@@ -609,15 +609,15 @@ def yy3yy_L10_C4_B2_02():
     kq3=sqrt(a**2 + b**2)
     kq4=1/2*a*b*sin(C)
     #Tạo các phương án
-    pa_A=f"*${{{kq:.2f}}}$".replace(".",",")
-    pa_B=f"${{{kq2:.2f}}}$".replace(".",",")
-    pa_C=f"${{{kq3:.2f}}}$".replace(".",",")
-    pa_D=f"${{{kq4:.2f}}}$".replace(".",",")
+    pa_A=f"*${{{kq:.2f}}}$cm".replace(".",",")
+    pa_B=f"${{{kq2:.2f}}}$cm".replace(".",",")
+    pa_C=f"${{{kq3:.2f}}}$cm".replace(".",",")
+    pa_D=f"${{{kq4:.2f}}}$cm".replace(".",",")
 
     #Trộn các phương án
     list_PA =[pa_A,pa_B,pa_C,pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Cho tam giác ${{ABC}}$ có ${ten_canh1}={a},{ten_canh2}={b},\\widehat{{{ten_goc}}}={C_degree}^\\circ$. Tính độ dài cạnh ${{{ten_canh3}}}$."
+    noi_dung= f"Cho tam giác ${{ABC}}$ có ${ten_canh1}={a}cm;{ten_canh2}={b}cm;\\widehat{{{ten_goc}}}={C_degree}^\\circ$. Tính độ dài cạnh ${{{ten_canh3}}}$."
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  
@@ -1760,7 +1760,7 @@ def yy3yy_L10_C4_B2_14():
     y=x+random.randint(35,40)
     AC1= (h*math.sin(math.radians(90+x)))/math.sin(math.radians(y-x))
     e=round(AC1)
-    kq=round(AC1*sin(math.radians(y)) )
+    kq= f"{round(AC1*sin(math.radians(y)) +a,2):.1f}".replace(".",",")
     code_hinh=r"""
     \begin{tikzpicture}[scale=.8,font=\footnotesize,line cap=round,line join=round,>=stealth]
     \draw (0,0) coordinate(O)grid (2,6);
@@ -1805,7 +1805,7 @@ def yy3yy_L10_C4_B2_14():
     file_name1=my_module.pdftoimage_timename(code1)
     A=random.choice(["Hiếu", "Hoàng", "Lam", "Minh", "Khôi", "Quân", "Nghĩa"])
     B=random.choice(["Hồng", "Hà", "Lan", "Mạnh", "Khánh", "Quyên", "Nga"])
-    noi_dung = f"   Bạn {A} đứng ở đỉnh của tòa nhà và quan sát chiếc diều, nhận thấy góc nâng (góc nghiêng giữa phương từ mắt của bạn {A} tới chiếc diều và phương nằm ngang) là $\\alpha={x}^{{\\circ}}$; khoảng cách từ đỉnh tòa nhà tới mắt bạn {A} là ${{{a1}}}$m. Cùng lúc đó ở dưới chân tòa nhà, bạn {B} cũng quan sát chiếc diều và thấy góc nâng là $\\beta={y}^{{\\circ}}$; khoảng cách từ mặt đất tới mắt bạn {B} cũng là ${{{a1}}}$m. Biết chiều cao của tòa nhà là $h={{{h}}}m$ (minh họa ở hình bên). Chiếc diều bay cao bao nhiêu mét so với mặt đất (làm tròn kết quả đến hàng đơn vị)?"
+    noi_dung = f"   Bạn {A} đứng ở đỉnh của tòa nhà và quan sát chiếc diều, nhận thấy góc nâng (góc nghiêng giữa phương từ mắt của bạn {A} tới chiếc diều và phương nằm ngang) là $\\alpha={x}^{{\\circ}}$; khoảng cách từ đỉnh tòa nhà tới mắt bạn {A} là ${{{a1}}}$m. Cùng lúc đó ở dưới chân tòa nhà, bạn {B} cũng quan sát chiếc diều và thấy góc nâng là $\\beta={y}^{{\\circ}}$; khoảng cách từ mặt đất tới mắt bạn {B} cũng là ${{{a1}}}$m. Biết chiều cao của tòa nhà là $h={{{h}}}m$ (minh họa ở hình bên). Chiếc diều bay cao bao nhiêu mét so với mặt đất (làm tròn kết quả đến hàng phần mười)?"
 
     noi_dung_loigiai=(f"Kí hiệu ${{C}}$ là vị trí của chiếc diều.\n\n"
              f"Từ điểm ${{B}}$ vẽ đường thẳng $Bx$ vuông góc với ${{AB}}$.\n\n"
@@ -1818,11 +1818,11 @@ def yy3yy_L10_C4_B2_14():
              f"$\\widehat{{CAB}} = \\widehat{{CAK}}+\\widehat{{KAB}} = {x}^{{\\circ}} + 90^{{\\circ}} = {90+x}^{{\\circ}}$.\n\n"
             f"$\\widehat{{CBA}} = \\widehat{{ABH}}-\\widehat{{CBH}} = 90^{{\\circ}}-{y}^{{\\circ}} = {90-y}^{{\\circ}}$.\n\n"
              f"Trong tam giác ${{ABC}}$ ta có \n\n"
-            f"$\\widehat{{C}}= 180^{{\\circ}} - \\left(\\widehat{{A}}+\\widehat{{B}}\\right) = 180^{{\\circ}} - \\left({90+x}^{{\\circ}}+{90-y}^{{\\circ}}\\right) = {y-x}^{{\\circ}}$."
+            f"$\\widehat{{C}}= 180^{{\\circ}} - \\left(\\widehat{{A}}+\\widehat{{B}}\\right) = 180^{{\\circ}} - \\left({90+x}^{{\\circ}}+{90-y}^{{\\circ}}\\right) = {y-x}^{{\\circ}}$.\n\n"
             f"Áp dụng định lí sin trong tam giác ${{ABC}}$ ta có\n\n"
          f"$\\dfrac{{AB}}{{ \\sin C}} = \\dfrac{{BC}}{{\\sin A }} \\Rightarrow BC = \\dfrac{{AB\\sin A}}{{\\sin C}} = \\dfrac{{ {h}\\sin {90+x}^{{\\circ}} }}{{\\sin {y-x}^{{\\circ}} }} \\approx {e}$\n\n"
          f"Trong tam giác ${{CBH}}$ vuông tại ${{H}}$ ta có \n\n"
-         f"$CH=BC\\sin B  \\approx {e}\\sin{{ {y}^{{\\circ}} }}\\approx {kq}$ m\n\n"
+         f"$CH=BC\\sin B  \\approx {e}\\sin{{ {y}^{{\\circ}} }}\\approx {round(AC1*sin(math.radians(y)))}$ m\n\n"
         f"Vậy chiếc diều bay cao khoảng ${{{kq}}}$ mét so với mặt đất.")
 
     debai_word= f"{noi_dung}\n"\
@@ -1911,6 +1911,7 @@ def yy3yy_L10_C4_B2_15():
     
     
     ;   
+    \tkzMarkAngles[size=.4](B,A,C C,B,A)
     \foreach \x/\g in {{C/90,A/210,B/-30}} \draw (\x)+(\g:0.3)node{{$\x$}};
 \end{{tikzpicture}}
 

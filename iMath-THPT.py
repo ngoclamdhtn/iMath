@@ -1623,7 +1623,11 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_02]-M1.Tìm trục đối xứng của đồ thị hàm số bậc 2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, "Tìm trục đối xứng của đồ thị hàm số bậc 2")
+
+                item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_35]-M2. Tìm điểm thuộc đồ thị hàm số bậc 2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+           
 
                 item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_03]-M2. Cho hàm số bậc 2. Tìm khoảng biến thiên."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -1758,15 +1762,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C3_B2, ["[D10_C3_B2_28]-SA-M3. Tính chiều cao của cổng Parabol 2"])
+                item=QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_28]-SA-M3. Tính chiều cao của cổng Parabol 2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item=QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_33]-SA-M4. Toán thực tế uốn cong miếng tôn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_34]-SA-M4. Toán thực tế về định giá sản phẩm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C3_B2_3, ["[D10_C3_B2_25]-SA-M4. Tìm m để phương trình f(|x|)=m có nhiều nghiệm nhất."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item=QTreeWidgetItem(L10_C3_B2, ["[D10_C3_B2_33]-SA-M4. Toán thực tế uốn cong miếng tôn"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2847,7 +2855,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_21]-SA-M3. Cho hai điểm A,B. Tìm điểm M thỏa mãn MA=kMB"])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_21]-SA-M3. Cho A,B. Tìm M thỏa mãn MA=kMB"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_22]-SA-M3. Cho A,B,C. Tìm M thỏa mãn mAM+nAB=pAC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10822,9 +10838,17 @@ class Ui_MainWindow(object):
                                                 if dang_toan =="[D10_C3_B2_32]":
                                                         debai_word,debai_latex,loigiai_word,dap_an=D10_C3.npl_mk_L10_C3_B2_32()
 
-                                                #[D10_C3_B2_33]-TL-M4. Toán thực tế uốn cong miếng tôn
+                                                #[D10_C3_B2_33]-SA-M4. Toán thực tế uốn cong miếng tôn
                                                 if dang_toan =="[D10_C3_B2_33]":
                                                         debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_33()
+
+                                                #[D10_C3_B2_34]-SA-M4. Toán thực tế về định giá sản phẩm
+                                                if dang_toan =="[D10_C3_B2_34]":
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B2_34()
+
+                                                #[D10_C3_B2_35]-M3. Tìm điểm thuộc parabol
+                                                if dang_toan =="[D10_C3_B2_35]":
+                                                        debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_35()
 
 
                                                                              
@@ -11194,7 +11218,15 @@ class Ui_MainWindow(object):
 
                                                 #[D10_CX_B0_21]-SA-M2. Cho hai điểm A,B. Tìm điểm M thỏa mãn MA=kMB
                                                 if dang_toan == "[D10_CX_B0_21]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_21()    
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_21()
+
+                                                #[D10_CX_B0_22]-SA-M2. Cho A,B,C. Tìm điểm M thỏa mãn mAM+nAB=pAC
+                                                if dang_toan == "[D10_CX_B0_22]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_22()
+
+                                                #[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB
+                                                if dang_toan == "[D10_CX_B0_23]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_23()
                                                     
 
                                     #Chương 6- Thống kê

@@ -4084,4 +4084,38 @@ def y7y7u_L10_C5_B4_09():
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
-	
+#[D10_C5_B4_10]-SA-M4. Quỹ tích điểm M thảo mãn đằng thức vecto 
+def y7y7u_L10_C5_B4_10(): 
+    r=random.randint(2,10)
+    b=random.randint(1,int(2*r**2-1))
+    A=["A ", "M", "P", "E", "I", "G", "Q", "E", "A"]
+    B=["B ", "N", "Q", "F", "J", "H", "K", "F","B"]
+    C=["C ", "P", "R", "G", "Q", "F", "H", "K","C"]
+    D=["D ", "Q", "T", "H", "K", "E", "F", "H","E"]
+    M=["H ", "E", "M", "M", "E", "I", "E", "M","M"]
+    i=random.randint(0,8)
+    A=A[i]
+    B=B[i]
+    C=C[i]
+    D=D[i]
+    M=M[i]
+    a=latex(nsimplify(sqrt(2*r**2-b)))
+
+    noi_dung=f" Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$. Tập hợp các điểm ${{{M}}}$ thoả mãn đẳng thức  \n\n $\\overrightarrow {{{M}{A}}} \\cdot \\overrightarrow {{{M}{C}}} + \\overrightarrow {{{M}{B}}} \\cdot \\overrightarrow {{{M}{D}}} ={b}$ \n\n là một đường tròn có bán kính có bằng bao nhiêu?"
+    noi_dung_loigiai=(f'Gọi ${{O}}$ là điểm thoả mãn $\\overrightarrow{{O{A}}}+\\overrightarrow{{O{B}}}+\\overrightarrow{{O{C}}}+\\overrightarrow{{O{D}}} =\\overrightarrow{{O}}$ \n\n'
+       f' $\\overrightarrow {{{M}{A}}} \\cdot \\overrightarrow {{{M}{C}}} + \\overrightarrow {{{M}{B}}} \\cdot \\overrightarrow {{{M}{D}}} ={b}$ \n\n '
+    f" $(\\overrightarrow {{O{A}}} - \\overrightarrow {{O{M}}})\\cdot (\\overrightarrow {{O{C}}} - \\overrightarrow {{O{M}}}) + (\\overrightarrow {{O{B}}} - \\overrightarrow {{O{M}}})\\cdot (\\overrightarrow {{O{D}}} - \\overrightarrow {{O{M}}})={b}$ \n\n"
+    f" $\\overrightarrow {{O{A}}} \\cdot \\overrightarrow {{O{C}}} +\\overrightarrow {{O{B}}} \\cdot \\overrightarrow {{O{D}}} +{{2}} \\overrightarrow {{O{M}}} ^{{2}} ={b}$ \n\n "
+    f" ${{-2}} O{A}^{{2}}+ 2O{M}^{{2}} ={b}$ \n\n"
+    f" ${{ O{M}={r} }}$ \n\n"
+    f"Vậy tập hợp các điểm ${{{M}}}$ thoả mãn đẳng thức là đường tròn tâm ${{O}}$ bán kính bằng ${{{r}}}$")
+    dap_an =str(r)
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
