@@ -11658,6 +11658,204 @@ def prt_34_L12_C1_B5_05():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C1_B5_06]-TF-M3. Xét Đ-S: Thể tích hộp khi cắt 4 góc.
+def prt_34_L12_C1_B5_06():
+	x=sp.symbols("x")
+	a=random.randint(4,20)*3
+
+	code_hinh=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=.6]\n\
+				\\filldraw[pattern=north east lines] \n\
+				(0,0)rectangle(1,1)(0,4)rectangle(1,5)\n\
+				(4,0)rectangle(5,1)(4,4)rectangle(5,5)\n\
+				;\n\
+				\\draw[dashed](1,1)rectangle(4,4);\n\
+				\\draw(0,0)rectangle(5,5);\n\
+				\\draw[dashed](5,5)arc(45:-45:{{5*1.41/2}}) node[midway,fill=white]{{${a}$ cm}};\n\
+			\\end{{tikzpicture}}"
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	code_hinh_2=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=.4]	\n\
+				\\tikzset{{\n\
+					pics/hhChuNhat/.style n args={{8}}{{\n\
+						code={{\n\
+							\\tikzset{{\n\
+								declare function={{a=2.5;b=1.8;goc=-135;h=0.75;}}\n\
+							}}\n\
+							\\path \n\
+							(0,0)coordinate(#1)+(0:a)coordinate(#2)+(goc:b)coordinate(#4)+(90:h)coordinate(#5)\n\
+							($(#2)+(#4)-(#1)$)coordinate(#3)\n\
+							;\n\
+							\\foreach \\pone/\\pname in{{#2/#6,#3/#7,#4/#8}}{{\n\
+								\\path \n\
+								($(\\pone)+(#5)-(#1)$)coordinate(\\pname)\n\
+								;\n\
+							}}\n\
+							\\foreach \\pointo/\\pointt in{{#2/#3,#3/#4,#5/#6,#6/#7,#7/#8,#8/#5,#2/#6,#3/#7,#4/#8}}{{\n\
+								\\draw[fill=black](\\pointo)--(\\pointt);\n\
+							}}\n\
+						}}\n\
+					}}\n\
+				}}\n\
+				\\path \n\
+				(0,0) pic{{hhChuNhat={{A}}{{B}}{{C}}{{D}}{{A'}}{{B'}}{{C'}}{{D'}}}}\n\
+				(intersection of A--D and C'--D')coordinate(M)\n\
+				(intersection of A--B and B'--C')coordinate(N)\n\
+				;\n\
+				\\foreach \\pointo/\\pointt in{{A/M,A/N,A/A'}}{{\n\
+					\\draw[fill=black](\\pointo)--(\\pointt);\n\
+				}}\n\
+				\\foreach \\pointo/\\pointt in{{D/M,B/N}}{{\n\
+					\\draw[fill=black,dashed](\\pointo)--(\\pointt);\n\
+				}}\n\
+			\\end{{tikzpicture}}"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_2)
+	file_name_2=my_module.pdftoimage_timename(code)
+
+
+	noi_dung =(f"Từ một tấm bìa carton hình vuông có độ dài cạnh bằng ${{{a}}}$ cm, người ta cắt bốn hình vuông bằng nhau ở bốn góc rồi gập thành một chiếc hộp"
+	f" có dạng hình hộp chữ nhật không có nắp (minh họa qua hình vẽ bên). Gọi ${{x}}$ (cm) là độ dài cạnh của các hình vuông nhỏ được cắt ở bốn góc của tấm bìa."
+	f" Xét tính đúng-sai của các khẳng định sau. ")
+	
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* Nếu cắt ở mỗi góc quá ${int(a/2)+random.randint(3,5)}$ cm thì không tạo được chiếc hộp có dạng hình hộp chữ nhật" 
+		kq1_F=f"Nếu cắt ở mỗi góc quá ${int(a/2)+random.randint(3,5)}$ cm thì tạo được chiếc hộp có dạng hình hộp chữ nhật"
+		
+		HDG=f"Điều kiện: $0<2x<{a} \\Rightarrow 0<x<{phan_so(a/2)}$"
+	
+	if chon==2:
+		kq1_T=f"* Nếu cắt ở mỗi góc nhỏ hơn ${int(a/2)-random.randint(1,3)}$ cm thì tạo được chiếc hộp có dạng hình hộp chữ nhật" 
+		kq1_F=f"Nếu cắt ở mỗi góc nhỏ hơn ${int(a/2)-random.randint(1,3)}$ cm thì không tạo được chiếc hộp có dạng hình hộp chữ nhật"
+		
+		HDG=f"Điều kiện: $0<2x<{a} \\Rightarrow 0<x<{phan_so(a/2)}$."
+	
+	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	f=(a-2*x)**2*x
+	f_false=(a-x)**2*x	
+
+	kq2_T=f"* Thể tích của chiếc hộp được mô tả bởi hàm số $V(x)={latex(expand(f))}$"
+	kq2_F=f"Thể tích của chiếc hộp được mô tả bởi hàm số $V(x)={latex(expand(f_false))}$"
+	
+	HDG=(f"Khi cắt bỏ bốn hình vuông nhỏ có cạnh $x$ cm ở bốn góc và gập lên thì ta được một chiếc hộp chữ nhật không có nắp,"
+		f" có đáy là hình vuông với độ dài cạnh bằng $({a}-2 x)$ (cm) và chiều cao bằng ${{x}}$ cm. Thể tích của chiếc hộp này là:\n\n"
+		f"$V(x)=({a}-2x)({a}-2x)x={latex(expand(f))}$."
+		)
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	f_dh=diff(f,x)
+	eq=Eq(f_dh,0)
+	tap_nghiem=solve(eq,x)
+	x_1=min(tap_nghiem)
+	x_2=max(tap_nghiem)
+	V_max=f.subs(x,x_1)
+
+	chon=random.randint(1,2)
+
+	if chon==1:
+		t1, t2=int(x_1)-random.randint(2,4), int(x_1)-random.randint(0,1)
+		kq3_T=f"* Thể tích của hộp tăng dần nếu cắt trong khoảng từ {t1} cm đến {t2} cm" 
+		kq3_F=f"Thể tích của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến {t2} cm"
+		
+		HDG=(f"$V'(x)={latex(expand(f_dh))}$.\n\n"
+			f"$V'(x)=0 \\Leftrightarrow x={phan_so(x_1)}, x={phan_so(x_2)}$.\n\n"
+			f"$V'(x)>0, \\forall x \\in ({t1};{t2})$ nên thể tích $V(x)$ của hộp tăng dần nếu cắt trong khoảng từ {t1} cm đến {t2} cm")
+	
+	if chon==2:
+		t1, t2=int(x_1)+random.randint(1,3), a/2
+		kq3_T=f"* Thể tích của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến {phan_so(t2)} cm" 
+		kq3_F=f"Thể tích của hộp tăng dần nếu cắt trong khoảng từ {t1} cm đến {phan_so(t2)} cm"
+		
+		HDG=(f"$V'(x)={latex(expand(f_dh))}$.\n\n"
+			f"$V'(x)=0 \\Leftrightarrow x={phan_so(x_1)}, x={phan_so(x_2)}$.\n\n"
+			f"$V'(x)<0, \\forall x \\in ({t1};{t2})$ nên thể tích $V(x)$ của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến {t2} cm")
+	
+	
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Thể tích hộp đạt lớn nhất bằng ${{{phan_so(V_max)}}}$"
+	kq4_F=f"Thể tích hộp đạt lớn nhất bằng ${{{phan_so(V_max+random.randint(1,3))}}}$"
+
+	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
+					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
+					{{$x$/0.7, $V'(x)$/0.7, $V(x)$/1.8}}\n\
+					{{$0$,${phan_so(x_1)}$,${phan_so(a/2)}$}}\n\
+					\\tkzTabLine{{,+,$0$,-,}}\n\
+					\\tkzTabVar{{-/$0$ ,+/ ${phan_so(V_max)}$ ,-/$0$}}	\n\
+				\\end{{tikzpicture}}"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_BBT)
+	file_name_BBT=my_module.pdftoimage_timename(code)
+	
+	HDG=(f"Dựa vào bảng biến thiên ta thấy $V_max=V({phan_so(x_1)})={phan_so(V_max)}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n{file_name_2}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n{file_name_BBT}\n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+		f"\\begin{{center}}\n{code_hinh_2}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \\begin{{center}}\n{code_hinh_BBT}\n\\end{{center}}\n \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 
 
 

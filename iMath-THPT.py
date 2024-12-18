@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer, QEventLoop, QUrl
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QTreeWidget, QTreeWidgetItem, QPushButton, QMenu, QVBoxLayout, QWidget, QMessageBox, QInputDialog,
         QFrame, QDialog, QFileDialog, QProgressBar, QToolTip, QScrollBar, QDesktopWidget,  QCheckBox, QTableWidget, QTableWidgetItem)
-from PyQt5.QtGui import QPainter, QPalette, QColor, QPixmap, QImage, QIcon, QDesktopServices
+from PyQt5.QtGui import QPainter, QPalette, QColor, QPixmap, QImage, QIcon, QDesktopServices, QGuiApplication, QFont
 import math
 import random
 from sympy import *
@@ -43,7 +43,7 @@ class Form_tieude(QWidget):
     def initUI(self):
         font = QtGui.QFont()
         font.setPointSize(11)
-        font.setFamily("Arial")
+        font.setFamily("Segoe UI")
         layout = QVBoxLayout()
         self.setLayout(layout)
         self.setWindowTitle('Thiết lập tiêu đề chung')
@@ -63,18 +63,36 @@ class Form_tieude(QWidget):
         self.parent.update_label(self.textEdit.toPlainText())
         self.close()
 
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        # Khởi tạo giao diện
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+        # Thiết lập kích thước cho MainWindow
+        self.adjust_window_size()
+        self.setWindowTitle("Segoe UI")
+
+    def adjust_window_size(self):
+        # Lấy kích thước màn hình
+        screen = QApplication.primaryScreen()
+        screen_geometry = screen.geometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+
+        # Đặt kích thước MainWindow phù hợp
+        self.setGeometry(0, 0, screen_width, screen_height)
+
 class Ui_MainWindow(object):
         def setupUi(self, MainWindow):
        
                 MainWindow.setObjectName("MainWindow")
-                MainWindow.resize(1920, 1440) 
+                #MainWindow.resize(1920, 1440) 
                 MainWindow.setWindowTitle("iMath-THPT\u00A92025")
-                MainWindow.showMaximized()
-                MainWindow.setStyleSheet("QMainWindow:title { color: red; background-color: #2B579A; }")
-                folder_path = my_module.get_folder_icon()    
-                folder_path= f"{folder_path}/icon.png" 
-                MainWindow.setWindowIcon(QIcon(folder_path))               
-        
+
+                MainWindow.showMaximized()     
 
                 self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
                 self.centralwidget.setObjectName("centralwidget")
@@ -108,20 +126,22 @@ class Ui_MainWindow(object):
             QTabBar::tab {
                 background: #E5E5E5;    /* Màu nền mặc định của tab */
                 color: #555555;         /* Màu chữ */
-                padding: 10px 0px;      /* Khoảng cách giữa nội dung và viền */
+                padding: 5px 15px;      /* Khoảng cách giữa nội dung và viền */
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
                 margin: 1px;            /* Khoảng cách giữa các tab */
-                font-family: "Arial" !important;
-                font-size: 12pt;
+                font-family: "Segoe UI" !important;
+                font-size: 10pt;
                 min-width: 120px;        /* Độ rộng tối thiểu của tab */
             }
             QTabBar::tab:selected {
-                background: darkblue;      /* Màu nền khi tab được chọn */
+                background: Indigo;      /* Màu nền khi tab được chọn */
                 color: white;           /* Màu chữ khi tab được chọn */
             }
             QTabBar::tab:hover {
-                background: lightgreen;    /* Màu nền khi hover vào tab */
+                background: skyblue;    /* Màu nền khi hover vào tab */                
+                border: 1px solid blue;
+                
             }
             QTabWidget::pane {
                 border-top: 2px solid #C0C0C0; /* Viền dưới của tab */
@@ -174,27 +194,27 @@ class Ui_MainWindow(object):
         #Thiết lập font cho MainWindow
                 font_8 = QtGui.QFont()
                 font_8.setPointSize(8)
-                font_8.setFamily("Arial")
+                font_8.setFamily("Segoe UI")
 
                 font_9 = QtGui.QFont()
                 font_9.setPointSize(9)
-                font_9.setFamily("Arial")
+                font_9.setFamily("Segoe UI")
 
                 font_10 = QtGui.QFont()
                 font_10.setPointSize(10)
-                font_10.setFamily("Arial")
+                font_10.setFamily("Segoe UI")
 
                 font = QtGui.QFont()
                 font.setPointSize(11)
-                font.setFamily("Arial")
+                font.setFamily("Segoe UI")
 
                 font_12 = QtGui.QFont()
                 font_12.setPointSize(12)
-                font_12.setFamily("Arial")
+                font_12.setFamily("Segoe UI")
 
                 font_tieude=QtGui.QFont()
                 font_tieude.setPointSize(11)
-                font_tieude.setFamily("Arial")
+                font_tieude.setFamily("Segoe UI")
                 font_tieude.setBold(True)
         
         
@@ -839,11 +859,11 @@ class Ui_MainWindow(object):
                 
                 self.btn_taode = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)        
                 self.btn_taode.setGeometry(QtCore.QRect(le_trai, le_top+300, 100, 30))
-                self.btn_taode.setFont(font_tieude)
+                self.btn_taode.setFont(font_10)
                 self.btn_taode.setObjectName("btn_taode")
                 self.btn_taode.setText("Tạo đề")
                 self.btn_taode.clicked.connect(self.tao_de)
-                self.btn_taode.setStyleSheet("color: white;background-color: #C4083E;;")
+                self.btn_taode.setStyleSheet("color: white;background-color: #4B0082;")
 
 
                 #Thanh Progress bar                
@@ -5985,7 +6005,11 @@ class Ui_MainWindow(object):
                 L12_C1_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_05]-TF-M2. Cho chuyển động theo hàm bậc 2. Xét Đ-S: vận tốc, gia tốc, vận tốc tăng giảm, min-max."])
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_05]-TF-M2. Chuyển động theo hàm bậc 2. Xét Đ-S: vận tốc, gia tốc, vận tốc tăng giảm, min-max."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_06]-TF-M3. Xét Đ-S: Thể tích hộp khi cắt 4 góc."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7624,6 +7648,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C1_B5_05]-TF-M2. Cho chuyển động theo hàm bậc 2. Xét Đ-S: vận tốc, gia tốc, vận tốc tăng giảm, min-max 
                                                 if dang_toan == "[D12_C1_B5_05]": 
                                                         debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_05()
+
+                                                #[D12_C1_B5_06]-TF-M3. Xét Đ-S: Thể tích hộp khi cắt 4 góc.
+                                                if dang_toan == "[D12_C1_B5_06]": 
+                                                        debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_06()
 
                                                     
 
@@ -14678,7 +14706,10 @@ class Ui_MainWindow(object):
             subprocess.Popen(['explorer', file_path])
             
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)    
+    app = QtWidgets.QApplication(sys.argv)
+    # Thiết lập font toàn cục cho ứng dụng
+    font = QFont("Segoe UI", 10)  # Font Segoe UI, cỡ chữ 10
+    app.setFont(font)  
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)

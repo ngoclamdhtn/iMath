@@ -1544,7 +1544,7 @@ def moi_truong_anh_latex(code):
 def moi_truong_latex(code):
     code_header=r"""\documentclass[12pt,a4paper]{article}
 \usepackage[top=1.5cm, bottom=1.5cm, left=2.0cm, right=1.5cm] {geometry}
-\usepackage{amsmath,amssymb,txfonts,fontawesome}
+\usepackage{amsmath,amssymb,fontawesome}
 \usepackage{tkz-euclide}
 \usepackage{setspace}
 \usepackage{lastpage}
@@ -1623,7 +1623,7 @@ def moi_truong_latex(code):
 def moi_truong_latex_loigiai(code):
     code_header=r"""\documentclass[12pt,a4paper]{article}
 \usepackage[top=1.5cm, bottom=1.5cm, left=2.0cm, right=1.5cm] {geometry}
-\usepackage{amsmath,amssymb,txfonts,fontawesome}
+\usepackage{amsmath,amssymb,fontawesome}
 \usepackage{tkz-euclide}
 \usepackage{setspace}
 \usepackage{lastpage}
