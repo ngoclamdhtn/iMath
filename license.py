@@ -14,7 +14,7 @@ def get_drive_serial_number():
     return st
 
 def encrypt_string(s):
-    key=b'ApDVZwk8Rp-ExD0Mupg5BC--uYlR7FC5rKn6qLEADpA='
+    key=b'-ImXOJa9umgOPhD9Q3XhR-a4dthNiz1Z_IJ9sfyqbIE='
     cipher_suite = Fernet(key)
     encrypted_text = cipher_suite.encrypt(s.encode('utf-8'))
 
@@ -25,7 +25,7 @@ def encrypt_string(s):
     return encrypted_text
 
 def decrypt_string(encrypted_text):
-    key=b'ApDVZwk8Rp-ExD0Mupg5BC--uYlR7FC5rKn6qLEADpA='
+    key=b'-ImXOJa9umgOPhD9Q3XhR-a4dthNiz1Z_IJ9sfyqbIE='
     cipher_suite = Fernet(key)
     bytes_string = encrypted_text.encode('utf-8') 
     decrypted_text = cipher_suite.decrypt(bytes_string).decode('utf-8')
@@ -103,7 +103,7 @@ def read_registry_value():
         value=""
     return value
 
-def kiemtra_banquyen():
+def kiemtra_banquyen_new():
     ketqua = False
     try:
         key_registry=read_registry_value()
@@ -123,7 +123,7 @@ def kiemtra_banquyen():
         ketqua = False        
     return ketqua
 
-def check_banquyen(key):
+def check_banquyen_new(key):
     ketqua = False
     try:        
         key = decrypt_string(key)
@@ -136,7 +136,7 @@ def check_banquyen(key):
         dayLicense =dayLicense.days
 
         #Trả về kết quả kiểm tra        
-        if dayLicense<=365:
+        if dayLicense <=365:
             ketqua = True         
     except Exception as e:
         ketqua = False        

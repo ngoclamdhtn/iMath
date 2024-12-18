@@ -11492,6 +11492,172 @@ def prt_34_L12_C1_B5_04():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C1_B5_05]-TF-M3. Cho chuyển động theo hàm bậc 2. Xét Đ-S: vận tốc, gia tốc, vận tốc tăng giảm, min-max
+def prt_34_L12_C1_B5_05():
+    x=sp.symbols("x")
+    t=sp.symbols("t")      
+    k=random.randint(2,3)
+    k=2
+    if k==2:
+        a = random.randint(1, 10)
+        c = random.randint(1, 10)    
+        b=  random.randint(-8, -1) 
+        f=a*t**2+b*t+c     
+        ham_so =f"{latex(f)}"   
+
+    if k==3:
+        a = random.randint(1, 5)
+        b = random.randint(0, 5)    
+        c =  random.randint(-1, 5)
+        d =  random.randint(1, 8)        
+        if 3<=a<=5:
+            c = random.randint(-3, -1)
+            d=  random.randint(3, 8)
+
+        f=a*t**3+b*t**2+c*t+d   
+        ham_so =f"{latex(f)}"
+
+    g1=diff(f,t)
+    g2=diff(g1,t)
+    
+
+    noi_dung=f"Một vật chuyển động thẳng không đều xác định bởi phương trình $s(t)={ham_so}$, "\
+        f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây. Xét tính đúng sai của các khẳng định sau"
+        
+    
+    t_0=random.randint(1,10)
+    v_0=g1.subs(t,t_0)
+    kq1_T=f"*Vận tốc chuyển động của vật tại thời điểm $t={t_0}$ là ${{{v_0}}}$ m/s"
+    kq1_F=f"Vận tốc chuyển động của vật tại thời điểm $t={t_0}$ là ${{{v_0+random.randint(1,6)}}}$ m/s"
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n"\
+    f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$\n\n"\
+    f"$v({t_0})={v_0}$ m/s."
+
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n"\
+    f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$\n\n"\
+    f"$v({t_0})={v_0}$ m/s."
+
+    t_1=random.randint(1,10)
+    a_1=g2.subs(t,t_1)
+
+    kq2_T=f"*Gia tốc chuyển động của vật tại thời điểm $t={t_1}$ là ${{{a_1}}}$ m/$s^2$"
+    kq2_F=f"Gia tốc chuyển động của vật tại thời điểm $t={t_1}$ là ${{{a_1+random.randint(1,6)}}}$ m/$s^2$"
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là đúng.\n\n"\
+    f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$\n\n"\
+    f"$a(t)=\\left({latex(g1)}\\right)'={latex(g2)}$.\n\n"\
+    f"$a({t_1})={a_1}$ m/$s^2$."
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là sai.\n\n"\
+    f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$\n\n"\
+    f"$a(t)=\\left({latex(g1)}\\right)'={latex(g2)}$.\n\n"\
+    f"$a({t_1})={a_1}$ m/$s^2$."
+
+    t_3=random.randint(1,20)
+    s_3=f.subs(t,t_3)
+    kq3_T=f"*Quãng đường vật đi được sau ${{{t_3}}}$ giây kể từ khi bắt đầu chuyển động là ${{{s_3}}}$  m."
+    kq3_F=f"Quãng đường vật đi được sau ${{{t_3}}}$ giây kể từ khi bắt đầu chuyển động là ${{{s_3+random.randint(1,6)}}}$  m."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là đúng.\n\n"\
+    f"$s({t_3})={s_3}$ m."
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là sai.\n\n"\
+    f"$s({t_3})={s_3}$ m."
+
+    if a>0:        
+
+        t_1=random.randint(1,5)
+        t_2=t_1+random.randint(2,4)
+
+        chon=random.choice(["v_min","v_max"])
+        
+        if chon=="v_min":
+        
+            v_min=g1.subs(t,t_1)
+            kq4_T=f"*Vận tốc nhỏ nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${{{v_min}}}$ m/s"
+            kq4_F=f"Vận tốc nhỏ nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${{{g1.subs(t,t_2)}}}$ m/s"
+            kq4=random.choice([kq4_T, kq4_F])
+            loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n"\
+            f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$ Hàm $v(t)$ là hàm số đồng biến trên $\\mathbb{{R}}$.\n\n"\
+            f"Trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ thì vận tốc đạt nhỏ nhất tại $t={t_1}$.\n\n"\
+            f"Vận tốc đạt được khi đó là $v\\left({t_1}\\right)={v_min}$."
+            if kq4==kq4_F:  
+                loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n"\
+            f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$ Hàm $v(t)$ là hàm số đồng biến trên $\\mathbb{{R}}$.\n\n"\
+            f"Trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ thì vận tốc đạt nhỏ nhất tại $t={t_1}$.\n\n"\
+            f"Vận tốc đạt được khi đó là $v\\left({t_1}\\right)={v_min}$."
+
+        if chon=="v_max":
+        
+            v_max=g1.subs(t,t_2)
+            kq4_T=f"*Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${v_max}$ m/s"
+            kq4_F=f"Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${g1.subs(t,t_1)}$ m/s"
+            kq4=random.choice([kq4_T, kq4_F])
+
+            loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n"\
+            f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$ Hàm $v(t)$ là hàm số đồng biến trên $\\mathbb{{R}}$.\n\n"\
+            f"Trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ thì vận tốc đạt lớn nhất tại $t={t_2}$.\n\n"\
+            f"Vận tốc đạt được khi đó là $v\\left({t_2}\\right)={v_max}$."
+
+            if kq4==kq4_F:
+                loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n"\
+                f"Khẳng định đã cho là khẳng định sai.\n\n"\
+            f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$ Hàm $v(t)$ là hàm số đồng biến trên $\\mathbb{{R}}$.\n\n"\
+            f"Trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ thì vận tốc đạt lớn nhất tại $t={t_2}$.\n\n"\
+            f"Vận tốc đạt được khi đó là $v\\left({t_2}\\right)={v_max}$."
+    
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3]
+    random.shuffle(list_PA)
+    list_PA.append(kq4)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)        
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"a) {loigiai[0]}\\\\ \n"\
+    f"b) {loigiai[1]}\\\\ \n"\
+    f"c) {loigiai[2]}\\\\ \n"\
+    f"d) {loigiai[3]}\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTF\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"        
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+    return debai,debai_latex,loigiai_word,dap_an
+
 
 
 

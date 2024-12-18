@@ -608,6 +608,10 @@ def yy3yy_L10_C4_B2_02():
     kq2=sqrt(a**2 + b**2 -2*a*b*sin(C))
     kq3=sqrt(a**2 + b**2)
     kq4=1/2*a*b*sin(C)
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
     #Tạo các phương án
     pa_A=f"*${{{kq:.2f}}}$cm".replace(".",",")
     pa_B=f"${{{kq2:.2f}}}$cm".replace(".",",")

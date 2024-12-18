@@ -68,7 +68,7 @@ class Ui_MainWindow(object):
        
                 MainWindow.setObjectName("MainWindow")
                 MainWindow.resize(1920, 1440) 
-                MainWindow.setWindowTitle("iMath")
+                MainWindow.setWindowTitle("iMath-THPT\u00A92025")
                 MainWindow.showMaximized()
                 MainWindow.setStyleSheet("QMainWindow:title { color: red; background-color: #2B579A; }")
                 folder_path = my_module.get_folder_icon()    
@@ -104,6 +104,31 @@ class Ui_MainWindow(object):
                 #self.tab_taode.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
+                self.tab_main.setStyleSheet("""
+            QTabBar::tab {
+                background: #E5E5E5;    /* Màu nền mặc định của tab */
+                color: #555555;         /* Màu chữ */
+                padding: 10px 0px;      /* Khoảng cách giữa nội dung và viền */
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                margin: 1px;            /* Khoảng cách giữa các tab */
+                font-family: "Arial" !important;
+                font-size: 12pt;
+                min-width: 120px;        /* Độ rộng tối thiểu của tab */
+            }
+            QTabBar::tab:selected {
+                background: darkblue;      /* Màu nền khi tab được chọn */
+                color: white;           /* Màu chữ khi tab được chọn */
+            }
+            QTabBar::tab:hover {
+                background: lightgreen;    /* Màu nền khi hover vào tab */
+            }
+            QTabWidget::pane {
+                border-top: 2px solid #C0C0C0; /* Viền dưới của tab */
+                background: white;
+            }            
+        """)
+
                 self.tab_main.addTab(self.tab_thongtin_dethi, "Tạo đề")
                 self.tab_thongtin_dethi.setObjectName("tab_thongtin_dethi")
                 #self.tab_thongtin_dethi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
@@ -134,7 +159,7 @@ class Ui_MainWindow(object):
                 # self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1440))        
            
 
-                self.tab_main.addTab(self.tab_ban_quyen, "Bản quyền-Cập nhật")
+                self.tab_main.addTab(self.tab_ban_quyen, "Bản quyền")
                 self.tab_ban_quyen.setObjectName("tab_ban_quyen")
                 #self.tab_ban_quyen.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
@@ -181,7 +206,11 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92023 ver 18.12.2024")
+                self.label.setText(f"iMath\u00A92025 ver 20.12.2024")
+                self.label.setFont(font_tieude)
+                self.label.setStyleSheet("color: #C4083E;")
+                self.label.setObjectName("label_socau")   
+                
 
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
                 self.label.setGeometry(QtCore.QRect(400, 120, 800, 20))
@@ -209,7 +238,7 @@ class Ui_MainWindow(object):
                 self.tab_ban_quyen_ma_may.setObjectName("tab_ban_quyen_ma_may")
                 self.tab_ban_quyen_ma_may.setFont(font_12)
                 self.tab_ban_quyen_ma_may.setText(text_ma_may)
-                if license.kiemtra_banquyen():
+                if license.kiemtra_banquyen_new():
                         self.tab_ban_quyen_ma_may.setText("")
 
                 
@@ -235,18 +264,25 @@ class Ui_MainWindow(object):
                 self.label_thoigian.setText(thoi_gian)
 
                 self.tab_ban_quyen_dangki = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
-                self.tab_ban_quyen_dangki.setGeometry(QtCore.QRect(520, 370, 150, 30))
+                self.tab_ban_quyen_dangki.setGeometry(QtCore.QRect(800, 370, 150, 30))
                 self.tab_ban_quyen_dangki.setFont(font)
                 self.tab_ban_quyen_dangki.setObjectName("tab_ban_quyen_copy_ma_may")
                 self.tab_ban_quyen_dangki.setText("Đăng ký bản quyền")
                 self.tab_ban_quyen_dangki.clicked.connect(self.dang_ki_ban_quyen)
 
                 self.tab_ban_quyen_copy_ma_may = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
-                self.tab_ban_quyen_copy_ma_may.setGeometry(QtCore.QRect(800, 370, 150, 30))
+                self.tab_ban_quyen_copy_ma_may.setGeometry(QtCore.QRect(520, 370, 150, 30))
                 self.tab_ban_quyen_copy_ma_may.setFont(font)
                 self.tab_ban_quyen_copy_ma_may.setObjectName("tab_ban_quyen_copy_ma_may")
                 self.tab_ban_quyen_copy_ma_may.setText("Copy mã máy")
                 self.tab_ban_quyen_copy_ma_may.clicked.connect(self.copy_ma_may)
+
+                self.tab_ban_quyen_copy_old_key = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
+                self.tab_ban_quyen_copy_old_key.setGeometry(QtCore.QRect(1080, 370, 150, 30))
+                self.tab_ban_quyen_copy_old_key.setFont(font)
+                self.tab_ban_quyen_copy_old_key.setObjectName("tab_ban_quyen_copy_old_ley")
+                self.tab_ban_quyen_copy_old_key.setText("Copy old key")
+                self.tab_ban_quyen_copy_old_key.clicked.connect(self.copy_old_key)
 
                 #Button check update
                 self.btn_check_update = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
@@ -764,6 +800,13 @@ class Ui_MainWindow(object):
 
                 #Label hướng dẫn
                 letop_hd=le_top+10
+                
+                self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
+                self.label.setGeometry(QtCore.QRect(le_trai+780, letop_hd-30, 600, 30))
+                self.label.setFont(font_tieude)
+                self.label.setStyleSheet("color: #C4083E;")
+                self.label.setObjectName("label_socau")   
+                self.label.setText(f"iMath\u00A92025 ver 20.12.2024")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -796,11 +839,11 @@ class Ui_MainWindow(object):
                 
                 self.btn_taode = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)        
                 self.btn_taode.setGeometry(QtCore.QRect(le_trai, le_top+300, 100, 30))
-                self.btn_taode.setFont(font)
+                self.btn_taode.setFont(font_tieude)
                 self.btn_taode.setObjectName("btn_taode")
                 self.btn_taode.setText("Tạo đề")
                 self.btn_taode.clicked.connect(self.tao_de)
-                self.btn_taode.setStyleSheet("color: white;background-color: #4385F6;")
+                self.btn_taode.setStyleSheet("color: white;background-color: #C4083E;;")
 
 
                 #Thanh Progress bar                
@@ -5938,6 +5981,14 @@ class Ui_MainWindow(object):
                 L12_C1_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L12_C1_B5_2 = QTreeWidgetItem(L12_C1_B5, ["Đúng-Sai"])
+                L12_C1_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C1_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_05]-TF-M2. Cho chuyển động theo hàm bậc 2. Xét Đ-S: vận tốc, gia tốc, vận tốc tăng giảm, min-max."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B5_3 = QTreeWidgetItem(L12_C1_B5, ["Trả lời ngắn"])
                 L12_C1_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -6963,7 +7014,7 @@ class Ui_MainWindow(object):
 #begin
         def tao_de(self):
                 try:
-                        if license.kiemtra_banquyen():                
+                        if license.kiemtra_banquyen_new():                
                             self.text_taode.clear()
                             self.save_thongtin_dethi()                            
                             current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -7569,6 +7620,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C1_B5_04]-SA-M3. Bài toán tìm tốc độ trung bình để chi phí xăng nhỏ nhất.
                                                 if dang_toan == "[D12_C1_B5_04]": 
                                                         debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_04()
+
+                                                #[D12_C1_B5_05]-TF-M2. Cho chuyển động theo hàm bậc 2. Xét Đ-S: vận tốc, gia tốc, vận tốc tăng giảm, min-max 
+                                                if dang_toan == "[D12_C1_B5_05]": 
+                                                        debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_05()
 
                                                     
 
@@ -13385,15 +13440,23 @@ class Ui_MainWindow(object):
                 return
 
         def copy_ma_may(self):
-                text = self.tab_ban_quyen_ma_may.toPlainText()
+                text = license.encrypt_serial_number()
                 pyperclip.copy(text)
                 show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo', 'Đã copy mã máy vào clipboard. Vui lòng gửi mã này cho tác giả để được cung cấp key sử dụng.')
                 show_msg_box.exec_()
                 return
 
+        def copy_old_key(self):
+                text = license.read_registry_value()
+                pyperclip.copy(text)
+                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo', 'Đã copy mã máy vào clipboard. Vui lòng gửi mã này cho tác giả để được cung cấp key sử dụng.')
+                show_msg_box.exec_()
+                return
+
+
         def dang_ki_ban_quyen(self):
                 key = self.tab_ban_quyen_ma_dangki.toPlainText()
-                if license.check_banquyen(key):            
+                if license.check_banquyen_new(key):            
                     license.create_registry_key(key)
                     thoi_gian = f"Thời gian sử dụng còn lại là {license.so_ngay_banquyen()} ngày."
                     self.label_thoigian.setText(thoi_gian)        

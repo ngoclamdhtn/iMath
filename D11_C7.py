@@ -3851,8 +3851,8 @@ def ui5io_L11_C7_B4_05():
         if chon=="v_max":
         
             v_max=g1.subs(t,t_2)
-            kq4_T=f"*Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${v_max}$ m/s"
-            kq4_F=f"Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${g1.subs(t,t_1)}$ m/s"
+            kq4_T=f"*Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${{{v_max}}}$ m/s"
+            kq4_F=f"Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${{{g1.subs(t,t_1)}}}$ m/s"
             kq4=random.choice([kq4_T, kq4_F])
 
             loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n"\
