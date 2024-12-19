@@ -626,6 +626,57 @@ def npl_mk_L10_C3_B1_08():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C3_B1_09]-SA-M2. Số các số nguyên thuộc TXD y=căn(ax+b) + căn (c-dx)
+def npl_mk_L10_C3_B1_09():
+    x=sp.symbols("x")
+    a=random.randint(1,10) 
+    b=a*random.randint(1,20)+random.randint(0,5)
+    
+    d=random.randint(1,8)
+    c=d*random.randint(8,20)+random.randint(0,5)
+
+    f=sqrt(a*x+b) + sqrt(c-d*x)
+    x_1,x_2=-b/a, c/d
+    dem=0
+    for i in range(int(x_1)-1,int(x_2)+1):
+        if x_1<=i and i<=x_2:
+            dem+=1
+    noi_dung = (
+    f"Tìm số các số nguyên thuộc tập xác định của hàm số $y={latex(f)}$."
+    )
+    dap_an=dem
+
+    noi_dung_loigiai=(
+    f"Điều kiện xác định: \n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a*x+b)}\\ge 0 \\\\ \n\
+    {latex(c-d*x)}\\ge 0\n\
+    \\end{{array}} \\right.$"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    x \\ge {phan_so(-b/a)} \\\\ \n\
+     x \\le {phan_so(c/d)}\n\
+    \\end{{array}} \\right.$"
+
+    f"$\\Rightarrow {phan_so(-b/a)}\\le x \\le {phan_so(c/d)}$.\n\n"
+    f"Tập xác định: $D=\\left[{phan_so(-b/a)};{phan_so(c/d)}\\right]$.\n\n"
+    f"Số các số nguyên thuộc tập xác định là ${{{dem}}}$."
+
+  
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 ################ Bài 2: Hàm số bậc 2 #################
 #[D10_C3_B2_01]. Tìm tọa độ đỉnh của đồ thị hàm số bậc 2
 def npl_mk_L10_C3_B2_01():

@@ -2022,397 +2022,6 @@ def gh11gh_L11_C3_B2_11():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-############# BÀI 3 - HÀM SỐ LIÊN TỤC 
-#[D11_C3_B3_01]. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm.
-def gh11gh_L11_C3_B3_01():
-       
-    x = sp.symbols('x')
-    a= random.choice([random.randint(-8, -1), random.randint(1, 8)])   
-    b= random.choice([random.randint(-7, -1), random.randint(1, 7)])         
-
-    f=sqrt(a*x+b)
-
-    if a>0:
-        #Tạo điểm liên tục 
-        x_1=random.randint(int(-b/a)+1,int(-b/a)+5)
-        x_2=random.randint(int(-b/a)+6,int(-b/a)+20)
-
-        #Tạo điểm gián đoạn
-        x_3=random.randint(int(-b/a)-9,int(-b/a))
-        x_4=random.randint(int(-b/a)-15,int(-b/a)-10)           
-    else:
-        #Tạo điểm liên tục 
-        x_1=random.randint(int(-b/a)-5,int(-b/a)-1)
-        x_2=random.randint(int(-b/a)-20,int(-b/a)-6)
-
-        #Tạo điểm gián đoạn
-        x_3=random.randint(int(-b/a)+1,int(-b/a)+9)
-        x_4=random.randint(int(-b/a)+10,int(-b/a)+15)
-
-    kq=f"Hàm số liên tục tại điểm $x={x_1}$"            
-    kq2=f"Hàm số gián đoạn tại điểm $x={x_2}$"
-    kq3=f"Hàm số liên tục tại điểm $x={x_3}$"
-    kq4=f"Hàm số liên tục tại điểm $x={latex(my_module.hien_phan_so(x_4))}$"    
-
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)
-    noi_dung = f"Cho hàm số $y={latex(f)}$. Tìm khẳng định đúng."
-    noi_dung_loigiai=f""
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-
-    debai= f"{noi_dung}\n"      
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
-#[D11_C3_B3_02]. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục.
-def gh11gh_L11_C3_B3_02():
-    x = sp.symbols('x')
-    a = random.randint(-8,8)
-    if a==0:
-        a = a + random.randint(1,8)       
-    b = random.randint(-7,7)
-
-    c = random.randint(-4,4)
-    if c==0:
-        c = c + random.randint(1,5)
-    d = random.randint(-5,5)
-
-    if a*d-b*c==0:
-        d=d+1     
-    f=(a*x+b)/(c*x+d)
-
-    x_0=-d/c
-    x_1=int(x_0)+random.randint(1,4)
-    x_2=int(x_0)-random.randint(1,4)
-
-    t=random.randint(1,4)
-    if t==1:
-        khoang_lien_tuc=f"({latex(my_module.hien_phan_so(x_0))};+\\infty)"
-    if t==2:
-        khoang_lien_tuc=f"(-\\infty;{latex(my_module.hien_phan_so(x_0))})"
-    if t==3:
-        khoang_lien_tuc=f"(-\\infty;{x_2})"
-    if t==4:
-        khoang_lien_tuc=f"({x_1};+\\infty)"
-
-
-    kq=f"Hàm số liên tục trên khoảng ${khoang_lien_tuc}$"            
-    kq2=f"Hàm số liên tục trên khoảng $(-\\infty;{x_1})$"
-    kq3=f"Hàm số liên tục trên khoảng $({x_2};+\\infty)$"
-    kq4=f"Hàm số liên tục trên khoảng $({x_2};{x_1})$"    
-
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)
-    noi_dung = f"Cho hàm số $y={latex(f)}$. Tìm khẳng định đúng."
-    noi_dung_loigiai=f""
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-
-    debai= f"{noi_dung}\n"      
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
-#[D11_C3_B3_03]. Cho f(x) có >=,<. Xét tính liên tục tại điểm.
-def gh11gh_L11_C3_B3_03():
-    #Tạo hàm thứ nhất
-    a = random.randint(-3,3)
-    if a==0:
-        a = a + 1
-    b = random.randint(-4,4)
-    c = random.randint(-5,3)
-    
-    x = sp.symbols('x')
-    f = a*x**2 + b*x + c
-
-    #Tạo t là điểm phân chia hàm
-    x_0 = random.choice([random.randint(-6, -1), random.randint(1, 6)])
-   
-    f_x = f.subs(x, x_0)
-
-    #Tạo hàm thứ hai và đảm bảo liên tục tại x_0
-    d = random.randint(-7,7)
-    if d==0:
-        d = d + 1
-    e = f_x - d*x_0
-    g = d*x + e
-
-    #Tạo hàm số không liên tục tại x_0
-    h= (d+1)*x +e
-
-    chon= random.choice(["h","g"])
-    if chon == "g":
-        ham_so = g
-        khang_dinh = "sai"
-        kq=f"Hàm số không liên tục tại $x={x_0}$"
-        kq2 = f"Hàm số liên tục tại $x={x_0}$"
-        kq3=f"Hàm số liên tục tại $x={x_0+random.randint(1,10)}$"
-        kq4=f"Hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$"
-    else:
-        ham_so = h
-        khang_dinh = "đúng"
-        kq=f"Hàm số không liên tục tại $x={x_0}$"
-        kq2 = f"Hàm số liên tục tại $x={x_0}$"
-        kq3=f"Hàm số không liên tục tại $x={x_0+random.randint(1,10)}$"
-        kq4=f"Hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$"   
-
-    #Tạo các phương án
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
-
-     #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Cho hàm số $f(x)=\\left\\{{ \\begin{{array}}{{l}} \n \
- {latex(f)} \\text{{ khi }} x \\ge {x_0}  \\\\ \n \
-{latex(ham_so)} \\text{{          khi  }} x < {x_0}  \n \
-\\end{{array}} \\right.$. Tìm khẳng định {khang_dinh}."
-
-    noi_dung_loigiai=f""
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-
-    debai= f"{noi_dung}\n"      
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
-#[D11_C3_B3_04]. Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0.
-def gh11gh_L11_C3_B3_04():
-    #Tạo hàm thứ nhất
-    x = sp.symbols('x')
-    x_0 = random.randint(-4,4)
-    if x_0==0:
-        x_0 = random.randint(2,5)
-
-    a = random.randint(-4,4)
-    if a==0:
-        a = random.randint(1,4)
-    b = random.randint(-4,4)
-    c = random.randint(-5,5)
-    if c==0:
-        c==random.randint(1,3)
-    d=-a*x_0**3-b*x_0**2-c*x_0
-    #Tạo hàm số thứ nhất
-    f = a*x**3 + b*x**2 + c*x + d
-
-    a1 = random.randint(-3,3)    
-    b1 = random.randint(-4,4)
-    if b1==0:
-        b1=random.randint(1,3)
-
-    c1=-a1*x_0**2-b1*x_0
-    g=a1*x**2 + b1*x +c1 
-
-    #Tạo hàm thứ 2: mx+b2
-    b2 = random.randint(-4,4)
-    if b2==0:
-        b2 = random.randint(1,3)
-    dau="+"
-    if b2<0:
-        dau=""
-        
-    kq=latex((limit(f/g, x, x_0)-b2)/x_0)
-    kq2 = latex((limit(f/g, x, x_0)+b2)/x_0)
-    kq3=latex(limit(f/g, x, x_0)/x_0)
-    kq4=latex(limit(g/f, x, x_0)/x_0)
-
-    #Tạo các phương án
-    pa_A= f"*$m={kq}$"
-    pa_B= f"$m={kq2}$"
-    pa_C= f"$m={kq3}$"
-    pa_D= f"$m={kq4}$"
-
-     #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Cho hàm số $f(x)=\\left\\{{ \\begin{{array}}{{l}} \n \
- {latex(f/g)} \\text{{ khi }} x \\ne {x_0}  \\\\ \n \
-mx{dau}{b2} \\text{{          khi  }} x = {x_0}  \n \
-\\end{{array}} \\right.$. Tìm m để hàm số đã cho liên tục tại điểm $x={x_0}$."
-    noi_dung_loigiai=f""
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-
-    debai= f"{noi_dung}\n"      
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
-#[D11_C3_B3_05]. Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0.
-def gh11gh_L11_C3_B3_05():
-    x = symbols('x')
-    x_0 = random.randint(-5, 5)
-    if x_0==0:
-        x_0=random.randint(1, 5)
-
-    #Tạo list chứa các hệ số
-    a = [random.randint(-4, 4) for _ in range(4)]
-    if a[0]==0:
-        a[0] = random.randint(1, 5)
-    if a[2]==0:
-        a[2] = random.randint(1, 5)
-    c_1 = -a[0]*x_0**(2)-a[1]*x_0
-    c_2 = -a[2]*x_0**(2)-a[3]*x_0
-
-    f = (a[0]*x**2 + a[1]*x + c_1)/(a[2]*x**2 + a[3]*x +c_2)
-
-    gioi_han = limit(f, x, x_0)        
-
-    #Tạo hàm thứ 2: mx+b2
-    b2 = random.randint(-4,4)
-    if b2==0:
-        b2 = random.randint(1,3)
-    dau="+"
-    if b2<0:
-        dau=""
-
-    kq=(gioi_han-b2)/x_0
-    kq2=(gioi_han+b2)/x_0
-    kq3=gioi_han/x_0
-    kq4=gioi_han-b2
-
-    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-    kq2=pa_kotrung[1]
-    kq3=pa_kotrung[2]
-    kq4=pa_kotrung[3]
-
-    kq=latex(kq)
-    kq2 =latex(kq2)
-    kq3=latex(kq3)
-    kq4=latex(kq4)
-
-    #Tạo các phương án
-    pa_A= f"*$m={kq}$"
-    pa_B= f"$m={kq2}$"
-    pa_C= f"$m={kq3}$"
-    pa_D= f"$m={kq4}$"
-
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Cho hàm số $f(x)=\\left\\{{ \\begin{{array}}{{l}} \n \
- {latex(f)} \\text{{ khi }} x \\ne {x_0}  \\\\ \n \
-mx{dau}{b2} \\text{{          khi  }} x = {x_0}  \n \
-\\end{{array}} \\right.$. Tìm m để hàm số đã cho liên tục tại điểm $x={x_0}$."
-    noi_dung_loigiai=f""
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-
-    debai= f"{noi_dung}\n"      
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
 #[D11_C3_B2_12]-TF-M3. Cho hàm số kép. Xét Đ-S: lim x->a, giới hạn 1 bên, giới hạn tại x_0
 def gh11gh_L11_C3_B2_12():
     x=sp.symbols("x")    
@@ -2840,6 +2449,574 @@ def gh11gh_L11_C3_B2_14():
     HDG=(f"${st_lim(x_4)} \\left[{ham}-a\\right]={st_lim(x_4)} {ham}-a={g.subs(x,x_4)}-a$\n\n"
         f"Suy ra ${g.subs(x,x_4)}-a={g.subs(x,x_4)-p}$"
     f"$\\Rightarrow a={p} \\Rightarrow {latex(d*t_p+e)}={d*p+e}$.")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+############# BÀI 3 - HÀM SỐ LIÊN TỤC 
+#[D11_C3_B3_01]. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm.
+def gh11gh_L11_C3_B3_01():
+       
+    x = sp.symbols('x')
+    a= random.choice([random.randint(-8, -1), random.randint(1, 8)])   
+    b= random.choice([random.randint(-7, -1), random.randint(1, 7)])         
+
+    f=sqrt(a*x+b)
+
+    if a>0:
+        #Tạo điểm liên tục 
+        x_1=random.randint(int(-b/a)+1,int(-b/a)+5)
+        x_2=random.randint(int(-b/a)+6,int(-b/a)+20)
+
+        #Tạo điểm gián đoạn
+        x_3=random.randint(int(-b/a)-9,int(-b/a))
+        x_4=random.randint(int(-b/a)-15,int(-b/a)-10)           
+    else:
+        #Tạo điểm liên tục 
+        x_1=random.randint(int(-b/a)-5,int(-b/a)-1)
+        x_2=random.randint(int(-b/a)-20,int(-b/a)-6)
+
+        #Tạo điểm gián đoạn
+        x_3=random.randint(int(-b/a)+1,int(-b/a)+9)
+        x_4=random.randint(int(-b/a)+10,int(-b/a)+15)
+
+    kq=f"Hàm số liên tục tại điểm $x={x_1}$"            
+    kq2=f"Hàm số gián đoạn tại điểm $x={x_2}$"
+    kq3=f"Hàm số liên tục tại điểm $x={x_3}$"
+    kq4=f"Hàm số liên tục tại điểm $x={latex(my_module.hien_phan_so(x_4))}$"    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    noi_dung = f"Cho hàm số $y={latex(f)}$. Tìm khẳng định đúng."
+    noi_dung_loigiai=f""
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_02]. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục.
+def gh11gh_L11_C3_B3_02():
+    x = sp.symbols('x')
+    a = random.randint(-8,8)
+    if a==0:
+        a = a + random.randint(1,8)       
+    b = random.randint(-7,7)
+
+    c = random.randint(-4,4)
+    if c==0:
+        c = c + random.randint(1,5)
+    d = random.randint(-5,5)
+
+    if a*d-b*c==0:
+        d=d+1     
+    f=(a*x+b)/(c*x+d)
+
+    x_0=-d/c
+    x_1=int(x_0)+random.randint(1,4)
+    x_2=int(x_0)-random.randint(1,4)
+
+    t=random.randint(1,4)
+    if t==1:
+        khoang_lien_tuc=f"({latex(my_module.hien_phan_so(x_0))};+\\infty)"
+    if t==2:
+        khoang_lien_tuc=f"(-\\infty;{latex(my_module.hien_phan_so(x_0))})"
+    if t==3:
+        khoang_lien_tuc=f"(-\\infty;{x_2})"
+    if t==4:
+        khoang_lien_tuc=f"({x_1};+\\infty)"
+
+
+    kq=f"Hàm số liên tục trên khoảng ${khoang_lien_tuc}$"            
+    kq2=f"Hàm số liên tục trên khoảng $(-\\infty;{x_1})$"
+    kq3=f"Hàm số liên tục trên khoảng $({x_2};+\\infty)$"
+    kq4=f"Hàm số liên tục trên khoảng $({x_2};{x_1})$"    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    noi_dung = f"Cho hàm số $y={latex(f)}$. Tìm khẳng định đúng."
+    noi_dung_loigiai=f""
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_03]. Cho f(x) có >=,<. Xét tính liên tục tại điểm.
+def gh11gh_L11_C3_B3_03():
+    #Tạo hàm thứ nhất
+    a = random.randint(-3,3)
+    if a==0:
+        a = a + 1
+    b = random.randint(-4,4)
+    c = random.randint(-5,3)
+    
+    x = sp.symbols('x')
+    f = a*x**2 + b*x + c
+
+    #Tạo t là điểm phân chia hàm
+    x_0 = random.choice([random.randint(-6, -1), random.randint(1, 6)])
+   
+    f_x = f.subs(x, x_0)
+
+    #Tạo hàm thứ hai và đảm bảo liên tục tại x_0
+    d = random.randint(-7,7)
+    if d==0:
+        d = d + 1
+    e = f_x - d*x_0
+    g = d*x + e
+
+    #Tạo hàm số không liên tục tại x_0
+    h= (d+1)*x +e
+
+    chon= random.choice(["h","g"])
+    if chon == "g":
+        ham_so = g
+        khang_dinh = "sai"
+        kq=f"Hàm số không liên tục tại $x={x_0}$"
+        kq2 = f"Hàm số liên tục tại $x={x_0}$"
+        kq3=f"Hàm số liên tục tại $x={x_0+random.randint(1,10)}$"
+        kq4=f"Hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$"
+    else:
+        ham_so = h
+        khang_dinh = "đúng"
+        kq=f"Hàm số không liên tục tại $x={x_0}$"
+        kq2 = f"Hàm số liên tục tại $x={x_0}$"
+        kq3=f"Hàm số không liên tục tại $x={x_0+random.randint(1,10)}$"
+        kq4=f"Hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$"   
+
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+     #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    noi_dung= f"Cho hàm số $f(x)=\\left\\{{ \\begin{{array}}{{l}} \n \
+ {latex(f)} \\text{{ khi }} x \\ge {x_0}  \\\\ \n \
+{latex(ham_so)} \\text{{          khi  }} x < {x_0}  \n \
+\\end{{array}} \\right.$. Tìm khẳng định {khang_dinh}."
+
+    noi_dung_loigiai=f""
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_04]. Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0.
+def gh11gh_L11_C3_B3_04():
+    #Tạo hàm thứ nhất
+    x = sp.symbols('x')
+    x_0 = random.randint(-4,4)
+    if x_0==0:
+        x_0 = random.randint(2,5)
+
+    a = random.randint(-4,4)
+    if a==0:
+        a = random.randint(1,4)
+    b = random.randint(-4,4)
+    c = random.randint(-5,5)
+    if c==0:
+        c==random.randint(1,3)
+    d=-a*x_0**3-b*x_0**2-c*x_0
+    #Tạo hàm số thứ nhất
+    f = a*x**3 + b*x**2 + c*x + d
+
+    a1 = random.randint(-3,3)    
+    b1 = random.randint(-4,4)
+    if b1==0:
+        b1=random.randint(1,3)
+
+    c1=-a1*x_0**2-b1*x_0
+    g=a1*x**2 + b1*x +c1 
+
+    #Tạo hàm thứ 2: mx+b2
+    b2 = random.randint(-4,4)
+    if b2==0:
+        b2 = random.randint(1,3)
+    dau="+"
+    if b2<0:
+        dau=""
+        
+    kq=latex((limit(f/g, x, x_0)-b2)/x_0)
+    kq2 = latex((limit(f/g, x, x_0)+b2)/x_0)
+    kq3=latex(limit(f/g, x, x_0)/x_0)
+    kq4=latex(limit(g/f, x, x_0)/x_0)
+
+    #Tạo các phương án
+    pa_A= f"*$m={kq}$"
+    pa_B= f"$m={kq2}$"
+    pa_C= f"$m={kq3}$"
+    pa_D= f"$m={kq4}$"
+
+     #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    noi_dung= f"Cho hàm số $f(x)=\\left\\{{ \\begin{{array}}{{l}} \n \
+ {latex(f/g)} \\text{{ khi }} x \\ne {x_0}  \\\\ \n \
+mx{dau}{b2} \\text{{          khi  }} x = {x_0}  \n \
+\\end{{array}} \\right.$. Tìm m để hàm số đã cho liên tục tại điểm $x={x_0}$."
+    noi_dung_loigiai=f""
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_05]. Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0.
+def gh11gh_L11_C3_B3_05():
+    x = symbols('x')
+    x_0 = random.randint(-5, 5)
+    if x_0==0:
+        x_0=random.randint(1, 5)
+
+    #Tạo list chứa các hệ số
+    a = [random.randint(-4, 4) for _ in range(4)]
+    if a[0]==0:
+        a[0] = random.randint(1, 5)
+    if a[2]==0:
+        a[2] = random.randint(1, 5)
+    c_1 = -a[0]*x_0**(2)-a[1]*x_0
+    c_2 = -a[2]*x_0**(2)-a[3]*x_0
+
+    f = (a[0]*x**2 + a[1]*x + c_1)/(a[2]*x**2 + a[3]*x +c_2)
+
+    gioi_han = limit(f, x, x_0)        
+
+    #Tạo hàm thứ 2: mx+b2
+    b2 = random.randint(-4,4)
+    if b2==0:
+        b2 = random.randint(1,3)
+    dau="+"
+    if b2<0:
+        dau=""
+
+    kq=(gioi_han-b2)/x_0
+    kq2=(gioi_han+b2)/x_0
+    kq3=gioi_han/x_0
+    kq4=gioi_han-b2
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    kq=latex(kq)
+    kq2 =latex(kq2)
+    kq3=latex(kq3)
+    kq4=latex(kq4)
+
+    #Tạo các phương án
+    pa_A= f"*$m={kq}$"
+    pa_B= f"$m={kq2}$"
+    pa_C= f"$m={kq3}$"
+    pa_D= f"$m={kq4}$"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    noi_dung= f"Cho hàm số $f(x)=\\left\\{{ \\begin{{array}}{{l}} \n \
+ {latex(f)} \\text{{ khi }} x \\ne {x_0}  \\\\ \n \
+mx{dau}{b2} \\text{{          khi  }} x = {x_0}  \n \
+\\end{{array}} \\right.$. Tìm m để hàm số đã cho liên tục tại điểm $x={x_0}$."
+    noi_dung_loigiai=f""
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D11_C3_B3_06]-TF-M2. f(x) là 2 hàm đa thức. Xét Đ-S: giới hạn, liên tục tại x_0.
+def gh11gh_L11_C3_B3_06():
+    x=sp.symbols("x")    
+    chon=random.randint(1,2)
+       
+    if chon==1:
+        x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+        a = random.choice([i for i in range(-10, 10) if i!=0])
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        f=a*x+b
+
+        m = random.choice([i for i in range(-2, 3) if i!=0])
+        n = random.choice([i for i in range(-4, 4) if i!=0])
+        p = random.choice([i for i in range(1, 5) if i!=0])
+        g=m**2*x**2+2*m*n*x+n**2+p
+        
+    
+    if chon==2:
+        a = random.choice([i for i in range(-10, 10) if i!=0])
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        if a>0:
+            x_0 = random.randint(int(-b/a)+2,int(-b/a)+7)
+        else:
+            x_0 = random.randint(int(-b/a)-6,int(-b/a)-2)
+
+        f=a*x+b
+        y_0=f.subs(x,x_0)        
+      
+        m = random.choice([i for i in range(-2, 3) if i!=0])
+        n = random.choice([i for i in range(-4, 4) if i!=0])
+        p=y_0-m*x_0**2-n*x_0
+        g=m*x**2+n*x+p
+    
+
+    chon=random.randint(1,2)
+    if chon==1:
+        ham=f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} \\text{{ khi }} x \\ge {x_0} \\\\ \n\
+        {latex(g)} \\text{{ khi }} x < {x_0} \n\
+        \\end{{array}} \\right.$"
+    
+    if chon==2:
+        ham=f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(g)} \\text{{ khi }} x < {x_0} \\\\ \n\
+        {latex(f)} \\text{{ khi }} x \\ge {x_0} \n\
+        \\end{{array}} \\right.$" 
+
+    
+    noi_dung = f"Cho hàm số {ham}. Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    
+    x_1 = random.randint(x_0+1,x_0+6)
+    f_1=f.subs(x,x_1)
+    g_1=g.subs(x,x_1)
+    if g_1==f_1: g_1=f_1+random.randint(1,3)
+    kq1_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}={f_1}$" 
+    kq1_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}={latex(g_1)}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_1}}} ({latex(f)})={f_1}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x_2 = random.randint(x_0-6,x_0-1)    
+    g_2=g.subs(x,x_2)
+    f_2=f.subs(x,x_2)
+    if f_2==g_2: f_2=f_2+random.randint(1,2)
+
+    kq2_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}={latex(g_2)}$"
+    kq2_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}={f_2}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_2}}} ({latex(g)})={latex(g_2)}$."
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    f_0=f.subs(x,x_0)
+    g_0=g.subs(x,x_0)
+    chon=random.randint(1,2)
+
+    if chon==1:
+        
+        kq3_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={f_0}$" 
+        kq3_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={f_0+random.randint(1,3)}$"        
+        HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$."
+    
+    if chon==2:
+        
+        kq3_T=f"* Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}={latex(g_0)}$" 
+        kq3_F=f"Giới hạn $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}={latex(g_0+random.randint(1,2))}$"        
+        HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(f)}) = {latex(g_0)}$."    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if f_0==g_0:
+        kq4_T=f"*Hàm số liên tục tại $x={{{x_0}}}$"
+        kq4_F=f"Hàm số không liên tục tại $x={{{x_0}}}$" 
+    
+        HDG=(
+        f"$f({x_0})={f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(g)}) = {latex(g_0)}$.\n\n"
+        f"Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}$"
+        f" nên $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}={f_0}$.\n\n"
+        f" Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}} {{f(x)}}=f({x_0})$ nên hàm số liên tục tại $x={{{x_0}}}$."
+        )
+    else:
+        kq4_T=f"*Hàm số không liên tục tại $x={{{x_0}}}$"
+        kq4_F=f"Hàm số liên tục tại $x={{{x_0}}}$"
+
+        HDG=(
+        f"$f({x_0})={f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} ({latex(f)}) = {f_0}$.\n\n"
+        f"$\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}=\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} ({latex(g)}) = {latex(g_0)}$.\n\n"
+        f"Vì $\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^+}} {{f(x)}}\\ne \\mathop{{\\lim}}\\limits_{{x \\to  {x_0}^-}} {{f(x)}}$"
+        f" nên hàm số không tồn tại giới hạn tại ${{{x_0}}}$.\n\n"
+        f'Do đó hàm số không liên tục tại ${{{x_0}}}$.'
+        )
+
+    kq4=random.choice([kq4_T, kq4_F])
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

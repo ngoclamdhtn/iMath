@@ -1222,7 +1222,51 @@ class Ui_MainWindow(object):
                 
                
                 self.treeWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-                self.treeWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)        
+                self.treeWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+                self.treeWidget.setStyleSheet("""
+            QTreeWidget::indicator {
+                width: 18px;
+                height: 18px;
+                border-radius: 3px; /* Bo góc nhẹ */
+                border: 0px solid #ddd; /* Viền xám nhạt */
+                background-color: #ffffff; /* Màu nền trắng */
+            }
+
+            QTreeWidget::indicator:checked {
+                background-color: #FF5252; /* Nền đỏ khi chọn */
+                border: 1px solid #FF5252; /* Viền đỏ khớp với nền */
+            }
+
+            QTreeWidget::indicator:checked::before {
+                content: f'\\2713'; /* Unicode của dấu tick ✓ */
+                color: white; /* Màu dấu tick */
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                width: 100%; /* Căn giữa */
+                height: 100%; /* Căn giữa */
+                line-height: 16px; /* Căn giữa theo chiều dọc */
+            }
+
+            QTreeWidget::indicator:unchecked {
+                background-color: #ffffff; /* Nền trắng khi chưa chọn */
+                border: 1px solid #ddd; /* Viền xám nhạt */
+            }
+
+            QTreeWidget::indicator:hover {
+                border: 1px solid #bbb; /* Viền đậm hơn khi hover */
+            }
+
+            QTreeWidget::item:hover {
+                background-color: #f5f5f5; /* Hiệu ứng hover trên mục */
+            }
+
+            QTreeWidget {
+                font-size: 14px; /* Cỡ chữ */
+                color: #333333; /* Màu chữ */
+            }
+        """) 
                  
 
                 #self.treeWidget.setHeaderLabels(["Chọn dạng toán"])
@@ -1630,45 +1674,52 @@ class Ui_MainWindow(object):
                 L10_C3_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C3_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_01]-M1. Tính giá trị của hàm số tại một điểm"])
+                L10_C3_B1_1 = QTreeWidgetItem(L10_C3_B1, ["Trắc nghiệm"])
+                L10_C3_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C3_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_01]-M1. Tính giá trị của hàm số tại một điểm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_02]-M2. Tính giá trị của hàm số cho bởi 2 biểu thức tại một điểm"])
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_02]-M2. Tính giá trị của hàm số cho bởi 2 biểu thức tại một điểm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tính giá trị của hàm số cho bởi 2 biểu thức tại một điểm')
+              
 
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_03]-M1. Tìm tập xác định y =(ax+b)/(cx+d)."])
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_03]-M1. Tìm tập xác định y =(ax+b)/(cx+d)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
+
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_04]-M1. Tìm tập xác định y = căn(ax+b)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)     
+
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_05]-M2. Tìm tập xác định y = căn(A) + B/C."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
+
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_06]-M2. Tìm tập giá trị dựa vào hình vẽ đồ thị."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                  
+
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_07]-M2. Tìm tập xác định y =căn(ax+b) + căn(cx+d)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
+
+                item = QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_08]-M2. Tìm tập xác định hàm số y =A/(ax^2+bx+c)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm tập xác định y =(ax+b)/(cx+d).')
 
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_04]-M1. Tìm tập xác định y = căn(ax+b)."])
+                L10_C3_B1_3 = QTreeWidgetItem(L10_C3_B1, ["Trả lời ngắn"])
+                L10_C3_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C3_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B1_3, ["[D10_C3_B1_09]-SA-M3. Số các số nguyên thuộc TXĐ y=căn(ax+b)+căn(c-dx)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm tập xác định y = căn(ax+b).')
-
-
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_05]-M2. Tìm tập xác định y = căn(A) + B/C."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm tập xác định y = căn(A) + B/C.') 
-
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_06]-M2. Tìm tập giá trị dựa vào hình vẽ đồ thị."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, "Tìm tập giá trị dựa vào hình vẽ đồ thị.")       
-
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_07]-M2. Tìm tập xác định y =căn(ax+b) + căn(cx+d)."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, "Tìm tập xác định y =căn(ax+b) + căn(cx+d).")
-
-                item = QTreeWidgetItem(L10_C3_B1, ["[D10_C3_B1_08]-M2. Tìm tập xác định hàm số y =A/(ax^2+bx+c)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, "Tìm tập xác định hàm số y =A/(ax^2+bx+c)")
+               
 
                 L10_C3_B2 = QTreeWidgetItem(L10_C3, ["Bài 2 - Hàm số bậc 2"])
                 L10_C3_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4076,30 +4127,42 @@ class Ui_MainWindow(object):
                 L11_C3_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C3_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C3_B3, ["[D11_C3_B3_01]-M2. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm')
+                L11_C3_B3_1 = QTreeWidgetItem(L11_C3_B3, ["Trắc nghiệm"])
+                L11_C3_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C3_B3, ["[D11_C3_B3_02]-M2. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục."])
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_01]-M2. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục')
+            
 
-                item = QTreeWidgetItem(L11_C3_B3, ["[D11_C3_B3_03]-M2. Cho f(x) có >=,<. Xét tính liên tục tại điểm."])
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_02]-M2. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Cho f(x) có >=,<. Xét tính liên tục tại điểm')
+                
 
-                item = QTreeWidgetItem(L11_C3_B3, ["[D11_C3_B3_05]-M2. Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0."])
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_03]-M2. Cho f(x) có >=,<. Xét tính liên tục tại điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0')
+              
 
-                item = QTreeWidgetItem(L11_C3_B3, ["[D11_C3_B3_04]-M2. Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0."])
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_05]-M2. Cho f(x) có phân thức bậc 2. Tìm m để f(x) liên tục tại x_0."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0')
+               
+
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_04]-M2. Cho f(x) có phân thức bậc 3. Tìm m để f(x) liên tục tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C3_B3_2 = QTreeWidgetItem(L11_C3_B3, ["Đúng-Sai"])
+                L11_C3_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_2, ["[D11_C3_B3_06]-TF-M2. f(x) là 2 hàm đa thức. Xét Đ-S: giới hạn, liên tục tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+               
 
         #Lớp 11 - Chương 4 - Quan hệ song song trong không gian
                 L11_C4 = QTreeWidgetItem(L11, ["Chương 4 - Quan hệ song song trong không gian"])
@@ -9279,6 +9342,10 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D11_C3_B3_05]": 
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_05()
 
+                                                #[D11_C3_B3_06]-TF-M2. f(x) là 2 hàm đa thức. Xét Đ-S: giới hạn, liên tục tại x_0. 
+                                                if dang_toan == "[D11_C3_B3_06]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B3_06()
+
                                     ######### Toán 11_ Chương 4-QUAN HỆ SONG SONG ########
 
                                     #Bài 1: ĐƯỜNG THẲNG VÀ MẶT PHẲNG TRONG KHÔNG GIAN
@@ -10846,14 +10913,18 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_06()                                     
                                                     
 
-                                            #[D10_C3_B1_07]-M2. Tìm tập xác định y =căn(ax+b) + căn(cx+d).
+                                                #[D10_C3_B1_07]-M2. Tìm tập xác định y =căn(ax+b) + căn(cx+d).
                                                 if dang_toan == "[D10_C3_B1_07]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_07()                                     
                                                     
 
-                                            #[D10_C3_B1_08]-M2.Tìm tập xác định y =A/(ax^2+bx+c).
+                                                #[D10_C3_B1_08]-M2.Tìm tập xác định y =A/(ax^2+bx+c).
                                                 if dang_toan == "[D10_C3_B1_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_08()
+
+                                                #[D10_C3_B1_09]-SA-M2. Số các số nguyên thuộc TXD y=căn(ax+b) + căn (c-dx) 
+                                                if dang_toan == "[D10_C3_B1_09]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B1_09()                                 
                                                     
 
                                                 ####################### Bài 1: Hàm số và đồ thị ######################
