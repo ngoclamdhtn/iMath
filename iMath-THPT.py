@@ -122,32 +122,36 @@ class Ui_MainWindow(object):
                 #self.tab_taode.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
+                # Style cho mainwindows
+
                 self.tab_main.setStyleSheet("""
-            QTabBar::tab {
-                background: #E5E5E5;    /* Màu nền mặc định của tab */
-                color: #555555;         /* Màu chữ */
-                padding: 5px 15px;      /* Khoảng cách giữa nội dung và viền */
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
-                margin: 1px;            /* Khoảng cách giữa các tab */
-                font-family: "Segoe UI" !important;
-                font-size: 10pt;
-                min-width: 120px;        /* Độ rộng tối thiểu của tab */
-            }
-            QTabBar::tab:selected {
-                background: Indigo;      /* Màu nền khi tab được chọn */
-                color: white;           /* Màu chữ khi tab được chọn */
-            }
-            QTabBar::tab:hover {
-                background: skyblue;    /* Màu nền khi hover vào tab */                
-                border: 1px solid blue;
+                        QTabBar::tab {
+                            background: #E5E5E5;    /* Màu nền mặc định của tab */
+                            color: #555555;         /* Màu chữ */
+                            padding: 5px 15px;      /* Khoảng cách giữa nội dung và viền */
+                            border-top-left-radius: 5px;
+                            border-top-right-radius: 5px;
+                            margin: 1px;            /* Khoảng cách giữa các tab */
+                            font-family: "Segoe UI" !important;
+                            font-size: 10pt;
+                            min-width: 120px;        /* Độ rộng tối thiểu của tab */
+                        }
+                        QTabBar::tab:selected {
+                            background: Indigo;      /* Màu nền khi tab được chọn */
+                            color: white;           /* Màu chữ khi tab được chọn */
+                        }
+                        QTabBar::tab:hover {
+                            background: skyblue;    /* Màu nền khi hover vào tab */                
+                            border: 1px solid blue;
+                            
+                        }
+                        QTabWidget::pane {
+                            border-top: 2px solid #C0C0C0; /* Viền dưới của tab */
+                            background: white;
+                        }            
+                    """)
                 
-            }
-            QTabWidget::pane {
-                border-top: 2px solid #C0C0C0; /* Viền dưới của tab */
-                background: white;
-            }            
-        """)
+
 
                 self.tab_main.addTab(self.tab_thongtin_dethi, "Tạo đề")
                 self.tab_thongtin_dethi.setObjectName("tab_thongtin_dethi")
@@ -519,7 +523,7 @@ class Ui_MainWindow(object):
                 self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
                 self.btn_chuyen_tuluan.setText("TN => TL")
                 self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
-                self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
+                #self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
@@ -528,16 +532,16 @@ class Ui_MainWindow(object):
                 self.btn_xoa_dong.setObjectName("btn_xoa_dong")
                 self.btn_xoa_dong.setText("Xóa dòng")
                 self.btn_xoa_dong.clicked.connect(self.btn_xoa_dong_click)
-                self.btn_xoa_dong.setStyleSheet("color: white;background-color: #4D82B8;")                
+                #self.btn_xoa_dong.setStyleSheet("color: white;background-color: #4D82B8;")                
 
                 #Nút xóa ma trận
                 self.btn_xoa_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
                 self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 100, 30))
                 self.btn_xoa_matran.setFont(font_10)
                 self.btn_xoa_matran.setObjectName("btn_xoa_matran")
-                self.btn_xoa_matran.setText("Xóa toàn bộ")
+                self.btn_xoa_matran.setText("Xóa ma trận")
                 self.btn_xoa_matran.clicked.connect(self.clear_dangtoan)
-                self.btn_xoa_matran.setStyleSheet("color: white;background-color: #4385F6;")
+                #self.btn_xoa_matran.setStyleSheet("color: white;background-color: #4385F6;")
 
                 #Nút mở ma trận
                 self.btn_load_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
@@ -546,7 +550,7 @@ class Ui_MainWindow(object):
                 self.btn_load_matran.setObjectName("btn_load_matran")
                 self.btn_load_matran.setText("Mở ma trận")
                 self.btn_load_matran.clicked.connect(self.load_matran)
-                self.btn_load_matran.setStyleSheet("color: white;background-color: #4385F6;")
+                #self.btn_load_matran.setStyleSheet("color: white;background-color: #4385F6;")
 
                 #Nút lưu ma trận
                 self.btn_luu_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
@@ -555,7 +559,7 @@ class Ui_MainWindow(object):
                 self.btn_luu_matran.setObjectName("btn_luu_matran")
                 self.btn_luu_matran.setText("Lưu ma trận")
                 self.btn_luu_matran.clicked.connect(self.luu_matran)
-                self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")
+                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")
 
                 
 
@@ -797,7 +801,7 @@ class Ui_MainWindow(object):
                 self.btn_nhapmade.setObjectName("btn_nhapmade")
                 self.btn_nhapmade.setText("Tự nhập mã đề")
                 self.btn_nhapmade.clicked.connect(self.nhapmade)
-                self.btn_nhapmade.setStyleSheet("color: white;background-color: #4D82B8;")
+                #self.btn_nhapmade.setStyleSheet("color: white;background-color: #4D82B8;")
 
 
                 #Nút tự trộn dạng toán
@@ -838,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+40, 700, 30))
                 self.label.setFont(font)        
-                self.label.setText("1. Chọn dạng toán và nhập số câu cho mỗi dạng ở tab Thiết lập ma trận.")
+                self.label.setText("1. Sổ mũi tam giác phía trước, chọn vào mã dạng toán, nhập số lượng câu lấy ở tab Thiết lập ma trận.")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+80, 600, 30))
@@ -856,14 +860,42 @@ class Ui_MainWindow(object):
                 self.label.setText("4. Mở file Word. Chọn Word to PowerPoint. Chọn Xử lí câu hỏi iMath.")
 
                 #Nút tạo đề
+                style_taode_button=("""
+    QPushButton {
+        background-color: #4B0082; /* Màu nền xanh dương */
+        color: white; /* Màu chữ trắng */
+        border: none; /* Không viền */
+        border-radius: 4px; /* Bo góc */
+        font-size: 10pt; /* Cỡ chữ */
+        font-weight: normal; /* Không đậm */
+        font-family: "Segoe UI"; /* Font chữ Segoe UI */
+        padding: 4px 10px; /* Khoảng cách trong nút */
+        
+    }
+
+    QPushButton:hover {
+        background-color: #005A9E; /* Màu nền đậm hơn khi hover */
+    }
+
+    QPushButton:pressed {
+        background-color: #003E73; /* Màu nền đậm nhất khi nhấn */
+        border: 2px solid #002F58; /* Viền thêm khi nhấn */
+    }
+
+    QPushButton:disabled {
+        background-color: #A6A6A6; /* Màu nền xám khi nút bị vô hiệu */
+        color: #F0F0F0; /* Màu chữ xám nhạt */
+        border: none;
+    }
+    """)
                 
                 self.btn_taode = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)        
                 self.btn_taode.setGeometry(QtCore.QRect(le_trai, le_top+300, 100, 30))
-                self.btn_taode.setFont(font_10)
+                self.btn_taode.setFont(font_12)
                 self.btn_taode.setObjectName("btn_taode")
                 self.btn_taode.setText("Tạo đề")
                 self.btn_taode.clicked.connect(self.tao_de)
-                self.btn_taode.setStyleSheet("color: white;background-color: #4B0082;")
+                self.btn_taode.setStyleSheet(style_taode_button)
 
 
                 #Thanh Progress bar                
@@ -1144,47 +1176,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font)        
                 self.label.setText("3) Tạo đề cho học sinh làm bài tập nên chọn Tạo đề Word - Equation để xuất đề nhanh nhất.")
 
-
-
-
-        #Tab latextoimage
-
-                # self.text_run_latex = QtWidgets.QTextEdit(parent=self.tab_run_latex)
-                # self.text_run_latex.setGeometry(QtCore.QRect(10, 40, 500, 500))
-                # self.text_run_latex.setFont(font)
-                # self.text_run_latex.setObjectName("text_run_latex")
-                # code=my_module.moi_truong_latex("")
-                # self.text_run_latex.setText(code)
-
-                # # Tạo QFrame
-                # frame = QtWidgets.QFrame(parent=self.tab_run_latex)
-                # # Thiết lập màu nền của QFrame
-                # frame.setStyleSheet("background-color: #fdfdfd;")
-                # frame.setStyleSheet("border: 1px solid grey; padding: 10px;")
-                # # Đặt kích thước và vị trí của QFrame
-                # frame.setGeometry(650, 40, 700, 500)
-
-                # #Label chứa đồ thị xuất ra
-                # self.label_latextoimage= QtWidgets.QLabel(parent=self.tab_run_latex)
-                # self.label_latextoimage.setGeometry(QtCore.QRect(660, 40, 700, 500))
-
-                # top_biendichlatex=40
-                # left_biendichlatex=515
-                # #Button chạy code biên dịch latex 
-                # self.btn_moitruong_latex = QtWidgets.QPushButton(parent=self.tab_run_latex)
-                # self.btn_moitruong_latex.setGeometry(QtCore.QRect(left_biendichlatex, top_biendichlatex, 130, 35))
-                # self.btn_moitruong_latex.setFont(font)
-                # self.btn_moitruong_latex.setObjectName("btn_moitruong_latex")
-                # self.btn_moitruong_latex.setText("Môi trường Latex")
-                # self.btn_moitruong_latex.clicked.connect(self.btn_moitruong_latex_click)
-
-                # #Button chạy code biên dịch latex 
-                # self.btn_run_latex = QtWidgets.QPushButton(parent=self.tab_run_latex)
-                # self.btn_run_latex.setGeometry(QtCore.QRect(left_biendichlatex, top_biendichlatex+40, 130, 35))
-                # self.btn_run_latex.setFont(font)
-                # self.btn_run_latex.setObjectName("btn_run_latex")
-                # self.btn_run_latex.setText("Biên dịch Latex")
-                # self.btn_run_latex.clicked.connect(self.btn_run_latex_click)
+        
 
         # Tab Tạo đề
         #label chọn dạng toán
@@ -1200,10 +1192,10 @@ class Ui_MainWindow(object):
                 self.checkbox_tree_random.setGeometry(QtCore.QRect(25, 25, 205, 30))
                 self.checkbox_tree_random.setFont(font_10)
                 self.checkbox_tree_random.setObjectName("checkbox_tree_random")
-                self.checkbox_tree_random.setText("Số dạng ngẫu nhiên từ mục con")
+                self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
         
                 self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
-                self.soluong_dangtoan.setGeometry(QtCore.QRect(235, 25, 30, 30))
+                self.soluong_dangtoan.setGeometry(QtCore.QRect(230, 25, 30, 60))
                 self.soluong_dangtoan.setFont(font)
                 self.soluong_dangtoan.setObjectName("soluong_dangtoan")
 
@@ -1223,6 +1215,7 @@ class Ui_MainWindow(object):
                
                 self.treeWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
                 self.treeWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        # TreeStyle
                 self.treeWidget.setStyleSheet("""
             QTreeWidget::indicator {
                 width: 18px;
@@ -1234,7 +1227,7 @@ class Ui_MainWindow(object):
 
             QTreeWidget::indicator:checked {
                 background-color: #FF5252; /* Nền đỏ khi chọn */
-                border: 1px solid #FF5252; /* Viền đỏ khớp với nền */
+                border: 2px solid #FF5252; /* Viền đỏ khớp với nền */
             }
 
             QTreeWidget::indicator:checked::before {
@@ -1259,7 +1252,7 @@ class Ui_MainWindow(object):
             }
 
             QTreeWidget::item:hover {
-                background-color: #f5f5f5; /* Hiệu ứng hover trên mục */
+                background-color: #cce7ff; /* Hiệu ứng hover trên mục */
             }
 
             QTreeWidget {
@@ -14779,7 +14772,40 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     # Thiết lập font toàn cục cho ứng dụng
-    font = QFont("Segoe UI", 10)  # Font Segoe UI, cỡ chữ 10
+    font = QFont("Segoe UI", 11)  # Font Segoe UI, cỡ chữ 10
+
+    #Thiết lập Style cho button
+    # Áp dụng StyleSheet cho tất cả QPushButton
+    
+    app.setStyleSheet("""
+    QPushButton {
+        background-color: #0078D7; /* Màu nền xanh dương */
+        color: white; /* Màu chữ trắng */
+        border: none; /* Không viền */
+        border-radius: 4px; /* Bo góc */
+        font-size: 8pt; /* Cỡ chữ */
+        font-weight: normal; /* Không đậm */
+        font-family: "Segoe UI"; /* Font chữ Segoe UI */
+        padding: 4px 10px; /* Khoảng cách trong nút */
+        
+    }
+
+    QPushButton:hover {
+        background-color: #005A9E; /* Màu nền đậm hơn khi hover */
+    }
+
+    QPushButton:pressed {
+        background-color: #003E73; /* Màu nền đậm nhất khi nhấn */
+        border: 2px solid #002F58; /* Viền thêm khi nhấn */
+    }
+
+    QPushButton:disabled {
+        background-color: #A6A6A6; /* Màu nền xám khi nút bị vô hiệu */
+        color: #F0F0F0; /* Màu chữ xám nhạt */
+        border: none;
+    }
+    """)
+
     app.setFont(font)  
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
