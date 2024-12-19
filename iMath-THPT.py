@@ -503,22 +503,22 @@ class Ui_MainWindow(object):
                 self.btn_move_row_up.setObjectName("btn_move_up")
                 self.btn_move_row_up.setText("")
                 self.btn_move_row_up.clicked.connect(self.move_row_up)
-                self.btn_move_row_up.setStyleSheet("color: white;background-color: #4D82B8;")
+                #self.btn_move_row_up.setStyleSheet("color: white;background-color: #4D82B8;")
                 self.btn_move_row_up.setIcon(QIcon(f"{icon_folder_path}\\up-arrow.png"))
 
                 #Tạo nút Move Down
                 self.btn_move_row_down = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_move_row_down.setGeometry(QtCore.QRect(le_trai+575, le_top+30, 30, 30))
+                self.btn_move_row_down.setGeometry(QtCore.QRect(le_trai+575, le_top+35, 30, 30))
                 self.btn_move_row_down.setFont(font_10)
                 self.btn_move_row_down.setObjectName("btn_move_down")
                 self.btn_move_row_down.setText("")
                 self.btn_move_row_down.clicked.connect(self.move_row_down)
-                self.btn_move_row_down.setStyleSheet("color: white;background-color: #4D82B8;")
+                #self.btn_move_row_down.setStyleSheet("color: white;background-color: #4D82B8;")
                 self.btn_move_row_down.setIcon(QIcon(f"{icon_folder_path}\\down-arrow.png"))
 
                 #Tạo nút Chuyển tự luận
                 self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
+                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 80, 30))
                 self.btn_chuyen_tuluan.setFont(font_10)
                 self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
                 self.btn_chuyen_tuluan.setText("TN => TL")
@@ -527,7 +527,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 100, 30))
+                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 80, 30))
                 self.btn_xoa_dong.setFont(font_10)
                 self.btn_xoa_dong.setObjectName("btn_xoa_dong")
                 self.btn_xoa_dong.setText("Xóa dòng")
@@ -536,7 +536,7 @@ class Ui_MainWindow(object):
 
                 #Nút xóa ma trận
                 self.btn_xoa_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 100, 30))
+                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 80, 30))
                 self.btn_xoa_matran.setFont(font_10)
                 self.btn_xoa_matran.setObjectName("btn_xoa_matran")
                 self.btn_xoa_matran.setText("Xóa ma trận")
@@ -545,7 +545,7 @@ class Ui_MainWindow(object):
 
                 #Nút mở ma trận
                 self.btn_load_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_load_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+300, 100, 30))
+                self.btn_load_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+300, 80, 30))
                 self.btn_load_matran.setFont(font_10)
                 self.btn_load_matran.setObjectName("btn_load_matran")
                 self.btn_load_matran.setText("Mở ma trận")
@@ -554,7 +554,7 @@ class Ui_MainWindow(object):
 
                 #Nút lưu ma trận
                 self.btn_luu_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_luu_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+340, 100, 30))
+                self.btn_luu_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+340, 80, 30))
                 self.btn_luu_matran.setFont(font_10)
                 self.btn_luu_matran.setObjectName("btn_luu_matran")
                 self.btn_luu_matran.setText("Lưu ma trận")
@@ -1195,7 +1195,7 @@ class Ui_MainWindow(object):
                 self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
         
                 self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
-                self.soluong_dangtoan.setGeometry(QtCore.QRect(230, 25, 30, 60))
+                self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 25, 30, 60))
                 self.soluong_dangtoan.setFont(font)
                 self.soluong_dangtoan.setObjectName("soluong_dangtoan")
 
@@ -1215,7 +1215,7 @@ class Ui_MainWindow(object):
                
                 self.treeWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
                 self.treeWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        # TreeStyle
+        #Tree Style
                 self.treeWidget.setStyleSheet("""
             QTreeWidget::indicator {
                 width: 18px;
@@ -1227,19 +1227,19 @@ class Ui_MainWindow(object):
 
             QTreeWidget::indicator:checked {
                 background-color: #FF5252; /* Nền đỏ khi chọn */
-                border: 2px solid #FF5252; /* Viền đỏ khớp với nền */
+                border: 1px solid #FF5252; /* Viền đỏ khớp với nền */
             }
 
             QTreeWidget::indicator:checked::before {
                 content: f'\\2713'; /* Unicode của dấu tick ✓ */
                 color: white; /* Màu dấu tick */
-                font-size: 14px;
+                font-size: 5pt;
                 font-weight: bold;
                 text-align: center;
                 display: inline-block;
                 width: 100%; /* Căn giữa */
                 height: 100%; /* Căn giữa */
-                line-height: 16px; /* Căn giữa theo chiều dọc */
+                line-height: 10px; /* Căn giữa theo chiều dọc */
             }
 
             QTreeWidget::indicator:unchecked {
@@ -1256,7 +1256,7 @@ class Ui_MainWindow(object):
             }
 
             QTreeWidget {
-                font-size: 14px; /* Cỡ chữ */
+                font-size: 12pt; /* Cỡ chữ */
                 color: #333333; /* Màu chữ */
             }
         """) 
