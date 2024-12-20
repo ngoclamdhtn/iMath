@@ -98,7 +98,7 @@ class Ui_MainWindow(object):
                 self.centralwidget.setObjectName("centralwidget")
                 self.tab_main = QtWidgets.QTabWidget(parent=self.centralwidget)
                 #self.tab_main.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
-                self.tab_main.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
+                self.tab_main.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
                 self.tab_main.setAccessibleName("")
                 self.tab_main.setObjectName("tab_main")
 
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
                 self.tab_main.addTab(self.tab_taode, "Thiết lập ma trận")
                 self.tab_taode.setObjectName("tab_taode")
                 #self.tab_taode.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
-                self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
+                self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
                 # Style cho mainwindows
 
@@ -156,26 +156,26 @@ class Ui_MainWindow(object):
                 self.tab_main.addTab(self.tab_thongtin_dethi, "Tạo đề")
                 self.tab_thongtin_dethi.setObjectName("tab_thongtin_dethi")
                 #self.tab_thongtin_dethi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
-                self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
+                self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
                 self.tab_main.addTab(self.tab_dothi, "Đồ thị")
                 self.tab_dothi.setObjectName("tab_dothi")
                 #self.tab_dothi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
-                self.tab_dothi.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
+                self.tab_dothi.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
                 self.tab_main.addTab(self.tab_bbt, "Bảng biến thiên")
                 self.tab_bbt.setObjectName("tab_bbt")
                 #self.tab_bbt.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))  
-                self.tab_bbt.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
+                self.tab_bbt.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
                 self.tab_main.addTab(self.tab_vehinh, "Vẽ hình")
                 self.tab_vehinh.setObjectName("tab_vehinh")                
-                self.tab_vehinh.setGeometry(QtCore.QRect(0, 0, 1920, 1440)) 
+                self.tab_vehinh.setGeometry(QtCore.QRect(0, 0, 1920, 1080)) 
 
                 self.tab_main.addTab(self.tab_bang_so_lieu, "Bảng số liệu")
                 self.tab_bang_so_lieu.setObjectName("tab_bang_so_lieu")
                 #self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height())) 
-                self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1440)) 
+                self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1080)) 
 
                 # self.tab_main.addTab(self.tab_run_latex, "Biên dịch Latex")
                 # self.tab_run_latex.setObjectName("tab_run_latex")

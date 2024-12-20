@@ -3085,46 +3085,56 @@ def gh11gh_L11_C3_B3_07():
 
     g=a*(x-x_2)/k
 
+
+
     p= random.choice([i for i in range(-5, 6) if i!=0])
     q= random.choice([i for i in range(-5, 6) if i!=0])
+    f_2=p*m*x+q
 
     ham=(
     f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
-    \\dfrac{{{f_tu}}}{{{f_mau}}} &\\text{{ khi }} x\\ne {x_1}\\\\ \n\
-    {latex(p*m+q)} &\\text{{ khi }} x = {x_1}\n\
+    \\dfrac{{{f_tu}}}{{{f_mau}}} \\text{{ khi }} x\\ne {x_1}\\\\ \n\
+    {latex(p*m*x+q)} \\text{{ khi }} x = {x_1}\n\
     \\end{{array}} \\right.$")
 
     noi_dung = f"Cho hàm số {ham}. Xét tính đúng-sai của các khẳng định sau:"  
 
 
-    kq1_T=f"*" 
-    kq1_F=f" "
+    kq1_T=f"* Tập xác định của hàm số là $\\mathbb{{R}}$." 
+    kq1_F=f"Tập xác định của hàm số là $\\mathbb{{R}}\\backslash {{{x_1}}}$."
     kq1=random.choice([kq1_T, kq1_F])
-    HDG=f" "
+    HDG=f"Hàm số xác định với mọi ${{x}}$ nên tập xác định của hàm số là $\\mathbb{{R}}$."
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* "
-    kq2_F=f" "
+    kq2_T=f"* ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$"
+    kq2_F=f"${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1)+random.randint(1,3))}$"
     kq2=random.choice([kq2_T, kq2_F])
-    HDG=f""
+    HDG=(
+        f"Ta có: ${st_lim(x_1)}f(x)={st_lim(x_1)}\\dfrac{{{f_tu}}}{{{f_mau}}}={st_lim(x_1)}\\dfrac{{{latex(a*(x-x_1)*(x-x_2))}}}{{{f_mau}}}$"
+        f"$={st_lim(x_1)}({latex(g)})={phan_so(g.subs(x,x_1))}$."
+        )
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq3_T=f"* " 
-    kq3_F=f" "
+    kq3_T=f"* $f({x_1})={latex(f_2.subs(x,x_1))}$" 
+    kq3_F=f"$f({x_1})={latex(f_2.subs(x,x_1)+random.randint(1,3))}$"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f""
+    HDG=f"$f({x_1})={latex(f_2.subs(x,x_1))}$"
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq4_T=f"* "
-    kq4_F=f" " 
+    m_0=(g.subs(x,x_1)-q)/(p*x_1)
+    kq4_T=f"* Hàm số liên tục tại $x={x_1}$ khi $m={phan_so(m_0)}$"
+    kq4_F=f"Hàm số liên tục tại $x={x_1}$ khi $m={phan_so(m_0+random.choice([random.randint(1,4),random.randint(-4,-1)]))}$" 
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=f""
+    HDG=(f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
+        f"$f({x_1})={latex(f_2.subs(x,x_1))}$.\n\n"
+        f"Hàm số liên tục tại $x={x_1}$ khi ${latex(f_2.subs(x,x_1))}={phan_so(g.subs(x,x_1))}$.\n\n"
+        f"Suy ra $m={phan_so(m_0)}$")
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
