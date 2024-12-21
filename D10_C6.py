@@ -203,6 +203,11 @@ def tktk_L10_C6_B3_01():
 	kq3=list_PA[2]
 	kq4=list_PA[3]
 
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
+
 	pa_A= f"*${{{kq}}}$"
 	pa_B= f"${{{kq2}}}$"
 	pa_C= f"${{{kq3}}}$"
@@ -272,6 +277,11 @@ def tktk_L10_C6_B3_02():
 	kq2=list_PA[1]
 	kq3=list_PA[2]
 	kq4=list_PA[3]
+
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
 
 	pa_A= f"*${{{kq}}}$"
 	pa_B= f"${{{kq2}}}$"
@@ -1178,9 +1188,9 @@ def tktk_L10_C6_B4_03():
 	kq4=list_PA[3]
 
 	pa_A= f"*${{{kq}}}$"
-	pa_B= f"*${{{kq2}}}$"
-	pa_C= f"*${{{kq3}}}$"
-	pa_D=f"*${{{kq4}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D=f"${{{kq4}}}$"
 
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]

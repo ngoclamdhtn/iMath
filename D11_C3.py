@@ -1215,7 +1215,7 @@ def gh11gh_L11_C3_B1_13():
         u=(a*n**4+b*n**3+c*n+d)/(e*n**2+f)**2
         kq=a/e**2
         if kq<=-9.9:
-            noi_dung=f"Tính $\\lim {latex(u)}={phan_so(a/e**2)}$ (kết quả làm tròn đến hàng đơn vị)."
+            noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng đơn vị)."
             dap_an=f"{N(a/e**2,1)}".replace(".",",")
         else:
             noi_dung=f"Tính $\\lim {latex(u)}={phan_so(a/e**2)}$ (kết quả làm tròn đến hàng phần trăm)."
@@ -1227,7 +1227,7 @@ def gh11gh_L11_C3_B1_13():
     if chon==2:
         u=(e*n**2+f)**2/(a*n**4+b*n**3+c*n+d)
 
-        noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
+        noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
 
         noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n+c/n**3+d/n**4)} }}= {phan_so(e**2/a)}$."
         dap_an=f"{N(e**2/a,2):.1f}".replace(".",",")
@@ -1241,7 +1241,7 @@ def gh11gh_L11_C3_B1_13():
     if chon==4:
         u=(e*n**2+f)**3/(a*n**6+b*n**4+c*n**3+d)
 
-        noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
+        noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
 
         noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n**2+c/n**3+d/n**6)}}}= {phan_so(e**3/a)}$."
         dap_an=f"{N(e**3/a,2):.1f}".replace(".",",") 
@@ -3128,13 +3128,29 @@ def gh11gh_L11_C3_B3_07():
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     m_0=(g.subs(x,x_1)-q)/(p*x_1)
-    kq4_T=f"* Hàm số liên tục tại $x={x_1}$ khi $m={phan_so(m_0)}$"
-    kq4_F=f"Hàm số liên tục tại $x={x_1}$ khi $m={phan_so(m_0+random.choice([random.randint(1,4),random.randint(-4,-1)]))}$" 
+    chon=random.randint(1,2)
+    if chon==1:
+        kq4_T=f"* Hàm số liên tục tại $x={x_1}$ khi $m={phan_so(m_0)}$"
+        kq4_F=f"Hàm số liên tục tại $x={x_1}$ khi $m={phan_so(m_0+random.choice([random.randint(1,4),random.randint(-4,-1)]))}$" 
+        
+        HDG=(f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
+            f"$f({x_1})={latex(f_2.subs(x,x_1))}$.\n\n"
+            f"Hàm số liên tục tại $x={x_1}$ khi ${latex(f_2.subs(x,x_1))}={phan_so(g.subs(x,x_1))}$.\n\n"
+            f"Suy ra $m={phan_so(m_0)}$")
+    
+    if chon==2:
+        kq4_T=f"* Hàm số liên tục trên $\\mathbb{{R}}$ khi $m={phan_so(m_0)}$"
+        kq4_F=f"Hàm số liên tục trên $\\mathbb{{R}}$ khi $m={phan_so(m_0+random.choice([random.randint(1,4),random.randint(-4,-1)]))}$" 
+        
+        HDG=(f"Dễ thấy hàm số liên tục trên các khoảng $(-\\infty;{x_1})$ và $({x_1};+\\infty)$.\n\n"
+            f"Hàm số liên tục trên $\\mathbb{{R}}$ khi và chỉ khi hàm số liên tục tại $x={x_1}$"
+            f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
+            f"$f({x_1})={latex(f_2.subs(x,x_1))}$.\n\n"
+            f"Hàm số liên tục tại $x={x_1}$ khi ${latex(f_2.subs(x,x_1))}={phan_so(g.subs(x,x_1))}$.\n\n"
+            f"Suy ra $m={phan_so(m_0)}$")
+    
+    
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=(f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
-        f"$f({x_1})={latex(f_2.subs(x,x_1))}$.\n\n"
-        f"Hàm số liên tục tại $x={x_1}$ khi ${latex(f_2.subs(x,x_1))}={phan_so(g.subs(x,x_1))}$.\n\n"
-        f"Suy ra $m={phan_so(m_0)}$")
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -3187,5 +3203,54 @@ def gh11gh_L11_C3_B3_07():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B3_08]-SA-M2. f(x)= phân thức + đa thức. Tìm m để liên tục tại x_0.
+def gh11gh_L11_C3_B3_08():
+    x,m=sp.symbols("x m")    
+    x_1 = random.choice([i for i in range(-7, 7) if i!=0])
+    x_2 = random.choice([i for i in range(-7,7) if i != x_1  and i!=0])
+
+    a = random.choice([i for i in range(-3, 3) if i!=0])
+    b,c=-a*(x_1+x_2),a*x_1*x_2
+
+    f_tu=latex(a*x**2+b*x+c)
+    k = random.choice([i for i in range(-5, 5) if i!=0 and i!=1])
+    f_mau=latex(k*(x-x_1))
+
+    g=a*(x-x_2)/k
+    p= random.choice([i for i in range(-5, 6) if i!=0])
+    q= random.choice([i for i in range(-5, 6) if i!=0])
+    f_2=p*m*x+q
+
+    ham=(
+    f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+    \\dfrac{{{f_tu}}}{{{f_mau}}} \\text{{ khi }} x\\ne {x_1}\\\\ \n\
+    {latex(p*m*x+q)} \\text{{ khi }} x = {x_1}\n\
+    \\end{{array}} \\right.$")
+
+    noi_dung = (
+    f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    m_0=(g.subs(x,x_1)-q)/(p*x_1)
+    dap_an=f"{round(m_0,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
+            f"$f({x_1})={latex(f_2.subs(x,x_1))}$.\n\n"
+            f"Hàm số liên tục tại $x={x_1}$ khi ${latex(f_2.subs(x,x_1))}={phan_so(g.subs(x,x_1))}$.\n\n"
+            f"Suy ra $m={phan_so(m_0)}$"
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 

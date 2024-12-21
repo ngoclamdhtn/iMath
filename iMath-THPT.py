@@ -518,7 +518,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Chuyển tự luận
                 self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 80, 30))
+                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
                 self.btn_chuyen_tuluan.setFont(font_10)
                 self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
                 self.btn_chuyen_tuluan.setText("TN => TL")
@@ -527,7 +527,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 80, 30))
+                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 100, 30))
                 self.btn_xoa_dong.setFont(font_10)
                 self.btn_xoa_dong.setObjectName("btn_xoa_dong")
                 self.btn_xoa_dong.setText("Xóa dòng")
@@ -536,7 +536,7 @@ class Ui_MainWindow(object):
 
                 #Nút xóa ma trận
                 self.btn_xoa_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 80, 30))
+                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 100, 30))
                 self.btn_xoa_matran.setFont(font_10)
                 self.btn_xoa_matran.setObjectName("btn_xoa_matran")
                 self.btn_xoa_matran.setText("Xóa ma trận")
@@ -545,7 +545,7 @@ class Ui_MainWindow(object):
 
                 #Nút mở ma trận
                 self.btn_load_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_load_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+300, 80, 30))
+                self.btn_load_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+300, 100, 30))
                 self.btn_load_matran.setFont(font_10)
                 self.btn_load_matran.setObjectName("btn_load_matran")
                 self.btn_load_matran.setText("Mở ma trận")
@@ -554,7 +554,7 @@ class Ui_MainWindow(object):
 
                 #Nút lưu ma trận
                 self.btn_luu_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_luu_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+340, 80, 30))
+                self.btn_luu_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+340, 100, 30))
                 self.btn_luu_matran.setFont(font_10)
                 self.btn_luu_matran.setObjectName("btn_luu_matran")
                 self.btn_luu_matran.setText("Lưu ma trận")
@@ -1220,7 +1220,7 @@ class Ui_MainWindow(object):
             QTreeWidget::indicator {
                 width: 18px;
                 height: 18px;
-                border-radius: 3px; /* Bo góc nhẹ */
+                border-radius: 4px; /* Bo góc nhẹ */
                 border: 0px solid #ddd; /* Viền xám nhạt */
                 background-color: #ffffff; /* Màu nền trắng */
             }
@@ -1228,18 +1228,6 @@ class Ui_MainWindow(object):
             QTreeWidget::indicator:checked {
                 background-color: #FF5252; /* Nền đỏ khi chọn */
                 border: 1px solid #FF5252; /* Viền đỏ khớp với nền */
-            }
-
-            QTreeWidget::indicator:checked::before {
-                content: f'\\2713'; /* Unicode của dấu tick ✓ */
-                color: white; /* Màu dấu tick */
-                font-size: 5pt;
-                font-weight: bold;
-                text-align: center;
-                display: inline-block;
-                width: 100%; /* Căn giữa */
-                height: 100%; /* Căn giữa */
-                line-height: 10px; /* Căn giữa theo chiều dọc */
             }
 
             QTreeWidget::indicator:unchecked {
@@ -1256,7 +1244,7 @@ class Ui_MainWindow(object):
             }
 
             QTreeWidget {
-                font-size: 12pt; /* Cỡ chữ */
+                font-size: 10pt; /* Cỡ chữ */
                 color: #333333; /* Màu chữ */
             }
         """) 
@@ -4153,6 +4141,10 @@ class Ui_MainWindow(object):
                 L11_C3_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C3_B3_2, ["[D11_C3_B3_06]-TF-M2. f(x) là 2 hàm đa thức. Xét Đ-S: giới hạn, liên tục tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_2, ["[D11_C3_B3_07]-TF-M2. f(x)= phân thức + đa thức. Xét Đ-S:TXĐ, f(x_0), giới hạn, liên tục tại x_0."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                
@@ -9338,6 +9330,10 @@ class Ui_MainWindow(object):
                                                 #[D11_C3_B3_06]-TF-M2. f(x) là 2 hàm đa thức. Xét Đ-S: giới hạn, liên tục tại x_0. 
                                                 if dang_toan == "[D11_C3_B3_06]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B3_06()
+
+                                                #[D11_C3_B3_07]-TF-M2. f(x)= phân thức + đa thức. Xét Đ-S: giới hạn, liên tục tại x_0.
+                                                if dang_toan == "[D11_C3_B3_07]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B3_07()
 
                                     ######### Toán 11_ Chương 4-QUAN HỆ SONG SONG ########
 
@@ -14772,7 +14768,8 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     # Thiết lập font toàn cục cho ứng dụng
-    font = QFont("Segoe UI", 11)  # Font Segoe UI, cỡ chữ 10
+    font = QFont("Segoe UI", 10)  # Font Segoe UI, cỡ chữ 10
+    app.setFont(font)
 
     #Thiết lập Style cho button
     # Áp dụng StyleSheet cho tất cả QPushButton
@@ -14783,7 +14780,7 @@ if __name__ == "__main__":
         color: white; /* Màu chữ trắng */
         border: none; /* Không viền */
         border-radius: 4px; /* Bo góc */
-        font-size: 8pt; /* Cỡ chữ */
+        font-size: 9pt; /* Cỡ chữ */
         font-weight: normal; /* Không đậm */
         font-family: "Segoe UI"; /* Font chữ Segoe UI */
         padding: 4px 10px; /* Khoảng cách trong nút */
@@ -14806,7 +14803,7 @@ if __name__ == "__main__":
     }
     """)
 
-    app.setFont(font)  
+    
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
