@@ -3085,10 +3085,10 @@ def gh11gh_L11_C3_B3_07():
 
     g=a*(x-x_2)/k
 
-
-
     p= random.choice([i for i in range(-5, 6) if i!=0])
     q= random.choice([i for i in range(-5, 6) if i!=0])
+    chon=random.randint(1,2)
+
     f_2=p*m*x+q
 
     ham=(
@@ -3229,7 +3229,7 @@ def gh11gh_L11_C3_B3_08():
     \\end{{array}} \\right.$")
 
     noi_dung = (
-    f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ (kết quả làm tròn đến hàng phần mười)."
+    f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ \n(kết quả làm tròn đến hàng phần mười)."
     )
     m_0=(g.subs(x,x_1)-q)/(p*x_1)
     dap_an=f"{round(m_0,1):.1f}".replace(".",",")
@@ -3238,7 +3238,7 @@ def gh11gh_L11_C3_B3_08():
     f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
             f"$f({x_1})={latex(f_2.subs(x,x_1))}$.\n\n"
             f"Hàm số liên tục tại $x={x_1}$ khi ${latex(f_2.subs(x,x_1))}={phan_so(g.subs(x,x_1))}$.\n\n"
-            f"Suy ra $m={phan_so(m_0)}$"
+            f"Suy ra $m={phan_so(m_0)}={dap_an}$."
     )    
         
     debai_word= f"{noi_dung}\n"

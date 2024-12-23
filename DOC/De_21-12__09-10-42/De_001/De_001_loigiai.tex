@@ -1,0 +1,135 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2.0cm, right=1.5cm] {geometry}
+\usepackage{amsmath,amssymb,fontawesome}
+\usepackage{tkz-euclide}
+\usepackage{setspace}
+\usepackage{lastpage}
+
+\usepackage{tikz,tkz-tab}
+%\usepackage[solcolor]{ex_test}
+%\usepackage[dethi]{ex_test} % Chỉ hiển thị đề thi
+\usepackage[loigiai]{ex_test} % Hiển thị lời giải
+%\usepackage[color]{ex_test} % Khoanh các đáp án
+\everymath{\displaystyle}
+
+\def\colorEX{\color{purple}}
+%\def\colorEX{}%Không tô màu đáp án đúng trong tùy chọn loigiai
+\renewtheorem{ex}{\color{violet}Câu}
+\renewcommand{\FalseEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+\renewcommand{\TrueEX}{\stepcounter{dapan}{{\bf \textcolor{blue}{\Alph{dapan}.}}}}
+
+%---------- Khai báo viết tắt, in đáp án
+\newcommand{\hoac}[1]{ %hệ hoặc
+    \left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{ %hệ và
+    \left\{\begin{aligned}#1\end{aligned}\right.}
+
+%Tiêu đề
+\newcommand{\tenso}{iMath}
+\newcommand{\tentruong}{Phần mềm Tạo đề ngẫu nhiên}
+\newcommand{\tenkythi}{ĐỀ ÔN TẬP}
+\newcommand{\tenmonthi}{Môn thi: Toán 12}
+\newcommand{\thoigian}{}
+\newcommand{\tieude}[1]{
+   \begin{tabular}{cm{3cm}cm{3cm}cm{3cm}}
+    {\bf \tenso} & & {\bf \tenkythi} \\
+    {\bf \tentruong} & & {\bf \tenmonthi}\\
+    && {\bf Thời gian: \bf \thoigian \, phút}\\
+    && { \fbox{\bf Mã đề: #1}}
+   \end{tabular}\\\\
+    
+   {Họ tên HS: \dotfill Số báo danh \dotfill}\\
+}
+\newcommand{\chantrang}[2]{\rfoot{Trang \thepage $-$ Mã đề #2}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\usetikzlibrary{shapes.geometric,arrows,calc,intersections,angles,quotes,patterns,snakes,positioning}
+
+\begin{document}
+%Thiết lập giãn dọng 1.5cm 
+%\setlength{\lineskip}{1.5em}
+%Nội dung trắc nghiệm bắt đầu ở đây
+
+
+\tieude{001}
+\chantrang{\pageref{LastPage}}{001}
+\setcounter{page}{1}
+{\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans001-3]
+\begin{ex}
+ Tìm giá trị của tham số ${m}$ để hàm số $f(x)=\left\{ \begin{array}{l} 
+    \dfrac{- 2 x^{2} - 2 x + 12}{8 - 4 x} \text{ khi } x\ne 2\\ 
+    m x + 5 \text{ khi } x = 2
+    \end{array} \right.$ liên tục tại $x=2$ (kết quả làm tròn đến hàng phần mười).
+
+
+\shortans[4]{-1,2}
+
+\loigiai{ 
+ Ta có: $\mathop{\lim}\limits_{x \to  2}f(x)=\frac{5}{2}$.
+
+$f(2)=2 m + 5$.
+
+Hàm số liên tục tại $x=2$ khi $2 m + 5=\frac{5}{2}$.
+
+Suy ra $m=- \frac{5}{4}=-1,2$. 
+ }\end{ex}
+
+\begin{ex}
+ Tìm giá trị của tham số ${m}$ để hàm số $f(x)=\left\{ \begin{array}{l} 
+    \dfrac{x^{2} - 5 x + 6}{8 - 4 x} \text{ khi } x\ne 2\\ 
+    - 2 m x - 4 \text{ khi } x = 2
+    \end{array} \right.$ liên tục tại $x=2$ (kết quả làm tròn đến hàng phần mười).
+
+
+\shortans[4]{-1,1}
+
+\loigiai{ 
+ Ta có: $\mathop{\lim}\limits_{x \to  2}f(x)=\frac{1}{4}$.
+
+$f(2)=- 4 m - 4$.
+
+Hàm số liên tục tại $x=2$ khi $- 4 m - 4=\frac{1}{4}$.
+
+Suy ra $m=- \frac{17}{16}=-1,1$. 
+ }\end{ex}
+
+\begin{ex}
+ Tìm giá trị của tham số ${m}$ để hàm số $f(x)=\left\{ \begin{array}{l} 
+    \dfrac{x^{2} + 2 x - 3}{- 3 x - 9} \text{ khi } x\ne -3\\ 
+    5 m x + 3 \text{ khi } x = -3
+    \end{array} \right.$ liên tục tại $x=-3$ (kết quả làm tròn đến hàng phần mười).
+
+
+\shortans[4]{0,1}
+
+\loigiai{ 
+ Ta có: $\mathop{\lim}\limits_{x \to  -3}f(x)=\frac{4}{3}$.
+
+$f(-3)=3 - 15 m$.
+
+Hàm số liên tục tại $x=-3$ khi $3 - 15 m=\frac{4}{3}$.
+
+Suy ra $m=\frac{1}{9}=0,1$. 
+ }\end{ex}
+
+\Closesolutionfile{ans}
+
+ \begin{center}
+-----HẾT-----
+\end{center}
+
+ %\newpage 
+%\begin{center}
+%{\bf BẢNG ĐÁP ÁN MÃ ĐỀ 1 }
+%\end{center}
+%{\bf Phần 3 }
+% \inputansbox{6}{ans001-3}
+\newpage 
+
+
+
+\end{document}

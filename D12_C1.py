@@ -11078,8 +11078,8 @@ def prt_34_L12_C1_B4_19():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	f_dh=(2*a*d*x**2+2*a*e*x+b*e-c*d)/(d*x+e)**2
-	f_dh_false=(2*a*d*x**2-2*a*e*x+b*e-c*d+random.randint(1,2))/(d*x+e)**2
+	f_dh=(a*d*x**2+2*a*e*x+b*e-c*d)/(d*x+e)**2
+	f_dh_false=(a*d*x**2-2*a*e*x+b*e+c*d+random.randint(1,2))/(d*x+e)**2
 
 	kq2_T=f"* Đạo hàm của hàm số là $y'={latex(f_dh)}$"
 	kq2_F=f"Đạo hàm của hàm số là $y'={latex(f_dh_false)}$"

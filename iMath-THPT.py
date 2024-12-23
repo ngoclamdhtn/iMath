@@ -1218,8 +1218,8 @@ class Ui_MainWindow(object):
         #Tree Style
                 self.treeWidget.setStyleSheet("""
             QTreeWidget::indicator {
-                width: 18px;
-                height: 18px;
+                width: 16px;
+                height: 16px;
                 border-radius: 4px; /* Bo góc nhẹ */
                 border: 0px solid #ddd; /* Viền xám nhạt */
                 background-color: #ffffff; /* Màu nền trắng */
@@ -4145,6 +4145,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C3_B3_2, ["[D11_C3_B3_07]-TF-M2. f(x)= phân thức + đa thức. Xét Đ-S:TXĐ, f(x_0), giới hạn, liên tục tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C3_B3_3 = QTreeWidgetItem(L11_C3_B3, ["Trả lời ngắn"])
+                L11_C3_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_3, ["[D11_C3_B3_08]-SA-M2. f(x)= phân thức + đa thức. Tìm m để f(x) liên tục tại x_0."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                
@@ -9334,6 +9342,10 @@ class Ui_MainWindow(object):
                                                 #[D11_C3_B3_07]-TF-M2. f(x)= phân thức + đa thức. Xét Đ-S: giới hạn, liên tục tại x_0.
                                                 if dang_toan == "[D11_C3_B3_07]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B3_07()
+
+                                                #[D11_C3_B3_08]-SA-M2. f(x)= phân thức + đa thức. Tìm m để liên tục tại x_0.
+                                                if dang_toan == "[D11_C3_B3_08]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B3_08()
 
                                     ######### Toán 11_ Chương 4-QUAN HỆ SONG SONG ########
 
