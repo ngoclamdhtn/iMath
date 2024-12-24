@@ -1215,6 +1215,11 @@ class Ui_MainWindow(object):
                
                 self.treeWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
                 self.treeWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+                # Tắt chế độ giãn cột cuối cùng
+                self.treeWidget.header().setStretchLastSection(False)
+                self.treeWidget.setColumnWidth(0, 900)  # Cột 1 rộng 200px
+                #self.treeWidget.setColumnWidth(1, 400)  # Cột 2 rộng 300px
+                #self.treeWidget.setColumnWidth(2, 400)  # Cột 3 rộng 150px
         #Tree Style
                 self.treeWidget.setStyleSheet("""
             QTreeWidget::indicator {
