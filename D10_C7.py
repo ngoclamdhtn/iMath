@@ -4,6 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+#Trả về dạng phân số 
+def phan_so(t):
+    m=latex(Rational(t).limit_denominator(100000000000))
+    return m
 def thay_heso_1x(st):
 	ketqua=st.replace("1x^2","x^2").replace("-1x^2","-x^2").replace("1x^3","x^3").replace("-1x^3","-x^3")
 	return ketqua
@@ -39,15 +43,242 @@ def tinh_va_dau_delta(a,b,c):
         dau="<0"
         x_1=""
         x_2=""
-    elif d==0:
+    if d==0:
         dau="=0"
         x_1=-b/(2*a)
         x_2=-b/(2*a)
-    else:
+    if d>0:
         dau=">0"
         x_1=(-b-sp.sqrt(d))/(2*a)
         x_2=(-b+sp.sqrt(d))/(2*a)
+        if x_1>x_2:
+            t=x_2
+            x_2=x_1
+            x_1=t
     return dau, x_1, x_2
+
+#Giải bất phương trình bậc hai
+def solve_bpt_bac2(a,b,c,dau_bpt,bien_x):
+    delta,x_1,x_2=tinh_va_dau_delta(a,b,c)
+    #ax^2 + bx + c>0
+    if dau_bpt==">0" and a>0:    
+            if delta == "<0":
+                nghiem=f"$\\forall {bien_x} \\in \\mathbb{{R}}$"
+            elif delta=="=0":
+                nghiem=f"${bien_x}\\ne {phan_so(x_1)}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${bien_x} < {x_1}$ hoặc ${bien_x} > {x_2}$"
+    if dau_bpt==">0" and a<0:
+            if delta == "<0" or delta == "=0" :
+                nghiem=f"không tồn tại ${bien_x}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${x_1} < {bien_x}< {x_2}$"
+
+    #ax^2 + bx + c<0
+    if dau_bpt=="<0" and a>0:
+
+            if delta == "<0" or delta == "=0" :
+                nghiem=f"không tồn tại ${bien_x}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${x_1} < {bien_x} <{x_2}$"            
+    if dau_bpt=="<0" and a<0:       
+            if delta == "<0":
+                nghiem=f"$\\forall {bien_x} \\in \\mathbb{{R}}$"
+            elif delta=="=0":
+                nghiem=f"${bien_x}\\ne {phan_so(x_1)}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${bien_x} < {x_1}$ hoặc ${bien_x} > {x_2}$"
+
+    #ax^2 + bx + c>0
+    if dau_bpt==">=0" and a>0:
+        
+            if delta == "<0" or delta== "=0":
+                nghiem=f"$\\forall {bien_x} \\in \\mathbb{{R}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${bien_x} \\le {x_1}$ hoặc  ${bien_x}\\ge {x_2}$"
+    if dau_bpt==">=0" and a<0:
+            if delta == "<0":
+                nghiem=f"không tồn tại ${bien_x}$"
+            elif delta == "=0":
+                nghiem=f"${bien_x} = {phan_so(x_1)}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${x_1} \\le {bien_x} \\le {x_2}$"
+    #ax^2 + bx + c<=0
+    if dau_bpt=="<=0" and a>0:
+            if delta == "<0":
+                nghiem=f"không tồn tại ${bien_x}$"
+            elif delta == "=0":
+                nghiem=f"${bien_x} = {phan_so(x_1)}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${x_1} \\le {bien_x} \\le {x_2}$"
+            
+    if dau_bpt=="<=0" and a<0:           
+
+            if delta == "<0" or delta== "=0":
+                nghiem=f"$\\forall {bien_x} \\in \\mathbb{{R}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"${bien_x} \\le {x_1}$ hoặc ${bien_x} \\ge {x_2}$"
+    return nghiem
+
+#Tìm tập nghiệm bất phương trình bậc hai
+def tapnghiem_bpt_bac2(a,b,c,dau_bpt,bien_x):
+    delta,x_1,x_2=tinh_va_dau_delta(a,b,c)
+    #ax^2 + bx + c>0
+    if dau_bpt==">0" and a>0:    
+            if delta == "<0":
+                nghiem=f"$\\mathbb{{R}}$"
+            elif delta=="=0":
+                nghiem=f"$\\mathbb{{R}}\\backslash \\left\\{{{phan_so(x_1)}\\right\\}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left(-\\infty; {x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$"
+    if dau_bpt==">0" and a<0:
+            if delta == "<0" or delta == "=0" :
+                nghiem=f"$\\emptyset$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left({x_1};{x_2}\\right)$"
+
+    #ax^2 + bx + c<0
+    if dau_bpt=="<0" and a>0:
+
+            if delta == "<0" or delta == "=0" :
+                nghiem=f"$\\emptyset$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left({x_1};{x_2}\\right)$"            
+    if dau_bpt=="<0" and a<0:       
+            if delta == "<0":
+                nghiem=f"$\\mathbb{{R}}$"
+            elif delta=="=0":
+                nghiem=f"$\\mathbb{{R}}\\backslash \\left\\{{{phan_so(x_1)}\\right\\}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left(-\\infty; {x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$"
+
+    #ax^2 + bx + c>0
+    if dau_bpt==">=0" and a>0:
+        
+            if delta == "<0" or delta== "=0":
+                nghiem=f"$\\mathbb{{R}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left(-\\infty; {x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"
+    if dau_bpt==">=0" and a<0:
+            if delta == "<0":
+                nghiem=f"$\\emptyset$"
+            elif delta == "=0":
+                nghiem=f"$\\left\\{{{phan_so(x_1)}\\right\\}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left[{x_1};{x_2}\\right]$"
+    #ax^2 + bx + c<=0
+    if dau_bpt=="<=0" and a>0:
+            if delta == "<0":
+                nghiem=f"$\\emptyset$"
+            elif delta == "=0":
+                nghiem=f"$\\left\\{{{phan_so(x_1)}\\right\\}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left[{x_1};{x_2}\\right]$"
+            
+    if dau_bpt=="<=0" and a<0:           
+
+            if delta == "<0" or delta== "=0":
+                nghiem=f"$\\mathbb{{R}}$"
+            else:
+                if check_so_nguyen(x_1):            
+                    x_1=phan_so(x_1)
+                    x_2=phan_so(x_2)
+                else:
+                    x_1=latex(x_1)
+                    x_2=latex(x_2)
+                nghiem=f"$\\left(-\\infty; {x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"
+    return nghiem
+
 
  #Trả về phép cộng với ngoặc đơn
 def show_tong(a,b):

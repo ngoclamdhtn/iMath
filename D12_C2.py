@@ -6092,4 +6092,166 @@ def mnj_34_jkl_L12_C2_B3_30():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C2_B3_31]-M2. Cho hai véctơ a và b. Tính cos(a,b)
+def mnj_34_jkl_L12_C2_B3_31():
+	a1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	a2= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	a3= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+
+	b1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	b2= random.randint(-5,5)
+	b3= random.randint(-5,5)
+
+	if b1==a1: b1=a1+random.randint(1,4)
+	list_ten=["a","u", "m", "d","b","c", "v", "w"]
+	random.shuffle(list_ten)
+
+	vt_A,vt_B=list_ten[0:2]	
+
+	vt_A=f"\\overrightarrow{{{vt_A}}}"
+	vt_B=f"\\overrightarrow{{{vt_B}}}"
+
+
+	noi_dung= thay_dau_congtru(f"Trong hệ trục tọa độ ${{Oxyz}}$, cho hai véctơ ${vt_A}=({a1};{a2};{a3})$ và ${vt_B}=({b1};{b2};{b3})$."\
+	f" Tính cosin của góc giữa hai vectơ ${vt_A}$ và ${vt_B}$.")
+	do_dai_a=sqrt(a1**2+a2**2+a3**2)
+	do_dai_b=sqrt(b1**2+b2**2+b3**2)
+	tich_vh=a1*b1+a2*b2+a3*b3
+	tich_vh_false=a1+b1*a2+b2+a3*b3
+	
+
+	kq=tich_vh/(do_dai_a*do_dai_b)
+	kq_false=[
+	(tich_vh-random.randint(1,3))/(do_dai_a*do_dai_b),
+	tich_vh/(do_dai_a+do_dai_b),
+	tich_vh/(do_dai_a),
+	tich_vh/(do_dai_b)
+	]
+	random.shuffle(kq_false)
+
+	kq2,kq3,kq4=kq_false[0:3]
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
+
+	noi_dung_loigiai=(
+	f"$\\cos({vt_A},{vt_B})=\\dfrac{{{vt_A}.{vt_B}}}{{|{vt_A}|.|{vt_B}|}}=\\dfrac{{{tich_vh} }}{{{latex(do_dai_a)}.{latex(do_dai_b)}}}={latex(kq)}$"
+	)
+
+	pa_A= f"*${latex(kq)}$"
+	pa_B= f"${latex(kq2)}$"
+	pa_C= f"${latex(kq3)}$"
+	pa_D= f"${latex(kq4)}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C2_B3_32]-M2. Tính góc giữa hai véctơ.
+def mnj_34_jkl_L12_C2_B3_32():
+	a1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	a2= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	a3= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+
+	b1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	b2= random.randint(-5,5)
+	b3= random.randint(-5,5)
+
+	if b1==a1: b1=a1+random.randint(1,4)
+	list_ten=["a","u", "m", "d","b","c", "v", "w"]
+	random.shuffle(list_ten)
+
+	vt_A,vt_B=list_ten[0:2]	
+
+	vt_A=f"\\overrightarrow{{{vt_A}}}"
+	vt_B=f"\\overrightarrow{{{vt_B}}}"
+
+
+	noi_dung= thay_dau_congtru(f"Trong hệ trục tọa độ ${{Oxyz}}$, cho hai véctơ ${vt_A}=({a1};{a2};{a3})$ và ${vt_B}=({b1};{b2};{b3})$."\
+	f" Tính góc giữa hai vectơ ${vt_A}$ và ${vt_B}$(kết quả làm tròn đến hàng phần mười).")
+	do_dai_a=sqrt(a1**2+a2**2+a3**2)
+	do_dai_b=sqrt(b1**2+b2**2+b3**2)
+	tich_vh=a1*b1+a2*b2+a3*b3
+	tich_vh_false=a1+b1*a2+b2+a3*b3
+	
+	cos_goc=tich_vh/(do_dai_a*do_dai_b)
+	kq=acos(cos_goc)
+	kq=deg(kq)
+	round_kq=f"{round(kq,2):.2f}".replace(".",",")
+
+	kq_false=[
+	random.randint(0,60)+random.randint(1,9)/10,
+	random.randint(61,120)+random.randint(1,9)/10,
+random.randint(121,180)+random.randint(1,9)/10,
+
+	]
+	random.shuffle(kq_false)
+
+	kq2,kq3,kq4=kq_false[0:3]
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
+
+
+	noi_dung_loigiai=(
+	f"$\\cos({vt_A},{vt_B})=\\dfrac{{{vt_A}.{vt_B}}}{{|{vt_A}|.|{vt_B}|}}=\\dfrac{{{tich_vh} }}{{{latex(do_dai_a)}.{latex(do_dai_b)}}}$.\n\n"
+	f"Suy ra: $({vt_A},{vt_B})={round_kq}^\\circ$."
+	)
+
+	pa_A= f"*${round(kq,2):.2f}^\\circ$".replace(".",",")
+	pa_B= f"${round(kq2,2):.2f}^\\circ$".replace(".",",")
+	pa_C= f"${round(kq3,2):.2f}^\\circ$".replace(".",",")
+	pa_D= f"${round(kq4,2):.2f}^\\circ$".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 

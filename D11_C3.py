@@ -5,6 +5,22 @@ import random
 from fractions import Fraction
 import my_module
 
+#Trả về dấu của hệ số a
+def tao_dau(a):
+    if a==0 or a<0:
+        dau=f""
+    else:
+        dau=f"+"
+    return dau
+
+#Trả về dấu ngoặc bao lấy hệ số a
+def tao_ngoac(a):
+    if a<0:
+        dau=f"({a})"
+    else:
+        dau=f"{a}"
+    return dau
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
@@ -1340,6 +1356,157 @@ def gh11gh_L11_C3_B1_15():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B1_16]-M2. Cho lim (u_n) và (v_n). Tính lim (a.un + b.vn +c)
+def gh11gh_L11_C3_B1_16():
+    #Tạo list chứa các hệ số
+    u_n = random.choice([i for i in range(-8, 8) if i!=0])
+    v_n = random.choice([i for i in range(-10, 10) if i!=0])
+
+    if v_n==u_n:
+        v_n=u_n + random.randint(2,5)
+    
+    a= random.choice([i for i in range(-4, 4) if i!=0])
+    b= random.choice([i for i in range(-4, 4) if i!=0])
+    c=random.randint(-7,7)
+
+    u,v=sp.symbols("u_n v_n")
+    dayso=a*u+b*v+c
+
+    kq= a*u_n+b*v_n+c
+    kq2=a*v_n+b*u_n+c
+    kq3=a*u_n+b*v_n +c+random.randint(1,2)
+    kq4=a*u_n+v_n-c
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    
+    #Tạo các phương án
+    pa_A= f"*${{ {phan_so(kq)} }}$"
+    pa_B= f"$ {{{phan_so(kq2)} }}$"
+    pa_C= f"$ {{ {phan_so(kq3)}}}$"
+    pa_D= f"$ {{{phan_so(kq4)} }}$"
+     #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA) 
+    noi_dung= f"Cho hai dãy số $(u_n)$ và $(v_n)$ có $\\lim u_n ={u_n}$ và $\\lim v_n ={v_n}$. Tính giới hạn $\\lim ({latex(dayso)})$."
+
+    noi_dung_loigiai=f" $\\lim ({latex(dayso)})={a}.{tao_ngoac(u_n)}+{b}.{tao_ngoac(v_n)}+{c}={phan_so(kq)}$.".replace("+-","-")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B1_17]-M2. Cho lim (u_n) và (v_n). Tính lim (a.u_n+b/c.v_n)
+def gh11gh_L11_C3_B1_17():
+    #Tạo list chứa các hệ số
+    u_n = random.choice([i for i in range(-8, 8) if i!=0])
+    v_n = random.choice([i for i in range(-10, 10) if i!=0])
+
+    if v_n==u_n:
+        v_n=u_n + random.randint(2,5)
+    
+    a= random.choice([i for i in range(-4, 4) if i!=0])
+    b= random.choice([i for i in range(-4, 4) if i!=0])
+    c= random.choice([i for i in range(-4, 4) if i!=0])
+
+    u,v=sp.symbols("u_n v_n")
+    chon=random.randint(1,2)
+    if chon==1:
+        dayso=(a*u+b)/(c*v)        
+
+        kq= (a*u_n+b)/(c*v_n)
+        kq2=a*u_n+b/(c*v_n)
+        kq3=(a*u_n)/(c*v_n)
+        kq4=(a*v_n+b)/(c*u_n)
+
+        noi_dung_loigiai=f" $\\lim ({latex(dayso)})=\\dfrac{{{a}.{tao_ngoac(u_n)}+{b}}}{{{c*v_n} }}={phan_so(kq)}$.".replace("+-","-")
+    
+    if chon==2:
+
+        dayso=(a*v+b)/(c*u)        
+
+        kq= (a*v_n+b)/(c*u_n)
+        kq2=a*u_n+b/(c*v_n)
+        kq3=(a*u_n)/(c*v_n)
+        kq4=(a*u_n+b)/(c*v_n)
+
+        noi_dung_loigiai=f" $\\lim ({latex(dayso)})=\\dfrac{{{a}.{tao_ngoac(v_n)}+{b}}}{{{c*u_n} }}={phan_so(kq)}$.".replace("+-","-")
+    
+    
+
+    noi_dung= f"Cho hai dãy số $(u_n)$ và $(v_n)$ có $\\lim u_n ={u_n}$ và $\\lim v_n ={v_n}$. Tính giới hạn $\\lim ({latex(dayso)})$."
+    
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    
+    #Tạo các phương án
+    pa_A= f"*${{ {phan_so(kq)} }}$"
+    pa_B= f"$ {{{phan_so(kq2)} }}$"
+    pa_C= f"$ {{ {phan_so(kq3)}}}$"
+    pa_D= f"$ {{{phan_so(kq4)} }}$"
+     #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA) 
+    
+
+    
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
     
  
 ########################### BÀI 2 - GIỚI HẠN HÀM SỐ ###########################

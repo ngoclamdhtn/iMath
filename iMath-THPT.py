@@ -3957,10 +3957,17 @@ class Ui_MainWindow(object):
                 L11_C3_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C3_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_07]-M1. Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu."])
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_07]-M1. Cho lim(u_n),lim(v_n). Tính lim(un+-vn)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Cho giới hạn của (u_n) và (v_n). Tính giới hạn tổng hiệu')
+
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_16]-M2. Cho lim(u_n),lim(v_n). Tính lim(au+bv+c)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_17]-M2. Cho lim (u_n) và (v_n). Tính lim (a.u_n+b)/c.v_n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)       
 
                 item = QTreeWidgetItem(L11_C3_B1_1, ["[D11_C3_B1_01]-M2. Giới hạn dãy số bậc tử = bậc mẫu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6298,6 +6305,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_1_1, ["[D12_C2_B3_31]-M2. Tìm cosin của góc giữa 2 vectơ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_1, ["[D12_C2_B3_32]-M2. Tìm góc giữa 2 vectơ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C2_B3_1_1, ["[D12_C2_B3_04]-M3. Tìm m để hai vectơ vuông góc."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7965,6 +7980,14 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D12_C2_B3_30]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_30()
 
+                                            #[D12_C2_B3_31]-M2. Cho hai véctơ a và b. Tính cos(a,b)
+                                                if dang_toan == "[D12_C2_B3_31]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_31()
+
+                                            #[D12_C2_B3_32]-M2. Cho hai véctơ a và b. Tính cos(a,b)
+                                                if dang_toan == "[D12_C2_B3_32]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_32()
+
 
 
                                         #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->
@@ -9255,6 +9278,14 @@ class Ui_MainWindow(object):
                                                 #[D11_C3_B1_15]-SA-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số nhân
                                                 if dang_toan == "[D11_C3_B1_15]": 
                                                         debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_15()
+
+                                                #[D11_C3_B1_16]. Cho giới hạn của (u_n) và (v_n). Cho lim (u_n) và (v_n). Tính lim (a.un + b.vn +c)
+                                                if dang_toan == "[D11_C3_B1_16]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_16()
+
+                                                #[D11_C3_B1_17].  Cho lim (u_n) và (v_n). Tính lim (a.u_n+b/c.v_n)
+                                                if dang_toan == "[D11_C3_B1_17]": 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_17()
 
                                                 #Bài 2: GIỚI HẠN HÀM SỐ
                                                 #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
