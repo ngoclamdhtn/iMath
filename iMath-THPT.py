@@ -840,7 +840,7 @@ class Ui_MainWindow(object):
                 self.label.setText("*Quy trình chung để tạo đề:")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+40, 700, 30))
+                self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+40, 800, 30))
                 self.label.setFont(font)        
                 self.label.setText("1. Sổ mũi tam giác phía trước, chọn vào mã dạng toán, nhập số lượng câu lấy ở tab Thiết lập ma trận.")
 
@@ -1217,7 +1217,7 @@ class Ui_MainWindow(object):
                 self.treeWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
                 # Tắt chế độ giãn cột cuối cùng
                 self.treeWidget.header().setStretchLastSection(False)
-                self.treeWidget.setColumnWidth(0, 900)  # Cột 1 rộng 200px
+                self.treeWidget.setColumnWidth(0, 1100)  # Cột 1 rộng 200px
                 #self.treeWidget.setColumnWidth(1, 400)  # Cột 2 rộng 300px
                 #self.treeWidget.setColumnWidth(2, 400)  # Cột 3 rộng 150px
         #Tree Style
@@ -1249,7 +1249,7 @@ class Ui_MainWindow(object):
             }
 
             QTreeWidget {
-                font-size: 10pt; /* Cỡ chữ */
+                font-size: 9.5pt; /* Cỡ chữ */
                 color: #333333; /* Màu chữ */
             }
         """) 
@@ -6081,6 +6081,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_07]-TF-M3. Xét Đ-S: Cho chi phí trung bình C(x). Xét Đ-S: C(x_0), C'(x), sự tăng giảm, C_min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B5_3 = QTreeWidgetItem(L12_C1_B5, ["Trả lời ngắn"])
                 L12_C1_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7728,6 +7732,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C1_B5_06]-TF-M3. Xét Đ-S: Thể tích hộp khi cắt 4 góc.
                                                 if dang_toan == "[D12_C1_B5_06]": 
                                                         debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_06()
+
+                                                #[D12_C1_B5_07]-TF-M3. Xét Đ-S: Cho hàm số chi phí trung bình C(x). Xét Đ-S: C(x_0), C'(x), sự tăng giảm, C_min.
+                                                if dang_toan == "[D12_C1_B5_07]": 
+                                                        debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_07()
 
                                                     
 

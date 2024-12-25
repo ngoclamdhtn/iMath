@@ -11858,47 +11858,90 @@ def prt_34_L12_C1_B5_06():
 	return debai,debai_latex,loigiai_word,dap_an
 
 
-#[D12_C1_B5_06]-TF-M3. Xét Đ-S: Thể tích hộp khi cắt 4 góc.
-def prt_34_L12_C1_B5_06():
+#[D12_C1_B5_07]-TF-M3. Cho chi phí trung bình C(x). Xét Đ-S: C(x_0), C'(x), sự tăng giảm, C_min.
+def prt_34_L12_C1_B5_07():
 	x=sp.symbols("x")
 
 	a=random.randint(1,10)
-	b=random.randint(200,2)
+	b=random.randint(100,400)
 
-	ham
+	f=(a*x**2+b)/(x)
 
-	noi_dung = f"Nếu trong một ngày, một xưởng sản xuất được ${{x}}$ kilôgam sản phẩm thì chi phí trung bình (tính bằng nghìn đồng)."
-	f" cho một sản phẩm được tính bởi công thức Xét tính đúng-sai của các khẳng định sau. "		
-	debai_word= f"{noi_dung}\n"
+	noi_dung =(f"Nếu trong một ngày, một xưởng sản xuất được ${{x}}$ kilôgam sản phẩm thì chi phí trung bình (tính bằng nghìn đồng)"
+	f" cho một sản phẩm được tính bởi công thức $C(x)={latex(f)}$.\n\n Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần mười). ")		
 	
-	kq1_T=f"*" 
-	kq1_F=f" "
+	x_0=random.randint(15,45)
+	y_0=f.subs(x,x_0)
+	round_y_0=f"{round(y_0,1):.1f}".replace(".",",")
+	round_y_0_false=f"{round(y_0+random.randint(1,3),1):.1f}".replace(".",",")
+
+	kq1_T=f"* Chi phí trung bình cho một sản phẩm khi sản xuất ${{{x_0}}}$ kilôgam là {round_y_0} (nghìn đồng)" 
+	kq1_F=f"Chi phí trung bình cho một sản phẩm khi sản xuất ${{{x_0}}}$ kilôgam là {round_y_0_false} (nghìn đồng)"
 	kq1=random.choice([kq1_T, kq1_F])
-	HDG=f" "
+	HDG=(f"Chi phí trung bình cho một sản phẩm khi sản xuất ${{{x_0}}}$ kilôgam là:\n\n"
+		f"$C({x_0})={round_y_0}$ (nghìn đồng).")
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=f"* "
-	kq2_F=f" "
+	kq2_T=f"* Đạo hàm số của hàm số đã cho là $C'(x)= \\dfrac{{{latex(a*x**2-b)}}}{{x^2}}$"
+	kq2_F=f"Đạo hàm số của hàm số đã cho là $C'(x)= \\dfrac{{{latex(a*x**2-b)}}}{{x}}$"
 	kq2=random.choice([kq2_T, kq2_F])
-	HDG=f""
+	HDG=f"$C'(x)=\\left({a}x+{latex(b/x)}\\right)'={a}-{latex(b/x**2)}=\\dfrac{{{latex(a*x**2-b)}}}{{x^2}}$."
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq3_T=f"* " 
-	kq3_F=f" "
+	x_1=sqrt(b/a)
+	y_1=f.subs(x,x_1)
+	x_1=latex(nsimplify(x_1))
+	y_1=f"{round(y_1,1):.1f}"
+
+	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
+					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
+					{{$x$/0.7, $C'(x)$/0.7, $C(x)$/1.8}}\n\
+					{{$0$,${x_1}$,$+\\infty$}}\n\
+					\\tkzTabLine{{,-,$0$,+,}}\n\
+					\\tkzTabVar{{+/$+\\infty$ ,-/ ${y_1}$ ,+/$+\\infty$}}	\n\
+				\\end{{tikzpicture}}"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_BBT)
+	file_name_BBT=my_module.pdftoimage_timename(code)
+	
+
+	chon=random.randint(1,2)
+	if chon==1:
+		x_1=int(sqrt(b/a))-random.randint(1,3)
+		kq3_T=f"* Chi phí trung bình cho một sản phẩm giảm dần khi $0<x<{x_1}$" 
+		kq3_F=random.choice([
+			f"Chi phí trung bình cho một sản phẩm tăng dần khi $x<{x_1}$",
+			f"Chi phí trung bình cho một sản phẩm giảm dần khi $x<{x_1}$"])
+	if chon==2:
+		x_1=int(sqrt(b/a))+random.randint(1,6)
+		kq3_T=f"* Chi phí trung bình cho một sản phẩm tăng dần khi $x>{x_1}$" 
+		kq3_F=f"Chi phí trung bình cho một sản phẩm giảm dần khi $x>{x_1}$"
+	
+	HDG=(f"$C'(x)=0\\Leftrightarrow {latex(a*x**2-b)}=0\\Rightarrow x={latex(nsimplify(sqrt(b/a)))}$.\n\n"
+		f"Dựa vào bảng biến thiên ta thấy:\n\n"
+		f"$C(x)$ tăng khi $x>{latex(nsimplify(sqrt(b/a)))}$, giảm khi $0<x<{latex(nsimplify(sqrt(b/a)))}$."
+		)
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=f""
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"* "
-	kq4_F=f" " 
+	x_1=sqrt(b/a)
+	y_1=f.subs(x,x_1)	
+	y_1=f"{round(y_1,1):.1f}".replace(".",",")
+
+	
+	y_2=f.subs(x,x_1)+random.randint(1,3)
+	y_2=f"{round(y_2,1):.1f}".replace(".",",")
+
+	kq4_T=f"* Chi phí trung bình cho một sản phẩm nhỏ nhất bằng ${{{y_1}}}$ (nghìn đồng)."
+	kq4_F=f"Chi phí trung bình cho một sản phẩm nhỏ nhất bằng ${{{y_2}}}$ (nghìn đồng)." 
 	kq4=random.choice([kq4_T, kq4_F])
-	HDG=f""
+	HDG=f"Dựa vào bảng biến thiên ta có chi phí trung bình cho một sản phẩm nhỏ nhất bằng ${{{y_1}}}$ (nghìn đồng)."
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
 		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -11926,14 +11969,15 @@ def prt_34_L12_C1_B5_06():
 
 
 	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
-	f"\n\n a) {loigiai[0]}\n"\
+	f"a) {loigiai[0]}\n"\
 	f"b) {loigiai[1]}\n"\
 	f"c) {loigiai[2]}\n"\
 	f"d) {loigiai[3]}\n"\
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+	loigiai_word=f"Lời giải:\n{file_name_BBT}\n {noi_dung_loigiai} \n" \
 
-	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	loigiai_latex=f"\\begin{{center}}\n{code_hinh_BBT}\n\\end{{center}}\n\n"\
+	f"a) {loigiai[0]}\n\n"\
 	f"b) {loigiai[1]}\n\n"\
 	f"c) {loigiai[2]}\n\n"\
 	f"d) {loigiai[3]}\n\n"
