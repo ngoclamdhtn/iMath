@@ -6081,7 +6081,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_07]-TF-M3. Xét Đ-S: Cho chi phí trung bình C(x). Xét Đ-S: C(x_0), C'(x), sự tăng giảm, C_min."])
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_07]-TF-M3. Cho chi phí trung bình C(x). Xét Đ-S: C(x_0), C'(x), sự tăng giảm, C_min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_08]-TF-M3. Cho hộp có V và h. Xét Đ-S: y=kx, S_tp, đạo hàm, Stp_min."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7737,6 +7741,10 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D12_C1_B5_07]": 
                                                         debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_07()
 
+                                                #[D12_C1_B5_08]-TF-M3. Cho hộp có V và h. Xét Đ-S: y=kx, S_tp, đạo hàm, Stp_min.
+                                                if dang_toan == "[D12_C1_B5_08]": 
+                                                        debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_08()
+
                                                     
 
                                     ######### Toán 12_ Chương 2 - TỌA ĐỘ VECTƠ TRONG KHÔNG GIAN ########
@@ -9068,7 +9076,7 @@ class Ui_MainWindow(object):
                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B5_17()
 
                                                 #[D11_C1_B5_18]-TF-M3. Cho tanax=m. Xét Đ-S: tanax=tanv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
-                                                if dang_toan == "[D11_C1_B5_17]": 
+                                                if dang_toan == "[D11_C1_B5_18]": 
                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B5_18()
                                                 
 

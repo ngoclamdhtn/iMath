@@ -11895,7 +11895,7 @@ def prt_34_L12_C1_B5_07():
 	x_1=sqrt(b/a)
 	y_1=f.subs(x,x_1)
 	x_1=latex(nsimplify(x_1))
-	y_1=f"{round(y_1,1):.1f}"
+	y_1=f"{round(y_1,1):.1f}".replace(".","\\text{{,}}")
 
 	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
 					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
@@ -11991,6 +11991,126 @@ def prt_34_L12_C1_B5_07():
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_08]-TF-M3. Cho hộp có V và h. Xét Đ-S: y=kx, S_tp, đạo hàm, Stp_min.
+def prt_34_L12_C1_B5_08():
+	x,y=sp.symbols("x y")
+
+	h=random.randint(1,20)
+	if h<10:
+		V=h*random.choice([10*i for i in range(2,7)])
+	else:
+		V=h*random.choice([10*i for i in range(1,5)])
+
+
+	noi_dung = (f"Người ta chế tạo một chiếc hộp chữ nhật có thể tích ${V}cm^3$, chiều cao là ${{{h}}}$ cm."
+	f" Gọi $x,y$ là các kích thước còn lại của chiếc hộp với $x>0,y>0$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")	
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* $y={latex(V/(h*x))}$" 
+	kq1_F=f"$y={latex(V/x)}$"
+	
+	HDG=f"$V={latex(x*y*h)}={V}\\Rightarrow xy={phan_so(V/h)}\\Rightarrow y={latex(V/(h*x))}$."
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Diện tích toàn phần của chiếc hộp là $S(x)={phan_so(2*V/h)}+{latex(2*h*x+2*V/x)}$"
+	kq2_F=f"Diện tích toàn phần của chiếc hộp là $S(x)={phan_so(2*V/h)}+{latex(h*x+2*V/x)}$"
+
+
+	
+	HDG=(f"Diện tích toàn phần của chiếc hộp là:\n\n"
+	f"$S(x)=2xy+2x.{h}+2y.{h}=2.{phan_so(V/h)}+2x.{h}+{2*h}.{latex(V/(h*x))}={phan_so(2*V/h)}+{latex(2*h*x+2*V/x)}$.")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* $S'(x)=\\dfrac{{{2*h}x^2-{2*V}}}{{x^2}}$" 
+	kq3_F=f"$S'(x)=\\dfrac{{{h}x^2-{V}}}{{x^2}}$ "
+	
+	HDG=f"$S'(x)={2*h}-{latex(2*V/x**2)}=\\dfrac{{{2*h}x^2-{2*V}}}{{x^2}}$."
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x_0=latex(sqrt(int(V/h)))
+	x_0_false=latex(sqrt(int(V/h+random.randint(1,3))))
+
+	f=2*V/h+2*h*x+2*V/x
+	y_0=f"{round(f.subs(x,sqrt(V/h)),2):.2f}".replace(".","\\text{{,}}")
+	kq4_T=f"* Chi phí vật liệu làm hộp nhỏ nhất khi $x={x_0}$"
+	kq4_F=f"Chi phí vật liệu làm hộp nhỏ nhất khi $x={x_0_false}$"
+
+	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
+					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
+					{{$x$/0.7, $S'(x)$/0.7, $S(x)$/1.8}}\n\
+					{{$0$,${x_0}$,$+\\infty$}}\n\
+					\\tkzTabLine{{,-,$0$,+,}}\n\
+					\\tkzTabVar{{+/$+\\infty$ ,-/ ${y_0}$ ,+/$+\\infty$}}	\n\
+				\\end{{tikzpicture}}"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_BBT)
+	file_name_BBT=my_module.pdftoimage_timename(code)
+	
+	HDG=(f"$S'(x)=0 \\Leftrightarrow {2*h}x^2-{2*V}=0\\Rightarrow x={latex(sqrt(int(V/h)))}$.\n\n"
+		f"Dựa vào bảng biến thiên ta có: $S(x)_{{min}}={y_0}$ khi $x={latex(sqrt(int(V/h)))}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n{file_name_BBT}\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\\begin{{center}}\n{code_hinh_BBT}\n\\end{{center}}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
 
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
