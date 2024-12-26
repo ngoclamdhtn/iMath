@@ -12116,6 +12116,167 @@ def prt_34_L12_C1_B5_08():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C1_B5_09]-SA-M3. Cho hàm số lượng vi khuẩn. Tìm số vi khuẩn lớn nhất
+def prt_34_L12_C1_B5_09():
+	t=sp.symbols("t")
+	a=random.randint(100,200)
+	b=random.randint(100,400)
+	N=random.randint(1000,2000)
+	f=N+a*t/(b+t**2)
+	N_max=f"{round(f.subs(t,sqrt(b)),0):.0f}".replace(".",",")
+
+	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
+					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
+					{{$x$/0.7, $N'(x)$/0.7, $N(x)$/1.8}}\n\
+					{{$0$,${latex(sqrt(b))}$,$+\\infty$}}\n\
+					\\tkzTabLine{{,+,$0$,-,}}\n\
+					\\tkzTabVar{{-/$-\\infty$ ,+/ ${N_max}$ ,-/${N}$}}	\n\
+				\\end{{tikzpicture}}"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_BBT)
+	file_name_BBT=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"	Trong một thí nghiệm y học, người ta cấy ${{{N}}}$ vi khuẩn vào môi trường dinh dưỡng."
+	f" Bằng thực nghiệm, người ta xác định được số lượng vi khuẩn thay đổi theo thời gian bởi công thức:"
+	f" $N(t)={latex(f)}$ (con),"
+	f" trong đó $t$ là thời gian tính bằng giây. Tính số lượng vi khuẩn lớn nhất kể từ khi thực hiện cấy vi khuẩn vào môi trường dinh dưỡng"
+	f" (kết quả làm tròn đến hàng đơn vị)."
+	)
+	dap_an=N_max
+
+	noi_dung_loigiai=(
+	f"Ta có: $N'(t)=\\dfrac{{{a}({b}+t^2)-{a}t.2t}}{{(t^2+{b})^2}}=\\dfrac{{-{a}t^2+{a*b}}}{{(t^2+{b})^2}}$.\n\n"
+	f"$N'(t)=0 \\Leftrightarrow -{a}t^2+{a*b}=0 \\Rightarrow t={latex(sqrt(b))}$.\n\n"
+	f"Lập bảng biến thiên, ta thấy: $N_{{max}}=N({latex(sqrt(b))})={N_max}$."
+
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name_BBT}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n \\begin{{center}}\n{code_hinh_BBT}\n\\end{{center}}\n{noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_10]-SA-M3. Cho hàm số số lượng vi khuẩn. Xét Đ-S:
+def prt_34_L12_C1_B5_10():
+	t=sp.symbols("t")
+	a=random.randint(100,200)
+	b=random.randint(100,400)
+	N=random.randint(1000,2000)
+	f=N+a*t/(b+t**2)
+	N_max=f"{round(f.subs(t,sqrt(b)),0):.0f}".replace(".",",")
+	N_max_false=f"{round(f.subs(t,sqrt(b))+random.randint(10,20),0):.0f}".replace(".",",")
+
+	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
+					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
+					{{$x$/0.7, $N'(x)$/0.7, $N(x)$/1.8}}\n\
+					{{$0$,${latex(sqrt(b))}$,$+\\infty$}}\n\
+					\\tkzTabLine{{,+,$0$,-,}}\n\
+					\\tkzTabVar{{-/$-\\infty$ ,+/ ${N_max}$ ,-/${N}$}}	\n\
+				\\end{{tikzpicture}}"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_BBT)
+	file_name_BBT=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"	Trong một thí nghiệm y học, người ta cấy ${{{N}}}$ vi khuẩn vào môi trường dinh dưỡng."
+	f" Bằng thực nghiệm, người ta xác định được số lượng vi khuẩn thay đổi theo thời gian bởi công thức:"
+	f" $N(t)={latex(f)}$ (con),"
+	f" trong đó $t$ là thời gian tính bằng giây. Xét tính đúng-sai của các khẳng định sau"
+	f" (kết quả làm tròn đến hàng đơn vị)."
+	)
+	t_0=random.randint(2,10)
+	y_0=f"{round(f.subs(t,t_0),0):.0f}"
+	y_0_false=f"{round(f.subs(t,t_0)+random.randint(10,20),0):.0f}"
+	kq1_T=f"* Số lượng vi khuẩn sau {t_0} giây bằng ${{{y_0}}}$" 
+	kq1_F=f"Số lượng vi khuẩn sau {t_0} giây bằng: ${{{y_0_false}}}$"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Số lượng vi khuẩn sau 10 giây bằng: $N({t_0})={{{y_0}}}$."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Đạo hàm của hàm số là $N'(t)=\\dfrac{{-{a}t^2+{a*b}}}{{(t^2+{b})^2}}$"
+	kq2_F=f"Đạo hàm của hàm số là $N'(t)=\\dfrac{{-{a}t^2+{b}}}{{(t^2+{b})^2}}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Ta có: $N'(t)=\\dfrac{{{a}({b}+t^2)-{a}t.2t}}{{(t^2+{b})^2}}=\\dfrac{{-{a}t^2+{a*b}}}{{(t^2+{b})^2}}$.\n\n"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Số lượng vi khuẩn tăng dần khi $0<t<{int(sqrt(b))-random.randint(1,5)}$" 
+	kq3_F=f"Số lượng vi khuẩn giảm dần khi $0<t<{int(sqrt(b))-random.randint(1,5)}$"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"$N'(t)=0 \\Leftrightarrow -{a}t^2+{a*b}=0 \\Rightarrow t={latex(sqrt(b))}$.\n\n"
+		f"$N'(t)>0$ khi $t \\in (0;{latex(sqrt(b))})$, $N'(t)<0$ khi $t \\in ({latex(sqrt(b))};+\\infty)$.")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Số lượng vi khuẩn đạt lớn nhất bằng ${{{N_max}}}$"
+	kq4_F=f"Số lượng vi khuẩn đạt lớn nhất bằng ${{{N_max_false}}}$" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Lập bảng biến thiên, ta thấy: $N_{{max}}=N({latex(sqrt(b))})={N_max}$."
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n{file_name_BBT}\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n \\begin{{center}}\n{code_hinh_BBT}\n\\end{{center}}\n{loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
 
 
 

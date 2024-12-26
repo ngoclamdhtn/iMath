@@ -6109,6 +6109,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_09]-SA-M3. Cho hàm số lượng vi khuẩn. Tìm số vi khuẩn lớn nhất"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 
 
 
@@ -7744,6 +7748,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C1_B5_08]-TF-M3. Cho hộp có V và h. Xét Đ-S: y=kx, S_tp, đạo hàm, Stp_min.
                                                 if dang_toan == "[D12_C1_B5_08]": 
                                                         debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_08()
+
+                                                #[D12_C1_B5_09]-SA-M3. Cho hàm số lượng vi khuẩn. Tìm số vi khuẩn lớn nhất
+                                                if dang_toan == "[D12_C1_B5_09]": 
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_09()
 
                                                     
 
