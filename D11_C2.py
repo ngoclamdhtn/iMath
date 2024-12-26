@@ -1513,11 +1513,12 @@ def mn8mn_L11_C2_B2_17():
             f"${{{u1+d}}}$ xe trong hàng thứ hai, ${{{u1+2*d}}}$ xe trong hàng thứ ba, và cứ thế tiếp tục."
             f" Hãy tìm số xe có thể đỗ được nếu có ${{{n}}}$ hàng đỗ trong rạp."
         )        
-        dap_an=u_n
+        dap_an=S_n
         noi_dung_loigiai=(
         f"Số xe ở mỗi hàng lập thành một cấp số cộng $(u_n)$ với"
         f" số ${{u_n}}$ là số xe ở hàng thứ ${{n}}$ và $u_1={u1}$ và công sai $d={d}$.\n\n"
         f" Số xe đỗ ở hàng thứ ${{{n}}}$: $u_{{{n}}}={u1}+{n-1}.{d}={u1+(n-1)*d}$.\n\n"
+        f" Tổng số xe có thể đổ: $S_{{{n}}}=\\dfrac{{{n}}}{{2}}[2.{u1}+{n-1}.{d}]={S_n}$.\n\n"
         f"Đáp án: {dap_an}")
     
     if chon==3:

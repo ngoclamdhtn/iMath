@@ -302,7 +302,7 @@ def treqw_L11_C5_B1_03():
 
 	dap_an=my_module.tra_ve_dap_an(list_PA) 
 	debai= f"{noi_dung}\n"\
-	f"{file_name}\n" \
+	f"{file_name}\n"\
 	f" Tính {ten_nhom.lower()} trung bình từ mẫu số liệu ghép nhóm trên.\n"
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
