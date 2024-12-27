@@ -2209,10 +2209,10 @@ def y7y7u_L10_C5_B3_01():
 	if chon==5:
 		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${{G}}$ là trọng tâm của tam giác ${{{B}{C}{D}}}$."\
 		f" Gọi ${vec("x")}={vec(f"{AB}")}+{vec(f"{AC}")}+{vec(f"{AD}")}$. Tìm khẳng định đúng."
-		kq=f"${vec("x")}={vec(f"{A}G")}$"
+		kq=f"${vec("x")}=3{vec(f"{A}G")}$"
 		kq2=f"${vec("x")}=\\dfrac{{2}}{{3}}{vec(f"{A}G")}$"
 		kq3=f"${vec("x")}=\\dfrac{{3}}{{2}}{vec(f"{A}G")}$"
-		kq4=f"${vec("x")}=3{vec(f"{A}G")}$"
+		kq4=f"${vec("x")}=2{vec(f"{A}G")}$"
 		noi_dung_loigiai=f"{kq} là khẳng định đúng."
 	pa_A= f"*{kq}"
 	pa_B= f"{kq2}"

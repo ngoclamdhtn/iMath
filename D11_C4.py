@@ -1121,7 +1121,7 @@ def ghj_7_jkl_L11_C4_B2_03():
 		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",		
 		f"Điểm ${{{M}}}$ không thuộc đường thẳng ${{{b}}}$",
 		f"Điểm ${{{M}}}$ và ${{{a}}}$ cùng nằm trong một mặt phẳng",
-		f"Có duy nhất một mặt phẳng chứa điểm ${{{b}}}$ và song song với ${{{a}}}$"
+		f"Có duy nhất một mặt phẳng chứa điểm ${{{M}}}$ và đường thẳng ${{{b}}}$"
 		 ])
 		kq_false=[
 		f"${{{a}}}$ và ${{{b}}}$ song song",
@@ -1166,7 +1166,7 @@ def ghj_7_jkl_L11_C4_B2_03():
 		f"${{{a}}}$ và ${{{b}}}$ không có điểm chung",		
 		f"Điểm ${{{M}}}$ không thuộc đường thẳng ${{{b}}}$",
 		f"Điểm ${{{M}}}$ và ${{{a}}}$ cùng nằm trong một mặt phẳng",
-		f"Có duy nhất một mặt phẳng chứa điểm ${{{b}}}$ và song song với ${{{a}}}$",
+		f"Có duy nhất một mặt phẳng chứa điểm ${{{M}}}$ và đường thẳng ${{{b}}}$"
 
 
 		]

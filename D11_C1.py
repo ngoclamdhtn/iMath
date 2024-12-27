@@ -211,8 +211,8 @@ def ngh_kjg_L11_C1_B1_05():
     dap_an=my_module.tra_ve_dap_an(list_PA)
     
 
-    debai= f"{noi_dung}\n\n"\
-    f"{file_name}\n"      
+    debai=(f"{noi_dung}\n"
+    f"{file_name}\n")      
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"     
    
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
