@@ -6411,7 +6411,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_35]-TF-M3. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm M thỏa mãn đẳng thức vectơ."])
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_35]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài vectơ, tổng-hiệu, Góc, Tìm M thỏa mãn đẳng thức vectơ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_37]-TF-M3. Cho tam giác. Xét Đ-S: Trung điểm hoặc trọng tâm, Góc nhọn hay tù, Điểm đối xứng, tìm M để MA+MB min."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8064,6 +8068,10 @@ class Ui_MainWindow(object):
                                             #[D12_C2_B3_36]-SA-M3. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min
                                                 if dang_toan == "[D12_C2_B3_36]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_36()
+
+                                            #[D12_C2_B3_37]-TF-M3. Cho tam giác. Xét Đ-S: Trung điểm hoặc trọng tâm, Góc nhọn hay tù, Điểm đối xứng, tìm M để MA+MB min.
+                                                if dang_toan == "[D12_C2_B3_37]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_37()
 
 
 

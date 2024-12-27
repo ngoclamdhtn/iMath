@@ -274,7 +274,7 @@ def tao_3dinh_tamgiac():
 	y_3 = y_0+b*t3
 	z_3 = z_0+c*(t3-random.randint(1,2))
 
-	while z_1==0 or z_2==0:
+	while x_1==0 or x_2==0 or z_1==z_2:
 		t1=random.choice([random.randint(-3, -1), random.randint(1, 3)])
 		x_1 = x_0+a*t1
 		y_1 = y_0+b*t1
@@ -6839,7 +6839,7 @@ def mnj_34_jkl_L12_C2_B3_34():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D12_C2_B3_35]-TF-M3. Cho tam giác. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm M thỏa mãn đẳng thức vectơ.
+#[D12_C2_B3_35]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài vectơ, Tổng-hiệu, Góc, Tìm M thỏa mãn đẳng thức vectơ.
 def mnj_34_jkl_L12_C2_B3_35():
 	ten=["A","B","C","D","E","M","N","P"]
 	random.shuffle(ten)
@@ -6874,38 +6874,18 @@ def mnj_34_jkl_L12_C2_B3_35():
 	vec_AC=f"{vec(f"{A}{C}")}"
 	vec_BC=f"{vec(f"{B}{C}")}"
 
-	chon=random.randint(1,4)
+	chon=random.randint(1,2)
 	if chon==1:
-		kq1_T=f"* ${vec_AB}=({x_AB};{y_AB};{z_AB})$" 
-		kq1_F=random.choice([
-			f"${vec_AB}=({-x_AB};{-y_AB};{z_AB+random.randint(1,2)})$",
-			f"${vec_AB}=({x_AB+random.randint(1,2)};{-y_AB};{-z_AB})$",
-			])
-		HDG=(f"${vec_AB}=({x_AB};{y_AB};{z_AB})$.")
-	
+		kq1_T=f"* $|{vec_AB}|={latex(sqrt(x_AB**2+y_AB**2+z_AB**2))}$" 
+		kq1_F=f"$|{vec_AB}|={latex(sqrt(x_AB**2+y_AB**2+z_AB**2+random.randint(1,2)))}$"
+		HDG=(f"${vec_AB}=({x_AB};{y_AB};{z_AB})$."
+			f"$\\Rightarrow |{vec_AB}|={latex(sqrt(x_AB**2+y_AB**2+z_AB**2))}$")
+
 	if chon==2:
-		kq1_T=f"* ${vec_AC}=({x_AC};{y_AC};{z_AC})$" 
-		kq1_F=random.choice([
-			f"${vec_AC}=({-x_AC};{-y_AC};{z_AC+random.randint(1,2)})$",
-			f"${vec_AC}=({x_AC+random.randint(1,2)};{-y_AC};{-z_AC})$",
-			])
-		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$.")
-
-	if chon==3:
-		kq1_T=f"* ${vec_BC}=({x_BC};{y_BC};{z_BC})$" 
-		kq1_F=random.choice([
-			f"${vec_BC}=({-x_BC};{-y_BC};{z_BC+random.randint(1,2)})$",
-			f"${vec_BC}=({x_BC+random.randint(1,2)};{-y_BC};{-z_BC})$",
-			])
-		HDG=(f"${vec_BC}=({x_BC};{y_BC};{z_BC})$.")
-
-	if chon==4:
-		kq1_T=f"* ${vec_BA}=({x_BA};{y_BA};{z_BA})$" 
-		kq1_F=random.choice([
-			f"${vec_BA}=({-x_BA};{-y_BA};{z_BA+random.randint(1,2)})$",
-			f"${vec_BA}=({x_BA+random.randint(1,2)};{-y_BA};{-z_BA})$",
-			])
-		HDG=(f"${vec_BA}=({x_BA};{y_BA};{z_BA})$.")
+		kq1_T=f"* $|{vec_AC}|={latex(sqrt(x_AC**2+y_AC**2+z_AC**2))}$" 
+		kq1_F=f"$|{vec_AC}|={latex(sqrt(x_AC**2+y_AC**2+z_AC**2+random.randint(1,2)))}$"
+		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$."
+			f"$\\Rightarrow |{vec_AC}|={latex(sqrt(x_AC**2+y_AC**2+z_AC**2))}$")	
 
 	kq1=random.choice([kq1_T, kq1_F])	
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -6916,17 +6896,19 @@ def mnj_34_jkl_L12_C2_B3_35():
 	AC=sqrt(x_AC**2+y_AC**2+z_AC**2)
 	AC_false=sqrt(x_AC**2+y_AC**2+z_AC**2+random.randint(1,3))
 
-	chon=random.randint(1,2)
-	if chon==1:
-		kq2_T=f"*$|{vec_BC}+{vec_AB}|={latex(AC)}$"
-		kq2_F=f" $|{vec_BC}+{vec_AB}|={latex(AC_false)}$"		
-		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
-			f"$|{vec_BC}+{vec_AB}|=|{vec_AB}+{vec_BC}|=|{vec_AC}|={latex(AC)}$.")	
-	if chon==2:
-		kq2_T=f"*$|{vec(f"{B}{C}")}-{vec(f"{B}{A}")}|={latex(AC)}$"
-		kq2_F=f" $|{vec(f"{B}{C}")}-{vec(f"{B}{A}")}|={latex(AC_false)}$"		
-		HDG=(f"${vec_AC}=({x_AC};{y_AC};{z_AC})$.\n\n"
-			f"$|{vec(f"{B}{C}")}-{vec(f"{B}{A}")}|=|{vec_AC}|={latex(AC)}$.")	
+	m=random.randint(2,4)
+	n = random.choice([i for i in range(-3, 4) if i!=0 and i!=-1])
+
+	x,y,z=m*x_BC+n*x_AB, m*y_BC+n*y_AB, m*z_BC+n*z_AB
+
+	
+	kq2_T=f"* Vectơ ${vec("u")}={m}{vec_BC}+{n}{vec_AB}$ có tọa độ là $({x};{y};{z})$".replace("+-","-").replace("+1","+")
+	kq2_F=f"Vectơ ${vec("u")}={m}{vec_BC}+{n}{vec_AB}$ có tọa độ là $({x};{y+random.randint(1,2)};{z})$".replace("+-","-").replace("+1","+")
+	HDG=(f"${vec_BC}=({x_BC};{y_BC};{z_BC})$.\n\n"
+		f"${vec_AB}=({x_AB};{y_AB};{z_AB})$.\n\n"
+		f"${vec("u")}={m}{vec_BC}+{n}{vec_AB}=({x};{y};{z})$.")
+	HDG=HDG.replace("+-","-").replace("+1","+")
+
 	
 	kq2=random.choice([kq2_T, kq2_F])
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -7285,13 +7267,56 @@ def mnj_34_jkl_L12_C2_B3_37():
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	if a3*b3<0:
-		HDG=(f"${M}{A}+{M}{B} \\ge {A}{B}$.\n\n"
-			f"${M}{A}+{M}{B}$")
 
+	if a3*b3<=0:
+		HDG=(f"Ta thấy: ${{{A},{B}}}$ nằm khác phía so với mặt phẳng $(Oxy)$.\n\n"
+			f"${M}{A}+{M}{B} \\ge {A}{B}$.\n\n"
+			f"${M}{A}+{M}{B}$ nhỏ nhất khi ${{{A},{M},{B}}}$ thẳng hàng.\n\n"
+			f"Gọi ${M}(a;b;0)$.\n\n"
+			f"${vec2(A,B)}=({x_AB};{y_AB};{z_AB})$.\n\n"
+			f"${vec2(A,M)}=(a-{a1};b-{a2};{-a3})$.\n\n"
+			f"Ta có: ${vec2(A,M)}=k{vec2(A,B)}$\n\n"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			a-{a1}=k.{tao_ngoac(x_AB)} \\\\ \n\
+			b-{a2}=k.{tao_ngoac(y_AB)} \\\\ \n\
+			{-a3}=k.{tao_ngoac(z_AB)}\n\
+			\\end{{array}} \\right.$\n\n"
+			f"$\\Rightarrow a={phan_so(-a3*x_AB/z_AB+a1)}, b={phan_so(-a3*y_AB/z_AB+a2)}$\n\n"
+			f"Vậy: $a+b+c={phan_so(-a3*x_AB/z_AB+a1 + -a3*y_AB/z_AB+a2)}$")
 
-	kq4_T=f"* Điểm ${M}(a;b;c)$ thuộc mặt phẳng $(Oxy)$ sao cho ${M}{A}+{M}{B}$ nhỏ nhất. Khi đó $a+b+c=$"
-	kq4_F=f" " 
+		dap_an=f"{round(-a3*x_AB/z_AB+a1 + -a3*y_AB/z_AB+a2,1):.1f}".replace(".",",")
+		dap_an_false=f"{round(-a3*x_AB/z_AB + -a3*y_AB/z_AB,1):.1f}".replace(".",",")
+
+	if a3*b3>0:
+		
+		z_AB=b3+a3
+		HDG=(f"Gọi ${{{A}'}}$ là điểm đối xứng với ${{{A}}}$ qua $(Oxy)$.\n\n"
+
+			f"Suy ra: ${A}'({a1};{a2};{-a3})$.\n\n"
+
+			f"${M}{A}+{M}{B}={M}{A}'+{M}{B} \\ge {A}'{B}$.\n\n"
+			f"${M}{A}+{M}{B}$ nhỏ nhất khi ${{{A}',{M},{B}}}$ thẳng hàng.\n\n"
+
+			f"Gọi ${M}(a;b;0)$.\n\n"
+			f"${vec2(f"{A}'",B)}=({x_AB};{y_AB};{z_AB})$.\n\n"
+			f"${vec2(f"{A}'",M)}=(a-{a1};b-{a2};{a3})$.\n\n"
+			f"Ta có: ${vec2(A,M)}=k{vec2(A,B)}$\n\n"
+			f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+			a-{a1}=k.{tao_ngoac(x_AB)} \\\\ \n\
+			b-{a2}=k.{tao_ngoac(y_AB)} \\\\ \n\
+			{a3}=k.{tao_ngoac(z_AB)}\n\
+			\\end{{array}} \\right.$"
+			f"$\\Rightarrow a={phan_so(a3*x_AB/z_AB+a1)}, b={phan_so(a3*y_AB/z_AB+a2)}$.\n\n"
+			f"Vậy: $a+b+c={phan_so(a3*x_AB/z_AB+a1 + a3*y_AB/z_AB+a2)}$"
+
+			)
+		dap_an=f"{round(a3*x_AB/z_AB+a1 + a3*y_AB/z_AB+a2,1):.1f}".replace(".",",")
+		dap_an_false=f"{round(a3*x_AB/z_AB - a3*y_AB/z_AB,1):.1f}".replace(".",",")
+
+	HDG=HDG.replace("+-","-").replace("--","+").replace("-+","-")
+
+	kq4_T=f"* Điểm ${M}(a;b;c)$ thuộc mặt phẳng $(Oxy)$ sao cho ${M}{A}+{M}{B}$ nhỏ nhất. Khi đó $a+b+c={dap_an}$"
+	kq4_F=f"Điểm ${M}(a;b;c)$ thuộc mặt phẳng $(Oxy)$ sao cho ${M}{A}+{M}{B}$ nhỏ nhất. Khi đó $a+b+c={dap_an_false}$" 
 	
 	
 	kq4=random.choice([kq4_T, kq4_F])
