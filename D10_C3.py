@@ -677,6 +677,124 @@ def npl_mk_L10_C3_B1_09():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+
+#[D10_C3_B1_10]-M2.  Tìm hs có TXD là R 
+def npl_mk_L10_C3_B1_10():  
+    x=symbols("x") 
+    n=random.randint(1,4)
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    b=random.choice([i for i in range(-5,5) if i!=0])
+    c=random.choice([i for i in range(-5,5) if i!=0])
+    c1=random.choice([i for i in range(-5,5) if i!=0])
+    a2=random.choice([i for i in range(-5,5) if i!=0])
+    c2=random.choice([i for i in range(-5,5) if i!=0])
+    a3=random.choice([i for i in range(-5,5) if i!=0])
+    noi_dung=f" Trong các hàm số sau hàm số nào xác định trên $\\mathbb{{R}}$?"
+    noi_dung_loigiai=f" Hàm số có TXD là $\\mathbb{{R}}$ là $y={latex(a*x**n+b*x**(n-1)+c)}$"
+   #Tạo các phương án
+    kq= f"$y={latex(a*x**n+b*x**(n-1)+c)}$ "
+    kq_F=[ f"$y={latex(expand(1/(a*(x-c)*(x-c1))))}$ ", f"$y={latex(sqrt(a*x-c1))} $", f"$y={latex(1/sqrt(a2*x-c2))} $", f" $y={latex((a2*x-a)/(b*x-c) )}$", f"$y={latex(c*x+sqrt(a3*x+c2))} $"]
+    kq4, kq2, kq3=random.sample(kq_F,3)
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)  
+    
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[D10_C3_B1_11]-M2.  Tìm hs đồng biến(nghịch biến) trên R 
+def npl_mk_L10_C3_B1_11():  
+    x=symbols("x") 
+    n=random.randint(1,4)
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    b=random.choice([i for i in range(-5,5) if i!=0])
+    c=random.choice([i for i in range(-5,5) if i!=0])
+    c1=random.choice([i for i in range(-5,5) if i!=0])
+    a2=random.choice([i for i in range(-5,5) if i!=0])
+    c2=random.choice([i for i in range(-5,5) if i!=0])
+    a3=random.choice([i for i in range(-5,5) if i!=0])
+    if a>0: 
+        noi_dung=f" Trong các hàm số sau hàm số nào đồng biến trên $\\mathbb{{R}}$?"
+        noi_dung_loigiai=f" Hàm số đồng biến trên $\\mathbb{{R}}$ là $y={latex(a*x+c)}$"
+       #Tạo các phương án
+        kq= f"$y={latex(a*x+c)}$ "
+        kq_F=[ f"$y={latex(-a*x+a3)}$ ", f"$y={latex(sqrt(a*x-c1))} $", f"$y={latex(1/sqrt(a2*x-c2))} $", f" $y={latex((a2*x-a)/(b*x-c) )}$", f"$y={latex(c*x+sqrt(a3*x+c2))} $"]
+
+    if a<0: 
+        noi_dung=f" Trong các hàm số sau hàm số nào nghịch biến trên $\\mathbb{{R}}$?"
+        noi_dung_loigiai=f" Hàm số nghịch biến trên $\\mathbb{{R}}$ là $y={latex(a*x+c)}$"
+       #Tạo các phương án
+        kq= f"$y={latex(a*x+c)}$ "
+        kq_F=[ f"$y={latex(-a*x-c2)}$ ", f"$y={latex(sqrt(a*x-c1))} $", f"$y={latex(1/sqrt(a2*x-c2))} $", f" $y={latex((a2*x-a)/(b*x-c) )}$", f"$y={latex(c*x+sqrt(a3*x+c2))} $", f"$y={latex(a*x**2+b*x+c)}$"]
+
+
+    kq4, kq2, kq3=random.sample(kq_F,3)
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)  
+    
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
 ################ Bài 2: Hàm số bậc 2 #################
 #[D10_C3_B2_01]. Tìm tọa độ đỉnh của đồ thị hàm số bậc 2
 def npl_mk_L10_C3_B2_01():
@@ -1077,6 +1195,10 @@ def npl_mk_L10_C3_B2_06():
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
 
 #[D10_C3_B2_07]. Tìm hàm số bậc 2 có đồ thị đi qua một điểm.
 def npl_mk_L10_C3_B2_07():
@@ -3101,10 +3223,10 @@ def npl_mk_L10_C3_B2_31():
                         f" ${latex(nsimplify(a*v**2+b*v-m))} > 0 $ suy ra $m < {phan_so(z2)}$")
 
 
-        pa_A= f"*$m < {phan_so(z1)}$"
-        pa_B= f"$m > {phan_so(z1)}$"
-        pa_C= f"$m \\le {phan_so(z1)}$"
-        pa_D= f"$m \\ge {phan_so(z1)}$"
+        pa_A= f"*$m < {phan_so(z2)}$"
+        pa_B= f"$m > {phan_so(z2)}$"
+        pa_C= f"$m \\le {phan_so(z2)}$"
+        pa_D= f"$m \\ge {phan_so(z2)}$"
 
 
     if a>0 and x0<=u:
@@ -3368,6 +3490,384 @@ def npl_mk_L10_C3_B2_35():
     debai= f"{noi_dung}\n"
 
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+
+
+
+
+#[D10_C3_B2_36]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên R
+def npl_mk_L10_C3_B2_36():
+    x=symbols("x")
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0 ])
+
+    chon =random.randint(1,2)
+    if chon ==1:
+        a=random.randint(-5,-1)
+        x0=-b/(2*a)
+        y0=a*x0**2+b*x0+c
+        noi_dung=f" Giá trị lớn nhất của hàm số bậc hai $y={latex(a*x**2+b*x+c)}$ là:"
+
+        noi_dung_loigiai=f" Giá trị lớn nhất của hàm số là ${{{phan_so(y0)}}}$."
+    if chon ==2:
+        a=random.randint(1,5)
+        x0=-b/(2*a)
+        y0=a*x0**2+b*x0+c
+        noi_dung=f" Giá trị nhỏ nhất của hàm số bậc hai $y={latex(a*x**2+b*x+c)}$ là:"
+
+        noi_dung_loigiai=f" Giá trị nhỏ nhất của hàm số là ${{{phan_so(y0)}}}$."
+    kq=f"${{{phan_so(y0)}}}$ "
+    kq_F=[  f"${{{phan_so(y0+random.randint(1,2))}}}$ ", f"${{{phan_so(y0-random.randint(1,2))}}}$ ", f"${{{phan_so(y0-random.randint(3,4))}}}$ ", f"${{{phan_so(y0+random.randint(3,4))}}}$ ", f"${{{phan_so(y0-random.randint(5,6))}}}$ "]
+    kq2,kq3,kq4=random.sample(kq_F,3)
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+
+#[D10_C3_B2_37]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên [a,b]
+def npl_mk_L10_C3_B2_37():
+    x=symbols("x")
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0 ])
+    m=random.randint(-5,5)
+    n=m+random.randint(2,5)
+    chon =random.randint(1,2)
+    a=random.choice([i for i in range(-5,5) if i!=0]) 
+    x0=-b/(2*a)
+    y01=a*x0**2+b*x0+c
+    y02=a*m**2+b*m+c
+    y03=a*n**2+b*n+c
+    if m <= x0 <=n: 
+        y0=max(y01,y02,y03)
+        y=min(y01,y02,y03)
+    if x0< m or x0> n: 
+        y0=max(y02,y03)
+        y=min(y02,y03)
+    if chon ==1:
+
+        noi_dung=f" Giá trị lớn nhất của hàm số bậc hai $y={latex(a*x**2+b*x+c)}$ trên $\\left[ {m}; {n} \\right]$ là "
+
+        noi_dung_loigiai=f" Sử dụng BBT ta tìm được giá trị lớn nhất của hàm số ${{{phan_so(y0)}}}$ trên $\\left[ {m}; {n} \\right]$ là ${{{phan_so(y0)}}}$"
+        kq=f"${{{phan_so(y0)}}}$ "
+        kq_F=[  f"${{{phan_so(y0+random.randint(1,2))}}}$ ", f"${{{phan_so(y0-random.randint(1,2))}}}$ ", f"${{{phan_so(y0-random.randint(3,4))}}}$ ", f"${{{phan_so(y0+random.randint(3,4))}}}$ ", f"${{{phan_so(y0-random.randint(5,6))}}}$ "]
+    if chon ==2:
+
+        noi_dung=f" Giá trị nhỏ nhất của hàm số bậc hai $y={latex(a*x**2+b*x+c)}$ trên $\\left[ {m}; {n} \\right]$ là:"
+
+        noi_dung_loigiai=f" Sử dụng BBT ta tìm được giá trị nhỏ nhất của hàm số ${{{phan_so(y0)}}}$ trên $\\left[ {m}; {n} \\right]$ là ${{{phan_so(y)}}}$."
+
+        kq=f"${{{phan_so(y)}}}$ "
+        kq_F=[  f"${{{phan_so(y+random.randint(1,2))}}}$ ", f"${{{phan_so(y-random.randint(1,2))}}}$ ", f"${{{phan_so(y-random.randint(3,4))}}}$ ", f"${{{phan_so(y+random.randint(3,4))}}}$ ", f"${{{phan_so(y-random.randint(5,6))}}}$ "]
+
+
+    kq2,kq3,kq4=random.sample(kq_F,3)
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+#[D10_C3_B2_38]-M1. Nhận dạng hàm số bậc hai
+def npl_mk_L10_C3_B2_38():
+    x=symbols("x")
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0 ])
+    a2=random.choice([i for i in range(-5,5) if i!=0]) 
+    a3=random.choice([i for i in range(-5,5) if i!=0]) 
+    c1=random.choice([i for i in range(-5,5) if i!=0 ])
+    c2=random.choice([i for i in range(-5,5) if i!=0 ])
+    chon =random.randint(1,2)
+    a=random.choice([i for i in range(-5,5) if i!=0]) 
+    noi_dung=f" Trong các hàm số sau, hàm số nào là hàm số bậc hai?"
+
+    noi_dung_loigiai=f" Hàm số bậc hai là $y={latex(a*x**2+b*x+c)}$."
+
+    kq=f" $y={latex(a*x**2+b*x+c)}$"
+
+    kq_F=[ f"$y={latex(expand(1/(a*(x-c)*(x-c1))))}$ ", f"$y={latex(sqrt(a*x-c1))} $", f"$y={latex(1/sqrt(a2*x-c2))} $", f" $y={latex((a2*x-a)/(b*x-c) )}$", f"$y={latex(c*x+sqrt(a3*x+c2))} $", f"$y={latex(a3*x**3+b*x**2+c)}$" ]
+    kq4, kq2, kq3=random.sample(kq_F,3)
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+#[D10_C3_B2_39]-M1. Tìm số giao điểm của (P) và trục hoành
+def npl_mk_L10_C3_B2_39():
+    x=symbols("x")
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0 ])
+    a2=random.choice([i for i in range(-5,5) if i!=0])  
+    a1=random.choice([i for i in range(-5,5) if i!=0 and i!=a2 ])
+    c2=random.choice([i for i in range(-5,5) if i!=0 ])
+    chon =random.randint(1,2)
+    a=random.choice([i for i in range(-5,5) if i!=0]) 
+    a4=random.choice([i for i in range(-5,5) if i!=0])
+    b4=random.choice([i for i in range(-5,5) if i!=0 and i*a4>0])
+    chon =random.randint(1,3)
+    if chon ==1:
+        noi_dung=f" Số giao điểm của ${{(P)}}$:  $y={latex(expand(a*(x-a1)*(x-a2)))}$ với trục hoành là?"
+
+        noi_dung_loigiai=f"Vì phương trình hoành độ giao điểm ${latex(expand(a*(x-a1)*(x-a2)))} =0$ có hai nghiệm phân biệt nên số giao điểm của Parabol với trục hoành bằng ${{2}}$."
+
+        kq=f" ${{2}}$"
+
+        kq_F=[ f"${{0}}$ ", f"${{1}}$", f"${{3}}$", f" ${{4}}$", f"${{5}}$", f"${{6}}$" ]
+
+
+    if chon ==2:
+        noi_dung=f" Số giao điểm của ${{(P)}}$:  $y={latex(expand(a4*(x-a1)*(x-a1)+b4))}$ với trục hoành là?"
+
+        noi_dung_loigiai=f"Vì phương trình hoành độ giao điểm ${latex(expand(a*(x-a1)*(x-a2)))} =0$ vô nghiệm phân biệt nên số giao điểm của Parabol với trục hoành bằng ${{0}}$."
+
+        kq=f" ${{0}}$"
+
+        kq_F=[ f"${{2}}$ ", f"${{1}}$", f"${{3}}$", f" ${{4}}$", f"${{5}}$", f"${{6}}$" ]
+
+
+
+    if chon ==3:
+        noi_dung=f" Số giao điểm của ${{(P)}}$:  $y={latex(expand(a*(x-a1)*(x-a1)))}$ với trục hoành là?"
+
+        noi_dung_loigiai=f"Vì phương trình hoành độ giao điểm ${latex(expand(a*(x-a1)*(x-a1)))} =0$ có nghiệm kép nên số giao điểm của Parabol với trục hoành bằng ${{1}}$."
+
+        kq=f" ${{1}}$"
+
+        kq_F=[ f"${{0}}$ ", f"${{2}}$", f"${{3}}$", f" ${{4}}$", f"${{5}}$", f"${{6}}$" ]
+
+
+    kq4, kq2, kq3=random.sample(kq_F,3)
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+#[D10_C3_B2_40]-M1. Tìm toạ độ giao điểm Parabol với trục tung
+def npl_mk_L10_C3_B2_40():
+    x=symbols("x")
+    b=random.choice([i for i in range(-5,5) if i!=0]) 
+    c=random.choice([i for i in range(-5,5) if i!=0 ])
+    a2=random.choice([i for i in range(-5,5) if i!=0])  
+    a1=random.choice([i for i in range(-5,5) if i!=0 ])
+    c2=random.choice([i for i in range(-5,5) if i!=0 ])
+    chon =random.randint(1,2)
+    a=random.choice([i for i in range(-5,5) if i!=0]) 
+    a4=random.choice([i for i in range(-5,5) if i!=0])
+    b4=random.choice([i for i in range(-5,5) if i!=0 and i*a4>0])
+
+    noi_dung=f" Giao điểm của ${{(P)}}$  $y={latex(expand(a*x**2+b*x+c))}$ với trục tung có toạ độ là:"
+
+    noi_dung_loigiai=f"Giao điểm của ${{(P)}}$  $y={latex(expand(a*x**2+b*x+c))}$ với trục tung có toạ độ là $\\left({{0}}; {c} \\right)$"
+
+    kq=f" $\\left({{0}}; {c} \\right)$"
+
+    kq_F=[ f"$\\left({{0}}; {c+random.randint(1,2)} \\right)$ ", f"$\\left({{0}}; {c-random.randint(1,2)} \\right)$", f"$\\left({c} ;{{0}} \\right)$", f" $\\left({c+random.randint(1,2)}; {{0}} \\right)$", f"$\\left({c+random.randint(1,2)}; {{{b}}} \\right)$" ]
+
+    kq4, kq2, kq3=random.sample(kq_F,3)
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+#[D10_C3_B2_41]-M2. Tìm toạ độ giao điểm Parabol với đường thẳng y=ax+b
+def npl_mk_L10_C3_B2_41():
+    x=symbols("x")
+    x0=random.choice([i for i in range(-5,5) if i!=0])  
+    x1=random.choice([i for i in range(-5,5) if i!=0 and i!=x0 ])
+    a=random.choice([i for i in range(-5,5) if i!=0]) 
+    m=random.choice([i for i in range(-5,5) if i!=0])
+    n=random.choice([i for i in range(-5,5) if i!=0])
+    y0= m*x0+n
+    y1= m*x1+n
+    noi_dung=f" Giao điểm của ${{(P)}}$  $y={latex(expand(a*(x-x0)*(x-x1)+m*x+n))}$ với đường thẳng $y={latex(m*x+n)}$ có toạ độ là:"
+
+    noi_dung_loigiai=(f"Xét phương trình hoành độ giao điểm \n\n ${latex(expand(a*(x-x0)*(x-x1)+m*x+n))} = {latex(m*x+n)}$ \n\n ${latex(a*(x-x0)*(x-x1))}=0$ suy ra ${{x={x0}; x={x1}}}$ \n\n "
+    f" Với ${{x={x0}}}$ thì ${{y={y0}}}$ \n\n"
+f" Với ${{x={x1}}}$ thì ${{y={y1}}}$ ")
+    kq=f" $\\left({x0}; {phan_so(y0)} \\right)$ và $\\left({x1}; {phan_so(y1)} \\right)$ "
+
+    kq_F=[ f"$\\left({x0}; {phan_so(y0+1)} \\right)$ và $\\left({x1}; {phan_so(y1)} \\right)$ ", f"$\\left({x0}; {phan_so(y0)} \\right)$ và $\\left({x1}; {phan_so(y1+1)} \\right)$", f"$\\left({x0}; {phan_so(y0+1)} \\right)$ và $\\left({x1}; {phan_so(y1+1)} \\right)$", f" $\\left({x0}; {phan_so(y0-1)} \\right)$ và $\\left({x1}; {phan_so(y1-1)} \\right)$", f"$\\left({x0}; {phan_so(y0-2)} \\right)$ và $\\left({x1}; {phan_so(y1-2)} \\right)$" ]
+
+    kq4, kq2, kq3=random.sample(kq_F,3)
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"

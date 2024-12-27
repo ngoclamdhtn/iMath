@@ -3021,7 +3021,7 @@ def ghj_7_jkl_L11_C4_B3_01():
 	if chon==5:
 		noi_dung=(
 		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom} tâm ${{{O}}}$."
-		f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{S}{B},{B}{D}}}$."
+		f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{S}{B},{S}{D}}}$."
 		f" Khẳng định nào sau đây là khẳng định đúng?")		
 		kq=random.choice([
 			f"{M}{N}//({A}{B}{C}{D})",
@@ -3888,7 +3888,10 @@ def ghj_7_jkl_L11_C4_B3_07():
 
 
 	kq=random.choice([		
-		f"${A}{B}//{M}{N}$",
+		f"${B}{C}//{M}{N}$",
+		f"${N}{M}//{C}{B}$",
+		f"${A}{D}//{M}{N}$",
+		f"${M}{N}//{D}{A}$",
 		f"${G}{H}//{B}{C}$",
 		f"${G}{H}//{A}{D}$",
 		f"${G}{H}//{M}{N}$",

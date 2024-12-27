@@ -18,9 +18,37 @@ def find_mode(my_list):
     
     return most_frequent
 
+def group_by_frequency(lst):
+    # Đếm số lần xuất hiện của mỗi phần tử
+    frequency_count = Counter(lst)
+    
+    # Tạo một dictionary với key là số lần xuất hiện và value là danh sách các phần tử có số lần xuất hiện đó
+    grouped = {}
+    for value, count in frequency_count.items():
+        grouped.setdefault(count, []).append(value)
+
+    return grouped
+
+def find_mode_2(lst):
+    # Lấy danh sách các giá trị được nhóm theo số lần xuất hiện
+    grouped = group_by_frequency(lst)
+    
+    # Tìm số lần xuất hiện lớn nhất
+    max_frequency = max(grouped.keys())
+    
+    # Lấy danh sách các giá trị có số lần xuất hiện lớn nhất
+    return max_frequency, grouped[max_frequency]
+
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
     return m
+
+def calculate_mode(data):
+    unique_values, counts = np.unique(data, return_counts=True)
+    max_count_index = np.argmax(counts)
+    mode_value = unique_values[max_count_index]
+    mode_count = counts[max_count_index]
+    return mode_value, mode_count
 
 #Chương 6 - Bài 1: Số gần đúng và sai số
 #[D10_C6_B1_01]-M2. Viết số quy tròn của số nguyên có độ chính xác cho trước.
@@ -320,60 +348,40 @@ def tktk_L10_C6_B3_02():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-def calculate_mode(data):
-    unique_values, counts = np.unique(data, return_counts=True)
-    max_count_index = np.argmax(counts)
-    mode_value = unique_values[max_count_index]
-    mode_count = counts[max_count_index]
-    return mode_value, mode_count
+
 
 #[D10_C6_B3_03]. Cho dãy số liệu. Tính mốt.
 def tktk_L10_C6_B3_03():
-	# Tạo một mẫu số liệu ngẫu nhiên gồm 100 số nguyên dương
-	np.random.seed(42)  # Để có thể tái tạo kết quả
-	a= random.randint(1,20)
-	b=a+random.randint(5,30)
+	t=random.randint(8,14)
+	mau_solieu=[random.randint(7,30) for i in range(t)]	
+	max_freq, result = find_mode_2(mau_solieu)
 
-	so_luong=random.randint(7,13)
+	list_not_most=[x for x in mau_solieu if x not in result]	
+	while  len(list_not_most)<4:
+		t=random.randint(8,14)
+		mau_solieu=[random.randint(7,30) for i in range(t)]	
+		max_freq, result = find_mode_2(mau_solieu)
 
-	sample_data = np.random.randint(a, b, so_luong)  # Tạo ngẫu nhiên số từ a đến b
-	mau_solieu=str(sample_data)
-	mau_solieu=mau_solieu.split()
-	mau_solieu="; ".join(mau_solieu)
-	mau_solieu=mau_solieu.replace("[","")
-	mau_solieu=mau_solieu.replace("]","")
-	#Xử lí dấu ' thừa
-	if mau_solieu[0]==";":
-		mau_solieu=mau_solieu[1:]
-
-	mode = calculate_mode(sample_data)[0]
-	
-	kq =mode #Tính mốt
-	kq2= calculate_mode(sample_data)[1]  # Tính độ lệch chuẩn
-	kq3=np.mean(sample_data)  # Tính giá trị trung bình
-	kq4= np.median(sample_data) # Tính trung vị
+		list_not_most=[x for x in mau_solieu if x not in result]	
+		
+	kq =result[0]
+	kq2,kq3,kq4=list_not_most[0:3]
 
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]
 
-	list_PA=my_module.tra_ve_so_nguyen([kq,kq2,kq3,kq4])
-	kq=list_PA[0]
-	kq2=list_PA[1]
-	kq3=list_PA[2]
-	kq4=list_PA[3]
-
 	pa_A= f"*${{{kq}}}$"
-	pa_B= f"${{{kq2}}}$"
-	pa_C= f"${{{kq3}}}$"
-	pa_D= f"${{{kq4}}}$"
+	pa_B= f"${{{int(kq2)}}}$"
+	pa_C= f"${{{int(kq3)}}}$"
+	pa_D= f"${{{int(kq4)}}}$"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
-	noi_dung = f"Cho mẫu số liệu như sau: {mau_solieu}. Tìm mốt mẫu số liệu đã cho."
-
-	noi_dung_loigiai=f""
+	noi_dung = f"Cho mẫu số liệu như sau: {mau_solieu}. Giá trị nào sau đây là một mốt của mẫu số liệu đã cho.".replace("[","").replace("]","")
+	
+	noi_dung_loigiai=f"Mốt của mẫu số liệu đã cho là: ${{{result}}}$ với tần số xuất hiện là {max_freq}.".replace("[","").replace("]","")
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -629,7 +637,11 @@ def tktk_L10_C6_B3_07():
 	so_luong=random.randint(7,13)
 
 	sample_data = np.random.randint(a, b, so_luong)  # Tạo ngẫu nhiên số từ a đến b
-	data=sample_data.tolist()
+	data=sample_data.tolist()	
+
+	max_freq, list_mode = find_mode_2(data)
+	list_not_mode=[x for x in data if x not in list_mode]
+
 	
 
 	mau_solieu=str(sample_data)	
@@ -642,7 +654,7 @@ def tktk_L10_C6_B3_07():
 	if mau_solieu[0]==";":
 		mau_solieu=mau_solieu[1:]		
 
-	noi_dung = f"Cho mẫu số liệu ${{{mau_solieu}}}$ . Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần mười):"		
+	noi_dung = f"Cho mẫu số liệu ${{{mau_solieu}}}$. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần mười):"		
 	debai_word= f"{noi_dung}\n"
 	
 	st=""
@@ -683,18 +695,14 @@ def tktk_L10_C6_B3_07():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	ds_mode=find_mode(data)
-	st_st_mode=", ".join(map(str, ds_mode))
 
-	mode = random.choice(ds_mode)	
-	mode_false=random.choice([x for x in data if x not in ds_mode ])
-	count = data.count(mode)
 
-	kq3_T=f"* Mốt của mẫu số liệu là ${{{mode}}}$" 
-	kq3_F=f"Mốt của mẫu số liệu là ${{{mode}}}$"
+	kq3_T=f"* Mốt của mẫu số liệu là ${{{list_mode}}}$".replace("[","").replace("]","")
+	kq3_F=f"Mốt của mẫu số liệu là ${{{list_not_mode[0]}}}$"
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=(f" Các mốt của mẫu số liệu là: {st_st_mode}.\n\n"
-		f"Số ${{{mode}}}$ xuất hiện nhiều nhất ({count} lần) nên mốt là ${{{mode}}}$.")
+	HDG=(f" Các mốt của mẫu số liệu là: {list_mode}.\n"
+		)
+	HDG=HDG.replace("[","").replace("]","")
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

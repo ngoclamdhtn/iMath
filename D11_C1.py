@@ -78,6 +78,7 @@ def ngh_kjg_L11_C1_B1_02():
         f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    
 
 #[D11_C1_B1_03]-M1. Đổi số đo từ radian sang độ
 def ngh_kjg_L11_C1_B1_03():

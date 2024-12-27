@@ -382,27 +382,27 @@ def yy3yy_L10_C4_B1_06():
     chon =random.randint(1,2)
     if chon ==1:
         noi_dung=f"Cho $\\cos \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
-        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(a/b)}$ "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(b/a)}$ "
                 
-        kq=f" ${{{phan_so(a/b)}}}$"
-        ds=[f"${{{phan_so((a+1)/b)}}}$",
-        f"${{{phan_so((a+2)/b)}}}$",
-        f"${{{phan_so((a-1)/b)}}}$",
-    f"${{{phan_so((a-2)/c)}}}$",
-        f"${{{phan_so((a-3)/c)}}}$",
-    f"${{{phan_so((a+3)/c)}}}$"]
+        kq=f" ${{{phan_so(b/a)}}}$"
+        ds=[f"${{{phan_so((b+1)/a)}}}$",
+        f"${{{phan_so((b+2)/a)}}}$",
+        f"${{{phan_so((b-1)/a)}}}$",
+    f"${{{phan_so((b-2)/a)}}}$",
+        f"${{{phan_so((b-3)/a)}}}$",
+    f"${{{phan_so((b+4)/a)}}}$"]
     if chon ==2:
         noi_dung=f"Cho $\\cos \\alpha = {phan_so(-a/c)}$ và $ 90^{{\\circ}}<\\alpha < 180^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
 
-        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}} < \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(-a/b)}$ "
+        noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}} < \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(-b/a)}$ "
                 
-        kq=f" ${{{phan_so(-a/b)}}}$"
-        ds=[f"${{{phan_so((-a+1)/b)}}}$",
-        f"${{{phan_so((-a+2)/b)}}}$",
-        f"${{{phan_so((-a-1)/b)}}}$",
-    f"${{{phan_so((-a-2)/c)}}}$",
-        f"${{{phan_so((-a-3)/c)}}}$",
-    f"${{{phan_so((-a+3)/c)}}}$"]
+        kq=f" ${{{phan_so(-b/a)}}}$"
+        ds=[f"${{{phan_so((-b+1)/a)}}}$",
+        f"${{{phan_so((-b+2)/a)}}}$",
+        f"${{{phan_so((-b-1)/a)}}}$",
+    f"${{{phan_so((-b-2)/a)}}}$",
+        f"${{{phan_so((-b-3)/a)}}}$",
+    f"${{{phan_so((-b+3)/a)}}}$"]
     kq2, kq3, kq4 = random.sample(ds, 3)  
 
 
@@ -441,16 +441,20 @@ def yy3yy_L10_C4_B1_06():
 
 #[D10_C4_B1_07]-M2 Cho tan tính giá trị của biểu thức 
 def yy3yy_L10_C4_B1_07():
-    a=random.choice([i for i in range(-5,5) if i!=0])
-    b=random.choice([i for i in range(-5,5) if i!=0]) 
-    c=random.choice([i for i in range(-5,5) if i!=0]) 
+    
+    b=random.choice([i for i in range(-6,6) if i!=0]) 
+    c=random.choice([i for i in range(-6,6) if i!=0 and i!=1]) 
 
-    b1=random.choice([i for i in range(-5,5) if i!=0]) 
-    e=random.choice([i for i in range(-5,5) if i!=0 ])
+    
+
+    triples = [(e, b1, a) for e in range(-5, 5) 
+                       for b1 in range(-5, 5) 
+                       for a in range(-5, 5)
+                       if e-b1*a!=0 and e-b1*a !=1 and e!=0 and b1!=0 and a!=0]
+    
+    # Chọn một bộ ba ngẫu nhiên từ danh sách
+    e, b1, a = random.choice(triples)
     c1=e-b1*a
-    if c1==0: 
-        c1+random.randint(1,4)
-
     ds= (b*a+c) /(b1*a+c1)
 
 
@@ -460,7 +464,7 @@ def yy3yy_L10_C4_B1_07():
     kqs=[ f"${{{phan_so(ds+1)}}}$",f"${{{phan_so(ds-1)}}}$",f"${{{phan_so(ds+2)}}}$",f"${{{phan_so(ds-2)}}}$" ]
     kq2, kq3, kq4 = random.sample(kqs, 3)  
     
-    noi_dung=noi_dung.replace("1\\cos\\alpha"," \\cos\\alpha").replace("1\\sin\\alpha"," \\sin\\alpha").replace("-1\\cos\\alpha"," -\\cos\\alpha").replace("-1\\sin\\alpha"," -\\sin\\alpha")
+    noi_dung=noi_dung.replace("1\\sin\\alpha"," \\sin\\alpha").replace("-1\\cos\\alpha"," -\\cos\\alpha").replace("-1\\sin\\alpha"," -\\sin\\alpha").replace("+ -","-")
     noi_dung=thay_cong_tru(noi_dung)
     noi_dung_loigiai=noi_dung_loigiai.replace("-1\\tan\\alpha"," -\\tan\\alpha").replace("1\\tan\\alpha"," -\\tan\\alpha")
 
@@ -2327,7 +2331,7 @@ def yy3yy_L10_C4_B2_23():
     c=random.randint(30,45)
     b=c+random.randint(25,35)
     a=random.randint(50,80)
-    kq=f"{round(a*math.sin(math.radians(c))**math.sin(math.radians(90-b))/math.sin(math.radians(b-c)),1):.1f}".replace(".",",").replace(",0"," ")
+    kq=f"{round(a*math.sin(math.radians(c))*math.sin(math.radians(90-b))/math.sin(math.radians(b-c)),1):.1f}".replace(".",",").replace(",0"," ")
    
     code_hinh=fr"""
     \begin{{tikzpicture}}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]

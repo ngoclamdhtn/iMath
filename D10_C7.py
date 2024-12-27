@@ -1345,6 +1345,10 @@ def aaa_pry_L10_C7_B1_15():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+
+
+
+
 ############# Bài 2: Bất phương trình bậc hai ########################
 
 #[D10_C7_B2_01]-M2. Giải bất phương trình bậc hai, tam thức vô nghiệm.
@@ -2101,6 +2105,99 @@ def aaa_pry_L10_C7_B2_09():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[D10_C7_B2_10]-M2. Toán thực tế: tìm giá bán để lợi nhuận thoả đk cho trước
+def aaa_pry_L10_C7_B2_10(): 
+    x=symbols("x")
+    chon =random.randint(1,2)
+    if chon ==1:
+        x1=random.randint(4,8)
+        c=x1*3
+    if chon ==2:
+        x1=2*random.randint(3,4)
+        c=x1*4
+    a=random.randint(10,30)
+    B=2*a*(x1-random.randint(1,2))
+    e=B+a*c 
+    x2=e/a
+    x0=(x1+x2)/2 
+    x4=random.choice([i for i in range(x1+1,int(x0-1))]) 
+    x5 =phan_so(2*x0-x4) 
+    f4 =phan_so((e-a*x4)*(x4-x1))
+    x0=phan_so(x0)
+    x2=phan_so(x2)
+    noi_dung = f"Lợi nhuận bán sách ${{X}}$ của một cửa hàng là một hàm số bậc hai $P(x)={{{latex(expand( (e-a*x)*(x-x1)))}}}$ (USD) với ${{x}}$ (USD) là giá bán một quyển sách ${{X}}$. Muốn lợi nhuận thu được lớn hơn ${{{f4}}}$ USD thì giá bán sách phải trong phạm vi:"
+
+    noi_dung_loigiai=(f" Giải bất phương trình $P(x)={{{latex(expand( (e-a*x)*(x-x1)))}}} \\ge {f4}$ \n\n"
+                        f" Ta được $ x \\in ({x4};{x5})$ \n\n"
+    f"Muốn tổng lợi nhuận thu được lớn hơn ${{{f4}}}$ USD thì giá bán mới phải thuộc khoảng $({x4};{x5})$ ")
+
+    kq=f" $({x4};{x5})$ (USD)"
+    ds=[f"$({phan_so(x1)};{x5})$ (USD)", 
+    f" $({phan_so(x1)};{x0})$ (USD)", 
+    f" $({phan_so(x1)};{x4})$ (USD)", 
+    f" $({x0};{x2})$ (USD)",
+    f" $({phan_so(x4)};{x2})$ (USD)" ]
+    kq2,kq3,kq4=random.sample(ds, 3)
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #Bài 3: Phương trình quy về bậc hai

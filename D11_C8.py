@@ -592,11 +592,11 @@ def zz8zz_L11_C8_B2_01():
 	if duong==f"{B1}{C1}" and mat==f"S{A1}{B1}":
 		noi_dung_loigiai=f"Ta có: ${{{B1}{C1}\\bot {A1}{B1}}}$ và ${{{B1}{C1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABCD))$ nên ${B1}{C1}\\bot (S{A1}{B1})$."
-	elif duong==f"{C1}{D1}" and mat==f"S{A1}{D1}":
+	if duong==f"{C1}{D1}" and mat==f"S{A1}{D1}":
 		noi_dung_loigiai=f"Ta có: ${{{C1}{D1}\\bot {A1}{D1}}}$ và ${{{C1}{D1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABCD))$ nên ${C1}{D1}\\bot (S{A1}{D1})$."
 		
-	else:
+	if duong==f"{B1}{D1}" and mat==f"S{A1}{C1}":
 		noi_dung_loigiai=f"Ta có: ${{{B1}{D1}\\bot {A1}{C1}}}$ và ${{{B1}{D1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABCD))$ nên ${B1}{D1}\\bot (S{A1}{C1})$."			
 	
@@ -643,7 +643,8 @@ def zz8zz_L11_C8_B2_01():
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+	return debai,debai_latex,loigiai_word, phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 #[D11_C8_B2_02]-M1. S.ABCD: cạnh v.g đáy h.chữ nhật. Tìm đường vg mặt
 def zz8zz_L11_C8_B2_02(): 
@@ -671,7 +672,7 @@ def zz8zz_L11_C8_B2_02():
 		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
 			f" Chứng minh: ${B1}{C1}\\bot (S{A1}{B1})$."
 
-	elif duong==f"{C1}{D1}" and mat==f"S{A1}{D1}":
+	if duong==f"{C1}{D1}" and mat==f"S{A1}{D1}":
 		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
 			f" Tìm khẳng định đúng?"
 		noi_dung_loigiai=f"Ta có: ${{{C1}{D1}\\bot {A1}{D1}}}$ và ${{{C1}{D1}\\bot S{A1}}}$"\
@@ -679,7 +680,7 @@ def zz8zz_L11_C8_B2_02():
 		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
 			f" Chứng minh: ${C1}{D1}\\bot (S{A1}{D1})$."
 		
-	else:
+	if duong==f"{B1}{D1}" and mat==f"S{A1}{M1}":
 		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{A1}}}$ trên đường thẳng ${{{B1}{D1}}}$. Tìm khẳng định đúng?"
 
@@ -766,7 +767,7 @@ def zz8zz_L11_C8_B2_03():
 		kq3=random.choice([f"${B1}{C1}\\bot (S{A1}{C1})$", f"${B1}{C1}\\bot (S{C1}{D1})$", f"${B1}{D1}\\bot (S{A1}{D1})$"])
 		kq4=random.choice([f"${C1}{N1}\\bot (S{B1}{D1})$",f"${C1}{N1}\\bot (S{A1}{B1})$"])
 
-	elif duong==f"{C1}{N1}" and mat==f"S{A1}{D1}":
+	if duong==f"{C1}{N1}" and mat==f"S{A1}{D1}":
 		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{B1}}}$."\
 			f" ${{{N1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{D1}}}$. Tìm khẳng định đúng?"
@@ -781,7 +782,7 @@ def zz8zz_L11_C8_B2_03():
 		kq3=random.choice([f"${B1}{C1}\\bot (S{A1}{C1})$", f"${B1}{C1}\\bot (S{C1}{D1})$", f"${B1}{D1}\\bot (S{A1}{D1})$"])
 		kq4=random.choice([f"${C1}{M1}\\bot (S{B1}{D1})$", f"${C1}{M1}\\bot (S{A1}{C1})$"])	
 		
-	else:
+	if duong==f"{B1}{D1}" and mat==f"S{A1}{C1}":
 		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
 		f" Tìm khẳng định đúng?"
 
@@ -854,10 +855,11 @@ def zz8zz_L11_C8_B2_04():
 		noi_dung_loigiai=f"Ta có: ${{{A1}{B1}\\bot {A1}{C1}}}$ và ${{{A1}{B1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABC))$ nên ${A1}{B1}\\bot (S{A1}{C1})$."
 
-	elif duong==f"{A1}{C1}" and mat==f"S{A1}{B1}":
+	if duong==f"{A1}{C1}" and mat==f"S{A1}{B1}":
 		noi_dung_loigiai=f"Ta có: ${{{A1}{C1}\\bot {A1}{B1}}}$ và ${{{A1}{C1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABC))$ nên ${A1}{C1}\\bot (S{A1}{B1})$."
-	else:
+
+	if duong==f"{B1}{C1}" and mat==f"S{A1}{M1}":
 		noi_dung_loigiai=f"Ta có: ${{{A1}{M1}\\bot {B1}{C1}}}$ và ${{{A1}{M1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABC))$ nên ${A1}{M1}\\bot (S{B1}{C1})$."
 			
@@ -931,10 +933,11 @@ def zz8zz_L11_C8_B2_05():
 		noi_dung_loigiai=f"Ta có: ${{{B1}{C1}\\bot {A1}{M1}}}$ và ${{{B1}{C1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABC))$ nên ${B1}{C1}\\bot (S{A1}{M1})$."
 
-	elif duong==f"{B1}{N1}" and mat==f"S{A1}{C1}":
+	if duong==f"{B1}{N1}" and mat==f"S{A1}{C1}":
 		noi_dung_loigiai=f"Ta có: ${{{B1}{N1}\\bot {A1}{C1}}}$ và ${{{B1}{N1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABC))$ nên ${B1}{N1}\\bot (S{A1}{C1})$."
-	else:
+
+	if duong==f"{C1}{P1}" and mat==f"S{A1}{B1}":
 		noi_dung_loigiai=f"Ta có: ${{{C1}{P1}\\bot {A1}{B1}}}$ và ${{{C1}{P1}\\bot S{A1}}}$"\
 						f" (Do $S{A1}\\bot (ABC))$ nên ${C1}{P1}\\bot (S{A1}{B1})$."
 	

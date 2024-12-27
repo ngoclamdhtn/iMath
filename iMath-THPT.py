@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 20.12.2024")
+                self.label.setText(f"iMath\u00A92025 ver 27.12.2024")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -1698,6 +1698,16 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_10]-M2. Tìm hàm số có TXĐ là R"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_11]-M2. Tìm hàm số đồng biến (nghịch biến) trên R"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                 L10_C3_B1_3 = QTreeWidgetItem(L10_C3_B1, ["Trả lời ngắn"])
                 L10_C3_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C3_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -1715,6 +1725,10 @@ class Ui_MainWindow(object):
                 L10_C3_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C3_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_38]-M1. Nhận dạng hàm số bậc hai"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_01]-M1. Tìm tọa độ đỉnh của hàm số bậc 2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -1726,8 +1740,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_35]-M2. Tìm điểm thuộc đồ thị hàm số bậc 2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-           
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)           
 
                 item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_03]-M2. Cho hàm số bậc 2. Tìm khoảng biến thiên."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -1777,6 +1790,26 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_23]-M3. Toán thực tế ứng dụng tìm giá bán để lợi nhuận thoả điều kiện cho trước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_36]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên R"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_37]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên [a,b]"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item=QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_39]-M1. Tìm số giao điểm của (P) và trục hoành"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_40]-M1. Tìm toạ độ giao điểm Parabol với trục tung"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_41]-M2. Tìm toạ độ giao điểm Parabol với đường thẳng y=ax+b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2491,6 +2524,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_09]-M2. Tìm tập xác định của y=căn(ax^2+bx+c)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_05]-M3. Tìm m để ax^2 + bx + c >0 (<0) với mọi x."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -2507,9 +2544,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_09]-M2. Tìm tập xác định của y=căn(ax^2+bx+c)."])
+                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_10]-M3. Toán thực tế: tìm giá bán để lợi nhuận thoả điều kiện."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
 
                 L10_C7_B3 = QTreeWidgetItem(L10_C7, ["Bài 3 - Phương trình quy về bậc 2"])
                 L10_C7_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -2688,6 +2727,26 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_21]-M3. Số giao điểm của m đường thẳng và n đường tròn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_28]-M1. Số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)   "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_29]-M2. Số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0) "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2903,6 +2962,14 @@ class Ui_MainWindow(object):
                 L10_C10_B0_1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_24]-M1. Cho toạ độ điểm A, tìm toạ độ vecto OA và ngược lại"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_25]-M1. Cho vecto(u) biểu diễn theo 2 vecto(i) và vecto(j). Tìm toạ độ vecto(u)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                          
+
                 item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_01]-M1. Cho 2 điểm. Tìm tọa độ vectơ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -2968,11 +3035,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_28]-M2. Tìm toạ độ D để ABCD là hình bình hành"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_26]-M3. Tìm toạ độ trực tâm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C10_B0_1_3 = QTreeWidgetItem(L10_C10_B0_1, ["3. Biểu thức tọa độ tích vô hướng"])
                 L10_C10_B0_1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_04]-M1. Cho 2 vectơ. Cho hai véctơ tính tích vô hướng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_27]-M3. Tính góc giữa hai vecto"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7208,6 +7287,7 @@ class Ui_MainWindow(object):
                             list_tonghop_HDG=""
                             list_dapan_word=[]
                             chuoi_QR="{"
+                            chuoi_QR_QM="["
 
                             for j in range(self.spin_soluong_de.value()):
                                 self.text_taode.setText("")
@@ -7254,6 +7334,7 @@ class Ui_MainWindow(object):
 
                                 #Tao_qrcode
                                 chuoi_QR+=f'"{name_de}":"'
+                                chuoi_QR_QM+=f'["{name_de}",'
                                                         
                                 socau_daxuli=0
                                 self.label_dangxuli.setText("Chương trình đang xử lý. Vui lòng đợi...")                                        
@@ -10272,11 +10353,19 @@ class Ui_MainWindow(object):
 
                                     #[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Tạo câu đúng-sai: góc giữa 2 đường thẳng.
                                                 if dang_toan == "[D11_C8_B1_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B1_04()                            
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B1_04()
+
+                                                #[D11_C8_B2_01]-M1. S.ABCD: cạnh v.g đáy h.vuông. Tìm đường vg mặt.
+                                                if dang_toan == "[D11_C8_B2_01]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B2_01()
+
+                                                #[D11_C8_B2_02]-M1. S.ABCD: cạnh v.g đáy h.chữ nhật. Tìm đường vg mặt
+                                                if dang_toan == "[D11_C8_B2_02]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B2_02()                         
                        
                                                     
 
-                                    #[D11_C8_B2_03]-M2. S.ABCD: cạnh bên vuông góc đáy h.thoi. Tìm đường vg mặt.
+                                                #[D11_C8_B2_03]-M2. S.ABCD: cạnh bên vuông góc đáy h.thoi. Tìm đường vg mặt.
                                                 if dang_toan == "[D11_C8_B2_03]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B2_03()                                     
     
@@ -10361,11 +10450,15 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B2_19()                                     
                                                     
 
-                                        #[D11_C8_B2_20]-M2. S.ABCD: ABCD h.vuông. Tìm hình chiếu của đường thẳng trên mặt đứng.
+                                                #[D11_C8_B2_20]-M2. S.ABCD: ABCD h.vuông. Tìm hình chiếu của đường thẳng trên mặt đứng.
                                                 if dang_toan == "[D11_C8_B2_20]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B2_20()                                     
-                                                    
-                                    #Bài 3: Hai mặt phẳng vuông góc
+                                    
+                                                
+
+
+
+                                                #Bài 3: Hai mặt phẳng vuông góc
                                     #[D11_C8_B3_01]-M2. S.ABCD: ABCD h.vuông. Xác định 2 mặt phẳng vuông góc.
                                                 if dang_toan == "[D11_C8_B3_01]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B3_01()                                     
@@ -11041,7 +11134,17 @@ class Ui_MainWindow(object):
 
                                                 #[D10_C3_B1_09]-SA-M2. Số các số nguyên thuộc TXD y=căn(ax+b) + căn (c-dx) 
                                                 if dang_toan == "[D10_C3_B1_09]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B1_09()                                 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B1_09()
+
+                                                #[D10_C3_B1_10]-M2.  Tìm hàm số có TXĐ là R
+                                                if dang_toan =="[D10_C3_B1_10]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_10()
+
+                                                #[D10_C3_B1_11]-M2.  Tìm hàm số đồng biến (nghịch biến) trên R
+                                                if dang_toan =="[D10_C3_B1_11]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_11()
+
+                              
                                                     
 
                                                 ####################### Bài 1: Hàm số và đồ thị ######################
@@ -11195,6 +11298,32 @@ class Ui_MainWindow(object):
                                                 #[D10_C3_B2_35]-M3. Tìm điểm thuộc parabol
                                                 if dang_toan =="[D10_C3_B2_35]":
                                                         debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_35()
+
+                                                #[D10_C3_B2_36]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên R
+                                                if dang_toan =="[D10_C3_B2_36]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_36()
+
+                                                #[D10_C3_B2_37]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên [a,b]
+                                                if dang_toan =="[D10_C3_B2_37]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_37()
+
+                                                #[D10_C3_B2_38]-M1. Nhận dạng hàm số bậc hai
+                                                if dang_toan =="[D10_C3_B2_38]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_38()
+
+                                                #[D10_C3_B2_39]-M1. Tìm số giao điểm của (P) và trục hoành
+                                                if dang_toan =="[D10_C3_B2_39]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_39()
+
+                                                #[D10_C3_B2_40]-M1. Tìm toạ độ giao điểm Parabol với trục tung
+                                                if dang_toan =="[D10_C3_B2_40]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_40()
+
+                                                #[D10_C3_B2_41]-M2. Tìm toạ độ giao điểm Parabol với đường thẳng y=ax+b
+                                                if dang_toan =="[D10_C3_B2_41]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_41()
+
+
 
 
                                                                              
@@ -11615,6 +11744,28 @@ class Ui_MainWindow(object):
                                                 #[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB
                                                 if dang_toan == "[D10_CX_B0_23]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_23()
+
+                                                #[D10_CX_B0_24]-M1. Cho toạ độ điểm A, tìm toạ độ vecto OA và ngược lại
+                                                if dang_toan =="[D10_CX_B0_24]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_24()
+
+                                                #[D10_CX_B0_25]-M1. Cho vecto(u) biểu diễn theo 2 vecto(i) và vecto(j). Tìm toạ độ vecto(u)
+                                                if dang_toan =="[D10_CX_B0_25]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_25()
+
+                                                #[D10_CX_B0_26]-M3. Tìm toạ độ trực tâm
+                                                if dang_toan =="[D10_CX_B0_26]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_26()
+
+                                                #[D10_CX_B0_27]-M3. Tính góc giữa hai vecto
+                                                if dang_toan =="[D10_CX_B0_27]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_27()
+
+                                                #[D10_CX_B0_28]-M2. Tìm toạ độ D để ABCD là Hình bình hành
+                                                if dang_toan =="[D10_CX_B0_28]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_28()
+
+
                                                     
 
                                     #Chương 6- Thống kê
@@ -11814,7 +11965,11 @@ class Ui_MainWindow(object):
 
                                             #[D10_C7_B2_09]-M2. Tìm tập xác định hàm số y=căn(ax^2+bx+c)
                                                 if dang_toan == "[D10_C7_B2_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B2_09()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B2_09()
+
+                                            #[D10_C7_B2_10]-M3. Toán thực tế: tìm giá bán để lợi nhuận thoả đk cho trước
+                                                if dang_toan == "[D10_C7_B2_10]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B2_10()                                    
                                                     
 
                                             #Bài 3: Phương trình quy về bậc 2
@@ -12005,27 +12160,49 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_22()                                       
 
 
-                                    #[D10_C8_B2_24]-TF-M2. Tạo câu đúng-sai: Chọn 2 bức tranh.
+                                                #[D10_C8_B2_24]-TF-M2. Tạo câu đúng-sai: Chọn 2 bức tranh.
                                                 if dang_toan == "[D10_C8_B2_24]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_24()                                       
 
 
-                                    #[D10_C8_B2_25]-TF-M2. Tạo câu đúng-sai: Chọn 2 viên bi.
+                                                #[D10_C8_B2_25]-TF-M2. Tạo câu đúng-sai: Chọn 2 viên bi.
                                                 if dang_toan == "[D10_C8_B2_25]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_25()                                       
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_25()                                    
                                                     
 
-                                    #[D10_C8_B2_26]-TF-M2. Tạo câu đúng-sai: Chọn 2 người.
+                                                #[D10_C8_B2_26]-TF-M2. Tạo câu đúng-sai: Chọn 2 người.
                                                 if dang_toan == "[D10_C8_B2_26]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_26()                                       
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_26()
+
+                                                #[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn    
+                                                if dang_toan =="[D10_C8_B2_27]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_27()
+
+                                                #[D10_C8_B2_28]-M1. Có bn số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)  
+                                                if dang_toan =="[D10_C8_B2_28]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_28()
+
+                                                #[D10_C8_B2_29]-M2. Có bn số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0)    
+                                                if dang_toan =="[D10_C8_B2_29]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_29()
+
+                                                #[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt
+                                                if dang_toan =="[D10_C8_B2_30]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_30()
+
+                                                #[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song
+                                                if dang_toan =="[D10_C8_B2_31]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_31()
+
+                                    
                                                     
 
-                                    #[D10_C8_B3_01]-M1. Khai triển (x+a)^n
+                                                #[D10_C8_B3_01]-M1. Khai triển (x+a)^n
                                                 if dang_toan == "[D10_C8_B3_01]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B3_01()                                     
                                                     
 
-                                    #[D10_C8_B3_02]-M2. Khai triển (a-x)^n
+                                                #[D10_C8_B3_02]-M2. Khai triển (a-x)^n
                                                 if dang_toan == "[D10_C8_B3_02]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B3_02()                                     
                                                     
@@ -12629,8 +12806,11 @@ class Ui_MainWindow(object):
                                         for phan_tu in list_dapan_TN:
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
-                                                chuoi_QR+=phan_tu
+                                                chuoi_QR+=phan_tu 
+                                                chuoi_QR_QM+=f'"{phan_tu}",'                                               
                                         chuoi_QR+="#"
+                                        
+                                        
 
                                     if len(list_dungsai)>0:
                                         list_noi_dung+=f'\n {{\\bf PHẦN II. Câu trắc nghiệm đúng sai.}}\n'
@@ -12645,8 +12825,10 @@ class Ui_MainWindow(object):
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
                                                 chuoi_QR+='_'
+                                                chuoi_QR_QM+=f'"{phan_tu[0]}","{phan_tu[1]}","{phan_tu[2]}","{phan_tu[3]}",'
 
-                                        chuoi_QR+="#" 
+                                        chuoi_QR+="#"
+                                        
 
                                     if len(list_tuluan)>0:
                                         list_noi_dung+=f'\n {{\\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}}\n'
@@ -12661,8 +12843,11 @@ class Ui_MainWindow(object):
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
                                                 chuoi_QR+='_'
+                                                chuoi_QR_QM+=f'"{phan_tu}",'
+                                        chuoi_QR_QM=chuoi_QR_QM[:-1]
 
                                         chuoi_QR+="#"
+                                        
 
                                     list_noi_dung+=f"{{\\bf -----HẾT-----}} \n"
                                     list_noi_dung_HDG+=f"{{\\bf -----HẾT-----}} \n"
@@ -12685,6 +12870,7 @@ class Ui_MainWindow(object):
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
+                                                chuoi_QR_QM+=f'"{phan_tu}",'
                                         chuoi_QR+="#"
 
                                     if len(list_dungsai)>0:
@@ -12699,7 +12885,8 @@ class Ui_MainWindow(object):
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
-                                                chuoi_QR+='_'                                       
+                                                chuoi_QR+='_'
+                                                chuoi_QR_QM+=f'"{phan_tu[0]}","{phan_tu[1]}","{phan_tu[2]}","{phan_tu[3]}",'                                   
 
                                         chuoi_QR+="#"                                        
                                                 
@@ -12717,6 +12904,8 @@ class Ui_MainWindow(object):
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
                                                 chuoi_QR+='_'
+                                                chuoi_QR_QM+=f'"{phan_tu}",'
+                                        chuoi_QR_QM=chuoi_QR_QM[:-1]
 
                                         chuoi_QR+="#"
 
@@ -12745,6 +12934,7 @@ class Ui_MainWindow(object):
                                                 list_dapan_word.append(phan_tu)
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
+                                                chuoi_QR_QM+=f'"{phan_tu}",'
                                         chuoi_QR+="#"
 
                                     if len(list_dungsai)>0:
@@ -12762,6 +12952,7 @@ class Ui_MainWindow(object):
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
                                                 chuoi_QR+='_'
+                                                chuoi_QR_QM+=f'"{phan_tu[0]}","{phan_tu[1]}","{phan_tu[2]}","{phan_tu[3]}",'
 
                                         chuoi_QR+="#" 
                                         
@@ -12780,6 +12971,8 @@ class Ui_MainWindow(object):
                                                 #Add vào chuỗi QR
                                                 chuoi_QR+=phan_tu
                                                 chuoi_QR+='_'
+                                                chuoi_QR_QM+=f'"{phan_tu}",'
+                                        chuoi_QR_QM=chuoi_QR_QM[:-1]
 
                                         chuoi_QR+="#" 
                                     
@@ -12841,6 +13034,7 @@ class Ui_MainWindow(object):
 
                                 #Kết thúc đáp án của mã đề hiện tại cho chuỗi QR
                                 chuoi_QR+='",'
+                                chuoi_QR_QM+="],"
 
                             #end
 
@@ -12851,8 +13045,12 @@ class Ui_MainWindow(object):
 
                             #Kết thúc chuỗi QR
                             chuoi_QR+='"success":true,"type":5}'
-                            chuoi_QR=chuoi_QR.replace('#"','"').replace('_"','"').replace('_#','#')                            
-                            #Tạo ảnh QRcode
+                            chuoi_QR=chuoi_QR.replace('#"','"').replace('_"','"').replace('_#','#')
+
+                            chuoi_QR_QM+="]" 
+                            chuoi_QR_QM=chuoi_QR_QM.replace("Đ","D").replace("],]","]]")                        
+                            #Tạo ảnh QRcode TNmaker
+                            print(chuoi_QR_QM)
 
 
                             # Tạo đối tượng QRCode
@@ -12873,7 +13071,31 @@ class Ui_MainWindow(object):
                             img = qr.make_image(fill_color="black", back_color="white")
 
                             # Lưu hình ảnh
-                            img.save(f"{name_thu_muc}\\QRcode_TNMaker.png")          
+                            img.save(f"{name_thu_muc}\\QRcode_TNMaker.png")
+
+                            #####
+                            #Tạo ảnh QRcode phần mềm QM                     
+
+
+                            # Tạo đối tượng QRCode
+                            qr = qrcode.QRCode(
+                                version=1,  # Độ lớn của mã QR (tùy chọn)
+                                error_correction=qrcode.constants.ERROR_CORRECT_L,  # Mức độ sửa lỗi (tùy chọn)
+                                box_size=10,  # Kích thước mỗi ô vuông (tùy chọn)
+                                border=4,  # Độ dày viền (tùy chọn)
+                            )
+
+                            # Thêm dữ liệu vào mã QR
+                            qr.add_data(chuoi_QR_QM)
+
+                            # Tạo hình ảnh mã QR
+                            qr.make(fit=True)
+
+                            # Tạo đối tượng hình ảnh
+                            img = qr.make_image(fill_color="black", back_color="white")
+
+                            # Lưu hình ảnh
+                            img.save(f"{name_thu_muc}\\QRcode_QM_Chamthi_2025.png")         
 
 
 

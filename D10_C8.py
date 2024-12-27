@@ -2910,6 +2910,270 @@ def mcn__L10_C8_B2_26():
 		f"\\end{{ex}}\n"	
 	return debai,debai_latex,loigiai_word,dap_an
 
+
+
+
+
+
+
+
+
+#[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn	
+def mcn__L10_C8_B2_27(): 
+	n=random.randint(8,30)
+	noi_dung=f" Có bao nhiêu cách xếp ${{{n}}}$ người vào một bàn tròn."
+	noi_dung_loigiai=f" Số cách xếp ${{{n}}}$ người vào bàn tròn là ${{{n-1}!}}$"
+
+	kq=f"${{{n-1}!}}$"
+	kqs=[f"${{{n}!}}$",
+	f"${{{n-2}!}}$",
+	f"${{{n+2}!}}$",
+f"${{{n-3}!}}$",
+f"${{{n+1}!}}$",
+	f"${{{n+3}!}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[D10_C8_B2_28]-M1. Có bn số có n chữ số khác nhau từ n chữ số (không có chữ số 0)	
+def mcn__L10_C8_B2_28(): 
+	n=random.randint(4,9)
+	noi_dung=f" Có bao nhiêu số tự nhiên có ${{{n}}}$ chữ số khác nhau được lập từ ${{{n}}}$ chữ số ${{1;2;...;{n}}}$ ."
+	noi_dung_loigiai=f" Có ${{{n}}}!$ số tự nhiên có ${{{n}}}$ chữ số khác nhau được lập từ ${{{n}}}$ chữ số ${{1;2;...;{n}}}$ "
+
+	kq=f"${{{n}!}}$"
+	kqs=[f"${{{n-1}!}}$",
+	f"${{{n-2}!}}$",
+	f"${{{n+2}!}}$",
+f"${{{n-3}!}}$",
+f"${{{n+1}!}}$",
+	f"${{{n+3}!}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[D10_C8_B2_29]-M2. Có bn số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0)	
+def mcn__L10_C8_B2_29(): 
+	n=random.randint(4,9)
+	noi_dung=f" Có bao nhiêu số tự nhiên có ${{{n}}}$ chữ số khác nhau được lập từ ${{{n}}}$ chữ số ${{0;1;...;{n-1}}}$ ."
+	noi_dung_loigiai=(f" Có ${{{n}!}}$ số có ${{{n}}}$ chữ số khác nhau được lập từ ${{{n}}}$ chữ số trên tính cả chữ số ${{0}}$ đứng đầu \n\n"
+					f" Xét các số có  ${{{n}}}$ chữ số khác nhau được lập từ ${{{n}}}$ chữ số trên với chữ số ${{0}}$ đứng đầu thì có ${{{n-1}}}!$ \n\n"
+					f" Vậy có ${{{n}!-{n-1}!}}$  số tự nhiên có ${{{n}}}$ chữ số khác nhau được lập từ ${{{n}}}$ chữ số ${{0;1;...;{n-1}}}$")
+
+	kq=f"${{{n}!-{n-1}!}}$"
+	kqs=[f"${{{n}!}}$",
+	f"${{{n-1}!}}$",
+	f"${{{n}!-{n-2}!}}$",
+f"${{{n-1}!-{n-2}!}}$",
+f"${{{n+1}!-{n-1}!}}$",
+	f"${{{n+1}!-{n}!}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt
+def mcn__L10_C8_B2_30(): 
+	n=random.randint(20,100)
+	noi_dung=f" Có bao nhiêu vectơ khác vectơ không được tạo từ ${{{n}}}$ điểm phân biệt trong mặt phẳng."
+	noi_dung_loigiai=f" Có $A_{{{n}}}^{{2}}$ vectơ khác vectơ không được tạo từ ${{{n}}}$ điểm phân biệt trong mặt phẳng "
+					
+
+	kq=f"$A_{{{n}}}^{{2}}$"
+	kqs=[f"${{{n}!}}$",
+	f"$A_{{{n}}}^{{{n-1}}}$",
+	f"$C_{{{n}}}^{{2}}$",
+f"${{{n-1}!}}$",
+f"${{{n+1}!}}$",
+	f"${{{n+1}!-{n}!}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+def phan_so(t):
+    m=latex(Rational(t).limit_denominator(1000000000))
+    return m
+
+
+#[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song
+def mcn__L10_C8_B2_31(): 
+	n=random.randint(10,20)
+	m=random.choice([i for i in range(10,20) if i!=n])
+	a= binomial(n,2)*m+ binomial(m,2)*n
+	noi_dung=f"Cho hai đường thẳng ${{(d)}}$ và ${{(d')}}$ song song với nhau, trên đường thẳng ${{(d)}}$ có ${{{n}}}$ điểm phân biệt, trên đường thẳng ${{(d')}}$ có ${{{m}}}$ điểm phân biệt. Hỏi có thể tạo ra bao nhiêu tam giác có đỉnh là các điểm thuộc ${{(d)}}$ và ${{(d')}}$ ?"
+	noi_dung_loigiai=(f" Lấy ${{2}}$ điểm thuộc ${{(d)}}$ và ${{1}}$ điểm thuộc ${{(d')}}$ taọ được $C_{{{n}}}^{{2}} C_{{{m}}}^{{1}}$ tam giác \n\n"
+					f" Lấy ${{2}}$ điểm thuộc ${{(d')}}$ và ${{1}}$ điểm thuộc ${{(d)}}$ taọ được $C_{{{m}}}^{{2}} C_{{{n}}}^{{1}}$ tam giác \n\n"
+						f" Vậy số tam giác được tạo ra là $C_{{{n}}}^{{2}} C_{{{m}}}^{{1}} +C_{{{m}}}^{{2}} C_{{{n}}}^{{1}}= {phan_so(a)} $ tam giác")
+	kq=f"${{{phan_so(a)}}}$"
+	kqs=[f"${{{phan_so(a+1)}}}$",
+	f"${{{phan_so(a-1)}}}$",
+	f"${{{phan_so(a+2)}}}$",
+f"${{{phan_so(a-2)}}}$",
+f"${{{phan_so(a+3)}}}$",
+	f"${{{phan_so(a-3)}}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 #Bài 3 - Nhị thức Niu-tơn
 #[D10_C8_B3_01]-M1. Khai triển (x+a)^n
 def mcn__L10_C8_B3_01():
