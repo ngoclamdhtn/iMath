@@ -6089,9 +6089,17 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_10]-TF-M3.Cho hàm số số lượng vi khuẩn. Xét Đ-S: SL vi khuẩn, đạo hàm, tăng-giảm, max."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B5_3 = QTreeWidgetItem(L12_C1_B5, ["Trả lời ngắn"])
                 L12_C1_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_11]-SA-M2.  Tính chi phí trung bình sản xuất đồ chơi khi x đủ lớn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_04]-SA-M2. Bài toán tìm tốc độ trung bình để chi phí xăng nhỏ nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6395,6 +6403,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_33]-TF-M3. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm điểm thuộc trục thỏa mãn điều kiện."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_34]-TF-M3. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm M để MA=kMB."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_35]-TF-M3. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm M thỏa mãn đẳng thức vectơ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C2_B3_3 = QTreeWidgetItem(L12_C2_B3, ["Trả lời ngắn"])
                 L12_C2_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C2_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -6424,6 +6444,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_23]-SA-M3. Bài toán liên quan trung điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7753,6 +7777,14 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D12_C1_B5_09]": 
                                                         debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_09()
 
+                                                #[D12_C1_B5_10]-TF-M3. Cho hàm số số lượng vi khuẩn. Xét Đ-S: SL vi khuẩn, đạo hàm, tăng-giảm, max
+                                                if dang_toan == "[D12_C1_B5_10]": 
+                                                        debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_10()
+
+                                                #[D12_C1_B5_11]-SA-M2. Tính chi phí trung bình sản xuất đồ chơi khi x đủ lớn.
+                                                if dang_toan == "[D12_C1_B5_11]": 
+                                                        debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_11()
+
                                                     
 
                                     ######### Toán 12_ Chương 2 - TỌA ĐỘ VECTƠ TRONG KHÔNG GIAN ########
@@ -8016,6 +8048,22 @@ class Ui_MainWindow(object):
                                             #[D12_C2_B3_32]-M2. Cho hai véctơ a và b. Tính cos(a,b)
                                                 if dang_toan == "[D12_C2_B3_32]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_32()
+
+                                            #[D12_C2_B3_33]-TF-M3. Cho tam giác. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm điểm thuộc Ox thỏa mãn điều kiện.
+                                                if dang_toan == "[D12_C2_B3_33]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_33()
+
+                                            #[D12_C2_B3_34]-TF-M3. Cho tam giác. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm M thỏa mãn MA=kMB.
+                                                if dang_toan == "[D12_C2_B3_34]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_34()
+
+                                            #[D12_C2_B3_35]-TF-M3. Cho tam giác. Xét Đ-S: Tọa độ vectơ, Độ dài, Góc, Tìm M thỏa mãn đẳng thức vectơ.
+                                                if dang_toan == "[D12_C2_B3_35]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_35()
+
+                                            #[D12_C2_B3_36]-SA-M3. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min
+                                                if dang_toan == "[D12_C2_B3_36]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_36()
 
 
 

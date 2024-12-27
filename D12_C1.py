@@ -12164,7 +12164,7 @@ def prt_34_L12_C1_B5_09():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C1_B5_10]-SA-M3. Cho hàm số số lượng vi khuẩn. Xét Đ-S:
+#[D12_C1_B5_10]-TF-M3. Cho hàm số số lượng vi khuẩn. Xét Đ-S: SL vi khuẩn, đạo hàm, tăng-giảm, max
 def prt_34_L12_C1_B5_10():
 	t=sp.symbols("t")
 	a=random.randint(100,200)
@@ -12256,7 +12256,7 @@ def prt_34_L12_C1_B5_10():
 	f"c) {loigiai[2]}\n"\
 	f"d) {loigiai[3]}\n"\
 
-	loigiai_word=f"Lời giải:\n{file_name_BBT}\n {noi_dung_loigiai} \n" \
+	loigiai_word=f"Lời giải:\n {file_name_BBT} \n {noi_dung_loigiai} \n" \
 
 	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
 	f"b) {loigiai[1]}\n\n"\
@@ -12276,6 +12276,43 @@ def prt_34_L12_C1_B5_10():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_11]-SA-M2. Tính chi phí trung bình sản xuất đồ chơi khi x đủ lớn.
+def prt_34_L12_C1_B5_11():
+	toy=random.choice(["ôtô đồ chơi", "máy bay mô hình", "tàu hỏa đồ chơi", 
+		"xếp hình khối gỗ", "đồ chơi ghép tranh", "búp bê Barbie", "ô tô điều khiển từ xa"])
+	T=random.randint(20,60)*1000
+	m=random.randint(5,20)
+	noi_dung = (
+	f"Tại một công ty sản xuất {toy}, công ty phải chi ${{{T}}}$ USD để thiết lập dây chuyền sản xuất ban đầu."
+	f" Sau đó, cứ sản xuất được một sản phẩm đồ chơi, công ty phải chi trả ${{{m}}}$ USD cho nguyên liệu thô và nhân công."
+	f" Gọi $x~(x \\ge 1)$ là số {toy} mà công ty đã sản xuất và $T(x)$ (đơn vị USD) " 
+	f" là tổng số tiền bao gồm cả chi phí ban đầu mà công ty phải chi trả khi sản xuất $x$ {toy}."
+	f" Người ta xác định chi phí trung bình cho mỗi sản phẩm là $M(x)=\\dfrac{{T(x)}}{{x}}$."
+	f" Khi $x$ đủ lớn $(x \\to +\\infty)$ thì chi phí trung bình (USD) cho mỗi sản phẩm {toy} là bao nhiêu?"
+	)
+	dap_an=m
+
+	noi_dung_loigiai=(
+	f"Chi phí tổng chi phí để sản xuất ${{x}}$ sản phẩm đồ chơi là: $T(x)= {T}+{m}x$\n\n"
+	f"Chi phí trung bình cho mỗi sản phẩm đồ chơi là: $M(x)=\\dfrac{{{T}+{m}x}}{{x}}$.\n\n"
+	f"Khi đó: $\\mathop{{\\lim}}\\limits_{{x \\to  +\\infty}} {{M(x)}}"
+	f"=\\mathop{{\\lim}}\\limits_{{x \\to  +\\infty}}\\dfrac{{{T}+{m}x}}{{x}}={m}$.\n\n"
+	f" Khi $x$ đủ lớn, chi phí trung bình cho mỗi sản phẩm {toy} là ${{{m}}}$ USD"
+
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 

@@ -1088,8 +1088,8 @@ def ytrzz_L12_C3_B2_02():
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
 		st_b=f"{b}".replace(".",",")
 
-		st_dai_dien_x_tan_so+=f"{st_b}.{a}+"
-		st_dai_dien_square_x_tan_so+=f"{st_b}.{a}^2+"
+		st_dai_dien_x_tan_so+=f"{a}.{st_b}+"
+		st_dai_dien_square_x_tan_so+=f"{a}.{st_b}^2+"
 
 	st_dai_dien_x_tan_so=st_dai_dien_x_tan_so[0:len(st_dai_dien_x_tan_so)-1]
 	st_dai_dien_square_x_tan_so=st_dai_dien_square_x_tan_so[0:len(st_dai_dien_square_x_tan_so)-1]
@@ -1350,8 +1350,8 @@ def ytrzz_L12_C3_B2_04():
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
 		st_b=f"{b}".replace(".",",")
 
-		st_dai_dien_x_tan_so+=f"{st_b}.{a}+"
-		st_dai_dien_square_x_tan_so+=f"{st_b}.{a}^2+"
+		st_dai_dien_x_tan_so+=f"{a}.{st_b}+"
+		st_dai_dien_square_x_tan_so+=f"{a}.{st_b}^2+"
 
 	st_dai_dien_x_tan_so=st_dai_dien_x_tan_so[0:len(st_dai_dien_x_tan_so)-1]
 	st_dai_dien_square_x_tan_so=st_dai_dien_square_x_tan_so[0:len(st_dai_dien_square_x_tan_so)-1]
