@@ -11,27 +11,27 @@ from docx import Document
 import pyperclip
 
 #Test trắc nghiệm
-# test, test_latex="",""
-# for i in range(3):
-# 	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_03()
-# 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
-# 	test_latex=test_latex + f"{debai_latex}\n"
-# 	#print(test)
-# 	print(test_latex)
-# 	pyperclip.copy(test_latex)
+test, test_latex="",""
+for i in range(3):
+	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_03()
+	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
+	test_latex=test_latex + f"{debai_latex}\n"
+	#print(test)
+	print(test_latex)
+	pyperclip.copy(test_latex)
 
 
 
 #Test đúng sai
-test, test_latex="",""
-for i in range(5):
-	debai,debai_latex,loigiai_word,dap_an =D10_C6.tktk_L10_C6_B3_07()
-	#print(debai)
-	#print(loigiai_word)
-	test=test + f"{debai}\n{loigiai_word}\n"
-	test_latex=test_latex + f"{debai_latex}\n"
-	print(test_latex)
-pyperclip.copy(test_latex)
+# test, test_latex="",""
+# for i in range(5):
+# 	debai,debai_latex,loigiai_word,dap_an =D10_C6.tktk_L10_C6_B3_07()
+# 	#print(debai)
+# 	#print(loigiai_word)
+# 	test=test + f"{debai}\n{loigiai_word}\n"
+# 	test_latex=test_latex + f"{debai_latex}\n"
+# 	print(test_latex)
+# pyperclip.copy(test_latex)
 
 #Test tự luận
 # test, test_latex="",""

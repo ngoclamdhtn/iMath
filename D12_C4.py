@@ -201,27 +201,18 @@ def zz8zz_L12_C4_B1_02():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C4_B1_03]. Tìm nguyên hàm của sinu, cosu
+#[D12_C4_B1_03]. Tìm nguyên hàm của asinx+bcosx
 def zz8zz_L12_C4_B1_03():
     #Tạo bậc ngẫu nhiên
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    a = [random.randint(-4,5) for i in range(2)]
-    if a[0]==0 and a[1]==0:
-        a[0]= random.randint(1,5)
-    if a[0]==a[1]:
-        a[0]=a[1]+ random.randint(2,5)
-
-    b = [random.randint(1,5) for i in range(2)]    
-
-    f = a[0]*sin(b[0]*x) + a[1]*cos(b[1]*x)
-    ham=my_module.thay_the_ngoac_sincos(latex(f))
-
-    g = a[0]*cos(b[0]*x) + a[1]*sin(b[1]*x)
-
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*sin(x)+b*cos(x)
+    
     kq= integrate(f, x) 
     kq2=diff(f, x)
-    kq3=integrate(g, x) 
+    kq3=integrate(f, x)+random.randint(1,3)*x
     kq4=integrate(f, x)*random.choice([random.randint(-5, -2), random.randint(2, 5)])
 
    
@@ -243,7 +234,10 @@ def zz8zz_L12_C4_B1_03():
      #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Tìm nguyên hàm $  \\int {{\\left[{ham}\\right]{d_x}}}$."
+
+    noi_dung= f"Tìm nguyên hàm $  \\int {{\\left({latex(f)}\\right){d_x}}}$."
+    noi_dung=noi_dung.replace("\\left(","").replace("\\right)","")
+
     dap_an=my_module.tra_ve_dap_an(list_PA)     
     debai= f"{noi_dung}\n"
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
@@ -271,7 +265,7 @@ def zz8zz_L12_C4_B1_04():
    
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    a = random.randint(2, 10)
+    a = 1
     b = random.choice([random.randint(-10, -2), random.randint(2, 10)])
 
     f = b*sin(a*x)
@@ -329,7 +323,7 @@ def zz8zz_L12_C4_B1_04():
 def zz8zz_L12_C4_B1_05():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    a = random.randint(2, 10)
+    a = 1
     b = random.choice([random.randint(-10, -2), random.randint(2, 10)])
 
     f = b*cos(a*x)
