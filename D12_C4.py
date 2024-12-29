@@ -1007,6 +1007,69 @@ def zz8zz_L12_C4_B1_16():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_17]-SA-M2. Tìm nguyên hàm đa thức thỏa mãn F(x_0)=b
+def zz8zz_L12_C4_B1_17():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    
+    chon=random.randint(1,2)
+    if chon==1:
+        a = random.choice([i for i in range(-4, 4) if i!=0])
+        b = random.choice([i for i in range(-6, 6) if i!=0])
+        c = random.choice([i for i in range(-5, 5) if i!=0])
+        F = a*x**2+b*x+c
+    
+    if chon==2:
+        a = random.choice([i for i in range(-3, 3) if i!=0])
+        b = random.choice([i for i in range(-4, 4) if i!=0])
+        c = random.choice([i for i in range(-5, 5) if i!=0])
+        d = random.choice([i for i in range(-5, 5) if i!=0])
+        F = a*x**3+b*x**2+c*x+d
+
+    if chon==2:
+        a = random.choice([i for i in range(-3, 3) if i!=0])
+        b = random.choice([i for i in range(-4, 4) if i!=0])
+        c = random.choice([i for i in range(-5, 5) if i!=0])        
+        F = a*x**4+b*x**2+c
+
+    C= random.choice([i for i in range(-3, 3) if i!=0])
+    F_c=F+C    
+
+    
+    x_0= random.randint(-6, 6)
+    
+    b= F_c.subs(x,x_0)
+    x_1=random.randint(-5, 5)
+    if x_1==x_0: x_1=x_1+1
+
+    f=diff(F_c,x)
+
+    noi_dung = (
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=F.subs(x,x_1)
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {F.subs(x,x_0)}+C={b}\\Rightarrow C={C}$.\n\n"
+    f"Vậy $F(x)={latex(F)}$.\n\n"
+    f"$F({x_1})={dap_an}$."
+    
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN
 #[D12_C4_B2_01]. Nguyên hàm đổi biến chứa căn(ax+b)
