@@ -6626,14 +6626,39 @@ class Ui_MainWindow(object):
                 L12_C4_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_01]-M1. Tìm nguyên hàm đa thức."])
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_12]-M1. Tìm nguyên hàm của k."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm của hàm số đa thức.')
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_06]-M1. Tìm nguyên hàm đa thức + a/x."])
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_11]-M1. Tìm nguyên hàm của ax+b."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_13]-M1. Tìm nguyên hàm của ax^2+bx+c."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_01]-M2. Tìm nguyên hàm đa thức."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_14]-M2. Tìm nguyên hàm của (ax+b)^2."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_15]-M2. Tìm nguyên hàm của (a+b/x^2)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+c."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)          
+
+                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_06]-M2. Tìm nguyên hàm đa thức + a/x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
               
 
                 item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_02]-M2. Tìm nguyên hàm của hàm số đa thức thỏa mãn F(a)=b."])
@@ -6654,25 +6679,9 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_03]-M2. Tìm nguyên hàm asinx + bcosx."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm chứa sinu, cosu.')
+           
 
-                # item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_07]-M1. Tìm nguyên hàm m/(ax+b)."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                # #item.setToolTip(0, 'Tìm nguyên hàm m/(ax+b).')
-
-                # item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_08]. Tìm nguyên hàm (mx+n)/(ax+b)."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                # #item.setToolTip(0, 'Tìm nguyên hàm (mx+n)/(ax+b).')
-
-                # item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_09]-M2. Tìm nguyên hàm (mx^2+nx+p)/(ax+b)."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                
-                # item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_10]-M2. Tìm nguyên hàm e^(ax+b)."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+               
 
                 L12_C4_B2 = QTreeWidgetItem(L12_C4, ["Bài 2 - Nguyên hàm đổi biến"])
                 L12_C4_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8252,7 +8261,31 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B1_10]. Tìm nguyên hàm của e^(ax+b)
                                                 if dang_toan == "[D12_C4_B1_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_10()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_10()
+
+                                                #[D12_C4_B1_11]-M1. Tìm nguyên hàm của ax+b
+                                                if dang_toan == "[D12_C4_B1_11]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_11()
+
+                                                #[D12_C4_B1_12]-M1. Tìm nguyên hàm của k
+                                                if dang_toan == "[D12_C4_B1_12]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_12()
+
+                                                #[D12_C4_B1_13]-M2. Tìm nguyên hàm của ax^2+bx+c
+                                                if dang_toan == "[D12_C4_B1_13]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_13()
+
+                                                #[D12_C4_B1_14]-M2. Tìm nguyên hàm của (ax+b)^2
+                                                if dang_toan == "[D12_C4_B1_14]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_14()
+
+                                                #[D12_C4_B1_15]-M2. Tìm nguyên hàm của a+b/x^2
+                                                if dang_toan == "[D12_C4_B1_15]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_15()
+
+                                                #[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+cTìm nguyên hàm của ax+b/x^2+c
+                                                if dang_toan == "[D12_C4_B1_16]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_16()                                
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến
@@ -13050,7 +13083,7 @@ class Ui_MainWindow(object):
                             chuoi_QR_QM+="]" 
                             chuoi_QR_QM=chuoi_QR_QM.replace("Đ","D").replace("],]","]]")                        
                             #Tạo ảnh QRcode TNmaker
-                            print(chuoi_QR_QM)
+                            
 
 
                             # Tạo đối tượng QRCode
