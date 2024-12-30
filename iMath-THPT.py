@@ -6622,61 +6622,115 @@ class Ui_MainWindow(object):
                 L12_C4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B1 = QTreeWidgetItem(L12_C4, ["Bài 1 - Nguyên hàm cơ bản"])
+                
+
+                L12_C4_B1 = QTreeWidgetItem(L12_C4, ["Bài 1 - Nguyên hàm"])
                 L12_C4_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_12]-M1. Tìm nguyên hàm của k."])
+                L12_C4_B1_1 = QTreeWidgetItem(L12_C4_B1, ["Trắc nghiệm"])
+                L12_C4_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B1_11 = QTreeWidgetItem(L12_C4_B1_1, ["Nguyên hàm đa thức-phân thức"])
+                L12_C4_B1_11.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B1_11.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_12]-M1. Tìm nguyên hàm của k."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_11]-M1. Tìm nguyên hàm của ax+b."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_11]-M1. Tìm nguyên hàm của ax+b."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_13]-M1. Tìm nguyên hàm của ax^2+bx+c."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_13]-M1. Tìm nguyên hàm của ax^2+bx+c."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_01]-M2. Tìm nguyên hàm đa thức."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_01]-M2. Tìm nguyên hàm đa thức."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_14]-M2. Tìm nguyên hàm của (ax+b)^2."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_14]-M2. Tìm nguyên hàm của (ax+b)^2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_15]-M2. Tìm nguyên hàm của (a+b/x^2)."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_15]-M2. Tìm nguyên hàm của (a+b/x^2)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+c."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+c."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)          
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_06]-M2. Tìm nguyên hàm đa thức + a/x."])
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_06]-M2. Tìm nguyên hàm đa thức + a/x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
+
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_02]-M2. Tìm nguyên hàm của đa thức thỏa F(a)=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                
+                L12_C4_B1_12 = QTreeWidgetItem(L12_C4_B1_1, ["Nguyên hàm lượng giác"])
+                L12_C4_B1_12.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B1_12.setCheckState(0, Qt.CheckState.PartiallyChecked)       
+
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_04]-M1. Tìm nguyên hàm asinx."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+             
+
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_05]-M1. Tìm nguyên hàm acosx."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                
+
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_03]-M2. Tìm nguyên hàm asinx + bcosx."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
-              
-
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_02]-M2. Tìm nguyên hàm của hàm số đa thức thỏa mãn F(a)=b."])
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_21]-M2. Tìm nguyên hàm a/cos^2x."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm của hàm số đa thức thỏa mãn F(a)=b.')        
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_04]-M1. Tìm nguyên hàm asinx."])
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_22]-M2. Tìm nguyên hàm a/sin^2x."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm chứa sinu, cosu.')
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_05]-M1. Tìm nguyên hàm acosx."])
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_23]-M2. Tìm nguyên hàm a(1+tan^2x)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm chứa sinu, cosu.')
 
-                item = QTreeWidgetItem(L12_C4_B1, ["[D12_C4_B1_03]-M2. Tìm nguyên hàm asinx + bcosx."])
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_24]-M2. Tìm nguyên hàm a(1+cot^2x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_25]-M2. Tìm nguyên hàm của m/cos^2x + n/sin^2x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B1_2 = QTreeWidgetItem(L12_C4_B1, ["Đúng-Sai"])
+                L12_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B1_3 = QTreeWidgetItem(L12_C4_B1, ["Trả lời ngắn"])
+                L12_C4_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_17]-SA-M2. Nguyên hàm của đa thức thỏa F(x_0)=y_0. Tính F(x_1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_18]-SA-M2. Nguyên hàm của a+b/x^2 thỏa F(x_0)=y_0. Tính F(x_1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_19]-SA-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_20]-SA-M2. Tìm nguyên hàm của ax+b+c/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
            
@@ -8285,7 +8339,43 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+cTìm nguyên hàm của ax+b/x^2+c
                                                 if dang_toan == "[D12_C4_B1_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_16()                                
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_16()
+
+                                                #[D12_C4_B1_17]-M2. Tìm nguyên hàm đa thức thỏa mãn F(x_0)=b
+                                                if dang_toan == "[D12_C4_B1_17]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_17()
+
+                                                #[D12_C4_B1_18]-M2. Tìm nguyên hàm của a+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_18]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_18()
+
+                                                #[D12_C4_B1_19]-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_19]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_19()
+
+                                                #[D12_C4_B1_20]-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_20]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_20()
+
+                                                #[D12_C4_B1_21]-M2. Tìm nguyên hàm của m/cos^2x
+                                                if dang_toan == "[D12_C4_B1_21]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_21()
+
+                                                #[D12_C4_B1_22]-M2. Tìm nguyên hàm của m/sin^2x
+                                                if dang_toan == "[D12_C4_B1_22]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_22()
+
+                                                #[D12_C4_B1_23]-M2. Tìm nguyên hàm của m(1+tan^2x)
+                                                if dang_toan == "[D12_C4_B1_23]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_23()
+
+                                                #[D12_C4_B1_24]-M2. Tìm nguyên hàm của m(1+cot^2x)
+                                                if dang_toan == "[D12_C4_B1_24]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_24()
+
+                                                #[D12_C4_B1_25]-M2. Tìm nguyên hàm của m/cos^2x + n/sin^2x
+                                                if dang_toan == "[D12_C4_B1_25]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_25()             
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến
@@ -13572,25 +13662,25 @@ class Ui_MainWindow(object):
                         if cell_value is not None:
                             rows_count += 1
 
-                    self.tableWidget.setRowCount(rows_count-1)  
+                    self.tableWidget.setRowCount(rows_count)  
                     
-                    for i in range(1,rows_count):
-                        cell_value = sheet.cell(row=i+1, column=1).value
-                        dang_toan = sheet.cell(row=i+1, column=1).value                            
+                    for i in range(1,rows_count+1):
+                        cell_value = sheet.cell(row=i, column=1).value
+                        dang_toan = sheet.cell(row=i, column=1).value                            
                         item = QTableWidgetItem(dang_toan)                            
                         self.tableWidget.setItem(i-1, 0, item)
 
-                        loai_cau = sheet.cell(row=i+1, column=2).value
+                        loai_cau = sheet.cell(row=i, column=2).value
                         item = QTableWidgetItem(loai_cau)
                         item.setTextAlignment(Qt.AlignCenter)
                         self.tableWidget.setItem(i-1, 1, item)
 
-                        muc_do = sheet.cell(row=i+1, column=3).value
+                        muc_do = sheet.cell(row=i, column=3).value
                         item = QTableWidgetItem(muc_do)
                         item.setTextAlignment(Qt.AlignCenter)
                         self.tableWidget.setItem(i-1, 2, item)
 
-                        so_cau = str(sheet.cell(row=i+1, column=4).value)
+                        so_cau = str(sheet.cell(row=i, column=4).value)
                         item = QTableWidgetItem(so_cau)
                         item.setTextAlignment(Qt.AlignCenter)
                         self.tableWidget.setItem(i-1, 3, item)

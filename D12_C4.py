@@ -4,6 +4,12 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+from decimal import Decimal, ROUND_HALF_UP
+# Hàm làm tròn half-up
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Thay thế dấu ngoặc sin(x) thành sinx
 def thay_the_ngoac_sincos(st):
     str_thaythe=st.replace(f"\\cos{{\\left(x \\right)}}",f"\\cos x")
@@ -1013,49 +1019,48 @@ def zz8zz_L12_C4_B1_17():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     
-    chon=random.randint(1,2)
+    chon=random.randint(1,3)
     if chon==1:
         a = random.choice([i for i in range(-4, 4) if i!=0])
-        b = random.choice([i for i in range(-6, 6) if i!=0])
-        c = random.choice([i for i in range(-5, 5) if i!=0])
-        F = a*x**2+b*x+c
-    
-    if chon==2:
-        a = random.choice([i for i in range(-3, 3) if i!=0])
-        b = random.choice([i for i in range(-4, 4) if i!=0])
-        c = random.choice([i for i in range(-5, 5) if i!=0])
-        d = random.choice([i for i in range(-5, 5) if i!=0])
-        F = a*x**3+b*x**2+c*x+d
+        b = random.choice([i for i in range(-6, 6) if i!=0])        
 
+        F = a*x**2+b*x
+    
     if chon==2:
         a = random.choice([i for i in range(-3, 3) if i!=0])
         b = random.choice([i for i in range(-4, 4) if i!=0])
         c = random.choice([i for i in range(-5, 5) if i!=0])        
-        F = a*x**4+b*x**2+c
+        F = a*x**3+b*x**2+c*x
 
-    C= random.choice([i for i in range(-3, 3) if i!=0])
-    F_c=F+C    
+    if chon==3:
+        a = random.choice([i for i in range(-3, 3) if i!=0])
+        b = random.choice([i for i in range(-4, 4) if i!=0])
+        c = random.choice([i for i in range(-5, 5) if i!=0])        
+        F = a*x**4+b*x**2+c*x  
 
     
     x_0= random.randint(-6, 6)
     
-    b= F_c.subs(x,x_0)
+    b= random.randint(-10, 10)
     x_1=random.randint(-5, 5)
     if x_1==x_0: x_1=x_1+1
 
-    f=diff(F_c,x)
+    f=diff(F,x)
+    C=b-F.subs(x,x_0)
+    G=F+C
+
+    dap_an=G.subs(x,x_1)
 
     noi_dung = (
-    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$."
     )
-    dap_an=F.subs(x,x_1)
+    
 
     noi_dung_loigiai=(
     f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
     f"$F({x_0})={b}\\Leftrightarrow {F.subs(x,x_0)}+C={b}\\Rightarrow C={C}$.\n\n"
-    f"Vậy $F(x)={latex(F)}$.\n\n"
-    f"$F({x_1})={dap_an}$."
-    
+    f"Vậy $F(x)={latex(F+C)}$.\n\n"
+    f"$F({x_1})={dap_an}$."    
     )    
         
     debai_word= f"{noi_dung}\n"
@@ -1069,6 +1074,427 @@ def zz8zz_L12_C4_B1_17():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_18]-SA-M2. Tìm nguyên hàm của a+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_18():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    
+    chon=random.randint(1,2)
+    
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.choice([i for i in range(-5, 5) if i!=0])        
+
+    F = a*x+b/x
+   
+    x_0= random.choice([i for i in range(-5, 5) if i!=0])
+    
+    b= random.randint(-8, 8)
+    x_1=random.randint(-5, 5)
+
+    while x_1==x_0 or x_1==0:
+        x_1=random.randint(-5, 5)       
+   
+
+    f=diff(F,x)
+    C=b-F.subs(x,x_0)
+    G=F+C
+
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {phan_so(F.subs(x,x_0))}+C={b}\\Rightarrow C={phan_so(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n"
+    f"$F({x_1})={phan_so(G.subs(x,x_1))}={dap_an}$."    
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_19]-SA-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_19():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    
+    chon=random.randint(1,2)
+    
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.choice([i for i in range(-6, 6) if i!=0])        
+
+    F = a*x**2+b/x
+   
+    x_0= random.choice([i for i in range(-5, 5) if i!=0])
+    
+    b= random.randint(-8, 8)
+    x_1=random.randint(-5, 5)
+
+    while x_1==x_0 or x_1==0:
+        x_1=random.randint(-5, 5)       
+   
+
+    f=diff(F,x)
+    C=b-F.subs(x,x_0)
+    G=F+C
+
+    dap_an=f"{round_half_up(G.subs(x,x_1)):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {phan_so(F.subs(x,x_0))}+C={b}\\Rightarrow C={phan_so(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n"
+    f"$F({x_1})={phan_so(G.subs(x,x_1))}={dap_an}$."    
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_20]-SA-M2. Tìm nguyên hàm của ax+b+c/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_20():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"   
+
+    
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.choice([i for i in range(-4, 4) if i!=0])
+    c = random.choice([i for i in range(-4, 4) if i!=0])        
+
+    F = a*x**2+b*x+c/x   
+    x_0= random.choice([i for i in range(-3, 3) if i!=0])   
+    
+    x_1=random.randint(-5, 5)
+    while x_1==x_0 or x_1==0:
+        x_1=random.randint(-4, 4)       
+   
+    b= random.randint(-6, 6)
+    f=diff(F,x)
+    C=b-F.subs(x,x_0)
+    G=F+C
+
+    dap_an=f"{round_half_up(G.subs(x,x_1)):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {phan_so(F.subs(x,x_0))}+C={b}\\Rightarrow C={phan_so(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n"
+    f"$F({x_1})={phan_so(G.subs(x,x_1))}={dap_an}$."    
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_21]-M2. Tìm nguyên hàm của m/cos^2x
+def zz8zz_L12_C4_B1_21():
+    m= random.choice([random.randint(-10,-2), random.randint(2,10)])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int \\dfrac{{{m}}}{{\\cos^2 x}} dx$."
+    )
+    
+    kq=f"${m}\\tan x+C$"
+    kq_false=[
+    f"${m}\\cot x+C$",
+    f"${m}\\cos^2 x+C$",
+    f"${m}\\sin^2 x+C$",
+    f"${m}\\tan^2 x+C$",
+     f"${m}\\cot^2 x+C$"
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int \\dfrac{{{m}}}{{\\cos^2 x}}dx={m}\\tan x+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_22]-M2. Tìm nguyên hàm của m/sin^2x
+def zz8zz_L12_C4_B1_22():
+    m= random.choice([random.randint(-10,-2), random.randint(2,10)])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int \\dfrac{{{m}}}{{\\sin^2 x}} dx$."
+    )
+    
+    kq=f"${-m}\\cot x+C$"
+    kq_false=[
+    f"${m}\\cot x+C$",
+    f"${m}\\cos^2 x+C$",
+    f"${m}\\sin^2 x+C$",
+    f"${m}\\tan^2 x+C$",
+    f"${m}\\cot^2 x+C$",
+    f"$\\dfrac{{{m}}}{{\\cot^2 x}}+C$",
+    f"$\\dfrac{{{m}}}{{\\tan^2 x}}+C$"
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int \\dfrac{{{m}}}{{\\sin^2 x}} dx={-m}\\cot x+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_23]-M2. Tìm nguyên hàm của m(1+tan^2x)
+def zz8zz_L12_C4_B1_23():
+    m= random.choice([random.randint(-10,-2), random.randint(2,10)])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int {m}\\left(1+\\tan^2 x\\right) dx$."
+    )
+    
+    kq=f"${m}\\tan x+C$"
+    kq_false=[
+    f"${m}\\cot x+C$",
+    f"${m}\\cos^2 x+C$",
+    f"${m}\\sin^2 x+C$",
+    f"${m}\\tan^2 x+C$",
+     f"${m}\\cot^2 x+C$"
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int {m}\\left(1+\\tan^2 x\\right)dx={m}\\tan x+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_24]-M2. Tìm nguyên hàm của m(1+cot^2x)
+def zz8zz_L12_C4_B1_24():
+    m= random.choice([random.randint(-10,-2),random.randint(2,10)])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int {m}\\left(1+\\cot^2 x\\right)dx$."
+    )
+    
+    kq=f"${-m}\\cot x+C$"
+    kq_false=[
+    f"${m}\\cot x+C$",
+    f"${-m}\\cos^2 x+C$",
+    f"${m}\\sin^2 x+C$",
+    f"${m}\\tan^2 x+C$",
+    f"${m}\\cot^2 x+C$",
+    f"$\\dfrac{{{-m}}}{{\\cot^2 x}}+C$",
+    f"$\\dfrac{{{m}}}{{\\tan^2 x}}+C$"
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int {m}\\left(1+\\cot^2 x\\right) dx={-m}\\cot x+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_25]-M2. Tìm nguyên hàm của m/cos^2x + n/sin^2x
+def zz8zz_L12_C4_B1_25():
+    m= random.choice([random.randint(-10,-2), random.randint(2,10)])
+    n= random.choice([random.randint(-10,-2), random.randint(2,10)])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int \\left(\\dfrac{{{m}}}{{\\cos^2 x}} +\\dfrac{{{n}}}{{\\sin^2 x}}\\right) dx$."
+    )
+    
+    kq=f"${m}\\tan x+{-n}\\cot x+C$"
+    kq_false=[
+    f"${m}\\tan x+{n}\\cot x+C$",
+    f"${m}\\cos^2 x+{n}\\sin^2x +C$",
+    f"${m}\\cos x+{n}\\sin x$",
+    f"${m}\\tan^2 x+C$",
+     f"${n}\\cot^2 x+C$"
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int \\left(\\dfrac{{{m}}}{{\\cos^2 x}} +\\dfrac{{{n}}}{{\\sin^2 x}}\\right) dx={m}\\tan x+{-n}\\cot x+C$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+
+    pa_A= f"*{kq}".replace("+-","-")
+    pa_B= f"{kq2}".replace("+-","-")
+    pa_C= f"{kq3}".replace("+-","-")
+    pa_D= f"{kq4}".replace("+-","-")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN
@@ -1118,6 +1544,8 @@ def zz8zz_L12_C4_B2_01():
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 
 #[D12_C4_B2_02]. Nguyên hàm đổi biến chứa căn(ax^2+b)
 def zz8zz_L12_C4_B2_02():
