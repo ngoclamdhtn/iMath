@@ -6714,6 +6714,10 @@ class Ui_MainWindow(object):
                 L12_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C4_B1_3 = QTreeWidgetItem(L12_C4_B1, ["Trả lời ngắn"])
                 L12_C4_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8375,7 +8379,11 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B1_25]-M2. Tìm nguyên hàm của m/cos^2x + n/sin^2x
                                                 if dang_toan == "[D12_C4_B1_25]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_25()             
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_25()
+                                                
+                                                #[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)
+                                                if dang_toan == "[D12_C4_B1_26]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_26()        
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến
