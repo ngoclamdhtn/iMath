@@ -1607,6 +1607,221 @@ def zz8zz_L12_C4_B1_26():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_27]-M1. Nguyên hàm của a^x
+def zz8zz_L12_C4_B1_27():
+    a=random.choice([random.randint(2,15),pi])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int {{{latex(a)}^x}}dx$."
+    )
+    
+
+    kq=f"$\\dfrac{{{latex(a)}^x}}{{\\ln {latex(a)}}}$"
+    kq_false=[
+    f"$\\dfrac{{{latex(a)}^x}}{{{latex(a)}}}+C$",
+    f"${latex(a)}^x\\ln {latex(a)}+C$",
+    f"$x^{{{latex(a)}}}\\ln {latex(a)}+C$",
+    f"$\\dfrac{{x^{{{latex(a)}}} }}{{\\ln {latex(a)}}}+C$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int {{{latex(a)}^x}}dx=\\dfrac{{{latex(a)}^x}}{{\\ln {latex(a)}}}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_28]-M2. Nguyên hàm của m.e^x
+def zz8zz_L12_C4_B1_28():
+    a=random.choice([random.randint(2,15), random.randint(1,9)/random.randint(10,20)])
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int {{{phan_so(a)}.e^x}}dx$."
+    )
+    
+
+    kq=f"${phan_so(a)}e^x+C$"
+    kq_false=[
+    f"${phan_so(a)}\\ln x+C$",
+    f"$e^x+C$",
+    f"$e^{{{phan_so(a)}x}}+C$",
+    f"${phan_so(1/a)}e^x+C$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int {{{phan_so(a)}.e^x}}dx={phan_so(a)}e^x+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_29]-M2. Nguyên hàm của e^(ax+b)
+def zz8zz_L12_C4_B1_29():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-8, 8) if i!=0 and i!=1])
+    b = random.randint(-8,8)
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int e^{{{latex(a*x+b)}}}dx$."
+    )
+    
+
+    kq=f"${phan_so(1/a)}e^{{{latex(a*x+b)}}}+C$"
+    kq_false=[
+    f"${a}e^{{{latex(a*x+b)}}}+C$",
+    f"$e^{{{latex(a*x+b)}}}+C$",
+    f"$({latex(a*x+b)}).e^x+C$",
+  ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int e^{{{latex(a*x+b)}}}dx={phan_so(1/a)}e^{{{latex(a*x+b)}}}+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_30]-M2. Nguyên hàm của e^(ax)+mx+n
+def zz8zz_L12_C4_B1_30():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-8, 8) if i!=0 and i!=1 and i !=-1])
+    m = random.choice([i for i in range(-5, 5) if i!=0 and i!=1 and i !=-1])
+    n = random.choice([i for i in range(-7, 7) if i!=0])
+    
+    noi_dung=(
+    f"Tìm nguyên hàm $\\int (e^{{{latex(a*x)}}}+{latex(m*x+n)})dx$."
+    )
+    
+
+    kq=f"${phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}C$"
+    kq_false=[
+    f"$e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}C$",
+    f"${phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2+n*x)}C$",
+    f"${a}e^{{{latex(a*x)}}}+{m}+C$",
+  ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int e^{{{latex(a*x+b)}}}dx={phan_so(1/a)}e^{{{latex(a*x+b)}}}+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN
 #[D12_C4_B2_01]. Nguyên hàm đổi biến chứa căn(ax+b)

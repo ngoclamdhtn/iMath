@@ -4419,7 +4419,7 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_07]-M2. Cho hình hộp. Xét sự song song của một đường với các đường."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                ##item.setToolTip(0, 'Cho hình hộp. Xét sự song song của một đường với các đường.')
+                item.setToolTip(0, 'Cho hình hộp. Xét sự song song của một đường với các đường.')
 
                 item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_08]-M2. Cho hình hộp. Xét sự song song của hai đường tùy ý."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6674,7 +6674,7 @@ class Ui_MainWindow(object):
                 
                 L12_C4_B1_12 = QTreeWidgetItem(L12_C4_B1_1, ["Nguyên hàm lượng giác"])
                 L12_C4_B1_12.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L12_C4_B1_12.setCheckState(0, Qt.CheckState.PartiallyChecked)       
+                L12_C4_B1_12.setCheckState(0, Qt.CheckState.PartiallyChecked)      
 
                 item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_04]-M1. Tìm nguyên hàm asinx."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6710,11 +6710,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L12_C4_B1_13 = QTreeWidgetItem(L12_C4_B1_1, ["Nguyên hàm các hàm số khác"])
+                L12_C4_B1_13.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B1_13.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_27]-M1. Tìm nguyên hàm của a^x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_28]-M1. Tìm nguyên hàm của m.e^x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_29]-M2. Nguyên hàm của e^(ax+b)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C4_B1_2 = QTreeWidgetItem(L12_C4_B1, ["Đúng-Sai"])
                 L12_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1_12, ["[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8383,7 +8399,19 @@ class Ui_MainWindow(object):
                                                 
                                                 #[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)
                                                 if dang_toan == "[D12_C4_B1_26]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_26()        
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_26()
+
+                                                #[D12_C4_B1_27]-M1. Nguyên hàm của a^x
+                                                if dang_toan == "[D12_C4_B1_27]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_27() 
+
+                                                #[D12_C4_B1_28]-M2. Nguyên hàm của m.e^x
+                                                if dang_toan == "[D12_C4_B1_28]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_28()
+
+                                                #[D12_C4_B1_29]-M2. Nguyên hàm của e^(ax+b)
+                                                if dang_toan == "[D12_C4_B1_29]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_29()
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến
