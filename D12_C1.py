@@ -3027,7 +3027,7 @@ def prt_34_L12_C1_B1_22():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{p*x_CT + q*x_CD}}}\n\n"\
+	f"\\shortans[4]{{{p*x_CT + q*x_CD}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=p*x_CT + q*x_CD
@@ -3095,7 +3095,7 @@ def prt_34_L12_C1_B1_23():
 	
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{${dap_an}$}}\n\n"\
+	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3144,7 +3144,7 @@ def prt_34_L12_C1_B1_24():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{${p*x_CT + q*x_CD}$}}\n\n"\
+	f"\\shortans[4]{{${p*x_CT + q*x_CD}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=p*x_CT + q*x_CD
@@ -3197,7 +3197,7 @@ def prt_34_L12_C1_B1_25():
 	dap_an=f"{round(p*y_CT + q*y_CD,1)}".replace(".",",")
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{${dap_an}$}}\n\n"\
+	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3772,7 +3772,7 @@ def prt_34_L12_C1_B1_29():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${{{dap_an}}}$}}\n\n"\
+	f"\\shortans[4]{{${{{dap_an}}}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4315,7 +4315,7 @@ def prt_34_L12_C1_B1_32():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${{{dap_an}}}$}}\n\n"\
+	f"\\shortans[4]{{${{{dap_an}}}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4376,7 +4376,7 @@ def prt_34_L12_C1_B1_33():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${{{dap_an}}}$}}\n\n"\
+	f"\\shortans[4]{{${{{dap_an}}}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4671,7 +4671,7 @@ def prt_34_L12_C1_B1_36():
 	
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{${dap_an}$}}\n\n"\
+	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4734,7 +4734,7 @@ def prt_34_L12_C1_B1_37():
 	
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{${dap_an}$}}\n\n"\
+	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -6425,7 +6425,7 @@ def prt_34_L12_C1_B2_15():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -6549,7 +6549,7 @@ def prt_34_L12_C1_B2_16():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -6616,7 +6616,7 @@ def prt_34_L12_C1_B2_17():
 				f"Hàm số nghịch biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị nhỏ nhất trên nửa khoảng ${{({m};{n}]}}$ bằng $f({n})={phan_so(y_n)}={kq}$."
 		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 
@@ -6690,7 +6690,7 @@ def prt_34_L12_C1_B2_17():
 			f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left(-{latex(nsimplify(sqrt(b/a)))} \\right)={latex(y_1)}={kq}$.\n\n"
 
 		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 
@@ -6783,7 +6783,7 @@ def prt_34_L12_C1_B2_17():
 				f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 				f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left({x_1} \\right)={latex(y_1)}$.\n\n"
 			latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 
@@ -6859,7 +6859,7 @@ def prt_34_L12_C1_B2_18():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	
@@ -6922,7 +6922,7 @@ def prt_34_L12_C1_B2_19():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{t_round}}}\n\n"\
+	f"\\shortans[4]{{{t_round}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=t_round
@@ -6971,7 +6971,7 @@ def prt_34_L12_C1_B2_20():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${t_round}$}}\n\n"\
+	f"\\shortans[4]{{${t_round}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=t_round
@@ -7367,7 +7367,7 @@ def prt_34_L12_C1_B2_24():
 		f"\\end{{ex}}\n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -8398,7 +8398,7 @@ def prt_34_L12_C1_B3_10():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -9135,7 +9135,7 @@ def prt_34_L12_C1_B3_18():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -10339,7 +10339,7 @@ def prt_34_L12_C1_B4_10():
 		f"\\end{{ex}}\n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-	f"\\shortans[oly]{{{kq}}}\n"\
+	f"\\shortans[4]{{{kq}}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -10434,7 +10434,7 @@ def prt_34_L12_C1_B4_11():
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"Số nghiệm của phương trình $f(x)={m}$ là:\n"\
-	f"\\shortans[oly]{{{kq}}}\n"\
+	f"\\shortans[4]{{{kq}}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -10678,7 +10678,7 @@ def prt_34_L12_C1_B4_13():
 	    f"\\end{{ex}}\n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-		f"\\shortans[oly]{{{kq}}}\n"\
+		f"\\shortans[4]{{{kq}}}\n"\
 		f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -10954,7 +10954,7 @@ def prt_34_L12_C1_B4_17():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -11042,7 +11042,7 @@ def prt_34_L12_C1_B4_18():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -11066,7 +11066,7 @@ def prt_34_L12_C1_B4_19():
 	y_0=g.subs(x,x_0)
 
 
-	noi_dung = f"Cho hàm số ${latex(f)}$ . Xét tính đúng-sai của các khẳng định sau. "		
+	noi_dung = f"Cho hàm số $y={latex(f)}$ . Xét tính đúng-sai của các khẳng định sau. "		
 	debai_word= f"{noi_dung}\n"
 	
 	kq1_T=f"* Tập xác định của hàm số là $D=\\mathbb{{R}} \\backslash \\left\\{{{phan_so(-e/d)}\\right\\}}$" 
@@ -11245,7 +11245,7 @@ def prt_34_L12_C1_B5_01():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -11325,7 +11325,7 @@ def prt_34_L12_C1_B5_02():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -11421,7 +11421,7 @@ def prt_34_L12_C1_B5_03():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -11487,7 +11487,7 @@ def prt_34_L12_C1_B5_04():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -12159,7 +12159,7 @@ def prt_34_L12_C1_B5_09():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n \\begin{{center}}\n{code_hinh_BBT}\n\\end{{center}}\n{noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an

@@ -1778,17 +1778,17 @@ def zz8zz_L12_C4_B1_30():
     )
     
 
-    kq=f"${phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}C$"
+    kq=f"${phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}+C$"
     kq_false=[
-    f"$e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}C$",
-    f"${phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2+n*x)}C$",
+    f"$e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}+C$",
+    f"${phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2+n*x)}+C$",
     f"${a}e^{{{latex(a*x)}}}+{m}+C$",
   ]
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
 
     noi_dung_loigiai=(
-    f"$\\int e^{{{latex(a*x+b)}}}dx={phan_so(1/a)}e^{{{latex(a*x+b)}}}+C$."
+    f"$\\int (e^{{{latex(a*x)}}}+{latex(m*x+n)})dx={phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}+C$"
     )
 
     pa_A= f"*{kq}"

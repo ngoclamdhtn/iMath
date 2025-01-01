@@ -1,4 +1,4 @@
-import D10_C1,D10_C2, D10_C3, D10_C4, D10_C5, D10_C6, D10_C7,D10_C8,D10_C9,D10_C10, D11_C1, D11_C2, D11_C3, D11_C4, D11_C5, D11_C6,D11_C7, D11_C8,D11_C9, D12_C1,D12_C2, D12_C4,D12_C5, D12_C7
+import D10_C1,D10_C2, D10_C3, D10_C4, D10_C5, D10_C6, D10_C7,D10_C8,D10_C9,D10_C10, D11_C1, D11_C2, D11_C3, D11_C4, D11_C5, D11_C6,D11_C7, D11_C8,D11_C9, D12_C1,D12_C2, D12_C4,D12_C5,D12_C6, D12_C7
 import D12_C3
 import my_module
 import math
@@ -13,7 +13,7 @@ import pyperclip
 #Test trắc nghiệm
 test, test_latex="",""
 for i in range(3):
-	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_30()
+	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_04()
 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
 	test_latex=test_latex + f"{debai_latex}\n"
 	#print(test)

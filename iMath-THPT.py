@@ -9,7 +9,7 @@ from sympy import *
 from tabulate import tabulate
 import sympy as sp
 import my_module, license
-import D10_C1,D10_C2,D10_C3,D10_C4,D10_C5,D10_C6,D10_C7,D10_C10,D10_C8,D10_C9, D11_C1, D11_C2, D11_C3, D11_C4, D11_C5, D11_C6, D11_C7, D11_C8,D11_C9, D12_C1,D12_C2, D12_C4, D12_C3, D12_C5, D12_C7
+import D10_C1,D10_C2,D10_C3,D10_C4,D10_C5,D10_C6,D10_C7,D10_C10,D10_C8,D10_C9, D11_C1, D11_C2, D11_C3, D11_C4, D11_C5, D11_C6, D11_C7, D11_C8,D11_C9, D12_C1,D12_C2, D12_C4, D12_C3, D12_C5, D12_C6, D12_C7
 import pyperclip
 import os, shutil,re, sys, subprocess
 from docx import Document
@@ -7230,9 +7230,31 @@ class Ui_MainWindow(object):
         #Chương 6 - Một số yếu tố xác suất
                 L12_C6 = QTreeWidgetItem(L12, ["Chương 6 - Một số yếu tố xác suất"])
                 L12_C6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 L12_C6_B1 = QTreeWidgetItem(L12_C6, ["Bài 1 - Xác suất có điều kiện"])
                 L12_C6_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C6_B1_1 = QTreeWidgetItem(L12_C6_B1, ["Trắc nghiệm"])
+                L12_C6_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_01]-M2. Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_02]-M2. Câu lạc bộ gồm những người biết chơi môn X, môn Y. Tính xác suất người biết chơi môn X biết rằng người đó chơi được môn Y."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_03]-M2. Lấy lần lượt 2 bi. Tính xác suất A lấy được bi màu x biết B lấy được bi màu x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_04]-M2. Hộp I và II đều chứa 2 loại bi. Lấy 1 bi từ hộp I bỏ vào hộp II. Lấy tiếp 1 bi hộp II. Tính xác suất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 L12_C6_B2 = QTreeWidgetItem(L12_C6, ["Bài 2 - Công thức xác suất toàn phần, xác suất Bayes"])
                 L12_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8848,328 +8870,41 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_05()                                     
                                                     
 
-                                            #[D12_C5_B3_06]-M2. Viết phương trình mặt cầu có tâm và đường kính
+                                                #[D12_C5_B3_06]-M2. Viết phương trình mặt cầu có tâm và đường kính
                                                 if dang_toan == "[D12_C5_B3_06]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_06()                                     
                                                     
 
-                                            #[D12_C5_B3_07]-M3. Viết phương trình mặt cầu có đường kính AB
+                                                #[D12_C5_B3_07]-M3. Viết phương trình mặt cầu có đường kính AB
                                                 if dang_toan == "[D12_C5_B3_07]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_07()                                     
                                                     
 
-                                            #[D12_C5_B3_08]-M2. Viết phương trình mặt cầu có tâm và đi qua điểm
+                                                #[D12_C5_B3_08]-M2. Viết phương trình mặt cầu có tâm và đi qua điểm
                                                 if dang_toan == "[D12_C5_B3_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_08()
+
+                                                #Chương 6 - Một số yếu tố xác suất
+
+                                                #[D12_C6_B1_01]-M2. Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y.
+                                                if dang_toan == "[D12_C6_B1_01]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_01()
+
+                                                #[D12_C6_B1_02]-M2. Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y.
+                                                if dang_toan == "[D12_C6_B1_02]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_02()
+
+                                                #[D12_C6_B1_03]-M2. Lấy lần lượt 2 bi. Tính xác suất A lấy được bi màu x biết B lấy được bi màu x.
+                                                if dang_toan == "[D12_C6_B1_03]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_03()
+
+                                                #[D12_C6_B1_04]-M2. Hộp I và II đều chứa 2 loại bi. Lấy 1 bi từ hộp I bỏ vào hộp II. Lấy tiếp 1 bi hộp II. Tính xác suất.
+                                                if dang_toan == "[D12_C6_B1_04]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_04()
+
                                                     
                                        
-                                    ######### Toán 12_ Chương 6 - MẶT TRÒN XOAY ########
-                                            #Bài 1. MẶT NÓN
-                                                #[D12_C7_B1_01]. Cho hình nón có bán kính r và đường sinh l. Tính S_xq.
-                                                if dang_toan == "[D12_C7_B1_01]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B1_01()                                     
-                                                    
-                                                #[D12_C7_B1_02]. Cho hình nón có bán kính r và chiều cao h. Tính V.
-
-                                                if dang_toan == "[D12_C7_B1_02]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B1_02()                                     
-                                                    
-
-                                                #[D12_C7_B1_03].Cho hình nón có chu vi và đường sinh. Tính chiều cao h.
-                                                if dang_toan == "[D12_C7_B1_03]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B1_03()                                     
-                                                    
-
-                                                #[D12_C7_B1_04].Cho hình nón có diện tích đáy và đường sinh. Tính chiều cao h.
-                                                if dang_toan == "[D12_C7_B1_04]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B1_03()                                     
-                                                    
-
-                                        #Bài 2. MẶT TRỤ
-
-                                                 #[D12_C7_B2_01]. Cho hình trụ có bán kính r và đường sinh l. Tính S_xq. 
-                                                if dang_toan == "[D12_C7_B2_01]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B2_01()                                     
-                                                    
-
-                                                #[D12_C7_B2_02]. Cho hình trụ có bán kính r và đường sinh l. Tính S_xq. 
-                                                if dang_toan == "[D12_C7_B2_02]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B2_02()                                     
-                                                    
-
-                                                #[D12_C7_B2_03]. Cho hình trụ có thiết diện qua trục là hình vuông. Tính S_tp.
-                                                if dang_toan == "[D12_C7_B2_03]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B2_03()                                     
-                                                    
-
-                                                #[D12_C7_B2_04]. Cho hình trụ có thiết diện qua trục là hình chữ nhật. Tính S_tp. 
-                                                if dang_toan == "[D12_C7_B2_04]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B2_04()                                     
-                                                    
-
-                                        #Bài 3. MẶT CẦU
-
-                                                #[D12_C7_B3_01]. Cho mặt cầu có bán kính r. Tính S_mc. 
-                                                if dang_toan == "[D12_C7_B3_01]": 
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B3_01()                                     
-                                                    
-
-                                                #[D12_C7_B3_02]. Cho mặt cầu có thể tích. Tính bán kính R.                 
-                                                if dang_toan == "[D12_C7_B3_02]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C7.zz8zz_L12_C7_B3_02()                                     
-                                                    
-
-                                        #[PT_DE2024_01]. Cho bảng biến thiên. Tìm giá trị cực trị. 
-                                                if dang_toan == "[PT_DE2024_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_01()                                     
-                                                    
-
-                                        #[PT_DE2024_02]. Tìm nguyên hàm của hàm số đa thức
-                                                if dang_toan == "[PT_DE2024_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_02()                                     
-                                                    
-
-                                        #[PT_DE2024_03]. Giải phương trình log_a(mx^2+nx+p)=b
-                                                if dang_toan == "[PT_DE2024_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_03()                                     
-                                                    
-
-                                        #[PT_DE2024_04]. Cho hai điểm. Tìm tọa độ vectơ tạo bởi 2 điểm.
-                                                if dang_toan == "[PT_DE2024_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_04()                                     
-                                                    
-
-                                        #[PT_DE2024_05]. Đọc đường tiệm cận từ đồ thị hàm số y=(ax+b)/(cx+d)
-                                                if dang_toan == "[PT_DE2024_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_05()                                     
-                                                    
-
-                                        #[PT_DE2024_06]. Cho bảng biến thiên, tìm hàm số.
-                                                if dang_toan == "[PT_DE2024_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_06()                                     
-                                                    
-
-                                        #[PT_DE2024_07]. Tìm tập xác định của y=[f(x)]^n
-                                                if dang_toan == "[PT_DE2024_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_07()                                     
-                                                    
-
-                                        #[PT_DE2024_08]. Đọc véctơ chỉ phương từ phương trình chính tắc
-                                                if dang_toan == "[PT_DE2024_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_08()                                     
-                                                    
-
-                                        #[PT_DE2024_09]. Đọc số phức từ điểm biểu diễn
-                                                if dang_toan == "[PT_DE2024_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_09()                                     
-                                                    
-
-                                        #[PT_DE2024_10]. Viết phương trình mặt cầu có tâm và bán kính
-                                                if dang_toan == "[PT_DE2024_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_10()                                     
-                                                    
-
-                                        #[PT_DE2024_11]. Tìm khẳng định đúng về tính chất logarit
-                                                if dang_toan == "[PT_DE2024_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_11()                                     
-                                                    
-
-                                        #[PT_DE2024_12]. Cho đồ thị. Tìm khoảng đồng biến, nghịch biến. 
-                                                if dang_toan == "[PT_DE2024_12]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_12()                                     
-                                                    
-
-                                        #[PT_DE2024_13]. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-                                                if dang_toan == "[PT_DE2024_13]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_13()                                     
-                                                    
-
-                                        #[PT_DE2024_14]. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-                                                if dang_toan == "[PT_DE2024_14]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_14()                                     
-                                                    
-
-                                        #[PT_DE2024_15]. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-                                                if dang_toan == "[PT_DE2024_15]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_15()                                     
-                                                    
-
-                                        #[PT_DE2024_16]. Đọc véctơ pháp tuyến của mặt phẳng tọa độ
-                                                if dang_toan == "[PT_DE2024_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_16()                                     
-                                                    
-
-                                        #[PT_DE2024_17]. Cho f'(x) đếm số điểm cực trị 
-                                                if dang_toan == "[PT_DE2024_17]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_17()                                     
-                                                    
-
-                                        #[PT_DE2024_18]. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-                                                if dang_toan == "[PT_DE2024_18]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_18()                                     
-                                                    
-
-                                        #[PT_DE2024_19]. Cho tích phân từ a đến b, tính tích phân từ b đến a
-                                                if dang_toan == "[PT_DE2024_19]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_19()                                     
-                                                    
-
-                                        #[PT_DE2024_20]. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-                                                if dang_toan == "[PT_DE2024_20]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_20()                                     
-                                                    
-
-                                        #[PT_DE2024_21]. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-                                                if dang_toan == "[PT_DE2024_21]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_21()                                     
-                                                    
-
-                                        #[PT_DE2024_22]. Tìm công thức đúng về l,S_xq,S_tp của hình nón, hình trụ
-                                                if dang_toan == "[PT_DE2024_22]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_22()                                     
-                                                    
-
-                                        #[PT_DE2024_23]. Xếp k bạn vào một hàng
-                                                if dang_toan == "[PT_DE2024_23]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_23()                                     
-                                                    
-
-                                        #[PT_DE2024_24]. Xếp k bạn vào một hàng
-                                                if dang_toan == "[PT_DE2024_24]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_24()                                     
-                                                    
-
-                                        #[PT_DE2024_25]. Xếp k bạn vào một hàng
-                                                if dang_toan == "[PT_DE2024_25]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_25()                                     
-                                                    
-
-                                        #[PT_DE2024_26]. Tìm công thức đúng về l,r,h của hình trụ, hình nón theo S_xq
-                                                if dang_toan == "[PT_DE2024_26]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_26()                                     
-                                                    
-
-                                        #[PT_DE2024_27]. Xếp k bạn vào một hàng
-                                                if dang_toan == "[PT_DE2024_27]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_27()                                     
-                                                    
-
-                                        #[PT_DE2024_28]. Tìm phần thực, phần ảo, liên hợp, môđun số phức.
-                                                if dang_toan == "[PT_DE2024_28]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_28()                                     
-                                                    
-
-                                        #[PT_DE2024_29]. Tìm phần thực, phần ảo, liên hợp của tích 2 số phức.
-                                                if dang_toan == "[PT_DE2024_29]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_29()                                     
-                                                    
-
-                                        #[PT_DE2024_30]. Cho hình lập phương. Xác định góc giữa hai đường thẳng.
-                                                if dang_toan == "[PT_DE2024_30]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_30()                                     
-                                                    
-
-                                        #[PT_DE2024_31]. S.ABCD: ABCD h.chữ nhật. Tính k.c từ chân đường cao đến mặt nghiêng.
-                                                if dang_toan == "[PT_DE2024_31]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_31()                                     
-                                                    
-
-                                        #[PT_DE2024_32]. Cho f'(x). Tìm khoảng đồng biến, nghịch biến.
-                                                if dang_toan == "[PT_DE2024_32]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_32()                                     
-                                                    
-
-                                        #[PT_DE2024_33]. Cho 2 nhóm đồ vật. Tính xác suất để số vật được chọn thuộc cùng 1 nhóm.
-                                                if dang_toan == "[PT_DE2024_33]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_33()                                     
-                                                    
-
-                                        #[PT_DE2024_34]. Cho tích phân theo f. Tính tích phân (m.f+n).
-                                                if dang_toan == "[PT_DE2024_34]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_34()                                     
-                                                    
-
-                                        #[PT_DE2024_35]. Tìm GTLN-GTNN của hàm số trên đoạn.
-                                                if dang_toan == "[PT_DE2024_35]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_35()                                     
-                                                    
-
-                                        #[PT_DE2024_36]. Tìm khẳng định đúng về biến đổi logarit
-                                                if dang_toan == "[PT_DE2024_36]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_36()                                     
-                                                    
-
-                                        #[PT_DE2024_37]. Viết phương trình mặt cầu có tâm và bán kính.
-                                                if dang_toan == "[PT_DE2024_37]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_37()                                     
-                                                    
-
-                                        #[PT_DE2024_38]. Viết phương trình đường thẳng qua điểm và song song với đường thẳng.
-                                                if dang_toan == "[PT_DE2024_38]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_38()                                     
-                                                    
-
-                                        #[PT_DE2024_39]. Cho log_m a= log_n b = log_p (a+b). Tính a/b.
-                                                if dang_toan == "[PT_DE2024_39]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_39()                                     
-                                                    
-                                        #[PT_DE2024_40]. Tìm m để hàm số đồng biến(nghịch biến) trên khoảng K.
-                                                if dang_toan == "[PT_DE2024_40]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_40()                                     
-                                                    
-
-                                        #[PT_DE2024_41]. Cho f(x) bậc 4 có 3 cực trị, g(x) bậc 2, diện tích. Tính tích phân 
-                                                if dang_toan == "[PT_DE2024_41]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_41()                                     
-                                                    
-
-                                        #[PT_DE2024_42]. Cho 3 môđun dạng |az+bw|. Tính |z| hoặc |w| hoặc zw.
-                                                if dang_toan == "[PT_DE2024_42]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=DeMH2024.PT_DE2024_42()
-                                                                                                                                                
-                                                #[D11_C1_B1_02]-M1. Đổi số đo từ độ sang radian
-                                                if dang_toan == "[D11_C1_B1_02]":                                                                                
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_02()
-
-                                                #[D11_C1_B1_03]-M1. Đổi số đo từ radian sang độ
-                                                if dang_toan == "[D11_C1_B1_03]":                                                                                
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_03()
-
-                                                #[D11_C1_B1_04]-M1. Tìm góc có điểm biểu diễn trùng nhau
-                                                if dang_toan == "[D11_C1_B1_04]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_04()
-
-                                                #[D11_C1_B1_05]-M2. Tìm góc lượng giác có điểm biểu diễn cho trước
-                                                if dang_toan == "[D11_C1_B1_05]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_05()
-
-                                                #[D11_C1_B1_06]-M2. Cho bán kính và góc radian. Tính độ dài của cung.
-                                                if dang_toan == "[D11_C1_B1_06]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_06()
-
-                                                #[D11_C1_B1_07]-M2. Cho bán kính và góc độ. Tính độ dài của cung.
-                                                if dang_toan == "[D11_C1_B1_07]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_07()
-
-                                                #[D11_C1_B1_08]-TF-M2. Cho góc radian. Xét đúng-sai: Đổi sang độ, Điểm biểu diễn thuộc phần tư, Góc cùng điểm biểu diễn, Đếm số điểm biểu diễn
-                                                if dang_toan == "[D11_C1_B1_08]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B1_08()
-
-                                                #[D11_C1_B1_09]-TF-M2. Cho góc radian. Xét đúng-sai: Cho góc độ. Xét đúng-sai: Đổi sang radian, Điểm biểu diễn thuộc phần tư, Góc cùng điểm biểu diễn, Đếm số điểm biểu diễn
-                                                if dang_toan == "[D11_C1_B1_09]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B1_09()
-
-                                                #[D11_C1_B1_10]-SA-M3. Cho số vòng quay bánh xe sau t1 giây. Tính góc radian sau khi quay trong t2 giây
-                                                if dang_toan == "[D11_C1_B1_10]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_10()
-
-                                                #[D11_C1_B1_11]-SA-M3. Cho số vòng quay bánh xe sau t1 giây. Tính quãng đường đi được sau t2 giây
-                                                if dang_toan == "[D11_C1_B1_11]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_11()
-
-                                                #[D11_C1_B1_12]-SA-M3. Cho đường kính của bánh trước và bánh sau, vận tốc n vòng/phút. Tính quãng đường xe đi.
-                                                if dang_toan == "[D11_C1_B1_12]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_12()
+                                    
                                                 
 
                                                     
