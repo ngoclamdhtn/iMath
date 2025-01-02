@@ -320,3 +320,55 @@ def newy25_L12_C6_B1_04():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C1_B1_07]-M2. 
+def D10_C1_B1_07():
+    phu_nu=["phụ nữ", "đàn ông","người đã có gia đình", ]
+    tuoi=random.randint(35,50)
+    ti_le
+    noi_dung=(
+    f"Một công ty bảo hiểm nhận thấy có 48% số người mua bảo hiểm ô tô là phụ nữ và"
+    f"có 36% số người mua bảo hiểm ô tô là phụ nữ trên 45 tuổi."
+    )
+    
+
+    kq=random.choice([f" "])
+    kq_false=[]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f" "
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an

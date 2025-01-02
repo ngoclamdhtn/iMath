@@ -7124,11 +7124,11 @@ def mnj_34_jkl_L12_C2_B3_36():
 	chon=random.randint(1,3)
 	
 	if chon==1:
-		noi_dung+=f" Điểm ${{M}}\\in (Oxy)$ sao cho biểu thức $T={M}{A}^2+{M}{B}^2+{M}{C}^2$ đạt giá trị nhỏ nhất."
+		noi_dung+=f" Điểm ${{{M}}}\\in (Oxy)$ sao cho biểu thức $T={M}{A}^2+{M}{B}^2+{M}{C}^2$ đạt giá trị nhỏ nhất."
 	if chon==2:
-		noi_dung+=f" Điểm ${{M}}\\in (Oyz)$ sao cho biểu thức $T={M}{A}^2+{M}{B}^2+{M}{C}^2$ đạt giá trị nhỏ nhất."
+		noi_dung+=f" Điểm ${{{M}}}\\in (Oyz)$ sao cho biểu thức $T={M}{A}^2+{M}{B}^2+{M}{C}^2$ đạt giá trị nhỏ nhất."
 	if chon==3:
-		noi_dung+=f" Điểm ${{M}}\\in (Oxz)$ sao cho biểu thức $T={M}{A}^2+{M}{B}^2+{M}{C}^2$ đạt giá trị nhỏ nhất."
+		noi_dung+=f" Điểm ${{{M}}}\\in (Oxz)$ sao cho biểu thức $T={M}{A}^2+{M}{B}^2+{M}{C}^2$ đạt giá trị nhỏ nhất."
 
 	noi_dung+=f" Biết ${M}(a;b;c)$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
 

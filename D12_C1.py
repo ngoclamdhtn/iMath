@@ -9417,7 +9417,7 @@ def prt_34_L12_C1_B4_05():
 
 		kq=f"$y={latex((x**2-x_0*x+a)/(x-x_0))}$"
 		kq2=f"$y={latex((x**2-x_0*x+a+random.randint(1,3))/(x-x_0))}$"
-		kq3=f"$y={latex((random.randint(1,3)*x**2+x_0*x+a)/(x+x_0))}$"
+		kq3=f"$y={latex((random.randint(2,4)*x**2+x_0*x+a)/(x+x_0))}$"
 		kq4=f"$y={latex((x**2-x_0*x+a-random.randint(1,3))/(x-x_0))}$"
 
 		noi_dung_loigiai=f"Đồ thị có tiệm cận đứng là $x={x_0}$.\n\n"\
@@ -9435,7 +9435,7 @@ def prt_34_L12_C1_B4_05():
 
 		kq=f"$y={latex((x**2-x_0*x+a)/(x-x_0))}$"
 		kq2=f"$y={latex((x**2-x_0**2+a+random.randint(1,3))/(x-x_0))}$"
-		kq3=f"$y={latex((random.randint(1,2)*x**2+x_0*x+a)/(x+x_0))}$"
+		kq3=f"$y={latex((random.randint(2,4)*x**2+x_0*x+a)/(x+x_0))}$"
 		kq4=f"$y={latex((x**2-x_0**2-a)/(x-x_0))}$"
 
 		noi_dung_loigiai=f"Đồ thị có tiệm cận đứng là $x={x_0}$.\n\n"\
@@ -9454,7 +9454,7 @@ def prt_34_L12_C1_B4_05():
 
 		kq=f"$y={latex(f)}$"
 		kq2=f"$y={latex((x**2-x_0*x+m**2+random.randint(1,3))/(x-x_0))}$"
-		kq3=f"$y={latex((random.randint(1,2)*x**2+x_0*x+m)/(x+x_0))}$"
+		kq3=f"$y={latex((random.randint(2,3)*x**2+x_0*x+m)/(x+x_0))}$"
 		kq4=f"$y={latex((x**2-x+m**2+random.randint(1,3))/(x-x_0))}$"
 
 		noi_dung_loigiai=f"Đồ thị có tiệm cận đứng là $x={x_0}$.\n\n"\
@@ -9473,7 +9473,7 @@ def prt_34_L12_C1_B4_05():
 
 		kq=f"$y={latex(f)}$"
 		kq2=f"$y={latex((x**2+x_0*x-m**2)/(x-x_0))}$"
-		kq3=f"$y={latex((random.randint(1,2)*x**2+x_0*x+m)/(x+x_0))}$"
+		kq3=f"$y={latex((random.randint(2,3)*x**2+x_0*x+m)/(x+x_0))}$"
 		kq4=f"$y={latex((-x**2+x_0*x-m**2+random.randint(1,2))/(x-x_0))}$"
 
 		noi_dung_loigiai=f"Đồ thị có tiệm cận đứng là $x={x_0}$.\n\n"\
@@ -9493,7 +9493,7 @@ def prt_34_L12_C1_B4_05():
 
 		kq=f"$y={latex(f)}$"
 		kq2=f"$y={latex((-x**2+(a-x_0)*x-a*x_0-m)/(x-x_0))}$"
-		kq3=f"$y={latex((random.randint(1,2)*x**2+x_0*x+m)/(x+x_0))}$"
+		kq3=f"$y={latex((random.randint(2,3)*x**2+x_0*x+m)/(x+x_0))}$"
 		kq4=f"$y={latex((x**2+a*x-x_0-m)/(x-x_0))}$"
 
 		noi_dung_loigiai=f"Đồ thị có tiệm cận đứng là $x={x_0}$.\n\n"\
