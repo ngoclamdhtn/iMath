@@ -321,9 +321,9 @@ def newy25_L12_C6_B1_04():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_C1_B1_07]-M2. 
-def D10_C1_B1_07():
-    phu_nu=["phụ nữ", "đàn ông", "người đã có gia đình", "nam giới", "nữ giới"]
+#[D12_C6_B1_05]-M2. Tính xác suất người mua sản phẩm trên độ tuổi nào đó.
+def newy25_L12_C6_B1_05():
+    phu_nu=random.choice(["phụ nữ", "đàn ông", "người đã có gia đình", "nam giới", "nữ giới", "người độc thân"])
     a=random.randint(35,65)
     tile_phunu=a/100    
     st_tile_phunu=f"{round(tile_phunu,2):.2f}".replace(".",",")
@@ -334,19 +334,27 @@ def D10_C1_B1_07():
 
     do_tuoi=random.randint(35,50)
 
-    san_pham=["máy lọc nước", "đồng hồ thể thao đa năng", "thức ăn dinh dưỡng cho chó mèo", "balo du lịch",
-    "ghế massage toàn thân", "thực phẩm hữu cơ cao cấp"]
+    san_pham=random.choice(["máy lọc nước", "đồng hồ thể thao đa năng", "thức ăn dinh dưỡng cho chó mèo", "balo du lịch",
+    "ghế massage toàn thân", "thực phẩm hữu cơ cao cấp"])
     noi_dung=(
     f"Một công ty bán {san_pham} nhận thấy có ${a}\\%$ số người mua hàng là {phu_nu} và"
-    f"có ${st_tile_tren_tuoi}\\%$ số người mua hàng là {phu_nu} trên {do_tuoi} tuổi."
-    f" Biết một người mua {san_pham} là {phu_nu}, tính xác suất để người đó trên {do_tuoi}."
+    f" có ${b}\\%$ số người mua hàng là {phu_nu} trên {do_tuoi} tuổi."
+    f" Biết một người mua {san_pham} là {phu_nu}, tính xác suất để người đó trên {do_tuoi} tuổi."
     )
     
 
-    kq=random.choice([f" "])
-    kq_false=[]
+    kq=b/a
+    kq_false=[
+    b/(a+random.randint(1,5)),
+    (100-a)/100,
+    (100-b)/100]
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
 
     noi_dung_loigiai=(
@@ -355,12 +363,92 @@ def D10_C1_B1_07():
     f"Ta cần tính $P(B|A)$.\n\n"
     f"Do có ${a}\\%$ người mua {san_pham} là {phu_nu} nên P(A) = {st_tile_phunu}.\n\n"
     f"Do có ${b}\\%$ số người mua {san_pham} là {phu_nu} trên {do_tuoi} tuổi nên $P(AB) = {st_tile_tren_tuoi}$.\n\n"
+    f"Vậy $P(A|B)=\\dfrac{{P(AB)}}{{P(A)}}=\\dfrac{{{st_tile_tren_tuoi}}}{{{st_tile_phunu}}}={phan_so(b/a)}$"
     )
 
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
+    pa_A= f"* ${phan_so(kq)}$"
+    pa_B= f"${phan_so(kq2)}$"
+    pa_C= f"${phan_so(kq3)}$"
+    pa_D= f"${phan_so(kq4)}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B1_06]-M2. Cho P(A),P(B) và P(A|B). Tính xác suất P(\overline(A)B)  
+def newy25_L12_C6_B1_06():
+    p_a=random.randint(10,80)/100
+    st_p_a=f"{round(p_a,2):.2f}".replace(".",",")
+
+    p_b=random.randint(10,80)/100
+    while p_b==p_a:
+        p_b=random.randint(10,80)/100        
+    st_p_b=f"{round(p_b,2):.2f}".replace(".",",")
+
+    p_a_dk_b=random.randint(30,60)/100
+    st_p_a_dk_b=f"{round(p_a_dk_b,2):.2f}".replace(".",",")
+
+    noi_dung=(
+    f"Cho hai biến cố ${{{A}}}$ và ${{{B}}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(A|B)= {st_p_a_dk_b}$. Tính $P(\\overline{{A}}B)$."
+    )
+        
+
+    p_ab=p_b*p_a_dk_b
+    st_p_ab=f"{round_half_up(p_ab,2):.2f}".replace(".",",")
+
+    kq=p_b-p_ab
+    st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+
+    kq_false=[
+    p_ab,
+    p_a*p_b,
+    p_a*p_a_dk_b,
+    p_a*p_b*p_a_dk_b
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    st_kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    st_kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    st_kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    noi_dung_loigiai=(
+    f"Theo công thức nhân xác suất, ta có $P(AB) = P(B)P(A|B) = {st_p_b}.{st_p_a_dk_b}={st_p_ab}$."
+    f"Vì $\\overline{{A}}B$ và ${{AB}}$ là hai biên cố xung khắc và $\\overline{{A}}B \\cup AB=B$ nên:\n\n"
+    f"$P(\\overline{{A}}B)=P(B)-P(AB)={st_kq}$."
+    )
+
+    pa_A= f"*${{{st_kq}}}$"
+    pa_B= f"${{{st_kq2}}}$"
+    pa_C= f"${{{st_kq3}}}$"
+    pa_D= f"${{{st_kq4}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
