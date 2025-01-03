@@ -323,12 +323,23 @@ def newy25_L12_C6_B1_04():
 
 #[D10_C1_B1_07]-M2. 
 def D10_C1_B1_07():
-    phu_nu=["phụ nữ", "đàn ông","người đã có gia đình", ]
-    tuoi=random.randint(35,50)
-    ti_le
+    phu_nu=["phụ nữ", "đàn ông", "người đã có gia đình", "nam giới", "nữ giới"]
+    a=random.randint(35,65)
+    tile_phunu=a/100    
+    st_tile_phunu=f"{round(tile_phunu,2):.2f}".replace(".",",")
+
+    b=a-random.randint(5,15)
+    tile_tren_tuoi=(b)/100
+    st_tile_tren_tuoi=f"{round(tile_tren_tuoi,2):.2f}".replace(".",",")
+
+    do_tuoi=random.randint(35,50)
+
+    san_pham=["máy lọc nước", "đồng hồ thể thao đa năng", "thức ăn dinh dưỡng cho chó mèo", "balo du lịch",
+    "ghế massage toàn thân", "thực phẩm hữu cơ cao cấp"]
     noi_dung=(
-    f"Một công ty bảo hiểm nhận thấy có 48% số người mua bảo hiểm ô tô là phụ nữ và"
-    f"có 36% số người mua bảo hiểm ô tô là phụ nữ trên 45 tuổi."
+    f"Một công ty bán {san_pham} nhận thấy có ${a}\\%$ số người mua hàng là {phu_nu} và"
+    f"có ${st_tile_tren_tuoi}\\%$ số người mua hàng là {phu_nu} trên {do_tuoi} tuổi."
+    f" Biết một người mua {san_pham} là {phu_nu}, tính xác suất để người đó trên {do_tuoi}."
     )
     
 
@@ -339,7 +350,11 @@ def D10_C1_B1_07():
 
 
     noi_dung_loigiai=(
-    f" "
+    f'Gọi A là biến cố "Người mua {san_pham} là {phu_nu},'
+    f' B là biến cố "Người mua {san_pham} trên {do_tuoi} tuổi.'
+    f"Ta cần tính $P(B|A)$.\n\n"
+    f"Do có ${a}\\%$ người mua {san_pham} là {phu_nu} nên P(A) = {st_tile_phunu}.\n\n"
+    f"Do có ${b}\\%$ số người mua {san_pham} là {phu_nu} trên {do_tuoi} tuổi nên $P(AB) = {st_tile_tren_tuoi}$.\n\n"
     )
 
     pa_A= f"*{kq}"

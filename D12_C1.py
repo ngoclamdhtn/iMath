@@ -4,6 +4,9 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
  
 
 def thay_heso_1x(st):
@@ -1351,10 +1354,10 @@ def prt_34_L12_C1_B1_10():
 	solution = solve(equation, x)
 	a,b=solution[0],solution[1]
 	y_a,y_b=f_dh.subs(x,a),f_dh.subs(x,b)
-	x_min, x_max= round(min(a,b)-3,1), round(max(a,b)+3,1)
+	x_min, x_max= round_half_up(min(a,b)-3,1), round_half_up(max(a,b)+3,1)
 	if x_max<=0: x_max=1.5
 	if x_min>=0: x_min=-1.5
-	y_min, y_max=round(0.5*min(y_a,y_b)-1,1), round(0.5*max(y_a,y_b)+1,1)
+	y_min, y_max=round_half_up(0.5*min(y_a,y_b)-1,1), round_half_up(0.5*max(y_a,y_b)+1,1)
 	chuoi_so_x=f"\\foreach \\x in {{{x_1}, {x_2},{x_3}}}\n"
 
 	if x_1==0:
@@ -3076,7 +3079,7 @@ def prt_34_L12_C1_B1_23():
 	noi_dung = f"Cho hàm số $y=f(x)={latex(f)}$ có giá trị cực tiểu bằng $y_1$ và giá trị cực đại bằng $y_2$.\n\n Tính $P={p}y_1+{q}y_2$ (kết quả làm tròn đến hàng phần mười)."
 	noi_dung=noi_dung.replace("=1y_1","=y_1").replace("=-1y_1","=-y_1").replace("+1y_2","+y_2").replace("+-1y_2","-y_2").replace("+-","-")
 
-	ketqua=round(p*y_CT + q*y_CD,1)
+	ketqua=round_half_up(p*y_CT + q*y_CD,1)
 	dap_an=f"{ketqua}".replace(".",",")
 
 	noi_dung_loigiai=(f"$f'(x)={latex(f_dh)}$.\n\n"
@@ -3194,7 +3197,7 @@ def prt_34_L12_C1_B1_25():
 	debai_word= f"{noi_dung}\n"
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
-	dap_an=f"{round(p*y_CT + q*y_CD,1)}".replace(".",",")
+	dap_an=f"{round_half_up(p*y_CT + q*y_CD,1)}".replace(".",",")
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
 	f"\\shortans[4]{{${dap_an}$}}\n\n"\
@@ -4525,10 +4528,10 @@ def prt_34_L12_C1_B1_35():
 	solution = solve(equation, x)
 	a,b=solution[0],solution[1]
 	y_a,y_b=f_dh.subs(x,a),f_dh.subs(x,b)
-	x_min, x_max= round(min(a,b)-3,1), round(max(a,b)+3,1)
+	x_min, x_max= round_half_up(min(a,b)-3,1), round_half_up(max(a,b)+3,1)
 	if x_max<=0: x_max=1.5
 	if x_min>=0: x_min=-1.5
-	y_min, y_max=round(0.5*min(y_a,y_b)-1,1), round(0.5*max(y_a,y_b)+1,1)
+	y_min, y_max=round_half_up(0.5*min(y_a,y_b)-1,1), round_half_up(0.5*max(y_a,y_b)+1,1)
 	chuoi_so_x=f"\\foreach \\x in {{{x_1}, {x_2},{x_3}}}\n"
 
 	if x_1==0:
@@ -4650,7 +4653,7 @@ def prt_34_L12_C1_B1_36():
 	
 	k_a=(y_2-y_1)/(x_2-x_1)
 	k_b=-k_a*x_1+y_1
-	dap_an=f"{round(p*k_a + q*k_b,1)}".replace(".",",")
+	dap_an=f"{round_half_up(p*k_a + q*k_b,1)}".replace(".",",")
 
 	noi_dung_loigiai=(f"$f'(x)={latex(f_dh)}$.\n\n"
 		f"$f'(x)=0 \\Leftrightarrow x={x_1}$ hoặc $x={x_2}$.\n\n"
@@ -4711,7 +4714,7 @@ def prt_34_L12_C1_B1_37():
 	
 	k_a=(y_2-y_1)/(x_2-x_1)
 	k_b=-k_a*x_1+y_1
-	dap_an=f"{round(p*k_a + q*k_b,1)}".replace(".",",")
+	dap_an=f"{round_half_up(p*k_a + q*k_b,1)}".replace(".",",")
 
 	noi_dung_loigiai=(f"$f'(x)={latex(a*g)}$.\n\n"
 		f"$f'(x)=0 \\Leftrightarrow x={x_1}$ hoặc $x={x_2}$.\n\n"
@@ -6356,9 +6359,9 @@ def prt_34_L12_C1_B2_15():
 
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":
-			kq=f"${{{round(giatri_max,1)}}}$".replace(".",",")
+			kq=f"${{{round_half_up(giatri_max,1)}}}$".replace(".",",")
 		else:
-			kq=f"${{{round(giatri_min,1)}}}$".replace(".",",")
+			kq=f"${{{round_half_up(giatri_min,1)}}}$".replace(".",",")
 
 
 		noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."	
@@ -6396,13 +6399,13 @@ def prt_34_L12_C1_B2_15():
 		if gia_tri=="giá trị lớn nhất":
 		
 			if a*d-b*c>0:
-				kq = f"{round(y_n,1)}".replace(".",",")
+				kq = f"{round_half_up(y_n,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}>0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số đồng biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số có giá trị lớn nhất bằng $f({n})={kq}$."
 			else:
 
-				kq = f"{round(y_m,1)}".replace(".",",")
+				kq = f"{round_half_up(y_m,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}<0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số nghịch biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị lớn nhất bằng $f({m})={kq}$."
@@ -6410,12 +6413,12 @@ def prt_34_L12_C1_B2_15():
 		else:
 
 			if a*d-b*c>0:
-				kq = f"{round(y_m,1)}".replace(".",",")
+				kq = f"{round_half_up(y_m,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}>0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số đồng biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị nhỏ nhất bằng $f({m})={kq}$."
 			else:
-				kq = f"{round(y_n,1)}".replace(".",",")
+				kq = f"{round_half_up(y_n,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}<0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số nghịch biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị nhỏ nhất bằng $f({n})={kq}$."	
@@ -6460,10 +6463,10 @@ def prt_34_L12_C1_B2_16():
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":
 			kq_latex=latex(giatri_max)	
-			kq=f"{round(giatri_max,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_max,1)}".replace(".",",")
 		else:
 			kq_latex=latex(giatri_min)		
-			kq=f"{round(giatri_min,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_min,1)}".replace(".",",")
 
 		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."
 		
@@ -6495,10 +6498,10 @@ def prt_34_L12_C1_B2_16():
 
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":		
-			kq=f"{round(giatri_max,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_max,1)}".replace(".",",")
 			kq_latex=latex(giatri_max)
 		else:		
-			kq=f"{round(giatri_min,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_min,1)}".replace(".",",")
 			kq_latex=latex(giatri_min).replace(".",",")
 
 		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$.\n"	
@@ -6533,10 +6536,10 @@ def prt_34_L12_C1_B2_16():
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":		
 			kq_latex=latex(giatri_max)
-			kq=f"{round(giatri_max,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_max,1)}".replace(".",",")
 		else:		
 			kq_latex=latex(giatri_min)
-			kq=f"{round(giatri_min,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_min,1)}".replace(".",",")
 
 		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$.\n".replace("log","ln")	
 		noi_dung_loigiai=f"$y'={latex(g)}$.\n\n"\
@@ -6590,13 +6593,13 @@ def prt_34_L12_C1_B2_17():
 		if gia_tri=="giá trị lớn nhất":			
 			if a*d-b*c>0:
 				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên nửa khoảng ${{({m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."
-				kq = f"{round(y_n,1)}".replace(".",",")
+				kq = f"{round_half_up(y_n,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}>0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số đồng biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị lớn nhất trên nửa khoảng ${{({m};{n}]}}$ bằng $f({n})={phan_so(y_n)}={kq}$."
 			else:
 				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên nửa khoảng ${{[{m};{n})}}$ (kết quả làm tròn đến hàng phần mười)."
-				kq = f"{round(y_m,1)}".replace(".",",")
+				kq = f"{round_half_up(y_m,1)}".replace(".",",")
 
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}<0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số nghịch biến trên khoảng $({m};{n})$.\n\n"\
@@ -6605,13 +6608,13 @@ def prt_34_L12_C1_B2_17():
 		else:
 			if a*d-b*c>0:
 				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên nửa khoảng ${{[{m};{n})}}$ (kết quả làm tròn đến hàng phần mười)."
-				kq = f"{round(y_m,1)}".replace(".",",")
+				kq = f"{round_half_up(y_m,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}>0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số đồng biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị nhỏ nhất trên nửa khoảng ${{[{m};{n})}}$ bằng $f({m})={phan_so(y_m)}={kq}$."
 			else:
 				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên nửa khoảng ${{({m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."
-				kq = f"{round(y_n,1)}".replace(".",",")
+				kq = f"{round_half_up(y_n,1)}".replace(".",",")
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}<0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số nghịch biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị nhỏ nhất trên nửa khoảng ${{({m};{n}]}}$ bằng $f({n})={phan_so(y_n)}={kq}$."
@@ -6643,7 +6646,7 @@ def prt_34_L12_C1_B2_17():
 				kihieu=f"[{t};+\\infty)"
 				khoang= f"nửa khoảng $[{t};+\\infty)$"
 
-			kq=f"{round(y_2,1)}".replace(".",",")
+			kq=f"{round_half_up(y_2,1)}".replace(".",",")
 
 			noi_dung=f"Tìm giá trị nhỏ nhất của hàm số $y={latex(f)}$ cho trên {khoang} bằng (kết quả làm tròn đến hàng phần mười)."
 			noi_dung_loigiai=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{0\\}}$.\n\n"\
@@ -6672,7 +6675,7 @@ def prt_34_L12_C1_B2_17():
 				kihieu=f"(-\\infty;{t}]"
 				khoang= f"nửa khoảng $(-\\infty;{t})$"
 
-			kq=f"{round(y_1,1)}".replace(".",",")
+			kq=f"{round_half_up(y_1,1)}".replace(".",",")
 
 			noi_dung=f"Tìm giá trị lớn nhất của hàm số $y={latex(f)}$ trên {khoang} (kết quả làm tròn đến hàng phần mười)."
 			noi_dung_loigiai=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{0\\}}$.\n\n"\
@@ -6739,7 +6742,7 @@ def prt_34_L12_C1_B2_17():
 					kihieu=f"[{t};+\\infty)"
 					khoang= f"nửa khoảng $[{t};+\\infty)$"
 
-				kq=f"{round(y_2,1)}".replace(".",",")
+				kq=f"{round_half_up(y_2,1)}".replace(".",",")
 				noi_dung=f"Tìm giá trị nhỏ nhất của hàm số $y={latex(f_ok)}$ cho trên {khoang} (kết quả làm tròn đến hàng phần mười)."
 
 				noi_dung_loigiai=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{{x_0}\\}}$.\n\n"\
@@ -6768,7 +6771,7 @@ def prt_34_L12_C1_B2_17():
 
 				noi_dung=f"Tìm giá trị lớn nhất của hàm số $y={latex(f_ok)}$ trên {khoang} (kết quả làm tròn đến hàng phần mười)."
 
-				kq=f"{round(y_1,1)}".replace(".",",")
+				kq=f"{round_half_up(y_1,1)}".replace(".",",")
 				noi_dung_loigiai=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{{x_0}\\}}$.\n\n"\
 				f"$y'={latex(a*g)}$.\n\n"\
 				f"$y'=0 \\Leftrightarrow x={x_1}, x={x_2}$.\n\n"\
@@ -6902,7 +6905,7 @@ def prt_34_L12_C1_B2_19():
 	pt= Eq(t_max+e*x, max_value)	
 	nghiem= solve(pt , x)
 	t=nghiem[0]
-	t_round=str(round(t,1)).replace(".",",")
+	t_round=str(round_half_up(t,1)).replace(".",",")
 
 	noi_dung = f"Cho hàm số $y=\\Bigg|{latex(f)}\\Bigg|+{e}m$ với ${{m}}$ là tham số."\
 	f" Tìm ${{m}}$ sao cho giá trị lớn nhất của hàm số đã cho trên đoạn ${{[{m};{n}]}}$ bằng ${{{max_value}}}$ (kết quả làm tròn đến hàng phần mười).".replace("+-","-")
@@ -6958,7 +6961,7 @@ def prt_34_L12_C1_B2_20():
 	pt= Eq(f_1+f_2, T)	
 	nghiem= solve(pt , m)
 	t=nghiem[0]
-	t_round=str(round(t,1)).replace(".",",")
+	t_round=str(round_half_up(t,1)).replace(".",",")
 
 	noi_dung_loigiai=f"$y'=\\dfrac{{{latex(a*d-b*m*c)}}}{{{latex((c*x+d)**2)}}},\\forall x\\ne {phan_so(-d/c)}$.\n\n"\
 	f"Với $m\\ne {phan_so(a*d/(b*c))}$ thì:\n\n"\
@@ -7136,7 +7139,7 @@ def prt_34_L12_C1_B2_23():
 	b=int(x_1)+random.randint(1,3)
 	V_a=f.subs(x,a)
 	V_b=f.subs(x,b)
-	V_1=f"{round(f.subs(x,x_1))}"
+	V_1=f"{round_half_up(f.subs(x,x_1))}"
 	t=f.subs(x,x_1)
 	
 	while t<-9.9 or t>9999:
@@ -7154,7 +7157,7 @@ def prt_34_L12_C1_B2_23():
 		b=int(x_1)+random.randint(1,3)
 		V_a=f.subs(x,a)
 		V_b=f.subs(x,b)
-		V_1=f"{round(f.subs(x,x_1))}"
+		V_1=f"{round_half_up(f.subs(x,x_1))}"
 		t=f.subs(x,x_1)
 
 	code_hinh=r"""
@@ -7222,7 +7225,7 @@ def prt_34_L12_C1_B2_23():
 			)
 	
 	if chon==2:
-		kq=f"{round(f.subs(x,x_1))}"
+		kq=f"{round_half_up(f.subs(x,x_1))}"
 		noi_dung = (f"Từ một tấm bìa hình chữ nhật có chiều rộng ${{{r}}}$cm và chiều dài ${{{d}}}$ cm như hình a,"
 			f" người ta cắt ở bốn góc bốn hình vuông có cạnh ${{x}}$ với ${a} \\leq x \\leq {b}$ và gấp lại để tạo thành chiếc hộp có dạng hình hộp chữ nhật không nắp như hình b."
 		f" Tìm thể tích lớn nhất của chiếc hộp có thể tạo ra (kết quả làm tròn đến hàng đơn vị).")
@@ -8386,7 +8389,7 @@ def prt_34_L12_C1_B3_10():
 		b = random.randint(-6,6)
 		c = random.choice([random.randint(-5, -1), random.randint(1, 5)])
 		d = random.choice([random.randint(-4, -1), random.randint(1, 4)])
-	kq=f"{round(b*c/(a*d),1)}".replace(".",",")
+	kq=f"{round_half_up(b*c/(a*d),1)}".replace(".",",")
 	
 	noi_dung=f"Biết các giá trị của tham số $m$ để đồ thị hàm số $y={latex(f)}$ có tiệm cận đứng là $m\\ne a$. \n\n"\
 	f" Tính giá trị của ${{a}}$ (làm tròn đến hàng phần mười)."
@@ -11171,25 +11174,25 @@ def prt_34_L12_C1_B4_19():
 def prt_34_L12_C1_B5_01():
 	a=random.randint(1,7)
 	b=random.randint(1,10)/10
-	st_b=f"{round(b,1):.1f}".replace(".",",")
+	st_b=f"{round_half_up(b,1):.1f}".replace(".",",")
 
 	c=random.randint(1,7)/1000
-	st_c=f"{round(c,3):.3f}".replace(".",",")
+	st_c=f"{round_half_up(c,3):.3f}".replace(".",",")
 
 	x_max=int(sqrt(a/c)+random.randint(10,20))
 	x=sp.symbols("x")
 	f=(a+b*x+c*x**2)/x
 	x_min=sqrt(a/c)
 	y_min=f.subs(x,x_min)
-	st_xmin=f"{round(x_min,0):.1f}".replace(".",",")
-	st_ymin=f"{round(y_min,2):.2f}".replace(".",",")
+	st_xmin=f"{round_half_up(x_min,0):.1f}".replace(".",",")
+	st_ymin=f"{round_half_up(y_min,2):.2f}".replace(".",",")
 
 	code_hinh=f" \\begin{{tikzpicture}}\n\
 \\tkzTabInit[espcl=2.5,lgt=1.5,nocadre=false]\n\
 {{$x$/1.2,$y'$/0.7,$y$/2.1}}\n\
 {{$0$,$\\sqrt{{{phan_so(a/c)}}}$,$+\\infty$}}\n\
 \\tkzTabLine{{d,-,0,+}}\n\
-\\tkzTabVar{{+D+/$ $/$+\\infty$,-/${f"{round(y_min,2):.2f}"}$,+/$+\\infty$}}\n\
+\\tkzTabVar{{+D+/$ $/$+\\infty$,-/${f"{round_half_up(y_min,2):.2f}"}$,+/$+\\infty$}}\n\
 \\end{{tikzpicture}} " 
 
 
@@ -11254,18 +11257,18 @@ def prt_34_L12_C1_B5_01():
 def prt_34_L12_C1_B5_02():
 	a=random.randint(1,7)
 	b=random.randint(1,10)/10
-	st_b=f"{round(b,1):.1f}".replace(".",",")
+	st_b=f"{round_half_up(b,1):.1f}".replace(".",",")
 
 	c=random.randint(1,7)/1000
-	st_c=f"{round(c,3):.3f}".replace(".",",")
+	st_c=f"{round_half_up(c,3):.3f}".replace(".",",")
 
 	x_max=int(sqrt(a/c)+random.randint(10,20))
 	x=sp.symbols("x")
 	f=(a+b*x+c*x**2)/x
 	x_min=sqrt(a/c)
 	y_min=f.subs(x,x_min)
-	st_xmin=f"{round(x_min,1):.1f}".replace(".",",")
-	st_ymin=f"{round(y_min,1):.1f}".replace(".",",")
+	st_xmin=f"{round_half_up(x_min,1):.1f}".replace(".",",")
+	st_ymin=f"{round_half_up(y_min,1):.1f}".replace(".",",")
 
 	# x_1,x_2,x_3=int(x_min)-1,int(x_min),int(x_min)+1
 	# y_1,y_2,y_3=f.subs(x,x_1),f.subs(x,x_2), f.subs(x,x_3)
@@ -11276,7 +11279,7 @@ def prt_34_L12_C1_B5_02():
 {{$x$/1.2,$y'$/0.7,$y$/2.1}}\n\
 {{$0$,$\\sqrt{{{phan_so(a/c)}}}$,$+\\infty$}}\n\
 \\tkzTabLine{{d,-,0,+}}\n\
-\\tkzTabVar{{+D+/$ $/$+\\infty$,-/${f"{round(y_min,2):.2f}"}$,+/$+\\infty$}}\n\
+\\tkzTabVar{{+D+/$ $/$+\\infty$,-/${f"{round_half_up(y_min,2):.2f}"}$,+/$+\\infty$}}\n\
 \\end{{tikzpicture}} " 
 
 
@@ -11872,8 +11875,8 @@ def prt_34_L12_C1_B5_07():
 	
 	x_0=random.randint(15,45)
 	y_0=f.subs(x,x_0)
-	round_y_0=f"{round(y_0,1):.1f}".replace(".",",")
-	round_y_0_false=f"{round(y_0+random.randint(1,3),1):.1f}".replace(".",",")
+	round_y_0=f"{round_half_up(y_0,1):.1f}".replace(".",",")
+	round_y_0_false=f"{round_half_up(y_0+random.randint(1,3),1):.1f}".replace(".",",")
 
 	kq1_T=f"* Chi phí trung bình cho một sản phẩm khi sản xuất ${{{x_0}}}$ kilôgam là {round_y_0} (nghìn đồng)" 
 	kq1_F=f"Chi phí trung bình cho một sản phẩm khi sản xuất ${{{x_0}}}$ kilôgam là {round_y_0_false} (nghìn đồng)"
@@ -11895,7 +11898,7 @@ def prt_34_L12_C1_B5_07():
 	x_1=sqrt(b/a)
 	y_1=f.subs(x,x_1)
 	x_1=latex(nsimplify(x_1))
-	y_1=f"{round(y_1,1):.1f}".replace(".","\\text{{,}}")
+	y_1=f"{round_half_up(y_1,1):.1f}".replace(".","\\text{{,}}")
 
 	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
 					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
@@ -11932,11 +11935,11 @@ def prt_34_L12_C1_B5_07():
 
 	x_1=sqrt(b/a)
 	y_1=f.subs(x,x_1)	
-	y_1=f"{round(y_1,1):.1f}".replace(".",",")
+	y_1=f"{round_half_up(y_1,1):.1f}".replace(".",",")
 
 	
 	y_2=f.subs(x,x_1)+random.randint(1,3)
-	y_2=f"{round(y_2,1):.1f}".replace(".",",")
+	y_2=f"{round_half_up(y_2,1):.1f}".replace(".",",")
 
 	kq4_T=f"* Chi phí trung bình cho một sản phẩm nhỏ nhất bằng ${{{y_1}}}$ (nghìn đồng)."
 	kq4_F=f"Chi phí trung bình cho một sản phẩm nhỏ nhất bằng ${{{y_2}}}$ (nghìn đồng)." 
@@ -12045,7 +12048,7 @@ def prt_34_L12_C1_B5_08():
 	x_0_false=latex(sqrt(int(V/h+random.randint(1,3))))
 
 	f=2*V/h+2*h*x+2*V/x
-	y_0=f"{round(f.subs(x,sqrt(V/h)),2):.2f}".replace(".","\\text{{,}}")
+	y_0=f"{round_half_up(f.subs(x,sqrt(V/h)),2):.2f}".replace(".","\\text{{,}}")
 	kq4_T=f"* Chi phí vật liệu làm hộp nhỏ nhất khi $x={x_0}$"
 	kq4_F=f"Chi phí vật liệu làm hộp nhỏ nhất khi $x={x_0_false}$"
 
@@ -12123,7 +12126,7 @@ def prt_34_L12_C1_B5_09():
 	b=random.randint(100,400)
 	N=random.randint(1000,2000)
 	f=N+a*t/(b+t**2)
-	N_max=f"{round(f.subs(t,sqrt(b)),0):.0f}".replace(".",",")
+	N_max=f"{round_half_up(f.subs(t,sqrt(b)),0):.0f}".replace(".",",")
 
 	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
 					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
@@ -12171,8 +12174,8 @@ def prt_34_L12_C1_B5_10():
 	b=random.randint(100,400)
 	N=random.randint(1000,2000)
 	f=N+a*t/(b+t**2)
-	N_max=f"{round(f.subs(t,sqrt(b)),0):.0f}".replace(".",",")
-	N_max_false=f"{round(f.subs(t,sqrt(b))+random.randint(10,20),0):.0f}".replace(".",",")
+	N_max=f"{round_half_up(f.subs(t,sqrt(b)),0):.0f}".replace(".",",")
+	N_max_false=f"{round_half_up(f.subs(t,sqrt(b))+random.randint(10,20),0):.0f}".replace(".",",")
 
 	code_hinh_BBT=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
 					\\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=.55]\n\
@@ -12193,8 +12196,8 @@ def prt_34_L12_C1_B5_10():
 	f" (kết quả làm tròn đến hàng đơn vị)."
 	)
 	t_0=random.randint(2,10)
-	y_0=f"{round(f.subs(t,t_0),0):.0f}"
-	y_0_false=f"{round(f.subs(t,t_0)+random.randint(10,20),0):.0f}"
+	y_0=f"{round_half_up(f.subs(t,t_0),0):.0f}"
+	y_0_false=f"{round_half_up(f.subs(t,t_0)+random.randint(10,20),0):.0f}"
 	kq1_T=f"* Số lượng vi khuẩn sau {t_0} giây bằng ${{{y_0}}}$" 
 	kq1_F=f"Số lượng vi khuẩn sau {t_0} giây bằng: ${{{y_0_false}}}$"
 	kq1=random.choice([kq1_T, kq1_F])

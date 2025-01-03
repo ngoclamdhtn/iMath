@@ -4,6 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+    
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
@@ -15,7 +19,7 @@ def return_number_vn(a):
 		if a==int(a):
 			t=int(a)
 		else:
-			t=str(round(a,2))
+			t=str(round_half_up(a,2))
 			t=t.replace(".",",")
 	except Exception as e:
 		t=a
@@ -1329,10 +1333,10 @@ def mnj_34_jkl_L12_C2_B1_09():
 	kq=sqrt(a1**2+a2**2+a3**2)
 	if kq>=100:
 		noi_dung+="(kết quả làm tròn đến hàng đơn vị)"
-		kq=f"{round(sqrt(a1**2+a2**2+a3**2),0)}".replace(".",",")
+		kq=f"{round_half_up(sqrt(a1**2+a2**2+a3**2),0)}".replace(".",",")
 	else:
 		noi_dung+="(kết quả làm tròn đến hàng phần mười)"
-		kq=f"{round(sqrt(a1**2+a2**2+a3**2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(sqrt(a1**2+a2**2+a3**2),1):.1f}".replace(".",",")
 	
 	noi_dung_loigiai=(f" Dựng các hình chữ nhật ${{OBEC}}$ và ${{OEFA}}$ thì ta có:\
 				$\\overrightarrow{{OB}}+\\overrightarrow{{OC}}=\\overrightarrow{{OE}}, \\overrightarrow{{OA}}+\\overrightarrow{{OE}}=\\overrightarrow{{OF}}.$\n\n\
@@ -1708,7 +1712,7 @@ def mnj_34_jkl_L12_C2_B1_12():
 	debai= f"{noi_dung}\n"
 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
-	kq=f"{round(kq,1)}".replace(".",",")
+	kq=f"{round_half_up(kq,1)}".replace(".",",")
 	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
 	loigiai_traloingan=(f"Lời giải:\n {noi_dung_loigiai} \n"
 	f"Đáp án: {kq}")
@@ -1813,18 +1817,18 @@ def mnj_34_jkl_L12_C2_B1_14():
 	noi_dung=noi_dung.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
 
 	kq=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)
-	dap_an=f"{round(kq,1):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
 
 	if tich_vh>0:
 		noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.{tich_vh}+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
-		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round_half_up(kq,1):.1f}$.")
 	else:
 		noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.({tich_vh})+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
-		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round_half_up(kq,1):.1f}$.")
 
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
 
@@ -1861,7 +1865,7 @@ def mnj_34_jkl_L12_C2_B1_15():
 	vec_b=f"{vec(f"{ten_b}")}"
 	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
 
-	kq=f"{round(tich_vh/(a*b),1)}".replace(".",",")
+	kq=f"{round_half_up(tich_vh/(a*b),1)}".replace(".",",")
 	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và $|{m}{vec_a}+{n}{vec_b}|={latex(nsimplify(modun))}$."
 	f" Tính $\\cos({vec_a},{vec_b})$ (kết quả làm tròn đến hàng phần mười)."
 	)
@@ -1926,7 +1930,7 @@ def mnj_34_jkl_L12_C2_B1_16():
 	vec_y=f"{vec("y")}"
 	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
 
-	kq=f"{round(tich_vh/(a*b),1)}".replace(".",",")
+	kq=f"{round_half_up(tich_vh/(a*b),1)}".replace(".",",")
 	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và ${vec_a}.{vec_b}={tich_vh}$."
 	f" Xét hai vectơ ${vec_x}={m}{vec_a}+{n}{vec_b}$ và ${vec_y}={p}{vec_a}+{q}{vec_b}$. Tính $\\cos({vec_x},{vec_y})$ (kết quả làm tròn đến hàng phần mười)."
 	)
@@ -1936,7 +1940,7 @@ def mnj_34_jkl_L12_C2_B1_16():
 	modun_x=f"{latex(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh)))}"
 	modun_y=f"{latex(sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))}"
 	kq=xy/(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh))*sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))
-	kq=f"{round(kq,1)}".replace(".",",")
+	kq=f"{round_half_up(kq,1)}".replace(".",",")
 	if tich_vh>0:
 		noi_dung_loigiai=(
 			f"${vec_x}.{vec_y}=({m}{vec_a}+{n}{vec_b}).({p}{vec_a}+{q}{vec_b})={m*p}{vec_a}^2+{n*q}{vec_b}^2+{m*q+n*p}{vec_a}.{vec_b}"
@@ -2874,7 +2878,7 @@ def mnj_34_jkl_L12_C2_B2_07():
 		
 		x_M, y_M, z_M=(x_A1+x_C)/2, (y_A1+y_C)/2, (z_A1+z_C)/2
 	t=m*x_M+n*y_M+p*z_M
-	dap_an=f"{round(t,1)}".replace(".",",")
+	dap_an=f"{round_half_up(t,1)}".replace(".",",")
 
 	noi_dung_loigiai=(
 		f"Ta có: $A(0;0;0), B({x_B};0;0), C({x_C};{y_C};0), D(0;{y_D};0), $.\n\n"
@@ -3326,12 +3330,12 @@ def mnj_34_jkl_L12_C2_B2_10():
 	OA=OH*cos(goc_HOA_rad)
 	OB=OH*sin(goc_HOA_rad)
 
-	r_OH=f"{round(OH,2):.2f}".replace(".",",")
-	r_OA=f"{round(OA,2):.2f}".replace(".",",")
-	r_OB=f"{round(OB,2):.2f}".replace(".",",")
-	r_OC=f"{round(OC,2):.2f}".replace(".",",")
+	r_OH=f"{round_half_up(OH,2):.2f}".replace(".",",")
+	r_OA=f"{round_half_up(OA,2):.2f}".replace(".",",")
+	r_OB=f"{round_half_up(OB,2):.2f}".replace(".",",")
+	r_OC=f"{round_half_up(OC,2):.2f}".replace(".",",")
 
-	dap_an=f"{round(OA+OB+OC,0)}".replace(".",",")
+	dap_an=f"{round_half_up(OA+OB+OC,0)}".replace(".",",")
 
 	noi_dung_loigiai=(
 	f"Ta có: $O{H}=O{M}\\cos {goc_HOM}^\\circ={r_OH}$\n\n"
@@ -3969,7 +3973,7 @@ def mnj_34_jkl_L12_C2_B3_09():
 		f" Gọi ${M}(a;b;c)$ là trung điểm của ${{A{C1}}}$. Tính $P={latex(m*a+n*b+p*c)}$ (kết quả làm tròn đến hàng phần mười)."
 		)
 		
-		dap_an=f"{round(m*l_B/2+n*l_D/2+p*z_A1/2,1)}".replace(".",",")
+		dap_an=f"{round_half_up(m*l_B/2+n*l_D/2+p*z_A1/2,1)}".replace(".",",")
 		noi_dung_loigiai=(
 
 			f"Ta có: $A(0;0;0), B({l_B};0;0), D(0;{l_D};0), C({l_B};{l_D};0), {C1}({l_B};{l_D};{l_A1})$.\n\n"			
@@ -3991,7 +3995,7 @@ def mnj_34_jkl_L12_C2_B3_09():
 		x_M, y_M, z_M=l_B, 0, l_A1/2
 		x_N, y_N, z_N=(x_I+x_M)/2, (y_I+y_M)/2, (z_I+z_M)/2
 
-		dap_an=f"{round(m*x_N+n*y_N+p*z_N,1)}".replace(".",",")
+		dap_an=f"{round_half_up(m*x_N+n*y_N+p*z_N,1)}".replace(".",",")
 		noi_dung_loigiai=(
 
 			f"Ta có: $A(0;0;0), B({l_B};0;0), D(0;{l_D};0), C({l_B};{l_D};0), {B1}({l_B};0;{l_A1})$.\n\n"
@@ -4018,7 +4022,7 @@ def mnj_34_jkl_L12_C2_B3_09():
 		x_N, y_N, z_N=(x_C+x_D1)/2, (y_C+y_D1)/2, (z_C+z_D1)/2
 		x_MN, y_MN, z_MN=x_N-x_M, y_N-y_M, z_N-z_M
 
-		dap_an=f"{round(m*x_MN+n*y_MN+p*z_MN,1)}".replace(".",",")
+		dap_an=f"{round_half_up(m*x_MN+n*y_MN+p*z_MN,1)}".replace(".",",")
 		noi_dung_loigiai=(
 
 			f"Ta có: $A(0;0;0), B({l_B};0;0), D(0;{l_D};0), C({l_B};{l_D};0),{A1}(0;0;{l_A1}), {B1}({l_B};0;{l_A1})$.\n\n"
@@ -4043,7 +4047,7 @@ def mnj_34_jkl_L12_C2_B3_09():
 		)
 		
 		x_M, y_M, z_M=(x_B1+x_C1+x_D1)/3, (y_B1+y_C1+y_D1)/3, (z_B1+z_C1+z_D1)/3
-		dap_an=f"{round(m*x_M+n*y_M+p*z_M,1)}".replace(".",",")
+		dap_an=f"{round_half_up(m*x_M+n*y_M+p*z_M,1)}".replace(".",",")
 		noi_dung_loigiai=(
 
 			f"Ta có: $A(0;0;0), B({l_B};0;0), D(0;{l_D};0), C({l_B};{l_D};0), {B1}({l_B};0;{l_A1})$.\n\n"
@@ -4239,7 +4243,7 @@ def mnj_34_jkl_L12_C2_B3_11():
 			f" Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười.")
 		noi_dung=noi_dung.replace("$1","$").replace("+1","+").replace("+-","-").replace("-1\\","-\\").replace("1\\","\\")
 
-		dap_an=f"{round(a+b+c,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
 
 	noi_dung_loigiai=(
 		f"${m}{vec_a}+{n}{vec_x}={p}{vec_b}\\Rightarrow {n}{vec_x}={p}{vec_b}-{m}{vec_a}=({p*b1-m*a1};{p*b2-m*a2};{p*b3-m*a3})$.\n\n"
@@ -4354,7 +4358,7 @@ def mnj_34_jkl_L12_C2_B3_13():
 		f" Tính $a+b+c$.")
 
 	else:
-		dap_an=f"{round(c1+c2+c3,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(c1+c2+c3,1):.1f}".replace(".",",")
 		noi_dung=(f"Trong không gian ${{Oxyz}}$, cho hai điểm ${diem_A}({a1};{a2};{a3})$ và ${diem_B}({b1};{b2};{b3})$."
 		f" Biết điểm ${{{diem_C}}}(a;b;c)$ thỏa mãn ${{{diem_A}}}$ và ${{{diem_C}}}$ đối xứng nhau qua ${{{diem_B}}}$."
 		f" Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười).")
@@ -4404,7 +4408,7 @@ def mnj_34_jkl_L12_C2_B3_14():
 		noi_dung=(f"Trong hệ trục tọa độ ${{Oxyz}}$, cho hai véctơ ${vt_A}=({latex(a1*m + a2)};{a3};{a4})$ và ${vt_B}=({b1};{latex(b2*m+b3)};{b4})$."
 			f" Tìm giá trị của ${{{m}}}$ để vectơ ${{{vt_A}}}$ và vectơ ${{{vt_B}}}$ vuông góc.")
 	else:
-		dap_an=f"{round(x_0,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(x_0,1):.1f}".replace(".",",")
 		noi_dung=(f"Trong hệ trục tọa độ ${{Oxyz}}$, cho hai véctơ ${vt_A}=({latex(a1*m + a2)};{a3};{a4})$ và ${vt_B}=({b1};{latex(b2*m+b3)};{b4})$."
 			f" Tìm giá trị của ${{{m}}}$ để vectơ ${{{vt_A}}}$ và vectơ ${{{vt_B}}}$ vuông góc (kết quả làm tròn đến hàng phần mười).")
 
@@ -4925,7 +4929,7 @@ def mnj_34_jkl_L12_C2_B3_21():
 		)
 	else:
 
-		dap_an=f"{round(c1+c3+g2,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(c1+c3+g2,1):.1f}".replace(".",",")
 		noi_dung=(
 		f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}(a;{c2};b)$."
 		f" Tam giác ${{{A}{B}{C}}}$ có trọng tâm ${G}({x_G};c;{z_G})$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
@@ -4966,10 +4970,10 @@ def mnj_34_jkl_L12_C2_B3_22():
 
 	d1 = random.choice([i for i in range(-5, 6) if i!=0])
 	d2 = random.choice([i for i in range(-5, 6) if i!=0])
-	if (c1-d2)/d1==round((c1-d2)/d1,0):
+	if (c1-d2)/d1==round_half_up((c1-d2)/d1,0):
 		dap_an=int((c1-d2)/d1)
 	else:
-		dap_an=f"{round((c1-d2)/d1,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up((c1-d2)/d1,1):.1f}".replace(".",",")
 
 	
 	vitri=f"{A}"
@@ -4985,7 +4989,7 @@ def mnj_34_jkl_L12_C2_B3_22():
 	noi_dung=f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({latex(d1*m+d2)};{c2};{c3})$."
 	
 
-	if (c1-d2)/d1==round((c1-d2)/d1,0):	
+	if (c1-d2)/d1==round_half_up((c1-d2)/d1,0):	
 		
 		noi_dung+=f" Tìm giá trị của ${{m}}$ để tam giác ${{{A}{B}{C}}}$ vuông tại ${{{vitri}}}$."
 		
@@ -5040,7 +5044,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 			dap_an=int(x+y+z)
 			noi_dung+=f"Tính $m+n+p$."
 		else:
-			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
+			dap_an=f"{round_half_up(x+y+z,1):.1f}".replace(".",",")
 			noi_dung+=f"Tính $m+n+p$((kết quả làm tròn đến hàng phần mười)."
 
 		noi_dung_loigiai=(
@@ -5078,7 +5082,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 			dap_an=int(x+y+z)
 			noi_dung+=f" Tính $m+n+p$."
 		else:
-			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
+			dap_an=f"{round_half_up(x+y+z,1):.1f}".replace(".",",")
 			noi_dung+=f" Tính $m+n+p$ (kết quả làm tròn đến hàng phần mười)."
 
 		noi_dung_loigiai=(
@@ -5116,7 +5120,7 @@ def mnj_34_jkl_L12_C2_B3_23():
 			dap_an=int(x+y+z)
 			noi_dung+=f" Tính $m+n+p$."
 		else:
-			dap_an=f"{round(x+y+z,1):.1f}".replace(".",",")
+			dap_an=f"{round_half_up(x+y+z,1):.1f}".replace(".",",")
 			noi_dung+=f" Tính $m+n+p$ (kết quả làm tròn đến hàng phần mười)."
 
 		noi_dung_loigiai=(
@@ -5835,8 +5839,8 @@ def mnj_34_jkl_L12_C2_B3_29():
 	chon=random.randint(1,2)
 	
 	if chon==1:
-		goc_deg=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -5849,8 +5853,8 @@ def mnj_34_jkl_L12_C2_B3_29():
 			)
 	
 	if chon==2:
-		goc_deg=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -5906,8 +5910,8 @@ def mnj_34_jkl_L12_C2_B3_29():
 		t=random.randint(2,4)
 		k=-t/(t+1)
 		a, b, c=x_A-k*x_AB, y_A-k*y_AB, z_A-k*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
@@ -5934,8 +5938,8 @@ def mnj_34_jkl_L12_C2_B3_29():
 		a=x_A+q/m*x_AC-n/m*x_AB
 		b=y_A+q/m*y_AC-n/m*y_AB
 		c=z_A+q/m*z_AC-n/m*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq_false}$" 
@@ -6049,9 +6053,9 @@ def mnj_34_jkl_L12_C2_B3_30():
 
 	x_MN,y_MN,z_MN=n1-m1,n2-m2,n3-m3
 	a,b,c=1/k*x_MN+n1, 1/k*y_MN+n2, 1/k*z_MN+n3
-	a_round=f"{round(a,2):.2f}".replace(".",",")
-	b_round=f"{round(b,2):.2f}".replace(".",",")
-	c_round=f"{round(c,2):.2f}".replace(".",",")
+	a_round=f"{round_half_up(a,2):.2f}".replace(".",",")
+	b_round=f"{round_half_up(b,2):.2f}".replace(".",",")
+	c_round=f"{round_half_up(c,2):.2f}".replace(".",",")
 
 	code_hinh=f"\\begin{{tikzpicture}}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]\n\
 			\\draw[dashed] (0,0) node[shift={{(-158:5mm)}}, rotate=-25]{{\\color{{cyan}}\\Huge \\faPlane}}--(4,1.5);\n\
@@ -6069,7 +6073,7 @@ def mnj_34_jkl_L12_C2_B3_30():
 	f" Nếu máy bay tiếp tục giữ nguyên vận tốc và hướng bay sau ${t_NQ}$ phút tiếp theo thì tọa độ của máy bay lúc này là ${Q}(a;b;c)$."
 	f" Kết quả của phép tính $\\dfrac{{a+b+c}}{{2025}}$ (làm tròn đến hàng phần mười) bằng bao nhiêu?"
 	)
-	dap_an=f"{round((a+b+c)/2025,1):.1f}".replace(".",",")
+	dap_an=f"{round_half_up((a+b+c)/2025,1):.1f}".replace(".",",")
 
 	noi_dung_loigiai=(
 	f"${vec2(M,N)}=({x_MN};{y_MN};{z_MN}), {vec2(N,Q)}=(a-{n1};b-{n2};c-{n3})$.\n\n"
@@ -6218,7 +6222,7 @@ def mnj_34_jkl_L12_C2_B3_32():
 	cos_goc=tich_vh/(do_dai_a*do_dai_b)
 	kq=acos(cos_goc)
 	kq=deg(kq)
-	round_kq=f"{round(kq,2):.2f}".replace(".",",")
+	round_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
 
 	kq_false=[
 	random.randint(0,60)+random.randint(1,9)/10,
@@ -6240,10 +6244,10 @@ random.randint(121,180)+random.randint(1,9)/10,
 	f"Suy ra: $({vt_A},{vt_B})={round_kq}^\\circ$."
 	)
 
-	pa_A= f"*${round(kq,2):.2f}^\\circ$".replace(".",",")
-	pa_B= f"${round(kq2,2):.2f}^\\circ$".replace(".",",")
-	pa_C= f"${round(kq3,2):.2f}^\\circ$".replace(".",",")
-	pa_D= f"${round(kq4,2):.2f}^\\circ$".replace(".",",")
+	pa_A= f"*${round_half_up(kq,2):.2f}^\\circ$".replace(".",",")
+	pa_B= f"${round_half_up(kq2,2):.2f}^\\circ$".replace(".",",")
+	pa_C= f"${round_half_up(kq3,2):.2f}^\\circ$".replace(".",",")
+	pa_D= f"${round_half_up(kq4,2):.2f}^\\circ$".replace(".",",")
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
@@ -6373,8 +6377,8 @@ def mnj_34_jkl_L12_C2_B3_33():
 	chon=random.randint(1,2)
 	
 	if chon==1:
-		goc_deg=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -6387,8 +6391,8 @@ def mnj_34_jkl_L12_C2_B3_33():
 			)
 	
 	if chon==2:
-		goc_deg=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -6444,8 +6448,8 @@ def mnj_34_jkl_L12_C2_B3_33():
 		t=random.randint(2,4)
 		k=-t/(t+1)
 		a, b, c=x_A-k*x_AB, y_A-k*y_AB, z_A-k*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
@@ -6472,8 +6476,8 @@ def mnj_34_jkl_L12_C2_B3_33():
 		a=x_A+q/m*x_AC-n/m*x_AB
 		b=y_A+q/m*y_AC-n/m*y_AB
 		c=z_A+q/m*z_AC-n/m*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq_false}$" 
@@ -6657,8 +6661,8 @@ def mnj_34_jkl_L12_C2_B3_34():
 	chon=random.randint(1,2)
 	
 	if chon==1:
-		goc_deg=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -6671,8 +6675,8 @@ def mnj_34_jkl_L12_C2_B3_34():
 			)
 	
 	if chon==2:
-		goc_deg=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -6728,8 +6732,8 @@ def mnj_34_jkl_L12_C2_B3_34():
 		t=random.randint(2,4)
 		k=-t/(t+1)
 		a, b, c=x_A-k*x_AB, y_A-k*y_AB, z_A-k*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
@@ -6756,8 +6760,8 @@ def mnj_34_jkl_L12_C2_B3_34():
 		a=x_A+q/m*x_AC-n/m*x_AB
 		b=y_A+q/m*y_AC-n/m*y_AB
 		c=z_A+q/m*z_AC-n/m*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq_false}$" 
@@ -6923,8 +6927,8 @@ def mnj_34_jkl_L12_C2_B3_35():
 	chon=random.randint(1,2)
 	
 	if chon==1:
-		goc_deg=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -6937,8 +6941,8 @@ def mnj_34_jkl_L12_C2_B3_35():
 			)
 	
 	if chon==2:
-		goc_deg=f"{round(deg(pi-goc_rad),1):.1f}".replace(".",",")
-		goc_deg_false=f"{round(deg(goc_rad),1):.1f}".replace(".",",")
+		goc_deg=f"{round_half_up(deg(pi-goc_rad),1):.1f}".replace(".",",")
+		goc_deg_false=f"{round_half_up(deg(goc_rad),1):.1f}".replace(".",",")
 		kq3_T=f"* Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg}^\\circ$" 
 		kq3_F=f"Góc giữa hai vectơ ${vec2(A,B)}$ và ${vec2(C,A)}$ bằng ${goc_deg_false}^\\circ$"
 		kq3=random.choice([kq3_T, kq3_F])
@@ -6994,8 +6998,8 @@ def mnj_34_jkl_L12_C2_B3_35():
 		t=random.randint(2,4)
 		k=-t/(t+1)
 		a, b, c=x_A-k*x_AB, y_A-k*y_AB, z_A-k*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Khi đó $a+b+c={kq_false}$" 
@@ -7022,8 +7026,8 @@ def mnj_34_jkl_L12_C2_B3_35():
 		a=x_A+q/m*x_AC-n/m*x_AB
 		b=y_A+q/m*y_AC-n/m*y_AB
 		c=z_A+q/m*z_AC-n/m*z_AB
-		kq=f"{round(a+b+c,1):.1f}".replace(".",",")
-		kq_false=f"{round(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
+		kq=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
+		kq_false=f"{round_half_up(a+b+c+random.randint(1,2),1):.1f}".replace(".",",")
 
 		kq4_T=f"* Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq}$"
 		kq4_F=f"Điểm ${{{P}}}(a;b;c)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Khi đó $a+b+c={kq_false}$" 
@@ -7284,8 +7288,8 @@ def mnj_34_jkl_L12_C2_B3_37():
 			f"$\\Rightarrow a={phan_so(-a3*x_AB/z_AB+a1)}, b={phan_so(-a3*y_AB/z_AB+a2)}$\n\n"
 			f"Vậy: $a+b+c={phan_so(-a3*x_AB/z_AB+a1 + -a3*y_AB/z_AB+a2)}$")
 
-		dap_an=f"{round(-a3*x_AB/z_AB+a1 + -a3*y_AB/z_AB+a2,1):.1f}".replace(".",",")
-		dap_an_false=f"{round(-a3*x_AB/z_AB + -a3*y_AB/z_AB,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(-a3*x_AB/z_AB+a1 + -a3*y_AB/z_AB+a2,1):.1f}".replace(".",",")
+		dap_an_false=f"{round_half_up(-a3*x_AB/z_AB + -a3*y_AB/z_AB,1):.1f}".replace(".",",")
 
 	if a3*b3>0:
 		
@@ -7310,8 +7314,8 @@ def mnj_34_jkl_L12_C2_B3_37():
 			f"Vậy: $a+b+c={phan_so(a3*x_AB/z_AB+a1 + a3*y_AB/z_AB+a2)}$"
 
 			)
-		dap_an=f"{round(a3*x_AB/z_AB+a1 + a3*y_AB/z_AB+a2,1):.1f}".replace(".",",")
-		dap_an_false=f"{round(a3*x_AB/z_AB - a3*y_AB/z_AB,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(a3*x_AB/z_AB+a1 + a3*y_AB/z_AB+a2,1):.1f}".replace(".",",")
+		dap_an_false=f"{round_half_up(a3*x_AB/z_AB - a3*y_AB/z_AB,1):.1f}".replace(".",",")
 
 	HDG=HDG.replace("+-","-").replace("--","+").replace("-+","-")
 

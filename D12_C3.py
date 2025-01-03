@@ -5,6 +5,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 # Helper function to calculate quantile
 def calculate_quantile(L, F, f, h, target_position):
     return L + ((target_position - F) / f) * h
@@ -228,7 +232,7 @@ def ytrzz_L12_C3_B1_02():
 	f_Q1 = Q1_class[1]
 	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
 	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
-	Q1_round=f"{round(Q1,2):.2f}".replace(".",",")
+	Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
 	
 
 	# Calculating Q2
@@ -246,10 +250,10 @@ def ytrzz_L12_C3_B1_02():
 	f_Q3 = Q3_class[1]
 	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
 	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
+	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,2):.2f}".replace(".",",")
+	Delta_Q_round=f"{round_half_up(Delta_Q,2):.2f}".replace(".",",")
 
 	kq=Delta_Q
 	kq_false=[
@@ -266,10 +270,10 @@ def ytrzz_L12_C3_B1_02():
 	kq4=pa_kotrung[3]
 
 	#Tạo các phương án
-	pa_A= f"*${{{round(kq,2):.2f}}}$".replace(".",",")
-	pa_B= f"${{{round(kq2,2):.2f}}}$".replace(".",",")
-	pa_C= f"${{{round(kq3,2):.2f}}}$".replace(".",",")
-	pa_D= f"${{{round(kq4,2):.2f}}}$".replace(".",",")
+	pa_A= f"*${{{round_half_up(kq,2):.2f}}}$".replace(".",",")
+	pa_B= f"${{{round_half_up(kq2,2):.2f}}}$".replace(".",",")
+	pa_C= f"${{{round_half_up(kq3,2):.2f}}}$".replace(".",",")
+	pa_D= f"${{{round_half_up(kq4,2):.2f}}}$".replace(".",",")
 
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -292,7 +296,7 @@ def ytrzz_L12_C3_B1_02():
 		f"Tổng tần số là: $N={N}$.\n\n"
 		f"Tìm tứ phân vị $Q_1$:\n\n"
 	
-		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round_half_up(N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
 		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
@@ -303,7 +307,7 @@ def ytrzz_L12_C3_B1_02():
 		f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={phan_so(Q1)}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_3$:\n\n"
-		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round_half_up(3*N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
 		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"
@@ -386,7 +390,7 @@ def ytrzz_L12_C3_B1_03():
 	f_Q1 = Q1_class[1]
 	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
 	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
-	Q1_round=f"{round(Q1,2):.2f}".replace(".",",")
+	Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
 	
 
 	# Calculating Q2
@@ -404,10 +408,10 @@ def ytrzz_L12_C3_B1_03():
 	f_Q3 = Q3_class[1]
 	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
 	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
+	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,1):.1f}".replace(".",",")
+	Delta_Q_round=f"{round_half_up(Delta_Q,1):.1f}".replace(".",",")
 
 
 	#Code latex
@@ -426,7 +430,7 @@ def ytrzz_L12_C3_B1_03():
 		f"Tổng tần số là: $N={N}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_1$:\n\n"	
-		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round_half_up(N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
 		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
@@ -437,7 +441,7 @@ def ytrzz_L12_C3_B1_03():
 		f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={phan_so(Q1)}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_3$:\n\n"
-		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round_half_up(3*N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
 		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"
@@ -510,9 +514,9 @@ def ytrzz_L12_C3_B1_04():
 	f_Q1 = Q1_class[1]
 	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
 	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
-	Q1_round=f"{round(Q1,2):.2f}".replace(".",",")
+	Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
 	Q1_false=Q1+random.randint(1,2)
-	Q1_false_round=f"{round(Q1_false,2):.2f}".replace(".",",")
+	Q1_false_round=f"{round_half_up(Q1_false,2):.2f}".replace(".",",")
 	
 
 	# Calculating Q2
@@ -530,15 +534,15 @@ def ytrzz_L12_C3_B1_04():
 	f_Q3 = Q3_class[1]
 	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
 	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
+	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
 	Q3_false=Q1+random.randint(1,2)
-	Q3_false_round=f"{round(Q3_false,2):.2f}".replace(".",",")
+	Q3_false_round=f"{round_half_up(Q3_false,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,1):.2f}".replace(".",",")
+	Delta_Q_round=f"{round_half_up(Delta_Q,1):.2f}".replace(".",",")
 
 	Delta_Q_false=Delta_Q+random.randint(1,2)
-	Delta_Q_false_round=f"{round(Delta_Q_false,2):.2f}".replace(".",",")
+	Delta_Q_false_round=f"{round_half_up(Delta_Q_false,2):.2f}".replace(".",",")
 
 	#Code latex
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
@@ -564,7 +568,7 @@ def ytrzz_L12_C3_B1_04():
 	HDG=(
 		f"Tìm tứ phân vị $Q_1$:\n\n"
 		f"Tổng tần số là: $N={N}$.\n\n"
-		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round_half_up(N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
 		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
@@ -582,7 +586,7 @@ def ytrzz_L12_C3_B1_04():
 	kq3=random.choice([kq3_T, kq3_F])
 	HDG=(f"Tìm tứ phân vị $Q_3$:\n\n"
 		f"Tổng tần số là: $N={N}$.\n\n"
-		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round_half_up(3*N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
 		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"
@@ -709,9 +713,9 @@ def ytrzz_L12_C3_B1_05():
 	f_Q1 = Q1_class[1]
 	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
 	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
-	Q1_round=f"{round(Q1,2):.2f}".replace(".",",")
+	Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
 	Q1_false=Q1+random.randint(1,2)
-	Q1_false_round=f"{round(Q1_false,2):.2f}".replace(".",",")
+	Q1_false_round=f"{round_half_up(Q1_false,2):.2f}".replace(".",",")
 	
 
 	# Calculating Q2
@@ -729,15 +733,15 @@ def ytrzz_L12_C3_B1_05():
 	f_Q3 = Q3_class[1]
 	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
 	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
+	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
 	Q3_false=Q1+random.randint(1,2)
-	Q3_false_round=f"{round(Q3_false,2):.2f}".replace(".",",")
+	Q3_false_round=f"{round_half_up(Q3_false,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,1):.2f}".replace(".",",")
+	Delta_Q_round=f"{round_half_up(Delta_Q,1):.2f}".replace(".",",")
 
 	Delta_Q_false=Delta_Q+random.randint(1,2)
-	Delta_Q_false_round=f"{round(Delta_Q_false,2):.2f}".replace(".",",")
+	Delta_Q_false_round=f"{round_half_up(Delta_Q_false,2):.2f}".replace(".",",")
 
 	#Code latex
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
@@ -763,7 +767,7 @@ def ytrzz_L12_C3_B1_05():
 	HDG=(
 		f"Tìm tứ phân vị $Q_1$:\n\n"
 		f"Tổng tần số là: $N={N}$.\n\n"
-		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round_half_up(N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
 		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
@@ -781,7 +785,7 @@ def ytrzz_L12_C3_B1_05():
 	kq3=random.choice([kq3_T, kq3_F])
 	HDG=(f"Tìm tứ phân vị $Q_3$:\n\n"
 		f"Tổng tần số là: $N={N}$.\n\n"
-		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,1)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round_half_up(3*N/4,1)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
 		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"
@@ -796,14 +800,14 @@ def ytrzz_L12_C3_B1_05():
 
 
 	a,b=Q1-1.5*Delta_Q, Q3+1.5*Delta_Q
-	a_round=f"{round(a,2):.2f}".replace(".",",")
-	b_round=f"{round(b,2):.2f}".replace(".",",")
+	a_round=f"{round_half_up(a,2):.2f}".replace(".",",")
+	b_round=f"{round_half_up(b,2):.2f}".replace(".",",")
 	
 	chon=random.randint(1,2)
 	
 	if chon==1:
 		x=random.choice([Q1-random.randint(1,14)/10*Delta_Q, Q3+Delta_Q, Q3+random.randint(1,14)/10*Delta_Q])
-		x_round=f"{round(x,2):.2f}".replace(".",",")		
+		x_round=f"{round_half_up(x,2):.2f}".replace(".",",")		
 
 		kq4_T=f"* ${{{x_round}}}$ không phải là giá trị ngoại lệ của mẫu số liệu"
 		kq4_F=f"${{{x_round}}}$ là giá trị ngoại lệ của mẫu số liệu" 
@@ -819,7 +823,7 @@ def ytrzz_L12_C3_B1_05():
 	
 	if chon==2:
 		x=random.choice([Q3+random.randint(16,20)/10*Delta_Q])
-		x_round=f"{round(x,2):.2f}".replace(".",",")		
+		x_round=f"{round_half_up(x,2):.2f}".replace(".",",")		
 
 		kq4_T=f"* ${{{x_round}}}$ là giá trị ngoại lệ của mẫu số liệu"
 		kq4_F=f"${{{x_round}}}$ không phải là giá trị ngoại lệ của mẫu số liệu" 
@@ -952,7 +956,7 @@ def ytrzz_L12_C3_B2_01():
 
 	#Tính tổng các tần số
 	tong_tan_so=sum(tan_so)
-	so_trung_binh=f"{round(weighted_mean,2)}".replace(".",",")	
+	so_trung_binh=f"{round_half_up(weighted_mean,2)}".replace(".",",")	
 
 	#Tạo kết quả ảo
 	tich = []	
@@ -972,10 +976,10 @@ def ytrzz_L12_C3_B2_01():
 	random.shuffle(kq_fasle)
 	kq2,kq3,kq4=kq_fasle[0:3]
 
-	kq=f"{round(variance,2):.2f}".replace(".",",")
-	kq2=f"{round(kq2,2):.2f}".replace(".",",")
-	kq3=f"{round(kq3,2):.2f}".replace(".",",")
-	kq4=f"{round(kq4,2):.2f}".replace(".",",")
+	kq=f"{round_half_up(variance,2):.2f}".replace(".",",")
+	kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+	kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+	kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
 
 	code_latex=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
 	code=my_module.moi_truong_anh_latex(code_latex)	
@@ -1097,7 +1101,7 @@ def ytrzz_L12_C3_B2_02():
 
 	#Tính tổng các tần số
 	tong_tan_so=sum(tan_so)
-	so_trung_binh=f"{round(weighted_mean,2)}".replace(".",",")	
+	so_trung_binh=f"{round_half_up(weighted_mean,2)}".replace(".",",")	
 
 	#Tạo kết quả ảo
 	tich = []	
@@ -1121,12 +1125,12 @@ def ytrzz_L12_C3_B2_02():
 	kq2=pa_kotrung[1]
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]
-	variance_round=f"{round(variance,2):.2f}".replace(".",",")
+	variance_round=f"{round_half_up(variance,2):.2f}".replace(".",",")
 
-	kq=f"{round(sqrt(variance),2):.2f}".replace(".",",")
-	kq2=f"{round(sqrt(abs(kq2)),2):.2f}".replace(".",",")
-	kq3=f"{round(sqrt(abs(kq3)),2):.2f}".replace(".",",")
-	kq4=f"{round(sqrt(abs(kq4)),2):.2f}".replace(".",",")
+	kq=f"{round_half_up(sqrt(variance),2):.2f}".replace(".",",")
+	kq2=f"{round_half_up(sqrt(abs(kq2)),2):.2f}".replace(".",",")
+	kq3=f"{round_half_up(sqrt(abs(kq3)),2):.2f}".replace(".",",")
+	kq4=f"{round_half_up(sqrt(abs(kq4)),2):.2f}".replace(".",",")
 
 	code_latex=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
 	code=my_module.moi_truong_anh_latex(code_latex)	
@@ -1250,7 +1254,7 @@ def ytrzz_L12_C3_B2_03():
 
 	#Tính tổng các tần số
 	tong_tan_so=sum(tan_so)
-	so_trung_binh=f"{round(weighted_mean,2)}".replace(".",",")	
+	so_trung_binh=f"{round_half_up(weighted_mean,2)}".replace(".",",")	
 
 	#Tạo kết quả ảo
 	tich = []	
@@ -1260,7 +1264,7 @@ def ytrzz_L12_C3_B2_03():
 	tong_giatri_x_tan_so = sum(tich)
 
 
-	dap_an=f"{round(variance,2):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(variance,2):.1f}".replace(".",",")
 
 
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
@@ -1324,7 +1328,7 @@ def ytrzz_L12_C3_B2_04():
 
 	# Tính phương sai
 	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
-	variance_round=f"{round(variance,2):.1f}".replace(".",",")
+	variance_round=f"{round_half_up(variance,2):.1f}".replace(".",",")
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
 
@@ -1359,7 +1363,7 @@ def ytrzz_L12_C3_B2_04():
 
 	#Tính tổng các tần số
 	tong_tan_so=sum(tan_so)
-	so_trung_binh=f"{round(weighted_mean,2)}".replace(".",",")	
+	so_trung_binh=f"{round_half_up(weighted_mean,2)}".replace(".",",")	
 
 	#Tạo kết quả ảo
 	tich = []	
@@ -1369,7 +1373,7 @@ def ytrzz_L12_C3_B2_04():
 	tong_giatri_x_tan_so = sum(tich)
 
 
-	dap_an=f"{round(sqrt(variance),2):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(sqrt(variance),2):.1f}".replace(".",",")
 
 
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
@@ -1434,8 +1438,8 @@ def ytrzz_L12_C3_B2_05():
 
 	# Tính phương sai
 	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
-	variance_round=f"{round(variance,2):.2f}".replace(".",",")
-	variance_false_round=f"{round(variance+random.choice([0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
+	variance_round=f"{round_half_up(variance,2):.2f}".replace(".",",")
+	variance_false_round=f"{round_half_up(variance+random.choice([0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1473,7 +1477,7 @@ def ytrzz_L12_C3_B2_05():
 	f_Q1 = Q1_class[1]
 	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
 	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
-	Q1_round=f"{round(Q1,2):.2f}".replace(".",",")
+	Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
 	
 
 	# Calculating Q2
@@ -1491,11 +1495,11 @@ def ytrzz_L12_C3_B2_05():
 	f_Q3 = Q3_class[1]
 	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
 	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round(Q3,2):.2f}".replace(".",",")
+	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round(Delta_Q,2):.2f}".replace(".",",")
-	Delta_Q_false_round=f"{round(Delta_Q+random.randint(1,2),2):.2f}".replace(".",",")
+	Delta_Q_round=f"{round_half_up(Delta_Q,2):.2f}".replace(".",",")
+	Delta_Q_false_round=f"{round_half_up(Delta_Q+random.randint(1,2),2):.2f}".replace(".",",")
 
 	#@@@# Tính thủ công:
 
@@ -1535,8 +1539,8 @@ def ytrzz_L12_C3_B2_05():
 		f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")	
 
 
-	so_trung_binh=f"{round(weighted_mean,2):.2f}".replace(".",",")
-	so_trung_binh_false=f"{round(weighted_mean+random.choice([0.2,0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
+	so_trung_binh=f"{round_half_up(weighted_mean,2):.2f}".replace(".",",")
+	so_trung_binh_false=f"{round_half_up(weighted_mean+random.choice([0.2,0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 	
 	kq1_T=f"* Số trung bình của mẫu số liệu bằng ${{{so_trung_binh}}}$" 
 	kq1_F=f"Số trung bình của mẫu số liệu bằng ${{{so_trung_binh_false}}}$"
@@ -1557,8 +1561,8 @@ def ytrzz_L12_C3_B2_05():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	dolech_round=f"{round(sqrt(variance),2):.2f}".replace(".",",")
-	dolech_false_round=f"{round(sqrt(variance)+random.choice([0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
+	dolech_round=f"{round_half_up(sqrt(variance),2):.2f}".replace(".",",")
+	dolech_false_round=f"{round_half_up(sqrt(variance)+random.choice([0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 
 	kq3_T=f"* Độ lệch chuẩn của mẫu số liệu bằng ${{{dolech_round}}}$" 
 	kq3_F=f"Độ lệch chuẩn của mẫu số liệu bằng ${{{dolech_false_round}}}$"
@@ -1575,7 +1579,7 @@ def ytrzz_L12_C3_B2_05():
 	HDG=(f"Tổng tần số là: $N={N}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_1$:\n\n"	
-		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round(N/4,2)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_1$: $Q_1$ nằm ở vị trí $\\dfrac{{{N}}}{{4}}={round_half_up(N/4,2)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_1$: Tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_1$ ta được lớp $[{L_Q1};{R_Q1})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_1$.\n\n"
 		f" Cận dưới của lớp $[{L_Q1};{R_Q1})$ chứa $Q_1$: $L={L_Q1}$\n\n"
@@ -1586,7 +1590,7 @@ def ytrzz_L12_C3_B2_05():
 		f"={L_Q1}+\\left(\\dfrac{{ \\dfrac{{{N}}}{{4}}-{F_Q1} }}{{{f_Q1}}}\\right).{h_Q1}={phan_so(Q1)}$.\n\n"
 
 		f"Tìm tứ phân vị $Q_3$:\n\n"
-		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round(3*N/4,2)}$.\n\n"
+		f"Bước 1: Xác định vị trí của $Q_3$: $Q_3$ nằm ở vị trí $\\dfrac{{3.{N}}}{{4}}={round_half_up(3*N/4,2)}$.\n\n"
 		f"Bước 2: Xác định lớp chứa $Q_3$: tính tần số tích lũy từ lớp đầu tiên đến khi đạt hoặc vượt qua vị trí của $Q_3$ ta được lớp $[{L_Q3};{R_Q3})$.\n\n"
 		f"Bước 3: Xác định các thông số của công thức tính $Q_3$.\n\n"
 		f" Cận dưới của lớp $[{L_Q3};{R_Q3})$ chứa $Q_3$: $L={L_Q3}$\n\n"
