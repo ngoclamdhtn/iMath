@@ -4025,6 +4025,10 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_13]-SA-M3. Cho số dân (mức lương) và tỉ lệ tăng trưởng. Tính số dân (mức lương) sau n năm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B3_3, ["[D11_C2_B3_14]-SA-M3. Bài toán lát gạch cho tòa tháp."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
 
         #Lớp 11 - Chương 3 - Giới hạn
@@ -7264,6 +7268,22 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L12_C6_B1_2 = QTreeWidgetItem(L12_C6_B1, ["Đúng-Sai"])
+                L12_C6_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_2, ["[D12_C6_B1_08]-TF-M3. Cho tỉ lệ % mua hàng thỏa mãn 2 biến cố A,B. Xét Đ-S: P(ngang(A)), P(B|A), P(AB), P(ngang(A)ngang(B))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C6_B1_3 = QTreeWidgetItem(L12_C6_B1, ["Trả lời ngắn"])
+                L12_C6_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_07]-SA-M3. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)|B)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C6_B2 = QTreeWidgetItem(L12_C6, ["Bài 2 - Công thức xác suất toàn phần, xác suất Bayes"])
                 L12_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
 
@@ -8918,6 +8938,14 @@ class Ui_MainWindow(object):
                                                 if dang_toan == "[D12_C6_B1_06]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_06()
 
+                                                #[D12_C6_B1_07]-SA-M3. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)|B)
+                                                if dang_toan == "[D12_C6_B1_07]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_07()
+
+                                                #[D12_C6_B1_08]-TF-M3. Cho tỉ lệ % mua hàng thỏa mãn 2 biến cố A,B. Xét Đ-S: P(ngang(A)), P(B|A), P(AB), P(ngang(A)ngang(B))
+                                                if dang_toan == "[D12_C6_B1_08]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B1_08()
+
                                                     
                                        
                                     
@@ -9287,6 +9315,10 @@ class Ui_MainWindow(object):
                                                 #[D11_C2_B3_13]-SA-M3. Cho số dân và tỉ lệ tăng trưởng. Tính số dân sau n năm.
                                                 if dang_toan == "[D11_C2_B3_13]": 
                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_13()
+
+                                                #[D11_C2_B3_14]-SA-M3. Bài toán lát gạch cho tòa tháp
+                                                if dang_toan == "[D11_C2_B3_14]": 
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B3_14()
 
                                                 
 

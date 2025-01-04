@@ -2616,8 +2616,8 @@ def mn8mn_L11_C2_B3_13():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D11_C2_B3_13]-TL-M3. Bài toán lát gạch cho tòa tháp
-def mn8mn_L11_C2_B3_13():
+#[D11_C2_B3_14]-TL-M3. Bài toán lát gạch cho tòa tháp
+def mn8mn_L11_C2_B3_14():
     n=random.randint(5,8)
     S1=random.choice([40,45,50,55,60,65])
 

@@ -549,50 +549,75 @@ def newy25_L12_C6_B1_08():
 
     if sp_chung=="ghế massage":
         sp_rieng=random.choice(["ghế massage nhiệt hồng ngoại", "ghế massage văn phòng", "ghế massage cho người cao tuổi", "ghế massage thông minh (AI)"])
+   
+    a=random.randint(55,70)
+    p_a=a/100
+    st_p_a=f"{round_half_up(a/100,2)}".replace(".",",")
+    st_p_ngang_a=f"{round_half_up(1-a/100,2)}".replace(".",",")
 
+    b=random.randint(10,20)
+    p_b=b/100
+    st_p_b=f"{round_half_up(b/100,2)}".replace(".",",")
 
+    b_dk_a=random.randint(5,15)
+    p_b_dk_a=b_dk_a/100
+
+    st_p_b_dk_a=f"{round_half_up(b_dk_a/100,2)}".replace(".",",")
+    st_p_b_dk_a_false=f"{round_half_up(1-b_dk_a/100,2)}".replace(".",",")
 
     noi_dung = (f"Một công ty kinh doanh {sp_chung} sau khi kiểm tra nhóm khách hàng mua sản phẩm của mình đã thu thập được các thông tin sau:\n\n"
-        f"-Tất cả khách hàng đều mua ít nhất một chiếc {sp_chung}.\n\n"
-        f" Có 70% khách hàng mua nhiều hơn một chiếc {sp_chung}.\n\n"
-        f"  Có 20% khách hàng mua {sp_rieng}.\n\n"
-        f" Trong số những khách hàng mua nhiều hơn một chiếc {sp_chung}, có 15% mua {sp_rieng}.\n\n"
+        f" - Tất cả khách hàng đều mua ít nhất một chiếc {sp_chung}.\n\n"
+        f" - Có ${a}\\%$ khách hàng mua nhiều hơn một chiếc {sp_chung}.\n\n"
+        f" - Có ${b}\\%$ khách hàng mua {sp_rieng}.\n\n"
+        f" Trong số những khách hàng mua nhiều hơn một chiếc {sp_chung}, có ${b_dk_a}\\%$ mua {sp_rieng}.\n\n"
         f' Gọi A là biến cố: "Khách hàng mua nhiều hơn một chiếc {sp_chung}".\n\n'
         f' Gọi B là biến cố: "Khách hàng mua {sp_rieng}".\n\n'
-        f" Xét tính đúng-sai của các khẳng định sau."      )  
-    debai_word= f"{noi_dung}\n"
+        f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")  
+      
     
-    kq1_T=f"*" 
-    kq1_F=f" "
+    kq1_T=f"* $P(\\overline{{A}})={st_p_ngang_a}$" 
+    kq1_F=f"$P(\\overline{{A}})={st_p_a}$"
     
-    HDG=f" "
+    HDG=f"Do có ${a}\\%$ khách hàng mua nhiều hơn một chiếc {sp_chung} nên $P(A)={st_p_a}$ và $P(\\overline{{A}})={st_p_ngang_a}$."
     kq1=random.choice([kq1_T, kq1_F])
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* "
-    kq2_F=f" "
+    kq2_T=f"* $P(B|A)={st_p_b_dk_a}$"
+    kq2_F=f" $P(B|A)={st_p_b_dk_a_false}$"
     
-    HDG=f""
+    HDG=f"Do trong số những khách hàng mua nhiều hơn một chiếc {sp_chung}, có ${b_dk_a}\\%$ mua {sp_rieng} nên $P(B|A)={st_p_b_dk_a}$."
     kq2=random.choice([kq2_T, kq2_F])
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq3_T=f"* " 
-    kq3_F=f" "
+    p_ab=p_b_dk_a*p_a
+    st_p_ab=f"{round_half_up(p_ab,2)}".replace(".",",")
+    st_p_ab_false=f"{round_half_up(1-p_ab,2)}".replace(".",",")
+
+
+    kq3_T=f"* $P(AB)={st_p_ab}$" 
+    kq3_F=f"$P(AB)={st_p_ab_false}$"
     
-    HDG=f""
+    HDG=f"Áp dụng công thức nhân xác suất: $P(AB)=P(B|A).P(A)={st_p_b_dk_a}.{st_p_a}={st_p_ab}$."
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq4_T=f"* "
-    kq4_F=f" " 
+    p_ngang_a_ngang_b=1-p_a-p_b+p_ab    
+    st_p_ngang_a_ngang_b=f"{round_half_up(p_ngang_a_ngang_b,2)}".replace(".",",")
+
+    p_ngang_a_ngang_b_false=1-p_a-p_b
+    st_p_ngang_a_ngang_b_false=f"{round_half_up(p_ngang_a_ngang_b_false,2)}".replace(".",",")
+
+    kq4_T=f"* Xác suất một khách hàng chỉ mua đúng một chiếc {sp_chung} và chiếc {sp_chung} đó không phải là {sp_rieng} bằng {st_p_ngang_a_ngang_b}"
+    kq4_F=f"Xác suất một khách hàng chỉ mua đúng một chiếc {sp_chung} và chiếc {sp_chung} đó không phải là {sp_rieng} bằng {st_p_ngang_a_ngang_b_false}" 
     
-    HDG=f""
+    HDG=(f"Xác suất một khách hàng chỉ mua đúng một chiếc {sp_chung} và chiếc {sp_chung} đó không phải là {sp_rieng} bằng:\n\n"
+        f"$P(\\overline{{A}}\\overline{{B}})=1-P(A\\cup B)=1-P(A)-P(B)+P(AB)=1-{st_p_a}-{st_p_b}+{st_p_ab}={st_p_ngang_a_ngang_b}$.")
     kq4=random.choice([kq4_T, kq4_F])
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
