@@ -7260,6 +7260,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_06]-M2. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)B)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C6_B2 = QTreeWidgetItem(L12_C6, ["Bài 2 - Công thức xác suất toàn phần, xác suất Bayes"])
                 L12_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
 
@@ -8909,6 +8913,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C6_B1_05]-M2.  Tính xác suất người mua sản phẩm trên độ tuổi nào đó.
                                                 if dang_toan == "[D12_C6_B1_05]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_05()
+
+                                                #[D12_C6_B1_06]-M2.  Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)B)
+                                                if dang_toan == "[D12_C6_B1_06]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_06()
 
                                                     
                                        

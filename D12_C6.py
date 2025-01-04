@@ -397,7 +397,7 @@ def newy25_L12_C6_B1_05():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C6_B1_06]-M2. Cho P(A),P(B) và P(A|B). Tính xác suất P(\overline(A)B)  
+#[D12_C6_B1_06]-M2. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)B)
 def newy25_L12_C6_B1_06():
     p_a=random.randint(10,80)/100
     st_p_a=f"{round(p_a,2):.2f}".replace(".",",")
@@ -411,7 +411,7 @@ def newy25_L12_C6_B1_06():
     st_p_a_dk_b=f"{round(p_a_dk_b,2):.2f}".replace(".",",")
 
     noi_dung=(
-    f"Cho hai biến cố ${{{A}}}$ và ${{{B}}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(A|B)= {st_p_a_dk_b}$. Tính $P(\\overline{{A}}B)$."
+    f"Cho hai biến cố ${{A}}$ và ${{B}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(A|B)= {st_p_a_dk_b}$. Tính $P(\\overline{{A}}B)$."
     )
         
 
@@ -440,7 +440,7 @@ def newy25_L12_C6_B1_06():
     st_kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
     st_kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
     noi_dung_loigiai=(
-    f"Theo công thức nhân xác suất, ta có $P(AB) = P(B)P(A|B) = {st_p_b}.{st_p_a_dk_b}={st_p_ab}$."
+    f"Theo công thức nhân xác suất, ta có $P(AB) = P(B)P(A|B) = {st_p_b}.{st_p_a_dk_b}={st_p_ab}$.\n\n"
     f"Vì $\\overline{{A}}B$ và ${{AB}}$ là hai biên cố xung khắc và $\\overline{{A}}B \\cup AB=B$ nên:\n\n"
     f"$P(\\overline{{A}}B)=P(B)-P(AB)={st_kq}$."
     )
@@ -475,3 +475,174 @@ def newy25_L12_C6_B1_06():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B1_07]-SA-M3. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)|B)
+def newy25_L12_C6_B1_07():
+
+    p_a=random.randint(10,80)/100
+    st_p_a=f"{round(p_a,2):.2f}".replace(".",",")
+
+    b=random.randint(50,80)
+    p_b=b/100
+    while p_b==p_a:
+        p_b=random.randint(10,80)/100        
+    st_p_b=f"{round(p_b,2):.2f}".replace(".",",")
+
+    p_ab=(b-random.randint(5,30))/100
+    st_p_ab=f"{round(p_ab,2):.2f}".replace(".",",")
+
+    p_a_dk_b=p_ab/p_b
+    st_p_a_dk_b=f"{round(p_a_dk_b,2):.2f}".replace(".",",")
+
+
+    noi_dung=(
+    f"Cho hai biến cố ${{A}}$ và ${{B}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(AB)= {st_p_ab}$. Tính $P(\\overline{{A}}|B)$ (kết quả làm tròn đến hàng phần trăm)."
+    )
+        
+
+    p_ab=p_b*p_a_dk_b
+    st_p_ab=f"{round_half_up(p_ab,2):.2f}".replace(".",",")
+
+    p_ngang_a_b=p_b-p_ab
+
+    st_p_ngang_a_b=f"{round_half_up(p_ngang_a_b,2):.2f}".replace(".",",")
+
+    p_ngang_a_dk_b=1-p_a_dk_b
+    dap_an=f"{round_half_up(p_ngang_a_dk_b,2):.2f}".replace(".",",")
+
+    
+
+    noi_dung_loigiai=(
+    f"Ta có $P(A|B) = \\dfrac{{P(AB)}}{{P(B) }} = \\dfrac{{{st_p_ab} }}{{{st_p_b}}}={st_p_a_dk_b}$.\n\n"
+    
+    f"$P(\\overline{{A}}|B)=1-P(A|B)=1-{st_p_a_dk_b}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_08]-TF-M3. Cho tỉ lệ % mua hàng thỏa mãn 2 biến cố A,B. Xét Đ-S: P(ngang(A)), P(B|A), P(AB), P(ngang(A)ngang(B))
+def newy25_L12_C6_B1_08():
+    sp_chung=["máy lọc nước", "đồng hồ", "xe máy", "balo",
+    "ghế massage", "xe ô tô"]
+
+    sp_rieng=["máy lọc nước RO", "đồng hồ thể thao đa năng" ,"xe tay ga", "balo du lịch",
+     "ghế massage nhiệt hồng ngoại", "xe ô tô số tự động"  ]
+
+    i=random.randint(0,len(sp_chung))
+    sp_chung,sp_rieng=sp_chung[i], sp_rieng[i]
+
+    if sp_chung=="máy lọc nước":
+        sp_rieng=random.choice(["máy lọc nước RO", "máy lọc nước Nano", "máy lọc nước điện phân" ])
+
+    if sp_chung=="đồng hồ":
+        sp_rieng=random.choice(["đồng hồ thông minh", "đồng hồ cơ", "đồng hồ thể thao đa năng"])
+
+    if sp_chung=="ghế massage":
+        sp_rieng=random.choice(["ghế massage nhiệt hồng ngoại", "ghế massage văn phòng", "ghế massage cho người cao tuổi", "ghế massage thông minh (AI)"])
+
+
+
+    noi_dung = (f"Một công ty kinh doanh {sp_chung} sau khi kiểm tra nhóm khách hàng mua sản phẩm của mình đã thu thập được các thông tin sau:\n\n"
+        f"-Tất cả khách hàng đều mua ít nhất một chiếc {sp_chung}.\n\n"
+        f" Có 70% khách hàng mua nhiều hơn một chiếc {sp_chung}.\n\n"
+        f"  Có 20% khách hàng mua {sp_rieng}.\n\n"
+        f" Trong số những khách hàng mua nhiều hơn một chiếc {sp_chung}, có 15% mua {sp_rieng}.\n\n"
+        f' Gọi A là biến cố: "Khách hàng mua nhiều hơn một chiếc {sp_chung}".\n\n'
+        f' Gọi B là biến cố: "Khách hàng mua {sp_rieng}".\n\n'
+        f" Xét tính đúng-sai của các khẳng định sau."      )  
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"*" 
+    kq1_F=f" "
+    
+    HDG=f" "
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* "
+    kq2_F=f" "
+    
+    HDG=f""
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* " 
+    kq3_F=f" "
+    
+    HDG=f""
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* "
+    kq4_F=f" " 
+    
+    HDG=f""
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
