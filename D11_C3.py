@@ -394,6 +394,11 @@ def gh11gh_L11_C3_B1_07():
         kq2=v_n-u_n
         kq3=u_n+v_n 
         kq4=u_n*v_n
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
     
     #Tạo các phương án
     pa_A= f"*${{ {latex(my_module.hien_phan_so(kq))} }}$"
@@ -2688,7 +2693,7 @@ def gh11gh_L11_C3_B3_01():
 
     if a>0:
         #Tạo điểm liên tục 
-        x_1=random.randint(int(-b/a)+1,int(-b/a)+5)
+        x_1=random.randint(int(-b/a)+2,int(-b/a)+5)
         x_2=random.randint(int(-b/a)+6,int(-b/a)+20)
 
         #Tạo điểm gián đoạn
@@ -2696,7 +2701,7 @@ def gh11gh_L11_C3_B3_01():
         x_4=random.randint(int(-b/a)-15,int(-b/a)-10)           
     else:
         #Tạo điểm liên tục 
-        x_1=random.randint(int(-b/a)-5,int(-b/a)-1)
+        x_1=random.randint(int(-b/a)-5,int(-b/a)-2)
         x_2=random.randint(int(-b/a)-20,int(-b/a)-6)
 
         #Tạo điểm gián đoạn

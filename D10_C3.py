@@ -708,7 +708,7 @@ def npl_mk_L10_C3_B1_10():
     dap_an=my_module.tra_ve_dap_an(list_PA)  
     
     debai= f"{noi_dung}\n"
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -770,7 +770,7 @@ def npl_mk_L10_C3_B1_11():
     dap_an=my_module.tra_ve_dap_an(list_PA)  
     
     debai= f"{noi_dung}\n"
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -3315,7 +3315,7 @@ def npl_mk_L10_C3_B2_32():
 
 
 
-    kq3_T=f"Muốn diện tích lớn hơn ${{{phan_so(u)}}}m^{{2}}$ thì chiều rộng phải thuộc khoảng $\\left({x1};{x0}  \\right]$  " 
+    kq3_T=f"*Muốn diện tích lớn hơn ${{{phan_so(u)}}}m^{{2}}$ thì chiều rộng phải thuộc khoảng $\\left({x1};{x0}  \\right]$  " 
     kq3_F=f"Muốn diện tích lớn hơn ${{{phan_so(u)}}}m^{{2}}$ thì chiều rộng phải thuộc khoảng $\\left({x1};{x2}  \\right]$ "
     kq3=random.choice([kq3_T, kq3_F])
     HDG=f"${latex(expand(x*(a-x)))} > {phan_so(u)}$ \n\n ${latex(nsimplify(expand(x*(a-x)-u)))} > 0$ \n\n ${x1}<x< {x2}$ \n\n Vì $x \\le {x0}$ nên $x\\in \\left({x1};{x0}  \\right].$ "

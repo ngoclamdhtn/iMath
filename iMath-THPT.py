@@ -6800,7 +6800,27 @@ class Ui_MainWindow(object):
                 L12_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét Đ-S: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_48]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, atan^2x, tính F(x_0) theo nguyên hàm sin,cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_49]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, acot^2x, tính F(x_0) theo nguyên hàm sin,cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_50]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, asinmx+n, tính F(x_0) theo nguyên hàm tan,cot"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_51]-TF-M3. Xét Đ-S: nguyên hàm của: a^x, e^mx, m.e^x+n.e^(-x), tính F(x_0) từ nguyên hàm a^x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_52]-TF-M3. Xét Đ-S: nguyên hàm của: me^x, a^mx, a^x.b^x.c^x, tính F(x_0) từ nguyên hàm e^x+e^(-x)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8605,6 +8625,26 @@ class Ui_MainWindow(object):
                                                 #[D12_C4_B1_47]-SA-M3. F(x) là một nguyên hàm của mtan^2+ncot^2(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_47]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_47()
+
+                                                #[D12_C4_B1_48]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, atan^2x, Tính F(x_0) theo nguyên hàm sin,cos
+                                                if dang_toan == "[D12_C4_B1_48]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_48()
+
+                                                #[D12_C4_B1_49]-TF-M3. Xét Đ-S: Xét Đ-S: nguyên hàm của asinx, acosx+b, acot^2x, Tính F(x_0) theo nguyên hàm sin,cos
+                                                if dang_toan == "[D12_C4_B1_49]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_49()
+
+                                                #[D12_C4_B1_50]-TF-M3. Xét Đ-S: Xét Đ-S: nguyên hàm của asinx, acosx+b, sinmx+n, Tính F(x_0) theo nguyên hàm tan,cot
+                                                if dang_toan == "[D12_C4_B1_50]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_50()
+
+                                                #[D12_C4_B1_51]-TF-M3. Xét Đ-S: nguyên hàm của: a^x, e^mx, m.e^x+n.e^(-x), Tính F(x_0) từ nguyên hàm a^x
+                                                if dang_toan == "[D12_C4_B1_51]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_51()
+
+                                                #[D12_C4_B1_52]-TF-M3. nguyên hàm của: me^x, a^mx, a^x.b^x.c^x, Tính F(x_0) từ nguyên hàm e^x+e^(-x)
+                                                if dang_toan == "[D12_C4_B1_52]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_52()
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến

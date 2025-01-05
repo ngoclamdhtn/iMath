@@ -2166,11 +2166,9 @@ def y7y7u_L10_C5_B3_01():
 	D=["D","C","F","D","E","F"]
 	i=random.randint(0,5)
 	A, B, C, D = A[i], B[i], C[i], D[i]
-	M=["M","H", "G"]
-	N=["N","I", "H"]
-	P=["P","K", "I"]
-	i=random.randint(0,2)
-	M, N, P = M[i], N[i], P[i]	
+	diem=["M","N","P","H","I","K"]
+	random.shuffle(diem)	
+	M, N, P = diem[0:3]	
 	
 	AB, AC, AD = f"{A}{B}", f"{A}{C}", f"{A}{D}"
 	ten_tudien = f"{{{A}{B}{C}{D}}}"
@@ -2178,7 +2176,7 @@ def y7y7u_L10_C5_B3_01():
 	chon=random.randint(1,5)
 	
 	if chon==1:
-		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${M},{N},{P}$ lần lượt là trung điểm của các đoạn ${AB},{AC},{AD}$. Tìm khẳng định sai."
+		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${M},{N},{P}$ lần lượt là trung điểm của các đoạn ${{{AB},{AC},{AD}}}$. Tìm khẳng định sai."
 		kq=f"$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{A}{D}}}=2\\overrightarrow{{{M}{P}}}$"
 		kq2=f"$\\overrightarrow{{{A}{D}}}+\\overrightarrow{{{C}{A}}}=2\\overrightarrow{{{N}{P}}}$"
 		kq3=f"$\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{A}{C}}}=2\\overrightarrow{{{N}{M}}}$"
@@ -2186,7 +2184,7 @@ def y7y7u_L10_C5_B3_01():
 		noi_dung_loigiai=f"{kq} là khẳng định sai vì $\\overrightarrow{{{A}{B}}}-\\overrightarrow{{{A}{D}}}=2\\overrightarrow{{{P}{M}}}$."
 
 	if chon==2:
-		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${M},{N},{P}$ lần lượt là trung điểm của các đoạn ${AB},{AC},{AD}$ Tìm khẳng định đúng."
+		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${M},{N},{P}$ lần lượt là trung điểm của các đoạn ${{{AB},{AC},{AD}}}$ Tìm khẳng định đúng."
 		kq=f"$\\overrightarrow{{{C}{B}}}-\\overrightarrow{{{A}{C}}}=2\\overrightarrow{{{C}{M}}}$"
 		kq2=f"$\\overrightarrow{{{D}{A}}}+\\overrightarrow{{{D}{C}}}=2\\overrightarrow{{{N}{D}}}$"
 		kq3=f"$\\overrightarrow{{{B}{A}}}-\\overrightarrow{{{C}{B}}}=2\\overrightarrow{{{N}{B}}}$"
@@ -2200,7 +2198,7 @@ def y7y7u_L10_C5_B3_01():
 		kq4=f"${vec(f"G{A}")}+{vec(f"G{B}")}+{vec(f"G{C}")}={vec(f"GD")}$"
 		noi_dung_loigiai=f"{kq} là khẳng định đúng."
 	if chon==4:
-		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${{{M}}}$ là trung điểm của cạnh ${B}{C}$, ${{G}}$ là trọng tâm của tam giác ${{{B}{C}{D}}}$. Tìm khẳng định đúng."
+		noi_dung=f"Cho tứ giác ${ten_tudien}$. Gọi ${{{M}}}$ là trung điểm của cạnh ${{{B}{C}}}$, ${{G}}$ là trọng tâm của tam giác ${{{B}{C}{D}}}$. Tìm khẳng định đúng."
 		kq=f"${vec(f"G{B}")} + {vec(f"G{C}")} =- {vec(f"G{D}")}$"
 		kq2=f"${vec(f"G{B}")} + {vec(f"G{C}")} ={vec(f"G{M}")}$"
 		kq3=f"${vec(f"{B}{C}")} =2 {vec(f"{C}{M}")}$"
@@ -3015,7 +3013,7 @@ def y7y7u_L10_C5_B3_07():
 		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
 		f" Tính độ dài vectơ ${vec_u}={vec_AB}+2{vec_AD}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(AD**2+AB**2/4,1):.1f}".replace(".",",")
+		dap_an=f"{round(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
 
 		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
 			\\coordinate ({A}) at (0,3);\n\
@@ -3033,7 +3031,7 @@ def y7y7u_L10_C5_B3_07():
 		f"Gọi ${{{M}}}$ điểm đối xứng với ${{{A}}}$ qua ${{{D}}}$.\n\n"
 		f"Gọi ${{{N}}}$ là trung điểm của ${{{C}{D}}}$.\n\n"
 		f"$|{vec_u}|=|{vec_AB}+2{vec_AD}|=|{vec_AB}+{vec_AM}|=2|{vec_AN}|$\n"
-		f"$=2\\sqrt{{{AD}^2+{AB/2}^2}}={latex(nsimplify(AD**2+AB**2/4))}={dap_an}$."
+		f"$=2\\sqrt{{{AD}^2+{AB/2}^2}}={latex(nsimplify(2*sqrt(AD**2+AB**2/4)))}={dap_an}$."
 		)
 
 	code = my_module.moi_truong_anh_latex(code_hinh_LG)

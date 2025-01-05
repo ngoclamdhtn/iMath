@@ -9365,8 +9365,8 @@ def prt_34_L12_C1_B4_04():
 
 	kq=f"$y={latex(f)}$"
 	kq2=f"$y={latex((-a*x-b)/(c*x+d))}$"
-	kq3=f"$y={latex((a*x+d)/(c*x+b+1))}$"
-	kq4=f"$y={latex((a*x-b)/(-c*x+d))}$"
+	kq3=f"$y={latex((a*x+b)/(c*x+d+random.randint(1,2)))}$"
+	kq4=f"$y={latex((a*x+b)/(-c*x+d))}$"
 
 	pa_A= f"*{kq}"
 	pa_B= f"{kq2}"

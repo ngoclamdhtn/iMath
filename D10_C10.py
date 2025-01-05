@@ -532,7 +532,7 @@ def gghik_L10_CX_B0_07():
 	kq=f"\\left({phan_so((a1+b1)/2)};{phan_so((a2+b2)/2)} \\right)"
 	kq2=f"\\left({phan_so((a1-b1)/2)};{phan_so((a2-b2)/2)} \\right)"
 	kq3=f"\\left({phan_so(a1+b1)};{phan_so(a2+b2)} \\right)"
-	kq4=f"\\left({phan_so((a1+a2)/2)};{phan_so((b1+b2)/2)} \\right)"
+	kq4=f"\\left({phan_so((a1+a2)/3)};{phan_so((b1+b2)/3)} \\right)"
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${diem_A}({a1};{a2})$ và ${diem_B}({b1};{b2})$. Tìm tọa độ trung điểm của đoạn thẳng ${{{diem_A}{diem_B}}}$."
 	noi_dung_loigiai=f" Tọa độ trung điểm của đoạn thẳng ${{{diem_A}{diem_B}}}$ là:"\

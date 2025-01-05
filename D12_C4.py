@@ -19,8 +19,10 @@ def thay_sin_cos(st):
     st=st.replace(f"\\tan^{{2}}{{\\left(x \\right)}}",f"\\tan^2 x")
     st=st.replace(f"\\cot^{{2}}{{\\left(x \\right)}}",f"\\cot^2 x")
     
-    for i in range(1,8):
-        st=st.replace(f"\\log{{\\left({i} \\right)}}",f"\\ln {i}")
+
+    for i in range(1,10):
+        st=st.replace(f"\\cos{{\\left({i} x \\right)}}",f"\\cos {i}x")
+        st=st.replace(f"\\sin{{\\left({i} x \\right)}}",f"\\sin {i}x")
     return st
 
 # Hàm làm tròn half-up
@@ -259,7 +261,7 @@ def zz8zz_L12_C4_B1_03():
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
 
-    noi_dung= f"Tìm nguyên hàm $  \\int {{\\left({latex(f)}\\right){d_x}}}$."
+    noi_dung= f"Tìm nguyên hàm $\\int {{\\left({latex(f)}\\right){d_x}}}$."
     noi_dung=noi_dung.replace("\\left(","").replace("\\right)","")
 
     dap_an=my_module.tra_ve_dap_an(list_PA)     
@@ -1634,7 +1636,7 @@ def zz8zz_L12_C4_B1_27():
     )
     
 
-    kq=f"$\\dfrac{{{latex(a)}^x}}{{\\ln {latex(a)}}}$"
+    kq=f"$\\dfrac{{{latex(a)}^x}}{{\\ln {latex(a)}}}+C$"
     kq_false=[
     f"$\\dfrac{{{latex(a)}^x}}{{{latex(a)}}}+C$",
     f"${latex(a)}^x\\ln {latex(a)}+C$",
@@ -1644,7 +1646,7 @@ def zz8zz_L12_C4_B1_27():
     kq2,kq3,kq4=kq_false[0:3]
 
     noi_dung_loigiai=(
-    f"$\\int {{{latex(a)}^x}}dx=\\dfrac{{{latex(a)}^x}}{{\\ln {latex(a)}}}$."
+    f"$\\int {{{latex(a)}^x}}dx=\\dfrac{{{latex(a)}^x}}{{\\ln {latex(a)}}}+C$."
     )
 
     pa_A= f"*{kq}"
@@ -2209,11 +2211,7 @@ def zz8zz_L12_C4_B1_37():
 
     f=diff(F,x)
     
-    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
-    noi_dung=(
-    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
-    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
-    )    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")  
 
     noi_dung_loigiai=(
     f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
@@ -2225,9 +2223,7 @@ def zz8zz_L12_C4_B1_37():
     noi_dung=(
     f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
     f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
-    )    
-
-    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")   
+    ) 
 
         
     debai_word= f"{noi_dung}\n"
@@ -2263,10 +2259,7 @@ def zz8zz_L12_C4_B1_38():
     f=diff(F,x)
     
     dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
-    noi_dung=(
-    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
-    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
-    )    
+
 
     noi_dung_loigiai=(
     f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
@@ -2763,45 +2756,99 @@ def zz8zz_L12_C4_B1_47():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C4_B1_48]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, atan^2x, Tính F(x_0)
+#[D12_C4_B1_48]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, atan^2x, Tính F(x_0) theo nguyên hàm sin,cos
 def zz8zz_L12_C4_B1_48():
     x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"    
 
-    noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
-    debai_word= f"{noi_dung}\n"
-
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"  
+ 
+    chon=random.randint(1,2)
     a=random.randint(2,10)
+    if chon==1:
+        kq1_T=f"* $\\int {latex(a*sin(x))}{d_x}={latex(-a*cos(x))}+C$" 
+        kq1_F=f"$\\int {latex(a*sin(x))}{d_x}={latex(a*cos(x))}+C$"
+        kq1=random.choice([kq1_T, kq1_F])
+        kq1=thay_sin_cos(kq1)
+        HDG=f"$\\int {latex(a*sin(x))}={latex(-a*cos(x))}+C$."
+        HDG=thay_sin_cos(HDG)
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
     
-    kq1_T=f"* $\\int {latex(a*sin(x))}={latex(-a*cos(x))}+C$" 
-    kq1_F=f"$\\int {latex(a*sin(x))}={latex(a*cos(x))}+C$"
-    kq1=random.choice([kq1_T, kq1_F])
-    kq1=thay_sin_cos(kq1)
-    HDG=f"$\\int {latex(a*sin(x))}={latex(-a*cos(x))}+C$."
-    HDG=thay_sin_cos(HDG)
-    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
-    if kq1==kq1_F:
-        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    if chon==2:
+        kq1_T=f"* $\\int {latex(a*cos(x))}{d_x}={latex(a*sin(x))}+C$" 
+        kq1_F=f"$\\int {latex(a*cos(x))}{d_x}={latex(-a*sin(x))}+C$"
+        kq1=random.choice([kq1_T, kq1_F])
+        kq1=thay_sin_cos(kq1)
+        HDG=f"$\\int {latex(a*cos(x))}{d_x}={latex(a*sin(x))}+C$."
+        HDG=thay_sin_cos(HDG)
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*sin(x)+b*cos(x)   
+    
 
-    kq2_T=f"* "
-    kq2_F=f" "
+    kq2_T=f"* $\\int {{\\left({latex(f)}\\right){d_x}}}={latex(integrate(f, x))}+C$"
+    kq2_F=f"$\\int {{\\left({latex(f)}\\right){d_x}}}={latex(diff(f, x))}+C$"
     kq2=random.choice([kq2_T, kq2_F])
-    HDG=f""
+    kq2=thay_sin_cos(kq2)
+
+    HDG=f"$\\int {{\\left({latex(f)}\\right){d_x}}}={latex(integrate(f, x))}+C$"
+    HDG=thay_sin_cos(HDG)
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq3_T=f"* " 
-    kq3_F=f" "
+    m = random.choice([i for i in range(-5, 5) if i!=0])
+    n = random.choice([i for i in range(-5, 5) if i!=0])     
+    F=m*tan(x)+n*x
+    f=diff(F,x)
+
+    kq3_T=f"* $\\int ({latex(f)}){d_x}={latex(F)}+C$" 
+    kq3_F=f"$\\int ({latex(f)}){d_x}={latex(F+random.randint(1,2)*x)}+C$"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f""
+    kq3=thay_sin_cos(kq3)
+    HDG=f"$\\int ({latex(f)}){d_x}={latex(F)}+C$."
+    HDG=thay_sin_cos(HDG)
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq4_T=f"* "
-    kq4_F=f" " 
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])   
+        p = random.choice([i for i in range(-6, 6) if i!=0])   
+        
+        F=m*cos(x)+n*sin(x)+p*x        
+        
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    dap_an_false=f"{round_half_up(G.subs(x,x_1)+random.randint(1,2),1):.1f}".replace(".",",")
+   
+    kq4_T=f"* Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$. Khi đó $F({latex(x_1)})={dap_an}$"
+    kq4_F=f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$. Khi đó $F({latex(x_1)})={dap_an_false}$" 
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=f""
+    kq4=thay_sin_cos(kq4)
+    HDG=(f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$.")
+    HDG=thay_sin_cos(HDG)
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2850,6 +2897,586 @@ def zz8zz_L12_C4_B1_48():
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_49]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, acot^2x, Tính F(x_0) theo nguyên hàm sin,cos
+def zz8zz_L12_C4_B1_49():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"    
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"  
+ 
+    chon=random.randint(1,2)
+    a=random.randint(2,10)
+    if chon==1:
+        kq1_T=f"* $\\int {latex(a*sin(x))}{d_x}={latex(-a*cos(x))}+C$" 
+        kq1_F=f"$\\int {latex(a*sin(x))}{d_x}={latex(a*cos(x))}+C$"
+        kq1=random.choice([kq1_T, kq1_F])
+        kq1=thay_sin_cos(kq1)
+        HDG=f"$\\int {latex(a*sin(x))}{d_x}={latex(-a*cos(x))}+C$."
+        HDG=thay_sin_cos(HDG)
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    if chon==2:
+        kq1_T=f"* $\\int {latex(a*cos(x))}{d_x}={latex(a*sin(x))}+C$" 
+        kq1_F=f"$\\int {latex(a*cos(x))}{d_x}={latex(-a*sin(x))}+C$"
+        kq1=random.choice([kq1_T, kq1_F])
+        kq1=thay_sin_cos(kq1)
+        HDG=f"$\\int {latex(a*cos(x))}={latex(a*sin(x))}+C$."
+        HDG=thay_sin_cos(HDG)
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*sin(x)+b*cos(x)   
+    
+
+    kq2_T=f"* $\\int {{\\left({latex(f)}\\right){d_x}}}={latex(integrate(f, x))}+C$"
+    kq2_F=f"$\\int {{\\left({latex(f)}\\right){d_x}}}={latex(diff(f, x))}+C$"
+    kq2=random.choice([kq2_T, kq2_F])
+    kq2=thay_sin_cos(kq2)
+
+    HDG=f"$\\int {{\\left({latex(f)}\\right){d_x}}}={latex(integrate(f, x))}+C$"
+    HDG=thay_sin_cos(HDG)
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m = random.choice([i for i in range(-5, 5) if i!=0])
+    n = random.choice([i for i in range(-5, 5) if i!=0])     
+    F=m*cot(x)+n*x
+    f=diff(F,x)
+
+    kq3_T=f"* $\\int ({latex(f)}){d_x}={latex(F)}+C$" 
+    kq3_F=f"$\\int ({latex(f)}){d_x}={latex(F+random.randint(1,2)*x)}+C$"
+    kq3=random.choice([kq3_T, kq3_F])
+    kq3=thay_sin_cos(kq3)
+    HDG=f"$\\int ({latex(f)}){d_x}={latex(F)}+C$."
+    HDG=thay_sin_cos(HDG)
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])   
+        p = random.choice([i for i in range(-6, 6) if i!=0])   
+        
+        F=m*cos(x)+n*sin(x)+p*x        
+        
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    dap_an_false=f"{round_half_up(G.subs(x,x_1)+random.randint(1,2),1):.1f}".replace(".",",")
+   
+    kq4_T=f"* Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$. Khi đó $F({latex(x_1)})={dap_an}$"
+    kq4_F=f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$. Khi đó $F({latex(x_1)})={dap_an_false}$" 
+    kq4=random.choice([kq4_T, kq4_F])
+    kq4=thay_sin_cos(kq4)
+    HDG=(f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$.")
+    HDG=thay_sin_cos(HDG)
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_50]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, sinmx+n, Tính F(x_0) theo nguyên hàm tan,cot
+def zz8zz_L12_C4_B1_50():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"    
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"  
+ 
+    chon=random.randint(1,2)
+    a=random.randint(2,10)
+    if chon==1:
+        kq1_T=f"* $\\int {latex(a*sin(x))}{d_x}={latex(-a*cos(x))}+C$" 
+        kq1_F=f"$\\int {latex(a*sin(x))}{d_x}={latex(a*cos(x))}+C$"
+        kq1=random.choice([kq1_T, kq1_F])
+        kq1=thay_sin_cos(kq1)
+        HDG=f"$\\int {latex(a*sin(x))}{d_x}={latex(-a*cos(x))}+C$."
+        HDG=thay_sin_cos(HDG)
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    if chon==2:
+        kq1_T=f"* $\\int {latex(a*cos(x))}{d_x}={latex(a*sin(x))}+C$" 
+        kq1_F=f"$\\int {latex(a*cos(x))}{d_x}={latex(-a*sin(x))}+C$"
+        kq1=random.choice([kq1_T, kq1_F])
+        kq1=thay_sin_cos(kq1)
+        HDG=f"$\\int {latex(a*cos(x))}{d_x}={latex(a*sin(x))}+C$."
+        HDG=thay_sin_cos(HDG)
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*sin(x)+b*cos(x)   
+    
+
+    kq2_T=f"* $\\int {{\\left({latex(f)}\\right){d_x}}}={latex(integrate(f, x))}+C$"
+    kq2_F=f"$\\int {{\\left({latex(f)}\\right){d_x}}}={latex(diff(f, x))}+C$"
+    kq2=random.choice([kq2_T, kq2_F])
+    kq2=thay_sin_cos(kq2)
+
+    HDG=f"$\\int {{\\left({latex(f)}\\right){d_x}}}={latex(integrate(f, x))}+C$"
+    HDG=thay_sin_cos(HDG)
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m = random.choice([i for i in range(-5, 5) if i!=0])
+    n = random.choice([i for i in range(-5, 5) if i!=0])
+    a=random.randint(2,9)
+    chon=random.randint(1,2)
+    if chon==1:
+        F=m*sin(a*x)+n*x    
+    if chon==2:
+        F=m*cos(a*x)+n*x
+    
+    
+    f=diff(F,x)
+
+    kq3_T=f"* $\\int ({latex(f)}){d_x}={latex(F)}+C$" 
+    kq3_F=f"$\\int ({latex(f)}){d_x}={latex(F+random.randint(1,2)*x)}+C$"
+    kq3=random.choice([kq3_T, kq3_F])
+    kq3=thay_sin_cos(kq3)
+    HDG=f"$\\int ({latex(f)}){d_x}={latex(F)}+C$."
+    HDG=thay_sin_cos(HDG)
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-7, 7) if i!=0])
+        n = random.choice([i for i in range(-7, 7) if i!=0])
+        p=random.randint(-5,5)          
+        
+        F=m*tan(x)+n*cot(x)+p*x
+        
+        x_0= random.choice([pi/3, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, 7*pi/4, 5*pi/4, 5*pi/3])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[pi/3, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, 7*pi/4, 5*pi/4, 5*pi/3]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    dap_an_false=f"{round_half_up(G.subs(x,x_1)+random.randint(1,2),1):.1f}".replace(".",",")
+
+    
+    kq4_T=f"* Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$. Khi đó $F({latex(x_1)})={dap_an}$"
+    kq4_F=f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$. Khi đó $F({latex(x_1)})={dap_an_false}$" 
+    kq4=random.choice([kq4_T, kq4_F])
+    kq4=thay_sin_cos(kq4)
+    HDG=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    ) 
+    HDG=thay_sin_cos(HDG)
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_51]-TF-M3. Xét Đ-S: nguyên hàm của: a^x, e^mx, m.e^x+n.e^(-x), Tính F(x_0) từ nguyên hàm a^x
+def zz8zz_L12_C4_B1_51():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"        
+    debai_word= f"{noi_dung}\n"
+
+    a=random.randint(2,9)
+
+    kq1_T=f"* $\\int {{{a}^x}}{d_x}=\\dfrac{{{latex(a)}^x}}{{\\ln {a}}}+C$" 
+    kq1_F=random.choice([
+        f"$\\int {{{a}^x}}{d_x}={a}^x+C$",
+        f"$\\int {{{a}^x}}{d_x}={a}^x.\\ln {a}+C$"])
+    
+    HDG=f"$\\int {{{a}^x}}{d_x}=\\dfrac{{{latex(a)}^x}}{{\\ln {a}}}+C$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m=random.randint(2,9)
+
+    kq2_T=f"* $\\int e^{{{a}x}}{d_x}=\\dfrac{{1}}{{{a}}}e^{{{a}x}}+C$"
+    kq2_F=f"$\\int e^{{{a}x}}{d_x}={a}e^{{{a}x}}+C$"
+    
+    HDG=f"$\\int e^{{{a}x}}{d_x}=\\dfrac{{1}}{{{a}}}e^{{{a}x}}+C$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+
+    p = random.choice([i for i in range(-4, 4) if i!=0])
+    e,x=sp.symbols("e x")
+    f=m*e**x+n*e**(-x)
+
+    kq3_T=f"* $\\int ({latex(f)}){d_x}={latex(m*e**x-n*e**(-x))}+C$" 
+    kq3_F=random.choice([
+        f"$\\int ({latex(f)}){d_x}={latex(m*e**x+n*e**(-x))}+C$",
+        f"$\\int ({latex(f)}){d_x}={latex(-m*e**x+n*e**(-x))}+C$"])
+    
+    HDG=f"$\\int ({latex(f)}){d_x}={latex(m*e**x-n*e**(-x))}+C$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-4, -1) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        F=m*a**(x)+n*x
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-4,4) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    dap_an_false=f"{round_half_up(G.subs(x,x_1)+random.randint(1,2),1):.1f}".replace(".",",") 
+
+
+    kq4_T=( f"* $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Khi đó $F({x_1})={dap_an}$")
+    kq4_F=( f"$F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Khi đó $F({x_1})={dap_an_false}$")
+    
+    HDG=thay_log_2_ln(f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$.")
+    kq4=thay_log_2_ln(random.choice([kq4_T, kq4_F]))
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_52]-TF-M3. Xét Đ-S: nguyên hàm của: me^x, a^mx, a^x.b^x.c^x, Tính F(x_0) từ nguyên hàm e^x+e^(-x)
+def zz8zz_L12_C4_B1_52():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"        
+    debai_word= f"{noi_dung}\n"
+
+    a=random.randint(2,9)
+
+    kq1_T=f"* $\\int {{{a}e^x}}{d_x}={a}e^x+C$" 
+    kq1_F=f"* $\\int {{{a}e^x}}{d_x}=e^{{{a}x}}+C$"
+    
+    HDG=f"$\\int {{{a}e^x}}{d_x}={a}e^x+C$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    
+    a=random.randint(2,9)
+    m=random.randint(2,4)
+
+    kq2_T=f"* $\\int {a}^{{{m}x}}{d_x}=\\dfrac{{{a**m}^x }}{{\\ln {a**m} }}+C$"
+    kq2_F=f"$\\int {a}^{{{m}x}}{d_x}=\\dfrac{{{a}^x }}{{\\ln {a*m} }}+C$"
+    
+    HDG=f"$\\int {a}^{{{m}x}}{d_x}=\\int {a**m}^x{d_x}=\\dfrac{{{a**m}^x }}{{\\ln {a**m} }}+C$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a=random.randint(2,4)
+    b=a+random.randint(1,3)
+    c=b+random.randint(1,3)
+
+    kq3_T=f"* $\\int {a}^x.{b}^x.{c}^x{d_x}=\\dfrac{{{a*b*c}^x}}{{\\ln {a*b*c}}}+C$" 
+    kq3_F=f"$\\int {a}^x.{b}^x.{c}^x{d_x}={a*b*c}^x\\ln {a*b*c}+C$"
+    
+    HDG=f"$\\int {a}^x.{b}^x.{c}^x{d_x}=\\int {a*b*c}^x{d_x}=\\dfrac{{{a*b*c}^x}}{{\\ln {a*b*c}}}+C$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-4, -1) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        F=m*a**(x)+n*x
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-4,4) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    dap_an_false=f"{round_half_up(G.subs(x,x_1)+random.randint(1,2),1):.1f}".replace(".",",") 
+
+    while True:
+        m = random.choice([i for i in range(-4, 4) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])
+        p = random.choice([i for i in range(-4, 4) if i!=0])  
+        
+        F=m*exp(x)+n*exp(-x)+p*x
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-3,3) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    dap_an_false=f"{round_half_up(G.subs(x,x_1)+random.randint(1,2),1):.1f}".replace(".",",")
+
+
+    kq4_T=( f"* $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Khi đó $F({x_1})={dap_an}$")
+    kq4_F=( f"$F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Khi đó $F({x_1})={dap_an_false}$")
+    
+    HDG=thay_log_2_ln(f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$." )
+    kq4=thay_log_2_ln(random.choice([kq4_T, kq4_F]))
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
 
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
