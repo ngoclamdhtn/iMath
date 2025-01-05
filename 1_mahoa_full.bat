@@ -25,6 +25,7 @@ pyarmor gen --output dist D12_C2.py
 pyarmor gen --output dist D12_C3.py
 pyarmor gen --output dist D12_C4.py
 pyarmor gen --output dist D12_C5.py
+pyarmor gen --output dist D12_C6.py
 pyarmor gen --output dist D12_C7.py
 pyarmor gen --output dist license.py
 pyarmor gen --output dist my_module.py
