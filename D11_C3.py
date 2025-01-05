@@ -4,6 +4,9 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
 
 #Trả về dấu của hệ số a
 def tao_dau(a):
@@ -1232,10 +1235,10 @@ def gh11gh_L11_C3_B1_13():
         kq=a/e**2
         if kq<=-9.9:
             noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng đơn vị)."
-            dap_an=f"{N(a/e**2,1)}".replace(".",",")
+            dap_an=f"{round_half_up(a/e**2,0)}".replace(".",",")
         else:
             noi_dung=f"Tính $\\lim {latex(u)}={phan_so(a/e**2)}$ (kết quả làm tròn đến hàng phần trăm)."
-            dap_an=f"{N(a/e**2,3):.2f}".replace(".",",")
+            dap_an=f"{round_half_up(a/e**2,2):.2f}".replace(".",",")
 
         noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n+c/n**3+d/n**4)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**2)}$."
         
@@ -1246,13 +1249,13 @@ def gh11gh_L11_C3_B1_13():
         noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
 
         noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n+c/n**3+d/n**4)} }}= {phan_so(e**2/a)}$."
-        dap_an=f"{N(e**2/a,2):.1f}".replace(".",",")
+        dap_an=f"{round_half_up(e**2/a,1):.1f}".replace(".",",")
     
     if chon==3:
         u=(a*n**6+b*n**4+c*n**3+d)/(e*n**2+f)**3
         noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
         noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n**2+c/n**3+d/n**6)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**3)}$."
-        dap_an=f"{N(a/e**3,2):.1f}".replace(".",",")
+        dap_an=f"{round_half_up(a/e**3,1):.1f}".replace(".",",")
 
     if chon==4:
         u=(e*n**2+f)**3/(a*n**6+b*n**4+c*n**3+d)
@@ -1260,7 +1263,7 @@ def gh11gh_L11_C3_B1_13():
         noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần mười)."
 
         noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex((e+f/n**2)**2)}}}{{{latex(a+b/n**2+c/n**3+d/n**6)}}}= {phan_so(e**3/a)}$."
-        dap_an=f"{N(e**3/a,2):.1f}".replace(".",",") 
+        dap_an=f"{round_half_up(e**3/a,1):.1f}".replace(".",",") 
       
     debai_word= f"{noi_dung}\n"
 
@@ -1295,14 +1298,14 @@ def gh11gh_L11_C3_B1_14():
     v4=v3+dv
     S2=f"{latex(n/2*(2*v1+(n-1)*dv))}"
 
-    noi_dung=f"Tính $\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}$ (kết quả làm tròn đến hàng phần mười).".replace("+-","-")
+    noi_dung=f"Tính $\\lim \\dfrac{{{u1}+{u2}+{u3}+...+({un})}}{{{v1}+{v2}+{v3}+...+({vn})}}$ (kết quả làm tròn đến hàng phần mười).".replace("+-","-")
 
     noi_dung_loigiai=(f"${u1},{u2},{u3},...,{un}$ lập thành cấp số cộng có $u_1={u1},d={du}$.\n\n"
         f"${v1},{v2},{v3},...,{vn}$ lập thành cấp số cộng có $v_1={v1},d={dv}$.\n\n"
         f"$\\lim \\dfrac{{{u1}+{u2}+{u3}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn}}}$\n"
         f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}=\\lim \\dfrac{{{latex(expand(2*u1+(n-1)*du))}}}{{{latex(expand(2*v1+(n-1)*dv))}}}={phan_so(du/dv)}$")
     noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
-    dap_an=f"{N(du/dv,2):.1f}".replace(".",",") 
+    dap_an=f"{round_half_up(du/dv,1):.1f}".replace(".",",") 
     
     debai_word= f"{noi_dung}\n"
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -1336,14 +1339,14 @@ def gh11gh_L11_C3_B1_15():
 
     kq,kp=phan_so(u1/1-q),phan_so(v1/1-p)
 
-    noi_dung=f"Tính $\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+{v3}+...+{vn} }}$(kết quả làm tròn đến hàng phần mười).".replace("+-","-").replace("--","+")   
+    noi_dung=f"Tính $\\lim \\dfrac{{{u1}+{u2}+...+({un})}}{{{v1}+{v2}+{v3}+...+({vn})}}$(kết quả làm tròn đến hàng phần mười).".replace("+-","-").replace("--","+")   
 
     noi_dung_loigiai=(f"${u1},{u2},...,{un}$ lập thành cấp số nhân có $u_1={u1},q={q}$.\n\n"
         f"${v1},{v2},...,{vn}$ lập thành cấp số nhân có $v_1={v1},q={p}$.\n\n"
         f"$\\lim \\dfrac{{{u1}+{u2}+...+{un}}}{{{v1}+{v2}+...+{vn}}}$\n"
         f"$=\\lim \\dfrac{{{S1}}}{{{S2}}}={phan_so(u1/v1)}$.\n" )
 
-    dap_an=f"{N(u1/v1,2):.1f}".replace(".",",") 
+    dap_an=f"{round_half_up(u1/v1,1):.1f}".replace(".",",") 
         
     debai_word= f"{noi_dung}\n"
 
@@ -1637,41 +1640,47 @@ def gh11gh_L11_C3_B2_02():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C3_B2_03]. Tính giới hạn dạng 0/0 - Bậc 2/Bậc 2
+
+#[D11_C3_B2_03]-M3. Tính giới hạn dạng 0/0 - Bậc 2/Bậc 2
 def gh11gh_L11_C3_B2_03():
     x = symbols('x')
-    x_0 = random.randint(-5, 5)
-    if x_0==0:
-        x_0=random.randint(1, 5)
-    #Tạo list chứa các hệ số
-    a = [random.randint(-4, 4) for _ in range(4)]
-    if a[0]==0:
-        a[0] = random.randint(1, 5)        
-    if a[2]==0:
-        a[2] = random.randint(1, 5)
-    c_1 = -a[0]*x_0**(2)-a[1]*x_0
-    c_2 = -a[2]*x_0**(2)-a[3]*x_0
-    f = (a[0]*x**2 + a[1]*x + c_1)/(a[2]*x**2 + a[3]*x +c_2)
-    kq= limit(f, x, x_0)
-    kq2=a[0]/a[2]
-    kq3=a[1]/a[2]
-    kq4=a[1]/a[2]
+    x_0 =  random.choice([i for i in range(-6, 6) ])
+    x_1 =  random.choice([i for i in range(-5, 5) if i!=x_0])
+    x_2 =  random.choice([i for i in range(-4, 4) if i!=x_0 and i!=x_1])
+
+    a = random.choice([i for i in range(-3, 3) if i!=0])
+    b = random.choice([i for i in range(-3, 3) if i!=0])
+    
+    kq= a*(x_0-x_1)/(b*(x_0-x_2))
+    kq2=a/b
+    kq3=a*(x_0+x_1+random.randint(1,2))/(b*(x_0-x_2))
+    kq4=(a*x_1+random.randint(1,2))/b*x_2
     
     pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
     kq2=pa_kotrung[1]
     kq3=pa_kotrung[2]
     kq4=pa_kotrung[3]
 
-    pa_A= f"*${{{latex(my_module.hien_phan_so(kq))}}}$"
-    pa_B= f"${{{latex(my_module.hien_phan_so(kq2))}}}$"
-    pa_C= f"${{{latex(my_module.hien_phan_so(kq3))}}}$"
-    pa_D= f"${{{latex(my_module.hien_phan_so(kq4))}}}$"
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
-    noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {x_0}}} {latex(f)}$."
 
-    noi_dung_loigiai=f""
+    f_tu=latex(expand(a*(x-x_0)*(x-x_1)))
+    f_mau=latex(expand(b*(x-x_0)*(x-x_2)))
+    
+    noi_dung = f"Tính giới hạn $\\lim \\limits_{{x \\to {x_0}}} \\dfrac{{{f_tu}}}{{{f_mau}}}$."
+
+    noi_dung_loigiai=(
+        f"${st_lim(x_0)}\\dfrac{{{f_tu}}}{{{f_mau}}} $"
+        f"$={st_lim(x_0)} \\dfrac{{{latex(a*(x-x_0)*(x-x_1))}}}{{{latex(b*(x-x_0)*(x-x_2))}}}$\n\n"
+        f"$={st_lim(x_0)} \\dfrac{{{latex(a*(x-x_1))}}}{{{latex(b*(x-x_2))}}}$"
+        f"$={phan_so(a*(x_0-x_1)/(b*(x_0-x_2)))}$."
+        )
+    
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -1705,10 +1714,8 @@ def gh11gh_L11_C3_B2_04():
     x_0 = random.randint(-5, 5)
 
     #Tạo list chứa các hệ số
-    a = [random.randint(-4, 4) for _ in range(3)]
-    for j in range(3):
-        if a[j]==0:
-            a[j] = random.randint(1, 5)
+    a = [random.choice([random.randint(1,4),random.randint(-4,-1) ]) for _ in range(3)]
+
     x_0 = random.randint(1, 6)
     t=int(-a[1]/a[0])
     if a[0]>0:
@@ -3399,7 +3406,7 @@ def gh11gh_L11_C3_B3_08():
     f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ \n(kết quả làm tròn đến hàng phần mười)."
     )
     m_0=(g.subs(x,x_1)-q)/(p*x_1)
-    dap_an=f"{round(m_0,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(m_0,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
     f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"

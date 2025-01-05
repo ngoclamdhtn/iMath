@@ -671,3 +671,68 @@ def newy25_L12_C6_B1_08():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B1_09]-M1. Nhận dạng công thức xác suất có điều kiện
+def newy25_L12_C6_B1_09():
+    bien_co=["A","B","C","D","E","F"]
+    random.shuffle(bien_co)
+    A,B=bien_co[0:2]
+
+    noi_dung=(
+    f"Cho  ${{{A},{B}}}$ là các biến cố trong đó $P({B})>0$. Khẳng định nào sau đây đúng"
+    )    
+
+    kq=random.choice([
+        f"$P({A}|{B})=\\dfrac{{P({A}{B})}}{{P({B})}}$",
+        f"$P({A}|{B})=\\dfrac{{P({A}\\cap {B})}}{{P({B})}}$",
+        f"$P({A}{B})=P({B})P({A}|{B})$",
+        f"$P(\\overline{{{A}}}|{B})=\\dfrac{{P(\\overline{{{A}}}{B})}}{{P({B})}}$",
+        f"$P(\\overline{{{A}}}|{B})=1-P({A}|{B})$"
+        ])
+    kq_false=[
+    f"$P({A}|{B})=\\dfrac{{P({A}\\cup {B})}}{{P({B})}}$",
+    f"$P({A}|{B})=\\dfrac{{P({B})}}{{P({A}{B})}}$",
+    f"$P({A}|{B})=P({A})-P({B})$",
+    f"$P({A}{B})=P({A})P({B})$",
+    f"$P({A}{B})=1-P({A}|{B})$",
+    f"$P(\\overline{{{A}}}|{B})=P({A}|{B})$",
+    f"$P(\\overline{{{A}}}|{B})=P({A}|\\overline{{{B}}})$",
+
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"{kq} là khẳng định đúng. "
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an

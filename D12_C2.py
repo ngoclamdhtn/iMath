@@ -5751,11 +5751,11 @@ def mnj_34_jkl_L12_C2_B3_29():
 	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 	
 	if chon==2:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${B}({b1};{b2};{b3}), {A}({a1};{a2};{a3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 
 	if chon==3:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${C}({c1};{c2};{c3}), {B}({b1};{b2};{b3}), {A}({a1};{a2};{a3})$."
@@ -6289,11 +6289,11 @@ def mnj_34_jkl_L12_C2_B3_33():
 	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 	
 	if chon==2:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${B}({b1};{b2};{b3}), {A}({a1};{a2};{a3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 
 	if chon==3:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${C}({c1};{c2};{c3}), {B}({b1};{b2};{b3}), {A}({a1};{a2};{a3})$."
@@ -6573,11 +6573,11 @@ def mnj_34_jkl_L12_C2_B3_34():
 	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 	
 	if chon==2:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${B}({b1};{b2};{b3}), {A}({a1};{a2};{a3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 
 	if chon==3:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${C}({c1};{c2};{c3}), {B}({b1};{b2};{b3}), {A}({a1};{a2};{a3})$."
@@ -6857,11 +6857,11 @@ def mnj_34_jkl_L12_C2_B3_35():
 	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 	
 	if chon==2:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${B}({b1};{b2};{b3}), {A}({a1};{a2};{a3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 
 	if chon==3:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho ba điểm ${C}({c1};{c2};{c3}), {B}({b1};{b2};{b3}), {A}({a1};{a2};{a3})$."
@@ -7194,11 +7194,11 @@ def mnj_34_jkl_L12_C2_B3_37():
 	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho tam giác ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 
 	if chon==2:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho tam giác ${B}({b1};{b2};{b3}), {A}({a1};{a2};{a3}), {C}({c1};{c2};{c3})$."
-		f" Xét tính đúng-sai của các khẳng định sau:")
+		f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")
 
 	if chon==3:
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho tam giác ${C}({c1};{c2};{c3}), {B}({b1};{b2};{b3}), {A}({a1};{a2};{a3})$."

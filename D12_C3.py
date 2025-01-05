@@ -1428,9 +1428,8 @@ def ytrzz_L12_C3_B2_05():
 		frequencies.append(tan_so[i-1])
 	# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
 	# frequencies=[3,12,15,24,2]
-
-	#@@@# Sử dụng numpy để tính
-	# Tính trung bình mỗi khoảng
+	
+	# Tính giá trị đại diện mỗi khoảng
 	interval_means = [(a + b) / 2 for a, b in class_intervals]
 
 	# Tính trung bình trọng số của mẫu

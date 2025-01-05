@@ -4462,23 +4462,55 @@ class Ui_MainWindow(object):
                 L11_C5_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C5_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2, ["[D11_C5_B2_01]-M3. Cho bảng số liệu ghép nhóm. Tính số trung vị."])
+                L11_C5_B2_1 = QTreeWidgetItem(L11_C5_B2, ["Trắc nghiệm"])
+                L11_C5_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C5_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_1, ["[D11_C5_B2_01]-M3. Cho bảng số liệu ghép nhóm. Tính số trung vị."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2, ["[D11_C5_B2_02]-M2. Cho bảng số liệu ghép nhóm. Tính mốt."])
+                item = QTreeWidgetItem(L11_C5_B2_1, ["[D11_C5_B2_02]-M2. Cho bảng số liệu ghép nhóm. Tính mốt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2, ["[D11_C5_B2_03]-M2. Cho bảng số liệu ghép nhóm. Tính Q1."])
+                item = QTreeWidgetItem(L11_C5_B2_1, ["[D11_C5_B2_03]-M2. Cho bảng số liệu ghép nhóm. Tính Q1."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2, ["[D11_C5_B2_04]-M2. Cho bảng số liệu ghép nhóm. Tính Q2."])
+                item = QTreeWidgetItem(L11_C5_B2_1, ["[D11_C5_B2_04]-M2. Cho bảng số liệu ghép nhóm. Tính Q2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2, ["[D11_C5_B2_05]-M2. Cho bảng số liệu ghép nhóm. Tính Q3."])
+                item = QTreeWidgetItem(L11_C5_B2_1, ["[D11_C5_B2_05]-M2. Cho bảng số liệu ghép nhóm. Tính Q3."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C5_B2_2 = QTreeWidgetItem(L11_C5_B2, ["Đúng-Sai"])
+                L11_C5_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C5_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_09]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: giá trị đại diện, số trung bình, Q1, Q3."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_10]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: mốt, số trung bình, Q1, Q3."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C5_B2_3 = QTreeWidgetItem(L11_C5_B2, ["Trả lời ngắn"])
+                L11_C5_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C5_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_3, ["[D11_C5_B2_06]-SA-M2. Tìm tứ phân vị Q1 của mẫu số liệu ghép nhóm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_3, ["[D11_C5_B2_07]-SA-M2. Tìm trung vị của mẫu số liệu ghép nhóm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_3, ["[D11_C5_B2_08]-SA-M2. Tìm tứ phân vị Q3 của mẫu số liệu ghép nhóm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -6675,6 +6707,20 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_02]-M2. Tìm nguyên hàm của đa thức thỏa F(a)=b."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_07]-M2. Tìm nguyên hàm m/(ax+b)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                #item.setToolTip(0, 'Tìm nguyên hàm m/(ax+b).')
+
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_08]-M3. Tìm nguyên hàm (mx+n)/(ax+b)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                #item.setToolTip(0, 'Tìm nguyên hàm (mx+n)/(ax+b).')
+
+                item = QTreeWidgetItem(L12_C4_B1_11, ["[D12_C4_B1_09]-M3. Tìm nguyên hàm (mx^2+nx+p)/(ax+b)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
                 L12_C4_B1_12 = QTreeWidgetItem(L12_C4_B1_1, ["Nguyên hàm lượng giác"])
                 L12_C4_B1_12.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6730,6 +6776,26 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_31]-M2. Nguyên hàm của m.e^x + n.e^(-x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_30]-M3. Nguyên hàm của e^(ax+b)+mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_32]-M3. Nguyên hàm của m.e^x + n.e^(-x)+p."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_33]-M3. Nguyên hàm của m.e^x + n thỏa mãn F(a)=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_13, ["[D12_C4_B1_34]-M3. Nguyên hàm của m.e^x + n.e^(-x) thỏa mãn F(a)=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C4_B1_2 = QTreeWidgetItem(L12_C4_B1, ["Đúng-Sai"])
                 L12_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -6742,7 +6808,7 @@ class Ui_MainWindow(object):
                 L12_C4_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_17]-SA-M2. Nguyên hàm của đa thức thỏa F(x_0)=y_0. Tính F(x_1)."])
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_17]-SA-M2. Nguyên hàm của đa thức thỏa F(x_0)=b. Tính F(x_1)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6757,63 +6823,64 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_20]-SA-M2. Tìm nguyên hàm của ax+b+c/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-           
 
-               
-
-                L12_C4_B2 = QTreeWidgetItem(L12_C4, ["Bài 2 - Nguyên hàm đổi biến"])
-                L12_C4_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L12_C4_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B2, ["[D12_C4_B2_01]-M2. Nguyên hàm đổi biến chứa căn(ax+b)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Nguyên hàm đổi biến chứa căn(ax+b)')
-
-                item = QTreeWidgetItem(L12_C4_B2, ["[D12_C4_B2_02]-M2. Nguyên hàm đổi biến chứa căn(ax^2+b)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Nguyên hàm đổi biến chứa căn(ax^2+b)')
-
-                item = QTreeWidgetItem(L12_C4_B2, ["[D12_C4_B2_04]-M2. Nguyên hàm đổi biến (acosx+b)sinx."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Nguyên hàm đổi biến (acosx+b)sinx.')
-
-                item = QTreeWidgetItem(L12_C4_B2, ["[D12_C4_B2_03]-M2. Nguyên hàm đổi biến sinx/căn(acosx+b)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Nguyên hàm đổi biến sinx/căn(acosx+b)')      
-
-                item = QTreeWidgetItem(L12_C4_B2, ["[D12_C4_B2_05]-M2. Nguyên hàm đổi biến (alnx + b)/x."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Nguyên hàm đổi biến (alnx + b)/x.')
-
-                L12_C4_B3 = QTreeWidgetItem(L12_C4, ["Bài 3 - Nguyên hàm từng phần"])
-                L12_C4_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L12_C4_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B3, ["[D12_C4_B3_01]-M2. Tìm nguyên hàm P(x).sin hoặc P(x).cos"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm P(x).sin hoặc P(x).cos')
-                
-
-                item = QTreeWidgetItem(L12_C4_B3, ["[D12_C4_B3_02]-M2. Tìm nguyên hàm P(x).e^(ax+b)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'Tìm nguyên hàm P(x).e^(ax+b)')
-
-                item = QTreeWidgetItem(L12_C4_B3, ["[D12_C4_B3_03]-M2. Tìm nguyên hàm P(x).ln(ax)"])
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_35]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B4 = QTreeWidgetItem(L12_C4, ["Bài 4 - Tích phân"])
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_36]-SA-M3. F(x) là một nguyên hàm của m.e^x + n.e^(-x) thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_37]-SA-M3. F(x) là một nguyên hàm của m.e^x + n.e^(-x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_38]-SA-M3. F(x) là một nguyên hàm của m.a^x+n thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_39]-SA-M3. F(x) là một nguyên hàm của m.a^x+n.e^x thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_40]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_41]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_42]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n hoặc m.cos(x)+n  thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_43]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n.cos(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_44]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n.cos(x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_45]-SA-M3. F(x) là một nguyên hàm của mtan^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_46]-SA-M3. F(x) là một nguyên hàm của mcot^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_3, ["[D12_C4_B1_47]-SA-M3. F(x) là một nguyên hàm của mtan^2(x)+ncot^2(x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B4 = QTreeWidgetItem(L12_C4, ["Bài 2 - Tích phân"])
                 L12_C4_B4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B4_1 = QTreeWidgetItem(L12_C4_B4, ["4.1 Tích phân lý thuyết"])
+                L12_C4_B4_1 = QTreeWidgetItem(L12_C4_B4, ["Tích phân lý thuyết"])
                 L12_C4_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6853,7 +6920,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B4_2 = QTreeWidgetItem(L12_C4_B4, ["4.1 Tích phân đa thức, phân thức"])
+                L12_C4_B4_2 = QTreeWidgetItem(L12_C4_B4, ["Tích phân đa thức, phân thức"])
                 L12_C4_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6869,7 +6936,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B4_3 = QTreeWidgetItem(L12_C4_B4, ["4.3 Tích phân hàm số lượng giác"])
+                L12_C4_B4_3 = QTreeWidgetItem(L12_C4_B4, ["Tích phân hàm số lượng giác"])
                 L12_C4_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6878,11 +6945,11 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
 
-                L12_C4_B5 = QTreeWidgetItem(L12_C4, ["Bài 5 - Ứng dụng của tích phân"])
+                L12_C4_B5 = QTreeWidgetItem(L12_C4, ["Bài 3 - Ứng dụng của tích phân"])
                 L12_C4_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B5_1 = QTreeWidgetItem(L12_C4_B5, ["4.5.1. Diện tích hình phẳng"])
+                L12_C4_B5_1 = QTreeWidgetItem(L12_C4_B5, ["Diện tích hình phẳng"])
                 L12_C4_B5_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6902,7 +6969,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B5_2 = QTreeWidgetItem(L12_C4_B5, ["4.5.2. Thể tích khối tròn xoay"])
+                L12_C4_B5_2 = QTreeWidgetItem(L12_C4_B5, ["Thể tích khối tròn xoay"])
                 L12_C4_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6943,7 +7010,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["4.5.3. Bài toán chuyển động"])
+                L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["Bài toán chuyển động"])
                 L12_C4_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7243,6 +7310,10 @@ class Ui_MainWindow(object):
                 L12_C6_B1_1 = QTreeWidgetItem(L12_C6_B1, ["Trắc nghiệm"])
                 L12_C6_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C6_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_09]-M1. Nhận dạng công thức xác suất có điều kiện ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_01]-M2. Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8462,6 +8533,78 @@ class Ui_MainWindow(object):
                                                 #[D12_C4_B1_29]-M2. Nguyên hàm của e^(ax+b)
                                                 if dang_toan == "[D12_C4_B1_29]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_29()
+
+                                                #[D12_C4_B1_30]-M2. Nguyên hàm của e^(ax)+mx+n
+                                                if dang_toan == "[D12_C4_B1_30]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_30()
+
+                                                #[D12_C4_B1_31]-M2. Nguyên hàm của e^(ax)+mx+n
+                                                if dang_toan == "[D12_C4_B1_31]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_31()
+
+                                                #[D12_C4_B1_32]-M2.  Nguyên hàm của m.e^x + n.e^(-x)+p
+                                                if dang_toan == "[D12_C4_B1_32]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_32()
+
+                                                #[D12_C4_B1_33]-M2.  Nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0
+                                                if dang_toan == "[D12_C4_B1_33]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_33()
+
+                                                #[D12_C4_B1_34]-M2.  Nguyên hàm của m.e^x + n.e^(-x) thỏa mãn F(x_0)=y_0
+                                                if dang_toan == "[D12_C4_B1_34]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_34()
+                                                
+                                                #[D12_C4_B1_35]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_35]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_35()
+
+                                                #[D12_C4_B1_36]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_36]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_36()
+
+                                                #[D12_C4_B1_37]-SA-M3. F(x) là một nguyên hàm của m.e^x + ne^(-x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_37]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_37()
+
+                                                #[D12_C4_B1_38]-SA-M3. F(x) là một nguyên hàm của m.a^x+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_38]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_38()
+
+                                                #[D12_C4_B1_39]-SA-M3. F(x) là một nguyên hàm của m.a^x+n.e^x thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_39]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_39()
+
+                                                #[D12_C4_B1_40]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_40]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_40()
+
+                                                #[D12_C4_B1_41]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_41]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_41()
+
+                                                #[D12_C4_B1_42]-SA-M3. F(x) là một nguyên hàm của của m.cos(x)+n hoặc m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_42]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_42()
+
+                                                #[D12_C4_B1_43]-SA-M3. F(x) là một nguyên hàm của của m.cos(x)+n.sin(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_43]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_43()
+
+                                                #[D12_C4_B1_44]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n.sin(x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_44]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_44()
+
+                                                #[D12_C4_B1_45]-SA-M3. F(x) là một nguyên hàm của mtan^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_45]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_45()
+
+                                                #[D12_C4_B1_46]-SA-M3. F(x) là một nguyên hàm của mcot^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_46]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_46()
+
+                                                #[D12_C4_B1_47]-SA-M3. F(x) là một nguyên hàm của mtan^2+ncot^2(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
+                                                if dang_toan == "[D12_C4_B1_47]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_47()
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến
@@ -8945,6 +9088,10 @@ class Ui_MainWindow(object):
                                                 #[D12_C6_B1_08]-TF-M3. Cho tỉ lệ % mua hàng thỏa mãn 2 biến cố A,B. Xét Đ-S: P(ngang(A)), P(B|A), P(AB), P(ngang(A)ngang(B))
                                                 if dang_toan == "[D12_C6_B1_08]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B1_08()
+
+                                                #[D12_C6_B1_09]-M2.  Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)B)
+                                                if dang_toan == "[D12_C6_B1_09]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_09()
 
                                                     
                                        
@@ -9636,46 +9783,66 @@ class Ui_MainWindow(object):
 
                                     #Bài 2: TRUNG VỊ VÀ TỨ PHÂN VỊ VUA MẪU SỐ LIỆU GHÉP NHÓM
 
-                                    #[D11_C5_B2_01]-M3. Tìm số trung bình của mẫu số liệu ghép nhóm ngẫu nhiên.
+                                                #[D11_C5_B2_01]-M3. Tìm số trung bình của mẫu số liệu ghép nhóm ngẫu nhiên.
                                                 if dang_toan == "[D11_C5_B2_01]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C5.treqw_L11_C5_B2_01()                                     
                                                     
 
-                                    #[D11_C5_B2_02]-M2. Tìm mốt của mẫu số liệu ghép nhóm ngẫu nhiên.
+                                                #[D11_C5_B2_02]-M2. Tìm mốt của mẫu số liệu ghép nhóm ngẫu nhiên.
                                                 if dang_toan == "[D11_C5_B2_02]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C5.treqw_L11_C5_B2_02()
 
-                                    #[D11_C5_B2_03]-M2. Tìm tứ phân vị Q1 của mẫu số liệu ghép nhóm.
+                                                #[D11_C5_B2_03]-M2. Tìm tứ phân vị Q1 của mẫu số liệu ghép nhóm.
                                                 if dang_toan == "[D11_C5_B2_03]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C5.treqw_L11_C5_B2_03()
 
-                                    #[D11_C5_B2_04]-M2. Tìm tứ phân vị Q2 của mẫu số liệu ghép nhóm.
+                                                #[D11_C5_B2_04]-M2. Tìm tứ phân vị Q2 của mẫu số liệu ghép nhóm.
                                                 if dang_toan == "[D11_C5_B2_04]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C5.treqw_L11_C5_B2_04()
 
-                                    #[D11_C5_B2_05]-M2. Tìm tứ phân vị Q3 của mẫu số liệu ghép nhóm.
+                                                #[D11_C5_B2_05]-M2. Tìm tứ phân vị Q3 của mẫu số liệu ghép nhóm.
                                                 if dang_toan == "[D11_C5_B2_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C5.treqw_L11_C5_B2_05()                                  
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C5.treqw_L11_C5_B2_05()
+
+                                                #[D11_C5_B2_06]-SA-M2. Tìm tứ phân vị Q1 của mẫu số liệu ghép nhóm. 
+                                                if dang_toan == "[D11_C5_B2_06]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C5.treqw_L11_C5_B2_06()
+
+                                                #[D11_C5_B2_07]-SA-M2. Tìm trung vị của mẫu số liệu ghép nhóm. 
+                                                if dang_toan == "[D11_C5_B2_07]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C5.treqw_L11_C5_B2_07()
+
+                                                #[D11_C5_B2_08]-SA-M2. Tìm tứ phân vị Q3 của mẫu số liệu ghép nhóm.
+                                                if dang_toan == "[D11_C5_B2_08]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C5.treqw_L11_C5_B2_08() 
+
+                                                #[D11_C5_B2_09]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Giá trị đại diện, số trung bình, Q1, Q3
+                                                if dang_toan == "[D11_C5_B2_09]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C5.treqw_L11_C5_B2_09()
+
+                                                #[D11_C5_B2_10]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Mốt, số trung bình, Q1, Q3
+                                                if dang_toan == "[D11_C5_B2_10]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D11_C5.treqw_L11_C5_B2_10()                   
                                                     
 
                                 
                                     ################ Bài 1: PHÉP TÍNH LŨY THỪA ########################
-                                    #[D11_C6_B1_01]. Rút gọn a^m.a^n với m,n là phân số.                      
+                                                #[D11_C6_B1_01]. Rút gọn a^m.a^n với m,n là phân số.                      
                                                 if dang_toan == "[D11_C6_B1_01]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_01()                                     
                                                     
 
-                                    #[D11_C6_B1_02]-M2. Rút gọn (a^m.a^n)/a^p với m,n,p là phân số.                     
+                                                #[D11_C6_B1_02]-M2. Rút gọn (a^m.a^n)/a^p với m,n,p là phân số.                     
                                                 if dang_toan == "[D11_C6_B1_02]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_02()                                     
                                                     
 
-                                    #[D11_C6_B1_03]-M1. Biểu diễn căn bậc sang lũy thừa số mũ hữu tỷ.                    
+                                                #[D11_C6_B1_03]-M1. Biểu diễn căn bậc sang lũy thừa số mũ hữu tỷ.                    
                                                 if dang_toan == "[D11_C6_B1_03]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_03()                                     
                                                     
 
-                                    #[D11_C6_B1_04]-M1. Biểu diễn tích chứa 2 căn thành lũy thừa.                    
+                                                #[D11_C6_B1_04]-M1. Biểu diễn tích chứa 2 căn thành lũy thừa.                    
                                                 if dang_toan == "[D11_C6_B1_04]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_04()                                     
                                                     

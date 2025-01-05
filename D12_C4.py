@@ -5,6 +5,24 @@ import random
 from fractions import Fraction
 import my_module
 from decimal import Decimal, ROUND_HALF_UP
+
+def thay_log_2_ln(st):
+    for i in range(1,8):
+        st=st.replace(f"\\log{{\\left({i} \\right)}}",f"\\ln {i}")
+    return st
+
+def thay_sin_cos(st):
+    st=st.replace(f"\\cos{{\\left(x \\right)}}",f"\\cos x")
+    st=st.replace(f"\\sin{{\\left(x \\right)}}",f"\\sin x")
+    st=st.replace(f"\\tan{{\\left(x \\right)}}",f"\\tan x")
+    st=st.replace(f"\\cot{{\\left(x \\right)}}",f"\\cot x")
+    st=st.replace(f"\\tan^{{2}}{{\\left(x \\right)}}",f"\\tan^2 x")
+    st=st.replace(f"\\cot^{{2}}{{\\left(x \\right)}}",f"\\cot^2 x")
+    
+    for i in range(1,8):
+        st=st.replace(f"\\log{{\\left({i} \\right)}}",f"\\ln {i}")
+    return st
+
 # Hàm làm tròn half-up
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
@@ -1790,19 +1808,20 @@ def zz8zz_L12_C4_B1_30():
     noi_dung_loigiai=(
     f"$\\int (e^{{{latex(a*x)}}}+{latex(m*x+n)})dx={phan_so(1/a)}e^{{{latex(a*x)}}}+{latex(m*x**2/2+n*x)}+C$"
     )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
 
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
+    pa_A= f"*{kq}".replace("+-","-")
+    pa_B= f"{kq2}".replace("+-","-")
+    pa_C= f"{kq3}".replace("+-","-")
+    pa_D= f"{kq4}".replace("+-","-")
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
     dap_an=my_module.tra_ve_dap_an(list_PA)
 
-    debai= f"{noi_dung}\n"
+    debai= f"{noi_dung}\n".replace("+-","-")
 
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -1821,6 +1840,931 @@ def zz8zz_L12_C4_B1_30():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_31]-M2. Nguyên hàm của m.e^x + n.e^(-x)
+def zz8zz_L12_C4_B1_31():
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+
+    p = random.choice([i for i in range(-4, 4) if i!=0])
+    e,x=sp.symbols("e x")
+    f=m*e**x+n*e**(-x)
+
+    noi_dung=(
+    f"Tìm nguyên hàm của hàm số $f(x)={latex(f)}$."
+    )
+    
+
+    kq=f"${latex(m*e**x-n*e**(-x))}+C$"
+    kq_false=[
+    f"${latex(m*e**x+n*e**(-x))}+C$",
+    f"${latex(m*e**x-n*e**(-x)+random.randint(1,2))}+C$",
+    f"${latex(m*e**x+n)}+C$",
+    f"${latex(e**x+n*e**(-x))}+C$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int ({latex(f)})dx={latex(m*e**x-n*e**(-x))}+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_32]-M2. Nguyên hàm của m.e^x + n.e^(-x) +p
+def zz8zz_L12_C4_B1_32():
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])
+
+    p = random.choice([i for i in range(-4, 4) if i!=0])
+    e,x=sp.symbols("e x")
+    f=m*e**x+n*e**(-x)+p
+
+    noi_dung=(
+    f"Tìm nguyên hàm của hàm số $f(x)={latex(f)}$."
+    )
+    
+
+    kq=f"${latex(m*e**x-n*e**(-x)+p*x)}+C$"
+    kq_false=[
+    f"${latex(m*e**x+n*e**(-x)+p*x)}+C$",
+    f"${latex(m*e**x-n*e**(-x)+p)}+C$",
+    f"${latex(m*e**x+p*x)}+C$",
+    f"${latex(e**x-n*e**(-x)+p*x**2)}+C$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\int ({latex(f)})dx={latex(m*e**x-n*e**(-x)+p*x)}+C$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_33]-M2. Nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0
+def zz8zz_L12_C4_B1_33():
+    d_x=f"\\mathrm{{\\,d}}x"
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])   
+    x,e=sp.symbols("x,e")
+    F=m*exp(x)+n*x
+
+    x_0= random.choice([0, random.randint(-3, 3)])   
+    b= random.randint(-6, 6)  
+
+    f=diff(F,x)
+    C=b-F.subs(x,x_0)
+    G=F+C
+
+    noi_dung=(
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    )    
+
+    kq=f"${latex(G)}$"
+    kq_false=[
+    f"$F(x)={latex(m*e**x+n*x**2+C)}$",
+    f"$F(x)={latex(m*e**(-x)+n*x+C)}$",
+    f"$F(x)={latex(m*e**x-n*x+C)}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$."     
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_34]-M3. Nguyên hàm của m.e^x + n.e^(-x) thỏa mãn F(x_0)=y_0
+def zz8zz_L12_C4_B1_34():
+    d_x=f"\\mathrm{{\\,d}}x"
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])   
+    x,e=sp.symbols("x,e")
+    F=m*exp(x)+n*exp(-x)
+
+    x_0= random.randint(-3, 3)
+    b= random.randint(-5, 5)  
+
+    f=diff(F,x)
+    C=b-F.subs(x,x_0)
+    G=F+C
+
+    noi_dung=(
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    )    
+
+    kq=f"${latex(G)}$"
+    kq_false=[
+    f"$F(x)={latex(m*e**x+n*e**(-x)+C)}$",
+    f"$F(x)={latex(m*e**(-x)+n*x+C)}$",
+    f"$F(x)={latex(m*e**x-n+C)}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$."     
+    )  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B1_35]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_35():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")
+    m = random.choice([i for i in range(-4, 4) if i!=0])
+    n = random.choice([i for i in range(-3, 3) if i!=0])   
+    
+    F=m*exp(x)+n*x
+    x_0= random.choice([random.randint(-3, 3)])    
+    b= random.randint(-6, 6)
+    C=b-F.subs(x,x_0)
+    G=F+C
+    f=diff(F,x)  
+    x_1=random.choice([i for i in range(-3,3) if i!=x_0])
+    while G.subs(x,x_1)<-9.9 or G.subs(x,x_1)>9999:
+        m = random.choice([i for i in range(-4, 4) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        F=m*exp(x)+n*x
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-6, 6)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-3,3) if i!=x_0])
+   
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )    
+
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Do đó $F(x)={latex(F+C)}$.\n\n"
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."  
+    )
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_36]-SA-M3. F(x) là một nguyên hàm của m.e^x + ne^(-x)  thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_36():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        m = random.choice([i for i in range(-4, 4) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        F=m*exp(x)+n*exp(-x)
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-3,3) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    noi_dung=(
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )    
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )    
+
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")   
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_37]-SA-M3. F(x) là một nguyên hàm của m.e^x + ne^(-x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_37():
+    d_x=f"\\mathrm{{\\,d}}x"
+    e,x=sp.symbols("e x")
+    while True:
+        m = random.choice([i for i in range(-4, 4) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])
+        p = random.choice([i for i in range(-4, 4) if i!=0])  
+        
+        F=m*exp(x)+n*exp(-x)+p*x
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-3,3) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    noi_dung=(
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )    
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )    
+
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")   
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D12_C4_B1_38]-SA-M3. F(x) là một nguyên hàm của m.a^x+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_38():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-4, -1) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        F=m*a**(x)+n*x
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-4,4) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    noi_dung=(
+    f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    )    
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_log_2_ln(noi_dung)
+    noi_dung_loigiai=thay_log_2_ln(noi_dung_loigiai)
+
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")   
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_39]-SA-M3. F(x) là một nguyên hàm của m.a^x+n.e^x thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_39():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-4, -1) if i!=0])
+        n = random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        F=m*a**(x)+n*exp(x)
+        x_0= random.choice([random.randint(-3, 3)])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        x_1=random.choice([i for i in range(-4,4) if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
+    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_log_2_ln(noi_dung)
+    noi_dung_loigiai=thay_log_2_ln(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_40]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_40():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-4, 4) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])   
+        
+        F=m*cos(x)+n*x
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_41]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_41():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])   
+        
+        F=m*sin(x)+n*x
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_42]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n hoặc m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_42():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])
+        chon=random.randint(1,2)
+        if chon==1:
+            F=m*sin(x)+n*x
+        
+        if chon==2:
+            F=m*cos(x)+n*x     
+        
+        
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_43]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n.sin(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_43():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])      
+        
+        F=m*cos(x)+n*sin(x)
+        
+        
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_44]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n.sin(x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_44():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0])   
+        p = random.choice([i for i in range(-6, 6) if i!=0])   
+        
+        F=m*cos(x)+n*sin(x)+p*x        
+        
+        x_0= random.choice([0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_45]-SA-M3. F(x) là một nguyên hàm của mtan^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_45():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0]) 
+           
+        
+        F=m*tan(x)+n*x        
+        
+        x_0= random.choice([0,pi/3,  pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[0,pi/3, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_46]-SA-M3. F(x) là một nguyên hàm của mcot^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_46():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-5, 5) if i!=0])
+        n = random.choice([i for i in range(-5, 5) if i!=0]) 
+           
+        
+        F=m*cot(x)+n*x        
+        
+        x_0= random.choice([pi/2, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, 3*pi/2])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[pi/2, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, 3*pi/2]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B1_47]-SA-M3. F(x) là một nguyên hàm của mtan^2+ncot^2(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
+def zz8zz_L12_C4_B1_47():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x,e=sp.symbols("x,e")    
+    while True:
+        a=random.randint(2,7)
+        m = random.choice([i for i in range(-7, 7) if i!=0])
+        n = random.choice([i for i in range(-7, 7) if i!=0])
+        p=random.randint(-5,5)
+           
+        
+        F=m*tan(x)+n*cot(x)+p*x
+        
+        x_0= random.choice([pi/3, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, 7*pi/4, 5*pi/4, 5*pi/3])    
+        b= random.randint(-5, 5)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        list_x=[pi/3, pi/6, pi/4, 2*pi/3, 3*pi/4, 5*pi/6, 7*pi/4, 5*pi/4, 5*pi/3]
+        x_1=random.choice([i for i in list_x if i!=x_0])
+        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+            break
+    f=diff(F,x)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
+    f"$F({latex(x_0)})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
+    f"Vậy $F(x)={latex(F+C)}$.\n\n" 
+    f"$F({latex(x_1)})={latex(G.subs(x,x_1))}={dap_an}$."     
+    )  
+
+    noi_dung=(
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({latex(x_0)})={b}$."
+    f" Tính $F({latex(x_1)})$ (kết quả làm tròn đến hàng phần mười)."
+    ) 
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+
 
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN
