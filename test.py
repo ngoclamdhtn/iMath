@@ -25,7 +25,7 @@ import pyperclip
 #Test đúng sai
 test, test_latex="",""
 for i in range(1):
-	debai,debai_latex,loigiai_word,dap_an =D12_C4.zz8zz_L12_C4_B1_52()
+	debai,debai_latex,loigiai_word,dap_an =D12_C5.htd_25_xyz_L12_C5_B1_18()
 	#print(debai)
 	#print(loigiai_word)
 	test=test + f"{debai}\n{loigiai_word}\n"

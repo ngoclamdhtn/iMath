@@ -5,6 +5,13 @@ import random
 from fractions import Fraction
 import my_module
 
+#Tạo hàm chứa chuỗi latex vecto
+def vec(st):
+    return f"\\overrightarrow{{{st}}}"
+
+def vec2(A,B):
+    return f"\\overrightarrow{{{A}{B}}}"
+
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
     return m
@@ -149,7 +156,7 @@ def tim_vecto_vuong_goc(a1, a2, a3):
 
 #BÀI 1 - PHƯƠNG TRÌNH MẶT PHẲNG
 #[D12_C5_B1_01]-M1. Viết PTMP qua điểm và có véctơ pháp tuyến
-def zz8zz_L12_C5_B1_01():
+def htd_25_xyz_L12_C5_B1_01():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -211,7 +218,7 @@ def zz8zz_L12_C5_B1_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_02]-M2. Viết PTMP qua điểm A và nhận vectơ BC làm véctơ pháp tuyến.
-def zz8zz_L12_C5_B1_02():
+def htd_25_xyz_L12_C5_B1_02():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -280,7 +287,7 @@ def zz8zz_L12_C5_B1_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_03]-M2. Viết PTMP qua điểm A và vuông góc với trục tọa độ.
-def zz8zz_L12_C5_B1_03():
+def htd_25_xyz_L12_C5_B1_03():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -367,7 +374,7 @@ def zz8zz_L12_C5_B1_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_04]-M2. Viết PTMP qua điểm và song song với mặt phẳng
-def zz8zz_L12_C5_B1_04():
+def htd_25_xyz_L12_C5_B1_04():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -433,7 +440,7 @@ def zz8zz_L12_C5_B1_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_05]-M2. Viết PTMP trung trực của đoạn AB.
-def zz8zz_L12_C5_B1_05():
+def htd_25_xyz_L12_C5_B1_05():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -502,7 +509,7 @@ def zz8zz_L12_C5_B1_05():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_06]-M3. Viết PTMP đi qua 3 điểm A,B,C.
-def zz8zz_L12_C5_B1_06():
+def htd_25_xyz_L12_C5_B1_06():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -585,7 +592,7 @@ def zz8zz_L12_C5_B1_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_07]-M1. Tính khoảng cách từ điểm đến mặt phẳng
-def zz8zz_L12_C5_B1_07():
+def htd_25_xyz_L12_C5_B1_07():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -649,7 +656,7 @@ def zz8zz_L12_C5_B1_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_08]-M2. Xét vị trí tương đối giữa 2 mặt phẳng
-def zz8zz_L12_C5_B1_08():
+def htd_25_xyz_L12_C5_B1_08():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -780,7 +787,7 @@ def zz8zz_L12_C5_B1_08():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_09]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. Kết quả trùng nhau
-def zz8zz_L12_C5_B1_09():
+def htd_25_xyz_L12_C5_B1_09():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -846,7 +853,7 @@ def zz8zz_L12_C5_B1_09():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_10]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: song song
-def zz8zz_L12_C5_B1_10():
+def htd_25_xyz_L12_C5_B1_10():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -913,7 +920,7 @@ def zz8zz_L12_C5_B1_10():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_1]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: vuông góc
-def zz8zz_L12_C5_B1_11():
+def htd_25_xyz_L12_C5_B1_11():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -982,7 +989,7 @@ def zz8zz_L12_C5_B1_11():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_12]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: cắt và không vuông góc
-def zz8zz_L12_C5_B1_12():
+def htd_25_xyz_L12_C5_B1_12():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -1053,7 +1060,7 @@ def zz8zz_L12_C5_B1_12():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_13]-M2. Tính khoảng cách giữa 2 mặt phẳng song song
-def zz8zz_L12_C5_B1_13():
+def htd_25_xyz_L12_C5_B1_13():
     #Tạo bậc ngẫu nhiên
    #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
@@ -1127,7 +1134,7 @@ def zz8zz_L12_C5_B1_13():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_14]-M1. Cho PTMP, đọc véctơ pháp tuyến
-def zz8zz_L12_C5_B1_14():
+def htd_25_xyz_L12_C5_B1_14():
     #Tạo bậc ngẫu nhiê
     x,y,z=sp.symbols("x y z")
     chon=random.randint(1,3)
@@ -1254,7 +1261,7 @@ def zz8zz_L12_C5_B1_14():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_15]-M2. Cho PTMP, tìm điểm thuộc mặt phẳng 
-def zz8zz_L12_C5_B1_15():
+def htd_25_xyz_L12_C5_B1_15():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -1335,7 +1342,7 @@ def zz8zz_L12_C5_B1_15():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_16]-M2. Cho PTMP, tìm điểm không thuộc mặt phẳng 
-def zz8zz_L12_C5_B1_16():
+def htd_25_xyz_L12_C5_B1_16():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -1416,7 +1423,7 @@ def zz8zz_L12_C5_B1_16():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B1_17]-M2. Viết phương trình mặt phẳng đoạn chắn
-def zz8zz_L12_C5_B1_17():
+def htd_25_xyz_L12_C5_B1_17():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -1478,9 +1485,160 @@ def zz8zz_L12_C5_B1_17():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C5_B1_18]-M2. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, khoảng cách
+def htd_25_xyz_L12_C5_B1_18():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+
+    x_A,y_A,z_A = [random.randint(-7,7) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,7)
+
+    x_B, y_B, z_B = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7)
+    x_C, y_C, z_C = [random.randint(-8,8) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,7)
+
+    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
+    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
+    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
+
+    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
+        x_B = x_B + random.randint(1,3)
+
+    while True:
+        x_I, y_I, z_I = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7) 
+        if all([x_I!=x_A, x_I!=x_B, x_I!=x_C,y_I!=y_A, y_I!=y_B, y_I!=y_C]):
+            break
+
+
+    m=[x_B-x_A, y_B-y_A, z_B-z_A]
+    n=[x_C-x_A, y_C-y_A, z_C-z_A]
+    a, b, c = tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,D,E,F=ten_diem[0:4]   
+    mp=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    d=-a*x_A-b*y_A-c*z_A
+    
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({ten_mp})}}$ có phương trình ${mp}=0$."
+                f" Xét tính đúng-sai của các khẳng định sau")
+    k=random.choice([i for i in range(-2, 2) if i!=0])
+    chon=random.randint(1,2)
+    if chon==1:
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({ten_mp})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c})$ không phải là một véctơ pháp tuyến của ${{({ten_mp})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({ten_mp})}}$"
+
+    if chon==2:
+        t=random.randint(1,2)
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({ten_mp})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ là một véctơ pháp tuyến của ${{({ten_mp})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({a};{b};{c+t})$ không là một véctơ pháp tuyến của ${{({ten_mp})}}$."
+    
+    
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc mặt phẳng ${{({ten_mp})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc mặt phẳng ${{({ten_mp})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ thỏa mãn phương trình ${mp}=0$ nên điểm ${{{A}}}$ thuộc mặt phẳng ${{({ten_mp})}}$."
+    
+    if chon==2:
+        t=random.randint(1,2)
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+t})$ không thuộc mặt phẳng ${{({ten_mp})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({ten_mp})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${mp}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({ten_mp})}}$."
+    
+
+    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    khoang_cach=latex(nsimplify(abs(a*x_I+b*y_I+c*z_I+d)/sqrt(a**2+b**2+c**2)))
+    khoang_cach_false=latex(nsimplify(abs(a*x_I+b*y_I+c*z_I+d+random.randint(1,2))/sqrt(a**2+b**2+c**2)))
+
+
+    kq3_T=f"* Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({ten_mp})}}$ bằng ${khoang_cach}$" 
+    kq3_F=f"Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({ten_mp})}}$ bằng ${khoang_cach_false}$"
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"$d\\left({I},({ten_mp})\\right)=\\dfrac{{{show_tich(a,x_I)}+{show_tich(b,y_I)}+{show_tich(c,z_I)}+{d}}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}$."
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Mặt phẳng ${{({ten_mp})}}$ cắt ba trục $Ox,Oy,Oz$ lần lượt tại các điểm"
+    kq4_F=f" " 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=f""
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
 #[D12_C5_B3_01]. Viết phương trình mặt cầu có tâm và bán kính
-def zz8zz_L12_C5_B3_01():
+def htd_25_xyz_L12_C5_B3_01():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     lits_r=[sqrt(i) for i in range(1,101)]
@@ -1538,7 +1696,7 @@ def zz8zz_L12_C5_B3_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B3_02]-M1. Đọc tọa độ tâm từ phương trình mặt cầu thu gọn
-def zz8zz_L12_C5_B3_02():
+def htd_25_xyz_L12_C5_B3_02():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     lits_r=[sqrt(i) for i in range(1,101)]
@@ -1593,7 +1751,7 @@ def zz8zz_L12_C5_B3_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B3_03]-M1. Đọc bán kính từ phương trình mặt cầu thu gọn
-def zz8zz_L12_C5_B3_03():
+def htd_25_xyz_L12_C5_B3_03():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     lits_r=[i for i in range(1,50)]
@@ -1648,7 +1806,7 @@ def zz8zz_L12_C5_B3_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B3_04]-M1. Đọc tọa độ tâm từ phương trình mặt cầu khai triển
-def zz8zz_L12_C5_B3_04():
+def htd_25_xyz_L12_C5_B3_04():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a,b,c = [random.choice([random.randint(-8,-1),random.randint(1,8)]) for i in range(3)]
@@ -1724,7 +1882,7 @@ def zz8zz_L12_C5_B3_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B3_05]-M2. Đọc bán kính từ phương trình mặt cầu khai triển
-def zz8zz_L12_C5_B3_05():
+def htd_25_xyz_L12_C5_B3_05():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a,b,c = [random.choice([random.randint(-8,-1),random.randint(1,8)]) for i in range(3)]
@@ -1807,7 +1965,7 @@ def zz8zz_L12_C5_B3_05():
 
 
 #[D12_C5_B3_06]-M2. Viết phương trình mặt cầu có tâm và đường kính
-def zz8zz_L12_C5_B3_06():
+def htd_25_xyz_L12_C5_B3_06():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     lits_r=[i for i in range(1,101)]
@@ -1863,7 +2021,7 @@ def zz8zz_L12_C5_B3_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B3_07]-M3. Viết phương trình mặt cầu có đường kính AB
-def zz8zz_L12_C5_B3_07():
+def htd_25_xyz_L12_C5_B3_07():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     diem_A=["A","M","P","C"]
@@ -1933,7 +2091,7 @@ def zz8zz_L12_C5_B3_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B3_08]. Viết phương trình mặt cầu có tâm và đi qua điểm
-def zz8zz_L12_C5_B3_08():
+def htd_25_xyz_L12_C5_B3_08():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a,b,c = [random.randint(-10,10) for i in range(3)]
@@ -1993,7 +2151,7 @@ def zz8zz_L12_C5_B3_08():
 
 #BÀI 2 - PHƯƠNG TRÌNH ĐƯỜNG THẲNG
 #[D12_C5_B2_01]-M1. Viết PTDT qua điểm và có véctơ chỉ phương 
-def zz8zz_L12_C5_B2_01():
+def htd_25_xyz_L12_C5_B2_01():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2057,7 +2215,7 @@ def zz8zz_L12_C5_B2_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_02]-M2. Viết PTĐT qua điểm A và nhận vectơ BC làm véctơ chỉ phương.
-def zz8zz_L12_C5_B2_02():
+def htd_25_xyz_L12_C5_B2_02():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -2129,7 +2287,7 @@ def zz8zz_L12_C5_B2_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_03]-M2. Viết PTDT qua điểm và song song với đường thẳng
-def zz8zz_L12_C5_B2_03():
+def htd_25_xyz_L12_C5_B2_03():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2199,7 +2357,7 @@ def zz8zz_L12_C5_B2_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_04]-M2. Viết PT chính tắc qua điểm và vuông góc với mặt phẳng
-def zz8zz_L12_C5_B2_04():
+def htd_25_xyz_L12_C5_B2_04():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2268,7 +2426,7 @@ def zz8zz_L12_C5_B2_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_05]-M1. Viết PT chính tắc đường thẳng qua 2 điểm.
-def zz8zz_L12_C5_B2_05():
+def htd_25_xyz_L12_C5_B2_05():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2335,7 +2493,7 @@ def zz8zz_L12_C5_B2_05():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_06]-M3. Viết PT chính tắc đường thẳng d song song d' và vuông góc với (P).
-def zz8zz_L12_C5_B2_06():
+def htd_25_xyz_L12_C5_B2_06():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     #Tạo véctơ chỉ phương của d'
@@ -2414,7 +2572,7 @@ def zz8zz_L12_C5_B2_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_07]-M3. Viết PT chính tắc đường thẳng d và vuông góc với (P) và (Q).
-def zz8zz_L12_C5_B2_07():
+def htd_25_xyz_L12_C5_B2_07():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     #Tạo véctơ chỉ phương của d'
@@ -2493,7 +2651,7 @@ def zz8zz_L12_C5_B2_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_08]-M1. Viết PTTS đường thẳng qua điểm và có véctơ chỉ phương 
-def zz8zz_L12_C5_B2_08():
+def htd_25_xyz_L12_C5_B2_08():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2572,7 +2730,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_09]-M2. Viết PTTS đường thẳng qua điểm A và nhận vectơ BC làm véctơ chỉ phương.
-def zz8zz_L12_C5_B2_09():
+def htd_25_xyz_L12_C5_B2_09():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
@@ -2657,7 +2815,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_10]-M2. Viết PTTS đường thẳng qua điểm và song song với đường thẳng
-def zz8zz_L12_C5_B2_10():
+def htd_25_xyz_L12_C5_B2_10():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2740,7 +2898,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_11]-M1. Cho phương trình chính tắc viết phương trình tham số
-def zz8zz_L12_C5_B2_11():
+def htd_25_xyz_L12_C5_B2_11():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2818,7 +2976,7 @@ z = {show_ptts(z_0,c)}\
 
 
 #[D12_C5_B2_12]-M2. Cho phương trình tham số viết phương trình chính tắc
-def zz8zz_L12_C5_B2_12():
+def htd_25_xyz_L12_C5_B2_12():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2886,7 +3044,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_13]-M1. Đọc VTCP từ phương trình tham số
-def zz8zz_L12_C5_B2_13():
+def htd_25_xyz_L12_C5_B2_13():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -2960,7 +3118,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_14]-M2. Đọc tọa độ điểm từ phương trình tham số
-def zz8zz_L12_C5_B2_14():
+def htd_25_xyz_L12_C5_B2_14():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3031,7 +3189,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_15]-M2. Đọc VTCP từ phương trình chính tắc
-def zz8zz_L12_C5_B2_15():
+def htd_25_xyz_L12_C5_B2_15():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3105,7 +3263,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_16]-M2. Đọc tọa độ điểm từ phương trình chính tắc
-def zz8zz_L12_C5_B2_16():
+def htd_25_xyz_L12_C5_B2_16():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3177,7 +3335,7 @@ z = {show_ptts(z_0,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_17]-M2. Tìm giao điểm của đường thẳng và mặt phẳng
-def zz8zz_L12_C5_B2_17():
+def htd_25_xyz_L12_C5_B2_17():
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3261,7 +3419,7 @@ z = {show_ptts(z_1,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_18]-M2. Tìm hình chiếu của điểm trên đường thẳng
-def zz8zz_L12_C5_B2_18():
+def htd_25_xyz_L12_C5_B2_18():
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3339,7 +3497,7 @@ def zz8zz_L12_C5_B2_18():
 
 
 #[D12_C5_B2_19]-M2. Xét vị trí 2 đường thẳng. Kết quả là song song
-def zz8zz_L12_C5_B2_19():
+def htd_25_xyz_L12_C5_B2_19():
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3413,7 +3571,7 @@ def zz8zz_L12_C5_B2_19():
 
 
 #[D12_C5_B2_20]-M2. Xét vị trí 2 đường thẳng. Kết quả là trùng nhau
-def zz8zz_L12_C5_B2_20():
+def htd_25_xyz_L12_C5_B2_20():
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3486,7 +3644,7 @@ def zz8zz_L12_C5_B2_20():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_21]-M2. Xét vị trí 2 đường thẳng. Kết quả là cắt nhau
-def zz8zz_L12_C5_B2_21():
+def htd_25_xyz_L12_C5_B2_21():
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3574,7 +3732,7 @@ def zz8zz_L12_C5_B2_21():
 
 
 #[D12_C5_B2_22]-M2. Xét vị trí 2 đường thẳng. Kết quả là chéo nhau
-def zz8zz_L12_C5_B2_22():
+def htd_25_xyz_L12_C5_B2_22():
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
@@ -3660,7 +3818,7 @@ def zz8zz_L12_C5_B2_22():
 
 #[D12_C5_B2_23]-M2. Tổng hợp xét vị trí tương đối giữa 2 đường thẳng 
 
-def zz8zz_L12_C5_B2_23():
+def htd_25_xyz_L12_C5_B2_23():
     chon=random.randint(1,4)
     if chon==1:
         #Tạo bậc ngẫu nhiên
@@ -3896,7 +4054,7 @@ def zz8zz_L12_C5_B2_23():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_24]-M4. Tìm đường thẳng đi qua điểm cắt và vuông góc với đường thẳng khác
-def zz8zz_L12_C5_B2_24():
+def htd_25_xyz_L12_C5_B2_24():
    
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-6, -1), random.randint(1, 7)])
@@ -3983,7 +4141,7 @@ def zz8zz_L12_C5_B2_24():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C5_B2_25]-M4. Tìm đường thẳng đi qua điểm, cắt đường thẳng khác và song song mặt phẳng
-def zz8zz_L12_C5_B2_25():
+def htd_25_xyz_L12_C5_B2_25():
    
     x,y,z,t=sp.symbols("x y z t")
     a = random.choice([random.randint(-6, -1), random.randint(1, 7)])
@@ -4082,7 +4240,7 @@ def zz8zz_L12_C5_B2_25():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
         
 #[D12_C5_B2_26]-M4. Viết PTMP qua A,B cách M một khoảng lớn nhất
-def zz8zz_L12_C5_B2_26():
+def htd_25_xyz_L12_C5_B2_26():
    
     x,y,z=sp.symbols("x y z")
     #Tạo véctơ pháp tuyến

@@ -7058,7 +7058,7 @@ class Ui_MainWindow(object):
                 L12_C5_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B1_1 = QTreeWidgetItem(L12_C5_B1, ["5.1.1. Đọc thông tin VTPT, điểm thuộc mặt phẳng"])
+                L12_C5_B1_1 = QTreeWidgetItem(L12_C5_B1, ["1. Đọc thông tin VTPT, điểm thuộc mặt phẳng"])
                 L12_C5_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7074,7 +7074,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B1_2 = QTreeWidgetItem(L12_C5_B1, ["5.1.2. Viết phương trình mặt phẳng"])
+                L12_C5_B1_2 = QTreeWidgetItem(L12_C5_B1, ["2. Viết phương trình mặt phẳng"])
                 L12_C5_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7106,7 +7106,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B1_3 = QTreeWidgetItem(L12_C5_B1, ["5.1.3. Vị trí tương đối giữa các mặt phẳng"])
+                L12_C5_B1_3 = QTreeWidgetItem(L12_C5_B1, ["3. Vị trí tương đối giữa các mặt phẳng"])
                 L12_C5_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7130,7 +7130,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B1_4 = QTreeWidgetItem(L12_C5_B1, ["5.1.4. Khoảng cách từ điểm đến mặt phẳng"])
+                L12_C5_B1_4 = QTreeWidgetItem(L12_C5_B1, ["4. Khoảng cách từ điểm đến mặt phẳng"])
                 L12_C5_B1_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8844,256 +8844,256 @@ class Ui_MainWindow(object):
                                     #BÀI 1 - PHƯƠNG TRÌNH MẶT PHẲNG
                                             #[D12_C5_B1_01]-M1. Viết PTMP qua điểm và có véctơ pháp tuyến
                                                 if dang_toan == "[D12_C5_B1_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_01()                                     
                                                     
 
                                             #[D12_C5_B1_02]-M2. Viết PTMP qua điểm A và nhận vectơ BC làm véctơ pháp tuyến.
                                                 if dang_toan == "[D12_C5_B1_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_02()                                     
                                                     
 
                                             #[D12_C5_B1_03]-M2. Viết PTMP qua điểm A và vuông góc trục tọa độ.
                                                 if dang_toan == "[D12_C5_B1_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_03()                                     
                                                     
 
                                             #[D12_C5_B1_04]-M2. Viết PTMP qua điểm và song song với mặt phẳng.
                                                 if dang_toan == "[D12_C5_B1_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_04()                                     
                                                     
 
                                             #[D12_C5_B1_05]-M2. Viết PTMP trung trực của đoạn AB.
                                                 if dang_toan == "[D12_C5_B1_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_05()                                     
                                                     
 
                                             #[D12_C5_B1_06]-M3. Viết PTMP đi qua 3 điểm A,B,C.
                                                 if dang_toan == "[D12_C5_B1_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_06()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_06()                                     
                                                     
 
                                             #[D12_C5_B1_07]-M1. Tính khoảng cách từ điểm đến mặt phẳng
                                                 if dang_toan == "[D12_C5_B1_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_07()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_07()                                     
                                                     
 
                                             #[D12_C5_B1_08]-M2. Xét vị trí tương đối giữa 2 mặt phẳng
                                                 if dang_toan == "[D12_C5_B1_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_08()                                     
                                                     
 
                                             #[D12_C5_B1_09]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: trùng nhau
                                                 if dang_toan == "[D12_C5_B1_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_09()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_09()                                     
                                                     
 
                                             #[D12_C5_B1_10]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: song song
                                                 if dang_toan == "[D12_C5_B1_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_10()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_10()                                     
                                                     
 
                                             #[D12_C5_B1_11]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: vuông góc
                                                 if dang_toan == "[D12_C5_B1_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_11()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_11()                                     
                                                     
 
                                             #[D12_C5_B1_12]-M2. Xét vị trí tương đối giữa 2 mặt phẳng. KQ: cắt và không vuông góc
                                                 if dang_toan == "[D12_C5_B1_12]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_12()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_12()                                     
                                                     
 
                                             #[D12_C5_B1_13]-M2. Tính khoảng cách giữa 2 mặt phẳng song song
                                                 if dang_toan == "[D12_C5_B1_13]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_13()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_13()                                     
                                                     
 
                                             #[D12_C5_B1_14]-M2. Cho PTMP, đọc véctơ pháp tuyến
                                                 if dang_toan == "[D12_C5_B1_14]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_14()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_14()                                     
                                                     
 
                                             #[D12_C5_B1_15]-M2. Cho PTMP, tìm điểm thuộc mặt phẳng 
                                                 if dang_toan == "[D12_C5_B1_15]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_15()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_15()                                     
                                                     
 
                                             #[D12_C5_B1_16]-M2. Cho PTMP, tìm điểm không thuộc mặt phẳng 
                                                 if dang_toan == "[D12_C5_B1_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_16()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_16()                                     
                                                     
 
                                             #[D12_C5_B1_17]-M2.  Viết phương trình mặt phẳng đoạn chắn
                                                 if dang_toan == "[D12_C5_B1_17]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B1_17()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_17()                                     
                                                     
 
 
                                             #BÀI 2- PHƯƠNG TRÌNH ĐƯỜNG THẲNG
                                             #[D12_C5_B2_01]-M1. Viết PTDT qua điểm và có véctơ chỉ phương 
                                                 if dang_toan == "[D12_C5_B2_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_01()                                     
                                                     
 
                                             #[D12_C5_B2_02]-M1. Viết PTĐT qua điểm A và nhận vectơ BC làm véctơ chỉ phương.
                                                 if dang_toan == "[D12_C5_B2_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_02()                                     
                                                     
 
                                             #[D12_C5_B2_03]-M2. Viết PT chính tắc của đường thẳng qua điểm A và song song với đường thẳng.
                                                 if dang_toan == "[D12_C5_B2_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_03()                                     
                                                     
 
                                             #[D12_C5_B2_04]-M2. Viết PT chính tắc của đường thẳng qua điểm A và vuông góc với mặt phẳng
                                                 if dang_toan == "[D12_C5_B2_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_04()                                     
                                                     
 
                                             #[D12_C5_B2_05]-M2. Viết PT chính tắc của đường thẳng qua 2 điểm 
                                                 if dang_toan == "[D12_C5_B2_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_05()                                     
                                                     
 
                                             #[D12_C5_B2_06]-M2. Viết PT chính tắc đường thẳng d song song d' và vuông góc với (P).
                                                 if dang_toan == "[D12_C5_B2_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_06()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_06()                                     
                                                     
 
                                             #[D12_C5_B2_07]-M2. Viết PT chính tắc đường thẳng d và vuông góc với (P) và (Q).
                                                 if dang_toan == "[D12_C5_B2_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_07()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_07()                                     
                                                     
 
                                             #[D12_C5_B2_08]-M2. Viết PT tham số đường thẳng qua điểm và có véctơ chỉ phương.
                                                 if dang_toan == "[D12_C5_B2_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_08()                                     
                                                     
 
                                             #[D12_C5_B2_09]-M2. Viết PTTS đường thẳng qua điểm A và nhận vectơ BC làm véctơ chỉ phương.
                                                 if dang_toan == "[D12_C5_B2_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_09()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_09()                                     
                                                     
 
                                             #[D12_C5_B2_10]-M2. Viết PTTS đường thẳng qua điểm và song song với đường thẳng
                                                 if dang_toan == "[D12_C5_B2_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_10()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_10()                                     
                                                     
 
                                             #[D12_C5_B2_11]-M2. Cho phương trình chính tắc viết phương trình tham số
                                                 if dang_toan == "[D12_C5_B2_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_11()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_11()                                     
                                                     
 
                                             #[D12_C5_B2_12]-M2. Cho phương trình tham số viết phương trình chính tắc
                                                 if dang_toan == "[D12_C5_B2_12]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_12()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_12()                                     
                                                     
 
                                             #[D12_C5_B2_13]-M2. Đọc VTCP từ phương trình tham số
                                                 if dang_toan == "[D12_C5_B2_13]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_13()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_13()                                     
                                                     
 
                                             #[D12_C5_B2_14]-M2. Đọc tọa độ điểm từ phương trình tham số
                                                 if dang_toan == "[D12_C5_B2_14]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_14()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_14()                                     
                                                     
 
                                             #[D12_C5_B2_15]-M2. Đọc véctơ chỉ phương từ phương trình chính tắc
                                                 if dang_toan == "[D12_C5_B2_15]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_15()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_15()                                     
                                                     
 
                                             #[D12_C5_B2_16]-M2. Đọc tọa độ điểm từ phương trình chính tắc
                                                 if dang_toan == "[D12_C5_B2_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_16()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_16()                                     
                                                     
 
                                             #[D12_C5_B2_17]-M3. Tìm giao điểm của đường thẳng và mặt phẳng
                                                 if dang_toan == "[D12_C5_B2_17]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_17()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_17()                                     
                                                     
 
                                             #[D12_C5_B2_18]-M3. Tìm hình chiếu của điểm trên đường thẳng
                                                 if dang_toan == "[D12_C5_B2_18]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_18()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_18()                                     
                                                     
 
                                             #[D12_C5_B2_19]-M2. Xét vị trí 2 đường thẳng. Kết quả là song song
                                                 if dang_toan == "[D12_C5_B2_19]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_19()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_19()                                     
                                                     
 
                                             #[D12_C5_B2_20]-M2. Xét vị trí 2 đường thẳng. Kết quả là trùng nhau
                                                 if dang_toan == "[D12_C5_B2_20]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_20()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_20()                                     
                                                     
 
                                             #[D12_C5_B2_21]-M2. Xét vị trí 2 đường thẳng. Kết quả là cắt nhau
                                                 if dang_toan == "[D12_C5_B2_21]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_21()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_21()                                     
                                                     
 
                                             #[D12_C5_B2_22]-M2. Xét vị trí 2 đường thẳng. Kết quả là chéo nhau
                                                 if dang_toan == "[D12_C5_B2_22]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_22()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_22()                                     
                                                     
 
                                             #[D12_C5_B2_23]-M2. Xét vị trí 2 đường thẳng tùy ý
                                                 if dang_toan == "[D12_C5_B2_23]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_23()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_23()
 
                                             #[D12_C5_B2_24]-M4. Tìm đường thẳng đi qua điểm cắt và vuông góc với đường thẳng khác
                                                 if dang_toan == "[D12_C5_B2_24]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_24()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_24()
 
                                             #[D12_C5_B2_25]-M4. Tìm đường thẳng đi qua điểm, cắt đường thẳng khác và song song mặt phẳng
                                                 if dang_toan == "[D12_C5_B2_25]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_25()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_25()
 
                                             #[D12_C5_B2_26]-M4. Viết PTMP qua A,B cách M một khoảng lớn nhất
                                                 if dang_toan == "[D12_C5_B2_26]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B2_26()                                    
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_26()                                    
                                                     
 
                                             #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
                                             #[D12_C5_B3_01]-M1. Đọc tọa độ tâm từ phương trình mặt cầu
                                                 if dang_toan == "[D12_C5_B3_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_01() 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_01() 
 
                                             #[D12_C5_B3_02]-M1. Đọc tọa độ tâm từ phương trình mặt cầu
                                                 if dang_toan == "[D12_C5_B3_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_02()                                     
                                                     
 
                                             #[D12_C5_B3_03]-M1. Đọc bán kính từ phương trình mặt cầu thu gọn
                                                 if dang_toan == "[D12_C5_B3_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_03()                                     
                                                     
 
                                             #[D12_C5_B3_04]-M1. Đọc tọa độ tâm từ phương trình mặt cầu khai triển
                                                 if dang_toan == "[D12_C5_B3_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_04()                                     
                                                     
 
                                             #[D12_C5_B3_05]-M1. Đọc bán kính từ phương trình mặt cầu khai triển
                                                 if dang_toan == "[D12_C5_B3_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_05()                                     
                                                     
 
                                                 #[D12_C5_B3_06]-M2. Viết phương trình mặt cầu có tâm và đường kính
                                                 if dang_toan == "[D12_C5_B3_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_06()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_06()                                     
                                                     
 
                                                 #[D12_C5_B3_07]-M3. Viết phương trình mặt cầu có đường kính AB
                                                 if dang_toan == "[D12_C5_B3_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_07()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_07()                                     
                                                     
 
                                                 #[D12_C5_B3_08]-M2. Viết phương trình mặt cầu có tâm và đi qua điểm
                                                 if dang_toan == "[D12_C5_B3_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.zz8zz_L12_C5_B3_08()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_08()
 
                                                 #Chương 6 - Một số yếu tố xác suất
 
