@@ -261,7 +261,7 @@ def zz8zz_L12_C4_B1_03():
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
 
-    noi_dung= f"Tìm nguyên hàm $\\int {{\\left({latex(f)}\\right){d_x}}}$."
+    noi_dung= f"Tìm nguyên hàm $\\int {{({latex(f)}){d_x}}}$."
     noi_dung=noi_dung.replace("\\left(","").replace("\\right)","")
 
     dap_an=my_module.tra_ve_dap_an(list_PA)     
@@ -1978,7 +1978,7 @@ def zz8zz_L12_C4_B1_33():
     f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
     )    
 
-    kq=f"${latex(G)}$"
+    kq=f"$F(x)={latex(G)}$"
     kq_false=[
     f"$F(x)={latex(m*e**x+n*x**2+C)}$",
     f"$F(x)={latex(m*e**(-x)+n*x+C)}$",
@@ -2042,7 +2042,7 @@ def zz8zz_L12_C4_B1_34():
     f"Tìm một nguyên hàm $F(x)$ của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
     )    
 
-    kq=f"${latex(G)}$"
+    kq=f"$F(x)={latex(G)}$"
     kq_false=[
     f"$F(x)={latex(m*e**x+n*e**(-x)+C)}$",
     f"$F(x)={latex(m*e**(-x)+n*x+C)}$",

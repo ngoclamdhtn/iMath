@@ -4,6 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+# Hàm làm tròn half-up
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
 
 #Tạo hàm chứa chuỗi latex vecto
 def vec(st):
@@ -1485,17 +1489,17 @@ def htd_25_xyz_L12_C5_B1_17():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C5_B1_18]-M2. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, khoảng cách
+#[D12_C5_B1_18]-M2. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, khoảng cách, góc giữa 2 mp
 def htd_25_xyz_L12_C5_B1_18():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
 
-    x_A,y_A,z_A = [random.randint(-7,7) for i in range(3)]
-    if x_A ==0: x_A=random.randint(1,7)
+    x_A,y_A,z_A = [random.randint(-5,5) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,5)
 
-    x_B, y_B, z_B = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7)
-    x_C, y_C, z_C = [random.randint(-8,8) for i in range(3)]
-    if y_C ==0: y_C=random.randint(1,7)
+    x_B, y_B, z_B = random.randint(-3,3),random.randint(-4,4),random.randint(-3,3)
+    x_C, y_C, z_C = [random.randint(-4,4) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,5)
 
     if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
     if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
@@ -1518,29 +1522,32 @@ def htd_25_xyz_L12_C5_B1_18():
     a,b,c=int(a/t),int(b/t),int(c/t)
 
 
-    ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
     ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
     random.shuffle(ten_diem)
-    A,B,C,I,D,E,F=ten_diem[0:4]   
-    mp=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    A,B,C,I=ten_diem[0:4]   
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
     d=-a*x_A-b*y_A-c*z_A
     
-    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({ten_mp})}}$ có phương trình ${mp}=0$."
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({mp_P})}}$ có phương trình ${ptmp_P}=0$."
                 f" Xét tính đúng-sai của các khẳng định sau")
     k=random.choice([i for i in range(-2, 2) if i!=0])
     chon=random.randint(1,2)
     if chon==1:
-        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({ten_mp})}}$" 
-        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c})$ không phải là một véctơ pháp tuyến của ${{({ten_mp})}}$"
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c})$ không phải là một véctơ pháp tuyến của ${{({mp_P})}}$"
         kq1=random.choice([kq1_T, kq1_F])
-        HDG=f"${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({ten_mp})}}$"
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
 
     if chon==2:
         t=random.randint(1,2)
-        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({ten_mp})}}$" 
-        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ là một véctơ pháp tuyến của ${{({ten_mp})}}$"
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
         kq1=random.choice([kq1_T, kq1_F])
-        HDG=f"${vec("n")}=({a};{b};{c+t})$ không là một véctơ pháp tuyến của ${{({ten_mp})}}$."
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$."
     
     
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -1549,17 +1556,17 @@ def htd_25_xyz_L12_C5_B1_18():
 
     chon=random.randint(1,2)
     if chon==1:
-        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc mặt phẳng ${{({ten_mp})}}$"
-        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc mặt phẳng ${{({ten_mp})}}$"
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc mặt phẳng ${{({mp_P})}}$"
         kq2=random.choice([kq2_T, kq2_F])
-        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ thỏa mãn phương trình ${mp}=0$ nên điểm ${{{A}}}$ thuộc mặt phẳng ${{({ten_mp})}}$."
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ thuộc mặt phẳng ${{({mp_P})}}$."
     
     if chon==2:
         t=random.randint(1,2)
-        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+t})$ không thuộc mặt phẳng ${{({ten_mp})}}$"
-        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({ten_mp})}}$"
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+t})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({mp_P})}}$"
         kq2=random.choice([kq2_T, kq2_F])
-        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${mp}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({ten_mp})}}$."
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({mp_P})}}$."
     
 
     
@@ -1571,18 +1578,390 @@ def htd_25_xyz_L12_C5_B1_18():
     khoang_cach_false=latex(nsimplify(abs(a*x_I+b*y_I+c*z_I+d+random.randint(1,2))/sqrt(a**2+b**2+c**2)))
 
 
-    kq3_T=f"* Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({ten_mp})}}$ bằng ${khoang_cach}$" 
-    kq3_F=f"Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({ten_mp})}}$ bằng ${khoang_cach_false}$"
+    kq3_T=f"* Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({mp_P})}}$ bằng ${khoang_cach}$" 
+    kq3_F=f"Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({mp_P})}}$ bằng ${khoang_cach_false}$"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f"$d\\left({I},({ten_mp})\\right)=\\dfrac{{{show_tich(a,x_I)}+{show_tich(b,y_I)}+{show_tich(c,z_I)}+{d}}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}$."
+    HDG=f"$d\\left({I},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_I)}+{show_tich(b,y_I)}+{show_tich(c,z_I)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}$."
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq4_T=f"* Mặt phẳng ${{({ten_mp})}}$ cắt ba trục $Ox,Oy,Oz$ lần lượt tại các điểm"
-    kq4_F=f" " 
+    a1,b1,c1=[random.choice([i for i in range(-5, 6) if i!=0]) for _ in range(3)]
+    d1=random.randint(-5,5)
+
+    cos_goc=abs(a*a1+b*b1+c*c1)/(sqrt(a**2+b**2+c**2)*sqrt(a1**2+b1**2+c1**2))
+    goc=acos(cos_goc)
+    goc_degree=f"{round_half_up(math.degrees(goc),1):.1f}".replace(".",",")
+    goc_degree_false=f"{round_half_up(math.degrees(goc)+random.randint(1,2),1):.1f}".replace(".",",")
+
+    kq4_T=f"* Góc giữa mặt phẳng ${{({mp_P})}}$ và mặt phẳng ${{({mp_Q})}}:{latex(a1*x+b1*y+c1*z+d1)}=0$ bằng ${goc_degree}^\\circ$"
+    kq4_F=f"Góc giữa mặt phẳng ${{({mp_P})}}$ và mặt phẳng ${{({mp_Q})}}:{latex(a1*x+b1*y+c1*z+d1)}=0$ bằng ${goc_degree}^\\circ$" 
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=f""
+    HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
+        f"$\\cos({mp_P},{mp_Q})=\\dfrac{{|{show_tich(a,a1)}+{show_tich(b,b1)}+{show_tich(c,c1)}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}.\\sqrt{{{a1**2}+{b1**2}+{c1**2}}} }}$"
+        f"$={latex(nsimplify(cos_goc))}$.\n\n"
+        f"$\\Rightarrow ({mp_P},{mp_Q})={goc_degree}^\\circ$."
+        )
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C5_B1_19]-M2. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, khoảng cách, phương trình mặt phẳng song song
+def htd_25_xyz_L12_C5_B1_19():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+
+    x_A,y_A,z_A = [random.randint(-5,5) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,5)
+
+    x_B, y_B, z_B = random.randint(-3,3),random.randint(-4,4),random.randint(-3,3)
+    x_C, y_C, z_C = [random.randint(-4,4) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,5)
+
+    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
+    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
+    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
+
+    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
+        x_B = x_B + random.randint(1,3)
+
+    while True:
+        x_I, y_I, z_I = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7) 
+        if all([x_I!=x_A, x_I!=x_B, x_I!=x_C,y_I!=y_A, y_I!=y_B, y_I!=y_C]):
+            break
+
+
+    m=[x_B-x_A, y_B-y_A, z_B-z_A]
+    n=[x_C-x_A, y_C-y_A, z_C-z_A]
+    a, b, c = tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]   
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    d=-a*x_A-b*y_A-c*z_A
+    
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({mp_P})}}$ có phương trình ${ptmp_P}=0$."
+                f" Xét tính đúng-sai của các khẳng định sau")
+    k=random.choice([i for i in range(-2, 2) if i!=0])
+    chon=random.randint(1,2)
+    if chon==1:
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c})$ không phải là một véctơ pháp tuyến của ${{({mp_P})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
+
+    if chon==2:
+        t=random.randint(1,2)
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$."
+    
+    
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ thuộc mặt phẳng ${{({mp_P})}}$."
+    
+    if chon==2:
+        t=random.randint(1,2)
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+t})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({mp_P})}}$."
+    
+
+    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    khoang_cach=latex(nsimplify(abs(a*x_I+b*y_I+c*z_I+d)/sqrt(a**2+b**2+c**2)))
+    khoang_cach_false=latex(nsimplify(abs(a*x_I+b*y_I+c*z_I+d+random.randint(1,2))/sqrt(a**2+b**2+c**2)))
+
+
+    kq3_T=f"* Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({mp_P})}}$ bằng ${khoang_cach}$" 
+    kq3_F=f"Khoảng cách từ điểm ${I}({x_I};{y_I};{z_I})$ đến mặt phẳng ${{({mp_P})}}$ bằng ${khoang_cach_false}$"
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"$d\\left({I},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_I)}+{show_tich(b,y_I)}+{show_tich(c,z_I)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}$."
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a1,b1,c1=[random.choice([i for i in range(-5, 6) if i!=0]) for _ in range(3)]
+    d1=random.randint(-5,5)
+
+    x_M,y_M,z_M=x_B,y_B,z_B+random.randint(1,2)
+
+    kq4_T=(f"* Mặt phẳng ${{({mp_Q})}}$ qua điểm ${M}({x_M};{y_M};{z_M})$ và song song với ${{({mp_P})}}$ có phương trình là "
+        f"${latex(a*(x-x_M)+b*(y-y_M)+c*(z-z_M))}=0$"
+        )
+    kq4_F=(f" Mặt phẳng ${{({mp_Q})}}$ qua điểm ${M}({x_M};{y_M};{z_M})$ và song song với ${{({mp_P})}}$ có phương trình là "
+        f"${latex(a*(x-x_M)+b*(y-y_M)+c*(z-z_M)+random.randint(1,3))}=0$"
+        ) 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f"Mặt phẳng ${{({mp_Q})}}$ nhận ${vec(f"n_{mp_P}")}=({a};{b};{c})$ làm một véctơ pháp tuyến.\n\n"
+        f"Phương trình ${{({mp_Q})}}:{a}({latex(x-x_M)})+{b}({latex(y-y_M)})+{c}({latex(z-z_M)})=0$"
+        f" $\\Leftrightarrow {latex(a*(x-x_M)+b*(y-y_M)+c*(z-z_M))}=0$."      
+        )
+    HDG=HDG.replace("+-","-")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C5_B1_20]-M2. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, vị trí hai mp, phương trình mặt phẳng vuông góc
+def htd_25_xyz_L12_C5_B1_20():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+
+    x_A,y_A,z_A = [random.randint(-5,5) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,5)
+
+    x_B, y_B, z_B = random.randint(-3,3),random.randint(-4,4),random.randint(-3,3)
+    x_C, y_C, z_C = [random.randint(-4,4) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,5)
+
+    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
+    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
+    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
+
+    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
+        x_B = x_B + random.randint(1,3)
+
+    while True:
+        x_I, y_I, z_I = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7) 
+        if all([x_I!=x_A, x_I!=x_B, x_I!=x_C,y_I!=y_A, y_I!=y_B, y_I!=y_C]):
+            break
+
+
+    m=[x_B-x_A, y_B-y_A, z_B-z_A]
+    n=[x_C-x_A, y_C-y_A, z_C-z_A]
+    a, b, c = tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]   
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    d=-a*x_A-b*y_A-c*z_A
+    
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({mp_P})}}$ có phương trình ${ptmp_P}=0$."
+                f" Xét tính đúng-sai của các khẳng định sau")
+    k=random.choice([i for i in range(-2, 2) if i!=0])
+    chon=random.randint(1,2)
+    if chon==1:
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c})$ không phải là một véctơ pháp tuyến của ${{({mp_P})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
+
+    if chon==2:
+        t=random.randint(1,2)
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$."
+    
+    
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ thuộc mặt phẳng ${{({mp_P})}}$."
+    
+    if chon==2:
+        t=random.randint(1,2)
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+t})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({mp_P})}}$."
+    
+
+    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    k=random.choice([i for i in range(-3, 3) if i!=0])
+    
+
+    chon=random.randint(1,2)
+ 
+    if chon==1:
+        a1,b1,c1=k*a,k*b,k*c
+        d1=k*d+random.randint(1,2)
+        kq3_T=f"* Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ song song nhau" 
+        kq3_F=f"Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ {random.choice(["cắt", "vuông góc", "trùng" ])} nhau"
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
+            f"Ta có: ${vec(f"n_{mp_P}")}={k}{vec(f"n_{mp_Q}")}$ và ${d1}\\ne {show_tich(k,d)}$"
+            f" nên  ${{({mp_P})}}$ và $({mp_Q})$ song song nhau.")
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if chon==2:
+        a1,b1,c1,d1=k*a,k*b,k*c,k*d
+        
+        kq3_T=f"* Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d)}=0$ trùng nhau" 
+        kq3_F=f"Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d)}=0$ {random.choice(["cắt", "vuông góc", "song song" ])} nhau"
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
+            f"Ta có: ${vec(f"n_{mp_P}")}={k}{vec(f"n_{mp_Q}")}$ và ${d1}={show_tich(k,d)}$"
+            f" nên  ${{({mp_P})}}$ và $({mp_Q})$ trùng nhau.")
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}" 
+
+    
+
+    x_A,y_A,z_A=x_A+random.randint(1,2),y_A,z_A
+    x_B,y_B,z_B=x_B,y_B+random.randint(1,2),z_B
+
+    x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+    m=[x_AB, y_AB, z_AB]
+    n=[a, b, c]
+    
+    a1,b1,c1=tich_co_huong(m,n)
+
+    kq4_T=(f"* Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình là "
+        f"${latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))}=0$"
+        )
+    kq4_F=(f"* Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình là "
+        f"${latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A)+random.randint(1,2))}=0$"
+        ) 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec2(B,C)}=({x_AB};{y_AB};{z_AB})$.\n\n"
+        f"Mặt phẳng ${{({mp_Q})}}$ nhận ${vec(f"n_{mp_P}")},{vec2(A,B)}$ làm cặp véctơ chỉ phương.\n\n"
+        f"$[{vec(f"n_{mp_P}")},{vec2(B,C)}]=({a1};{b1};{c1})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_Q})}}$.\n\n"        
+        f"Phương trình ${{({mp_Q})}}:{a1}({latex(x-x_A)})+{b1}({latex(y-y_A)})+{c1}({latex(z-z_A)})=0$"
+        f" $\\Leftrightarrow {latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))}=0$."      
+        )
+    HDG=HDG.replace("+-","-")
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
