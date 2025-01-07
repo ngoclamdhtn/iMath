@@ -301,7 +301,7 @@ def htd_25_xyz_L12_C5_B1_03():
     ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
     ten_A=random.choice(["A","B","C", "M", "E", "I", "N"])
     chon=random.randint(1,3)
-    chon=3
+    
     if chon==1:
         a,b,c = 1,0,0
         noi_dung= f"Trong không gian ${{Oxyz}}$, viết phương trình mặt phẳng ${{({ten_mp})}}$ đi qua điểm ${{{ten_A}({x_0};{y_0};{z_0})}}$"\
@@ -2014,6 +2014,578 @@ def htd_25_xyz_L12_C5_B1_20():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C5_B1_21]-M2. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, vị trí hai mp, PTMP vuông góc (tổng hệ số)
+def htd_25_xyz_L12_C5_B1_21():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+
+    x_A,y_A,z_A = [random.randint(-5,5) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,5)
+
+    x_B, y_B, z_B = random.randint(-3,3),random.randint(-4,4),random.randint(-3,3)
+    x_C, y_C, z_C = [random.randint(-4,4) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,5)
+
+    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
+    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
+    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
+
+    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
+        x_B = x_B + random.randint(1,3)
+
+    while True:
+        x_I, y_I, z_I = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7) 
+        if all([x_I!=x_A, x_I!=x_B, x_I!=x_C,y_I!=y_A, y_I!=y_B, y_I!=y_C]):
+            break
+
+
+    m=[x_B-x_A, y_B-y_A, z_B-z_A]
+    n=[x_C-x_A, y_C-y_A, z_C-z_A]
+    a, b, c = tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]   
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    d=-a*x_A-b*y_A-c*z_A
+    
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({mp_P})}}$ có phương trình ${ptmp_P}=0$."
+                f" Xét tính đúng-sai của các khẳng định sau")
+    k=random.choice([i for i in range(-2, 2) if i!=0])
+    chon=random.randint(1,2)
+    if chon==1:
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c})$ không phải là một véctơ pháp tuyến của ${{({mp_P})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
+
+    if chon==2:
+        t=random.randint(1,2)
+        kq1_T=f"* ${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$" 
+        kq1_F=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ là một véctơ pháp tuyến của ${{({mp_P})}}$"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${vec("n")}=({k*a};{k*b};{k*c+t})$ không là một véctơ pháp tuyến của ${{({mp_P})}}$."
+    
+    
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ thuộc mặt phẳng ${{({mp_P})}}$."
+    
+    if chon==2:
+        t=random.randint(1,2)
+        kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+t})$ không thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({mp_P})}}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({mp_P})}}$."
+    
+
+    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    k=random.choice([i for i in range(-3, 3) if i!=0])
+    
+
+    chon=random.randint(1,2)
+ 
+    if chon==1:
+        a1,b1,c1=k*a,k*b,k*c
+        d1=k*d+random.randint(1,2)
+        kq3_T=f"* Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ song song nhau" 
+        kq3_F=f"Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ {random.choice(["cắt", "vuông góc", "trùng" ])} nhau"
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
+            f"Ta có: ${vec(f"n_{mp_P}")}={k}{vec(f"n_{mp_Q}")}$ và ${d1}\\ne {show_tich(k,d)}$"
+            f" nên  ${{({mp_P})}}$ và $({mp_Q})$ song song nhau.")
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if chon==2:
+        a1,b1,c1,d1=k*a,k*b,k*c,k*d
+        
+        kq3_T=f"* Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d)}=0$ trùng nhau" 
+        kq3_F=f"Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d)}=0$ {random.choice(["cắt", "vuông góc", "song song" ])} nhau"
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
+            f"Ta có: ${vec(f"n_{mp_P}")}={k}{vec(f"n_{mp_Q}")}$ và ${d1}={show_tich(k,d)}$"
+            f" nên  ${{({mp_P})}}$ và $({mp_Q})$ trùng nhau.")
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}" 
+
+    
+
+    x_A,y_A,z_A=x_A+random.randint(1,2),y_A,z_A
+    x_B,y_B,z_B=x_B,y_B+random.randint(1,2),z_B
+
+    x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+    m=[x_AB, y_AB, z_AB]
+    n=[a, b, c]
+    
+    a1,b1,c1=tich_co_huong(m,n)
+    d1=-a1*x_A-b1*y_A-c1*z_A
+
+    kq4_T=(f"* Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình dạng"
+        f"$ax+by+cz+{d1}=0$. Khi đó $a+b+c={a1+b1+c1}$"
+        )
+    kq4_F=(f"* Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình dạng"
+        f"$ax+by+cz+{d1}=0$. Khi đó $a+b+c={a1+b1+c1+random.randint(1,2)}$"
+        ) 
+    kq4=random.choice([kq4_T, kq4_F])
+    kq4=kq4.replace("+-","-")
+    HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec2(B,C)}=({x_AB};{y_AB};{z_AB})$.\n\n"
+        f"Mặt phẳng ${{({mp_Q})}}$ nhận ${vec(f"n_{mp_P}")},{vec2(B,C)}$ làm cặp véctơ chỉ phương.\n\n"
+        f"$[{vec(f"n_{mp_P}")},{vec2(B,C)}]=({a1};{b1};{c1})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_Q})}}$.\n\n"        
+        f"Phương trình ${{({mp_Q})}}:{a1}({latex(x-x_A)})+{b1}({latex(y-y_A)})+{c1}({latex(z-z_A)})=0$"
+        f" $\\Leftrightarrow {latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))}=0$.\n\n"
+        f"Khi đó: $a+b+c={a1+b1+c1}.$"      
+        )
+    HDG=HDG.replace("+-","-")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C5_B1_22]-SA-M3. Cho mp(P). Viết mp(Q) qua A,B vuông góc voi mp(P)(tổng hệ số)
+def htd_25_xyz_L12_C5_B1_22():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+
+    x_A,y_A,z_A = [random.randint(-5,5) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,5)
+
+    x_B, y_B, z_B = random.randint(-3,3),random.randint(-4,4),random.randint(-3,3)
+    x_C, y_C, z_C = [random.randint(-4,4) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,5)
+
+    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
+    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
+    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
+
+    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
+        x_B = x_B + random.randint(1,3)
+
+    while True:
+        x_I, y_I, z_I = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7) 
+        if all([x_I!=x_A, x_I!=x_B, x_I!=x_C,y_I!=y_A, y_I!=y_B, y_I!=y_C]):
+            break
+
+    m=[x_B-x_A, y_B-y_A, z_B-z_A]
+    n=[x_C-x_A, y_C-y_A, z_C-z_A]
+    a, b, c = tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]   
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    d=-a*x_A-b*y_A-c*z_A
+    
+
+    x_A,y_A,z_A=x_A+random.randint(1,2),y_A,z_A
+    x_B,y_B,z_B=x_B,y_B+random.randint(1,2),z_B
+
+    x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+    m=[x_AB, y_AB, z_AB]
+    n=[a, b, c]
+    
+    a1,b1,c1=tich_co_huong(m,n)
+    d1=-a1*x_A-b1*y_A-c1*z_A
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({mp_P})}}$ có phương trình ${ptmp_P}=0$."
+        f" Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình dạng $ax+by+cz+{d1}=0$. Tính ${{a+b+c}}$." )
+    noi_dung=noi_dung.replace("+-","-")
+
+    dap_an=a1+b1+c1
+    noi_dung_loigiai=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec2(B,C)}=({x_AB};{y_AB};{z_AB})$.\n\n"
+        f"Mặt phẳng ${{({mp_Q})}}$ nhận ${vec(f"n_{mp_P}")},{vec2(B,C)}$ làm cặp véctơ chỉ phương.\n\n"
+        f"$[{vec(f"n_{mp_P}")},{vec2(B,C)}]=({a1};{b1};{c1})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_Q})}}$.\n\n"        
+        f"Phương trình ${{({mp_Q})}}:{a1}({latex(x-x_A)})+{b1}({latex(y-y_A)})+{c1}({latex(z-z_A)})=0$"
+        f" $\\Leftrightarrow {latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))}=0$.\n\n"
+        f"Khi đó: $a+b+c={a1+b1+c1}.$"      
+        )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_23]-SA-M3. Cho mp(P). Viết mp(Q) qua A và song song voi mp(P)(tổng hệ số)
+def htd_25_xyz_L12_C5_B1_23():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+
+    x_A,y_A,z_A = [random.randint(-5,5) for i in range(3)]
+    if x_A ==0: x_A=random.randint(1,5)
+
+    x_B, y_B, z_B = random.randint(-3,3),random.randint(-4,4),random.randint(-3,3)
+    x_C, y_C, z_C = [random.randint(-4,4) for i in range(3)]
+    if y_C ==0: y_C=random.randint(1,5)
+
+    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
+    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
+    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
+
+    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
+        x_B = x_B + random.randint(1,3)
+
+    while True:
+        x_I, y_I, z_I = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7) 
+        if all([x_I!=x_A, x_I!=x_B, x_I!=x_C,y_I!=y_A, y_I!=y_B, y_I!=y_C]):
+            break
+
+    m=[x_B-x_A, y_B-y_A, z_B-z_A]
+    n=[x_C-x_A, y_C-y_A, z_C-z_A]
+    a, b, c = tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]   
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    d=-a*x_A-b*y_A-c*z_A
+    
+
+    x_B,y_B,z_B=x_B+random.randint(1,2),y_B,z_B
+    d1=-a*x_B-b*y_B-c*z_B
+        
+    
+    noi_dung= (f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({mp_P})}}$ có phương trình ${ptmp_P}=0$."
+        f" Mặt phẳng ${{({mp_Q})}}$ đi qua điểm ${B}({x_B};{y_B};{z_B})$ và song song với ${{({mp_P})}}$ có phương trình dạng ${a}x+ay+bz+c=0$. Tính ${{a+b+c}}$." )
+    noi_dung=noi_dung.replace("+-","-")
+
+    dap_an=b+c+d1
+    noi_dung_loigiai=(
+        f"Mặt phẳng ${{({mp_Q})}}$ nhận ${vec(f"n_{mp_P}")}=({a};{b};{c})$ làm một véctơ pháp tuyến.\n\n"            
+        f"Phương trình ${{({mp_Q})}}:{a}({latex(x-x_B)})+{b}({latex(y-y_B)})+{c}({latex(z-z_B)})=0$"
+        f" $\\Leftrightarrow {latex(a*(x-x_B)+b*(y-y_B)+c*(z-z_B))}=0$.\n\n"
+        f"Khi đó: $a+b+c={b+c+d1}$."      
+        )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_24]-SA-M3. Mp(P) qua A và chứa trục tọa độ. Tính khoảng cách từ B đến (P)
+def htd_25_xyz_L12_C5_B1_24():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z") 
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]
+
+    while True:
+        x_A,y_A,z_A = [random.randint(-6,6) for i in range(3)]
+        x_B,y_B,z_B = [random.randint(-7,7) for i in range(3)]             
+
+        if all([x_A!=0, y_A!=0, z_A!=0, x_B!=x_A, y_B!=y_A, z_B!=z_A]):            
+            break      
+
+    chon=random.randint(1,3)
+    if chon==1:
+        m=[x_A, y_A, z_A]
+        n=[1, 0, 0]
+        
+        a,b,c=tich_co_huong(m,n)
+        d=-a*x_A-b*y_A-c*z_A
+        ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A)) 
+
+        
+        noi_dung= (f"Trong không gian ${{Oxyz}}$, cho hai điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B})$."
+            f" Mặt phẳng ${{({mp_P})}}$ qua ${{{A}}}$ và chứa trục ${{Ox}}$. Tính khoảng cách từ điểm ${{{B}}}$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+        noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+        khoang_cach=latex(nsimplify(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2)))
+        dap_an=f"{round_half_up(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(f"${vec(f"O{A}")}=({x_A};{y_A};{z_A}), {vec("i")}=(1;0;0)$.\n\n"
+            f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec(f"O{A}")},{vec("i")}$ làm cặp véctơ chỉ phương.\n\n"
+            f"$[{vec(f"O{A}")},{vec("i")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+            f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+            f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+            f"$d\\left({B},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_B)}+{show_tich(b,y_B)}+{show_tich(c,z_B)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+            )
+
+    if chon==2:
+        m=[x_A, y_A, z_A]
+        n=[0, 1, 0]
+        
+        a,b,c=tich_co_huong(m,n)
+        d=-a*x_A-b*y_A-c*z_A
+        ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A)) 
+
+        
+        noi_dung= (f"Trong không gian ${{Oxyz}}$, cho hai điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B})$."
+            f" Mặt phẳng ${{({mp_P})}}$ qua ${{{A}}}$ và chứa trục ${{Oy}}$. Tính khoảng cách từ điểm ${{{B}}}$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+        noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+        khoang_cach=latex(nsimplify(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2)))
+        dap_an=f"{round_half_up(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(f"${vec(f"O{A}")}=({x_A};{y_A};{z_A}), {vec("j")}=(0;1;0)$.\n\n"
+            f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec(f"O{A}")},{vec("j")}$ làm cặp véctơ chỉ phương.\n\n"
+            f"$[{vec(f"O{A}")},{vec("j")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+            f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+            f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+            f"$d\\left({B},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_B)}+{show_tich(b,y_B)}+{show_tich(c,z_B)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+            )
+
+    if chon==3:
+        m=[x_A, y_A, z_A]
+        n=[0, 0, 1]
+        
+        a,b,c=tich_co_huong(m,n)
+        d=-a*x_A-b*y_A-c*z_A
+        ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A)) 
+
+        
+        noi_dung= (f"Trong không gian ${{Oxyz}}$, cho hai điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B})$."
+            f" Mặt phẳng ${{({mp_P})}}$ qua ${{{A}}}$ và chứa trục ${{Oz}}$. Tính khoảng cách từ điểm ${{{B}}}$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+        noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+        khoang_cach=latex(nsimplify(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2)))
+        dap_an=f"{round_half_up(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(f"${vec(f"O{A}")}=({x_A};{y_A};{z_A}), {vec("k")}=(0;0;1)$.\n\n"
+            f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec(f"O{A}")},{vec("k")}$ làm cặp véctơ chỉ phương.\n\n"
+            f"$[{vec(f"O{A}")},{vec("k")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+            f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+            f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+            f"$d\\left({B},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_B)}+{show_tich(b,y_B)}+{show_tich(c,z_B)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+            )
+    
+    
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_25]-SA-M3. Mp(P) qua A,B và song song trục tọa độ. Tính khoảng cách từ B đến (P)
+def htd_25_xyz_L12_C5_B1_25():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z") 
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q=ten_mp[0:2]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,I,M=ten_diem[0:5]
+
+    while True:
+        x_A,y_A,z_A = [random.randint(-6,6) for i in range(3)]
+        x_B,y_B,z_B = [random.randint(-7,7) for i in range(3)]
+        x_C,y_C,z_C = [random.randint(-7,7) for i in range(3)]         
+
+        if all([x_A!=0, y_A!=0, z_A!=0, x_B!=x_A, y_B!=y_A, z_B!=z_A,
+            x_C not in [x_A,x_B], y_C not in [y_A,y_B]]):            
+            break      
+
+    chon=random.randint(1,3)
+    
+    if chon==1:
+        x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+        m=[x_AB, y_AB, z_AB]
+        n=[1, 0, 0]
+        
+        a,b,c=tich_co_huong(m,n)
+        d=-a*x_A-b*y_A-c*z_A
+        ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A)) 
+
+        
+        noi_dung= (f"Trong không gian ${{Oxyz}}$, cho các điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B}),{C}({x_C};{y_C};{z_C})$."
+            f" Mặt phẳng ${{({mp_P})}}$ qua ${{{A},{B}}}$ và song song ${{Ox}}$. Tính khoảng cách từ điểm ${{{C}}}$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+        noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+        khoang_cach=latex(nsimplify(abs(a*x_C+b*y_C+c*z_C+d)/sqrt(a**2+b**2+c**2)))
+        dap_an=f"{round_half_up(abs(a*x_C+b*y_C+c*z_C+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(f"${vec2(A,B)}=({x_AB};{y_AB};{z_AB}), {vec("i")}=(1;0;0)$.\n\n"
+            f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec2(A,B)},{vec("i")}$ làm cặp véctơ chỉ phương.\n\n"
+            f"$[{vec2(A,B)},{vec("i")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+            f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+            f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+            f"$d\\left({C},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_C)}+{show_tich(b,y_C)}+{show_tich(c,z_C)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+            )
+
+    if chon==2:
+        x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+        m=[x_AB, y_AB, z_AB]
+        n=[0, 1, 0]
+        
+        a,b,c=tich_co_huong(m,n)
+        d=-a*x_A-b*y_A-c*z_A
+        ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A)) 
+
+        
+        noi_dung= (f"Trong không gian ${{Oxyz}}$, cho các điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B}),{C}({x_C};{y_C};{z_C})$."
+            f" Mặt phẳng ${{({mp_P})}}$ qua ${{{A},{B}}}$ và song song ${{Oy}}$. Tính khoảng cách từ điểm ${{{C}}}$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+        noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+        khoang_cach=latex(nsimplify(abs(a*x_C+b*y_C+c*z_C+d)/sqrt(a**2+b**2+c**2)))
+        dap_an=f"{round_half_up(abs(a*x_C+b*y_C+c*z_C+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(f"${vec2(A,B)}=({x_AB};{y_AB};{z_AB}), {vec("j")}=(0;1;0)$.\n\n"
+            f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec2(A,B)},{vec("j")}$ làm cặp véctơ chỉ phương.\n\n"
+            f"$[{vec2(A,B)},{vec("j")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+            f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+            f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+            f"$d\\left({C},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_C)}+{show_tich(b,y_C)}+{show_tich(c,z_C)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+            )
+    
+    if chon==3:
+        x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+        m=[x_AB, y_AB, z_AB]
+        n=[0, 0, 1]
+        
+        a,b,c=tich_co_huong(m,n)
+        d=-a*x_A-b*y_A-c*z_A
+        ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A)) 
+
+        
+        noi_dung= (f"Trong không gian ${{Oxyz}}$, cho các điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B}),{C}({x_C};{y_C};{z_C})$."
+            f" Mặt phẳng ${{({mp_P})}}$ qua ${{{A},{B}}}$ và song song ${{Oz}}$. Tính khoảng cách từ điểm ${{{C}}}$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+        noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+        khoang_cach=latex(nsimplify(abs(a*x_C+b*y_C+c*z_C+d)/sqrt(a**2+b**2+c**2)))
+        dap_an=f"{round_half_up(abs(a*x_C+b*y_C+c*z_C+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(f"${vec2(A,B)}=({x_AB};{y_AB};{z_AB}), {vec("k")}=(0;0;1)$.\n\n"
+            f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec2(A,B)},{vec("k")}$ làm cặp véctơ chỉ phương.\n\n"
+            f"$[{vec2(A,B)},{vec("k")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+            f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+            f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+            f"$d\\left({C},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_C)}+{show_tich(b,y_C)}+{show_tich(c,z_C)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+            )
+    
+    
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
 #[D12_C5_B3_01]. Viết phương trình mặt cầu có tâm và bán kính

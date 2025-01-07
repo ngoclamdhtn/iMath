@@ -7162,6 +7162,31 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+
+                item = QTreeWidgetItem(L12_C5_B1_12, ["[D12_C5_B1_21]-TF-M3. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, vị trí 2 mặt phẳng, PTMP vuông góc (tính tổng hệ số)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C5_B1_13 = QTreeWidgetItem(L12_C5_B1, ["Trả lời ngắn"])
+                L12_C5_B1_13.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C5_B1_13.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_22]-SA-M3. Mp(Q) qua A,B vuông góc voi mp(P)(tính tổng hệ số)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_23]-SA-M3. Mp(Q) qua A và song song voi mp(P)(tính tổng hệ số)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_24]-SA-M3. Mp(P) qua A và chứa trục tọa độ. Tính khoảng cách từ B đến (P)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_25]-SA-M3. Mp(P) qua A,B và song song trục tọa độ. Tính khoảng cách từ C đến (P)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                
 
                 L12_C5_B2 = QTreeWidgetItem(L12_C5, ["Bài 2 - Phương trình đường thẳng"])
@@ -8956,7 +8981,28 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C5_B1_20]-M3. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, vị trí hai mp, phương trình mặt phẳng vuông góc
                                                 if dang_toan == "[D12_C5_B1_20]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_20()                              
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_20()
+
+
+                                                #[D12_C5_B1_21]-M3. Cho mặt phẳng. Xét Đ-S: VTPT, điểm thuộc mp, vị trí hai mp, PTMP vuông góc (tổng hệ số)
+                                                if dang_toan == "[D12_C5_B1_21]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_21()
+
+                                                #[D12_C5_B1_22]-SA-M3. Cho mp(P). Viết mp(Q) qua A,B vuông góc voi mp(P)(tổng hệ số)
+                                                if dang_toan == "[D12_C5_B1_22]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_22()
+
+                                                #[D12_C5_B1_23]-SA-M3. Cho mp(P). Cho mp(P). Viết mp(Q) qua A và song song voi mp(P)(tổng hệ số)
+                                                if dang_toan == "[D12_C5_B1_23]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_23()
+
+                                                #[D12_C5_B1_24]-SA-M3. Mp(P) qua A và chứa trục tọa độ. Tính khoảng cách từ B đến (P)
+                                                if dang_toan == "[D12_C5_B1_24]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_24()
+
+                                                #[D12_C5_B1_25]-SA-M3. Mp(P) qua A,B và song song trục tọa độ. Tính khoảng cách từ B đến (P)
+                                                if dang_toan == "[D12_C5_B1_25]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_25()                             
                                                     
 
 
