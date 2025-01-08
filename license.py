@@ -7,10 +7,27 @@ from cryptography.fernet import Fernet
 from datetime import datetime
 
 def get_drive_serial_number():
-    st=subprocess.check_output('wmic bios get serialnumber').decode("utf-8")
-    st=st.replace("SerialNumber","")
-    st = ''.join(st.splitlines())
-    st=st.replace(" ","")
+    try:
+        # Thực thi lệnh WMIC
+        result = subprocess.run(
+            ['wmic', 'bios', 'get', 'serialnumber'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        # Kiểm tra lỗi
+        if result.returncode != 0:            
+            return "iMath@2025-Lam"
+        
+        # Xử lý đầu ra
+        output = result.stdout.strip().split("\n")
+        if len(output) > 1:
+            serial_number = output[1].strip()
+            return serial_number
+        else:            
+            return "iMath@2025-Lam"
+    except Exception as e:        
+        return "iMath@2025-Lam"
     return st
 
 def encrypt_string(s):

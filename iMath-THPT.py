@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 05.01.2025")
+                self.label.setText(f"iMath\u00A92025 ver 08.01.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -7195,6 +7195,24 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_29]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính chu vi ABC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_28]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính diện tích ABC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_30]-SA-M3. Tìm hình chiếu của điểm lên mặt phẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_31]-SA-M3. Tìm điểm đối xứng của điểm lên mặt phẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                
 
                 L12_C5_B2 = QTreeWidgetItem(L12_C5, ["Bài 2 - Phương trình đường thẳng"])
@@ -9018,7 +9036,23 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C5_B1_27]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính tổng hệ số
                                                 if dang_toan == "[D12_C5_B1_27]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_27()                           
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_27()
+
+                                                #[D12_C5_B1_28]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính diện tích ABC
+                                                if dang_toan == "[D12_C5_B1_28]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_28()
+
+                                                #[D12_C5_B1_29]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính chu vi ABC
+                                                if dang_toan == "[D12_C5_B1_29]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_29()
+
+                                                #[D12_C5_B1_30]-SA-M3. Tìm hình chiếu của điểm lên mặt phẳng.
+                                                if dang_toan == "[D12_C5_B1_30]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_30()
+
+                                                #[D12_C5_B1_31]-SA-M3. Tìm điểm đối xưng của điểm qua mặt phẳng.
+                                                if dang_toan == "[D12_C5_B1_31]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_31()                         
                                                     
 
 

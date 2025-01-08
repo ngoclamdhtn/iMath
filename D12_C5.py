@@ -2817,7 +2817,7 @@ def htd_25_xyz_L12_C5_B1_27():
     f"Trong không gian ${{Oxyz}}$, mặt phẳng ${{({mp_P})}}$ đi qua ba điểm ${A}({x_A};{y_A};{z_A})$, "
         f" ${B}({x_B};{y_B};{z_B})$ và ${C}({x_C};{y_C};{z_C})$ có phương trình dạng $ax+by+c+{d}=0$."
         f" Tính tổng ${{a+b+c}}$.")
-    noi_dung=noi_dung.replace("+-","-").replace("+0","0")
+    noi_dung=noi_dung.replace("+-","-").replace("+0","")
 
     ptmp_P= f"{latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))}=0"
 
@@ -2829,7 +2829,7 @@ def htd_25_xyz_L12_C5_B1_27():
         f" ${a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0\\Leftrightarrow {ptmp_P}$.\n\n"
         f"$a+b+c={dap_an}$.")
 
-    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","0")  
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","")  
         
     debai_word= f"{noi_dung}\n"
 
@@ -2846,15 +2846,11 @@ def htd_25_xyz_L12_C5_B1_27():
 #[D12_C5_B1_28]-SA-M3. Cho mặt phẳng (P). Tính diện tích tam giác khi mp cắt 3 trục tọa độ
 def htd_25_xyz_L12_C5_B1_28():
     #Tạo bậc ngẫu nhiên
-    x,y,z=sp.symbols("x y z")    
-
-    while True:
-        a = random.randint(-6,7)
-        b = random.randint(-5,6)
-        c = random.randint(-5,6)
-        d = random.randint(-8,9)    
-        if all([ a!=0,b!=0,c!=0]):            
-            break
+    x,y,z=sp.symbols("x y z")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.randint(-10,11)    
     ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
 
     x_A,y_A,z_A=-d/a,0,0
@@ -2893,7 +2889,7 @@ def htd_25_xyz_L12_C5_B1_28():
         f" tính được S={dap_an}."       
         )
 
-    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","0")  
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","")  
         
     debai_word= f"{noi_dung}\n"
 
@@ -2906,6 +2902,199 @@ def htd_25_xyz_L12_C5_B1_28():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_29]-SA-M3. Cho mặt phẳng (P). Tính chu vi tam giác khi mp cắt 3 trục tọa độ
+def htd_25_xyz_L12_C5_B1_29():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.randint(-10,11)
+    ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
+
+    x_A,y_A,z_A=-d/a,0,0
+    x_B,y_B,z_B=0,-d/b,0
+    x_C,y_C,z_C=0,0,-d/b
+    x_AB,y_AB,z_AB=x_B-x_A, y_B-y_A, z_B-z_A
+    x_AC,y_AC,z_AC=x_C-x_A, y_C-y_A, z_C-z_A
+    x_BC,y_BC,z_BC=x_C-x_B, y_C-y_B, z_C-z_B
+
+    m=[d/a,-d/b,0]
+    n=[d/a,0,-d/c]   
+    a,b,c=tich_co_huong(m,n)
+
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,M=ten_diem[0:4]
+
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    vec_AB, vec_AC, vec_BC=f"\\overrightarrow{{{A}{B}}}", f"\\overrightarrow{{{A}{C}}}", f"\\overrightarrow{{{B}{C}}}"
+    
+    AB=sqrt(x_AB**2+y_AB**2+z_AB**2)
+    AC=sqrt(x_AC**2+y_AC**2+z_AC**2)
+    BC=sqrt(x_BC**2+y_BC**2+z_BC**2)
+    dap_an=f"{round_half_up(AB+AC+BC,1):.1f}".replace(".",",")
+    noi_dung= (
+    f"Trong không gian ${{Oxyz}}$, cho mặt phẳng $({mp_P}):{ptmp_P}=0$ "
+        f" Mặt phẳng $({mp_P})$ cắt các trục ${{Ox,Oy,Oz}}$ tại các điểm ${A},{B},{C}$."
+        f" Tính chu vi tam giác ${{{A}{B}{C}}}$(kết quả làm tròn đến hàng phần mười).")
+
+
+    noi_dung_loigiai=my_module.thay_dau_congtru(
+        f"Mặt phẳng $({mp_P})$ cắt các trục ${{Ox,Oy,Oz}}$ tại ${A}({phan_so(x_A)};0;0),{B}(0;{phan_so(y_B)};0), {C}(0;0;{phan_so(z_C)})$.\n\n"
+        f"${vec_AB}=({phan_so(x_B-x_A)};{phan_so(y_B-y_A)};{phan_so(z_B-z_A)}), {vec_AC}=({phan_so(x_C-x_A)};{phan_so(y_C-y_A)};{phan_so(z_C-z_A)})$,"
+        f"${vec_BC}=({phan_so(x_C-x_A)};{phan_so(y_C-y_A)};{phan_so(z_C-z_A)})$.\n\n"
+        f"${A}{B}={latex(nsimplify(sqrt(x_AB**2+y_AB**2+z_AB**2)))}$, ${A}{C}={latex(nsimplify(sqrt(x_AC**2+y_AC**2+z_AC**2)))}$, "
+        f"${B}{C}={latex(nsimplify(sqrt(x_BC**2+y_BC**2+z_BC**2)))}$.\n\n"
+        f" Chu vi tam giác: ${A}{B}+{A}{C}+{B}{C}={latex(nsimplify(AB))}+{latex(nsimplify(AC))}+{latex(nsimplify(BC))}={dap_an}$\n\n"             
+        )
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_30]-SA-M3. Tìm hình chiếu của điểm lên mặt phẳng.
+def htd_25_xyz_L12_C5_B1_30():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.randint(-10,11)
+    ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
+
+    
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,H=ten_diem[0:2]
+
+    while True:
+        x_A,y_A,z_A=random.randint(-6,6),random.randint(-6,6),random.randint(-6,6)
+        if a*x_A+b*y_A+c*z_A+d !=0:
+            break
+
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    
+    noi_dung= (
+    f"Trong không gian ${{Oxyz}}$, cho mặt phẳng $({mp_P}):{ptmp_P}$ và điểm ${A}({x_A};{y_A};{z_A})$."
+        f" Biết ${H}(a;b;c)$ là hình chiếu của điểm ${{{A}}}$ lên mặt phẳng ${{({mp_P})}}$."
+        f" Tính ${{a+b+c}}$ (kết quả làm tròn đến hàng phần mười).")
+
+    t=sp.symbols("t")
+    eq=Eq(a*(x_A+a*t)+b*(y_A+b*t)+c*(z_A+c*t)+d,0)
+    solution=solve(eq,t)
+
+    t=solution[0]
+    x_H,y_H,z_H = x_A+a*t, y_A+b*t, z_A+c*t
+
+    dap_an=f"{round_half_up(x_H+y_H+z_H,1):.1f}".replace(".",",")
+    noi_dung_loigiai=my_module.thay_dau_congtru(
+        f"$(P)$ nhận ${vec("n")}=({a};{b};{c})$ làm một véctơ pháp tuyến.\n\n"
+        f"${vec2(A,H)}=(a-{x_A};b-{y_A};c-{z_A})$ cùng phương với ${vec("n")}$ nên:\n\n"
+        f"${vec2(A,H)}=t{vec("n")}\\Rightarrow a={x_A}+{a}t,b={y_A}+{b}t,c={z_A}+{c}t$.\n\n"
+        f"${H} \\in ({mp_P}) \\Rightarrow {a}({x_A}+{a}t)+{b}({y_A}+{b}t)+{c}({z_A}+{c}t)+{d}=0$.\n\n"
+        f"$\\Rightarrow t={phan_so(t)} \\Rightarrow {H}({phan_so(x_H)};{phan_so(y_H)};{phan_so(z_H)})$\n\n"
+        f"$a+b+c={phan_so(x_H)}+{phan_so(y_H)}+{phan_so(z_H)}={dap_an}$."
+                    
+        )
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_31]-SA-M3. Tìm điểm đối xưng của điểm qua mặt phẳng.
+def htd_25_xyz_L12_C5_B1_31():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.randint(-10,11)
+    ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
+
+    
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,H,M=ten_diem[0:3]
+
+    while True:
+        x_A,y_A,z_A=random.randint(-6,6),random.randint(-6,6),random.randint(-6,6)
+        if a*x_A+b*y_A+c*z_A+d !=0:
+            break
+
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    
+    noi_dung= (
+    f"Trong không gian ${{Oxyz}}$, cho mặt phẳng $({mp_P}):{ptmp_P}$ và điểm ${A}({x_A};{y_A};{z_A})$."
+        f" Biết ${M}(a;b;c)$ là điểm đối xứng với điểm ${{{A}}}$ qua mặt phẳng ${{({mp_P})}}$."
+        f" Tính ${{a+b+c}}$ (kết quả làm tròn đến hàng phần mười).")
+
+    t=sp.symbols("t")
+    eq=Eq(a*(x_A+a*t)+b*(y_A+b*t)+c*(z_A+c*t)+d,0)
+    solution=solve(eq,t)
+
+    t=solution[0]
+    x_H,y_H,z_H = x_A+a*t, y_A+b*t, z_A+c*t
+    x_M,y_M,z_M=2*x_H-x_A, 2*y_H-y_A, 2*z_H-z_A
+
+    dap_an=f"{round_half_up(x_M+y_M+z_M,1):.1f}".replace(".",",")
+    noi_dung_loigiai=my_module.thay_dau_congtru(
+        f"$(P)$ nhận ${vec("n")}=({a};{b};{c})$ làm một véctơ pháp tuyến.\n\n"
+        f"Gọi ${{{H}}}$ là hình chiếu của ${{{A}}}$ lên $({mp_P})$.\n\n"
+        f"${vec2(A,H)}=(a-{x_A};b-{y_A};c-{z_A})$ cùng phương với ${vec("n")}$ nên:\n\n"
+        f"${vec2(A,H)}=t{vec("n")}\\Rightarrow a={x_A}+{a}t,b={y_A}+{b}t,c={z_A}+{c}t$.\n\n"
+        f"${H} \\in ({mp_P}) \\Rightarrow {a}({x_A}+{a}t)+{b}({y_A}+{b}t)+{c}({z_A}+{c}t)+{d}=0$.\n\n"
+        f"$\\Rightarrow t={phan_so(t)} \\Rightarrow {H}({phan_so(x_H)};{phan_so(y_H)};{phan_so(z_H)})$\n\n"
+        f"$x_{M}=2.{phan_so(x_H)}-{x_A}={phan_so(x_M)}$,"
+        f"$y_{M}=2.{phan_so(y_H)}-{y_A}={phan_so(y_M)}$,"
+        f"$z_{M}=2.{phan_so(z_H)}-{z_A}={phan_so(z_M)}$."
+        f"${M}({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)})$.\n\n"
+        f"$a+b+c={phan_so(x_M)}+{phan_so(y_M)}+{phan_so(z_M)}={dap_an}$."
+                    
+        )
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
 #[D12_C5_B3_01]. Viết phương trình mặt cầu có tâm và bán kính
