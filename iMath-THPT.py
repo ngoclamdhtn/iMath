@@ -7187,6 +7187,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_26]-SA-M3. Mp(P) qua A và vuông góc với (Q),(R). Tính khoảng cách từ B đến (P)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_27]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính tổng hệ số"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                
 
                 L12_C5_B2 = QTreeWidgetItem(L12_C5, ["Bài 2 - Phương trình đường thẳng"])
@@ -9002,7 +9010,15 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C5_B1_25]-SA-M3. Mp(P) qua A,B và song song trục tọa độ. Tính khoảng cách từ B đến (P)
                                                 if dang_toan == "[D12_C5_B1_25]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_25()                             
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_25()
+
+                                                #[D12_C5_B1_26]-SA-M3. Mp(P) qua A và vuông góc với (Q),(R). Tính khoảng cách từ B đến (P)
+                                                if dang_toan == "[D12_C5_B1_26]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_26()
+
+                                                #[D12_C5_B1_27]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính tổng hệ số
+                                                if dang_toan == "[D12_C5_B1_27]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_27()                           
                                                     
 
 

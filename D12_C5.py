@@ -4,6 +4,114 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+def tao_3dinh_tamgiac():   
+    
+    a = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    b = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    c = random.choice([random.randint(-3, -1), random.randint(1, 3)])   
+
+    t_uc=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t_uc),int(b/t_uc),int(c/t_uc)
+
+    x_0,y_0,z_0 = [random.randint(-2,2) for i in range(3)]
+    if x_0==y_0==z_0==0:
+        x_0= random.choice([i for i in range(-2, 2) if i!=0])
+        y_0= random.choice([i for i in range(-2, 2) if i!=0])
+
+    t1=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    x_1 = x_0+a*t1
+    y_1 = y_0+b*t1
+    z_1 = z_0+c*t1
+
+    t2=t1+random.randint(1,2)
+    x_2 = x_0+a*t2
+    y_2 = y_0+b*t2
+    z_2 = z_0+c*t2
+
+    t3=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    x_3 = x_0+a*(t3+random.randint(1,2))
+    y_3 = y_0+b*t3
+    z_3 = z_0+c*(t3-random.randint(1,2))
+
+    while x_1==0 or x_2==0 or z_1==z_2:
+        t1=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+        x_1 = x_0+a*t1
+        y_1 = y_0+b*t1
+        z_1 = z_0+c*t1
+
+        t2=t1+random.randint(1,2)
+        x_2 = x_0+a*t2
+        y_2 = y_0+b*t2
+        z_2 = z_0+c*t2
+
+    x=(x_1,y_1,z_1)
+    y=(x_2,y_2,z_2)
+    z=(x_3,y_3,z_3)
+    return x,y,z
+
+def tao_3dinh_tamgiacvuong():
+    while True:
+        # Tạo ngẫu nhiên ba điểm A, B, C trong khoảng [-6, 6]
+        A = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+        B = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+        C = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+
+        # Kiểm tra các điểm không trùng nhau
+        if any([A[0]==B[0],A[1]==B[1],A[2]==B[2],
+            A[0]==C[0],A[1]==C[1],A[2]==C[2],
+            B[0]==C[0],B[1]==C[1],B[2]==C[2]]):
+            continue
+
+        # Tính các vectơ
+        AB = (B[0] - A[0], B[1] - A[1], B[2] - A[2])
+        AC = (C[0] - A[0], C[1] - A[1], C[2] - A[2])
+        BC = (C[0] - B[0], C[1] - B[1], C[2] - B[2])
+
+        # Tính tích vô hướng của các cặp vectơ
+        dot_AB_AC = AB[0]*AC[0] + AB[1]*AC[1] + AB[2]*AC[2]
+        dot_AB_BC = AB[0]*BC[0] + AB[1]*BC[1] + AB[2]*BC[2]
+        dot_AC_BC = AC[0]*BC[0] + AC[1]*BC[1] + AC[2]*BC[2]
+
+        # Kiểm tra tam giác vuông
+        if dot_AB_AC == 0:  # Vuông tại A
+            return A, B, C
+        elif dot_AB_BC == 0:  # Vuông tại B
+            return B, C, A
+        elif dot_AC_BC == 0:  # Vuông tại C
+            return C, A, B
+
+def tao_3dinh_tamgiacvuong_2():
+    while True:
+        # Tạo ngẫu nhiên ba điểm A, B, C trong khoảng [-6, 6]
+        A = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+        B = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+        C = (random.randint(-6, 6), random.randint(-6, 6), random.randint(-6, 6))
+
+        # Kiểm tra các điểm không trùng nhau
+        if any([A[0]==B[0],A[1]==B[1],A[2]==B[2],
+            A[0]==C[0],A[1]==C[1],A[2]==C[2],
+            B[0]==C[0],B[1]==C[1],B[2]==C[2]]):
+            continue
+
+        # Tính các vectơ
+        AB = (B[0] - A[0], B[1] - A[1], B[2] - A[2])
+        AC = (C[0] - A[0], C[1] - A[1], C[2] - A[2])
+        BC = (C[0] - B[0], C[1] - B[1], C[2] - B[2])
+
+        # Tính tích vô hướng của các cặp vectơ
+        dot_AB_AC = AB[0]*AC[0] + AB[1]*AC[1] + AB[2]*AC[2]
+        dot_AB_BC = AB[0]*BC[0] + AB[1]*BC[1] + AB[2]*BC[2]
+        dot_AC_BC = AC[0]*BC[0] + AC[1]*BC[1] + AC[2]*BC[2]
+
+        # Kiểm tra tam giác vuông
+        if dot_AB_AC == 0:  # Vuông tại A
+            return A, B, C
+        elif dot_AB_BC == 0:  # Vuông tại B
+            return B, A, C
+        elif dot_AC_BC == 0:  # Vuông tại C
+            return C, A, B
+
 # Hàm làm tròn half-up
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
@@ -2490,7 +2598,7 @@ def htd_25_xyz_L12_C5_B1_25():
 
         if all([x_A!=0, y_A!=0, z_A!=0, x_B!=x_A, y_B!=y_A, z_B!=z_A,
             x_C not in [x_A,x_B], y_C not in [y_A,y_B]]):            
-            break      
+            break     
 
     chon=random.randint(1,3)
     
@@ -2583,6 +2691,218 @@ def htd_25_xyz_L12_C5_B1_25():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
     f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_26]-SA-M3. Mp(P) qua A và vuông góc với (Q),(R). Tính khoảng cách từ B đến (P)
+def htd_25_xyz_L12_C5_B1_26():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z") 
+    ten_mp=["P","Q", "R", "\\alpha","\\beta", "\\gamma"]
+    random.shuffle(ten_mp)
+    mp_P, mp_Q, mp_R=ten_mp[0:3]
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B=ten_diem[0:2]
+
+
+    while True:        
+        a1,b1,c1 = [random.randint(-5,5) for i in range(3)]
+        a2,b2,c2 = [random.randint(-5,5) for i in range(3)]
+        m=[a1,b1,c1]
+        n=[a2,b2,c2]    
+        a,b,c=tich_co_huong(m,n)       
+
+        if all([a1!=a2, b1!= b2, a!=0, b!=0]):            
+            break
+
+    t=ucln_ba_so(a1,b1,c1)
+    a1,b1,c1=int(a1/t),int(b1/t),int(c1/t)
+
+    t=ucln_ba_so(a2,b2,c2)
+    a2,b2,c2=int(a2/t),int(b2/t),int(c2/t)
+
+    d1=random.randint(-10,10)
+    d2 = random.choice([i for i in range(-10, 10) if i!=0])
+
+    m=[a1,b1,c1]
+    n=[a2,b2,c2]    
+    a,b,c=tich_co_huong(m,n)
+    
+    while True:
+        x_A,y_A,z_A = [random.randint(-4,4) for i in range(3)]
+        x_B,y_B,z_B = [random.randint(-6,6) for i in range(3)]
+        if all([x_A!=x_B, y_A!=y_B, a*(x_B-x_A)+b*(y_B-y_A)+c*(z_B-z_A)!=0]):            
+            break
+
+    d=-a*x_A-b*y_A-c*z_A
+    ptmp_P=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+
+    
+    noi_dung= (f"Trong không gian ${{Oxyz}}$,"
+        f" mặt phẳng ${{({mp_P})}}$ qua điểm ${A}({x_A};{y_A};{z_A})$ và vuông góc với hai mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ và $({mp_R}):{latex(a2*x+b2*y+c2*z+d2)}=0$."
+        f" Tính khoảng cách từ điểm ${B}({x_B};{y_B};{z_B})$ đến mặt phẳng ${{({mp_P})}}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+    noi_dung=noi_dung.replace("+-","-").replace("+0","")
+
+    khoang_cach=latex(nsimplify(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2)))
+    dap_an=f"{round_half_up(abs(a*x_B+b*y_B+c*z_B+d)/sqrt(a**2+b**2+c**2),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(f"${vec(f"n_{{{mp_Q}}}")}=({a1};{b1};{c1}), {vec(f"n_{{{mp_R}}}")}=({a2};{b2};{c2})$.\n\n"
+        f"Mặt phẳng ${{({mp_P})}}$ nhận ${vec(f"n_{{{mp_Q}}}")},{vec(f"n_{{{mp_R}}}")}$ làm cặp véctơ chỉ phương.\n\n"
+        f"$[{vec(f"n_{{{mp_Q}}}")},{vec(f"n_{{{mp_R}}}")}]=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({mp_P})}}$.\n\n"        
+        f"Phương trình ${{({mp_P})}}:{a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0$"
+        f" $\\Leftrightarrow {ptmp_P}=0$.\n\n"
+        f"$d\\left({B},({mp_P})\\right)=\\dfrac{{|{show_tich(a,x_B)}+{show_tich(b,y_B)}+{show_tich(c,z_B)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={khoang_cach}={dap_an}$."      
+        )
+
+    
+    
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_27]-SA-M3. Mặt phẳng (P) đi qua 3 điểm A,B,C. Tính tổng hệ số
+def htd_25_xyz_L12_C5_B1_27():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    while True:
+        x_A,y_A,z_A = [random.randint(-6,7) for i in range(3)]
+        x_B,y_B,z_B = [random.randint(-5,6) for i in range(3)]
+        x_C,y_C,z_C = [random.randint(-5,6) for i in range(3)]
+
+        x_AB,y_AB,z_AB=x_B-x_A,y_B-y_A,z_B-z_A
+        x_AC,y_AC,z_AC=x_C-x_A,y_C-y_A,z_C-z_A
+
+        m=[x_AB,y_AB,z_AB]
+        n=[x_AC,y_AC,z_AC]    
+        a,b,c=tich_co_huong(m,n)     
+
+        if all([x_B!=x_A, y_B!=y_A,
+            x_C not in [x_A, x_B], z_C not in [z_A,z_B],
+            a!=0,b!=0,c!=0]):            
+            break
+
+    m=[x_AB,y_AB,z_AB]
+    n=[x_AC,y_AC,z_AC]    
+    a,b,c=tich_co_huong(m,n)
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,M=ten_diem[0:4]
+
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    vec_AB, vec_AC=f"\\overrightarrow{{{A}{B}}}", f"\\overrightarrow{{{A}{C}}}"
+    d=-a*x_A-b*y_A-c*z_A
+    dap_an=a+b+c
+    noi_dung= (
+    f"Trong không gian ${{Oxyz}}$, mặt phẳng ${{({mp_P})}}$ đi qua ba điểm ${A}({x_A};{y_A};{z_A})$, "
+        f" ${B}({x_B};{y_B};{z_B})$ và ${C}({x_C};{y_C};{z_C})$ có phương trình dạng $ax+by+c+{d}=0$."
+        f" Tính tổng ${{a+b+c}}$.")
+    noi_dung=noi_dung.replace("+-","-").replace("+0","0")
+
+    ptmp_P= f"{latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))}=0"
+
+
+    noi_dung_loigiai=my_module.thay_dau_congtru(f"Ta có: ${vec_AB}=({x_B-x_A};{y_B-y_A};{z_B-z_A}), {vec_AC}=({x_C-x_A};{y_C-y_A};{z_C-z_A})$.\n\n"\
+        f"Mặt phẳng ${{({mp_P})}}$ nhận $\\overrightarrow{{n}}=\\left[{vec_AB}, {vec_AC}\\right]=({a};{b};{c})$ làm một véctơ pháp tuyến.\n\n"
+        f"Mặt phẳng ${{({mp_P})}}$ qua điểm ${A}({x_A};{y_A};{z_A})$.\n\n"
+        f"Mặt phẳng ${{({mp_P})}}$ có phương trình là:\n\n"\
+        f" ${a}({latex(x-x_A)})+{b}({latex(y-y_A)})+{c}({latex(z-z_A)})=0\\Leftrightarrow {ptmp_P}$.\n\n"
+        f"$a+b+c={dap_an}$.")
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","0")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_28]-SA-M3. Cho mặt phẳng (P). Tính diện tích tam giác khi mp cắt 3 trục tọa độ
+def htd_25_xyz_L12_C5_B1_28():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    while True:
+        a = random.randint(-6,7)
+        b = random.randint(-5,6)
+        c = random.randint(-5,6)
+        d = random.randint(-8,9)    
+        if all([ a!=0,b!=0,c!=0]):            
+            break
+    ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
+
+    x_A,y_A,z_A=-d/a,0,0
+    x_B,y_B,z_B=0,-d/b,0
+    x_C,y_C,z_C=0,0,-d/b
+    x_AB,y_AB,z_AB=x_B-x_A, y_B-y_A, z_B-z_A
+    x_AC,y_AC,z_AC=x_C-x_A, y_C-y_A, z_C-z_A
+    x_BC,y_BC,z_BC=x_C-x_B, y_C-y_B, z_C-z_B
+
+    m=[d/a,-d/b,0]
+    n=[d/a,0,-d/c]   
+    a,b,c=tich_co_huong(m,n)
+
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,M=ten_diem[0:4]
+
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    vec_AB, vec_AC, vec_BC=f"\\overrightarrow{{{A}{B}}}", f"\\overrightarrow{{{A}{C}}}", f"\\overrightarrow{{{B}{C}}}"
+    
+    dap_an=f"{round_half_up(sqrt(a**2+b**2+c**2)/2,1):.1f}".replace(".",",")
+    noi_dung= (
+    f"Trong không gian ${{Oxyz}}$, cho mặt phẳng $({mp_P}):{ptmp_P}=0$ "
+        f" Mặt phẳng $({mp_P})$ cắt các trục ${{Ox,Oy,Oz}}$ tại các điểm ${A},{B},{C}$."
+        f" Tính diện tích tam giác ${{{A}{B}{C}}}$(kết quả làm tròn đến hàng phần mười).") 
+
+    noi_dung_loigiai=my_module.thay_dau_congtru(
+        f"Mặt phẳng $({mp_P})$ cắt các trục ${{Ox,Oy,Oz}}$ tại ${A}({phan_so(x_A)};0;0),{B}(0;{phan_so(y_B)};0), {C}(0;0;{phan_so(z_C)})$.\n\n"
+        f"${vec_AB}=({phan_so(x_B-x_A)};{phan_so(y_B-y_A)};{phan_so(z_B-z_A)}), {vec_AC}=({phan_so(x_C-x_A)};{phan_so(y_C-y_A)};{phan_so(z_C-z_A)})$,"
+        f"${vec_BC}=({phan_so(x_C-x_A)};{phan_so(y_C-y_A)};{phan_so(z_C-z_A)})$.\n\n"
+        f"${A}{B}={latex(nsimplify(sqrt(x_AB**2+y_AB**2+z_AB**2)))}$, ${A}{C}={latex(nsimplify(sqrt(x_AC**2+y_AC**2+z_AC**2)))}$, "
+        f"${B}{C}={latex(nsimplify(sqrt(x_BC**2+y_BC**2+z_BC**2)))}$.\n\n"
+        f" Áp dụng công thức Hê-rông: $S=\\sqrt{{(p-{A}{B}).(p-{A}{C}).(p-{B}{C})}}$ với $p=\\dfrac{{{A}{B}+{A}{C}+{B}{C}}}{{2}}$\n\n"
+        f" tính được S={dap_an}."       
+        )
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("+0","0")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
