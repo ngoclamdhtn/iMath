@@ -146,8 +146,7 @@ def mien_nghiem_BPT_2an(a,b,c,dau):
 
     return lst_nghiem
 
-def mien_not_nghiem_BPT_2an(a,b,c,dau):  
-   
+def mien_not_nghiem_BPT_2an(a,b,c,dau):   
 
     lst_nghiem=[]
     if dau==">":
@@ -549,18 +548,18 @@ def bch_12_L10_C2_B1_05():
     if chon==1:
         noi_dung=random.choice([
         f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào",
-        f"Miền nghiệm của bất phương trình ${latex(a*x+b*y+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(-c+d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào"
+        f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào"
         ])
         cap_nghiem=mien_nghiem_BPT_2an(a,b,c,">")[0]
-        kq2,kq3,kq4=mien_not_nghiem_BPT_2an(a,b,c,">")[0:3]
+        kq2,kq3,kq4=mien_nghiem_BPT_2an(a,b,c,"<")[0:3]
     
     if chon==2:
         noi_dung=random.choice([
         f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice(["<","\\le"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào trong các điểm sau?",
-        f"Miền nghiệm của bất phương trình ${latex(a*x+b*y+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(-c+d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào trong các điểm sau?"
+        f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào trong các điểm sau?"
         ])
         cap_nghiem=mien_nghiem_BPT_2an(a,b,c,"<")[0]
-        kq2,kq3,kq4=mien_not_nghiem_BPT_2an(a,b,c,"<")[0:3]
+        kq2,kq3,kq4=mien_nghiem_BPT_2an(a,b,c,">")[0:3]
 
     kq=f"${cap_nghiem}$"       
     kq2=f"${kq2}$"       
@@ -774,7 +773,7 @@ def bch_12_L10_C2_B1_08():
         if kq1==kq1_F:
             loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-        not_nghiem=mien_not_nghiem_BPT_2an(a,b,c,">")[0]  
+        not_nghiem=mien_nghiem_BPT_2an(a,b,c,"<")[0]  
 
         kq2_T=f"*Cặp số ${not_nghiem}$ không là nghiệm của bất phương trình."
         kq2_F=f"Cặp số ${not_nghiem}$ là nghiệm của bất phương trình "
@@ -813,7 +812,7 @@ def bch_12_L10_C2_B1_08():
         noi_dung = f"Xét bất phương trình ${latex(f)}\\ge 0$. Xét tính đúng-sai của các khẳng định sau. "        
         debai_word= f"{noi_dung}\n"
 
-        cap_nghiem=mien_nghiem_BPT_2an(a,b,c,"<")[0]    
+        cap_nghiem=mien_nghiem_BPT_2an(a,b,c,">")[0]    
         
         kq1_T=f"*Cặp số ${cap_nghiem}$ là một nghiệm của bất phương trình." 
         kq1_F=f"Cặp số ${cap_nghiem}$ không là nghiệm của bất phương trình "
@@ -862,24 +861,22 @@ def bch_12_L10_C2_B1_08():
         noi_dung = f"Xét bất phương trình ${latex(f)}<0$. Xét tính đúng-sai của các khẳng định sau. "        
         debai_word= f"{noi_dung}\n"
 
-        x_0=random.randint(-3,3)
-        y_0=int((-a*x_0-c)/b) - random.randint(1,2)           
+        cap_nghiem=mien_nghiem_BPT_2an(a,b,c,"<")[0]        
         
-        kq1_T=f"*Cặp số $({x_0};{y_0})$ là một nghiệm của bất phương trình." 
-        kq1_F=f"Cặp số $({x_0};{y_0})$ không là nghiệm của bất phương trình "
+        kq1_T=f"*Cặp số ${cap_nghiem}$ là một nghiệm của bất phương trình." 
+        kq1_F=f"Cặp số ${cap_nghiem}$ không là nghiệm của bất phương trình "
         kq1=random.choice([kq1_T, kq1_F])
-        HDG=f"Thay $({x_0};{y_0})$ vào bất phương trình thấy thỏa mãn nên $({x_0};{y_0})$ là một nghiệm của bất phương trình."
+        HDG=f"Thay ${cap_nghiem}$ vào bất phương trình thấy thỏa mãn nên ${cap_nghiem}$ là một nghiệm của bất phương trình."
         loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq1==kq1_F:
             loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-        x_1=random.randint(-3,3)
-        y_1=int((-a*x_1-c)/b) + random.randint(1,3)
+        cap_nghiem=mien_nghiem_BPT_2an(a,b,c,">")[0]
 
-        kq2_T=f"*Cặp số $({x_1};{y_1})$ không là nghiệm của bất phương trình."
-        kq2_F=f"Cặp số $({x_1};{y_1})$ là nghiệm của bất phương trình "
+        kq2_T=f"*Cặp số ${cap_nghiem}$ không là nghiệm của bất phương trình."
+        kq2_F=f"Cặp số ${cap_nghiem}$ là nghiệm của bất phương trình "
         kq2=random.choice([kq2_T, kq2_F])
-        HDG=f"Thay $({x_1};{y_1})$ vào bất phương trình thấy không thỏa mãn nên $({x_1};{y_1})$ không là nghiệm của bất phương trình."
+        HDG=f"Thay ${cap_nghiem}$ vào bất phương trình thấy không thỏa mãn nên ${cap_nghiem}$ không là nghiệm của bất phương trình."
         loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq2==kq2_F:
             loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -935,10 +932,10 @@ def bch_12_L10_C2_B1_08():
         if kq2==kq2_F:
             loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-        kq3_T=f"*Miền nghiệm của bất phương trình không chứa đường thẳng $d:{latex(f)}=0$" 
-        kq3_F=f"Miền nghiệm của bất phương trình chứa đường thẳng $d:{latex(f)}=0$"
+        kq3_T=f"*Miền nghiệm của bất phương trình chứa đường thẳng $d:{latex(f)}=0$" 
+        kq3_F=f"Miền nghiệm của bất phương trình khôngchứa đường thẳng $d:{latex(f)}=0$"
         kq3=random.choice([kq3_T, kq3_F])
-        HDG=f"Bất phương trình ${latex(f)}<0$ có miền nghiệm không chứa đường thẳng ${latex(f)}=0$."
+        HDG=f"Bất phương trình ${latex(f)}<0$ có miền nghiệm chứa đường thẳng ${latex(f)}=0$."
         loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq3==kq3_F:
             loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -949,7 +946,7 @@ def bch_12_L10_C2_B1_08():
             f"Miền nghiệm là nửa mặt phẳng không chứa điểm $({x_1};{y_1})$ và không chứa đường thẳng $d:{latex(f)}=0$"
             ])
         kq4=random.choice([kq4_T, kq4_F])
-        HDG=f"Miền nghiệm là nửa mặt phẳng chứa điểm $({x_0};{y_0})$ và không chứa đường thẳng $d:{latex(f)}=0$."
+        HDG=f"Miền nghiệm là nửa mặt phẳng chứa điểm $({x_0};{y_0})$ và chứa đường thẳng $d:{latex(f)}=0$."
         loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq4==kq4_F:
             loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

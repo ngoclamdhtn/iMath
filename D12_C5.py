@@ -1488,17 +1488,23 @@ def htd_25_xyz_L12_C5_B1_16():
     mp=latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))
 
     d1=-a1*x_A-b1*y_A-c1*z_A+random.randint(1,6)
+
+    while True:
+        x_I,y_I,z_I= random.randint(-7,7), random.randint(-7,7), random.randint(-7,7)
+        if a1*x_I+b1*y_I+c1*z_I+d1 !=0:
+            break
+
     noi_dung= f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({ten_mp})}}$ có phương trình ${mp}=0$."\
                 f" Điểm nào trong các điểm sau không thuộc mặt phẳng ${{({ten_mp})}}$?"
-
-    kq=f"{ten_A}({x_A+random.randint(1,3)};{y_C};{z_B})"
+    
+    kq=f"{ten_A}({x_I};{y_I};{z_I})"
     kq2=f"{ten_B}({x_B};{y_B};{z_B})"
     kq3=f"{ten_C}({x_C};{y_C};{z_C})"
     kq4=f"{ten_D}({x_A};{y_A};{z_A})"
 
 
     noi_dung_loigiai=my_module.thay_dau_congtru(f"Thay tọa độ các điểm vào phương trình mặt phẳng ${{({ten_mp})}}$"
-        f"ta thấy điểm ${ten_A}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình nên điểm ${{{ten_A}}}$ không thuộc mặt phẳng ${{({ten_mp})}}$.\n")  
+        f"ta thấy điểm ${ten_A}({x_I};{y_I};{z_I})$ không thỏa mãn phương trình nên điểm ${{{ten_A}}}$ không thuộc mặt phẳng ${{({ten_mp})}}$.\n")  
 
     #Tạo các phương án
     pa_A= f"*${kq}$"

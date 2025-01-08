@@ -251,8 +251,9 @@ def yy3yy_L10_C4_B1_04():
     f"${{{phan_so((a-2)/c)}}}$",
         f"${{{phan_so((a-3)/c)}}}$",
     f"${{{phan_so((a+3)/c)}}}$"]
+
     if chon ==2:
-        noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 90^{{\\circ}} <\\alpha < 180^{{\\circ}}$, giá trị $\\cos \\alpha$ là: "
+        noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 90^{{\\circ}} <\\alpha < 180^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}}< \\alpha < 180^{{\\circ}}$ nên $\\cos \\alpha ={phan_so(-b/c)}$ suy ra $\\tan \\alpha ={phan_so(-a/b)}$"
                 
         kq=f" ${{{phan_so(-a/b)}}}$"

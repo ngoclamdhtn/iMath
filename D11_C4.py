@@ -4175,7 +4175,7 @@ def ghj_7_jkl_L11_C4_B3_08():
 	kq2=random.choice([kq2_T, kq2_F])
 	if f"{G}{H}" in kq2:
 		HDG=(f"$\\dfrac{{{S}{G}}}{{{S}{M}}}=\\dfrac{{{S}{H}}}{{{S}{N}}}={phan_so(2/3)}\\Rightarrow {G}{H} // {M}{N} // {A}{C} // {B}{D}$.\n\n"
-			f"Suy ra ${kq}$ là khẳng định đúng.")
+			f"Suy ra {kq} là khẳng định đúng.")
 			
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
