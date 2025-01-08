@@ -3,6 +3,7 @@ import sympy as sp
 from sympy import *
 import random
 from fractions import Fraction
+from itertools import permutations
 import my_module
 def xu_li_dau_cham(a):
 	str_a=str(a)
@@ -51,10 +52,35 @@ def dem_so_chan_den_m(m):
 
 #Trả về dạng phân số 
 def phan_so(t):
-    m=latex(Rational(t).limit_denominator(10000000000000))
+    m=latex(Rational(t).limit_denominator(1000000000))
     return m
 
+def la_so_chinh_phuong(n):
+    can_bac_hai = int(math.sqrt(n))
+    return can_bac_hai * can_bac_hai == n
+def la_so_nguyen_to(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
+
+def la_hop_so(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return True
+    return False
+
+def dem_uoc(n):
+    count = 0
+    for i in range(1, n + 1):
+        if n % i == 0:
+            count += 1
+    return count
 #Tạo dấu cho một số
 
 #[D10_C9_B1_01]-M1. Chọn ngẫu nhiên 1 vật từ 2 nhóm đồ vật. Tìm số phần tử không gian mẫu.
@@ -1864,8 +1890,8 @@ def mjulk_L10_C9_B2_09():
 
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_C9_B1_12]-TF-M2. Tạo câu đúng-sai: Chọn 2 nhóm đồ vật. Đúng-sai: không gian mẫu, xác suất
-def mjulk_L10_C9_B1_12(): 
+#[D10_C9_B2_32]-TF-M2. Tạo câu đúng-sai: Chọn 2 nhóm đồ vật. Đúng-sai: không gian mẫu, xác suất
+def mjulk_L10_C9_B2_32(): 
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
 	do_vat_3=["bức tranh lụa", "bức tranh gỗ","bức tranh sơn dầu", "bức tranh sơn mài", "bức tranh Đông Hồ"]
@@ -2031,8 +2057,8 @@ def mjulk_L10_C9_B1_12():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D10_C9_B1_13]-TF-M2. Gieo một con xúc sắc 2 lần. Đúng-Sai: không gian mẫu, xác suất.
-def mjulk_L10_C9_B1_13():
+#[D10_C9_B2_33]-TF-M2. Gieo một con xúc sắc 2 lần. Đúng-Sai: không gian mẫu, xác suất.
+def mjulk_L10_C9_B2_33():
 	
 	noi_dung=f"Gieo một con xúc sắc cân đối đồng chất ${{2}}$ lần. Xét tính đúng-sai của các khẳng định sau"
 	kq1_T=f"*Số phần tử của không gian mẫu là ${{36}}$"
@@ -2193,8 +2219,8 @@ def mjulk_L10_C9_B1_13():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D10_C9_B1_14]-TF-M3. Chọn k vật từ 3 nhóm. Xét Đ-S: không gian mẫu, xác suất.
-def mjulk_L10_C9_B1_14():
+#[D10_C9_B2_34]-TF-M3. Chọn k vật từ 3 nhóm. Xét Đ-S: không gian mẫu, xác suất.
+def mjulk_L10_C9_B2_34():
 	
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
@@ -2360,3 +2386,5339 @@ def mjulk_L10_C9_B1_14():
 	return debai,debai_latex,loigiai_word,dap_an
 
 
+#[L10_C9_B2_35]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại 
+def mjulk_L10_C9_B2_35(): 
+    a2=random.randint(1,4)
+    a1=a2+random.randint(23,45)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+    b=random.choice([i for i in nhom2])
+    danh_sach = [x + y for x in nhom1 for y in nhom2 if x!=y] 
+    ds=[x*y for x in nhom1 for y in nhom2 if x!=y] 
+    a=len(danh_sach)
+    thutu=random.choice(["hai", "nhất"])
+    chon =random.randint(1,2)
+    if chon ==1:
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Xét phép thử: Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa. Xét tính đúng-sai của các khẳng định sau. "     
+        debai_word= f"{noi_dung}\n"
+        c=a3-1
+        kq1_T=f"*Xác suất để lần thứ {thutu} rút được thẻ ghi số ${{{b}}}$ là ${{{phan_so(c/a)}}}$ " 
+        kq1_F=f"Xác suất để lần thứ {thutu} rút được thẻ ghi số ${{{b}}}$ là "
+        kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=(f" $\\Omega= \\left\\{{  \\left(  i;j       \\right) , {a2} \\le i,j \\le {a1}, i \\ne j  \\right\\}}$ \n\n"
+            f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+            f" Gọi A là biến cố lần thứ {thutu} rút được thẻ ghi số ${{{b}}}$ \n\n"
+        f" Số kết quả thuận lợi của biến cố A là ${{{c}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        c=(a3-1)*(a3-1)
+        kq2_T=f"*Xác suất để lần thứ {thutu} không rút được thẻ ghi số ${{{b}}}$ là "
+        kq2_F=f"Xác suất để lần thứ {thutu} không rút được thẻ ghi số ${{{b}}}$ là "
+
+        kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=(f" Gọi B là biến cố lần thứ {thutu} không rút được thẻ ghi số ${{{b}}}$ \n\n "
+         f" Số kết quả thuận lợi của biến cố B là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq2==kq2_F:
+            loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        c= len([i for i in danh_sach if i % 2 != 0])
+        kq3_T=f"*Xác suất để tổng số ghi trên hai thẻ là số lẻ là ${{{phan_so(c/a)}}}$ " 
+        kq3_F=f"Xác suất để tổng số ghi trên hai thẻ là số lẻ là "
+        kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f" Gọi C là biến cố tổng số ghi trên hai thẻ là số lẻ \n\n "
+         f" Số kết quả thuận lợi của biến cố C là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")    
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        
+    if chon ==2:
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Xét phép thử: Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa. Xét tính đúng-sai của các khẳng định sau. "     
+        debai_word= f"{noi_dung}\n"
+        m=sum(1 for i in nhom2 if i%2==0)
+        c=(a3-1)*m
+        kq1_T=f"*Xác suất để lần thứ {thutu} rút được thẻ ghi số chẵn là ${{{phan_so(c/a)}}}$ " 
+        kq1_F=f"Xác suất để lần thứ {thutu} rút được thẻ ghi số chẵn là "
+        kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=(f" $\\Omega= \\left\\{{  \\left(  i;j       \\right) , {a2} \\le i,j \\le {a1}  \\right\\}}$ \n\n"
+            f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+            f" Gọi A là biến cố lần thứ {thutu} rút được thẻ ghi số chẵn \n\n"
+        f" Số kết quả thuận lợi của biến cố A là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        c=(a3-1)*(a3-2)
+        kq2_T=f"*Xác suất để cả hai lần đều không rút được thẻ ghi số ${{{b}}}$ là "
+        kq2_F=f"Xác suất để cả hai lần đều không rút được thẻ ghi số ${{{b}}}$ là"
+
+        kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=(f" Gọi B là biến cố cả hai lần đều không rút được thẻ ghi số ${{{b}}}$ \n\n "
+         f" Số kết quả thuận lợi của biến cố B là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq2==kq2_F:
+            loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+        c= len([i for i in danh_sach if i % 2 == 0])
+        kq3_T=f"*Xác suất để tổng số ghi trên hai thẻ là số chẵn là ${{{phan_so(c/a)}}}$ " 
+        kq3_F=f"Xác suất để tổng số ghi trên hai thẻ chẵn số chẵn là "
+        kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f" Gọi C là biến cố tổng số ghi trên hai thẻ là số chẵn \n\n "
+         f" Số kết quả thuận lợi của biến cố C là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")    
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+    danh_sach_moi = list(filter(lambda x: la_so_nguyen_to(x), nhom1))
+    k = len(danh_sach_moi)
+
+    c= k*(k-1)
+
+    kq4_T=f"*Xác suất để hai số ghi trên hai thẻ đều là số nguyên tố là ${{{phan_so(c/a)}}}$ "
+    kq4_F=f"Xác suất để hai số ghi trên hai thẻ đều là số nguyên tố là " 
+    kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f" Gọi D là biến cố hai số ghi trên hai thẻ đều là số nguyên tố là \n\n "
+    	f" Từ ${{{a2}}}$ đến ${{{a1}}}$ có ${{{k}}}$ số nguyên tố \n\n"
+     f" Số kết quả thuận lợi của biến cố D là ${{{phan_so(c)}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+#[L10_C9_B2_36]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại 
+def mjulk_L10_C9_B2_36(): 
+    a2=random.randint(1,5)
+    a1=a2+random.randint(15,45)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+    b=random.choice([i for i in nhom2])
+    danh_sach = [x + y for x in nhom1 for y in nhom2] 
+    ds=[x*y for x in nhom1 for y in nhom2 ] 
+    a=len(danh_sach)
+    thutu=random.choice(["hai", "nhất"])
+    chon =random.randint(1,2)
+    if chon ==1:
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Xét phép thử: Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa. Xét tính đúng-sai của các khẳng định sau. "     
+        debai_word= f"{noi_dung}\n"
+        c=a3
+        kq1_T=f"*Xác suất để lần thứ {thutu} rút được thẻ ghi số ${{{b}}}$ là ${{{phan_so(c/a)}}}$ " 
+        kq1_F=f"Xác suất để lần thứ {thutu} rút được thẻ ghi số ${{{b}}}$ là "
+        kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=(f" $\\Omega{{= \\left\\{{  \\left(  i;j       \\right) , {a2} \\le i,j \\le {a1}  \\right\\}} }}$ \n\n"
+            f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+            f" Gọi A là biến cố lần thứ {thutu} rút được thẻ ghi số ${{{b}}}$ \n\n"
+        f" Số kết quả thuận lợi của biến cố A là ${{{c}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        c=(a3-1)*a3
+        kq2_T=f"*Xác suất để lần thứ {thutu} không rút được thẻ ghi số ${{{b}}}$ là "
+        kq2_F=f"Xác suất để lần thứ {thutu} không rút được thẻ ghi số ${{{b}}}$ là "
+
+        kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=(f" Gọi B là biến cố lần thứ {thutu} không rút được thẻ ghi số ${{{b}}}$ \n\n "
+         f" Số kết quả thuận lợi của biến cố B là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq2==kq2_F:
+            loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        c= len([i for i in danh_sach if i % 2 != 0])
+        kq3_T=f"*Xác suất để tổng số ghi trên hai thẻ là số lẻ là ${{{phan_so(c/a)}}}$ " 
+        kq3_F=f"Xác suất để tổng số ghi trên hai thẻ là số lẻ là "
+        kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f" Gọi C là biến cố tổng số ghi trên hai thẻ là số lẻ \n\n "
+         f" Số kết quả thuận lợi của biến cố C là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")    
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+    if chon ==2:
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Xét phép thử: Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa. Xét tính đúng-sai của các khẳng định sau. "     
+        debai_word= f"{noi_dung}\n"
+        m=sum(1 for i in nhom2 if i%2==0)
+        c=a3*m
+        kq1_T=f"*Xác suất để lần thứ {thutu} rút được thẻ ghi số chẵn là ${{{phan_so(c/a)}}}$ " 
+        kq1_F=f"Xác suất để lần thứ {thutu} rút được thẻ ghi số chẵn là "
+        kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=(f" $\\Omega{{= \\left\\{{  \\left(  i;j       \\right) , {a2} \\le i,j \\le {a1}  \\right\\}} }}$ \n\n"
+            f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+            f" Gọi A là biến cố lần thứ {thutu} rút được thẻ ghi số chẵn \n\n"
+        f" Số kết quả thuận lợi của biến cố A là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq1==kq1_F:
+            loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+        c=(a3-1)*(a3-1)
+        kq2_T=f"*Xác suất để cả hai lần đều không rút được thẻ ghi số ${{{b}}}$ là "
+        kq2_F=f"Xác suất để cả hai lần đều không rút được thẻ ghi số ${{{b}}}$ là "
+
+        kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=(f" Gọi B là biến cố cả hai lần đều không rút được thẻ ghi số ${{{b}}}$ \n\n "
+         f" Số kết quả thuận lợi của biến cố B là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")
+        loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq2==kq2_F:
+            loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+        c= len([i for i in danh_sach if i % 2 == 0])
+        kq3_T=f"*Xác suất để tổng số ghi trên hai thẻ là số chẵn là ${{{phan_so(c/a)}}}$ " 
+        kq3_F=f"Xác suất để tổng số ghi trên hai thẻ chẵn số chẵn là "
+        kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+            ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f" Gọi C là biến cố tổng số ghi trên hai thẻ là số chẵn \n\n "
+         f" Số kết quả thuận lợi của biến cố C là ${{{phan_so(c)}}}$ \n\n"
+            f"Xác suất là ${{{phan_so(c/a)}}}$")    
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    danh_sach_moi = list(filter(lambda x: la_so_nguyen_to(x), nhom1))
+    k = len(danh_sach_moi)
+
+    c= k*k
+
+    kq4_T=f"*Xác suất để hai số ghi trên hai thẻ là số nguyên tố là ${{{phan_so(c/a)}}}$ "
+    kq4_F=f"Xác suất để hai số ghi trên hai thẻ là số nguyên tố là " 
+    kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(f" Gọi D là biến cố hai số ghi trên hai thẻ là số nguyên tố\n\n "
+        f" Từ ${{{a2}}}$ đến ${{{a1}}}$ có ${{{k}}}$ số nguyên tố \n\n"
+     f" Số kết quả thuận lợi của biến cố D là ${{{phan_so(c)}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+#[L10_C9_B2_37]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc
+def mjulk_L10_C9_B2_37():
+	a2=random.randint(1,5)
+	a1=a2+random.randint(15,45)
+	a3= (a1-a2)+1
+	nhom1 = range(a2, a1 + 1)
+	nhom2 = range(a2, a1 + 1)
+	b=random.choice([i for i in nhom2])
+
+
+	sole=len([i for i in range(a2, a1 + 1) if i % 2 != 0])
+	sochan=len([i for i in range(a2, a1 + 1) if i % 2 == 0])
+	a=math.comb(a3, 2)
+
+	noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Xét phép thử: Rút ngẫu nhiên đồng thời ${{2}}$ thẻ số. Xét tính đúng-sai của các khẳng định sau. "
+	debai_word= f"{noi_dung}\n"
+	chon =random.randint(1,2)
+
+	if chon ==1: 
+		c=sole*sochan
+
+		kq1_T=f"*Xác suất để tổng hai số trên hai thẻ là một số lẻ là ${{{phan_so(c/a)}}}$" 
+		kq1_F=f"Xác suất để tổng hai số trên hai thẻ là một số lẻ là "
+		kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ",
+		        f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+		        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+		f" Từ ${{{a2}}}$ đến ${{{a1}}}$ có ${{{sole}}}$ số lẻ và ${{{sochan}}}$ số chẵn. \n\n"
+		f" Gọi ${{A}}$ là biến cố tổng hai số trên hai thẻ là một số lẻ \n\n "
+		f" ${{n(A)= {c}}}$ \n\n"
+		f" ${{ P(A)= {phan_so(c/a)} }}$")
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+		c=math.comb(sole, 2)
+
+		kq2_T=f"*Xác suất để tích hai số trên hai thẻ là số lẻ là ${{{phan_so(c/a)}}}$"
+		kq2_F=f"Xác suất để tích hai số trên hai thẻ là số lẻ là  "
+		kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ",
+		     f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+		        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=	(f" Gọi ${{B}}$ là biến cố tích hai số trên hai thẻ là số lẻ.\n\n"
+			f" ${{n(B)= {c}}}$ \n\n"
+		f" ${{ P(B)= {phan_so(c/a)} }}$")
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon ==2: 
+		c=math.comb(sole,2)+math.comb(sochan,2)
+
+		kq1_T=f"*Xác suất để tổng hai số trên hai thẻ là một số chẵn là ${{{phan_so(c/a)}}}$" 
+		kq1_F=f"Xác suất để tổng hai số trên hai thẻ là một số chẵn là "
+		kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ",
+		        f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+		        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+		f" Từ ${{{a2}}}$ đến ${{{a1}}}$ có ${{{sole}}}$ số lẻ và ${{{sochan}}}$ số chẵn. \n\n"
+		f" Gọi ${{A}}$ là biến cố tổng hai số trên hai thẻ là một số chẵn \n\n "
+		f" ${{n(A)= {c}}}$ \n\n"
+		f" ${{ P(A)= {phan_so(c/a)} }}$")
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+		c=sochan*(a3-1)
+
+		kq2_T=f"*Xác suất để tích hai số trên hai thẻ là số chẵn là ${{{phan_so(c/a)}}}$"
+		kq2_F=f"Xác suất để tích hai số trên hai thẻ là số chẵn là  "
+		kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ",
+		     f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+		        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=	(f" Gọi ${{B}}$ là biến cố tích hai số trên hai thẻ là số chẵn.\n\n"
+			f" ${{n(B)= {c}}}$ \n\n"
+		f" ${{ P(B)= {phan_so(c/a)} }}$")
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+	c=math.comb(a3-1, 2)
+	kq3_T=f"*Xác suất để trong hai thẻ rút ra không có thẻ nào ghi số ${{{b}}}$ là ${{{phan_so(c/a)}}}$" 
+	kq3_F=f" Xác suất để trong hai thẻ rút ra không có thẻ nào ghi số ${{{b}}}$ là "
+	kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ",
+	        f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f" Gọi ${{C}}$ là biến cố trong hai thẻ rút ra không có thẻ nào ghi số ${{{b}}}$ \n\n"
+		f" ${{n(C)= {c}}}$ \n\n"
+	f" ${{ P(C)= {phan_so(c/a)} }}$")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	danh_sach_moi = list(filter(lambda x: la_so_nguyen_to(x), nhom1))
+	k = len(danh_sach_moi)
+
+	c= math.comb(k,2)
+
+
+	kq4_T=f"*Xác suất để rút được hai thẻ đều là số nguyên tố là ${{{phan_so(c/a)}}}$ "
+	kq4_F=f"Xác suất để rút được hai thẻ đều là số nguyên tố là  " 
+	kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Gọi D là biến cố rút được hai thẻ đều là số nguyên tố \n\n"
+	f" ${{n(D)={c}}}$ \n\n"
+	f" ${{P(D)= {phan_so(c/a)}}}$")
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[L10_C9_B2_38]-TF-M3. XS các bài toán chọn 2 người từ một nhóm
+def mjulk_L10_C9_B2_38():
+	a2=random.randint(10,20)
+	a3=random.randint(10,25)
+	a1=a2+a3
+	a=math.comb(a1, 2)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+
+	noi_dung = f"Một đội có ${{{a1}}}$ bạn  trong đó có bạn nữ tên {A} và bạn nam tên {B}. Giáo viên chọn ngẫu nhiên ra hai bạn tham gia hội khoẻ phù đổng của huyện. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+
+	c=1
+	kq1_T=f"*Xác suất để chọn được cả hai bạn {A} và {B} là ${{{phan_so(c/a)}}}$" 
+	kq1_F=f"Xác suất để chọn được cả hai bạn {A} và {B} là "
+	kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+		f" Gọi ${{A}}$ là biến cố chọn được cả hai bạn {A} và {B} \n\n "
+		f" ${{n(A)= {c}}}$ \n\n"
+		f" ${{ P(A)= {phan_so(c/a)} }}$")	
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c=a1-2
+	kq2_T=f"*Xác suất để chọn được {A} mà không chọn được {B} là ${{{phan_so(c/a)}}}$ "
+	kq2_F=f"Xác suất để chọn được {A} mà không chọn được {B} là "
+	kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=(f" Gọi ${{B}}$ là biến cố chọn được {A} mà không chọn được {B} \n\n "
+		f" ${{n(B)= {c}}}$ \n\n"
+		f" ${{ P(B)= {phan_so(c/a)} }}$")	
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	c= math.comb(a1-2, 2)
+	kq3_T=f"*Xác suất để cả hai bạn {A} và {B} đều không được chọn là ${{{phan_so(c/a)}}}$ " 
+	kq3_F=f" Xác suất để cả hai bạn {A} và {B} đều không được chọn là "
+
+	kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f" Gọi ${{C}}$ là biến cố cả hai bạn {A} và {B} đều không được chọn \n\n "
+		f" ${{n(C)= {c}}}$ \n\n"
+		f" ${{ P(C)= {phan_so(c/a)} }}$")	
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= a3*(a2-1)
+	kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được một bạn nam và một bạn nữ trong đó không có {B} là ${{{phan_so(c/a)}}}$  "
+	kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được một bạn nam và một bạn nữ trong đó không có {B} là " 
+	kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f" Gọi ${{D}}$ là biến cố chọn được một bạn nam và một bạn nữ trong đó không có {B}\n\n "
+		f" ${{n(D)= {c}}}$ \n\n"
+		f" ${{ P(D)= {phan_so(c/a)} }}$")	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[L10_C9_B2_39]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1
+def mjulk_L10_C9_B2_39():
+    a2=random.randint(10,20)
+    a3=random.randint(10,25)
+    a1=a2+a3
+    a=math.comb(a1, 3)
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+
+    noi_dung = f"Một đội có ${{{a1}}}$ bạn  trong đó có bạn nữ tên {A} và bạn nam tên {B}. Giáo viên chọn ngẫu nhiên ra ba bạn tham gia hội khoẻ phù đổng của huyện. Xét tính đúng-sai của các khẳng định sau. "       
+    debai_word= f"{noi_dung}\n"
+    
+
+    c=a1-2
+    kq1_T=f"*Xác suất để trong ba bạn được chọn có cả hai bạn {A} và {B} là ${{{phan_so(c/a)}}}$" 
+    kq1_F=f"Xác suất để trong ba bạn được chọn có cả hai bạn {A} và {B} là "
+    kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+        f" Gọi ${{A}}$ là biến cố trong ba bạn được chọn có cả hai bạn {A} và {B} \n\n "
+        f" ${{n(A)= {c}}}$ \n\n"
+        f" ${{ P(A)= {phan_so(c/a)} }}$")   
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    c=math.comb(a1-2,2)
+    kq2_T=f"*Xác suất để trong ba bạn được chọn có {A} mà không có {B} là ${{{phan_so(c/a)}}}$ "
+    kq2_F=f"Xác suất để trong ba bạn được chọn có {A} mà không có {B} là "
+    kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=(f" Gọi ${{B}}$ là biến cố trong ba bạn được chọn có {A} mà không có {B} \n\n "
+        f" ${{n(B)= {c}}}$ \n\n"
+        f" ${{ P(B)= {phan_so(c/a)} }}$")   
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+    c= math.comb(a1-2, 3)
+    kq3_T=f"*Xác suất để cả hai bạn {A} và {B} đều không được chọn là ${{{phan_so(c/a)}}}$ " 
+    kq3_F=f" Xác suất để cả hai bạn {A} và {B} đều không được chọn là "
+
+    kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=(f" Gọi ${{C}}$ là biến cố cả hai bạn {A} và {B} đều không được chọn \n\n "
+        f" ${{n(C)= {c}}}$ \n\n"
+        f" ${{ P(C)= {phan_so(c/a)} }}$")   
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    chon =random.randint(1,6)
+    if chon ==1:
+        c= math.comb(a2-1,2)*a3
+        kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nam và một bạn nữ trong đó không có {B} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nam và một bạn nữ trong đó không có {B} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nam và một bạn nữ trong đó không có {B}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+    if chon ==2:
+        c= math.comb(a3,2)*(a2-1)
+        kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nữ và một bạn nam trong đó không có {B} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nữ và một bạn nam trong đó không có {B} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nữ và một bạn nam trong đó không có {B}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+    if chon ==3:
+        c= math.comb(a3-1,2)*a2
+        kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nữ và một bạn nam trong đó không có {A} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nữ và một bạn nam trong đó không có {A} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nữ và một bạn nam trong đó không có {A}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    if chon ==4:
+        c= math.comb(a3-1,1)*a2
+        kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nữ và một bạn nam trong đó có {A} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nữ và một bạn nam trong đó có {A} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nữ và một bạn nam trong đó có {A}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    if chon ==5:
+        c= math.comb(a2-1,1)*a3
+        kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nam và một bạn nữ trong đó có {B} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nam và một bạn nữ trong đó có {B} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nam và một bạn nữ trong đó có {B}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    if chon ==6:
+        c= math.comb(a2-1,2)*(a3-1)
+        kq4_T=f"*Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nam và một bạn nữ trong đó không có {B} và {A} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Biết trong đội có ${{{a2}}}$ bạn nam, xác suất để chọn được hai bạn nam và một bạn nữ trong đó không có {B} và {A} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nam và một bạn nữ trong đó không có {B} và {A}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+#[D10_C9_B2_09]-M3. Gieo 2 con xúc xắc. Tìm biến cố giao: i + j = k và i.j <(>) m.
+def mjulk_L10_C9_B2_09():      
+	
+	k=random.randint(6,8)
+	m=random.randint(6,10)
+	chon=random.choice(["nhỏ hơn", "lớn hơn"])
+
+	t,t_m,t_k=0,0,0
+	list_kq=[]
+
+	for i in range(1,7):
+		for j in range(1,7):
+			if chon=="nhỏ hơn":	 
+				if i+j==k and i*j<m:
+					t=t+1
+					list_kq.append(f"({i};{j})")
+			else:
+				if i+j==k and i*j>m:
+					t=t+1
+					list_kq.append(f"({i};{j})")
+
+			if i+j>k:
+				t_k=t_k+1
+			if i+j<m:
+				t_m=t_m+1
+	t_kq2=abs(t_k-t_m)
+
+	
+	list_kq=str(list_kq)
+	list_kq=list_kq.replace("[","")
+	list_kq=list_kq.replace("]","")
+	list_kq=list_kq.replace("'","")	
+    
+	kq=t
+	kq2=t_kq2
+	kq3=t_k
+	kq4=t_m
+
+	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+	kq2=pa_kotrung[1]
+	kq3=pa_kotrung[2]
+	kq4=pa_kotrung[3]
+
+	#Tạo các phương án
+	pa_A= f"*${{{phan_so(kq/36)}}}$"
+	pa_B= f"${{{phan_so(kq2/36)}}}$"
+	pa_C= f"${{{phan_so(kq3/36)}}}$"
+	pa_D= f"${{{phan_so(kq4/36)}}}$"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   
+
+	noi_dung=f"Gieo một con xúc xắc cân đối và đồng chất hai lần." \
+	f" Gọi ${{A}}$ là biến cố “Tổng số chấm của hai lần gieo bằng {k} và tích số chấm của hai lần gieo {chon} {m}”."\
+	f" Xác suất của biến cố ${{A}}$ bằng"
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+	noi_dung_loigiai=f"Số phần tử của không gian mẫu: $n(\\Omega)=36$.\n\n"\
+					f"${{A}}=\\{{{list_kq}\\}}$. \n\n Số phần tử của biến cố ${{A}}$ là ${{{t}}}$."\
+					f" Xác suất của biến cố ${{A}}$ là: $P=\\dfrac{{{t}}}{{{36}}}={phan_so(t/36)}$.\n"
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[L10_C9_B2_10]-M1. Cho m nam ,n nữ, xs chọn k nữ(nam)
+def mjulk_L10_C9_B2_10():
+	k=random.randint(2,6)
+	n=k+ random.randint(2,4)
+	m=k+random.randint(2,6)
+	a=math.comb(n+m,k)
+	
+	A= random.choice([" văn nghệ toàn trường", "hội khoẻ phù đồng của huyện", "thi đấu võ thuật của tỉnh", "thi đấu thể thao của trường"])
+	chon=random.randint(1,2)
+	if chon ==1: 
+		c=math.comb(m,k)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ${{{k}}}$ bạn nam là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" ${{n(A)=C^{{{k}}}_{{{m}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$")
+
+	if chon ==2: 
+		c=math.comb(n,k)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ${{{k}}}$ bạn nữ là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" ${{n(A)=C^{{{k}}}_{{{n}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$")
+	kq=f"${{{phan_so(c/a)} }}$"
+
+	dss=[f"${{{phan_so(c/(a-10))}}}$ ",   f"${{{phan_so(c/(a-5))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+	kq2,kq3,kq4= random.sample(dss,3)
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   
+
+	
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+	 
+	loigiai_word=my_module.frac_to_dfrac(f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n")
+	loigiai_traloingan=my_module.frac_to_dfrac(f"Lời giải:\n {noi_dung_loigiai} \n")
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex=my_module.frac_to_dfrac( f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n")
+
+	latex_tuluan=my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_11]-M2. Cho m nam ,n nữ chọn k bạn thoả dk nào đó
+def mjulk_L10_C9_B2_11():
+	k1=random.randint(1,3)
+	k=k1+random.randint(1,3)
+	n=k+ random.randint(2,4)
+	m=k+random.randint(2,6)
+	a=math.comb(n+m,k)
+	c=math.comb(m,k)
+	A= random.choice([" văn nghệ toàn trường", "hội khoẻ phù đồng của huyện", "thi đấu võ thuật của tỉnh", "thi đấu thể thao của trường"])
+	chon=random.randint(1,2)
+	if chon ==1: 
+		c=math.comb(m,k1)*math.comb(n,k-k1)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ${{{k1}}}$ bạn nam là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" ${{n(A)=C^{{{k1}}}_{{{m}}} C^{{{k-k1}}}_{{{n}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$")
+
+	if chon ==2: 
+		c=math.comb(n,k1)*math.comb(m,k-k1)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ${{{k1}}}$ bạn nữ là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" ${{n(A)=C^{{{k1}}}_{{{n}}} C^{{{k-k1}}}_{{{m}}}  ={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$")
+	kq=f"${{{phan_so(c/a)} }}$"
+
+	dss=[f"${{{phan_so(c/(a-6))}}}$ ",   f"${{{phan_so(c/(a-5))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+	kq2,kq3,kq4= random.sample(dss,3)
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   
+
+	
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+	 
+	loigiai_word=my_module.frac_to_dfrac(f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n")
+	loigiai_traloingan=my_module.frac_to_dfrac(f"Lời giải:\n {noi_dung_loigiai} \n")
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex=my_module.frac_to_dfrac( f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n")
+
+	latex_tuluan=my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_12]-M1. Cho m nam ,n nữ, xs chọn được ít nhất 1 nữ (nam)
+def mjulk_L10_C9_B2_12():
+	k=random.randint(2,6)
+	n=k+ random.randint(2,4)
+	m=k+random.randint(2,6)
+	a=math.comb(n+m,k)
+	
+	A= random.choice([" văn nghệ toàn trường", "hội khoẻ phù đồng của huyện", "thi đấu võ thuật của tỉnh", "thi đấu thể thao của trường"])
+	chon=random.randint(1,2)
+	if chon ==1: 
+		c=math.comb(n,k)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ít nhất bạn nam là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" Gọi ${{A}}$ là biến cố không chọn được bạn nam nào\n\n"
+						f" ${{n(A)=C^{{{k}}}_{{{n}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$ \n\n"
+						f"  ${{P(\\overline{{A}})= 1- {phan_so(c/a)}= {phan_so(1-(c/a))} }}$ ")
+
+	if chon ==2: 
+
+	
+		
+		c=math.comb(m,k)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ít nhất bạn nam là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" Gọi ${{A}}$ là biến cố không chọn được bạn nữ nào\n\n"
+						f" ${{n(A)=C^{{{k}}}_{{{m}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$ \n\n"
+						f"  ${{P(\\overline{{A}})= 1- {phan_so(c/a)}= {phan_so(1-(c/a))} }}$ ")
+
+
+
+	kq=f"${{{phan_so(1-(c/a))} }}$"
+
+	dss=[f"${{{phan_so(c/(a-10))}}}$ ",   f"${{{phan_so(c/(a-5))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+	kq2,kq3,kq4= random.sample(dss,3)
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   
+
+	
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+	 
+	loigiai_word=my_module.frac_to_dfrac(f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n")
+	loigiai_traloingan=my_module.frac_to_dfrac(f"Lời giải:\n {noi_dung_loigiai} \n")
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex=my_module.frac_to_dfrac( f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n")
+
+	latex_tuluan=my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_13]-M2. Cho m nam ,n nữ, chọn k bạn trong đó có (không có) bạn A
+def mjulk_L10_C9_B2_13():
+	k=random.randint(2,6)
+	n=k+ random.randint(2,4)
+	m=k+random.randint(2,6)
+	a=math.comb(n+m,k)
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+
+	A= random.choice([" văn nghệ toàn trường", "hội khoẻ phù đồng của huyện", "thi đấu võ thuật của tỉnh", "thi đấu thể thao của trường"])
+	chon=random.randint(1,2)
+	if chon ==1: 
+		c=math.comb(n+m-1,k-1)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ trong đó có bạn {B}, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất để {B} được chọn là:"
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" Gọi ${{A}}$ là biến cố để {B} được chọn\n\n"
+						f" ${{n(A)=C^{{{k-1}}}_{{{n+m-1}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$ \n\n"
+					)
+
+	if chon ==2: 
+		c=math.comb(n+m-1,k)
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ trong đó có bạn {B}, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất để {B} không được chọn là:"
+
+	
+
+		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
+						f" Gọi ${{A}}$ là biến cố không chọn được {B}\n\n"
+						f" ${{n(A)=C^{{{k}}}_{{{m+n-1}}}={c} }}$ \n\n"
+						f" ${{P(A) = {phan_so(c/a)}}}$ \n\n"
+					)
+
+	kq=f"${{{phan_so(c/a)} }}$"
+
+	dss=[f"${{{phan_so(c/(a-10))}}}$ ",   f"${{{phan_so(c/(a-5))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+	kq2,kq3,kq4= random.sample(dss,3)
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   
+
+	
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+
+	 
+	loigiai_word=my_module.frac_to_dfrac(f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n")
+	loigiai_traloingan=my_module.frac_to_dfrac(f"Lời giải:\n {noi_dung_loigiai} \n")
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex=my_module.frac_to_dfrac( f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n")
+
+	latex_tuluan=my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[L10_C9_B2_14]-M1. Tính xs các bài toán về gieo 1 con xúc sắc (nhiều kiểu hỏi)
+def mjulk_L10_C9_B2_14(): 
+    chon =random.randint(1,2) 
+    if chon ==1:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo ngẫu nhiên một con xúc sắc cân đối và đồng chất. Xác suất để xuất hiện mặt ${{{a}}}$ chấm là"
+        noi_dung_loigiai=f" Xác suất để xuất hiện mặt ${{{a}}}$ chấm là ${{{phan_so(1/6)}}}$."
+
+        kq=f"${{{phan_so(1/6)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(6+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(6+random.randint(1,2)))}}}$ "
+    if chon ==2:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo ngẫu nhiên một con xúc sắc cân đối và đồng chất. Xác suất để xuất hiện mặt có số chấm chẵn là"
+        noi_dung_loigiai=f" Xác suất để xuất hiện mặt mặt có số chấm chẵn là ${{{phan_so(1/2)}}}$."
+
+        kq=f"${{{phan_so(1/2)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(6+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(6+random.randint(1,2)))}}}$ "
+
+    if chon ==3:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo ngẫu nhiên một con xúc sắc cân đối và đồng chất. Xác suất để xuất hiện mặt có số chấm lẻ là"
+        noi_dung_loigiai=f" Xác suất để xuất hiện mặt mặt có số chấm lẻ là ${{{phan_so(1/2)}}}$."
+
+        kq=f"${{{phan_so(1/2)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(6+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(6+random.randint(1,2)))}}}$ "
+    if chon ==4:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo ngẫu nhiên một con xúc sắc cân đối và đồng chất. Xác suất để xuất hiện mặt có số chấm chia hết cho 3 là"
+        noi_dung_loigiai=f" Xác suất để xuất hiện mặt mặt có số chấm chia hết cho 3 là ${{{phan_so(1/3)}}}$."
+
+        kq=f"${{{phan_so(1/3)}}}$ "
+        kq2=f"${{{phan_so(1/(6-random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(6+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(6-random.randint(1,2)))}}}$ "
+    if chon ==5:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo ngẫu nhiên một con xúc sắc cân đối và đồng chất. Xác suất để xuất hiện mặt có số chấm chia hết cho 4 là"
+        noi_dung_loigiai=f" Xác suất để xuất hiện mặt mặt có số chấm chia hết cho 4 là ${{{phan_so(1/6)}}}$."
+
+        kq=f"${{{phan_so(1/6)}}}$ "
+        kq2=f"${{{phan_so(1/(6-random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(6+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(6-random.randint(1,2)))}}}$ "
+    if chon ==6:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo ngẫu nhiên một con xúc sắc cân đối và đồng chất. Xác suất để xuất hiện mặt có số chấm chia hết cho 5 là"
+        noi_dung_loigiai=f" Xác suất để xuất hiện mặt mặt có số chấm chia hết cho 5 là ${{{phan_so(1/6)}}}$."
+
+        kq=f"${{{phan_so(1/6)}}}$ "
+        kq2=f"${{{phan_so(1/(6-random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(6+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(6-random.randint(1,2)))}}}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_15]-M2. xs các btoán về gieo 2 con xúc sắc (rất nhiều kiểu hỏi)
+def mjulk_L10_C9_B2_15(): 
+    chon =random.randint(1,27) 
+    if chon ==1:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 2 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 2 là ${{{phan_so(1/36)}}}$."
+
+        kq=f"${{{phan_so(1/36)}}}$ "
+        kq2=f"${{{phan_so(1/(36-random.randint(10,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(36-random.randint(10,20)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(1,20)))}}}$ "
+    if chon ==2:
+        a=random.randint(1,6)
+
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 3 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 3 là ${{{phan_so(1/18)}}}$."
+
+        kq=f"${{{phan_so(1/18)}}}$ "
+        kq2=f"${{{phan_so(1/(18+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(16+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(16+random.randint(1,2)))}}}$ "
+
+    if chon ==3:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 4 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 4 là ${{{phan_so(3/36)}}}$."
+
+        kq=f"${{{phan_so(1/12)}}}$ "
+        kq2=f"${{{phan_so(1/(12+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(12+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(12+random.randint(1,2)))}}}$ "
+    if chon ==4:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 5 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 5 là ${{{phan_so(4/36)}}}$."
+
+        kq=f"${{{phan_so(1/9)}}}$ "
+        kq2=f"${{{phan_so(1/(9+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(9+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(9-random.randint(1,3)))}}}$ "
+    if chon ==5:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 6 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm trên hai con xúc sắc bằng 6 là ${{{phan_so(5/36)}}}$."
+
+        kq=f"${{{phan_so(5/36)}}}$ "
+        kq2=f"${{{phan_so(5/(12+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(1,2)))}}}$ "
+    if chon ==6:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 7 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 7 là ${{{phan_so(6/36)}}}$."
+
+        kq=f"${{{phan_so(1/6)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==7:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 8 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 8 là ${{{phan_so(5/36)}}}$."
+
+        kq=f"${{{phan_so(5/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+
+    if chon ==8:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 9 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 9 là ${{{phan_so(4/36)}}}$."
+
+        kq=f"${{{phan_so(4/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==9:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 10 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 10 là ${{{phan_so(3/36)}}}$."
+
+        kq=f"${{{phan_so(3/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==10:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 11 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm trên hai con xúc sắc bằng 11 là ${{{phan_so(2/36)}}}$."
+
+        kq=f"${{{phan_so(2/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==11:
+        noi_dung=f" Gieo hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm trên hai con xúc sắc bằng 12 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm trên hai con xúc sắc bằng 12 là ${{{phan_so(1/36)}}}$."
+
+        kq=f"${{{phan_so(1/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==12:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 5 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 5 là ${{{phan_so(11/36)}}}$."
+
+        kq=f"${{{phan_so(11/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==13:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 10 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 10 là ${{{phan_so(6/36)}}}$."
+
+        kq=f"${{{phan_so(6/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==14:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 6 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 6 là ${{{phan_so(15/36)}}}$."
+
+        kq=f"${{{phan_so(15/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==15:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 8 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 8 là ${{{phan_so(3/36)}}}$."
+
+        kq=f"${{{phan_so(3/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==16:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 4 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 4 là ${{{phan_so(15/36)}}}$."
+
+        kq=f"${{{phan_so(15/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==17:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 9 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm trên hai con xúc sắc chia hết cho 9 là ${{{phan_so(4/36)}}}$."
+
+        kq=f"${{{phan_so(4/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==18:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là"
+        noi_dung_loigiai=f" Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là ${{{phan_so(11/36)}}}$."
+
+        kq=f"${{{phan_so(11/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==19:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là"
+        noi_dung_loigiai=f" Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là ${{{phan_so(11/36)}}}$."
+
+        kq=f"${{{phan_so(11/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==20:
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để cả hai con xúc sắc có số chấm xuất hiện giống nhau là"
+        noi_dung_loigiai=f"Xác suất để cả hai con xúc sắc có số chấm xuất hiện giống nhau là ${{{phan_so(6/36)}}}$."
+
+        kq=f"${{{phan_so(6/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==21:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để có mặt ${{{a}}}$ xuất hiện đúng một lần là"
+        noi_dung_loigiai=f" Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là ${{{phan_so(10/36)}}}$."
+
+        kq=f"${{{phan_so(10/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==22:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm xuất hiện trên hai con xúc sắc là một số lẻ là"
+        noi_dung_loigiai=f"Xác suất để tích số chấm xuất hiện trên hai con xúc sắc là một số lẻ là ${{{phan_so(9/36)}}}$."
+
+        kq=f"${{{phan_so(9/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==23:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tích số chấm xuất hiện trên hai con xúc sắc là một số chẵn là"
+        noi_dung_loigiai=f"Xác suất để tích số chấm xuất hiện trên hai con xúc sắc là một số lẻ là ${{{phan_so(3/4)}}}$."
+
+        kq=f"${{{phan_so(3/4)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==24:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 7 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 7 là ${{{phan_so(15/36)}}}$."
+
+        kq=f"${{{phan_so(15/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==25:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 6 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 7 là ${{{phan_so(10/36)}}}$."
+
+        kq=f"${{{phan_so(10/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$"
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$"
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==26:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 6 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 6 là ${{{phan_so(10/36)}}}$."
+
+        kq=f"${{{phan_so(10/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$"
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$"
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==27:
+        a=random.randint(1,6)
+        noi_dung=f" Gieo đồng thời hai con xúc sắc cân đối và đồng chất. Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 5 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện trên hai con xúc sắc nhỏ hơn 5 là ${{{phan_so(7/36)}}}$."
+
+        kq=f"${{{phan_so(7/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$"
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$"
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_16]-M1. xác suất các btoán về rút 1 thẻ số
+def mjulk_L10_C9_B2_16(): 
+    a=random.randint(20,50)
+    b=a-random.randint(5,15)
+    chon =random.randint(1,7)
+
+    if chon ==1:
+        c=len([i for i in range(1, a + 1) if i % b == 0])
+        noi_dung=f"Một hộp chứa ${{{a}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{1}}$ đến ${{{a}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất để rút được thẻ ghi số chia hết cho ${{{b}}}$ là:  "
+        
+
+
+    if chon ==2:
+        c=len([i for i in range(1, a + 1) if i < b])
+        noi_dung=f"Một hộp chứa ${{{a}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{1}}$ đến ${{{a}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất để rút được thẻ ghi số nhỏ hơn ${{{b}}}$ là:  "
+        
+
+
+    if chon == 3:
+        c = sum(1 for i in range(2, a+1) if all(i % j != 0 for j in range(2, int(i**0.5) + 1)))
+        noi_dung = f"Một hộp chứa ${{{a}}}$ thẻ được đánh số từ ${{1}}$ đến ${{{a}}}$. Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất rút được thẻ ghi số nguyên tố là:  "
+        
+
+    if chon == 4:
+        c = sum(1 for i in range(1, int(a**0.5) + 1) if i**2 <= a)
+        noi_dung = f"Một hộp chứa ${{{a}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{1}}$ đến ${{{a}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất rút được thẻ ghi số chính phương là:  "
+        
+
+
+    if chon == 5:
+        c = sum(1 for i in range(2, a+1) if any(i % j == 0 for j in range(2, int(i**0.5) + 1)))
+        noi_dung = f"Một hộp chứa ${{{a}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{1}}$ đến ${{{a}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất rút được thẻ là hợp số là:  "
+        
+
+    if chon == 6:
+        m = a - random.randint(10, 18)
+        n = a - random.randint(1, 6)
+        c = max(0, n - m - 1)
+        noi_dung = f"Một hộp chứa ${{{a}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{1}}$ đến ${{{a}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất rút được thẻ ghi số lớn hơn ${{{m}}}$ và nhỏ hơn ${{{n}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=a-random.randint(1,10)
+        c = len([i for i in range(1, a + 1) if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{{a}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{1}}$ đến ${{{a}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên một thẻ mà không nhìn vào hộp, xác suất rút được thẻ ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+
+
+    ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ",f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$ "]
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[L10_C9_B2_17]-M2. xs các btoán về xếp chỗ ngồi(4 kiểu)
+def mjulk_L10_C9_B2_17(): 
+    ds=["Lan", "Mai", "Hoa", "Sơn", "Hà", "Hồng", "Tâm", "Hiền", "Lam", "Thảo", "Tân","Tiến"]
+    A, B, C =random.sample(ds, 3)
+
+    D=random.choice(["đầu", "cuối", "giữa"])
+    chon =random.randint(1,4)
+    if chon ==1:
+        a=random.randint(6,10)
+        b=a-random.randint(3,4)
+        c=a+random.randint(1,5)
+        noi_dung=f" Xếp ngẫu nhiên chỗ ngồi cho ba bạn {A}, {B}, {C} vào một ghế dài. Xác suất để {A} ngồi {D} là "
+        noi_dung_loigiai=f" Xác suất để {A} ngồi {D} là ${{{phan_so(1/3)}}}$"
+
+        kq=f"${{{phan_so(1/3)}}}$ "
+        kq2=f"${{{phan_so(1/a)}}}$ "
+        kq3=f"${{{phan_so(1/b)}}}$ "
+        kq4=f" ${{{phan_so(1/c)}}}$"
+    if chon ==2:
+        a=random.randint(2,4)
+        b=random.randint(8,10)
+        c=a+random.randint(1,3)
+        noi_dung=f" Xếp ngẫu nhiên chỗ ngồi cho ba bạn {A}, {B}, {C} vào một ghế dài. Xác suất để {A} ngồi đầu và {B} ngồi cuối là "
+        noi_dung_loigiai=f" Xác suất để {A} ngồi đầu và {B} ngồi cuối là ${{{phan_so(1/6)}}}$"
+
+        kq=f"${{{phan_so(1/6)}}}$ "
+        kq2=f"${{{phan_so(1/a)}}}$ "
+        kq3=f"${{{phan_so(1/b)}}}$ "
+        kq4=f" ${{{phan_so(1/c)}}}$"
+    if chon ==3:
+        a=random.randint(2,4)
+        b=random.randint(7,10)
+        c=random.randint(4, 5)
+        noi_dung=f" Xếp ngẫu nhiên chỗ ngồi cho ba bạn {A}, {B}, {C} vào một ghế dài. Xác suất để {A} và {B} ngồi cạnh nhau là "
+        noi_dung_loigiai=f" Xác suất để {A} và {B} ngồi cạnh nhau là ${{{phan_so(2/3)}}}$"
+
+        kq=f"${{{phan_so(2/3)}}}$ "
+        kq2=f"${{{phan_so(1/a)}}}$ "
+        kq3=f"${{{phan_so(2/b)}}}$ "
+        kq4=f" ${{{phan_so(2/c)}}}$"
+    if chon ==4:
+        a=random.randint(6,10)
+        b=a-random.randint(3,4)
+        c=a+random.randint(1,5)
+        noi_dung=f" Xếp ngẫu nhiên chỗ ngồi cho ba bạn {A}, {B}, {C} vào một ghế dài. Xác suất để {A} và {B} không ngồi cạnh nhau là "
+        noi_dung_loigiai=f" Xác suất để {A} và {B} không ngồi cạnh nhau là ${{{phan_so(1/3)}}}$"
+
+        kq=f"${{{phan_so(1/3)}}}$ "
+        kq2=f"${{{phan_so(1/a)}}}$ "
+        kq3=f"${{{phan_so(1/b)}}}$ "
+        kq4=f" ${{{phan_so(1/c)}}}$"
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+#[L10_C9_B2_18]-M2. xác suất các bài toán về chọn người kiểu 1
+def mjulk_L10_C9_B2_18(): 
+
+    a=random.randint(2,3)
+    b=random.randint(2,3)
+    c=math.comb(a+b, 2)
+
+    chon =random.randint(1,8)
+    if chon ==1:
+        d=a*b
+        kq=phan_so(a*b/c)
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam và một bạn nữ là "
+        noi_dung_loigiai=f" Xác suất để chọn được một bạn nam và một bạn nữ là ${{{phan_so(a*b/c)}}}$"
+
+        kq=f"${{{phan_so(a*b/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d-2)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"                    ]
+
+    if chon ==2:
+    
+        d=math.comb(a, 2)
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được hai bạn nữ là "
+        noi_dung_loigiai=f" Xác suất để chọn được hai bạn nữ là ${{{phan_so(d/c)}}}$"
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d+4)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"                    ]
+
+    if chon ==3:
+        d=math.comb(b, 2)
+ 
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được hai bạn nam là "
+        noi_dung_loigiai=f" Xác suất để chọn được hai bạn nam là ${{{phan_so(d/c)}}}$"
+
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d+4)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"           
+         ]
+
+    if chon ==4:
+        d=a+b-1
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để bạn {A} được chọn là "
+        noi_dung_loigiai=f" Xác suất để {A} được chọn là ${{{phan_so(d/c)}}}$"
+
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d-2)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"  ]         
+
+    if chon ==5:
+        d=b
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được một nam một nữ trong đó có bạn {A} là "
+        noi_dung_loigiai=f" Xác suất để chọn được một nam một nữ trong đó có {A} được chọn là ${{{phan_so(d/c)}}}$"
+
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d+4)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"  ]  
+    if chon ==6:
+        d=1
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam trong đó có một bạn tên {B}. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được {A} và {B} là "
+        noi_dung_loigiai=f" Xác suất để chọn được {A} và {B} là ${{{phan_so(d/c)}}}$"
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d+4)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"  ]         
+
+    if chon ==7:
+        d=math.comb(a+b-1, 2)
+        A=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường", "Hà", "Lan", "Mai"," Huệ"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam trong đó có một bạn tên {A} . Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để bạn {A} không được chọn là "
+        noi_dung_loigiai=f" Xác suất để bạn {A} không được chọn là ${{{phan_so(d/c)}}}$"
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d-2)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"  ]         
+    
+
+    if chon ==8:
+        d=a+b-2
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam trong đó có một bạn tên {B}. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được {A} mà không chọn {B} là "
+        noi_dung_loigiai=f" Xác suất để chọn được {A} mà không chọn {B} là ${{{phan_so(d/c)}}}$"
+        kq=f"${{{phan_so(d/c)}}}$ "
+        ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d+4)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"  ]         
+
+
+
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[L10_C9_B2_19]-M2. Tính xác suất các bài toán về chọn người 
+def mjulk_L10_C9_B2_19(): 
+
+    a=random.randint(3,6)
+    b=random.randint(3,6)
+    c=math.comb(a+b, 2)
+
+    chon =random.randint(1,7)
+    if chon ==1:
+        d=a*b
+        kq=phan_so(a*b/c)
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam và một bạn nữ là "
+        noi_dung_loigiai=f" Xác suất để chọn được một bạn nam và một bạn nữ là ${{{phan_so(a*b/c)}}}$"
+
+
+    if chon ==2:
+    
+        d=math.comb(a, 2)
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được hai bạn nữ là "
+        noi_dung_loigiai=f" Xác suất để chọn được hai bạn nữ là ${{{phan_so(d/c)}}}$"
+        
+
+    if chon ==3:
+        d=math.comb(b, 2)
+ 
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được hai bạn nam là "
+        noi_dung_loigiai=f" Xác suất để chọn được hai bạn nam là ${{{phan_so(d/c)}}}$"
+
+        
+
+    if chon ==4:
+        d=a+b-1
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để bạn {A} được chọn là "
+        noi_dung_loigiai=f" Xác suất để {A} được chọn là ${{{phan_so(d/c)}}}$"
+
+ 
+
+    if chon ==5:
+        d=b
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được một nam một nữ trong đó có bạn {A} là "
+        noi_dung_loigiai=f" Xác suất để chọn được một nam một nữ trong đó có {A} được chọn là ${{{phan_so(d/c)}}}$"
+
+    if chon ==6:
+        d=a+b-2
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam trong đó có một bạn tên {B}. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được {A} mà không chọn {B} là "
+        noi_dung_loigiai=f" Xác suất để chọn được {A} mà không chọn {B} là ${{{phan_so(d/c)}}}$"
+
+
+    if chon ==7:
+        d=math.comb(a+b-1, 2)
+        A=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường", "Hà", "Lan", "Mai"," Huệ"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ và ${{{b}}}$ bạn nam trong đó có một bạn tên {A} . Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để bạn {A} không được chọn là "
+        noi_dung_loigiai=f" Xác suất để bạn {A} không được chọn là ${{{phan_so(d/c)}}}$"
+
+    if chon ==8:
+        d=a+b-2
+        A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+        B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường"])
+        noi_dung=f"Một nhóm gồm ${{{a}}}$ bạn nữ trong đó có một bạn tên {A} và ${{{b}}}$ bạn nam trong đó có một bạn tên {B}. Giáo viên chọn ngẫu nhiên hai bạn tham gia văn nghệ. Xác suất để chọn được {A} mà không chọn {B} là "
+        noi_dung_loigiai=f" Xác suất để {A} và {B} không được chọn là ${{{phan_so(d/c)}}}$"
+
+
+    kq=f"${{{phan_so(d/c)}}}$ "
+    ds=[f"${{{phan_so((d+1)/c)}}}$ ",   f"${{{phan_so((d+2)/c)}}}$ ",f" ${{{phan_so((d-2)/c)}}}$",f" ${{{phan_so((d-1)/c)}}}$",f" ${{{phan_so((d+3)/c)}}}$"                    ]
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[L10_C9_B2_20]-M2. xs các btoán về Rút quả cầu từ một hộp các quả vừa khác màu vừa khác số(18 kiểu)
+def mjulk_L10_C9_B2_20(): 
+    ds=[" đen", "đỏ", "xanh", "tím", "vàng", "trắng"]
+    A,B=random.sample(ds,2)
+    a=random.randint(10,25)
+    m =random.randint(6, 15)
+    n=m+random.randint(10,25)
+    b=n-m+1
+    u=a+b
+    e=random.choice([3,4,5,6,7,8,10])
+    chon=random.randint(1,17)
+    if chon ==1:
+        d=a
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {A} là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {A} là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {A} là ${{{x}}}$. ")
+
+    if chon ==2:
+        d=b
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {B} là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {B} là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {B} là ${{{x}}}$. ")
+
+    if chon ==3:
+        d=len([i for i in range(m, n + 1) if i %2 != 0])
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {B} ghi số lẻ là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {B} ghi số lẻ là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {B} ghi số lẻ là ${{{x}}}$. ")
+
+
+    if chon ==4:
+        d=len([i for i in range(1, a + 1) if i %2 != 0])
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {A} ghi số lẻ là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {A} ghi số lẻ là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {A} ghi số lẻ là ${{{x}}}$. ")
+
+
+    if chon ==5:
+        d=len([i for i in range(m, n + 1) if i %2 == 0])
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {B} ghi số chẵn là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {B} ghi số chẵn là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {B} ghi số chẵn là ${{{x}}}$. ")
+
+
+    if chon ==6:
+        d=len([i for i in range(1, a + 1) if i %2 == 0])
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {A} ghi số chẵn là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {A} ghi số chẵn là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {A} ghi số chẵn là ${{{x}}}$. ")
+
+
+
+    if chon ==7:
+        d1=len([i for i in range(1, a + 1) if i %2 != 0])
+        d2=len([i for i in range(m, n + 1) if i %2 != 0])
+        d=d1+d2
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu ghi số lẻ là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả cầu ghi số lẻ là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả cầu ghi số lẻ là ${{{x}}}$. ")
+
+
+    if chon ==8:
+        d1=len([i for i in range(m, n + 1) if i %2 == 0])
+        d2=len([i for i in range(1, a + 1) if i %2 == 0])
+        d=d1+d2
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu ghi số chẵn là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả cầu ghi số chẵn là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả cầu ghi số chẵn là ${{{x}}}$. ")
+
+
+
+    if chon ==9:
+        d=sum(1 for i in range(int(m**0.5), int(n**0.5) + 1) if m<=i**2 <= n)
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {B} ghi số chính phương là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {B} ghi số chính phương là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {B} ghi số chính phương là ${{{x}}}$. ")
+
+
+    if chon ==10:
+        d=sum(1 for i in range(1, int(a**0.5) + 1) if i**2 <= a)
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {A} ghi số chính phương là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {A} ghi số chính phương là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {A} ghi số chính phương là ${{{x}}}$. ")
+
+
+    if chon ==11:
+        d1=sum(1 for i in range(1, int(a**0.5) + 1) if i**2 <= a)
+        d2=sum(1 for i in range(int(m**0.5), int(n**0.5) + 1) if m<=i**2 <= n)
+        d=d1+d2
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu ghi số chính phương là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả cầu ghi số chính phương là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả cầu ghi số chính phương là ${{{x}}}$. ")
+
+
+
+    if chon ==12:
+        d=sum(1 for i in range(m, n+1) if all(i % d != 0 for d in range(2, int(i**0.5) + 1)) and i > 1)
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {B} ghi số nguyên tố là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {B} ghi số nguyên tố là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {B} ghi số nguyên tố là ${{{x}}}$. ")
+
+
+    if chon ==13:
+        d=sum(1 for i in range(2, a+1) if all(i % j != 0 for j in range(2, int(i**0.5) + 1)))
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {A} ghi số nguyên tố là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {A} ghi số nguyên tố là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {A} ghi số nguyên tố là ${{{x}}}$. ")
+
+
+    if chon ==14:
+        d1=sum(1 for i in range(2, a+1) if all(i % j != 0 for j in range(2, int(i**0.5) + 1)))
+        d2=sum(1 for i in range(m, n+1) if all(i % d != 0 for d in range(2, int(i**0.5) + 1)) and i > 1)
+        d=d1+d2
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu ghi số nguyên tố là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả ghi số nguyên tố là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả ghi số nguyên tố là ${{{x}}}$. ")
+
+
+    if chon ==15:
+        d=len([i for i in range(m, n + 1) if i % e == 0])
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {B} ghi số chia hết cho ${{{e}}}$ là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {B} ghi số chia hết cho ${{{e}}}$ là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {B} ghi số chia hết cho ${{{e}}}$ là ${{{x}}}$. ")
+
+
+    if chon ==16:
+        d=len([i for i in range(1, a + 1) if i % e == 0])
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu màu {A} ghi số chia hết cho ${{{e}}}$ là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả màu {A} ghi số chia hết cho ${{{e}}}$ là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả màu {A} ghi số chia hết cho ${{{e}}}$ là ${{{x}}}$. ")
+
+
+    if chon ==17:
+        d1=len([i for i in range(1, a + 1) if i % e == 0])
+        d2=len([i for i in range(m, n + 1) if i % e == 0])
+        d=d1+d2
+        x=phan_so(d/u)
+        noi_dung=f"Một hộp chứa ${{{a}}}$ quả cầu màu {A} được đánh số từ ${{1}}$ đến ${{{a}}}$ và ${{{b}}}$ quả cầu màu {B} được đánh số ${{{m}}}$ đến ${{{n}}}$. Lấy ngẫu nhiên một quả cầu trong hộp, xác suất để lấy được quả cầu ghi số chia hết cho ${{{e}}}$ là: "
+        noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{u}}}$. \n\n"
+                        f" Số các kết quả thuận lợi của biến cố lấy được quả ghi số chia hết cho ${{{e}}}$ là ${{{d}}}$\n\n"
+                        f" Xác suất để lấy được quả ghi số chia hết cho ${{{e}}}$ là ${{{x}}}$. ")
+
+
+
+
+
+    kq=f"${{{x}}}$ "
+    ds1=[f"${{{phan_so(d/(u-1))}}}$ ",   f"${{{phan_so(d/(u-2))}}}$ ",f" ${{{phan_so(d/(u+4))}}}$",f" ${{{phan_so(d/(u+1))}}}$",f" ${{{phan_so(d/(u+2))}}}$" ,f" ${{{phan_so(d/(u+3))}}} $",f" ${{{phan_so(d/(u-3))}}}$ "]
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_21]-M1. XS các bài toán quay số trúng thưởng
+def mjulk_L10_C9_B2_21(): 
+    a=random.randint(10,20)
+    b=random.randint(1,a)
+    chon =random.randint(1,9)
+    C=random.choice([" con chuột máy tính"," chai dầu gội", " tuýt kem đánh răng", "hộp bánh", "túi nước giặt", "thú bông"])
+    A=random.choice(["tivi", "tủ lạnh", "bàn là", "nồi cơm điện", "máy hút bụi", "mũ bảo hiểm", "điện thoại thông minh", "đèn học", "bộ nồi gia dụng", "ấm siêu tốc","máy sấy tóc"])
+    B=random.choice(["siêu thị", "cửa hàng tiện lợi", "hội chợ", "cửa hàng bách hoá", " trung tâm thương mại", "công ty"," cửa hàng"])
+    if chon ==1:
+        c=1
+        noi_dung=f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số ${{{b}}}$ thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:"
+        
+
+
+    if chon ==2:
+        c=len([i for i in range(1, a + 1) if i < b])
+        noi_dung=f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số nhỏ hơn ${{{b}}}$ thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:"
+
+        
+
+
+    if chon == 3:
+        c = sum(1 for i in range(2, a+1) if all(i % j != 0 for j in range(2, int(i**0.5) + 1)))
+        noi_dung=f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số nguyên tố thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:"
+        
+
+    if chon == 4:
+        c = sum(1 for i in range(1, int(a**0.5) + 1) if i**2 <= a)
+        noi_dung=f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số chính phương thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:"
+        
+
+
+    if chon == 5:
+        c = sum(1 for i in range(2, a+1) if any(i % j == 0 for j in range(2, int(i**0.5) + 1)))
+        noi_dung=f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi hợp số thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:"
+        
+
+    if chon == 6:
+        n = random.randint(2, 5)
+        m = random.choice([i for i in range(n+3,a-1) ])
+        
+        c = max(0, m - n - 1)
+        noi_dung = f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số lớn hơn ${{{n}}}$ và nhỏ hơn ${{{m}}}$ thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=a-random.randint(1,10)
+        c = len([i for i in range(1, a + 1) if i % b != 0])
+        noi_dung = f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số chia hết cho ${{{b}}}$ thì người chơi nhận được một {A}. Xác suất để người chơi nhận được {A} là:  "
+        
+    if chon == 8:
+        
+        c = len([i for i in range(1, a + 1) if i % 2 != 0])
+        noi_dung = f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số lẻ thì người chơi nhận được {C}. Xác suất để người chơi nhận được {C} là:  "
+    
+    if chon == 9:
+        
+        c = len([i for i in range(1, a + 1) if i % 2 == 0])
+        noi_dung = f"Một {B} tổ chức quay số trúng thưởng nhân dịp khai trương, họ chuẩn bị một vòng tròn cố định tâm và có gắn kim quay tại tâm, vòng tròn được chia thành ${{{a}}}$ phần bằng nhau và đánh số liên tiếp từ ${{1}}$ đến ${{{a}}}$. Mỗi người chơi chỉ được quay một lần duy nhất, nếu quay vào ô ghi số chẵn thì người chơi nhận được {C}. Xác suất để người chơi nhận được {C} là:  "
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+
+
+    ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+    ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+    f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_22]-M2. XS các bài toán rút số từ 2 hộp và ghép lại với nhau
+def mjulk_L10_C9_B2_22(): 
+    a=9
+    b=random.randint(2,9)
+    d=random.choice([i for i in range(2,9) if i!=b])
+    m=random.choice([i for i in range(1,9) if i!=b and i!=d])    
+
+    e=random.randint(0,9)
+    f=random.choice([i for i in range(0,9) if i!=e])
+    h=random.choice([i for i in range(0,9) if i!=e and i!=f])    
+    b1=10*b+e 
+    b2=10*b+f 
+    b3=10*b+h 
+    b4=10*d+e 
+    b5=10*d+f 
+    b6=10*d+h 
+    b7=10*m+e 
+    b8=10*m+f 
+    b9=10*m+h 
+
+    ds=[b1,b2,b3,b5,b4,b6,b7,b8,b9]
+
+    chon =random.randint(1,7)
+    if chon ==1:
+        c1=sum(1 for x in (e, f, h) if x % 2 == 0)
+        c=3*c1
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số chẵn là: "
+
+    if chon ==2:
+        c1=sum(1 for x in (e, f, h) if x % 2 != 0)
+        c=3*c1
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=random.randint(10,20)
+        j=i+random.randint(20,50)
+        c=sum(i < x < j for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Từ mỗi túi I và II rút ngẫu nhiên một tấm thẻ và ghép thành số có hai chữ số với chữ số trên tấm thẻ rút từ túi I là chữ số hàng chục. Xác xuất để số tạo thành là số không chia hết cho ${{{u}}}$ là: "
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[L10_C9_B2_23]-M2. XS các bài toán rút số từ 2 hộp và nhân lại với nhau
+def mjulk_L10_C9_B2_23(): 
+    a=9
+    b=random.randint(1,9)
+    d=random.choice([i for i in range(1,9) if i!=b])
+    m=random.choice([i for i in range(1,9) if i!=b and i!=d])    
+
+    e=random.randint(1,9)
+    f=random.choice([i for i in range(1,9) if i!=e])
+    h=random.choice([i for i in range(1,9) if i!=e and i!=f])    
+    b1=b*e 
+    b2=b*f 
+    b3=b*h 
+    b4=d*e 
+    b5=d*f 
+    b6=d*h 
+    b7=m*e 
+    b8=m*f 
+    b9=m*h 
+    ds=[b1,b2,b3,b5,b4,b6,b7,b8,b9]
+
+    chon =random.randint(1,7)
+    if chon ==1:
+        c=sum(x % 2 == 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số chẵn là: "
+
+    if chon ==2:
+        c=sum(x % 2 != 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=random.randint(2,20)
+        j=i+random.randint(20,50)
+        c=sum(i < x < j for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và nhân hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số không chia hết cho ${{{u}}}$ là: "
+
+
+    
+
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_24]-M2. XS các bài toán rút số từ 2 hộp và cộng lại với nhau
+def mjulk_L10_C9_B2_24(): 
+    a=9
+    b=random.randint(2,9)
+    d=random.choice([i for i in range(2,9) if i!=b])
+    m=random.choice([i for i in range(2,9) if i!=b and i!=d])    
+
+    e=random.randint(1,9)
+    f=random.choice([i for i in range(1,9) if i!=e])
+    h=random.choice([i for i in range(1,9) if i!=e and i!=f])    
+    b1=b+e 
+    b2=b+f 
+    b3=b+h 
+    b4=d+e 
+    b5=d+f 
+    b6=d+h 
+    b7=m+e 
+    b8=m+f 
+    b9=m+h 
+    ds=[b1,b2,b3,b5,b4,b6,b7,b8,b9]
+
+    chon =random.randint(1,8)
+    if chon ==1:
+        c=sum(x % 2 == 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số chẵn là: "
+
+    if chon ==2:
+        c=sum(x % 2 != 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=min(ds)+1
+        j=max(ds)-random.randint(1,3)
+        c=sum(i < x < j for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là số không chia hết cho ${{{u}}}$ là: "
+
+    if chon == 8:
+        e=random.choice([i for i in ds])
+        u=e*random.randint(2,4)
+        c=sum(u % x == 0 for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả là ước của ${{{u}}}$ là: "
+    
+    if chon == 9:
+        e=random.choice([i for i in ds])
+        u=e*random.randint(2,5) 
+        v=e-1 
+        c=sum(u % x == 0 and x>v for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả vừa là ước của ${{{u}}}$ và lớn hơn ${{{v}}}$ là: "
+
+    if chon == 10:
+        e=random.choice([i for i in ds if i!=1])
+        u=e*random.randint(3,5) 
+        v=e+random.randint(1,10)
+        c=sum(u % x == 0 and x<v for x in ds)
+        noi_dung=f"Cho hai túi I và II. Túi I chứa 3 tấm thẻ đánh số ${{{d}; {b}; {m}}}$. Túi II chứa 3 tấm thẻ, đánh số ${{{e}; {f}; {h}}}$. Rút ngẫu nhiên từ mỗi túi ra một tấm thẻ và cộng hai số ghi trên hai tấm thẻ với nhau. Xác xuất để kết quả vừa là ước của ${{{u}}}$ và nhỏ hơn ${{{v}}}$ là: "
+
+
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_25]-M2. XS các bài toán quay số từ 2 vòng quay và nhân(cộng, ghép) lại với nhau(8 kiểu)
+def mjulk_L10_C9_B2_25(): 
+    ten=["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"]
+    ten1, ten2=random.sample(ten,2)
+    a=12
+    b=random.randint(1,9)
+    d=random.choice([i for i in range(1,9) if i!=b])
+    m=random.choice([i for i in range(1,9) if i!=b and i!=d])    
+
+    e=random.randint(1,9)
+    f=random.choice([i for i in range(1,9) if i!=e])
+    h=random.choice([i for i in range(1,9) if i!=e and i!=f])    
+    g=random.choice([i for i in range(1,9) if i!=e and i!=f and i!=h])    
+    b1=b*e 
+    b2=b*f 
+    b3=b*h 
+    b4=d*e 
+    b5=d*f 
+    b6=d*h 
+    b7=m*e 
+    b8=m*f 
+    b9=m*h 
+    b10=b*g 
+    b11=d*g 
+    b12=m*g
+    ds=[b1,b2,b3,b5,b4,b6,b7,b8,b9, b11, b12, b10]
+    code_hinh=fr"""
+\begin{{tikzpicture}}
+    % Vẽ hình tròn thứ nhất (nhỏ lại)
+    \draw[thick] (0,0) circle(2cm);
+    
+    % Vẽ các đường chia hình tròn thứ nhất thành 3 phần bằng nhau
+    \foreach \angle in {{0,120,240}} {{
+        \draw[thick] (0,0) -- (\angle:2cm);
+    }}
+    
+    % Đánh số các phần của hình tròn thứ nhất
+    \node at (60:1cm) {{${d}$}};
+    \node at (180:1cm) {{${b}$}};
+    \node at (-60:1cm){{${m}$}};
+    
+    % Vẽ hình tròn thứ hai (nhỏ lại, có khoảng cách)
+    \draw[thick] (5,0) circle(2cm);
+    
+    % Vẽ các đường chia hình tròn thứ hai thành 4 phần bằng nhau
+    \foreach \angle in {{0,90,180,270}} {{
+        \draw[thick] (5,0) -- ++(\angle:2cm);
+    }}
+    
+    % Đánh số các phần của hình tròn thứ hai
+    \node at (6,1) {{${e}$}};
+    \node at (6,-1) {{${f}$}};
+    \node at (4,-1) {{${g}$}};
+    \node at (4,1) {{${h}$}};
+\end{{tikzpicture}}
+    """
+    chon =random.randint(1,7)
+    if chon ==1:
+        c=sum(x % 2 == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số chẵn là: "
+
+    if chon ==2:
+        c=sum(x % 2 != 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=random.randint(2,20)
+        j=i+random.randint(20,50)
+        c=sum(i < x < j for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là số không chia hết cho ${{{u}}}$ là: "
+
+    # if chon ==8:
+    #     u=random.randint(20,100)
+    #     c=sum(u % x == 0 for x in ds)
+    #     noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tích hai số ở hình quạt mà hai mũi tên chỉ vào là ước của ${{{u}}}$ là: "
+    
+
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+    phuongan = f"A. {list_PA[0]}.\t   B. {list_PA[1]}.\t    C. {list_PA[2]}.\t     D. {list_PA[3]}.\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề latex
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+                   f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+                   f"\\end{{ex}}\n"
+    
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_26]-M3. XS các btoán quay số từ 2 vòng quay và cộng lại với nhau(10 kiểu)
+def mjulk_L10_C9_B2_26(): 
+    ten=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    ten1, ten2=random.sample(ten,2)
+    a=12
+    b=random.randint(1,9)
+    d=random.choice([i for i in range(1,9) if i!=b])
+    m=random.choice([i for i in range(1,9) if i!=b and i!=d])    
+
+    e=random.randint(1,9)
+    f=random.choice([i for i in range(1,9) if i!=e])
+    h=random.choice([i for i in range(1,9) if i!=e and i!=f])    
+    g=random.choice([i for i in range(1,9) if i!=e and i!=f and i!=h])    
+    b1=b+e 
+    b2=b+f 
+    b3=b+h 
+    b4=d+e 
+    b5=d+f 
+    b6=d+h 
+    b7=m+e 
+    b8=m+f 
+    b9=m+h 
+    b10=b+g 
+    b11=d+g 
+    b12=m+g
+    ds=[b1,b2,b3,b5,b4,b6,b7,b8,b9, b11, b12, b10]
+    code_hinh=fr"""
+\begin{{tikzpicture}}
+    % Vẽ hình tròn thứ nhất (nhỏ lại)
+    \draw[thick] (0,0) circle(2cm);
+    
+    % Vẽ các đường chia hình tròn thứ nhất thành 3 phần bằng nhau
+    \foreach \angle in {{0,120,240}} {{
+        \draw[thick] (0,0) -- (\angle:2cm);
+    }}
+    
+    % Đánh số các phần của hình tròn thứ nhất
+    \node at (60:1cm) {{${d}$}};
+    \node at (180:1cm) {{${b}$}};
+    \node at (-60:1cm){{${m}$}};
+    
+    % Vẽ hình tròn thứ hai (nhỏ lại, có khoảng cách)
+    \draw[thick] (5,0) circle(2cm);
+    
+    % Vẽ các đường chia hình tròn thứ hai thành 4 phần bằng nhau
+    \foreach \angle in {{0,90,180,270}} {{
+        \draw[thick] (5,0) -- ++(\angle:2cm);
+    }}
+    
+    % Đánh số các phần của hình tròn thứ hai
+    \node at (6,1) {{${e}$}};
+    \node at (6,-1) {{${f}$}};
+    \node at (4,-1) {{${g}$}};
+    \node at (4,1) {{${h}$}};
+\end{{tikzpicture}}
+    """
+    chon =random.randint(1,8)
+    if chon ==1:
+        c=sum(x % 2 == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số chẵn là: "
+
+    if chon ==2:
+        c=sum(x % 2 != 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=min(ds) +2
+        j=max(ds)-1
+        c=sum(i < x < j for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là số không chia hết cho ${{{u}}}$ là: "
+
+    if chon ==8:
+        u=random.randint(20,100)
+        c=sum(u % x == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là ước của ${{{u}}}$ là: "
+    
+    if chon == 9:
+        u=random.randint(20,100)
+        v=random.randint(2,15)
+        c=sum(u % x == 0 and x>v for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là ước của ${{{u}}}$ và lớn hơn ${{{v}}}$ là: "
+
+    if chon == 10:
+        u=random.randint(20,100)
+        v=u-random.randint(25,)
+        c=sum(u % x == 0 and x<v for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {ten1} quay tấm bìa ${{A}}$, bạn {ten2} quay tấm bìa ${{B}}$. Xác xuất để tổng hai số ở hình quạt mà hai mũi tên chỉ vào là ước của ${{{u}}}$ và nhỏ hơn ${{{v}}}$là: "
+
+
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+    phuongan = f"A. {list_PA[0]}.\t   B. {list_PA[1]}.\t    C. {list_PA[2]}.\t     D. {list_PA[3]}.\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề latex
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+                   f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+                   f"\\end{{ex}}\n"
+    
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_27]-M2. XS các bài toán quay số từ 2 vòng quay và ghép lại với nhau(7 kiểu)
+def mjulk_L10_C9_B2_27(): 
+    X=random.choice(["An ", "Minh", "Phú", "Hà", "Lan", "Mai", "Hồng", "Huệ", "Bình"])
+    Y=random.choice(["Công ", "Nga", "Quân", "Khôi", "Hải", "Hiền", "Kiên", "Duy","Bảo"])
+    a=12
+    b=random.randint(1,9)
+    d=random.choice([i for i in range(1,9) if i!=b])
+    m=random.choice([i for i in range(1,9) if i!=b and i!=d])    
+
+    e=random.randint(1,9)
+    f=random.choice([i for i in range(1,9) if i!=e])
+    h=random.choice([i for i in range(1,9) if i!=e and i!=f])    
+    g=random.choice([i for i in range(1,9) if i!=e and i!=f and i!=h])    
+    b1=10*b+e 
+    b2=10*b+f 
+    b3=10*b+h 
+    b4=10*d+e 
+    b5=10*d+f 
+    b6=10*d+h 
+    b7=10*m+e 
+    b8=10*m+f 
+    b9=10*m+h 
+    b10=10*b+g 
+    b11=10*d+g 
+    b12=10*m+g
+    ds=[b1,b2,b3,b5,b4,b6,b7,b8,b9, b11, b12, b10]
+    code_hinh=fr"""
+\begin{{tikzpicture}}
+    % Vẽ hình tròn thứ nhất (nhỏ lại)
+    \draw[thick] (0,0) circle(2cm);
+    
+    % Vẽ các đường chia hình tròn thứ nhất thành 3 phần bằng nhau
+    \foreach \angle in {{0,120,240}} {{
+        \draw[thick] (0,0) -- (\angle:2cm);
+    }}
+    
+    % Đánh số các phần của hình tròn thứ nhất
+    \node at (60:1cm) {{${d}$}};
+    \node at (180:1cm) {{${b}$}};
+    \node at (-60:1cm){{${m}$}};
+    
+    % Vẽ hình tròn thứ hai (nhỏ lại, có khoảng cách)
+    \draw[thick] (5,0) circle(2cm);
+    
+    % Vẽ các đường chia hình tròn thứ hai thành 4 phần bằng nhau
+    \foreach \angle in {{0,90,180,270}} {{
+        \draw[thick] (5,0) -- ++(\angle:2cm);
+    }}
+    
+    % Đánh số các phần của hình tròn thứ hai
+    \node at (6,1) {{${e}$}};
+    \node at (6,-1) {{${f}$}};
+    \node at (4,-1) {{${g}$}};
+    \node at (4,1) {{${h}$}};
+\end{{tikzpicture}}
+    """
+    chon =random.randint(1,7)
+    if chon ==1:
+        c=sum(x % 2 == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số chẵn là: "
+
+    if chon ==2:
+        c=sum(x % 2 != 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=random.randint(2,20)
+        j=i+random.randint(20,50)
+        c=sum(i < x < j for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là số không chia hết cho ${{{u}}}$ là: "
+
+    # if chon ==8:
+    #     u=random.randint(20,100)
+    #     c=sum(u % x == 0 for x in ds)
+    #     noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là ước của ${{{u}}}$ là: "
+    
+    # if chon == 9:
+    #     u=random.randint(20,100)
+    #     v=random.randint(2,15)
+    #     c=sum(u % x == 0 and x>v for x in ds)
+    #     noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là ước của ${{{u}}}$ và lớn hơn ${{{v}}}$ là: "
+
+    # if chon == 10:
+    #     u=random.randint(20,100)
+    #     v=u-random.randint(25,)
+    #     c=sum(u % x == 0 and x<v for x in ds)
+    #     noi_dung=f"Tấm bìa cứng ${{A}}$ hình tròn được chia thành ba hình quạt có diện tích bằng nhau, đánh số ${{{d}; {b}; {m}}}$ và tấm bìa cứng ${{B}}$ hình tròn được chia thành ${{4}}$ hình quạt có diện tích bằng nhau đánh số ${{{e}; {f}; {g}; {h}}}$. Trục quay của ${{A}}$ và ${{B}}$ được gắn mũi tên ở tâm. Bạn {X} quay tấm bìa ${{A}}$, bạn {Y} quay tấm bìa ${{B}}$ và ghép hai số quay được của 2 bạn thành số có hai chữ số với chữ số bạn {X} quay được là chữ số hàng chục. Xác suất để kết quả là ước của ${{{u}}}$ và nhỏ hơn ${{{v}}}$là: "
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+    phuongan = f"A. {list_PA[0]}.\t   B. {list_PA[1]}.\t    C. {list_PA[2]}.\t     D. {list_PA[3]}.\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề latex
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+                   f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+                   f"\\end{{ex}}\n"
+    
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[L10_C9_B2_28]-M2. Tính xác suất các bài toán về chọn 1 người từ 2 nhóm
+def mjulk_L10_C9_B2_28(): 
+
+    e=random.randint(1,12)
+    
+    ds2=["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"]
+    ds3=["Hoà", "Minh", "Hiếu", "Hùng", "Hưng", "Hoàng", "Công", "Thịnh", "Long", "Linh", "Trường"]
+    A,B,C,D =random.sample(ds2, 4)
+    M,N,P,Q,Z=random.sample(ds3,5)
+    w=random.randint(1,2)
+    if w==1:
+        a=7
+        chon =random.randint(1,11)
+        if chon ==1:
+            c=3
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam là "
+
+        if chon ==2:        
+            c=4
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nữ là "               
+
+        if chon ==3:
+            c=2     
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$A là "
+
+
+        if chon ==4:
+            c=2
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn một bạn lớp ${{{e}}}$B là "
+
+        if chon ==5:
+            c=3
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn một bạn lớp ${{{e}}}$C là "
+
+        if chon ==6:
+            c=1
+
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam lớp ${{{e}}}$A là "
+        if chon ==7:
+            c=2
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nữ lớp ${{{e}}}$C là "
+   
+        if chon ==8:
+            c=4
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn bạn lớp ${{{e}}}$C là "
+           
+        if chon ==9:
+            c=5
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn được bạn nữ lớp ${{{e}}}$C là "    
+        if chon ==10:
+            c=6
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn được bạn {A} là "
+        if chon ==11:
+            c=1
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{3}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất chọn được bạn {A} là "
+    if w==2:
+        a=8
+
+        chon =random.randint(1,11)
+        if chon ==1:
+            c=4
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam là "
+
+        if chon ==2:        
+            c=4
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nữ là "               
+
+        if chon ==3:
+            c=2     
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$A là "
+
+
+        if chon ==4:
+            c=3
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$B là "
+
+        if chon ==5:
+            c=3
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$C là "
+
+        if chon ==6:
+            c=1
+
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam lớp ${{{e}}}$A là "
+        if chon ==7:
+            c=2
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nữ lớp ${{{e}}}$C là "
+   
+        if chon ==8:
+            c=5
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn bạn lớp ${{{e}}}$C là "
+           
+        if chon ==9:
+            c=6
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn được bạn nữ lớp ${{{e}}}$C là "    
+        if chon ==10:
+            c=7
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn được bạn {Q} là "    
+            chon =random.randint(1,9)
+        if chon ==11:
+            c=1
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{4}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất chọn được bạn {A} là "
+    if w==3:
+        a=9
+        chon =random.randint(1,12)
+        if chon ==1:
+            c=5
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam là "
+
+        if chon ==2:        
+            c=4
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nữ là "               
+
+        if chon ==3:
+            c=2     
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$A là "
+
+
+        if chon ==4:
+            c=4
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$B là "
+
+        if chon ==5:
+            c=3
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn lớp ${{{e}}}$C là "
+
+        if chon ==6:
+            c=1
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nam lớp ${{{e}}}$A là "
+        if chon ==7:
+            c=2
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất để chọn được một bạn nữ lớp ${{{e}}}$C là "
+   
+        if chon ==8:
+            c=6
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn bạn lớp ${{{e}}}$C là "
+           
+        if chon ==9:
+            c=7
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn được bạn nữ lớp ${{{e}}}$C là "    
+        if chon ==10:
+            c=8
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất không chọn được bạn {Q} là "    
+        if chon ==11:
+            c=3
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn nam tên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất chọn được bạn nam lớp {B} là " 
+        if chon ==12:
+            c=1
+            noi_dung=f"Một nhóm gồm ${{4}}$ bạn nữ tên {A} (lớp ${{{e}}}$A), {B} (lớp ${{{e}}}$B), {C} (lớp ${{{e}}}$C), {D} (lớp ${{{e}}}$C) và ${{5}}$ bạn namtên {M} (lớp ${{{e}}}$A), {N} (lớp ${{{e}}}$B), {P} (lớp ${{{e}}}$C), {Q} (lớp ${{{e}}}$B), {Z} (lớp ${{{e}}}$B). Giáo viên chọn ngẫu nhiên một bạn tham gia văn nghệ. Xác suất chọn được bạn {A} là "
+    
+
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    kq2, kq3, kq4 = random.sample(ds, 3)  
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_29]-M3. XS các btoan tích số chấm, tổng số chấm khi gieo 1 con xúc xắc 2 lần 
+def mjulk_L10_C9_B2_29(): 
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+
+    chon =random.randint(1,27) 
+    if chon ==1:
+        a=random.randint(1,6)
+
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 2 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 2 là ${{{phan_so(1/36)}}}$."
+
+        kq=f"${{{phan_so(1/36)}}}$ "
+        kq2=f"${{{phan_so(1/(36-random.randint(10,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(36-random.randint(10,20)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(1,20)))}}}$ "
+    if chon ==2:
+        a=random.randint(1,6)
+
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 3 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 3 là ${{{phan_so(1/18)}}}$."
+
+        kq=f"${{{phan_so(1/18)}}}$ "
+        kq2=f"${{{phan_so(1/(18+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(16+random.randint(1,2)))}}}$  "
+        kq4=f" ${{{phan_so(3/(16+random.randint(1,2)))}}}$ "
+
+    if chon ==3:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 4 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 4 là ${{{phan_so(3/36)}}}$."
+
+        kq=f"${{{phan_so(1/12)}}}$ "
+        kq2=f"${{{phan_so(1/(12+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(12+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(12+random.randint(1,2)))}}}$ "
+    if chon ==4:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 5 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 5 là ${{{phan_so(4/36)}}}$."
+
+        kq=f"${{{phan_so(1/9)}}}$ "
+        kq2=f"${{{phan_so(1/(9+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(9+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(9-random.randint(1,3)))}}}$ "
+    if chon ==5:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 6 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm của hai lần gieo bằng 6 là ${{{phan_so(5/36)}}}$."
+
+        kq=f"${{{phan_so(5/36)}}}$ "
+        kq2=f"${{{phan_so(5/(12+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(1,2)))}}}$ "
+    if chon ==6:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 7 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 7 là ${{{phan_so(6/36)}}}$."
+
+        kq=f"${{{phan_so(1/6)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==7:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 8 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 8 là ${{{phan_so(5/36)}}}$."
+
+        kq=f"${{{phan_so(5/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,2)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+
+    if chon ==8:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 9 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 9 là ${{{phan_so(4/36)}}}$."
+
+        kq=f"${{{phan_so(4/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(1,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==9:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 10 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 10 là ${{{phan_so(3/36)}}}$."
+
+        kq=f"${{{phan_so(3/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==10:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 11 là"
+        noi_dung_loigiai=f" Xác suất để tổng số chấm của hai lần gieo bằng 11 là ${{{phan_so(2/36)}}}$."
+
+        kq=f"${{{phan_so(2/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==11:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm của hai lần gieo bằng 12 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm của hai lần gieo bằng 12 là ${{{phan_so(1/36)}}}$."
+
+        kq=f"${{{phan_so(1/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==12:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm của hai lần gieo chia hết cho 5 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm của hai lần gieo chia hết cho 5 là ${{{phan_so(11/36)}}}$."
+
+        kq=f"${{{phan_so(11/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==13:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm của hai lần gieo chia hết cho 10 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm của hai lần gieo chia hết cho 10 là ${{{phan_so(6/36)}}}$."
+
+        kq=f"${{{phan_so(6/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==14:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm của hai lần gieo chia hết cho 6 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm của hai lần gieo chia hết cho 6 là ${{{phan_so(15/36)}}}$."
+
+        kq=f"${{{phan_so(15/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,16)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==15:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm của hai lần gieo chia hết cho 8 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm của hai lần gieo chia hết cho 8 là ${{{phan_so(3/36)}}}$."
+
+        kq=f"${{{phan_so(3/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==16:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm của hai lần gieo chia hết cho 4 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm của hai lần gieo chia hết cho 4 là ${{{phan_so(15/36)}}}$."
+
+        kq=f"${{{phan_so(15/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==17:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm của hai lần gieo chia hết cho 9 là"
+        noi_dung_loigiai=f" Xác suất để tích số chấm của hai lần gieo chia hết cho 9 là ${{{phan_so(4/36)}}}$."
+
+        kq=f"${{{phan_so(4/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==18:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là"
+        noi_dung_loigiai=f" Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là ${{{phan_so(11/36)}}}$."
+
+        kq=f"${{{phan_so(11/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==19:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là"
+        noi_dung_loigiai=f" Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là ${{{phan_so(11/36)}}}$."
+
+        kq=f"${{{phan_so(11/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==20:
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để hai lần gieo có số chấm xuất hiện giống nhau là"
+        noi_dung_loigiai=f"Xác suất để của hai lần gieo có số chấm xuất hiện giống nhau là ${{{phan_so(6/36)}}}$."
+
+        kq=f"${{{phan_so(6/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==21:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để có mặt ${{{a}}}$ xuất hiện đúng một lần là"
+        noi_dung_loigiai=f" Xác suất để có mặt ${{{a}}}$ chấm xuất hiện là ${{{phan_so(10/36)}}}$."
+
+        kq=f"${{{phan_so(10/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==22:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm xuất hiện của hai lần gieo là một số lẻ là"
+        noi_dung_loigiai=f"Xác suất để tích số chấm xuất hiện của hai lần gieo là một số lẻ là ${{{phan_so(9/36)}}}$."
+
+        kq=f"${{{phan_so(9/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==23:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tích số chấm xuất hiện của hai lần gieo là một số chẵn là"
+        noi_dung_loigiai=f"Xác suất để tích số chấm xuất hiện của hai lần gieo là một số lẻ là ${{{phan_so(3/4)}}}$."
+
+        kq=f"${{{phan_so(3/4)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==24:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 7 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 7 là ${{{phan_so(15/36)}}}$."
+
+        kq=f"${{{phan_so(15/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$  "
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$  "
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==25:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 6 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 7 là ${{{phan_so(10/36)}}}$."
+
+        kq=f"${{{phan_so(10/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$"
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$"
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+
+    if chon ==26:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 6 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 6 là ${{{phan_so(10/36)}}}$."
+
+        kq=f"${{{phan_so(10/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$"
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$"
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    if chon ==27:
+        a=random.randint(1,6)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần. Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 5 là"
+        noi_dung_loigiai=f"Xác suất để tổng số chấm xuất hiện của hai lần gieo nhỏ hơn 5 là ${{{phan_so(7/36)}}}$."
+
+        kq=f"${{{phan_so(7/36)}}}$ "
+        kq2=f"${{{phan_so(1/(6+random.randint(7,20)))}}}$"
+        kq3=f"${{{phan_so(2/(18+random.randint(1,6)))}}}$"
+        kq4=f" ${{{phan_so(3/(36-random.randint(10,15)))}}}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_30]-M2. XS các btoán ghép số khi gieo 1 con xúc xắc 2 lần(7 kiểu)
+def mjulk_L10_C9_B2_30(): 
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    a=36
+    bo_1 = range(1, 7)
+    bo_2 = range(1, 7)
+
+    ds = [10 * x + y for x in bo_1 for y in bo_2]
+
+    chon =random.randint(1,7)
+    if chon ==1:
+        
+        c=sum(x % 2 == 0 for x in ds)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số chẵn là: "
+
+    if chon ==2:
+        
+        c=sum(x % 2 != 0 for x in ds)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số lẻ là: "
+
+    if chon ==3:
+        c=sum(all(x % i != 0 for i in range(2, int(x**0.5) + 1)) and x > 1 for x in ds)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số nguyên tố là: "
+    
+    if chon ==4:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u == 0 for x in ds)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số chia hết cho ${{{u}}}$ là: "
+
+    if chon ==5:
+        i=random.randint(10,20)
+        j=i+random.randint(20,50)
+        c=sum(i < x < j for x in ds)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số lớn hơn ${{{i}}}$ và nhỏ hơn ${{{j}}}$ là: "
+
+    if chon ==6:
+
+        c=sum(int(x**0.5)**2 == x for x in ds if x >= 0)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số chính phương là: "
+
+    if chon ==7:
+        u=random.choice([3,4,5,6,10])
+        c=sum(x % u != 0 for x in ds)
+        noi_dung=f" Bạn {A} gieo ngẫu nhiên một con xúc xắc cân đối và đồng chất hai lần, đem kết quả ghép thành số có hai chữ số với chữ số của lần gieo thứ nhất là chữ số hàng chục. Xác xuất để số tạo thành là số không chia hết cho ${{{u}}}$ là: "
+
+    noi_dung_loigiai=(f" Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_24]-M3. Tính xác suất các btoán về rút thẻ số 2 lần có hoàn trả lại và ghép lại với nhau(12 kiểu)
+def mjulk_L10_C9_B2_24(): 
+    a2=random.randint(1,3)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [10 * x + y for x in nhom1 for y in nhom2]
+    a=len(danh_sach)
+    chon =random.randint(1,11)
+
+    if chon ==1:
+        b=random.choice([3,4,5,6])
+        danh_sach_moi = list(filter(lambda x: x % b==0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        b=max(danh_sach)-random.randint(1,4)
+        danh_sach_moi = list(filter(lambda x: x < b, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số nhỏ hơn ${{{b}}}$ là:  "
+        
+
+    if chon == 3:
+        danh_sach_moi = list(filter(lambda x: la_so_nguyen_to(x), danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số nguyên tố là:  "
+    if chon == 4:
+        danh_sach_moi = list(filter(lambda x: la_so_chinh_phuong(x), danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số chính phương là:  "
+        
+
+
+    if chon == 5:
+
+        danh_sach_moi = list(filter(lambda x: la_hop_so(x), danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là hợp số là:  "
+        
+
+    if chon == 6:
+        m=min(danh_sach)+1
+        n=max(danh_sach)-random.randint(1,3)
+        danh_sach_moi = list(filter(lambda x: m <x <n, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số lớn hơn ${{{m}}}$ và nhỏ hơn ${{{n}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([3,4,5,6])
+        danh_sach_moi = list(filter(lambda x: x % b!=0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 9:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        danh_sach_moi = list(filter(lambda i: i % b == 0 and i%e==0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==10:
+        danh_sach_moi = list(filter(lambda x: x % 2 == 0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số chẵn là:  "
+    
+
+    if chon ==11:
+        danh_sach_moi = list(filter(lambda x: x % 2 != 0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số lẻ là:  "
+
+    if chon == 8:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+
+        danh_sach_moi = list(filter(lambda x: x % b == j, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép kết quả 2 lần rút thẻ thành số có hai chữ số với chữ số trên tấm thẻ rút lần đầu là chữ số hàng chục. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+
+    danh_sach=str(danh_sach).replace("[","\\left\\{").replace("]","\\right\\} ").replace(",",";")
+    danh_sach_moi=str(danh_sach_moi).replace("[","\\left\\{").replace("]","\\right\\} ").replace(",",";")
+    noi_dung_loigiai=(f" $\\Omega = \\left\\{{ \\overline {{ij}}  ; {a2} \\le i;j \\le {a1} \\right\\}} $\n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f"$A={danh_sach_moi}$ \n\n Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[L10_C9_B2_25]-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại và cộng kq lại với nhau(10kiểu)
+def mjulk_L10_C9_B2_25(): 
+    a2=random.randint(1,4)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [x + y for x in nhom1 for y in nhom2]
+    a=len(danh_sach)
+    chon =random.randint(1,10)
+
+    if chon ==1:
+        b=random.choice([i for i in range(3, int(a/2))])
+        c=len([i for i in danh_sach if i % b == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        b=random.randint(6,12)
+        c=len([i for i in danh_sach if i < b])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số nhỏ hơn ${{{b}}}$ là:  "
+        
+
+    if chon == 3:
+        c = sum(1 for i in danh_sach if la_so_nguyen_to(i))
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số nguyên tố là:  "
+        
+
+    if chon == 4:
+        c = sum(1 for i in danh_sach if la_so_chinh_phuong(i))
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chính phương là:  "
+        
+
+
+    if chon == 5:
+        c = sum(1 for i in danh_sach if la_hop_so(i) )
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là hợp số là:  "
+        
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([i for i in range(3,int(a/2))])
+        c = len([i for i in danh_sach if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 9:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        c = len([i for i in danh_sach if i % b == 0 and i%e==0 ])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==10:
+        c=len([i for i in danh_sach if i % 2 == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chẵn là:  "
+    
+
+    if chon ==6:
+        c=len([i for i in danh_sach if i % 2 != 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số lẻ là:  "
+
+    if chon == 8:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+        c=sum(1 for so in danh_sach if so % b == j)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_26]-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại và nhân kq lại với nhau(10kiểu)
+def mjulk_L10_C9_B2_26(): 
+    a2=random.randint(2,4)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [x * y for x in nhom1 for y in nhom2]
+    a=len(danh_sach)
+    chon =random.randint(1,8)
+
+    if chon ==1:
+        b=random.choice([3,4,5,6,12,20])
+        c=len([i for i in danh_sach if i % b == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        b=random.randint(20,35)
+        c=len([i for i in danh_sach if i < b])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số nhỏ hơn ${{{b}}}$ là:  "
+        
+    if chon == 4:
+        c = sum(1 for i in danh_sach if la_so_chinh_phuong(i))
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chính phương là:  "
+        
+
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([i for i in range(3,int(a/2))])
+        c = len([i for i in danh_sach if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 5:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        c = len([i for i in danh_sach if i % b == 0 and i%e==0 ])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==3:
+        c=len([i for i in danh_sach if i % 2 == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chẵn là:  "
+    
+
+    if chon ==6:
+        c=len([i for i in danh_sach if i % 2 != 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số lẻ là:  "
+
+    if chon == 8:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+        c=sum(1 for so in danh_sach if so % b == j)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+    f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+#[L10_C9_B2_27]-M4. XS các btoán về rút thẻ số 2lần không trả lại và nhân kq lại với nhau(7kiểu)
+def mjulk_L10_C9_B2_27(): 
+    a2=random.randint(2,4)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [x * y for x in nhom1 for y in nhom2 if y!=x]
+    a=len(danh_sach)
+    chon =random.randint(1,7)
+
+    if chon ==1:
+        b=random.choice([3,4,5,6,8,12])
+        c=len([i for i in danh_sach if i % b == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        b=random.randint(20,35)
+        c=len([i for i in danh_sach if i < b])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số nhỏ hơn ${{{b}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([i for i in range(3,int(a/2))])
+        c = len([i for i in danh_sach if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 5:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        c = len([i for i in danh_sach if i % b == 0 and i%e==0 ])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==3:
+        c=len([i for i in danh_sach if i % 2 == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chẵn là:  "
+    
+
+    if chon ==6:
+        c=len([i for i in danh_sach if i % 2 != 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số lẻ là:  "
+
+    if chon == 4:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+        c=sum(1 for so in danh_sach if so % b == j)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, nhân các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_28]-M4. XS các btoán về rút thẻ số 2lần không trả lại và cộng kq lại với nhau(9kiểu)
+def mjulk_L10_C9_B2_28(): 
+    a2=random.randint(2,4)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [x + y for x in nhom1 for y in nhom2 if y!=x]
+    a=len(danh_sach)
+    chon =random.randint(1,9)
+
+    if chon ==1:
+        b=random.choice([3,4,5,6])
+        c=len([i for i in danh_sach if i % b == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        b=random.randint(7,12)
+        c=len([i for i in danh_sach if i < b])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số nhỏ hơn ${{{b}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([i for i in range(3,int(a/2))])
+        c = len([i for i in danh_sach if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 5:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        c = len([i for i in danh_sach if i % b == 0 and i%e==0 ])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==3:
+        c=len([i for i in danh_sach if i % 2 == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chẵn là:  "
+    
+
+    if chon ==6:
+        c=len([i for i in danh_sach if i % 2 != 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số lẻ là:  "
+
+    if chon == 4:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+        c=sum(1 for so in danh_sach if so % b == j)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+    if chon ==8:
+        c=len([i for i in danh_sach if la_so_nguyen_to(i)])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là số nguyên tố là:  "
+
+    if chon ==9:
+        c=len([i for i in danh_sach if la_hop_so(i)])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, cộng các số của 2 lần rút thẻ lại. Xác suất để kết quả là hợp tố là:  "
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+#[L10_C9_B2_29]-M4. XS các btoán về rút thẻ số 2lần không trả lại và ghép kq lại với nhau(9kiểu)
+def mjulk_L10_C9_B2_29(): 
+    a2=random.randint(2,4)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [10*x + y for x in nhom1 for y in nhom2 if y!=x]
+    a=len(danh_sach)
+    chon =random.randint(1,9)
+
+    if chon ==1:
+        b=random.choice([3,4,5,6])
+        c=len([i for i in danh_sach if i % b == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        b=random.randint(27,52)
+        c=len([i for i in danh_sach if i < b])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là số nhỏ hơn ${{{b}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([i for i in range(3,int(a/2))])
+        c = len([i for i in danh_sach if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 5:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        c = len([i for i in danh_sach if i % b == 0 and i%e==0 ])
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==3:
+        c=len([i for i in danh_sach if i % 2 == 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là số chẵn là:  "
+    
+
+    if chon ==6:
+        c=len([i for i in danh_sach if i % 2 != 0])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là số lẻ là:  "
+
+    if chon == 4:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+        c=sum(1 for so in danh_sach if so % b == j)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+    if chon ==8:
+        c=len([i for i in danh_sach if la_so_nguyen_to(i)])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là số nguyên tố là:  "
+
+    if chon ==9:
+        c=len([i for i in danh_sach if la_hop_so(i)])
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên 1 thẻ và không trả lại hộp, tiếp tục rút ngẫu nhiên 1 thẻ 1 lần nữa, ghép các số của 2 lần rút thẻ lại thành một số có hai chữ số với chữ số hàng chục là kết quả lần rút thứ nhất. Xác suất để kết quả là hợp tố là:  "
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[L10_C9_B2_30]-M4. XS các btoán về rút thẻ số nhiều lần không trả lại và ghép kq lại với nhau(12kiểu)
+def mjulk_L10_C9_B2_30(): 
+    a1=random.choice([1,3,5,7,9] )
+    a3=random.choice([2,4,6,8] )
+    a4=random.choice([i for i in range(1,9) if i!=a1 and i!=a3])
+    a2=random.choice([i for i in range(1,9) if i!=a1 and i!=a3 and i!=a4])
+
+    chu_so=[a1, a2, a3, a4]
+    b1, b2=random.sample(chu_so,2)
+
+
+    danh_sach=[int("".join(map(str, p))) for p in permutations(chu_so, 4)] 
+    e=min(danh_sach)
+
+    a=len(danh_sach)
+    chon =random.randint(1,12)
+
+
+    if chon ==2:
+        b=random.randint(e+1000,e+4000)
+        c=len([i for i in danh_sach if i < b])
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số nhỏ hơn ${{{b}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 7:
+        b=random.choice([3,4,5,6,7,8])
+        c = len([i for i in danh_sach if i % b != 0])
+        noi_dung = f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là ghi số không chia hết cho ${{{b}}}$ là:  "
+        
+
+
+    if chon ==3:
+        c=len([i for i in danh_sach if i % 2 == 0])
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số chẵn là:  "
+    
+
+    if chon ==6:
+        c=len([i for i in danh_sach if i % 2 != 0])
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số lẻ là:  "
+
+    if chon == 4:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+        c=sum(1 for so in danh_sach if so % b == j)
+        noi_dung = f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+    if chon ==8:
+        c=len([i for i in danh_sach if la_so_nguyen_to(i)])
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số nguyên tố là:  "
+
+    if chon ==9:
+        c=len([i for i in danh_sach if la_hop_so(i)])
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là hợp tố là:  "
+
+    if chon ==10:
+        c=2
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số có các chữ số tăng dần hoặc giảm dần là:  "
+    hang=[" trăm", "nghìn", "chục", "đơn vị"]
+    dv, dv1=random.sample(hang, 2)
+
+    if chon ==11:
+
+        c=6
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số có chữ số ${{{b1}}}$ xuất hiện ở hàng {dv} là:  "
+
+    if chon ==1:
+
+        c=2
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số có chữ số ${{{b1}}}$ xuất hiện ở hàng {dv} và chữ số ${{{b2}}}$ xuất hiện ở hàng {dv1} là:  "
+    if chon ==5:
+
+        c=18
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số có chữ số ${{{a1}}}$ không xuất hiện ở hàng {dv} là:  "
+    
+    if chon ==12:
+        tang=random.choice([" tăng", "giảm"])
+        c=1
+        noi_dung=f"Một hộp chứa ${{4}}$ thẻ gồm các số ${a1}; {a2}; {a3}; {a4}$ (mỗi thẻ chỉ đánh một số). Rút ngẫu nhiên ${{4}}$ lần mỗi lần 1 thẻ và không lần nào hoàn trả lại hộp, ghép các số của 4 lần rút thẻ lại thành một số có 4 chữ số với chữ số hàng nghìn là kết quả lần rút thứ nhất, chữ số hàng trăm là kết quả của lần rút thứ hai, chữ số hàng chục là kết quả của lần rút thứ 3, chữ số hàng đơn vị là kết quả của lần rút cuối cùng. Xác suất để số tạo thành là số có các chữ số {tang} dần là:  "
+
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+#[L10_C9_B2_31]-M3. XS các btoán rút vật từ hộp này bỏ sang hộp kia
+def mjulk_L10_C9_B2_31():
+    m=random.randint(3,5) 
+    n=random.choice([i for i in range(4,6)])
+    c=1 
+    a=n+1 
+    A=random.choice(["quả bóng", "quả cầu", "viên bi","quyển sách", "thanh kẹo"])
+
+    noi_dung=f" Có hai hộp: hộp I chứa ${{{m}}}$ {A}, hộp II chứa ${{{n}}}$ {A} (các {A} đều có kích thước và khối lượng như nhau). Lấy ngẫu nhiên một {A} từ hộp I bỏ sang hộp II, rồi lại lấy ngẫu nhiên một {A} từ hộp II bỏ ra ngoài. Tính xác suất để {A} lấy ra chính là {A} của hộp I."
+    noi_dung_loigiai=(f"\n\n  Đánh số các {A} của hộp I là $A_{{1}};A_{{2}};...;A_{{{m}}}$, đánh số các {A} của hộp II là $B_{{1}};B_{{2}};...;B_{{{n}}}$. \n\n"
+                    f" Phép thử: Lấy ngẫu nhiên một {A} từ hộp I bỏ sang hộp II, rồi lại lấy ngẫu nhiên một \n\n {A} từ hộp II ra ngoài. \n\n"
+                    f" Không gian mẫu là tập hợp gồm các phần tử có dạng $A_{{i}} B_{{j}} $ và $A_{{i}}A_{{i}}$ với $1\\le i \\le {m}, 1 \\le j \\le {n}, i, j \\in \\mathbb{{N}}$ \n\n"
+                    f" $ n(\\Omega)= {phan_so(m*n+m)}$ \n\n"
+                    f" Xét biến cố A: {A} lấy ra chính là {A} của hộp I \n\n "
+                    f" Các kết quả thuận lợi của biến cố A là $A_{{i}}A_{{i}}$ với $1 \\le i \\le {m}$ \n\n "
+                    f" $n(A)={m}$ \n\n"
+                    f" Vậy $P(A)={phan_so(1/(n+1))}$")
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[L10_C9_B2_40]-TF-M3. XS các bài toán chọn 4 người từ một nhóm
+def mjulk_L10_C9_B2_40():
+    a2=random.randint(10,20)
+    a3=random.randint(10,25)
+    a1=a2+a3
+    a=math.comb(a1, 4)
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+
+    noi_dung = f"Một đội có ${{{a2}}}$ bạn nam trong đó có bạn nam tên {B} và ${{{a3}}}$ bạn nữ trong đó có bạn nữ tên {A}. Giáo viên chọn ngẫu nhiên ra bốn bạn tham gia hội khoẻ phù đổng của huyện. Xét tính đúng-sai của các khẳng định sau. "       
+    debai_word= f"{noi_dung}\n"
+    
+    chon =random.randint(1,2)
+    if chon ==1:
+	    c=math.comb(a2,4)
+	    kq1_T=f"*Xác suất để chọn được ${{4}}$ bạn nam là ${{{phan_so(c/a)}}}$" 
+	    kq1_F=f"Xác suất để chọn được ${{4}}$ bạn nam là "
+	    kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq1=random.choice([kq1_T, kq1_F])
+	    HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+	        f" Gọi ${{A}}$ là biến cố chọn được ${{4}}$ bạn nam\n\n "
+	        f" ${{n(A)= {c}}}$ \n\n"
+	        f" ${{ P(A)= {phan_so(c/a)} }}$")   
+    if chon ==2:
+	    c=math.comb(a3,4)
+	    kq1_T=f"*Xác suất để chọn được ${{4}}$ bạn nữ là ${{{phan_so(c/a)}}}$" 
+	    kq1_F=f"Xác suất để chọn được ${{4}}$ bạn nữ là "
+	    kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq1=random.choice([kq1_T, kq1_F])
+	    HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+	        f" Gọi ${{A}}$ là biến cố chọn được ${{4}}$ bạn nữ\n\n "
+	        f" ${{n(A)= {c}}}$ \n\n"
+	        f" ${{ P(A)= {phan_so(c/a)} }}$")   
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    chon =random.randint(1,3)
+    if chon ==1:
+
+	    c=math.comb(a2,2)*math.comb(a3,2)
+	    kq2_T=f"*Xác suất để chọn được ${{2}}$ bạn nam và ${{2}}$ bạn nữ là ${{{phan_so(c/a)}}}$ "
+	    kq2_F=f"Xác suất để trong bốn bạn được chọn có ${{2}}$ bạn nam và ${{2}}$ bạn nữ là "
+	    kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq2=random.choice([kq2_T, kq2_F])
+	    HDG=(f" Gọi ${{B}}$ là biến cố trong ba bạn được chọn ${{2}}$ bạn nam và ${{2}}$ bạn nữ \n\n "
+	        f" ${{n(B)= {c}}}$ \n\n"
+	        f" ${{ P(B)= {phan_so(c/a)} }}$")   
+
+    if chon ==2:
+
+	    c=math.comb(a3,3)*a2
+	    kq2_T=f"*Xác suất để trong bốn bạn được chọn có ${{3}}$ bạn nữ và ${{1}}$ bạn nam là ${{{phan_so(c/a)}}}$ "
+	    kq2_F=f"Xác suất để trong bốn bạn được chọn có ${{3}}$ bạn nữ và ${{1}}$ bạn nam là "
+	    kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq2=random.choice([kq2_T, kq2_F])
+	    HDG=(f" Gọi ${{B}}$ là biến cố trong ba bạn được chọn có${{3}}$ bạn nữ và ${{1}}$ bạn nam \n\n "
+	        f" ${{n(B)= {c}}}$ \n\n"
+	        f" ${{ P(B)= {phan_so(c/a)} }}$")   
+
+    if chon ==3:
+
+	    c=math.comb(a2,3)*a3
+	    kq2_T=f"*Xác suất để trong bốn bạn được chọn có ${{3}}$ bạn nam và ${{1}}$ bạn nữ là ${{{phan_so(c/a)}}}$ "
+	    kq2_F=f"Xác suất để trong bốn bạn được chọn có ${{3}}$ bạn nam và ${{1}}$ bạn nữ là "
+	    kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq2=random.choice([kq2_T, kq2_F])
+	    HDG=(f" Gọi ${{B}}$ là biến cố trong bốn bạn được chọn có${{3}}$ bạn nam và ${{1}}$ bạn nữ \n\n "
+	        f" ${{n(B)= {c}}}$ \n\n"
+	        f" ${{ P(B)= {phan_so(c/a)} }}$")   
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon =random.randint(1,4)
+    if chon ==1:
+	    c= math.comb(a3-1, 4)
+	    kq3_T=f"*Xác suất để chọn được ${{4}}$ bạn nữ nhưng không có bạn {A} là ${{{phan_so(c/a)}}}$ " 
+	    kq3_F=f" Xác suất để chọn được ${{4}}$ bạn nữ nhưng không có bạn {A} "
+
+	    kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq3=random.choice([kq3_T, kq3_F])
+	    HDG=(f" Gọi ${{C}}$ là biến cố chọn được ${{3}}$ bạn nữ nhưng không có bạn {A} \n\n "
+	        f" ${{n(C)= {c}}}$ \n\n"
+	        f" ${{ P(C)= {phan_so(c/a)} }}$")   
+	    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	    if kq3==kq3_F:
+	        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if chon ==2:
+	    c= math.comb(a3-1, 3)
+	    kq3_T=f"*Xác suất để chọn được ${{4}}$ bạn nữ trong đó có bạn {A} là ${{{phan_so(c/a)}}}$ " 
+	    kq3_F=f" Xác suất để chọn được ${{4}}$ bạn nữ trong đó có bạn {A} "
+
+	    kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+	            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+	    kq3=random.choice([kq3_T, kq3_F])
+	    HDG=(f" Gọi ${{C}}$ là biến cố chọn được ${{4}}$ bạn nữ trong đó có bạn {A} \n\n "
+	        f" ${{n(C)= {c}}}$ \n\n"
+	        f" ${{ P(C)= {phan_so(c/a)} }}$")   
+	    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	    if kq3==kq3_F:
+	        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if chon ==3:
+        c= math.comb(a2-1, 4)
+        kq3_T=f"*Xác suất để chọn được ${{4}}$ bạn nam nhưng không có bạn {B} là ${{{phan_so(c/a)}}}$ " 
+        kq3_F=f" Xác suất để chọn được ${{4}}$ bạn nam nhưng không có bạn {B} "
+
+        kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f" Gọi ${{C}}$ là biến cố chọn được ${{4}}$ bạn nam nhưng không có bạn {B} \n\n "
+            f" ${{n(C)= {c}}}$ \n\n"
+            f" ${{ P(C)= {phan_so(c/a)} }}$")   
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if chon ==4:
+        c= math.comb(a2-1, 3)
+        kq3_T=f"*Xác suất để chọn được ${{4}}$ bạn nam trong đó có bạn {B} là ${{{phan_so(c/a)}}}$ " 
+        kq3_F=f" Xác suất để chọn được ${{4}}$ bạn nam trong đó có bạn {B} "
+
+        kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq3=random.choice([kq3_T, kq3_F])
+        HDG=(f" Gọi ${{C}}$ là biến cố chọn được ${{4}}$ bạn nam trong đó có bạn {B} \n\n "
+            f" ${{n(C)= {c}}}$ \n\n"
+            f" ${{ P(C)= {phan_so(c/a)} }}$")   
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    chon =random.randint(1,6)
+    if chon ==1:
+        c= math.comb(a2-1,2)*math.comb(a3,2)
+        kq4_T=f"*Xác suất để chọn được hai bạn nam và hai bạn nữ trong đó không có {B} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Xác suất để chọn được hai bạn nam và một bạn nữ trong đó không có {B} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nam và một bạn nữ trong đó không có {B}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+    if chon ==2:
+        c=math.comb(a2,3)*math.comb(a3-1,1)
+        kq4_T=f"*Xác suất để chọn được ba bạn nữ và một bạn nam trong đó không có {B} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Xác suất để chọn được ba bạn nữ và một bạn nam trong đó không có {B} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được ba bạn nữ và một bạn nam trong đó không có {B}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+    if chon ==3:
+        c= math.comb(a3-1,3)*a2
+        kq4_T=f"*Xác suất để chọn được ba bạn nữ và một bạn nam trong đó không có {A} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Xác suất để chọn được ba bạn nữ và một bạn nam trong đó không có {A} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được ba bạn nữ và một bạn nam trong đó không có {A}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    if chon ==4:
+        c= math.comb(a3-1,1)*math.comb(a2,2)
+        kq4_T=f"*Xác suất để chọn được hai bạn nữ và hai bạn nam trong đó có {A} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Xác suất để chọn được hai bạn nữ và hai bạn nam trong đó có {A} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nữ và hai bạn nam trong đó có {A}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    if chon ==5:
+        c=  math.comb(a2-1,1)*math.comb(a3,2)
+        kq4_T=f"*Xác suất để chọn được hai bạn nam và hai bạn nữ trong đó có {B} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Xác suất để chọn được hai bạn nam và hai bạn nữ trong đó có {B} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nam và hai bạn nữ trong đó có {B}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    if chon ==6:
+        c= math.comb(a2-1,2)*math.comb(a3-1,2)
+        kq4_T=f"*Xác suất để chọn được hai bạn nam và hai bạn nữ trong đó không có {B} và {A} là ${{{phan_so(c/a)}}}$  "
+        kq4_F=f"Xác suất để chọn được hai bạn nam và hai bạn nữ trong đó không có {B} và {A} là " 
+        kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+        kq4=random.choice([kq4_T, kq4_F])
+        HDG=(f" Gọi ${{D}}$ là biến cố chọn được hai bạn nam và hai bạn nữ trong đó không có {B} và {A}\n\n "
+            f" ${{n(D)= {c}}}$ \n\n"
+            f" ${{ P(D)= {phan_so(c/a)} }}$")   
+
+
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+#[L10_C9_B2_41]-TF-M3. XS các bài toán chọn vật(viên bi, quả cầu)
+def mjulk_L10_C9_B2_41():
+    D=random.choice(["viên bi", "quả cầu"])
+    ds=["xanh","vàng", "đen", "tím", "trắng", "đỏ", "nâu", "xám"]
+    A, B, C=random.sample(ds, 3)  
+    k=random.randint(3,4)
+    a1=k+random.randint(1,5)
+    a2=k+random.randint(1,5)
+    a3=a2+random.randint(1,3)
+    a=a1+a2+a3
+    a=math.comb(a,k)
+
+    c=math.comb(a1,k)
+
+    noi_dung = f"Một hộp chứa ${{{a1}}}$ {D} {A}, ${{{a2}}}$ {D} {B} và ${{{a3}}}$ {D} {C}. Chọn ngẫu nhiên không nhìn vào hộp ${{{k}}}$ {D}. Xét tính đúng-sai của các khẳng định sau. "     
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"*Xác suất để lấy được ${{{k}}}$ {D} {A} là ${{{phan_so(c/a)}}}$" 
+    kq1_F=f"Xác suất để lấy được ${{{k}}}$ {D} {A} là  "
+    kq1_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+            f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=(f"${{ n(\\Omega)= {a} }}$ \n\n"
+        f" Gọi ${{A}}$ là biến cố lấy được ${{{k}}}$ {D} {A}\n\n "
+        f" ${{n(A)=  C^{{{k}}}_{{{a1}}} = {c}}}$ \n\n"
+        f" ${{ P(A)= {phan_so(c/a)} }}$")   
+
+
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    c=math.comb(a1+a3,k)
+
+    kq2_T=f"*Xác suất để ${{{k}}}$ {D} lấy ra không có {D} {B} là ${{{phan_so(c/a)}}}$ "
+    kq2_F=f"Xác suất để ${{{k}}}$ {D} lấy ra không có {D} {B} là "
+    kq2_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=(f" Gọi ${{B}}$ là biến cố ${{{k}}}$ {D} lấy ra không có {D} {B} \n\n "
+        f" ${{n(B)= C^{{{k}}}_{{{a1+a3}}}={c}}}$ \n\n"
+        f" ${{ P(B)= {phan_so(c/a)} }}$")   
+
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+    c= math.comb(a1+a2,k)
+    kq3_T=f"* Xác suất để ${{{k}}}$ {D} lấy ra có ít nhất một {D} {C} là ${{ {phan_so(1-(c/a))}}}$" 
+    kq3_F=f"Xác suất để ${{{k}}}$ {D} lấy ra có ít nhất một {D} {C} là ${{ {phan_so(1-(c/(a+1)))}}}$ "
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=(f" Gọi ${{C}}$ là biến cố ${{{k}}}$ {D} lấy ra không có {D} {C} \n\n "
+        f" ${{n(C)= C^{{{k}}}_{{{a1+a2}}}={c}}}$ \n\n"
+        f" ${{ P(C)= {phan_so(c/a)} }}$ \n\n"
+        f"Xác suất để ${{{k}}}$ {D} lấy ra có ít nhất một {D} {C} là ${{ 1-  {phan_so(c/a)}  = {phan_so(1-(c/a))} }}$")       
+
+
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+    if k==3: c=a1*a2*a3
+    if k==4: c= math.comb(a1,1)*math.comb(a2,1)*math.comb(a3,2)+ math.comb(a1,2)*math.comb(a2,1)*math.comb(a3,1)+ math.comb(a1,1)*math.comb(a2,2)*math.comb(a3,1)
+
+    kq4_T=f"*Xác suất để ${{{k}}}$ {D} lấy ra có đủ ba màu là ${{{phan_so(c/a)}}}$  "
+    kq4_F=f"Xác suất để ${{{k}}}$ {D} lấy ra có đủ ba màu là " 
+    kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ ", f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+                f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "])
+    kq4=random.choice([kq4_T, kq4_F])
+
+    HDG=(f"Gọi ${{C}}$ là biến cố ${{{k}}}$ {D} lấy ra có đủ ba màu \n\n "
+      f" ${{n(C)= {c}}}$ \n\n"
+        f" ${{ P(C)= {phan_so(c/a)} }}$")
+
+
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+#[L10_C9_B2_42]-M3. XS các btoan rút 2 thẻ số đồng thời(9 kiểu)
+def mjulk_L10_C9_B2_42():
+
+    danh_sach =random.sample(range(10, 100), random.randint(5, 9)) 
+    a2=len(danh_sach) 
+    a=math.comb(a2, 2)
+    a1=random.choice([i for i in danh_sach])
+    a3=random.choice([i for i in danh_sach if i!=a1])
+    ds=str(danh_sach).replace("[","").replace("]","").replace(",",";") 
+    DS=[x + y for i, x in enumerate(danh_sach) for j, y in enumerate(danh_sach) if i < j]
+    DS1=[x * y for i, x in enumerate(danh_sach) for j, y in enumerate(danh_sach) if i < j]
+    chon=random.randint(1,6)
+    if chon ==1:
+        c=a2-1
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp. Xác suất để rút được thẻ số ${{{a1}}}$ là:"
+    if chon ==2: 
+        c=math.comb(a2-1, 2)
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp. Xác suất để không rút được thẻ số ${{{a1}}}$ là:"
+    if chon ==3: 
+        c=math.comb(a2-2, 2)
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp. Xác suất để không rút được thẻ số ${{{a1}}}$ và thẻ số ${{{a2}}}$ là:"
+    if chon ==4: 
+        c=math.comb(a2-2, 2)
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp. Xác suất để rút được thẻ số ${{{a1}}}$ nhưng không rút được thẻ số ${{{a2}}}$ là:"
+    if chon ==5: 
+        c=len([i for i in DS if i % 2 == 0])
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp, rồi cộng hai số trên hai thẻ lại với nhau. Xác suất để kết quả là số chẵn là:"
+
+    if chon ==6: 
+        c=len([i for i in DS if i % 2 != 0])
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp, rồi cộng hai số trên hai thẻ lại với nhau. Xác suất để kết quả là số lẻ là:"
+    if chon ==7: 
+        c=len([i for i in DS1 if i % 2 == 0])
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp, rồi nhân hai số trên hai thẻ lại với nhau. Xác suất để kết quả là số chẵn là:"
+
+    if chon ==8: 
+        c=len([i for i in DS1 if i % 2 != 0])
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp, rồi nhân hai số trên hai thẻ lại với nhau. Xác suất để kết quả là số lẻ là:"
+
+    if chon ==9: 
+        b=random.choice([i for i in (3,6)])
+        e=random.randint(1,b-1)
+        c=len([i for i in DS if i % b != e])
+        noi_dung=f" Một hộp chứa các thẻ số {ds}, rút ngẫu nhiên một lúc hai thẻ số mà không nhìn vào hộp, rồi cộng hai số trên hai thẻ lại với nhau. Xác suất để kết quả là số chia cho ${{{b}}}$ dư ${{{e}}}$ là:"
+    
+
+    noi_dung_loigiai=(f" \n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f" Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ ",f" ${{{phan_so(c/(a-5))}}} $",f" ${{{phan_so(c/(a-6))}}} $"]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[L10_C9_B2_43]-M2. XS các btoán về rút đồng thời 2 thẻ và ghép kq lại với nhau(9kiểu)
+def mjulk_L10_C9_B2_43(): 
+    a2=random.randint(1,4)
+    a1=a2+random.randint(3,5)
+    a3= (a1-a2)+1
+    nhom1 = range(a2, a1 + 1)
+    nhom2 = range(a2, a1 + 1)
+
+    danh_sach = [ int(f"{x}{y}") for x in nhom1 for y in nhom2 if x!=y]
+    a=len(danh_sach) 
+    chon =random.randint(1,9)
+
+    if chon ==1:
+        b=random.choice([3,4,5,6])
+        danh_sach_moi = list(filter(lambda x: x % b==0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong danh sách số tạo thành. Xác suất để chọn được số là số chia hết cho ${{{b}}}$ là:  "
+        
+    if chon ==2:
+        # i=min(ds)+1
+        b=max(danh_sach)-random.randint(1,4)
+        danh_sach_moi = list(filter(lambda x: x < b, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được số số nhỏ hơn ${{{b}}}$ là:  "
+        
+    
+    # Tạo danh sách các phương án lựa chọn ngẫu nhiên
+
+    if chon == 3:
+        b=random.choice([i for i in range(3,int(a/2))])
+        danh_sach_moi = list(filter(lambda x: x % b != 0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được số không chia hết cho ${{{b}}}$ là:  "
+        
+
+    if chon == 5:
+        b=random.choice([i for i in range(2,5)])
+        e=random.choice([i for i in range(2,6) if i!=b and i%b!=0 and b%i !=0])
+        danh_sach_moi = list(filter(lambda i: i % b == 0 and i%e==0, danh_sach))
+        c = len(danh_sach_moi)
+        
+
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được bội của ${{{b}}}$ và ${{{e}}}$ là:  "
+    if chon ==7:
+
+        danh_sach_moi = list(filter(lambda x: x % 2 == 0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được số chẵn là:  "
+    
+
+    if chon ==6:
+        danh_sach_moi = list(filter(lambda x: x % 2 != 0, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được số lẻ là:  "
+
+    if chon == 4:
+        b=random.choice([3,4,5,6])
+        j=b-random.randint(1,b-1)
+
+        danh_sach_moi = list(filter(lambda x: x % b == j, danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung = f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được số chia cho ${{{b}}}$ dư ${{{j}}}$ là:  "
+    if chon ==8:
+
+        danh_sach_moi = list(filter(lambda x: la_so_nguyen_to(x), danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được số nguyên tố là:  "
+
+    if chon ==9:
+        c=len([i for i in danh_sach if la_hop_so(i)])
+        danh_sach_moi = list(filter(lambda x: la_hop_so(x), danh_sach))
+        c = len(danh_sach_moi)
+        noi_dung=f"Một hộp chứa ${{{a3}}}$ thẻ được đánh số tự nhiên liên tiếp từ ${{{a2}}}$ đến ${{{a1}}}$ (mỗi thẻ chỉ đánh một số). Gọi ${{S}}$ là tập hợp các kết quả có thể của phép thử rút ngẫu nhiên cùng lúc 2 thẻ mà không nhìn vào hộp và ghép kết quả thành các số có hai chữ số. Chọn ngẫu nhiên một số trong tập ${{S}}$. Xác suất để chọn được hợp tố là:  "
+
+
+
+    danh_sach=str(danh_sach).replace("[","\\left\\{").replace("]","\\right\\} ").replace(",",";")
+    danh_sach_moi=str(danh_sach_moi).replace("[","\\left\\{").replace("]","\\right\\} ").replace(",",";")
+    noi_dung_loigiai=(f" $\\Omega =  \\left\\{{ \\overline {{ij}}  ; {a2} \\le i;j \\le {a1} \\right\\}} $\n\n Số phần tử của không gian mẫu là ${{{a}}}$\n\n"
+             f"$A={danh_sach_moi}$ \n\n Số kết quả thuận lợi của biến cố là ${{{c}}}$ \n\n"
+        f"Xác suất là ${{{phan_so(c/a)}}}$")
+
+    kq=f"${{{phan_so(c/a)}}}$ "
+    if c!=0:
+
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+    if c==0:
+        c=c+random.randint(1,4)
+        ds1=[f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+        ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
+        f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a+7))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]
+
+
+    kq2, kq3, kq4 = random.sample(ds1, 3)  
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+	

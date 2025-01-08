@@ -2682,7 +2682,7 @@ class Ui_MainWindow(object):
                 L10_C8_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L10_C8_B2_3_1 = QTreeWidgetItem(L10_C8_B2_3, ["1. Trắc Nghiệm"])
+                L10_C8_B2_3_1 = QTreeWidgetItem(L10_C8_B2_3, ["Trắc Nghiệm"])
                 L10_C8_B2_3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B2_3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2750,7 +2750,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L10_C8_B2_3_2 = QTreeWidgetItem(L10_C8_B2_3, ["2. Đúng-Sai"])
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_32]-M2. Các bài toán chọn k người thoả điều kiện nào đó"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_33]-M2. Các bài toán chọn k bi(cầu) đủ các màu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
+
+
+
+                L10_C8_B2_3_2 = QTreeWidgetItem(L10_C8_B2_3, ["Đúng-Sai"])
                 L10_C8_B2_3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B2_3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2775,6 +2787,24 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_26]-TF-M2. Bài toán chọn 2 người."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_34]-TF-M3. Cho m nam,n nữ trong đó có A. Xét ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_35]-TF-M3. Cho m nam,n nữ trong đó có nam A và nữ B. Xét ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
+
+                L10_C8_B2_3_3 = QTreeWidgetItem(L10_C8_B2_3, ["Trả lời ngắn"])
+                L10_C8_B2_3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C8_B2_3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_3, ["[D10_C8_B2_36]-SA-M3. Cho m nam n nữ chọn k bạn trong đó A B không cùng có mặt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2929,21 +2959,151 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_10]-M2. Cho m nam ,n nữ, xs chọn k nữ(nam)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_11]-M2. Cho m nam ,n nữ chọn k bạn thoả dk nào đó"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_12]-M1. Cho m nam ,n nữ, xs chọn được ít nhất 1 nữ (nam)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_13]-M2. Cho m nam ,n nữ, chọn k bạn trong đó có (không có) bạn A"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_14]-M1. xs các btoán về gieo 1 con xúc sắc (nhiều kiểu hỏi)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_15]-M2. xs các btoán về gieo 2 con xúc sắc (rất nhiều kiểu hỏi)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_16]-M1. xác suất các btoán về rút 1 thẻ số(nhiều kiểu hỏi)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_17]-M2. xs các btoán về xếp chỗ ngồi(4 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_18]-M1. xác suất các bài toán về chọn người"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_19]-M2. xác suất các bài toán về chọn người "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_20]-M2. xs các btoán về Rút cầu vừa khác màu vừa khác số(18 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_21]-M1. XS các btoán quay số trúng thưởng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_22]-M2. XS các btoán rút số từ 2 hộp và ghép lại với nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_23]-M2. XS các btoán rút số từ 2 hộp và nhân lại với nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_24]-M2. XS các btoán rút số từ 2 hộp và cộng lại với nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_25]-M2. XS các btoán quay số từ 2 vòng quay và nhân(cộng, ghép) lại với nhau(8 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_36]-M1. XS các btoán quay số từ 2 vòng quay và cộng lại với nhau(10 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_27]-M2. XS các btoán quay số từ 2 vòng quay và ghép lại với nhau(7 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_28]-M2. XS các btoán về chọn 1 người từ 2 nhóm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_29]-M1. XS các btoan tích số chấm, tổng số chấm khi gieo 1 con xúc xắc 2 lần "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_30]-M2. XS các btoán ghép số khi gieo 1 con xúc xắc 2 lần(7 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_31]-M3. XS các btoán rút vật từ hộp này bỏ sang hộp kia"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_43]-M3. XS các btoan rút 2 thẻ số đồng thời(9 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_44]-M2. XS các btoán về rút đồng thời 2 thẻ và ghép kq lại với nhau(9kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                 L10_C9_B2_2 = QTreeWidgetItem(L10_C9_B2, ["Đúng-Sai"])
                 L10_C9_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C9_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B1_12]-TF-M3. Chọn 2 nhóm đồ vật. Đúng-sai: không gian mẫu, xác suất"])
+                item = QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_32]-TF-M3. Chọn 2 nhóm đồ vật. Đúng-sai: không gian mẫu, xác suất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B1_13]-TF-M3. Gieo xúc sắc 2 lần. Đúng-Sai: không gian mẫu, xác suất."])
+                item = QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_33]-TF-M3. Gieo xúc sắc 2 lần. Đúng-Sai: không gian mẫu, xác suất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B1_14]-TF-M3. Chọn k vật từ 3 nhóm. Xét Đ-S: không gian mẫu, xác suất."])
+                item = QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_34]-TF-M3. Chọn k vật từ 3 nhóm. Xét Đ-S: không gian mẫu, xác suất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_35]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_36]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_37]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_38]-TF-M3. XS các bài toán chọn 2 người từ một nhóm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_39]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_40]-TF-M3. XS các bài toán chọn 4 người từ một nhóm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_41]-TF-M3. XS các bài toán chọn vật(viên bi, quả cầu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
+
 
         #Lớp 10 - Chương 10 - Phương pháp tọa độ trong mặt phẳng 
                 L10_C10 = QTreeWidgetItem(L10, ["Chương 10 - Phương pháp tọa độ trong mặt phẳng"])
@@ -12513,6 +12673,28 @@ class Ui_MainWindow(object):
                                                 if dang_toan =="[D10_C8_B2_31]":
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_31()
 
+                                                #[D10_C8_B2_32]-M2. Các bài toán chọn k người thoả điều kiện nào đó
+                                                if dang_toan =="[D10_C8_B2_32]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_32()
+
+                                                #[D10_C8_B2_33]-M2. Các bài toán chọn k bi(cầu) đủ các màu
+                                                if dang_toan =="[D10_C8_B2_33]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_33()
+
+                                                #[D10_C8_B2_34]-TF-M3. Cho m nam,n nữ trong đó có A. Xét ĐS
+                                                if dang_toan =="[D10_C8_B2_34]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_34()
+
+                                                #[D10_C8_B2_35]-TF-M3. Cho m nam,n nữ trong đó có nam A và nữ B. Xét ĐS
+                                                if dang_toan =="[D10_C8_B2_35]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_35()
+
+                                                #[D10_C8_B2_36]-SA-M3. Cho m nam n nữ chọn k bạn trong đó A B không cùng có mặt.
+                                                if dang_toan =="[D10_C8_B2_36]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_36()
+
+
+
                                     
                                                     
 
@@ -12633,55 +12815,184 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_05()                                     
                                                     
 
-                                        #[D10_C9_B2_06]-M2. Gieo 2 con xúc xắc. Tính xác suất để  i + j>k.
+                                                #[D10_C9_B2_06]-M2. Gieo 2 con xúc xắc. Tính xác suất để  i + j>k.
                                                 if dang_toan == "[D10_C9_B2_06]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_06()                                     
                                                     
 
-                                        #[D10_C9_B2_07]-M2. Gieo 2 con xúc xắc. Tính xác suất để  i + j<k.
+                                                #[D10_C9_B2_07]-M2. Gieo 2 con xúc xắc. Tính xác suất để  i + j<k.
                                                 if dang_toan == "[D10_C9_B2_07]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_07()                                     
                                                     
 
-                                        #[D10_C9_B2_08]-M2. Gieo 2 con xúc xắc. Tính xác suất để  i + j=k.
+                                                #[D10_C9_B2_08]-M2. Gieo 2 con xúc xắc. Tính xác suất để  i + j=k.
                                                 if dang_toan == "[D10_C9_B2_08]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_08()                                     
                                                     
 
-                                        #[D10_C9_B2_09]-M2. Gieo 2 con xúc xắc. Tìm biến cố giao: i + j = k và i.j <(>) m.
+                                                #[D10_C9_B2_09]-M2. Gieo 2 con xúc xắc. Tìm biến cố giao: i + j = k và i.j <(>) m.
                                                 if dang_toan == "[D10_C9_B2_09]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_09()
+
+                                                #[D10_C9_B2_10]-M2. Cho m nam ,n nữ, xs chọn k nữ(nam)
+                                                if dang_toan == "[D10_C9_B2_10]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_10()
+
+                                                #[D10_C9_B2_11]-M2. Cho m nam ,n nữ chọn k bạn thoả dk nào đó
+                                                if dang_toan == "[D10_C9_B2_11]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_11()
+
+
+
+                                                #[D10_C9_B2_12]-M1. Cho m nam ,n nữ, xs chọn được ít nhất 1 nữ (nam)
+                                                if dang_toan =="[D10_C9_B2_12]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_12()
+
+                                                #[D10_C9_B2_13]-M2. Cho m nam ,n nữ, chọn k bạn trong đó có (không có) bạn A
+                                                if dang_toan =="[D10_C9_B2_13]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_13()
+
+                                                #[D10_C9_B2_14]-M1. xs các btoán về gieo 1 con xúc sắc (nhiều kiểu hỏi)
+                                                if dang_toan =="[D10_C9_B2_14]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_14()
+
+                                                #[D10_C9_B2_15]-M2. xs các btoán về gieo 2 con xúc sắc (rất nhiều kiểu hỏi)
+                                                if dang_toan =="[D10_C9_B2_15]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_15()
+
+                                                #[D10_C9_B2_16]-M1. xác suất các btoán về rút 1 thẻ số(nhiều kiểu hỏi)
+                                                if dang_toan =="[D10_C9_B2_16]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_16()
+
+                                                #[D10_C9_B2_17]-M2. xs các btoán về xếp chỗ ngồi(4 kiểu)
+                                                if dang_toan =="[D10_C9_B2_17]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_17()
+
+                                                #[D10_C9_B2_18]-M1. xác suất các bài toán về chọn người
+                                                if dang_toan =="[D10_C9_B2_18]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_18()
+
+                                                #[D10_C9_B2_19]-M2. xác suất các bài toán về chọn người 
+                                                if dang_toan =="[D10_C9_B2_19]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_19()
+
+                                                #[D10_C9_B2_20]-M2. xs các btoán về Rút cầu vừa khác màu vừa khác số(18 kiểu)
+                                                if dang_toan =="[D10_C9_B2_20]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_20()
+
+                                                #[D10_C9_B2_21]-M1. XS các btoán quay số trúng thưởng
+                                                if dang_toan =="[D10_C9_B2_21]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_21()
+
+                                                #[D10_C9_B2_22]-M2. XS các btoán rút số từ 2 hộp và ghép lại với nhau
+                                                if dang_toan =="[D10_C9_B2_22]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_22()
+
+                                                #[D10_C9_B2_23]-M2. XS các btoán rút số từ 2 hộp và nhân lại với nhau
+                                                if dang_toan =="[D10_C9_B2_23]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_23()
+
+                                                #[D10_C9_B2_24]-M2. XS các btoán rút số từ 2 hộp và cộng lại với nhau
+                                                if dang_toan =="[D10_C9_B2_24]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_24()
+
+                                                #[D10_C9_B2_25]-M2. XS các btoán quay số từ 2 vòng quay và nhân(cộng, ghép) lại với nhau(8 kiểu)
+                                                if dang_toan =="[D10_C9_B2_25]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_25()
+
+                                                #[D10_C9_B2_36]-M1. XS các btoán quay số từ 2 vòng quay và cộng lại với nhau(10 kiểu)
+                                                if dang_toan =="[D10_C9_B2_36]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_26()
+
+                                                #[D10_C9_B2_27]-M2. XS các btoán quay số từ 2 vòng quay và ghép lại với nhau(7 kiểu)
+                                                if dang_toan =="[D10_C9_B2_27]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_27()
+
+                                                #[D10_C9_B2_28]-M2. XS các btoán về chọn 1 người từ 2 nhóm
+                                                if dang_toan =="[D10_C9_B2_28]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_28()
+
+                                                #[D10_C9_B2_29]-M1. XS các btoan tích số chấm, tổng số chấm khi gieo 1 con xúc xắc 2 lần 
+                                                if dang_toan =="[D10_C9_B2_29]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_29()
+
+                                                #[D10_C9_B2_30]-M2. XS các btoán ghép số khi gieo 1 con xúc xắc 2 lần(7 kiểu)
+                                                if dang_toan =="[D10_C9_B2_30]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_30()
+
+                                                #[D10_C9_B2_31]-M3. XS các btoán rút vật từ hộp này bỏ sang hộp kia
+                                                if dang_toan =="[D10_C9_B2_31]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_31()
                                         #ĐÚNGG-SAI
-                                        #[D10_C9_B1_12]-TF-M3. Chọn 2 nhóm đồ vật. Đúng-sai: không gian mẫu, xác suất
-                                                if dang_toan == "[D10_C9_B1_12]":
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B1_12()
+                                        #[D10_C9_B2_32]-TF-M3. Chọn 2 nhóm đồ vật. Đúng-sai: không gian mẫu, xác suất
+                                                if dang_toan == "[D10_C9_B2_32]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_32()
 
                                         #Gieo một con xúc sắc 2 lần. Đúng-Sai: không gian mẫu, xác suất.
-                                                if dang_toan == "[D10_C9_B1_13]":
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B1_13()
+                                                if dang_toan == "[D10_C9_B2_33]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_33()
 
                                         #Chọn k vật từ 3 nhóm. Xét Đ-S: không gian mẫu, xác suất.
-                                                if dang_toan == "[D10_C9_B1_14]":
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B1_14()
-                                    #Toán 10 - Chương 10 - Phương pháp tọa độ trong mặt phẳng
-                                    #Bài 1. Phương trình đường thẳng
-                                    #[D10_CX_B1_01]-M1. Cho véctơ pháp tuyến tìm véctơ chỉ phương và ngược lại
+                                                if dang_toan == "[D10_C9_B2_34]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_34()
+
+                                                #[D10_C9_B2_35]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại 
+                                                if dang_toan =="[D10_C9_B2_35]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_35()
+
+                                                #[D10_C9_B2_36]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại 
+                                                if dang_toan =="[D10_C9_B2_36]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_36()
+
+                                                #[D10_C9_B2_37]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc
+                                                if dang_toan =="[D10_C9_B2_37]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_37()
+
+                                                #[D10_C9_B2_38]-TF-M3. XS các bài toán chọn 2 người từ một nhóm
+                                                if dang_toan =="[D10_C9_B2_38]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_38()
+
+                                                #[D10_C9_B2_39]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1
+                                                if dang_toan =="[D10_C9_B2_39]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_39()
+
+                                                #[D10_C9_B2_40]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 2
+                                                if dang_toan =="[D10_C9_B2_40]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_40()
+
+                                                #[D10_C9_B2_41]-TF-M3. XS các bài toán chọn 4 người từ một nhóm
+                                                if dang_toan =="[D10_C9_B2_41]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_41()
+
+                                                #[D10_C9_B2_42]-M3. 
+                                                if dang_toan =="[D10_C9_B2_42]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_42()
+
+                                                #[D10_C9_B2_43]-M3. 
+                                                if dang_toan =="[D10_C9_B2_43]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_43()
+
+
+
+                                        #Toán 10 - Chương 10 - Phương pháp tọa độ trong mặt phẳng
+                                        #Bài 1. Phương trình đường thẳng
+                                        #[D10_CX_B1_01]-M1. Cho véctơ pháp tuyến tìm véctơ chỉ phương và ngược lại
                                                 if dang_toan == "[D10_CX_B1_01]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_01()                                     
                                                     
 
-                                    #[D10_CX_B1_02]-M2. Đọc véctơ pháp tuyến(véctơ chỉ phương) từ phương trình tổng quát
+                                        #[D10_CX_B1_02]-M2. Đọc véctơ pháp tuyến(véctơ chỉ phương) từ phương trình tổng quát
                                                 if dang_toan == "[D10_CX_B1_02]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_02()                                     
                                                     
 
-                                    #[D10_CX_B1_03]-M2. Đọc véctơ pháp tuyến(véctơ chỉ phương) từ phương trình tham số
+                                        #[D10_CX_B1_03]-M2. Đọc véctơ pháp tuyến(véctơ chỉ phương) từ phương trình tham số
                                                 if dang_toan == "[D10_CX_B1_03]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_03()                                     
                                                     
-                                    #10.1.3. Phương trình tổng quát 
+                                        #10.1.3. Phương trình tổng quát 
 
-                                    #[D10_CX_B1_04]-M2. Cho tọa độ điểm và véctơ pháp tuyến, viết phương trình tổng quát
+                                        #[D10_CX_B1_04]-M2. Cho tọa độ điểm và véctơ pháp tuyến, viết phương trình tổng quát
                                                 if dang_toan == "[D10_CX_B1_04]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_04()                                     
                                                     
