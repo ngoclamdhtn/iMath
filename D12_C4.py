@@ -103,11 +103,17 @@ def thay_the_tich_phan(st):
     str_thaythe=str_thaythe.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+")
     return str_thaythe
 
+def tphan(x_1,x_2):
+    return f"\\int \\limits_{{{x_1}}}^{{{x_2}}}"
+
+def st_lim(x_0):
+    return f"\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}}"
+
 
 ################ Bài 1: NGUYÊN HÀM #################
 
 #[D12_C4_B1_01]. Tìm nguyên hàm của hàm số đa thức
-def zz8zz_L12_C4_B1_01():
+def ckz_L12C4_B1_01():
     #Tạo bậc ngẫu nhiên
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
@@ -165,7 +171,7 @@ def zz8zz_L12_C4_B1_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_02]. Tìm nguyên hàm của hàm số đa thức thỏa mãn điều kiện F(x_0)=b
-def zz8zz_L12_C4_B1_02():   
+def ckz_L12C4_B1_02():   
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     #Tạo bậc k cho đa thức. Bậc ngẫu nhiên từ 1 đến 4
@@ -228,7 +234,7 @@ def zz8zz_L12_C4_B1_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_03]. Tìm nguyên hàm của asinx+bcosx
-def zz8zz_L12_C4_B1_03():
+def ckz_L12C4_B1_03():
     #Tạo bậc ngẫu nhiên
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
@@ -287,7 +293,7 @@ def zz8zz_L12_C4_B1_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_04]. Tìm nguyên hàm của asinu
-def zz8zz_L12_C4_B1_04():
+def ckz_L12C4_B1_04():
    
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
@@ -346,7 +352,7 @@ def zz8zz_L12_C4_B1_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_05]. Tìm nguyên hàm của acosu
-def zz8zz_L12_C4_B1_05():
+def ckz_L12C4_B1_05():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = 1
@@ -404,7 +410,7 @@ def zz8zz_L12_C4_B1_05():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_06]. Tìm nguyên hàm của hàm số đa thức và 1/x
-def zz8zz_L12_C4_B1_06():
+def ckz_L12C4_B1_06():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     k=random.randint(1,4)
@@ -461,7 +467,7 @@ def zz8zz_L12_C4_B1_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_07]. Tìm nguyên hàm của m/(ax+b)
-def zz8zz_L12_C4_B1_07():
+def ckz_L12C4_B1_07():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -524,7 +530,7 @@ def zz8zz_L12_C4_B1_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_08]. Tìm nguyên hàm của mx+n/(ax+b)
-def zz8zz_L12_C4_B1_08():
+def ckz_L12C4_B1_08():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.randint(1, 5)
@@ -582,7 +588,7 @@ def zz8zz_L12_C4_B1_08():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_09]. Tìm nguyên hàm của (mx^2+nx+p)/(ax+b)
-def zz8zz_L12_C4_B1_09():
+def ckz_L12C4_B1_09():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.randint(1, 3)
@@ -642,7 +648,7 @@ def zz8zz_L12_C4_B1_09():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_10]. Tìm nguyên hàm của e^(ax+b)
-def zz8zz_L12_C4_B1_10():
+def ckz_L12C4_B1_10():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -2), random.randint(2, 10)])
@@ -706,7 +712,7 @@ def zz8zz_L12_C4_B1_10():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_11]-M1. Tìm nguyên hàm của ax+b
-def zz8zz_L12_C4_B1_11():
+def ckz_L12C4_B1_11():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-7, 7) if i!=0])
     b = random.choice([i for i in range(-7, 7) if i!=0])
@@ -758,7 +764,7 @@ def zz8zz_L12_C4_B1_11():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_12]-M1. Tìm nguyên hàm của k
-def zz8zz_L12_C4_B1_12():
+def ckz_L12C4_B1_12():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-7, 7) if i!=0])
     
@@ -810,7 +816,7 @@ def zz8zz_L12_C4_B1_12():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_13]-M2. Tìm nguyên hàm của ax^2+bx+c
-def zz8zz_L12_C4_B1_13():
+def ckz_L12C4_B1_13():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-7, 7) if i!=0])
     b = random.choice([i for i in range(-7, 7) if i!=0])
@@ -865,7 +871,7 @@ def zz8zz_L12_C4_B1_13():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_14]-M2. Tìm nguyên hàm của (ax+b)^2
-def zz8zz_L12_C4_B1_14():
+def ckz_L12C4_B1_14():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-5, 4) if i!=0])
     b = random.choice([i for i in range(-5, 4) if i!=0])
@@ -922,7 +928,7 @@ def zz8zz_L12_C4_B1_14():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_15]-M2. Tìm nguyên hàm của a+b/x^2
-def zz8zz_L12_C4_B1_15():
+def ckz_L12C4_B1_15():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-5, 4) if i!=0])
     b = random.choice([i for i in range(-5, 4) if i!=0])
@@ -978,7 +984,7 @@ def zz8zz_L12_C4_B1_15():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+c
-def zz8zz_L12_C4_B1_16():
+def ckz_L12C4_B1_16():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-5, 4) if i!=0])
     b = random.choice([i for i in range(-5, 4) if i!=0])
@@ -1035,7 +1041,7 @@ def zz8zz_L12_C4_B1_16():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_17]-SA-M2. Tìm nguyên hàm đa thức thỏa mãn F(x_0)=b
-def zz8zz_L12_C4_B1_17():
+def ckz_L12C4_B1_17():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     
@@ -1090,13 +1096,13 @@ def zz8zz_L12_C4_B1_17():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_18]-SA-M2. Tìm nguyên hàm của a+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_18():
+def ckz_L12C4_B1_18():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     
@@ -1141,13 +1147,13 @@ def zz8zz_L12_C4_B1_18():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_19]-SA-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_19():
+def ckz_L12C4_B1_19():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     
@@ -1192,13 +1198,13 @@ def zz8zz_L12_C4_B1_19():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_20]-SA-M2. Tìm nguyên hàm của ax+b+c/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_20():
+def ckz_L12C4_B1_20():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"   
 
@@ -1240,13 +1246,13 @@ def zz8zz_L12_C4_B1_20():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_21]-M2. Tìm nguyên hàm của m/cos^2x
-def zz8zz_L12_C4_B1_21():
+def ckz_L12C4_B1_21():
     m= random.choice([random.randint(-10,-2), random.randint(2,10)])
     noi_dung=(
     f"Tìm nguyên hàm $\\int \\dfrac{{{m}}}{{\\cos^2 x}} dx$."
@@ -1299,7 +1305,7 @@ def zz8zz_L12_C4_B1_21():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_22]-M2. Tìm nguyên hàm của m/sin^2x
-def zz8zz_L12_C4_B1_22():
+def ckz_L12C4_B1_22():
     m= random.choice([random.randint(-10,-2), random.randint(2,10)])
     noi_dung=(
     f"Tìm nguyên hàm $\\int \\dfrac{{{m}}}{{\\sin^2 x}} dx$."
@@ -1354,7 +1360,7 @@ def zz8zz_L12_C4_B1_22():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_23]-M2. Tìm nguyên hàm của m(1+tan^2x)
-def zz8zz_L12_C4_B1_23():
+def ckz_L12C4_B1_23():
     m= random.choice([random.randint(-10,-2), random.randint(2,10)])
     noi_dung=(
     f"Tìm nguyên hàm $\\int {m}\\left(1+\\tan^2 x\\right) dx$."
@@ -1407,7 +1413,7 @@ def zz8zz_L12_C4_B1_23():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_24]-M2. Tìm nguyên hàm của m(1+cot^2x)
-def zz8zz_L12_C4_B1_24():
+def ckz_L12C4_B1_24():
     m= random.choice([random.randint(-10,-2),random.randint(2,10)])
     noi_dung=(
     f"Tìm nguyên hàm $\\int {m}\\left(1+\\cot^2 x\\right)dx$."
@@ -1462,7 +1468,7 @@ def zz8zz_L12_C4_B1_24():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_25]-M2. Tìm nguyên hàm của m/cos^2x + n/sin^2x
-def zz8zz_L12_C4_B1_25():
+def ckz_L12C4_B1_25():
     m= random.choice([random.randint(-10,-2), random.randint(2,10)])
     n= random.choice([random.randint(-10,-2), random.randint(2,10)])
     noi_dung=(
@@ -1517,7 +1523,7 @@ def zz8zz_L12_C4_B1_25():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)
-def zz8zz_L12_C4_B1_26():
+def ckz_L12C4_B1_26():
     x=sp.symbols("x")
 
     noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
@@ -1629,7 +1635,7 @@ def zz8zz_L12_C4_B1_26():
     return debai,debai_latex,loigiai_word,dap_an
 
 #[D12_C4_B1_27]-M1. Nguyên hàm của a^x
-def zz8zz_L12_C4_B1_27():
+def ckz_L12C4_B1_27():
     a=random.choice([random.randint(2,15),pi])
     noi_dung=(
     f"Tìm nguyên hàm $\\int {{{latex(a)}^x}}dx$."
@@ -1681,7 +1687,7 @@ def zz8zz_L12_C4_B1_27():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_28]-M2. Nguyên hàm của m.e^x
-def zz8zz_L12_C4_B1_28():
+def ckz_L12C4_B1_28():
     a=random.choice([random.randint(2,15), random.randint(1,9)/random.randint(10,20)])
     noi_dung=(
     f"Tìm nguyên hàm $\\int {{{phan_so(a)}.e^x}}dx$."
@@ -1733,7 +1739,7 @@ def zz8zz_L12_C4_B1_28():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_29]-M2. Nguyên hàm của e^(ax+b)
-def zz8zz_L12_C4_B1_29():
+def ckz_L12C4_B1_29():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-8, 8) if i!=0 and i!=1])
     b = random.randint(-8,8)
@@ -1787,7 +1793,7 @@ def zz8zz_L12_C4_B1_29():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_30]-M2. Nguyên hàm của e^(ax)+mx+n
-def zz8zz_L12_C4_B1_30():
+def ckz_L12C4_B1_30():
     x=sp.symbols("x")
     a = random.choice([i for i in range(-8, 8) if i!=0 and i!=1 and i !=-1])
     m = random.choice([i for i in range(-5, 5) if i!=0 and i!=1 and i !=-1])
@@ -1844,7 +1850,7 @@ def zz8zz_L12_C4_B1_30():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_31]-M2. Nguyên hàm của m.e^x + n.e^(-x)
-def zz8zz_L12_C4_B1_31():
+def ckz_L12C4_B1_31():
     m = random.choice([i for i in range(-5, 6) if i!=0])
     n = random.choice([i for i in range(-3, 3) if i!=0])
 
@@ -1902,7 +1908,7 @@ def zz8zz_L12_C4_B1_31():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_32]-M2. Nguyên hàm của m.e^x + n.e^(-x) +p
-def zz8zz_L12_C4_B1_32():
+def ckz_L12C4_B1_32():
     m = random.choice([i for i in range(-5, 6) if i!=0])
     n = random.choice([i for i in range(-3, 3) if i!=0])
 
@@ -1960,7 +1966,7 @@ def zz8zz_L12_C4_B1_32():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_33]-M2. Nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0
-def zz8zz_L12_C4_B1_33():
+def ckz_L12C4_B1_33():
     d_x=f"\\mathrm{{\\,d}}x"
     m = random.choice([i for i in range(-5, 6) if i!=0])
     n = random.choice([i for i in range(-3, 3) if i!=0])   
@@ -2024,7 +2030,7 @@ def zz8zz_L12_C4_B1_33():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_34]-M3. Nguyên hàm của m.e^x + n.e^(-x) thỏa mãn F(x_0)=y_0
-def zz8zz_L12_C4_B1_34():
+def ckz_L12C4_B1_34():
     d_x=f"\\mathrm{{\\,d}}x"
     m = random.choice([i for i in range(-5, 6) if i!=0])
     n = random.choice([i for i in range(-3, 3) if i!=0])   
@@ -2044,7 +2050,7 @@ def zz8zz_L12_C4_B1_34():
 
     kq=f"$F(x)={latex(G)}$"
     kq_false=[
-    f"$F(x)={latex(m*e**x+n*e**(-x)+C)}$",
+    f"$F(x)={latex(m*e**x-n*e**(-x)+C)}$",
     f"$F(x)={latex(m*e**(-x)+n*x+C)}$",
     f"$F(x)={latex(m*e**x-n+C)}$"]
     random.shuffle(kq_false)
@@ -2088,7 +2094,7 @@ def zz8zz_L12_C4_B1_34():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B1_35]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_35():
+def ckz_L12C4_B1_35():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")
     m = random.choice([i for i in range(-4, 4) if i!=0])
@@ -2141,7 +2147,7 @@ def zz8zz_L12_C4_B1_35():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_36]-SA-M3. F(x) là một nguyên hàm của m.e^x + ne^(-x)  thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_36():
+def ckz_L12C4_B1_36():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2192,7 +2198,7 @@ def zz8zz_L12_C4_B1_36():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_37]-SA-M3. F(x) là một nguyên hàm của m.e^x + ne^(-x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_37():
+def ckz_L12C4_B1_37():
     d_x=f"\\mathrm{{\\,d}}x"
     e,x=sp.symbols("e x")
     while True:
@@ -2240,7 +2246,7 @@ def zz8zz_L12_C4_B1_37():
 
 
 #[D12_C4_B1_38]-SA-M3. F(x) là một nguyên hàm của m.a^x+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_38():
+def ckz_L12C4_B1_38():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2291,7 +2297,7 @@ def zz8zz_L12_C4_B1_38():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_39]-SA-M3. F(x) là một nguyên hàm của m.a^x+n.e^x thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_39():
+def ckz_L12C4_B1_39():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2340,7 +2346,7 @@ def zz8zz_L12_C4_B1_39():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_40]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_40():
+def ckz_L12C4_B1_40():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2390,7 +2396,7 @@ def zz8zz_L12_C4_B1_40():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_41]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_41():
+def ckz_L12C4_B1_41():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2440,7 +2446,7 @@ def zz8zz_L12_C4_B1_41():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_42]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n hoặc m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_42():
+def ckz_L12C4_B1_42():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2496,7 +2502,7 @@ def zz8zz_L12_C4_B1_42():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_43]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n.sin(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_43():
+def ckz_L12C4_B1_43():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2548,7 +2554,7 @@ def zz8zz_L12_C4_B1_43():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_44]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n.sin(x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_44():
+def ckz_L12C4_B1_44():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2600,7 +2606,7 @@ def zz8zz_L12_C4_B1_44():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_45]-SA-M3. F(x) là một nguyên hàm của mtan^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_45():
+def ckz_L12C4_B1_45():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2652,7 +2658,7 @@ def zz8zz_L12_C4_B1_45():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_46]-SA-M3. F(x) là một nguyên hàm của mcot^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_46():
+def ckz_L12C4_B1_46():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2704,7 +2710,7 @@ def zz8zz_L12_C4_B1_46():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_47]-SA-M3. F(x) là một nguyên hàm của mtan^2+ncot^2(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
-def zz8zz_L12_C4_B1_47():
+def ckz_L12C4_B1_47():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")    
     while True:
@@ -2757,7 +2763,7 @@ def zz8zz_L12_C4_B1_47():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C4_B1_48]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, atan^2x, Tính F(x_0) theo nguyên hàm sin,cos
-def zz8zz_L12_C4_B1_48():
+def ckz_L12C4_B1_48():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"    
 
@@ -2903,7 +2909,7 @@ def zz8zz_L12_C4_B1_48():
     return debai,debai_latex,loigiai_word,dap_an
 
 #[D12_C4_B1_49]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, acot^2x, Tính F(x_0) theo nguyên hàm sin,cos
-def zz8zz_L12_C4_B1_49():
+def ckz_L12C4_B1_49():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"    
 
@@ -3049,7 +3055,7 @@ def zz8zz_L12_C4_B1_49():
     return debai,debai_latex,loigiai_word,dap_an
 
 #[D12_C4_B1_50]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, sinmx+n, Tính F(x_0) theo nguyên hàm tan,cot
-def zz8zz_L12_C4_B1_50():
+def ckz_L12C4_B1_50():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"    
 
@@ -3205,7 +3211,7 @@ def zz8zz_L12_C4_B1_50():
     return debai,debai_latex,loigiai_word,dap_an
 
 #[D12_C4_B1_51]-TF-M3. Xét Đ-S: nguyên hàm của: a^x, e^mx, m.e^x+n.e^(-x), Tính F(x_0) từ nguyên hàm a^x
-def zz8zz_L12_C4_B1_51():
+def ckz_L12C4_B1_51():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
@@ -3337,7 +3343,7 @@ def zz8zz_L12_C4_B1_51():
     return debai,debai_latex,loigiai_word,dap_an
 
 #[D12_C4_B1_52]-TF-M3. Xét Đ-S: nguyên hàm của: me^x, a^mx, a^x.b^x.c^x, Tính F(x_0) từ nguyên hàm e^x+e^(-x)
-def zz8zz_L12_C4_B1_52():
+def ckz_L12C4_B1_52():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
@@ -3488,7 +3494,7 @@ def zz8zz_L12_C4_B1_52():
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN
 #[D12_C4_B2_01]. Nguyên hàm đổi biến chứa căn(ax+b)
-def zz8zz_L12_C4_B2_01():
+def ckz_L12C4_B2_01():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -2), random.randint(2, 10)])
@@ -3537,7 +3543,7 @@ def zz8zz_L12_C4_B2_01():
 
 
 #[D12_C4_B2_02]. Nguyên hàm đổi biến chứa căn(ax^2+b)
-def zz8zz_L12_C4_B2_02():
+def ckz_L12C4_B2_02():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -2), random.randint(2, 10)])
@@ -3590,7 +3596,7 @@ def zz8zz_L12_C4_B2_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B2_03]. Nguyên hàm đổi biến sinx/căn(acosx+b){d_x}
-def zz8zz_L12_C4_B2_03():
+def ckz_L12C4_B2_03():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -3647,7 +3653,7 @@ def zz8zz_L12_C4_B2_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B2_04]. Nguyên hàm đổi biến (acosx+b)sinx
-def zz8zz_L12_C4_B2_04():
+def ckz_L12C4_B2_04():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -3704,7 +3710,7 @@ def zz8zz_L12_C4_B2_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B2_05]. Nguyên hàm đổi biến (lnx)^n/x
-def zz8zz_L12_C4_B2_05():
+def ckz_L12C4_B2_05():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -3758,7 +3764,7 @@ def zz8zz_L12_C4_B2_05():
 
 #BÀI 3- NGUYÊN HÀM TỪNG PHẦN
 #[D12_C4_B3_01]. Nguyên hàm P(x).sin hoặc P(x).cos
-def zz8zz_L12_C4_B3_01():
+def ckz_L12C4_B3_01():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -3821,7 +3827,7 @@ def zz8zz_L12_C4_B3_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B3_02]. Nguyên hàm P(x).e^(ax+b) 
-def zz8zz_L12_C4_B3_02():
+def ckz_L12C4_B3_02():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     k=random.randint(2,3)    
@@ -3881,7 +3887,7 @@ def zz8zz_L12_C4_B3_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B3_03]. Nguyên hàm P(x).ln(mx)
-def zz8zz_L12_C4_B3_03():
+def ckz_L12C4_B3_03():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -3937,7 +3943,7 @@ def zz8zz_L12_C4_B3_03():
 
 ################ Bài 4: TÍCH PHÂN #################
 #[D12_C4_B4_01]-M1. Cho F(a) và F(b). Tính tích phân từ a đến b.
-def zz8zz_L12_C4_B4_01():   
+def ckz_L12C4_B4_01():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4000,7 +4006,7 @@ def zz8zz_L12_C4_B4_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_02]-M1. Cho 2 tích phân theo f và g. Tính tích phân (m.f+n.g).
-def zz8zz_L12_C4_B4_02():   
+def ckz_L12C4_B4_02():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4074,7 +4080,7 @@ def zz8zz_L12_C4_B4_02():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_03]-M1. Tính tổng tích phân trên 2 đoạn nối tiếp
-def zz8zz_L12_C4_B4_03():   
+def ckz_L12C4_B4_03():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4137,7 +4143,7 @@ def zz8zz_L12_C4_B4_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_04]-M1. Cho theo f. Tính tích phân (m.f+n).
-def zz8zz_L12_C4_B4_04():   
+def ckz_L12C4_B4_04():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4210,7 +4216,7 @@ def zz8zz_L12_C4_B4_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_05]-M2. Cho tích phân f và F(a). Tính F(b).
-def zz8zz_L12_C4_B4_05():   
+def ckz_L12C4_B4_05():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4282,7 +4288,7 @@ def zz8zz_L12_C4_B4_05():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_06]-M1. Cho f(a) và f(b). Tính tích phân f'(x).
-def zz8zz_L12_C4_B4_06():   
+def ckz_L12C4_B4_06():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4344,7 +4350,7 @@ def zz8zz_L12_C4_B4_06():
 
 
 #[D12_C4_B4_07]-M2. Cho tích phân f'(x) và f(a). Tính f(b).
-def zz8zz_L12_C4_B4_07():   
+def ckz_L12C4_B4_07():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4427,7 +4433,7 @@ def zz8zz_L12_C4_B4_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_08]-M2. Cho tphan_a^c(f) và tphan_a^b(f). Tính tphan_b^c(f), a<b<c.
-def zz8zz_L12_C4_B4_08():   
+def ckz_L12C4_B4_08():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4491,7 +4497,7 @@ def zz8zz_L12_C4_B4_08():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_09]-M2. Cho tphan_a^d(f) và tphan_b^c(f). Tính tphan_a^b(f) + tphan_c^d(f), a<b<c<d.
-def zz8zz_L12_C4_B4_09():   
+def ckz_L12C4_B4_09():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -4559,7 +4565,7 @@ def zz8zz_L12_C4_B4_09():
 
 #4.4.2 Tích phân các hàm số thường gặp
 #[D12_C4_B4_10]. Tính tích phân của m/(ax+b)
-def zz8zz_L12_C4_B4_10():
+def ckz_L12C4_B4_10():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -4611,7 +4617,7 @@ def zz8zz_L12_C4_B4_10():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_11]. Tính tích phân của (mx+n)/(ax+b)
-def zz8zz_L12_C4_B4_11():
+def ckz_L12C4_B4_11():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.randint(1, 5)
@@ -4681,7 +4687,7 @@ def zz8zz_L12_C4_B4_11():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_12]. Tính tích phân của đa thức
-def zz8zz_L12_C4_B4_12():       
+def ckz_L12C4_B4_12():       
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     k=random.randint(2,4)
@@ -4734,7 +4740,7 @@ def zz8zz_L12_C4_B4_12():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_13]. Tính tích phân của asinbx
-def zz8zz_L12_C4_B4_13():   
+def ckz_L12C4_B4_13():   
     x=sp.symbols("x") 
     d_x=f"\\mathrm{{\\,d}}x"    
     a = random.randint(1, 10)
@@ -4802,9 +4808,306 @@ def zz8zz_L12_C4_B4_13():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C4_B4_14]-SA-M2. Tính tích phân của hàm số kép:ax+b và mx^2+nx+p
+def ckz_L12C4_B4_14():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*x+b
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+    p=random.randint(-7,7)
+    g=m*x**2+n*x+p
+
+    x_0= random.randint(-4,4)
+    x_1 = x_0-random.randint(1,4)    
+    x_2=x_0+random.randint(1,4)
+
+    tp1=integrate(f, (x,x_1,x_0))
+    tp2=integrate(g, (x,x_0,x_2))
+
+
+    noi_dung = (f" Cho hàm số"
+    f" $f(x)= \\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f)} \\text{{ khi }} x\\le {x_0} \\\\ \n\
+    {latex(g)}  \\text{{ khi }} x> {x_0}\n\
+    \\end{{array}} \\right.$."
+    f" Tính ${tphan(x_1,x_2)} f(x){d_x}$(kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)} f(x){d_x}={tphan(x_1,x_0)} f(x){d_x}+{tphan(x_0,x_2)} f(x){d_x}$"
+    f" $={tphan(x_1,x_0)} ({latex(f)}){d_x} + {tphan(x_0,x_2)} ({latex(g)}){d_x}$\n\n"
+    f" $={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$."    
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_15]-SA-M2. Tính tích phân của hàm số kép:ax+b/x^2 và mx^2+nx+p
+def ckz_L12C4_B4_15():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*x+b/x**2
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+    p=random.randint(-7,7)
+    g=m*x**2+n*x+p
+
+    while True:
+        x_0= random.choice([i for i in range(-4, 4) if i!=0])
+        x_1 = x_0-random.randint(1,4)    
+        x_2=x_0+random.randint(1,4)
+        if x_1 != 0 and x_2!=0:
+            break
+
+    tp1=integrate(f, (x,x_1,x_0))
+    tp2=integrate(g, (x,x_0,x_2))
+
+
+    noi_dung = (f" Cho hàm số"
+    f" $f(x)= \\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f)} \\text{{ khi }} x\\le {x_0} \\\\ \n\
+    {latex(g)}  \\text{{ khi }} x> {x_0}\n\
+    \\end{{array}} \\right.$."
+    f" Tính ${tphan(x_1,x_2)} f(x){d_x}$(kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)} f(x){d_x}={tphan(x_1,x_0)} f(x){d_x}+{tphan(x_0,x_2)} f(x){d_x}$"
+    f" $={tphan(x_1,x_0)} ({latex(f)}){d_x} + {tphan(x_0,x_2)} ({latex(g)}){d_x}$\n\n"
+    f" $={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$."    
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_16]-SA-M3. Tính tích phân của hàm số kép (chứa tham số m) :ax+b và mx^2+nx+p 
+def ckz_L12C4_B4_16():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*x+b
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+
+    x_0= random.randint(-4,4)
+
+    p=a*x_0+b-m*x_0**2-n*x_0    
+    g=m*x**2+n*x+p
+
+    
+    x_1 = x_0-random.randint(1,4)    
+    x_2=x_0+random.randint(1,4)
+
+    tp1=integrate(f, (x,x_1,x_0))
+    tp2=integrate(g, (x,x_0,x_2))
+
+
+    noi_dung = (f" Cho hàm số"
+    f" $f(x)= \\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f)} \\text{{ khi }} x\\le {x_0} \\\\ \n\
+    {latex(m*x**2+n*x)}+m  \\text{{ khi }} x> {x_0}\n\
+    \\end{{array}} \\right.$."
+    f" Biết rằng hàm số $f(x)$ liên tục trên $\\mathbb{{R}}$."
+    f" Tính ${tphan(x_1,x_2)} f(x){d_x}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Đề hàm số $f(x)$ liên tục trên $\\mathbb{{R}}$ thì hàm số liên tục tại $x_0={x_0}$.\n\n"
+    f"Suy ra: ${st_lim(f"{x_0}^{{-}}")} f(x)={st_lim(f"{x_0}^{{+}}")} f(x)$\n\n"
+    f"$\\Leftrightarrow {st_lim(f"{x_0}^{{-}}")} ({latex(a*x+b)})={st_lim(f"{x_0}^{{-}}")} ({latex(m*x**2+n*x)}+m)$\n\n"
+    f"$\\Leftrightarrow {a*x_0+b}={m*x_0**2+n*x_0}+m \\Leftrightarrow m={p}$.\n\n"
+
+    f"${tphan(x_1,x_2)} f(x){d_x}={tphan(x_1,x_0)} f(x){d_x}+{tphan(x_0,x_2)} f(x){d_x}$"
+    f" $={tphan(x_1,x_0)} ({latex(f)}){d_x} + {tphan(x_0,x_2)} ({latex(g)}){d_x}$\n\n"
+    f" $={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$."    
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_17]-SA-M3. Tính tích phân của hàm số kép (chứa tham số a,b): x^2+ax+b và g(x^3)
+def ckz_L12C4_B4_17():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f_dh=2*a*x+b
+
+    m = random.choice([i for i in range(-3, 3) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+
+    x_0= random.randint(-4,4)
+
+    p=2*a*x_0+b-3*m*x_0**2-2*n*x_0    
+    g_dh=3*m*x**2+2*n*x+p
+
+    
+    q = random.randint(-5,6)
+    g=m*x**3+n*x**2+p*x+q    
+    c=g.subs(x,x_0)-a*x_0**2-b*x_0
+    f=a*x**2+b*x+c
+
+    
+    x_1 = x_0-random.randint(1,4)    
+    x_2=x_0+random.randint(1,4)
+
+    tp1=integrate(f, (x,x_1,x_0))
+    tp2=integrate(g, (x,x_0,x_2))
+
+
+    noi_dung = (f" Cho hàm số"
+    f" $f(x)= \\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a*x**2)}+ax+b \\text{{ khi }} x\\le {x_0} \\\\ \n\
+    {latex(g)}  \\text{{ khi }} x> {x_0}\n\
+    \\end{{array}} \\right.$."
+    f" Biết rằng hàm số $f(x)$ có đạo hàm tại điểm $x={x_0}$."
+    f" Tính ${tphan(x_1,x_2)} f(x){d_x}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f_dh)} \\\\ \n\
+    {latex(g_dh)}\n\
+    \\end{{array}} \\right.$"
+    f"f'(x) có đạo hàm tại $x={x_0}$ nên ta có: \n\n"
+    f"$\\Leftrightarrow {2*a*x_0}+a={g_dh.subs(x,x_0)} \\Leftrightarrow a={b}$.\n\n"
+    f"$f(x)$ liên tục tại $x={x_0}$ nên:"
+    f"Suy ra: ${st_lim(f"{x_0}^{{-}}")} f(x)={st_lim(f"{x_0}^{{+}}")} f(x)$\n\n"
+    f"$\\Leftrightarrow {st_lim(f"{x_0}^{{-}}")} ({latex(a*x**2+b*x)}+b)={st_lim(f"{x_0}^{{-}}")} ({latex(g)})$\n\n"
+    f"$\\Leftrightarrow b={c}$.\n\n"
+    f"Suy ra: "
+    f"$f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f)} \\\\ \n\
+    {latex(g)}\n\
+    \\end{{array}} \\right.$"
+
+    f"${tphan(x_1,x_2)} f(x){d_x}={tphan(x_1,x_0)} f(x){d_x}+{tphan(x_0,x_2)} f(x){d_x}$"
+    f" $={tphan(x_1,x_0)} ({latex(f)}){d_x} + {tphan(x_0,x_2)} ({latex(g)}){d_x}$\n\n"
+    f" $={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$."    
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_16]-SA-M3. Tính tích phân của hàm số kép (chứa tham số m) :ax+b và mx^2+nx+p 
+def ckz_L12C4_B4_16():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*x+b
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+
+    x_0= random.randint(-4,4)
+
+    p=a*x_0+b-m*x_0**2-n*x_0    
+    g=m*x**2+n*x+p
+
+    
+    x_1 = x_0-random.randint(1,4)    
+    x_2=x_0+random.randint(1,4)
+
+    tp1=integrate(f, (x,x_1,x_0))
+    tp2=integrate(g, (x,x_0,x_2))
+
+
+    noi_dung = (f" Cho hàm số"
+    f" $f(x)= \\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f)} \\text{{ khi }} x\\le {x_0} \\\\ \n\
+    {latex(m*x**2+n*x)}+m  \\text{{ khi }} x> {x_0}\n\
+    \\end{{array}} \\right.$."
+    f" Biết rằng hàm số $f(x)$ liên tục trên $\\mathbb{{R}}$."
+    f" Tính ${tphan(x_1,x_2)} f(x){d_x}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Đề hàm số $f(x)$ liên tục trên $\\mathbb{{R}}$ thì hàm số liên tục tại $x_0={x_0}$.\n\n"
+    f"Suy ra: ${st_lim(f"{x_0}^{{-}}")} f(x)={st_lim(f"{x_0}^{{+}}")} f(x)$\n\n"
+    f"$\\Leftrightarrow {st_lim(f"{x_0}^{{-}}")} ({latex(a*x+b)})={st_lim(f"{x_0}^{{-}}")} ({latex(m*x**2+n*x)}+m)$\n\n"
+    f"$\\Leftrightarrow {a*x_0+b}={m*x_0**2+n*x_0}+m \\Leftrightarrow m={p}$.\n\n"
+
+    f"${tphan(x_1,x_2)} f(x){d_x}={tphan(x_1,x_0)} f(x){d_x}+{tphan(x_0,x_2)} f(x){d_x}$"
+    f" $={tphan(x_1,x_0)} ({latex(f)}){d_x} + {tphan(x_0,x_2)} ({latex(g)}){d_x}$\n\n"
+    f" $={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$."    
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 ################ Bài 5: ỨNG DỤNG CỦA TÍCH PHÂN #################
 #[D12_C4_B5_01]. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b
-def zz8zz_L12_C4_B5_01():   
+def ckz_L12C4_B5_01():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     chon=random.choice([1,2])
@@ -4888,7 +5191,7 @@ def zz8zz_L12_C4_B5_01():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_02]. Diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b
-def zz8zz_L12_C4_B5_02():   
+def ckz_L12C4_B5_02():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -4957,7 +5260,7 @@ def zz8zz_L12_C4_B5_02():
 
 
 #[D12_C4_B5_03]. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị.
-def zz8zz_L12_C4_B5_03():   
+def ckz_L12C4_B5_03():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     x_1=random.randint(-6,-1)
@@ -5072,7 +5375,7 @@ def zz8zz_L12_C4_B5_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_04]. Diện tích hình phẳng: y=f(x),y=g(x)
-def zz8zz_L12_C4_B5_04():   
+def ckz_L12C4_B5_04():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
@@ -5141,7 +5444,7 @@ def zz8zz_L12_C4_B5_04():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_05]. Thể tích quay quanh Ox bởi hình: y=f(x),Ox,x=a,x=b
-def zz8zz_L12_C4_B5_05():   
+def ckz_L12C4_B5_05():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     chon=random.randint(1,3)
@@ -5235,7 +5538,7 @@ def zz8zz_L12_C4_B5_05():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_06]. Thể tích quay quanh Ox bởi hình: y=ax+b,Ox,x=a,x=b
-def zz8zz_L12_C4_B5_06():   
+def ckz_L12C4_B5_06():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -5305,7 +5608,7 @@ def zz8zz_L12_C4_B5_06():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_07]. Thể tích quay quanh Ox bởi hình: y=ax^2+bx+c,Ox,x=a,x=b
-def zz8zz_L12_C4_B5_07():   
+def ckz_L12C4_B5_07():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")      
 
@@ -5377,7 +5680,7 @@ def zz8zz_L12_C4_B5_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_08]. Thể tích quay quanh Ox bởi hình: y=căn(ax+b),Ox,x=a,x=b
-def zz8zz_L12_C4_B5_08():   
+def ckz_L12C4_B5_08():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")    
    
@@ -5441,7 +5744,7 @@ def zz8zz_L12_C4_B5_08():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_09]-M3. Thể tích quay quanh Ox bởi hình: y=ae^x+b,Ox,x=a,x=b
-def zz8zz_L12_C4_B5_09():   
+def ckz_L12C4_B5_09():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")    
    
@@ -5505,7 +5808,7 @@ def zz8zz_L12_C4_B5_09():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_10]. Thể tích quay quanh Ox bởi hình: y=ax^2+bx+c, Ox
-def zz8zz_L12_C4_B5_10():   
+def ckz_L12C4_B5_10():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")      
     a = random.choice([random.randint(-6, -1), random.randint(1, 6)])
@@ -5569,7 +5872,7 @@ def zz8zz_L12_C4_B5_10():
 #4.5.3 BÀI TOÁN CHUYỂN ĐỘNG
 
 #[D12_C4_B5_11]-M2. Cho hàm số vận tốc. Tính quãng đường đi được từ t1 đến t2.
-def zz8zz_L12_C4_B5_11():   
+def ckz_L12C4_B5_11():   
     d_t=f"\\mathrm{{\\,d}}t"
     m_s=f"\\mathrm{{\\,(m}}/\\mathrm{{\\,s)}}"
     m=f"\\mathrm{{\\,(m)}}"
@@ -5634,7 +5937,7 @@ def zz8zz_L12_C4_B5_11():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_12]-M3. Cho hàm số vận tốc. Tính quãng đường đi được từ t1 đến t2.
-def zz8zz_L12_C4_B5_12():   
+def ckz_L12C4_B5_12():   
     d_t=f"\\mathrm{{\\,d}}t"
     m_s=f"\\mathrm{{\\,(m}}/\\mathrm{{\\,s)}}"
     m=f"\\mathrm{{\\,(m)}}"
@@ -5703,7 +6006,7 @@ def zz8zz_L12_C4_B5_12():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_13]-M3. Xe tăng tốc với gia tốc. Tính quãng đường đi được trong khoảng thời gian
-def zz8zz_L12_C4_B5_13():   
+def ckz_L12C4_B5_13():   
     d_t=f"\\mathrm{{\\,d}}t"
     km_h=f"\\mathrm{{\\,(km}}/\\mathrm{{\\,h)}}"
     km_h_2=f"\\mathrm{{\\,(km}}/\\mathrm{{\\,h^2)}}"
@@ -5776,7 +6079,7 @@ def zz8zz_L12_C4_B5_13():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_14]-M2. Thể tích vật thể có thiết diện là hình chữ nhật.
-def zz8zz_L12_C4_B5_14():   
+def ckz_L12C4_B5_14():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")      
     a = random.randint(1,15)
@@ -5842,7 +6145,7 @@ def zz8zz_L12_C4_B5_14():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_14]-M2. Thể tích vật thể có thiết diện là hình chữ nhật.
-def zz8zz_L12_C4_B5_14():   
+def ckz_L12C4_B5_14():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
 
@@ -5909,7 +6212,7 @@ def zz8zz_L12_C4_B5_14():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_15]-M2. Thể tích vật thể có thiết diện là hình vuông.
-def zz8zz_L12_C4_B5_15():   
+def ckz_L12C4_B5_15():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")      
     a = random.randint(2,10)
@@ -5977,7 +6280,7 @@ def zz8zz_L12_C4_B5_15():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B5_16]-M2. Thể tích vật thể có thiết diện là hình tam giác đều.
-def zz8zz_L12_C4_B5_16():   
+def ckz_L12C4_B5_16():   
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")      
     a = random.randint(1,8)

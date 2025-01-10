@@ -7124,6 +7124,26 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L12_C4_B4_4 = QTreeWidgetItem(L12_C4_B4, ["Đúng-Sai"])
+                L12_C4_B4_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B4_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B4_5 = QTreeWidgetItem(L12_C4_B4, ["Trả lời ngắn"])
+                L12_C4_B4_5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B4_5.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_14]-SA-M2. Tính tích phân của HS kép:ax+b và mx^2+nx+p"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_15]-SA-M2. Tính tích phân của HS kép:ax+b/x^2 và mx^2+nx+p"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_16]-SA-M2. Tính tích phân của HS kép (chứa tham số):ax+b và mx^2+nx+p"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
                 L12_C4_B5 = QTreeWidgetItem(L12_C4, ["Bài 3 - Ứng dụng của tích phân"])
                 L12_C4_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8662,412 +8682,424 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B1_01]. Tìm nguyên hàm của hàm số đa thức
                                                 if dang_toan == "[D12_C4_B1_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_01()                                     
                                                     
 
                                                 #[D12_C4_B1_02]. Tìm nguyên hàm của hàm số đa thức có F(a)=b
                                                 if dang_toan == "[D12_C4_B1_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_02()                                     
                                                     
 
                                                 #[D12_C4_B1_03]. Tìm nguyên hàm chứa sinu, cosu
                                                 if dang_toan == "[D12_C4_B1_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_03()                                     
                                                     
 
                                                 #[D12_C4_B1_04]. Tìm nguyên hàm asinu
                                                 if dang_toan == "[D12_C4_B1_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_04()                                     
                                                     
 
                                                 #[D12_C4_B1_05]. Tìm nguyên hàm acosu
                                                 if dang_toan == "[D12_C4_B1_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_05()                                     
                                                     
 
                                                 #[D12_C4_B1_06]. Tìm nguyên hàm đa thức +a/x
                                                 if dang_toan == "[D12_C4_B1_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_06()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_06()                                     
                                                     
 
                                                 #[D12_C4_B1_07]. Tìm nguyên hàm đa thức m/(ax+b)
                                                 if dang_toan == "[D12_C4_B1_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_07()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_07()                                     
                                                     
 
                                                 #[D12_C4_B1_08]. Tìm nguyên hàm đa thức (mx+n)/(ax+b)
                                                 if dang_toan == "[D12_C4_B1_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_08()                                     
                                                     
 
                                                 #[D12_C4_B1_09]. Tìm nguyên hàm đa thức (mx^2+nx+p)/(ax+b)
                                                 if dang_toan == "[D12_C4_B1_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_09()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_09()                                     
                                                     
 
                                                 #[D12_C4_B1_10]. Tìm nguyên hàm của e^(ax+b)
                                                 if dang_toan == "[D12_C4_B1_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_10()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_10()
 
                                                 #[D12_C4_B1_11]-M1. Tìm nguyên hàm của ax+b
                                                 if dang_toan == "[D12_C4_B1_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_11()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_11()
 
                                                 #[D12_C4_B1_12]-M1. Tìm nguyên hàm của k
                                                 if dang_toan == "[D12_C4_B1_12]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_12()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_12()
 
                                                 #[D12_C4_B1_13]-M2. Tìm nguyên hàm của ax^2+bx+c
                                                 if dang_toan == "[D12_C4_B1_13]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_13()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_13()
 
                                                 #[D12_C4_B1_14]-M2. Tìm nguyên hàm của (ax+b)^2
                                                 if dang_toan == "[D12_C4_B1_14]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_14()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_14()
 
                                                 #[D12_C4_B1_15]-M2. Tìm nguyên hàm của a+b/x^2
                                                 if dang_toan == "[D12_C4_B1_15]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_15()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_15()
 
                                                 #[D12_C4_B1_16]-M2. Tìm nguyên hàm của ax+b/x^2+cTìm nguyên hàm của ax+b/x^2+c
                                                 if dang_toan == "[D12_C4_B1_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_16()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_16()
 
                                                 #[D12_C4_B1_17]-M2. Tìm nguyên hàm đa thức thỏa mãn F(x_0)=b
                                                 if dang_toan == "[D12_C4_B1_17]": 
-                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_17()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_17()
 
                                                 #[D12_C4_B1_18]-M2. Tìm nguyên hàm của a+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_18]": 
-                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_18()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_18()
 
                                                 #[D12_C4_B1_19]-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_19]": 
-                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_19()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_19()
 
                                                 #[D12_C4_B1_20]-M2. Tìm nguyên hàm của ax+b/x^2 thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_20]": 
-                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_20()
+                                                   debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_20()
 
                                                 #[D12_C4_B1_21]-M2. Tìm nguyên hàm của m/cos^2x
                                                 if dang_toan == "[D12_C4_B1_21]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_21()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_21()
 
                                                 #[D12_C4_B1_22]-M2. Tìm nguyên hàm của m/sin^2x
                                                 if dang_toan == "[D12_C4_B1_22]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_22()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_22()
 
                                                 #[D12_C4_B1_23]-M2. Tìm nguyên hàm của m(1+tan^2x)
                                                 if dang_toan == "[D12_C4_B1_23]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_23()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_23()
 
                                                 #[D12_C4_B1_24]-M2. Tìm nguyên hàm của m(1+cot^2x)
                                                 if dang_toan == "[D12_C4_B1_24]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_24()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_24()
 
                                                 #[D12_C4_B1_25]-M2. Tìm nguyên hàm của m/cos^2x + n/sin^2x
                                                 if dang_toan == "[D12_C4_B1_25]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_25()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_25()
                                                 
                                                 #[D12_C4_B1_26]-TF-M2. Xét đúng-sai: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)
                                                 if dang_toan == "[D12_C4_B1_26]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_26()
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_26()
 
                                                 #[D12_C4_B1_27]-M1. Nguyên hàm của a^x
                                                 if dang_toan == "[D12_C4_B1_27]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_27() 
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_27() 
 
                                                 #[D12_C4_B1_28]-M2. Nguyên hàm của m.e^x
                                                 if dang_toan == "[D12_C4_B1_28]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_28()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_28()
 
                                                 #[D12_C4_B1_29]-M2. Nguyên hàm của e^(ax+b)
                                                 if dang_toan == "[D12_C4_B1_29]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_29()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_29()
 
                                                 #[D12_C4_B1_30]-M2. Nguyên hàm của e^(ax)+mx+n
                                                 if dang_toan == "[D12_C4_B1_30]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_30()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_30()
 
                                                 #[D12_C4_B1_31]-M2. Nguyên hàm của e^(ax)+mx+n
                                                 if dang_toan == "[D12_C4_B1_31]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_31()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_31()
 
                                                 #[D12_C4_B1_32]-M2.  Nguyên hàm của m.e^x + n.e^(-x)+p
                                                 if dang_toan == "[D12_C4_B1_32]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_32()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_32()
 
                                                 #[D12_C4_B1_33]-M2.  Nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0
                                                 if dang_toan == "[D12_C4_B1_33]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_33()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_33()
 
                                                 #[D12_C4_B1_34]-M2.  Nguyên hàm của m.e^x + n.e^(-x) thỏa mãn F(x_0)=y_0
                                                 if dang_toan == "[D12_C4_B1_34]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B1_34()
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_34()
                                                 
                                                 #[D12_C4_B1_35]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_35]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_35()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_35()
 
                                                 #[D12_C4_B1_36]-SA-M3. F(x) là một nguyên hàm của m.e^x + n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_36]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_36()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_36()
 
                                                 #[D12_C4_B1_37]-SA-M3. F(x) là một nguyên hàm của m.e^x + ne^(-x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_37]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_37()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_37()
 
                                                 #[D12_C4_B1_38]-SA-M3. F(x) là một nguyên hàm của m.a^x+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_38]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_38()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_38()
 
                                                 #[D12_C4_B1_39]-SA-M3. F(x) là một nguyên hàm của m.a^x+n.e^x thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_39]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_39()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_39()
 
                                                 #[D12_C4_B1_40]-SA-M3. F(x) là một nguyên hàm của m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_40]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_40()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_40()
 
                                                 #[D12_C4_B1_41]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_41]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_41()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_41()
 
                                                 #[D12_C4_B1_42]-SA-M3. F(x) là một nguyên hàm của của m.cos(x)+n hoặc m.sin(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_42]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_42()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_42()
 
                                                 #[D12_C4_B1_43]-SA-M3. F(x) là một nguyên hàm của của m.cos(x)+n.sin(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_43]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_43()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_43()
 
                                                 #[D12_C4_B1_44]-SA-M3. F(x) là một nguyên hàm của m.cos(x)+n.sin(x)+p thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_44]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_44()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_44()
 
                                                 #[D12_C4_B1_45]-SA-M3. F(x) là một nguyên hàm của mtan^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_45]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_45()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_45()
 
                                                 #[D12_C4_B1_46]-SA-M3. F(x) là một nguyên hàm của mcot^2(x)+n thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_46]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_46()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_46()
 
                                                 #[D12_C4_B1_47]-SA-M3. F(x) là một nguyên hàm của mtan^2+ncot^2(x) thỏa mãn F(x_0)=y_0. Tính F(x_1)
                                                 if dang_toan == "[D12_C4_B1_47]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.zz8zz_L12_C4_B1_47()
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B1_47()
 
                                                 #[D12_C4_B1_48]-TF-M3. Xét Đ-S: nguyên hàm của asinx, acosx+b, atan^2x, Tính F(x_0) theo nguyên hàm sin,cos
                                                 if dang_toan == "[D12_C4_B1_48]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_48()
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_48()
 
                                                 #[D12_C4_B1_49]-TF-M3. Xét Đ-S: Xét Đ-S: nguyên hàm của asinx, acosx+b, acot^2x, Tính F(x_0) theo nguyên hàm sin,cos
                                                 if dang_toan == "[D12_C4_B1_49]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_49()
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_49()
 
                                                 #[D12_C4_B1_50]-TF-M3. Xét Đ-S: Xét Đ-S: nguyên hàm của asinx, acosx+b, sinmx+n, Tính F(x_0) theo nguyên hàm tan,cot
                                                 if dang_toan == "[D12_C4_B1_50]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_50()
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_50()
 
                                                 #[D12_C4_B1_51]-TF-M3. Xét Đ-S: nguyên hàm của: a^x, e^mx, m.e^x+n.e^(-x), Tính F(x_0) từ nguyên hàm a^x
                                                 if dang_toan == "[D12_C4_B1_51]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_51()
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_51()
 
                                                 #[D12_C4_B1_52]-TF-M3. nguyên hàm của: me^x, a^mx, a^x.b^x.c^x, Tính F(x_0) từ nguyên hàm e^x+e^(-x)
                                                 if dang_toan == "[D12_C4_B1_52]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.zz8zz_L12_C4_B1_52()
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_52()
                                                     
 
                                             #Bài 2. Nguyên hàm đổi biến
                                                 #[D12_C4_B2_01]. Nguyên hàm đổi biến chứa căn(ax^+b)
                                                 if dang_toan == "[D12_C4_B2_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B2_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B2_01()                                     
                                                     
 
                                                 #[D12_C4_B2_02]. Nguyên hàm đổi biến chứa căn(ax^2+b)
                                                 if dang_toan == "[D12_C4_B2_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B2_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B2_02()                                     
                                                     
 
                                                 #[D12_C4_B2_03]. Nguyên hàm đổi biến sinx/căn(acosx+b)dx
                                                 if dang_toan == "[D12_C4_B2_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B2_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B2_03()                                     
                                                     
 
                                                 #[D12_C4_B2_04]. Nguyên hàm đổi biến (acosx+b)sinx
                                                 if dang_toan == "[D12_C4_B2_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B2_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B2_04()                                     
                                                     
 
                                                 #[D12_C4_B2_05]. Nguyên hàm đổi biến (alnx + b)/x
                                                 if dang_toan == "[D12_C4_B2_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B2_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B2_05()                                     
                                                     
 
                                             #Bài 3. Nguyên hàm từng phần
                                                 #[D12_C4_B3_01]. Nguyên hàm P(x).sin hoặc P(x).cos
                                                 if dang_toan == "[D12_C4_B3_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B3_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B3_01()                                     
                                                                    
 
                                                 #[D12_C4_B3_02]. Nguyên hàm P(x).e^(ax+b)
                                                 if dang_toan == "[D12_C4_B3_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B3_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B3_02()                                     
                                                     
 
                                                 #[D12_C4_B3_03]. Nguyên hàm P(x).ln(mx)
                                                 if dang_toan == "[D12_C4_B3_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B3_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B3_03()                                     
                                                     
 
                                             #Bài 4. Tích phân
                                             #[D12_C4_B4_01]-M1. Cho F(a) và F(b). Tính tích phân từ a đến b.
                                                 if dang_toan == "[D12_C4_B4_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_01()                                     
                                                     
 
                                             #[D12_C4_B4_02]-M1. Cho 2 tích phân theo f và g. Tính tích phân (m.f+n.g).
                                                 if dang_toan == "[D12_C4_B4_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_02()                                     
                                                     
 
                                             #[D12_C4_B4_03]-M1. Tính tổng tích phân trên 2 đoạn nối tiếp.
                                                 if dang_toan == "[D12_C4_B4_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_03()                                     
                                                     
 
                                             #[D12_C4_B4_04]-M1. Cho theo f. Tính tích phân (m.f+n).
                                                 if dang_toan == "[D12_C4_B4_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_04()                                     
                                                     
 
                                             #[D12_C4_B4_05]-M2. Cho tích phân f và F(a). Tính F(b).
                                                 if dang_toan == "[D12_C4_B4_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_05()                                     
                                                     
 
                                             #[D12_C4_B4_06]-M1. Cho f(a) và f(b). Tính tích phân f'(x).
                                                 if dang_toan == "[D12_C4_B4_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_06()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_06()                                     
                                                     
 
                                             #[D12_C4_B4_07]-M1. Cho f(a) và f(b). Tính tích phân f'(x).
                                                 if dang_toan == "[D12_C4_B4_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_07()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_07()                                     
                                                     
 
                                             #[D12_C4_B4_08]-M1. Cho tphan_a^c(f) và tphan_a^b(f). Tính tphan_b^c(f), a<b<c.
                                                 if dang_toan == "[D12_C4_B4_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_08()                                     
                                                     
 
                                             #[D12_C4_B4_09]-M2. Cho tphan_a^d(f) và tphan_b^c(f). Tính tphan_a^b(f) + tphan_c^d(f), a<b<c<d.
                                                 if dang_toan == "[D12_C4_B4_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_09()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_09()                                     
                                                     
 
                                             #Tích phân đa thức, phân thức
 
                                             #[D12_C4_B4_10]-M2. Tính tích phân của m/(ax+b).
                                                 if dang_toan == "[D12_C4_B4_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_10()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_10()                                     
                                                     
 
-                                            #[D12_C4_B4_11]-M2. Tính tích phân của (mx+n)/(ax+b).
+                                                #[D12_C4_B4_11]-M2. Tính tích phân của (mx+n)/(ax+b).
                                                 if dang_toan == "[D12_C4_B4_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_11()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_11()                                     
                                                     
 
-                                            #[D12_C4_B4_12]-M2. Tính tích phân của đa thức.
+                                                #[D12_C4_B4_12]-M2. Tính tích phân của đa thức.
                                                 if dang_toan == "[D12_C4_B4_12]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_12()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_12()                                     
                                                     
 
-                                            #[D12_C4_B4_13]-M2. Tính tích phân của asinbx.
+                                                #[D12_C4_B4_13]-M2. Tính tích phân của asinbx.
                                                 if dang_toan == "[D12_C4_B4_13]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B4_13()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_13()
+
+                                                #[D12_C4_B4_14]-TL-M3. Tính tích phân của hàm số kép:ax+b và mx^2+nx+p
+                                                if dang_toan == "[D12_C4_B4_14]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_14()
+
+                                                #[D12_C4_B4_15]-TL-M3. Tính tích phân của hàm số kép:ax+b/x^2 và mx^2+nx+p
+                                                if dang_toan == "[D12_C4_B4_15]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_15()
+
+                                                #[D12_C4_B4_16]-TL-M3. Tính tích phân của hàm số kép (chứa tham số m) :ax+b và mx^2+nx+p 
+                                                if dang_toan == "[D12_C4_B4_16]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_16()                                     
                                                     
 
                                             #Bài 5. Ứng dụng tích phân
-                                            #[D12_C4_B5_03]. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị.
+                                                #[D12_C4_B5_03]. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị.
                                                 if dang_toan == "[D12_C4_B5_03]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_03()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_03()                                     
                                                     
 
                                      
-                                            #[D12_C4_B5_01]. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b
+                                                #[D12_C4_B5_01]. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_01]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_01()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_01()                                     
                                                     
 
                                             #[D12_C4_B5_02]. Diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_02]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_02()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_02()                                     
                                                     
 
                                             #[D12_C4_B5_04]. Diện tích hình phẳng: y=f(x),y=g(x)
                                                 if dang_toan == "[D12_C4_B5_04]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_04()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_04()                                     
                                                     
 
                                             #[D12_C4_B5_05]. Thể tích quay quanh Ox bởi hình: y=f(x),Ox,x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_05]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_05()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_05()                                     
                                                      
 
                                             #[D12_C4_B5_06]. Thể tích quay quanh Ox bởi hình: y=ax+b,Ox,x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_06]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_06()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_06()                                     
                                                     
 
                                             #[D12_C4_B5_07]. Thể tích quay quanh Ox bởi hình: y=ax^2+bx+c,Ox,x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_07]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_07()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_07()                                     
                                                     
 
                                             #[D12_C4_B5_08]. Thể tích quay quanh Ox bởi hình: y=căn(ax+b),Ox,x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_08]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_08()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_08()                                     
                                                     
 
                                             #[D12_C4_B5_09]. Thể tích quay quanh Ox bởi hình: y=căn(ax+b),Ox,x=a,x=b
                                                 if dang_toan == "[D12_C4_B5_09]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_09()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_09()                                     
                                                     
 
                                             #[D12_C4_B5_10]. Thể tích quay quanh Ox bởi hình: y=ax^2+bx+c, Ox
                                                 if dang_toan == "[D12_C4_B5_10]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_10()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_10()                                     
                                                     
 
                                             #[D12_C4_B5_11]. Cho hàm số vận tốc. Tính quãng đường đi được từ t1 đến t2.
                                                 if dang_toan == "[D12_C4_B5_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_11()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_11()                                     
                                                     
 
                                             #[D12_C4_B5_12]. Cho hàm số vận tốc. Tính quãng đường đi được từ t1 đến t2.
                                                 if dang_toan == "[D12_C4_B5_12]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_12()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_12()                                     
                                                     
 
                                             #[D12_C4_B5_13]. Xe tăng tốc với gia tốc. Tính quãng đường đi được trong khoảng thời gian
                                                 if dang_toan == "[D12_C4_B5_13]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_13()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_13()                                     
                                                     
 
                                             #[D12_C4_B5_14]. Thể tích vật thể có thiết diện là hình chữ nhật.
                                                 if dang_toan == "[D12_C4_B5_14]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_14()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_14()                                     
                                                     
 
                                             #[D12_C4_B5_15]. Thể tích vật thể có thiết diện là hình vuông.
                                                 if dang_toan == "[D12_C4_B5_15]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_15()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_15()                                     
                                                     
 
                                             #[D12_C4_B5_16]. Thể tích vật thể có thiết diện là hình tam giác đều.
                                                 if dang_toan == "[D12_C4_B5_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.zz8zz_L12_C4_B5_16()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_16()                                     
                                                     
 
                                                 ##################################################################

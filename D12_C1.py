@@ -10821,7 +10821,7 @@ def prt_34_L12_C1_B4_16():
 	x=sp.symbols("x")	
 	a=random.choice([i for i in range(-3, 4) if i!=0])
 	b=random.choice([i for i in range(-4, 4) if i!=0])
-	c=random.choice([i for i in range(-5, 5)])	
+	c=random.choice([i for i in range(-5, 5) if i!=0])	
 	d=random.randint(-6,6)
 	f=a*x**3+b*x**2+c*x+d
 	f_dh1=diff(f,x)
