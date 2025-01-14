@@ -6757,6 +6757,44 @@ def ckz_L12C4_B4_37():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C4_B4_38]-SA-M2. Tính tích phân acot^2x+b
+def ckz_L12C4_B4_38():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    list_can=[pi/6,pi/3,pi/4,2*pi/3,3*pi/4,5*pi/6]
+    while True:
+        x_1=random.choice([list_can])
+        x_2=random.choice([list_can])
+        if x_1<x_2:
+            break
+    f=a*cot(x)**2+b
+    F=integrate(f)
+
+    noi_dung = (
+    f"Biết ${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=a{latex(pi)}+b{latex(sqrt(3))}+c$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=" "
+
+    noi_dung_loigiai=(
+    f"${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}={latex(F)}\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+    f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$."
+    
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 ################ Bài 5: ỨNG DỤNG CỦA TÍCH PHÂN #################
 #[D12_C4_B5_01]. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b
 def ckz_L12C4_B5_01():   
