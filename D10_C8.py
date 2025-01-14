@@ -4,6 +4,8 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+from itertools import permutations
 def xu_li_dau_cham(a):
 	str_a=str(a)
 	str_a=str_a.replace(".",",")
@@ -48,6 +50,17 @@ def dem_so_chan_den_m(m):
     for so in range(2, m + 1, 2):
         dem += 1
     return dem
+
+
+def tinh_tong_chu_so(so):
+    # Lấy giá trị tuyệt đối để đảm bảo không bị lỗi với số âm
+    so = abs(so)
+    tong = 0
+    while so > 0:
+        tong += so % 10  # Lấy chữ số cuối cùng
+        so //= 10        # Bỏ chữ số cuối cùng
+    return tong
+
 
 ################ Bài 1: QUY TẮC CỘNG VÀ QUY TẮC NHÂN ########################
 #[D10_C8_B1_01]-M1. Cho 2 nhóm đồ vật. Tìm số cách chọn 1 vật
@@ -750,6 +763,1375 @@ def mcn__L10_C8_B1_11():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+
+
+
+
+
+#[D10_C8_B1_12]-M2. Tính số ước nguyên của một số
+def mcn__L10_C8_B1_12(): 
+    a= random.choice([n for n in range(40, 1000) if len([i for i in range(2, n//2 + 1) if n % i == 0]) >= 2])
+    b= sum(1 for i in range(1, abs(a) + 1) if a % i == 0)
+    c= b*2
+    noi_dung=f"Số ước của ${{{a}}}$ là "
+    noi_dung_loigiai=f"Số ước của ${{{a}}}$ là ${{{c}}}$ "
+    pa_A= f"*${{{c}}}$"
+
+    dss=[ f"${{{c-1}}}$",
+    f"${{{c+1}}}$",
+    f"${{{c+5}}}$",
+f"${{{c+3}}}$",
+    f"${{{c+2}}}$",
+f"${{{c-2}}}$",
+    f"${{{c+4}}}$",
+    ]
+    pa_B, pa_C, pa_D= random.sample(dss, 3)  
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan
+
+
+
+
+
+
+#[D10_C8_B1_13]-SA-M2. Tính số ước nguyên của một số
+def mcn__L10_C8_B1_13(): 
+	a= random.choice([n for n in range(40, 1000) if len([i for i in range(2, n//2 + 1) if n % i == 0]) >= 2])
+	b= sum(1 for i in range(1, abs(a) + 1) if a % i == 0)
+	c= b*2
+	kq=str(c)
+	noi_dung=f"Số ước của ${{{a}}}$ là"
+	noi_dung_loigiai=f"Số ước của ${{{a}}}$ là ${{{c}}}$ "
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+#[D10_C8_B1_14]-TF-M2. Chọn đề tài thi cử. Xét ĐS
+def mcn__L10_C8_B1_14(): 
+	detai=["con người", "thiên nhiên", "lịch sử", "địa lí", "văn hoá xã hội", "ẩm thực", "khoa bảng"]
+	A,B,C,D =random.sample(detai,4)
+	a,b,c,d=random.sample(range(3,10),4)
+
+
+	noi_dung = f"Trong một cuộc thi tìm hiểu về đất nước Việt Nam, ban tổ chức công bố danh sách các đề tài bao gồm: ${{{a}}}$ đề tài về {A}, ${{{b}}}$ đề tài về {B}, ${{{c}}}$ đề tài về {C} và ${{{d}}}$ đề tài về {D}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a}}}$ cách để chọn được một câu hỏi thuộc đề tài về {A}" 
+	kq1_F=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{b}}}$ cách để chọn được một câu hỏi thuộc đề tài về {A} "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a}}}$ cách để chon được một câu hỏi thuộc đề tài về {A} "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Nếu mỗi thí sinh phải chọn ${{2}}$ câu hỏi thuộc các đề tài trên thì có ${{{a*b}}}$ cách để chọn được 1 đề tài về {A} và 1 đề tài về {B} "
+	kq2_F=f"Nếu mỗi thí sinh phải chọn ${{2}}$ câu hỏi thuộc các đề tài trên thì có ${{{a*b+1}}}$ cách để chọn được 1 đề tài về {A} và 1 đề tài về {B} "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Nếu mỗi thứ sinh phải chọn ${{2}}$ câu hỏi thuộc các đề tài trên thì có ${{{a} \\cdot {b} = {a*b}}}$ cách để chọn được 1 đề tài về {A} và 1 đề tài về {B}"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+c+d}}}$ cách chọn" 
+	kq3_F=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+c+d+1}}}$ cách chọn "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+c+d}}}$ cách chọn"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*Nếu mỗi thí sinh phải chọn 4 câu hỏi thuộc đủ các đề tài thì có ${{{a*b*c*d}}}$ cách chọn "
+	kq4_F=f"Nếu mỗi thí sinh phải chọn 4 câu hỏi thuộc đủ các đề tài thì có ${{{a*b*c*d+1}}}$ cách chọn " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Nếu mỗi thí sinh phải chọn 4 câu hỏi thuộc đủ các đề tài thì có ${{{a}\\cdot {b} \\cdot {c} \\cdot {d} ={a*b*c*d}}}$ cách chọn "
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+
+#[D10_C8_B1_15]-TF-M3. Chọn đề tài thi cử. Xét ĐS
+def mcn__L10_C8_B1_15(): 
+	detai=["con người", "thiên nhiên", "lịch sử", "địa lí", "văn hoá xã hội", "ẩm thực", "khoa bảng"]
+	A,B,C,D =random.sample(detai,4)
+	a,b,c,d=random.sample(range(3,10),4)
+
+
+	noi_dung = f"Trong một cuộc thi tìm hiểu về đất nước Việt Nam, ban tổ chức công bố danh sách các đề tài bao gồm: ${{{a}}}$ đề tài về {A}, ${{{b}}}$ đề tài về {B}, ${{{c}}}$ đề tài về {C} và ${{{d}}}$ đề tài về {D}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+c+d}}}$ cách chọn" 
+	kq1_F=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+c+d+1}}}$ cách chọn "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a}+{b}+{c}+{d}={a+b+c+d}}}$ cách chọn "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*Nếu mỗi thí sinh phải chọn ${{3}}$ câu hỏi thuộc ba đề tài khác nhau thì có ${{{a*b*c+a*b*d+b*d*c+a*c*d}}}$ cách chọn "
+	kq4_F=f"Nếu mỗi thí sinh phải chọn ${{3}}$ câu hỏi thuộc ba đề tài khác nhau thì có ${{{a*b*c+a*b*d+b*d*c+a*c*d+1}}}$ cách chọn  "
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"TH1: chọn được ${{1}}$ đề tài về {A} và ${{1}}$ đề tài về {B} và ${{1}}$ đề tài {C} có ${{{a} \\cdot {b} \\cdot{c} ={a*b*c}}}$ cách chọn \n\n"
+f"TH2: chọn được ${{1}}$ đề tài về {A} và ${{1}}$ đề tài về {B} và ${{1}}$ đề tài {D} có ${{{a} \\cdot {b} \\cdot{d} ={a*b*d}}}$ cách chọn \n\n"
+f"TH3: chọn được ${{1}}$ đề tài về {B} và ${{1}}$ đề tài về {D} và ${{1}}$ đề tài {C} có ${{{b} \\cdot {d} \\cdot{c} ={b*d*c}}}$ cách chọn \n\n"
+f"TH4: chọn được ${{1}}$ đề tài về {A} và ${{1}}$ đề tài về {C} và ${{1}}$ đề tài {D} có ${{{a} \\cdot {c} \\cdot{d} ={a*c*d}}}$ cách chọn \n\n"
+f"Vậy chọn ${{3}}$ câu hỏi thuộc ba đề tài khác nhau thì có ${{{a*b*c+a*b*d+b*d*c+a*c*d}}}$ cách chọn "
+)
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b}}}$ cách chọn đề tài về {A} hoặc đề tài về {B}" 
+	kq3_F=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+1}}}$ cách chọn đề tài về {A} hoặc đề tài về {B} "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Nếu mỗi thí sinh chọn ${{1}}$ câu hỏi thuộc các đề tài trên thì có ${{{a+b+c+d}}}$ cách chọn đề tài về {A} hoặc đề tài về {B}"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Nếu mỗi thí sinh phải chọn ${{4}}$ câu hỏi thuộc đủ các đề tài thì có ${{{a*b*c*d}}}$ cách chọn "
+	kq2_F=f"Nếu mỗi thí sinh phải chọn ${{4}}$ câu hỏi thuộc đủ các đề tài thì có ${{{a*b*c*d+1}}}$ cách chọn " 
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Nếu mỗi thí sinh phải chọn ${{4}}$ câu hỏi thuộc đủ các đề tài thì có ${{{a}\\cdot {b} \\cdot {c} \\cdot {d} ={a*b*c*d}}}$ cách chọn "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+#[D10_C8_B1_16]-TF-M3. Các bài toán về tạo số.(nhiều kiểu)
+def mcn__L10_C8_B1_16(): 
+	m=random.choice([i for i in range(-20,20) if i!=0])
+	q=random.randint(1,2)
+	if q==1:
+
+		noi_dung = f"Cho các chữ số ${{0;1;2;3;4;5;6;7;8;9}}$ . Xét tính đúng-sai của các khẳng định sau. "		
+		debai_word= f"{noi_dung}\n"
+		chon =random.randint(1,3)
+		if chon ==1:
+			kq1_T=f"*Có ${{{phan_so(9*10*10*10)}}}$ số tự nhiên có ${{4}}$ chữ số được tạo thành từ các chữ số trên" 
+			kq1_F=f" Có ${{{phan_so(9*10*10*10+m)}}}$ số tự nhiên có ${{4}}$ chữ số được tạo thành từ các chữ số trên"
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f"Có ${{{phan_so(9*10*10*10)}}}$ số tự nhiên có ${{4}}$ chữ số được tạo thành từ các chữ số trên "
+			loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq1==kq1_F:
+				loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		if chon ==2: 
+			kq1_T=f"*Có ${{{phan_so(9*10*10)}}}$ số tự nhiên có ${{3}}$ chữ số được tạo thành từ các chữ số trên" 
+			kq1_F=f" Có ${{{phan_so(9*10*10+m)}}}$ số tự nhiên có ${{3}}$ chữ số được tạo thành từ các chữ số trên"
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f"Có ${{{phan_so(9*10*10)}}}$ số tự nhiên có ${{3}}$ chữ số được tạo thành từ các chữ số trên "
+			loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq1==kq1_F:
+				loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==3: 
+			kq1_T=f"*Có ${{{phan_so(9*10*10*10*10)}}}$ số tự nhiên có ${{5}}$ chữ số được tạo thành từ các chữ số trên" 
+			kq1_F=f" Có ${{{phan_so(9*10*10*10*10+m)}}}$ số tự nhiên có ${{5}}$ chữ số được tạo thành từ các chữ số trên"
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f"Có ${{{phan_so(9*10*10*10*10)}}}$ số tự nhiên có ${{5}}$ chữ số được tạo thành từ các chữ số trên "
+			loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq1==kq1_F:
+				loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		chon =random.randint(1,3)
+		if chon ==1:
+
+			kq2_T=f"*Có ${{{phan_so(9*9*8*7)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			kq2_F=f"Có ${{{phan_so(9*9*8*7+m)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau được tạo thành từ các chữ số trên  "
+			kq2=random.choice([kq2_T, kq2_F])
+			HDG=f"Có ${{{phan_so(9*9*8*7)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq2==kq2_F:
+				loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==2: 
+			kq2_T=f"*Có ${{{phan_so(9*9*8)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			kq2_F=f"Có ${{{phan_so(9*9*8+m)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau được tạo thành từ các chữ số trên  "
+			kq2=random.choice([kq2_T, kq2_F])
+			HDG=f"Có ${{{phan_so(9*9*8)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq2==kq2_F:
+				loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+		if chon ==3:
+
+			kq2_T=f"*Có ${{{phan_so(9*9*8*7*6)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			kq2_F=f"Có ${{{phan_so(9*9*8*7*6+m)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau được tạo thành từ các chữ số trên  "
+			kq2=random.choice([kq2_T, kq2_F])
+			HDG=f"Có ${{{phan_so(9*9*8*7*6)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq2==kq2_F:
+				loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+		chon =random.randint(1,3)
+		if chon ==1:
+
+
+			kq3_T=f"*Có ${{{phan_so(9*10*10*5)}}}$ số tự nhiên có ${{4}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq3_F=f"Có ${{{phan_so(9*10*10*5+m)}}}$ số tự nhiên có ${{4}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f"Có ${{{phan_so(9*10*10*5)}}}$ số tự nhiên có ${{4}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq3==kq3_F:
+				loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		if chon ==2:
+			kq3_T=f"*Có ${{{phan_so(9*10*5)}}}$ số tự nhiên có ${{3}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq3_F=f"Có ${{{phan_so(9*10*5+m)}}}$ số tự nhiên có ${{3}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f"Có ${{{phan_so(9*10*5)}}}$ số tự nhiên có ${{3}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq3==kq3_F:
+				loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		if chon ==3:
+
+
+			kq3_T=f"*Có ${{{phan_so(9*10*10*10*5)}}}$ số tự nhiên có ${{5}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq3_F=f"Có ${{{phan_so(9*10*10*10*5+m)}}}$ số tự nhiên có ${{5}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f"Có ${{{phan_so(9*10*10*10*5)}}}$ số tự nhiên có ${{5}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq3==kq3_F:
+				loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		chon =random.randint(1,3)
+		if chon ==1:
+			kq4_T=f"*Có ${{{phan_so(9*8*7+4*8*8*7)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  "
+			kq4_F=f"Có ${{{phan_so(9*8*7+4*8*8*7+m)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Có ${{{phan_so(9*8*7+4*8*8*7)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==2:
+
+
+			kq4_T=f"*Có ${{{phan_so(9*8+4*8*8)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  "
+			kq4_F=f"Có ${{{phan_so(9*8+4*8*8+m)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Có ${{{phan_so(9*8+4*8*8)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==3:
+			kq4_T=f"*Có ${{{phan_so(9*8*7*6+4*8*8*7*6)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  "
+			kq4_F=f"Có ${{{phan_so(9*8*7*6+4*8*8*7*6+m)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Có ${{{phan_so(9*8*7*6+4*8*8*7*6)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	if q==2:
+		m=random.randint(1,8)
+		if m==1:
+			noi_dung = f"Cho các chữ số ${{0;1;2;3;4;5;6;7}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+		if m==2:
+			noi_dung = f"Cho các chữ số ${{0;1;2;3;4;5;6;9}}$. Xét tính đúng-sai của các khẳng định sau. "		
+
+
+		if m==3:
+			noi_dung = f"Cho các chữ số ${{0;1;2;3;4;7;6;9}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+		if m==4:
+			noi_dung = f"Cho các chữ số ${{0;3;2;5;4;7;6;9}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+		if m==5:
+			noi_dung = f"Cho các chữ số ${{0;1;2;3;4;5;8;9}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+		if m==6:
+			noi_dung = f"Cho các chữ số ${{0;1;2;3;6;5;8;9}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+
+		if m==7:
+			noi_dung = f"Cho các chữ số ${{0;1;4;3;8;5;6;7}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+		if m==8:
+			noi_dung = f"Cho các chữ số ${{0;1;2;3;4;7;8;9}}$. Xét tính đúng-sai của các khẳng định sau. "	
+
+		debai_word= f"{noi_dung}\n"
+		chon =random.randint(1,3)
+		if chon ==1:
+			kq1_T=f"*Có ${{{phan_so(7*8*8*8)}}}$ số tự nhiên có ${{4}}$ chữ số được tạo thành từ các chữ số trên" 
+			kq1_F=f" Có ${{{phan_so(7*8*8*8+m)}}}$ số tự nhiên có ${{4}}$ chữ số được tạo thành từ các chữ số trên"
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f"Có ${{{phan_so(7*8*8*8)}}}$ số tự nhiên có ${{4}}$ chữ số được tạo thành từ các chữ số trên "
+			loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq1==kq1_F:
+				loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		if chon ==2: 
+			kq1_T=f"*Có ${{{phan_so(7*8*8)}}}$ số tự nhiên có ${{3}}$ chữ số được tạo thành từ các chữ số trên" 
+			kq1_F=f" Có ${{{phan_so(7*8*8+m)}}}$ số tự nhiên có ${{3}}$ chữ số được tạo thành từ các chữ số trên"
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f"Có ${{{phan_so(7*8*8)}}}$ số tự nhiên có ${{3}}$ chữ số được tạo thành từ các chữ số trên "
+			loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq1==kq1_F:
+				loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==3: 
+			kq1_T=f"*Có ${{{phan_so(7*8*8*8*8)}}}$ số tự nhiên có ${{5}}$ chữ số được tạo thành từ các chữ số trên" 
+			kq1_F=f" Có ${{{phan_so(7*8*8*8*8+m)}}}$ số tự nhiên có ${{5}}$ chữ số được tạo thành từ các chữ số trên"
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f"Có ${{{phan_so(7*8*8*8*8)}}}$ số tự nhiên có ${{5}}$ chữ số được tạo thành từ các chữ số trên "
+			loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq1==kq1_F:
+				loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		chon =random.randint(1,3)
+		if chon ==1:
+
+			kq2_T=f"*Có ${{{phan_so(7*7*6*5)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			kq2_F=f"Có ${{{phan_so(7*7*6*5+m)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau được tạo thành từ các chữ số trên  "
+			kq2=random.choice([kq2_T, kq2_F])
+			HDG=f"Có ${{{phan_so(7*7*6*5)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq2==kq2_F:
+				loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==2: 
+			kq2_T=f"*Có ${{{phan_so(7*7*6)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			kq2_F=f"Có ${{{phan_so(7*7*6+m)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau được tạo thành từ các chữ số trên  "
+			kq2=random.choice([kq2_T, kq2_F])
+			HDG=f"Có ${{{phan_so(7*7*6)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq2==kq2_F:
+				loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+		if chon ==3:
+
+			kq2_T=f"*Có ${{{phan_so(7*7*6*5)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			kq2_F=f"Có ${{{phan_so(7*7*6*5+m)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau được tạo thành từ các chữ số trên  "
+			kq2=random.choice([kq2_T, kq2_F])
+			HDG=f"Có ${{{phan_so(7*7*6*5)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau được tạo thành từ các chữ số trên "
+			loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq2==kq2_F:
+				loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+		chon =random.randint(1,3)
+		if chon ==1:
+
+			kq3_T=f"*Có ${{{phan_so(7*8*8*4)}}}$ số tự nhiên có ${{4}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq3_F=f"Có ${{{phan_so(7*8*8*4+m)}}}$ số tự nhiên có ${{4}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f"Có ${{{phan_so(7*8*8*4)}}}$ số tự nhiên có ${{4}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq3==kq3_F:
+				loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		if chon ==2:
+			kq3_T=f"*Có ${{{phan_so(7*8*4)}}}$ số tự nhiên có ${{3}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq3_F=f"Có ${{{phan_so(7*8*4+m)}}}$ số tự nhiên có ${{3}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f"Có ${{{phan_so(7*8*4)}}}$ số tự nhiên có ${{3}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq3==kq3_F:
+				loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		if chon ==3:
+
+
+			kq3_T=f"*Có ${{{phan_so(7*8*8*8*4)}}}$ số tự nhiên có ${{5}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq3_F=f"Có ${{{phan_so(7*8*8*8*4+m)}}}$ số tự nhiên có ${{5}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f"Có ${{{phan_so(7*8*8*8*5)}}}$ số tự nhiên có ${{5}}$ chữ số và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq3==kq3_F:
+				loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		chon =random.randint(1,3)
+		if chon ==1:
+			kq4_T=f"*Có ${{{phan_so(7*7*6+3*6*6*5)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  "
+			kq4_F=f"Có ${{{phan_so(7*7*6+3*6*6*5+m)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Có ${{{phan_so(7*7*6+3*6*6*5)}}}$ số tự nhiên có ${{4}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==2:
+
+
+			kq4_T=f"*Có ${{{phan_so(7*6+3*6*6)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  "
+			kq4_F=f"Có ${{{phan_so(7*6+3*6*6+m)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Có ${{{phan_so(7*6+3*6*6)}}}$ số tự nhiên có ${{3}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon ==3:
+			kq4_T=f"*Có ${{{phan_so(7*6*5*4+3*6*6*5*4)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  "
+			kq4_F=f"Có ${{{phan_so(7*6*5*4+3*6*6*5*4+m)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên  " 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Có ${{{phan_so(7*6*5*4+3*6*6*5*4)}}}$ số tự nhiên có ${{5}}$ chữ số khác nhau và là số chẵn được tạo thành từ các chữ số trên "
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+#[D10_C8_B1_17]-TF-M3. Các bài toán về xếp người thành hàng(nhiều kiểu)
+def mcn__L10_C8_B1_17(): 
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	m=random.randint(4,6)
+	n=m
+	a=random.choice([i for i in range(-10,10) if i!=0])
+	vt=random.choice(["cuối", "đầu", "vị trí thứ hai", "vị trí thứ ba", "vị trí thứ tư", "vị trí thứ năm"])
+	noi_dung = f"Có ${{{m}}}$ bạn nam và ${{{n}}}$ nữ trong đó có bạn nam tên {B} và bạn nữ tên {A}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+
+	kq1_T=f"*Có ${{{factorial(m+n)}}}$ cách xếp các bạn thành một hàng dọc" 
+	kq1_F=f"Có ${{{factorial(m+n)+a}}}$ cách xếp các bạn thành một hàng dọc "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Có ${{{factorial(m+n)}}}$ cách xếp các bạn thành một hàng dọc "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon =random.randint(1,2)
+	if chon ==1:
+
+		kq2_T=f"*Có ${{{2*factorial(m)*factorial(m)}}}$ cách xếp các bạn nam nữ xen kẽ thành một hàng dọc "
+		kq2_F=f"Có ${{{2*factorial(m)*factorial(m)+a}}}$ cách xếp các bạn nam nữ xen kẽ thành một hàng dọc "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"Có ${{{2*factorial(m)*factorial(m)}}}$ cách xếp các bạn nam nữ xen kẽ thành một hàng dọc"
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+		gt=random.choice(["nam", "nữ"])
+
+		kq2_T=f"*Có ${{{m*factorial(m+n-1)}}}$ cách xếp để một bạn {gt} luôn đứng đầu hàng "
+		kq2_F=f"Có ${{{m*factorial(m+n-1)+a}}}$ cách xếp để một bạn {gt} luôn đứng đầu hàng "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"Có ${{{m*factorial(m+n-1)}}}$ cách xếp để một bạn {gt} luôn đứng đầu hàng"
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	chon =random.randint(1,2)
+	if chon ==1:
+		đầu, cuối =random.sample(vt,2)
+
+		kq3_T=f"* Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} đứng {đầu} hàng còn {B} đứng {cuối} hàng" 
+		kq3_F=f"Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} đứng {đầu} hàng còn {B} đứng {cuối} hàng "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} đứng đầu hàng còn {B} đứng cuối hàng"
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+		
+
+		kq3_T=f"* Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} hoặc {B} đứng {vt} của hàng" 
+		kq3_F=f"Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} hoặc {B} đứng {vt} của hàng "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} hoặc {B} đứng {vt} của hàng"
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	chon=random.randint(1,2)
+	if chon ==1:
+
+		kq4_T=f"*Có ${{{factorial(m+1)*factorial(m)}}}$ cách xếp các bạn nam luôn đứng cạnh nhau "
+		kq4_F=f"Có ${{{factorial(m+1)*factorial(m)+a}}}$ cách xếp các bạn nam luôn đứng cạnh nhau " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"Coi các bạn nam là 1 cùng với ${{{m}}}$ bạn nữ thì có ${{{factorial(m+1)}}}$ cách xếp \n\n"
+		f" Trong nhóm các bạn nam thì có ${{{factorial(m)}}}$ cách xếp \n\n"
+		f" Theo quy tắc nhân có ${{{factorial(m+1)*factorial(m)}}}$ cách xếp các bạn nam luôn đứng cạnh nhau ")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+
+		kq4_T=f"*Có ${{{factorial(m+m-1)*factorial(2)}}}$ cách xếp hai bạn {B} và {A} luôn đứng cạnh nhau "
+		kq4_F=f"Có ${{{factorial(m+m-1)*factorial(2)+a}}}$ cách xếp hai bạn {B} và {A} luôn đứng cạnh nhau " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"Coi hai bạn {B} và {A} là 1 cùng với ${{{m+m-2}}}$ bạn còn lại thì có ${{{factorial(m+m-1)}}}$ cách xếp \n\n"
+		f" Trong nhóm hai bạn {B} và {A} thì có ${{{factorial(2)}}}$ cách xếp \n\n"
+		f" Theo quy tắc nhân có ${{{factorial(m+m-1)*factorial(2)}}}$ cách xếp chai bạn {B} và {A} luôn đứng cạnh nhau ")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+#[D10_C8_B1_18]-TF-M3. Các bài toán về xếp 3 nhóm đồ vật
+def mcn__L10_C8_B1_18(): 
+	a=random.choice([i for i in range(-10,10) if i!=0])
+	m=random.randint(2,3)
+	n=random.randint(1,3)
+	p=random.randint(2,4)
+	ds=["Toán học", "Văn học", "Hoá học", "Ngoại ngữ", "Địa lí", "Lịch sử", "Tin học", "Âm nhạc", "Mĩ thuật", "Sinh học", "Giáo dục công dân"]
+	A,B,C=random.sample(ds, 3)
+	noi_dung = f"Một giá có ${{{m}}}$ quyển sách {A} khác nhau có ${{{n}}}$ quyển sách {B} khác nhau và ${{{p}}}$ quyển sách {C} khác nhau. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Có ${{{factorial(m+n+p)}}}$ cách sắp xếp các quyển sách thành một chồng" 
+	kq1_F=f"Có ${{{factorial(m+n+p)+a}}}$ cách sắp xếp các quyển sách thành một chồng"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Có ${{{factorial(m+n+p)}}}$ cách sắp xếp các quyển sách thành một chồng"
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq2_T=f"* Có ${{{factorial(m)*factorial(n+p)}}}$ cách sắp xếp các quyển sách {A} luôn trên cùng"
+	kq2_F=f"Có ${{{factorial(m)*factorial(n+p)+a}}}$ cách sắp xếp các quyển sách {A} luôn trên cùng "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Xếp các quyển sách {A} thì có ${{{factorial(m)}}}$ cách \n\n"
+	f" Xếp các quyển còn lại có ${{{factorial(n+p)}}}$ cách \n\n"
+	f" Theo quy tắc nhân có ${{{factorial(m)*factorial(n+p)}}}$ cách sắp xếp các quyển sách {A} luôn trên cùng "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq3_T=f"*Có ${{{(m+n)*(m+n-1)*factorial(m+n+p-2)}}}$ cách xếp để quyển trên cùng và dưới cùng không phải sách {C} " 
+	kq3_F=f"Có ${{{(m+n)*(m+n-1)*factorial(m+n+p-2)+a}}}$ cách xếp để quyển trên cùng và dưới cùng không phải sách {C} "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Có ${{{(m+n)*(m+n-1)*factorial(m+n+p-2)}}}$ cách xếp để quyển trên cùng và dưới cùng không phải sách {C}"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq4_T=f"*Có ${{{n*(n-1)*factorial(m+n+p-2)}}}$ cách xếp để quyển trên cùng và dưới cùng là sách {C}  "
+	kq4_T=f"*Có ${{{n*(n-1)*factorial(m+n+p-2)+a}}}$ cách xếp để quyển trên cùng và dưới cùng là sách {C} "
+	kq4_F=f"Có ${{{n*(n-1)*factorial(m+n+p-2)}}}$ cách xếp để quyển trên cùng và dưới cùng là sách {C} " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Có ${{{n*(n-1)*factorial(m+n+p-2)}}}$ cách xếp để quyển trên cùng và dưới cùng là sách {C}"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+#[D10_C8_B1_19]-TF-M3. Các bài toán về chọn vật từ ba nhóm đối tượng
+def mcn__L10_C8_B1_19(): 
+	m=random.randint(6,20)
+	n=random.randint(5,30)
+	p=random.randint(5,20)
+	A=random.choice(["viên bi", "quả cầu"])
+	a=random.choice([i for i in range(-3,3) if i!=0])
+	mau=["xanh", "đỏ", "tím", "vàng", "trắng", "đen"]
+	e,u,k=random.sample(mau,3)
+
+	noi_dung = f"Một hộp có ${{{m}}}$ {A} {e}, ${{{n}}}$ {A} {u} và ${{{p}}}$ {A} {k}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Có ${{{m+n+p}}}$ cách để chọn ra một quả cầu" 
+	kq1_F=f"Có ${{{m+n+p+a}}}$ cách để chọn ra một quả cầu "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Có ${{{m}+{n}+{p}={m+n+p}}}$ cách để chọn ra một quả cầu "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Có ${{{m*n}}}$ cách để chọn ra hai quả cầu trong đó có một quả màu {e} và một quả màu {u} "
+	kq2_F=f"Có ${{{m*n+a}}}$ cách để chọn ra hai quả cầu trong đó có một quả màu {e} và một quả màu {u} "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Có ${{{m} \\cdot {n}={m*n}}}$ cách để chọn ra hai quả cầu trong đó có một quả màu {e} và một quả màu {u}"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Có ${{{m*n*p}}}$ cách để chọn ra ba quả cầu đủ các màu" 
+	kq3_F=f"Có ${{{m*n*p+a}}}$ cách để chọn ra ba quả cầu đủ các màu "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Có ${{{m} \\cdot {n} \\cdot {p} = {m*n*p}}}$ cách để chọn ra ba quả cầu đủ các màu"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*Có ${{{m*n+n*p+p*m}}}$ cách để chọn ra hai quả cầu khác màu "
+	kq4_F=f"Có ${{{m*n+n*p+p*m+a}}}$ cách để chọn ra hai quả cầu khác màu  " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Có ${{{m} \\cdot {n} + {m} \\cdot {p}+{p} \\cdot {n}=   {m*n+n*p+p*m}}}$ cách để chọn ra hai quả cầu khác màu "
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+#[D10_C8_B1_20]-SA-M2. Tính số cái bắt tay
+def mcn__L10_C8_B1_20(): 
+	a= random.randint(8,110)
+	kq=str(a)
+	noi_dung=f"Tại một bữa tiệc có ${{{a}}}$ cặp vợ chồng, các ông chồng lần lượt đi bắt tay với các bà vợ, hỏi có bao nhiêu cái bắt tay biết rằng họ không bắt tay với vợ của mình."
+	noi_dung_loigiai=f"Số cái bắt tay là ${{{a} \\cdot {a-1}}}$ là ${{{phan_so(a*(a-1))}}}$ "
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+#[D10_C8_B1_21]-SA-M2. Tính số cách lấy ra 3 vật khác nhóm từ 3 nhóm
+def mcn__L10_C8_B1_21(): 
+	m=random.randint(6,20)
+	n=random.randint(5,20)
+	p=random.randint(5,20)
+	A=random.choice(["viên bi", "quả cầu"])
+	a=random.choice([i for i in range(-3,3) if i!=0])
+	mau=["xanh", "đỏ", "tím", "vàng", "trắng", "đen"]
+	e,u,k=random.sample(mau,3)
+	kq=phan_so(m*n*p)
+
+	noi_dung = f"Một hộp có ${{{m}}}$ {A} {e}, ${{{n}}}$ {A} {u} và ${{{p}}}$ {A} {k}. Có bao nhiêu cách lấy ra ba {A} khác màu.  "		
+
+	noi_dung_loigiai=f"Số cách lấy ba {A} khác mầu là ${{{m} \\cdot {n} \\cdot {p }= {phan_so(m*n*p)}}}$ "
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C8_B1_22]-SA-M3. Tính số cách lấy ra 2 vật khác nhóm từ 3 nhóm
+def mcn__L10_C8_B1_22(): 
+	m=random.randint(6,20)
+	n=random.randint(5,20)
+	p=random.randint(5,20)
+	A=random.choice(["viên bi", "quả cầu"])
+	a=random.choice([i for i in range(-3,3) if i!=0])
+	mau=["xanh", "đỏ", "tím", "vàng", "trắng", "đen"]
+	e,u,k=random.sample(mau,3)
+	kq=phan_so(m*n*p)
+
+	noi_dung = f"Một hộp có ${{{m}}}$ {A} {e}, ${{{n}}}$ {A} {u} và ${{{p}}}$ {A} {k}. Có bao nhiêu cách lấy ra hai {A} khác màu.  "		
+
+	noi_dung_loigiai=f"Số cách lấy hai {A} khác màu là ${{{m} \\cdot {n}+ {n} \\cdot {p } +{m} \\cdot {p} = {phan_so(m*n+n*p+m*p)}}}$ "
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C8_B1_23]-SA-M3. Tính số cách lấy ra 3 đ.tuong khác nhóm từ 4 nhóm
+def mcn__L10_C8_B1_23(): 
+
+	detai=["con người", "thiên nhiên", "lịch sử", "địa lí", "văn hoá xã hội", "ẩm thực", "khoa bảng"]
+	A,B,C,D =random.sample(detai,4)
+	a,b,c,d=random.sample(range(3,10),4)
+	kq=phan_so(a*b*c+a*b*d+b*d*c+a*d*c)
+
+	noi_dung = (f"Trong một cuộc thi tìm hiểu về đất nước Việt Nam, ban tổ chức công bố danh sách các đề tài bao gồm: ${{{a}}}$ đề tài về {A}, ${{{b}}}$ đề tài về {B}, ${{{c}}}$ đề tài về {C} và ${{{d}}}$ đề tài về {D}. "
+	f" Mỗi thi sinh được lựa chọn ra ba đề tài thuộc ba mảng khác nhau. Hỏi mỗi thi sinh có bao nhiêu cách lựa chọn. "	)	
+	noi_dung_loigiai=f"Số cách chọn đề tài là ${{{a} \\cdot {b} \\cdot {d}+ {a} \\cdot {b } \\cdot {d} +{b} \\cdot {c} \\cdot {d} +{a} \\cdot {d} \\cdot {c}= {phan_so(a*b*c+a*b*d+b*d*c+a*d*c)}}}$ "
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C8_B1_24]-SA-M3. B.toán tạo số chẵn có các chữ số khác nhau (ds có chứa cso 0)
+def mcn__L10_C8_B1_24(): 
+	le=[1,3,5,7,9]
+	
+	chan=[2,4,6,8]
+
+	chon =random.randint(1,6)
+	if chon ==1:
+		a1,b1,c1=random.sample(chan,3)
+		a,b,c,d=random.sample(le,4)
+		kq=phan_so(7*6*5+3*6*6*5)
+		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1};{d}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và là số chẵn."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcd}}$ $(a \\ne 0; a \\ne b \\ne c\\ne d)$ \n\n"
+		f" TH1: ${{d=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 \\cdot 5 ={phan_so(7*6*5)}}}$ số \n\n"
+		f" TH2: ${{d \\ne 0}}$ \n\n d có ${{3}}$ cách chọn \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 6 \\cdot 6 \\cdot 5 ={phan_so(3*6*6*5)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(7*6*5)} + {phan_so(3*6*6*5)}= {phan_so(7*6*5+3*6*6*5)} }}$ số ")
+	if chon ==2:
+		a1,b1,c1=random.sample(chan,3)
+		a,b,c=random.sample(le,3)
+		kq=phan_so(4*6*5+3*5*4*5)
+		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và là số chẵn."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcd}}$ $(a \\ne 0; a \\ne b \\ne c\\ne d)$ \n\n"
+		f" TH1: ${{d=0}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n c có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{6 \\cdot 5 \\cdot 4 ={phan_so(4*6*5)}}}$ số \n\n"
+		f" TH2: ${{d \\ne 0}}$ \n\n d có ${{3}}$ cách chọn \n\n a có ${{5}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n c có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 5 \\cdot 5 \\cdot 4 ={phan_so(3*5*5*4)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(4*6*5)} + {phan_so(3*5*5*4)}= {phan_so(4*6*5+3*5*4*5)} }}$ số ")
+
+
+	if chon ==3:
+		a1,b1,c1=random.sample(chan,3)
+		a,b,c,d=random.sample(le,4)
+		kq=phan_so(7*6+3*6*6)
+		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1};{d}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
+		f" TH1: ${{c=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn  \n\n Theo quy tắc nhân có ${{7 \\cdot 6={phan_so(7*6)}}}$ số \n\n"
+		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{3}}$ cách chọn \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 6 \\cdot 6 ={phan_so(3*6*6)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(7*6)} + {phan_so(3*6*6)}= {phan_so(7*6+3*6*6)} }}$ số ")
+	if chon ==4:
+		a1,b1,c1=random.sample(chan,3)
+		a,b,c=random.sample(le,3)
+		kq=phan_so(6*5+3*5*5)
+		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
+		f" TH1: ${{c=0}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{6 \\cdot 5 ={phan_so(6*5)}}}$ số \n\n"
+		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{3}}$ cách chọn \n\n a có ${{5}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 5 \\cdot 5  ={phan_so(3*5*5)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*5)} + {phan_so(3*5*5)}= {phan_so(6*5+3*5*5)} }}$ số ")
+
+
+
+	if chon ==5:
+		a1,b1,c1, d1=random.sample(chan,4)
+		a,b,c,d=random.sample(le,4)
+		kq=phan_so(7*8+4*7*7)
+		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1};{d}; {d1}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
+		f" TH1: ${{c=0}}$ \n\n a có ${{8}}$ cách chọn \n\n b có ${{7}}$ cách chọn  \n\n Theo quy tắc nhân có ${{8 \\cdot 7={phan_so(7*8)}}}$ số \n\n"
+		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{4}}$ cách chọn \n\n a có ${{7}}$ cách chọn \n\n b có ${{7}}$ cách chọn \n\n Theo quy tắc nhân có ${{4 \\cdot 7 \\cdot 7 ={phan_so(4*7*7)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(7*8)} + {phan_so(4*7*7)}= {phan_so(7*8+4*7*7)} }}$ số ")
+	if chon ==6:
+		a1,b1,c1, d1=random.sample(chan,4)
+		a,b,c,d=random.sample(le,4)
+		kq=phan_so(6*5+3*5*5)
+		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1}; {d}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
+		f" TH1: ${{c=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 ={phan_so(6*7)}}}$ số \n\n"
+		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{4}}$ cách chọn \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{4 \\cdot 6 \\cdot 6  ={phan_so(4*6*6)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*7)} + {phan_so(4*6*6)}= {phan_so(6*7+4*6*6)} }}$ số ")
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C8_B1_25]-SA-M3. B.toán tạo số chia hết cho 5 có các chữ số khác nhau (ds có chứa cso 0)
+def mcn__L10_C8_B1_25(): 
+	le=[1,3,7,9]
+	so=[1,2,3,4,6,7,8,9]
+	
+	chan=[2,4,6,8]
+	a,b,c =random.sample(le, 3)
+	a1,b1,c1=random.sample(chan,3)
+	chon =random.randint(1,5)
+	if chon ==1:
+		kq=phan_so(6*7+6*6)
+
+		noi_dung=f" Từ các chữ số ${{0; 5;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chia hết cho ${{5}}$."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
+		f" TH1: ${{c=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 ={phan_so(6*7)}}}$ số \n\n"
+		f" TH2: ${{c=5}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{ 6 \\cdot 6  ={phan_so(6*6)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*7)} + {phan_so(6*6)}= {phan_so(6*7+6*6)} }}$ số ")
+	if chon ==2:
+		kq=phan_so(6*7*5+6*6*5)
+
+		noi_dung=f" Từ các chữ số ${{0; 5;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và là số chia hết cho ${{5}}$."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcd}}$ $(a \\ne 0; a \\ne b \\ne c \\ne d)$ \n\n"
+		f" TH1: ${{d=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 \\cdot 5={phan_so(6*7*5)}}}$ số \n\n"
+		f" TH2: ${{d=5}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{ 6 \\cdot 6 \\cdot 5  ={phan_so(6*6*5)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*7*5)} + {phan_so(6*6*5)}= {phan_so(6*7*5+6*6*5)} }}$ số ")
+
+	if chon ==3:
+		kq=phan_so(6*7*5*4+6*6*5*4)
+
+		noi_dung=f" Từ các chữ số ${{0; 5;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có năm chữ số đôi một khác nhau và là số chia hết cho ${{5}}$."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcde}}$ $(a \\ne 0; a \\ne b \\ne c \\ne d)$ \n\n"
+		f" TH1: ${{e=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n d có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 \\cdot 5 \\cdot 4={phan_so(6*7*5*4)}}}$ số \n\n"
+		f" TH2: ${{e=5}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n d có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{ 6 \\cdot 6 \\cdot 5 \\cdot 4  ={phan_so(6*6*5*4)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*7*5*4)} + {phan_so(6*6*5*4)}= {phan_so(6*7*5*4+6*6*5*4)} }}$ số ")
+
+
+	if chon ==4:
+		kq=phan_so(6*7*5*4+6*6*5*4)
+		a,a1,b,b1,c,c1=random.sample(so,6)
+
+		noi_dung=f" Từ các chữ số ${{0; 5;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có năm chữ số đôi một khác nhau và là số chia hết cho ${{5}}$."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcde}}$ $(a \\ne 0; a \\ne b \\ne c \\ne d)$ \n\n"
+		f" TH1: ${{e=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n d có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 \\cdot 5 \\cdot 4={phan_so(6*7*5*4)}}}$ số \n\n"
+		f" TH2: ${{e=5}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n d có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{ 6 \\cdot 6 \\cdot 5 \\cdot 4  ={phan_so(6*6*5*4)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*7*5*4)} + {phan_so(6*6*5*4)}= {phan_so(6*7*5*4+6*6*5*4)} }}$ số ")
+
+	if chon ==5:
+		kq=phan_so(6*3*5*4+3*5*5*4)
+		a,a1,b,b1,c=random.sample(so,5)
+
+		noi_dung=f" Từ các chữ số ${{0; 5;{a};{a1};{b};{b1};{c}}}$ tạo được bao nhiêu số tự nhiên có năm chữ số đôi một khác nhau và là số chia hết cho ${{5}}$."
+		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcde}}$ $(a \\ne 0; a \\ne b \\ne c \\ne d)$ \n\n"
+		f" TH1: ${{e=0}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n c có ${{4}}$ cách chọn \n\n d có ${{3}}$ cách chọn \n\n Theo quy tắc nhân có ${{6 \\cdot 5 \\cdot 4 \\cdot 3={phan_so(6*3*5*4)}}}$ số \n\n"
+		f" TH2: ${{e=5}}$ \n\n a có ${{5}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n c có ${{4}}$ cách chọn \n\n d có ${{3}}$ cách chọn \n\n Theo quy tắc nhân có ${{ 5 \\cdot 5 \\cdot 4 \\cdot 3  ={phan_so(5*5*4*3)}}}$ số \n\n"
+		f" Vậy có ${{{phan_so(6*3*5*4)} + {phan_so(3*5*5*4)}= {phan_so(6*3*5*4+3*5*5*4)} }}$ số ")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+#[D10_C8_B1_26]-SA-M3. B.toán tạo số có các chữ số khác nhau lớn hơn số m cho trước
+def mcn__L10_C8_B1_26(): 
+
+	#chu_so = [ 1, 2, 3, 4, 5, 6, 7,8, 9, 0]
+	a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
+	chu_so=[a1,a2,a3,a4,a5,a6,a7]
+	# Bước 2: Số m cho trước
+	m = random.randint(1234,4567)
+	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(chu_so, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+
+	# Bước 4: Lọc ra các số lớn hơn 2300
+	so_ket_qua = [so for so in so_hoan_vi if so > m]
+
+	# Bước 5: Đếm số lượng các số thỏa mãn
+	kq = len(so_ket_qua)
+
+	noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và lớn hơn ${{{m}}}$. "
+	noi_dung_loigiai=f" Lập được ${{{kq}}}$ số thoả mãn yêu cầu."
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C8_B1_27]-SA-M3. B.toán tạo số có các chữ số khác nhau nhỏ hơn số m cho trước
+def mcn__L10_C8_B1_27(): 
+
+	#chu_so = [ 1, 2, 3, 4, 5, 6, 7,8, 9, 0]
+	a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
+	chu_so=[a1,a2,a3,a4,a5,a6,a7]
+	# Bước 2: Số m cho trước
+	m = random.randint(4600,7865)
+	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(chu_so, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+
+	# Bước 4: Lọc ra các số lớn hơn 2300
+	so_ket_qua = [so for so in so_hoan_vi if so < m]
+
+	# Bước 5: Đếm số lượng các số thỏa mãn
+	kq = len(so_ket_qua)
+
+	noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và nhỏ hơn ${{{m}}}$. "
+	noi_dung_loigiai=f" Lập được ${{{kq}}}$ số thoả mãn yêu cầu."
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C8_B1_28]-SA-M4. B.toán tính tổng các số được tạo ra.
+def mcn__L10_C8_B1_28(): 
+
+	#chu_so = [ 1, 2, 3, 4, 5, 6, 7,8, 9, 0]
+	a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
+	chu_so=[a1,a2,a3,a4,a5,a6,a7]
+	# Bước 2: Số m cho trước
+	m = random.randint(4600,7865)
+	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(chu_so, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+
+	# Bước 4: Lọc ra các số lớn hơn 2300
+	m=sum(so_hoan_vi)
+
+	# Bước 5: Đếm số lượng các số thỏa mãn
+	
+	kq=tinh_tong_chu_so(m)
+
+	noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập tất cả các số tự nhiên có bốn chữ số đôi một khác nhau. Tổng các số lập được là ${{m}}$. Tính tổng các chữ số của số ${{m}}$ "
+	noi_dung_loigiai=f" Tổng các số tạo ra là ${{{m}}}$. Tổng các chữ số của nó là ${{{kq}}}$ (Thầy cô ơi đây là kết quả do lập trình tính) \n\n HDG tính các chữ số đứng ở các hàng bao nhiêu lần."
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C8_B1_29]-SA-M3. Cho 2 dt //, tính số vecto tạo ra có điểm đầu, điểm cuối k nằm trên 1 dt
+def mcn__L10_C8_B1_29(): 
+	a1=random.randint(10,50)
+	a2=random.randint(10,50)
+	kq=a1*a2*2
+
+	noi_dung=f" Cho hai đường thẳng song song ${{(d)}}$ và ${{(d')}}$. Trên đường thẳng ${{(d)}}$ lấy ${{{a1}}}$ điểm khác nhau, trên đường thẳng ${{(d')}}$ lấy ${{{a2}}}$ điểm khác nhau. Hỏi có thể vẽ được bao nhiêu vectơ mà các điểm đầu và điểm cuối không cùng nằm trên một đường thẳng."
+	noi_dung_loigiai=(f" TH1: điểm đầu thuộc ${{(d)}}$ và điểm cuối ${{(d')}}$ có ${{ {a1} \\cdot {a2}={a1*a2} }}$ vecto \n\n"
+						f" TH2: điểm đầu thuộc ${{(d')}}$ và điểm cuối ${{(d)}}$ có ${{ {a1} \\cdot {a2}={a1*a2} }}$ vecto \n\n "
+						f" Theo quy tắc cộng số vecto là ${{{a1*a2} +{a1*a2} ={a1*a2*2}}}$ vecto")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #8.2.1 Hoán vị
 #[D10_C8_B2_01]-M1. Xếp k bạn vào một hàng
 def mcn__L10_C8_B2_01():  	
@@ -1437,6 +2819,8 @@ def mcn__L10_C8_B2_09():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 
 #[D10_C8_B2_10]-M2. Chọn k đối tượng từ 2 nhóm đối tượng.
 def mcn__L10_C8_B2_10():  	
@@ -2945,7 +4329,7 @@ f"${{{n+1}!}}$",
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -2995,7 +4379,7 @@ f"${{{n+1}!}}$",
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -3048,7 +4432,7 @@ f"${{{n+1}!-{n-1}!}}$",
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -3100,7 +4484,7 @@ f"${{{n+1}!}}$",
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -3155,7 +4539,7 @@ f"${{{phan_so(a+3)}}}$",
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -3174,6 +4558,1350 @@ f"${{{phan_so(a+3)}}}$",
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+#[L10_C8_B2_32]-M2. Các btoán chọn k người thoả dk nào đó
+def mcn__L10_C8_B2_32(): 
+	k1=random.randint(1,3)
+	k2=random.randint(1,4)
+	k=k1+k2
+	a1=k+random.randint(2,6)
+	a2=k+random.randint(2,8)
+	a= binomial(a1,k1)* binomial(a2,k2)
+	noi_dung = f"Một đội có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ. Có bao nhiêu cách để chọn được ${{{k}}}$ bạn trong đó có ${{{k1}}}$ nam và ${{{k2}}}$ nữ."		
+
+	noi_dung_loigiai=(f"Số cách chọn ${{{k1}}}$ nam là $C_{{{a1}}}^{{{k1}}}$\n\n"
+					f"Số cách chọn ${{{k2}}}$ nữ là $C_{{{a2}}}^{{{k2}}}$ \n\n"
+						f" Vậy số cách chọn ${{{k1}}}$ nam và ${{{k2}}}$ nữ là $C_{{{a1}}}^{{{k1}}} C_{{{a2}}}^{{{k2}}}= {phan_so(a)} $")
+
+	kq=f"${{{phan_so(a)}}}$"
+	kqs=[f"${{{phan_so(a+1)}}}$",
+	f"${{{phan_so(a-1)}}}$",
+	f"${{{phan_so(a+2)}}}$",
+f"${{{phan_so(a-2)}}}$",
+f"${{{phan_so(a+3)}}}$",
+	f"${{{phan_so(a-3)}}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+#[D10_C8_B2_33]-M2. Các btoán chọn k bi(cầu) đủ các màu
+def mcn__L10_C8_B2_33(): 
+	v=random.choice([" viên bi", "quả cầu"])
+	mau=["xanh","đỏ", "tím ", "vàng", "trắng", "đen", "nâu", "xám"]
+	x,d,t=random.sample(mau,3)
+	chon =random.randint(1,2)
+	if chon ==1:
+		k=3
+		a1=k+random.randint(2,6)
+		a2=k+random.randint(2,8)
+		a3=k+random.randint(2,8)
+		a= a1*a2*a3
+		noi_dung = f"Một hộp có ${{{a1}}}$ {v} {x}; ${{{a2}}}$ {v} {d} và ${{{a3}}}$ {v} {t}. Có bao nhiêu cách để chọn được ${{{k}}}$ {v} đủ ba màu."		
+
+		noi_dung_loigiai=(f"Số cách chọn ${{1}}$ {v} {x} là $C_{{{a1}}}^{{1}}$\n\n"
+						f"Số cách chọn ${{1}}$ {v} {d} là $C_{{{a2}}}^{{1}}$ \n\n"
+						f"Số cách chọn ${{1}}$ {v} {t} là $C_{{{a3}}}^{{1}}$ \n\n"
+							f" Vậy số cách chọn ${{{k}}}$ {v} đủ ba màu là $C_{{{a1}}}^{{1}} C_{{{a2}}}^{{2}} C_{{{a3}}}^{{1}}= {phan_so(a)} $")
+
+	if chon ==2:
+		k=4
+		a1=k+random.randint(2,6)
+		a2=k+random.randint(2,8)
+		a3=k+random.randint(2,8)
+		a= binomial(a1,1)* binomial(a2,1)*binomial(a3,2)+binomial(a1,2)* binomial(a2,1)*binomial(a3,1)+binomial(a1,1)* binomial(a2,2)*binomial(a3,1)
+		noi_dung = f"Một hộp có ${{{a1}}}$ {v} {x}; ${{{a2}}}$ {v} {d} và ${{{a3}}}$ {v} {t}. Có bao nhiêu cách để chọn được ${{{k}}}$ {v} đủ ba màu."		
+
+		noi_dung_loigiai=(f"Số cách chọn ${{1}}$ {v} {x}, ${{1}}$ {v} {d}, ${{2}}$ {v} {t}  là $C_{{{a1}}}^{{1}}C_{{{a2}}}^{{1}}C_{{{a3}}}^{{2}}$\n\n"
+						f"Số cách chọn ${{1}}$ {v} {x}, ${{2}}$ {v} {d}, ${{1}}$ {v} {t} là $C_{{{a1}}}^{{1}}C_{{{a2}}}^{{2}}C_{{{a3}}}^{{1}}$ \n\n"
+						f"Số cách chọn ${{2}}$ {v} {x}, ${{1}}$ {v} {d}, ${{1}}$ {v} {t} là $C_{{{a1}}}^{{2}}C_{{{a2}}}^{{1}}C_{{{a3}}}^{{1}}$ \n\n"
+							f" Vậy số cách chọn ${{{k}}}$ {v} đủ ba màu là ${{ {phan_so(a)} }}$")
+
+
+	kq=f"${{{phan_so(a)}}}$"
+	kqs=[f"${{{phan_so(a+1)}}}$",
+	f"${{{phan_so(a-1)}}}$",
+	f"${{{phan_so(a+2)}}}$",
+f"${{{phan_so(a-2)}}}$",
+f"${{{phan_so(a+3)}}}$",
+	f"${{{phan_so(a-3)}}}$"]
+
+	kq2,kq3,kq4=random.sample(kqs,3)
+
+	#Tạo các phương án
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)  
+
+	debai= f"{noi_dung}\n"
+			 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+
+#[D10_C8_B2_34]-TF-M3. Cho m nam, n nữ trong đó có bạn A. Xét ĐS
+def mcn__L10_C8_B2_34(): 
+	k1=random.randint(1,3)
+	k2=random.randint(1,4)
+	k=k1+k2
+	a1=k+random.randint(2,6)
+	a2=k+random.randint(2,8)
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])	
+	noi_dung = f"Một đội có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	c= binomial(a1+a2,k)
+        
+	kq1_T=f"*Số cách chọn ra ${{{k}}}$ bạn bất kì trong đội là ${{{phan_so(c)}}}$" 
+	kq1_F=f"Số cách chọn ra ${{{k}}}$ bạn bất kì trong đội là  "
+	kq1_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Số cách chọn ra ${{{k}}}$ bạn bất kì trong đội là ${{C^{{{k}}}_{{{a1+a2}}}={phan_so(c)}}}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= binomial(a1,k1)* binomial(a2,k2)
+	kq2_T=f"*Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đội là ${{{phan_so(c)}}}$ "
+	kq2_F=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đội là "
+
+	kq2_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đội là ${{C^{{{k1}}}_{{{a1}}}\\cdot C^{{{k2}}}_{{{a2}}}={phan_so(c)}}}$"
+
+
+
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= binomial(a1+a2-1,k-1)
+	kq3_T=f"* Số cách chọn ra ${{{k}}}$ bạn trong đó có bạn {B} là ${{{phan_so(c)}}}$ " 
+	kq3_F=f"Số cách chọn ra ${{{k}}}$ bạn trong đó có bạn {B} là "
+	kq3_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Số cách chọn ra ${{{k}}}$ bạn trong đó có bạn {B} là ${{C^{{{k-1}}}_{{{a1+a2-1}}}={phan_so(c)} }} $"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= binomial(a1-1,k1-1)* binomial(a2,k2)
+	kq4_T=f"*Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó có {B} là ${{{phan_so(c)}}}$  "
+	kq4_F=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó có {B} là " 
+	kq4_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó có {B} là ${{C^{{{k1-1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2}}}={phan_so(c)}}}$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+#[D10_C8_B2_35]-TF-M3. Cho m nam, n nữ trong đó có bạn nam A và nữ B. Xét ĐS
+def mcn__L10_C8_B2_35(): 
+	k1=random.randint(1,3)
+	k2=random.randint(1,4)
+	k=k1+k2
+	a1=k+random.randint(2,6)
+	a2=k+random.randint(2,8)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])	
+	noi_dung = f"Một đội có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} và bạn nữ tên {A}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+
+	c= binomial(a1+a2-2,k-2)
+        
+	kq1_T=f"*Số cách chọn ra ${{{k}}}$ bạn trong đội trong đó có cả {A} và {B} là ${{{phan_so(c)}}}$" 
+	kq1_F=f"Số cách chọn ra ${{{k}}}$ bạn trong đội trong đó có cả {A} và {B} là  "
+	kq1_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Số cách chọn ra ${{{k}}}$ bạn trong đó có cả {A} và {B} là ${{C^{{{k-2}}}_{{{a1+a2-2}}}={phan_so(c)}}}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= binomial(a1,k1)* binomial(a2-1,k2)
+	kq2_T=f"*Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó không có {A} là ${{{phan_so(c)}}}$ "
+	kq2_F=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó không có {A} là "
+
+	kq2_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó không có {A} là ${{C^{{{k1}}}_{{{a1}}}\\cdot C^{{{k2-1}}}_{{{a2-1}}}={phan_so(c)}}}$"
+
+
+
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= binomial(a1+a2-2,k-1)
+	kq3_T=f"* Số cách chọn ra ${{{k}}}$ bạn trong đó có bạn {B} mà không có bạn {A} là ${{{phan_so(c)}}}$ " 
+	kq3_F=f"Số cách chọn ra ${{{k}}}$ bạn trong đó có bạn {B} mà không có bạn {A} là "
+	kq3_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Số cách chọn ra ${{{k}}}$ bạn trong đó có bạn {B} mà không có bạn {A} là ${{C^{{{k-1}}}_{{{a1+a2-2}}}={phan_so(c)} }} $"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	c= binomial(a1-1,k1-1)* binomial(a2-1,k2)+binomial(a1-1,k1)* binomial(a2-1,k2-1)+binomial(a1-1,k1)* binomial(a2-1,k2)
+	kq4_T=f"*Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó {B} và {A} không đồng thời cùng có mặt là ${{{phan_so(c)}}}$  "
+	kq4_F=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó {B} và {A} không đồng thời cùng có mặt là " 
+	kq4_F +=random.choice([
+                f"${{{c - 1}}}$", 
+                f"${{{c + random.randint(6, 7)}}}$  ", 
+                f"${{{c + random.randint(1, 3)}}}$ ", 
+                f"${{{c + random.randint(4, 5)}}}$ "])
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó {B} và {A} không đồng thời cùng có mặt là \n\n ${{C^{{{k1-1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2-1}}}+C^{{{k1}}}_{{{a1-1}}}\\cdot C^{{{k2-1}}}_{{{a2-1}}}+C^{{{k1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2-1}}} ={phan_so(c)}}}$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+#[D10_C8_B2_36]-SA-M3. Cho m nam, n nữ, chọn k bạn trong đó A, B không cùng có mặt.
+def mcn__L10_C8_B2_36(): 
+	k1=random.randint(2,4)
+	k2=random.randint(2,4)
+	k=k1+k2
+	a1=k+random.randint(2,6)
+	a2=k+random.randint(2,6)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	c= binomial(a1-1,k1-1)* binomial(a2-1,k2)+binomial(a1-1,k1)* binomial(a2-1,k2-1)+binomial(a1-1,k1)* binomial(a2-1,k2)
+	kq=tinh_tong_chu_so(c)
+	noi_dung = f"Một đội có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} và bạn nữ tên {A}. Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó {B} và {A} không đồng thời cùng có mặt là ${{m}}$. Tổng các chữ số của ${{m}}$ là "		
+	noi_dung_loigiai=(f" TH1: Có {B} mà không có {A} thì có ${{C^{{{k1-1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2-1}}} }}$ cách chọn \n\n"
+					f" TH2: Có {A} mà không có {B} thì có ${{C^{{{k1}}}_{{{a1-1}}}\\cdot C^{{{k2-1}}}_{{{a2-1}}} }} $ cách chọn \n\n"
+					f" TH3: Không có cả {A} và {B} là ${{C^{{{k1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2-1}}} }}$ cách chọn \n\n"
+	f"Số cách chọn ra ${{{k1}}}$ bạn nam và ${{{k2}}}$ bạn nữ trong đó {B} và {A} không đồng thời cùng có mặt là \n\n ${{m= C^{{{k1-1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2-1}}}+C^{{{k1}}}_{{{a1-1}}}\\cdot C^{{{k2-1}}}_{{{a2-1}}}+C^{{{k1}}}_{{{a1-1}}}\\cdot C^{{{k2}}}_{{{a2-1}}} ={phan_so(c)}}}$ cách chọn\n\n"
+	f"Tổng các chữ số của ${{m}}$ là ${{{kq}}}$ "
+	)
+	debai_word= f"{noi_dung}\n"
+
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C8_B2_37]-SA-M3. Xếp m nam, n nữ sao cho bạn nam A luôn giữa 2 bạn nữ.
+def mcn__L10_C8_B2_37(): 
+
+	a1=random.randint(3,6)
+	a2=random.randint(3,6)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	m= (a1+a2-2)*a2*(a2-1)*factorial(a1+a2-3)
+	kq=tinh_tong_chu_so(m)
+	noi_dung = f"Có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B}. Xếp các bạn thành một hàng ngang. Số cách xếp bạn {B} luôn đứng giữa hai bạn nữ là ${{m}}$. Tổng các chữ số của ${{m}}$ là "		
+	noi_dung_loigiai=(f" Xếp bạn {B} có ${{{a1+a2-2}}}$ cách \n\n"
+					f" Xếp bạn nữ đứng trước {B} có ${{{a2}}}$ cách \n\n"
+					f" Xếp bạn nữ đứng sau {B} có ${{{a2-1}}}$ cách\n\n"
+					f" Xếp các bạn còn lại có ${{{a1+a2-3}!}}$ cách \n\n"
+					f" Theo quy tắc nhân có $  {{{a1+a2-2} \\cdot {a2} \\cdot {a2-1} \\cdot  {a1+a2-3}!= {(a1+a2-2)*a2*(a2-1)*factorial(a1+a2-3)} }}   $ cách xếp \n\n"
+	f"Tổng các chữ số của ${{m}}$ là ${{{kq}}}$ "
+	)
+	debai_word= f"{noi_dung}\n"
+
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C8_B2_38]-SA-M3. Xếp m nam, n nữ sao cho bạn nam (nữ) luôn cạnh nhau.
+def mcn__L10_C8_B2_38(): 
+	gt=["nam", "nữ" ]
+	nam, nữ=random.sample(gt, 2)
+	a1=random.randint(3,7)
+	a2=random.randint(3,7)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	m= factorial(a1)*factorial(a2+1)
+	kq=tinh_tong_chu_so(m)
+	noi_dung = f"Có ${{{a1}}}$ bạn {nam} và ${{{a2}}}$ bạn {nữ}. Số cách xếp các bạn thành một hàng ngang sao cho các bạn {nam} luôn đứng cạnh nhau là ${{m}}$. Tổng các chữ số của ${{m}}$ là "		
+	noi_dung_loigiai=(f" Coi các bạn {nam} là 1 kết hợp với  ${{{a2}}}$ bạn {nữ} có ${{{a2+1}!}}$ cách xếp \n\n"
+					f" Xếp riêng nhóm các bạn {nam} có ${{{a1}!}}$ cách \n\n"
+					
+					f" Theo quy tắc nhân có $  {{{a1}! \\cdot {a2+1}!= {factorial(a1)*factorial(a2+1)} }} $ cách xếp \n\n "
+	f"Tổng các chữ số của ${{m}}$ là ${{{kq}}}$ "
+	)
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C8_B2_39]-SA-M2. Xếp m nam, n nữ sao cho bạn nam A không đứng đầu(cuối).
+def mcn__L10_C8_B2_39(): 
+	vt=random.choice(["đầu", "cuối"])
+	ngang=random.choice(["ngang", "dọc"])
+	a1=random.randint(3,5)
+	a2=random.randint(3,5)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	m= (a1+a2-1)*factorial(a1+a2-1)
+	kq=tinh_tong_chu_so(m)
+	noi_dung = f"Có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B}. Xếp các bạn thành một hàng {ngang}. Số cách xếp bạn {B} không đứng {vt} hàng là ${{m}}$. Tổng các chữ số của ${{m}}$ là "		
+	noi_dung_loigiai=(f" Xếp bạn {B} có ${{{a1+a2-1}}}$ cách \n\n"
+					f" Xếp các bạn còn lại có ${{{a1+a2-1}!}}$ cách \n\n"
+					f" Theo quy tắc nhân có $  {{{a1+a2-1} \\cdot {a1+a2-1}!= {(a1+a2-1)*factorial(a1+a2-1)} }}   $ cách xếp \n\n"
+	f"Tổng các chữ số của ${{m}}$ là ${{{kq}}}$ "
+	)
+	debai_word= f"{noi_dung}\n"
+
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C8_B2_40]-SA-M2. Xếp m nam, m nữ sao cho nam nữ xen kẽ.
+def mcn__L10_C8_B2_40(): 
+	vt=random.choice(["đầu", "cuối"])
+	ngang=random.choice(["ngang", "dọc"])
+	a1=random.randint(3,7)
+	a2=random.randint(3,7)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	m= factorial(a1)*factorial(a1)*2
+	kq=tinh_tong_chu_so(m)
+	noi_dung = f"Có ${{{a1}}}$ bạn nam và ${{{a1}}}$ bạn nữ trong đó có bạn nam tên {B}. Xếp các bạn thành một hàng {ngang}. Số cách xếp sao cho nam nữ xen kẽ là ${{m}}$. Tổng các chữ số của ${{m}}$ là "		
+	noi_dung_loigiai=(f" TH1: nam đứng đầu có ${{{a1}!{a1}! }}$ cách \n\n"
+					f" TH2: nữ đứng đầu có ${{{a1}!{a1}! }}$ cách\n\n"
+					f" Theo quy tắc cộng có $  {{{a1}!{a1}!+ {a1}!{a1}!= {factorial(a1)*factorial(a1)*2} }}   $ cách xếp \n\n"
+	f"Tổng các chữ số của ${{m}}$ là ${{{kq}}}$ "
+	)
+	debai_word= f"{noi_dung}\n"
+
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+#[D10_C8_B2_41]-TF-M2. Xếp m nam, m nữ thoả các dk. Xét tính ĐS
+def mcn__L10_C8_B2_41():
+	a1=random.randint(5,10)
+	a2=a1 
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	noi_dung = f"Có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} bạn nữ tên {A}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	doc=random.choice(["ngang", "dọc"])
+
+	chon =random.randint(1,2)
+	if chon==1:
+		kq1_T=f"*Có ${{{a1+a2}!}}$ cách xếp các bạn trên thành một hàng {doc}" 
+		kq1_F=f"Có ${{{a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} "
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Có ${{{a1+a2}!}}$ cách xếp các bạn trên thành một hàng {doc} "
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon==2:
+		vt=["đầu", "cuối"]
+		dau, cuoi =random.sample(vt,2)
+		kq1_T=f"*Có ${{{a1+a2-2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} đứng {dau} và {B} đứng {cuoi}" 
+		kq1_F=f"Có ${{{a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} đứng {dau} và {B} đứng {cuoi} "
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Có ${{{a1+a2-2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} đứng {dau} và {B} đứng {cuoi}"
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon =random.randint(1,2)
+	if chon ==1:
+
+		kq2_T=f"*Có ${{2 \\cdot {a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho nam nữ xen kẽ "
+		kq2_F=f"Có ${{{a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho nam nữ xen kẽ  "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"Có ${{2 \\cdot {a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho nam nữ xen kẽ "
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon ==2:
+		nữ=random.choice(["nữ", "nam"])
+
+		kq2_T=f"*Có ${{ {a1+1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho các bạn {nữ} luôn đứng cạnh nhau "
+		kq2_F=f"Có ${{{a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho các bạn {nữ} luôn đứng cạnh nhau  "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"Có ${{ {a1+1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho các bạn {nữ} luôn đứng cạnh nhau "
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	if chon ==1:
+		kq3_T=f"*Có ${{2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} luôn đứng cạnh nhau " 
+		kq3_F=f"Có ${{{a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} luôn đứng cạnh nhau  "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Có ${{2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} luôn đứng cạnh nhau "
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	if chon ==2:
+		kq3_T=f"*Có ${{{a1+a2}!-2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} không đứng cạnh nhau " 
+		kq3_F=f"Có ${{2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} không đứng cạnh nhau  "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Có ${{{a1+a2}!-2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} không đứng cạnh nhau"
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	chon=random.randint(1,2)
+	if chon ==1:
+
+		kq4_T=f"*Có ${{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nam "
+		kq4_F=f"Có ${{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nam " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Có ${{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nam"
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+
+		kq4_T=f"*Có ${{{(a1+a2-2)*(a1-1)*(a1-2)}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nữ "
+		kq4_F=f"Có ${{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nữ " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Có ${{{(a1+a2-2)*(a1-1)*(a1-2)}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nữ"
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+#[D10_C8_B2_42]-TF-M3. Có m nam, n nữ, chọn k bạn thoả các dk. Xét tính ĐS
+def mcn__L10_C8_B2_42():
+	k=random.randint(2,5)
+	i=random.randint(2,5)
+	a1=i+random.randint(3,10)
+	a2=k+random.randint(3,10)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	noi_dung = f"Một nhóm có ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} bạn nữ tên {A}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	doc=random.choice(["ngang", "dọc"])
+
+	chon =random.randint(1,2)
+	if chon==1:
+		kq1_T=f"*Có ${{C^{{{k}}}_{{{a1+a2}}}}}$ cách chọn ra ${{{k}}}$ bạn từ nhóm bạn trên" 
+		kq1_F=f"*Có ${{A^{{{k}}}_{{{a1+a2}}}}}$ cách chọn ra ${{{k}}}$ bạn từ nhóm bạn trên"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"*Có ${{C^{{{k}}}_{{{a1+a2}}} }}$ cách chọn ra ${{{k}}}$ bạn từ nhóm bạn trên"
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon==2:
+		vt=["đầu", "cuối"]
+		dau, cuoi =random.sample(vt,2)
+		kq1_T=f"*Có ${{C^{{{k}}}_{{{a2}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ từ nhóm bạn trên" 
+		kq1_F=f"Có ${{C^{{{k}}}_{{{a2+a1}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ từ nhóm bạn trên"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Có ${{C^{{{k}}}_{{{a2}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ từ nhóm bạn trên"
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon =random.randint(1,2)
+	if chon ==1:
+
+		kq2_T=f"*Có ${{C^{{{k}}}_{{{a2}}} \\cdot C^{{{i}}}_{{{a1}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ và ${{{i}}}$ bạn nam từ nhóm bạn trên"
+		kq2_F=f"Có ${{C^{{{k}}}_{{{a2+a1}}} \\cdot C^{{{i}}}_{{{a1+a2}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ và ${{{i}}}$ bạn nam từ nhóm bạn trên"
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"Có ${{C^{{{k}}}_{{{a2}}} \\cdot C^{{{i}}}_{{{a1}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ và ${{{i}}}$ bạn nam từ nhóm bạn trên "
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon ==2:
+		nữ=random.choice(["nữ", "nam"])
+
+		kq2_T=f"*Có ${{C^{{{k}}}_{{{a2}}} \\cdot C^{{{i}}}_{{{a1}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ và ${{{i}}}$ bạn nam từ nhóm bạn trên "
+		kq2_F=f"Có ${{A^{{{k}}}_{{{a2}}} \\cdot A^{{{i}}}_{{{a1}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ và ${{{i}}}$ bạn nam từ nhóm bạn trên "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"Có ${{C^{{{k}}}_{{{a2}}} \\cdot C^{{{i}}}_{{{a1}}}}}$ cách chọn ra ${{{k}}}$ bạn nữ và ${{{i}}}$ bạn nam từ nhóm bạn trên "
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	if chon ==1:
+		kq3_T=f"*Có ${{A^{{2}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm  " 
+		kq3_F=f"Có ${{C^{{2}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm  "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Có ${{A^{{2}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm"
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	if chon ==2:
+		kq3_T=f"*Có ${{A^{{3}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên  " 
+		kq3_F=f"Có ${{C^{{3}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên  "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Có ${{A^{{3}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên  "
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	chon=random.randint(1,2)
+	if chon ==1:
+
+		kq4_T=f"*Có ${{3 \\cdot A^{{2}}_{{{a2+a1-1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên trong đó {A} có giữ một chức vụ nào đó"
+		kq4_F=f"Có ${{A^{{3}}_{{{a2+a1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên trong đó {A} có giữ một chức vụ nào đó" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Có ${{3 \\cdot A^{{2}}_{{{a2+a1-1}}} }}$ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên trong đó {A} có giữ một chức vụ nào đó"
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+
+		kq4_T=f"*Có ${{{phan_so(6*(a2+a1-2))}}} $ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên trong đó {A} và {B} đều giữ các chức vụ "
+		kq4_F=f"Có ${{{phan_so(6*(a2+a1-2)+random.randint(1,10))}}} $ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên trong đó {A} và {B} đều giữ các chức vụ  " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Có ${{{phan_so(6*(a2+a1-2))}}} $ cách chọn ra một bạn giữ vị trí trưởng nhóm, một bạn giữ vị trí phó nhóm, một bạn uỷ viên trong đó {A} và {B} đều giữ các chức vụ "
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+#[D10_C8_B2_43]-SA-M3. Tạo các số có các chữ số tăng (giảm) dần
+def mcn__L10_C8_B2_43(): 
+	chon =random.randint(1,6)
+
+
+
+	if chon ==1:
+		l=random.randint(3,5)
+		kq = binomial(6,l)
+		a1,a2,a3,a4,a5,a6=random.sample(range(1,9),6)
+		noi_dung=f" Từ các chữ số ${{0; {a1}; {a2}; {a3}; {a4}; {a5}; {a6} }}$ lập được bao nhiêu số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau mà các chữ số tăng dần. "
+
+		noi_dung_loigiai=(f"Một tổ hợp gồm ${{{l}}}$ chữ số chỉ tạo ra được một số thoả mãn yêu cầu \n\n"
+		f" Do đó lập được ${{C^{{{l}}}_{{6}}={kq}}}$ số thoả mãn yêu cầu.")
+
+
+
+	if chon ==2:
+		l=random.randint(3,6)
+		kq = binomial(8,l)
+		a1,a2,a3,a4,a5,a6,a7,a8=random.sample(range(1,9),8)
+		noi_dung=f" Từ các chữ số ${{0; {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7};{a8} }}$ lập được bao nhiêu số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau mà các chữ số tăng dần. "
+
+		noi_dung_loigiai=(f"Một tổ hợp gồm ${{{l}}}$ chữ số chỉ tạo ra được một số thoả mãn yêu cầu \n\n"
+		f" Do đó lập được ${{C^{{{l}}}_{{8}}={kq}}}$ số thoả mãn yêu cầu.")
+
+	if chon ==3:
+		l=random.randint(3,6)
+		kq = binomial(7,l)
+		a1,a2,a3,a4,a5,a6,a7=random.sample(range(1,9),7)
+		noi_dung=f" Từ các chữ số ${{0; {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được bao nhiêu số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau mà các chữ số tăng dần. "
+
+		noi_dung_loigiai=(f"Một tổ hợp gồm ${{{l}}}$ chữ số chỉ tạo ra được một số thoả mãn yêu cầu \n\n"
+		f" Do đó lập được ${{C^{{{l}}}_{{7}}={kq}}}$ số thoả mãn yêu cầu.")
+
+
+
+	if chon ==6:
+		l=random.randint(3,6)
+		kq = binomial(7,l)
+		a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
+		noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được bao nhiêu số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau mà các chữ số giảm dần. "
+		noi_dung_loigiai=(f"Một tổ hợp gồm bốn chữ số chỉ tạo ra được một số thoả mãn yêu cầu \n\n"
+		f" Do đó lập được ${{C^{{{l}}}_{{7}}={kq}}}$ số thoả mãn yêu cầu.")
+
+	if chon ==4:
+		l=random.randint(3,8)
+		kq = binomial(9,l)
+		a1,a2,a3,a4,a5,a6,a7,a8,a9=random.sample(range(0,9),9)
+		noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7}; {a8}; {a9} }}$ lập được bao nhiêu số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau mà các chữ số giảm dần. "
+		noi_dung_loigiai=(f"Một tổ hợp gồm bốn chữ số chỉ tạo ra được một số thoả mãn yêu cầu \n\n"
+		f" Do đó lập được ${{C^{{{l}}}_{{9}}={kq}}}$ số thoả mãn yêu cầu.")
+
+	if chon ==5:
+		l=random.randint(3,7)
+		kq = binomial(8,l)
+		a1,a2,a3,a4,a5,a6,a7,a8=random.sample(range(0,9),8)
+		noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7}; {a8}}}$ lập được bao nhiêu số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau mà các chữ số giảm dần. "
+		noi_dung_loigiai=(f"Một tổ hợp gồm bốn chữ số chỉ tạo ra được một số thoả mãn yêu cầu \n\n"
+		f" Do đó lập được ${{C^{{{l}}}_{{8}}={kq}}}$ số thoả mãn yêu cầu.")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C8_B2_44]-SA-M4. Có bao nhiêu cách chia m kẹo cho n em.
+def mcn__L10_C8_B2_44(): 
+	n=random.randint(3,7)
+	m=n+random.randint(2,8)
+
+	kq=binomial(m-1,n-1)
+	noi_dung=f" Có bao nhiêu cách chia ${{{m}}}$ chiếc kẹo cho ${{{n}}}$ em học sinh sao cho em nào cũng có ít nhất một kẹo?"
+	noi_dung_loigiai=(f"Rải ${{{m}}}$ chiếc kẹo lên mặt bàn tạo ra ${{{m-1}}}$ vách ngăn, chọn ra ${{{n-1}}}$ vách ngăn để đặt cách thanh gỗ ngăn cách, giữ đúng thứ tự đó để chia kẹo cho các em cũng theo thứ tự.\n\n"
+	f" Một cách làm như trên là một cách chia kẹo \n\n"
+	f" Vậy có ${{C^{{{n-1}}}_{{{m-1}}}={kq}}}$ cách chia kẹo")
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D10_C8_B2_45]-SA-M4. Số nghiệm nguyên dương của phương trình bậc nhất nhiều ẩn
+def mcn__L10_C8_B2_45(): 
+	chon =random.randint(1,2)
+	if chon ==1:
+		n=3
+		m=random.randint(10,131)
+
+		kq=binomial(m-1,n-1)
+
+		noi_dung=f"Phương trình ${{x+y+z={m}}}$ có bao nhiêu nghiệm nguyên dương."
+		noi_dung_loigiai=(f" Nghiệm của phương trình là một bộ ba số ${{(x;y;z)}}$ với $x;y;z \\ge 1; x;y;z \\in \\mathbb{{N}}$\n\n"
+			f"Viết ${{{m}}}$ số ${{1}}$ lên giấy tạo ra ${{{m-1}}}$ vách ngăn giữa cách số ${{1}}$, chọn ra ${{{n-1}}}$ vách ngăn để đặt cách gạch sọc ngăn cách, giữ đúng thứ tự đó ta sẽ được một nghiệm của phương trình.\n\n"
+		f" Vậy phương trình có ${{C^{{{n-1}}}_{{{m-1}}}={kq}}}$ nghiệm")
+	if chon ==2:
+		n=4
+		m=random.randint(10,22)
+
+		kq=binomial(m-1,n-1)
+
+		noi_dung=f"Phương trình ${{x+y+z+t={m}}}$ có bao nhiêu nghiệm nguyên dương."
+		noi_dung_loigiai=(f" Nghiệm của phương trình là một bộ ba số ${{(x;y;z;t)}}$ với $x;y;z;t \\ge 1; x;y;z;t \\in \\mathbb{{N}}$\n\n"
+			f"Viết ${{{m}}}$ số ${{1}}$ lên giấy tạo ra ${{{m-1}}}$ vách ngăn giữa cách số ${{1}}$, chọn ra ${{{n-1}}}$ vách ngăn để đặt cách gạch sọc ngăn cách, giữ đúng thứ tự đó ta sẽ được một nghiệm của phương trình.\n\n"
+		f" Vậy phương trình có ${{C^{{{n-1}}}_{{{m-1}}}={kq}}}$ nghiệm")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+#[D10_C8_B2_46]-TF-M3. Cho k vật từ một nhóm thoả điều kiện nào đó. Xét ĐS
+def mcn__L10_C8_B2_46():
+	a=random.choice([i for i in range(-10,10) if i!=0])
+	k=random.randint(2,5)
+	m=k+ random.randint(2,5)
+	n=k+random.randint(2,5)
+	p=k+random.randint(2,5)
+	A=random.choice(["viên bi", "quả cầu"])
+	mau=["xanh", "đỏ", "tím", "vàng", "trắng", "đen", "xám", "nâu"]
+	x,d,t=random.sample(mau,3)
+	noi_dung = f"Một hộp chứa ${{{m}}}$ {A} {x} khác nhau, ${{{n}}}$ {A} {d} khác nhau và ${{{p}}}$ {A} {t} khác nhau. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Có ${{C^{{{k}}}_{{{m+n+p}}}}}$ cách chọn ra ${{{k}}}$ {A} từ hộp " 
+	kq1_F=f"Có ${{C^{{{k}}}_{{{m*n*p}}}}}$ cách chọn ra ${{{k}}}$ {A} từ hộp "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f" Có ${{C^{{{k}}}_{{{m+n+p}}}}}$ cách chọn ra ${{{k}}}$ {A} từ hộp"
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq=binomial(m,k)+binomial(n,k)+binomial(p,k)
+
+	kq2_T=f"*Có ${{{kq}}}$ cách chọn ra ${{{k}}}$ {A} cùng màu "
+	kq2_F=f"Có ${{{kq+random.randint(1,10)}}}$ cách chọn ra ${{{k}}}$ {A} cùng màu "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Có ${{C^{{{k}}}_{{{m}}}+C^{{{k}}}_{{{n}}}+C^{{{k}}}_{{{p}}}={kq} }}$ cách chọn ra ${{{k}}}$ {A} cùng màu "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq=binomial(m,2)*binomial(n,1)*binomial(p,1)+binomial(m,1)*binomial(n,1)*binomial(p,2)+binomial(m,1)*binomial(n,2)*binomial(p,1)
+
+	kq3_T=f"*Có ${{{kq}}}$ cách lấy ra ${{4}}$ {A} đủ cả ba màu " 
+	kq3_F=f"Có ${{{kq+a}}}$ cách lấy ra ${{4}}$ {A} đủ cả ba màu "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Có ${{{kq}}}$ cách lấy ra ${{4}}$ {A} đủ cả ba màu "
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	kq=binomial(m+n+p,3)-m*n*p
+
+	kq4_T=f"* Có ${{{kq}}}$ cách lấy ra ${{3}}$ {A} không có đủ cả ba màu"
+	kq4_F=f"Có ${{{kq+a}}}$ cách lấy ra ${{3}}$ {A} không có đủ cả ba màu " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Có ${{C^{{{3}}}_{{{m+n+p}}}-{m} \\cdot {n} \\cdot {p}= {kq}}}$ cách lấy ra ${{3}}$ {A} không có đủ cả ba màu"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+#[D10_C8_B2_47]-SA-M3. Tạo số có chữ số x có mặt k lần, chữ số y có mặt q lần
+def mcn__L10_C8_B2_47(): 
+	m=random.randint(2,4)
+	n=random.randint(2,4)
+	l=m+n+random.randint(2,3)
+	chon =random.randint(1,4)
+	if chon ==1:
+		a1,a2,a3,a4,a5,a6,a7=random.sample(range(1,9),7)
+
+		m1=binomial(l,m)*binomial(l-m,n)*chinh_hop(l-m-n,5)
+		kq=tinh_tong_chu_so(m1)
+		noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được ${{m}}$ số tự nhiên có ${{{l}}}$ chữ số sao cho chữ số ${{{a1}}}$ có mặt đúng ${{{m}}}$ lần, chữ số ${{{a6}}}$ có mặt đúng ${{{n}}}$ lần các chữ số khác có mặt không quá một lần. Tổng các chữ số của ${{m}}$ là "
+		noi_dung_loigiai=(f"Có $C^{{{m}}}_{{{l}}} $ cách xếp số ${{{a1}}}$\n\n  "
+			f"Có $C^{{{n}}}_{{{l-m}}} $ cách xếp số ${{{a2}}}$\n\n  "
+			f" Có $A^{{{l-m-n}}}_{{{5}}}$ cách tạo số cho ${{{l-m-n}}}$ vị trí còn lại\n\n"
+			f"Theo quy tắc nhân có $C^{{{m}}}_{{{l}}} \\cdot C^{{{n}}}_{{{l-m}}} \\cdot A^{{{l-m-n}}}_{{{5}}}= {m1}$ số\n\n"
+			f" Tổng các chữ số của ${{{m}}}$ là ${{{kq}}}$"
+	)
+
+
+	if chon ==2:
+		a1,a2,a3,a4,a5,a6=random.sample(range(1,9),6)
+		m1=binomial(l,m)*binomial(l-m,n)*chinh_hop(l-m-n,4)
+		kq=tinh_tong_chu_so(m1)
+		noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6} }}$ lập được ${{m}}$ số tự nhiên có ${{{l}}}$ chữ số sao cho chữ số ${{{a1}}}$ có mặt đúng ${{{m}}}$ lần, chữ số ${{{a6}}}$ có mặt đúng ${{{n}}}$ lần các chữ số khác có mặt không quá một lần. Tổng các chữ số của ${{m}}$ là "
+		noi_dung_loigiai=(f"Có $C^{{{m}}}_{{{l}}} $ cách xếp số ${{{a1}}}$\n\n  "
+			f"Có $C^{{{n}}}_{{{l-m}}} $ cách xếp số ${{{a2}}}$\n\n  "
+			f" Có $A^{{{l-m-n}}}_{{{4}}}$ cách tạo số cho ${{{l-m-n}}}$ vị trí còn lại\n\n"
+			f"Theo quy tắc nhân có $C^{{{m}}}_{{{l}}} \\cdot C^{{{n}}}_{{{l-m}}} \\cdot A^{{{l-m-n}}}_{{{4}}}= {m1}$ số\n\n"
+			f" Tổng các chữ số của ${{{m}}}$ là ${{{kq}}}$"
+		)
+	if chon ==3:
+		m1=binomial(l-1,m)*binomial(l-m,n)*chinh_hop(l-m-n,5)
+		kq=tinh_tong_chu_so(m1)
+		a1,a2,a3,a4,a5,a6=random.sample(range(1,9),6)
+		noi_dung=f" Từ các chữ số ${{0; {a1}; {a2}; {a3}; {a4}; {a5}; {a6} }}$ lập được ${{m}}$ số tự nhiên có ${{{l}}}$ chữ số sao cho chữ số ${{0}}$ có mặt đúng ${{{m}}}$ lần, chữ số ${{{a6}}}$ có mặt đúng ${{{n}}}$ lần các chữ số khác có mặt không quá một lần. Tổng các chữ số của ${{m}}$ là "
+		noi_dung_loigiai=(f"Có $C^{{{m}}}_{{{l-1}}} $ cách xếp số ${{0}}$\n\n  "
+			f"Có $C^{{{n}}}_{{{l-m}}} $ cách xếp số ${{{a2}}}$\n\n  "
+			f" Có $A^{{{l-m-n}}}_{{{5}}}$ cách tạo số cho ${{{l-m-n}}}$ vị trí còn lại\n\n"
+			f"Theo quy tắc nhân có $C^{{{m}}}_{{{l-1}}} \\cdot C^{{{n}}}_{{{l-m}}} \\cdot A^{{{l-m-n}}}_{{{5}}}= {m1}$ số\n\n"
+			f" Tổng các chữ số của ${{{m}}}$ là ${{{kq}}}$"
+		)
+	if chon ==4:
+		a1,a2,a3,a4,a5,a6,a7=random.sample(range(1,9),7)
+		m=random.randint(2,3)
+		n=random.randint(2,3)
+		l=m+n+random.randint(2,4)
+		m1=binomial(l-1,m)*binomial(l-m,n)*chinh_hop(l-m-n,6)
+		kq=tinh_tong_chu_so(m1)
+
+		noi_dung=f" Từ các chữ số ${{0; {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được ${{m}}$ số tự nhiên có ${{{l}}}$ chữ số sao cho chữ số ${{{0}}}$ có mặt đúng ${{{m}}}$ lần, chữ số ${{{a6}}}$ có mặt đúng ${{{n}}}$ lần các chữ số khác có mặt không quá một lần. Tổng các chữ số của ${{m}}$ là "
+		noi_dung_loigiai=(f"Có $C^{{{m}}}_{{{l-1}}} $ cách xếp số ${{{0}}}$\n\n  "
+			f"Có $C^{{{n}}}_{{{l-m}}} $ cách xếp số ${{{a2}}}$\n\n  "
+			f" Có $A^{{{l-m-n}}}_{{{6}}}$ cách tạo số cho ${{{l-m-n}}}$ vị trí còn lại\n\n"
+			f"Theo quy tắc nhân có $C^{{{m}}}_{{{l-1}}} \\cdot C^{{{n}}}_{{{l-m}}} \\cdot A^{{{l-m-n}}}_{{{6}}}= {m1}$ số\n\n"
+			f" Tổng các chữ số của ${{{m}}}$ là ${{{kq}}}$"
+	)
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C8_B2_48]-TF-M3. Các bài toán tạo số.
+def mcn__L10_C8_B2_48(): 
+	a1,a2,a3,a4,a5,a6,a7=random.sample(range(1,9),7)
+
+	noi_dung = f"Từ các chữ số ${{{a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7}}}$. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+	l=random.randint(3,6)
+	
+	kq1_T=f"*Lập được ${{7^{{{l}}}}}$ số tự nhiên có ${{{l}}}$ chữ số " 
+	kq1_F=f"Lập được ${{A^{{{l}}}_{{7}}}}$ số tự nhiên có ${{{l}}}$ chữ số "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Lập được ${{7^{{{l}}}}}$ số tự nhiên có ${{{l}}}$ chữ số "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	l=random.randint(3,6)
+	kq2_T=f"*Lập được ${{A^{{{l}}}_{{7}}}}$ số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau "
+	kq2_F=f" Lập được ${{C^{{{l}}}_{{7}}}}$ số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f" Lập được ${{A^{{{l}}}_{{7}}}}$ số tự nhiên có ${{{l}}}$ chữ số đôi một khác nhau "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	l=random.randint(3,6)
+	chu_so=[a1,a2,a3,a4,a5,a6,a7]
+
+	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(chu_so, l)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+	
+	chon=random.randint(1,2)
+	if chon ==1:
+		so_ket_qua = [so for so in so_hoan_vi if so %2 ==0]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+		a=random.choice([i for i in range(-10,10) if i!=0])
+
+		kq3_T=f"* Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và là số chẵn" 
+		kq3_F=f"Lập được ${{{kq+a}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và là số chẵn "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và là số chẵn"
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon ==2:
+		so_ket_qua = [so for so in so_hoan_vi if so %2 !=0]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+		a=random.choice([i for i in range(-10,10) if i!=0])
+
+		kq3_T=f"* Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và là số lẻ" 
+		kq3_F=f"Lập được ${{{kq+a}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và là số lẻ "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và là số lẻ"
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	l=4
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(chu_so, l)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+
+	chon=random.randint(1,2)
+	if chon ==1:
+		m=random.randint(1356,3456)
+		so_ket_qua = [so for so in so_hoan_vi if so > m]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+		kq4_T=f"*Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và lớn hơn ${{{m}}}$ "
+		kq4_F=f"Lập được ${{{kq+a}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và lớn hơn ${{{m}}}$ " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và lớn hơn ${{{m}}}$"
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+		m=random.randint(5134,7897)
+		so_ket_qua = [so for so in so_hoan_vi if so < m]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+		kq4_T=f"*Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và nhỏ hơn ${{{m}}}$ "
+		kq4_F=f"Lập được ${{{kq+a}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và nhỏ hơn ${{{m}}}$ " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Lập được ${{{kq}}}$ số tự nhiên có ${{{l}}}$ chữ số khác nhau và nhỏ hơn ${{{m}}}$"
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
 #Bài 3 - Nhị thức Niu-tơn
 #[D10_C8_B3_01]-M1. Khai triển (x+a)^n
 def mcn__L10_C8_B3_01():
@@ -3199,7 +5927,7 @@ def mcn__L10_C8_B3_01():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Áp dụng công thức khai triển Niu-tơn ta được: \n\n"\
 					f"${latex(f)}={kq}$."
@@ -3245,7 +5973,7 @@ def mcn__L10_C8_B3_02():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Áp dụng công thức khai triển Niu-tơn ta được: \n\n"\
 					f"${latex(f)}={kq}$."
@@ -3292,7 +6020,7 @@ def mcn__L10_C8_B3_03():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Áp dụng công thức khai triển Niu-tơn ta được: \n\n"\
 					f"${latex(f)}={kq}$."
@@ -3345,7 +6073,7 @@ def mcn__L10_C8_B3_04():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"\
 					f"Hệ số của ${{ x^{{{k}}} }}$ là ${{{kq}}}$."
@@ -3403,7 +6131,7 @@ def mcn__L10_C8_B3_05():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"				
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -3455,7 +6183,7 @@ def mcn__L10_C8_B3_06():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"\
 					f"Hệ số của ${{ x^{{{k}}} }}$ là ${{{kq}}}$."
@@ -3513,7 +6241,7 @@ def mcn__L10_C8_B3_07():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"				
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -3533,6 +6261,11 @@ def mcn__L10_C8_B3_07():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
 
 #[D10_C8_B3_08]-M2. Tìm số hạng thứ k+1 trong khai triển của (ax+b)^n giảm dần theo số mũ của x 
 def mcn__L10_C8_B3_08():
@@ -3570,7 +6303,7 @@ def mcn__L10_C8_B3_08():
 
 	debai= f"{noi_dung}\n"
 			 
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 	noi_dung_loigiai=f"Số hạng thứ ${{{k+1}}}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{n-k}}}.({b})^{{{k}}}.x^{{{n-k}}}={binomial(n,k)*a**(n-k)*b**k}x^{{{n-k}}}$.\n"				
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"

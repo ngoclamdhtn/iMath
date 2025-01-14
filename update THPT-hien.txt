@@ -1,81 +1,171 @@
-[D10_C3_B1_10]-M2.  Tìm hs có TXD là R
-[D10_C3_B1_11]-M2.  Tìm hs đồng biến(nghịch biến) trên R 
 
-[D10_C3_B2_36]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên R
-[D10_C3_B2_37]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên [a,b]
-[D10_C3_B2_38]-M1. Nhận dạng hàm số bậc hai
-[D10_C3_B2_39]-M1. Tìm số giao điểm của (P) và trục hoành
-[D10_C3_B2_40]-M1. Tìm toạ độ giao điểm Parabol với trục tung
-[D10_C3_B2_41]-M2. Tìm toạ độ giao điểm Parabol với đường thẳng y=ax+b
 
-[D10_C7_B2_09]-M2. Toán thực tế: tìm giá bán để lợi nhuận thoả đk cho trước
+[D10_C8_B1_12]-M2. Tính số ước nguyên của một số
 
-[D10_CX_B0_24]-M1. Cho toạ độ điểm A, tìm toạ độ vecto OA và ngược lại
-[D10_CX_B0_25]-M1. Cho vecto(u) biểu diễn theo 2 vecto(i) và vecto(j). Tìm toạ độ vecto(u)
-[D10_CX_B0_26]-M3. Tìm toạ độ trực tâm
-[D10_CX_B0_27]-M3. Tính góc giữa hai vecto
-[D10_CX_B0_28]-M2. Tìm toạ độ D để ABCD là Hình bình hành
+[D10_C8_B1_14]-TF-M2. Chọn đề tài thi cử. Xét ĐS
+[D10_C8_B1_15]-TF-M3. Chọn đề tài thi cử. Xét ĐS
+[D10_C8_B1_16]-TF-M3. Các bài toán về tạo số.(nhiều kiểu)
+[D10_C8_B1_17]-TF-M3. Các b.toán về xếp người thành hàng(nhiều kiểu)
+[D10_C8_B1_18]-TF-M3. Các bài toán về xếp 3 nhóm đồ vật
+[D10_C8_B1_19]-TF-M3. Các bài toán về chọn vật từ ba nhóm đối tượng
 
-[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn	
-[D10_C8_B2_28]-M1. Có bn số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)	
-[D10_C8_B2_29]-M2. Có bn số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0)	
-[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt
-[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song
+
+[D10_C8_B1_13]-SA-M2. Tính số ước nguyên của một số
+[D10_C8_B1_20]-SA-M2. Tính số cái bắt tay
+[D10_C8_B1_21]-SA-M2. Tính số cách lấy ra 3 vật khác nhóm từ 3 nhóm
+[D10_C8_B1_22]-SA-M3. Tính số cách lấy ra 2 vật khác nhóm từ 3 nhóm
+[D10_C8_B1_23]-SA-M3. Tính số cách lấy ra 3 đ.tuong khác nhóm từ 4 nhóm
+[D10_C8_B1_24]-SA-M3. B.toán tạo số có các chữ số khác nhau và là số chẵn (ds có chứa cso 0)
+[D10_C8_B1_25]-SA-M3. B.toán tạo số các c.số khác nhau và chia hết cho 5 (ds có chứa cso 0)
+[D10_C8_B1_26]-SA-M3. B.toán tạo số có các chữ số khác nhau và lớn hơn số m cho trước
+[D10_C8_B1_27]-SA-M3. B.toán tạo số có các chữ số khác nhau và nhỏ hơn số m cho trước
+[D10_C8_B1_28]-SA-M4. B.toán tính tổng các số được tạo ra.
+[D10_C8_B1_29]-SA-M3. Cho 2 dt //, tính số vecto tạo ra có điểm đầu, điểm cuối không nằm trên 1 dt
+
+
+[D10_C8_B2_37]-SA-M3. Xếp m nam, n nữ sao cho bạn nam A luôn giữa 2 bạn nữ.
+[D10_C8_B2_38]-SA-M3. Xếp m nam, n nữ sao cho bạn nam (nữ) luôn cạnh nhau.
+[D10_C8_B2_39]-SA-M2. Xếp m nam, n nữ sao cho bạn nam A không đứng đầu(cuối).
+[D10_C8_B2_40]-SA-M2. Xếp m nam, m nữ sao cho nam nữ xen kẽ.
+[D10_C8_B2_43]-SA-M3. Tạo các số có các chữ số tăng (giảm) dần
+[D10_C8_B2_44]-SA-M4. Có bao nhiêu cách chia m kẹo cho n em.
+[D10_C8_B2_45]-SA-M4. Số nghiệm nguyên dương của phương trình bậc nhất nhiều ẩn
+[D10_C8_B2_47]-SA-M3. Tạo số có chữ số x có mặt k lần, chữ số y có mặt q lần
+
+
+[D10_C8_B2_41]-TF-M3. Xếp m nam, m nữ thoả các dk. Xét tính ĐS
+[D10_C8_B2_42]-TF-M3. Có m nam, n nữ, chọn k bạn thoả các dk. Xét tính ĐS
+[D10_C8_B2_46]-TF-M3. Chọn k vật từ một nhóm thoả điều kiện nào đó. Xét ĐS
+[D10_C8_B2_48]-TF-M3. Các bài toán tạo số.
+
+
+####################################
+####################################8/1/2025
+chỗ này là cac bài xs
+[D10_C9_B1_15]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại 
+[D10_C9_B1_16]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại 
+[D10_C9_B1_17]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc
+[D10_C9_B1_18]-TF-M3. XS các bài toán chọn 2 người từ một nhóm
+[D10_C9_B1_19]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1
+[D10_C9_B1_20]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 2
+[D10_C9_B1_21]-TF-M3. XS các bài toán chọn 4 người từ một nhóm
+[D10_C9_B1_22]-TF-M3. XS các bài toán chọn vật(viên bi, quả cầu)
+
+
+[D10_C9_B2_10]-M1. Cho m nam ,n nữ, xs chọn k nữ(nam)
+[D10_C9_B2_11]-M2. Cho m nam ,n nữ chọn k bạn thoả dk nào đó
+[D10_C9_B2_12]-M1. Cho m nam ,n nữ, xs chọn được ít nhất 1 nữ (nam)
+[D10_C9_B2_13]-M2. Cho m nam ,n nữ, chọn k bạn trong đó có (không có) bạn A
+[D10_C9_B2_14]-M1. xs các btoán về gieo 1 con xúc sắc (nhiều kiểu hỏi)
+[D10_C9_B2_15]-M2. xs các btoán về gieo 2 con xúc sắc (rất nhiều kiểu hỏi)
+[D10_C9_B2_16]-M1. xác suất các btoán về rút 1 thẻ số(nhiều kiểu hỏi)
+[D10_C9_B2_17]-M2. xs các btoán về xếp chỗ ngồi(4 kiểu)
+[D10_C9_B2_18]-M1. xác suất các bài toán về chọn người
+[D10_C9_B2_19]-M2. xác suất các bài toán về chọn người 
+[D10_C9_B2_20]-M2. xs các btoán về Rút cầu vừa khác màu vừa khác số(18 kiểu)
+[D10_C9_B2_21]-M1. XS các btoán quay số trúng thưởng
+[D10_C9_B2_22]-M2. XS các btoán rút số từ 2 hộp và ghép lại với nhau
+[D10_C9_B2_23]-M2. XS các btoán rút số từ 2 hộp và nhân lại với nhau
+[D10_C9_B2_24]-M2. XS các btoán rút số từ 2 hộp và cộng lại với nhau
+[D10_C9_B2_25]-M2. XS các btoán quay số từ 2 vòng quay và nhân(cộng, ghép) lại với nhau(8 kiểu)
+[D10_C9_B2_26]-M1. XS các btoán quay số từ 2 vòng quay và cộng lại với nhau(10 kiểu)
+[D10_C9_B2_27]-M2. XS các btoán quay số từ 2 vòng quay và ghép lại với nhau(7 kiểu)
+[D10_C9_B2_28]-M2. XS các btoán về chọn 1 người từ 2 nhóm
+[D10_C9_B2_29]-M1. XS các btoan tích số chấm, tổng số chấm khi gieo 1 con xúc xắc 2 lần 
+[D10_C9_B2_30]-M2. XS các btoán ghép số khi gieo 1 con xúc xắc 2 lần(7 kiểu)
+[D10_C9_B2_31]-M3. XS các btoán rút vật từ hộp này bỏ sang hộp kia
+[D10_C9_B2_32]-M3. XS các btoan rút 2 thẻ số đồng thời(9 kiểu)
+[D10_C9_B2_33]-M2. XS các btoán về rút đồng thời 2 thẻ và ghép kq lại với nhau(9kiểu)
+
+
+[D10_C8_B2_32]-M2. Các btoán chọn k người thoả dk nào đó
+[D10_C8_B2_33]-M2. Các btoán chọn k bi(cầu) đủ các màu
+[D10_C8_B2_34]-TF-M3. Cho m nam,n nữ trong đó có A. Xét ĐS
+[D10_C8_B2_35]-TF-M3. Cho m nam,n nữ trong đó có nam A và nữ B. Xét ĐS
+
+[D10_C8_B2_36]-SA-M3. Cho m nam, n nữ, chọn k bạn trong đó A, B không cùng có mặt.
+
+
+#############################################
+
+[_C3_B1_10]-M2.  Tìm hs có TXD là R
+[_C3_B1_11]-M2.  Tìm hs đồng biến(nghịch biến) trên R 
+
+[_C3_B2_36]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên R
+[_C3_B2_37]-M2. Tìm GTLN (GTNN) của hàm số bậc hai trên [a,b]
+[_C3_B2_38]-M1. Nhận dạng hàm số bậc hai
+[_C3_B2_39]-M1. Tìm số giao điểm của (P) và trục hoành
+[_C3_B2_40]-M1. Tìm toạ độ giao điểm Parabol với trục tung
+[_C3_B2_41]-M2. Tìm toạ độ giao điểm Parabol với đường thẳng y=ax+b
+
+[_C7_B2_09]-M2. Toán thực tế: tìm giá bán để lợi nhuận thoả đk cho trước
+
+[_CX_B0_24]-M1. Cho toạ độ điểm A, tìm toạ độ vecto OA và ngược lại
+[_CX_B0_25]-M1. Cho vecto(u) biểu diễn theo 2 vecto(i) và vecto(j). Tìm toạ độ vecto(u)
+[_CX_B0_26]-M3. Tìm toạ độ trực tâm
+[_CX_B0_27]-M3. Tính góc giữa hai vecto
+[_CX_B0_28]-M2. Tìm toạ độ D để ABCD là Hình bình hành
+
+[_C8_B2_27]-M2. Xếp n người vào bàn tròn	
+[_C8_B2_28]-M1. Có bn số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)	
+[_C8_B2_29]-M2. Có bn số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0)	
+[_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt
+[_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song
 
 ################################################
-[D10_C4_B2_23]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 10
-[D10_C4_B2_22]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 9
-[D10_C4_B2_21]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 8
-[D10_C4_B2_20]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 7
-[D10_C4_B2_19]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 6
-[D10_C4_B2_18]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 5
-[D10_C4_B2_17]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 4
+[_C4_B2_23]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 10
+[_C4_B2_22]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 9
+[_C4_B2_21]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 8
+[_C4_B2_20]-SA-M2. Ứng dụng hệ thức lượng vào thực tế 7
+[_C4_B2_19]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 6
+[_C4_B2_18]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 5
+[_C4_B2_17]-SA-M3. Ứng dụng hệ thức lượng vào thực tế 4
 
 ( anh xem nạp may cau duoi chua)
-[D10_C5_B4_10]-SA-M4. Quỹ tích điểm M thảo mãn đằng thức vecto
-[D10_C3_B2_34]-SA-M4. Toán thực tế về định giá sản phẩm
-[D10_C3_B2_35]-M1. Tìm điểm thuộc đồ thị hàm số
+[_C5_B4_10]-SA-M4. Quỹ tích điểm M thảo mãn đằng thức vecto
+[_C3_B2_34]-SA-M4. Toán thực tế về định giá sản phẩm
+[_C3_B2_35]-M1. Tìm điểm thuộc đồ thị hàm số
 
 ####################
-[D10_C3_B2_28]-SA-M3. Tính chiều cao của cổng Parabol 2
-[D10_C3_B2_29]-TF-M3. Các câu hỏi về chuyển động của vật khi biết v(t) là hàm số bậc hai. 
-[D10_C3_B2_30]-M3. Tìm m để hàm số bậc hai đồng biến, nghịch biến trên khoảng K
+[_C3_B2_28]-SA-M3. Tính chiều cao của cổng Parabol 2
+[_C3_B2_29]-TF-M3. Các câu hỏi về chuyển động của vật khi biết v(t) là hàm số bậc hai. 
+[_C3_B2_30]-M3. Tìm m để hàm số bậc hai đồng biến, nghịch biến trên khoảng K
 
 
 
-[D10_C4_B1_03]-M2. Cho sin tìm cos
-[D10_C4_B1_04]-M2. Cho sin tìm tan
-[D10_C4_B1_05]-M2. Cho cos tìm sin
-[D10_C4_B1_06]-M2. Cho cos tìm tan
-[D10_C4_B1_07]-M2. Cho tan tính giá trị của biểu thức 
+[_C4_B1_03]-M2. Cho sin tìm cos
+[_C4_B1_04]-M2. Cho sin tìm tan
+[_C4_B1_05]-M2. Cho cos tìm sin
+[_C4_B1_06]-M2. Cho cos tìm tan
+[_C4_B1_07]-M2. Cho tan tính giá trị của biểu thức 
 
-[D10_C3_B2_31]-M3. Tìm m để hàm số xác định trên đoạn [a,b]
-[D10_C3_B2_32]-TF-M3. Bài tổng hợp về diện tích mảnh vườn
-[D10_C3_B2_33]-TL-M4. Toán thực tế uốn cong miếng tôn 
+[_C3_B2_31]-M3. Tìm m để hàm số xác định trên đoạn [a,b]
+[_C3_B2_32]-TF-M3. Bài tổng hợp về diện tích mảnh vườn
+[_C3_B2_33]-TL-M4. Toán thực tế uốn cong miếng tôn 
 
-[D10_C4_B2_15]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 2
-[D10_C4_B2_16]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 3
+[_C4_B2_15]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 2
+[_C4_B2_16]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 3
 
 
 #################################
-[D10_C4_B3_01]-TL-M3. Ứng dụng hệ thức lượng trong tam giác
+[_C4_B3_01]-TL-M3. Ứng dụng hệ thức lượng trong tam giác
 
-[D10_C3_B2_14]-TL-M3. Toán thực tế liên quan đến đồ thị hàm bậc hai 1
-[D10_C3_B2_15]-M3. Toán thực tế ứng dụng đồ thị hàm số bậc hai tìm lợi nhuận lớn nhất
-[D10_C3_B2_16]-M2. Tìm trục đối xứng của Parabol khi biết toạ độ giao điểm của nó với trục hoành.
-[D10_C3_B2_17]-TL-M4. Tìm m để phương trình f(|x|)=m có nhiều nghiệm nhất
-[D10_C3_B2_18]-TF-M4. Tìm m để phương trình f(|x|)=m có nghiệm thoả đk  
-[D10_C3_B2_19]-TL-M3. Tính chiều cao của cổng Parabol
+[_C3_B2_14]-TL-M3. Toán thực tế liên quan đến đồ thị hàm bậc hai 1
+[_C3_B2_15]-M3. Toán thực tế ứng dụng đồ thị hàm số bậc hai tìm lợi nhuận lớn nhất
+[_C3_B2_16]-M2. Tìm trục đối xứng của Parabol khi biết toạ độ giao điểm của nó với trục hoành.
+[_C3_B2_17]-TL-M4. Tìm m để phương trình f(|x|)=m có nhiều nghiệm nhất
+[_C3_B2_18]-TF-M4. Tìm m để phương trình f(|x|)=m có nghiệm thoả đk  
+[_C3_B2_19]-TL-M3. Tính chiều cao của cổng Parabol
 
-[D10_C7_B2_10]-M3. Toán thực tế ứng dụng tìm giá bán để lợi nhuận thoả điều kiện cho trước
+[_C7_B2_10]-M3. Toán thực tế ứng dụng tìm giá bán để lợi nhuận thoả điều kiện cho trước
 
-[D10_C2_B2_05]-TL-M3. Toán thực tế ứng dụng bpt bậc nhất 2 ẩn
-[D10_C2_B2_06]-M3. Tìm m để hệ bất phương trình vô nghiệm
-
-
-[D10_C5_B3_06]-TL-M4. Bài tổng hợp 
-
-[D10_CX_B0_14]-TF-M3. Tổng hợp(tìm toạ độ trực tâm)
+[_C2_B2_05]-TL-M3. Toán thực tế ứng dụng bpt bậc nhất 2 ẩn
+[_C2_B2_06]-M3. Tìm m để hệ bất phương trình vô nghiệm
 
 
-[D10_C5_B3_06]-TF-M3.Tổng hợp vecto
+[_C5_B3_06]-TL-M4. Bài tổng hợp 
+
+[_CX_B0_14]-TF-M3. Tổng hợp(tìm toạ độ trực tâm)
+
+
+[_C5_B3_06]-TF-M3.Tổng hợp vecto
