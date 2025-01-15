@@ -811,7 +811,7 @@ f"${{{c-2}}}$",
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
 
 
 

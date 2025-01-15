@@ -5774,10 +5774,10 @@ def htd_25_xyz_L12_C5_B2_26():
         f"Phương trình mặt phẳng ${{({ten_mp})}}:{n1}(x-{a1})+{n2}(y-{a2})+{n3}(z-{a3})=0\\Leftrightarrow {mp}$.\n\n"\
         f"Vậy: $T={a}a+{b}b+{c}c+{e}={T}$.").replace("1a","a").replace("-1a","-a").replace("-1b","-b").replace("-1c","-c")
     #Tạo các phương án
-    pa_A= f"*${kq}$"
-    pa_B= f"${kq2}$"
-    pa_C= f"${kq3}$"
-    pa_D= f"${kq4}$"
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
 
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]

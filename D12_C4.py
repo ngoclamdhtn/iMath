@@ -4592,9 +4592,9 @@ def ckz_L12C4_B4_10():
     x_2=x_1 + random.randint(1,5)
 
     kq= thay_the_tich_phan(f"$ {latex(my_module.hien_phan_so(m/a))}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)/(a*x_1+b))))}$")
-    kq2=thay_the_tich_phan(f"$ {m}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)/(a*x_1+b))))}$")
-    kq3=thay_the_tich_phan(f"$ \\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)/(a*x_1+b))))}$")
-    kq4=thay_the_tich_phan(f"$ {latex(my_module.hien_phan_so(m/a))}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)*(a*x_1+b))))}$")
+    kq2=thay_the_tich_phan(f"$ {m}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)/(a*x_1+b))))}+{random.randint(1,2)}$")
+    kq3=thay_the_tich_phan(f"$ \\ln {latex(my_module.hien_phan_so(abs((a*x_1+b)/(a*x_2+b))))}$")
+    kq4=thay_the_tich_phan(f"$ {latex(my_module.hien_phan_so(m/(a+random.randint(1,2))))}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b))))}$")
 
     #Tạo các phương án
     pa_A= f"*{kq}"
@@ -7027,15 +7027,22 @@ def ckz_L12C4_B4_41():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C4_B4_42]-SA-M2. Tính tổng các hệ số của kết quả tích phân asin^2(x/2)+b.
+#[D12_C4_B4_42]-SA-M2. Tính tổng các hệ số của kết quả tích phân asin^2(x/2) hoặc acos^2(x/2).
 def ckz_L12C4_B4_42():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    a= random.choice([2*i for i in range(-3, 4) if i!=0])
-    b = random.choice([i for i in range(-5, 6) if i!=0]) 
+    m= random.choice([2*i for i in range(-3, 4) if i!=0])
     
-    f=a*sin(x/2)**2+b
-    F=integrate(f,x)
+
+    chon=random.randint(1,2)
+
+    if chon==1:
+        f=m*sin(x/2)**2
+        F=m*(x-sin(x))/2    
+    if chon==2:
+        f=m*cos(x/2)**2
+        F=m*(x+sin(x))/2   
+    
     
     list_can=[pi/6, pi/3, 2*pi/3, 5*pi/6, pi/2, 0]
     random.shuffle(list_can)
@@ -7043,19 +7050,31 @@ def ckz_L12C4_B4_42():
     result = sp.simplify(integrate(f,(x,x_1,x_2)))
 
     # Tìm các hệ số a, b, c
-    a = result.as_coefficients_dict()[pi]    
-    c = result - a*pi    
+    a = result.as_coefficients_dict()[pi]
+    b = result.as_coefficients_dict()[sqrt(3)]
+    c = result - a*pi - b*sqrt(3)     
     
-    dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")    
+    dap_an=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")    
     noi_dung = (
-    f"Biết ${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}=a{latex(pi)}+b$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
-    )    
+    f"Biết ${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}=a{latex(pi)}+b{latex(sqrt(3))}+c$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    if chon==1:
 
-    noi_dung_loigiai=(
-    thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
-    f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
-    f"$\\Rightarrow a={latex(a)},b={latex(b)}$.\n\n"
-    f"$a+b={dap_an}$."))      
+        noi_dung_loigiai=(
+        thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}={tphan(latex(x_1),latex(x_2))}\\left[{m}\\dfrac{{1-\\sin x }}{{2}}\\right]{d_x}"
+        f"=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+        f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
+        f"$\\Rightarrow a={latex(a)},b={latex(b)},c={latex(c)}$.\n\n"
+        f"$a+b+c={dap_an}$."))
+
+    if chon==2:
+
+        noi_dung_loigiai=(
+        thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}={tphan(latex(x_1),latex(x_2))}\\left[{m}\\dfrac{{1+\\cos x }}{{2}}\\right]{d_x}"
+        f"=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+        f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
+        f"$\\Rightarrow a={latex(a)},b={latex(b)},c={latex(c)}$.\n\n"
+        f"$a+b+c={dap_an}$."))       
 
     noi_dung=thay_sin_cos(noi_dung)
     noi_dung_loi_giai=thay_sin_cos(noi_dung_loigiai) 

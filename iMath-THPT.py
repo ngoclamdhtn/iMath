@@ -2572,55 +2572,139 @@ class Ui_MainWindow(object):
                 L10_C8_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L10_C8_B1_1 = QTreeWidgetItem(L10_C8_B1, ["8.1.1 Quy tắc cộng"])
+                L10_C8_B1_1 = QTreeWidgetItem(L10_C8_B1, ["Trắc nghiệm"])
                 L10_C8_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_1, ["[D10_C8_B1_01]-M1. Cho 2 nhóm đồ vật. Tìm số cách chọn 1 vật."])
+                L10_C8_B1_11 = QTreeWidgetItem(L10_C8_B1_1, ["1. Quy tắc cộng"])
+                L10_C8_B1_11.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C8_B1_11.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C8_B1_11, ["[D10_C8_B1_01]-M1. Cho 2 nhóm đồ vật. Tìm số cách chọn 1 vật."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_1, ["[D10_C8_B1_02]-M1. Cho số lượng học sinh. Chọn 1 bạn để giữ chức vụ."])
+                item = QTreeWidgetItem(L10_C8_B1_11, ["[D10_C8_B1_02]-M1. Cho số lượng học sinh. Chọn 1 bạn để giữ chức vụ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_1, ["[D10_C8_B1_03]-M1. Chọn một thức uống từ các loại nước."])
+                item = QTreeWidgetItem(L10_C8_B1_11, ["[D10_C8_B1_03]-M1. Chọn một thức uống từ các loại nước."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_1, ["[D10_C8_B1_04]-M1. Chọn một địa điểm đi du lịch."])
+                item = QTreeWidgetItem(L10_C8_B1_11, ["[D10_C8_B1_04]-M1. Chọn một địa điểm đi du lịch."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L10_C8_B1_2 = QTreeWidgetItem(L10_C8_B1, ["8.1.2 Quy tắc nhân"])
-                L10_C8_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L10_C8_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L10_C8_B12 = QTreeWidgetItem(L10_C8_B1_1, ["2. Quy tắc nhân"])
+                L10_C8_B12.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C8_B12.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_05]-M1. Cho 2 nhóm đồ vật. Tìm số cách chọn 2 vật."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_05]-M1. Cho 2 nhóm đồ vật. Tìm số cách chọn 2 vật."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_06]-M1. Cho số lượng học sinh. Chọn 2 bạn để giữ chức vụ."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_06]-M1. Cho số lượng học sinh. Chọn 2 bạn để giữ chức vụ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_07]-M1. Tìm số đường đi từ A đến B và từ B đến C."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_07]-M1. Tìm số đường đi từ A đến B và từ B đến C."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_08]-M2. Từ n chữ số lập số có k chữ số."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_08]-M2. Từ n chữ số lập số có k chữ số."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_09]-M2. Từ n chữ số lập số có k chữ số khác nhau."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_09]-M2. Từ n chữ số lập số có k chữ số khác nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_10]-M2. Từ n chữ số có chứa số 0 lập số có k chữ số khác nhau."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_10]-M2. Từ n chữ số có chứa số 0 lập số có k chữ số khác nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B1_2, ["[D10_C8_B1_11]-M3. Chọn 2 quả cầu khác màu và có tổng là chẵn hoặc lẻ."])
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_12]-M2. Tính số ước nguyên của một số."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C8_B12, ["[D10_C8_B1_11]-M3. Chọn 2 quả cầu khác màu và có tổng là chẵn hoặc lẻ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                D10_C8_B1_2 = QTreeWidgetItem(L10_C8_B1, ["Đúng-Sai"])
+                D10_C8_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                D10_C8_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_2, ["[D10_C8_B1_14]-TF-M2. Chọn đề tài thi cử. Xét ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_2, ["[D10_C8_B1_15]-TF-M3. Chọn đề tài thi cử. Xét ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_2, ["[D10_C8_B1_16]-TF-M3. Các bài toán về tạo số.(nhiều kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_2, ["[D10_C8_B1_17]-TF-M3. Các b.toán về xếp người thành hàng(nhiều kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_2, ["[D10_C8_B1_18]-TF-M3. Các bài toán về xếp 3 nhóm đồ vật"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_2, ["[D10_C8_B1_19]-TF-M3. Các bài toán về chọn vật từ ba nhóm đối tượng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                D10_C8_B1_3 = QTreeWidgetItem(L10_C8_B1, ["Trả lời ngắn"])
+                D10_C8_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                D10_C8_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_13]-SA-M2. Tính số ước nguyên của một số"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_20]-SA-M2. Tính số cái bắt tay"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_21]-SA-M2. Tính số cách lấy ra 3 vật khác nhóm từ 3 nhóm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_22]-SA-M3. Tính số cách lấy ra 2 vật khác nhóm từ 3 nhóm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_23]-SA-M3. Tính số cách lấy ra 3 đ.tuong khác nhóm từ 4 nhóm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_24]-SA-M3. B.toán tạo số có các chữ số khác nhau và là số chẵn (ds có chứa cso 0)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_25]-SA-M3. B.toán tạo số các c.số khác nhau và chia hết cho 5 (ds có chứa cso 0)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_26]-SA-M3. B.toán tạo số có các chữ số khác nhau và lớn hơn số m cho trước"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_27]-SA-M3. B.toán tạo số có các chữ số khác nhau và nhỏ hơn số m cho trước"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_28]-SA-M4. B.toán tính tổng các số được tạo ra."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_29]-SA-M3. Cho 2 dt // tính số vecto tạo ra có điểm đầu điểm cuối không nằm trên 1 dt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2629,28 +2713,76 @@ class Ui_MainWindow(object):
                 #Bài 2
                 L10_C8_B2 = QTreeWidgetItem(L10_C8, ["Bài 2 - Hoán vị, chỉnh hợp, tổ hợp"])
                 L10_C8_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L10_C8_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L10_C8_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)               
 
-                #8.2.1
+                
                 L10_C8_B2_1 = QTreeWidgetItem(L10_C8_B2, ["8.2.1. Hoán vị"])
                 L10_C8_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_01]-M1. Xếp n bạn vào một hàng ngang(dọc)."])
+                L10_C8_B2_11 = QTreeWidgetItem(L10_C8_B2_1, ["Trắc nghiệm"])
+                L10_C8_B2_11.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C8_B2_11.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+                item = QTreeWidgetItem(L10_C8_B2_11, ["[D10_C8_B2_01]-M1. Xếp n bạn vào một hàng ngang(dọc)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_07]-M2. Xếp k nhóm đồ vật vào một hàng."])
+                item = QTreeWidgetItem(L10_C8_B2_11, ["[D10_C8_B2_07]-M2. Xếp k nhóm đồ vật vào một hàng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_12]-M2. Xếp k người vào một hàng có 2 bạn đứng ở 2 đầu."])
+                item = QTreeWidgetItem(L10_C8_B2_11, ["[D10_C8_B2_12]-M2. Xếp k người vào một hàng có 2 bạn đứng ở 2 đầu."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_13]-M2. Xếp k người vào một hàng có 2 bạn đứng cạnh nhau(không cạnh nhau)."])
+                item = QTreeWidgetItem(L10_C8_B2_11, ["[D10_C8_B2_13]-M2. Xếp k người vào một hàng có 2 bạn đứng cạnh nhau(không cạnh nhau)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C8_B2_12 = QTreeWidgetItem(L10_C8_B2_1, ["Đúng-Sai"])
+                L10_C8_B2_12.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C8_B2_12.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+                D10_C8_B2_13 = QTreeWidgetItem(L10_C8_B2_1, ["Trả lời ngắn"])
+                D10_C8_B2_13.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                D10_C8_B2_13.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_37]-SA-M3. Xếp m nam, n nữ sao cho bạn nam A luôn giữa 2 bạn nữ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_38]-SA-M3. Xếp m nam, n nữ sao cho bạn nam (nữ) luôn cạnh nhau."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_39]-SA-M2. Xếp m nam, n nữ sao cho bạn nam A không đứng đầu(cuối)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_40]-SA-M2. Xếp m nam, m nữ sao cho nam nữ xen kẽ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_43]-SA-M3. Tạo các số có các chữ số tăng (giảm) dần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_44]-SA-M4. Có bao nhiêu cách chia m kẹo cho n em."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_45]-SA-M4. Số nghiệm nguyên dương của phương trình bậc nhất nhiều ẩn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_13, ["[D10_C8_B2_47]-SA-M3. Tạo số có chữ số x có mặt k lần chữ số y có mặt q lần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 #8.2.1
                 L10_C8_B2_2 = QTreeWidgetItem(L10_C8_B2, ["8.2.2. Chỉnh hợp"])
@@ -2756,9 +2888,7 @@ class Ui_MainWindow(object):
 
                 item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_33]-M2. Các bài toán chọn k bi(cầu) đủ các màu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
 
 
@@ -2790,23 +2920,75 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_34]-TF-M3. Cho m nam,n nữ trong đó có A. Xét ĐS"])
+                item=QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_34]-TF-M3. Cho m nam,n nữ trong đó có A. Xét ĐS"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_35]-TF-M3. Cho m nam,n nữ trong đó có nam A và nữ B. Xét ĐS"])
+                item=QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_35]-TF-M3. Cho m nam,n nữ trong đó có nam A và nữ B. Xét ĐS"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_41]-TF-M3. Xếp m nam, m nữ thoả các dk. Xét tính ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_42]-TF-M3. Có m nam, n nữ, chọn k bạn thoả các dk. Xét tính ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_46]-TF-M3. Chọn k vật từ một nhóm thoả điều kiện nào đó. Xét ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_3_2, ["[D10_C8_B2_48]-TF-M3. Các bài toán tạo số."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 
 
-                L10_C8_B2_3_3 = QTreeWidgetItem(L10_C8_B2_3, ["Trả lời ngắn"])
-                L10_C8_B2_3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L10_C8_B2_3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                D10_C8_B2_3 = QTreeWidgetItem(L10_C8_B2_3, ["Trả lời ngắn"])
+                D10_C8_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                D10_C8_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_3, ["[D10_C8_B2_36]-SA-M3. Cho m nam n nữ chọn k bạn trong đó A B không cùng có mặt."])
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_36]-SA-M3. Cho m nam n nữ chọn k bạn trong đó A B không cùng có mặt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_37]-SA-M3. Xếp m nam, n nữ sao cho bạn nam A luôn giữa 2 bạn nữ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_38]-SA-M3. Xếp m nam, n nữ sao cho bạn nam (nữ) luôn cạnh nhau."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_39]-SA-M2. Xếp m nam, n nữ sao cho bạn nam A không đứng đầu(cuối)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_40]-SA-M2. Xếp m nam, m nữ sao cho nam nữ xen kẽ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_43]-SA-M3. Tạo các số có các chữ số tăng (giảm) dần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_44]-SA-M4. Có bao nhiêu cách chia m kẹo cho n em."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_45]-SA-M4. Số nghiệm nguyên dương của phương trình bậc nhất nhiều ẩn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_47]-SA-M3. Tạo số có chữ số x có mặt k lần chữ số y có mặt q lần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 #Bài 3
                 L10_C8_B3 = QTreeWidgetItem(L10_C8, ["Bài 3 - Nhị thức Niutơn"])
@@ -7241,13 +7423,17 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_39]-SA-M3.Tính tổng hệ số của kq quả tích phân atan^2x+b."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_40]-SA-M3.Tính tổng hệ số của kq quả tích phân asinmx+bcosnx."])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_41]-SA-M3.Tính tổng hệ số của kq quả tích phân asinx+bcosx+cx."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_41]-SA-M3.Tính tổng hệ số của kq quả tích phân asinx+bcosx+cx."])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_42]-SA-M3.Tính tổng hệ số của kq quả tích phân asin^2(x/2) hoặc acos^2(x/2)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_40]-SA-M3.Tính tổng hệ số của kq quả tích phân asinmx+bcosnx."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9224,7 +9410,11 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B4_41]-SA-M2. Tính tổng các hệ số của kết quả tích phân asinx+bcosx+cx. 
                                                 if dang_toan == "[D12_C4_B4_41]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_41()          
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_41()
+
+                                                #[D12_C4_B4_42]-SA-M2. Tính tổng các hệ số của kết quả tích phân asin^2(x/2) hoặc acos^2(x/2).
+                                                if dang_toan == "[D12_C4_B4_42]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_42()         
                                                     
 
                                             #Bài 5. Ứng dụng tích phân
@@ -12744,19 +12934,95 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B1_08()                                     
                                                     
 
-                                    #[D10_C8_B1_09]-M1. Từ n chữ số lập được bao nhiêu số có k chữ số.
+                                                #[D10_C8_B1_09]-M1. Từ n chữ số lập được bao nhiêu số có k chữ số.
                                                 if dang_toan == "[D10_C8_B1_09]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B1_09()                                     
                                                     
 
-                                    #[D10_C8_B1_10]-M1. Từ n chữ số lập được bao nhiêu số có k chữ số.
+                                                #[D10_C8_B1_10]-M1. Từ n chữ số lập được bao nhiêu số có k chữ số.
                                                 if dang_toan == "[D10_C8_B1_10]":                                        
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B1_10()                                     
                                                     
 
-                                    #[D10_C8_B1_11]-M3. Chọn 2 quả cầu khác màu và tổng là chẵn hoặc lẻ.
+                                                #[D10_C8_B1_11]-M3. Chọn 2 quả cầu khác màu và tổng là chẵn hoặc lẻ.
                                                 if dang_toan == "[D10_C8_B1_11]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B1_11()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B1_11()
+
+                                                #[D10_C8_B1_12]-M3. Tính số ước nguyên của một số
+                                                if dang_toan == "[D10_C8_B1_12]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B1_12()
+
+                                                #[D10_C8_B1_13]-SA-M2. Tính số ước nguyên của một số
+                                                if dang_toan =="[D10_C8_B1_13]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_13()
+
+                                                #[D10_C8_B1_14]-TF-M2. Chọn đề tài thi cử. Xét ĐS
+                                                if dang_toan =="[D10_C8_B1_14]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B1_14()
+
+                                                #[D10_C8_B1_15]-TF-M3. Chọn đề tài thi cử. Xét ĐS
+                                                if dang_toan =="[D10_C8_B1_15]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B1_15()
+
+                                                #[D10_C8_B1_16]-TF-M3. Các bài toán về tạo số.(nhiều kiểu)
+                                                if dang_toan =="[D10_C8_B1_16]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B1_16()
+
+                                                #[D10_C8_B1_17]-TF-M3. Các b.toán về xếp người thành hàng(nhiều kiểu)
+                                                if dang_toan =="[D10_C8_B1_17]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B1_17()
+
+                                                #[D10_C8_B1_18]-TF-M3. Các bài toán về xếp 3 nhóm đồ vật
+                                                if dang_toan =="[D10_C8_B1_18]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B1_18()
+
+                                                #[D10_C8_B1_19]-TF-M3. Các bài toán về chọn vật từ ba nhóm đối tượng
+                                                if dang_toan =="[D10_C8_B1_19]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B1_19()
+
+                                                #[D10_C8_B1_20]-SA-M2. Tính số cái bắt tay
+                                                if dang_toan =="[D10_C8_B1_20]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_20()
+
+                                                #[D10_C8_B1_21]-SA-M2. Tính số cách lấy ra 3 vật khác nhóm từ 3 nhóm
+                                                if dang_toan =="[D10_C8_B1_21]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_21()
+
+                                                #[D10_C8_B1_22]-SA-M3. Tính số cách lấy ra 2 vật khác nhóm từ 3 nhóm
+                                                if dang_toan =="[D10_C8_B1_22]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_22()
+
+                                                #[D10_C8_B1_23]-SA-M3. Tính số cách lấy ra 3 đ.tuong khác nhóm từ 4 nhóm
+                                                if dang_toan =="[D10_C8_B1_23]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_23()
+
+                                                #[D10_C8_B1_24]-SA-M3. B.toán tạo số có các chữ số khác nhau và là số chẵn (ds có chứa cso 0)
+                                                if dang_toan =="[D10_C8_B1_24]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_24()
+
+                                                #[D10_C8_B1_25]-SA-M3. B.toán tạo số các c.số khác nhau và chia hết cho 5 (ds có chứa cso 0)
+                                                if dang_toan =="[D10_C8_B1_25]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_25()
+
+                                                #[D10_C8_B1_26]-SA-M3. B.toán tạo số có các chữ số khác nhau và lớn hơn số m cho trước
+                                                if dang_toan =="[D10_C8_B1_26]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_26()
+
+                                                #[D10_C8_B1_27]-SA-M3. B.toán tạo số có các chữ số khác nhau và nhỏ hơn số m cho trước
+                                                if dang_toan =="[D10_C8_B1_27]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_27()
+
+                                                #[D10_C8_B1_28]-SA-M4. B.toán tính tổng các số được tạo ra.
+                                                if dang_toan =="[D10_C8_B1_28]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_28()
+
+                                                #[D10_C8_B1_29]-SA-M3. Cho 2 dt // tính số vecto tạo ra có điểm đầu điểm cuối không nằm trên 1 dt
+                                                if dang_toan =="[D10_C8_B1_29]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_29()
+
+
+
+                                  
                                                     
                                     #8.2.1 Hoán vị
 
@@ -12930,7 +13196,62 @@ class Ui_MainWindow(object):
 
                                                 #[D10_C8_B2_36]-SA-M3. Cho m nam n nữ chọn k bạn trong đó A B không cùng có mặt.
                                                 if dang_toan =="[D10_C8_B2_36]":
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_36()                                    
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_36()
+
+                                                #[D10_C8_B2_37]-SA-M3. Xếp m nam, n nữ sao cho bạn nam A luôn giữa 2 bạn nữ.
+                                                if dang_toan =="[D10_C8_B2_37]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_37()
+
+                                                #[D10_C8_B2_38]-SA-M3. Xếp m nam, n nữ sao cho bạn nam (nữ) luôn cạnh nhau.
+                                                if dang_toan =="[D10_C8_B2_38]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_38()
+
+                                                #[D10_C8_B2_39]-SA-M2. Xếp m nam, n nữ sao cho bạn nam A không đứng đầu(cuối).
+                                                if dang_toan =="[D10_C8_B2_39]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_39()
+
+                                                #[D10_C8_B2_40]-SA-M2. Xếp m nam, m nữ sao cho nam nữ xen kẽ.
+                                                if dang_toan =="[D10_C8_B2_40]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_40()
+
+                                                #[D10_C8_B2_41]-TF-M3. Xếp m nam, m nữ thoả các dk. Xét tính ĐS
+                                                if dang_toan =="[D10_C8_B2_41]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_41()
+
+                                                #[D10_C8_B2_42]-TF-M3. Có m nam, n nữ, chọn k bạn thoả các dk. Xét tính ĐS
+                                                if dang_toan =="[D10_C8_B2_42]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_42()
+
+                                                #[D10_C8_B2_43]-SA-M3. Tạo các số có các chữ số tăng (giảm) dần
+                                                if dang_toan =="[D10_C8_B2_43]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_43()
+
+                                                #[D10_C8_B2_44]-SA-M4. Có bao nhiêu cách chia m kẹo cho n em.
+                                                if dang_toan =="[D10_C8_B2_44]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_44()
+
+                                                #[D10_C8_B2_45]-SA-M4. Số nghiệm nguyên dương của phương trình bậc nhất nhiều ẩn
+                                                if dang_toan =="[D10_C8_B2_45]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_45()
+
+                                                #[D10_C8_B2_46]-TF-M3. Chọn k vật từ một nhóm thoả điều kiện nào đó. Xét ĐS
+                                                if dang_toan =="[D10_C8_B2_46]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_46()
+
+                                                #[D10_C8_B2_47]-SA-M3. Tạo số có chữ số x có mặt k lần chữ số y có mặt q lần
+                                                if dang_toan =="[D10_C8_B2_47]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B2_47()                                        
+
+                                                #[D10_C8_B2_48]-TF-M3. Các bài toán tạo số.
+                                                if dang_toan =="[D10_C8_B2_48]":
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_48()
+
+
+
+
+
+
+                                                # Bài 3: Nhị thức niuton                                    
                                                     
 
                                                 #[D10_C8_B3_01]-M1. Khai triển (x+a)^n
