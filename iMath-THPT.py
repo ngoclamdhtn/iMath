@@ -7231,7 +7231,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_23]-SA-M3. Tính tổng hệ số của kết quả tích phân a/x"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_23]-SA-M3. Tính tổng hệ số của kq tích phân a/x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_38]-SA-M3.Tính tổng hệ số của kq tích phân acot^2x+b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_39]-SA-M3.Tính tổng hệ số của kq quả tích phân atan^2x+b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_40]-SA-M3.Tính tổng hệ số của kq quả tích phân asinmx+bcosnx."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9192,7 +9204,19 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B4_37]-TF-M2.  Xét Đ-S về biến đổi tích phân: đổi cận, tích phân hàm số chẵn, lẻ, tích phân chứa dấu ||
                                                 if dang_toan == "[D12_C4_B4_37]": 
-                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_37()                 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_37()
+
+                                                #[D12_C4_B4_38]-SA-M2. Tính tổng các hệ số của kết quả tích phân acot^2x+b. 
+                                                if dang_toan == "[D12_C4_B4_38]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_38()
+
+                                                #[D12_C4_B4_39]-SA-M2. Tính tổng các hệ số của kết quả tích phân atan^2x+b. 
+                                                if dang_toan == "[D12_C4_B4_39]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_39()
+
+                                                #[D12_C4_B4_40]-SA-M2. Tính tổng các hệ số của kết quả tích phân asinmx+bcosnx. 
+                                                if dang_toan == "[D12_C4_B4_40]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_40()           
                                                     
 
                                             #Bài 5. Ứng dụng tích phân

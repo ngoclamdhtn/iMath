@@ -6757,31 +6757,171 @@ def ckz_L12C4_B4_37():
 
     return debai,debai_latex,loigiai_word,dap_an
 
-#[D12_C4_B4_38]-SA-M2. Tính tích phân acot^2x+b
+#[D12_C4_B4_38]-SA-M2. Tính tổng các hệ số của kết quả tích phân acot^2x+b.
 def ckz_L12C4_B4_38():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     a= random.choice([i for i in range(-5, 6) if i!=0])
     b = random.choice([i for i in range(-5, 6) if i!=0])
-    list_can=[pi/6,pi/3,pi/4,2*pi/3,3*pi/4,5*pi/6]
+    list_can=[pi/6, pi/3, pi/4, 2*pi/3, 3*pi/4, 5*pi/6]
+  
     while True:
-        x_1=random.choice([list_can])
-        x_2=random.choice([list_can])
+        x_1=random.choice(list_can)
+        x_2=random.choice(list_can)
+        if x_1 in [pi/4, 3*pi/4] and x_2 in [pi/4, 3*pi/4]:
+            continue
         if x_1<x_2:
             break
-    f=a*cot(x)**2+b
-    F=integrate(f)
+    F=a*cot(x)+b*x
+    f=diff(F,x)
 
+    result = sp.simplify(integrate(f,(x,x_1,x_2)))
+
+    # Tìm các hệ số a, b, c
+    a = result.as_coefficients_dict()[pi]
+    b = result.as_coefficients_dict()[sqrt(3)]
+    c = result - a*pi - b*sp.sqrt(3)
+  
+    dap_an=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")
     noi_dung = (
     f"Biết ${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=a{latex(pi)}+b{latex(sqrt(3))}+c$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
-    )
-    dap_an=" "
+    )    
 
     noi_dung_loigiai=(
-    f"${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}={latex(F)}\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
-    f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$."
-    
+    thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+    f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
+    f"$\\Rightarrow a={phan_so(a)},b={phan_so(b)},c={latex(c)}$.\n\n"
+    f"$a+b+c={dap_an}$."))
+
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loi_giai=thay_sin_cos(noi_dung_loigiai) 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_39]-SA-M2. Tính tổng các hệ số của kết quả tích phân acot^2x+b.
+def ckz_L12C4_B4_39():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+
+    chon=random.randint(1,6)    
+    if chon==1:
+        x_1, x_2=pi/6, pi/3    
+    if chon==2:
+        x_1, x_2=pi/4, pi/3
+    if chon==3:
+        x_1, x_2=pi/6, pi/4
+    if chon==4:
+        x_1, x_2=3*pi/4, 2*pi/3
+    if chon==5:
+        x_1, x_2=3*pi/4, 5*pi/6
+    if chon==6:
+        x_1, x_2=2*pi/3, 5*pi/6
+
+    F=a*tan(x)+b*x
+    f=diff(F,x)
+
+    result = sp.simplify(integrate(f,(x,x_1,x_2)))
+
+    # Tìm các hệ số a, b, c
+    a = result.as_coefficients_dict().get(sp.pi, 0)
+    b = result.as_coefficients_dict().get(sp.sqrt(3), 0)
+    c = result - a*pi - b*sp.sqrt(3)
+  
+    dap_an=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")    
+    noi_dung = (
+    f"Biết ${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=a{latex(pi)}+b{latex(sqrt(3))}+c$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
     )    
+
+    noi_dung_loigiai=(
+    thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+    f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
+    f"$\\Rightarrow a={latex(a)},b={latex(b)},c={latex(c)}$.\n\n"
+    f"$a+b+c={dap_an}$."))
+
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loi_giai=thay_sin_cos(noi_dung_loigiai) 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_40]-SA-M2. Tính tổng các hệ số của kết quả tích phân asinmx+bcosnx.
+def ckz_L12C4_B4_40():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    m=random.randint(1,3)
+    n=random.randint(1,4)
+    F=a*sin(m*x)+b*cos(n*x)
+    f=diff(F,x)
+    chon=random.randint(1,2)    
+    if chon==1:
+        list_can=[pi/6, pi/3, 2*pi/3, 5*pi/6]
+        random.shuffle(list_can)
+        x_1, x_2=list_can[0:2]
+        result = sp.simplify(integrate(f,(x,x_1,x_2)))
+
+        # Tìm các hệ số a, b, c
+        a = result.as_coefficients_dict().get(sp.sqrt(3), 0)
+        b =  result-a*sp.sqrt(3)       
+        
+        dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")    
+        noi_dung = (
+        f"Biết ${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=a{latex(pi)}+b{latex(sqrt(3))}$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+        )    
+
+        noi_dung_loigiai=(
+        thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+        f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
+        f"$\\Rightarrow a={latex(a)},b={latex(b)}$.\n\n"
+        f"$a+b={dap_an}$."))
+
+    if chon==2:
+        x_1=random.choice([pi/6, pi/3, 2*pi/3, 5*pi/6])        
+        x_2=random.choice([pi/4, 3*pi/4])  
+        result = sp.simplify(integrate(f,(x,x_1,x_2)))
+
+        # Tìm các hệ số a, b, c
+        a = result.as_coefficients_dict().get(sp.sqrt(2), 0)
+        b = result.as_coefficients_dict().get(sp.sqrt(3), 0)
+        c = result - a*sqrt(2) - b*sp.sqrt(3)      
+        
+        dap_an=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")    
+        noi_dung = (
+        f"Biết ${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=a{latex(sqrt(2))}+b{latex(sqrt(3))}+c$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
+        )    
+
+        noi_dung_loigiai=(
+        thay_sin_cos(f"${tphan(latex(x_1),latex(x_2))}({latex(f)}){d_x}=\\left[{latex(F)}\\right]\\bigg|_{{{latex(x_1)}}}^{{{latex(x_2)}}}$\n\n"
+        f"$={latex(F.subs(x,x_2))}-({latex(F.subs(x,x_1))})={latex(F.subs(x,x_2)-F.subs(x,x_1))}$.\n\n"
+        f"$\\Rightarrow a={latex(a)},b={latex(b)},c={latex(c)}$.\n\n"
+        f"$a+b+c={dap_an}$."))  
+
+    
+
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loi_giai=thay_sin_cos(noi_dung_loigiai) 
         
     debai_word= f"{noi_dung}\n"
 
