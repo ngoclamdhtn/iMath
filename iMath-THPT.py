@@ -7247,6 +7247,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_41]-SA-M3.Tính tổng hệ số của kq quả tích phân asinx+bcosx+cx."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
                 L12_C4_B5 = QTreeWidgetItem(L12_C4, ["Bài 3 - Ứng dụng của tích phân"])
                 L12_C4_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -9216,7 +9220,11 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B4_40]-SA-M2. Tính tổng các hệ số của kết quả tích phân asinmx+bcosnx. 
                                                 if dang_toan == "[D12_C4_B4_40]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_40()           
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_40()
+
+                                                #[D12_C4_B4_41]-SA-M2. Tính tổng các hệ số của kết quả tích phân asinx+bcosx+cx. 
+                                                if dang_toan == "[D12_C4_B4_41]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_41()          
                                                     
 
                                             #Bài 5. Ứng dụng tích phân
