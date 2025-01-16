@@ -1914,13 +1914,13 @@ def gh11gh_L11_C3_B2_07():
         kq=f"{latex(sqrt(a)/m)}"
         kq2=f"{latex(-sqrt(a)/m)}"
         kq3=random.choice([0,"+\\infty","-\\infty"])
-        kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}"
+        kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n)])}"
 
     else:
         kq=f"{latex(-sqrt(a)/m)}"
         kq2=f"{latex(sqrt(a)/m)}"
         kq3=random.choice([0,"+\\infty","-\\infty"])
-        kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n),latex(-sqrt(a)/m) ])}" 
+        kq4=f"{random.choice([phan_so(a/m),phan_so(-a/m),phan_so(a/n),phan_so(-a/m),latex(sqrt(a)/n) ])}" 
 
     pa_A= f"*${{{kq}}}$"
     pa_B= f"${{{kq2}}}$"
@@ -2911,47 +2911,41 @@ def gh11gh_L11_C3_B3_03():
 def gh11gh_L11_C3_B3_04():
     #Tạo hàm thứ nhất
     x = sp.symbols('x')
-    x_0 = random.randint(-4,4)
-    if x_0==0:
-        x_0 = random.randint(2,5)
+    x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+    x_1=x_0+random.randint(1,4)
 
-    a = random.randint(-4,4)
-    if a==0:
-        a = random.randint(1,4)
-    b = random.randint(-4,4)
-    c = random.randint(-5,5)
-    if c==0:
-        c==random.randint(1,3)
-    d=-a*x_0**3-b*x_0**2-c*x_0
+
+    a1 = random.choice([i for i in range(-3, 3) if i!=0])
+    b1 = random.choice([i for i in range(-4, 4) if i!=0])
+    c1=random.randint(-5,5)
+
     #Tạo hàm số thứ nhất
-    f = a*x**3 + b*x**2 + c*x + d
-
-    a1 = random.randint(-3,3)    
-    b1 = random.randint(-4,4)
-    if b1==0:
-        b1=random.randint(1,3)
-
-    c1=-a1*x_0**2-b1*x_0
-    g=a1*x**2 + b1*x +c1 
+    f = (x-x_0)*(a1*x**2+b1*x+c1)
+    a2 = random.choice([i for i in range(-5, 6) if i!=0])
+  
+    g=a2*(x-x_0)*(x-x_1)
 
     #Tạo hàm thứ 2: mx+b2
-    b2 = random.randint(-4,4)
-    if b2==0:
-        b2 = random.randint(1,3)
+    b2 = random.choice([i for i in range(-5, 6) if i!=0])
     dau="+"
     if b2<0:
         dau=""
         
-    kq=latex((limit(f/g, x, x_0)-b2)/x_0)
-    kq2 = latex((limit(f/g, x, x_0)+b2)/x_0)
-    kq3=latex(limit(f/g, x, x_0)/x_0)
-    kq4=latex(limit(g/f, x, x_0)/x_0)
+    kq=(limit(f/g, x, x_0)-b2)/x_0
+    kq2 = (limit(f/g, x, x_0)+b2)/x_0
+    kq3=(limit(f/g, x, x_0))/x_0
+    kq4=(limit(f/g, x, x_0))/x_1
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
     #Tạo các phương án
-    pa_A= f"*$m={kq}$"
-    pa_B= f"$m={kq2}$"
-    pa_C= f"$m={kq3}$"
-    pa_D= f"$m={kq4}$"
+    pa_A= f"*$m={latex(kq)}$"
+    pa_B= f"$m={latex(kq2)}$"
+    pa_C= f"$m={latex(kq3)}$"
+    pa_D= f"$m={latex(kq4)}$"
 
      #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -3408,10 +3402,10 @@ def gh11gh_L11_C3_B3_08():
     \\end{{array}} \\right.$")
 
     noi_dung = (
-    f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ \n(kết quả làm tròn đến hàng phần mười)."
+    f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ \n(kết quả làm tròn đến hàng phần trăm)."
     )
     m_0=(g.subs(x,x_1)-q)/(p*x_1)
-    dap_an=f"{round_half_up(m_0,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(m_0,2):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
     f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"

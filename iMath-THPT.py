@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 08.01.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.01.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 08.01.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.01.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -910,7 +910,7 @@ class Ui_MainWindow(object):
 
                 #Tạo label đang xử lí
                 self.label_socau_daxuli = QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label_socau_daxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+380, 450, 20))
+                self.label_socau_daxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+380, 450, 100))
                 self.label_socau_daxuli.setFont(font)
                 self.label_socau_daxuli.setObjectName("label_socau_daxuli")
 
@@ -13939,7 +13939,10 @@ class Ui_MainWindow(object):
                                                 #Cập nhật số câu đã xử lí
                                                 if dong_dangtoan[0]=="[":
                                                         socau_daxuli += 1
-                                                        self.label_socau_daxuli.setText(f"Đã tạo xong câu {socau_daxuli}/{sum_toanbo} của đề số {j+1}.")
+                                                        noi_dung_tao_xong=(
+                                                            f"Đã tạo xong dạng: {dang_toan}\n"
+                                                            f"Đã tạo câu {socau_daxuli}/{sum_toanbo} của đề số {j+1}.")
+                                                        self.label_socau_daxuli.setText(noi_dung_tao_xong)
                                     
                                     self.progress_bar.setValue(i)                                    
                                     self.sleep(1)

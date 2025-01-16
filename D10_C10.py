@@ -1645,15 +1645,13 @@ def gghik_L10_CX_B0_21():
 	t=random.randint(2,4)
 	k=-t/(t+1)
 
-	chon=random.randint(1,3)
+	chon=random.randint(1,2)
 	if chon==1:
-		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$.")
+		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2})$.")
 	
 	if chon==2:
-		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${B}({b1};{b2}), {A}({a1};{a2}), {C}({c1};{c2})$.")
+		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${B}({b1};{b2}), {A}({a1};{a2})$.")
 
-	if chon==3:
-		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${C}({c1};{c2}), {B}({b1};{b2}), {A}({a1};{a2})$.")
 
 	noi_dung+=f" Điểm ${{{P}}}(a;b)$ thuộc đoạn ${{{A}{B}}}$ thỏa mãn ${P}{A}={t}{P}{B}$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
 	
@@ -1935,8 +1933,10 @@ def gghik_L10_CX_B0_25():
 	u=random.choice(["u", "v", "m", "n", "a", "b", "c"])
 	a=random.randint(-10,10)
 	b=random.choice([i for i in range(-5,5) if i!=0])
+	i,j=sp.symbols(" sti stj")
 
-	noi_dung=f" Trong mặt phẳng toạ độ ${{(Oxy)}}$ biết $\\overrightarrow{{{u}}}= {a}\\overrightarrow{{i}}+{b}\\overrightarrow{{j}}$, toạ độ của $\\overrightarrow{{{u}}}$ là:"
+	noi_dung=f" Trong mặt phẳng toạ độ ${{(Oxy)}}$ biết $\\overrightarrow{{{u}}}= {latex(a*i+b*j)}$, toạ độ của $\\overrightarrow{{{u}}}$ là:"
+	noi_dung=noi_dung.replace("sti","\\overrightarrow{{i}}").replace("stj","\\overrightarrow{{j}}")
 	noi_dung_loigiai= f"${{ \\overrightarrow{{{u}}}=({a}; {b}) }}$"
 	noi_dung=thay_dau_congtru(noi_dung)
 	kq=f"${{\\left({a}; {b} \\right)}}$ "

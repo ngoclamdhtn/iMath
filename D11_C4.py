@@ -1363,6 +1363,7 @@ def ghj_7_jkl_L11_C4_B2_05():
 			f"${{{G}{N}}}$ và ${{{M}{K}}}$ cắt nhau",
 			f"${{{S}{G}}}$ và ${{{A}{B}}}$ cắt nhau",
 			f"${{{A}{M}}}$ và ${{{C}{N}}}$ cắt nhau",
+			f"${{{S}{K}}}$ và ${{{A}{C}}}$ cắt nhau",
 
 			f"${{{S}{C}}}$ và ${{{A}{B}}}$ chéo nhau",
 			f"${{{S}{B}}}$ và ${{{A}{C}}}$ chéo nhau",
@@ -1372,7 +1373,7 @@ def ghj_7_jkl_L11_C4_B2_05():
 
 		kq_false=[
 			f"${{{S}{G}}}$ và ${{{B}{C}}}$ cắt nhau",
-			f"${{{S}{K}}}$ và ${{{A}{C}}}$ cắt nhau",			
+			f"${{{S}{G}}}$ và ${{{A}{C}}}$ cắt nhau",						
 			f"${{{S}{B}}}$ và ${{{M}{N}}}$ cắt nhau",
 
 			f"${{{M}{K}}}$ và ${{{B}{C}}}$ song song",
@@ -1403,7 +1404,7 @@ def ghj_7_jkl_L11_C4_B2_05():
 
 		kq=random.choice([
 			f"${{{S}{G}}}$ và ${{{B}{C}}}$ cắt nhau",
-			f"${{{S}{K}}}$ và ${{{A}{C}}}$ cắt nhau",			
+			f"${{{S}{K}}}$ và ${{{A}{C}}}$ chéo nhau",			
 			f"${{{S}{B}}}$ và ${{{M}{N}}}$ cắt nhau",
 
 			f"${{{M}{K}}}$ và ${{{B}{C}}}$ song song",

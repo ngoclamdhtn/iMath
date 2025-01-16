@@ -2063,9 +2063,9 @@ def ckz_L12C4_B1_34():
 
     kq=f"$F(x)={latex(G)}$"
     kq_false=[
-    f"$F(x)={latex(m*e**x-n*e**(-x)+C)}$",
+    f"$F(x)={latex(1/m*e**x-1/n*e**(-x)+C)}$",
     f"$F(x)={latex(m*e**(-x)+n*x+C)}$",
-    f"$F(x)={latex(m*e**x-n+C)}$"]
+    f"$F(x)={latex(m*e**x-n*e**(-x)+C+random.randint(1,3))}$"]
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
 
@@ -2110,17 +2110,8 @@ def ckz_L12C4_B1_34():
 def ckz_L12C4_B1_35():
     d_x=f"\\mathrm{{\\,d}}x"
     x,e=sp.symbols("x,e")
-    m = random.choice([i for i in range(-4, 4) if i!=0])
-    n = random.choice([i for i in range(-3, 3) if i!=0])   
-    
-    F=m*exp(x)+n*x
-    x_0= random.choice([random.randint(-3, 3)])    
-    b= random.randint(-6, 6)
-    C=b-F.subs(x,x_0)
-    G=F+C
-    f=diff(F,x)  
-    x_1=random.choice([i for i in range(-3,3) if i!=x_0])
-    while G.subs(x,x_1)<-9.9 or G.subs(x,x_1)>9999:
+
+    while True:
         m = random.choice([i for i in range(-4, 4) if i!=0])
         n = random.choice([i for i in range(-3, 3) if i!=0])   
         
@@ -2130,6 +2121,11 @@ def ckz_L12C4_B1_35():
         C=b-F.subs(x,x_0)
         G=F+C
         x_1=random.choice([i for i in range(-3,3) if i!=x_0])
+        if G.subs(x,x_1)>-9 and G.subs(x,x_1)<600:
+            break
+    f=diff(F,x)
+
+    
    
 
     noi_dung=(
@@ -3366,7 +3362,7 @@ def ckz_L12C4_B1_52():
     a=random.randint(2,9)
 
     kq1_T=f"* $\\int {{{a}e^x}}{d_x}={a}e^x+C$" 
-    kq1_F=f"* $\\int {{{a}e^x}}{d_x}=e^{{{a}x}}+C$"
+    kq1_F=f"$\\int {{{a}e^x}}{d_x}=e^{{{a}x}}+C$"
     
     HDG=f"$\\int {{{a}e^x}}{d_x}={a}e^x+C$."
     kq1=random.choice([kq1_T, kq1_F])
@@ -4594,7 +4590,7 @@ def ckz_L12C4_B4_10():
     kq= thay_the_tich_phan(f"$ {latex(my_module.hien_phan_so(m/a))}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)/(a*x_1+b))))}$")
     kq2=thay_the_tich_phan(f"$ {m}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b)/(a*x_1+b))))}+{random.randint(1,2)}$")
     kq3=thay_the_tich_phan(f"$ \\ln {latex(my_module.hien_phan_so(abs((a*x_1+b)/(a*x_2+b))))}$")
-    kq4=thay_the_tich_phan(f"$ {latex(my_module.hien_phan_so(m/(a+random.randint(1,2))))}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b))))}$")
+    kq4=thay_the_tich_phan(f"$ {m*a}\\ln {latex(my_module.hien_phan_so(abs((a*x_2+b))))}$")
 
     #Tạo các phương án
     pa_A= f"*{kq}"
@@ -4889,11 +4885,13 @@ def ckz_L12C4_B4_15():
         x_0= random.choice([i for i in range(-4, 4) if i!=0])
         x_1 = x_0-random.randint(1,4)    
         x_2=x_0+random.randint(1,4)
-        if x_1 != 0 and x_2!=0:
+        if x_1 != 0 and x_2!=0 and x_1*x_0>0:
             break
 
     tp1=integrate(f, (x,x_1,x_0))
     tp2=integrate(g, (x,x_0,x_2))
+
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
 
 
     noi_dung = (f" Cho hàm số"
@@ -4903,7 +4901,7 @@ def ckz_L12C4_B4_15():
     \\end{{array}} \\right.$."
     f" Tính ${tphan(x_1,x_2)} f(x){d_x}$(kết quả làm tròn đến hàng phần mười)."
     )
-    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+    
 
     noi_dung_loigiai=(
     f"${tphan(x_1,x_2)} f(x){d_x}={tphan(x_1,x_0)} f(x){d_x}+{tphan(x_0,x_2)} f(x){d_x}$"
@@ -5519,7 +5517,7 @@ def ckz_L12C4_B4_25():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C4_B4_26]-M1. Tính tích phân msinx
-def ckz_L12C4_B4_xx():
+def ckz_L12C4_B4_26():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
     list_goc=[0,pi/6, pi/4, pi/3, pi/2, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 3*pi/2]

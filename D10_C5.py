@@ -2457,8 +2457,8 @@ def y7y7u_L10_C5_B3_04():
 	f"{vec(f"{A}{B}")}+{vec(f"{A}{D}")}=2{vec(f"{I}{C}")}",
 	f"{vec(f"{C}{B}")}+{vec(f"{C}{D}")}=2{vec(f"{C}{I}")}",
 	f"{vec(f"{C}{B}")}+{vec(f"{C}{D}")}=-2{vec(f"{I}{C}")}",
-	f"{vec(f"{D}{A}")}+{vec(f"{D}{C}")}=-2{vec(f"{D}{I}")}",
-	f"{vec(f"{B}{A}")}+{vec(f"{B}{C}")}=-2{vec(f"{B}{I}")}",
+	f"{vec(f"{D}{A}")}+{vec(f"{D}{C}")}=2{vec(f"{D}{I}")}",
+	f"{vec(f"{B}{A}")}+{vec(f"{B}{C}")}=2{vec(f"{B}{I}")}",
 	f"{vec(f"{A}{B}")}+{vec(f"{A}{D}")}=2{vec(f"{A}{I}")}",
 	f"{vec(f"{A}{B}")}+{vec(f"{A}{D}")}=2{vec(f"{I}{C}")}",
 	 ])
