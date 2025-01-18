@@ -8332,3 +8332,213 @@ def ckz_L12C4_B5_16():
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_17]-SA-M2. Tính diện tích hình phẳng giới hạn bởi y=(a*x+b)/(c*x+d) và các trục tọa độ
+def ckz_L12C4_B5_17():
+    x=sp.symbols("x")
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        while True:
+            c =  random.choice([i for i in range(-2, 2) if i!=0])
+            a =  c*random.randint(1,2)            
+            a= random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            d = random.choice([i for i in range(-5, 6) if i!=0])
+            if all([a*d-b*c !=0, -b/a >0,-d/c<0]) :
+                break
+        f=(a*x+b)/(c*x+d)
+        
+        x_2=phan_so(-b/a)    
+        f_abs=abs((a*x+b)/(c*x+d))
+
+        noi_dung = (
+        f"  Gọi ${{S}}$ là hình phẳng giới hạn bởi đồ thị hàm số $(H):y=\\dfrac{{{latex(a*x+b)}}}{{{latex(c*x+d)}}}$ và các trục tọa độ."
+        f" Tính diện tích hình phẳng ${{S}}$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+
+        
+        dap_an=f"{round_half_up(integrate(f_abs,(x,0,-b/a)),2):.2f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f" Điều kiện: $x\\ne {phan_so(-d/c)}$.\n\n"
+        f" Hoành độ giao điểm của đồ thị hàm số và trục ${{Ox}}$ là nghiệm của phương trình:\n\n"
+        f" ${latex(f)}=0 \\Leftrightarrow x={phan_so(-b/a)}$.\n\n"
+        f" Diện tích hình phẳng là:\n\n"
+        f" $S={tphan(0,x_2)}\\bigg|{latex(f)}\\bigg|={dap_an}$."
+        )
+    
+    if chon==2:
+        while True:
+            c =  random.choice([i for i in range(-2, 2) if i!=0])
+            a =  c*random.randint(1,2)            
+            a= random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            d = random.choice([i for i in range(-5, 6) if i!=0])
+            if all([a*d-b*c !=0, -b/a <0,-d/c>0]) :
+                break
+        f=(a*x+b)/(c*x+d)
+        
+        x_2=phan_so(-b/a)    
+        f_abs=abs((a*x+b)/(c*x+d))
+
+        noi_dung = (
+        f"  Gọi ${{S}}$ là hình phẳng giới hạn bởi đồ thị hàm số $(H):y=\\dfrac{{{latex(a*x+b)}}}{{{latex(c*x+d)}}}$ và các trục tọa độ."
+        f" Tính diện tích hình phẳng ${{S}}$ (kết quả làm tròn đến hàng phần trăm).") 
+        
+        dap_an=f"{round_half_up(integrate(f_abs,(x,-b/a,0)),2):.2f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f" Điều kiện: $x\\ne {phan_so(-d/c)}$.\n\n"
+        f" Hoành độ giao điểm của đồ thị hàm số và trục ${{Ox}}$ là nghiệm của phương trình:\n\n"
+        f" ${latex(f)}=0 \\Leftrightarrow x={phan_so(-b/a)}$.\n\n"
+        f" Diện tích hình phẳng là:\n\n"
+        f" $S={tphan(x_2,0)}\\bigg|{latex(f)}\\bigg|={dap_an}$."
+        )
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_18]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đường thẳng và parabol
+def ckz_L12C4_B5_18():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")    
+           
+        
+    a= random.choice([i for i in range(-3, 4) if i!=0])
+    x_1=random.randint(-4,4)
+    x_2=x_1+random.randint(1,4)      
+
+    f=a*(x-x_1)*(x-x_2)
+
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+    e= random.choice([i for i in range(-5, 6) if i!=0])
+    g=d*x+e   
+
+    noi_dung = (
+    f"Tính diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
+    f" $y={latex(expand(f+g))}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(abs(integrate(f,(x,x_1,x_2))),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n ${latex(expand(f+g))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f))}=0 \\Leftrightarrow x={x_1},x={x_2}$.\n\n"
+    f" Diện tích hình phẳng:\n\n"
+    f" $S={tphan(x_1,x_2)}|({latex(expand(f+g))})-({latex(g)})|{d_x}={tphan(x_1,x_2)}|{latex(expand(f))}|{d_x}={phan_so(integrate(f,(x,x_1,x_2)))}={dap_an}$.\n\n")    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox
+def ckz_L12C4_B5_19():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")
+
+    while True:
+           
+        x_0=random.randint(-3,3)    
+        a= random.randint(1,3)
+        b= random.randint(1,3)     
+
+        f=a*(x-x_0)**2+b
+
+        x_1=random.randint(-3,4)
+        x_2=x_1+random.randint(1,3)
+        y_1,y_2=f.subs(x,x_1), f.subs(x,x_2)
+        k=(y_2-y_1)/(x_2-x_1)
+        g=k*(x-x_1)+y_1
+
+        if int(k)==k and pi*integrate(f**2-g**2,(x,x_1,x_2))<900:
+            break    
+
+    t=random.randint(8,15)
+
+    noi_dung = (
+    f"Gọi ${{V}}$ là thể tích của khối tròn xoay khi quay hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
+    f" $y={latex(expand(f))}$ quanh trục ${{Ox}}$. Tính $\\dfrac{{V}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(1/t*abs(pi*integrate(f**2-g**2,(x,x_1,x_2))),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={x_1},x={x_2}$.\n\n"
+    f" Thể tích của khối tròn xoay:\n\n $S=\\pi{tphan(x_1,x_2)}|({latex(expand(f))})^2-({latex(g)})^2|{d_x}={phan_so(abs(integrate(f**2-g**2,(x,x_1,x_2))))}\\pi$.\n\n"
+    f" Suy ra $\\dfrac{{V}}{{{15}}}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi đường thẳng, parabol, trục Ox
+def ckz_L12C4_B5_20():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")                  
+    a= random.randint(1,2)
+    x_1=random.randint(-4,1)      
+
+    f=a*(x-x_1)**2
+
+    x_2=x_1+random.randint(1,3)
+    y_2=f.subs(x,x_2)
+    x_3=x_2+random.randint(1,3)
+
+    k=-y_2/(x_3-x_2)
+    g=k*(x-x_3)
+
+    eq = Eq(f, g)
+
+    # Giải phương trình
+    solution = solve(eq, x)
+
+    x_a,x_b=solution[0:2]
+    tp1=integrate(f,(x,x_1,x_2))
+    tp2=integrate(g,(x,x_2,x_3))
+
+    noi_dung = (
+    f"Tính diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
+    f" $y={latex(expand(f))}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={x_a},x={x_b}$.\n\n"
+    f" Diện tích hình phẳng:\n\n"
+    f" $S={tphan(x_1,x_2)}({latex(expand(f))}){d_x}+{tphan(x_2,x_3)}({latex(expand(g))}){d_x}"
+    f"={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$.\n\n")    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

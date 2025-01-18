@@ -7442,80 +7442,104 @@ class Ui_MainWindow(object):
                 L12_C4_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B5_1 = QTreeWidgetItem(L12_C4_B5, ["Diện tích hình phẳng"])
+                L12_C4_B5_1 = QTreeWidgetItem(L12_C4_B5, ["Trắc nghiệm"])
                 L12_C4_B5_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_1, ["[D12_C4_B5_03]-M1. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị"])
+                L12_C4_B5_11 = QTreeWidgetItem(L12_C4_B5_1, ["Diện tích hình phẳng"])
+                L12_C4_B5_11.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B5_11.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_03]-M1. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_1, ["[D12_C4_B5_01]-M1. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b"])
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_01]-M1. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_1, ["[D12_C4_B5_02]-M2. Diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b"])
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_02]-M2. Diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_1, ["[D12_C4_B5_04]-M2. Diện tích hình phẳng: y=f(x),y=g(x)"])
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_04]-M2. Diện tích hình phẳng: y=f(x),y=g(x)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C4_B5_2 = QTreeWidgetItem(L12_C4_B5, ["Thể tích khối tròn xoay"])
+                L12_C4_B5_12 = QTreeWidgetItem(L12_C4_B5_1, ["Thể tích khối tròn xoay"])
+                L12_C4_B5_12.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B5_12.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_05]-M2. V_khối tròn xoay: y=f(x),Ox,x=a,x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_06]-M2. V_khối tròn xoay: y=ax+b,Ox,x=a,x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_07]-M2. V_khối tròn xoay: y=ax^2+bx+c,Ox,x=a,x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_08]-M2. V_khối tròn xoay: y=căn(ax+b),Ox,x=a,x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)      
+        
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_09]-M3. V_khối tròn xoay: y=ax.e^(bx),Ox,x=a,x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_10]-M2. V_khối tròn xoay: y=ax^2+bx+c và Ox"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_14]-M2. Thể tích vật thể có thiết diện là hình chữ nhật"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_15]-M2. Thể tích vật thể có thiết diện là hình vuông"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_12, ["[D12_C4_B5_16]-M2. Thể tích vật thể có thiết diện là hình tam giác đều"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B5_13 = QTreeWidgetItem(L12_C4_B5_1, ["Bài toán chuyển động"])
+                L12_C4_B5_13.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B5_13.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_13, ["[D12_C4_B5_11]-M2. Cho hàm số vận tốc. Tính quãng đường đi được từ t1 đến t2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_13, ["[D12_C4_B5_12]-M2. Xe chạy chậm dần đều. Tính quãng đường đi được đến khi dừng hẳn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_13, ["[D12_C4_B5_13]-M3. Xe tăng tốc với gia tốc. Tính quãng đường đi được trong khoảng thời gian"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B5_2 = QTreeWidgetItem(L12_C4_B5, ["Đúng-Sai"])
                 L12_C4_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_05]-M2. V_khối tròn xoay: y=f(x),Ox,x=a,x=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_06]-M2. V_khối tròn xoay: y=ax+b,Ox,x=a,x=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_07]-M2. V_khối tròn xoay: y=ax^2+bx+c,Ox,x=a,x=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_08]-M2. V_khối tròn xoay: y=căn(ax+b),Ox,x=a,x=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)            
-        
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_09]-M3. V_khối tròn xoay: y=ax.e^(bx),Ox,x=a,x=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_10]-M2. V_khối tròn xoay: y=ax^2+bx+c và Ox"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_14]-M2. Thể tích vật thể có thiết diện là hình chữ nhật"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_15]-M2. Thể tích vật thể có thiết diện là hình vuông"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_16]-M2. Thể tích vật thể có thiết diện là hình tam giác đều"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["Bài toán chuyển động"])
+                L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["Trả lời ngắn"])
                 L12_C4_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_11]-M2. Cho hàm số vận tốc. Tính quãng đường đi được từ t1 đến t2"])
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_17]-SA-M2. Tính diện tích hình phẳng giới hạn bởi y=(a*x+b)/(c*x+d) và các trục tọa độ"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_12]-M2. Xe chạy chậm dần đều. Tính quãng đường đi được đến khi dừng hẳn"])
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_18]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đường thẳng và parabol"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_13]-M3. Xe tăng tốc với gia tốc. Tính quãng đường đi được trong khoảng thời gian"])
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9494,9 +9518,21 @@ class Ui_MainWindow(object):
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_15()                                     
                                                     
 
-                                            #[D12_C4_B5_16]. Thể tích vật thể có thiết diện là hình tam giác đều.
+                                                #[D12_C4_B5_16]. Thể tích vật thể có thiết diện là hình tam giác đều.
                                                 if dang_toan == "[D12_C4_B5_16]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_16()                                     
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_16()
+
+                                                #[D12_C4_B5_17]-SA-M2. Tính diện tích hình phẳng giới hạn bởi y=(a*x+b)/(c*x+d) và các trục tọa độ
+                                                if dang_toan == "[D12_C4_B5_17]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_17()
+
+                                                #[D12_C4_B5_18]-SA-M2. Tìm diện tích hình phẳng giới hạn bởi đường thẳng và parabol
+                                                if dang_toan == "[D12_C4_B5_18]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_18()
+
+                                                #[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox
+                                                if dang_toan == "[D12_C4_B5_19]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_19()                              
                                                     
 
                                                 ##################################################################
