@@ -7539,9 +7539,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_21]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi 3 đường: đường thẳng, parabol, trục Ox"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
 
@@ -9532,7 +9542,15 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox
                                                 if dang_toan == "[D12_C4_B5_19]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_19()                              
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_19()
+
+                                                #[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi đường thẳng, parabol, trục Ox
+                                                if dang_toan == "[D12_C4_B5_20]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_20()
+
+                                                #[D12_C4_B5_21]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol
+                                                if dang_toan == "[D12_C4_B5_21]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_21()                         
                                                     
 
                                                 ##################################################################

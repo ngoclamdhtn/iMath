@@ -8497,7 +8497,8 @@ def ckz_L12C4_B5_19():
 #[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi đường thẳng, parabol, trục Ox
 def ckz_L12C4_B5_20():
     d_x=f"\\mathrm{{\\,d}}x"
-    x=sp.symbols("x")                  
+    x=sp.symbols("x")
+                                        
     a= random.randint(1,2)
     x_1=random.randint(-4,1)      
 
@@ -8519,17 +8520,110 @@ def ckz_L12C4_B5_20():
     tp1=integrate(f,(x,x_1,x_2))
     tp2=integrate(g,(x,x_2,x_3))
 
+
+    code_hinh=f" \\begin{{tikzpicture}}[>=stealth,x=1cm,y=1cm,scale=0.75]\n\
+            \\draw[->] ({x_1-2},0)--({x_3+2},0) node[below]{{$x$}};\n\
+            \\draw[->] (0,-2) --(0,{y_2+2}) node[right]{{$y$}};\n\
+            \\begin{{scope}}\n\
+            \\clip ({x_1-2},-1) rectangle ({x_3+2},{y_2+2});\n\
+            \\draw [samples=100, domain={x_1-2}:{x_3}] plot (\\x, {{{a}*(\\x-{x_1})^2}});\n\
+            \\draw [samples=100, domain={x_1-2}:{x_3+1}] plot (\\x, {{{k}*(\\x-{x_3})}});\n\
+            \\end{{scope}}\n\
+            \\fill [pattern=north west lines,draw=none] ({x_1},0)-- plot[domain={x_1}:{x_2}] (\\x, {{{a}*(\\x-{x_1})^2}})-- plot[domain={x_2}:{x_3}] (\\x, {{{k}*(\\x-{x_3})}})--({x_1},0);\n\
+            \\fill (0,0) node[shift={{(-120:1.5ex)}}]{{\\footnotesize $O$}} circle(1pt);\n\
+            %\\fill ({x_3},0) node[shift={{(-90:1.5ex)}}]{{\\footnotesize ${x_3}$}} circle(1pt);\n\
+            %\\fill ({x_2},0) node[shift={{(-90:1.5ex)}}]{{\\footnotesize ${x_2}$}} circle(1pt);\n\
+            %\\draw ({x_3},0) node[shift={{(90:1.5ex)}}]{{\\footnotesize $B$}};\n\
+            %\\fill ({x_2},{y_2}) node[shift={{(0:1.5ex)}}]{{\\footnotesize $A$}} circle(1pt);\n\
+    \\end{{tikzpicture}}" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
     noi_dung = (
-    f"Tính diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
-    f" $y={latex(expand(f))}$ (kết quả làm tròn đến hàng phần mười)."
+    f"Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
+    f" $y={latex(expand(f))}$ và $y=0$ (phần gạch chéo trong hình vẽ dưới đây). "
+    f"Tính diện tích của tam giác cong đã cho (kết quả làm tròn đến hàng phần mười)."
     )
-    dap_an=f"{round_half_up(tp1+tp2,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(abs(tp1)+abs(tp2),1):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
     f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={x_a},x={x_b}$.\n\n"
     f" Diện tích hình phẳng:\n\n"
     f" $S={tphan(x_1,x_2)}({latex(expand(f))}){d_x}+{tphan(x_2,x_3)}({latex(expand(g))}){d_x}"
-    f"={phan_so(tp1)}+{phan_so(tp2)}={phan_so(tp1+tp2)}={dap_an}$.\n\n")    
+    f"={phan_so(abs(tp1))}+{phan_so(abs(tp2))}={phan_so(abs(tp1)+abs(tp2))}={dap_an}$.\n\n")    
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_21]-SA-M3. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol
+def ckz_L12C4_B5_21():
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")
+    x_1 = random.randint(-5,-1)
+    x_2 = x_1+random.randint(1,4)
+    x_3 = x_2+random.randint(1,4)
+    m = random.choice([i for i in range(-2, 2) if i!=0])
+
+    f=m*(x-x_1)*(x-x_2)*(x-x_3)
+
+    a = random.choice([i for i in range(-3, 3) if i!=0])
+    b = random.choice([i for i in range(-4, 5) if i!=0])
+    c = random.randint(-6,6)
+
+    g=a*x**2+b*x+c
+
+    tp1=integrate(f,(x,x_1,x_2))
+    tp2=integrate(f,(x,x_2,x_3))
+    dap_an=f"{round_half_up(abs(tp1)+abs(tp2),1):.1f}".replace(".",",")
+
+    noi_dung = ( f"Tính diện tích hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(f+g))}$ và $y={latex(g)}$.")    
+
+    noi_dung_loigiai=(
+    f" Xét phương trình:\n\n ${latex(expand(f+g))}={latex(g)}$\n\n $ \\Leftrightarrow {latex(expand(f))}=0 \n\n \\Rightarrow x={x_1},x={x_2},x={x_3}$.\n\n"
+    f" Diện tích hình phẳng là:\n\n "
+    f"${tphan(x_1,x_2)}|{latex(expand(f))}|{d_x}+{tphan(x_2,x_3)}|{latex(expand(f))}|{d_x}={phan_so(abs(tp1))}+{phan_so(abs(tp2))}={dap_an}$."    
+    )    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_22]-SA-M3. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol
+def ckz_L12C4_B5_22():
+    a=random.randint(10,20)
+    AB=random.randint(4,8)
+    OH= AB+random.randint(-2,2)
+
+    noi_dung = (
+    f"Một hoa văn trang trí được tạo ra từ một miếng bìa hình vuông cạnh bằng ${{{a}}}$ cm"
+    f" bằng cách khoét đi bốn phần bằng nhau có hình dạng parabol như hình vẽ bên."
+    f" Biết $AB={AB}$ cm, $OH={OH}$ cm. Tính diện tích của bề mặt hoa văn đó (đơn vị: cm$^2$)"
+    f" (kết quả làm tròn đến chữ số thập phân thứ nhất)."
+    )
+    dap_an=""
+
+    noi_dung_loigiai=(
+    f"Diện tích bề mặt hoa văn là $S=10^2-4S_0 $, trong đó $ S_0 $ là diện tích của Parabol."
+    )    
         
     debai_word= f"{noi_dung}"
 
