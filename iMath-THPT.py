@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 16.01.2025")
+                self.label.setText(f"iMath\u00A92025 ver 03.02.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 16.01.2025")
+                self.label.setText(f"iMath\u00A92025 ver 03.02.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -7393,7 +7393,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_17]-SA-M3. Tính tích phân của HS kép (chứa tham số):ax+b và mx^2+nx+p"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_17]-SA-M3. Tính tích phân của hàm số kép (chứa tham số a,b): x^2+ax+b và g(x^3)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
@@ -7486,7 +7486,6 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
                 item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_26]-M1. Tính diện tích hình phẳng tạo bởi y=e^x, x=a, x=b, Ox."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7559,6 +7558,18 @@ class Ui_MainWindow(object):
                 L12_C4_B5_2 = QTreeWidgetItem(L12_C4_B5, ["Đúng-Sai"])
                 L12_C4_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_31]-TF-M3. Xét Đ-S: Công thức tính diện tích, diện tích 1 f(x), diện tích f và g, diện tích f,g,h"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_32]-TF-M3. Xét Đ-S: Công thức tính thể tích, thể tích 1 f(x), diện tích f và g, diện tích f,g,h"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_33]-TF-M3. Xét Đ-S: Diện tích, thể tích giới hạn bởi y=e^x, x=a,x=k,x=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["Trả lời ngắn"])
                 L12_C4_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -9623,7 +9634,19 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B5_30]. Tìm công thức tính diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b,Ox (lí thuyết)
                                                 if dang_toan == "[D12_C4_B5_30]":                                        
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_30()                    
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_30()
+
+                                                #[D12_C4_B5_31]-M3. Xét Đ-S: Công thức tính diện tích, diện tích 1 f(x), diện tích f và g, diện tích f,g,h
+                                                if dang_toan == "[D12_C4_B5_31]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_31()
+
+                                                #[D12_C4_B5_32]-M3. Xét Đ-S: Công thức tính thể tích, thể tích 1 f(x), diện tích f và g, diện tích f,g,h
+                                                if dang_toan == "[D12_C4_B5_32]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_32()
+
+                                                #[D12_C4_B5_33]-M3. Xét Đ-S: diện tích giới hạn bởi y=e^x, x=a,x=k,x=b.
+                                                if dang_toan == "[D12_C4_B5_33]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_33()           
                                                     
 
                                                 ##################################################################
