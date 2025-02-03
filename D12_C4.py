@@ -9401,3 +9401,185 @@ def ckz_L12C4_B5_30():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_31]-M3. Xét đúng-sai: Công thức tính diện tích, diện tích 1 f(x), diện tích f và g, diện tích f,g,h
+def ckz_L12C4_B5_31():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần mười)."        
+    debai_word= f"{noi_dung}\n"
+    a=random.randint(-5,2)
+    b=a+random.randint(1,4)
+    f=random.choice(["f(x)","g(x)","h(x)"])
+    
+    kq1_T=(f"* Hình phẳng giới hạn bởi đồ thị hàm số $y={f},x={a},x={b},y=0$ có diện tích xác định bởi công thức"
+        f" $S={tphan(a,b)}|{f}|{d_x}$")
+    chon=random.randint(1,2)
+    if chon==1:
+        kq1_F=(f"Hình phẳng giới hạn bởi đồ thị hàm số $y={f},x={a},x={b},y=0$ có diện tích xác định bởi công thức"
+            f" $S={tphan(a,b)}{f}{d_x}$")    
+    if chon==2:
+        kq1_F=(f"Hình phẳng giới hạn bởi đồ thị hàm số $y={f},x={a},x={b},y=0$ có diện tích xác định bởi công thức"
+            f" $S=\\bigg|{tphan(a,b)}{f}{d_x}\\bigg|$")
+    
+    
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=(f"Hình phẳng giới hạn bởi các đường $y={f},x={a},x={b},y=0$ có diện tích xác định bởi công thức"
+        f" $S={tphan(a,b)}|{f}|{d_x}$")
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n=random.randint(-6,6)
+    a=random.randint(-5,2)
+    b=a+random.randint(1,4)
+
+    f=a*x+b
+    S=abs(integrate(f,(x,a,b)))
+
+    kq2_T=f"* Hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ có diện tích bằng ${latex(S)}$"
+    kq2_F=f" Hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ có diện tích bằng ${latex(S+random.randint(1,3))}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"Diện tích hình phẳng là: $S={tphan(a,b)} |{latex(f)}|{d_x}={latex(S)}$."
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a= random.choice([i for i in range(-3, 4) if i!=0])
+    x_1=random.randint(-4,4)
+    x_2=x_1+random.randint(1,4)      
+
+    f=a*(x-x_1)*(x-x_2)
+
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+    e= random.choice([i for i in range(-5, 6) if i!=0])
+    g=d*x+e   
+
+    dap_an=phan_so(abs(integrate(f,(x,x_1,x_2))))
+    dap_an_false=phan_so(abs(integrate(f,(x,x_1,x_2)))+random.randint(1,2))
+
+    kq3_T=(f"* Diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
+    f" $y={latex(expand(f+g))}$ bằng ${dap_an}$")
+
+    kq3_F=(f" Diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
+    f" $y={latex(expand(f+g))}$ bằng ${dap_an_false}$")
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=(f"Xét phương trình:\n\n ${latex(expand(f+g))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f))}=0 \\Leftrightarrow x={x_1},x={x_2}$.\n\n"
+    f" Diện tích hình phẳng:\n\n"
+    f" $S={tphan(x_1,x_2)}|({latex(expand(f+g))})-({latex(g)})|{d_x}={tphan(x_1,x_2)}|{latex(expand(f))}|{d_x}={phan_so(integrate(f,(x,x_1,x_2)))}={dap_an}$.\n\n")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a= random.randint(1,2)
+    x_1=random.randint(-4,1)      
+
+    f=a*(x-x_1)**2
+
+    x_2=x_1+random.randint(1,3)
+    y_2=f.subs(x,x_2)
+    x_3=x_2+random.randint(1,3)
+
+    k=-y_2/(x_3-x_2)
+    g=k*(x-x_3)
+
+    eq = Eq(f, g)
+
+    # Giải phương trình
+    solution = solve(eq, x)
+
+    x_a,x_b=solution[0:2]
+    tp1=integrate(f,(x,x_1,x_2))
+    tp2=integrate(g,(x,x_2,x_3))
+
+
+    code_hinh=f" \\begin{{tikzpicture}}[>=stealth,x=1cm,y=1cm,scale=0.75]\n\
+            \\draw[->] ({x_1-2},0)--({x_3+2},0) node[below]{{$x$}};\n\
+            \\draw[->] (0,-2) --(0,{y_2+2}) node[right]{{$y$}};\n\
+            \\begin{{scope}}\n\
+            \\clip ({x_1-2},-1) rectangle ({x_3+2},{y_2+2});\n\
+            \\draw [samples=100, domain={x_1-2}:{x_3}] plot (\\x, {{{a}*(\\x-{x_1})^2}});\n\
+            \\draw [samples=100, domain={x_1-2}:{x_3+1}] plot (\\x, {{{k}*(\\x-{x_3})}});\n\
+            \\end{{scope}}\n\
+            \\fill [pattern=north west lines,draw=none] ({x_1},0)-- plot[domain={x_1}:{x_2}] (\\x, {{{a}*(\\x-{x_1})^2}})-- plot[domain={x_2}:{x_3}] (\\x, {{{k}*(\\x-{x_3})}})--({x_1},0);\n\
+            \\fill (0,0) node[shift={{(-120:1.5ex)}}]{{\\footnotesize $O$}} circle(1pt);\n\
+            %\\fill ({x_3},0) node[shift={{(-90:1.5ex)}}]{{\\footnotesize ${x_3}$}} circle(1pt);\n\
+            %\\fill ({x_2},0) node[shift={{(-90:1.5ex)}}]{{\\footnotesize ${x_2}$}} circle(1pt);\n\
+            %\\draw ({x_3},0) node[shift={{(90:1.5ex)}}]{{\\footnotesize $B$}};\n\
+            %\\fill ({x_2},{y_2}) node[shift={{(0:1.5ex)}}]{{\\footnotesize $A$}} circle(1pt);\n\
+    \\end{{tikzpicture}}" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    
+    dap_an=phan_so(abs(tp1)+abs(tp2))
+    dap_an_false=phan_so(abs(tp1)+abs(tp2)+random.randint(1,2))
+
+    
+    kq4_T=(f"* Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
+    f" $y={latex(expand(f))}$ và $y=0$."
+    f" Diện tích của tam giác cong đã cho bằng ${dap_an}$.")
+    kq4_F=(f"Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
+    f" $y={latex(expand(f))}$ và $y=0$."
+    f" Diện tích của tam giác cong đã cho bằng ${dap_an_false}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=(
+    f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={x_a},x={x_b}$.\n\n"
+    f" Diện tích hình phẳng:\n\n"
+    f" $S={tphan(x_1,x_2)}({latex(expand(f))}){d_x}+{tphan(x_2,x_3)}({latex(expand(g))}){d_x}"
+    f"={phan_so(abs(tp1))}+{phan_so(abs(tp2))}={phan_so(abs(tp1)+abs(tp2))}$.\n\n")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
