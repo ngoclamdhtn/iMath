@@ -2221,7 +2221,7 @@ def ckz_L12C4_B1_37():
         C=b-F.subs(x,x_0)
         G=F+C
         x_1=random.choice([i for i in range(-3,3) if i!=x_0])
-        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+        if G.subs(x,x_1)>-9 and G.subs(x,x_1)<500:
             break
 
     f=diff(F,x)
@@ -2269,28 +2269,27 @@ def ckz_L12C4_B1_38():
         C=b-F.subs(x,x_0)
         G=F+C
         x_1=random.choice([i for i in range(-4,4) if i!=x_0])
-        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+        if G.subs(x,x_1)>50 and G.subs(x,x_1)<600:
             break
     f=diff(F,x)
-    
-    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    t=random.randint(10,20)
+    dap_an=f"{round_half_up(G.subs(x,x_1)/t,1):.1f}".replace(".",",")
 
 
     noi_dung_loigiai=(
     f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
     f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
     f"Vậy $F(x)={latex(F+C)}$.\n\n" 
-    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."     
+    f"$F({x_1})={latex(G.subs(x,x_1))}$.\n\n"
+    f"$\\dfrac{{F({x_1})}}{{{t}}}={dap_an}$."     
     )  
 
     noi_dung=(
     f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
-    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    f" Tính $\\dfrac{{F({x_1})}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
     ) 
     noi_dung=thay_log_2_ln(noi_dung)
     noi_dung_loigiai=thay_log_2_ln(noi_dung_loigiai)
-
-    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")   
 
         
     debai_word= f"{noi_dung}"
@@ -2320,22 +2319,26 @@ def ckz_L12C4_B1_39():
         C=b-F.subs(x,x_0)
         G=F+C
         x_1=random.choice([i for i in range(-4,4) if i!=x_0])
-        if G.subs(x,x_1)>-9.9 and G.subs(x,x_1)<9999:
+        if G.subs(x,x_1)>50 and G.subs(x,x_1)<600:
             break
     f=diff(F,x)
-    
-    dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
 
+    t=random.randint(10,20)
+    
+    dap_an=f"{round_half_up(G.subs(x,x_1)/t,1):.1f}".replace(".",",")
+    
     noi_dung_loigiai=(
     f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(F)}+C$.\n\n"
     f"$F({x_0})={b}\\Leftrightarrow {latex(F.subs(x,x_0))}+C={b}\\Rightarrow C={latex(C)}$.\n\n"
     f"Vậy $F(x)={latex(F+C)}$.\n\n" 
-    f"$F({x_1})={latex(G.subs(x,x_1))}={dap_an}$."     
+    f"$F({x_1})={latex(G.subs(x,x_1))}$.\n\n"
+    f"$\\Rightarrow \\dfrac{{F({x_1})}}{{{t}}}={dap_an}$." 
     )  
 
+    
     noi_dung=(
     f"Biết $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$ thỏa mãn $F({x_0})={b}$."
-    f" Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    f" Tính $\\dfrac{{F({x_1})}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
     ) 
     noi_dung=thay_log_2_ln(noi_dung)
     noi_dung_loigiai=thay_log_2_ln(noi_dung_loigiai)
@@ -7029,8 +7032,7 @@ def ckz_L12C4_B4_41():
 def ckz_L12C4_B4_42():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    m= random.choice([2*i for i in range(-3, 4) if i!=0])
-    
+    m= random.choice([2*i for i in range(-3, 4) if i!=0])   
 
     chon=random.randint(1,2)
 
@@ -7054,7 +7056,7 @@ def ckz_L12C4_B4_42():
     
     dap_an=f"{round_half_up(a+b+c,1):.1f}".replace(".",",")    
     noi_dung = (
-    f"Biết ${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}=a{latex(pi)}+b{latex(sqrt(3))}+c$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+    f"Biết ${tphan(latex(x_1),latex(x_2))}\\left[{latex(f)}\\right]{d_x}=a{latex(pi)}+b{latex(sqrt(3))}+c$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
     )
     if chon==1:
 
@@ -8607,11 +8609,34 @@ def ckz_L12C4_B5_21():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C4_B5_22]-SA-M3. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol
+#[D12_C4_B5_22]-SA-M3. Toán thực tế: Tính diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol.
 def ckz_L12C4_B5_22():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
     a=random.randint(10,20)
     AB=random.randint(4,8)
     OH= AB+random.randint(-2,2)
+    k=-4*OH/AB**2
+    f=k*x**2+OH
+    S_0=integrate(f,(x,-AB/2,AB/2))
+
+    dap_an=f"{round_half_up(a**2-4*S_0,1):.1f}".replace(".",",")
+    code_hinh=f" \\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.5]\n\
+            \\tikzset{{every node/.style={{scale=0.9}}}}\n\
+                \\begin{{scope}}\n\
+                    \\fill[black] (0,0)--(10,0)--(10,10)--(0,10)--cycle;\n\
+                    \\fill[white](2.5,0)--plot[samples=200,domain=2.5:7.5,smooth,variable=\\x] (\\x,{{-16/25*(\\x-2.5)^2+16/5*(\\x-2.5)}})--(7.5,0);\n\
+                    \\fill[white](2.5,10)--plot[samples=200,domain=2.5:7.5,smooth,variable=\\x] (\\x,{{16/25*(\\x-2.5)^2-16/5*(\\x-2.5)+10}})--(7.5,10);\n\
+                    \\fill[white] plot[samples=200,domain=6:10,smooth,variable=\\x] (\\x,{{sqrt(1.5625*((\\x)-6))+5}})--(10,5)--plot[samples=200,domain=6:10,smooth,variable=\\x] (\\x,{{-sqrt(1.5625*((\\x)-6))+5}})--(10,5);\n\
+                    \\fill[white] plot[samples=200,domain=4:0,smooth,variable=\\x] (\\x,{{sqrt(1.5625*(4-(\\x)))+5}})--(0,5)--plot[samples=200,domain=4:0,smooth,variable=\\x] (\\x,{{-sqrt(1.5625*(4-(\\x)))+5}})--(0,5);              \n\
+                \\end{{scope}}\n\
+                \\draw[fill=white](6,5) circle (1.5pt) node[above right]{{$O$}} (10,2.5) circle (1.5pt) node[right]{{$B$}} (10,7.5) circle (1.5pt) node[right]{{$A$}} (10,5) circle (1.5pt) node[right]{{$H$}};\n\
+                \\draw[dashed] (6,5)--(10,5) (10,2.5)--(10,7.5);\n\
+            \\end{{tikzpicture}}\n"
+
+        
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
 
     noi_dung = (
     f"Một hoa văn trang trí được tạo ra từ một miếng bìa hình vuông cạnh bằng ${{{a}}}$ cm"
@@ -8619,20 +8644,760 @@ def ckz_L12C4_B5_22():
     f" Biết $AB={AB}$ cm, $OH={OH}$ cm. Tính diện tích của bề mặt hoa văn đó (đơn vị: cm$^2$)"
     f" (kết quả làm tròn đến chữ số thập phân thứ nhất)."
     )
-    dap_an=""
 
     noi_dung_loigiai=(
-    f"Diện tích bề mặt hoa văn là $S=10^2-4S_0 $, trong đó $ S_0 $ là diện tích của Parabol."
+    f"Diện tích bề mặt hoa văn là $S={a}^2-4S_0$, trong đó $ S_0 $ là diện tích của Parabol.\n\n"
+    f" Đưa parabol vào hệ trục ${{Oxy}}$ sao cho parabol qua các điểm $A({phan_so(-AB/2)};0),B({phan_so(AB/2)};0)$ và $C(0;{OH})$.\n\n"
+    f" Parabol có dạng $y=kx^2+c$.\n\n"
+    f" Parabol qua điểm $(0;{OH})\\Rightarrow c={OH}$.\n\n"
+    f" Parabol qua điểm  $\\left({phan_so(AB/2)};0\\right)$"
+    f" $\\Rightarrow k.{phan_so(AB**2/4)}+{OH}=0$"
+    f" $\\Rightarrow k={phan_so(k)}$.\n\n"
+    f" $\\Rightarrow (P):y={phan_so(k)}x^2+{OH}$.\n\n"
+    f" Diện tích của một parabol là: ${tphan(phan_so(-AB/2),phan_so(AB/2))}({phan_so(k)}x^2+{OH}){d_x}={phan_so(S_0)}$.\n\n"
+    f" Diện tích cần tính là: ${a}^2-4.{phan_so(S_0)}={phan_so(a**2-4*S_0)}={dap_an}$."
     )    
         
-    debai_word= f"{noi_dung}"
+    debai_word= f"{noi_dung}\n{file_name}\n"
 
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
         f"Đáp án: {dap_an}\n")
 
-
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
     f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_23]-M3. Cho hình phẳng giới hạn bởi 2 parabol. Tìm công thức tính diện tích
+def ckz_L12C4_B5_23():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"   
+
+    while True:
+        a1 = random.choice([i for i in range(-3, 3) if i!=0])
+        b1=random.randint(-4,4)
+        c1=random.randint(-4,4)
+
+        f=a1*x**2+b1*x+c1
+        x_1=random.randint(-4,1)
+        x_2=x_1+random.randint(1,3)
+        f_1=f.subs(x,x_1)
+        f_2=f.subs(x,x_2)
+
+        a2 = random.choice([i for i in range(-3, 3) if i!=0])
+        b2 = random.randint(-5,5)
+        c2 = random.randint(-5,5)
+        g=a2*x**2+b2*x+c2
+        g_1=g.subs(x,x_1)
+        g_2=g.subs(x,x_2)
+
+        s1=f.subs(x,-b1/(2*a1))
+        s2=g.subs(x,-b2/(2*a2))
+        if all([a1>0, a2<0, g_1==f_1, g_2==f_2, -4<=s1<=4,-4<=s2<=4,]):
+            break
+    x_f=x_1-0.2
+    y_f=f.subs(x,x_f)
+    x_g=x_2+0.2
+    y_g=g.subs(x,x_g)
+
+    x_min, x_max=x_1-1.5, x_2+1.5
+    if x_min>=0:x_min=-2
+    if x_max<=0: x_max=2
+
+
+    y_min, y_max=-4,4
+    if s1>=0 and s2>=0:
+        y_min, y_max=-2, int(max(s1,s2))+1
+    if s1<0 and s2<0:
+        y_min, y_max=int(min(s1,s2))-1,2  
+
+
+    noi_dung=(f"Diện tích phần hình phẳng gạch chéo trong hình vẽ bên dưới được tính theo công thức nào dưới đây?")
+
+    
+    kq=random.choice([f"${tphan(x_1,x_2)}({latex(g-f)}){d_x}$"])
+    kq_false=[
+    f"${tphan(x_1,x_2)}({latex(f-g)}){d_x}$",
+    f"${tphan(x_1,x_2)}({latex(f+g)}){d_x}$",
+    f"${tphan(x_1,x_2)}|{latex(f)}|{d_x}$",
+    f"${tphan(x_1,x_2)}|{latex(g)}|{d_x}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    code_hinh=f" \\begin{{tikzpicture}}[yscale=.8,xscale=.8,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\def\\xmin{{{x_min}}} \\def\\xmax{{{x_max}}}\n\
+            \\def\\ymin{{{y_min}}} \\def\\ymax{{{y_max}}} \n\
+            \\draw[->] (\\xmin,0)--(\\xmax,0) node [below]{{$x$}};\n\
+            \\draw[->] (0,\\ymin)--(0,\\ymax) node [left]{{$y$}};\n\
+            \\node [left] at ({x_f},{y_f}){{$y={latex(f)}$}};\n\
+            \\node [right] at ({x_g},{y_g}){{$y={latex(g)}$}};\n\
+            \\begin{{scope}}\n\
+            \\clip (\\xmin,\\ymin) rectangle (\\xmax,\\ymax);\n\
+            \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a1}*(\\x)^2+{b1}*(\\x)+{c1}}}) ;\n\
+            \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a2}*(\\x)^2+{b2}*(\\x)+{c2}}});\n\
+            \\draw[pattern=north east lines,draw=none]\n\
+            plot[domain={x_1}:{x_2}](\\x,{{{a1}*(\\x)^2+{b1}*(\\x)+{c1}}}) plot[domain={x_2}:{x_1}](\\x,{{{a2}*(\\x)^2+{b2}*(\\x)+{c2}}});\n\
+            \\node at (0,0) [below right]{{$O$}};\n\
+            \\draw[dashed] ({x_1},0) node [below]{{${x_1}$}}--({x_1},{g_1});\n\
+            \\draw[dashed] ({x_2},0) node [below]{{${x_2}$}}--({x_2},{g_2});\n\
+            \\end{{scope}}\n\
+        \\end{{tikzpicture}}"
+    if x_1==0:
+        code_hinh=f" \\begin{{tikzpicture}}[yscale=.8,xscale=.8,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+                \\def\\xmin{{{x_min}}} \\def\\xmax{{{x_max}}}\n\
+                \\def\\ymin{{{y_min}}} \\def\\ymax{{{y_max}}} \n\
+                \\draw[->] (\\xmin,0)--(\\xmax,0) node [below]{{$x$}};\n\
+                \\draw[->] (0,\\ymin)--(0,\\ymax) node [left]{{$y$}};\n\
+                \\node [left] at ({x_f},{y_f}){{$y={latex(f)}$}};\n\
+                \\node [right] at ({x_g},{y_g}){{$y={latex(g)}$}};\n\
+                \\begin{{scope}}\n\
+                \\clip (\\xmin,\\ymin) rectangle (\\xmax,\\ymax);\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a1}*(\\x)^2+{b1}*(\\x)+{c1}}}) ;\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a2}*(\\x)^2+{b2}*(\\x)+{c2}}});\n\
+                \\draw[pattern=north east lines,draw=none]\n\
+                plot[domain={x_1}:{x_2}](\\x,{{{a1}*(\\x)^2+{b1}*(\\x)+{c1}}}) plot[domain={x_2}:{x_1}](\\x,{{{a2}*(\\x)^2+{b2}*(\\x)+{c2}}});\n\
+                \\node at (0,0) [below right]{{$O$}};\n\
+                \\draw[dashed] ({x_1},0) node [below]{{}}--({x_1},{g_1});\n\
+                \\draw[dashed] ({x_2},0) node [below]{{${x_2}$}}--({x_2},{g_2});\n\
+                \\end{{scope}}\n\
+            \\end{{tikzpicture}}"
+    if x_2==0:
+        code_hinh=f" \\begin{{tikzpicture}}[yscale=.8,xscale=.8,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+                \\def\\xmin{{{x_min}}} \\def\\xmax{{{x_max}}}\n\
+                \\def\\ymin{{{y_min}}} \\def\\ymax{{{y_max}}} \n\
+                \\draw[->] (\\xmin,0)--(\\xmax,0) node [below]{{$x$}};\n\
+                \\draw[->] (0,\\ymin)--(0,\\ymax) node [left]{{$y$}};\n\
+                \\node [left] at ({x_f},{y_f}){{$y={latex(f)}$}};\n\
+                \\node [right] at ({x_g},{y_g}){{$y={latex(g)}$}};\n\
+                \\begin{{scope}}\n\
+                \\clip (\\xmin,\\ymin) rectangle (\\xmax,\\ymax);\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a1}*(\\x)^2+{b1}*(\\x)+{c1}}}) ;\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a2}*(\\x)^2+{b2}*(\\x)+{c2}}});\n\
+                \\draw[pattern=north east lines,draw=none]\n\
+                plot[domain={x_1}:{x_2}](\\x,{{{a1}*(\\x)^2+{b1}*(\\x)+{c1}}}) plot[domain={x_2}:{x_1}](\\x,{{{a2}*(\\x)^2+{b2}*(\\x)+{c2}}});\n\
+                \\node at (0,0) [below right]{{$O$}};\n\
+                \\draw[dashed] ({x_1},0) node [below]{{${x_1}$}}--({x_1},{g_1});\n\
+                \\draw[dashed] ({x_2},0) node [below]{{}}--({x_2},{g_2});\n\
+                \\end{{scope}}\n\
+            \\end{{tikzpicture}}"
+
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+    noi_dung_loigiai=(f"Diện tích hình phẳng là:\n\n ${tphan(x_1,x_2)}|{latex(f)}-({latex(g)})|{d_x}$\n\n"
+    f" $={tphan(x_1,x_2)}\\left[{latex(g)}-({latex(f)})\\right]$"
+    f" $={tphan(x_1,x_2)}({latex(g-f)}){d_x}$.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_24]-M3. Cho hình phẳng giới hạn bởi đường thẳng và parabol. Tìm công thức tính diện tích
+def ckz_L12C4_B5_24():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    chon=random.randint(1,2)    
+    if chon==1:
+        while True:
+            a = random.choice([i for i in range(1, 3) if i!=0])
+            b = random.randint(-4,4)
+            c = random.randint(-3,3)
+            f = a*x**2+b*x+c
+            x_0=-b/(2*a)
+            y_0=f.subs(x,x_0)
+            x_1=int(x_0)-random.randint(2,4)
+            x_2=int(x_0)+random.randint(2,4)
+            y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
+            if all([-3<=y_1<=5, -3<=y_2<=5, y_1 != y_2]):
+                break
+
+        k=(y_2-y_1)/(x_2-x_1)
+        g=k*(x-x_1)+y_1
+
+        x_min, x_max=x_1-1.5, x_2+1.5
+        if x_min>=0:x_min=-2
+        if x_max<=0: x_max=2
+
+
+        y_min, y_max=-4,4
+        if y_0>=0 :
+            y_min, y_max=-2, max(y_1,y_2)+1
+        if y_0<0:
+            y_min, y_max=y_0-1, max(y_1,y_2)+1
+
+        x_f=x_1-0.2
+        y_f=f.subs(x,x_f)
+        x_g=x_2+0.2
+        y_g=g.subs(x,x_g)
+
+        code_hinh=f" \\begin{{tikzpicture}}[yscale=.8,xscale=.8,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+                \\def\\xmin{{{x_min}}} \\def\\xmax{{{x_max}}}\n\
+                \\def\\ymin{{{y_min}}} \\def\\ymax{{{y_max}}} \n\
+                \\draw[->] (\\xmin,0)--(\\xmax,0) node [below]{{$x$}};\n\
+                \\draw[->] (0,\\ymin)--(0,\\ymax) node [left]{{$y$}};\n\
+                \\node [left] at ({x_f},{y_f}){{$y={latex(f)}$}};\n\
+                \\node [right] at ({x_g},{y_g}){{$y={latex(g)}$}};\n\
+                \\begin{{scope}}\n\
+                \\clip (\\xmin,\\ymin) rectangle (\\xmax,\\ymax);\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a}*(\\x)^2+{b}*(\\x)+{c}}}) ;\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{k}*((\\x)-{x_1})+{y_1}}});\n\
+                \\draw[pattern=north east lines,draw=none]\n\
+                plot[domain={x_1}:{x_2}](\\x,{{{a}*(\\x)^2+{b}*(\\x)+{c}}}) plot[domain={x_2}:{x_1}](\\x,{{{k}*((\\x)-{x_1})+{y_1}}});\n\
+                \\node at (0,0) [below right]{{$O$}};\n\
+                \\draw[dashed] ({x_1},0) node [below]{{${x_1}$}}--({x_1},{y_1});\n\
+                \\draw[dashed] ({x_2},0) node [below]{{${x_2}$}}--({x_2},{y_2});\n\
+                \\end{{scope}}\n\
+            \\end{{tikzpicture}}"
+
+        noi_dung_loigiai=(
+        f"Diện tích hình phẳng là:\n\n ${tphan(x_1,x_2)}|{latex(f)}-({latex(g)})|{d_x}$\n\n"
+        f" $={tphan(x_1,x_2)}\\left[{latex(g)}-({latex(f)})\\right]$"
+        f" $={tphan(x_1,x_2)}({latex(g-f)}){d_x}$.")
+        
+
+        kq=random.choice([f"${tphan(x_1,x_2)}({latex(g-f)}){d_x}$"])
+        kq_false=[
+        f"${tphan(x_1,x_2)}({latex(f-g)}){d_x}$",
+        f"${tphan(x_1,x_2)}({latex(f+g)}){d_x}$",
+        f"${tphan(x_1,x_2)}|{latex(f)}|{d_x}$",
+        f"${tphan(x_1,x_2)}|{latex(g)}|{d_x}$"]
+      
+    if chon==2:
+
+        while True:
+            a = random.randint(-2,-1)
+            b = random.randint(-3,2)
+            c = random.randint(-4,3)
+            f = a*x**2+b*x+c
+            x_0=-b/(2*a)
+            y_0=f.subs(x,x_0)
+            x_1=int(x_0)-random.randint(2,4)
+            x_2=int(x_0)+random.randint(2,4)
+            y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
+
+            if all([-5<=y_1<=5, -5<=y_2<=5, y_1 != y_2]):
+                break
+
+        k=(y_2-y_1)/(x_2-x_1)
+        g=k*(x-x_1)+y_1
+
+        x_min, x_max=x_1-1.5, x_2+1.5
+        if x_min>=0:x_min=-2
+        if x_max<=0: x_max=2
+
+
+        y_min, y_max=-4,4
+        if y_0>=0 :
+            y_min, y_max=min(y_1,y_2)-1, y_0+1
+        if y_0<0:
+            y_min, y_max=min(y_1,y_2)-1, 2
+
+        x_f=x_1-0.2
+        y_f=f.subs(x,x_f)
+        x_g=x_2+0.2
+        y_g=g.subs(x,x_g)
+
+        code_hinh=f" \\begin{{tikzpicture}}[yscale=.8,xscale=.8,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+                \\def\\xmin{{{x_min}}} \\def\\xmax{{{x_max}}}\n\
+                \\def\\ymin{{{y_min}}} \\def\\ymax{{{y_max}}} \n\
+                \\draw[->] (\\xmin,0)--(\\xmax,0) node [below]{{$x$}};\n\
+                \\draw[->] (0,\\ymin)--(0,\\ymax) node [left]{{$y$}};\n\
+                \\node [left] at ({x_f},{y_f}){{$y={latex(f)}$}};\n\
+                \\node [right] at ({x_g},{y_g}){{$y={latex(g)}$}};\n\
+                \\begin{{scope}}\n\
+                \\clip (\\xmin,\\ymin) rectangle (\\xmax,\\ymax);\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{a}*(\\x)^2+{b}*(\\x)+{c}}}) ;\n\
+                \\draw[smooth,samples=300] plot[domain={x_1-1.5}:{x_2+1.5}](\\x,{{{k}*((\\x)-{x_1})+{y_1}}});\n\
+                \\draw[pattern=north east lines,draw=none]\n\
+                plot[domain={x_1}:{x_2}](\\x,{{{a}*(\\x)^2+{b}*(\\x)+{c}}}) plot[domain={x_2}:{x_1}](\\x,{{{k}*((\\x)-{x_1})+{y_1}}});\n\
+                \\node at (0,0) [below right]{{$O$}};\n\
+                \\draw[dashed] ({x_1},0) node [above]{{${x_1}$}}--({x_1},{y_1});\n\
+                \\draw[dashed] ({x_2},0) node [above]{{${x_2}$}}--({x_2},{y_2});\n\
+                \\end{{scope}}\n\
+            \\end{{tikzpicture}}"
+
+        noi_dung_loigiai=(
+        f"Diện tích hình phẳng là:\n\n ${tphan(x_1,x_2)}|{latex(f)}-({latex(g)})|{d_x}$\n\n"
+        f" $={tphan(x_1,x_2)}\\left[{latex(f)}-({latex(g)})\\right]{d_x}$"
+        f" $={tphan(x_1,x_2)}({latex(f-g)}){d_x}$.")
+        
+
+        kq=random.choice([f"${tphan(x_1,x_2)}({latex(f-g)}){d_x}$"])
+        kq_false=[
+        f"${tphan(x_1,x_2)}({latex(g-f)}){d_x}$",
+        f"${tphan(x_1,x_2)}({latex(f+g)}){d_x}$",
+        f"${tphan(x_1,x_2)}|{latex(f)}|{d_x}$",
+        f"${tphan(x_1,x_2)}|{latex(g)}|{d_x}$"]     
+    
+    noi_dung=(
+    f"Diện tích phần hình phẳng gạch chéo trong hình vẽ bên dưới được tính theo công thức nào dưới đây?"
+    )
+
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]   
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+    
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"\
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"\
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_25]-M2. Tính diện tích hình phẳng tạo bởi y=e^x, y=a, x=b.
+def ckz_L12C4_B5_25():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    a=random.randint(1,4)
+    b=random.randint(-4,4)
+
+    noi_dung=(
+    f"Hình phẳng giới hạn bởi đồ thị hàm số $y=e^x$ và các đường thẳng $y={a},x={b}$ có diện tích là"
+    )
+    if log(a)>b:
+        noi_dung_loigiai=(
+        f"Xét phương trình: $e^x={a}\\Rightarrow x=\\ln {a}$.\n\n"
+        f" Diện tích hình phẳng là:\n\n"
+        f" ${tphan(b, f"\\ln {a}")} e^x {d_x}=e^x \\bigg|_{{{b}}}^{{\\ln {a}}}={latex(integrate(exp(x),(x,b,log(a))))}$."
+        )
+        kq=integrate(exp(x),(x,b,log(a)))
+
+    else:
+        noi_dung_loigiai=(
+        f"Xét phương trình: $e^x={a}\\Rightarrow x=\\ln {a}$.\n\n"
+        f" Diện tích hình phẳng là:\n\n"
+        f" ${tphan(f"\\ln {a}",b)} e^x {d_x}=e^x \\bigg|_{{\\ln {a}}}^{{{b}}}={latex(integrate(exp(x),(x,log(a),b)))}$."
+        )
+        kq=integrate(exp(x),(x,log(a),b))
+    
+    kq_false=[
+    exp(b),
+    exp(a+b),
+    abs(integrate(exp(x),(x,a,b))),
+    abs(integrate(exp(-x),(x,a,b)))
+    ]   
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3] 
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_26]-M2. Tính diện tích hình phẳng tạo bởi y=e^x, x=a, x=b, Ox.
+def ckz_L12C4_B5_26():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    a=random.randint(-5,4)
+    b=a+random.randint(1,4)
+
+    noi_dung=(
+    f"Hình phẳng giới hạn bởi đồ thị hàm số $y=e^x$, các đường thẳng $x={a},x={b}$ và trục ${{Ox}}$ có diện tích là"
+    )
+    
+    noi_dung_loigiai=(    
+    f" Diện tích hình phẳng là:\n\n"
+    f" ${tphan(a,b)} e^x {d_x}=e^x \\bigg|_{{{a}}}^{{{b}}}={latex(integrate(exp(x),(x,a,b)))}$."
+    )
+    kq=integrate(exp(x),(x,a,b))
+    
+    kq_false=[
+    exp(a),
+    exp(b),
+    exp(a+b),
+    abs(integrate(exp(2*x),(x,a,b))),
+    abs(integrate(exp(-x),(x,a,b)))
+    ]   
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3] 
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_27]-M2. Tính diện tích hình phẳng tạo bởi y=m/x, x=a, x=b, Ox.
+def ckz_L12C4_B5_27():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    m=random.randint(-8,8)
+
+    chon=random.randint(1,2)
+    if chon==1:
+        a=random.randint(1,5)
+        b=a+random.randint(1,4)
+   
+    if chon==2:
+        a=random.randint(-5,-1)
+        b=a-random.randint(1,4)          
+
+    noi_dung=(
+    f"Hình phẳng giới hạn bởi đồ thị hàm số $y={latex(m/x)}$, các đường thẳng $x={a},x={b}$ và trục ${{Ox}}$ có diện tích là"
+    )
+    
+    noi_dung_loigiai=(    
+    f" Diện tích hình phẳng là:\n\n"
+    f" ${tphan(a,b)} {latex(m/x)} {d_x}=\\ln |{latex(m/x)}| \\bigg|_{{{a}}}^{{{b}}}={latex(abs(integrate(m/x,(x,a,b))))}$."
+    )
+    noi_dung_loigiai=thay_log_2_ln(noi_dung_loigiai)
+
+    kq=abs(integrate(m/x,(x,a,b)))
+    
+    kq_false=[
+    abs(integrate(m*x,(x,a,b))),
+    abs(integrate(exp(x),(x,a,b))),
+    abs(integrate(m*x+random.randint(1,2),(x,a,b))),
+    abs(integrate(m/(x+random.randint(1,2)),(x,a,b)))    
+    ]   
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    thay_log_2_ln
+
+    pa_A= thay_log_2_ln(f"*${{{latex(kq)}}}$")
+    pa_B= thay_log_2_ln(f"${{{latex(kq2)}}}$")
+    pa_C= thay_log_2_ln(f"${{{latex(kq3)}}}$")
+    pa_D= thay_log_2_ln(f"${{{latex(kq4)}}}$")
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_28]-M1. Tìm công thức tính diện tích hình phẳng tạo bởi y=a^x, x=a, x=b, Ox.
+def ckz_L12C4_B5_28():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    m = random.choice(["e",random.randint(2,9),"\\pi" ])
+
+    a=random.randint(-6,3)
+    b=a+random.randint(1,4)
+    noi_dung=(
+    f"Gọi ${{S}}$ là diện tích của hình phẳng giới hạn bởi các đường $y={m}^x,y=0,x={a},x={b}$."
+    f" Khẳng định nào sau đây đúng?")
+    
+
+    kq=random.choice([
+        f"$S={tphan(a,b)}{m}^x{d_x}$"])
+    kq_false=[
+    f"$S=\\pi{tphan(a,b)}{m}^x{d_x}$",
+    f"$S={tphan(b,a)}{m}^x{d_x}$",
+    f"$S=\\pi{tphan(a,b)}{m}^{{2x}}{d_x}$",
+    f"$S={tphan(a,b)}{m}^{{2x}}{d_x}$",
+    f"$S={tphan(0,a)}{m}^{{2x}}{d_x}$",
+    f"$S={tphan(0,b)}{m}^{{2x}}{d_x}$",
+
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$S={tphan(a,b)}|{m}^x|{d_x}={tphan(a,b)}{m}^x{d_x}$.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_29]-M1. Tìm công thức tính diện tích hình phẳng: y=f(x),x=a,x=b,Ox (lí thuyết)
+def ckz_L12C4_B5_29():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    f = random.choice(["f(x)", "g(x)", "h(x)"])
+    a=random.randint(-6,3)
+    b=a+random.randint(1,4)
+
+    noi_dung=(
+    f"Gọi ${{S}}$ là diện tích của hình phẳng giới hạn bởi các đường $y=f(x),y=0,x={a},x={b}$."
+    f" Khẳng định nào sau đây đúng?")
+    
+
+    kq=random.choice([
+        f"$S={tphan(a,b)}|{f}|{d_x}$"])
+
+    kq_false=[
+    f"$S=\\pi{tphan(a,b)} {f}{d_x}$",
+    f"$S={tphan(b,a)} {f}{d_x}$",
+    f"$S={tphan(a,b)} {f}{d_x}$",
+    f"$S=\\pi{tphan(a,b)} {{[{f}]^2}}{d_x}$",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$S={tphan(a,b)}|{f}|{d_x}$.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_30]-M1. (Lí thuyết)Tìm công thức tính diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b,Ox 
+def ckz_L12C4_B5_30():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    ten=["f(x)", "g(x)", "h(x)"]
+    random.shuffle(ten)
+    f,g = ten[0:2]
+    a=random.randint(-6,3)
+    b=a+random.randint(1,4)
+
+    noi_dung=(
+    f"Gọi ${{S}}$ là diện tích của hình phẳng giới hạn bởi các đường $y={f},y={g},x={a},x={b}$."
+    f" Khẳng định nào sau đây đúng?")
+    
+
+    kq=random.choice([
+        f"$S={tphan(a,b)}|{f}-{g}|{d_x}$",
+        f"$S={tphan(a,b)}|{g}-{f}|{d_x}$"])
+
+    kq_false=[
+    f"$S=\\pi{tphan(a,b)} ({f}-{g}){d_x}$",
+    f"$S={tphan(a,b)} {{[{f}+{g}]}}{d_x}$",
+    f"$S={tphan(a,b)} |{f}|{d_x}-{tphan(a,b)} |{g}|{d_x}$",
+    f"$S=\\pi{tphan(a,b)} {{[|{f}|-|{g}|]}}{d_x}$",
+    f"$S=\\pi{tphan(a,b)} {{[|{g}|-|{h}|]}}{d_x}$",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$S={tphan(a,b)}|{f}-{g}|{d_x}={tphan(a,b)}|{g}-{f}|{d_x}$.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an

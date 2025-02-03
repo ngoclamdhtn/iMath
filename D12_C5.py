@@ -1709,7 +1709,7 @@ def htd_25_xyz_L12_C5_B1_18():
     goc_degree_false=f"{round_half_up(math.degrees(goc)+random.randint(1,2),1):.1f}".replace(".",",")
 
     kq4_T=f"* Góc giữa mặt phẳng ${{({mp_P})}}$ và mặt phẳng ${{({mp_Q})}}:{latex(a1*x+b1*y+c1*z+d1)}=0$ bằng ${goc_degree}^\\circ$"
-    kq4_F=f"Góc giữa mặt phẳng ${{({mp_P})}}$ và mặt phẳng ${{({mp_Q})}}:{latex(a1*x+b1*y+c1*z+d1)}=0$ bằng ${goc_degree}^\\circ$" 
+    kq4_F=f"Góc giữa mặt phẳng ${{({mp_P})}}$ và mặt phẳng ${{({mp_Q})}}:{latex(a1*x+b1*y+c1*z+d1)}=0$ bằng ${goc_degree_false}^\\circ$" 
     kq4=random.choice([kq4_T, kq4_F])
     HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
         f"$\\cos({mp_P},{mp_Q})=\\dfrac{{|{show_tich(a,a1)}+{show_tich(b,b1)}+{show_tich(c,c1)}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}.\\sqrt{{{a1**2}+{b1**2}+{c1**2}}} }}$"

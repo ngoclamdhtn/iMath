@@ -517,12 +517,12 @@ class Ui_MainWindow(object):
                 self.btn_move_row_down.setIcon(QIcon(f"{icon_folder_path}\\down-arrow.png"))
 
                 #Tạo nút Chuyển tự luận
-                self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
-                self.btn_chuyen_tuluan.setFont(font_10)
-                self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
-                self.btn_chuyen_tuluan.setText("TN => TL")
-                self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
+                # self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
+                # self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
+                # self.btn_chuyen_tuluan.setFont(font_10)
+                # self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
+                # self.btn_chuyen_tuluan.setText("TN => TL")
+                # self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
                 #self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
 
                 #Tạo nút Xóa dòng
@@ -7450,19 +7450,52 @@ class Ui_MainWindow(object):
                 L12_C4_B5_11.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_11.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_29]-M1. (LT) Tìm công thức tính diện tích hình phẳng: y=f(x),x=a,x=b,Ox "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_30]-M1. (LT) Tìm công thức tính diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b,Ox "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_28]-M1. Tìm công thức tính diện tích hình phẳng tạo bởi y=a^x, x=a, x=b, Ox."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_03]-M1. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_01]-M1. Diện tích hình phẳng: y=f(x),Ox,x=a,x=b"])
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_23]-M2. Tìm công thức tính diện tích từ hình vẽ có 2 parabol"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_02]-M2. Diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b"])
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_24]-M2. Tìm công thức tính diện tích từ hình vẽ có đường thẳng và parabol"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_01]-M1. Diện tích hình phẳng: y=ax+b hoặc y=ax^2+bx+c,Ox,x=a,x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_02]-M2. Diện tích hình phẳng: y=ax^2+bx_c,y=ax+b,x=a,x=b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_04]-M2. Diện tích hình phẳng: y=f(x),y=g(x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_26]-M1. Tính diện tích hình phẳng tạo bởi y=e^x, x=a, x=b, Ox."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_25]-M2. Tính diện tích hình phẳng tạo bởi y=e^x, y=a, x=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_27]-M2. Tính diện tích hình phẳng tạo bởi y=m/x, x=a, x=b, Ox."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7544,6 +7577,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi 3 đường: đường thẳng, parabol, trục Ox"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_22]-SA-M2. Toán thực tế: Tính diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9550,7 +9587,43 @@ class Ui_MainWindow(object):
 
                                                 #[D12_C4_B5_21]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol
                                                 if dang_toan == "[D12_C4_B5_21]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_21()                         
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_21()
+
+                                                #[D12_C4_B5_22]-SA-M2. Toán thực tế: Tính diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol.
+                                                if dang_toan == "[D12_C4_B5_22]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_22()
+
+                                                #[D12_C4_B5_23]. Cho hình phẳng giới hạn bởi 2 parabol. Tìm công thức tính diện tích
+                                                if dang_toan == "[D12_C4_B5_23]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_23()
+
+                                                #[D12_C4_B5_24]. Cho hình phẳng giới hạn bởi đường thẳng và parabol. Tìm công thức tính diện tích
+                                                if dang_toan == "[D12_C4_B5_24]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_24()
+
+                                                #[D12_C4_B5_25]. Tính diện tích hình phẳng tạo bởi y=e^x, y=a, x=b.
+                                                if dang_toan == "[D12_C4_B5_25]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_25()
+
+                                                #[D12_C4_B5_26]. Tính diện tích hình phẳng tạo bởi y=e^x, x=a, x=b, Ox.
+                                                if dang_toan == "[D12_C4_B5_26]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_26()
+
+                                                #[D12_C4_B5_27]. Tính diện tích hình phẳng tạo bởi y=m/x, x=a, x=b, Ox.
+                                                if dang_toan == "[D12_C4_B5_27]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_27()
+
+                                                #[D12_C4_B5_28]. Tìm công thức tính diện tích hình phẳng tạo bởi y=a^x, x=a, x=b, Ox.
+                                                if dang_toan == "[D12_C4_B5_28]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_28()
+
+                                                #[D12_C4_B5_29]. Tìm công thức tính diện tích hình phẳng: y=f(x),x=a,x=b,Ox (lí thuyết)
+                                                if dang_toan == "[D12_C4_B5_29]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_29() 
+
+                                                #[D12_C4_B5_30]. Tìm công thức tính diện tích hình phẳng: y=f(x),y=g(x),x=a,x=b,Ox (lí thuyết)
+                                                if dang_toan == "[D12_C4_B5_30]":                                        
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_30()                    
                                                     
 
                                                 ##################################################################
