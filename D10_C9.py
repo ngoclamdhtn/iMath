@@ -2219,6 +2219,8 @@ def mjulk_L10_C9_B2_33():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+	
+
 #[D10_C9_B2_34]-TF-M3. Chọn k vật từ 3 nhóm. Xét Đ-S: không gian mẫu, xác suất.
 def mjulk_L10_C9_B2_34():
 	
@@ -2386,7 +2388,7 @@ def mjulk_L10_C9_B2_34():
 	return debai,debai_latex,loigiai_word,dap_an
 
 
-#[L10_C9_B2_35]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại 
+#[D10_C9_B2_35]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại 
 def mjulk_L10_C9_B2_35(): 
     a2=random.randint(1,4)
     a1=a2+random.randint(23,45)
@@ -2575,7 +2577,7 @@ def mjulk_L10_C9_B2_35():
 
 
 
-#[L10_C9_B2_36]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại 
+#[D10_C9_B2_36]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại 
 def mjulk_L10_C9_B2_36(): 
     a2=random.randint(1,5)
     a1=a2+random.randint(15,45)
@@ -2762,7 +2764,7 @@ def mjulk_L10_C9_B2_36():
 
 
 
-#[L10_C9_B2_37]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc
+#[D10_C9_B2_37]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc
 def mjulk_L10_C9_B2_37():
 	a2=random.randint(1,5)
 	a1=a2+random.randint(15,45)
@@ -2939,7 +2941,7 @@ def mjulk_L10_C9_B2_37():
 
 
 
-#[L10_C9_B2_38]-TF-M3. XS các bài toán chọn 2 người từ một nhóm
+#[D10_C9_B2_38]-TF-M3. XS các bài toán chọn 2 người từ một nhóm
 def mjulk_L10_C9_B2_38():
 	a2=random.randint(10,20)
 	a3=random.randint(10,25)
@@ -3059,7 +3061,7 @@ def mjulk_L10_C9_B2_38():
 
 
 
-#[L10_C9_B2_39]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1
+#[D10_C9_B2_39]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1
 def mjulk_L10_C9_B2_39():
     a2=random.randint(10,20)
     a3=random.randint(10,25)
@@ -3329,7 +3331,7 @@ def mjulk_L10_C9_B2_09():
 
 
 
-#[L10_C9_B2_10]-M1. Cho m nam ,n nữ, xs chọn k nữ(nam)
+#[D10_C9_B2_10]-M1. Cho m nam ,n nữ, xs chọn k nữ(nam)
 def mjulk_L10_C9_B2_10():
 	k=random.randint(2,6)
 	n=k+ random.randint(2,4)
@@ -3394,7 +3396,7 @@ def mjulk_L10_C9_B2_10():
 
 
 
-#[L10_C9_B2_11]-M2. Cho m nam ,n nữ chọn k bạn thoả dk nào đó
+#[D10_C9_B2_11]-M2. Cho m nam ,n nữ chọn k bạn thoả dk nào đó
 def mjulk_L10_C9_B2_11():
 	k1=random.randint(1,3)
 	k=k1+random.randint(1,3)
@@ -3460,7 +3462,7 @@ def mjulk_L10_C9_B2_11():
 
 
 
-#[L10_C9_B2_12]-M1. Cho m nam ,n nữ, xs chọn được ít nhất 1 nữ (nam)
+#[D10_C9_B2_12]-M1. Cho m nam ,n nữ, xs chọn được ít nhất 1 nữ (nam)
 def mjulk_L10_C9_B2_12():
 	k=random.randint(2,6)
 	n=k+ random.randint(2,4)
@@ -3536,7 +3538,7 @@ def mjulk_L10_C9_B2_12():
 
 
 
-#[L10_C9_B2_13]-M2. Cho m nam ,n nữ, chọn k bạn trong đó có (không có) bạn A
+#[D10_C9_B2_13]-M2. Cho m nam ,n nữ, chọn k bạn trong đó có (không có) bạn A
 def mjulk_L10_C9_B2_13():
 	k=random.randint(2,6)
 	n=k+ random.randint(2,4)
@@ -3611,7 +3613,7 @@ def mjulk_L10_C9_B2_13():
 
 
 
-#[L10_C9_B2_14]-M1. Tính xs các bài toán về gieo 1 con xúc sắc (nhiều kiểu hỏi)
+#[D10_C9_B2_14]-M1. Tính xs các bài toán về gieo 1 con xúc sắc (nhiều kiểu hỏi)
 def mjulk_L10_C9_B2_14(): 
     chon =random.randint(1,2) 
     if chon ==1:
@@ -3708,7 +3710,7 @@ def mjulk_L10_C9_B2_14():
 
 
 
-#[L10_C9_B2_15]-M2. xs các btoán về gieo 2 con xúc sắc (rất nhiều kiểu hỏi)
+#[D10_C9_B2_15]-M2. xs các btoán về gieo 2 con xúc sắc (rất nhiều kiểu hỏi)
 def mjulk_L10_C9_B2_15(): 
     chon =random.randint(1,27) 
     if chon ==1:
@@ -3986,7 +3988,7 @@ def mjulk_L10_C9_B2_15():
 
 
 
-#[L10_C9_B2_16]-M1. xác suất các btoán về rút 1 thẻ số
+#[D10_C9_B2_16]-M1. xác suất các btoán về rút 1 thẻ số
 def mjulk_L10_C9_B2_16(): 
     a=random.randint(20,50)
     b=a-random.randint(5,15)
@@ -4078,7 +4080,7 @@ def mjulk_L10_C9_B2_16():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-#[L10_C9_B2_17]-M2. xs các btoán về xếp chỗ ngồi(4 kiểu)
+#[D10_C9_B2_17]-M2. xs các btoán về xếp chỗ ngồi(4 kiểu)
 def mjulk_L10_C9_B2_17(): 
     ds=["Lan", "Mai", "Hoa", "Sơn", "Hà", "Hồng", "Tâm", "Hiền", "Lam", "Thảo", "Tân","Tiến"]
     A, B, C =random.sample(ds, 3)
@@ -4165,7 +4167,7 @@ def mjulk_L10_C9_B2_17():
 
 
 
-#[L10_C9_B2_18]-M2. xác suất các bài toán về chọn người kiểu 1
+#[D10_C9_B2_18]-M2. xác suất các bài toán về chọn người kiểu 1
 def mjulk_L10_C9_B2_18(): 
 
     a=random.randint(2,3)
@@ -4280,7 +4282,7 @@ def mjulk_L10_C9_B2_18():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-#[L10_C9_B2_19]-M2. Tính xác suất các bài toán về chọn người 
+#[D10_C9_B2_19]-M2. Tính xác suất các bài toán về chọn người 
 def mjulk_L10_C9_B2_19(): 
 
     a=random.randint(3,6)
@@ -4385,7 +4387,7 @@ def mjulk_L10_C9_B2_19():
 
 
 
-#[L10_C9_B2_20]-M2. xs các btoán về Rút quả cầu từ một hộp các quả vừa khác màu vừa khác số(18 kiểu)
+#[D10_C9_B2_20]-M2. xs các btoán về Rút quả cầu từ một hộp các quả vừa khác màu vừa khác số(18 kiểu)
 def mjulk_L10_C9_B2_20(): 
     ds=[" đen", "đỏ", "xanh", "tím", "vàng", "trắng"]
     A,B=random.sample(ds,2)
@@ -4601,7 +4603,7 @@ def mjulk_L10_C9_B2_20():
 
 
 
-#[L10_C9_B2_21]-M1. XS các bài toán quay số trúng thưởng
+#[D10_C9_B2_21]-M1. XS các bài toán quay số trúng thưởng
 def mjulk_L10_C9_B2_21(): 
     a=random.randint(10,20)
     b=random.randint(1,a)
@@ -4710,7 +4712,7 @@ def mjulk_L10_C9_B2_21():
 
 
 
-#[L10_C9_B2_22]-M2. XS các bài toán rút số từ 2 hộp và ghép lại với nhau
+#[D10_C9_B2_22]-M2. XS các bài toán rút số từ 2 hộp và ghép lại với nhau
 def mjulk_L10_C9_B2_22(): 
     a=9
     b=random.randint(2,9)
@@ -4819,7 +4821,7 @@ def mjulk_L10_C9_B2_22():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[L10_C9_B2_23]-M2. XS các bài toán rút số từ 2 hộp và nhân lại với nhau
+#[D10_C9_B2_23]-M2. XS các bài toán rút số từ 2 hộp và nhân lại với nhau
 def mjulk_L10_C9_B2_23(): 
     a=9
     b=random.randint(1,9)
@@ -4932,7 +4934,7 @@ def mjulk_L10_C9_B2_23():
 
 
 
-#[L10_C9_B2_24]-M2. XS các bài toán rút số từ 2 hộp và cộng lại với nhau
+#[D10_C9_B2_24]-M2. XS các bài toán rút số từ 2 hộp và cộng lại với nhau
 def mjulk_L10_C9_B2_24(): 
     a=9
     b=random.randint(2,9)
@@ -5063,7 +5065,7 @@ def mjulk_L10_C9_B2_24():
 
 
 
-#[L10_C9_B2_25]-M2. XS các bài toán quay số từ 2 vòng quay và nhân(cộng, ghép) lại với nhau(8 kiểu)
+#[D10_C9_B2_25]-M2. XS các bài toán quay số từ 2 vòng quay và nhân(cộng, ghép) lại với nhau(8 kiểu)
 def mjulk_L10_C9_B2_25(): 
     ten=["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"]
     ten1, ten2=random.sample(ten,2)
@@ -5218,7 +5220,7 @@ def mjulk_L10_C9_B2_25():
 
 
 
-#[L10_C9_B2_26]-M3. XS các btoán quay số từ 2 vòng quay và cộng lại với nhau(10 kiểu)
+#[D10_C9_B2_26]-M3. XS các btoán quay số từ 2 vòng quay và cộng lại với nhau(10 kiểu)
 def mjulk_L10_C9_B2_26(): 
     ten=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
     ten1, ten2=random.sample(ten,2)
@@ -5386,7 +5388,7 @@ def mjulk_L10_C9_B2_26():
 
 
 
-#[L10_C9_B2_27]-M2. XS các bài toán quay số từ 2 vòng quay và ghép lại với nhau(7 kiểu)
+#[D10_C9_B2_27]-M2. XS các bài toán quay số từ 2 vòng quay và ghép lại với nhau(7 kiểu)
 def mjulk_L10_C9_B2_27(): 
     X=random.choice(["An ", "Minh", "Phú", "Hà", "Lan", "Mai", "Hồng", "Huệ", "Bình"])
     Y=random.choice(["Công ", "Nga", "Quân", "Khôi", "Hải", "Hiền", "Kiên", "Duy","Bảo"])
@@ -5553,7 +5555,7 @@ def mjulk_L10_C9_B2_27():
 
 
 
-#[L10_C9_B2_28]-M2. Tính xác suất các bài toán về chọn 1 người từ 2 nhóm
+#[D10_C9_B2_28]-M2. Tính xác suất các bài toán về chọn 1 người từ 2 nhóm
 def mjulk_L10_C9_B2_28(): 
 
     e=random.randint(1,12)
@@ -5756,7 +5758,7 @@ def mjulk_L10_C9_B2_28():
 
 
 
-#[L10_C9_B2_29]-M3. XS các btoan tích số chấm, tổng số chấm khi gieo 1 con xúc xắc 2 lần 
+#[D10_C9_B2_29]-M3. XS các btoan tích số chấm, tổng số chấm khi gieo 1 con xúc xắc 2 lần 
 def mjulk_L10_C9_B2_29(): 
     A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
 
@@ -6036,7 +6038,7 @@ def mjulk_L10_C9_B2_29():
 
 
 
-#[L10_C9_B2_30]-M2. XS các btoán ghép số khi gieo 1 con xúc xắc 2 lần(7 kiểu)
+#[D10_C9_B2_30]-M2. XS các btoán ghép số khi gieo 1 con xúc xắc 2 lần(7 kiểu)
 def mjulk_L10_C9_B2_30(): 
     A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
     a=36
@@ -6134,7 +6136,7 @@ def mjulk_L10_C9_B2_30():
 
 
 
-#[L10_C9_B2_24]-M3. Tính xác suất các btoán về rút thẻ số 2 lần có hoàn trả lại và ghép lại với nhau(12 kiểu)
+#[D10_C9_B2_24]-M3. Tính xác suất các btoán về rút thẻ số 2 lần có hoàn trả lại và ghép lại với nhau(12 kiểu)
 def mjulk_L10_C9_B2_24(): 
     a2=random.randint(1,3)
     a1=a2+random.randint(3,5)
@@ -6277,7 +6279,7 @@ def mjulk_L10_C9_B2_24():
 
 
 
-#[L10_C9_B2_25]-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại và cộng kq lại với nhau(10kiểu)
+#[D10_C9_B2_25]-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại và cộng kq lại với nhau(10kiểu)
 def mjulk_L10_C9_B2_25(): 
     a2=random.randint(1,4)
     a1=a2+random.randint(3,5)
@@ -6400,7 +6402,7 @@ def mjulk_L10_C9_B2_25():
 
 
 
-#[L10_C9_B2_26]-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại và nhân kq lại với nhau(10kiểu)
+#[D10_C9_B2_26]-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại và nhân kq lại với nhau(10kiểu)
 def mjulk_L10_C9_B2_26(): 
     a2=random.randint(2,4)
     a1=a2+random.randint(3,5)
@@ -6515,7 +6517,7 @@ def mjulk_L10_C9_B2_26():
 
 
 
-#[L10_C9_B2_27]-M4. XS các btoán về rút thẻ số 2lần không trả lại và nhân kq lại với nhau(7kiểu)
+#[D10_C9_B2_27]-M4. XS các btoán về rút thẻ số 2lần không trả lại và nhân kq lại với nhau(7kiểu)
 def mjulk_L10_C9_B2_27(): 
     a2=random.randint(2,4)
     a1=a2+random.randint(3,5)
@@ -6623,7 +6625,7 @@ def mjulk_L10_C9_B2_27():
 
 
 
-#[L10_C9_B2_28]-M4. XS các btoán về rút thẻ số 2lần không trả lại và cộng kq lại với nhau(9kiểu)
+#[D10_C9_B2_28]-M4. XS các btoán về rút thẻ số 2lần không trả lại và cộng kq lại với nhau(9kiểu)
 def mjulk_L10_C9_B2_28(): 
     a2=random.randint(2,4)
     a1=a2+random.randint(3,5)
@@ -6746,7 +6748,7 @@ def mjulk_L10_C9_B2_28():
 
 
 
-#[L10_C9_B2_29]-M4. XS các btoán về rút thẻ số 2lần không trả lại và ghép kq lại với nhau(9kiểu)
+#[D10_C9_B2_29]-M4. XS các btoán về rút thẻ số 2lần không trả lại và ghép kq lại với nhau(9kiểu)
 def mjulk_L10_C9_B2_29(): 
     a2=random.randint(2,4)
     a1=a2+random.randint(3,5)
@@ -6859,7 +6861,7 @@ def mjulk_L10_C9_B2_29():
 
 
 
-#[L10_C9_B2_30]-M4. XS các btoán về rút thẻ số nhiều lần không trả lại và ghép kq lại với nhau(12kiểu)
+#[D10_C9_B2_30]-M4. XS các btoán về rút thẻ số nhiều lần không trả lại và ghép kq lại với nhau(12kiểu)
 def mjulk_L10_C9_B2_30(): 
     a1=random.choice([1,3,5,7,9] )
     a3=random.choice([2,4,6,8] )
@@ -6997,7 +6999,7 @@ def mjulk_L10_C9_B2_30():
 
 
 
-#[L10_C9_B2_31]-M3. XS các btoán rút vật từ hộp này bỏ sang hộp kia
+#[D10_C9_B2_31]-M3. XS các btoán rút vật từ hộp này bỏ sang hộp kia
 def mjulk_L10_C9_B2_31():
     m=random.randint(3,5) 
     n=random.choice([i for i in range(4,6)])
@@ -7065,7 +7067,7 @@ def mjulk_L10_C9_B2_31():
 
 
 
-#[L10_C9_B2_40]-TF-M3. XS các bài toán chọn 4 người từ một nhóm
+#[D10_C9_B2_40]-TF-M3. XS các bài toán chọn 4 người từ một nhóm
 def mjulk_L10_C9_B2_40():
     a2=random.randint(10,20)
     a3=random.randint(10,25)
@@ -7335,7 +7337,7 @@ def mjulk_L10_C9_B2_40():
 
 
 
-#[L10_C9_B2_41]-TF-M3. XS các bài toán chọn vật(viên bi, quả cầu)
+#[D10_C9_B2_41]-TF-M3. XS các bài toán chọn vật(viên bi, quả cầu)
 def mjulk_L10_C9_B2_41():
     D=random.choice(["viên bi", "quả cầu"])
     ds=["xanh","vàng", "đen", "tím", "trắng", "đỏ", "nâu", "xám"]
@@ -7469,7 +7471,7 @@ def mjulk_L10_C9_B2_41():
     return debai,debai_latex,loigiai_word,dap_an
 
 
-#[L10_C9_B2_42]-M3. XS các btoan rút 2 thẻ số đồng thời(9 kiểu)
+#[D10_C9_B2_42]-M3. XS các btoan rút 2 thẻ số đồng thời(9 kiểu)
 def mjulk_L10_C9_B2_42():
 
     danh_sach =random.sample(range(10, 100), random.randint(5, 9)) 
@@ -7569,7 +7571,7 @@ def mjulk_L10_C9_B2_42():
 
 
 
-#[L10_C9_B2_43]-M2. XS các btoán về rút đồng thời 2 thẻ và ghép kq lại với nhau(9kiểu)
+#[D10_C9_B2_43]-M2. XS các btoán về rút đồng thời 2 thẻ và ghép kq lại với nhau(9kiểu)
 def mjulk_L10_C9_B2_43(): 
     a2=random.randint(1,4)
     a1=a2+random.randint(3,5)

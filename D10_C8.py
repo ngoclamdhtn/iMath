@@ -811,7 +811,7 @@ f"${{{c-2}}}$",
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan
 
 
 
@@ -1989,16 +1989,16 @@ def mcn__L10_C8_B1_25():
 
 #[D10_C8_B1_26]-SA-M3. B.toán tạo số có các chữ số khác nhau lớn hơn số m cho trước
 def mcn__L10_C8_B1_26(): 
+	n=random.randint(6,9)
+	nhom1=tao_taphop_khac_0(n)
 
-	#chu_so = [ 1, 2, 3, 4, 5, 6, 7,8, 9, 0]
-	a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
-	chu_so=[a1,a2,a3,a4,a5,a6,a7]
+
 	# Bước 2: Số m cho trước
 	m = random.randint(1234,4567)
 	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
 	so_hoan_vi = [
 	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
-	    for p in permutations(chu_so, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	    for p in permutations(nhom1, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
 	]
 
 	# Bước 4: Lọc ra các số lớn hơn 2300
@@ -2007,7 +2007,7 @@ def mcn__L10_C8_B1_26():
 	# Bước 5: Đếm số lượng các số thỏa mãn
 	kq = len(so_ket_qua)
 
-	noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và lớn hơn ${{{m}}}$. "
+	noi_dung=f" Từ các chữ số $\\{{ {nhom1} \\}}$ lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và lớn hơn ${{{m}}}$. "
 	noi_dung_loigiai=f" Lập được ${{{kq}}}$ số thoả mãn yêu cầu."
 	debai_word= f"{noi_dung}\n"
 
@@ -2024,16 +2024,16 @@ def mcn__L10_C8_B1_26():
 
 #[D10_C8_B1_27]-SA-M3. B.toán tạo số có các chữ số khác nhau nhỏ hơn số m cho trước
 def mcn__L10_C8_B1_27(): 
+	n=random.randint(6,9)
+	nhom1=tao_taphop_khac_0(n)
 
-	#chu_so = [ 1, 2, 3, 4, 5, 6, 7,8, 9, 0]
-	a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
-	chu_so=[a1,a2,a3,a4,a5,a6,a7]
+
 	# Bước 2: Số m cho trước
-	m = random.randint(4600,7865)
+	m = random.randint(1234,4567)
 	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
 	so_hoan_vi = [
 	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
-	    for p in permutations(chu_so, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	    for p in permutations(nhom1, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
 	]
 
 	# Bước 4: Lọc ra các số lớn hơn 2300
@@ -2042,7 +2042,7 @@ def mcn__L10_C8_B1_27():
 	# Bước 5: Đếm số lượng các số thỏa mãn
 	kq = len(so_ket_qua)
 
-	noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và nhỏ hơn ${{{m}}}$. "
+	noi_dung=f" Từ các chữ số $\\{{ {nhom1} \\}}$ lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và nhỏ hơn ${{{m}}}$. "
 	noi_dung_loigiai=f" Lập được ${{{kq}}}$ số thoả mãn yêu cầu."
 	debai_word= f"{noi_dung}\n"
 
@@ -2061,27 +2061,72 @@ def mcn__L10_C8_B1_27():
 
 #[D10_C8_B1_28]-SA-M4. B.toán tính tổng các số được tạo ra.
 def mcn__L10_C8_B1_28(): 
+	chon=random.randint(1,2)
+	if chon ==1:
+		n=random.randint(6,9)
+		nhom1=tao_taphop_chua_0(n)
+		a1=random.choice([i for i in nhom1 if i!=0])
+		nhom2 = [x for x in nhom1 if x != 0] 
+		nhom2=str(nhom2)
+		nhom2=nhom2.replace("["," ").replace("]"," ").replace(",","+")
 
-	#chu_so = [ 1, 2, 3, 4, 5, 6, 7,8, 9, 0]
-	a1,a2,a3,a4,a5,a6,a7=random.sample(range(0,9),7)
-	chu_so=[a1,a2,a3,a4,a5,a6,a7]
-	# Bước 2: Số m cho trước
-	m = random.randint(4600,7865)
-	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
-	so_hoan_vi = [
-	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
-	    for p in permutations(chu_so, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+		sl=len(nhom1)
+		s1=(sl-2)*(sl-2)*(sl-3)
+		# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+		so_hoan_vi = [
+		    int(''.join(map(str, p)))  
+		    for p in permutations(nhom1, 4)  
+		    if p[0] != 0  # Loại bỏ hoán vị có số 0 đứng đầu
 	]
+		# Bước 4: Lọc ra các số lớn hơn 2300
+		m=sum(so_hoan_vi)
 
-	# Bước 4: Lọc ra các số lớn hơn 2300
-	m=sum(so_hoan_vi)
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		
+		kq=tinh_tong_chu_so(m)
 
-	# Bước 5: Đếm số lượng các số thỏa mãn
+		noi_dung=f" Từ các chữ số $ {nhom1} $ lập tất cả các số tự nhiên có bốn chữ số đôi một khác nhau. Tổng các số lập được là ${{m}}$. Tính tổng các chữ số của số ${{m}}$ "
+		noi_dung_loigiai=(f"\n\n Xét chữ số ${{{a1}}}$ đứng ở hàng đơn vị ${{{s1}}}$ lần \n\n"
+						f" Hoàn toàn tương tự chữ số ${{{a1}}}$ cũng đứng ở hàng chục ${{{s1}}}$ lần, hàng trăm ${{{s1}}}$ lần\n\n"
+						f" Xét chữ số ${{{a1}}}$ đứng ở hàng nghìn ${{{chinh_hop(3,sl-1)}}}$ lần \n\n"
+						f" Các chữ số khác cũng vậy (không tính chữ số 0 vì không có giá trị khi tính tổng)\n\n"
+						f" Tổng các số sẽ là \n\n  $\\left( {nhom2} \\right) \\cdot (1+10+100) \\cdot {s1} + \\left( {nhom2} \\right) \\cdot 1000 \\cdot {chinh_hop(3,sl-1)} ={m}$ \n\n"
+		f" Tổng các số tạo ra là ${{{m}}}$. \n\n Tổng các chữ số của nó là ${{{kq}}}$.")
 	
-	kq=tinh_tong_chu_so(m)
 
-	noi_dung=f" Từ các chữ số ${{ {a1}; {a2}; {a3}; {a4}; {a5}; {a6}; {a7} }}$ lập tất cả các số tự nhiên có bốn chữ số đôi một khác nhau. Tổng các số lập được là ${{m}}$. Tính tổng các chữ số của số ${{m}}$ "
-	noi_dung_loigiai=f" Tổng các số tạo ra là ${{{m}}}$. Tổng các chữ số của nó là ${{{kq}}}$ (Thầy cô ơi đây là kết quả do lập trình tính) \n\n HDG tính các chữ số đứng ở các hàng bao nhiêu lần."
+	if chon ==2:
+		n=random.randint(6,9)
+		nhom1=tao_taphop_khac_0(n)
+		a1=random.choice([i for i in nhom1 if i!=0])
+		nhom2 = [x for x in nhom1 if x != 0] 
+		nhom2=str(nhom2)
+		nhom2=nhom2.replace("["," ").replace("]"," ").replace(",","+")
+
+		sl=len(nhom1)
+		s1=(sl-1)*(sl-2)*(sl-3)
+		# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+		so_hoan_vi = [
+		    int(''.join(map(str, p)))  
+		    for p in permutations(nhom1, 4)  
+		    if p[0] != 0  # Loại bỏ hoán vị có số 0 đứng đầu
+	]
+		# Bước 4: Lọc ra các số lớn hơn 2300
+		m=sum(so_hoan_vi)
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		
+		kq=tinh_tong_chu_so(m)
+
+		noi_dung=f" Từ các chữ số $ {nhom1} $ lập tất cả các số tự nhiên có bốn chữ số đôi một khác nhau. Tổng các số lập được là ${{m}}$. Tính tổng các chữ số của số ${{m}}$ "
+		noi_dung_loigiai=(f"\n\n Xét chữ số ${{{a1}}}$ đứng ở hàng đơn vị ${{{s1}}}$ lần \n\n"
+						f" Hoàn toàn tương tự chữ số ${{{a1}}}$ cũng đứng ở hàng chục ${{{s1}}}$ lần, hàng trăm ${{{s1}}}$ lần, hàng nghìn ${{{s1}}}$ lần\n\n"
+						f" Tương tự các chữ số khác cũng vậy\n\n"
+						f" Tổng các số sẽ là \n\n $\\left( {nhom2} \\right) \\cdot (1+10+100+1000) \\cdot {s1} ={m}$ \n\n"
+		f" Tổng các số tạo ra là ${{{m}}}$. \n\n Tổng các chữ số của nó là ${{{kq}}}$.")
+
+
+
+
 	debai_word= f"{noi_dung}\n"
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -2093,6 +2138,17 @@ def mcn__L10_C8_B1_28():
 	dap_an= kq
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2122,7 +2178,78 @@ def mcn__L10_C8_B1_29():
 
 
 
+#[D10_C8_B1_30]-SA-M4. Đếm các số chẵn(lẻ) có các chữ số khác nhau và nhỏ hơn(lớn hơn) m
+def mcn__L10_C8_B1_30(): 
+	n=random.randint(6,9)
+	nhom1=tao_taphop_khac_0(n)
 
+
+	# Bước 2: Số m cho trước
+	
+	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(nhom1, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+
+	chon=random.randint(1,4)
+	if chon==1:
+		m = random.randint(1234,4567)
+	# Bước 4: Lọc ra các số lớn hơn 2300
+		so_ket_qua = [so for so in so_hoan_vi if so > m and so%2==0 ]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+
+		noi_dung=f" Từ các chữ số $\\{{ {nhom1} \\}}$ lập được tất cả bao nhiêu số tự nhiên chẵn có bốn chữ số đôi một khác nhau và lớn hơn ${{{m}}}$. "
+		noi_dung_loigiai=f"Lập được ${{{kq}}}$ số (kết quả do lập trình tính) ."
+
+	if chon==2:
+		m = random.randint(1234,4567)
+	# Bước 4: Lọc ra các số lớn hơn 2300
+		so_ket_qua = [so for so in so_hoan_vi if so > m and so%2!=0 ]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+
+		noi_dung=f" Từ các chữ số $\\{{ {nhom1} \\}}$ lập được tất cả bao nhiêu số tự nhiên lẻ có bốn chữ số đôi một khác nhau và lớn hơn ${{{m}}}$. "
+		noi_dung_loigiai=f"Lập được ${{{kq}}}$ số (kết quả do lập trình tính) ."
+
+
+	if chon==3:
+		m = random.randint(6234,6567)
+	# Bước 4: Lọc ra các số lớn hơn 2300
+		so_ket_qua = [so for so in so_hoan_vi if so > m and so%2==0 ]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+
+		noi_dung=f" Từ các chữ số $\\{{ {nhom1} \\}}$ lập được tất cả bao nhiêu số tự nhiên chẵn có bốn chữ số đôi một khác nhau và nhỏ hơn ${{{m}}}$. "
+		noi_dung_loigiai=f"Lập được ${{{kq}}}$ số (kết quả do lập trình tính) ."
+
+	if chon==4:
+		m = random.randint(6234,6567)
+	# Bước 4: Lọc ra các số lớn hơn 2300
+		so_ket_qua = [so for so in so_hoan_vi if so > m and so%2!=0 ]
+
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq = len(so_ket_qua)
+
+		noi_dung=f" Từ các chữ số $\\{{ {nhom1} \\}}$ lập được tất cả bao nhiêu số tự nhiên lẻ có bốn chữ số đôi một khác nhau và nhỏ hơn ${{{m}}}$. "
+		noi_dung_loigiai=f"Lập được ${{{kq}}}$ số (kết quả do lập trình tính) ."
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
 
@@ -5897,6 +6024,338 @@ def mcn__L10_C8_B2_48():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[D10_C8_B2_49]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các chữ số cho trước (các cs không nhất thiết khác nhau)
+def mcn_L10_C8_B2_49(): 
+	nhom1 = range(1, 10)
+	chon =random.randint(1,5)
+	if chon ==1:
+		danh_sach = [ int(f"{x}{y}{z}{t}") for x in nhom1 for y in nhom1 for z in nhom1 for t in nhom1 ]
+		dem=len([ i for i in danh_sach if i%6==0])
+		noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số có ${{4}}$ chữ số chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+		noi_dung_loigiai=(f" Gọi số đó là $\\overline{{abcd}}$ \n\n"
+				f" ${{d}}$ có 4 cách chọn \n\n"
+				f" b có 9 cách chọn\n\n"
+				f" c có 9 cách chọn \n\n"
+				f" a có 3 cách chọn vì tổng b+d+c nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 3= {dem}}}$ số ")
+		
+	if chon ==2:
+		danh_sach = [ int(f"{x}{y}{z}") for x in nhom1 for y in nhom1 for z in nhom1]
+		dem=len([ i for i in danh_sach if i%6==0])
+		noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số có ${{3}}$ chữ số chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+		noi_dung_loigiai=(f" Gọi số đó là $\\overline{{abc}}$ \n\n"
+				f" ${{c}}$ có 4 cách chọn \n\n"
+				f" b có 9 cách chọn\n\n"
+				f" a có 3 cách chọn vì tổng b+c nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 3= {dem}}}$ số ")		
+
+	if chon ==3:
+		danh_sach = [ int(f"{x}{y}{z}{t}{a}") for x in nhom1 for y in nhom1 for z in nhom1 for t in nhom1 for a in nhom1]
+		dem=len([ i for i in danh_sach if i%6==0])
+		noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số có ${{5}}$ chữ số chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+		noi_dung_loigiai=(f" Gọi số đó là $\\overline{{abcde}}$ \n\n"
+				f" ${{e}}$ có 4 cách chọn \n\n"
+				f" d có 9 cách chọn \n\n"
+				f" b có 9 cách chọn\n\n"
+				f" c có 9 cách chọn \n\n"
+				f" a có 3 cách chọn vì tổng b+d+c+e nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 9 \\cdot 3= {dem}}}$ số ")
+	if chon ==4:
+		danh_sach = [ int(f"{x}{y}{z}{t}{a}{b}") for x in nhom1 for y in nhom1 for z in nhom1 for t in nhom1 for a in nhom1 for b in nhom1]
+		dem=len([ i for i in danh_sach if i%6==0])
+		noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số có ${{6}}$ chữ số chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+		noi_dung_loigiai=(f" Gọi số đó là $\\overline{{abcdef}}$ \n\n"
+				f" ${{f}}$ có 4 cách chọn \n\n"
+				f" e có 9 cách chọn \n\n"
+				f" d có 9 cách chọn \n\n"
+				f" b có 9 cách chọn\n\n"
+				f" c có 9 cách chọn \n\n"
+				f" a có 3 cách chọn vì tổng b+d+c+e+f nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 9  \\cdot 9 \\cdot 3= {dem}}}$ số ")
+
+	if chon ==5:
+		danh_sach = [ int(f"{x}{y}{z}{t}{a}{b}") for x in nhom1 for y in nhom1 for z in nhom1 for t in nhom1 for a in nhom1 for b in nhom1]
+		dem=len([ i for i in danh_sach if i%6==0])
+		noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số có ${{6}}$ chữ số chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+		noi_dung_loigiai=(f" Gọi số đó là $\\overline{{abcdef}}$ \n\n"
+				f" ${{f}}$ có 4 cách chọn \n\n"
+				f" e có 9 cách chọn \n\n"
+				f" d có 9 cách chọn \n\n"
+				f" b có 9 cách chọn\n\n"
+				f" c có 9 cách chọn \n\n"
+				f" a có 3 cách chọn vì tổng b+d+c+e+f nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 9  \\cdot 9 \\cdot 3= {dem}}}$ số ")
+	kq=tinh_tong_chu_so(dem)
+	noi_dung_loigiai+=f" Tổng các chữ số của số ${{m}}$ là ${{{kq}}}$"
+	
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+#[D10_C8_B2_50]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các chữ số cho trước (các cs khác nhau)
+def mcn_L10_C8_B2_50(): 
+
+	w=random.randint(1,6)
+	if w==1:
+
+		nhom1 = range(1, 10)
+		chon =random.randint(1,4)
+		if chon ==1:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 4)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{4}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+			
+		if chon ==2:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 3)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{3}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==3:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 5)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{5}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==4:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 6)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{6}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+	if w==2:
+
+
+		nhom1 = range(1, 9)
+		chon =random.randint(1,4)
+		if chon ==1:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 4)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8}}$ lập được ${{m}}$ số tự nhiên có ${{4}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+			
+		if chon ==2:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 3)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8}}$ lập được ${{m}}$ số tự nhiên có ${{3}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==3:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 5)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8}}$ lập được ${{m}}$ số tự nhiên có ${{5}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==4:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 6)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7;8}}$ lập được ${{m}}$ số tự nhiên có ${{6}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+
+	if w==3:
+
+		nhom1 = range(1, 8)
+		chon =random.randint(1,4)
+		if chon ==1:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 4)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7}}$ lập được ${{m}}$ số tự nhiên có ${{4}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+			
+		if chon ==2:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 3)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7}}$ lập được ${{m}}$ số tự nhiên có ${{3}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==3:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 5)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7}}$ lập được ${{m}}$ số tự nhiên có ${{5}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==4:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 6)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6;7}}$ lập được ${{m}}$ số tự nhiên có ${{6}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+	if w==4:
+
+		nhom1 = range(1, 7)
+		chon =random.randint(1,3)
+		if chon ==1:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 4)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6}}$ lập được ${{m}}$ số tự nhiên có ${{4}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+			
+		if chon ==2:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 3)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6}}$ lập được ${{m}}$ số tự nhiên có ${{3}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==3:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 5)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{1;2;3;...;6}}$ lập được ${{m}}$ số tự nhiên có ${{5}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+
+	if w==5:
+
+		nhom1 = range(2, 10)
+		chon =random.randint(1,4)
+		if chon ==1:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 4)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{4}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+			
+		if chon ==2:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 3)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{3}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==3:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 5)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{5}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==4:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 6)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số ${{2;3;...;6;7;8;9}}$ lập được ${{m}}$ số tự nhiên có ${{6}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+	if w==6:
+		n=random.randint(6,9)
+		nhom1 =tao_taphop_khac_0(n)
+		# a1,a2,a3,a4,a5,a6,a7=random.sample(range(1,10),7)
+		# nhom1 = [a1,a2,a3,a4,a5,a6,a7]
+		chon =random.randint(1,4)
+		if chon ==1:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 4)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số $\\{{{nhom1} \\}}$ lập được ${{m}}$ số tự nhiên có ${{4}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+			
+		if chon ==2:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 3)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số $\\{{{nhom1} \\}}$ lập được ${{m}}$ số tự nhiên có ${{3}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==3:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 5)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số $\\{{{nhom1} \\}}$ lập được ${{m}}$ số tự nhiên có ${{5}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+		if chon ==4:
+			danh_sach=[int("".join(map(str, p))) for p in permutations(nhom1, 6)] 
+			dem=len([ i for i in danh_sach if i%6==0])
+			noi_dung=f"Từ các chữ số $\\{{{nhom1} \\}}$ lập được ${{m}}$ số tự nhiên có ${{6}}$ chữ số đôi một khác nhau và chia hết cho ${{6}}$. Tổng các chữ số của số ${{m}}$ là "
+
+	noi_dung_loigiai=f" Có ${{{dem}}}$ số thoả mãn yêu cầu bài toán \n\n"
+
+	kq=tinh_tong_chu_so(dem)
+	noi_dung_loigiai+=f" Tổng các chữ số của số ${{m}}$ là ${{{kq}}}$"
+	
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+#[D10_C8_B2_51]-SA-M3. Tạo số có các chữ số khác nhau trong đó phải có mặt của chữ số x,y...(ds không có 0) 
+def mcn_L10_C8_B2_51(): 
+	chon =random.randint(1,2)
+	if chon ==1:
+		n=random.randint(6,9)
+		m=random.randint(4,5)
+		nhom1 =tao_taphop_khac_0(n)
+		a1, a2 = random.sample(list(nhom1), 2)
+		noi_dung=f" Từ các chữ số $\\{{{nhom1}\\}}$ có thể lập được bao nhiên số tự nhiên có ${{{m}}}$ chữ số đôi một khác nhau trong đó luôn có mặt của chữ số ${{{a1}; {a2}}}$ "
+		noi_dung_loigiai=(f" có $A^{{2}}_{{{m}}}$ cách xếp ${{{a1}; {a2}}}$ vào \n\n"
+		f" Có  $A^{{{m-2}}}_{{{n-2}}}$ cách xếp số cho các chữ cái còn lại \n\n"
+		f" Theo quy tắc nhân có $A^{{2}}_{{{m}}} \\cdot A^{{{m-2}}}_{{{n-2}}} = {chinh_hop(2,m)*chinh_hop(m-2,n-2)} $")
+		kq= chinh_hop(2,m)*chinh_hop(m-2,n-2)
+
+	if chon ==2:
+		n=random.randint(7,9)
+		m=random.randint(5,6)
+		nhom1 =tao_taphop_khac_0(n)
+		a1, a2, a3 = random.sample(list(nhom1), 3)
+		noi_dung=f" Từ các chữ số $\\{{{nhom1}\\}}$ có thể lập được bao nhiên số tự nhiên có ${{{m}}}$ chữ số đôi một khác nhau trong đó luôn có mặt của chữ số ${{{a1}; {a2}; {a3}}}$ "
+		noi_dung_loigiai=(f" có $A^{{3}}_{{{m}}}$ cách xếp ${{{a1}; {a2}; {a3}}}$ vào \n\n"
+		f" Có  $A^{{{m-3}}}_{{{n-3}}}$ cách xếp số cho các chữ cái còn lại \n\n"
+		f" Theo quy tắc nhân có $A^{{3}}_{{{m}}} \\cdot A^{{{m-3}}}_{{{n-3}}} = {chinh_hop(3,m)*chinh_hop(m-3,n-3)} $")
+		kq= chinh_hop(3,m)*chinh_hop(m-3,n-3)
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+#[D10_C8_B2_52]-SA-M3. Tạo số có các chữ số khác nhau trong đó phải có mặt của chữ số x,y...(ds có 0) 
+def mcn_L10_C8_B2_52(): 
+	n=random.randint(6,9)
+	m=random.randint(4,5)
+	nhom1 =tao_taphop_chua_0(n)
+	nhom_khac_0 = [x for x in nhom1 if x != 0]
+	a1, a2 = random.sample(nhom_khac_0, 2)
+	kq= chinh_hop(2,m)*chinh_hop(m-2,n-2) - chinh_hop(2,m-1)*chinh_hop(m-3,n-3)
+	noi_dung=f" Từ các chữ số $\\{{{nhom1}\\}}$ có thể lập được bao nhiên số tự nhiên có ${{{m}}}$ chữ số đôi một khác nhau trong đó luôn có mặt của chữ số ${{{a1}; {a2}}}$ "
+	noi_dung_loigiai=(f" Xét các số có ${{{m}}}$ chữ số đôi một khác nhau trong đó luôn có mặt của chữ số ${{{a1}; {a2}}}$ tính cả chữ số 0 đứng đầu \n\n"
+		f" có $A^{{2}}_{{{m}}}$ cách xếp ${{{a1}; {a2}}}$ \n\n"
+	f" Có  $A^{{{m-2}}}_{{{n-2}}}$ cách xếp số cho các chữ cái còn lại \n\n"
+	f" Theo quy tắc nhân có $A^{{2}}_{{{m}}} \\cdot A^{{{m-2}}}_{{{n-2}}} = {chinh_hop(2,m)*chinh_hop(m-2,n-2)} $\n\n"
+	f" Xét các số có ${{{m}}}$ chữ số đôi một khác nhau trong đó luôn có mặt của chữ số ${{{a1}; {a2}}}$ và chữ số 0 đứng đầu  \n\n"
+
+	f" có $A^{{2}}_{{{m-1}}}$ cách xếp ${{{a1}; {a2}}}$ \n\n"
+	f" Có  $A^{{{m-3}}}_{{{n-3}}}$ cách xếp số cho các chữ cái còn lại \n\n"
+	f" Theo quy tắc nhân có $A^{{2}}_{{{m-1}}} \\cdot A^{{{m-3}}}_{{{n-3}}} = {chinh_hop(2,m-1)*chinh_hop(m-3,n-3)} $\n\n"
+	f" Vậy có $ {{ {chinh_hop(2,m)*chinh_hop(m-2,n-2)} -{chinh_hop(2,m-1)*chinh_hop(m-3,n-3)} = {kq} }}$ số "
+	)
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
 
 
 

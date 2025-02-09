@@ -17,7 +17,7 @@ def tao_ten_mau_ghep_nhom():
     list_nhom=[["Khoảng tuổi","Số người"], ["Cân nặng (đơn vị:kg)","Số người"], 
     ["Điểm số","Số học sinh"], ["Lương (đơn vị: triệu đồng)","Số nhân viên"],
     ["Điểm thi","Số người dự thi"],
-    ["Quãng đường chạy bộ mỗi ngày (đơn vị: km)","Số ngày chạy bộ"]
+    ["Quãng đường chạy bộ(đơn vị: km)","Số ngày chạy bộ"]
     ]
     so_nhom=len(list_nhom)
     #Chọn ngẫu nhiên một nhóm

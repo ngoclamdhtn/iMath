@@ -4720,10 +4720,10 @@ def ckz_L12C4_B4_12():
     kq4=pa_kotrung[3]
 
     #Tạo các phương án
-    pa_A= f"*$ {phan_so(kq)}$"
-    pa_B= f"$ {phan_so(kq2)}$"
-    pa_C= f"$ {phan_so(kq3)}$"
-    pa_D= f"$ {phan_so(kq4)}$"
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
      #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -4825,18 +4825,20 @@ def ckz_L12C4_B4_14():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
-    a = random.choice([i for i in range(-5, 6) if i!=0])
-    b = random.choice([i for i in range(-5, 6) if i!=0])
-    f=a*x+b
+    x_0= random.randint(-4,4)
+    x_1 = x_0-random.randint(1,4)    
+    x_2=x_0+random.randint(1,4)
 
     m = random.choice([i for i in range(-5, 6) if i!=0])
     n = random.choice([i for i in range(-5, 6) if i!=0])
     p=random.randint(-7,7)
     g=m*x**2+n*x+p
 
-    x_0= random.randint(-4,4)
-    x_1 = x_0-random.randint(1,4)    
-    x_2=x_0+random.randint(1,4)
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = g.subs(x,x_0) -  a*x_0
+    f=a*x+b
+
+    
 
     tp1=integrate(f, (x,x_1,x_0))
     tp2=integrate(g, (x,x_0,x_2))
@@ -4875,21 +4877,22 @@ def ckz_L12C4_B4_15():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
-    a = random.choice([i for i in range(-5, 6) if i!=0])
-    b = random.choice([i for i in range(-5, 6) if i!=0])
-    f=a*x+b/x**2
-
-    m = random.choice([i for i in range(-5, 6) if i!=0])
-    n = random.choice([i for i in range(-5, 6) if i!=0])
-    p=random.randint(-7,7)
-    g=m*x**2+n*x+p
-
     while True:
         x_0= random.choice([i for i in range(-4, 4) if i!=0])
         x_1 = x_0-random.randint(1,4)    
         x_2=x_0+random.randint(1,4)
         if x_1 != 0 and x_2!=0 and x_1*x_0>0:
             break
+
+    a = random.choice([i for i in range(-5, 5) if i!=0])
+    b = random.choice([i for i in range(-5, 5) if i!=0])
+    f=a*x+b/x**2
+
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+    p=f.subs(x,x_0)-m*x_0**2-n*x_0
+    g=m*x**2+n*x+p
+    
 
     tp1=integrate(f, (x,x_1,x_0))
     tp2=integrate(g, (x,x_0,x_2))
@@ -5865,7 +5868,7 @@ def ckz_L12C4_B4_31():
             f"${tphan(a,b)}g(x){d_x}={tphan(c,a)}g(x){d_x}+{tphan(a,b)}g(x){d_x}$",])
         kq_false=[
         f"${tphan(a,a)}f(x){d_x}=0$",
-        f"${tphan(a,b)}[f(x)+g(x)]{d_x}={tphan(a,b)}f(x){d_x}+{tphan(a,b)}g(x){d_x}$",
+        f"${tphan(a,b)}{{[f(x)+g(x)]}}{d_x}={tphan(a,b)}f(x){d_x}+{tphan(a,b)}g(x){d_x}$",
         f"${tphan(a,b)}f(x){d_x}={tphan(a,b)}f(t){d_t}$",
         f"${tphan(a,b)}f(x){d_x}={tphan(a,c)}f(x){d_x}+{tphan(c,b)}g(x){d_x}$"
         ]
@@ -5877,7 +5880,7 @@ def ckz_L12C4_B4_31():
 
         kq=random.choice([
             f"${tphan(a,a)}f(x){d_x}=0$",
-            f"${tphan(a,b)}[f(x)+g(x)]{d_x}={tphan(a,b)}f(x){d_x}+{tphan(a,b)}g(x){d_x}$",
+            f"${tphan(a,b)}{{[f(x)+g(x)]}}{d_x}={tphan(a,b)}f(x){d_x}+{tphan(a,b)}g(x){d_x}$",
             f"${tphan(a,b)}f(x){d_x}={tphan(a,b)}f(t){d_t}$",
             f"${tphan(a,b)}f(x){d_x}={tphan(a,c)}f(x){d_x}+{tphan(c,b)}g(x){d_x}$"
             ])
@@ -6073,7 +6076,7 @@ def ckz_L12C4_B4_33():
 
 
     noi_dung = (f"Cho các hàm số ${f},{g}$ liên tục trên đoạn ${{[{a};{b}]}}$ thỏa mãn"
-    f" ${tphan(a,c)}[{m}{f}+{n}{g}]{d_x}={m*f_tp+n*g_tp}$, ${tphan(a,c)}[{p}{f}+{q}{g}]{d_x}={p*f_tp+q*g_tp}$"
+    f" ${tphan(a,c)}{{[{m}{f}+{n}{g}]}}{d_x}={m*f_tp+n*g_tp}$, ${tphan(a,c)}{{[{p}{f}+{q}{g}]}}{d_x}={p*f_tp+q*g_tp}$"
     f" và ${tphan(a,b)}{f}{d_x}={f_tp_ab}$."
     f" Xét tính đúng-sai của các khẳng định sau. "  )
     noi_dung=noi_dung.replace("[1f","[f").replace("[-1f","[-f").replace("+1f","+f").replace("+1g","+g").replace("-1g","-g").replace("[-1g","[-g").replace("[1h","[h").replace("[-1h","[-h").replace("+1h","h")
@@ -6126,10 +6129,10 @@ def ckz_L12C4_B4_33():
     n = random.choice([i for i in range(-5, 6) if i!=0])
 
     kq=integrate(e*x+f1,(x,a,c))+m*f_tp+n*g_tp
-    kq4_T=f"* ${tphan(a,c)}[{latex(e*x+f1)}+{m}{f}+{n}{g}]{d_x}={phan_so(kq)}$"
-    kq4_F=f"${tphan(a,c)}[{latex(e*x+f1)}+{m}{f}+{n}{g}]{d_x}={phan_so(kq+random.randint(1,2))}$" 
+    kq4_T=f"* ${tphan(a,c)}{{[{latex(e*x+f1)}+{m}{f}+{n}{g}]}}{d_x}={phan_so(kq)}$"
+    kq4_F=f"${tphan(a,c)}{{[{latex(e*x+f1)}+{m}{f}+{n}{g}]}}{d_x}={phan_so(kq+random.randint(1,2))}$" 
     
-    HDG=( f"${tphan(a,c)}[{latex(e*x+f1)}+{m}{f}+{n}{g}]{d_x}$"
+    HDG=( f"${tphan(a,c)}{{[{latex(e*x+f1)}+{m}{f}+{n}{g}]}}{d_x}$"
         f"$={tphan(a,c)}({latex(e*x+f1)}{d_x})+{m}{tphan(a,c)}{f}{d_x}+{n}{tphan(a,c)}{g}{d_x}$"
         f"$={phan_so(integrate(e*x+f1,(x,a,c)))}+{m*f_tp}+{n*g_tp}={phan_so(kq)}$."
     )
@@ -6344,10 +6347,10 @@ def ckz_L12C4_B4_35():
     
     T=random.randint(5,15)
 
-    kq3_T=f"* Biết ${tphan(a,latex(b))}[f(x)+e^x]{d_x}={T}$. Khi đó ${tphan(a,latex(b))}f(x){d_x}={latex(T-integrate(exp(x),(x,a,b)))}$" 
-    kq3_F=f"Biết ${tphan(a,latex(b))}[f(x)+e^x]{d_x}={T}$. Khi đó ${tphan(a,latex(b))}f(x){d_x}={latex(T-integrate(exp(x),(x,a,b))+random.randint(1,2))}$"
+    kq3_T=f"* Biết ${tphan(a,latex(b))}{{[f(x)+e^x]}}{d_x}={T}$. Khi đó ${tphan(a,latex(b))}f(x){d_x}={latex(T-integrate(exp(x),(x,a,b)))}$" 
+    kq3_F=f"Biết ${tphan(a,latex(b))}{{[f(x)+e^x]}}{d_x}={T}$. Khi đó ${tphan(a,latex(b))}f(x){d_x}={latex(T-integrate(exp(x),(x,a,b))+random.randint(1,2))}$"
     
-    HDG=(f"${tphan(a,latex(b))}[f(x)+e^x]{d_x}={T}$"
+    HDG=(f"${tphan(a,latex(b))}{{[f(x)+e^x]}}{d_x}={T}$"
         f"$\\Rightarrow {tphan(a,latex(b))}f(x){d_x}={T}-{tphan(a,latex(b))}e^x{d_x}={T}-({latex(integrate(exp(x),(x,a,b)))})$"
         f"$={latex(T-integrate(exp(x),(x,a,b)))}$")
     HDG=thay_log_2_ln(HDG)
@@ -6483,10 +6486,10 @@ def ckz_L12C4_B4_36():
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     m=random.choice([i for i in range(-5, 6) if i!=0])
-    kq2_T=f"* ${tphan(x_1,x_2)}[f'(x)+{m}]{d_x}={f_2-f_1+m*(x_2-x_1)}$"
-    kq2_F=f"${tphan(x_1,x_2)}[f'(x)+{m}]{d_x}={f_1-f_2-m*(x_2-x_1)}$"
+    kq2_T=f"* ${tphan(x_1,x_2)}{{[f'(x)+{m}]}}{d_x}={f_2-f_1+m*(x_2-x_1)}$"
+    kq2_F=f"${tphan(x_1,x_2)}{{[f'(x)+{m}]}}{d_x}={f_1-f_2-m*(x_2-x_1)}$"
     
-    HDG=(thay_dau_cong_tru(f"${tphan(x_1,x_2)}[f'(x)+{m}]{d_x}={tphan(x_1,x_2)}f'(x){d_x}+{tphan(x_1,x_2)}{m}{d_x}$"
+    HDG=(thay_dau_cong_tru(f"${tphan(x_1,x_2)}{{[f'(x)+{m}]}}{d_x}={tphan(x_1,x_2)}f'(x){d_x}+{tphan(x_1,x_2)}{m}{d_x}$"
         f"$=f({x_2})-f({x_1})+{m}({x_2}-{x_1})={f_2-f_1+m*(x_2-x_1)}$." ))
 
     kq2=random.choice([kq2_T, kq2_F])
@@ -9439,8 +9442,8 @@ def ckz_L12C4_B5_31():
     f=a*x+b
     S=abs(integrate(f,(x,a,b)))
 
-    kq2_T=f"* Hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ có diện tích bằng ${latex(S)}$"
-    kq2_F=f" Hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ có diện tích bằng ${latex(S+random.randint(1,3))}$"
+    kq2_T=f"* Hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ có diện tích bằng ${{{latex(S)}}}$"
+    kq2_F=f" Hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ có diện tích bằng ${{{latex(S+random.randint(1,3))}}}$"
     kq2=random.choice([kq2_T, kq2_F])
     HDG=f"Diện tích hình phẳng là: $S={tphan(a,b)} |{latex(f)}|{d_x}={latex(S)}$."
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -9521,10 +9524,10 @@ def ckz_L12C4_B5_31():
     
     kq4_T=(f"* Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
     f" $y={latex(expand(f))}$ và $y=0$ (phần gạch chéo trong hình vẽ). \n{file_name}\n"
-    f" Diện tích của tam giác cong đã cho bằng ${dap_an}$ ")
+    f" Diện tích của tam giác cong đã cho bằng ${{{dap_an}}}$ ")
     kq4_F=(f"Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
     f" $y={latex(expand(f))}$ và $y=0$ (phần gạch chéo trong hình vẽ). \n{file_name}\n"
-    f" Diện tích của tam giác cong đã cho bằng ${dap_an_false}$")
+    f" Diện tích của tam giác cong đã cho bằng ${{{dap_an_false}}}$")
     kq4=random.choice([kq4_T, kq4_F])
 
     HDG=(
@@ -9628,8 +9631,8 @@ def ckz_L12C4_B5_32():
     V=pi*(integrate((a*x+b)**2,(x,a,b)))
     V_false=(integrate((a*x+b)**2,(x,a,b)))
 
-    kq2_T=f"* Quay hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ quanh trục ${{Ox}}$ tạo thành vật thể tròn xoay có thể tích bằng ${latex(V)}$"
-    kq2_F=f" Quay hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ quanh trục ${{Ox}}$ tạo thành vật thể tròn xoay có thể tích bằng ${latex(V_false)}$"
+    kq2_T=f"* Quay hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ quanh trục ${{Ox}}$ tạo thành vật thể tròn xoay có thể tích bằng ${{{latex(V)}}}$"
+    kq2_F=f" Quay hình phẳng giới hạn bởi các đường $y={latex(f)},x={a},x={b},y=0$ quanh trục ${{Ox}}$ tạo thành vật thể tròn xoay có thể tích bằng ${{{latex(V_false)}}}$"
     kq2=random.choice([kq2_T, kq2_F])
     HDG=f"Thể tích của vật thể là: $V=\\pi{tphan(a,b)} {latex((a*x+b)**2)}{d_x}={latex(V)}$."
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -9650,10 +9653,10 @@ def ckz_L12C4_B5_32():
     dap_an_false=phan_so(abs(integrate(f,(x,x_1,x_2)))+random.randint(1,2))
 
     kq3_T=(f"* Diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
-    f" $y={latex(expand(f+g))}$ bằng ${dap_an}$")
+    f" $y={latex(expand(f+g))}$ bằng ${{{dap_an}}}$")
 
     kq3_F=(f" Diện tích của hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
-    f" $y={latex(expand(f+g))}$ bằng ${dap_an_false}$")
+    f" $y={latex(expand(f+g))}$ bằng ${{{dap_an_false}}}$")
     kq3=random.choice([kq3_T, kq3_F])
     HDG=(f"Xét phương trình:\n\n ${latex(expand(f+g))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f))}=0 \\Leftrightarrow x={x_1},x={x_2}$.\n\n"
     f" Diện tích hình phẳng:\n\n"
@@ -9710,10 +9713,10 @@ def ckz_L12C4_B5_32():
     
     kq4_T=(f"* Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
     f" $y={latex(expand(f))}$ và $y=0$.\n{file_name}\n"
-    f" Diện tích của tam giác cong đã cho bằng ${dap_an}$")
+    f" Diện tích của tam giác cong đã cho bằng ${{{dap_an}}}$")
     kq4_F=(f"Gọi tam giác cong là hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(g))}$,"
     f" $y={latex(expand(f))}$ và $y=0$.\n{file_name}\n"
-    f" Diện tích của tam giác cong đã cho bằng ${dap_an_false}$")
+    f" Diện tích của tam giác cong đã cho bằng ${{{dap_an_false}}}$")
     kq4=random.choice([kq4_T, kq4_F])
     HDG=(
     f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={phan_so(x_a)},x={phan_so(x_b)}$.\n\n"
@@ -9787,7 +9790,7 @@ def ckz_L12C4_B5_33():
         f" Gọi $S_2$ là diện tích hình phẳng giới hạn bởi các đường $y=e^x,x=k,x={b},y=0$.\n\n"
         f" Gọi ${{S}}$ là diện tích hình phẳng giới hạn bởi các đường $y=e^x,x={a},x={b},y=0$.\n\n"
         f" Gọi ${{V}}$ là thể tích khối tròn xoay khi quay ${{S}}$ quanh trục ${{Ox}}$.\n\n"
-        f" Xét tính đúng-sai của các khẳng định sau:" )      
+        f" Biết ${a}<k<{b}$. Xét tính đúng-sai của các khẳng định sau:" )      
     debai_word= f"{noi_dung}\n"
     S=integrate(exp(x),(x,a,b))
     S_false=integrate(exp(x),(x,a,b+1))
