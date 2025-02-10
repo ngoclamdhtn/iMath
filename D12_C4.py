@@ -8595,7 +8595,7 @@ def ckz_L12C4_B5_21():
     noi_dung = ( f"Tính diện tích hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(f+g))}$ và $y={latex(g)}$.")    
 
     noi_dung_loigiai=(
-    f" Xét phương trình:\n\n ${latex(expand(f+g))}={latex(g)}$\n\n $ \\Leftrightarrow {latex(expand(f))}=0 \n\n \\Rightarrow x={x_1},x={x_2},x={x_3}$.\n\n"
+    f" Xét phương trình:\n\n ${latex(expand(f+g))}={latex(g)}$\n\n $\\Leftrightarrow {latex(expand(f))}=0$ \n\n $\\Rightarrow x={x_1},x={x_2},x={x_3}$.\n\n"
     f" Diện tích hình phẳng là:\n\n "
     f"${tphan(x_1,x_2)}|{latex(expand(f))}|{d_x}+{tphan(x_2,x_3)}|{latex(expand(f))}|{d_x}={phan_so(abs(tp1))}+{phan_so(abs(tp2))}={dap_an}$."    
     )    
@@ -9024,17 +9024,17 @@ def ckz_L12C4_B5_25():
         noi_dung_loigiai=(
         f"Xét phương trình: $e^x={a}\\Rightarrow x=\\ln {a}$.\n\n"
         f" Diện tích hình phẳng là:\n\n"
-        f" ${tphan(b, f"\\ln {a}")} e^x {d_x}=e^x \\bigg|_{{{b}}}^{{\\ln {a}}}={latex(integrate(exp(x),(x,b,log(a))))}$."
+        f" ${tphan(b, f"\\ln {a}")} |e^x-{a}| {d_x}=\\bigg|e^x-{a}x\\bigg|_{{{b}}}^{{\\ln {a}}} \\bigg|={latex(integrate(exp(x),(x,b,log(a))))}$."
         )
-        kq=integrate(exp(x),(x,b,log(a)))
+        kq=abs(integrate(exp(x)-a,(x,b,log(a))))
 
     else:
         noi_dung_loigiai=(
         f"Xét phương trình: $e^x={a}\\Rightarrow x=\\ln {a}$.\n\n"
         f" Diện tích hình phẳng là:\n\n"
-        f" ${tphan(f"\\ln {a}",b)} e^x {d_x}=e^x \\bigg|_{{\\ln {a}}}^{{{b}}}={latex(integrate(exp(x),(x,log(a),b)))}$."
+        f" ${tphan(f"\\ln {a}",b)} |e^x-{a}| {d_x}=\\bigg|e^x-{a}x\\bigg|_{{{b}}}^{{\\ln {a}}} \\bigg|={latex(integrate(exp(x),(x,log(a),b)))}$."
         )
-        kq=integrate(exp(x),(x,log(a),b))
+        kq=abs(integrate(exp(x)-a,(x,log(a),b)))
     
     kq_false=[
     exp(b),
