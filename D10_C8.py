@@ -6028,7 +6028,7 @@ def mcn__L10_C8_B2_48():
 
 
 #[D10_C8_B2_49]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các chữ số cho trước (các cs không nhất thiết khác nhau)
-def mcn_L10_C8_B2_49(): 
+def mcn__L10_C8_B2_49(): 
 	nhom1 = range(1, 10)
 	chon =random.randint(1,5)
 	if chon ==1:
@@ -6110,7 +6110,7 @@ def mcn_L10_C8_B2_49():
 
 
 #[D10_C8_B2_50]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các chữ số cho trước (các cs khác nhau)
-def mcn_L10_C8_B2_50(): 
+def mcn__L10_C8_B2_50(): 
 
 	w=random.randint(1,6)
 	if w==1:
@@ -6282,7 +6282,7 @@ def mcn_L10_C8_B2_50():
 
 
 #[D10_C8_B2_51]-SA-M3. Tạo số có các chữ số khác nhau trong đó phải có mặt của chữ số x,y...(ds không có 0) 
-def mcn_L10_C8_B2_51(): 
+def mcn__L10_C8_B2_51(): 
 	chon =random.randint(1,2)
 	if chon ==1:
 		n=random.randint(6,9)
@@ -6322,7 +6322,7 @@ def mcn_L10_C8_B2_51():
 
 
 #[D10_C8_B2_52]-SA-M3. Tạo số có các chữ số khác nhau trong đó phải có mặt của chữ số x,y...(ds có 0) 
-def mcn_L10_C8_B2_52(): 
+def mcn__L10_C8_B2_52(): 
 	n=random.randint(6,9)
 	m=random.randint(4,5)
 	nhom1 =tao_taphop_chua_0(n)

@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 09.02.2025")
+                self.label.setText(f"iMath\u00A92025 ver 10.02.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 09.02.2025")
+                self.label.setText(f"iMath\u00A92025 ver 10.02.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2988,19 +2988,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_3, ["[D10_C8_B2_49]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các csố cho trc (các cs không nhất thiết khác nhau)"])
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_49]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các csố cho trc (các cs không nhất thiết khác nhau)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_3, ["[D10_C8_B2_50]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các chữ số cho trước (các cs khác nhau)"])
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_50]-SA-M4. Đếm các số chia hết cho 6 được tạo thành từ các chữ số cho trước (các cs khác nhau)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_3, ["[D10_C8_B2_51]-SA-M3. Tạo số có các c.số khác nhau trong đó phải có mặt của chữ số x,y...(ds không có 0) "])
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_51]-SA-M3. Tạo số có các c.số khác nhau trong đó phải có mặt của chữ số x,y...(ds không có 0) "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_3, ["[D10_C8_B2_52]-SA-M3. Tạo số có các c.số khác nhau trong đó phải có mặt của chữ số xy...(ds có 0)"])
+                item=QTreeWidgetItem(D10_C8_B2_3, ["[D10_C8_B2_52]-SA-M3. Tạo số có các c.số khác nhau trong đó phải có mặt của chữ số xy...(ds có 0)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
