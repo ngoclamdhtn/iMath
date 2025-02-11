@@ -5,6 +5,11 @@ import random
 from fractions import Fraction
 import my_module
 import datetime
+# Hàm làm tròn half-up
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Tạo hàm bậc 2
 def tao_ham_bac_2():
     x=symbols("x")
@@ -650,6 +655,178 @@ def zz8zz_L11_C6_B1_08():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")       
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B1_09]-SA-M2. Cho a^x=t. Tính P=m.a^(2x)+n/a^(2x)+p
+def zz8zz_L11_C6_B1_09():
+    #a=random.choice(["a","\\alpha", "\\beta", "x", "m" ])
+    a=sp.symbols("a")
+    while  True:        
+        p= random.randint(2,7)
+        m= random.choice([i for i in range(-3, 3) if i!=0])
+        n= random.choice([i for i in range(-3, 4) if i!=0])
+
+        t_1=random.randint(1,8)
+        t_2=t_1+random.randint(1,5)
+        t=t_1/t_2
+        q= random.choice([i for i in range(-10, 10) if i!=0])
+        random.choice([i for i in range(-10, 10) if i!=0])
+        if (m*t+n*1/t)**2-2*m*n+q>-9 and (m*t+n*1/t)**2-2*m*n+q<99:
+            break 
+
+    noi_dung = (
+    f"Cho biết ${p}^{{{a}}}={phan_so(t)}$. Tính giá trị biểu thức $P={latex(m**2*(p**2)**a+n**2*(p**2)**(-a)+q)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    kq=(m*t+n*1/t)**2-2*m*n+q
+    dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P={latex(m**2*(p**2)**a+n**2*(p**2)**(-a)+q)}=({latex(m*p**a+n*p**(-a))})^2-{2*m*n}+{q}=({m}.{phan_so(t)}+{n}.{phan_so(1/t)})^2+{-2*m*n+q}={dap_an}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B1_10]-SA-M2. Cho a^x+a^(-x)=t. Tính P=m.a^(2x)+n.a^(-2x)+p
+def zz8zz_L11_C6_B1_10():
+    #a=random.choice(["a","\\alpha", "\\beta", "x", "m" ])
+    a=sp.symbols("a")
+    while  True:        
+        p= random.randint(2,7)
+        m= random.choice([i for i in range(-3, 3) if i!=0])
+        n= random.choice([i for i in range(-3, 4) if i!=0])
+
+        a_0=random.choice([i for i in range(-3, 3) if i!=0])        
+        t=m*p**a_0+n*p**(-a_0)
+        q= random.choice([i for i in range(-10, 10) if i!=0])
+        if t**2-2*m*n+q>-9 and t**2-2*m*n+q<99:
+            break 
+
+    noi_dung = (
+    f"Cho biết ${latex(m*p**a+n*p**(-a))}={phan_so(t)}$. Tính giá trị biểu thức $P={latex(m**2*(p**2)**a+n**2*(p**2)**(-a)+q)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    kq=(t)**2-2*m*n+q
+    dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P={latex(m**2*(p**2)**a+n**2*(p**2)**(-a)+q)}=({latex(m*p**a+n*p**(-a))})^2-{2*m*n}+{q}=({phan_so(t)})^2+{-2*m*n+q}={dap_an}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B1_11]-SA-M2. Cho m.a^(2x)+n.a^(-2x)=t. Tính P=a^x+a^(-x)+p
+def zz8zz_L11_C6_B1_11():
+    #a=random.choice(["a","\\alpha", "\\beta", "x", "m" ])
+    a=sp.symbols("a")
+    while  True:        
+        p= random.randint(2,7)
+        m= random.choice([i for i in range(1, 3) if i!=0])
+        n= random.choice([i for i in range(1, 4) if i!=0])
+
+        a_0=random.choice([i for i in range(-3, 3) if i!=0])        
+        t=m*p**a_0+n*p**(-a_0)
+        q= random.choice([i for i in range(-10, 10) if i!=0])
+        if t**2-2*m*n+q>0 and t**2-2*m*n+q<99:
+            break
+    
+
+    noi_dung = (
+    f"Cho ${latex(m**2*(p**2)**a+n**2*(p**2)**(-a)+q)}={phan_so(t**2-2*m*n+q)}$. Tính giá trị biểu thức $P={latex(m*p**a+n*p**(-a))}$ biết $P>0$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    kq=t
+    dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P={latex(m**2*(p**2)**a+n**2*(p**2)**(-a)+q)}=({latex(m*p**a+n*p**(-a))})^2-{2*m*n}+{q}$.\n\n"
+    f" Suy ra $({latex(m*p**a+n*p**(-a))})^2={phan_so(t**2-2*m*n+q)}+{2*m*n-q}$.\n\n"
+    f" $\\Rightarrow {latex(m*p**a+n*p**(-a))}=\\sqrt{{{phan_so(t**2)}}}={dap_an}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B1_12]-SA-M3. Cho a^x=m, a^y=n. Tính giá trị biểu thức chứa lũy thừa a^px, a^qy
+def zz8zz_L11_C6_B1_12():
+    chon=random.randint(1,2)
+    if chon==1:
+        a=sp.symbols("a")
+    
+    if chon==2:
+        a=sp.symbols("b")
+    x=["\\alpha", "x", "m", "\\beta"]
+    y=["\\beta","y", "n", "\\alpha"]
+    i=random.randint(0,3)
+    x,y=x[i],y[i]
+    chon=random.randint(1,2)
+    if chon==1:
+        x,y=sp.symbols("x y")
+    
+    if chon==2:
+        x,y=sp.symbols("m n")
+    while True:
+    
+        m=random.randint(2,5)
+        n=m+random.randint(1,3)
+
+        k_1,k_2,k_3,k_4=random.randint(1,3),random.randint(-3,-1), random.randint(-4,-1), random.randint(1,3)
+        q=random.randint(1,10)
+        kq=m**(k_1-k_3)*n**(k_2-k_4)+q
+
+        if 0<kq<99:
+            break
+    
+    noi_dung = (
+    f"Biết ${a}^{{{x}}}={m}, {a}^{{{y}}}={n}$. Tính $P=\\dfrac{{ {latex((a**k_1)**x)}.{latex((a**k_1)**y)} }} {{ {latex((a**k_3)**x)}.{latex((a**k_1)**y)} }}+{q}$"
+    f"(kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(m**(k_1-k_3)*n**(k_2-k_4)+q,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P=\\dfrac{{ {latex((a**k_1)**x)}.{latex((a**k_1)**y)} }} {{ {latex((a**k_3)**x)}.{latex((a**k_1)**y)} }}$"
+    f"  $={latex((a**(k_1-k_3))**x)}.{latex((a**(k_2-k_4))**y)}+{q}={phan_so(m**(k_1-k_3))}.{phan_so(n**(k_2-k_4))}+{q}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 ################ Bài 2: PHÉP TÍNH LOGARIT #########################
 #[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)

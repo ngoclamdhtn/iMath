@@ -517,13 +517,13 @@ class Ui_MainWindow(object):
                 self.btn_move_row_down.setIcon(QIcon(f"{icon_folder_path}\\down-arrow.png"))
 
                 #Tạo nút Chuyển tự luận
-                # self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
-                # self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
-                # self.btn_chuyen_tuluan.setFont(font_10)
-                # self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
-                # self.btn_chuyen_tuluan.setText("TN => TL")
-                # self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
-                #self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
+                self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
+                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
+                self.btn_chuyen_tuluan.setFont(font_10)
+                self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
+                self.btn_chuyen_tuluan.setText("TN => TL")
+                self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
+                self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
@@ -4992,13 +4992,41 @@ class Ui_MainWindow(object):
 
                 L11_C6_B1 = QTreeWidgetItem(L11_C6, ["Bài 1 - Phép tính lũy thừa"])
                 L11_C6_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L11_C6_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                L11_C6_B1_1 = QTreeWidgetItem(L11_C6_B1, ["6.1.1. Đúng-Sai"])
+                L11_C6_B1_1 = QTreeWidgetItem(L11_C6_B1, ["Trắc Nghiệm"])
                 L11_C6_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_01]-M1. Rút gọn a^m.a^n với m,n là phân số."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_07]-TF-M1. Tính chất của lũy thừa."])
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_02]-M2. Rút gọn (a^m.a^n)/a^p với m,n,p là phân số."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_03]-M1. Biểu diễn căn bậc thành lũy thừa."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_04]-M2. Biểu diễn tích chứa 2 căn thành lũy thừa."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_06]-M3. Tìm k để tích 3 căn = x^m."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B1_2 = QTreeWidgetItem(L11_C6_B1, ["Đúng-Sai"])
+                L11_C6_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_07]-TF-M1. Tính chất của lũy thừa."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5006,33 +5034,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C6_B1_2 = QTreeWidgetItem(L11_C6_B1, ["6.1.2. Trắc Nghiệm"])
-                L11_C6_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                
-                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_01]-M1. Rút gọn a^m.a^n với m,n là phân số."])
+                L11_C6_B1_3 = QTreeWidgetItem(L11_C6_B1, ["Trả lời ngắn"])
+                L11_C6_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B1_3, ["[D11_C6_B1_09]-SA-M2. Cho a^x=t. Tính P=m.a^(2x)+n/a^(2x)+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_02]-M2. Rút gọn (a^m.a^n)/a^p với m,n,p là phân số."])
+                item = QTreeWidgetItem(L11_C6_B1_3, ["[D11_C6_B1_10]-SA-M2. Cho a^x+a^(-x)=t. Tính P=m.a^(2x)+n.a^(-2x)+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_03]-M1. Biểu diễn căn bậc thành lũy thừa."])
+                item = QTreeWidgetItem(L11_C6_B1_3, ["[D11_C6_B1_11]-SA-M2. Cho m.a^(2x)+n.a^(-2x)=t. Tính P=a^x+a^(-x)+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_04]-M2. Biểu diễn tích chứa 2 căn thành lũy thừa."])
+                item = QTreeWidgetItem(L11_C6_B1_3, ["[D11_C6_B1_12]-SA-M2. Cho a^x=m, a^y=n. Tính giá trị biểu thức chứa lũy thừa a^px, a^qy"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_06]-M3. Tìm k để tích 3 căn = x^m."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                #------------------BÀI 2 - PHÉP TÍNH LOGARIT ------------------------>
                 
 
                 L11_C6_B2 = QTreeWidgetItem(L11_C6, ["Bài 2 - Phép tính Lôgarit"])
@@ -11052,23 +11074,41 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_04()                                     
                                                 
 
-                                #[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa.                    
+                                            #[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa.                    
                                             if dang_toan == "[D11_C6_B1_05]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_05()                                     
                                                 
 
-                                 #[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa.                    
+                                            #[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa.                    
                                             if dang_toan == "[D11_C6_B1_06]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_06()                                     
                                                 
-                                #[D11_C6_B1_07]-TF-M2. Tạo câu đúng-sai: Tính chất lũy thừa.  
+                                            #[D11_C6_B1_07]-TF-M2. Tạo câu đúng-sai: Tính chất lũy thừa.  
                                             if dang_toan == "[D11_C6_B1_07]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B1_07()                                      
 
 
-                                #[D11_C6_B1_08]-TF-M2. Tạo câu đúng-sai: Tính chất của căn bậc n.  
+                                            #[D11_C6_B1_08]-TF-M2. Tạo câu đúng-sai: Tính chất của căn bậc n.  
                                             if dang_toan == "[D11_C6_B1_08]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B1_08()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B1_08()
+
+                                            #[D11_C6_B1_09]-SA-M2. Cho a^x=t. Tính P=m.a^(2x)+n/a^(2x)+p
+                                            if dang_toan == "[D11_C6_B1_09]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_09()
+
+                                            #[D11_C6_B1_10]-SA-M2. Cho a^x+a^(-x)=t. Tính P=m.a^(2x)+n.a^(-2x)+p
+                                            if dang_toan == "[D11_C6_B1_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_10()
+
+                                            #[D11_C6_B1_11]-SA-M2. Cho m.a^(2x)+n.a^(-2x)=t. Tính P=a^x+a^(-x)+p
+                                            if dang_toan == "[D11_C6_B1_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_11()
+
+                                            #[D11_C6_B1_12]-SA-M3. Cho a^x=m, a^y=n. Tính giá trị biểu thức chứa lũy thừa a^px, a^qy
+                                            if dang_toan == "[D11_C6_B1_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_12()                                            
+
+
 
 
                                 #Bài 2: PHÉP TÍNH LÔGARIT
