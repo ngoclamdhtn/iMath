@@ -299,22 +299,23 @@ def tktk_L10_C6_B3_02():
 	# Tính tứ phân vị
 	quantiles = np.percentile(sample_data, [25, 50, 75])
 	kq4= quantiles[0]
+	#kq4=np.median(sample_data)+random.randint(1,3)
 
-	list_PA=my_module.tra_ve_so_nguyen([kq,kq2,kq3,kq4])
-	kq=list_PA[0]
-	kq2=list_PA[1]
-	kq3=list_PA[2]
-	kq4=list_PA[3]
+	#list_PA=my_module.tra_ve_so_nguyen([kq,kq2,kq3,kq4])
+	# kq=list_PA[0]
+	# kq2=list_PA[1]
+	# kq3=list_PA[2]
+	# kq4=list_PA[3]
 
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]
 
-	pa_A= f"*${{{kq}}}$"
-	pa_B= f"${{{kq2}}}$"
-	pa_C= f"${{{kq3}}}$"
-	pa_D= f"${{{kq4}}}$"
+	pa_A= f"*${{{phan_so(kq)}}}$"
+	pa_B= f"${{{phan_so(kq2)}}}$"
+	pa_C= f"${{{phan_so(kq3)}}}$"
+	pa_D= f"${{{phan_so(kq4)}}}$"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)

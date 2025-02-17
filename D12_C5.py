@@ -2861,7 +2861,7 @@ def htd_25_xyz_L12_C5_B1_28():
 
     x_A,y_A,z_A=-d/a,0,0
     x_B,y_B,z_B=0,-d/b,0
-    x_C,y_C,z_C=0,0,-d/b
+    x_C,y_C,z_C=0,0,-d/c
     x_AB,y_AB,z_AB=x_B-x_A, y_B-y_A, z_B-z_A
     x_AC,y_AC,z_AC=x_C-x_A, y_C-y_A, z_C-z_A
     x_BC,y_BC,z_BC=x_C-x_B, y_C-y_B, z_C-z_B
@@ -2922,7 +2922,7 @@ def htd_25_xyz_L12_C5_B1_29():
 
     x_A,y_A,z_A=-d/a,0,0
     x_B,y_B,z_B=0,-d/b,0
-    x_C,y_C,z_C=0,0,-d/b
+    x_C,y_C,z_C=0,0,-d/c
     x_AB,y_AB,z_AB=x_B-x_A, y_B-y_A, z_B-z_A
     x_AC,y_AC,z_AC=x_C-x_A, y_C-y_A, z_C-z_A
     x_BC,y_BC,z_BC=x_C-x_B, y_C-y_B, z_C-z_B

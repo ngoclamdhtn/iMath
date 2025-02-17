@@ -538,7 +538,7 @@ def newy25_L12_C6_B1_08():
     sp_rieng=["máy lọc nước RO", "đồng hồ thể thao đa năng" ,"xe tay ga", "balo du lịch",
      "ghế massage nhiệt hồng ngoại", "xe ô tô số tự động"  ]
 
-    i=random.randint(0,len(sp_chung))
+    i=random.randint(0,len(sp_chung)-1)
     sp_chung,sp_rieng=sp_chung[i], sp_rieng[i]
 
     if sp_chung=="máy lọc nước":

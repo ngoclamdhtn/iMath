@@ -83,6 +83,19 @@ def dem_uoc(n):
     return count
 #Tạo dấu cho một số
 
+
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
+def tinh_tong_chu_so(so):
+    # Lấy giá trị tuyệt đối để đảm bảo không bị lỗi với số âm
+    so = abs(so)
+    tong = 0
+    while so > 0:
+        tong += so % 10  # Lấy chữ số cuối cùng
+        so //= 10        # Bỏ chữ số cuối cùng
+    return tong
 #[D10_C9_B1_01]-M1. Chọn ngẫu nhiên 1 vật từ 2 nhóm đồ vật. Tìm số phần tử không gian mẫu.
 def mjulk_L10_C9_B1_01():   
 	#Tạo bậc ngẫu nhiên
@@ -7723,4 +7736,832 @@ def mjulk_L10_C9_B2_43():
 
 
 
+
+
+#[D10_C9_B2_44]-SA-M3. cho a sách X, b sách Y, c sách Z, chọn m quyển, xs để số sách còn lại đủ 3 môn
+def mjulk_L10_C9_B2_44(): 
+	n1=random.randint(1,3)
+	l1=random.randint(4,8)
+	l=random.randint(4,8)
+	l2=random.randint(4,9)
+	m=max(l,l1,l2)+n1
+	n=l+l1+l2
+	a=binomial(n,m)
+	b=binomial(l1+l2,m-l)+ binomial(l1+l,m-l1)+binomial(l+l2,m-l1)
+	t=Fraction(a-b,a)
+	tu=t.numerator
+	kq=tinh_tong_chu_so(tu)
+	dap_an= kq
+	noi_dung=f"Thầy X có ${{{l+l1+l2}}}$ cuốn sách gồm ${{{l1}}}$ cuốn sách toán, ${{{l2}}}$ cuốn sách lí và ${{{l}}}$ cuốn sách hóa. Các cuốn sách đôi một khác nhau. Thầy X chọn ngẫu nhiên ${{{m}}}$ cuốn sách để làm phần thưởng cho một học sinh. Xác suất để số cuốn sách còn lại của thầy X có đủ 3 môn là $\\dfrac{{a}}{{b}}$, với $a,b \\in \\mathbb{{N}}$ và $(a;b)=1$. Tổng các chữ số của ${{a}}$ là "
+	noi_dung_loigiai=(f'Gọi A là biến cố “Số cuốn sách còn lại của thầy X có đủ 3 môn”, suy ra $\\overline{{A}}$ là biến cố “Số cuốn sách còn lại của thầy X không có đủ 3 môn”= “Thầy X đã lấy hết số sách của một môn học”.\n\n'
+		f"$n(\\Omega)= C_{{{n}}}^{{{m}}}= {{{a}}}$\n\n "
+	f" $n(\\overline{{A}})=C_{{{l1}}}^{{{l1}}} C_{{{l+l2}}}^{{{m-l1}}}  + C_{{{l2}}}^{{{l2}}} C_{{{l1+l}}}^{{{m-l2}}} +  C_{{{l}}}^{{{l}}} C_{{{l1+l2}}}^{{{m-l}}} ={b}  $ \n\n"
+	f" $P(\\overline{{A}})= \\dfrac{{n(\\overline{{A}})}}{{n(\\Omega)}}= {phan_so(b/a)} $\n\n"
+	f" $P(A)=1-P(\\overline{{A}})= {phan_so(1-(b/a))} $\n\n"
+	f" Tổng các chữ số của ${{a}}$ là ${{{dap_an}}}$")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C9_B2_45]-SA-M3. XS các bài toán chọn bi(4 kiểu)
+def mjulk_L10_C9_B2_45():
+	mau_sac=["màu đỏ", "màu xanh", "màu vàng", "màu trắng", "màu tím", "màu đen"]
+	x,d,v=random.sample(mau_sac,3)
+	chon =random.randint(1,4)
+	if chon ==1:
+		n=5
+		
+		l1=n+random.randint(1,8)
+		l=n+random.randint(1,8)
+		l2=n+random.randint(1,9)
+		n1=l+l1+l2
+		a=binomial(n1,5)
+		b=binomial(l1,3)*binomial(l2,1)*binomial(l,1)+ binomial(l1,1)*binomial(l2,2)*binomial(l,2)
+		t=b/a
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp có ${{{l+l1+l2}}}$ viên bi gồm ${{{l1}}}$ viên bi {x}, ${{{l2}}}$ viên bi {d} và ${{{l}}}$ viên bi {v}. Chọn ngẫu nhiên ${{{n}}}$ viên bi trong hộp. Tính xác suất để ${{{n}}}$ viên bi được chọn có đủ các màu và số bi {d} bằng số bi {v}.(Làm tròn kết quả đến hàng phần trăm)"
+		noi_dung_loigiai=(f'Gọi A là biến cố “${{{n}}}$ viên bi được chọn có đủ 3 màu và số bi {d} bằng số bi {v}”.\n\n'
+			f"$n(\\Omega)= C_{{{n1}}}^{{5}}= {{{a}}}$\n\n "
+		f" TH1: Chọn 1 bi {d}, 1 bi {v}, 3 bi {x} có $C_{{{l1}}}^{{3}}C_{{{l2}}}^{{1}}C_{{{l}}}^{{1}} $ \n\n "
+		f"TH2: Chọn 2 bi {d}, 2 bi {v}, 1 bi {x} có $C_{{{l1}}}^{{1}}C_{{{l2}}}^{{2}}C_{{{l}}}^{{2}} $ \n\n"
+		f"$n(A)= C_{{{l1}}}^{{3}}C_{{{l2}}}^{{1}}C_{{{l}}}^{{1}}+ C_{{{l1}}}^{{1}}C_{{{l2}}}^{{2}}C_{{{l}}}^{{2}}= {b}$ \n\n"
+		f" $P(A)= {phan_so(b/a)} \\approx {dap_an}$"
+		)
+	if chon ==2:
+		n=4
+		
+		l1=n+random.randint(1,8)
+		l=n+random.randint(1,8)
+		l2=n+random.randint(1,9)
+		n1=l+l1+l2
+		a=binomial(n1,5)
+		b=binomial(l1,2)*binomial(l2,1)*binomial(l,1)+ binomial(l1,1)*binomial(l2,1)*binomial(l,2)+ binomial(l1,1)*binomial(l2,2)*binomial(l,1)
+		t=b/a
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp có ${{{l+l1+l2}}}$ viên bi gồm ${{{l1}}}$ viên bi {x}, ${{{l2}}}$ viên bi {d} và ${{{l}}}$ viên bi {v}. Chọn ngẫu nhiên ${{{n}}}$ viên bi trong hộp. Tính xác suất để ${{{n}}}$ viên bi được chọn có đủ các màu và số bi {d} bằng số bi {v}. (Làm tròn kết quả đến hàng phần trăm) "
+		noi_dung_loigiai=(f'Gọi A là biến cố “${{{n}}}$ viên bi được chọn có đủ 3 màu”.\n\n'
+			f"$n(\\Omega)= C_{{{n1}}}^{{5}}= {{{a}}}$\n\n "
+		f" TH1: Chọn 1 bi {d}, 1 bi {v}, 2 bi {x} có $C_{{{l1}}}^{{2}}C_{{{l2}}}^{{1}}C_{{{l}}}^{{1}} $ \n\n "
+		f"TH2: Chọn 2 bi {d}, 1 bi {v}, 1 bi {x} có $C_{{{l1}}}^{{1}}C_{{{l2}}}^{{2}}C_{{{l}}}^{{1}} $ \n\n"
+		f"TH3: Chọn 1 bi {d}, 2 bi {v}, 1 bi {x} có $C_{{{l1}}}^{{1}}C_{{{l2}}}^{{1}}C_{{{l}}}^{{2}} $ \n\n"
+		f"$n(A)= C_{{{l1}}}^{{2}}C_{{{l2}}}^{{1}}C_{{{l}}}^{{1}}+ C_{{{l1}}}^{{1}}C_{{{l2}}}^{{2}}C_{{{l}}}^{{1}}+C_{{{l1}}}^{{1}}C_{{{l2}}}^{{1}}C_{{{l}}}^{{2}} = {b}$ \n\n"
+		f" $P(A)= {phan_so(b/a)} \\approx {dap_an}$"
+		)
+	if chon ==3:
+		n=5
+
+		l1=n+random.randint(1,8)
+		l=n+random.randint(1,8)
+		l2=n+random.randint(1,9)
+		n1=l+l1+l2
+		a=binomial(n1,5)
+		b=binomial(l1,2)*binomial(l2,2)*binomial(l,1)+ binomial(l1,1)*binomial(l2,3)*binomial(l,1)
+		t=b/a
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp có ${{{l+l1+l2}}}$ viên bi gồm ${{{l1}}}$ viên bi {x}, ${{{l2}}}$ viên bi {d} và ${{{l}}}$ viên bi {v}. Chọn ngẫu nhiên ${{{n}}}$ viên bi trong hộp. Tính xác suất để ${{{n}}}$ viên bi được chọn có đủ các màu và số bi {d} nhiều hơn số bi {v}. (Làm tròn kết quả đến hàng phần trăm) "
+		noi_dung_loigiai=(f'Gọi A là biến cố “${{{n}}}$ viên bi được chọn có đủ 3 màu và số bi {d} nhiều hơn số bi {v}”.\n\n'
+			f"$n(\\Omega)= C_{{{n1}}}^{{5}}= {{{a}}}$\n\n "
+		f" TH1: Chọn 2 bi {d}, 1 bi {v}, 2 bi {x} có $C_{{{l1}}}^{{2}}C_{{{l2}}}^{{2}}C_{{{l}}}^{{1}} $ \n\n "
+		f"TH2: Chọn 3 bi {d}, 1 bi {v}, 1 bi {x} có $C_{{{l1}}}^{{1}}C_{{{l2}}}^{{3}}C_{{{l}}}^{{1}} $ \n\n"
+		f"$n(A)= C_{{{l1}}}^{{2}}C_{{{l2}}}^{{2}}C_{{{l}}}^{{1}}+ C_{{{l1}}}^{{1}}C_{{{l2}}}^{{3}}C_{{{l}}}^{{1}}= {b}$ \n\n"
+		f" $P(A)= {phan_so(b/a)} \\approx {dap_an}$"
+		)
+
+	if chon ==4:
+		n=random.randint(3,6)
+		l1=n+random.randint(1,9)
+		l=n+random.randint(1,8)
+		l2=n+random.randint(1,9)
+		n1=l+l1+l2
+		a=binomial(n1,n)
+		b=binomial(l1+l,n)
+		t=1-(b/a)
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp có ${{{l+l1+l2}}}$ viên bi gồm ${{{l1}}}$ viên bi {x}, ${{{l2}}}$ viên bi {d} và ${{{l}}}$ viên bi {v}. Chọn ngẫu nhiên ${{{n}}}$ viên bi trong hộp. Tính xác suất để ${{{n}}}$ viên bi được chọn có ít nhất 1 viên bi {d}. (Làm tròn kết quả đến hàng phần trăm)"
+		noi_dung_loigiai=(f'Gọi A là biến cố “${{{n}}}$ viên bi được chọn có ít nhất 1 bi {d}”.\n\n'
+			f"$\\overline{{A}}$ không có bi đỏ được chọn\n\n"
+			f"$n(\\Omega)= C_{{{n1}}}^{{{n}}}= {{{a}}}$\n\n "
+		f"$n(\\overline A)= C_{{{l+l1}}}^{{{n}}}= {b}$ \n\n"
+		f" $P(A)= 1- P(\\overline{{A}})= {phan_so(1-(b/a))} \\approx {dap_an}$"
+		)
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C9_B2_46]-SA-M3. XS các bài toán chọn người
+def mjulk_L10_C9_B2_46():
+	a=random.randint(6,10)
+	b=random.randint(6,15)
+	n=a+b-random.randint(2,7)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	chon=random.randint(1,7)
+	if chon ==1:
+		a1=binomial(a+b,n)
+		b1=binomial(a+b-2,n-2)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ, trong đó có bạn nam tên {B} và bạn nữ tên {A}. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để trong số các bạn được chọn có cả {A} và {B}. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+		f"$n(A)=C_{{{a+b-2}}}^{{{n-2}}}={b1} $ \n\n"
+		f" $P(A)= {phan_so(b1/a1)} \\approx {dap_an}$")
+	if chon ==2:
+		a1=binomial(a+b,n)
+		b1=binomial(a+b-2,n-1)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ, trong đó có bạn nam tên {B} và bạn nữ tên {A}. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để trong số các bạn được chọn có {A} nhưng không có {B}. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+		f"$n(A)=C_{{{a+b-2}}}^{{{n-1}}}={b1} $ \n\n"
+		f" $P(A)= {phan_so(b1/a1)} \\approx {dap_an}$")
+	if chon ==3:
+		a1=binomial(a+b,n)
+		b2=binomial(a+b-2,n-1)
+		b3=binomial(a+b-2,n)
+		b1=b2+b2+b3
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ, trong đó có bạn nam tên {B} và bạn nữ tên {A}. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để trong số các bạn được chọn {A} và {B} không đồng thời cùng có mặt. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+			f" TH1: Chọn {A} nhưng không chọn {B} là $C_{{{a+b-2}}}^{{{n-1}}}={b2} $\n\n"
+			f"TH2: Chọn {B} nhưng không chọn {A} là $C_{{{a+b-2}}}^{{{n-1}}}={b2} $\n\n"
+			f"TH3: Không chọn cả {A} và {B} là $C_{{{a+b-2}}}^{{{n}}}={b3} $\n\n"
+			f"$n(A)= {b2}+{b2}+{b3}={b1}$\n\n"
+			f"$P(A)= {phan_so(b1/a1)} \\approx {dap_an}$"
+
+)
+	if chon ==4:
+		m1=random.randint(3,5)
+		b=m1+random.randint(2,6)
+		n=m1+random.randint(2,4)
+		a1=binomial(a+b,n)
+
+		b1=binomial(b-1, m1-1)*binomial(a-1,n-m1)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ, trong đó có bạn nam tên {B} và bạn nữ tên {A}. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để chọn được ${{{m1}}}$ bạn nữ trong đó có {A} và {B} không được chọn. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+			f"$n(A)= C_{{{b-1}}}^{{{m1-1}}} C_{{{a-1}}}^{{{n-m1}}} = {b1}$\n\n"
+			f"$P(A)= {phan_so(b1/a1)} \\approx {dap_an}$")
+	if chon ==5:
+		m1=random.randint(3,5)
+		b=m1+random.randint(2,6)
+		n=m1+random.randint(2,4)
+		a1=binomial(a+b,n)
+
+		b1=binomial(b-1, m1)*binomial(a-1,n-m1)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ, trong đó có bạn nam tên {B} và bạn nữ tên {A}. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để chọn được ${{{m1}}}$ bạn nữ trong đó {A} và {B} không được chọn. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+			f"$n(A)= C_{{{b-1}}}^{{{m1}}} C_{{{a-1}}}^{{{n-m1}}} = {b1}$\n\n"
+			f"$P(A)= {phan_so(b1/a1)} \\approx {dap_an}$")
+	if chon ==6:
+		n=3
+		a1=binomial(a+b,n)
+		b1=binomial(a, 1)*binomial(b,2)+binomial(a,3)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để chọn được nam nhiều hơn nữ. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+			f"$n(A)= C_{{{a}}}^{{1}} C_{{{b}}}^{{2}}+ C_{{{a}}}^{{3}}= {b1}$\n\n"
+			f"$P(A)= {phan_so(b1/a1)} \\approx {dap_an}$")
+
+	if chon ==7:
+		n=4
+		a1=binomial(a+b,n)
+		b1=binomial(a, 1)*binomial(b,3)+binomial(b,4)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một nhóm gồm ${{{a}}}$ nam và ${{{b}}}$ nữ. Giáo viên chọn ngẫu nhiên ra ${{{n}}}$ bạn tham gia văn nghệ. Tính xác suất để chọn được không quá một nam. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b}}}^{{{n}}}={a1}$\n\n "
+			f"$n(A)= C_{{{a}}}^{{1}} C_{{{b}}}^{{3}}+ C_{{{b}}}^{{4}}= {b1}$\n\n"
+			f"$P(A)= {phan_so(b1/a1)} \\approx {dap_an}$")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+#[D10_C9_B2_47]-SA-M3. XS tổng các số trên các viên bi được chọn là số chia hết cho 3
+def mjulk_L10_C9_B2_47(): 
+	n=random.randint(20,50)
+	l1=len([i for i in range(1, n + 1) if i % 3 == 1])
+	l=len([i for i in range(1, n + 1) if i % 3== 0])
+	l2=len([i for i in range(1, n + 1) if i % 3 == 2])
 	
+	chon=random.randint(1,2)
+	if chon ==1:
+		a=binomial(n,3)
+		b=binomial(l1,3)+ binomial(l1,1)*binomial(l2,1)*binomial(l,1)+binomial(l2,3)+binomial(l,3)
+		t=b/a
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp chứa ${{{n}}}$ viên bi được đánh số từ ${{1}}$ đến ${{{n}}}$. Chọn ngẫu nhiên ${{3}}$ viên bi từ hộp. Tính xác suất để tổng các số trên các viên bi được chọn là số chia hết cho ${{3}}$. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{n}}}^{{3}}= {{{a}}}$\n\n "
+		f" TH1: Lấy được 3 bi ghi số chia 3 dư 1 là $ C_{{{l1}}}^{{3}}$ \n\n"
+		f" TH2: Lấy được 3 bi ghi số chia hết cho 3 là $ C_{{{l}}}^{{3}}$ \n\n"
+		f" TH3: Lấy được 1 bi ghi số chia hết cho 3, 1 bi ghi số chia 3 dư 1, 1 bi ghi số chia 3 dư 2 là $ C_{{{l1}}}^{{1}}  C_{{{l}}}^{{1}}  C_{{{l2}}}^{{1}}$ \n\n"
+		f" TH4: Lấy được 3 bi ghi số chia 3 dư 2 là $ C_{{{l2}}}^{{3}}$"
+		f" $n(A)=C_{{{l1}}}^{{3}}+ C_{{{l}}}^{{3}}+C_{{{l1}}}^{{1}}  C_{{{l}}}^{{1}}  C_{{{l2}}}^{{1}}+  C_{{{l2}}}^{{3}} ={b}  $ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b/a)} \\approx {dap_an} $")
+	if chon ==2:
+		a=binomial(n,2)
+		b=binomial(l1,1)*binomial(l2,1)+binomial(l,2)
+		t=b/a
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp chứa ${{{n}}}$ viên bi được đánh số từ ${{1}}$ đến ${{{n}}}$. Chọn ngẫu nhiên ${{2}}$ viên bi từ hộp. Tính xác suất để tổng các số trên các viên bi được chọn là số chia hết cho ${{3}}$. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{n}}}^{{2}}= {{{a}}}$\n\n "
+		f" TH1: Lấy được 1 bi ghi số chia 3 dư 1 và 1 bi ghi số chia 3 dư 2 là $ C_{{{l1}}}^{{1}} C_{{{l2}}}^{{1}}$ \n\n"
+		f" TH2: Lấy được 2 bi ghi số chia hết cho 3 là $ C_{{{l}}}^{{2}}$ \n\n"
+		
+		f" $n(A)=C_{{{l1}}}^{{1}} C_{{{l2}}}^{{1}}+ C_{{{l}}}^{{2}}={b}  $ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b/a)} \\approx {dap_an} $")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C9_B2_48]-SA-M3. XS các bài toán chọn sản phẩm tốt, xấu
+def mjulk_L10_C9_B2_48():
+	chon=random.randint(1,2)
+	if chon ==1:
+		a=random.randint(1,3)*100
+		n=random.randint(10,20)
+		m=random.randint(10,20)
+
+	if chon ==2:
+		a=random.randint(1,3)*1000
+		n=random.randint(10,20)*10
+		m=random.randint(10,20)
+	a1=binomial(a,m)
+	b1=binomial(a-n,m)+binomial(a-n,m-1)*binomial(n,1)+binomial(n,2)*binomial(a-n,m-2)
+	t=b1/a1
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Một lô hàng gồm ${{{a}}}$ sản phẩm trong đó có ${{{n}}}$ phế phẩm. Người ta kiểm tra ngẫu nhiên ${{{m}}}$ sản phẩm. Tính xác suất để trong số các sản phẩm được kiểm tra có không quá ${{2}}$ phế phẩm. (Kết quả làm tròn đến hàng phần trăm)"
+	noi_dung_loigiai=(f"$n(\\Omega)=C_{{{a}}}^{{{m}}}= {a1}$\n\n "
+	f" $n(A)= C_{{{a-n}}}^{{{m}}} +C_{{{n}}}^{{{1}}}  C_{{{a-n}}}^{{{m-1}}} + C_{{{n}}}^{{{2}}}C_{{{a-n}}}^{{{m-2}}}={b1}$ \n\n"
+	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b1/a1)} \\approx {dap_an} $")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C9_B2_49]-SA-M3. XS bài toán chọn cầu 2 lần
+def mjulk_L10_C9_B2_49():
+	chon=random.randint(1,2)
+	a=random.randint(5,25)
+	b=random.choice([i for i in range(5,20) if i!=a])
+	mau_sac=["màu đỏ", "màu xanh", "màu vàng", "màu trắng", "màu tím", "màu đen"]
+	x,d=random.sample(mau_sac,2)
+
+	chon =random.randint(1,2)
+	if chon ==1:
+		a1=(a+b)*(a+b-1)
+		b1=a*(a-1)+b*(b-1)
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp đựng ${{{a}}}$ quả cầu {x} và ${{{b}}}$ quả cầu {d}. Lấy ngẫu nhiên lần thứ nhất 1 quả cầu trong hộp không hoàn lại, tiếp tục lấy ngẫu nhiên 1 quả cầu lần thứ hai. Tính xác suất để lấy được 2 quả cầu cùng màu. (Kết quả làm tròn đến hàng phần trăm) "
+		noi_dung_loigiai=(f"$n(\\Omega)=C_{{{a+b}}}^{{{1}}}C_{{{a+b-1}}}^{{{1}}} = {a1}$\n\n "
+		f" $n(A)= C_{{{a}}}^{{{1}}} C_{{{a-1}}}^{{{1}}}+C_{{{b}}}^{{{1}}} C_{{{b-1}}}^{{{1}}} ={b1}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b1/a1)} \\approx {dap_an} $")
+	if chon ==2:
+		a1=(a+b)*(a+b-1)
+		b1=a*b*2
+		t=b1/a1
+		kq="{:.2f}".format(t).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Một hộp đựng ${{{a}}}$ quả cầu {x} và ${{{b}}}$ quả cầu {d}. Lấy ngẫu nhiên lần thứ nhất 1 quả cầu trong hộp không hoàn lại, tiếp tục lấy ngẫu nhiên 1 quả cầu lần thứ hai. Tính xác suất để lấy được 2 quả cầu khác màu. (Kết quả làm tròn đến hàng phần trăm)"
+		noi_dung_loigiai=(f"$n(\\Omega)=C_{{{a+b}}}^{{{1}}}C_{{{a+b-1}}}^{{{1}}} = {a1}$\n\n "
+		f" $n(A)= C_{{{a}}}^{{{1}}} C_{{{b}}}^{{{1}}}+C_{{{b}}}^{{{1}}} C_{{{a}}}^{{{1}}} ={b1}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b1/a1)} \\approx {dap_an} $")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+
+
+#[D10_C9_B2_50]-SA-M3. XS bài toán chọn ngẫu nhiên số nhỏ hơn số m
+def mjulk_L10_C9_B2_50():
+	n=random.randint(6,9)
+	nhom1=tao_taphop_khac_0(n)
+	# Bước 2: Số m cho trước
+	m = random.randint(1234,4567)
+	# Bước 3: Tạo tất cả các số có 4 chữ số khác nhau
+	so_hoan_vi = [
+	    int(''.join(map(str, p)))  # Chuyển từng hoán vị thành số nguyên
+	    for p in permutations(nhom1, 4)  # Tạo các hoán vị 4 chữ số từ tập hợp
+	]
+
+	# Bước 4: Lọc ra các số lớn hơn 2300
+	b1 = [so for so in so_hoan_vi if so < m]
+	b1=len(b1)
+	a1=len(so_hoan_vi)
+	t=b1/a1
+	# Bước 5: Đếm số lượng các số thỏa mãn
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+
+	noi_dung=f" Gọi S là tập hợp các số tự nhiên có bốn chữ số đôi một khác nhau được tạo thành từ các chữ số $\\{{ {nhom1} \\}}$. Lấy ngẫu nhiên một số từ tập S, tính xác suất để lấy được số nhỏ hơn ${{{m}}}$. (Kết quả làm tròn đến hàng phần trăm)  "
+	noi_dung_loigiai=(f" $n(\\Omega)={{{a1}}}$ \n\n"
+	f" $n(A)={{{b1}}}$ \n\n"
+	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b1/a1)} \\approx {dap_an} $")
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+#[D10_C9_B2_51]-TF-M3. XS các bài toán xếp m nam, m nữ hàng dọc. Xét tính ĐS
+def mjulk_L10_C9_B2_51():
+	a1=random.randint(5,10)
+	a2=a1 
+	kqm=factorial(a1+a2)
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	doc=random.choice(["ngang", "dọc"])
+
+	noi_dung = f"Xếp ngẫu nhiên ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} bạn nữ tên {A} thành một hàng {doc}. Xét tính đúng-sai của các khẳng định sau. "		
+	debai_word= f"{noi_dung}\n"
+
+	chon =random.randint(1,2)
+	if chon==1:
+		kq1_T=f"*Có ${{{a1+a2}!}}$ cách xếp các bạn trên thành một hàng {doc}" 
+		kq1_F=f"Có ${{{a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} "
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Có ${{{a1+a2}!}}$ cách xếp các bạn trên thành một hàng {doc} "
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon==2:
+		vt=["đầu", "cuối"]
+		dau, cuoi =random.sample(vt,2)
+		kq1_T=f"*Xác suất {A} đứng {dau} và {B} đứng {cuoi} là $\\dfrac{{{a1+a2-2}!}}{{{a1+a2}!}}$" 
+		kq1_F=f"Xác suất {A} đứng {dau} và {B} đứng {cuoi} là $\\dfrac{{{a1+a2-1}!}}{{{a1+a2}!}}$"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=(f"Có $n(A)={{{a1+a2-2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} đứng {dau} và {B} đứng {cuoi}\n\n"
+		f" $n(\\Omega)={{{a1+a2}!}} $ \n\n"
+		f" $P(A)= \\dfrac{{{a1+a2-2}!}}{{{a1+a2}!}}$")
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon =random.randint(1,2)
+	if chon ==1:
+
+		kq2_T=f"*Xác suất xếp được nam nữ xen kẽ là $\\dfrac{{2 \\cdot {a1}!{a2}!}}{{{a1+a2}!}}$ "
+		kq2_F=f"Xác suất xếp được nam nữ xen kẽ là $\\dfrac{{{a1}!{a2}!}}{{{a1+a2}!}}$  "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=(f"Có ${{2 \\cdot {a1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho nam nữ xen kẽ \n\n"
+		f"Xác suất xếp được nam nữ xen kẽ là $\\dfrac{{2 \\cdot {a1}!{a2}!}}{{{a1+a2}!}}$ ")
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon ==2:
+		nữ=random.choice(["nữ", "nam"])
+
+		kq2_T=f"*Xác suất xếp các bạn {nữ} luôn đứng cạnh nhau là $\\dfrac{{ {a1+1}!{a2}!}}{{{a1+a2}!}}$"
+		kq2_F=f"Xác suất xếp các bạn {nữ} luôn đứng cạnh nhau là $\\dfrac{{ {a1}!{a2}!}}{{{a1+a2}!}}$ "
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=(f"Có ${{ {a1+1}!{a2}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho các bạn {nữ} luôn đứng cạnh nhau \n\n"
+		f"Xác suất xếp các bạn {nữ} luôn đứng cạnh nhau là $\\dfrac{{ {a1+1}!{a2}!}}{{{a1+a2}!}}$")
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	if chon ==1:
+		kq3_T=f"*Xác suất xếp {A} và {B} luôn đứng cạnh nhau là $\\dfrac{{2\\cdot {a1+a2-1}!}}{{{a1+a2}!}}$" 
+		kq3_F=f"Xác suất xếp {A} và {B} luôn đứng cạnh nhau là $\\dfrac{{{a1+a2-1}!}}{{{a1+a2}!}}$ "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=(f"Có ${{2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} luôn đứng cạnh nhau\n\n "
+		f"Xác suất xếp {A} và {B} luôn đứng cạnh nhau là $\\dfrac{{2\\cdot {a1+a2-1}!}}{{{a1+a2}!}}$")
+
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	if chon ==2:
+		kq3_T=f"*Xác xuất để {A} và {B} không đứng cạnh nhau là $\\dfrac{{{a1+a2}!-2\\cdot {a1+a2-1}!}}{{{a1+a2}!}}$" 
+		kq3_F=f"Xác xuất để {A} và {B} không đứng cạnh nhau là $\\dfrac{{2\\cdot {a1+a2-1}!}}{{{a1+a2}!}}$  "
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=(f"Có ${{{a1+a2}!-2\\cdot {a1+a2-1}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} và {B} không đứng cạnh nhau \n\n"
+		f"Xác xuất để {A} và {B} không đứng cạnh nhau là $\\dfrac{{{a1+a2}!-2\\cdot {a1+a2-1}!}}{{{a1+a2}!}}$")
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	chon=random.randint(1,2)
+	if chon ==1:
+
+		kq4_T=f"*Xác suất để {A} luôn đứng giữa hai bạn nam là $\\dfrac{{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}{{{a1+a2}!}}$"
+		kq4_F=f"Xác suất để {A} luôn đứng giữa hai bạn nam là $\\dfrac{{{(a1+a2-1)*(a1-1)*a1}\\cdot {a1+a2-3}!}}{{{a1+a2}!}}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"Có ${{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nam \n\n"
+		f"Xác suất để {A} luôn đứng giữa hai bạn nam là $\\dfrac{{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}{{{a1+a2}!}}$")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	if chon ==2:
+
+		kq4_T=f"*Xác suất xếp {A} luôn đứng giữa hai bạn nữ là $\\dfrac{{{(a1+a2-2)*(a1-1)*(a1-2)}\\cdot {a1+a2-3}!}}{{{a1+a2}!}}$"
+		kq4_F=f"Xác suất xếp {A} luôn đứng giữa hai bạn nữ là $\\dfrac{{{(a1+a2-2)*(a1-1)*a1}\\cdot {a1+a2-3}!}}{{{a1+a2}!}}$ " 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"Có ${{{(a1+a2-2)*(a1-1)*(a1-2)}\\cdot {a1+a2-3}!}}$ cách xếp các bạn trên thành một hàng {doc} sao cho {A} luôn đứng giữa hai bạn nữ \n\n"
+		f"Xác suất xếp {A} luôn đứng giữa hai bạn nữ là $\\dfrac{{{(a1+a2-2)*(a1-1)*(a1-2)}\\cdot {a1+a2-3}!}}{{{a1+a2}!}}$")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+#[D10_C9_B2_52]-SA-M3. XS bài toán xếp m nam, m nữ hàng dọc(nhiều kiểu)
+def mjulk_L10_C9_B2_52():
+	a1=random.randint(5,10)
+	a2=a1 
+
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	doc=random.choice(["ngang", "dọc"])
+	vt=["đầu", "cuối"]
+	dau, cuoi =random.sample(vt,2)
+	chon =random.randint(1,5)
+	if chon ==1:
+		a=factorial(a1+a2)
+		b=factorial(a1+a2-2)	
+		ucln=math.gcd(abs(a),abs(b))
+		a,b=int(a/ucln),int(b/ucln)
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq=a+b
+		dap_an= kq
+
+		noi_dung=f"Xếp ngẫu nhiên ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} bạn nữ tên {A} thành một hàng {doc}. Xác suất {A} đứng {dau} và {B} đứng {cuoi} là $\\dfrac{{a}}{{b}}$ với $(a; b)=1$ và $a;b \\in \\mathbb {{N}}$. Tính ${{a+b}}$"
+		noi_dung_loigiai=(f" $n(\\Omega)={{{a1+a2}!}}$ \n\n"
+		f" $n(A)={{{a1+a2-2}!}}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}=\\dfrac{{{a1+a2-2}!}}{{{a1+a2}!}}= {phan_so(b/a)}$ \n\n"
+		f" Vậy ${{a+b}}={dap_an}$")
+
+
+	if chon ==2:
+		m=random.randint(4,8)
+		a=factorial(2*m)
+		b=factorial(m)*factorial(m)*2
+		ucln=math.gcd(abs(a),abs(b))
+		a,b=int(a/ucln),int(b/ucln)
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq=a+b
+		dap_an= kq
+		noi_dung=f"Xếp ngẫu nhiên ${{{m}}}$ bạn nam và ${{{m}}}$ bạn nữ thành một hàng {doc}. Xác suất để nam nữ xếp xen kẽ là $\\dfrac{{a}}{{b}}$ với $(a; b)=1$ và $a;b \\in \\mathbb {{N}}$. Tính ${{a+b}}$"
+		noi_dung_loigiai=(f" $n(\\Omega)={{{m+m}!}}$ \n\n"
+		f" $n(A)={{2 \\cdot {m}!{m}!}}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}=\\dfrac{{2 \\cdot {m}!{m}!}}{{{m+m}!}}= {phan_so(b/a)}$ \n\n"
+		f" Vậy ${{a+b}}={dap_an}$")
+
+
+	if chon ==3:
+		m=random.randint(5,8)
+		n=random.choice([i for i in range(5,9)])
+		a=factorial(2*m)
+		b=factorial(m)*factorial(m)*2
+		ucln=math.gcd(abs(a),abs(b))
+		a,b=int(a/ucln),int(b/ucln)
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq=a+b
+		dap_an= kq
+		noi_dung=f"Xếp ngẫu nhiên ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ thành một hàng {doc}. Xác suất để các bạn nữ luôn đứng cạnh nhau là $\\dfrac{{a}}{{b}}$ với $(a; b)=1$ và $a;b \\in \\mathbb {{N}}$. Tính ${{a+b}}$"
+		noi_dung_loigiai=(f" $n(\\Omega)={{{m+n}!}}$ \n\n"
+		f" $n(A)={{ {n}!{m+1}!}}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}=\\dfrac{{{n}!{m+1}!}}{{{m+n}!}}= {phan_so(b/a)}$ \n\n"
+		f" Vậy ${{a+b}}={dap_an}$")
+
+
+	if chon ==4:
+		a=factorial(a1+a2)
+		b=factorial(a1+a2-1)*2
+		
+		ucln=math.gcd(abs(a),abs(b))
+		a,b=int(a/ucln),int(b/ucln)
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq=a+b
+		dap_an= kq
+
+		noi_dung=f"Xếp ngẫu nhiên ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} bạn nữ tên {A} thành một hàng {doc}. Xác suất để {A} và {B} luôn đứng cạnh nhau là $\\dfrac{{a}}{{b}}$ với $(a; b)=1$ và $a;b \\in \\mathbb {{N}}$. Tính ${{a+b}}$"
+		noi_dung_loigiai=(f" $n(\\Omega)={{{a1+a2}!}}$ \n\n"
+		f" $n(A)={{2 \\cdot {a1+a2-1}!}}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}=\\dfrac{{2 \\cdot {a1+a2-1}!}}{{{a1+a2}!}}= {phan_so(b/a)}$ \n\n"
+		f" Vậy ${{a+b}}={dap_an}$")
+
+	if chon ==5:
+		a=factorial(a1+a2)
+		b=factorial(a1+a2-1)*2
+		
+		ucln=math.gcd(abs(a-b),abs(a))
+		a1,b1=int((a-b)/ucln),int(a/ucln)
+		# Bước 5: Đếm số lượng các số thỏa mãn
+		kq=a1+b1
+		dap_an= kq
+
+		noi_dung=f"Xếp ngẫu nhiên ${{{a1}}}$ bạn nam và ${{{a2}}}$ bạn nữ trong đó có bạn nam tên {B} bạn nữ tên {A} thành một hàng {doc}. Xác suất để {A} và {B} không đứng cạnh nhau là $\\dfrac{{a}}{{b}}$ với $(a; b)=1$ và $a;b \\in \\mathbb {{N}}$. Tính ${{a+b}}$"
+		noi_dung_loigiai=(f" $n(\\Omega)={{{a1+a2}!}}$ \n\n"
+			f" Gọi A là biến cố {A} và {B} đứng cạnh nhau \n\n"
+		f" $n(A)={{2 \\cdot {a1+a2-1}!}}$ \n\n"
+		f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}=\\dfrac{{2 \\cdot {a1+a2-1}!}}{{{a1+a2}!}}= {phan_so(b/a)}$ \n\n"
+		f"$P(\\overline A)= 1- P(A)= {phan_so(1-(b/a))}$ \n\n"
+		f" Vậy ${{a+b}}={dap_an}$")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_C9_B2_53]-SA-M3. Có m khách bước vào cửa hàng n quầy. XS đễn a người cùng vào 1 quầy
+def mjulk_L10_C9_B2_53():
+	n=random.randint(2,5)
+	m=n+random.randint(2,6)
+	e=random.randint(3,5)
+	thutu=random.choice([i for i in range(1,e)])
+	a=binomial(m,n)*(e-1)**(m-n)
+	b=e**m
+	t=a/b
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f" Có ${{{m}}}$ người khách bước ngẫu nhiên và một cửa hàng có ${{{e}}}$ quầy. Tính xác suất để ${{{n}}}$ người cùng chọn quầy thứ ${{{thutu}}}$. "
+	noi_dung_loigiai=(f"$n(\\Omega)={e}^{{{m}}} $ \n\n"
+	f"$n(A)= C_{{{m}}}^{{{n}}} {e-1}^{{{m-n}}} $ \n\n"
+	f"$P(A)=\\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(a/b)} \\approx {kq}$")
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#[D10_C9_B2_54]-SA-M3. Có m cặp nam nữ trong đó có n cặp vc. XS chọn 3 người k có cặp vc
+def mjulk_L10_C9_B2_54():
+	n=random.randint(2,5)
+	m=n+random.randint(2,6)
+
+	a=n*(2*m-2)
+	b=binomial(2*m,3)
+	t=1-(a/b)
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f" Trong một buổi liên hoan có ${{{m}}}$ cặp nam nữ trong đó có ${{{n}}}$ cặp vợ chồng. Chọn ngẫu nhiên ${{3}}$ người biểu diễn một tiết mục văn nghệ. Tính xác suất để ${{3}}$ người được chọn không có cặp vợ chồng nào. (Kết quả làm tròn đến hàng phần trăm) "
+	noi_dung_loigiai=(f"$n(\\Omega)=C_{{{2*m}}}^{{3}} $ \n\n"
+		f" Gọi ${{A}}$ là biến cố không có cặp vợ chồng nào trong ${{3}}$ người được chọn \n\n"
+		f"$\\overline{{A}}$ là biến cố trong ${{3}}$ người được chọn có một cặp vợ chồng \n\n"
+		f" $n(\\overline{{A}})= C_{{{n}}}^{{1}} \\cdot C_{{{2*m-2}}}^{{1}} $\n\n"
+	f"$P(A)=1-P(\\overline{{A}})=1- \\dfrac{{n(\\overline {{A}})}}{{n(\\Omega)}}= {phan_so(1-(a/b))} \\approx {kq}$")
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+#[D10_C9_B2_55]-SA-M3. Có m đôi giày. XS chọn 4 chiếc trong đó có ít nhất 1 đôi
+def mjulk_L10_C9_B2_55():
+	
+	m=random.randint(7,16)
+	a=m*binomial(2*m-2,2)- binomial(m,4)
+	b=binomial(2*m,4)
+	t=1-(a/b)
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Một người có ${{{m}}}$ đôi giày khác nhau và trong lúc đi du lịch vội vã lấy ngẫu nhiên ${{4}}$ chiếc. Tính xác suất để trong ${{4}}$ chiếc giày lấy ra có ít nhất một đôi. (Kết quả làm tròn đến hàng phần trăm) "
+	noi_dung_loigiai=(f"$n(\\Omega)=C_{{{2*m}}}^{{4}} $ \n\n"
+		f" Gọi ${{A}}$ là biến cố trong ${{4}}$ chiếc giày lấy ra có ít nhất một đôi \n\n"
+		f" $n({{A}})= C_{{{m}}}^{{1}} \\cdot  C_{{{2*m-2}}}^{{2}} -C_{{{m}}}^{{2}} $\n\n"
+	f"$P(A)= \\dfrac{{n({{A}})}}{{n(\\Omega)}}= {phan_so(a/b)} \\approx {kq}$")
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+#[D10_C9_B2_56]-SA-M3. Xs chọn 2 điểm tạo ra đt cắt 2 trục toạ độ
+def mjulk_L10_C9_B2_56():
+	a=random.randint(2,8)
+	b= random.randint(2,10)
+	c=random.randint(2,10)
+	d=random.randint(2,8)
+	a1=a*c+b*d
+	b1=binomial(a+b+c+d,2)
+	t=(a1/b1)
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Trong mặt phẳng toạ độ Oxy, vẽ ${{{a}}}$ điểm ở trong góc phần thứ nhất, ${{{b}}}$ điểm ở trong góc phần thứ hai, ${{{c}}}$ điểm ở trong góc phần thứ ba, ${{{d}}}$ điểm ở trong góc phần thứ tư. Chọn hai điểm bất kì trong các điểm trên, tính xác suất để đoạn thẳng nối hai điểm đó cắt hai trục toạ độ. (Kết quả làm tròn đến hàng phần trăm)"
+	noi_dung_loigiai=(f"$n(\\Omega)= C_{{{a+b+c+d}}}^{{2}}$ \n\n  "
+	f"$n(A)= C_{{{a}}}^{{1}}  C_{{{c}}}^{{1}} +  C_{{{b}}}^{{1}}  C_{{{d}}}^{{1}}$ \n\n"
+	f"$P(A)= \\dfrac{{n({{A}})}}{{n(\\Omega)}}= {phan_so(a1/b1)} \\approx {kq}$")
+
+
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+#[D10_C9_B2_57]-SA-M3. Có a phiếu trong đó có b phiếu trúng thưởng, m người rút. XS để A trúng thưởng
+def mjulk_L10_C9_B2_57():
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	n=random.randint(2,5)
+	b= random.randint(5,10)
+	a=b+n+random.randint(10,20)
+	d=random.randint(2,8)
+	a1=n* chinh_hop(b-1,a-n)
+	b1=chinh_hop(b,a)
+	t=(a1/b1)
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Một hộp có ${{{a}}}$ phiếu bốc thăm khác nhau trong đó có ${{{n}}}$ mã phiếu trúng thưởng. Có ${{{b}}}$ người tham gia bốc thăm trong đó có {A}, mỗi người chỉ được bốc một phiếu. Tính xác suất để chỉ có mỗi {A} rút được phiếu trúng thưởng. (Kết quả làm tròn đến hàng phần trăm)"
+	noi_dung_loigiai=(f"$n(\\Omega)= A_{{{a}}}^{{{b}}}$ \n\n  "
+	f"$n(A)=  {n} \\cdot A_{{{a-n}}}^{{{b-1}}} $ \n\n"
+	f"$P(A)= \\dfrac{{n({{A}})}}{{n(\\Omega)}}= {phan_so(a1/b1)} \\approx {kq}$")
+
+
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	

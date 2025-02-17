@@ -768,7 +768,7 @@ def mcn__L10_C8_B1_11():
 
 
 
-#[D10_C8_B1_12]-M2. Tính số ước nguyên của một số
+#[D10_C8_B1_12]-TL-M2. Tính số ước nguyên của một số
 def mcn__L10_C8_B1_12(): 
     a= random.choice([n for n in range(40, 1000) if len([i for i in range(2, n//2 + 1) if n % i == 0]) >= 2])
     b= sum(1 for i in range(1, abs(a) + 1) if a % i == 0)
@@ -811,7 +811,7 @@ f"${{{c-2}}}$",
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 
@@ -1419,6 +1419,7 @@ def mcn__L10_C8_B1_17():
 			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 	chon =random.randint(1,2)
 	if chon ==1:
+		vt=["cuối", "đầu", "vị trí thứ hai", "vị trí thứ ba", "vị trí thứ tư", "vị trí thứ năm"]
 		đầu, cuối =random.sample(vt,2)
 
 		kq3_T=f"* Có ${{{factorial(m+n-2)}}}$ cách xếp các bạn thành một hàng dọc sao cho {A} đứng {đầu} hàng còn {B} đứng {cuối} hàng" 
@@ -1632,34 +1633,34 @@ def mcn__L10_C8_B1_19():
 	noi_dung = f"Một hộp có ${{{m}}}$ {A} {e}, ${{{n}}}$ {A} {u} và ${{{p}}}$ {A} {k}. Xét tính đúng-sai của các khẳng định sau. "		
 	debai_word= f"{noi_dung}\n"
 	
-	kq1_T=f"*Có ${{{m+n+p}}}$ cách để chọn ra một quả cầu" 
-	kq1_F=f"Có ${{{m+n+p+a}}}$ cách để chọn ra một quả cầu "
+	kq1_T=f"*Có ${{{m+n+p}}}$ cách để chọn ra một {A}" 
+	kq1_F=f"Có ${{{m+n+p+a}}}$ cách để chọn ra một {A} "
 	kq1=random.choice([kq1_T, kq1_F])
-	HDG=f"Có ${{{m}+{n}+{p}={m+n+p}}}$ cách để chọn ra một quả cầu "
+	HDG=f"Có ${{{m}+{n}+{p}={m+n+p}}}$ cách để chọn ra một {A} "
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=f"*Có ${{{m*n}}}$ cách để chọn ra hai quả cầu trong đó có một quả màu {e} và một quả màu {u} "
-	kq2_F=f"Có ${{{m*n+a}}}$ cách để chọn ra hai quả cầu trong đó có một quả màu {e} và một quả màu {u} "
+	kq2_T=f"*Có ${{{m*n}}}$ cách để chọn ra hai {A} trong đó có một quả màu {e} và một quả màu {u} "
+	kq2_F=f"Có ${{{m*n+a}}}$ cách để chọn ra hai {A} trong đó có một quả màu {e} và một quả màu {u} "
 	kq2=random.choice([kq2_T, kq2_F])
-	HDG=f"Có ${{{m} \\cdot {n}={m*n}}}$ cách để chọn ra hai quả cầu trong đó có một quả màu {e} và một quả màu {u}"
+	HDG=f"Có ${{{m} \\cdot {n}={m*n}}}$ cách để chọn ra hai {A} trong đó có một quả màu {e} và một quả màu {u}"
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq3_T=f"* Có ${{{m*n*p}}}$ cách để chọn ra ba quả cầu đủ các màu" 
-	kq3_F=f"Có ${{{m*n*p+a}}}$ cách để chọn ra ba quả cầu đủ các màu "
+	kq3_T=f"* Có ${{{m*n*p}}}$ cách để chọn ra ba {A} đủ các màu" 
+	kq3_F=f"Có ${{{m*n*p+a}}}$ cách để chọn ra ba {A} đủ các màu "
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=f"Có ${{{m} \\cdot {n} \\cdot {p} = {m*n*p}}}$ cách để chọn ra ba quả cầu đủ các màu"
+	HDG=f"Có ${{{m} \\cdot {n} \\cdot {p} = {m*n*p}}}$ cách để chọn ra ba {A} đủ các màu"
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"*Có ${{{m*n+n*p+p*m}}}$ cách để chọn ra hai quả cầu khác màu "
-	kq4_F=f"Có ${{{m*n+n*p+p*m+a}}}$ cách để chọn ra hai quả cầu khác màu  " 
+	kq4_T=f"*Có ${{{m*n+n*p+p*m}}}$ cách để chọn ra hai {A} khác màu "
+	kq4_F=f"Có ${{{m*n+n*p+p*m+a}}}$ cách để chọn ra hai {A} khác màu  " 
 	kq4=random.choice([kq4_T, kq4_F])
-	HDG=f"Có ${{{m} \\cdot {n} + {m} \\cdot {p}+{p} \\cdot {n}=   {m*n+n*p+p*m}}}$ cách để chọn ra hai quả cầu khác màu "
+	HDG=f"Có ${{{m} \\cdot {n} + {m} \\cdot {p}+{p} \\cdot {n}=   {m*n+n*p+p*m}}}$ cách để chọn ra hai {A} khác màu "
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
 		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -1722,7 +1723,7 @@ def mcn__L10_C8_B1_19():
 #[D10_C8_B1_20]-SA-M2. Tính số cái bắt tay
 def mcn__L10_C8_B1_20(): 
 	a= random.randint(8,110)
-	kq=str(a)
+	kq=str(phan_so(a*(a-1)))
 	noi_dung=f"Tại một bữa tiệc có ${{{a}}}$ cặp vợ chồng, các ông chồng lần lượt đi bắt tay với các bà vợ, hỏi có bao nhiêu cái bắt tay biết rằng họ không bắt tay với vợ của mình."
 	noi_dung_loigiai=f"Số cái bắt tay là ${{{a} \\cdot {a-1}}}$ là ${{{phan_so(a*(a-1))}}}$ "
 
@@ -5565,8 +5566,6 @@ def mcn__L10_C8_B2_42():
 #[D10_C8_B2_43]-SA-M3. Tạo các số có các chữ số tăng (giảm) dần
 def mcn__L10_C8_B2_43(): 
 	chon =random.randint(1,6)
-
-
 
 	if chon ==1:
 		l=random.randint(3,5)

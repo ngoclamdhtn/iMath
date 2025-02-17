@@ -11,7 +11,8 @@ def vec(st):
 
 def vec2(A,B):
 	return f"\\overrightarrow{{{A}{B}}}"
-
+def thay_cong_tru(st):
+    return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y")
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -962,7 +963,7 @@ def gghik_L10_CX_B0_13():
 	r=sqrt((a-x_0)**2+b**2)
 	diem_A=random.choice(["A","M", "P", "C"])
 	diem_B=random.choice(["B","N", "Q","D"])
-	kq= f"${diem_A}({x_0};0)$"
+	kq= f"*${diem_A}({x_0};0)$"
 	kq2=f"${diem_A}(0;{x_0})$"
 	kq3=f"${diem_A}({x_0+random.randint(1,5)};0)$"
 	kq4=f"${diem_A}(0;{x_0+random.randint(1,5)})$"
@@ -1526,7 +1527,7 @@ def gghik_L10_CX_B0_20():
 		f"({a1-b1+random.randint(1,2)};{a2-b2}"	
 		])
 		
-		kq1_T=f"* ${vec_a}-{vec_b}=({a1-b1};{a2-b2};{a3-b3})$" 
+		kq1_T=f"* ${vec_a}-{vec_b}=({a1-b1};{a2-b2})$" 
 		kq1_F=f"${vec_a}-{vec_b}={kq_false}$"
 		HDG=f"${vec_a}-{vec_b}=({a1-b1};{a2-b2})$."
 	
@@ -3019,21 +3020,23 @@ def gghik_L10_CX_B1_11():
 	
 	ten_diem_1=random.choice(["A","M","D"])
 	ten_diem_2=random.choice(["B","N","E"])
-	ten_diem_3=random.choice(["C","P","F"])	
+	ten_diem_3=random.choice(["C","P","F"])
+	while True:
+		x_1=random.randint(-6,6)
+		y_1=random.randint(-7,7)	
 
-	x_1=random.randint(-6,6)
-	y_1=random.randint(-7,7)	
+		x_2=x_1+random.randint(1,4)
+		y_2=y_1+ random.randint(1,4)	
 
-	x_2=x_1+random.randint(1,4)
-	y_2=y_1+ random.randint(1,4)	
+		x_I=random.randint(-6,6)
+		y_I=random.randint(-6,6)
 
-	x_I=random.randint(-6,6)
-	y_I=random.randint(-6,6)
+		x_3=2*x_I-x_2
+		y_3=2*y_I-y_2
 
-	x_3=2*x_I-x_2
-	y_3=2*y_I-y_2
-
-	a, b =y_I-y_1, -(x_I-x_1)
+		a, b =y_I-y_1, -(x_I-x_1)
+		if all([a!=b, a!=-b]):
+			break
 
 	#Tìm UCLN của véctơ pháp tuyến:	
 	ucln=gcd(abs(a),abs(b))
@@ -3042,8 +3045,8 @@ def gghik_L10_CX_B1_11():
 
 	kq=f"{latex(a*(x-x_I)+b*(y-y_I))}=0"
 	kq2=f"{latex(a*(x+x_I)+b*(y+y_I))}=0"
-	kq3=f"{latex(a*(x-x_1)-(b+random.randint(1,3))*(y-y_1))}=0"
-	kq4=f"{latex(b*(x-x_1)-(a+random.randint(1,3))*(y-y_1)+random.randint(1,3))}=0"
+	kq3=f"{latex(b*(x-x_I)-a*(y-y_1))}=0"
+	kq4=f"{latex(b*(x+x_I)-a*(y+y_1))}=0"
 
 	ABC=f"{ten_diem_1}{ten_diem_2}{ten_diem_3}"
 
@@ -6520,7 +6523,7 @@ def gghik_L10_CX_B1_45():
 	x_M = solution[x]
 	y_M = solution[y]
 	t=x_M+y_M
-	dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+	dap_an="{:.1f}".format(t).replace(".", ",")
 
 	ABC=f"{ten_diem_1}{ten_diem_2}{ten_diem_3}"
 
@@ -6583,7 +6586,7 @@ def gghik_L10_CX_B1_46():
 	x_M = solution[x]
 	y_M = solution[y]
 	t=x_M+y_M
-	dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+	dap_an="{:.1f}".format(t).replace(".", ",")
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho $A({x_2};{y_2})$ đường thẳng $(\\Delta) : {latex(a1*x+b1*y+c1 )}=0$. Điểm ${{M(a;b)}}$ thuộc đường thẳng $\\Delta$ sao cho khoảng cách từ ${{A}}$ đến ${{M}}$ nhỏ nhất. Tính ${{a+b}}$. (Kết quả làm tròn đến hàng phần mười)"
 			
 	noi_dung_loigiai=(f" Điểm ${{M}}$ cần tìm là hình chiếu của ${{A}}$ lên đường thẳng $\\Delta$ \n\n"
@@ -6649,7 +6652,7 @@ def gghik_L10_CX_B1_47():
 	x_M = solution[x]
 	y_M = solution[y]
 	t=x_M+y_M
-	dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+	dap_an="{:.1f}".format(t).replace(".", ",")
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho $B({x_1};{y_1})$ và $C({phan_so(x_3)};{phan_so(y_3)})$ đường thẳng $(\\Delta) : {latex(a1*x+b1*y+c1 )}=0$. Điểm ${{M(a;b)}}$ thuộc đường thẳng $\\Delta$ sao cho ${{\\left| \\overrightarrow{{MC}}+\\overrightarrow{{MB}} \\right|}}$ nhỏ nhất. Tính ${{a+b}}$. (Kêt quả làm tròn đến hàng phần mười)"
 
@@ -6715,7 +6718,7 @@ def gghik_L10_CX_B1_48():
 	x_M = solution[x]
 	y_M = solution[y]
 	t=x_M+y_M
-	dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+	dap_an="{:.1f}".format(t).replace(".", ",")
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho $B({x_1};{y_1})$, $C({phan_so(x_3)};{phan_so(y_3)})$, $D({x_4};{y_4})$ đường thẳng $(\\Delta) : {latex(a1*x+b1*y+c1 )}=0$. Điểm ${{M(a;b)}}$ thuộc đường thẳng $\\Delta$ sao cho ${{\\left| \\overrightarrow{{MC}}+\\overrightarrow{{MB}} +\\overrightarrow{{MD}}\\right|}}$ nhỏ nhất. Tính ${{a+b}}$. (Kết quả làm tròn đến hàng phần mười)"
 			
     #Tạo các phương án
@@ -6749,7 +6752,6 @@ def gghik_L10_CX_B1_48():
 #[D10_CX_B1_49]-SA-M3. Toán thực tế. Xd vị trí phát tín hiệu âm thanh
 def gghik_L10_CX_B1_49():  
 	A, B, C = tao_3dinh_tamgiac()
-
 	# Lấy giá trị tọa độ các điểm
 	x1, y1 = A
 	x2, y2 = B
@@ -6771,8 +6773,8 @@ def gghik_L10_CX_B1_49():
 	x_I = solution[x]
 	y_I = solution[y]
 	t=x_I+y_I
-	dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
-	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, một tín hiệu âm thanh phát đi từ một vị trí có toạ độ ${{a+b}}$ và được ba thiết bị ghi tín hiệu đặt tại ba vị trí $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$ nhận được cùng một thời điểm. Tính ${{a+b}}$. (Kết quả làm tròn đến hàng phần mười)"
+	dap_an="{:.1f}".format(t).replace(".", ",")
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, một tín hiệu âm thanh phát đi từ một vị trí có toạ độ ${{(a;b)}}$ và được ba thiết bị ghi tín hiệu đặt tại ba vị trí $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$ nhận được cùng một thời điểm. Tính ${{a+b}}$. (Kết quả làm tròn đến hàng phần mười)"
 	noi_dung_loigiai=(f"Gọi ${{I}}$ là điểm thoả mãn yêu cầu bài toán thì ${{IA=IB=IC}}$ nên ${{I}}$ là giao của các đường trung trực \n\n"
 		f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${{{latex(nsimplify(expand(x_AB*(x-x_N)+y_AB*(y-y_N))))}=0}}$ (1) \n\n"
 	    f"Phương trình đường trung trực của đoạn thẳng ${{AC}}$ là ${{{latex(nsimplify(expand(x_AC*(x-x_M)+y_AC*(y-y_M))))}=0}}$ (2)\n\n"
@@ -6850,6 +6852,516 @@ def gghik_L10_CX_B1_50():
 
 
 
+
+
+#[D10_CX_B1_51]-M1. Tìm toạ độ giao điểm của hai đường thẳng(2PTTQ)
+def gghik_L10_CX_B1_51():  
+
+    b1 = random.choice([i for i in range(-5, 6) if i!=0])
+    c1= random.randint(-5,-1) or random.randint(1,5)
+    a2 = random.choice([i for i in range(-5, 6) if i!=0])
+    b2 = random.choice([i for i in range(-5, 6) if i!=0])
+    a1 = random.choice([i for i in range(-5, 6) if i!=0])
+    c2= random.randint(-5,5) or random.randint(1,5)
+    x, y = symbols('x y')
+    D=a1*b2-a2*b1
+    if D==0: 
+        a1=a1+1
+        D=a1*b2-a2*b1
+    # Khai báo các phương trình
+    eq1 = Eq(a1*x + b1*y, c1)
+    eq2 = Eq(a2*x +b2*y, c2)
+    e1=latex(eq1)
+    e2=latex(eq2)
+    # Giải hệ phương trình
+    solution = solve((eq1, eq2), (x, y))
+
+    # In kết quả
+    noi_dung=f"Tìm toạ độ giao điểm của hai đường thẳng $(d): {latex( a1*x + b1*y-c1)}=0$ và $(d'): {latex( a2*x + b2*y-c2)}=0$ \n\n"
+    x1 = solution[x]
+    y1= solution[y]
+       # Khai báo các phương trình
+    pa_A=f"*  $\\left( {latex(x1 )};{latex(y1)} \\right)$ "
+    pa_B=f"$\\left( {latex(x1+1)};{latex(y1)} \\right)$  "
+    pa_C=f"  $\\left( {latex(x1 )};{latex(y1+1)} \\right)$ "
+    pa_D=f"$\\left( {latex(x1+1 )};{latex(y1+1)} \\right)$ "
+    pa_A=thay_cong_tru(pa_A)
+    pa_B=thay_cong_tru(pa_B)
+    pa_C=thay_cong_tru(pa_C)
+    pa_D=thay_cong_tru(pa_D)        
+    noi_dung_loigiai=f" Đáp án đúng là $(x;y)=\\left( {latex(x1 )};{latex(y1)} \\right)$  "
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[D10_CX_B1_52]-M2. Tìm m để đường thẳng d đi qua giao điểm của hai đường thẳng
+def gghik_L10_CX_B1_52():  
+    x,y,m=symbols("x y m")
+    x0 = random.choice([i for i in range(-2, 2) if i != 0])
+    m0 = random.choice([i for i in range(-5, 5) if i != 0])
+    a1 = random.choice([i for i in range(-5, 5) if i != 0])
+    a2 = random.choice([i for i in range(-4, 4) if i != 0])
+    b1 = random.choice([i for i in range(-4, 4) if i != 0])
+    b2 = random.choice([i for i in range(-4, 4) if i != 0])
+    a = random.choice([i for i in range(-3, 2) if i != 0])
+    b = random.choice([i for i in range(-4, 4) if i != 0])
+    a3 = random.choice([i for i in range(-2, 2) if i != 0])
+    b3 = random.choice([i for i in range(-2, 2) if i != 0])
+    if a1*b2 == a2*b1:
+        a1=a1+6
+    if a*x0-a3==0:
+        x0=x0+3
+    y0=(a*m0-b)*x0-a3*m0-b3
+    c1=a1*x0+b1*y0
+    c2=a2*x0+b2*y0
+    noi_dung=f"Tìm giá trị của ${{m}}$ để đường thẳng $(d): {latex( (a*m-b)*x-y)}={latex(a3*m+b3)}$ đi qua giao điểm của hai đường thẳng $(d_{{1}}): {latex(a1*x+b1*y-c1)}=0$ và $(d_{{2}}):{latex(a2*x+b2*y-c2)}=0$"
+    noi_dung_loigiai=(f"Ta có giao điểm của hai đường thẳng $(d_{{1}})$ và $(d_{{1}})$ là $({x0};{y0})$\n\n"
+                    f" Để đường thẳng ${{(d)}}$ đi qua giao điểm thì $({x0};{y0})$ phải thoả mãn phương trình ${latex( (a*m-b)*x-y)}={latex(a3*m+b3 )}$ thay vào ta được ${{{latex( (a*m-b)*x0-y0)}={latex(a3*m+b3 )}}}$ giải ra ta được $m={m0}$")
+
+    kq=f"${{{m0}}}$ "
+    kq2=f"${{{m0-1}}}$ "
+    kq3=f"${{{m0+1}}}$ "
+    kq4=f"${{{m0-2}}}$ "
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D10_CX_B1_53]-M3. Tìm giá trị của m để ba đường thẳng đồng quy
+def gghik_L10_CX_B1_53():  
+    x,y,m=symbols("x y m")
+    x0 = random.choice([i for i in range(-2, 2) if i != 0])
+    m0 = random.choice([i for i in range(-5, 5) if i != 0])
+    a1 = random.choice([i for i in range(-5, 5) if i != 0])
+    a2 = random.choice([i for i in range(-4, 4) if i != 0])
+    b1 = random.choice([i for i in range(-4, 4) if i != 0])
+    b2 = random.choice([i for i in range(-4, 4) if i != 0])
+    a = random.choice([i for i in range(-3, 2) if i != 0])
+    b = random.choice([i for i in range(-4, 4) if i != 0])
+    a3 = random.choice([i for i in range(-2, 2) if i != 0])
+    b3 = random.choice([i for i in range(-2, 2) if i != 0])
+    if a1*b2 == a2*b1:
+        a1=a1+6
+    if a*x0-a3==0:
+        x0=x0+3
+    y0=(a*m0-b)*x0-a3*m0-b3
+    c1=a1*x0+b1*y0
+    c2=a2*x0+b2*y0
+    noi_dung=f"Tìm giá trị của ${{m}}$ để ba đường thẳng $(d): {latex( (a*m-b)*x-y-a3*m-b3)}=0$, $(d_{{1}}): {latex(a1*x+b1*y-c1)}=0$ và $(d_{{2}}):{latex(a2*x+b2*y-c2)}=0$ đồng quy tại một điểm."
+    noi_dung_loigiai=(f"Ta có giao điểm của hai đường thẳng $(d_{{1}})$ và $(d_{{1}})$ là $({x0};{y0})$\n\n"
+                    f" Để ba đường thẳng đồng quy thì ${{(d)}}$ phải đi qua giao điểm $({x0};{y0})$ suy ra toạ độ $({x0};{y0})$ phải thoả mãn phương trình ${latex( (a*m-b)*x-y)}={latex(a3*m+b3 )}$ thay vào ta được ${{{latex( (a*m-b)*x0-y0)}={latex(a3*m+b3 )}}}$ giải ra ta được $m={m0}$")
+
+    kq=f"$m={{{m0}}}$ "
+    kq2=f"$m={{{m0-1}}}$ "
+    kq3=f"$m={{{m0+1}}}$ "
+    kq4=f"$m={{{m0-2}}}$ "
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[D10_CX_B1_54]-M2. Tìm m để hai dt cắt nhau
+def gghik_L10_CX_B1_54():     
+    a1=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    b2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    c1=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    a2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    c2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    m0=phan_so(a1*b2/a2)
+    x, y, m =symbols("x y m")
+    noi_dung=f"Tìm ${{m}}$ để hai đường thẳng ${latex(a1*x+m*y-c1)}=0$ và ${latex(a2*x+b2*y-c2)}=0$ cắt nhau.\n\n"
+    noi_dung_loigiai=f" Hai đường thẳng cắt nhau khi $\\dfrac{{{a1}}}{{{a2}}} \\ne \\dfrac{{m}}{{{b2}}}$ vậy $m \\ne {m0}$."
+
+    kq=f" $m \\ne {m0}$"
+    kq2=f" $m = {m0}$"
+    kq3=f" $m \\ne {phan_so(a1*b2/a2-1)}$"
+    kq4=f"$m = {phan_so(a1*b2/a2-1)}$ "
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[D10_CX_B1_55]-M2. Tìm m để hai dt song song
+def gghik_L10_CX_B1_55():     
+    k=random.choice([random.randint(1,3),random.randint(-3,-1)])
+    
+    b2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    
+    a2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    c2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    a1=k*a2
+    c=c2*k
+    m0=phan_so(k*b2)
+    c1=random.choice([i for i in range(-10, 10) if i != c])
+    x, y, m =symbols("x y m")
+    noi_dung=f"Tìm ${{m}}$ để hai đường thẳng ${latex(a1*x+m*y-c1)}=0$ và ${latex(a2*x+b2*y-c2)}=0$ song song với nhau.\n\n"
+    
+    noi_dung_loigiai=f" Hai dt song song khi $\\dfrac{{{a1}}}{{{a2}}} = \\dfrac{{m}}{{{b2}}} \\ne \\dfrac{{{c1}}}{{{c2}}} $ vậy $m = {m0}$."
+
+    kq=f" $m = {m0}$"
+    kq2=f" $m \\ne {m0}$"
+    kq3=f" $m \\ne {phan_so(k*b2-random.randint(1,5))}$"
+    kq4=f"$m = {phan_so(k*b2+-random.randint(1,5))}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[D10_CX_B1_56]-M2. Tìm m để hai dt trùng nhau
+def gghik_L10_CX_B1_56():     
+    k=random.choice([random.randint(1,3),random.randint(-3,-1)])
+    
+    b2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    
+    a2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    c2=random.choice([random.randint(1,12),random.randint(-12,-1)])
+    a1=k*a2
+    c1=c2*k
+    m0=phan_so(k*b2)
+    x, y, m =symbols("x y m")
+    noi_dung=f"Tìm ${{m}}$ để hai đường thẳng ${latex(a1*x+m*y-c1)}=0$ và ${latex(a2*x+b2*y-c2)}=0$ trùng nhau.\n\n"
+   
+    noi_dung_loigiai=f" Hai đường thẳn trùng nhau khi $\\dfrac{{{a1}}}{{{a2}}} = \\dfrac{{m}}{{{b2}}} = \\dfrac{{{c1}}}{{{c2}}} $ vậy $m = {m0}$."
+
+    kq=f" $m = {m0}$"
+    kq2=f" $m \\ne {m0}$"
+    kq3=f" $m \\ne {phan_so(k*b2-random.randint(1,5))}$"
+    kq4=f"$m = {phan_so(k*b2+-random.randint(1,5))}$ "
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+#[D10_CX_B1_57]-M2. Tìm toạ độ hình chiếu vuông góc của điểm lên dth
+def gghik_L10_CX_B1_57():  
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+
+	ten_diem_1=random.choice(["A","M","D"])
+	ten_diem_2=random.choice(["B","N","E"])
+	ten_diem_3=random.choice(["C","P","F"])
+
+
+	x_1=random.randint(-6,6)
+	y_1=random.randint(-7,7)	
+
+	x_2=x_1+random.randint(1,4)
+	y_2=y_1+ random.randint(1,4)	
+
+	x_I=random.randint(-6,6)
+	y_I=random.randint(-6,6)
+
+	x_3=2*x_I-x_2
+	y_3=2*y_I-y_2
+
+	a, b =x_3-x_2, y_3-y_2	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+	b1=show_dau_value(b)
+
+
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, tìm toạ độ chân đường vuông góc kẻ từ điểm ${ten_diem_1}({x_2};{y_2})$ đến đường thẳng ${latex(a*(x-x_I)+b*(y-y_I))}=0$. "
+	noi_dung_loigiai=(f" Viết phương trình đường thẳng $\\Delta$ đi qua ${ten_diem_1}({x_2};{y_2})$ và vuông góc với ${latex(a*(x-x_I)+b*(y-y_I))}=0$ là ${latex(b*(x-x_2)-a*(y-y_2))}=0$ \n\n"
+	f" Gọi ${{I}}$ là giao điểm của $\\Delta$ và ${latex(a*(x-x_I)+b*(y-y_I))}=0$ thì $I \\left( {x_I};{y_I} \\right) $ \n\n"
+	)
+
+	#Tạo các phương án
+	pa_A= f"*${{\\left( {phan_so(x_I)};{phan_so(y_I)} \\right)}}$"
+	pa_B= f"${{\\left( {phan_so(x_I+1)};{phan_so(y_I+1)} \\right)}}$"
+	pa_C= f"${{\\left( {phan_so(x_I+1)};{phan_so(y_I-1)} \\right)}}$"
+	pa_D=f"${{\\left( {phan_so(x_I-1)};{phan_so(y_I-1)} \\right)}}$"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   	
+
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.   B. { list_PA[1]}.    C. { list_PA[2]}.     D. { list_PA[3]}.\n"
+
+
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+#[D10_CX_B1_58]-M2. Tìm chân đường cao kẻ từ A của tam giác ABC
+def gghik_L10_CX_B1_58():  
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+
+	ten_diem_1=random.choice(["A","M","D"])
+	ten_diem_2=random.choice(["B","N","E"])
+	ten_diem_3=random.choice(["C","P","F"])
+
+
+	x_1=random.randint(-6,6)
+	y_1=random.randint(-7,7)	
+
+	x_2=x_1+random.randint(1,4)
+	y_2=y_1+ random.randint(1,4)	
+
+	x_I=random.randint(-6,6)
+	y_I=random.choice([i for i in range(-6,6) if i!=y_2])
+
+	x_3=2*x_I-x_2
+	y_3=2*y_I-y_2
+
+	a, b =x_3-x_2, y_3-y_2	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+	
+
+	x4=random.choice([i for i in range(-6,6) if i!=x_I])
+	y4=phan_so( (a*x_I+b*y_I-a*x4)/b  )
+
+	x5=random.choice([i for i in range(-6,6) if i!=x_I and i!=x4])
+	y5=phan_so( (a*x_I+b*y_I-a*x5)/b  )
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, Cho tam giác ${{{ten_diem_1}{ten_diem_2}{ten_diem_3}}}$ có ${ten_diem_1}({x_2};{y_2})$; ${ten_diem_2}\\left({x4};{y4}\\right)$;${ten_diem_3}\\left({x5};{y5}\\right)$. Tìm toạ độ chân đường cao kẻ từ điểm ${{{ten_diem_1}}}$ của tam giác ${{{ten_diem_1}{ten_diem_2}{ten_diem_3}}}$. "
+	noi_dung_loigiai=(f"PTTQ của ${{{ten_diem_2}{ten_diem_3}}}$ là ${latex(a*(x-x_I)+b*(y-y_I))}=0$ \n\n"
+		f" Phương trình đường thẳng $\\Delta$ đi qua ${ten_diem_1}({x_2};{y_2})$ và vuông góc với ${latex(a*(x-x_I)+b*(y-y_I))}=0$ là ${latex(b*(x-x_2)-a*(y-y_2))}=0$ \n\n"
+	f" Gọi ${{H}}$ là giao điểm của $\\Delta$ và ${latex(a*(x-x_I)+b*(y-y_I))}=0$ thì $H \\left( {x_I};{y_I} \\right) $ \n\n"
+	)
+
+	#Tạo các phương án
+	pa_A= f"*${{\\left( {phan_so(x_I)};{phan_so(y_I)} \\right)}}$"
+	pa_B= f"${{\\left( {phan_so(x_I+1)};{phan_so(y_I+1)} \\right)}}$"
+	pa_C= f"${{\\left( {phan_so(x_I+1)};{phan_so(y_I-1)} \\right)}}$"
+	pa_D=f"${{\\left( {phan_so(x_I-1)};{phan_so(y_I-1)} \\right)}}$"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   	
+
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.   B. { list_PA[1]}.    C. { list_PA[2]}.     D. { list_PA[3]}.\n"
+
+
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 
@@ -8092,11 +8604,12 @@ def gghik_L10_CX_B3_15():
 #[D10_CX_B3_16]. Viết phương trình đường tròn có tâm và tiếp xúc với trục tọa độ
 def gghik_L10_CX_B3_16():
     #Tạo bậc ngẫu nhiên
-	x,y,z=sp.symbols("x y z")   
-	x_0 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	y_0 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	if x_0==y_0 or x_0==-y_0:
-		x_0=x_0+random.randint(1,4)
+	x,y,z=sp.symbols("x y z")
+	while True:
+		x_0 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_0 = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([x_0!=y_0,x_0!=-y_0]):
+			break
 
 	ten_tam=random.choice(["A","B","I","H","E","M","N"])
 	truc=random.choice(["Ox", "Oy"])    
@@ -8105,8 +8618,8 @@ def gghik_L10_CX_B3_16():
 	if truc=="Ox":
 		kq= f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={y_0**2}"
 		kq2=f"{latex((x+x_0)**2)}+{latex((y+y_0)**2)}={y_0**2}"
-		kq3=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={abs(x_0)}"
-		kq4=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={x_0**2}"
+		kq3=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={x_0**2}"
+		kq4=f"{latex((x+x_0)**2)}+{latex((y+y_0)**2)}={x_0**2}"
 
 		noi_dung_loigiai=thay_dau_congtru(f"Đường tròn ${{(C)}}$ có bán kính là $R={abs(y_0)}$.\n\n"\
 		f"Đường tròn ${{(C)}}$ có phương trình là: ${kq}$.".replace("(0)","0"))
@@ -8114,8 +8627,8 @@ def gghik_L10_CX_B3_16():
 	if truc=="Oy":
 		kq= f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={x_0**2}"
 		kq2=f"{latex((x+x_0)**2)}+{latex((y+y_0)**2)}={x_0**2}"
-		kq3=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={abs(y_0)}"
-		kq4=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={y_0**2}"
+		kq3=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={y_0**2}"
+		kq4=f"{latex((x+x_0)**2)}+{latex((y+y_0)**2)}={y_0**2}"
 
 		noi_dung_loigiai=thay_dau_congtru(f"Đường tròn ${{(C)}}$ có bán kính là $R={abs(x_0)}$.\n\n"\
 		f"Đường tròn ${{(C)}}$ có phương trình là: ${kq}$.".replace("(0)","0"))
@@ -8372,7 +8885,7 @@ def gghik_L10_CX_B3_19():
 	x_I = solution[x]
 	y_I = solution[y]
 	t=x_I+y_I
-	dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+	dap_an="{:.1f}".format(t).replace(".", ",")
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$. Điểm ${{I(a;b)}}$ là tâm đường tròn ngoại tiếp của tam giác. Tính ${{a+b}}$. (Làm tròn kết quà đến hàng phần mười)"
 	noi_dung_loigiai=(f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${{{latex(nsimplify(expand(x_AB*(x-x_N)+y_AB*(y-y_N))))}=0}}$ (1) \n\n"
 	    f"Phương trình đường trung trực của đoạn thẳng ${{AC}}$ là ${{{latex(nsimplify(expand(x_AC*(x-x_M)+y_AC*(y-y_M))))}=0}}$ (2)\n\n"

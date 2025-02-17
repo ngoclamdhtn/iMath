@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 10.02.2025")
+                self.label.setText(f"iMath\u00A92025 ver 17.02.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 10.02.2025")
+                self.label.setText(f"iMath\u00A92025 ver 17.02.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2866,31 +2866,31 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn "])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_28]-M1. Số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)   "])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_28]-M1. Số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)   "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_29]-M2. Số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0) "])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_29]-M2. Số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0) "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt"])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song"])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_32]-M2. Các bài toán chọn k người thoả điều kiện nào đó"])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_32]-M2. Các bài toán chọn k người thoả điều kiện nào đó"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C8_B2_1, ["[D10_C8_B2_33]-M2. Các bài toán chọn k bi(cầu) đủ các màu"])
+                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_33]-M2. Các bài toán chọn k bi(cầu) đủ các màu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
@@ -3251,12 +3251,6 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C9_B2_1, ["[D10_C9_B2_44]-M2. XS các btoán về rút đồng thời 2 thẻ và ghép kq lại với nhau(9kiểu)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-
-
                 L10_C9_B2_2 = QTreeWidgetItem(L10_C9_B2, ["Đúng-Sai"])
                 L10_C9_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C9_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -3300,6 +3294,70 @@ class Ui_MainWindow(object):
                 item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_41]-TF-M3. XS các bài toán chọn vật(viên bi, quả cầu)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_51]-TF-M3. XS các bài toán xếp m nam m nữ hàng dọc. Xét tính ĐS"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C9_B2_3 = QTreeWidgetItem(L10_C9_B2, ["Trả lời ngắn"])
+                L10_C9_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C9_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_44]-SA-M3. cho a sách X, b sách Y, c sách Z, chon m quyển, xs để số sách còn lại đủ 3 môn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_45]-SA-M3. XS các bài toán chọn bi(4 kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_46]-SA-M3. XS các bài toán chọn người(nhiều kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_47]-SA-M3. XS tổng các số trên các viên bi được chọn là số chia hết cho 3"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_48]-SA-M3. XS các bài toán chọn sản phẩm tốt, xấu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_49]-SA-M3. XS bài toán chọn cầu 2 lần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_50]-SA-M3. XS bài toán chọn ngẫu nhiên số nhỏ hơn số m"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_52]-SA-M3. XS bài toán xếp m nam, m nữ hàng dọc(nhiều kiểu)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_53]-SA-M3. Có m khách bước vào cửa hàng n quầy. XS để a người cùng vào 1 quầy"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_54]-SA-M3. Có m cặp nam nữ trong đó có n cặp vc. XS chọn 3 người k có cặp vc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_55]-SA-M3. Có m đôi giày. XS chọn 4 chiếc trong đó có ít nhất 1 đôi"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_56]-SA-M3. Xs chọn 2 điểm tạo ra đt cắt 2 trục toạ độ"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_57]-SA-M3. Có a phiếu trong đó có b phiếu trúng thưởng, m người rút. XS người A trúng thưởng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
+
+
 
 
 
@@ -3604,6 +3662,40 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_25]-M3. Cho PTTS của 2 đường thẳng, xét vị trí tương đối."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_51]-M1. Tìm toạ độ giao điểm của hai đường thẳng(2PTTQ)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_52]-M2. Tìm m để đường thẳng d đi qua giao điểm của hai đường thẳng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_53]-M3. Tìm giá trị của m để ba đường thẳng đồng quy"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_54]-M2. Tìm m để hai dt cắt nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_55]-M2. Tìm m để hai dt song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_56]-M2. Tìm m để hai dt trùng nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_57]-M2. Tìm toạ độ hình chiếu vuông góc của điểm lên dth"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_4, ["[D10_CX_B1_58]-M2. Tìm chân đường cao kẻ từ A của tam giác ABC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 
                 L10_C10_B1_5 = QTreeWidgetItem(L10_C10_B1_TN, ["2.5. Góc giữa 2 đường thẳng"])
@@ -5059,49 +5151,77 @@ class Ui_MainWindow(object):
 
                 L11_C6_B2 = QTreeWidgetItem(L11_C6, ["Bài 2 - Phép tính Lôgarit"])
                 L11_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L11_C6_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                L11_C6_B2_1 = QTreeWidgetItem(L11_C6_B2, ["6.2.1. Đúng-Sai"])
+                L11_C6_B2_1 = QTreeWidgetItem(L11_C6_B2, ["Trắc nghiệm"])
                 L11_C6_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C6_B2_2 = QTreeWidgetItem(L11_C6_B2, ["6.2.2. Câu hỏi lý thuyết công thức"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_02]-M1. Tìm khẳng định đúng về log_a (1/a^m)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(a^m.b^n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_05]-M2. Biễu diễn một logarit theo một logarit khác"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_07]-M3. Biểu diễn một logarit theo 2 logarit khác."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B2_2 = QTreeWidgetItem(L11_C6_B2, ["Đúng-Sai"])
                 L11_C6_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_02]-M1. Tìm khẳng định đúng về log_a (1/a^m)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(a^m.b^n)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L11_C6_B2_3 = QTreeWidgetItem(L11_C6_B2, ["6.2.3. Tính giá trị biểu thức chứa logarit"])
+                L11_C6_B2_3 = QTreeWidgetItem(L11_C6_B2, ["Trả lời ngắn"])
                 L11_C6_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính"])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_08]-SA-M2. Cho log_a(b), log_a(c). Tính P=log_a(b^m.c^n)+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
-                L11_C6_B2_4 = QTreeWidgetItem(L11_C6_B2, ["6.2.4 Biểu diễn logarit theo các loagrit khác"])
-                L11_C6_B2_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B2_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B2_4, ["[D11_C6_B2_05]-M2. Biễu diễn một logarit theo một logarit khác"])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_09]-SA-M2. Cho log_a(b), log_a(c). Tính log_a(a^m.b^n/c^p)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_4, ["[D11_C6_B2_07]-M3. Biểu diễn một logarit theo 2 logarit khác."])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_10]-SA-M2. Biểu diễn log_a(M) theo log_a(b) và log_a(c)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_11]-SA-M3. Biểu diễn log_a(M/N) theo log_a(b) và log_a(c)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_12]-SA-M3. Biểu diễn log_a(M) theo log(b) và log(c)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_13]-SA-M3. Cho a1^x1=b1, a2^x2=b2,....an^xn=bn. Tính x1.x2...xn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_14]-SA-M3. Tính tổng log_a (n/n+1) +...log_a (m/m+1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_15]-SA-M3. Tính tổng nhiều logarit vận dụng thấp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5110,7 +5230,94 @@ class Ui_MainWindow(object):
                 L11_C6_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C6_B3_1 = QTreeWidgetItem(L11_C6_B3, ["3.1.1. Đúng-Sai"])
+                
+                L11_C6_B3_2 = QTreeWidgetItem(L11_C6_B3, ["Trắc Nghiệm"])
+                L11_C6_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B3_2_1 = QTreeWidgetItem(L11_C6_B3_2, ["1. Tập xác định của hàm số"])
+                L11_C6_B3_2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B3_2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_01]-M1. TXĐ hàm số y=(ax+b)^n với n là số nguyên âm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_02]-M1. TXĐ hàm số y=(ax+b)^n với n không nguyên"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_03]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n là số nguyên âm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_04]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n không nguyên"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_05]-M1. TXĐ hàm số y=log(ax+b)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                #item.setToolTip(0, 'TXĐ hàm số y=log(ax+b)')
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_06]-M2. TXĐ hàm số y=log(ax^2+bx+c)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_10]-M3. Tìm m để log (ax^2 +bx+c) có tập xác định là R."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_11]-M3. Tìm m để a^(m/căn(ax^2 +bx+c)) có tập xác định là R."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
+                L11_C6_B3_2_2 = QTreeWidgetItem(L11_C6_B3_2, ["2. Đồ thị của hàm số"])
+                L11_C6_B3_2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B3_2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_07]-M2. Đồ thị hàm số y=a^x, a tùy ý."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_16]-M2. Đồ thị hàm số y=a^x, a>1."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_17]-M2. Đồ thị hàm số y=a^x, 0<a<1."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_08]-M1. Đồ thị hàm số y=log_a(x), a tùy ý."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_18]-M1. Đồ thị hàm số y=log_a(x), a>1."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_19]-M1. Đồ thị hàm số y=log_a(x), 0<a<1."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_09]-M1. Đồ thị hàm số y=căn(a)^x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B3_2_3 = QTreeWidgetItem(L11_C6_B3_2, ["3. Các bài toán khác"])
+                L11_C6_B3_2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B3_2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_20]-M2. Xét tính đơn điệu của hàm số y=a^x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_21]-M2. Xét tính đơn điệu của hàm số y=log_a x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B3_1 = QTreeWidgetItem(L11_C6_B3, ["Đúng-Sai"])
                 L11_C6_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5146,94 +5353,6 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C6_B3_2 = QTreeWidgetItem(L11_C6_B3, ["3.1.2. Trắc Nghiệm"])
-                L11_C6_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L11_C6_B3_2_1 = QTreeWidgetItem(L11_C6_B3_2, ["3.1.2.1. Tập xác định của hàm số"])
-                L11_C6_B3_2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B3_2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_01]-M1. TXĐ hàm số y=(ax+b)^n với n là số nguyên âm"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_02]-M1. TXĐ hàm số y=(ax+b)^n với n không nguyên"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-               
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_03]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n là số nguyên âm"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_04]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n không nguyên"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_05]-M1. TXĐ hàm số y=log(ax+b)."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                #item.setToolTip(0, 'TXĐ hàm số y=log(ax+b)')
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_06]-M2. TXĐ hàm số y=log(ax^2+bx+c)."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_10]-M3. Tìm m để log (ax^2 +bx+c) có tập xác định là R."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_11]-M3. Tìm m để a^(m/căn(ax^2 +bx+c)) có tập xác định là R."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L11_C6_B3_2_2 = QTreeWidgetItem(L11_C6_B3_2, ["3.1.2.2. Đồ thị của hàm số"])
-                L11_C6_B3_2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B3_2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_07]-M2. Đồ thị hàm số y=a^x, a tùy ý."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_16]-M2. Đồ thị hàm số y=a^x, a>1."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_17]-M2. Đồ thị hàm số y=a^x, 0<a<1."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_08]-M1. Đồ thị hàm số y=log_a(x), a tùy ý."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_18]-M1. Đồ thị hàm số y=log_a(x), a>1."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_19]-M1. Đồ thị hàm số y=log_a(x), 0<a<1."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_2, ["[D11_C6_B3_09]-M1. Đồ thị hàm số y=căn(a)^x."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L11_C6_B3_2_3 = QTreeWidgetItem(L11_C6_B3_2, ["3.1.2.3. Các bài toán khác"])
-                L11_C6_B3_2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B3_2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_20]-M2. Xét tính đơn điệu của hàm số y=a^x."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_21]-M2. Xét tính đơn điệu của hàm số y=log_a x."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-
-
                 
                 #Bài 4           
                 
@@ -5241,19 +5360,8 @@ class Ui_MainWindow(object):
                 L11_C6_B4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C6_B4_1 = QTreeWidgetItem(L11_C6_B4, ["6.4.1. Đúng-Sai"])
-                L11_C6_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_09]-TF-M2. Tạo câu Đ-S: Phương trình a^x=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: Phương trình log_a (x)=b"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L11_C6_B4_2 = QTreeWidgetItem(L11_C6_B4, ["6.4.2. Trắc Nghiệm"])
+                
+                L11_C6_B4_2 = QTreeWidgetItem(L11_C6_B4, ["Trắc Nghiệm"])
                 L11_C6_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5298,59 +5406,103 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C6_B4_2, ["[D11_C6_B4_08]-M3. Giải phương trình log_m(ax+b)+log_m(cx+d)=e"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B4_1 = QTreeWidgetItem(L11_C6_B4, ["Đúng-Sai"])
+                L11_C6_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_09]-TF-M2. Tạo câu Đ-S: Phương trình a^x=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: Phương trình log_a (x)=b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B4_3 = QTreeWidgetItem(L11_C6_B4, ["Trả lời ngắn"])
+                L11_C6_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_14]-SA-M2. Giải phương trình a^nx-a^m=0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_15]-SA-M3. Giải phương trình m.a^x + n.b^x = p.a^x +q.b^x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_16]-SA-M3. Giải phương trình a^x + a^(x+m) +a^(x-n) = b^x + b^(x+p) + b^(x-q)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_17]-SA-M3. Giải phương trình log_m(ax+b) - log_m(cx+d) = e"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
 
                 L11_C6_B5 = QTreeWidgetItem(L11_C6, ["Bài 5 - Bất phương trình mũ - Bất phương trình Lôgarit"])
                 L11_C6_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L11_C6_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                L11_C6_B5_1 = QTreeWidgetItem(L11_C6_B5, ["6.5.1. Đúng-Sai"])
+                L11_C6_B5_1 = QTreeWidgetItem(L11_C6_B5, ["Trắc Nghiệm"])
                 L11_C6_B5_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B5_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_10]-TF-M2. Tạo câu Đ-S: BPT chứa a^x"])
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_04]-M1. Giải BPT a^x >(>=) b, (a>1)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C6_B5_2 = QTreeWidgetItem(L11_C6_B5, ["6.5.2. Trắc Nghiệm"])
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_05]-M1. Giải BPT a^x <(<=) b, (a>1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_06]-M2. Giải BPT a^x <(<=) b, (0<a<1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_07]-M2. Giải BPT a^x >(>=) b, (0<a<1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_08]-M3. Giải BPT m^(ax+b) >(>=) m^(cx+d), (m>1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_09]-M3. Giải BPT m^(ax+b) >(>=) m^(cx+d), (0<m<1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_01]-M1. Giải BPT log_a(x) > b, (a>1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+            
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_02]-M2. Giải BPT log_a(x+m) > b, (a>1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+            
+
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_03]-M2. Giải BPT log_m(ax+b) > log_m(cx+d), (a>1)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B5_2 = QTreeWidgetItem(L11_C6_B5, ["Đúng-Sai"])
                 L11_C6_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_04]-M1. Giải BPT a^x >(>=) b, (a>1)"])
+                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_10]-TF-M2. Tạo câu Đ-S: BPT chứa a^x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_05]-M1. Giải BPT a^x <(<=) b, (a>1)"])
+                L11_C6_B5_3 = QTreeWidgetItem(L11_C6_B5, ["Trả lời ngắn"])
+                L11_C6_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_11]-SA-M2. Giải BPT m^(ax+b) > m^(cx+d)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_06]-M2. Giải BPT a^x <(<=) b, (0<a<1)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_07]-M2. Giải BPT a^x >(>=) b, (0<a<1)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_08]-M3. Giải BPT m^(ax+b) >(>=) m^(cx+d), (m>1)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_09]-M3. Giải BPT m^(ax+b) >(>=) m^(cx+d), (0<m<1)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_01]-M1. Giải BPT log_a(x) > b, (a>1)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-            
-
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_02]-M2. Giải BPT log_a(x+m) > b, (a>1)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-            
-
-                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_03]-M2. Giải BPT log_m(ax+b) > log_m(cx+d), (a>1)"])
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_12]-SA-M3. Tìm m để BPT mũ nghiệm đúng với mọi x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5363,7 +5515,11 @@ class Ui_MainWindow(object):
                 L11_C6_B6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B6.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B6, ["[D11_C6_B6_01]-M1. Cho số tiền và lãi suất theo năm. Tính tổng tiền sau n năm."])
+                L11_C6_B6_1 = QTreeWidgetItem(L11_C6_B6, ["Trắc nghiệm"])
+                L11_C6_B6_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B6_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_1, ["[D11_C6_B6_01]-M1. Cho số tiền và lãi suất theo năm. Tính tổng tiền sau n năm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
       
@@ -11056,57 +11212,57 @@ class Ui_MainWindow(object):
                                 ################ Bài 1: PHÉP TÍNH LŨY THỪA ########################
                                             #[D11_C6_B1_01]. Rút gọn a^m.a^n với m,n là phân số.                      
                                             if dang_toan == "[D11_C6_B1_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_01()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_01()                                     
                                                 
 
                                             #[D11_C6_B1_02]-M2. Rút gọn (a^m.a^n)/a^p với m,n,p là phân số.                     
                                             if dang_toan == "[D11_C6_B1_02]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_02()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_02()                                     
                                                 
 
                                             #[D11_C6_B1_03]-M1. Biểu diễn căn bậc sang lũy thừa số mũ hữu tỷ.                    
                                             if dang_toan == "[D11_C6_B1_03]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_03()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_03()                                     
                                                 
 
                                             #[D11_C6_B1_04]-M1. Biểu diễn tích chứa 2 căn thành lũy thừa.                    
                                             if dang_toan == "[D11_C6_B1_04]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_04()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_04()                                     
                                                 
 
                                             #[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa.                    
                                             if dang_toan == "[D11_C6_B1_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_05()                                     
                                                 
 
                                             #[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa.                    
                                             if dang_toan == "[D11_C6_B1_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B1_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_06()                                     
                                                 
                                             #[D11_C6_B1_07]-TF-M2. Tạo câu đúng-sai: Tính chất lũy thừa.  
                                             if dang_toan == "[D11_C6_B1_07]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B1_07()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B1_07()                                      
 
 
                                             #[D11_C6_B1_08]-TF-M2. Tạo câu đúng-sai: Tính chất của căn bậc n.  
                                             if dang_toan == "[D11_C6_B1_08]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B1_08()
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B1_08()
 
                                             #[D11_C6_B1_09]-SA-M2. Cho a^x=t. Tính P=m.a^(2x)+n/a^(2x)+p
                                             if dang_toan == "[D11_C6_B1_09]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_09()
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B1_09()
 
                                             #[D11_C6_B1_10]-SA-M2. Cho a^x+a^(-x)=t. Tính P=m.a^(2x)+n.a^(-2x)+p
                                             if dang_toan == "[D11_C6_B1_10]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_10()
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B1_10()
 
                                             #[D11_C6_B1_11]-SA-M2. Cho m.a^(2x)+n.a^(-2x)=t. Tính P=a^x+a^(-x)+p
                                             if dang_toan == "[D11_C6_B1_11]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_11()
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B1_11()
 
                                             #[D11_C6_B1_12]-SA-M3. Cho a^x=m, a^y=n. Tính giá trị biểu thức chứa lũy thừa a^px, a^qy
                                             if dang_toan == "[D11_C6_B1_12]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.zz8zz_L11_C6_B1_12()                                            
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B1_12()                                            
 
 
 
@@ -11114,37 +11270,69 @@ class Ui_MainWindow(object):
                                 #Bài 2: PHÉP TÍNH LÔGARIT
                                 #[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)
                                             if dang_toan == "[D11_C6_B2_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_01()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_01()                                     
                                                 
 
                                 #[D11_C6_B2_02]-M1. Tìm khẳng định đúng về log_a (1/a^m)
                                             if dang_toan == "[D11_C6_B2_02]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_02()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_02()                                     
                                                 
 
-                                #[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)
+                                            #[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)
                                             if dang_toan == "[D11_C6_B2_03]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_03()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_03()                                     
                                                 
 
-                                #[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính
+                                            #[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính
                                             if dang_toan == "[D11_C6_B2_04]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_04()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_04()                                     
                                                 
 
-                                #[D11_C6_B2_05]-M2. Biễu diễn một logarit theo một logarit khác
+                                            #[D11_C6_B2_05]-M2. Biễu diễn một logarit theo một logarit khác
                                             if dang_toan == "[D11_C6_B2_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_05()                                     
                                                 
 
-                                #[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(a^m.b^n)
+                                            #[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(a^m.b^n)
                                             if dang_toan == "[D11_C6_B2_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_06()                                     
                                                 
 
-                                        #D11_C6_B2_07]-M3. Biểu diễn một logarit theo 2 logarit khác.
+                                            #D11_C6_B2_07]-M3. Biểu diễn một logarit theo 2 logarit khác.
                                             if dang_toan == "[D11_C6_B2_07]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B2_07()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_07()
+
+                                            #[D11_C6_B2_08]-SA-M2. Cho log_a(b), log_a(c). Tính P=log_a(b^m.c^n)+p.
+                                            if dang_toan == "[D11_C6_B2_08]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_08()
+
+                                            #[D11_C6_B2_09]-SA-M2. Cho log_a(b), log_a(c). Tính log_a(a^m.b^n/c^p)
+                                            if dang_toan == "[D11_C6_B2_09]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_09()
+
+                                            #[D11_C6_B2_10]-SA-M2. Biểu diễn log_a(M) theo log_a(b) và log_a(c).
+                                            if dang_toan == "[D11_C6_B2_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_10()
+
+                                            #[D11_C6_B2_11]-SA-M3. Biểu diễn log_a(M) theo log_a(b) và log_a(c).
+                                            if dang_toan == "[D11_C6_B2_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_11()
+
+                                            #[D11_C6_B2_12]-SA-M3. Biểu diễn log_a(M) theo log(b) và log(c).
+                                            if dang_toan == "[D11_C6_B2_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_12()
+
+                                            #[D11_C6_B2_13]-SA-M3. Cho a1^x1=b1, a2^x2=b2,....an^xn=bn. Tính x1.x2...xn
+                                            if dang_toan == "[D11_C6_B2_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_13()
+
+                                            #[D11_C6_B2_14]-SA-M3. Cho a1^x1=b1, a2^x2=b2,....an^xn=bn. Tính x1.x2...xn
+                                            if dang_toan == "[D11_C6_B2_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_14()
+
+                                            #[D11_C6_B2_15]-SA-M3. Tính tổng log_a (n/n+1) +...log_a (m/m+1)
+                                            if dang_toan == "[D11_C6_B2_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_15()                            
                                                 
 
                                 
@@ -11153,127 +11341,127 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B3_01]. Tập xác định hàm số y=(ax+b)^n với n là số nguyên âm.
                                             if dang_toan == "[D11_C6_B3_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_01()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_01()                                     
                                                 
 
                                             #[D11_C6_B3_02]. Tập xác định hàm số y=(ax+b)^n với n là không nguyên.
                                             if dang_toan == "[D11_C6_B3_02]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_02()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_02()                                     
                                                 
 
                                 #[D11_C6_B3_03]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n là số nguyên âm.
                                             if dang_toan == "[D11_C6_B3_03]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_03()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_03()                                     
                                                 
 
                                             #[D11_C6_B3_04]. Tập xác định hàm số y=(ax^2+bx+c)^n với n là không nguyên.
                                             if dang_toan == "[D11_C6_B3_04]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_04()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_04()                                     
                                                 
 
                                             #[D11_C6_B3_05]. Tập xác định hàm số y=log(ax+b).
                                             if dang_toan == "[D11_C6_B3_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_05()                                     
                                                 
 
                                             #[D11_C6_B3_06]. Tập xác định hàm số y=log(ax^2+bx+c).
                                             if dang_toan == "[D11_C6_B3_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_06()                                     
                                                 
 
                                             #[D11_C6_B3_07]. Đồ thị hàm số y=a^x.
                                             if dang_toan == "[D11_C6_B3_07]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_07()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_07()                                     
                                                 
 
                                             #[D11_C6_B3_08]. Đồ thị hàm số y=log_a(x).
                                             if dang_toan == "[D11_C6_B3_08]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_08()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_08()                                     
                                                 
 
                                             #[D11_C6_B3_09]-M2. Đồ thị hàm số y=căn(a)^x
                                             if dang_toan == "[D11_C6_B3_09]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_09()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_09()                                     
                                                 
 
                                             #[D11_C6_B3_10]-M3. Tìm m để log (ax^2 +bx+c) có tập xác định là R.
                                             if dang_toan == "[D11_C6_B3_10]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_10()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_10()                                     
                                                 
 
                                         #[D11_C6_B3_11]-M3. Tìm m để e^a/căn(ax^2 +bx+c) có tập xác định là R.
                                             if dang_toan == "[D11_C6_B3_11]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_11()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_11()                                     
                                                 
 
                                         #[D11_C6_B3_12]-TF-M2. Cho y=a^x, a>1. Tạo câu Đ-S.
                                             if dang_toan == "[D11_C6_B3_12]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_12()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_12()                                      
 
 
                                         #[D11_C6_B3_13]-TF-M2. Cho y=a^x, 0<a<1. Tạo câu Đ-S.
                                             if dang_toan == "[D11_C6_B3_13]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_13()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_13()                                      
 
 
                                         #[D11_C6_B3_14]-TF-M2. Cho y=log_a x, a>1. Tạo câu Đ-S.
                                             if dang_toan == "[D11_C6_B3_14]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_14()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_14()                                      
 
 
                                         #[D11_C6_B3_15]-TF-M2. Cho y=log_a x, 0<a<1. Tạo câu Đ-S.
                                             if dang_toan == "[D11_C6_B3_15]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_15()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_15()                                      
 
 
                                         #[D11_C6_B3_16]-M2. Đồ thị hàm số y=a^x, a>1
                                             if dang_toan == "[D11_C6_B3_16]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_16()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_16()                                     
                                                 
 
                                         #[D11_C6_B3_17]-M2. Đồ thị hàm số y=a^x, 0<a<1
                                             if dang_toan == "[D11_C6_B3_17]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_17()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_17()                                     
                                                 
 
                                         #[D11_C6_B3_18]-M2. Đồ thị hàm số y=log_a x, a>1
                                             if dang_toan == "[D11_C6_B3_18]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_18()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_18()                                     
                                                 
 
                                         #[D11_C6_B3_19]-M2. Đồ thị hàm số y=log_a x, 0<a<1
                                             if dang_toan == "[D11_C6_B3_19]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_19()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_19()                                     
                                                 
 
                                         #[D11_C6_B3_20]-M2. Cho hàm số y=a^x. Xét tính đơn điệu
                                             if dang_toan == "[D11_C6_B3_20]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_20()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_20()                                     
                                                 
 
                                         #[D11_C6_B3_21]-M2. Cho hàm số y=log_a x. Xét tính đơn điệu
                                             if dang_toan == "[D11_C6_B3_21]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B3_21()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_21()                                     
                                                 
                                         
                                         #[D11_C6_B3_22]-TF-M2. Cho đồ thị y=a^x, 0<a<1. Tạo Đúng-Sai.                                   
                                             if dang_toan == "[D11_C6_B3_22]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_22()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_22()                                      
 
 
                                         #[D11_C6_B3_23]-TF-M2. Cho đồ thị y=log_a x, a>1. Tạo Đúng-Sai.                                  
                                             if dang_toan == "[D11_C6_B3_23]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_23()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_23()                                      
 
 
                                         #[D11_C6_B3_24]-TF-M2. Cho đồ thị y=log_a x, 0<a<1. Tạo Đúng-Sai.                                  
                                             if dang_toan == "[D11_C6_B3_24]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_24()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_24()                                      
 
 
                                         #[D11_C6_B3_25]-TF-M2. Cho đồ thị y=log_a x, 0<a<1. Tạo Đúng-Sai.                                  
                                             if dang_toan == "[D11_C6_B3_25]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B3_25()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_25()                                      
 
 
                                         #Chương 7 - ĐẠO HÀM
@@ -11550,144 +11738,168 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B4_01]. Giải phương trình a^x=b.
                                             if dang_toan == "[D11_C6_B4_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_01()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_01()                                     
                                                 
 
                                             #[D11_C6_B4_02]. Giải phương trình a^(x-m)=b.
                                             if dang_toan == "[D11_C6_B4_02]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_02()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_02()                                     
                                                 
 
                                             #[D11_C6_B4_03]. Phương trình dạng a^(mx+n)=b^(px+q)
                                             if dang_toan == "[D11_C6_B4_03]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_03()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_03()                                     
                                                 
 
                                             #[D11_C6_B4_04]. Giải phương trình bậc 2 đối với a^x.
                                             if dang_toan == "[D11_C6_B4_04]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_04()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_04()                                     
                                                 
 
                                             #[D11_C6_B4_05]. Giải phương trình logarit log_a(x)=b
                                             if dang_toan == "[D11_C6_B4_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_05()                                     
                                                 
 
                                         #[D11_C6_B4_06]-M2. Giải phương trình log_a(mx+n)=b
                                             if dang_toan == "[D11_C6_B4_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_06()                                     
                                                 
 
                                         #[D11_C6_B4_07]-M2. Giải phương trình log_m(ax+b)-log_m(cx+d) = e
                                             if dang_toan == "[D11_C6_B4_07]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_07()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_07()                                     
                                                 
 
                                         #[D11_C6_B4_08]-M2. Giải phương trình log_m(ax+b)+log_m(cx+d) = e
                                             if dang_toan == "[D11_C6_B4_08]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_08()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_08()                                     
                                                 
 
-                                        #[D11_C6_B4_09]-TF-M2. Tạo câu Đ-S: phương trình a^x=b.
+                                            #[D11_C6_B4_09]-TF-M2. Tạo câu Đ-S: phương trình a^x=b.
                                             if dang_toan == "[D11_C6_B4_09]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B4_09()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B4_09()                                      
 
 
-                                        #[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: log_a x=b.
+                                            #[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: log_a x=b.
                                             if dang_toan == "[D11_C6_B4_10]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B4_10()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B4_10()                                      
 
 
-                                        #[D11_C6_B4_11]-M3. Giải phương trình m.a^x + n.b^x = p.a^x +q.b^x
+                                            #[D11_C6_B4_11]-M3. Giải phương trình m.a^x + n.b^x = p.a^x +q.b^x
                                             if dang_toan == "[D11_C6_B4_11]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_11()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_11()                                     
                                                 
 
-                                        #[D11_C6_B4_12]-M3.  Giải phương trình a^x + a^(x+m) +a^(x-n) = b^x + b^(x+p) + b^(x-q)
+                                            #[D11_C6_B4_12]-M3.  Giải phương trình a^x + a^(x+m) +a^(x-n) = b^x + b^(x+p) + b^(x-q)
                                             if dang_toan == "[D11_C6_B4_12]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B4_12()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_12()
+
+                                            #[D11_C6_B4_14]-SA-M2. Giải phương trình a^nx-a^m=0
+                                            if dang_toan == "[D11_C6_B4_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_14()
+
+                                            #[D11_C6_B4_15]-SA-M2. Giải phương trình m.a^x + n.b^x = p.a^x +q.b^x
+                                            if dang_toan == "[D11_C6_B4_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_15()
+
+                                            #[D11_C6_B4_16]-SA-M2. Giải phương trình a^x + a^(x+m) +a^(x-n) = b^x + b^(x+p) + b^(x-q)
+                                            if dang_toan == "[D11_C6_B4_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_16()
+
+                                            #[D11_C6_B4_17]-SA-M2. Giải phương trình log_m(ax+b) - log_m(cx+d) = e
+                                            if dang_toan == "[D11_C6_B4_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_17()                              
                                                 
 
                                 #BÀI 5 - BẤT PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT
                                             #[D11_C6_B5_01]. Giải bất phương trình log_a x > b (a>1)
                                             if dang_toan == "[D11_C6_B5_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_01()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_01()                                     
                                                 
 
                                             #[D11_C6_B5_02]. Giải bất phương trình log_a (x-m) > b (a>1)
                                             if dang_toan == "[D11_C6_B5_02]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_02()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_02()                                     
                                                 
 
                                             #[D11_C6_B5_03]. Giải BPT log_m(ax+b) > log_m(cx+d), (a>1)
                                             if dang_toan == "[D11_C6_B5_03]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_03()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_03()                                     
                                                 
 
                                             #[D11_C6_B5_04]. Giải bất phương trình a^x > b (a>1)
                                             if dang_toan == "[D11_C6_B5_04]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_04()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_04()                                     
                                                 
 
                                             #[D11_C6_B5_05]. Giải bất phương trình a^x < b (a>1)
                                             if dang_toan == "[D11_C6_B5_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_05()                                     
                                                 
 
                                             #[D11_C6_B5_06]. Giải bất phương trình a^x < b (0<a<1)
                                             if dang_toan == "[D11_C6_B5_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_06()                                     
                                                 
 
                                             #[D11_C6_B5_07]. Giải bất phương trình a^x > b (0<a<1)
                                             if dang_toan == "[D11_C6_B5_07]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_07()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_07()                                     
                                                 
 
                                             #[D11_C6_B5_08]. Giải BPT m^(ax+b) > m^(cx+d), (m>1)
                                             if dang_toan == "[D11_C6_B5_08]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_08()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_08()                                     
                                                 
 
                                             #[D11_C6_B5_09]. Giải BPT m^(ax+b) > m^(cx+d), (0<m<1)
                                             if dang_toan == "[D11_C6_B5_09]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B5_09()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_09()                                     
                                                 
 
                                             #[D11_C6_B5_10]-TF-M2. Tạo câu Đ-S: bất phương trình chứa a^x.
                                             if dang_toan == "[D11_C6_B5_10]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.zz8zz_L11_C6_B5_10()                                      
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B5_10()
+
+                                            #[D11_C6_B5_11]-SA-M2. Giải BPT m^(ax+b) > m^(cx+d)
+                                            if dang_toan == "[D11_C6_B5_11]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B5_11()
+
+                                            #[D11_C6_B5_12]-SA-M2. Tìm m để BPT mũ nghiệm đúng với mọi x.
+                                            if dang_toan == "[D11_C6_B5_12]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B5_12()                                  
 
 
                                 #BÀI 6 - BÀI TOÁN LÃI SUẤT - TĂNG TRƯỞNG
                                             #[D11_C6_B6_01]. Cho số tiền và lãi suất theo năm. Tính tổng tiền thu được.
                                             if dang_toan == "[D11_C6_B6_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B6_01()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_01()                                     
                                                 
 
                                             #[D11_C6_B6_02]. Cho số tiền và lãi suất theo tháng. Tính tổng tiền thu được sau n tháng.
                                             if dang_toan == "[D11_C6_B6_02]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B6_02()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_02()                                     
                                                 
 
                                             #[D11_C6_B6_03]. Cho số tiền và lãi suất/năm. Tính số năm để thu được khoản tiền nào đó.
                                             if dang_toan == "[D11_C6_B6_03]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B6_03()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_03()                                     
                                                 
 
                                             #[D11_C6_B6_04]. Cho số tiền và kì hạn theo quý, lãi suất theo năm. Tính tổng tiền thu được sau n năm.
                                             if dang_toan == "[D11_C6_B6_04]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B6_04()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_04()                                     
                                                 
 
                                             #[D11_C6_B6_05]-M2. Cho số dân và tỉ lệ tăng trưởng. Tính số dân sau n năm.
                                             if dang_toan == "[D11_C6_B6_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B6_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_05()                                     
                                                 
 
                                             #[D11_C6_B6_06]-M2. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm.
                                             if dang_toan == "[D11_C6_B6_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.zz8zz_L11_C6_B6_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_06()                                     
                                                 
 
                                 #Toán 11 - Chương 8 - Quan hệ vuông góc
@@ -13996,6 +14208,64 @@ class Ui_MainWindow(object):
                                             if dang_toan =="[D10_C9_B2_43]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C9.mjulk_L10_C9_B2_43()
 
+                                            #[D10_C9_B2_44]-SA-M3. cho a sách X, b sách Y, c sách Z, chon m quyển, xs để số sách còn lại đủ 3 môn
+                                            if dang_toan =="[D10_C9_B2_44]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_44()
+
+                                            #[D10_C9_B2_45]-SA-M3. XS các bài toán chọn bi(4 kiểu)
+                                            if dang_toan =="[D10_C9_B2_45]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_45()
+
+                                            #[D10_C9_B2_46]-SA-M3. XS các bài toán chọn người(nhiều kiểu)
+                                            if dang_toan =="[D10_C9_B2_46]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_46()
+
+                                            #[D10_C9_B2_47]-SA-M3. XS tổng các số trên các viên bi được chọn là số chia hết cho 3
+                                            if dang_toan =="[D10_C9_B2_47]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_47()
+
+                                            #[D10_C9_B2_48]-SA-M3. XS các bài toán chọn sản phẩm tốt, xấu
+                                            if dang_toan =="[D10_C9_B2_48]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_48()
+
+                                            #[D10_C9_B2_49]-SA-M3. XS bài toán chọn cầu 2 lần
+                                            if dang_toan =="[D10_C9_B2_49]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_49()
+
+                                            #[D10_C9_B2_50]-SA-M3. XS bài toán chọn ngẫu nhiên số nhỏ hơn số m
+                                            if dang_toan =="[D10_C9_B2_50]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_50()
+
+                                            #[D10_C9_B2_52]-SA-M3. XS bài toán xếp m nam, m nữ hàng dọc(nhiều kiểu)
+                                            if dang_toan =="[D10_C9_B2_52]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_52()
+
+                                            #[D10_C9_B2_53]-SA-M3. Có m khách bước vào cửa hàng n quầy. XS để a người cùng vào 1 quầy
+                                            if dang_toan =="[D10_C9_B2_53]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_53()
+
+                                            #[D10_C9_B2_54]-SA-M3. Có m cặp nam nữ trong đó có n cặp vc. XS chọn 3 người k có cặp vc
+                                            if dang_toan =="[D10_C9_B2_54]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_54()
+
+                                            #[D10_C9_B2_55]-SA-M3. Có m đôi giày. XS chọn 4 chiếc trong đó có ít nhất 1 đôi
+                                            if dang_toan =="[D10_C9_B2_55]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_55()
+
+                                            #[D10_C9_B2_56]-SA-M3. Xs chọn 2 điểm tạo ra đt cắt 2 trục toạ độ
+                                            if dang_toan =="[D10_C9_B2_56]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_56()
+
+                                            #[D10_C9_B2_57]-SA-M3. Có a phiếu trong đó có b phiếu trúng thưởng, m người rút. XS người A trúng thưởng
+                                            if dang_toan =="[D10_C9_B2_57]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_57()
+
+                                            #[D10_C9_B2_51]-TF-M3. XS các bài toán xếp m nam m nữ hàng dọc. Xét tính ĐS
+                                            if dang_toan =="[D10_C9_B2_51]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_51()
+
+
+
 
 
                                     #Toán 10 - Chương 10 - Phương pháp tọa độ trong mặt phẳng
@@ -14229,6 +14499,40 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B1_50]-SA-M3. Tìm toạ độ điểm đối xứng của điểm qua đường thẳng
                                             if dang_toan =="[D10_CX_B1_50]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B1_50()
+
+                                            #[D10_CX_B1_51]-M1. Tìm toạ độ giao điểm của hai đường thẳng(2PTTQ)
+                                            if dang_toan =="[D10_CX_B1_51]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_51()
+
+                                            #[D10_CX_B1_52]-M2. Tìm m để đường thẳng d đi qua giao điểm của hai đường thẳng
+                                            if dang_toan =="[D10_CX_B1_52]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_52()
+
+                                            #[D10_CX_B1_53]-M3. Tìm giá trị của m để ba đường thẳng đồng quy
+                                            if dang_toan =="[D10_CX_B1_53]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_53()
+
+                                            #[D10_CX_B1_54]-M2. Tìm m để hai dt cắt nhau
+                                            if dang_toan =="[D10_CX_B1_54]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_54()
+
+                                            #[D10_CX_B1_55]-M2. Tìm m để hai dt song song
+                                            if dang_toan =="[D10_CX_B1_55]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_55()
+
+                                            #[D10_CX_B1_56]-M2. Tìm m để hai dt trùng nhau
+                                            if dang_toan =="[D10_CX_B1_56]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_56()
+
+                                            #[D10_CX_B1_57]-M2. Tìm toạ độ hình chiếu vuông góc của điểm lên dth
+                                            if dang_toan =="[D10_CX_B1_57]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_57()
+
+                                            #[D10_CX_B1_58]-M2. Tìm chân đường cao kẻ từ A của tam giác ABC
+                                            if dang_toan =="[D10_CX_B1_58]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_58()
+
+
 
                                             
 
