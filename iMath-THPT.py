@@ -8383,6 +8383,18 @@ class Ui_MainWindow(object):
                 L12_C6_B2 = QTreeWidgetItem(L12_C6, ["Bài 2 - Công thức xác suất toàn phần, xác suất Bayes"])
                 L12_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
 
+                L12_C6_B2_3 = QTreeWidgetItem(L12_C6_B2, ["Trả lời ngắn"])
+                L12_C6_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
         #Chương 7 - Mặt nón - Mặt trụ - Mặt cầu
                 # L12_C7 = QTreeWidgetItem(L12, ["Chương 7 - Mặt nón - Mặt trụ - Mặt cầu"])
                 # L12_C7.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -10434,6 +10446,16 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C6_B1_09]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_09()
 
+                                            #----------------------Toán 12 - Chương 6 - Bài 2-------------------->
+                                            #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
+                                            if dang_toan == "[D12_C6_B2_01]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_01()
+
+                                            #[D12_C6_B2_02]-SA-M2. Bài toán thực tế có P(A), P(B|A), P(B|A_). Tính P(B)
+                                            if dang_toan == "[D12_C6_B2_02]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_02()
+
+
                                             #[D11_C1_B1_02]-M1. Đổi số đo từ độ sang radian
                                             if dang_toan == "[D11_C1_B1_02]":                                                                                
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_02()
@@ -11788,12 +11810,13 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B4_11]-M3. Giải phương trình m.a^x + n.b^x = p.a^x +q.b^x
                                             if dang_toan == "[D11_C6_B4_11]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_11()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_11()                                    
                                                 
 
                                             #[D11_C6_B4_12]-M3.  Giải phương trình a^x + a^(x+m) +a^(x-n) = b^x + b^(x+p) + b^(x-q)
                                             if dang_toan == "[D11_C6_B4_12]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B4_12()
+
 
                                             #[D11_C6_B4_14]-SA-M2. Giải phương trình a^nx-a^m=0
                                             if dang_toan == "[D11_C6_B4_14]": 

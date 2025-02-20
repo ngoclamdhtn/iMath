@@ -736,3 +736,183 @@ def newy25_L12_C6_B1_09():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#Bài 2: Công thức xác suất toàn phần
+#[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
+def newy25_L12_C6_B2_01():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=random.randint(55,70)
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(5,20)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(45,75)
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    noi_dung = (
+    f"Cho hai biến cố ${{{A}}}$, ${{{B}}}$ với $P({B})={st_p_b}$; $P({A}|{B}) ={st_p_a_dk_b}$ và $P\\left({A}|\\overline{{{B}}}\\right)={st_p_a_dk_b_ngang}$."
+    f" Tính $P({A})$ (kết quả làm tròn đến hàng phần trăm)."
+    )
+    dap_an=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
+    dap_an=f"{round_half_up(dap_an,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Ta có: $P(\\overline{{{B}}})=1-P({B})={st_p_b_ngang}$.\n\n"
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P({A}) = P({A}|{B}). P({B}) + P\\left({A}|\\overline{{{B}}}\\right).P\\left(\\overline{{{B}}}\\right)$"
+    f"$={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_02]-SA-M2. Bài toán thực tế có P(A), P(B|A), P(B|A_). Tính P(B)
+def newy25_L12_C6_B2_02():
+    a=random.randint(55,80)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    p_a_ngang=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+    b_dk_a=random.randint(30,45)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(65,85)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    dap_an=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
+    dap_an=f"{round_half_up(dap_an,2):.2f}".replace(".",",")
+    chon=random.randint(1,8)
+    if chon==1:
+        noi_dung = (
+            f"Số khán giả đến xem buổi biểu diễn ca nhạc ngoài trời phụ thuộc vào thời tiết."
+            f" Giả sử, nếu trời không mưa thì xác suất để bán hết vé là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu trời mưa thì xác suất để bán hết vé chỉ là ${{{st_p_b_dk_a}}}$. "
+            f"Dự báo thời tiết cho thấy xác suất để trời mưa vào buổi biểu diễn là ${{{st_p_a}}}$. "
+            f"Tính xác suất để nhà tổ chức sự kiện bán hết vé? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Trời mưa", ${{B}}$ là biến cố "Bán hết vé".\n\n')
+
+
+    if chon==2:
+        noi_dung = (
+            f"Một nhà hàng hải sản phục vụ ngoài trời phụ thuộc vào thời tiết."
+            f" Giả sử, nếu trời không mưa thì xác suất để khách ngồi kín các bàn là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu trời mưa thì xác suất để khách ngồi kín các bàn chỉ là ${{{st_p_b_dk_a}}}$. "
+            f"Dự báo thời tiết cho thấy xác suất để trời mưa vào ngày mai là ${{{st_p_a}}}$. "
+            f"Tính xác suất để nhà hàng kín chỗ vào ngày mai? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Trời mưa", ${{B}}$ là biến cố "Khách ngồi kín các bàn".\n\n')
+
+    if chon==3:
+        noi_dung = (
+            f"Một công ty vận tải đánh giá xác suất giao hàng đúng hạn phụ thuộc vào tình trạng giao thông."
+            f" Nếu đường thông thoáng, xác suất giao đúng hạn là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu đường tắc, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
+            f"Dữ liệu giao thông cho thấy xác suất xảy ra ùn tắc vào ngày giao hàng là ${{{st_p_a}}}$. "
+            f"Tính xác suất để hàng được giao đúng hạn? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Đường bị tắc", ${{B}}$ là biến cố "Hàng được giao đúng hạn".\n\n')
+
+    if chon==4:
+        noi_dung = (
+            f"Năng suất thu hoạch nông sản của một nông trại phụ thuộc vào điều kiện thời tiết."
+            f" Nếu trời thuận lợi, xác suất để đạt năng suất cao là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu thời tiết xấu, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
+            f"Theo dự báo, xác suất thời tiết xấu trong mùa thu hoạch là ${{{st_p_a}}}$. "
+            f"Tính xác suất để nông trại đạt năng suất cao? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Thời tiết xấu", ${{B}}$ là biến cố "Đạt năng suất cao".\n\n')
+
+    if chon==4:
+        noi_dung = (
+            f"Tỷ lệ học sinh đạt điểm cao trong một kỳ thi chịu ảnh hưởng bởi mức độ khó của đề thi."
+            f" Nếu đề thi dễ, xác suất học sinh đạt điểm cao là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu đề thi khó, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
+            f"Theo phân tích, xác suất đề thi khó là ${{{st_p_a}}}$. "
+            f"Tính xác suất để một học sinh bất kỳ đạt điểm cao trong kỳ thi? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Đề thi khó", ${{B}}$ là biến cố "các học sinh đạt điểm cao".\n\n')
+
+    if chon==5:
+        noi_dung = (
+            f"Một cửa hàng điện thoại bán chạy hơn vào dịp cuối tuần."
+            f" Nếu hôm đó là cuối tuần, xác suất để bán hết số điện thoại nhập về là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu là ngày trong tuần, xác suất này chỉ là ${{{st_p_b_dk_a}}}$. "
+            f"Xác suất để một ngày bất kỳ trong tháng là cuối tuần là ${{{st_p_a}}}$. "
+            f"Tính xác suất để cửa hàng bán hết số điện thoại nhập về trong một ngày bất kỳ? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Ngày trong tuần", ${{B}}$ là biến cố "Bán hết số điện thoại nhập về".\n\n')
+
+    if chon==6:
+        noi_dung = (
+            f"Một nhà máy sản xuất linh kiện điện tử có tỷ lệ sản phẩm đạt tiêu chuẩn phụ thuộc vào nguồn nguyên liệu."
+            f" Nếu nguyên liệu đầu vào là loại tốt, xác suất sản phẩm đạt tiêu chuẩn là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu nguyên liệu loại trung bình, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
+            f"Nhà máy nhập nguyên liệu từ hai nguồn với tỷ lệ nguyên liệu tốt chiếm ${{{st_p_a}}}$. "
+            f"Tính xác suất để một sản phẩm bất kỳ đạt tiêu chuẩn? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Nguyên liệu loại trung bình", ${{B}}$ là biến cố "Sản phẩm bất kỳ đạt tiêu chuẩn".\n\n')
+
+    if chon==7:
+        noi_dung = (
+            f"Hiệu quả của một loại thuốc điều trị bệnh phụ thuộc vào phản ứng của bệnh nhân."
+            f" Nếu bệnh nhân không có cơ địa kháng thuốc, xác suất thuốc có hiệu quả là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu bệnh nhân có cơ địa kháng thuốc, xác suất này chỉ là ${{{st_p_b_dk_a}}}$. "
+            f"Theo thống kê, xác suất một bệnh nhân có cơ địa kháng thuốc là ${{{st_p_a}}}$. "
+            f"Tính xác suất để thuốc có hiệu quả trên một bệnh nhân bất kỳ? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Bệnh nhân có cơ địa kháng thuốc", ${{B}}$ là biến cố "Thuốc có hiệu quả".\n\n')
+
+    if chon==8:
+        noi_dung = (
+            f"Một hệ thống máy chủ có nguy cơ bị quá tải trong giờ cao điểm."
+            f" Nếu không bị quá tải, xác suất xử lý yêu cầu thành công là ${{{st_p_b_dk_a_ngang}}}$; "
+            f"còn nếu bị quá tải, xác suất này chỉ là ${{{st_p_b_dk_a}}}$. "
+            f"Theo số liệu theo dõi, xác suất xảy ra tình trạng quá tải trong một khoảng thời gian bất kỳ là ${{{st_p_a}}}$. "
+            f"Tính xác suất để một yêu cầu gửi đến hệ thống được xử lý thành công? (kết quả làm tròn đến hàng phần trăm)")
+        noi_dung_loigiai=(
+            f'Gọi ${{A}}$ là biến cố "Hệ thống máy chủ bị quá tải", ${{B}}$ là biến cố "Một yêu cầu gửi đến hệ thống được xử lý thành công".\n\n')  
+
+    
+    
+
+    noi_dung_loigiai+=(    
+    f"$P(\\overline{{A}})={st_p_a_ngang}, P(B|A)={st_p_b_dk_a}, P(B|\\overline{{A}})={st_p_b_dk_a_ngang}$.\n\n"
+    f"Xác suất cần tìm: \n\n"
+    f"$P(B)=P(A).P(B|A)+P(\\overline{{A}}).P(B|\\overline{{A}})={st_p_a}.{st_p_b_dk_a}+{st_p_a_ngang}.{st_p_b_dk_a_ngang}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

@@ -22,10 +22,10 @@ import pyperclip
 
 
 
-#Test đúng sai
+# #Test đúng sai
 test, test_latex="",""
 for i in range(1):
-	debai,debai_latex,loigiai_word,dap_an =D12_C6.newy25_L12_C6_B1_08()
+	debai,debai_latex,loigiai_word,dap_an =D12_C4.ckz_L12C4_B4_36()
 	#print(debai)
 	#print(loigiai_word)
 	test=test + f"{debai}\n{loigiai_word}\n"
@@ -35,8 +35,8 @@ pyperclip.copy(test_latex)
 
 #Test tự luận
 # test, test_latex="",""
-# for i in range(2):
-# 	debai_word,loigiai_word,latex_tuluan,dap_an = D11_C6.uz9zu_L11_C6_B5_12()
+# for i in range(1):
+# 	debai_word,loigiai_word,latex_tuluan,dap_an = D12_C4.ckz_L12C4_B4_36()
 # 	#print(debai)\\log {d}
 # 	#print(loigiai_word)
 # 	test=test + f"{debai_word}\n{loigiai_word}\n"

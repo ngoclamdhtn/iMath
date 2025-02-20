@@ -5870,7 +5870,7 @@ def ckz_L12C4_B4_31():
         f"${tphan(a,a)}f(x){d_x}=0$",
         f"${tphan(a,b)}{{[f(x)+g(x)]}}{d_x}={tphan(a,b)}f(x){d_x}+{tphan(a,b)}g(x){d_x}$",
         f"${tphan(a,b)}f(x){d_x}={tphan(a,b)}f(t){d_t}$",
-        f"${tphan(a,b)}f(x){d_x}={tphan(a,c)}f(x){d_x}+{tphan(c,b)}g(x){d_x}$"
+        f"${tphan(a,b)}f(x){d_x}={tphan(a,c)}f(x){d_x}+{tphan(c,b)}f(x){d_x}$"
         ]
 
         noi_dung_loigiai=(f"{kq} là khẳng định sai.")
@@ -5882,7 +5882,7 @@ def ckz_L12C4_B4_31():
             f"${tphan(a,a)}f(x){d_x}=0$",
             f"${tphan(a,b)}{{[f(x)+g(x)]}}{d_x}={tphan(a,b)}f(x){d_x}+{tphan(a,b)}g(x){d_x}$",
             f"${tphan(a,b)}f(x){d_x}={tphan(a,b)}f(t){d_t}$",
-            f"${tphan(a,b)}f(x){d_x}={tphan(a,c)}f(x){d_x}+{tphan(c,b)}g(x){d_x}$"
+            f"${tphan(a,b)}f(x){d_x}={tphan(a,c)}f(x){d_x}+{tphan(c,b)}f(x){d_x}$"
             ])
         kq_false=[      
 
@@ -6476,21 +6476,21 @@ def ckz_L12C4_B4_36():
     f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):" )      
     debai_word= f"{noi_dung}\n"
     
-    kq1_T=f"* ${tphan(x_1,x_2)}f'(x){d_x}={f_2-f_1}$" 
-    kq1_F=f"${tphan(x_1,x_2)}f'(x){d_x}={f_1-f_2}$"
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    kq1_T=f"* $\\int {latex(m/x)}{d_x}={m}\\ln |x|+C$" 
+    kq1_F=f"$\\int {latex(m/x)}{d_x}={m}\\log |x|+C$"
     
-    HDG=f"${tphan(x_1,x_2)}f'(x){d_x}=f(x)\\bigg|_{{{x_1}}}^{{{x_2}}}=f({x_2})-f({x_1})={f_2-f_1}$."
+    HDG=f"$\\int {latex(m/x)}{d_x}={m}\\ln |x|+C$"
     kq1=random.choice([kq1_T, kq1_F])
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    m=random.choice([i for i in range(-5, 6) if i!=0])
-    kq2_T=f"* ${tphan(x_1,x_2)}{{[f'(x)+{m}]}}{d_x}={f_2-f_1+m*(x_2-x_1)}$"
-    kq2_F=f"${tphan(x_1,x_2)}{{[f'(x)+{m}]}}{d_x}={f_1-f_2-m*(x_2-x_1)}$"
     
-    HDG=(thay_dau_cong_tru(f"${tphan(x_1,x_2)}{{[f'(x)+{m}]}}{d_x}={tphan(x_1,x_2)}f'(x){d_x}+{tphan(x_1,x_2)}{m}{d_x}$"
-        f"$=f({x_2})-f({x_1})+{m}({x_2}-{x_1})={f_2-f_1+m*(x_2-x_1)}$." ))
+    kq2_T=f"* $\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$"
+    kq2_F=f"$\\int f'(x){d_x}={phan_so(c/a)}\\log |{latex(a*x+b)}|+C$$"
+    
+    HDG=(thay_dau_cong_tru(f"$\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$." ))
 
     kq2=random.choice([kq2_T, kq2_F])
     kq2=thay_dau_cong_tru(kq2)
@@ -8618,12 +8618,13 @@ def ckz_L12C4_B5_22():
     d_x=f"\\mathrm{{\\,d}}x"
     a=random.randint(10,20)
     AB=random.randint(4,8)
-    OH= AB+random.randint(-2,2)
+    OH= int(a/2)-random.randint(2,5)
     k=-4*OH/AB**2
     f=k*x**2+OH
     S_0=integrate(f,(x,-AB/2,AB/2))
+    t=random.randint(6,15)
 
-    dap_an=f"{round_half_up(a**2-4*S_0,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up((a**2-4*S_0)/t,1):.1f}".replace(".",",")
     code_hinh=f" \\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.5]\n\
             \\tikzset{{every node/.style={{scale=0.9}}}}\n\
                 \\begin{{scope}}\n\
@@ -8644,10 +8645,10 @@ def ckz_L12C4_B5_22():
     noi_dung = (
     f"Một hoa văn trang trí được tạo ra từ một miếng bìa hình vuông cạnh bằng ${{{a}}}$ cm"
     f" bằng cách khoét đi bốn phần bằng nhau có hình dạng parabol như hình vẽ bên."
-    f" Biết $AB={AB}$ cm, $OH={OH}$ cm. Tính diện tích của bề mặt hoa văn đó (đơn vị: cm$^2$)"
-    f" (kết quả làm tròn đến chữ số thập phân thứ nhất)."
+    f" Biết $AB={AB}$ cm, $OH={OH}$ cm. Gọi ${{S}}$ là diện tích của bề mặt hoa văn đó (đơn vị: cm$^2$)."
+    f" Tính $\\dfrac{{S}}{{{t}}}$ (kết quả làm tròn đến chữ số thập phân thứ nhất)."
     )
-
+    
     noi_dung_loigiai=(
     f"Diện tích bề mặt hoa văn là $S={a}^2-4S_0$, trong đó $ S_0 $ là diện tích của Parabol.\n\n"
     f" Đưa parabol vào hệ trục ${{Oxy}}$ sao cho parabol qua các điểm $A({phan_so(-AB/2)};0),B({phan_so(AB/2)};0)$ và $C(0;{OH})$.\n\n"
@@ -8658,7 +8659,8 @@ def ckz_L12C4_B5_22():
     f" $\\Rightarrow k={phan_so(k)}$.\n\n"
     f" $\\Rightarrow (P):y={phan_so(k)}x^2+{OH}$.\n\n"
     f" Diện tích của một parabol là: ${tphan(phan_so(-AB/2),phan_so(AB/2))}({phan_so(k)}x^2+{OH}){d_x}={phan_so(S_0)}$.\n\n"
-    f" Diện tích cần tính là: ${a}^2-4.{phan_so(S_0)}={phan_so(a**2-4*S_0)}={dap_an}$."
+    f" Diện tích cần tính là: ${a}^2-4.{phan_so(S_0)}={phan_so(a**2-4*S_0)}$.\n\n"
+    f" $\\dfrac{{S}}{{{t}}}={dap_an}$"
     )    
         
     debai_word= f"{noi_dung}\n{file_name}\n"
