@@ -916,3 +916,288 @@ def newy25_L12_C6_B2_02():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_03]-SA-M2. Xác suất toàn phần: Tính xác suất đậu đại học khi chọn khối.
+def newy25_L12_C6_B2_03():
+    a=random.randint(60,85)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+
+    p_a_ngang=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+    b_dk_a=random.randint(50,75)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    while True:
+        b_dk_a_ngang=random.randint(50,75)
+        if b_dk_a_ngang != b_dk_a:
+            break
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    dap_an=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
+    dap_an=f"{round_half_up(dap_an,2):.1f}".replace(".",",")
+    
+    to_hop_mon = {
+    "A00": ["Toán", "Vật lí", "Hóa học"],
+    "A01": ["Toán", "Vật lí", "Tiếng Anh"],
+    "A02": ["Toán", "Vật lí", "Sinh học"],
+    "A03": ["Toán", "Vật lí", "Lịch sử"],
+    "A04": ["Toán", "Vật lí", "Địa lí"],
+    "B00": ["Toán", "Hóa học", "Sinh học"],
+    "B01": ["Toán", "Sinh học", "Lịch sử"],
+    "B02": ["Toán", "Sinh học", "Địa lí"],
+    "B03": ["Toán", "Sinh học", "Ngữ văn"],
+    "C00": ["Ngữ văn", "Lịch sử", "Địa lí"],
+    "C01": ["Ngữ văn", "Toán", "Vật lí"],
+    "C02": ["Ngữ văn", "Toán", "Hóa học"],
+    "D00": ["Toán", "Ngữ văn", "Tiếng Anh"],
+    "D01": ["Toán", "Ngữ văn", "Tiếng Anh"],
+    "D07": ["Toán", "Hóa học", "Tiếng Anh"]}
+
+    # Lấy danh sách các tổ hợp
+    to_hop_list = list(to_hop_mon.keys())
+
+    # Lấy danh sách các môn tương ứng theo từng tổ hợp
+    mon_thi_list = list(to_hop_mon.values())
+    index_random = random.randint(0, len(to_hop_list) - 1)
+    to_hop = to_hop_list[index_random]
+
+    mon_thi = mon_thi_list[index_random]
+    mon_thi=", ".join(mon_thi)
+
+
+    noi_dung = (
+    f"Trong một kì thi tốt nghiệp trung học phổ thông, một tỉnh X có ${a} \\%$ học sinh lựa chọn tổ hợp {to_hop} (gồm các môn {mon_thi})."
+    f" Biết rằng, nếu một học sinh chọn tổ hợp {to_hop} thì xác suất để học sinh đó đỗ đại học là ${{{st_p_b_dk_a}}}$;"
+    f" còn nếu một học sinh không chọn tổ hợp {to_hop} thì xác suất để học sinh đó đỗ đại học là ${{{st_p_b_dk_a_ngang}}}$."
+    f" Chọn ngẫu nhiên một học sinh của tỉnh X đã tốt nghiệp trung học phổ thông trong kì thi trên. Tính xác suất để học sinh đó đỗ đại học."
+    f"(kết quả làm tròn đến hàng phần trăm)"
+    )
+    
+
+    noi_dung_loigiai=(
+    f"Gọi $A$ là biến cố: Học sinh đó chọn tổ hợp {to_hop}; $B$ là biến cố: Học sinh đó đỗ đại học.\n\n"
+    f"$P(A)={st_p_a},P(\\overline{{A}})=1-P(A)={st_p_a_ngang}$.\n\n"
+    f"$P(B|A)$ là xác suất để một học sinh đỗ đại học với điều kiện học sinh đó chọn tổ hợp {to_hop}.\n\n"
+    f"$\\Rightarrow P(B|A)={st_p_b_dk_a}$.\n\n"
+    f"$P(B|\\overline{{A}})$ là xác suất để một học sinh đỗ đại học với điều kiện học sinh đó chọn tổ hợp {to_hop}.\n\n"
+    f"$\\Rightarrow P(B|\\overline{{A}})={st_p_b_dk_a_ngang}$.\n\n"
+    f"Thay vào công thức xác suất toàn phần ta được:\n\n"
+    f"$P(B)=P(A).P(B|A)+P(\\overline{{A}}).P(B|\\overline{{A}})={st_p_a}.{st_p_b_dk_a}+{st_p_a_ngang}.{st_p_b_dk_a_ngang}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_04]-SA-M3. X.S toàn phần: Tính xác suất hái bông hoa.
+def newy25_L12_C6_B2_04():
+    lop=[]
+    for i in range(1,10):
+        lop.append(f"12A{i}")
+        lop.append(f"11A{i}")
+        lop.append(f"10A{i}")
+    lop=random.choice(lop)
+    
+    so_trung=random.randint(5,15)
+    tong=so_trung+random.randint(5,10)
+
+    p_b=so_trung/tong
+    p_b_ngang=1-p_b
+    p_a_dk_b=(so_trung-1)/(tong-1)
+    p_a_dk_b_ngang=(so_trung)/(tong-1)
+    kq=p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang
+    dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    ten=[ "An", "Bảo", "Cường", "Dũng", "Hưng", "Khánh", "Minh", "Phúc", "Quân", "Tuấn", "Anh", "Chi", "Diệu", "Hạnh", "Lan", "Linh", "Mai", "Ngọc", "Thảo", "Vy"]
+    A,B = random.sample(ten,2)
+    noi_dung = (
+    f"Trong trò chơi hái hoa có thưởng của lớp {lop}, cô giáo treo ${{{tong}}}$ bông hoa trên cành cây, trong đó có ${{{so_trung}}}$ bông hoa chứa phiếu có thưởng. Bạn {B} hái bông hoa đầu tiên, sau đó bạn {A} hái bông hoa thứ hai."
+    f" Tính xác suất để bạn {A} hái được bông hoa chứa phiếu có thưởng (kết quả làm tròn đến hàng phần trăm)."
+    )   
+    
+
+    noi_dung_loigiai=(
+    f"Xét hai biến cố:\n\n"
+    f'"A: Bông hoa bạn {A} hái được chứa phiếu có thưởng."\n\n'
+    f'"B: Bông hoa bạn {B} hái được chứa phiếu có thưởng."\n\n'
+    f"$P(B)={phan_so(p_b)}, P(\\overline{{B}})=1-P(B)={phan_so(p_b_ngang)}$.\n\n"
+    f"$P(A|B)={phan_so(p_a_dk_b)}, P(A|\\overline{{B}})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Xác suất bạn {A} hái được bông hoa chứa phiếu có thưởng:\n\n"
+    f"$P(A)=P(B).P(A|B)+P(\\overline{{B}}).P(A|\\overline{{B}})={phan_so(p_b)}.{phan_so(p_a_dk_b)}+{phan_so(p_b_ngang)}.{phan_so(p_a_dk_b_ngang)}={phan_so(kq)}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_05]-SA-M3. X.S toàn phần: Tính xác suất lấy viên bi có màu nào đó.
+def newy25_L12_C6_B2_05():
+    lop=[]
+    for i in range(1,10):
+        lop.append(f"12A{i}")
+        lop.append(f"11A{i}")
+        lop.append(f"10A{i}")
+    lop=random.choice(lop)
+    
+    so_trung=random.randint(5,15)
+    tong=so_trung+random.randint(5,10)
+
+    p_b=so_trung/tong
+    p_b_ngang=1-p_b
+    p_a_dk_b=(so_trung-1)/(tong-1)
+    p_a_dk_b_ngang=(so_trung)/(tong-1)
+    kq=p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang
+    dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    ten=[ "An", "Bảo", "Cường", "Dũng", "Hưng", "Khánh", "Minh", "Phúc", "Quân", "Tuấn", "Anh", "Chi", "Diệu", "Hạnh", "Lan", "Linh", "Mai", "Ngọc", "Thảo", "Vy"]
+    A,B = random.sample(ten,2)
+    mau=random.choice(["đỏ", "xanh", "vàng", "tím", "trắng", "đen" ])
+    noi_dung = (
+    f"Một hộp chứa ${{{tong}}}$ viên bi, trong đó có ${{{so_trung}}}$ viên bi màu {mau}. Bạn {B} rút ngẫu nhiên một viên bi trước, sau đó bạn {A} rút một viên bi."
+    f" Tính xác suất để bạn {A} rút được một viên bi màu {mau} (kết quả làm tròn đến hàng phần trăm)."
+    )   
+    
+
+    noi_dung_loigiai=(
+    f"Xét hai biến cố:\n\n"
+    f'"A: Bạn {A} rút được viên bi màu {mau}."\n\n'
+    f'"B: Bạn {B} rút được viên bi màu {mau}."\n\n'
+    f"$P(B)={phan_so(p_b)}, P(\\overline{{B}})=1-P(B)={phan_so(p_b_ngang)}$.\n\n"
+    f"$P(A|B)={phan_so(p_a_dk_b)}, P(A|\\overline{{B}})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Xác suất bạn {A} rút được viên bi màu {mau}:\n\n"
+    f"$P(A)=P(B).P(A|B)+P(\\overline{{B}}).P(A|\\overline{{B}})={phan_so(p_b)}.{phan_so(p_a_dk_b)}+{phan_so(p_b_ngang)}.{phan_so(p_a_dk_b_ngang)}={phan_so(kq)}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_06]-SA-M3. X.S toàn phần: Tính xác suất chọn ly thủy tinh.
+def newy25_L12_C6_B2_06():
+    lop=[]
+    for i in range(1,10):
+        lop.append(f"12A{i}")
+        lop.append(f"11A{i}")
+        lop.append(f"10A{i}")
+    lop=random.choice(lop)
+    
+    so_trung=random.randint(8,15)
+    tong=so_trung+random.randint(4,10)
+
+    p_b=so_trung/tong
+    p_b_ngang=1-p_b
+    p_a_dk_b=(so_trung-1)/(tong-1)
+    p_a_dk_b_ngang=(so_trung)/(tong-1)
+    kq=p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang
+    dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    ten=[ "An", "Bảo", "Cường", "Dũng", "Hưng", "Khánh", "Minh", "Phúc", "Quân", "Tuấn", "Anh", "Chi", "Diệu", "Hạnh", "Lan", "Linh", "Mai", "Ngọc", "Thảo", "Vy"]
+    A,B = random.sample(ten,2)
+    
+    noi_dung = (
+    f"Trên kệ có ${{{tong}}}$ chiếc ly, trong đó có ${{{so_trung}}}$ chiếc  còn lại là ly nhựa. Bạn {B} lấy ngẫu nhiên một chiếc ly trước, sau đó đến lượt bạn {A} lấy một chiếc ly."
+    f" Tính xác suất để bạn {A} lấy được chiếc ly thủy tinh (kết quả làm tròn đến hàng phần trăm)."
+    )   
+    
+
+    noi_dung_loigiai=(
+    f"Xét hai biến cố:\n\n"
+    f'"A: Bạn {A} lấy được chiếc ly thủy tinh."\n\n'
+    f'"B: Bạn {B} lấy được chiếc ly thủy tinh."\n\n'
+    f"$P(B)={phan_so(p_b)}, P(\\overline{{B}})=1-P(B)={phan_so(p_b_ngang)}$.\n\n"
+    f"$P(A|B)={phan_so(p_a_dk_b)}, P(A|\\overline{{B}})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Xác suất bạn {A} lấy được chiếc ly thủy tinh:\n\n"
+    f"$P(A)=P(B).P(A|B)+P(\\overline{{B}}).P(A|\\overline{{B}})={phan_so(p_b)}.{phan_so(p_a_dk_b)}+{phan_so(p_b_ngang)}.{phan_so(p_a_dk_b_ngang)}={phan_so(kq)}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_07]-SA-M3. X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại
+def newy25_L12_C6_B2_07():
+    lop=[]
+    for i in range(1,10):
+        lop.append(f"12A{i}")
+        lop.append(f"11A{i}")
+        lop.append(f"10A{i}")
+    lop=random.choice(lop)
+    
+    so_trung=random.randint(8,20)
+    tong=so_trung+random.randint(4,10)
+
+    p_b=so_trung/tong
+    p_b_ngang=1-p_b
+    p_a_dk_b=(so_trung-1)/(tong-1)
+    p_a_dk_b_ngang=(so_trung)/(tong-1)
+    kq=p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang
+    dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    ten=[ "An", "Bảo", "Cường", "Dũng", "Hưng", "Khánh", "Minh", "Phúc", "Quân", "Tuấn", "Anh", "Chi", "Diệu", "Hạnh", "Lan", "Linh", "Mai", "Ngọc", "Thảo", "Vy"]
+    A,B = random.sample(ten,2)
+    loai_sach=random.choice(["sách Toán", "sách Văn", "sách Tiếng Anh", "Tin học", "truyện cổ tích", "truyện khoa học viễn tưởng" ])
+    noi_dung = (
+    f"Trên kệ có ${{{tong}}}$ cuốn sách , trong đó có ${{{so_trung}}}$ {loai_sach} khác nhau. Bạn {B} lấy ngẫu nhiên một cuốn sách, sau đó đến lượt bạn {A} lấy một cuốn khác từ kệ."
+    f" Tính xác suất để bạn {A} lấy được cuốn {loai_sach} (kết quả làm tròn đến hàng phần trăm)."
+    )   
+    
+
+    noi_dung_loigiai=(
+    f"Xét hai biến cố:\n\n"
+    f'"A: Bạn {A} lấy được cuốn {loai_sach}."\n\n'
+    f'"B: Bạn {B} lấy được cuốn {loai_sach}."\n\n'
+    f"$P(B)={phan_so(p_b)}, P(\\overline{{B}})=1-P(B)={phan_so(p_b_ngang)}$.\n\n"
+    f"$P(A|B)={phan_so(p_a_dk_b)}, P(A|\\overline{{B}})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Xác suất bạn {A} lấy được cuốn {loai_sach}:\n\n"
+    f"$P(A)=P(B).P(A|B)+P(\\overline{{B}}).P(A|\\overline{{B}})={phan_so(p_b)}.{phan_so(p_a_dk_b)}+{phan_so(p_b_ngang)}.{phan_so(p_a_dk_b_ngang)}={phan_so(kq)}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

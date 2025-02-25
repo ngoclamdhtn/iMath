@@ -3101,6 +3101,126 @@ def htd_25_xyz_L12_C5_B1_31():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C5_B1_32]-M2. Viết PTMP qua điểm song song với (Oxy), (Oyz), (Oyz).
+def htd_25_xyz_L12_C5_B1_32():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.randint(-10,11)
+    ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
+
+    
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,H,M=ten_diem[0:3]
+    while True:
+        x_A,y_A,z_A=random.randint(-6,6),random.randint(-6,6),random.randint(-6,6)
+        if all([x_A!=0, y_A!=0, z_A!=0, 
+                x_A!=y_A, x_A!=z_A, y_A!=z_A]):
+            break
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        noi_dung= (
+        f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A})$"
+            f" và song song với mặt phẳng $(Oxy)$ có phương trình là"        
+            )
+
+        noi_dung_loigiai=(
+        f"$({mp_P})$ song song với mặt phẳng $(Oxy)$ nên nhận vectơ ${vec("k")}=(0;0;1)$ là véctơ pháp tuyến.\n\n"
+        f"Phương trình $({mp_P})$ là: ${latex(z-z_A)}=0$."
+        )
+        
+
+        kq=f"${latex(z-z_A)}=0$"
+        kq_false=[
+        f"${latex(x-x_A)}=0$",
+        f"${latex(y-y_A)}=0$",    
+        f"${latex(x+y-z_A)}=0$",
+        f"${latex(y+z-x_A)}=0$",
+        f"${latex(x+z-y_A)}=0$"]
+    
+    if chon==2:
+        noi_dung= (
+        f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A})$"
+            f" và song song với mặt phẳng $(Oyz)$ có phương trình là"        
+            )
+
+        noi_dung_loigiai=(
+        f"$({mp_P})$ song song với mặt phẳng $(Oyz)$ nên nhận vectơ ${vec("i")}=(1;0;0)$ là véctơ pháp tuyến.\n\n"
+        f"Phương trình $({mp_P})$ là: ${latex(x-x_A)}=0$."
+        )
+        
+
+        kq=f"${latex(x-z_A)}=0$"
+        kq_false=[
+        f"${latex(z-z_A)}=0$",
+        f"${latex(y-y_A)}=0$",    
+        f"${latex(x+y-z_A)}=0$",
+        f"${latex(y+z-x_A)}=0$",
+        f"${latex(x+z-y_A)}=0$"]
+
+    if chon==3:
+        noi_dung= (
+        f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A})$"
+            f" và song song với mặt phẳng $(Oxz)$ có phương trình là"        
+            )
+
+        noi_dung_loigiai=(
+        f"$({mp_P})$ song song với mặt phẳng $(Oxz)$ nên nhận vectơ ${vec("j")}=(0;1;0)$ là véctơ pháp tuyến.\n\n"
+        f"Phương trình $({mp_P})$ là: ${latex(y-y_A)}=0$."
+        )
+        
+
+        kq=f"${latex(y-y_A)}=0$"
+        kq_false=[
+        f"${latex(x-x_A)}=0$",
+        f"${latex(y-y_A)}=0$",    
+        f"${latex(x+y-z_A)}=0$",
+        f"${latex(y+z-x_A)}=0$",
+        f"${latex(x+z-y_A)}=0$"]
+    
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
 #[D12_C5_B3_01]. Viết phương trình mặt cầu có tâm và bán kính

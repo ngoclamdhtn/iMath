@@ -7956,6 +7956,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_2, ["[D12_C5_B1_32]-M2. Viết PTMP qua điểm và song song với (Oxy), (Oyz), (Oyz)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C5_B1_2, ["[D12_C5_B1_05]-M3.  Viết PTMP trung trực của đoạn AB."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8391,7 +8395,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. X.S toàn phần: tổng hợp"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_03]-SA-M2. X.S toàn phần: Tính X.S đậu đại học khi chọn khối."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_04]-SA-M2. X.S toàn phần: Tính X.S hái bông hoa có thưởng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_05]-SA-M2. X.S toàn phần: Tính X.S lấy viên bi có màu nào đó."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_06]-SA-M2. X.S toàn phần: Tính xác suất chọn ly thủy tinh."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2.  X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8536,15 +8560,17 @@ class Ui_MainWindow(object):
 
                             list_tracnghiem, list_tracnghiem_HDG=[],[]
                             list_dungsai, list_dungsai_HDG=[],[]
+                            list_traloingan, list_traloingan_HDG=[],[]
                             list_tuluan, list_tuluan_HDG=[],[]
-                            list_dapan_TN, list_dapan_TF, list_dapan_TL=[], [], []
+                            list_dapan_TN, list_dapan_TF, list_dapan_SA,list_dapan_TL=[], [], [],[]
                             
 
                             list_noi_dung, list_noi_dung_HDG="",""                      
                             ghep_tracnghiem, ghep_tracnghiem_HDG="",""
                             ghep_dungsai, ghep_dungsai_HDG="", ""
+                            ghep_traloingan, ghep_traloingan_HDG="",""
                             ghep_tuluan, ghep_tuluan_HDG="",""
-                            ghep_dapan_TN, ghep_dapan_TF, ghep_dapan_TL= "","",""                                       
+                            ghep_dapan_TN, ghep_dapan_TF, ghep_dapan_SA,ghep_dapan_TL= "","","",""                                      
                                 
 
                             #Thiết lập mã đề tự nhập
@@ -10182,7 +10208,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B1_31]-SA-M3. Tìm điểm đối xưng của điểm qua mặt phẳng.
                                             if dang_toan == "[D12_C5_B1_31]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_31()                         
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_31()
+
+                                            #[D12_C5_B1_32]-M2.  Viết phương trình mặt phẳng đoạn chắn
+                                            if dang_toan == "[D12_C5_B1_32]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_32()                         
                                                 
 
 
@@ -10455,6 +10485,26 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C6_B2_02]":                                        
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_02()
 
+                                            #[D12_C6_B2_03]-SA-M2. Xác suất toàn phần: Tính xác suất đậu đại học khi chọn khối.
+                                            if dang_toan == "[D12_C6_B2_03]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_03()
+
+                                            #[D12_C6_B2_04]-SA-M2. Xác suất toàn phần: Tính xác suất hái bông hoa.
+                                            if dang_toan == "[D12_C6_B2_04]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_04()
+
+                                            #[D12_C6_B2_05]-SA-M2. Xác suất toàn phần: Tính xác suất hái bông hoa.
+                                            if dang_toan == "[D12_C6_B2_05]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_05()
+
+                                            #[D12_C6_B2_06]-SA-M2. X.S toàn phần: Tính xác suất chọn ly thủy tinh.
+                                            if dang_toan == "[D12_C6_B2_06]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_06()
+
+                                            #[D12_C6_B2_07]-SA-M2. X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại
+                                            if dang_toan == "[D12_C6_B2_07]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_07()
+
 
                                             #[D11_C1_B1_02]-M1. Đổi số đo từ độ sang radian
                                             if dang_toan == "[D11_C1_B1_02]":                                                                                
@@ -10542,7 +10592,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C1_B2_09]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B2_09()
 
-
+                                            
 
 
                                             ####################### Bài 3: Các công thức lượng giác. ######################
@@ -14783,7 +14833,7 @@ class Ui_MainWindow(object):
                                             if loai_cau=="TN":
                                                 if self.combo_taode.currentText() in ["Tạo đề Word - Equation",  "Tạo đề Word - MathType"]:
                                                     list_tracnghiem.append(f'{debai_word}\n{phuongan}\n')
-                                                    list_tracnghiem_HDG.append(f'{debai_word}\n{phuongan}\n{loigiai_word}\n')                                                                                                              
+                                                    list_tracnghiem_HDG.append(f'{debai_word}\n{phuongan}\n{loigiai_word}\n')                                                                                                            
                                                     
                                                 else:                                                       
                                                     list_tracnghiem.append(debai_latex)
@@ -14798,11 +14848,20 @@ class Ui_MainWindow(object):
                                                 else:                                                           
                                                     list_dungsai.append(f'{debai_word}\n')
                                                     list_dungsai_HDG.append(f'{debai_word}\n{loigiai_word}\n')
-                                                list_dapan_TF.append(f'{dap_an}')
-                                                    
+                                                list_dapan_TF.append(f'{dap_an}')                                                    
                                                 
                                        
                                             if loai_cau=="SA":
+                                                if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
+                                                    list_traloingan.append(latex_tuluan)
+                                                    list_traloingan_HDG.append(latex_tuluan)
+                                                    
+                                                else:                                                                                                       
+                                                    list_traloingan.append(f'{debai_word}\n')                                                    
+                                                    list_traloingan_HDG.append(f'{debai_word}\n{loigiai_word}\n')
+                                                list_dapan_SA.append(f'{dap_an}')
+
+                                            if loai_cau=="TL":
                                                 if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
                                                     list_tuluan.append(latex_tuluan)
                                                     list_tuluan_HDG.append(latex_tuluan)
@@ -14810,20 +14869,20 @@ class Ui_MainWindow(object):
                                                 else:                                                                                                       
                                                     list_tuluan.append(f'{debai_word}\n')                                                    
                                                     list_tuluan_HDG.append(f'{debai_word}\n{loigiai_word}\n')
-                                                list_dapan_TL.append(f'{dap_an}')
+                                                list_dapan_TL.append(latex_tuluan)
 
                                                                                                                         
 
 #end
 #############################################################################################################################
 
-                                            #Cập nhật số câu đã xử lí
-                                            if dong_dangtoan[0]=="[":
-                                                    socau_daxuli += 1
-                                                    noi_dung_tao_xong=(
-                                                        f"Đã tạo xong dạng: {dang_toan}\n"
-                                                        f"Đã tạo câu {socau_daxuli}/{sum_toanbo} của đề số {j+1}.")
-                                                    self.label_socau_daxuli.setText(noi_dung_tao_xong)
+                                        #Cập nhật số câu đã xử lí
+                                        if dong_dangtoan[0]=="[":
+                                                socau_daxuli += 1
+                                                noi_dung_tao_xong=(
+                                                    f"Đã tạo xong dạng: {dang_toan}\n"
+                                                    f"Đã tạo câu {socau_daxuli}/{sum_toanbo} của đề số {j+1}.")
+                                                self.label_socau_daxuli.setText(noi_dung_tao_xong)
                                 
                                 self.progress_bar.setValue(i)                                    
                                 self.sleep(1)
@@ -14853,6 +14912,16 @@ class Ui_MainWindow(object):
                                     list_dungsai_HDG = list(b_shuffled)
                                     list_dapan_TF=list(TF_shuffled)
 
+                                if len(list_traloingan)>0:
+
+                                    combined = list(zip(list_traloingan, list_traloingan_HDG, list_dapan_SA)) 
+                                    random.shuffle(combined)
+                                    # Tách lại thành hai danh sách a và b
+                                    a_shuffled, b_shuffled, SA_shuffled = zip(*combined)
+                                    list_traloingan = list(a_shuffled)
+                                    list_traloingan_HDG = list(b_shuffled)
+                                    list_dapan_SA=list(SA_shuffled)
+
                                 if len(list_tuluan)>0:
 
                                     combined = list(zip(list_tuluan, list_tuluan_HDG, list_dapan_TL)) 
@@ -14861,7 +14930,7 @@ class Ui_MainWindow(object):
                                     a_shuffled, b_shuffled, TL_shuffled = zip(*combined)
                                     list_tuluan = list(a_shuffled)
                                     list_tuluan_HDG = list(b_shuffled)
-                                    list_dapan_TL=list(TL_shuffled)                            
+                                    list_dapan_TL=list(TL_shuffled)                          
  
                                                                           
                             if self.combo_taode.currentText() == "Tạo đề Word - Equation":
@@ -14900,15 +14969,15 @@ class Ui_MainWindow(object):
                                     chuoi_QR+="#"
                                     
 
-                                if len(list_tuluan)>0:
+                                if len(list_traloingan)>0:
                                     list_noi_dung+=f'\n {{\\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}}\n'
                                     list_noi_dung_HDG+=f'\n {{\\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}}\n'
-                                    for chi_so in range(len(list_tuluan)):
-                                        list_noi_dung+=f'{{\\bf Câu {chi_so+1}.}} {str(list_tuluan[chi_so])}\n'
-                                        list_noi_dung_HDG+=f'{{\\bf Câu {chi_so+1}.}} {str(list_tuluan_HDG[chi_so])}\n'
+                                    for chi_so in range(len(list_traloingan)):
+                                        list_noi_dung+=f'{{\\bf Câu {chi_so+1}.}} {str(list_traloingan[chi_so])}\n'
+                                        list_noi_dung_HDG+=f'{{\\bf Câu {chi_so+1}.}} {str(list_traloingan_HDG[chi_so])}\n'
 
                                     #Lấy danh sách đáp án word:
-                                    for phan_tu in list_dapan_TL:
+                                    for phan_tu in list_dapan_SA:
                                             list_dapan_word.append(phan_tu)
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
@@ -14917,6 +14986,14 @@ class Ui_MainWindow(object):
                                     chuoi_QR_QM=chuoi_QR_QM[:-1]
 
                                     chuoi_QR+="#"
+                                
+
+                                if len(list_tuluan)>0:
+                                    list_noi_dung+=f'\n {{\\bf PHẦN IV. Tự luận.}}\n'
+                                    list_noi_dung_HDG+=f'\n {{\\bf PHẦN IV. Tự luận.}}\n'
+                                    for chi_so in range(len(list_tuluan)):
+                                        list_noi_dung+=f'{{\\bf Câu {chi_so+1}.}} {str(list_tuluan[chi_so])}\n'
+                                        list_noi_dung_HDG+=f'{{\\bf Câu {chi_so+1}.}} {str(list_tuluan_HDG[chi_so])}\n'                                   
                                     
 
                                 list_noi_dung+=f"{{\\bf -----HẾT-----}} \n"
@@ -14961,15 +15038,15 @@ class Ui_MainWindow(object):
                                     chuoi_QR+="#"                                        
                                             
 
-                                if len(list_tuluan)>0:
+                                if len(list_traloingan)>0:
                                     list_noi_dung+=f'\n PHẦN III. Câu trắc nghiệm trả lời ngắn.\n'
                                     list_noi_dung_HDG+=f'\n PHẦN III. Câu trắc nghiệm trả lời ngắn.\n'
-                                    for chi_so in range(len(list_tuluan)):
-                                        list_noi_dung+=f' Câu {chi_so+1}. {str(list_tuluan[chi_so])}\n'
-                                        list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_tuluan_HDG[chi_so])}\n'
+                                    for chi_so in range(len(list_traloingan)):
+                                        list_noi_dung+=f' Câu {chi_so+1}. {str(list_traloingan[chi_so])}\n'
+                                        list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_traloingan_HDG[chi_so])}\n'
 
                                     #Lấy danh sách đáp án word:
-                                    for phan_tu in list_dapan_TL:
+                                    for phan_tu in list_dapan_SA:
                                             list_dapan_word.append(phan_tu)                                                
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
@@ -14978,6 +15055,13 @@ class Ui_MainWindow(object):
                                     chuoi_QR_QM=chuoi_QR_QM[:-1]
 
                                     chuoi_QR+="#"
+
+                                if len(list_tuluan)>0:
+                                    list_noi_dung+=f'\n PHẦN IV. Tự luận..\n'
+                                    list_noi_dung_HDG+=f'\n PHẦN IV. Tự luận.\n'
+                                    for chi_so in range(len(list_tuluan)):
+                                        list_noi_dung+=f' Câu {chi_so+1}. {str(list_tuluan[chi_so])}\n'
+                                        list_noi_dung_HDG+=f'Câu {chi_so+1}. {str(list_tuluan_HDG[chi_so])}\n'
 
                                 list_noi_dung+=f" -----HẾT-----\n"
                                 list_noi_dung_HDG+=f"-----HẾT-----\n"
@@ -15027,16 +15111,16 @@ class Ui_MainWindow(object):
                                     chuoi_QR+="#" 
                                     
 
-                                if len(list_tuluan)>0:
-                                    ghep_tuluan='\n'.join(list_tuluan)
+                                if len(list_traloingan)>0:
+                                    ghep_traloingan='\n'.join(list_traloingan)
                                     list_noi_dung+=(f'{{\\bf PHẦN III. Câu trắc nghiệm trả lời ngắn.}}\n'
                                     f'\\setcounter{{ex}}{{0}}\n'
                                     f"\\Opensolutionfile{{ans}}[ans/ans{name_de}-3]\n"                                        
-                                    f'{ghep_tuluan}\n'
+                                    f'{ghep_traloingan}\n'
                                     f"\\Closesolutionfile{{ans}}\n")
 
                                     #Lấy danh sách đáp án word:
-                                    for phan_tu in list_dapan_TL:
+                                    for phan_tu in list_dapan_SA:
                                             list_dapan_word.append(phan_tu)
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
@@ -15044,7 +15128,15 @@ class Ui_MainWindow(object):
                                             chuoi_QR_QM+=f'"{phan_tu}",'
                                     chuoi_QR_QM=chuoi_QR_QM[:-1]
 
-                                    chuoi_QR+="#" 
+                                    chuoi_QR+="#"
+
+                                if len(list_tuluan)>0:
+                                    ghep_tuluan='\n'.join(list_tuluan)
+                                    list_noi_dung+=(f'{{\\bf PHẦN IV. Tự luận.}}\n'
+                                    f'\\setcounter{{ex}}{{0}}\n'
+                                    f"\\Opensolutionfile{{ans}}[ans/ans{name_de}-4]\n"                                        
+                                    f'{ghep_tuluan}\n'
+                                    f"\\Closesolutionfile{{ans}}\n")
                                 
 
                                 list_noi_dung+=(f"\n \\begin{{center}}\n-----HẾT-----\n\\end{{center}}\n"
@@ -15070,7 +15162,7 @@ class Ui_MainWindow(object):
                                     code_bang_dap_an+=(f"{{\\bf Phần 2 }}\n"
                                 f"\\inputansbox{{2}}{{ans{name_de}-2}}\n")
 
-                                if len(list_tuluan)>0:
+                                if len(list_traloingan)>0:
 
                                     list_noi_dung+=(f"%{{\\bf Phần 3 }}\n"
                                 f"% \\inputansbox{{6}}{{ans{name_de}-3}}\n"
@@ -15078,6 +15170,19 @@ class Ui_MainWindow(object):
 
                                     code_bang_dap_an+=(f"{{\\bf Phần 3 }}\n"
                                 f"\\inputansbox{{6}}{{ans{name_de}-3}}\n")
+
+                                if len(list_tuluan)>0:
+                                    xuat_dapan_TL=""
+                                    for st in list_tuluan:
+                                        xuat_dapan_TL+=f"{st}\n\n"
+
+
+                                    list_noi_dung+=(f"%{{\\bf Phần 4 }}\n"
+                                f"% \\inputansbox{{6}}{{ans{name_de}-4}}\n"
+                                f"\\newpage \n")
+
+                                    code_bang_dap_an+=(f"{{\\bf Phần 4 }}\n"
+                                f"{xuat_dapan_TL}\n")
 
                                 list_tonghop+=f"{list_noi_dung}"                                
 
@@ -15094,9 +15199,13 @@ class Ui_MainWindow(object):
                                     ghep_dungsai='\n'.join(list_dungsai)
                                     list_noi_dung+=f'{ghep_dungsai}'                  
 
+                                if len(list_traloingan)>0:
+                                    ghep_traloingan='\n'.join(list_traloingan)
+                                    list_noi_dung+=f'{ghep_traloingan}'
+
                                 if len(list_tuluan)>0:
                                     ghep_tuluan='\n'.join(list_tuluan)
-                                    list_noi_dung+=f'{ghep_tuluan}'                                       
+                                    list_noi_dung+=f'{ghep_tuluan}'                                      
 
                                 list_tonghop+=f"{list_noi_dung}"
 
@@ -15179,7 +15288,7 @@ class Ui_MainWindow(object):
 
                             self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)                        
 
-                            #self.tao_tnmaker_latex(name_thu_muc, list_ma_de,len(list_tracnghiem),len(list_dungsai),len(list_tuluan))
+                            #self.tao_tnmaker_latex(name_thu_muc, list_ma_de,len(list_tracnghiem),len(list_dungsai),len(list_traloingan))
                             name_thu_muc=name_thu_muc.replace("/","\\")
                             subprocess.Popen(['explorer', name_thu_muc])
 
@@ -15203,9 +15312,9 @@ class Ui_MainWindow(object):
                         show_msg_box.exec_()
 
                 except Exception as e:
-                        show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
-                        show_msg_box.exec_()
-                return
+                        #show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
+                        #show_msg_box.exec_()
+                    return
 
         def updateProgressBar(self):
                 # Cập nhật giá trị của progress bar
@@ -15466,9 +15575,32 @@ class Ui_MainWindow(object):
                                 self.tableWidget.setItem(row_count, 2, item)
                             
 
-                        #Lấy loại câu và mức độ của câu đúng sai
+                        #Lấy loại câu và mức độ của câu trả lời ngắn
                         if name[15:17]=="SA":
                             item = QTableWidgetItem(f"SA")
+                            item.setTextAlignment(Qt.AlignCenter)
+                            self.tableWidget.setItem(row_count, 1, item)
+                            
+                            if name[19]=="1":
+                                item = QTableWidgetItem(f"NB")
+                                item.setTextAlignment(Qt.AlignCenter)
+                                self.tableWidget.setItem(row_count, 2, item)
+                            if name[19]=="2":
+                                item = QTableWidgetItem(f"TH")
+                                item.setTextAlignment(Qt.AlignCenter)
+                                self.tableWidget.setItem(row_count, 2, item)
+                            if name[19]=="3":
+                                item = QTableWidgetItem(f"VDT")
+                                item.setTextAlignment(Qt.AlignCenter)
+                                self.tableWidget.setItem(row_count, 2, item)
+                            if name[19]=="4":
+                                item = QTableWidgetItem(f"VDC")
+                                item.setTextAlignment(Qt.AlignCenter)
+                                self.tableWidget.setItem(row_count, 2, item)
+
+                        #Lấy loại câu và mức độ của câu tự luận
+                        if name[15:17]=="TL":
+                            item = QTableWidgetItem(f"TL")
                             item.setTextAlignment(Qt.AlignCenter)
                             self.tableWidget.setItem(row_count, 1, item)
                             
@@ -16526,7 +16658,7 @@ class Ui_MainWindow(object):
                 ans_dapan_folder_path=os.path.join(dapan_folder_path, f"ans")
 
                 #Tạo file để in bảng đáp án
-                code_tex_dap_an = my_module.moi_truong_latex(code_bang_dap_an)
+                code_tex_dap_an = my_module.moi_truong_latex_loigiai(code_bang_dap_an)
                 file_path = os.path.join(ans_dapan_folder_path, f'ans.tex')               
                 with open(file_path, 'w',encoding="utf-8") as file:
                         file.write(code_tex_dap_an)
