@@ -2496,11 +2496,11 @@ class Ui_MainWindow(object):
                 L10_C7_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C7_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_12]-TF-M2. Cho biểu thức bậc 2 có 2 nghiệm. Tạo câu đúng-sai."])
+                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_12]-TF-M2. Cho biểu thức bậc 2 có 2 nghiệm. Xét Đ-S."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_13]-TF-M2. Cho bảng xét dấu hai nghiệm. Tạo câu đúng-sai."])
+                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_13]-TF-M2. Cho bảng xét dấu hai nghiệm. Xét Đ-S."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3747,7 +3747,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_30]-TF-M2. Tạo câu đúng-sai: Cho 1 điểm và PTTQ , xét đúng-sai về vị trí, khoảng cách."])
+                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_30]-TF-M2. Xét Đ-S: Cho 1 điểm và PTTQ , xét đúng-sai về vị trí, khoảng cách."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5803,23 +5803,23 @@ class Ui_MainWindow(object):
                 L11_C7_B4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_01]-TF-M2. Tạo câu đúng-sai: Đạo hàm cấp 1,2,tiếp tuyến của hàm số đa thức"])
+                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_01]-TF-M2. Xét Đ-S: Đạo hàm cấp 1,2,tiếp tuyến của hàm số đa thức"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_02]-TF-M2. Tạo câu đúng-sai: Đạo hàm cấp 1,2,tiếp tuyến của y=(ax+b)/(cx+d)"])
+                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_02]-TF-M2. Xét Đ-S: Đạo hàm cấp 1,2,tiếp tuyến của y=(ax+b)/(cx+d)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_03]-TF-M2. Tạo câu đúng-sai: Đạo hàm của y=msin(ax)+cos(x+b)"])
+                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_03]-TF-M2. Xét Đ-S: Đạo hàm của y=msin(ax)+cos(x+b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_04]-TF-M2. Tạo câu đúng-sai: Đạo hàm của hàm số lượng giác"])
+                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_04]-TF-M2. Xét Đ-S: Đạo hàm của hàm số lượng giác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_05]-TF-M2. Tạo câu đúng-sai: Bài toán chuyển động theo hàm bậc 2"])
+                item = QTreeWidgetItem(L11_C7_B4, ["[D11_C7_B4_05]-TF-M2. Xét Đ-S: Bài toán chuyển động theo hàm bậc 2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5840,7 +5840,7 @@ class Ui_MainWindow(object):
                 L11_C8_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B1_1, ["[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Tạo câu đúng-sai: góc giữa 2 đường thẳng."])
+                item = QTreeWidgetItem(L11_C8_B1_1, ["[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Xét Đ-S: góc giữa 2 đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5871,24 +5871,23 @@ class Ui_MainWindow(object):
                 L11_C8_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_08]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai: đường vuông góc đường."])
+                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_08]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Xét Đ-S: đường vuông góc đường."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_10]-TF-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Tạo câu đúng-sai: đường vuông góc đường."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_09]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai: đường vuông góc mặt."])
+                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_10]-TF-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Xét Đ-S: đường vuông góc đường."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_11]-TF-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Tạo câu đúng-sai: đường vuông góc mặt."])
+                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_09]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Xét Đ-S: đường vuông góc mặt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_12]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai:lập luận đường vuông góc mặt."])
+                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_11]-TF-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Xét Đ-S: đường vuông góc mặt."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_12]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Xét Đ-S:lập luận đường vuông góc mặt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7960,6 +7959,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_2, ["[D12_C5_B1_33]-M2. Viết PTMP qua điểm A và chứa trục Ox (Oy, Oz)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C5_B1_2, ["[D12_C5_B1_05]-M3.  Viết PTMP trung trực của đoạn AB."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8033,13 +8036,17 @@ class Ui_MainWindow(object):
                 L12_C5_B1_13.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1_13.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_22]-SA-M3. Mp(Q) qua A,B vuông góc voi mp(P)(tính tổng hệ số)"])
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_23]-SA-M2. Mp(Q) qua A và song song với mp(P)(tính tổng hệ số)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_23]-SA-M3. Mp(Q) qua A và song song voi mp(P)(tính tổng hệ số)"])
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_22]-SA-M3. Mp(Q) qua A,B vuông góc với mp(P)(tính tổng hệ số)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_34]-SA-M3. Mp(Q) qua A,B song song với CD (tính tổng hệ số)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_24]-SA-M3. Mp(P) qua A và chứa trục tọa độ. Tính khoảng cách từ B đến (P)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -10212,7 +10219,15 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B1_32]-M2.  Viết phương trình mặt phẳng đoạn chắn
                                             if dang_toan == "[D12_C5_B1_32]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_32()                         
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_32()
+
+                                            #[D12_C5_B1_33]-M2. Viết PTMP qua điểm A và chứa trục Ox (Oy, Oz)
+                                            if dang_toan == "[D12_C5_B1_33]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_33()
+
+                                            #[D12_C5_B1_34]-SA-M3. Viết PTMP qua điểm A,B và song song với C,D
+                                            if dang_toan == "[D12_C5_B1_34]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_34()                        
                                                 
 
 
@@ -11311,12 +11326,12 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C6_B1_06]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_06()                                     
                                                 
-                                            #[D11_C6_B1_07]-TF-M2. Tạo câu đúng-sai: Tính chất lũy thừa.  
+                                            #[D11_C6_B1_07]-TF-M2. Xét Đ-S: Tính chất lũy thừa.  
                                             if dang_toan == "[D11_C6_B1_07]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B1_07()                                      
 
 
-                                            #[D11_C6_B1_08]-TF-M2. Tạo câu đúng-sai: Tính chất của căn bậc n.  
+                                            #[D11_C6_B1_08]-TF-M2. Xét Đ-S: Tính chất của căn bậc n.  
                                             if dang_toan == "[D11_C6_B1_08]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B1_08()
 
@@ -11782,26 +11797,26 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B3_04()                                     
                                                 
                                             #Câu hỏi đúng sai
-                                            #[D11_C7_B4_01]-TF-M2. Tạo câu đúng-sai: Đạo hàm của hàm số đa thức  
+                                            #[D11_C7_B4_01]-TF-M2. Xét Đ-S: Đạo hàm của hàm số đa thức  
                                             if dang_toan == "[D11_C7_B4_01]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C7.ui5io_L11_C7_B4_01()                                      
 
-                                            #[D11_C7_B4_02]-TF-M2. Tạo câu đúng-sai: Đạo hàm của hàm số y=(ax+b)/(cx+d)  
+                                            #[D11_C7_B4_02]-TF-M2. Xét Đ-S: Đạo hàm của hàm số y=(ax+b)/(cx+d)  
                                             if dang_toan == "[D11_C7_B4_02]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C7.ui5io_L11_C7_B4_02()                                      
 
 
-                                            #[D11_C7_B4_03]-TF-M2. Tạo câu đúng-sai: Đạo hàm của y=msin(ax)+cos(x+b) 
+                                            #[D11_C7_B4_03]-TF-M2. Xét Đ-S: Đạo hàm của y=msin(ax)+cos(x+b) 
                                             if dang_toan == "[D11_C7_B4_03]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C7.ui5io_L11_C7_B4_03()                                      
 
 
-                                            #[D11_C7_B4_04]-TF-M2. Tạo câu đúng-sai: Đạo hàm của y=msin(ax)+cos(x+b) 
+                                            #[D11_C7_B4_04]-TF-M2. Xét Đ-S: Đạo hàm của y=msin(ax)+cos(x+b) 
                                             if dang_toan == "[D11_C7_B4_04]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C7.ui5io_L11_C7_B4_04()                                      
 
 
-                                            #[D11_C7_B4_05]-TF-M2. Tạo câu đúng-sai: Đạo hàm của y=msin(ax)+cos(x+b) 
+                                            #[D11_C7_B4_05]-TF-M2. Xét Đ-S: Đạo hàm của y=msin(ax)+cos(x+b) 
                                             if dang_toan == "[D11_C7_B4_05]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C7.ui5io_L11_C7_B4_05()                                      
 
@@ -11990,7 +12005,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C8_B1_03]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B1_03()
 
-                                #[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Tạo câu đúng-sai: góc giữa 2 đường thẳng.
+                                #[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Xét Đ-S: góc giữa 2 đường thẳng.
                                             if dang_toan == "[D11_C8_B1_04]":                                        
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B1_04()
 
@@ -12035,21 +12050,21 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B2_08()                                       
 
 
-                                #[D11_C8_B2_09]-TF-M2.  S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai: đường vuông góc mặt.
+                                #[D11_C8_B2_09]-TF-M2.  S.ABCD: cạnh v.g đáy h.vuông. Xét Đ-S: đường vuông góc mặt.
                                             if dang_toan == "[D11_C8_B2_09]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B2_09()                                   
 
 
-                                #[D11_C8_B2_10]-TF-M2.  S.ABCD: cạnh v.g đáy h.chữ nhật. Tạo câu đúng-sai: đường vuông góc đường.
+                                #[D11_C8_B2_10]-TF-M2.  S.ABCD: cạnh v.g đáy h.chữ nhật. Xét Đ-S: đường vuông góc đường.
                                             if dang_toan == "[D11_C8_B2_10]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B2_10()                                      
 
 
-                                #[D11_C8_B2_11]-TF-M2.  S.ABCD: cạnh v.g đáy h.chữ nhật. Tạo câu đúng-sai: đường vuông góc mặt.
+                                #[D11_C8_B2_11]-TF-M2.  S.ABCD: cạnh v.g đáy h.chữ nhật. Xét Đ-S: đường vuông góc mặt.
                                             if dang_toan == "[D11_C8_B2_11]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B2_11()                                  
 
-                                #[D11_C8_B2_12]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai: lập luận đường vuông góc mặt.
+                                #[D11_C8_B2_12]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Xét Đ-S: lập luận đường vuông góc mặt.
                                             if dang_toan == "[D11_C8_B2_12]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B2_12()                             
 
@@ -12295,11 +12310,11 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.zz8zz_L11_C8_B6_12()                                     
                                                 
                                         #Đúng-Sai
-                                        #[D11_C8_B7_01]-TF-M3. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Hai mặt vuông góc
+                                        #[D11_C8_B7_01]-TF-M3. S.ABC: đáy tam giác. Xét Đ-S: Thể tích, Góc đường mặt, Góc mặt mặt, Hai mặt vuông góc
                                             if dang_toan == "[D11_C8_B7_01]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B7_01()                                                                                         
                             
-                                        #[D11_C8_B7_02]-TF-M3. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Khoảng cách
+                                        #[D11_C8_B7_02]-TF-M3. S.ABC: đáy tam giác. Xét Đ-S: Thể tích, Góc đường mặt, Góc mặt mặt, Khoảng cách
                                             if dang_toan == "[D11_C8_B7_02]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C8.zz8zz_L11_C8_B7_02()                                      
 
@@ -13539,7 +13554,7 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B1_11()                                     
                                                 
 
-                                        #[D10_C7_B1_12]-TF-M2. Cho biểu thức bậc 2 có 2 nghiệm. Tạo câu đúng-sai.
+                                        #[D10_C7_B1_12]-TF-M2. Cho biểu thức bậc 2 có 2 nghiệm. Xét Đ-S.
                                             if dang_toan == "[D10_C7_B1_12]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C7.aaa_pry_L10_C7_B1_12()                                      
 
@@ -13796,7 +13811,7 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_07()                                     
                                                 
                                 #Tổ hợp
-                                #[D10_C8_B2_08]-TF-M2. Tạo câu đúng-sai: Chọn 2 nhóm đồ vật.
+                                #[D10_C8_B2_08]-TF-M2. Xét Đ-S: Chọn 2 nhóm đồ vật.
                                             if dang_toan == "[D10_C8_B2_08]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_08()
 
@@ -13866,30 +13881,30 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_21()                                     
                                                 
 
-                                #[D10_C8_B2_22]-TF-M2. Tạo câu đúng-sai: Chọn 2 cuốn sách.
+                                #[D10_C8_B2_22]-TF-M2. Xét Đ-S: Chọn 2 cuốn sách.
                                             if dang_toan == "[D10_C8_B2_22]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_22()                                       
 
-                                #[D10_C8_B2_23]-TF-M2. Tạo câu đúng-sai: Chọn 2 cuốn truyện.
+                                #[D10_C8_B2_23]-TF-M2. Xét Đ-S: Chọn 2 cuốn truyện.
                                             if dang_toan == "[D10_C8_B2_23]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_23()
 
-                                #[D10_C8_B2_22]-TF-M2. Tạo câu đúng-sai: Chọn 2 cuốn sách.
+                                #[D10_C8_B2_22]-TF-M2. Xét Đ-S: Chọn 2 cuốn sách.
                                             if dang_toan == "[D10_C8_B2_22]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_22()                                       
 
 
-                                            #[D10_C8_B2_24]-TF-M2. Tạo câu đúng-sai: Chọn 2 bức tranh.
+                                            #[D10_C8_B2_24]-TF-M2. Xét Đ-S: Chọn 2 bức tranh.
                                             if dang_toan == "[D10_C8_B2_24]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_24()                                       
 
 
-                                            #[D10_C8_B2_25]-TF-M2. Tạo câu đúng-sai: Chọn 2 viên bi.
+                                            #[D10_C8_B2_25]-TF-M2. Xét Đ-S: Chọn 2 viên bi.
                                             if dang_toan == "[D10_C8_B2_25]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_25()                                    
                                                 
 
-                                            #[D10_C8_B2_26]-TF-M2. Tạo câu đúng-sai: Chọn 2 người.
+                                            #[D10_C8_B2_26]-TF-M2. Xét Đ-S: Chọn 2 người.
                                             if dang_toan == "[D10_C8_B2_26]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_26()
 
@@ -14471,20 +14486,20 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B1_25()                                     
                                                 
 
-                                            #[D10_CX_B1_26]-TF-M2. Tạo câu đúng-sai: Cho PTTQ của 1 đường thẳng, xét đúng-sai về VTCP,VTPT, điểm thuộc đường thẳng.    
+                                            #[D10_CX_B1_26]-TF-M2. Xét Đ-S: Cho PTTQ của 1 đường thẳng, xét đúng-sai về VTCP,VTPT, điểm thuộc đường thẳng.    
                                             if dang_toan == "[D10_CX_B1_26]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B1_26()                                      
 
-                                            #[D10_CX_B1_27]-TF-M2. Tạo câu đúng-sai: Cho PTTS của 1 đường thẳng, xét đúng-sai về VTCP,VTPT, điểm thuộc đường thẳng.   
+                                            #[D10_CX_B1_27]-TF-M2. Xét Đ-S: Cho PTTS của 1 đường thẳng, xét đúng-sai về VTCP,VTPT, điểm thuộc đường thẳng.   
                                             if dang_toan == "[D10_CX_B1_27]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B1_27()                                      
 
-                                            #[D10_CX_B1_28]-TF-M2. Tạo câu đúng-sai: Tạo câu đúng-sai: Cho PTTS của 1 đường thẳng, xét đúng-sai về VTCP, VTPT, PTTS, PTTQ.  
+                                            #[D10_CX_B1_28]-TF-M2. Xét Đ-S: Xét Đ-S: Cho PTTS của 1 đường thẳng, xét đúng-sai về VTCP, VTPT, PTTS, PTTQ.  
                                             if dang_toan == "[D10_CX_B1_28]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B1_28()                                      
 
 
-                                            #[D10_CX_B1_29]-TF-M2. Tạo câu đúng-sai: Cho PTTQ của 1 đường thẳng, xét đúng-sai về vị trí tương đối.   
+                                            #[D10_CX_B1_29]-TF-M2. Xét Đ-S: Cho PTTQ của 1 đường thẳng, xét đúng-sai về vị trí tương đối.   
                                             if dang_toan == "[D10_CX_B1_29]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B1_29()                                      
 

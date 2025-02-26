@@ -4,6 +4,9 @@ from fractions import Fraction
 import my_module
 import sympy as sp
 from sympy import *
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
 
 def thay_hinh_hoc(st):
 	ketqua=st.replace("1I","I").replace("1E","E").replace("1M","M")
@@ -2583,6 +2586,263 @@ def zz8zz_L11_C8_B2_20():
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B2_21]-TF-M3. S.ABCD: ABCD h.vuông. Xét Đ-S: Hình chiếu của đường lên mặt, đường vuông góc đường, đường vuông góc mặt, góc giữa 2 đường
+def zz8zz_L11_C8_B2_21(): 
+	a=sp.symbols("a")  	
+	A=["A","B","C","D", "C", "A"]
+	B=["B","C","D","A", "D", "B"]
+	C=["C","D","A","B", "E", "E"]
+	D=["D","A","B","C", "F", "F"]
+	i=random.randint(0,3)
+	A, B, C, D = A[i], B[i], C[i], D[i]	
+
+	ten=["M", "N", "K", "P", "Q", "G", "H", "I"]
+	M,N,P,H=random.sample(ten,4)
+	code_hinh = codelatex_hinhchop_hbh_canhvg("S",A, B, C, D)
+	#code = my_module.moi_truong_anh_latex(code_hinh)
+	#file_name = my_module.pdftoimage_timename(code)
+
+	AB=random.randint(1,7)
+	SA=random.randint(1,7)
+	chon=random.randint(1,4)
+
+	noi_dung = (f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có $S{A}\\bot ({A}{B}{C}{D})$, đáy là hình vuông tâm ${{O}}$, ${A}{B}={latex(a*AB)},S{A}={latex(a*SA)}$."
+	f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")		
+	debai_word= f"{noi_dung}\n"
+
+	chon=random.randint(1,4)
+	if chon==1:
+		kq1_T=f"* Hình chiếu của đường thẳng ${{S{B}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${{{A}{B}}}$" 
+		kq1_F=f"Hình chiếu của đường thẳng ${{S{B}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${random.choice([f"{{{A}{C}}}", f"{{{A}{D}}}", f"{{{B}{D}}}", f"{{{C}{D}}}"])}$"
+		HDG=f"Hình chiếu của đường thẳng ${{S{B}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${{{A}{B}}}$."
+
+	if chon==2:
+		kq1_T=f"* Hình chiếu của đường thẳng ${{S{C}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${{{A}{C}}}$" 
+		kq1_F=f"Hình chiếu của đường thẳng ${{S{C}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${random.choice([f"{{{A}{B}}}", f"{{{A}{D}}}", f"{{{B}{D}}}", f"{{{C}{D}}}"])}$"
+		HDG=f"Hình chiếu của đường thẳng ${{S{C}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${{{A}{C}}}$."
+
+	if chon==3:
+		kq1_T=f"* Hình chiếu của đường thẳng ${{S{D}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${{{A}{D}}}$" 
+		kq1_F=f"Hình chiếu của đường thẳng ${{S{C}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${random.choice([f"{{{A}{B}}}", f"{{{A}{D}}}", f"{{{B}{D}}}", f"{{{C}{D}}}"])}$"
+		HDG=f"Hình chiếu của đường thẳng ${{S{C}}}$ trên mặt phẳng $({A}{B}{C}{D})$ là đường thẳng ${{{A}{C}}}$."
+
+	if chon==4:
+		kq1_T=f"* Hình chiếu của đường thẳng ${{{A}{C}}}$ trên mặt phẳng $(S{A}{B})$ là đường thẳng ${{{A}{B}}}$" 
+		kq1_F=f"Hình chiếu của đường thẳng ${{{A}{C}}}$ trên mặt phẳng $(S{A}{B})$ là đường thẳng ${random.choice([f"{{S{B}}}", f"{{S{A}}}", f"{{{B}{C}}}", f"{{{C}{D}}}"])}$"
+		HDG=f"Hình chiếu của đường thẳng ${{{A}{C}}}$ trên mặt phẳng $(S{A}{B})$ là đường thẳng ${{{A}{B}}}$."
+
+	if chon==5:
+		kq1_T=f"* Hình chiếu của đường thẳng ${{{A}{C}}}$ trên mặt phẳng $(S{A}{D})$ là đường thẳng ${{{A}{D}}}$" 
+		kq1_F=f"Hình chiếu của đường thẳng ${{{A}{C}}}$ trên mặt phẳng $(S{A}{D})$ là đường thẳng ${random.choice([f"{{S{D}}}", f"{{S{A}}}", f"{{{B}{D}}}", f"{{{C}{D}}}"])}$"
+		HDG=f"Hình chiếu của đường thẳng ${{{A}{C}}}$ trên mặt phẳng $(S{A}{D})$ là đường thẳng ${{{A}{D}}}$."
+
+	if chon==6:
+		kq1_T=f"* Hình chiếu của đường thẳng ${{{S}{B}}}$ trên mặt phẳng $(S{A}{C})$ là đường thẳng ${{SO}}$" 
+		kq1_F=f"Hình chiếu của đường thẳng ${{{S}{B}}}$ trên mặt phẳng $(S{A}{C})$ là đường thẳng ${random.choice([f"{{{A}O", f"{{S{A}}}", f"{{{A}{C}}}", f"{{S{C}}}"])}$"
+		HDG=f"Hình chiếu của đường thẳng ${{{S}{B}}}$ trên mặt phẳng $(S{A}{C})$ là đường thẳng ${{SO}}$."	
+	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,6)
+
+	if chon==1:
+		dt=random.choice([f"${{{B}{C}}}$", f"${{{B}{D}}}$", f"${{{C}{D}}}$"])
+		kq2_T=f"* Hai đường thẳng ${{S{A}}}$ và {dt} vuông góc nhau"
+		kq2_F=f"Hai đường thẳng ${{S{A}}}$ và {dt} không vuông góc nhau"
+		HDG=f"Hai đường thẳng ${{S{A}}}$ và {dt} vuông góc nhau."
+	
+	if chon==2:
+		dt_1=[f"${{{B}{C}}}$", f"${{{A}{D}}}$", f"${{{A}{C}}}$", f"${{{A}{C}}}$" ]
+		dt_2=[f"${{S{D}}}$", f"${{S{C}}}$", f"${{S{B}}}$", f"${{S{D}}}$"]
+		i=random.randint(0,3)
+		dt_1,dt_2=dt_1[i],dt_2[i]
+		kq2_T=f"* Hai đường thẳng {dt_1} và {dt_2} không vuông góc nhau"
+		kq2_F=f"Hai đường thẳng {dt_1} và {dt_2} vuông góc nhau"
+		HDG=f"Hai đường thẳng {dt_1} và {dt_2} không vuông góc nhau."
+
+	if chon==3:
+		kq2_T=f"* Hai đường thẳng ${{{B}{C}}}$ và ${{S{B}}}$ vuông góc nhau"
+		kq2_F=f"Hai đường thẳng ${{{B}{C}}}$ và ${{S{B}}}$ không vuông góc nhau"
+		HDG=(f"${B}{C}\\bot {A}{B}, {B}{C}\\bot S{A} \\Rightarrow {B}{C}\\bot (S{A}{B}) \\Rightarrow {B}{C}\\bot S{B}.$")
+
+	if chon==4:
+		kq2_T=f"* Hai đường thẳng ${{{B}{D}}}$ và ${{S{C}}}$ vuông góc nhau"
+		kq2_F=f"Hai đường thẳng ${{{B}{D}}}$ và ${{S{C}}}$ không vuông góc nhau"
+		HDG=(f"${B}{D}\\bot {A}{C}, {B}{D}\\bot S{A} \\Rightarrow {B}{D}\\bot (S{A}{C}) \\Rightarrow {B}{D}\\bot S{C}.$")
+
+	if chon==5:
+		kq2_T=f"* Hai đường thẳng ${{{C}{D}}}$ và ${{S{D}}}$ vuông góc nhau"
+		kq2_F=f"Hai đường thẳng ${{{C}{D}}}$ và ${{S{D}}}$ không vuông góc nhau"
+		HDG=(f"${C}{D}\\bot {A}{D}, {C}{D}\\bot S{A} \\Rightarrow {C}{D}\\bot (S{A}{D}) \\Rightarrow {C}{D}\\bot S{D}.$")
+
+	if chon==6:
+		kq2_T=f"* Hai đường thẳng ${{{A}{D}}}$ và ${{S{B}}}$ vuông góc nhau"
+		kq2_F=f"Hai đường thẳng ${{{A}{D}}}$ và ${{S{B}}}$ không vuông góc nhau"
+		HDG=(f"${A}{D}\\bot {A}{B}, {A}{D}\\bot S{A} \\Rightarrow {A}{D}\\bot (S{A}{B}) \\Rightarrow {A}{D}\\bot S{B}.$")	
+
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	
+	
+	kq3_T=random.choice([
+		f"* ${{{B}{C}}}\\bot (S{A}{B})$",
+		f"* ${{{C}{D}}}\\bot (S{A}{D})$",
+		f"* ${{{B}{D}}}\\bot (S{A}{C})$"])
+
+	kq3_F=random.choice([
+		f"${{{B}{C}}}\\bot (S{A}{C})$",
+		f"${{{C}{D}}}\\bot (S{B}{D})$",
+		f"${{{A}{C}}}\\bot (S{B}{C})$",])	
+	kq3=random.choice([kq3_T, kq3_F])
+
+	#HDG đúng:
+	if kq3==f"* ${{{B}{C}}}\\bot (S{A}{B})$":	
+		HDG=f"${B}{C}\\bot {A}{B},{B}{C}\\bot S{A}\\Rightarrow {B}{C}\\bot (S{A}{B})$."
+
+	if kq3==f"* ${{{C}{D}}}\\bot (S{A}{D})$":	
+		HDG=f"${C}{D}\\bot {A}{D},{C}{D}\\bot S{A}\\Rightarrow {C}{D}\\bot (S{A}{D})$."
+
+	if kq3==f"* ${{{B}{D}}}\\bot (S{A}{C})$":	
+		HDG=f"${B}{D}\\bot {A}{C},{B}{D}\\bot S{A}\\Rightarrow {B}{D}\\bot (S{A}{C})$."
+
+	#HDG sai:
+	if kq3==f"${{{B}{C}}}\\bot (S{A}{C})$":	
+		HDG=f"Nếu ${B}{C}\\bot (S{A}{C})\\Rightarrow {B}{C} \\bot {A}{C}$ (vô lí)."
+
+	if kq3==f"${{{C}{D}}}\\bot (S{B}{D})$":	
+		HDG=f"Nếu ${C}{D}\\bot (S{B}{D})\\Rightarrow {C}{D} \\bot {B}{D}$ (vô lí)."
+
+	if kq3==f"${{{A}{C}}}\\bot (S{B}{C})$":	
+		HDG=f"Nếu ${A}{C}\\bot (S{B}{C})\\Rightarrow {A}{C} \\bot {B}{C}$ (vô lí)."
+
+	
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	AM=(SA*AB)/sqrt(SA**2+AB**2)
+	AC=AB*sqrt(2)
+	t=atan(AM/AC)
+	goc=f"{round_half_up(math.degrees(t),1):.1f}".replace(".",",")
+	goc_false=f"{round_half_up(math.degrees(t)+random.randint(1,3),1):.1f}".replace(".",",")
+
+	chon=random.randint(1,3)
+	chon=3
+	if chon==1:
+		kq4_T=(f"* Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{B}}}$."
+			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc}^\\circ$")
+
+		kq4_F=(f"Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{B}}}$."
+			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc_false}^\\circ$") 
+		
+		HDG=(f"${A}{M}\\bot S{B}, {A}{M}\\bot {B}{C}$ (do ${B}{C} \\bot (S{A}{B})$) suy ra ${A}{M}\\bot {M}{C}$.\n\n"
+			f"${A}{C}={latex(AC*a)}$.\n\n"
+			f"${A}{M}=\\dfrac{{S{A}.{A}{B}}}{{\\sqrt{{S{A}^2+{A}{B}^2}}}} = \\dfrac{{{latex(SA*a)}.{latex(AB*a)}}}{{\\sqrt{{{latex((SA*a)**2)}+{latex((AB*a)**2)} }}}}={latex(nsimplify(AM)*a)}$.\n\n"
+			f"$\\tan \\widehat{{{A}{C}{M}}}=\\dfrac{{{A}{M}}}{{{A}{C}}}={latex(nsimplify(AM/AC))}$"
+			f"$\\Rightarrow \\widehat{{{A}{C}{M}}}={goc}^\\circ$."
+			)
+	
+	if chon==2:
+		kq4_T=(f"* Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{D}}}$."
+			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc}^\\circ$")
+
+		kq4_F=(f"Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{D}}}$."
+			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc_false}^\\circ$") 
+		
+		HDG=(f"${A}{M}\\bot S{D}, {A}{M}\\bot {C}{D}$ (do ${C}{D} \\bot (S{A}{D})$) suy ra ${A}{M}\\bot {M}{C}$.\n\n"
+			f"${A}{C}={latex(AC*a)}$.\n\n"
+			f"${A}{M}=\\dfrac{{S{A}.{A}{D}}}{{\\sqrt{{S{A}^2+{A}{D}^2}}}} = \\dfrac{{{latex(SA*a)}.{latex(AB*a)}}}{{\\sqrt{{{latex((SA*a)**2)}+{latex((AB*a)**2)} }}}}={latex(nsimplify(AM)*a)}$.\n\n"
+			f"$\\tan \\widehat{{{A}{C}{M}}}=\\dfrac{{{A}{M}}}{{{A}{C}}}={latex(nsimplify(AM/AC))}$"
+			f"$\\Rightarrow \\widehat{{{A}{C}{M}}}={goc}^\\circ$."
+			)
+	AM=(SA*AB)/sqrt(SA**2+AB**2)
+	AC=AB*sqrt(2)
+	NH=AC/4
+	NP=sqrt(AB**2/4+SA**2/4)
+	t=acos(NH/NP)
+	goc=f"{round_half_up(math.degrees(t),1):.1f}".replace(".",",")
+	goc_false=f"{round_half_up(math.degrees(t)+random.randint(1,3),1):.1f}".replace(".",",")
+
+	if chon==3:
+		kq4_T=(f"* Gọi ${{{M},{N}}}$ lần lượt là trung điểm các cạnh ${{{A}{B},{A}{D}}}$."
+			f" Góc giữa hai đường thẳng ${{{M}{N}}}$ và $S{D}$ bằng ${goc}^\\circ$")
+
+		kq4_F=(f"Gọi ${{{M},{N}}}$ lần lượt là trung điểm các cạnh ${{{A}{B},{A}{D}}}$."
+			f" Góc giữa hai đường thẳng ${{{M}{N}}}$ và $S{D}$ bằng ${goc_false}^\\circ$") 
+		
+		HDG=(f"Gọi ${{{P}}}$ là trung điểm của cạnh ${{S{A}}}$. Gọi ${{{H}}}$ là trung điểm của cạnh ${{{M}{N}}}$.\n\n"
+			f" Ta có: $({M}{N},S{D})=({M}{N},{N}{P})$.\n\n"
+			f"${N}{H}=\\dfrac{{{M}{N}}}{{2}}=\\dfrac{{{B}{D}}}{{4}}={latex(NH*a)}$.\n\n"
+			f"${N}{P}=\\sqrt{{{A}{N}^2+{A}{P}^2}}=\\sqrt{{{latex(AB**2*a**2/4)}+{latex(SA**2*a**2/4)}}}={latex(nsimplify(NP)*a)}$.\n\n"
+			f"$\\cos \\widehat{{{M}{N}{P}}}=\\cos \\widehat{{{H}{N}{P}}}=\\dfrac{{{N}{H}}}{{{N}{P}}}={latex(nsimplify(NH/NP))}$.\n\n"
+			f"$\\Rightarrow \\widehat{{{M}{N}{P}}}={goc}^\\circ$."
+			)
+
+	
+	
+
+	
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 
 #BÀI 3 - HAI MẶT PHẲNG VUÔNG GÓC
 #[D11_C8_B3_01]-M2. S.ABCD: ABCD h.vuông. Xác định 2 mặt phẳng vuông góc.

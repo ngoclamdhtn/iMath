@@ -3123,7 +3123,7 @@ def htd_25_xyz_L12_C5_B1_32():
             break
     mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
     
-    chon=random.randint(1,2)
+    chon=random.randint(1,3)
     
     if chon==1:
         noi_dung= (
@@ -3220,6 +3220,212 @@ def htd_25_xyz_L12_C5_B1_32():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C5_B1_33]-M2. Viết PTMP qua điểm A và chứa trục Ox (Oy, Oz)
+def htd_25_xyz_L12_C5_B1_33():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")    
+
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.randint(-10,11)
+    ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
+
+    
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,H,M=ten_diem[0:3]
+    while True:
+        x_A,y_A,z_A=random.randint(-6,6),random.randint(-6,6),random.randint(-6,6)
+        if all([x_A!=0, y_A!=0, z_A!=0, 
+                x_A!=y_A, x_A!=z_A, y_A!=z_A]):
+            break
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    
+    chon=random.randint(1,3)
+    
+    if chon==1:    
+    
+        noi_dung= (
+        f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A})$"
+            f" và chứa trục ${{Ox}}$ có phương trình là")
+
+        a,b,c=tich_co_huong([1,0,0],[x_A,y_A,z_A])   
+
+        t=ucln_ba_so(a,b,c)
+        a1,b1,c1=int(a/t),int(b/t),int(c/t)
+
+        noi_dung_loigiai=(
+        f"Ta có: ${vec("i")}=(1;0;0), {vec(f"O{A}")}=({x_A};{y_A};{z_A})$. \n\n"
+        f"$({mp_P})$ nhận ${vec("n")}=[{vec("i")}, {vec(f"O{A}")}]=({a};{b};{c})$ làm véctơ pháp tuyến.\n\n"
+        f"Phương trình $({mp_P})$ là: ${latex(a1*x+b1*y+c1*z-(a1*x_A+b1*y_A+c1*z_A))}=0$."
+        )
+        
+
+        kq=f"${latex(b1*y+c1*z)}=0$"
+        kq_false=[
+        f"${latex(random.randint(1,4)*x+b1*y+c1*z)}=0$",
+        f"${latex(b1*x+c1*z)}=0$", 
+        f"${latex(b1*y+c1*z+random.randint(1,4))}=0$" ]
+
+    if chon==2:    
+    
+        noi_dung= (
+        f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A})$"
+            f" và chứa trục ${{Oy}}$ có phương trình là")
+
+        a,b,c=tich_co_huong([0,1,0],[x_A,y_A,z_A])   
+
+        t=ucln_ba_so(a,b,c)
+        a1,b1,c1=int(a/t),int(b/t),int(c/t)
+
+        noi_dung_loigiai=(
+        f"Ta có: ${vec("j")}=(0;1;0), {vec(f"O{A}")}=({x_A};{y_A};{z_A})$. \n\n"
+        f"$({mp_P})$ nhận ${vec("n")}=[{vec("j")}, {vec(f"O{A}")}]=({a};{b};{c})$ làm véctơ pháp tuyến.\n\n"
+        f"Phương trình $({mp_P})$ là: ${latex(a1*x+b1*y+c1*z-(a1*x_A+b1*y_A+c1*z_A))}=0$."
+        )
+        
+
+        kq=f"${latex(a1*x+c1*z)}=0$"
+        kq_false=[
+        f"${latex(random.randint(1,4)*x+random.randint(1,4)*y+random.randint(1,4)*z)}=0$",
+        f"${latex(a1*y+c1*z)}=0$", 
+        f"${latex(a1*x+c1*z+random.randint(1,4))}=0$"]
+
+    if chon==3:    
+    
+        noi_dung= (
+        f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A})$"
+            f" và chứa trục ${{Oz}}$ có phương trình là")
+
+        a,b,c=tich_co_huong([0,0,1],[x_A,y_A,z_A])   
+
+        t=ucln_ba_so(a,b,c)
+        a1,b1,c1=int(a/t),int(b/t),int(c/t)
+
+        noi_dung_loigiai=(
+        f"Ta có: ${vec("k")}=(0;0;1), {vec(f"O{A}")}=({x_A};{y_A};{z_A})$. \n\n"
+        f"$({mp_P})$ nhận ${vec("n")}=[{vec("k")}, {vec(f"O{A}")}]=({a};{b};{c})$ làm véctơ pháp tuyến.\n\n"
+        f"Phương trình $({mp_P})$ là: ${latex(a1*x+b1*y+c1*z-(a1*x_A+b1*y_A+c1*z_A))}=0$."
+        )
+        
+
+        kq=f"${latex(a1*x+b1*y)}=0$"
+        kq_false=[
+        f"${latex(random.randint(1,4)*x+random.randint(1,4)*y+random.randint(1,4)*z)}=0$",
+        f"${latex(a1*y+b1*z)}=0$", 
+        f"${latex(a1*x+b1*y+random.randint(1,5))}=0$"]
+    
+    
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+import numpy as np
+
+def generate_non_coplanar_points():
+    while True:
+        # Tạo 4 điểm ngẫu nhiên khác nhau trong không gian Oxyz
+        points = set()
+        while len(points) < 4:
+            points.add(tuple(np.random.randint(-4, 5, size=3)))
+        
+        A, B, C, D = map(np.array, points)
+        
+        # Tính các vector AB, AC, AD
+        AB = B - A
+        AC = C - A
+        AD = D - A
+        
+        # Tính định thức của ma trận chứa các vector này
+        det = np.linalg.det(np.array([AB, AC, AD]))
+        
+        # Nếu định thức khác 0 thì 4 điểm không đồng phẳng
+        if abs(det) > 1e-6:
+            return A, B, C, D
+
+#[D12_C5_B1_34]-SA-M2. Viết PTMP qua điểm A,B và song song với C,D
+def htd_25_xyz_L12_C5_B1_34():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+    A,B,C,D=generate_non_coplanar_points()
+    x_A,y_A,z_A=A
+    x_B,y_B,z_B=B
+    x_C,y_C,z_C=C
+    x_D,y_D,z_D=D
+    
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,D=ten_diem[0:4]
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+
+    
+    x_1,y_1,z_1=x_B-x_A,y_B-y_A,z_B-z_A
+    x_2,y_2,z_2=x_D-x_C,y_D-y_C,z_D-z_C
+    a,b,c=tich_co_huong([x_1,y_1,z_1],[x_2,y_2,z_2])   
+
+    t=ucln_ba_so(a,b,c)
+    a1,b1,c1=int(a/t),int(b/t),int(c/t)
+    d1=a1*x_A+b1*y_A+c1*z_A
+
+    noi_dung = (
+    f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B})$"
+    f" và song song với đường thẳng đi qua hai điểm ${C}({x_C};{y_C};{z_C}),{B}({x_D};{y_D};{z_D})$"
+    f" có phương trình dạng ${a1}x+ay+bz+c=0$. Tính $a+b+c$."
+    )
+    dap_an=b1+c1-d1
+    
+
+    noi_dung_loigiai=(
+    f"${vec2(A,B)}=({x_1};{y_1};{z_1}),{vec2(C,D)}=({x_2};{y_2};{z_2})$.\n\n"
+    f" $({mp_P})$ nhận ${vec("n")}=[{vec2(A,B)},{vec2(C,D)}]=({a};{b};{c})$ làm véctơ pháp tuyến.\n\n"
+    f"Phương trình $({mp_P}):{latex(a1*x+b1*y+c1*z-d1)}=0$."
+    )    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
