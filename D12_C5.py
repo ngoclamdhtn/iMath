@@ -569,7 +569,7 @@ def htd_25_xyz_L12_C5_B1_05():
 
 
     ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
-    ten_B=random.choice(["A","M", "E", "B", "D"])
+    ten_B=random.choice(["A","M", "E", "D"])
     ten_C=random.choice(["B", "G", "K", "H"])
 
 
@@ -1203,6 +1203,11 @@ def htd_25_xyz_L12_C5_B1_13():
     kq2=abs(d+d2)/sqrt(a**2+b**2+c**2)
     kq3=abs(d+d2)/(abs(a)+abs(b)+abs(c))
     kq4=abs(d-m)/(abs(a)+abs(b)+abs(c))
+
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
     noi_dung_loigiai=my_module.thay_dau_congtru(
         f"${ten_mp2}:{latex(a*x+b*y+c*z)}+{phan_so(m)}=0$.\n\n"\
@@ -2014,9 +2019,7 @@ def htd_25_xyz_L12_C5_B1_20():
         kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+t})$ thuộc mặt phẳng ${{({mp_P})}}$"
         kq2=random.choice([kq2_T, kq2_F])
         HDG=f"Tọa độ điểm ${{{A}}}({x_A};{y_A};{z_A})$ không thỏa mãn phương trình ${ptmp_P}=0$ nên điểm ${{{A}}}$ không thuộc mặt phẳng ${{({mp_P})}}$."
-    
 
-    
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2041,8 +2044,8 @@ def htd_25_xyz_L12_C5_B1_20():
     if chon==2:
         a1,b1,c1,d1=k*a,k*b,k*c,k*d
         
-        kq3_T=f"* Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d)}=0$ trùng nhau" 
-        kq3_F=f"Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d)}=0$ {random.choice(["cắt", "vuông góc", "song song" ])} nhau"
+        kq3_T=f"* Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ trùng nhau" 
+        kq3_F=f"Mặt phẳng ${{({mp_P})}}$ và mặt phẳng $({mp_Q}):{latex(a1*x+b1*y+c1*z+d1)}=0$ {random.choice(["cắt", "vuông góc", "song song" ])} nhau"
         kq3=random.choice([kq3_T, kq3_F])
         HDG=(f"${vec(f"n_{mp_P}")}=({a};{b};{c}), {vec(f"n_{mp_Q}")}=({a1};{b1};{c1})$.\n\n"
             f"Ta có: ${vec(f"n_{mp_P}")}={k}{vec(f"n_{mp_Q}")}$ và ${d1}={show_tich(k,d)}$"
@@ -2065,7 +2068,7 @@ def htd_25_xyz_L12_C5_B1_20():
     kq4_T=(f"* Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình là "
         f"${latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))}=0$"
         )
-    kq4_F=(f"* Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình là "
+    kq4_F=(f"Mặt phẳng ${{({mp_Q})}}$ đi qua hai điểm ${B}({x_A};{y_A};{z_A}), {C}({x_B};{y_B};{z_B})$ và vuông góc với ${{({mp_P})}}$ có phương trình là "
         f"${latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A)+random.randint(1,2))}=0$"
         ) 
     kq4=random.choice([kq4_T, kq4_F])
@@ -6367,6 +6370,7 @@ def htd_25_xyz_L12_C5_B2_30():
 
     #Tạo tọa độ điểm A và điểm cắt B
     chon=random.randint(1,2)
+    
     if chon==1:
         while True:
 
@@ -6391,18 +6395,18 @@ def htd_25_xyz_L12_C5_B2_30():
             b1,b2,b3=tim_vecto_vuong_goc(a, b, c)
             t_uc=ucln_ba_so(b1,b2,b3)
             b1,b2,b3=int(b1/t_uc),int(b2/t_uc),int(b3/t_uc)
-            x_3 = x_0-a*m
+            x_3 = x_0+a*m+random.randint(1,2)
             y_3 = y_0+b*m
-            z_3 = z_0-c*m
+            z_3 = z_0+c*m
 
             t_0=-z_0/c
-            x, y = x_0+a*t_0, y_0+b*t_0
-            if x+y>-9:
+            x_kq, y_kq = x_0+a*t_0, y_0+b*t_0
+            if x_kq+y_kq>-9:
                 break
 
-        dap_an=f"{round_half_up(x+y,1):.1f}".replace(".",",")
-        
-        mp=latex(b1*(x-x_3)+b2*(y-y_3)+b3*(z-z_3)) 
+        dap_an=f"{round_half_up(x_kq+y_kq,1):.1f}".replace(".",",")
+       
+        mp=f"{latex(b1*(x-x_3)+b2*(y-y_3)+b3*(z-z_3))}" 
             
 
         dt2=f"\\left\\{{ \\begin{{array}}{{l}} \n\
@@ -6414,7 +6418,7 @@ def htd_25_xyz_L12_C5_B2_30():
                     f"Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ cắt đường thẳng ${{{ten_dt1}}}$ và song song với mặt phẳng $({{{ten_mp}}}):{mp}=0$."
                     f" Biết ${{{ten_dt2}}}$ cắt mặt phẳng $(Oxy)$ tại điểm ${M}(a;b;c)$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười).")    
 
-        noi_dung_loigiai=my_module.thay_dau_congtru(f"Đường thẳng ${{{ten_dt1}}}$ có véctơ chỉ phương là $\\overrightarrow{{u_1}}=({b1};{b2};{b3})$.\n\n"\
+        noi_dung_loigiai=my_module.thay_dau_congtru(f"Đường thẳng ${{{ten_dt1}}}$ có véctơ chỉ phương là $\\overrightarrow{{u_1}}=({a1};{a2};{a3})$.\n\n"\
             f"Gọi ${ten_diem2}({latex(x_2+a1*t)};{latex(y_2+a2*t)};{latex(z_2+a3*t)} ) \\in {ten_dt1}$.\n\n"
             f"Đường thẳng ${{{ten_dt2}}}$ có véctơ chỉ phương là $\\overrightarrow{{{ten_diem1}{ten_diem2}}}=({latex(x_2+a1*t-x_0)};{latex(y_2+a2*t-y_0)};{latex(z_2+a3*t-z_0)})$.\n\n"\
             f"Mặt phẳng $({{{ten_mp}}}):{mp}=0$ có véctơ pháp tuyến là $\\overrightarrow{{n}}=({b1};{b2};{b3})$.\n\n"\
@@ -6422,7 +6426,7 @@ def htd_25_xyz_L12_C5_B2_30():
             f"Đường thẳng ${{{ten_dt2}}}$ qua điểm ${ten_diem1}({x_0};{y_0};{z_0})$ nhận $\\overrightarrow{{{ten_diem1}{ten_diem2}}}=({x_2+a1*m-x_0};{y_2+a2*m-y_0};{z_2+a3*m-z_0})$ hoặc $\\overrightarrow{{u}}=({a};{b};{c})$ làm véctơ chỉ phương có phương trình là:\n\n"\
             f"${{{ten_dt2}}}:{dt2}$.\n\n"
             f"${{{ten_dt2}}}$ cắt mặt phẳng $(Oxy)$ khi $c=0\\Rightarrow {latex(z_0+c*t)}=0\\Rightarrow t={phan_so(-z_0/c)}$.\n\n"
-                f"$\\Rightarrow x={phan_so(x)},y={phan_so(y)} \\Rightarrow a+b+c={phan_so(x)}+{phan_so(y)}+0={phan_so(x+y)}={dap_an}$.")
+                f"$\\Rightarrow x={phan_so(x_kq)},y={phan_so(y_kq)} \\Rightarrow a+b+c={phan_so(x_kq)}+{phan_so(y_kq)}+0={phan_so(x_kq+y_kq)}={dap_an}$.")
     
     if chon==2:
         while True:
@@ -6448,18 +6452,18 @@ def htd_25_xyz_L12_C5_B2_30():
             b1,b2,b3=tim_vecto_vuong_goc(a, b, c)
             t_uc=ucln_ba_so(b1,b2,b3)
             b1,b2,b3=int(b1/t_uc),int(b2/t_uc),int(b3/t_uc)
-            x_3 = x_0-a*m
+            x_3 = x_0+a*m+random.randint(1,2)
             y_3 = y_0+b*m
-            z_3 = z_0-c*m
+            z_3 = z_0+c*m
 
             t_0=-x_0/a
-            y, z = y_0+b*t_0, z_0+c*t_0                     
+            y_kq, z_kq = y_0+b*t_0, z_0+c*t_0                     
 
-            if y+z>-9:
+            if y_kq+z_kq>-9:
                 break
 
-        dap_an=f"{round_half_up(y+z,1):.1f}".replace(".",",")
-        mp=latex(b1*(x-x_3)+b2*(y-y_3)+b3*(z-z_3))
+        dap_an=f"{round_half_up(y_kq+z_kq,1):.1f}".replace(".",",")
+        mp=f"{latex(b1*(x-x_3)+b2*(y-y_3)+b3*(z-z_3))}" 
 
         dt2=f"\\left\\{{ \\begin{{array}}{{l}} \n\
         x={latex(x_0+a*t)} \\\\ \n\
@@ -6472,7 +6476,7 @@ def htd_25_xyz_L12_C5_B2_30():
                     f"Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ cắt đường thẳng ${{{ten_dt1}}}$ và song song với mặt phẳng $({{{ten_mp}}}):{mp}=0$."
                     f" Biết ${{{ten_dt2}}}$ cắt mặt phẳng $(Oyz)$ tại điểm ${M}(a;b;c)$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười).")    
 
-        noi_dung_loigiai=my_module.thay_dau_congtru(f"Đường thẳng ${{{ten_dt1}}}$ có véctơ chỉ phương là $\\overrightarrow{{u_1}}=({b1};{b2};{b3})$.\n\n"\
+        noi_dung_loigiai=my_module.thay_dau_congtru(f"Đường thẳng ${{{ten_dt1}}}$ có véctơ chỉ phương là $\\overrightarrow{{u_1}}=({a1};{a2};{a3})$.\n\n"\
             f"Gọi ${ten_diem2}({latex(x_2+a1*t)};{latex(y_2+a2*t)};{latex(z_2+a3*t)} ) \\in {ten_dt1}$.\n\n"
             f"Đường thẳng ${{{ten_dt2}}}$ có véctơ chỉ phương là $\\overrightarrow{{{ten_diem1}{ten_diem2}}}=({latex(x_2+a1*t-x_0)};{latex(y_2+a2*t-y_0)};{latex(z_2+a3*t-z_0)})$.\n\n"\
             f"Mặt phẳng $({{{ten_mp}}}):{mp}=0$ có véctơ pháp tuyến là $\\overrightarrow{{n}}=({b1};{b2};{b3})$.\n\n"\
@@ -6480,7 +6484,7 @@ def htd_25_xyz_L12_C5_B2_30():
             f"Đường thẳng ${{{ten_dt2}}}$ qua điểm ${ten_diem1}({x_0};{y_0};{z_0})$ nhận $\\overrightarrow{{{ten_diem1}{ten_diem2}}}=({x_2+a1*m-x_0};{y_2+a2*m-y_0};{z_2+a3*m-z_0})$ hoặc $\\overrightarrow{{u}}=({a};{b};{c})$ làm véctơ chỉ phương có phương trình là:\n\n"\
             f"${{{ten_dt2}}}:{dt2}$.\n\n"
             f"${{{ten_dt2}}}$ cắt mặt phẳng $(Oyz)$ khi $a=0\\Rightarrow {latex(x_0+a*t)}=0\\Rightarrow t={phan_so(-x_0/a)}$.\n\n"
-            f"$\\Rightarrow y={phan_so(y)},z={phan_so(z)} \\Rightarrow a+b+c=0+{phan_so(y)}+{phan_so(z)}={phan_so(y+z)}={dap_an}$.")   
+            f"$\\Rightarrow y={phan_so(y_kq)},z={phan_so(z_kq)} \\Rightarrow a+b+c=0+{phan_so(y_kq)}+{phan_so(z_kq)}={phan_so(y_kq+z_kq)}={dap_an}$.")   
 
      
     debai_word= f"{noi_dung}"
@@ -6559,7 +6563,7 @@ z = {show_ptts(z_1,c)}\
     
     if chon==1:
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Với $t={t_A}$ thay vào phương trình ${{{ten_dt}}}$ ta được"
             f" $x={x_A}, y={y_A}, z={z_A}$ nên điểm ${A}({x_A};{y_A};{z_A})$ thuộc ${{{ten_dt}}}$.")
@@ -6567,7 +6571,7 @@ z = {show_ptts(z_1,c)}\
     if chon==2:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Với $t={t_A}$ thay vào phương trình ${{{ten_dt}}}$ ta được"
             f" $x={x_A}, y={y_A}, z={z_A}\\ne {z_A+k}$ nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")
@@ -6575,7 +6579,7 @@ z = {show_ptts(z_1,c)}\
     if chon==3:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Với $t={t_A}$ thay vào phương trình ${{{ten_dt}}}$ ta được"
             f" $x={x_A}, y={y_A}\\ne {y_A+k}, z={z_A}$ nên điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc ${{{ten_dt}}}$.")    
@@ -6812,7 +6816,7 @@ def htd_25_xyz_L12_C5_B2_32():
     
     if chon==1:
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Với $t={t_A}$ thay vào phương trình ${{{ten_dt}}}$ ta được"
             f" $x={x_A}, y={y_A}, z={z_A}$ nên điểm ${A}({x_A};{y_A};{z_A})$ thuộc ${{{ten_dt}}}$.")
@@ -6820,7 +6824,7 @@ def htd_25_xyz_L12_C5_B2_32():
     if chon==2:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Với $t={t_A}$ thay vào phương trình ${{{ten_dt}}}$ ta được"
             f" $x={x_A}, y={y_A}, z={z_A}\\ne {z_A+k}$ nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")
@@ -6828,7 +6832,7 @@ def htd_25_xyz_L12_C5_B2_32():
     if chon==3:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Với $t={t_A}$ thay vào phương trình ${{{ten_dt}}}$ ta được"
             f" $x={x_A}, y={y_A}\\ne {y_A+k}, z={z_A}$ nên điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc ${{{ten_dt}}}$.")    

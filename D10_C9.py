@@ -8538,6 +8538,8 @@ def mjulk_L10_C9_B2_56():
 
 
 
+
+
 #[D10_C9_B2_57]-SA-M3. Có a phiếu trong đó có b phiếu trúng thưởng, m người rút. XS để A trúng thưởng
 def mjulk_L10_C9_B2_57():
 	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
@@ -8551,11 +8553,41 @@ def mjulk_L10_C9_B2_57():
 	kq="{:.2f}".format(t).replace(".", ",")
 	dap_an= kq
 	noi_dung=f"Một hộp có ${{{a}}}$ phiếu bốc thăm khác nhau trong đó có ${{{n}}}$ mã phiếu trúng thưởng. Có ${{{b}}}$ người tham gia bốc thăm trong đó có {A}, mỗi người chỉ được bốc một phiếu. Tính xác suất để chỉ có mỗi {A} rút được phiếu trúng thưởng. (Kết quả làm tròn đến hàng phần trăm)"
-	noi_dung_loigiai=(f"$n(\\Omega)= A_{{{a}}}^{{{b}}}$ \n\n  "
+	noi_dung_loigiai=  (f"$ n(\\Omega)= A_{{{a}}}^{{{b}}}$ \n\n  "
 	f"$n(A)=  {n} \\cdot A_{{{a-n}}}^{{{b-1}}} $ \n\n"
 	f"$P(A)= \\dfrac{{n({{A}})}}{{n(\\Omega)}}= {phan_so(a1/b1)} \\approx {kq}$")
 
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
 
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+
+
+
+#[D10_C9_B2_58]-SA-M3. Tính xs chọn được k số có tổng bình phương chia hết cho 4
+def mjulk_L10_C9_B2_58():
+	a=random.randint(1,30)
+	n=random.randint(20,30)
+	k=random.choice([2,3])
+	chan=len([i for i in range(a, a + n) if i %2==0])
+	a1=binomial(chan,k)
+	b1=binomial(n,k)
+	t=(a1/b1)
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Gọi S là tập hợp các số tự nhiên liên tiếp từ ${{{a}}}$ đến ${{{a+n-1}}}$. Chọn ngẫu nhiên ${{{k}}}$ số tự nhiên bất kì từ tập hợp S. Tính xác suất để tổng bình phương của ${{{k}}}$ số đó chia hết cho ${{4}}$. Kết quả làm tròn đến hàng phần trăm."
+	noi_dung_loigiai=(f" $n(\\Omega)= C_{{{n}}}^{{{k}}}$ \n\n "
+	f'A:" Tổng bình phương của ${{{k}}}$ số đó chia hết cho ${{4}}$ \n\n'
+	f'A" Chọn được ${{{k}}}$ số chẵn" suy ra $n(A)= C_{{{chan}}}^{{{k}}}$ \n\n'
+	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}} \\approx {kq}$" )
 	debai_word= f"{noi_dung}\n"
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\

@@ -7147,9 +7147,9 @@ def mnj_34_jkl_L12_C2_B3_36():
 	if chon==1:
 		dap_an=f"{N(x+y,2):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
-		f"${M}\\in (Oxy)$ nên $M(a;b;0)$. \n\n"
+		f"${M}\\in (Oxy)$ nên ${M}(a;b;0)$. \n\n"
 		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxy)$.\n\n"
-		f"Suy ra: $M({x_G};{y_G};0)$.\n\n"
+		f"Suy ra: ${M}({x_G};{y_G};0)$.\n\n"
 		f"Vậy $a+b+c={dap_an}$.")	
 
 	if chon==2:
@@ -7157,15 +7157,15 @@ def mnj_34_jkl_L12_C2_B3_36():
 		noi_dung_loigiai+=(
 		f"${M}\\in (Oyz)$ nên $M(0;b;c)$. \n\n"
 		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxy)$.\n\n"
-		f"Suy ra: $M(0;{y_G};{z_G})$.\n\n"
+		f"Suy ra: ${M}(0;{y_G};{z_G})$.\n\n"
 		f"Vậy $a+b+c={dap_an}$.")
 
 	if chon==3:
 		dap_an=f"{N(x+z,2):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
-		f"${M}\\in (Oxz)$ nên $M(a;0;c)$. \n\n"
+		f"${M}\\in (Oxz)$ nên ${M}(a;0;c)$. \n\n"
 		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxy)$.\n\n"
-		f"Suy ra: $M({x_G};0;{z_G})$.\n\n"
+		f"Suy ra: ${M}({x_G};0;{z_G})$.\n\n"
 		f"Vậy $a+b+c={dap_an}$.")
 		
 	debai_word= f"{noi_dung}\n"

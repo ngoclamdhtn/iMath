@@ -3528,8 +3528,8 @@ y = {show_ptts(y_0,-a)}\
 
 	kq=f"{latex(a*(x-x_0)+b*(y-y_0))}=0"
 	kq2=f"{latex(a*(x+x_0)+b*(y+y_0))}=0"
-	kq3=f"{latex(x_1*(x-a)+y_1*(y-b))}=0"
-	kq4=f"{latex(b*(x-x_0)-a*(y-y_0))}=0"
+	kq3=f"{latex(b*x-a*y+b*x_0+a*y_0)}=0"
+	kq4=f"{latex(b*x-a*y+b*x_0+a*y_0+random.randint(1,2))}=0"
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ có phương trình tham số là ${f}$."\
 			 f" Viết phương trình tổng quát của đường thẳng ${{{ten_d}}}$."
@@ -3871,7 +3871,6 @@ def gghik_L10_CX_B1_20():
 
 	x=sp.symbols("x")
 	y=sp.symbols("y")
-
 
 	d1=["d","d_1","\\Delta_1"]
 	d2=["d'","d_2","\\Delta_2"]
@@ -7284,10 +7283,6 @@ def gghik_L10_CX_B1_57():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-
-
-
-
 #[D10_CX_B1_58]-M2. Tìm chân đường cao kẻ từ A của tam giác ABC
 def gghik_L10_CX_B1_58():  
 	x=sp.symbols("x")
@@ -7362,6 +7357,108 @@ def gghik_L10_CX_B1_58():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B1_59]-SA-M2. Tính góc giữa 2 đường thẳng (PTTQ)
+def gghik_L10_CX_B1_59():
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+
+	d1=["d","d_1","\\Delta_1"]
+	d2=["d'","d_2","\\Delta_2"]
+	i=random.randint(0,2)
+	d1, d2 = d1[i], d2[i]	
+
+	a1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	b1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+	c1= random.randint(-10, 10)
+	
+	a2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
+	b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	c2= random.randint(-10, 10)
+
+	t=abs(a1*a2+b1*b2)/(sqrt(a1**2+b1**2)*sqrt(a2**2+b2**2))
+	goc_rad=acos(t)
+	goc_deg=math.degrees(goc_rad)
+	dap_an=f"{round_half_up(goc_deg,1):.1f}".replace(".",",")
+
+	f1=latex(a1*x+b1*y+c1)
+	f2=latex(a2*x+b2*y+c2)
+
+	noi_dung=(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai đường thẳng ${d1}:{f1}=0$ và ${d2}:{f2}=0$."
+			 f" Tính góc tạo bởi ${{{d1}}}$ và ${{{d2}}}$ (kết quả làm tròn đến hàng phần mười).")
+
+	noi_dung_loigiai=(f"$ \\cos ({d1},{d2})=\\dfrac{{|{show_tich(a1,a2)}+{show_tich(b1,b2)}|}}{{\\sqrt{{{a1**2}+{b1**2}}}.\\sqrt{{{a2**2}+{b2**2}}}}}={latex(t)}$.\n\n"
+		f"$\\Rightarrow ({d1},{d2})={dap_an}^\\circ$")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("\\frac","\\dfrac")
+
+	
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B1_60]-SA-M2. Tìm m để khoảng cách từ A đến d bằng k
+def gghik_L10_CX_B1_60():
+	x,y,m=sp.symbols("x y m")
+
+	d=random.choice(["d","d_1","\\Delta_1", "\\Delta"])
+
+	a= random.choice([random.randint(-4, -1), random.randint(1, 5)])
+	b= random.choice([random.randint(-4, -1), random.randint(1, 5)])
+	c= random.randint(-5, 5)
+	t_m= random.choice([i for i in range(-3, 4) if i!=0])
+	
+	k=random.randint(1,5)*sqrt(a**2+b**2)
+
+	x_A=random.randint(-5,5)
+	y_A=random.randint(-5,5)
+	ten_diem=random.choice(["A","B","C","E","M","N","I" ])
+
+
+	
+	
+	e=k*sqrt(a**2+b**2)
+	m1=(e-a*x_A-b*y_A-c)/t_m
+	m2=(-e-a*x_A-b*y_A-c)/t_m
+	dap_an=m1+m2
+	if int(dap_an)==dap_an:
+		noi_dung=(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho điểm ${ten_diem}({x_A};{y_A})$ và đường thẳng ${d}:{latex(a*x+b*y)}+{latex(t_m*m+c)}=0$, với ${{m}}$ là tham số."
+			 f" Tính tổng các giá trị của tham số ${{m}}$ để khoảng cách từ ${{{ten_diem}}}$ đến đường thẳng ${{{d}}}$ bằng ${latex(k)}$.")
+		dap_an=latex(m1+m2)
+	else:
+		noi_dung=(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho điểm ${ten_diem}({x_A};{y_A})$ và đường thẳng ${d}:{latex(a*x+b*y)}+{latex(t_m*m+c)}=0$, với ${{m}}$ là tham số."
+			 f" Tính tổng các giá trị của tham số ${{m}}$ để khoảng cách từ ${{{ten_diem}}}$ đến đường thẳng ${{{d}}}$ bằng ${latex(k)}$ (kết quả làm tròn đến hàng phần mười).")
+		dap_an=f"{round_half_up(dap_an,1):.1f}".replace(".",",")
+	noi_dung_loigiai=(f"$d({ten_diem},{d})=\\dfrac{{|{show_tich(a,x_A)}+{show_tich(b,y_A)}+{latex(t_m*m+c)}| }}{{\\sqrt{{{a**2}+{b**2}}}}}={latex(k)}$.\n\n"
+		f"$\\Rightarrow |{latex(a*x_A+b*y_A+t_m*m+c)}|={latex(e)}$\n\n"
+		f"$\\Rightarrow {latex(a*x_A+b*y_A+t_m*m+c)}={latex(e)}$ hoặc ${latex(a*x_A+b*y_A+t_m*m+c)}={latex(-e)}$.\n\n"
+		f"$\\Rightarrow m_1={latex(m1)}$ hoặc $m_2={latex(m2)}$.\n\n"
+		f"$\\Rightarrow m_1+m_2={dap_an}$"
+		)
+	noi_dung=noi_dung.replace("+-","-").replace("\\frac","\\dfrac")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("\\frac","\\dfrac")
+
+	
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 

@@ -1781,11 +1781,11 @@ def mcn__L10_C8_B1_22():
 	a=random.choice([i for i in range(-3,3) if i!=0])
 	mau=["xanh", "đỏ", "tím", "vàng", "trắng", "đen"]
 	e,u,k=random.sample(mau,3)
-	kq=phan_so(m*n*p)
+	kq=m*n+n*p+m*p
 
 	noi_dung = f"Một hộp có ${{{m}}}$ {A} {e}, ${{{n}}}$ {A} {u} và ${{{p}}}$ {A} {k}. Có bao nhiêu cách lấy ra hai {A} khác màu.  "		
 
-	noi_dung_loigiai=f"Số cách lấy hai {A} khác màu là ${{{m} \\cdot {n}+ {n} \\cdot {p } +{m} \\cdot {p} = {phan_so(m*n+n*p+m*p)}}}$ "
+	noi_dung_loigiai=f"Số cách lấy hai {A} khác màu là ${{{m} \\cdot {n}+ {n} \\cdot {p } +{m} \\cdot {p} = {m*n+n*p+m*p}}}$."
 
 	debai_word= f"{noi_dung}\n"
 
@@ -6038,7 +6038,7 @@ def mcn__L10_C8_B2_49():
 				f" ${{d}}$ có 4 cách chọn \n\n"
 				f" b có 9 cách chọn\n\n"
 				f" c có 9 cách chọn \n\n"
-				f" a có 3 cách chọn vì tổng b+d+c nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+				f" a có 3 cách chọn vì tổng b+d+c nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2.\n\n"
 		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 3= {dem}}}$ số ")
 		
 	if chon ==2:
@@ -6048,7 +6048,7 @@ def mcn__L10_C8_B2_49():
 		noi_dung_loigiai=(f" Gọi số đó là $\\overline{{abc}}$ \n\n"
 				f" ${{c}}$ có 4 cách chọn \n\n"
 				f" b có 9 cách chọn\n\n"
-				f" a có 3 cách chọn vì tổng b+c nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+				f" a có 3 cách chọn vì tổng b+c nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2.\n\n "
 		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 3= {dem}}}$ số ")		
 
 	if chon ==3:
@@ -6060,7 +6060,7 @@ def mcn__L10_C8_B2_49():
 				f" d có 9 cách chọn \n\n"
 				f" b có 9 cách chọn\n\n"
 				f" c có 9 cách chọn \n\n"
-				f" a có 3 cách chọn vì tổng b+d+c+e nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+				f" a có 3 cách chọn vì tổng b+d+c+e nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2.\n\n"
 		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 9 \\cdot 3= {dem}}}$ số ")
 	if chon ==4:
 		danh_sach = [ int(f"{x}{y}{z}{t}{a}{b}") for x in nhom1 for y in nhom1 for z in nhom1 for t in nhom1 for a in nhom1 for b in nhom1]
@@ -6072,7 +6072,7 @@ def mcn__L10_C8_B2_49():
 				f" d có 9 cách chọn \n\n"
 				f" b có 9 cách chọn\n\n"
 				f" c có 9 cách chọn \n\n"
-				f" a có 3 cách chọn vì tổng b+d+c+e+f nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+				f" a có 3 cách chọn vì tổng b+d+c+e+f nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2.\n\n"
 		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 9  \\cdot 9 \\cdot 3= {dem}}}$ số ")
 
 	if chon ==5:
@@ -6085,7 +6085,7 @@ def mcn__L10_C8_B2_49():
 				f" d có 9 cách chọn \n\n"
 				f" b có 9 cách chọn\n\n"
 				f" c có 9 cách chọn \n\n"
-				f" a có 3 cách chọn vì tổng b+d+c+e+f nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2 thì c đều có 3 cách chọn "
+				f" a có 3 cách chọn vì tổng b+d+c+e+f nếu chia hết cho 3, hoặc chia 3 dư 1, hoặc chia 3 dư 2.\n\n"
 		f" Theo quy tắc nhân có ${{4\\cdot 9 \\cdot 9 \\cdot 9  \\cdot 9 \\cdot 3= {dem}}}$ số ")
 	kq=tinh_tong_chu_so(dem)
 	noi_dung_loigiai+=f" Tổng các chữ số của số ${{m}}$ là ${{{kq}}}$"
@@ -6365,7 +6365,7 @@ def mcn__L10_C8_B2_52():
 def mcn__L10_C8_B3_01():
 	x=sp.symbols("x")
 	a = random.choice([random.randint(-6, -1), random.randint(1, 6)])	
-	n=random.randint(4,6)
+	n=random.randint(4,5)
 	f=(x+a)**n
 	kq=latex(expand(f))
 	kq2=latex(expand((x-a)**n))
@@ -6411,7 +6411,7 @@ def mcn__L10_C8_B3_01():
 def mcn__L10_C8_B3_02():
 	x=sp.symbols("x")
 	a = random.choice([random.randint(-6, -1), random.randint(1, 6)])	
-	n=random.randint(4,6)
+	n=random.randint(4,5)
 	f=(a-x)**n
 	kq=latex(expand(f))
 	kq2=latex(expand((x+a)**n))
@@ -6458,7 +6458,7 @@ def mcn__L10_C8_B3_03():
 	x=sp.symbols("x")
 	a = random.choice([random.randint(-6, -2), random.randint(2, 6)])
 	b = random.choice([random.randint(-4, -1), random.randint(1, 4)])
-	n=random.randint(4,6)
+	n=random.randint(4,5)
 	f=(a*x+b)**n
 	kq=latex(expand(f))
 	kq2=latex(expand((a*x-b)**n))
@@ -6505,7 +6505,7 @@ def mcn__L10_C8_B3_04():
 	x=sp.symbols("x")
 	a = random.choice([random.randint(-6, -2), random.randint(2, 6)])
 	b = random.choice([random.randint(-4, -1), random.randint(1, 4)])
-	n=random.randint(8,15)
+	n=random.randint(4,5)
 	k=random.randint(1,n)
 	f=(a*x+b)**n
 	kq=binomial(n,k)*a**k*b**(n-k)

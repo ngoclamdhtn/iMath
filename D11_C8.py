@@ -80,7 +80,7 @@ def codelatex_hinh_hop(a,b,c,d,e,f,g,h):
 
 #Bài 1- Hai đường thẳng vuông góc
 #[D11_C8_B1_01]-M1. Cho hình lập phương. Xác định góc giữa hai đường thẳng.
-def zz8zz_L11_C8_B1_01():   	
+def uvxy9_L11_C8_B1_01():   	
 	A1=["A'","A_1","E"]
 	B1=["B'","B_1","F"]
 	C1=["C'","C_1","G"]
@@ -191,7 +191,7 @@ def zz8zz_L11_C8_B1_01():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B1_02]-M2. H.chóp có cạnh bên vuông góc, đáy h.c.n. Tính góc giữa 2 đường thẳng
-def zz8zz_L11_C8_B1_02(): 
+def uvxy9_L11_C8_B1_02(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -311,7 +311,7 @@ def zz8zz_L11_C8_B1_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B1_03]-M2. H.chóp có cạnh bên vuông góc. Tìm cặp đường thẳng vuông góc
-def zz8zz_L11_C8_B1_03(): 
+def uvxy9_L11_C8_B1_03(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -422,7 +422,7 @@ def zz8zz_L11_C8_B1_03():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Tạo câu đúng-sai: góc giữa 2 đường thẳng.
-def zz8zz_L11_C8_B1_04(): 
+def uvxy9_L11_C8_B1_04(): 
 	A1=["A'","A_1","E"]
 	B1=["B'","B_1","F"]
 	C1=["C'","C_1","G"]
@@ -575,7 +575,7 @@ def zz8zz_L11_C8_B1_04():
 #Bài 2: Đường thẳng vuông góc với mặt phẳng 
 
 #[D11_C8_B2_01]-M1. S.ABCD: cạnh v.g đáy h.vuông. Tìm đường vg mặt.
-def zz8zz_L11_C8_B2_01(): 
+def uvxy9_L11_C8_B2_01(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -650,7 +650,7 @@ def zz8zz_L11_C8_B2_01():
 
 
 #[D11_C8_B2_02]-M1. S.ABCD: cạnh v.g đáy h.chữ nhật. Tìm đường vg mặt
-def zz8zz_L11_C8_B2_02(): 
+def uvxy9_L11_C8_B2_02(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -737,7 +737,7 @@ def zz8zz_L11_C8_B2_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_03]-M1. S.ABCD: cạnh v.g đáy h.thoi. Tìm đường vg mặt
-def zz8zz_L11_C8_B2_03(): 
+def uvxy9_L11_C8_B2_03(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -839,7 +839,7 @@ def zz8zz_L11_C8_B2_03():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_04]-M2. S.ABCD: cạnh v.g đáy h.tam giác vuông. Tìm đường vg mặt
-def zz8zz_L11_C8_B2_04(): 	
+def uvxy9_L11_C8_B2_04(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -914,7 +914,7 @@ def zz8zz_L11_C8_B2_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_05]-M2. S.ABCD: cạnh v.g đáy h.tam giác đều. Tìm đường vg mặt
-def zz8zz_L11_C8_B2_05(): 	
+def uvxy9_L11_C8_B2_05(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -992,7 +992,7 @@ def zz8zz_L11_C8_B2_05():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_06]-M3. S.ABC: cạnh v.g đáy h.tam giác đều, có hình chiếu lên cạnh bên. Tìm đường vg mặt
-def zz8zz_L11_C8_B2_06(): 	
+def uvxy9_L11_C8_B2_06(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -1138,7 +1138,7 @@ def zz8zz_L11_C8_B2_06():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_07]-M3. S.ABC: cạnh v.g đáy h.tam giác đều, có hình chiếu lên cạnh bên. Tìm đường vg đường
-def zz8zz_L11_C8_B2_07(): 	
+def uvxy9_L11_C8_B2_07(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -1230,7 +1230,7 @@ def zz8zz_L11_C8_B2_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_08]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Xét tính đúng sai về đường vuông góc đường 
-def zz8zz_L11_C8_B2_08():
+def uvxy9_L11_C8_B2_08():
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -1320,7 +1320,7 @@ def zz8zz_L11_C8_B2_08():
 	return debai,debai_latex,loigiai_word,dap_an
 
 #[D11_C8_B2_09]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai: đường vuông góc mặt.
-def zz8zz_L11_C8_B2_09():
+def uvxy9_L11_C8_B2_09():
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -1416,7 +1416,7 @@ def zz8zz_L11_C8_B2_09():
 	return debai,debai_latex,loigiai_word,dap_an
 
 #[D11_C8_B2_10]-TF-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Tạo câu đúng-sai: đường vuông góc đường 
-def zz8zz_L11_C8_B2_10():
+def uvxy9_L11_C8_B2_10():
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -1506,7 +1506,7 @@ def zz8zz_L11_C8_B2_10():
 	return debai,debai_latex,loigiai_word,dap_an
 
 #[D11_C8_B2_11]-TF-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Tạo câu đúng-sai: đường vuông góc mặt.
-def zz8zz_L11_C8_B2_11():
+def uvxy9_L11_C8_B2_11():
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -1609,7 +1609,7 @@ def zz8zz_L11_C8_B2_11():
 	return debai,debai_latex,loigiai_word,dap_an
 
 #[D11_C8_B2_12]-TF-M2. S.ABCD: cạnh v.g đáy h.vuông. Tạo câu đúng-sai: lập luận đường vuông góc mặt.
-def zz8zz_L11_C8_B2_12():
+def uvxy9_L11_C8_B2_12():
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -1714,7 +1714,7 @@ def zz8zz_L11_C8_B2_12():
 	return debai,debai_latex,loigiai_word,dap_an
 
 #[D11_C8_B2_13]-M2. S.ABCD: cạnh v.g đáy h.vuông. Tìm hình chiếu của điểm trên mặt phẳng.
-def zz8zz_L11_C8_B2_13(): 
+def uvxy9_L11_C8_B2_13(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -1870,7 +1870,7 @@ def zz8zz_L11_C8_B2_13():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_14]-M2. S.ABCD: cạnh v.g đáy h.chữ nhật. Tìm hình chiếu của điểm trên mặt phẳng.
-def zz8zz_L11_C8_B2_14(): 
+def uvxy9_L11_C8_B2_14(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -2006,7 +2006,7 @@ def zz8zz_L11_C8_B2_14():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_15]-M2. S.ABC: đáy tam giác vuông. Tìm hình chiếu của điểm lên mặt
-def zz8zz_L11_C8_B2_15(): 	
+def uvxy9_L11_C8_B2_15(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -2101,7 +2101,7 @@ def zz8zz_L11_C8_B2_15():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_16]-M2. S.ABC: đáy tam giác đều. Tìm hình chiếu của điểm lên mặt
-def zz8zz_L11_C8_B2_16(): 	
+def uvxy9_L11_C8_B2_16(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -2176,7 +2176,7 @@ def zz8zz_L11_C8_B2_16():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_17]-M3. S.ABCD: cạnh v.g đáy h.vuông. Tìm hình chiếu của điểm trên mặt phẳng.
-def zz8zz_L11_C8_B2_17(): 
+def uvxy9_L11_C8_B2_17(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -2287,7 +2287,7 @@ def zz8zz_L11_C8_B2_17():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_18]-M3. S.ABCD: cạnh v.g đáy h.chữ nhật. Tìm hình chiếu của điểm trên mặt phẳng.
-def zz8zz_L11_C8_B2_18(): 
+def uvxy9_L11_C8_B2_18(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -2398,7 +2398,7 @@ def zz8zz_L11_C8_B2_18():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_19]-M1. S.ABCD: ABCD h.vuông. Tìm hình chiếu của đường thẳng trên mặt đáy.
-def zz8zz_L11_C8_B2_19(): 
+def uvxy9_L11_C8_B2_19(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -2485,7 +2485,7 @@ def zz8zz_L11_C8_B2_19():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_20]-M2. S.ABCD: ABCD h.vuông. Tìm hình chiếu của đường thẳng trên mặt đứng.
-def zz8zz_L11_C8_B2_20(): 
+def uvxy9_L11_C8_B2_20(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -2588,7 +2588,7 @@ def zz8zz_L11_C8_B2_20():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B2_21]-TF-M3. S.ABCD: ABCD h.vuông. Xét Đ-S: Hình chiếu của đường lên mặt, đường vuông góc đường, đường vuông góc mặt, góc giữa 2 đường
-def zz8zz_L11_C8_B2_21(): 
+def uvxy9_L11_C8_B2_21(): 
 	a=sp.symbols("a")  	
 	A=["A","B","C","D", "C", "A"]
 	B=["B","C","D","A", "D", "B"]
@@ -2598,10 +2598,10 @@ def zz8zz_L11_C8_B2_21():
 	A, B, C, D = A[i], B[i], C[i], D[i]	
 
 	ten=["M", "N", "K", "P", "Q", "G", "H", "I"]
-	M,N,P,H=random.sample(ten,4)
+	M,N,P,H,I,K=random.sample(ten,6)
 	code_hinh = codelatex_hinhchop_hbh_canhvg("S",A, B, C, D)
-	#code = my_module.moi_truong_anh_latex(code_hinh)
-	#file_name = my_module.pdftoimage_timename(code)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
 
 	AB=random.randint(1,7)
 	SA=random.randint(1,7)
@@ -2609,7 +2609,7 @@ def zz8zz_L11_C8_B2_21():
 
 	noi_dung = (f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có $S{A}\\bot ({A}{B}{C}{D})$, đáy là hình vuông tâm ${{O}}$, ${A}{B}={latex(a*AB)},S{A}={latex(a*SA)}$."
 	f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):")		
-	debai_word= f"{noi_dung}\n"
+	
 
 	chon=random.randint(1,4)
 	if chon==1:
@@ -2733,8 +2733,8 @@ def zz8zz_L11_C8_B2_21():
 	goc=f"{round_half_up(math.degrees(t),1):.1f}".replace(".",",")
 	goc_false=f"{round_half_up(math.degrees(t)+random.randint(1,3),1):.1f}".replace(".",",")
 
-	chon=random.randint(1,3)
-	chon=3
+	chon=random.randint(1,4)
+	
 	if chon==1:
 		kq4_T=(f"* Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{B}}}$."
 			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc}^\\circ$")
@@ -2751,10 +2751,10 @@ def zz8zz_L11_C8_B2_21():
 	
 	if chon==2:
 		kq4_T=(f"* Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{D}}}$."
-			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc}^\\circ$")
+			f" Góc giữa hai đường thẳng ${{{A}{C}}}$ và ${{{M}{C}}}$ bằng ${goc}^\\circ$")
 
 		kq4_F=(f"Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{D}}}$."
-			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc_false}^\\circ$") 
+			f" Góc giữa hai đường thẳng ${{{A}{C}}}$ và ${{{M}{C}}}$ bằng ${goc_false}^\\circ$") 
 		
 		HDG=(f"${A}{M}\\bot S{D}, {A}{M}\\bot {C}{D}$ (do ${C}{D} \\bot (S{A}{D})$) suy ra ${A}{M}\\bot {M}{C}$.\n\n"
 			f"${A}{C}={latex(AC*a)}$.\n\n"
@@ -2772,10 +2772,10 @@ def zz8zz_L11_C8_B2_21():
 
 	if chon==3:
 		kq4_T=(f"* Gọi ${{{M},{N}}}$ lần lượt là trung điểm các cạnh ${{{A}{B},{A}{D}}}$."
-			f" Góc giữa hai đường thẳng ${{{M}{N}}}$ và $S{D}$ bằng ${goc}^\\circ$")
+			f" Góc giữa hai đường thẳng ${{{M}{N}}}$ và ${{S{D}}}$ bằng ${goc}^\\circ$")
 
 		kq4_F=(f"Gọi ${{{M},{N}}}$ lần lượt là trung điểm các cạnh ${{{A}{B},{A}{D}}}$."
-			f" Góc giữa hai đường thẳng ${{{M}{N}}}$ và $S{D}$ bằng ${goc_false}^\\circ$") 
+			f" Góc giữa hai đường thẳng ${{{M}{N}}}$ và ${{S{D}}}$ bằng ${goc_false}^\\circ$") 
 		
 		HDG=(f"Gọi ${{{P}}}$ là trung điểm của cạnh ${{S{A}}}$. Gọi ${{{H}}}$ là trung điểm của cạnh ${{{M}{N}}}$.\n\n"
 			f" Ta có: $({M}{N},S{D})=({M}{N},{N}{P})$.\n\n"
@@ -2785,6 +2785,21 @@ def zz8zz_L11_C8_B2_21():
 			f"$\\Rightarrow \\widehat{{{M}{N}{P}}}={goc}^\\circ$."
 			)
 
+	if chon==4:
+		kq4_T=(f"* Gọi ${{{I},{K}}}$ lần lượt là trung điểm các cạnh ${{{B}{C},{C}{D}}}$."
+			f" Góc giữa hai đường thẳng ${{{I}{K}}}$ và $S{D}$ bằng ${goc}^\\circ$")
+
+		kq4_F=(f"Gọi ${{{I},{K}}}$ lần lượt là trung điểm các cạnh ${{{B}{C},{C}{D}}}$."
+			f" Góc giữa hai đường thẳng ${{{I}{K}}}$ và $S{D}$ bằng ${goc_false}^\\circ$") 
+		
+		HDG=(f"Gọi ${{{M},{N}}}$ lần lượt là trung điểm các cạnh ${{{A}{B},{A}{D}}}$."
+			f"Gọi ${{{P}}}$ là trung điểm của cạnh ${{S{A}}}$. Gọi ${{{H}}}$ là trung điểm của cạnh ${{{M}{N}}}$.\n\n"
+			f" Ta có: $({I}{K},S{D})=({M}{N},{N}{P})$.\n\n"
+			f"${N}{H}=\\dfrac{{{M}{N}}}{{2}}=\\dfrac{{{B}{D}}}{{4}}={latex(NH*a)}$.\n\n"
+			f"${N}{P}=\\sqrt{{{A}{N}^2+{A}{P}^2}}=\\sqrt{{{latex(AB**2*a**2/4)}+{latex(SA**2*a**2/4)}}}={latex(nsimplify(NP)*a)}$.\n\n"
+			f"$\\cos \\widehat{{{M}{N}{P}}}=\\cos \\widehat{{{H}{N}{P}}}=\\dfrac{{{N}{H}}}{{{N}{P}}}={latex(nsimplify(NH/NP))}$.\n\n"
+			f"$\\Rightarrow \\widehat{{{M}{N}{P}}}={goc}^\\circ$."
+			)
 	
 	
 
@@ -2799,7 +2814,7 @@ def zz8zz_L11_C8_B2_21():
 	#random.shuffle(list_PA)
 	list_TF=my_module.tra_ve_TF(list_PA)
 
-	debai= f"{noi_dung}\n\n"\
+	debai= f"{noi_dung}\n\n{file_name}\n\n"\
 	f"a) {list_PA[0]}.\n"\
 	f"b) {list_PA[1]}.\n"\
 	f"c) {list_PA[2]}.\n"\
@@ -2844,9 +2859,152 @@ def zz8zz_L11_C8_B2_21():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+#[D11_C8_B2_22]-M2. Cho hình lập phương. Tìm cặp đường thẳng vuông góc (cạnh bên vuông góc cạnh đáy).
+def uvxy9_L11_C8_B2_22():
+	A1=["A'","A_1","E"]
+	B1=["B'","B_1","F"]
+	C1=["C'","C_1","G"]
+	D1=["D'","D_1","H"]
+	i=random.randint(0,2)
+	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+	code_hinh = my_module.code_hinh_lapphuong("A","B","C","D",A1,B1,C1,D1)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+	
+	
+	noi_dung=(
+	f"Cho hình lập phương ${{ABCD.{A1}{B1}{C1}{D1}}}$."
+	f" Khẳng định nào sau đây đúng?")	
+
+	kq=random.choice([
+	f"$A{A1}\\bot AB$", f"$A{A1}\\bot BC$", f"$A{A1}\\bot CD$", f"$A{A1}\\bot AD$", f"$A{A1}\\bot AC$", f"$A{A1}\\bot BD$",
+	f"$B{B1}\\bot AB$",f"$B{B1}\\bot BC$", f"$B{B1}\\bot CD$", f"$B{B1}\\bot AD$",f"$B{B1}\\bot BD$", f"$B{B1}\\bot AC$",
+	f"$C{C1}\\bot AB$",f"$C{C1}\\bot BC$", f"$C{C1}\\bot CD$", f"$C{C1}\\bot AD$",f"$C{C1}\\bot BD$", f"$C{C1}\\bot AC$",
+	f"$D{D1}\\bot AB$",f"$D{D1}\\bot BC$", f"$D{D1}\\bot CD$", f"$D{D1}\\bot AD$",f"$D{D1}\\bot BD$", f"$D{D1}\\bot AC$",
+	])
+	kq_false=[f"$A{A1}\\bot C{C1}$", f"$A{A1}\\bot {B1}C$", f"$A{A1}\\bot C{C1}$",
+	f"$AC\\bot A{C1}$", f"$BD\\bot {A1}{D1}$", 
+	f"$D{B1}\\bot A{D1}$", f"$B{D1}\\bot BD$",  f"${A1}{C1}\\bot CD$",
+	f"${B1}C\\bot {A1}D$",f"${B1}{C1}\\bot AC$", f"${B1}{C1}\\bot AD$",
+	f"${A1}C\\bot {B1}D$",f"$B{D1}\\bot {B1}D$", 
+	f"${D1}C\\bot {B1}{D1}$",
+	f"$D{A1}\\bot {A1}B$",
+	f"$B{C1}\\bot {C1}D$",]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(f"{kq} là khẳng định đúng.")
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B2_23]-M2. Cho hình lập phương. Tìm cặp đường thẳng vuông góc.
+def uvxy9_L11_C8_B2_23():
+	A1=["A'","A_1","E"]
+	B1=["B'","B_1","F"]
+	C1=["C'","C_1","G"]
+	D1=["D'","D_1","H"]
+	i=random.randint(0,2)
+	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+	code_hinh = my_module.code_hinh_lapphuong("A","B","C","D",A1,B1,C1,D1)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+
+	
+	noi_dung=(
+	f"Cho hình lập phương ${{ABCD.{A1}{B1}{C1}{D1}}}$."
+	f" Khẳng định nào sau đây đúng?")	
+
+	kq=random.choice([
+	f"${B1}{D1}\\bot AC$",f"$BD\\bot {A1}{C1}$",
+	f"$B{C1}\\bot {A1}{B1}$",f"$B{C1}\\bot {C1}{D1}$",
+	f"${B1}C\\bot A{D1}$", f"${B1}C\\bot AB$", f"${B1}C\\bot {C1}{D1}$",
+	f"$C{D1}\\bot A{B1}$", f"$C{D1}\\bot AD$", f"$C{D1}\\bot BC$",
+	f"$A{D1}\\bot {C1}{D1}$", f"$A{D1}\\bot CD$", f"$A{D1}\\bot {A1}{B1}$",
+	f"$A{D1}\\bot AB$", 
+
+	])
+	kq_false=[f"$A{A1}\\bot C{C1}$", f"$A{A1}\\bot {B1}C$", f"$A{A1}\\bot C{C1}$",
+	f"$AC\\bot A{C1}$", f"$BD\\bot {A1}{D1}$", 
+	f"$D{B1}\\bot A{D1}$", f"$B{D1}\\bot BD$",  f"${A1}{C1}\\bot CD$",
+	f"${B1}C\\bot {A1}D$", f"${B1}C\\bot {B1}{D1}$",
+	f"${B1}{C1}\\bot AC$", f"${B1}{C1}\\bot AD$",
+	f"${A1}C\\bot {B1}D$",f"$B{D1}\\bot {B1}D$", 
+	f"${D1}C\\bot {B1}{D1}$",
+	f"$D{A1}\\bot {A1}B$",
+	f"$B{C1}\\bot {C1}D$",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(f"{kq} là khẳng định đúng.")
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 #BÀI 3 - HAI MẶT PHẲNG VUÔNG GÓC
 #[D11_C8_B3_01]-M2. S.ABCD: ABCD h.vuông. Xác định 2 mặt phẳng vuông góc.
-def zz8zz_L11_C8_B3_01(): 
+def uvxy9_L11_C8_B3_01(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -2927,7 +3085,7 @@ def zz8zz_L11_C8_B3_01():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_02]-M3. S.ABCD: ABCD h.vuông. Xác định 2 mặt phẳng vuông góc.
-def zz8zz_L11_C8_B3_02(): 
+def uvxy9_L11_C8_B3_02(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -3043,7 +3201,7 @@ def zz8zz_L11_C8_B3_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_03]-M2. S.ABCD: ABCD h.chữ nhật. Xác định 2 mặt phẳng vuông góc.
-def zz8zz_L11_C8_B3_03(): 
+def uvxy9_L11_C8_B3_03(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -3124,7 +3282,7 @@ def zz8zz_L11_C8_B3_03():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_04]-M3. S.ABCD: ABCD h.chữ nhật. Xác định 2 mặt phẳng vuông góc.
-def zz8zz_L11_C8_B3_04(): 
+def uvxy9_L11_C8_B3_04(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -3230,7 +3388,7 @@ def zz8zz_L11_C8_B3_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_05]-M2. S.ABC: ABC vuông tại A. Tìm 2 mpvg.
-def zz8zz_L11_C8_B3_05(): 	
+def uvxy9_L11_C8_B3_05(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -3330,7 +3488,7 @@ def zz8zz_L11_C8_B3_05():
 
 #Góc giữa 2 mặt phẳng
 #[D11_C8_B3_06]-M2. S.ABCD: ABCD h.vuông. Tìm vị trí góc (mặt nghiêng, mặt đáy).
-def zz8zz_L11_C8_B3_06(): 
+def uvxy9_L11_C8_B3_06(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -3421,7 +3579,7 @@ def zz8zz_L11_C8_B3_06():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_07]-M2. S.ABCD: ABCD h.chữ nhật. Tìm vị trí góc (mặt nghiêng, mặt đáy).
-def zz8zz_L11_C8_B3_07(): 
+def uvxy9_L11_C8_B3_07(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -3509,7 +3667,7 @@ def zz8zz_L11_C8_B3_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_08]-M2. S.ABC: ABC đều. Tính góc(mặt nghiêng, mặt đáy).
-def zz8zz_L11_C8_B3_08():
+def uvxy9_L11_C8_B3_08():
 	a=sp.symbols("a")  	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
@@ -3580,7 +3738,7 @@ def zz8zz_L11_C8_B3_08():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B3_09]-M2. S.ABC: ABC vuông. Tính góc(mặt nghiêng, mặt đáy).
-def zz8zz_L11_C8_B3_09():
+def uvxy9_L11_C8_B3_09():
 	a=sp.symbols("a")  	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
@@ -3658,7 +3816,7 @@ def zz8zz_L11_C8_B3_09():
 
 #Bài 4- Khoảng cách trong không gian
 #[D11_C8_B6_01]. Cho hình chóp có diện tích đáy và chiều cao. Tính thể tích.
-def zz8zz_L11_C8_B6_01():
+def uvxy9_L11_C8_B6_01():
 	S_day = random.randint(2,15)
 	h = random.randint(2,10)
 	kq=1/3*S_day*h
@@ -3714,7 +3872,7 @@ def zz8zz_L11_C8_B6_01():
 	
 
 #[D11_C8_B6_02]. Cho hình chóp có đáy là tam giác đều và chiều cao. Tính thể tích.
-def zz8zz_L11_C8_B6_02():
+def uvxy9_L11_C8_B6_02():
 	a = random.randint(1,10)
 	h = random.randint(2,10)
 	S_day=a**2/4
@@ -3777,7 +3935,7 @@ def zz8zz_L11_C8_B6_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_03]. Cho hình chóp có đáy là tam giác vuông và chiều cao. Tính thể tích.
-def zz8zz_L11_C8_B6_03():
+def uvxy9_L11_C8_B6_03():
 	a = random.randint(1,10)
 	b = random.randint(1,10)
 	h = random.randint(2,10)
@@ -3836,7 +3994,7 @@ def zz8zz_L11_C8_B6_03():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_04]-M2 Cho hình chóp có đáy là tam giác đều và góc giữa cạnh bên và đáy. Tính thể tích.
-def zz8zz_L11_C8_B6_04():
+def uvxy9_L11_C8_B6_04():
 	a = random.randint(1,10)
 	goc = random.choice([30,45,60])
 	h=a*my_module.hien_tan(goc)
@@ -3908,7 +4066,7 @@ def zz8zz_L11_C8_B6_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_05]-M1. Cho hình lăng trụ có diện tích đáy và chiều cao. Tính thể tích
-def zz8zz_L11_C8_B6_05():
+def uvxy9_L11_C8_B6_05():
 	S_day = random.randint(2,15)
 	h = random.randint(2,10)
 	kq=S_day*h
@@ -3964,7 +4122,7 @@ def zz8zz_L11_C8_B6_05():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_06]. Cho hình lăng trụ có đáy là tam giác đều và chiều cao. Tính thể tích.
-def zz8zz_L11_C8_B6_06():
+def uvxy9_L11_C8_B6_06():
 	a = random.randint(1,10)
 	h = random.randint(2,10)
 	S_day=a**2/4
@@ -4027,7 +4185,7 @@ def zz8zz_L11_C8_B6_06():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_07]-M1. Cho hình lăng trụ có đáy là tam giác vuông và chiều cao. Tính thể tích.
-def zz8zz_L11_C8_B6_07():
+def uvxy9_L11_C8_B6_07():
 	a = random.randint(1,10)
 	b = random.randint(1,10)
 	h = random.randint(2,10)
@@ -4086,7 +4244,7 @@ def zz8zz_L11_C8_B6_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_08]-M1. Cho hình lăng trụ có đáy là h.vuông,h.c.n và chiều cao. Tính thể tích.
-def zz8zz_L11_C8_B6_08():
+def uvxy9_L11_C8_B6_08():
 	a = random.randint(2,10)
 	b = random.randint(1,10)
 	h = random.randint(2,10)
@@ -4158,7 +4316,7 @@ def zz8zz_L11_C8_B6_08():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_09]-M3. S.ABCD: ABCD h.cn có góc giữa 2 đường thẳng. Tính V.
-def zz8zz_L11_C8_B6_09(): 
+def uvxy9_L11_C8_B6_09(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -4313,7 +4471,7 @@ def zz8zz_L11_C8_B6_09():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_01]-M2. S.ABCD: ABCD h.chữ nhật. Tính k.c từ điểm đến mặt đứng.
-def zz8zz_L11_C8_B4_01(): 
+def uvxy9_L11_C8_B4_01(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -4444,7 +4602,7 @@ def zz8zz_L11_C8_B4_01():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_02]-M3. S.ABCD: ABCD h.chữ nhật. Tính k.c từ điểm đến mặt đứng.
-def zz8zz_L11_C8_B4_02(): 
+def uvxy9_L11_C8_B4_02(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -4577,7 +4735,7 @@ def zz8zz_L11_C8_B4_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_03]-M3. S.ABCD: ABCD h.chữ nhật. Tính k.c từ chân đường cao đến mặt nghiêng.
-def zz8zz_L11_C8_B4_03(): 
+def uvxy9_L11_C8_B4_03(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -4681,7 +4839,7 @@ def zz8zz_L11_C8_B4_03():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_04]-M2. Cho hình lăng trụ đứng tam giác. Tính khoảng cách từ điểm đến mặt đứng
-def zz8zz_L11_C8_B4_04():
+def uvxy9_L11_C8_B4_04():
 	A=["A","B","C"]
 	B=["B","C","A"]
 	C=["C","A","B"]
@@ -4856,7 +5014,7 @@ def zz8zz_L11_C8_B4_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_09]-M3. Cho hình lăng trụ đứng tam giác. Tính khoảng cách từ điểm đến mặt nghiêng
-def zz8zz_L11_C8_B4_09():
+def uvxy9_L11_C8_B4_09():
 	A=["A","B","C"]
 	B=["B","C","A"]
 	C=["C","A","B"]
@@ -5043,7 +5201,7 @@ def zz8zz_L11_C8_B4_09():
 
 #KHOẢNG CÁCH GIỮA 2 ĐƯỜNG CHÉO NHAU
 #[D11_C8_B4_05]-M2. Cho hình lập phương. Tính khoảng cách giữa 2 đường chéo nhau (kẻ đường vuông góc chung)
-def zz8zz_L11_C8_B4_05():   	
+def uvxy9_L11_C8_B4_05():   	
 	A1=["A'","A_1","E"]
 	B1=["B'","B_1","F"]
 	C1=["C'","C_1","G"]
@@ -5201,7 +5359,7 @@ def zz8zz_L11_C8_B4_05():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_06]-M3. Cho hình lập phương. Tính khoảng cách giữa 2 đường chéo nhau (dựng mặt song song đường)
-def zz8zz_L11_C8_B4_06():   	
+def uvxy9_L11_C8_B4_06():   	
 	A1=["A'","A_1","E"]
 	B1=["B'","B_1","F"]
 	C1=["C'","C_1","G"]
@@ -5299,7 +5457,7 @@ def zz8zz_L11_C8_B4_06():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_07]-M2. S.ABCD: ABCD h.chữ nhật. Tính k.c 2 đường chéo nhau (đoạn vuông góc chung).
-def zz8zz_L11_C8_B4_07(): 
+def uvxy9_L11_C8_B4_07(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -5387,7 +5545,7 @@ def zz8zz_L11_C8_B4_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B4_08]-M2. S.ABCD: ABCD h.chữ nhật. Tính k.c 2 đường chéo nhau (tạo mặt song song đường).
-def zz8zz_L11_C8_B4_08(): 
+def uvxy9_L11_C8_B4_08(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -5507,7 +5665,7 @@ def zz8zz_L11_C8_B4_08():
 #BÀI 5 - GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG
 
 #[D11_C8_B5_01]-M1. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
-def zz8zz_L11_C8_B5_01(): 
+def uvxy9_L11_C8_B5_01(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -5595,7 +5753,7 @@ def zz8zz_L11_C8_B5_01():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B5_02]-M2. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
-def zz8zz_L11_C8_B5_02(): 
+def uvxy9_L11_C8_B5_02(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -5712,7 +5870,7 @@ def zz8zz_L11_C8_B5_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B5_03]-M2. S.ABCD: ABCD h.chữ nhật. Xác định góc giữa đường thẳng và mặt phẳng.
-def zz8zz_L11_C8_B5_03(): 
+def uvxy9_L11_C8_B5_03(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -5830,7 +5988,7 @@ def zz8zz_L11_C8_B5_03():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B5_04]-M1. S.ABC: ABC tam giác vuông. Xác định góc giữa đường thẳng và mặt phẳng.
-def zz8zz_L11_C8_B5_04(): 	
+def uvxy9_L11_C8_B5_04(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -5952,7 +6110,7 @@ def zz8zz_L11_C8_B5_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B5_05]-M2. S.ABC: ABC tam giác vuông. Xác định góc giữa đường thẳng và mặt bên.
-def zz8zz_L11_C8_B5_05(): 	
+def uvxy9_L11_C8_B5_05(): 	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
 	C1=["C","A","B"]
@@ -6080,7 +6238,7 @@ def zz8zz_L11_C8_B5_05():
 
 
 #[D11_C8_B5_06]-M2. S.ABCD, đáy h.c.n. Tính số đo góc phẳng nhị diện tạo bởi mặt nghiêng và đáy.
-def zz8zz_L11_C8_B5_06(): 
+def uvxy9_L11_C8_B5_06(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -6200,7 +6358,7 @@ def zz8zz_L11_C8_B5_06():
 
 
 #[D11_C8_B5_07]-M3. S.ABCD, đáy h.c.n. Tính số đo góc phẳng nhị diện tạo bởi mặt nghiêng và đáy.
-def zz8zz_L11_C8_B5_07(): 
+def uvxy9_L11_C8_B5_07(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -6274,7 +6432,7 @@ def zz8zz_L11_C8_B5_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B5_08]-M2. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
-def zz8zz_L11_C8_B5_08(): 
+def uvxy9_L11_C8_B5_08(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -6401,7 +6559,7 @@ def zz8zz_L11_C8_B5_08():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B5_09]-M3. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
-def zz8zz_L11_C8_B5_09(): 
+def uvxy9_L11_C8_B5_09(): 
 	a=sp.symbols("a")  	
 	A1=["A","B","C","D"]
 	B1=["B","C","D","A"]
@@ -6414,36 +6572,38 @@ def zz8zz_L11_C8_B5_09():
 
 	i=random.randint(0,3)
 	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
-	chon=random.randint(1,3)
-	chon=1
 	
-	if chon==1:
-		AB= random.choice([sqrt(i) for i in range(1,100)])
-		SA= random.choice([sqrt(i) for i in range(1,100)])
-		OB=AB*sqrt(3)/2
-		SB=SA**2+AB**2
-		t=OB/SB
-		goc=round(asin(t).evalf() * 180 / pi,2)
-		if "." in str(t):
-			t=latex(my_module.hien_phan_so(t))
-		else:
-			t=latex(t)
-		kq=return_number_vn(goc)
-		kq2=return_number_vn(goc+(random.randint(10,90))/10)
-		kq3=return_number_vn(goc+(random.randint(90,130))/10)
-		kq4=return_number_vn(goc+(random.randint(140,200))/10)
+	
+	AB= random.choice([sqrt(i) for i in range(1,64)])
+	SA= random.choice([sqrt(i) for i in range(1,64)])
+	OB=AB*sqrt(2)/2
+	SB=SA**2+AB**2
+	t=OB/SB
+	goc_rad=asin(t)
+	goc_deg=math.degrees(goc_rad)
 
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông tâm ${{O}}$, cạnh bằng ${latex(AB)}a$ , $S{A1}\\bot (ABCD), S{A1}={latex(SA)}a$."\
-		f" Số đo góc giữa đường thẳng $S{{{B1}}}$ và mặt phẳng $(S{A1}{C1})$ là"
+	#goc=round(asin(t).evalf() * 180 / pi,2)
+	goc=round(goc_deg,2)
+	if "." in str(t):
+		t=latex(my_module.hien_phan_so(t))
+	else:
+		t=latex(t)
+	kq=return_number_vn(goc)
+	kq2=return_number_vn(goc+(random.randint(10,90))/10)
+	kq3=return_number_vn(goc+(random.randint(90,130))/10)
+	kq4=return_number_vn(goc+(random.randint(140,200))/10)
 
-		noi_dung_loigiai=f"Điểm ${{S}}$ có hình chiếu trên ${{(S{A1}{C1})}}$ là điểm ${{S}}$."\
-		f" Điểm ${{{B1}}}$ có hình chiếu trên ${{(S{A1}{C1})}}$ là điểm ${{O}}$.\n\n"\
-		f" Do đó $S{{{B1}}}$ có hình chiếu trên ${{(S{A1}{C1})}}$ là ${{SO}}$.\n\n"\
-		f"Suy ra $\\left(S{B1},(S{A1}{C1})\\right)= \\left(S{B1}, SO\\right)=\\widehat{{{B1}SO}}$.\n\n"\
-		f"$O{B1}=\\dfrac{{{B1}{D1}}}{{2}}=\\dfrac{{{A1}{B1}\\sqrt 2}}{{2}}={latex(OB)}$.\n\n"\
-		f"$S{B1}=\\sqrt{{S{A1}^2+{A1}{B1}^2}}={latex(SB)}$.\n\n"\
-		f"$\\sin \\widehat{{{B1}SO}}=\\dfrac{{O{B1}}} {{S{B1}}}= \\dfrac{{{latex(OB*a)}}} {{{latex(SB*a)}}}={t}$.\n\n"\
-			f"Suy ra $\\widehat{{{B1}SO}} = {kq}^\\circ$."
+	noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông tâm ${{O}}$, cạnh bằng ${latex(AB)}a$ , $S{A1}\\bot (ABCD), S{A1}={latex(SA)}a$."\
+	f" Số đo góc giữa đường thẳng $S{{{B1}}}$ và mặt phẳng $(S{A1}{C1})$ là"
+
+	noi_dung_loigiai=f"Điểm ${{S}}$ có hình chiếu trên ${{(S{A1}{C1})}}$ là điểm ${{S}}$."\
+	f" Điểm ${{{B1}}}$ có hình chiếu trên ${{(S{A1}{C1})}}$ là điểm ${{O}}$.\n\n"\
+	f" Do đó $S{{{B1}}}$ có hình chiếu trên ${{(S{A1}{C1})}}$ là ${{SO}}$.\n\n"\
+	f"Suy ra $\\left(S{B1},(S{A1}{C1})\\right)= \\left(S{B1}, SO\\right)=\\widehat{{{B1}SO}}$.\n\n"\
+	f"$O{B1}=\\dfrac{{{B1}{D1}}}{{2}}=\\dfrac{{{A1}{B1}\\sqrt 2}}{{2}}={latex(OB)}$.\n\n"\
+	f"$S{B1}=\\sqrt{{S{A1}^2+{A1}{B1}^2}}={latex(SB)}$.\n\n"\
+	f"$\\sin \\widehat{{{B1}SO}}=\\dfrac{{O{B1}}} {{S{B1}}}= \\dfrac{{{latex(OB*a)}}} {{{latex(SB*a)}}}={t}$.\n\n"\
+		f"Suy ra $\\widehat{{{B1}SO}} = {kq}^\\circ$."
 	
 	#Tạo các phương án
 	pa_A= f"*${kq}^\\circ$"
@@ -6487,7 +6647,7 @@ def zz8zz_L11_C8_B5_09():
 ###################################################
 
 #[D11_C8_B6_10]-M1. Nhận dạng hình lăng trụ
-def zz8zz_L11_C8_B6_10(): 
+def uvxy9_L11_C8_B6_10(): 
 	A1=["A'","A_1","E"]
 	B1=["B'","B_1","F"]
 	C1=["C'","C_1","G"]
@@ -6543,7 +6703,7 @@ def zz8zz_L11_C8_B6_10():
 
 
 #[D11_C8_B6_11]-M1. Cho hình lập phương có độ dài cạnh. Tính thể tích.
-def zz8zz_L11_C8_B6_11():
+def uvxy9_L11_C8_B6_11():
 	a=random.choice([sqrt(i) for i in range(1,100)])
 	
 	kq=a**3
@@ -6599,7 +6759,7 @@ def zz8zz_L11_C8_B6_11():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B6_12]-M1. Cho hình hộp chữ nhật có độ dài cạnh. Tính thể tích.
-def zz8zz_L11_C8_B6_12():
+def uvxy9_L11_C8_B6_12():
 	a=random.choice([i for i in range(1,10)])
 	b=random.choice([i for i in range(1,10)])
 	c=random.choice([i for i in range(1,10)])
@@ -6661,7 +6821,7 @@ def zz8zz_L11_C8_B6_12():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C8_B7_01]-TF-M2. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Đường vuông góc mặt
-def zz8zz_L11_C8_B7_01():
+def uvxy9_L11_C8_B7_01():
 	a=sp.symbols("a")  	
 	A1=["A","B","C"]
 	B1=["B","C","A"]
@@ -6808,7 +6968,7 @@ def zz8zz_L11_C8_B7_01():
 	return debai,debai_latex,loigiai_word,dap_an
 
 #[D11_C8_B7_02]-TF-M3. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Khoảng cách
-def zz8zz_L11_C8_B7_02():
+def uvxy9_L11_C8_B7_02():
 	a=sp.symbols("a")  	
 	A1=["A","B","C"]
 	B1=["B","C","A"]

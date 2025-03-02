@@ -881,6 +881,94 @@ def uz9zu_L11_C6_B1_13():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C6_B1_14]-M2. Tìm khẳng định đúng về tính chất lũy thừa
+def uz9zu_L11_C6_B1_14():
+    chon=random.randint(1,5)
+    
+    if chon==1:
+        a, b=sp.symbols("a b")    
+    if chon==2:
+        a, b=sp.symbols("x y")
+    if chon==3:
+        a, b=sp.symbols("c d")
+    if chon==4:
+        a, b=sp.symbols("a c")
+    if chon==5:
+        a, b=sp.symbols("b d")
+
+    chon=random.randint(1,5)
+    if chon==1:
+        m,n=sp.symbols("m n")    
+    if chon==2:
+        m,n=sp.symbols("\\alpha \\beta")
+    if chon==3:
+        m,n=sp.symbols("\\alpha \\gamma")
+    if chon==4:
+        m,n=sp.symbols("\\beta \\gamma")
+    if chon==5:
+        m,n=sp.symbols("n p") 
+  
+    noi_dung=(
+    f"Cho các số thực ${{{a},{b},{m},{n}}}$ thỏa mãn ${a}>0,{b}>0$. Tìm khẳng định đúng trong các khẳng định sau"
+    )
+
+
+    kq=random.choice([
+        f"${latex(a**m)}.{latex(a**m)}={latex(a**(m+n))}$",
+        f"${latex(a**m)}:{latex(a**m)}={latex(a**(m-n))}$",
+        f"$({latex(a**m)})^{{{n}}}={latex(a**(m*n))}$",
+        f"$({latex(a**m)})^{{{n}}}={latex(a**(m*n))}$", 
+        f"${latex((a/b)**m)}=\\dfrac{{{latex(a**m)}}}{{{latex(b**m)}}}$",
+        f"${latex((a*b)**m)}={latex(a**m)}.{latex(b**m)}$",       
+        f"$\\left(\\dfrac{{{a}}}{{{b}}}\\right)^{{-1}}={latex(b/a)}$",
+        f"$\\left(\\dfrac{{{a}}}{{{b}}}\\right)^{{{-m}}}={latex((b/a)**m)}$",
+        f"$\\dfrac{{1}}{{{latex(a**n)}}}={latex(a**(-n))}$"
+         ])
+    kq_false=[
+    f"${latex((a+b)**m)}={latex(a**m)}+{latex(b**m)}$",
+    f"${latex((a-b)**m)}={latex(a**m)}-{latex(b**m)}$",
+    f"${latex((a*b)**m)}={latex(a**(b**m))}$",
+    f"${latex(a**(m+n))}={latex(a**m)}+{latex(a**n)}$",
+    f"${latex(a**(m-n))}={latex(a**m)}-{latex(a**n)}$",
+    f"$\\dfrac{{1}}{{{latex(a**m)}}}=\\dfrac{{1}}{{{latex(a*m)}}}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"{kq} là khẳng định đúng."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 ################ Bài 2: PHÉP TÍNH LOGARIT #########################
 #[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)
 def uz9zu_L11_C6_B2_01():   
@@ -1632,42 +1720,100 @@ def uz9zu_L11_C6_B2_15():
     return debai_word,loigiai_word,latex_tuluan,dap_an
     
 
-#[D11_C6_B2_0888]-TF-M2. Tạo câu đúng-sai: Tính chất của logarit.    
-def uz9zu_L11_C6_B2_0888():
-    a,b=sp.symbols("a b")      
-    noi_dung=f"Cho ${{a,b}}$ là các số thực dương tùy ý. Xét tính đúng sai của các khẳng định sau:"
+#[D11_C6_B2_16]-TF-M3. Xét Đ-S: log_a^n b, log(a.b), log(a+b)
+def uz9zu_L11_C6_B2_16():
+    chon=random.randint(1,2)
+    if chon==1:
+        a,b=sp.symbols("a b")    
+    if chon==2:
+        a,b=sp.symbols("x y")    
+          
+    noi_dung=f"Cho ${{{a},{b}}}$ là các số thực dương tùy ý và ${a}>{b}$. Xét tính đúng sai của các khẳng định sau:"
     m, n=random.randint(2,15), random.randint(3,9)   
     if m==n: n=n+random.randint(1,5)
-    kq1_T=f"*$\\log_{{{latex(a**m)}}} {{{b}}}={latex(1/m)}\\log_{{{a}}} {{{b}}}$."
+    kq1_T=f"*$\\log_{{{latex(a**m)}}} {{{b}}}={phan_so(1/m)}\\log_{{{a}}} {{{b}}}$"
     kq1_F=f"$\\log_{{{latex(a**m)}}} {{{b}}}={m}\\log_{{{a}}} {{{b}}}$"
-    loigiai_1=f"$\\log_{{{latex(a**m)}}} {{{b}}}={latex(1/m)}\\log_{{{a}}} {{{b}}}$."
-
-    kq2_T=f"*${latex(log(a**m))}{b}={latex(m*log(a)+log(b))}$."
-    kq2_F=random.choice([f"${latex(log(a**m))}{b}={latex(log(a)+m*log(b))}$",\
-                        f"${latex(log(a**m))}{b}={latex(my_module.hien_phan_so(1/m))}{latex(log(a)+log(b))}$"\
-                        f"${latex(log(a**m))}{b}={latex(m*(log(a))+log(b))}$"])
-    loigiai_2=f"$$."
-
-    kq3_T=f"*$$."
-    kq3_F=f"$$"
-    loigiai_3=f"$$."
-
-    kq4_T=f"*$$."
-    kq4_F=f"$$"
-    loigiai_4=f"$$."
-    
-    
     kq1=random.choice([kq1_T, kq1_F])
+
+    HDG=f"$\\log_{{{latex(a**m)}}} {{{b}}}={phan_so(1/m)}\\log_{{{a}}} {{{b}}}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$"
+    kq2_F=random.choice([f"${latex(log(a**m*b))}={latex(log(a)+m*log(b))}$",
+                        f"${latex(log(a**m*b))}={phan_so(1/m)}{latex(log(a)+log(b))}$",
+                        f"${latex(log(a**m*b))}={latex(m*(log(a))+log(b))}$"])
     kq2=random.choice([kq2_T, kq2_F])
+    HDG=f"${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$."
+    
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}" 
+    m=random.randint(2,6)
+    n=random.randint(2,7)
+    p=random.randint(2,8)
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq3_T=f"* $\\log_{a}{b}^{m}+\\log_{{{a}^{n}}}{b}^{p}={phan_so(m+p/n)}\\log_{a}{b}$" 
+        kq3_F=f"$\\log_{a}{b}^{m}+\\log_{{{a}^{n}}}{b}^{p}={phan_so(m-p/n)}\\log_{a}{b}$"
+
+        HDG=f"$\\log_{a}{b}^{m}+\\log_{{{a}^{n}}}{b}^{p}={m}\\log_{a}{b}+\\dfrac{{{p}}}{{{n}}}\\log_{a}{b}={phan_so(m+p/n)}\\log_{a}{b}$."
+
+    if chon==2:
+        kq3_T=f"* $\\log_{a}{b}^{m}-\\log_{{{a}^{n}}}{b}^{p}={phan_so(m-p/n)}\\log_{a}{b}$" 
+        kq3_F=f"$\\log_{a}{b}^{m}-\\log_{{{a}^{n}}}{b}^{p}={phan_so(m+p/n)}\\log_{a}{b}$"
+
+        HDG=f"$\\log_{a}{b}^{m}-\\log_{{{a}^{n}}}{b}^{p}={m}\\log_{a}{b}-\\dfrac{{{p}}}{{{n}}}\\log_{a}{b}={phan_so(m-p/n)}\\log_{a}{b}$."       
+
+    
     kq3=random.choice([kq3_T, kq3_F])
-    kq4=random.choice([kq4_T, kq4_F])   
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    k=random.randint(3,10)
+    m=[i for i in range(3,10) if i !=k]
+
+    chon=random.randint(1,2)
+
+    if chon==1:
+        kq4_T=f"* Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$"
+        kq4_F=random.choice([
+            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={random.randint(2,5)}(1+\\log_{k}{a}+\\log_{k}{b})$",
+            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})=({k}+\\log_{k}{a}+\\log_{k}{b})$",
+            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/random.randint(3,6))}(1+\\log_{k}{a}+\\log_{k}{b})$",
+            ])
+        
+        HDG=(f"${a}^2+{b}^2={k-2}{a}{b} \\Rightarrow  {latex((a+b)**2)}={latex(k*a*b)}$\n\n"
+            f"$\\Rightarrow \\log_{k} {latex((a+b)**2)}= \\log_{k}{latex(k*a*b)}\\Rightarrow $"
+            f" $\\log_{k}({a}+{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$.")
+    
+    if chon==2:
+        kq4_T=f"* Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$"
+        kq4_F=random.choice([
+            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={random.randint(2,5)}(1+\\log_{k}{a}+\\log_{k}{b})$",
+            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})=({k}+\\log_{k}{a}+\\log_{k}{b})$",
+            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={phan_so(1/random.randint(3,6))}(1+\\log_{k}{a}+\\log_{k}{b})$",
+            ])
+        
+        HDG=(f"${a}^2+{b}^2={k+2}{a}{b} \\Rightarrow  {latex((a-b)**2)}={latex(k*a*b)}$\n\n"
+            f"$\\Rightarrow \\log_{k} {latex((a-b)**2)}= \\log_{k}{latex(k*a*b)}\\Rightarrow $"
+            f" $\\log_{k}({a}-{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$.")
+    
+
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     #Trộn các phương án
     list_PA =[kq1, kq2, kq3, kq4]
-    random.shuffle(list_PA)
+    #random.shuffle(list_PA)
     list_TF=my_module.tra_ve_TF(list_PA)
 
-    debai= f"{noi_dung}\n"\
+    debai= f"{noi_dung}\n\n"\
     f"a) {list_PA[0]}.\n"\
     f"b) {list_PA[1]}.\n"\
     f"c) {list_PA[2]}.\n"\
@@ -1681,30 +1827,278 @@ def uz9zu_L11_C6_B2_0888():
         if pa==kq3:
             loigiai.append(loigiai_3)
         if pa==kq4:
-            loigiai.append(loigiai_4)        
+            loigiai.append(loigiai_4)
 
-    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
-    f"a) {loigiai[0]}\n"\
-    f"b) {loigiai[1]}\n"\
-    f"c) {loigiai[2]}\n"\
-    f"d) {loigiai[3]}\n"\
 
-    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
 
-    loigiai_latex=f"a) {loigiai[0]}\\\\ \n"\
-    f"b) {loigiai[1]}\\\\ \n"\
-    f"c) {loigiai[2]}\\\\ \n"\
-    f"d) {loigiai[3]}\\\\ \n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
 
     #Tạo đề latex
     for i in range(len(list_PA)):
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-        f"\\choiceTF\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
-        f"\\end{{ex}}\n"        
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B2_17]-TF-M3. Xét Đ-S: các phép toán logarit
+def uz9zu_L11_C6_B2_17():
+
+    a=random.choice(["a","b","x","y"])
+    noi_dung = f"Cho số thực dương ${a}\\ne 1$. Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    m=random.randint(2,50)
+    k = random.choice([i for i in range(2, 10) if i!=m])
+    ham=random.choice(["\\ln", "\\log", f"\\log_{k}" ])
+    chon=random.randint(1,2)    
+    if chon==1:
+        kq1_T=f"* ${ham} {a}+{ham} {m}={ham} ({m}{a})$" 
+        kq1_F=f"${ham} {a}+{ham} {m}={ham} ({a}+{m})$"
+        
+        HDG=f"${ham} {a}+{ham} {m}={ham} ({m}{a})$."
+    
+    if chon==2:
+        kq1_T=f"* ${ham} {a}-{ham} {m}={ham} \\dfrac{{{a}}}{{{m}}}$" 
+        kq1_F=f"${ham} {a}-{ham} {m}={ham} ({a}-{m})$"
+        
+        HDG=f"${ham} {a}-{ham} {m}={ham} \\dfrac{{{a}}}{{{m}}}$."
+    
+    
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    k = random.choice([i for i in range(2, 6) if i!=m])
+    m=random.randint(2,4)
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        kq2_T=f"* $\\log_{k}({k**m}{a})={m}+\\log_{k} {a}$"
+        kq2_F=f"$\\log_{k}({k**m}{a})={k**m}\\log_{k} {a}$"        
+        HDG=f"$\\log_{k}({k**m}{a})={m}+\\log_{k} {a}$."
+    
+    if chon==2:
+        kq2_T=f"* $\\log_{k} \\dfrac{{{k**m}}}{{{a}}}={m}-\\log_{k} {a}$"
+        kq2_F=f"$\\log_{k} \\dfrac{{{k**m}}}{{{a}}}=\\dfrac{{{k**m}}}{{\\log_{k} {a}}}$"        
+        HDG=f"$\\log_{k} \\dfrac{{{k**m}}}{{{a}}}={m}-\\log_{k} {a}$." 
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    k = random.choice([i for i in range(2, 6)])
+    t = random.choice([i for i in range(2, 6) if i!=k])
+
+    m=random.randint(2,4)
+    n=random.randint(2,8)
+
+    kq3_T=f"* $\\log_{{{k**m}}} {a}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {k}}}={phan_so(1/m+n)}\\log_{k} {a}$" 
+    kq3_F=f"$\\log_{{{k**m}}} {a}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {k}}}={m+n}\\log_{k} {a}$"
+    
+    HDG=(f"$\\log_{{{k**m}}} {a}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {k}}}={phan_so(1/m)}\\log_{k}{a}+{n}\\log_{k}{a}$"
+        f" $={phan_so(1/m+n)}\\log_{k} {a}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    m=random.randint(2,10)
+    n=random.randint(100,200)
+
+    kq4_T=f"* $\\dfrac{{1}}{{\\log_{{{m}}}{a}}}+\\dfrac{{1}}{{\\log_{{{m+1}}}{a}}}+\\dfrac{{1}}{{\\log_{{{m+2}}}{a}}}+...+\\dfrac{{1}}{{\\log_{{{n}}}{a}}}=\\log_{a}\\dfrac{{{n}!}}{{{m-1}!}}$"
+    kq4_F=f"$\\dfrac{{1}}{{\\log_{{{m}}}{a}}}+\\dfrac{{1}}{{\\log_{{{m+1}}}{a}}}+\\dfrac{{1}}{{\\log_{{{m+2}}}{a}}}+...+\\dfrac{{1}}{{\\log_{{{n}}}{a}}}=\\log_{a}\\dfrac{{{n}!}}{{{m}!}}$" 
+    
+    HDG=(f"$\\dfrac{{1}}{{\\log_{{{m}}}{a}}}+\\dfrac{{1}}{{\\log_{{{m+1}}}{a}}}+\\dfrac{{1}}{{\\log_{{{m+2}}}{a}}}+...+\\dfrac{{1}}{{\\log_{{{n}}}{a}}}$"
+        f"$=\\log_{a}{m}+\\log_{a}{m+1}+\\log_{a}{m+2}+...+\\log_{a}{n}$\n\n"
+        f"$=\\log_{a}({m}.{m+1}.{m+2}...{n})=\\log_{a}\\dfrac{{{n}!}}{{{m-1}!}}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B2_18]-TF-M3. Xét Đ-S: các phép toán logarit, biểu diễn logarit
+def uz9zu_L11_C6_B2_18():
+    co_so=[2,3,5,7]
+    a,b,c=random.sample(co_so,3)
+
+    m=random.randint(2,5)
+    n=random.randint(1,5)
+    p=random.randint(2,5)
+    
+    noi_dung = f"Cho $a=\\log_{a}{b}, b=\\log_{a}{c}$ Xét tính đúng-sai của các khẳng định sau:"      
+    
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        kq1_T=f"* $\\dfrac{{1}}{{\\log_{a}{b}}}=\\log_{b}{a}$" 
+        kq1_F=f"$\\dfrac{{1}}{{\\log_{a}{b}}}=\\log_{a}{phan_so(1/b)}$"    
+        HDG=f"$\\dfrac{{1}}{{\\log_{a}{b}}}=\\log_{b}{a}$."
+    
+    if chon==2:
+        kq1_T=f"* $\\dfrac{{1}}{{\\log_{a}{c}}}=\\log_{c}{a}$" 
+        kq1_F=f"$\\dfrac{{1}}{{\\log_{a}{c}}}=\\log_{a}{phan_so(1/c)}$"    
+        HDG=f"$\\dfrac{{1}}{{\\log_{a}{c}}}=\\log_{c}{a}$."
+        
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* $\\dfrac{{a}}{{b}}=\\log_{c}{b}$"
+        kq2_F=f"$\\dfrac{{a}}{{b}}=\\log_{b}{c}$"    
+        HDG=f"$\\dfrac{{a}}{{b}}=\\dfrac{{\\log_{a}{b}}}{{\\log_{a}{c}}}=\\log_{c}{b}$."
+    
+    if chon==2:
+        kq2_T=f"* $\\dfrac{{b}}{{a}}=\\log_{b}{c}$"
+        kq2_F=f"$\\dfrac{{b}}{{a}}=\\log_{c}{b}$"    
+        HDG=f"$\\dfrac{{b}}{{a}}=\\dfrac{{\\log_{a}{c}}}{{\\log_{a}{b}}}=\\log_{b}{c}$."
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    k=random.randint(2,10)
+
+    kq3_T=f"* $\\log_{{{b*c}}}{a**k}=\\dfrac{{{k}}}{{a+b}}$" 
+    kq3_F=f"$\\log_{{{b*c}}}{a**k}=\\dfrac{{{k+random.randint(1,2)}}}{{a+b}}$"    
+    HDG=(f"$\\log_{{{b*c}}}{a**k}={k}\\log_{{{b*c}}}{a}={k}\\dfrac{{1}}{{\\log_{a} {b*c} }}$"
+    f"$=\\dfrac{{{k}}}{{\\log_{a}{b}+\\log_{a}{c}}}=\\dfrac{{{k}}}{{a+b}}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    t_1 = random.choice([i for i in range(-3, 3) if i!=0])
+    t_2 = random.choice([i for i in range(-3, 3) if i!=0])
+    t_3 = random.choice([i for i in range(1, 3) if i!=0])
+    s_m, s_n, s_p=sp.symbols("m n p")
+    dap_an=t_1*m+t_2*n+t_3*p    
+
+    kq4_T=f"* Biết $\\log_{a}{latex(a**m*b**n*c**p)}=m+na+pb$. Khi đó ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$"
+    kq4_F=f"Biết $\\log_{a}{latex(a**m*b**n*c**p)}=m+na+pb$. Khi đó ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an+random.randint(1,3)}$" 
+    
+    HDG=(f"$\\log_{a}{latex(a**m*b**n*c**p)}=\\log_{a}({a}^{m}.{b}^{n}.{c}^{p})={m}+{n}\\log_{a}{b}+{p}\\log_{a}{c}$.\n\n"
+    f"$\\Rightarrow {latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$.") 
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
 
@@ -2564,7 +2958,7 @@ def uz9zu_L11_C6_B3_11():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-#[D11_C6_B3_12]-TF-M2. Cho y=a^x, a>1. Tạo câu hỏi đúng-sai.
+#[D11_C6_B3_12]-TF-M2. Cho y=a^x, a>1. Xét Đ-S: tập xác định, đơn điệu, đồ thị qua điểm, liên tục.
 def uz9zu_L11_C6_B3_12():
     a=random.randint(2,9)
     kq1_T=f"*Hàm số đã cho đồng biến trên $\\mathbb{{R}}$"
@@ -2687,8 +3081,8 @@ def uz9zu_L11_C6_B3_13():
             loigiai_3=f"Hàm số đã cho có tập xác định là $(0;+\\infty)$ là khẳng định sai. Hàm số đã cho có tập giá trị là $\\mathbb{{R}}$."
 
     if chon==2:
-        diem_T=random.choice([f"(0;1)", f"(1;{latex(my_module.hien_phan_so(a))})", f"(2;{latex(my_module.hien_phan_so(a**2))})", f"(3;{latex(my_module.hien_phan_so(a**3))})", f"(-1;{latex(my_module.hien_phan_so(1/a))})", f"(-2;{latex(my_module.hien_phan_so(1/a**2))})"])
-        diem_F=random.choice([f"(1;0)",f"({latex(my_module.hien_phan_so(a))};1)", f"({latex(my_module.hien_phan_so(a**2))};2)", f"({latex(my_module.hien_phan_so(a**3))};3)", f"({latex(my_module.hien_phan_so(1/a))};-1)", f"({latex(my_module.hien_phan_so(1/a**2))};-2)"])
+        diem_T=random.choice([f"(0;1)", f"(1;{phan_so(a)})", f"(2;{phan_so(a**2)})", f"(3;{a**3})", f"(-1;{phan_so(1/a)})", f"(-2;{phan_so(1/a**2)})"])
+        diem_F=random.choice([f"(1;0)",f"({phan_so(a)};1)", f"({phan_so(a**2)};2)", f"({phan_so(a**3)};3)", f"({phan_so(1/a)};-1)", f"({phan_so(1/a**2)};-2)"])
         kq2_T=f"*Đồ thị hàm số đã cho đi qua điểm ${{{diem_T}}}$"
         kq2_F=f"Đồ thị hàm số đã cho đi qua điểm ${{{diem_F}}}$"
         kq2=random.choice([kq2_T, kq2_F])
@@ -2759,7 +3153,7 @@ def uz9zu_L11_C6_B3_13():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S") 
     return debai,debai_latex,loigiai_word,dap_an
 
-#[D11_C6_B3_14]-TF-M2. Cho y=log_a x, a>1. Tạo câu hỏi đúng-sai.
+#[D11_C6_B3_14]-TF-M2. Cho y=log_a x, a>1. Xét Đ-S: tập xác định, đơn điệu, đồ thị, tập giá trị, liên tục.
 def uz9zu_L11_C6_B3_14():
     a=random.randint(2,9)
 
@@ -3519,14 +3913,14 @@ def uz9zu_L11_C6_B3_22():
     if kq1==kq1_F:
         loigiai_1=f"{kq1_F} là khẳng định sai.Trên khoảng {khoang} thì hàm số đã cho nghịch biến."
     
-    diem_F=random.choice([f"(0;1)", f"(1;{latex(my_module.hien_phan_so(a))})", f"(2;{latex(my_module.hien_phan_so(a**2))})", f"(3;{latex(my_module.hien_phan_so(a**3))})", f"(-1;{latex(my_module.hien_phan_so(1/a))})", f"(-2;{latex(my_module.hien_phan_so(1/a**2))})"])
-    diem_T=random.choice([f"(1;0)",f"({latex(my_module.hien_phan_so(a))};1)", f"({latex(my_module.hien_phan_so(a**2))};2)", f"({latex(my_module.hien_phan_so(a**3))};3)", f"({latex(my_module.hien_phan_so(1/a))};-1)", f"({latex(my_module.hien_phan_so(1/a**2))};-2)"])
+    diem_F=random.choice([f"(0;1)", f"(1;{phan_so(1/a)})", f"(2;{phan_so(1/a**2)})", f"(3;{phan_so(1/a**3)})", f"(-1;{a})", f"(-2;{a**2})"])
+    diem_T=random.choice([f"(1;0)",f"(1;{a})", f"(2;{a**2})", f"(3;{a**3})", f"(-1;{phan_so(1/a)})", f"(-2;{phan_so(1/a**2)})"])
     kq2_T=f"*Đồ thị hàm số đã cho đi qua điểm ${{{diem_T}}}$"
     kq2_F=f"Đồ thị hàm số đã cho đi qua điểm ${{{diem_F}}}$"
     kq2=random.choice([kq2_T, kq2_F])
-    loigiai_2=f"Dựa vào đồ thị ta có $\\displaystyle a={phan_so(1/a)} \\Rightarrow y={phan_so(1/a)}^x$ nên đồ thị hàm số đi qua điểm ${{{diem_T}}}$ là khẳng định đúng."
+    loigiai_2=f"Dựa vào đồ thị ta có $\\displaystyle a={phan_so(1/a)} \\Rightarrow y=\\left({phan_so(1/a)}\\right)^x$ nên đồ thị hàm số đi qua điểm ${{{diem_T}}}$ là khẳng định đúng."
     if kq2==kq2_F:
-        loigiai_2=f"Dựa vào đồ thị ta có $\\displaystyle a={phan_so(1/a)} \\Rightarrow y={phan_so(1/a)}^x$ nên đồ thị hàm số đi qua điểm ${{{diem_F}}}$ là khẳng định sai."
+        loigiai_2=f"Dựa vào đồ thị ta có $\\displaystyle a={phan_so(1/a)} \\Rightarrow y=\\left({phan_so(1/a)}\\right)^x$ nên đồ thị hàm số đi qua điểm ${{{diem_F}}}$ là khẳng định sai."
 
     chon=random.randint(1,2)
     if chon==1:
@@ -3849,7 +4243,7 @@ def uz9zu_L11_C6_B3_24():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
     return debai,debai_latex,loigiai_word,dap_an
 
-#[D11_C6_B3_25]-TF-M2. Cho đồ thị y=a^x, a>1. Tạo câu hỏi đúng-sai.
+#[D11_C6_B3_25]-TF-M2. Cho đồ thị y=a^x, a>1. Xét Đ-S: tập xác định, đơn điệu, tập giá trị, liên tục.
 def uz9zu_L11_C6_B3_25():
     x=sp.symbols("x")
     a=random.randint(2,7)
@@ -3966,6 +4360,280 @@ def uz9zu_L11_C6_B3_25():
         f"\\end{{ex}}\n"    
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B3_26]-TF-M3. Xét Đ-S: Nhận dạng hàm số mũ, TXĐ của hàm mũ-logarit, sự đơn điệu của hàm mũ-logarit
+def uz9zu_L11_C6_B3_26():
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    a=random.randint(2,9)
+    b=a+random.randint(3,7)
+
+    ham=random.choice([f"\\pi^x",f"{random.randint(2,9)}^x", f"e^x", f"{{\\sqrt 2}}^x", f"{{\\sqrt 3}}^x", f"{{\\sqrt 5}}^x",
+        f"{{\\sqrt 7}}^x",f"\\left({phan_so(a/b)}\\right)^x"])
+    ham_false=random.choice([f"x^{random.randint(2,9)}", f"x^{{{random.randint(2025,2035)}}}",
+    f"\\dfrac{{1}}{{x^{random.randint(2,9)}}}", ])
+    
+    kq1_T=f"* Hàm số $y={ham}$ là hàm số mũ" 
+    kq1_F=f"Hàm số $y={ham_false}$ là hàm số mũ"    
+    HDG=f""
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n Hàm số ${ham}$ là hàm số mũ."
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n Hàm số ${ham_false}$ không phải là hàm số mũ."
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ham=random.choice([f"{pi}^x",f"{random.randint(2,9)}^x", f"e^x", f"{{\\sqrt 2}}^x", f"{{\\sqrt 3}}^x", f"{{\\sqrt 5}}^x",
+            f"{{\\sqrt 7}}^x", f"\\left({phan_so(a/b)}\\right)" ])
+        kq2_T=f"* Tập xác định của hàm số $y={ham}$ là $D=\\mathbb{{R}}$"
+        kq2_F=random.choice([f"Tập xác định của hàm số $y={ham}$ là $D=(0;+\\infty)$",
+        f"Tập xác định của hàm số $y={ham}$ là $D=\\mathbb{{R}}\\backslash \\{{0\\}}$"])
+        
+        HDG=f"Tập xác định của hàm số $y={ham}$ là $D=\\mathbb{{R}}$."
+    
+    if chon==2:
+        ham=random.choice([f"\\log_{random.randint(2,9)}x",f"\\log_{{{random.randint(2025,2050)}}}x",
+            f"\\log x", f"\\log {{{random.randint(2,10)}x}}", f"\\ln {{{random.randint(2,10)}x}}"
+            ])
+        kq2_T=f"* Tập xác định của hàm số $y={ham}$ là $D=(0;+\\infty)$"
+        kq2_F=random.choice([f"Tập xác định của hàm số $y={ham}$ là $D=\\mathbb{{R}}$",
+        f"Tập xác định của hàm số $y={ham}$ là $D=\\mathbb{{R}}\\backslash \\{{0\\}}$", ])
+        
+        HDG=f"Tập xác định của hàm số $y={ham}$ là $D=(0;+\\infty)$."    
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,4)   
+    
+    if chon==1:
+        ham=random.choice([f"\\pi^x",f"{random.randint(2,9)}^x", f"e^x", f"{{\\sqrt 2}}^x", f"{{\\sqrt 3}}^x", f"{{\\sqrt 5}}^x",
+            f"{{\\sqrt 7}}^x"])
+        kq3_T=f"* Hàm số $y={ham}$ đồng biến trên $(-\\infty;+\\infty)$" 
+        kq3_F=f"Hàm số $y={ham}$ nghịch biến trên $(-\\infty;+\\infty)$"        
+        HDG=f"Hàm số $y={ham}$ đồng biến trên $(-\\infty;+\\infty)$."
+    
+    if chon==2:
+        a=random.randint(2,9)
+        b=a+random.randint(3,7)
+
+        ham=f"\\left({phan_so(a/b)}\\right)^x"
+        kq3_T=f"* Hàm số $y={ham}$ nghịch biến trên $(-\\infty;+\\infty)$" 
+        kq3_F=f"Hàm số $y={ham}$ đồng biến trên $(-\\infty;+\\infty)$"        
+        HDG=f"Hàm số $y={ham}$ nghịch biến trên $(-\\infty;+\\infty)$."
+
+    if chon==3:
+        ham=random.choice([f"\\log_{random.randint(2,9)}x",f"\\log_{{{random.randint(2025,2050)}}}x",
+            f"\\log x", f"\\log {{{random.randint(2,10)}x}}", f"\\ln {{{random.randint(2,10)}x}}"])
+        kq3_T=f"* Hàm số $y={ham}$ đồng biến trên $(0;+\\infty)$" 
+        kq3_F=f"Hàm số $y={ham}$ nghịch biến trên $(0;+\\infty)$"        
+        HDG=f"Hàm số $y={ham}$ đồng biến trên $(0;+\\infty)$."
+
+    if chon==4:
+        a=random.randint(2,9)
+        b=a+random.randint(3,7)
+
+        ham=random.choice([f"\\log_{{{phan_so(a/b)}}}x"])
+        kq3_T=f"* Hàm số $y={ham}$ nghịch biến trên $(0;+\\infty)$" 
+        kq3_F=f"Hàm số $y={ham}$ đồng biến trên $(0;+\\infty)$"        
+        HDG=f"Hàm số $y={ham}$ nghịch biến trên $(0;+\\infty)$."
+
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x=sp.symbols("x")
+    x_1=random.randint(-7,2)
+    x_2=x_1+random.randint(1,10)
+    a=random.randint(1,3)
+    f=latex(expand(a*(x-x_1)*(x-x_2)))
+    ham=random.choice([f"\\log ({f})", f"\\ln ({f})", f"\\log_{random.randint(2,9)} ({f})", f"\\log_{{{random.randint(2025,2035)}}} ({f})" ])
+    kq4_T=f"* Hàm số $y={ham}$ có tập xác định là $D=(-\\infty;{x_1})\\cup ({x_2};+\\infty)$"
+    kq4_F=random.choice([
+        f"Hàm số $y={ham}$ có tập xác định là $D=({x_1};{x_2})$",
+        f"Hàm số $y={ham}$ có tập xác định là $D=\\mathbb{{R}}$",
+        f"Hàm số $y={ham}$ có tập xác định là $D=(0;+\\infty)$",
+        f"Hàm số $y={ham}$ có tập xác định là $D=\\mathbb{{R}}\\backslash \\{{0\\}}$"]) 
+    
+    HDG=(
+        f"Điều kiện xác định: ${f}>0 \\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$.\n\n"
+        f"Tập xác định: $D=(-\\infty;{x_1})\\cup ({x_2};+\\infty)$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B3_27]-SA-M3. Tìm m để hàm số logarit với mọi x.
+def uz9zu_L11_C6_B3_27():
+    x,m=sp.symbols("x m")
+    while True:
+        a= random.choice([i for i in range(-4, 5) if i!=0])
+        b= random.choice([i for i in range(-8, 8) if i!=0])
+        c= random.choice([i for i in range(-7, 7) if i!=0])
+        d = random.choice([i for i in range(-5, 6) if i!=0])
+        e = random.choice([i for i in range(-5, 6) if i!=0])
+        if b+d==0:
+            continue
+        a1, b1, c1=a**2, 2*a*b, b**2-4*c
+        delta=b1**2-4*a1*c1        
+        if delta<=0:
+            continue    
+        if all([delta>0, sqrt(delta).is_integer]):
+            break
+    x_1=(-b1-sqrt(delta))/(2*a)
+    x_2=(-b1+sqrt(delta))/(2*a)
+    if x_1>x_2:
+        t=x_2
+        x_2=x_1
+        x_1=t
+
+    
+    p=random.randint(2,9)
+
+    dem=0    
+    chon=random.randint(1,4)
+
+    ham=random.choice(["\\ln", "\\log", f"\\log_{random.randint(2,9)}" ])  
+        
+    if chon==1:
+        for i in range(int(x_1)-2,int(x_2)+2):
+            if x_1<i and i<x_2:
+                dem+=1
+        noi_dung = (
+        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
+        f" xác định với mọi $x\\in \\mathbb{{R}}$.")
+
+        noi_dung_loigiai=(        
+        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}<0$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}<0$\n\n"
+        f"$\\Leftrightarrow {latex(x_1)}<m<{latex(x_2)}$.\n\n"
+        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+    
+    if chon==2:
+        for i in range(int(x_1)-2,int(x_2)+2):
+            if x_1<=i and i<=x_2:
+                dem+=1
+        noi_dung = (
+        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
+        f" xác định với mọi $x\\in \\mathbb{{R}}$.")
+
+        noi_dung_loigiai=(        
+        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} \\le 0$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} \\le 0$\n\n"
+        f"$\\Leftrightarrow {latex(x_1)} \\le m \\le {latex(x_2)}$.\n\n"
+        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+
+    if chon==3:
+        t_1=random.randint(1,10)
+        t_2=t_1+random.randint(1,5)
+        p=t_1/t_2
+        for i in range(int(x_1)-2,int(x_2)+2):
+            if x_1<i and i<x_2:
+                dem+=1
+        noi_dung = (
+        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
+        f" xác định với mọi $x\\in \\mathbb{{R}}$.")
+
+        noi_dung_loigiai=(        
+        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}<0$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}<0$\n\n"
+        f"$\\Leftrightarrow {latex(x_1)}<m<{latex(x_2)}$.\n\n"
+        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+
+    if chon==4:
+        t_1=random.randint(1,10)
+        t_2=t_1+random.randint(1,5)
+        p=t_1/t_2
+        for i in range(int(x_1)-2,int(x_2)+2):
+            if x_1<=i and i<=x_2:
+                dem+=1
+        noi_dung = (
+        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
+        f" xác định với mọi $x\\in \\mathbb{{R}}$.")     
+        
+
+        noi_dung_loigiai=(        
+        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} \\le 0$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} \\le 0$\n\n"
+        f"$\\Leftrightarrow {latex(x_1)} \\le m \\le {latex(x_2)}$.\n\n"
+        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)  
+    
+
+    dap_an=dem    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+
 
 #BÀI 4 PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT
 
@@ -4531,7 +5199,7 @@ def uz9zu_L11_C6_B4_15():
 def uz9zu_L11_C6_B4_16():
     x, st_x=sp.symbols("x x_0")
     a = random.randint(2, 5)
-    b = a+random.randint(1, 3)
+    b = random.choice([i for i in range(2, 5) if i!=a])
 
     m = random.choice([random.randint(-3, -1), random.randint(1, 3)])
     n = m+random.randint(1,3)
@@ -4621,6 +5289,207 @@ def uz9zu_L11_C6_B4_17():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B4_18]-TL-M2. Giải phương trình log_a(mx+n) = b
+def uz9zu_L11_C6_B4_18():
+    x=sp.symbols("x")
+    a=random.randint(2,5)
+    b=random.randint(1,7)
+    m = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+    n = random.choice([random.randint(-10, -1), random.randint(1, 10)])    
+    
+    noi_dung=f"Giải phương trình $\\log_{{{a}}}({latex(m*x+n)})={b}$."
+    kq=(a**b-n)/m        
+
+        
+
+    noi_dung_loigiai=f"$\\log_{{{a}}}({latex(m*x+n)})={b} \\Rightarrow {latex(m*x+n)}={a}^{b}"\
+                    f"\\Rightarrow x= {phan_so(kq)}$." 
+
+    debai= f"{noi_dung}\n"     
+    dap_an=noi_dung_loigiai 
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n" 
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B4_19]-TL-M2. Giải phương trình a^nx-a^m=0
+def uz9zu_L11_C6_B4_19():
+    x =sp.symbols("x")
+    a = random.choice([i for i in range(2, 7) if i!=4])
+    n=random.randint(2,7)    
+    m=random.randint(2,11)
+    p =random.randint(100,300)
+    noi_dung = (
+    f"Giải phương trình $\\sqrt[{n}]{{ {{{a}}}^{{{latex(m*x)}}} }}-{a}^{{{p}}}=0$." )
+
+    noi_dung_loigiai=(
+    f"$\\sqrt[{n}]{{ {{{a}}}^{{{latex(m*x)}}} }}-{a}^{{{p}}}=0$"
+    f" $\\Leftrightarrow {a}^{{{latex(m*x/n)}}}={a}^{{{p}}}$\n\n"
+    f"$ \\Leftrightarrow {latex(m*x/n)}={p} \\Rightarrow x={phan_so(n*p/m)}$.\n\n"
+
+    )
+    if n==2:
+        noi_dung = (
+        f"Giải phương trình $\\sqrt{{ {{{a}}}^{{{latex(m*x)}}} }}-{a}^{{{p}}}=0$." )
+        dap_an=f"{round_half_up(((n*p)/m)/t,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"$\\sqrt{{ {{{a}}}^{{{latex(m*x)}}} }}-{a}^{{{p}}}=0$"
+        f" $\\Leftrightarrow {a}^{{{latex(m*x/n)}}}={a}^{{{p}}}$\n\n"
+        f"$ \\Leftrightarrow {latex(m*x/n)}={p} \\Rightarrow x={phan_so(n*p/m)}$.\n\n"
+        )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    dap_an=noi_dung_loigiai 
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n" 
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B4_20]-TL-M2. Giải phương trình m.a^x + n.b^x = p.a^x +q.b^x
+def uz9zu_L11_C6_B4_20():
+    x, st_x=sp.symbols("x x_0")
+    m=random.randint(2,15)
+    p=random.randint(-15,-1)
+
+    n=random.randint(-20,-2)
+    q=random.randint(1,20)
+
+    a = random.randint(2, 9)
+    b = a+random.randint(2, 6)
+
+    
+    t_1=(q-n)/(m-p)
+    x_0=simplify(log(t_1)/log(a/b))
+    if x_0.is_Integer:
+        nghiem = latex((x_0))
+    else:
+        nghiem =f"\\log_{{{latex(my_module.hien_phan_so(a/b))}}} \\left({latex(my_module.hien_phan_so(t_1))}\\right)"    
+
+    c = random.choice([i for i in range(-4, 5) if i!=0])
+    d = random.choice([i for i in range(-4, 5) if i!=0])
+
+
+    noi_dung=(f"Giải phương trình ${latex(m*a**x+n*b**x)}={latex(p*a**x+q*b**x)}$.\n\n")
+
+    noi_dung=noi_dung.replace("\\cdot",".").replace("+-","-")
+
+    noi_dung_loigiai=(f"${latex(m*a**x+n*b**x)}={latex(p*a**x+q*b**x)}\\Leftrightarrow {latex(m*a**x-p*a**x)}={latex(q*b**x-n*b**x)}$ \n\n"
+        f" $\\Leftrightarrow \\left({phan_so(a/b)}\\right)^x={phan_so((q-n)/(m-p))}$"
+        f"$\\Leftrightarrow x={nghiem}$.")
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("\\cdot",".")  
+        
+        
+    debai_word= f"{noi_dung}\n"
+
+    dap_an=noi_dung_loigiai 
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n" 
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B4_21]-TL-M3. Giải phương trình a^x + a^(x+m) +a^(x-n) = b^x + b^(x+p) + b^(x-q)
+def uz9zu_L11_C6_B4_21():
+    x, st_x=sp.symbols("x x_0")
+    a = random.randint(2, 5)
+    b = random.choice([i for i in range(2, 5) if i!=a])
+
+    m = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    n = m+random.randint(1,3)
+
+    p = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    q = p+random.randint(1,3)
+
+
+    t_1=(1+b**p+b**q)/(1+a**m+a**n)
+    x_0=simplify(log(t_1)/log(a/b))
+
+    c = random.choice([i for i in range(-4, 5) if i!=0])
+    d = random.choice([i for i in range(-4, 5) if i!=0])
+    dap_an=f"{round_half_up(c*x_0+d,1):.1f}".replace(".",",")
+
+    if x_0.is_Integer:
+        nghiem = latex((x_0))
+    else:
+        nghiem =f"\\log_{{{phan_so(a/b)}}} \\left({phan_so(t_1)}\\right)"
+
+    noi_dung=(f"Giải phương trình ${latex(a**x+a**(x+m)+a**(x+n))}={latex(b**x+b**(x+p)+b**(x+q))}$.")
+
+    noi_dung=noi_dung.replace("\\cdot",".").replace("+-","-")
+    
+
+    noi_dung_loigiai=(f"${latex(a**x+a**(x+m)+a**(x+n))}={latex(b**x+b**(x+p)+b**(x+q))}\\Leftrightarrow {a}^x+{phan_so(a**m)}.{a}^x+{phan_so(a**p)}.{a}^x={b}^x+{phan_so(b**p)}.{b}^x+{phan_so(b**q)}.{b}^x$ \n\n"
+        f"$\\Leftrightarrow {phan_so(1+a**m+a**n)}.{a}^x={phan_so(1+b**p+b**q)}.{b}^x"
+        f" \\Leftrightarrow \\left( {phan_so(a/b)}\\right)^x={phan_so(t_1)}$"
+        f"$\\Leftrightarrow x={nghiem}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("\\cdot",".").replace("+-","-")   
+        
+        
+    debai_word= f"{noi_dung}\n"
+
+    dap_an=noi_dung_loigiai 
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n" 
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B4_22]-TL-M3. Giải phương trình log_m(ax+b) - log_m(cx+d) = e
+def uz9zu_L11_C6_B4_22():
+    x, st_x=sp.symbols("x x_0")
+    while True:
+        m=random.randint(2,6)
+        e=random.randint(1,4)
+        a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+        b = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+        c = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+        d = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+        if m**e*c==a:
+            continue
+        equation = Eq(a*x + b, m**e*(c*x+d))   
+        x_0 = solve(equation, x)
+        x_0=x_0[0]
+        if all([m**e*c!=a, a!=c, a*x_0+b>0, c*x_0+d>0]):
+            break
+    
+    p = random.choice([i for i in range(-4, 5) if i!=0])
+    q = random.choice([i for i in range(-4, 5) if i!=0])
+    
+    noi_dung=(f"Giải phương trình $\\log_{m}({latex(a*x+b)}) - \\log_{m}({latex(c*x+d)})={e}$." )
+
+    noi_dung_loigiai=(f"Điều kiện: ${latex(a*x+b)}>0$ và ${latex(c*x+d)}>0$.\n\n"
+                    f"$\\log_{m}({latex(a*x+b)}) - \\log_{m}({latex(c*x+d)})={e}"
+                    f"\\Leftrightarrow \\log_{m}{latex((a*x+b)/(c*x+d))}={e}"
+                    f"\\Leftrightarrow {latex((a*x+b)/(c*x+d))}={m}^{e}$\n\n"
+                    f"$\\Leftrightarrow {latex(a*x+b)}={m**e}({latex(c*x+d)})"
+                    f"\\Leftrightarrow x={phan_so(x_0)}$.")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    dap_an=noi_dung_loigiai 
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n" 
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
 
 
 
@@ -5507,8 +6376,8 @@ def uz9zu_L11_C6_B5_12():
             continue    
         if all([delta>0, sqrt(delta).is_integer]):
             break
-    x_1=(-b1-sqrt(delta))/(2*a)
-    x_2=(-b1+sqrt(delta))/(2*a)
+    x_1=(-b1-sqrt(delta))/(2*a1)
+    x_2=(-b1+sqrt(delta))/(2*a1)
     if x_1>x_2:
         t=x_2
         x_2=x_1
@@ -5600,9 +6469,7 @@ def uz9zu_L11_C6_B5_12():
         f"$\\Leftrightarrow {latex(x_1)} \\le m \\le {latex(x_2)}$.\n\n"
         f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
     noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
-
-    
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)  
     
 
     dap_an=dem    
@@ -5617,6 +6484,114 @@ def uz9zu_L11_C6_B5_12():
     f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B5_13]-TL-M2. Giải bất phương trình a^f(x)>a^g(x), f và g là các hàm bậc hai
+def uz9zu_L11_C6_B5_13():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-3, 4) if i!=0])
+    x_1=random.randint(-7,7)
+    x_2=x_1+random.randint(1,6)
+    f=a*(x-x_1)*(x-x_2)
+
+    b = random.randint(-3,3)
+    c = random.choice([i for i in range(-3, 4) if i!=0])
+    d = random.choice([i for i in range(-7, 7) if i!=0])
+
+
+    m=random.randint(2,19)
+
+    chon=random.randint(1,4)    
+    
+    if chon==1:
+        noi_dung = (
+        f"Giải bất phương trình ${m}^{{{latex(expand(f+b*x**2+c*x+d))}}}>{m}^{{{latex(b*x**2+c*x+d)}}}$."
+        )
+        
+
+        noi_dung_loigiai=(
+        f"${m}^{{{latex(expand(f+b*x**2+c*x+d))}}}>{m}^{{{latex(b*x**2+c*x+d)}}}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f+b*x**2+c*x+d))}>{latex(b*x**2+c*x+d)}$\n\n" 
+        f"$\\Leftrightarrow {latex(expand(f))}>0$\n\n"   
+        )
+        if a>0:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$")
+        else:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow {x_1}<x<{x_2}$.")
+    
+    if chon==2:
+        noi_dung = (
+        f"Giải bất phương trình ${m}^{{{latex(expand(f+b*x**2+c*x+d))}}} \\ge {m}^{{{latex(b*x**2+c*x+d)}}}$."
+        )
+        
+
+        noi_dung_loigiai=(
+        f"${m}^{{{latex(expand(f+b*x**2+c*x+d))}}} \\ge {m}^{{{latex(b*x**2+c*x+d)}}}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f+b*x**2+c*x+d))} \\ge {latex(b*x**2+c*x+d)}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f))}\\ge 0$\n\n"    
+        )
+        if a>0:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow x\\le {x_1}$ hoặc $x\\ge {x_2}$")
+        else:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow {x_1}\\le x \\le{x_2}$.")
+
+    if chon==3:
+        m1=random.randint(1,10)
+        m2=m1+random.randint(1,8)
+        m=phan_so(m1/m2)
+        noi_dung = (
+        f"Giải bất phương trình $\\left({m}\\right)^{{{latex(expand(f+b*x**2+c*x+d))}}}<\\left({m}\\right)^{{{latex(b*x**2+c*x+d)}}}$."
+        )
+        
+
+        noi_dung_loigiai=(
+        f"$\\left({m}\\right)^{{{latex(expand(f+b*x**2+c*x+d))}}}<\\left({m}\\right)^{{{latex(b*x**2+c*x+d)}}}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f+b*x**2+c*x+d))}>{latex(b*x**2+c*x+d)}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f))}>0$\n\n"   
+        )
+        if a>0:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$")
+        else:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow {x_1}<x<{x_2}$.")
+
+    if chon==4:
+        m1=random.randint(1,10)
+        m2=m1+random.randint(1,8)
+        m=phan_so(m1/m2)
+        noi_dung = (
+        f"Giải bất phương trình $\\left({m}\\right)^{{{latex(expand(f+b*x**2+c*x+d))}}} \\le \\left({m}\\right)^{{{latex(b*x**2+c*x+d)}}}$."
+        )
+        
+
+        noi_dung_loigiai=(
+        f"$\\left({m}\\right)^{{{latex(expand(f+b*x**2+c*x+d))}}} \\le \\left({m}\\right)^{{{latex(b*x**2+c*x+d)}}}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f+b*x**2+c*x+d))} \\ge {latex(b*x**2+c*x+d)}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(f))}\\ge 0$\n\n"  
+        )
+        if a>0:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow x\\le {x_1}$ hoặc $x\\ge {x_2}$")
+        else:
+            noi_dung_loigiai+=(
+                f"$\\Leftrightarrow {x_1}\\le x \\le{x_2}$.")
+    
+
+           
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        )
+    dap_an=noi_dung_loigiai
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"    
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
     
 
@@ -5998,6 +6973,27 @@ def uz9zu_L11_C6_B6_06():
         f"\\end{{ex}}\n"
 
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B6_07]-M3-SA. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm.
+def uz9zu_L11_C6_B6_07():
+    ngay_hien_tai = datetime.datetime.now()
+    nam_start=random.randint(2020,ngay_hien_tai.year)
+    n=3
+    nam_end=nam_start+n-1
+
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #Phương trình logarit
 

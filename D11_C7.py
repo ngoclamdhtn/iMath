@@ -3059,6 +3059,541 @@ def ui5io_L11_C7_B2_43():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C7_B2_44]-M2. Cho hàm số đa thức. Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_44():
+    x=sp.symbols("x")
+    while True:        
+        chon=random.randint(1,3)
+        if chon==1:
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            c = random.randint(-8,8)
+            f=a*x**2+b*x+c
+        
+        if chon==2:
+            a = random.choice([i for i in range(-20, 20) if i!=0])
+            b = random.choice([i for i in range(-15, 15) if i!=0])            
+            f=a*x+b
+
+        if chon==3:
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            c = random.randint(-8,8)
+            d = random.randint(-8,8)
+            f=a*x**3+b*x**2+c*x+d
+        
+        
+        x_0=random.randint(-6,6)
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=random.randint(-40,40)
+        y_4=random.randint(-50,50)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={x_0}$ bằng"
+    )
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(f_dh)}\\Rightarrow f'({x_0})={f_dh_value}$."
+    )
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_45]-M2. Cho y=(ax+b)/(cx+d). Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_45():
+    x=sp.symbols("x")
+    while True:        
+        chon=random.randint(1,3)
+        if chon==1:
+            a = random.choice([i for i in range(-9, 15) if i!=0])
+            f=a/x
+            x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+            x_3 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0])
+            x_4 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0 and i!=x_3])
+        
+        if chon==2:
+
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-6, 6) if i!=0])
+            c = random.randint(1,5)            
+            f=(a*x+b)/(c*x)
+            x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+            x_3 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0])
+            x_4 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0 and i!=x_3])
+
+        if chon==3:
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.randint(-8,8)
+            c = random.choice([i for i in range(-5, 6) if i!=0])
+            d = random.randint(-8,8)
+            if a*d-b*c==0: d=d+1
+            f=(a*x+b)/(c*x+d)
+            x_0 = random.choice([i for i in range(-5, 6) if i!=-d/c])
+            x_3 = random.choice([i for i in range(-5, 6) if i!=-d/c and i!=x_0])
+            x_4 = random.choice([i for i in range(-5, 6) if i!=-d/c and i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={x_0}$ bằng"
+    )
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}\\Rightarrow f'({x_0})={phan_so(kq)}$."
+    )
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_46]-M2. Cho y=ax+bcan(x)+c. Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_46():
+    x=sp.symbols("x")
+    while True:     
+        
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-7, 6) if i!=0])
+        c = random.choice([i for i in range(-10, 10) if i!=0])            
+        chon=random.randint(1,2)
+        if chon==1:
+            f=a*x**2+b*sqrt(x)+c        
+        if chon==2:
+            f=a*x+b*sqrt(x)+c        
+        
+        x_0 = random.randint(1,10)
+        x_3 = random.choice([i for i in range(1, 15) if i!=x_0])
+        x_4 = random.choice([i for i in range(1, 15) if i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={x_0}$ bằng"
+    )
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}\\Rightarrow f'({x_0})={latex(kq)}$."
+    )
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_47]-M2. Cho y=asin(bx) hoặc y=acos(bx). Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_47():
+    x=sp.symbols("x")
+    while True:     
+        
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b=random.randint(1,7)
+        chon=random.randint(1,2)
+        if chon==1:
+            f=a*sin(b*x)
+        
+        if chon==2:
+            f=b*sin(a*x)
+        
+        
+        list_goc=[0,random.randint(1,5)*pi/2, random.randint(1,5)*pi/3, random.randint(1,5)*pi/4, random.randint(1,5)*pi/6, random.randint(1,5)*pi ]
+        x_0 = random.choice(list_goc)      
+        x_3 = random.choice([i for i in list_goc if i!=x_0])
+        x_4 = random.choice([i for i in list_goc if i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={latex(x_0)}$ bằng" )
+    noi_dung=noi_dung.replace("\\left(","").replace("\\right)","")
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}\\Rightarrow f'({latex(x_0)})={latex(kq)}$."
+    )
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_48]-M2. Cho y=asinx+bcosx. Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_48():
+    x=sp.symbols("x")
+    while True:     
+        
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b=random.randint(1,7)
+        f=a*sin(x)+b*cos(x)       
+        
+        
+        list_goc=[0,random.randint(1,5)*pi/2, random.randint(1,5)*pi/3, random.randint(1,5)*pi/4, random.randint(1,5)*pi/6, random.randint(1,5)*pi ]
+        x_0 = random.choice(list_goc)      
+        x_3 = random.choice([i for i in list_goc if i!=x_0])
+        x_4 = random.choice([i for i in list_goc if i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={latex(x_0)}$ bằng" )
+    noi_dung=noi_dung.replace("\\left(","").replace("\\right)","")
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}\\Rightarrow f'({latex(x_0)})={latex(kq)}$."
+    )
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_49]-M2. Cho y=atanbx, y=acotbx. Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_49():
+    x=sp.symbols("x")
+    while True:     
+        
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b=random.randint(1,7)
+        c=random.randint(-15,15)
+        chon=random.randint(1,2)
+        if chon==1:
+            f=a*tan(x)+c        
+        if chon==2:
+            f=a*cot(x)+c      
+        
+        list_goc=[random.randint(1,2)*pi/3,random.randint(4,5)*pi/3, pi/4,3*pi/4,5*pi/4,7*pi/4, random.randint(1,2)*pi/6, 5*pi/6, 7*pi/6 ]
+        x_0 = random.choice(list_goc)      
+        x_3 = random.choice([i for i in list_goc if i!=x_0])
+        x_4 = random.choice([i for i in list_goc if i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4],  ):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={latex(x_0)}$ bằng" )
+    noi_dung=noi_dung.replace("\\left(","").replace("\\right)","")
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}\\Rightarrow f'({latex(x_0)})={latex(kq)}$."
+    )
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_50]-M2. Cho y=e^ax+b. Tính đạo hàm tại điểm x_0
+def ui5io_L11_C7_B2_50():
+    x=sp.symbols("x")
+    while True:     
+        
+        a = random.choice([i for i in range(1, 7) if i!=0])
+        b = random.choice([i for i in range(-10, 15) if i!=0])
+        c = random.choice([i for i in range(-10, 10) if i!=0])            
+        chon=random.randint(1,2)
+        if chon==1:
+            f=a**x+b       
+        if chon==2:
+            f=exp(a*x)+b        
+        
+        x_0 = random.randint(-4,6)
+        x_3 = random.choice([i for i in range(-4, 6) if i!=x_0])
+        x_4 = random.choice([i for i in range(-4, 6) if i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Đạo hàm của hàm số $y={latex(f)}$ tại điểm $x={x_0}$ bằng"
+    )
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}\\Rightarrow f'({x_0})={latex(kq)}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("\\log","\\ln").replace("\\left(","").replace("\\right)","")
+
+    pa_A= f"*${{{latex(kq)}}}$".replace("\\log","\\ln").replace("\\left(","").replace("\\right)","")
+    pa_B= f"${{{latex(kq2)}}}$".replace("\\log","\\ln").replace("\\left(","").replace("\\right)","")
+    pa_C= f"${{{latex(kq3)}}}$".replace("\\log","\\ln").replace("\\left(","").replace("\\right)","")
+    pa_D= f"${{{latex(kq4)}}}$".replace("\\log","\\ln").replace("\\left(","").replace("\\right)","")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 ################################################################################
 #BÀI 3 - PHƯƠNG TRÌNH TIẾP TUYẾN 
 
@@ -3274,6 +3809,97 @@ def ui5io_L11_C7_B3_04():
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B3_05]-M2. Cho y=(ax+b)/(cx+d). Tìm hệ số góc của tiếp tuyến tại điểm x_0
+def ui5io_L11_C7_B3_05():
+    x=sp.symbols("x")
+    while True:        
+        chon=random.randint(1,3)
+        if chon==1:
+            a = random.choice([i for i in range(-9, 15) if i!=0])
+            f=a/x
+            x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+            x_3 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0])
+            x_4 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0 and i!=x_3])
+        
+        if chon==2:
+
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-6, 6) if i!=0])
+            c = random.randint(1,5)            
+            f=(a*x+b)/(c*x)
+            x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+            x_3 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0])
+            x_4 = random.choice([i for i in range(-5, 6) if i!=0 and i!=x_0 and i!=x_3])
+
+        if chon==3:
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.randint(-8,8)
+            c = random.choice([i for i in range(-5, 6) if i!=0])
+            d = random.randint(-8,8)
+            if a*d-b*c==0: d=d+1
+            f=(a*x+b)/(c*x+d)
+            x_0 = random.choice([i for i in range(-5, 6) if i!=-d/c])
+            x_3 = random.choice([i for i in range(-5, 6) if i!=-d/c and i!=x_0])
+            x_4 = random.choice([i for i in range(-5, 6) if i!=-d/c and i!=x_0 and i!=x_3])     
+
+        y_0=f.subs(x,x_0)
+        f_dh=diff(f,x)
+        f_dh_value=f_dh.subs(x,x_0)
+
+        y_3=f_dh.subs(x,x_3)
+        y_4=f.subs(x,x_4)
+        if all([f_dh_value != y_0, f_dh_value!=y_3, f_dh_value!=y_4,
+                y_0!=y_3, y_0!=y_4, y_3!=y_4]):
+            break
+
+    noi_dung=(
+    f"Cho hàm số $y={latex(f)}$. Tiếp tuyến của đồ thị hàm số đã cho tại điểm có hoành độ $x={x_0}$ có hệ số góc bằng"
+    )
+    
+
+    kq=f_dh_value
+    kq_false=[y_0,y_3,y_4]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Ta có: $f'(x)={latex(simplify(f_dh))}$\n\n"
+    f"Hệ số góc của tiếp tuyến: $f'({x_0})={phan_so(kq)}$."
+    )
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#Bài 4
 
 #[D11_C7_B4_01]-TF-M2. Tạo câu đúng-sai: Đạo hàm của hàm số đa thức 
 def ui5io_L11_C7_B4_01():

@@ -891,10 +891,10 @@ def ckz_L12C4_B1_14():
     f=(a*x+b)**2
     kq=f"${latex(integrate(f,x))}+C$"
     kq_false=[
-    f"${latex(a*x**3+a*b*x**2+b**2*x)}+C$",
-    f"${latex(a*x**3/3+a*b*x**2/2+b**2*x)}+C$",
-    f"${latex(a*x**3/3+a*b*x**2/2+b**2)}+C$",
-    f"${latex(3*a*x**2+2*a*b*x+b**2)}+C$"
+    f"${latex(a*x**3+a*b*x**2+b**2)}+C$",
+    f"${latex(a**2*x**3+a*x**2/2+b**2*x)}+C$",
+    f"${latex(a**2*x**3/3+a*b*x**2/2)}+C$",
+    f"${latex(a*x**2+2*a*b*x+b**2)}+C$"
     ]
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
@@ -1053,36 +1053,39 @@ def ckz_L12C4_B1_16():
 def ckz_L12C4_B1_17():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
-    
-    chon=random.randint(1,3)
-    if chon==1:
-        a = random.choice([i for i in range(-4, 4) if i!=0])
-        b = random.choice([i for i in range(-6, 6) if i!=0])        
+    while True:
+        chon=random.randint(1,3)
+        if chon==1:
+            a = random.choice([i for i in range(-4, 4) if i!=0])
+            b = random.choice([i for i in range(-6, 6) if i!=0])        
 
-        F = a*x**2+b*x
-    
-    if chon==2:
-        a = random.choice([i for i in range(-3, 3) if i!=0])
-        b = random.choice([i for i in range(-4, 4) if i!=0])
-        c = random.choice([i for i in range(-5, 5) if i!=0])        
-        F = a*x**3+b*x**2+c*x
+            F = a*x**2+b*x
+        
+        if chon==2:
+            a = random.choice([i for i in range(-3, 3) if i!=0])
+            b = random.choice([i for i in range(-4, 4) if i!=0])
+            c = random.choice([i for i in range(-5, 5) if i!=0])        
+            F = a*x**3+b*x**2+c*x
 
-    if chon==3:
-        a = random.choice([i for i in range(-3, 3) if i!=0])
-        b = random.choice([i for i in range(-4, 4) if i!=0])
-        c = random.choice([i for i in range(-5, 5) if i!=0])        
-        F = a*x**4+b*x**2+c*x  
+        if chon==3:
+            a = random.choice([i for i in range(-3, 3) if i!=0])
+            b = random.choice([i for i in range(-4, 4) if i!=0])
+            c = random.choice([i for i in range(-5, 5) if i!=0])        
+            F = a*x**4+b*x**2+c*x  
 
-    
-    x_0= random.randint(-6, 6)
-    
-    b= random.randint(-10, 10)
-    x_1=random.randint(-5, 5)
-    if x_1==x_0: x_1=x_1+1
+        
+        x_0= random.randint(-6, 6)
+        
+        b= random.randint(-10, 10)
+        x_1=random.randint(-5, 5)
+        if x_1==x_0: x_1=x_1+1
 
-    f=diff(F,x)
-    C=b-F.subs(x,x_0)
-    G=F+C
+        f=diff(F,x)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        if -5<G.subs(x,x_1)<500:
+            break
+
 
     dap_an=G.subs(x,x_1)
 
@@ -1114,26 +1117,30 @@ def ckz_L12C4_B1_17():
 def ckz_L12C4_B1_18():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
-    
-    chon=random.randint(1,2)
-    
-    a = random.choice([i for i in range(-4, 4) if i!=0])
-    b = random.choice([i for i in range(-5, 5) if i!=0])        
 
-    F = a*x+b/x
-   
-    x_0= random.choice([i for i in range(-5, 5) if i!=0])
+    while True:
     
-    b= random.randint(-8, 8)
-    x_1=random.randint(-5, 5)
+        chon=random.randint(1,2)
+        
+        a = random.choice([i for i in range(-4, 4) if i!=0])
+        b = random.choice([i for i in range(-5, 5) if i!=0])        
 
-    while x_1==x_0 or x_1==0:
-        x_1=random.randint(-5, 5)       
-   
+        F = a*x+b/x
+       
+        x_0= random.choice([i for i in range(-5, 5) if i!=0])
+        
+        b= random.randint(-8, 8)
+        x_1=random.randint(-5, 5)
 
-    f=diff(F,x)
-    C=b-F.subs(x,x_0)
-    G=F+C
+        while x_1==x_0 or x_1==0:
+            x_1=random.randint(-5, 5)       
+       
+
+        f=diff(F,x)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        if -5<G.subs(x,x_1)<100:
+            break
 
     dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
 
@@ -1166,29 +1173,33 @@ def ckz_L12C4_B1_19():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
     
-    chon=random.randint(1,2)
+    while True:
+        pass
+        chon=random.randint(1,2)
+        
+        a = random.choice([i for i in range(-4, 4) if i!=0])
+        b = random.choice([i for i in range(-6, 6) if i!=0])        
+
+        F = a*x**2+b/x
+       
+        x_0= random.choice([i for i in range(-5, 5) if i!=0])
+        
+        b= random.randint(-8, 8)
+        x_1=random.randint(-5, 5)
+
+        while x_1==x_0 or x_1==0:
+            x_1=random.randint(-5, 5)       
+       
+
+        f=diff(F,x)
+        C=b-F.subs(x,x_0)
+        G=F+C
+        t=random.randint(10,15)
+        kq=G.subs(x,x_1)/t
+        if 0<kq<100:
+            break    
+
     
-    a = random.choice([i for i in range(-4, 4) if i!=0])
-    b = random.choice([i for i in range(-6, 6) if i!=0])        
-
-    F = a*x**2+b/x
-   
-    x_0= random.choice([i for i in range(-5, 5) if i!=0])
-    
-    b= random.randint(-8, 8)
-    x_1=random.randint(-5, 5)
-
-    while x_1==x_0 or x_1==0:
-        x_1=random.randint(-5, 5)       
-   
-
-    f=diff(F,x)
-    C=b-F.subs(x,x_0)
-    G=F+C
-
-    
-
-    t=random.randint(10,15)
     dap_an=f"{round_half_up((G.subs(x,x_1))/t):.1f}".replace(".",",")
 
     noi_dung = (
@@ -1221,22 +1232,25 @@ def ckz_L12C4_B1_20():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"   
 
-    
-    a = random.choice([i for i in range(-4, 4) if i!=0])
-    b = random.choice([i for i in range(-4, 4) if i!=0])
-    c = random.choice([i for i in range(-4, 4) if i!=0])        
+    while True:
+        a = random.choice([i for i in range(-4, 4) if i!=0])
+        b = random.choice([i for i in range(-4, 4) if i!=0])
+        c = random.choice([i for i in range(-4, 4) if i!=0])        
 
-    F = a*x**2+b*x+c/x   
-    x_0= random.choice([i for i in range(-3, 3) if i!=0])   
-    
-    x_1=random.randint(-5, 5)
-    while x_1==x_0 or x_1==0:
-        x_1=random.randint(-4, 4)       
-   
-    b= random.randint(-6, 6)
-    f=diff(F,x)
-    C=b-F.subs(x,x_0)
-    G=F+C
+        F = a*x**2+b*x+c/x   
+        x_0= random.choice([i for i in range(-3, 3) if i!=0])   
+        
+        x_1=random.randint(-5, 5)
+        while x_1==x_0 or x_1==0:
+            x_1=random.randint(-4, 4)       
+       
+        b= random.randint(-6, 6)
+        f=diff(F,x)
+        C=b-F.subs(x,x_0)
+        G=F+C
+
+        if -5<G.subs(x,x_1)<100:
+            break
 
     dap_an=f"{round_half_up(G.subs(x,x_1)):.1f}".replace(".",",")
 
@@ -4825,23 +4839,27 @@ def ckz_L12C4_B4_14():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
-    x_0= random.randint(-4,4)
-    x_1 = x_0-random.randint(1,4)    
-    x_2=x_0+random.randint(1,4)
+    while True:
 
-    m = random.choice([i for i in range(-5, 6) if i!=0])
-    n = random.choice([i for i in range(-5, 6) if i!=0])
-    p=random.randint(-7,7)
-    g=m*x**2+n*x+p
+        x_0= random.randint(-4,4)
+        x_1 = x_0-random.randint(1,4)    
+        x_2=x_0+random.randint(1,4)
 
-    a = random.choice([i for i in range(-5, 6) if i!=0])
-    b = g.subs(x,x_0) -  a*x_0
-    f=a*x+b
+        m = random.choice([i for i in range(-5, 6) if i!=0])
+        n = random.choice([i for i in range(-5, 6) if i!=0])
+        p=random.randint(-7,7)
+        g=m*x**2+n*x+p
 
-    
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = g.subs(x,x_0) -  a*x_0
+        f=a*x+b
 
-    tp1=integrate(f, (x,x_1,x_0))
-    tp2=integrate(g, (x,x_0,x_2))
+        
+
+        tp1=integrate(f, (x,x_1,x_0))
+        tp2=integrate(g, (x,x_0,x_2))
+        if 0<tp1+tp2<100:
+            break
 
 
     noi_dung = (f" Cho hàm số"
@@ -5336,13 +5354,15 @@ def ckz_L12C4_B4_22():
 def ckz_L12C4_B4_23():
     d_x=f"\\mathrm{{\\,d}}x"
     x,st_a,st_b=sp.symbols("x a b")
-
-    x_1=random.randint(2,7)
-    x_2=x_1+random.randint(1,5)
-    a = random.choice([i for i in range(-5, 7) if i!=0])
-    b=x_2/x_1
-    m = random.choice([i for i in range(-5, 6) if i!=0])
-    n = random.choice([i for i in range(-5, 6) if i!=0])
+    while True:        
+        x_1=random.randint(2,7)
+        x_2=x_1+random.randint(1,5)
+        a = random.choice([i for i in range(-5, 7) if i!=0])
+        b=x_2/x_1
+        m = random.choice([i for i in range(-5, 6) if i!=0])
+        n = random.choice([i for i in range(-5, 6) if i!=0])
+        if -5<m*a+n*b<100:
+            break
     noi_dung=(
     f"Biết tích phân ${tphan(x_1,x_2)} {latex(a/x)}{d_x}=a\\ln b$. Tính ${latex(m*st_a+n*st_b)}$."
     )
@@ -5887,8 +5907,7 @@ def ckz_L12C4_B4_31():
         kq_false=[      
 
         f"${tphan(a,b)}f(x){d_x}={tphan(b,a)}f(x){d_x}$",
-            f"${tphan(a,b)}f(x){d_x}=-{tphan(a,b)}f(t){d_t}$",
-            f"${tphan(a,b)}f(x){d_x}={tphan(a,b)}g(x){d_x}$",
+            f"${tphan(a,b)}f(x){d_x}=-{tphan(a,b)}f(t){d_t}$",           
             f"${tphan(a,b)}f(x){d_x}={tphan(c,a)}f(x){d_x}+{tphan(a,b)}f(x){d_x}$",
             f"${tphan(a,b)}g(x){d_x}={tphan(c,a)}g(x){d_x}+{tphan(a,b)}g(x){d_x}$",
         ]
@@ -5946,7 +5965,7 @@ def ckz_L12C4_B4_32():
     debai_word= f"{noi_dung}\n"
     
     kq1_T=f"*${tphan(a,b)}({latex(f)}){d_x}={tphan(a,b)}{latex(m*x**2)}{d_x}+{tphan(a,b)}{latex(n*x)}{d_x}+{tphan(a,b)}{p}{d_x}$" 
-    kq1_F=f"${tphan(a,b)}({latex(f)}){d_x}={tphan(a,b)}{latex(m*x**3/3)}{d_x}-{tphan(a,b)}{latex(n*x**2/2)}{d_x}+{tphan(a,b)}{p*x}{d_x}$"
+    kq1_F=f"${tphan(a,b)}({latex(f)}){d_x}={tphan(a,b)}{latex(m*x**3/3)}{d_x}-{tphan(a,b)}{latex(n*x**2/2)}{d_x}+{tphan(a,b)}{latex(p*x)}{d_x}$"
     
     HDG=f"${tphan(a,b)}({latex(f)}){d_x}={tphan(a,b)}{latex(m*x**2)}{d_x}+{tphan(a,b)}{latex(n*x)}{d_x}+{tphan(a,b)}{p}{d_x}$"
     if p==0:
@@ -6316,8 +6335,8 @@ def ckz_L12C4_B4_35():
 
     a=random.choice([random.randint(2,9)])
     
-    kq1_T=f"* $\\int {a}^x=\\dfrac{{{a}^x }}{{\\ln {a}}}$" 
-    kq1_F=f"$\\int {a}^x={a}^x\\ln {a}$"
+    kq1_T=f"* $\\int {a}^x{d_x}=\\dfrac{{{a}^x }}{{\\ln {a}}}+C$" 
+    kq1_F=f"$\\int {a}^x{d_x}={a}^x\\ln {a}+C$"
     
     HDG=f"$\\int {a}^x=\\dfrac{{{a}^x }}{{\\ln {a}}}$."
     kq1=random.choice([kq1_T, kq1_F])
@@ -8575,24 +8594,29 @@ def ckz_L12C4_B5_20():
 def ckz_L12C4_B5_21():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    x_1 = random.randint(-5,-1)
-    x_2 = x_1+random.randint(1,4)
-    x_3 = x_2+random.randint(1,4)
-    m = random.choice([i for i in range(-2, 2) if i!=0])
 
-    f=m*(x-x_1)*(x-x_2)*(x-x_3)
+    while True:        
+        x_1 = random.randint(-5,-1)
+        x_2 = x_1+random.randint(1,4)
+        x_3 = x_2+random.randint(1,4)
+        m = random.choice([i for i in range(-2, 2) if i!=0])
 
-    a = random.choice([i for i in range(-3, 3) if i!=0])
-    b = random.choice([i for i in range(-4, 5) if i!=0])
-    c = random.randint(-6,6)
+        f=m*(x-x_1)*(x-x_2)*(x-x_3)
 
-    g=a*x**2+b*x+c
+        a = random.choice([i for i in range(-3, 3) if i!=0])
+        b = random.choice([i for i in range(-4, 5) if i!=0])
+        c = random.randint(-6,6)
 
-    tp1=integrate(f,(x,x_1,x_2))
-    tp2=integrate(f,(x,x_2,x_3))
+        g=a*x**2+b*x+c
+
+        tp1=integrate(f,(x,x_1,x_2))
+        tp2=integrate(f,(x,x_2,x_3))
+        kq=abs(tp1)+abs(tp2)
+        if kq<100:
+            break
     dap_an=f"{round_half_up(abs(tp1)+abs(tp2),1):.1f}".replace(".",",")
 
-    noi_dung = ( f"Tính diện tích hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(f+g))}$ và $y={latex(g)}$.")    
+    noi_dung = ( f"Tính diện tích hình phẳng giới hạn bởi đồ thị các hàm số $y={latex(expand(f+g))}$ và $y={latex(g)}$(kết quả làm tròn đến hàng phần mười).")    
 
     noi_dung_loigiai=(
     f" Xét phương trình:\n\n ${latex(expand(f+g))}={latex(g)}$\n\n $\\Leftrightarrow {latex(expand(f))}=0$ \n\n $\\Rightarrow x={x_1},x={x_2},x={x_3}$.\n\n"
@@ -9294,7 +9318,7 @@ def ckz_L12C4_B5_29():
     b=a+random.randint(1,4)
 
     noi_dung=(
-    f"Gọi ${{S}}$ là diện tích của hình phẳng giới hạn bởi các đường $y=f(x),y=0,x={a},x={b}$."
+    f"Gọi ${{S}}$ là diện tích của hình phẳng giới hạn bởi các đường $y={f},y=0,x={a},x={b}$."
     f" Khẳng định nào sau đây đúng?")
     
 
