@@ -7571,6 +7571,10 @@ class Ui_MainWindow(object):
                 L12_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_53]-TF-M2. công thức nguyên hàm, công thức vận tốc-gia tốc, tìm nguyên hàm biết F(x_0), bài toán quãng đường"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét Đ-S: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -9822,6 +9826,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B1_52]-TF-M3. nguyên hàm của: me^x, a^mx, a^x.b^x.c^x, Tính F(x_0) từ nguyên hàm e^x+e^(-x)
                                             if dang_toan == "[D12_C4_B1_52]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_52()
+
+                                            #[D12_C4_B1_53]-TF-M3. T.c nguyên hàm, công thức vận tốc-gia tốc, tìm nguyên hàm biết F(x_0), bài toán quãng đường
+                                            if dang_toan == "[D12_C4_B1_53]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_53()
                                                 
 
                                         #Bài 2. Nguyên hàm đổi biến

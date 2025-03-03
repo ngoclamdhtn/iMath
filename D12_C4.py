@@ -1145,7 +1145,7 @@ def ckz_L12C4_B1_18():
     dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
 
     noi_dung = (
-    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
     )
     
 
@@ -1203,7 +1203,7 @@ def ckz_L12C4_B1_19():
     dap_an=f"{round_half_up((G.subs(x,x_1))/t):.1f}".replace(".",",")
 
     noi_dung = (
-    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $\\dfrac{{F({x_1})}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$. Tính $\\dfrac{{F({x_1})}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
     )
     
 
@@ -1255,7 +1255,7 @@ def ckz_L12C4_B1_20():
     dap_an=f"{round_half_up(G.subs(x,x_1)):.1f}".replace(".",",")
 
     noi_dung = (
-    f"Tìm một nguyên hàm $F(x)$ của hàm số $ f(x)={latex(f)}$ biết $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
+    f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
     )
     
 
@@ -3514,6 +3514,247 @@ def ckz_L12C4_B1_52():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C4_B1_53]-TF-M3. Xét Đ-S: T.c nguyên hàm, công thức vận tốc-gia tốc, tìm nguyên hàm biết F(x_0), bài toán quãng đường
+def ckz_L12C4_B1_53():
+    x=sp.symbols("x")    
+    d_x=f"\\mathrm{{\\,d}}x"
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười)."        
+    debai_word= f"{noi_dung}\n"
+
+    ten=["f(x)", "g(x)", "h(x)"]
+    f,g,h=random.sample(ten,3)
+
+    m = random.choice([i for i in range(-5, 5) if i!=0])
+    n = random.choice([i for i in range(-5, 5) if i!=0])
+    
+    kq1_T=random.choice([
+        f"* $\\int ({f}+{g}){d_x}= \\int {f}{d_x} + \\int {g}{d_x}$",
+        f"* $\\int ({f}-{g}){d_x}= \\int {f}{d_x} - \\int {g}{d_x}$",
+        f"* $\\int ({m}{f}+{n}{g}){d_x}= {m}\\int {f}{d_x} + {n}\\int {g}{d_x}$",
+        f"* $\\int {m}{f}{d_x}= {m}\\int {f}{d_x}$",
+        f"* $\\int f'(x){d_x}= f(x)+C$",
+        f"* $\\int g'(x){d_x}= g(x)+C$",
+        f"* $\\int h'(x){d_x}= h(x)+C$",
+        f"* $\\int x^n {d_x} = \\dfrac{{x^{{n+1}} }}{{n+1}}+C$, với $n\\ne -1$",
+        f"* $\\int a^x {d_x}= \\dfrac{{a^x}}{{\\ln a}}+C$, với $a>0,a\\ne 1$",
+        f"* $\\int \\dfrac{{1}}{{x}} {d_x}=\\ln |x|+C$",
+        f"* $\\int e^x {d_x}=e^x+C$",
+        f"* $\\int k {d_x}=kx+C$",
+        f"* $\\int \\sin x {d_x}=-\\cos x+C$",
+        f"* $\\int \\cos x {d_x}=\\sin x+C$",
+        f"* $\\int \\dfrac{{1}}{{\\cos^2 x}} {d_x}=\\tan x+C$",
+        f"* $\\int \\dfrac{{1}}{{\\sin^2 x}} {d_x}=-\\cot x+C$",
+        f"* $\\int (1+\\tan^2 x) {d_x}=\\tan x+C$",
+        f"* $\\int (1+\\cot^2 x) {d_x}=-\\cot x+C$",
+        ])
+    kq1_F=random.choice([
+        f"$\\int ({f}.{g}){d_x}= \\int {f}{d_x}.\\int {g}{d_x}$",
+        f"$\\int (\\dfrac{{{f}}}{{{g}}}){d_x}= \\dfrac{{\\int {f}{d_x}}}{{\\int {g}{d_x}}}$",
+        f"$\\int ({f}+{m}){d_x}= \\int {f}{d_x}+{m}$",
+        f"$\\int x^n {d_x} = \\dfrac{{x^{{n-1}} }}{{n-1}}+C$, với $n\\ne 1$",
+        f"$\\int a^x {d_x}= a^x\\ln a+C$",
+        f"$\\int \\dfrac{{1}}{{x}} {d_x}=\\ln x+C$",
+        f"$\\int k {d_x}=C$",
+        f"$\\int e^x {d_x}=e^{{-x}}+C$",
+        f"$\\int \\sin x {d_x}=\\cos x+C$",
+        f"$\\int \\cos x {d_x}=-\\sin x+C$",
+        f"$\\int \\tan x {d_x}=\\cot x+C$",
+        f"$\\int \\cot x {d_x}=-\\tan x+C$",
+        ])
+    
+    HDG=f" "
+    kq1=random.choice([kq1_T, kq1_F])
+    kq1=kq1.replace("+-","-")
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=(f"* Một vật chuyển động với gia tốc $a(t)$ với ${{t}}$ là thời gian tính bằng giây."
+            f" Vận tốc chuyển động của vật được xác định bởi $v(t)=\\int a(t)dt$")
+        kq2_F=(f"Một vật chuyển động với vận tốc $v(t)$ với ${{t}}$ là thời gian tính bằng giây."
+            f" Gia tốc chuyển động của vật được xác định bởi $a(t)=\\int v(t)dt$")
+    
+    if chon==2:
+        kq2_T=(f"Một vật chuyển động với vận tốc $s(t)$ với ${{t}}$ là thời gian tính bằng giây."
+            f" Quãng chuyển động của vật được xác định bởi $s(t)=\\int v(t)dt$")
+        kq2_F=(f"Một vật chuyển động với vận tốc $v(t)$ với ${{t}}$ là thời gian tính bằng giây."
+            f" Gia tốc chuyển động của vật được xác định bởi $a(t)=\\int v(t)dt$") 
+    
+    HDG=f""
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        while True:
+            chon=random.randint(1,3)
+            if chon==1:
+                a = random.choice([i for i in range(-4, 4) if i!=0])
+                b = random.choice([i for i in range(-6, 6) if i!=0])        
+
+                F = a*x**2+b*x
+            
+            if chon==2:
+                a = random.choice([i for i in range(-3, 3) if i!=0])
+                b = random.choice([i for i in range(-4, 4) if i!=0])
+                c = random.choice([i for i in range(-5, 5) if i!=0])        
+                F = a*x**3+b*x**2+c*x
+
+            if chon==3:
+                a = random.choice([i for i in range(-3, 3) if i!=0])
+                b = random.choice([i for i in range(-4, 4) if i!=0])
+                c = random.choice([i for i in range(-5, 5) if i!=0])        
+                F = a*x**4+b*x**2+c*x 
+
+            
+            x_0= random.randint(-6, 6)
+            
+            b= random.randint(-10, 10)
+            x_1=random.randint(-5, 5)
+            if x_1==x_0: x_1=x_1+1
+
+            f=diff(F,x)
+            C=b-F.subs(x,x_0)
+            G=F+C
+            if -5<G.subs(x,x_1)<500:
+                break
+
+        dap_an=G.subs(x,x_1)
+
+        kq3_T=f"* Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$. Khi đó $F({x_1})={dap_an}$"
+        kq3_F=f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$. Khi đó $F({x_1})={dap_an+random.randint(1,5)}$"
+        
+        HDG=(f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
+        f"$F({x_0})={b}\\Leftrightarrow {F.subs(x,x_0)}+C={b}\\Rightarrow C={C}$.\n\n"
+        f"Vậy $F(x)={latex(F+C)}$.\n\n"
+        f"$F({x_1})={dap_an}$." )
+    
+    if chon==2:
+        while True:
+        
+            chon=random.randint(1,2)            
+            a = random.choice([i for i in range(-4, 4) if i!=0])
+            b = random.choice([i for i in range(-5, 5) if i!=0]) 
+
+            F = a*x+b/x
+           
+            x_0= random.choice([i for i in range(-5, 5) if i!=0])
+            
+            b= random.randint(-8, 8)
+            x_1=random.randint(-5, 5)
+
+            while x_1==x_0 or x_1==0:
+                x_1=random.randint(-5, 5)    
+
+            f=diff(F,x)
+            C=b-F.subs(x,x_0)
+            G=F+C
+            if -5<G.subs(x,x_1)<100:
+                break
+
+        dap_an=phan_so(G.subs(x,x_1))
+        dap_an_false=phan_so(G.subs(x,x_1)+random.randint(1,2))
+
+        kq3_T = (f"* Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$."
+            f" Khi đó $F({x_1})={dap_an}$")
+        kq3_F = (f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$."
+            f" Khi đó $F({x_1})={dap_an_false}$")       
+
+        noi_dung_loigiai=(
+        f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
+        f"$F({x_0})={b}\\Leftrightarrow {phan_so(F.subs(x,x_0))}+C={b}\\Rightarrow C={phan_so(C)}$.\n\n"
+        f"Vậy $F(x)={latex(F+C)}$.\n\n"
+        f"$F({x_1})={phan_so(G.subs(x,x_1))}={dap_an}$." )    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    t=sp.symbols("t")
+    
+    while True:
+        v_0=random.randint(12,20)
+        a=v_0-random.randint(1,3)
+        b=random.randint(2,7)
+        v=a-b*t
+        t_0=random.randint(1,5)
+        s=integrate(v,(t,0,t_0))
+        if s>0:
+            break
+    s_false=s+random.randint(1,2)
+    if int(s_false)!=s_false:
+        s_false=f"{round_half_up(s_false,1):.1f}".replace(".",",")
+    if int(s)!=s:
+        s=f"{round_half_up(s,1):.1f}".replace(".",",")  
+
+    kq4_T=(f"* Một chiếc ôtô đang chuyển động với vận tốc ${{{v_0}}}$ m/s thì hãm phanh và chuyển động chậm dần với vận tốc "
+f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s}}}$ m"
+        )
+
+    kq4_F=(f"Một chiếc ôtô đang chuyển động với vận tốc ${{{v_0}}}$ m/s thì hãm phanh và chuyển động chậm dần với vận tốc "
+f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s}}}$ m") 
+    
+    HDG=(f"$s=\\int v(t)dt=\\int ({latex(v)})dt={latex(integrate(v,t))}+C$.\n\n"
+        f"$s(0)=0\\Rightarrow C=0$.\n\n"
+        f"Quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là: $s({t_0})={s}$ (m).")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 
 
 
@@ -7112,6 +7353,97 @@ def ckz_L12C4_B4_42():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_43]-TF-M2.
+def ckz_L12C4_B4_43():
+
+    noi_dung = f" . Xét tính đúng-sai của các khẳng định sau. "        
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"*" 
+    kq1_F=f" "
+    
+    HDG=f" "
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* "
+    kq2_F=f" "
+    
+    HDG=f""
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* " 
+    kq3_F=f" "
+    
+    HDG=f""
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* "
+    kq4_F=f" " 
+    
+    HDG=f""
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 
     
 
