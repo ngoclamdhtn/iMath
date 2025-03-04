@@ -4,6 +4,11 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def lcm(a, b):
+    return abs(a * b) // math.gcd(a, b)
+
+def lcm_of_three(x, y, z):
+    return lcm(lcm(x, y), z)
 
 def tao_3dinh_tamgiac():   
     
@@ -3426,6 +3431,53 @@ def htd_25_xyz_L12_C5_B1_34():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
     f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_35]-SA-M2. Tính khoảng cách từ một điểm đến mặt phẳng đoạn chắn
+def htd_25_xyz_L12_C5_B1_35():
+    x,y,z=sp.symbols("x y z")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    t=lcm_of_three(a,b,c)
+    a1,b1,c1=int(t/a), int(t/b), int(t/c)
+
+    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
+    random.shuffle(ten_diem)
+    A,B,C,M=ten_diem[0:4]
+
+    x_M = random.choice([i for i in range(-5, 6) if i!=0])
+    y_M = random.choice([i for i in range(-5, 6) if i!=0])
+    z_M = random.choice([i for i in range(-5, 6) if i!=0])
+
+    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])   
+
+    noi_dung= (
+    f"Trong không gian ${{Oxyz}}$, cho các điểm ${A}({a};0;0),{B}(0;{b};0), {C}(0;0;{c})$."        
+        f" Tính khoảng cách từ điểm ${{{M}}}({x_M};{y_M};{z_M})$ đến mặt phẳng ${{({A}{B}{C})}}$(kết quả làm tròn đến hàng phần mười).")
+
+    khoang_cach=abs(a1*x_M+b1*y_M+c1*z_M-t)/sqrt(a1**2+b1**2+c1**2)
+
+    dap_an=f"{round_half_up(khoang_cach,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Mặt phẳng ${{({A}{B}{C})}}$ có phương trình:\n\n"
+    f" $\\dfrac{{x}}{{{a}}}+\\dfrac{{y}}{{{b}}}+\\dfrac{{z}}{{{c}}}=1$\n\n"
+    f"$\\Leftrightarrow {latex(a1*x+b1*y+c1*z-t)}=0$.\n\n"
+    f"$d({M},({A}{B}{C}))=\\dfrac{{|{show_tich(a1,x_M)}+{show_tich(b1,y_M)}+{show_tich(c1,z_M)}-{t}|}}{{\\sqrt{{{a1**2}+{b1**2}+{c1**2}}} }}={latex(khoang_cach)}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an

@@ -6230,12 +6230,12 @@ def ckz_L12C4_B4_32():
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     # Biểu diễn đa thức với thứ tự biến: a trước, b sau
-    poly = Poly(F.subs(x,b)-F.subs(x,a), a, b)
+    p4 = P4(F.subs(x,b)-F.subs(x,a), a, b)
 
     # Chuyển lại thành biểu thức (sắp xếp theo thứ tự a trước b)
-    sorted_poly = poly.as_expr()
+    sorted_p4 = p4.as_expr()
 
-    kq3_T=f"* $I={latex(sorted_poly)}$" 
+    kq3_T=f"* $I={latex(sorted_p4)}$" 
     kq3_F=f"$I={latex(F.subs(x,a)-F.subs(x,b))}$"
 
     
@@ -7067,7 +7067,7 @@ def ckz_L12C4_B4_38():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -7124,7 +7124,7 @@ def ckz_L12C4_B4_39():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -7192,7 +7192,7 @@ def ckz_L12C4_B4_40():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -7239,7 +7239,7 @@ def ckz_L12C4_B4_41():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -7286,7 +7286,7 @@ def ckz_L12C4_B4_41():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -7349,49 +7349,116 @@ def ckz_L12C4_B4_42():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C4_B4_43]-TF-M2.
+#[D12_C4_B4_43]-SA-M2. Tích phân e^(ax+b)
 def ckz_L12C4_B4_43():
+    x=sp.symbols("x")
+    d_x=f"\\mathrm{{\\,d}}x"
+    while True:
+        a=random.randint(2,6)
+        b=random.choice([i for i in range(-4, 6) if i!=0])
 
-    noi_dung = f" . Xét tính đúng-sai của các khẳng định sau. "        
+        x_1=random.randint(-3,4)
+        x_2=x_1+random.randint(1,4)
+
+        m=random.choice([i for i in range(-3, 3) if i!=0])
+        n=random.choice([i for i in range(-3, 3) if i!=0])
+        p=random.choice([i for i in range(-3, 3) if i!=0])
+        s_a,s_b, s_c=sp.symbols("a b c")
+
+        f_a=a*x_1+b
+        f_b=a*x_2+b
+        if -5<m*1/a+n*f_b+p*f_a<100:
+            break
+
+    dap_an=f"{round_half_up(m*1/a+n*f_b+p*f_a,1):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Biết ${tphan(x_1,x_2)} {{{latex(exp(a*x+b))}}}{d_x}=a(e^b-e^c)$. Tính ${latex(m*s_a+n*s_b+p*s_c)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)} {{{latex(exp(a*x+b))}}}{d_x} ={phan_so(1/a)}{latex(exp(a*x+b))}\\bigg|_{{{x_1}}}^{{{x_2}}}$\n\n"
+    f"$={phan_so(1/a)}(e^{{{f_b}}}-e^{{{f_a}}})$.\n\n"
+    f"$\\Rightarrow a={phan_so(1/a)},b={f_b},c={f_a}$.\n\n"
+    f"$\\Rightarrow {latex(m*s_a+n*s_b+p*s_c)}={phan_so(m*1/a+n*f_b+p*f_a)}={dap_an}$.\n\n"
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B4_44]-TF-M2. 
+def ckz_L12C4_B4_44():
+
+    d_x=f"\\mathrm{{\\,d}}x"
+    x=sp.symbols("x")
+    ten=["f(x)", "g(x)", "h(x)"]
+
+    f,g=random.sample(ten,2)
+    a=random.randint(-8,3)
+    b=a+random.randint(2,5)
+    c=b+random.randint(1,4)
+    k= random.choice([i for i in range(-5, 6) if i!=0])
+
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau. "        
     debai_word= f"{noi_dung}\n"
     
-    kq1_T=f"*" 
-    kq1_F=f" "
-    
-    HDG=f" "
+    kq1_T=random.choice([
+        f"* ${tphan(a,b)}[{f}+{g}]{d_x}={tphan(a,b)}{f}{d_x}+{tphan(a,b)}{g}{d_x}$",
+        f"* ${tphan(a,b)}[{f}-{g}]{d_x}={tphan(a,b)}{f}{d_x}-{tphan(a,b)}{g}{d_x}$" ,
+        f"* ${tphan(a,b)}{k}{f}{d_x}={k}{tphan(a,b)}{f}{d_x}$" ,
+        f"* ${tphan(a,b)}f'(x){d_x}=f({b})-f({a})$" ,
+        f"* ${tphan(a,b)}g'(x){d_x}=g({b})-g({a})$" ,
+        f"* ${tphan(a,a)}{f}{d_x}=0$" ,
+        f"* ${tphan(a,c)}{f}{d_x}={tphan(a,b)}{f}{d_x}+{tphan(b,c)}{f}{d_x}$" ,
+        ])
+    kq1_F=random.choice([
+        f"${tphan(a,b)}[{f}.{g}]{d_x}={tphan(a,b)}{f}{d_x}.{tphan(a,b)}{g}{d_x}$",
+        f"${tphan(a,b)}f'(x){d_x}=f({a})+f({b})$" ,
+        f"${tphan(a,b)}f'(x){d_x}=f({a})-f({b})$" ,
+        f"${tphan(a,c)}{f}{d_x}={tphan(a,b)}{f}{d_x}-{tphan(b,c)}{f}{d_x}$" ,
+        f"${tphan(-a,a)}{f}{d_x}=2{tphan(0,a)}{f}{d_x}$" ,
+        ])
     kq1=random.choice([kq1_T, kq1_F])
+    HDG=f" "
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     kq2_T=f"* "
     kq2_F=f" "
-    
-    HDG=f""
     kq2=random.choice([kq2_T, kq2_F])
+    HDG=f""
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     kq3_T=f"* " 
     kq3_F=f" "
-    
-    HDG=f""
     kq3=random.choice([kq3_T, kq3_F])
+    HDG=f""
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     kq4_T=f"* "
     kq4_F=f" " 
-    
-    HDG=f""
     kq4=random.choice([kq4_T, kq4_F])
+    HDG=f""
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -7418,32 +7485,34 @@ def ckz_L12C4_B4_43():
             loigiai.append(loigiai_4)
 
 
-    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
-    f"\n\n a) {loigiai[0]}\n"
-    f"b) {loigiai[1]}\n"
-    f"c) {loigiai[2]}\n"
-    f"d) {loigiai[3]}\n")
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
 
-    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
 
-    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
-    f"b) {loigiai[1]}\n\n"
-    f"c) {loigiai[2]}\n\n"
-    f"d) {loigiai[3]}\n\n")
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
 
     #Tạo đề latex
     for i in range(len(list_PA)):
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
-        f"\\choiceTFt\n"
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
-        f"\\loigiai{{ \n {loigiai_latex} \n }}"
-        f"\\end{{ex}}\n")
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
 
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+
 
     
 

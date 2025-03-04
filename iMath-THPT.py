@@ -7786,7 +7786,7 @@ class Ui_MainWindow(object):
                 L12_C4_B4_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_37]-TF-M2.  Xét Đ-S về biến đổi tích phân: đổi cận, tích phân hàm số chẵn, lẻ, tích phân chứa dấu ||"])
+                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_37]-TF-M2.  Xét Đ-S: đổi cận, tích phân hàm số chẵn, lẻ, tích phân chứa dấu ||"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7839,6 +7839,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_20]-SA-M3. Tính tích phân e^x+g(x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_43]-SA-M2. Tính tích phân e^(ax+b)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8167,6 +8171,10 @@ class Ui_MainWindow(object):
                 L12_C5_B1_13.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B1_13.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_35]-SA-M2. Tính khoảng cách từ một điểm đến mặt phẳng chắn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_23]-SA-M2. Mp(Q) qua A và song song với mp(P)(tính tổng hệ số)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8177,7 +8185,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_34]-SA-M3. Mp(Q) qua A,B song song với CD (tính tổng hệ số)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
 
                 item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_24]-SA-M3. Mp(P) qua A và chứa trục tọa độ. Tính khoảng cách từ B đến (P)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8210,6 +8218,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_31]-SA-M3. Tìm điểm đối xứng của điểm lên mặt phẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
 
@@ -10055,7 +10065,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C4_B4_42]-SA-M2. Tính tổng các hệ số của kết quả tích phân asin^2(x/2) hoặc acos^2(x/2).
                                             if dang_toan == "[D12_C4_B4_42]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_42()         
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_42()
+
+                                            #[D12_C4_B4_43]-SA-M2. Tích phân e^(ax+b)
+                                            if dang_toan == "[D12_C4_B4_43]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_43()       
                                                 
 
                                         #Bài 5. Ứng dụng tích phân
@@ -10362,7 +10376,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B1_34]-SA-M3. Viết PTMP qua điểm A,B và song song với C,D
                                             if dang_toan == "[D12_C5_B1_34]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_34()                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_34()
+
+                                            #[D12_C5_B1_35]-SA-M3. Tính khoảng cách từ một điểm đến mặt phẳng đoạn chắn
+                                            if dang_toan == "[D12_C5_B1_35]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_35()                        
                                                 
 
 
@@ -15571,6 +15589,7 @@ class Ui_MainWindow(object):
                         #show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
                         #show_msg_box.exec_()
                     return
+#end2
 
         def updateProgressBar(self):
                 # Cập nhật giá trị của progress bar
