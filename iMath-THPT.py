@@ -900,17 +900,17 @@ class Ui_MainWindow(object):
 
                 #Thanh Progress bar                
                 self.progress_bar = QProgressBar(parent=self.tab_thongtin_dethi)
-                self.progress_bar.setGeometry(le_trai+200, le_top+330, 305, 15) 
+                self.progress_bar.setGeometry(le_trai+200, le_top+300, 305, 15) 
 
                 #Tạo label đang xử lí
                 self.label_dangxuli = QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label_dangxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+350, 400, 20))
+                self.label_dangxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+320, 400, 20))
                 self.label_dangxuli.setFont(font)
                 self.label_dangxuli.setObjectName("label_dangxuli")
 
                 #Tạo label đang xử lí
                 self.label_socau_daxuli = QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label_socau_daxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+380, 450, 100))
+                self.label_socau_daxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+345, 450, 100))
                 self.label_socau_daxuli.setFont(font)
                 self.label_socau_daxuli.setObjectName("label_socau_daxuli")
 
@@ -5141,7 +5141,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_08]-TF-M1. Tính chất của căn bậc n."])
+                item = QTreeWidgetItem(L11_C6_B1_2, ["[D11_C6_B1_08]-TF-M1. Tính chất của căn bậc n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5577,6 +5577,30 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_14]-SA-M2. Tìm nghiệm nguyên của log_a f(x)>b (>=,<,<=)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_15]-SA-M2. Tìm nghiệm nguyên của ln f(x)>b (>=,<,<=)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_16]-SA-M3. Tìm nghiệm nguyên của log_a f(x) + log_a g(x)>b hoặc log_a f(x) - log_a g(x)>b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_17]-SA-M3. Tìm nghiệm nguyên của log_a f(x) + log_a g(x)>b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_18]-SA-M3. Tìm nghiệm nguyên của log_a f(x) - log_a g(x)>b"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_3, ["[D11_C6_B5_19]-SA-M3. Tìm nghiệm nguyên của log_m (ax^2+bx+c)>n"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L11_C6_B5_4 = QTreeWidgetItem(L11_C6_B5, ["Tự luận"])
                 L11_C6_B5_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B5_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5584,6 +5608,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C6_B5_4, ["[D11_C6_B5_13]-TL-M2. Giải bất phương trình a^f(x)>a^g(x), f và g là các hàm bậc hai"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
                 
@@ -7786,6 +7812,10 @@ class Ui_MainWindow(object):
                 L12_C4_B4_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_44]-TF-M2.  Xét Đ-S: công thức tích phân, tính tích phân, tích phân của f'(x), cho vận tốc tìm quãng đường"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_37]-TF-M2.  Xét Đ-S: đổi cận, tích phân hàm số chẵn, lẻ, tích phân chứa dấu ||"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8233,7 +8263,7 @@ class Ui_MainWindow(object):
                 L12_C5_B2_TN.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_TN.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_1 = QTreeWidgetItem(L12_C5_B2_TN, ["2.1. Đọc thông tin VTCP, điểm thuộc đường thẳng"])
+                L12_C5_B2_1 = QTreeWidgetItem(L12_C5_B2_TN, ["1. Đọc thông tin VTCP, điểm thuộc đường thẳng"])
                 L12_C5_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8241,7 +8271,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B2_1, ["[D12_C5_B2_15]-M2. Đọc VTCP từ phương trình tham số."])
+                item = QTreeWidgetItem(L12_C5_B2_1, ["[D12_C5_B2_15]-M2. Đọc VTCP từ phương trình chính tắc."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8253,11 +8283,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_2 = QTreeWidgetItem(L12_C5_B2_TN, ["2.2. Viết phương trình đường thẳng"])
+                L12_C5_B2_2 = QTreeWidgetItem(L12_C5_B2_TN, ["2. Viết phương trình đường thẳng"])
                 L12_C5_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_2_1 = QTreeWidgetItem(L12_C5_B2_2, ["2.2.1. Viết phương trình chính tắc"])
+                L12_C5_B2_2_1 = QTreeWidgetItem(L12_C5_B2_2, ["Viết phương trình chính tắc"])
                 L12_C5_B2_2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8293,7 +8323,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_2_2 = QTreeWidgetItem(L12_C5_B2_2, ["2.2.2. Viết phương trình tham số"])
+                L12_C5_B2_2_2 = QTreeWidgetItem(L12_C5_B2_2, ["Viết phương trình tham số"])
                 L12_C5_B2_2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8313,7 +8343,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_3 = QTreeWidgetItem(L12_C5_B2_TN, ["2.3. Vị trí tương đối giữa các đường thẳng, đường thẳng và mặt phẳng"])
+                L12_C5_B2_3 = QTreeWidgetItem(L12_C5_B2_TN, ["3. Vị trí tương đối giữa các đường thẳng, đường thẳng và mặt phẳng"])
                 L12_C5_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8337,7 +8367,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_4 = QTreeWidgetItem(L12_C5_B2_TN, ["2.4. Các bài toán khác về đường thẳng"])
+                L12_C5_B2_4 = QTreeWidgetItem(L12_C5_B2_TN, ["4. Các bài toán khác về đường thẳng"])
                 L12_C5_B2_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8361,7 +8391,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B2_5 = QTreeWidgetItem(L12_C5_B2_TN, ["2.5. Góc"])
+                L12_C5_B2_5 = QTreeWidgetItem(L12_C5_B2_TN, ["5. Góc"])
                 L12_C5_B2_5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8437,7 +8467,7 @@ class Ui_MainWindow(object):
                 L12_C5_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                L12_C5_B3_1 = QTreeWidgetItem(L12_C5_B3, ["5.3.2. Trắc Nghiệm"])
+                L12_C5_B3_1 = QTreeWidgetItem(L12_C5_B3, ["Trắc Nghiệm"])
                 L12_C5_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
 
                 item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_02]-M1. Đọc tọa độ tâm từ PTMC thu gọn."])
@@ -8456,24 +8486,32 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_01]-M1. Viết phương trình mặt cầu có tâm và bán kính."])
+                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_01]-M1. Viết PTMC có tâm và bán kính."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_06]-M2. Viết phương trình mặt cầu có tâm và đường kính."])
+                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_06]-M2. Viết PTMC có tâm và đường kính."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_07]-M3. Viết phương trình mặt cầu có đường kính AB."])
+                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_07]-M3. Viết PTMC có đường kính AB."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_08]-M2. Viết phương trình mặt cầu có tâm và đi qua điểm."])
+                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_08]-M2. Viết PTMC có tâm và đi qua điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C5_B3_2 = QTreeWidgetItem(L12_C5_B3, ["5.3.1. Đúng-Sai"])
+                L12_C5_B3_2 = QTreeWidgetItem(L12_C5_B3, ["Đúng-Sai"])
                 L12_C5_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+
+                item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_09]-TF-M2. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, PTMP tiếp xúc mặt cầu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_10]-TF-M2. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
         #Chương 6 - Một số yếu tố xác suất
                 L12_C6 = QTreeWidgetItem(L12, ["Chương 6 - Một số yếu tố xác suất"])
@@ -10069,7 +10107,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C4_B4_43]-SA-M2. Tích phân e^(ax+b)
                                             if dang_toan == "[D12_C4_B4_43]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_43()       
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_43()
+
+                                            #[D12_C4_B4_44]-TF-M2. Xét Đ-S: công thức tích phân, tính tích phân, tích phân của f('x'), cho vận tốc tìm quãng đường
+                                            if dang_toan == "[D12_C4_B4_44]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_44()  
                                                 
 
                                         #Bài 5. Ứng dụng tích phân
@@ -10605,6 +10647,16 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B3_08]-M2. Viết phương trình mặt cầu có tâm và đi qua điểm
                                             if dang_toan == "[D12_C5_B3_08]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_08()
+
+                                            #[D12_C5_B3_09]-TF-M2. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, mặt phẳng tiếp xúc mặt cầu
+                                            if dang_toan == "[D12_C5_B3_09]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_09()
+
+                                            #[D12_C5_B3_10]-TF-M2. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, mặt phẳng tiếp cắt mặt cầu
+                                            if dang_toan == "[D12_C5_B3_10]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_10()
+
+                                            
 
                                             #Chương 6 - Một số yếu tố xác suất
 
@@ -12187,9 +12239,33 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C6_B5_12]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_12()
 
-                                            #[D11_C6_B5_13]-TL-M2. Giải bất phương trình a^f(x)>a^g(x), f và g là các hàm bậc hai.
+                                            #[D11_C6_B5_13]-SA-M2. Giải bất phương trình a^f(x)>a^g(x), f và g là các hàm bậc hai.
                                             if dang_toan == "[D11_C6_B5_13]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_13()
+
+                                            #[D11_C6_B5_14]-SA-M2. Tìm số nghiệm nguyên của bất phương trình log_a f(x)>b
+                                            if dang_toan == "[D11_C6_B5_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_14()
+
+                                            #[D11_C6_B5_15]-SA-M2. Tìm số nghiệm nguyên của bất phương trình ln f(x)>b
+                                            if dang_toan == "[D11_C6_B5_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_15()
+
+                                            #[D11_C6_B5_16]-SA-M2. Tìm số nghiệm nguyên của log_a f(x) + log_a g(x)>b hoặc log_a f(x) - log_a g(x)>b
+                                            if dang_toan == "[D11_C6_B5_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_16()
+
+                                            #[D11_C6_B5_17]-SA-M3. Tìm số nghiệm nguyên của log_a f(x) + log_a g(x)>b
+                                            if dang_toan == "[D11_C6_B5_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_17()
+
+                                            #[D11_C6_B5_18]-SA-M3. Tìm số nghiệm nguyên của log_a f(x) - log_a g(x)>b
+                                            if dang_toan == "[D11_C6_B5_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_18()
+
+                                            #[D11_C6_B5_19]-SA-M3. Tìm số nghiệm nguyên của log_m (ax^2+bx+c)>n
+                                            if dang_toan == "[D11_C6_B5_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_19()
                               
 
 
@@ -15586,9 +15662,9 @@ class Ui_MainWindow(object):
                         show_msg_box.exec_()
 
                 except Exception as e:
-                        #show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
-                        #show_msg_box.exec_()
-                    return
+                    show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
+                    show_msg_box.exec_()
+                return
 #end2
 
         def updateProgressBar(self):

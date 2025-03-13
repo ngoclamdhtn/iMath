@@ -4566,7 +4566,7 @@ def ckz_L12C4_B4_06():
     if F_a==f_b:
         f_b=F_a+random.randint(2,5)
      
-    f=f"  \\int\\limits_{{{a}}}^{{{b}}} {{f'(x){d_x}}}"
+    f=f"\\int\\limits_{{{a}}}^{{{b}}} {{f'(x){d_x}}}"
 
     kq=f_b - F_a
     kq2=f_b + F_a
@@ -7401,7 +7401,7 @@ def ckz_L12C4_B4_43():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C4_B4_44]-TF-M2. 
+#[D12_C4_B4_44]-TF-M2. Xét Đ-S: công thức tích phân, tính tích phân, tích phân của f('x'), cho vận tốc tìm quãng đường
 def ckz_L12C4_B4_44():
 
     d_x=f"\\mathrm{{\\,d}}x"
@@ -7439,26 +7439,92 @@ def ckz_L12C4_B4_44():
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* "
-    kq2_F=f" "
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        a =random.randint(-4,10)  
+        b=a+random.randint(2,8)
+        m = random.choice([random.randint(-10, -2), random.randint(2, 10)])
+        n = random.choice([random.randint(-10, -2), random.randint(2, 10)])
+        if n==m:
+            n=m+random.randint(2,5)
+            if n==0: n=1
+
+        dau_n=tao_dau(n)
+        if n==-1 or n==1:
+            n1=1
+        else:
+            n1= xu_li_heso_1(n)
+        m1=xu_li_heso_1(m)
+        f=f"\\int\\limits_{{{a}}}^{{{b}}} {{f(x){d_x}}}"
+        g=f"\\int\\limits_{{{a}}}^{{{b}}} {{\\left[ {m1}f(x){dau_n}{n1}\\right]{d_x}}}"
+
+        giatri_f = random.choice([random.randint(-15, -1), random.randint(1, 15)])        
+        kq =m*giatri_f + n*(b-a)
+
+        tich_mf=show_tich(m,giatri_f)
+        hieu=show_hieu(b,a)
+
+        kq2_T=f"* Cho tích phân ${f}={giatri_f}$. Khi đó ${g}={kq}$"
+        kq2_F=f"Cho tích phân ${f}={giatri_f}$. Khi đó ${g}={kq+random.randint(1,3)}$"
+        HDG=f"${g}={m1}{f}{dau_n}{n1}({hieu})={tich_mf}{dau_n}{n1}.{b-a}={kq}$."
+    
+    if chon==2:
+        b=a+random.randint(1,6)
+        F_a = random.choice([random.randint(-10, -1), random.randint(2, 10)])
+        F_b = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+        if F_a==F_b:
+            F_b=F_a+random.randint(2,5)     
+        f=f"  \\int\\limits_{{{a}}}^{{{b}}} {{f(x){d_x}}}"
+        hieu=show_hieu(F_b,F_a)  
+        kq2_T=f"* Biết $F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $ F({a})={F_a},F({b})={F_b}$. Khi đó ${f}={F_b-F_a}$"
+        kq2_F=f"Biết $F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $ F({a})={F_a},F({b})={F_b}$. Khi đó ${f}={F_b+F_a}$"
+        HDG=f"${f}=F({b})-F({a})={hieu}={F_b-F_a}$."
+
     kq2=random.choice([kq2_T, kq2_F])
-    HDG=f""
+     
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq3_T=f"* " 
-    kq3_F=f" "
+    a =random.randint(-4,10)  
+    b=a+random.randint(1,6)
+    F_a = random.choice([random.randint(-10, -1), random.randint(2, 10)])
+    f_b = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+    if F_a==f_b:
+        f_b=F_a+random.randint(2,5)
+     
+    f=f"  \\int\\limits_{{{a}}}^{{{b}}} {{f'(x){d_x}}}"
+
+    kq=f_b - F_a
+
+    kq3_T=f"* Cho hàm số $f(x)$ có đạo hàm trên đoạn ${{[{a};{b}]}}$, $f({a})={F_a}$ và $f({b})={f_b}$. Khi đó ${f}={kq}$"
+    kq3_F=f"Cho hàm số $f(x)$ có đạo hàm trên đoạn ${{[{a};{b}]}}$, $f({a})={F_a}$ và $f({b})={f_b}$. Khi đó ${f}={kq+random.randint(1,2)}$"
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f""
+    HDG=f"${f}=f({b})-f({a})={hieu}={kq}$."
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq4_T=f"* "
-    kq4_F=f" " 
+    d_t=f"\\mathrm{{\\,d}}t"
+    m_s=f"\\mathrm{{\\,(m}}/\\mathrm{{\\,s)}}"
+    m=f"\\mathrm{{\\,(m)}}"
+    t=sp.symbols("t")      
+    a = random.randint(1,10)
+    b = random.randint(1,10)
+    t_1=random.randint(0,8)
+    t_2=t_1+random.randint(1,10)
+
+    f=a*t+b 
+
+    kq= integrate(f, (t,{t_1},{t_2})) 
+
+    kq4_T=(f"* Một vật chuyển động với tốc độ $v(t)={latex(f)} ({m_s})$, với thời gian ${{t}}$ tính bằng giây."
+    f" Quãng đường vật đi được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ bằng ${phan_so(kq)}$")
+    kq4_F=(f"Một vật chuyển động với tốc độ $v(t)={latex(f)} ({m_s})$, với thời gian ${{t}}$ tính bằng giây."
+    f" Quãng đường vật đi được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ bằng ${phan_so(kq+random.randint(1,2))}$")
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=f""
+    HDG=f"Quãng đường đi được là: $  \\int\\limits_{{{t_1}}}^{{{t_2}}} {{\\left({latex(f)}\\right){d_t}}}={phan_so(kq)}$."  
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

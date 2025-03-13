@@ -751,7 +751,7 @@ def htd_25_xyz_L12_C5_B1_07():
 
     debai= f"{noi_dung}\n"
         #f"{file_name}\n"
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 
       
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -1181,10 +1181,10 @@ def htd_25_xyz_L12_C5_B1_13():
     #Tạo bậc ngẫu nhiên
    #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
-    a = random.choice([random.randint(-8, -1), random.randint(1, 8)])
-    b = random.choice([random.randint(-8, -1), random.randint(1, 8)])
-    c = random.choice([random.randint(-9, -1), random.randint(1, 9)])
-    d = random.choice([random.randint(-9, -1), random.randint(1, 9)])
+    a = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+    b = random.choice([random.randint(-4, -1), random.randint(1, 5)])
+    c = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+    d = random.choice([random.randint(-4, -1), random.randint(1, 5)])
 
     t=ucln_ba_so(a,b,c)
     a,b,c=int(a/t),int(b/t),int(c/t)
@@ -1193,8 +1193,8 @@ def htd_25_xyz_L12_C5_B1_13():
     ten_mp2=random.choice(["(Q)",  f"(\\beta)", f"(\\gamma)" ])   
 
 
-    t2=random.choice([random.randint(-3, -1), random.randint(1, 3)])
-    t3=random.randint(1,6)
+    t2=random.choice([random.randint(-2, -1), random.randint(1, 2)])
+    t3=random.randint(1,2)
     a2, b2, c2, d2= a*t2, b*t2, c*t2, d*t2+t3
     m=(d*t2+t3)/t2
     mp1=latex(a*x+b*y+c*z+d)
@@ -1206,13 +1206,12 @@ def htd_25_xyz_L12_C5_B1_13():
 
     kq=abs(t3/(t2*sqrt(a**2+b**2+c**2)))
     kq2=abs(d+d2)/sqrt(a**2+b**2+c**2)
-    kq3=abs(d+d2)/(abs(a)+abs(b)+abs(c))
-    kq4=abs(d-m)/(abs(a)+abs(b)+abs(c))
+    while True:        
+        kq3=random.randint(1,10)/random.randint(12,20)
+        kq4=random.randint(1,7)
+        if all([kq3!=kq, kq3!=kq2,kq4!=kq,kq4!=kq2, kq4!=kq3]):
+            break
 
-    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-    kq2=pa_kotrung[1]
-    kq3=pa_kotrung[2]
-    kq4=pa_kotrung[3]
 
     noi_dung_loigiai=my_module.thay_dau_congtru(
         f"${ten_mp2}:{latex(a*x+b*y+c*z)}+{phan_so(m)}=0$.\n\n"\
@@ -3995,6 +3994,314 @@ def htd_25_xyz_L12_C5_B3_08():
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C5_B3_09]-TF-M3. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, mặt phẳng tiếp xúc mặt cầu
+def htd_25_xyz_L12_C5_B3_09():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+    while True:
+        a,b,c = [random.randint(-5,6) for i in range(3)]
+        x_0,y_0,z_0=[random.randint(-5,6) for i in range(3)]
+        if all([a!=x_0,b!=y_0, x_0!=0, y_0!=0,z_0!=0]):
+            break
+    r=sqrt((a-x_0)**2+(b-y_0)**2+(c-z_0)**2)
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ptmc=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}+{latex((z-z_0)**2)}={r**2}"
+    
+    if chon==2:
+        ptmc=f"x^2+y^2+z^2+{-2*x_0}x+{-2*y_0}y+{-2*z_0}z+{x_0**2+y_0**2+z_0**2-r**2}=0"
+        ptmc=ptmc.replace("+-","-")
+    
+    
+          
+
+    noi_dung= (f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu ${{(S)}}$ có phương trình"
+                f" ${ptmc}$. Xét tính đúng-sai của các khẳng định sau:")
+    
+    kq1_T=f"* Tâm của mặt cầu ${{(S)}}$ là điểm $I({x_0};{y_0};{z_0})$" 
+    kq1_F=f"Tâm của mặt cầu ${{(S)}}$ là điểm $I({-x_0};{-y_0};{-z_0})$"
+    
+    HDG=f"Tâm của mặt cầu ${{(S)}}$ là điểm $I({x_0};{y_0};{z_0})$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Bán kính của mặt cầu ${{(S)}}$ là $R={latex(r)}$"
+    kq2_F=f"Bán kính của mặt cầu ${{(S)}}$ là $R={latex(r**2)}$"
+    
+    HDG=f"Bán kính của mặt cầu ${{(S)}}$ là $R=\\sqrt{{{r**2}}}={latex(r)}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    
+    ten=["A","B","H","M","N","E","F","D"]
+    A,B=random.sample(ten,2)
+   
+    chon=random.randint(1,2)    
+    if chon==1:
+        while True:        
+            x_1,y_1,z_1=[random.randint(-7,7) for i in range(3)]
+            r_1=sqrt((x_1-x_0)**2+(y_1-y_0)**2+(z_1-z_0)**2)
+            if all([x_1!=x_0,y_1!=y_0, x_1!=a, y_1!=b, r_1>r]):
+                break
+        kq3_T=f"* Điểm ${A}({x_1};{y_1};{z_1})$ nằm ngoài mặt cầu ${{(S)}}$" 
+        kq3_F=f"Điểm ${A}({x_1};{y_1};{z_1})$ nằm trong mặt cầu ${{(S)}}$"
+        
+        HDG=(f"$I{A}=\\sqrt{{{(x_1-x_0)**2}+{(y_1-y_0)**2}+{(z_1-z_0)**2}}}={latex(r_1)}>{latex(r)}$.\n\n"
+        f"Suy ra điểm ${A}({x_1};{y_1};{z_1})$ nằm ngoài mặt cầu ${{(S)}}$.")
+        kq3=random.choice([kq3_T, kq3_F])
+    
+    if chon==2:
+        while True:        
+            x_1,y_1,z_1=[random.randint(-7,7) for i in range(3)]
+            r_1=sqrt((x_1-x_0)**2+(y_1-y_0)**2+(z_1-z_0)**2)
+            if all([x_1!=x_0,y_1!=y_0, x_1!=a, y_1!=b, r_1<r]):
+                break
+        kq3_T=f"* Điểm ${A}({x_1};{y_1};{z_1})$ nằm trong mặt cầu ${{(S)}}$" 
+        kq3_F=f"Điểm ${A}({x_1};{y_1};{z_1})$ nằm ngoài mặt cầu ${{(S)}}$"
+        
+        HDG=(f"$I{A}=\\sqrt{{{(x_1-x_0)**2}+{(y_1-y_0)**2}+{(z_1-z_0)**2}}}={latex(r_1)}<{latex(r)}$.\n\n"
+        f"Suy ra điểm ${A}({x_1};{y_1};{z_1})$ nằm trong mặt cầu ${{(S)}}$.")
+        kq3=random.choice([kq3_T, kq3_F])
+    
+    
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    n1,n2,n3=a-x_0,b-y_0,c-z_0
+    t=ucln_ba_so(n1,n2,n3)
+    n1,n2,n3=int(n1/t), int(n2/t), int(n3/t)
+    ptmp=f"{latex(n1*(x-a)+n2*(y-b)+n3*(z-c))}=0"
+    ptmp_false=f"{latex(n1*(x-a)+n2*(y-b)+n3*(z-c)+random.randint(1,2))}=0"
+
+    kq4_T=f"* Mặt phẳng $(P)$ tiếp xúc với mặt cầu ${{(S)}}$ tại điểm ${B}({a};{b};{c})$ có phương trình là ${ptmp}$"
+    kq4_F=f"Mặt phẳng $(P)$ tiếp xúc với mặt cầu ${{(S)}}$ tại điểm ${B}({a};{b};{c})$ có phương trình là ${ptmp}$" 
+    
+    HDG=(f"Mặt phẳng $(P)$ qua điểm ${B}({a};{b};{c})$, nhận vectơ ${vec2("I",B)}=({a-x_0};{b-y_0};{c-z_0})$ làm một véctơ pháp tuyến.\n\n"
+        f"Phương trình $(P):{n1}({latex(x-a)})+{n2}({latex(y-b)})+{n3}({latex(z-c)})=0\\Leftrightarrow {ptmp}$."
+        )
+    HDG=HDG.replace("+-","-")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C5_B3_10]-TF-M3. Cho PTMC. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu
+def htd_25_xyz_L12_C5_B3_10():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+    while True:
+        a,b,c = [random.randint(-5,6) for i in range(3)]
+        x_0,y_0,z_0=[random.randint(-5,6) for i in range(3)]
+        if all([a!=x_0,b!=y_0, x_0!=0, y_0!=0]):
+            break
+    r=sqrt((a-x_0)**2+(b-y_0)**2+(c-z_0)**2)
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ptmc=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}+{latex((z-z_0)**2)}={r**2}"
+    
+    if chon==2:
+        ptmc=f"x^2+y^2+z^2+{-2*x_0}x+{-2*y_0}y+{-2*z_0}z+{x_0**2+y_0**2+z_0**2-r**2}=0"
+        ptmc=ptmc.replace("+-","-")
+          
+
+    noi_dung= (f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu ${{(S)}}$ có phương trình"
+                f" ${ptmc}$. Xét tính đúng-sai của các khẳng định sau:")
+    
+    kq1_T=f"* Tâm của mặt cầu ${{(S)}}$ là điểm $I({x_0};{y_0};{z_0})$" 
+    kq1_F=f"Tâm của mặt cầu ${{(S)}}$ là điểm $I({-x_0};{-y_0};{-z_0})$"
+    
+    HDG=f"Tâm của mặt cầu ${{(S)}}$ là điểm $I({x_0};{y_0};{z_0})$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Bán kính của mặt cầu ${{(S)}}$ là $R={latex(r)}$"
+    kq2_F=f"Bán kính của mặt cầu ${{(S)}}$ là $R={latex(r**2)}$"
+    
+    HDG=f"Bán kính của mặt cầu ${{(S)}}$ là $R=\\sqrt{{{r**2}}}={latex(r)}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    
+    ten=["A","B","H","M","N","E","F","D"]
+    A,B=random.sample(ten,2)
+   
+    chon=random.randint(1,2)    
+    if chon==1:
+        while True:        
+            x_1,y_1,z_1=[random.randint(-7,7) for i in range(3)]
+            r_1=sqrt((x_1-x_0)**2+(y_1-y_0)**2+(z_1-z_0)**2)
+            if all([x_1!=x_0,y_1!=y_0, x_1!=a, y_1!=b, r_1>r]):
+                break
+        kq3_T=f"* Điểm ${A}({x_1};{y_1};{z_1})$ nằm ngoài mặt cầu ${{(S)}}$" 
+        kq3_F=f"Điểm ${A}({x_1};{y_1};{z_1})$ nằm trong mặt cầu ${{(S)}}$"
+        
+        HDG=(f"$I{A}=\\sqrt{{{(x_1-x_0)**2}+{(y_1-y_0)**2}+{(z_1-z_0)**2}}}={latex(r_1)}>{latex(r)}$.\n\n"
+        f"Suy ra điểm ${A}({x_1};{y_1};{z_1})$ nằm ngoài mặt cầu ${{(S)}}$.")
+        kq3=random.choice([kq3_T, kq3_F])
+    
+    if chon==2:
+        while True:        
+            x_1,y_1,z_1=[random.randint(-7,7) for i in range(3)]
+            r_1=sqrt((x_1-x_0)**2+(y_1-y_0)**2+(z_1-z_0)**2)
+            if all([x_1!=x_0,y_1!=y_0, x_1!=a, y_1!=b, r_1<r]):
+                break
+        kq3_T=f"* Điểm ${A}({x_1};{y_1};{z_1})$ nằm trong mặt cầu ${{(S)}}$" 
+        kq3_F=f"Điểm ${A}({x_1};{y_1};{z_1})$ nằm ngoài mặt cầu ${{(S)}}$"
+        
+        HDG=(f"$I{A}=\\sqrt{{{(x_1-x_0)**2}+{(y_1-y_0)**2}+{(z_1-z_0)**2}}}={latex(r_1)}<{latex(r)}$.\n\n"
+        f"Suy ra điểm ${A}({x_1};{y_1};{z_1})$ nằm trong mặt cầu ${{(S)}}$.")
+        kq3=random.choice([kq3_T, kq3_F])
+    
+    
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    n1,n2,n3=a-x_0,b-y_0,c-z_0
+    t=ucln_ba_so(n1,n2,n3)
+    n1,n2,n3=int(n1/t), int(n2/t), int(n3/t)
+    ptmp=f"{latex(n1*(x-a)+n2*(y-b)+n3*(z-c))}=0"
+    ptmp_false=f"{latex(n1*(x-a)+n2*(y-b)+n3*(z-c)+random.randint(1,2))}=0"
+
+    while True:
+        n1=random.randint(-4,5)
+        n2,n3=[random.randint(-4,5) for i in range(2)]
+        n4=random.randint(-4,5)
+        t=ucln_ba_so(n1,n2,n3)
+        n1,n2,n3=int(n1/t), int(n2/t), int(n3/t)
+        d=abs(n1*x_0+n2*y_0+n3*z_0+n4)/sqrt(n1**2+n2**2+n3**2)
+        if d<r:
+            break 
+    d=abs(n1*x_0+n2*y_0+n3*z_0+n4)/sqrt(n1**2+n2**2+n3**2)    
+    
+    ptmp=f"{latex(n1*x+n2*y+n3*z+n4)}=0"
+    r_3=sqrt(r**2-d**2)
+    r_3_false=sqrt(r**2+d**2)
+
+    kq4_T=f"* Mặt phẳng $(P):{ptmp}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính bằng ${{{latex(r_3)}}}$"
+    kq4_F=f"Mặt phẳng $(P):{ptmp}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính bằng ${{{latex(r_3_false)}}}$" 
+    
+    HDG=(f"${{(S)}}$ có tâm $I({x_0};{y_0};{z_0})$ và bán kính $R={latex(r)}$.\n\n"
+        f"Khoảng cách từ tâm ${{I}}$ đến mặt phẳng $(P)$:\n\n"
+        f"$d(I,(P))=\\dfrac{{|{show_tich(n1,x_0)}+{show_tich(n2,y_0)}+{show_tich(n3,z_0)}+{n4}|}}{{\\sqrt{{{n1**2}+{n2**2}+{n3**2}}}}}={latex(d)}<{latex(r)}$\n\n"
+        f"Mặt phẳng $(P):{ptmp}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính bằng:\n\n"
+        f"$r=\\sqrt{{R^2-d^2}}=\\sqrt{{{latex(r**2)}-{latex(d**2)}}}={latex(r_3)}$."
+       
+        )
+    HDG=HDG.replace("+-","-")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
 
 #BÀI 2 - PHƯƠNG TRÌNH ĐƯỜNG THẲNG
 #[D12_C5_B2_01]-M1. Viết PTDT qua điểm và có véctơ chỉ phương 

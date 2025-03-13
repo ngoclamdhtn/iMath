@@ -914,8 +914,8 @@ def uz9zu_L11_C6_B1_14():
 
 
     kq=random.choice([
-        f"${latex(a**m)}.{latex(a**m)}={latex(a**(m+n))}$",
-        f"${latex(a**m)}:{latex(a**m)}={latex(a**(m-n))}$",
+        f"${latex(a**m)}.{latex(a**n)}={latex(a**(m+n))}$",
+        f"${latex(a**m)}:{latex(a**n)}={latex(a**(m-n))}$",
         f"$({latex(a**m)})^{{{n}}}={latex(a**(m*n))}$",
         f"$({latex(a**m)})^{{{n}}}={latex(a**(m*n))}$", 
         f"${latex((a/b)**m)}=\\dfrac{{{latex(a**m)}}}{{{latex(b**m)}}}$",
@@ -1772,7 +1772,7 @@ def uz9zu_L11_C6_B2_16():
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
-    k=random.randint(3,10)
+    k=random.randint(3,9)
     m=[i for i in range(3,10) if i !=k]
 
     chon=random.randint(1,2)
@@ -5306,7 +5306,7 @@ def uz9zu_L11_C6_B4_18():
     noi_dung_loigiai=f"$\\log_{{{a}}}({latex(m*x+n)})={b} \\Rightarrow {latex(m*x+n)}={a}^{b}"\
                     f"\\Rightarrow x= {phan_so(kq)}$." 
 
-    debai= f"{noi_dung}\n"     
+    debai_word= f"{noi_dung}\n"     
     dap_an=noi_dung_loigiai 
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
     latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n" 
@@ -6593,6 +6593,533 @@ def uz9zu_L11_C6_B5_13():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
     f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B5_14]-TL-M2. Tìm số nghiệm nguyên của bất phương trình log_a f(x)>b
+def uz9zu_L11_C6_B5_14():
+    x=sp.symbols("x")
+    while True:
+        m = random.randint(2,6)
+        a = random.randint(1,8)
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        c=random.randint(1,4)
+
+        x_0=(m**c-b)/a
+        if x_0!=-b/a:
+            break
+
+    x_1=int(x_0)-random.randint(20,50)
+    x_2=int(x_0)+random.randint(20,100)
+    dem=0
+
+    chon=random.randint(1,4)
+    if chon==1:
+        
+        for i in range(x_1,x_2+1):
+            if i>x_0 and i>-b/a: dem+=1
+        nghiem=max(x_0,-b/a)
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\log_{m}({latex(a*x+b)})>{c}$.")
+        
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\log_{m}({latex(a*x+b)})>{c} \\Leftrightarrow {latex(a*x+b)}>{m**c}\\Rightarrow x>{phan_so(x_0)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: $x>{phan_so(nghiem)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")  
+    
+    if chon==2:
+        
+        for i in range(x_1,x_2+1):
+            if i>=x_0 and i>-b/a: dem+=1
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\log_{m}({latex(a*x+b)})\\ge {c}$.")
+        
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\log_{m}({latex(a*x+b)})\\ge {c} \\Leftrightarrow {latex(a*x+b)}\\ge {m**c}\\Rightarrow x\\ge {phan_so(x_0)}$.\n\n"     
+        )
+        if x_0>-b/a:
+            noi_dung_loigiai+=(
+            f"Kết hợp điều kiện ta được nghiệm: $x\\ge {phan_so(x_0)}$.\n\n"
+            f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")
+        else:
+            noi_dung_loigiai+=(
+            f"Kết hợp điều kiện ta được nghiệm: $x>{phan_so(-b/a)}$.\n\n"
+            f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")
+    
+    if chon==3:
+        while True:
+            m = random.randint(2,6)
+            a = random.randint(1,8)
+            b = random.choice([i for i in range(-10, 10) if i!=0])
+            c=random.randint(1,4)
+
+            x_0=(m**c-b)/a
+            if -b/a<x_0:
+                break
+
+        x_1=int(-b/a)-random.randint(20,50)
+        x_2=int(x_0)+random.randint(20,100)
+        dem=0
+
+        for i in range(x_1,x_2+1):
+            if i>-b/a and i <x_0: dem+=1
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\log_{m}({latex(a*x+b)})< {c}$.")
+
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\log_{m}({latex(a*x+b)})<{c} \\Leftrightarrow {latex(a*x+b)}<{m**c}\\Rightarrow x<{phan_so(x_0)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: ${phan_so(-b/a)}<x<{phan_so(x_0)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")
+
+    
+    if chon==4:
+        while True:
+            m = random.randint(2,6)
+            a = random.randint(1,8)
+            b = random.choice([i for i in range(-10, 10) if i!=0])
+            c=random.randint(1,4)
+
+            x_0=(m**c-b)/a
+            if -b/a<x_0:
+                break
+
+        x_1=int(-b/a)-random.randint(20,50)
+        x_2=int(x_0)+random.randint(20,100)
+        dem=0
+
+        for i in range(x_1,x_2+1):
+            if i>-b/a and i <=x_0: dem+=1
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\log_{m}({latex(a*x+b)}) \\le {c}$.")
+
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\log_{m}({latex(a*x+b)})\\le {c} \\Leftrightarrow {latex(a*x+b)}<{m**c}\\Rightarrow x\\le {phan_so(x_0)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: ${phan_so(-b/a)}<x\\le {phan_so(x_0)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")           
+    dap_an=dem    
+    
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B5_15]-TL-M2. Tìm số nghiệm nguyên của bất phương trình ln f(x)>b
+def uz9zu_L11_C6_B5_15():
+    x=sp.symbols("x")
+    while True:        
+        a = random.randint(1,8)
+        b = random.choice([i for i in range(-10, 10) if i!=0])
+        c=random.randint(1,4)
+
+        x_0=(exp(c)-b)/a
+        if x_0!=-b/a:
+            break
+
+    x_1=int(x_0)-random.randint(20,50)
+    x_2=int(x_0)+random.randint(20,100)
+    dem=0
+
+    chon=random.randint(1,4)
+    
+
+    if chon==1:
+        
+        for i in range(x_1,x_2+1):
+            if i>x_0 and i>-b/a: dem+=1
+        nghiem=max(x_0,-b/a)
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\ln({latex(a*x+b)})>{c}$.")
+        
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\ln({latex(a*x+b)})>{c} \\Leftrightarrow {latex(a*x+b)}>e^{c}\\Rightarrow x>{latex((exp(c)-b)/a)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: $x>{latex(nghiem)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")  
+    
+    if chon==2:
+        
+        for i in range(x_1,x_2+1):
+            if i>=x_0 and i>-b/a: dem+=1
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\ln({latex(a*x+b)})\\ge {c}$.")
+        
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\ln ({latex(a*x+b)})\\ge {c} \\Leftrightarrow {latex(a*x+b)}\\ge e^{c}\\Rightarrow x\\ge {latex(x_0)}$.\n\n"     
+        )
+        if x_0>-b/a:
+            noi_dung_loigiai+=(
+            f"Kết hợp điều kiện ta được nghiệm: $x\\ge {latex(x_0)}$.\n\n"
+            f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")
+        else:
+            noi_dung_loigiai+=(
+            f"Kết hợp điều kiện ta được nghiệm: $x>{phan_so(-b/a)}$.\n\n"
+            f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")
+    
+    if chon==3:
+        while True:
+            m = random.randint(2,6)
+            a = random.randint(1,8)
+            b = random.choice([i for i in range(-10, 10) if i!=0])
+            c=random.randint(1,4)
+
+            x_0=(m**c-b)/a
+            if -b/a<x_0:
+                break
+
+        x_1=int(-b/a)-random.randint(20,50)
+        x_2=int(x_0)+random.randint(20,100)
+        dem=0
+
+        for i in range(x_1,x_2+1):
+            if i>-b/a and i <x_0: dem+=1
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\ln({latex(a*x+b)})< {c}$.")
+
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\ln ({latex(a*x+b)})<{c} \\Leftrightarrow {latex(a*x+b)}<e^{c}\\Rightarrow x<{phan_so(x_0)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: ${phan_so(-b/a)}<x<{phan_so(x_0)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")
+
+    
+    if chon==4:
+        while True:
+            m = random.randint(2,6)
+            a = random.randint(1,8)
+            b = random.choice([i for i in range(-10, 10) if i!=0])
+            c=random.randint(1,4)
+
+            x_0=(m**c-b)/a
+            if -b/a<x_0:
+                break
+
+        x_1=int(-b/a)-random.randint(20,50)
+        x_2=int(x_0)+random.randint(20,100)
+        dem=0
+
+        for i in range(x_1,x_2+1):
+            if i>-b/a and i <=x_0: dem+=1
+
+        noi_dung = (f"Tìm số nghiệm nguyên thuộc đoạn ${{[{x_1};{x_2}]}}$ của bất phương trình $\\ln({latex(a*x+b)}) \\le {c}$.")
+
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x+b)}>0 \\Rightarrow x>{phan_so(-b/a)}$.\n\n"
+        f"$\\ln({latex(a*x+b)})\\le {c} \\Leftrightarrow {latex(a*x+b)}<e^{c}\\Rightarrow x\\le {phan_so(x_0)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: ${phan_so(-b/a)}<x\\le {phan_so(x_0)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{x_1};{x_2}]$ là: ${{{dem}}}$.")           
+    dap_an=dem    
+    
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D11_C6_B5_16]-TL-M3. Tìm số nghiệm nguyên của log_a f(x) + log_a g(x)>b hoặc log_a f(x) - log_a g(x)>b
+def uz9zu_L11_C6_B5_16():
+    x=sp.symbols("x")
+    chon=random.randint(1,2)
+    if chon==1:
+        while True:
+            m = random.randint(2,6)
+            n = random.randint(2,5)
+            a = random.choice([i for i in range(-5, 6) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            
+            if all([a!=b, a*b-m**n==0, a+b!=0]):
+                break
+
+        if -a-b>0:
+            x_1, x_2 = 0, -a-b
+
+        if -a-b<0:
+            x_1, x_2 = -a-b, 0
+        u=random.randint(-100,-50)
+        v=-u
+        dem=0        
+        for i in range(u,v+1):
+            if all([i>-a,i>-b, any([i<x_1, i>x_2])]): dem+=1
+        
+        noi_dung = (f"Cho bất phương trình $\\log_{m}({latex(x+a)})+\\log_{m}({latex(x+b)})>{n}$. Tìm số nghiệm nguyên thuộc đoạn ${{[{u};{v}]}}$ của bất phương trình đã cho.")
+        max_dk=max(-a,-b)
+
+        noi_dung_loigiai=(
+        f"Điều kiện:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(x+a)}>0 \\\\ \n\
+        {latex(x+b)}>0\n\
+        \\end{{array}} \\right.$"
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        x>{-a} \\\\ \n\
+        x>{-b}\n\
+        \\end{{array}} \\right. \\Rightarrow x>{max_dk}$.\n\n"
+        f"$\\log_{m}({latex(x+a)})+\\log_{m}({latex(x+b)})>{n}$.\n\n"
+        f"$\\Leftrightarrow \\log_{m} [({latex(x+a)})({latex(x+b)})]>{n}$\n\n"
+        f"$\\Leftrightarrow {latex(expand(x+a)*(x+b))}>{m**n} \\Leftrightarrow {latex(expand((x+a)*(x+b)-m**n))}>0$\n\n"
+        f"$\\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$.\n\n"    
+        f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$.")
+    
+    
+    if chon==2:
+        while True:
+            a = random.choice([i for i in range(1, 5) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            c = random.randint(1,2)
+            d = random.choice([i for i in range(-5, 6) if i!=0])
+            m=random.randint(2,4)
+            n=random.randint(1,3)
+            if m**n-a>0:
+                break
+        u=random.randint(-100,-50)
+        v=-u
+        noi_dung = (f"Cho bất phương trình $\\log_{m}({latex(a*x+b)})-\\log_{m}({latex(c*x+d)})<{n}$. Tìm số nghiệm nguyên thuộc đoạn ${{[{u};{v}]}}$ của bất phương trình đã cho.")
+        max_dk=max(-b/a,-d/c)
+        
+        dem=0        
+        for i in range(u,v+1):
+            if all([-b/a!=-d/c, i>-b/a, i>-d/c, i>(b-m**n*d)/(m**n*c-a)]): dem+=1
+
+        noi_dung_loigiai=(
+        f"Điều kiện:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(a*x+b)}>0 \\\\ \n\
+        {latex(c*x+d)}>0\n\
+        \\end{{array}} \\right.$"
+        f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        x>{phan_so(-b/a)} \\\\ \n\
+        x>{phan_so(-d/c)}\n\
+        \\end{{array}} \\right. \\Rightarrow x>{phan_so(max_dk)}$.\n\n"
+        f"$\\log_{m}({latex(a*x+b)})-\\log_{m}({latex(c*x+d)})<{n}$\n\n "
+        f"$\\Leftrightarrow \\log_{m} ({latex(a*x+b)})<\\log_{m} [{m**n}({latex(c*x+d)})]$\n\n"
+        f"$\\Leftrightarrow {latex(a*x+b)}<{latex(expand(m**n*(c*x+d)))} \\Leftrightarrow x>{phan_so((b-m**n*d)/(m**n*c-a))}$.\n\n" 
+        f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$.")
+
+    
+    debai_word= f"{noi_dung}"
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+    dap_an=noi_dung_loigiai
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B5_17]-TL-M3. Tìm số nghiệm nguyên của log_a f(x) + log_a g(x)>b
+def uz9zu_L11_C6_B5_17():
+    x=sp.symbols("x")
+
+    while True:
+        m = random.randint(2,6)
+        n = random.randint(2,5)
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        
+        if all([a!=b, a*b-m**n==0, a+b!=0]):
+            break
+
+    if -a-b>0:
+        x_1, x_2 = 0, -a-b
+
+    if -a-b<0:
+        x_1, x_2 = -a-b, 0
+    u=random.randint(-100,-50)
+    v=-u
+    dem=0        
+    for i in range(u,v+1):
+        if all([i>-a,i>-b, any([i<x_1, i>x_2])]): dem+=1
+    
+    noi_dung = (f"Cho bất phương trình $\\log_{m}({latex(x+a)})+\\log_{m}({latex(x+b)})>{n}$. Tìm số nghiệm nguyên thuộc đoạn ${{[{u};{v}]}}$ của bất phương trình đã cho.")
+    max_dk=max(-a,-b)
+
+    noi_dung_loigiai=(
+    f"Điều kiện:\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(x+a)}>0 \\\\ \n\
+    {latex(x+b)}>0\n\
+    \\end{{array}} \\right.$"
+    f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    x>{-a} \\\\ \n\
+    x>{-b}\n\
+    \\end{{array}} \\right. \\Rightarrow x>{max_dk}$.\n\n"
+    f"$\\log_{m}({latex(x+a)})+\\log_{m}({latex(x+b)})>{n}$.\n\n"
+    f"$\\Leftrightarrow \\log_{m} [({latex(x+a)})({latex(x+b)})]>{n}$\n\n"
+    f"$\\Leftrightarrow {latex(expand(x+a)*(x+b))}>{m**n} \\Leftrightarrow {latex(expand((x+a)*(x+b)-m**n))}>0$\n\n"
+    f"$\\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$.\n\n"    
+    f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$.") 
+    
+    debai_word= f"{noi_dung}"
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+    dap_an=noi_dung_loigiai
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B5_18]-TL-M3. Tìm số nghiệm nguyên của log_a f(x) - log_a g(x)>b
+def uz9zu_L11_C6_B5_18():
+    x=sp.symbols("x")  
+
+    while True:
+        a = random.choice([i for i in range(1, 5) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(1,2)
+        d = random.choice([i for i in range(-5, 6) if i!=0])
+        m=random.randint(2,4)
+        n=random.randint(1,3)
+        if m**n-a>0:
+            break
+    u=random.randint(-100,-50)
+    v=-u
+    noi_dung = (f"Cho bất phương trình $\\log_{m}({latex(a*x+b)})-\\log_{m}({latex(c*x+d)})<{n}$."
+        f" Tìm số nghiệm nguyên thuộc đoạn ${{[{u};{v}]}}$ của bất phương trình đã cho.")
+    max_dk=max(-b/a,-d/c)
+    
+    dem=0        
+    for i in range(u,v+1):
+        if all([-b/a!=-d/c, i>-b/a, i>-d/c, i>(b-m**n*d)/(m**n*c-a)]): dem+=1
+
+    noi_dung_loigiai=(
+    f"Điều kiện:\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a*x+b)}>0 \\\\ \n\
+    {latex(c*x+d)}>0\n\
+    \\end{{array}} \\right.$"
+    f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    x>{phan_so(-b/a)} \\\\ \n\
+    x>{phan_so(-d/c)}\n\
+    \\end{{array}} \\right. \\Rightarrow x>{phan_so(max_dk)}$.\n\n"
+    f"$\\log_{m}({latex(a*x+b)})-\\log_{m}({latex(c*x+d)})<{n}$\n\n "
+    f"$\\Leftrightarrow \\log_{m} ({latex(a*x+b)})<\\log_{m} [{m**n}({latex(c*x+d)})]$\n\n"
+    f"$\\Leftrightarrow {latex(a*x+b)}<{latex(expand(m**n*(c*x+d)))} \\Leftrightarrow x>{phan_so((b-m**n*d)/(m**n*c-a))}$.\n\n" 
+    f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$.")
+
+    
+    debai_word= f"{noi_dung}"
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+    dap_an=noi_dung_loigiai
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B5_19]-TL-M3. Tìm số nghiệm nguyên của log_m (ax^2+bx+c)>n
+def uz9zu_L11_C6_B5_19():
+    x=sp.symbols("x")  
+    u=random.randint(-100,-50)
+    v=-u
+    chon=random.randint(1,2)
+    if chon==1:
+        while True:
+            a=random.randint(1,4)
+            b= random.choice([i for i in range(-4, 5) if i!=0])
+            c= random.choice([i for i in range(-5, 5) if i!=0])
+            m=random.randint(2,4)
+            n=random.randint(1,4)
+            delta=b**2-4*a*c
+
+            a1,b1,c1=a,b,c-m**n
+            delta_1=b1**2-4*a1*c1
+
+            if delta<=0:
+                continue
+            if delta_1<=0:
+                continue
+            if all([sqrt(delta).is_integer, sqrt(delta_1).is_integer]):
+                break
+        x_1,x_2=(-b-sqrt(delta))/(2*a), (-b+sqrt(delta))/(2*a)
+        x_3,x_4=(-b1-sqrt(delta_1))/(2*a1), (-b1+sqrt(delta_1))/(2*a1)
+
+        noi_dung = (f"Cho bất phương trình $\\log_{m}({latex(a*x**2+b*x+c)})>{n}$."
+            f" Tìm số nghiệm nguyên thuộc đoạn ${{[{u};{v}]}}$ của bất phương trình đã cho.")
+        dem=0
+        for i in range(u,v+1):
+            if all([ any([i<x_1, i>x_2]), any([i<x_3, i>x_4]) ]): dem+=1
+        dap_an=dem
+
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x**2+b*x+c)}>0\\Leftrightarrow x<{phan_so(x_1)}$ hoặc $x>{phan_so(x_2)}$.\n\n"
+        f"$\\log_{m}({latex(a*x**2+b*x+c)})>{n} \\Leftrightarrow {latex(a*x**2+b*x+c)}>{m**n}$.\n\n"
+        f"$\\Leftrightarrow {latex(a1*x**2+b1*x+c1)}>0$\n\n"
+        f"$\\Leftrightarrow x<{phan_so(x_3)}$ hoặc $x>{phan_so(x_4)}$.\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: $x<{phan_so(min(x_1,x_3))}$ hoặc $x>{phan_so(max(x_2,x_4))}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$."
+        ) 
+    
+    if chon==2:
+        while True:
+            a=random.randint(1,4)
+            b= random.choice([i for i in range(-6, 6) if i!=0])
+            c= random.choice([i for i in range(-6, 6) if i!=0])
+            m=random.randint(2,5)
+            n=random.randint(1,4)
+            delta=b**2-4*a*c
+
+            a1,b1,c1=a,b,c-m**n
+            delta_1=b1**2-4*a1*c1
+
+            if delta<=0:
+                continue
+            if delta_1<=0:
+                continue
+            x_1,x_2=(-b-sqrt(delta))/(2*a), (-b+sqrt(delta))/(2*a)
+            x_3,x_4=(-b1-sqrt(delta_1))/(2*a1), (-b1+sqrt(delta_1))/(2*a1)
+
+            if all([sqrt(delta).is_integer, sqrt(delta_1).is_integer, x_3<x_1, x_4>x_2]):
+                break
+        
+        noi_dung = (f"Cho bất phương trình $\\log_{m}({latex(a*x**2+b*x+c)})<{n}$."
+            f" Tìm số nghiệm nguyên thuộc đoạn ${{[{u};{v}]}}$ của bất phương trình đã cho.")
+        dem=0
+        for i in range(u,v+1):
+            if any([x_3<i<x_1, x_2<i<x_4]): dem+=1
+        dap_an=dem
+
+        noi_dung_loigiai=(
+        f"Điều kiện: ${latex(a*x**2+b*x+c)}>0\\Leftrightarrow x<{phan_so(x_1)}$ hoặc $x>{phan_so(x_2)}$.\n\n"
+        f"$\\log_{m}({latex(a*x**2+b*x+c)})>{n} \\Leftrightarrow {latex(a*x**2+b*x+c)}>{m**n}$.\n\n"
+        f"$\\Leftrightarrow {latex(a1*x**2+b1*x+c1)}>0$\n\n"
+        f"$\\Leftrightarrow {phan_so(x_3)}<x<{phan_so(x_4)}$ .\n\n"
+        f"Kết hợp điều kiện ta được nghiệm: ${phan_so(x_3)}<x<{phan_so(x_1)}$ hoặc ${phan_so(x_2)}<x<{phan_so(x_4)}$.\n\n"
+        f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$."
+        )    
+    
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
     
 
 
