@@ -4302,6 +4302,212 @@ def htd_25_xyz_L12_C5_B3_10():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C5_B3_11]-TF-M3. Cho PTMC và PTMP. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu
+def htd_25_xyz_L12_C5_B3_11():
+    #Tạo bậc ngẫu nhiên
+    x,y,z,t=sp.symbols("x y z t")
+    while True:        
+        x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]
+        a,b,c,d=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(4)]
+        R=random.choice([sqrt(i) for i in range(145)])
+        d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
+        d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+        if all([d_IP<R]):
+            break
+    d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
+    d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+    ptmp=f"{latex(a*x+b*y+c*z+d)}=0"
+    
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ptmc=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}+{latex((z-z_0)**2)}={R**2}"
+    
+    if chon==2:
+        ptmc=f"x^2+y^2+z^2+{-2*x_0}x+{-2*y_0}y+{-2*z_0}z+{x_0**2+y_0**2+z_0**2-R**2}=0"
+        ptmc=ptmc.replace("+-","-")
+          
+
+    noi_dung= (f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu ${{(S)}}:{ptmc}$"
+                f" và mặt phẳng $(P):{ptmp}$. Xét tính đúng-sai của các khẳng định sau:")
+    
+    kq1_T=f"* Mặt cầu ${{(S)}}$ có tâm $I({x_0};{y_0};{z_0})$ và bán kính $R={latex(R)}$" 
+    kq1_F=f"Mặt cầu ${{(S)}}$ có tâm $I({-x_0};{-y_0};{-z_0})$ và bán kính $R={latex(R)}$"
+    kq1=random.choice([kq1_T, kq1_F])
+    HDG=f"Mặt cầu ${{(S)}}$ có tâm $I({x_0};{y_0};{z_0})$ và bán kính $R={latex(R)}$."
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Khoảng cách từ tâm ${{I}}$ đến mặt phẳng $(P)$ bằng ${latex(d_IP)}$"
+    kq2_F=f"Khoảng cách từ tâm ${{I}}$ đến mặt phẳng $(P)$ bằng ${latex(d_IP_false)}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=(f"Khoảng cách từ tâm ${{I}}$ đến mặt phẳng $(P)$ bằng:\n\n"
+    f"$d(I,(P))=\\dfrac{{|{show_tich(a,x_0)}+{show_tich(b,y_0)}+{show_tich(c,z_0)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={latex(d_IP)}$.")
+    HDG=HDG.replace("+-","-")
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    r=sqrt(R**2-d_IP**2)
+    r_false=sqrt(R**2+d_IP**2)
+
+    kq3_T=f"* Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính bằng ${latex(r)}$" 
+    kq3_F=f"Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính bằng ${latex(r_false)}$"
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=(f"$d(I,(P))=\\dfrac{{|{show_tich(a,x_0)}+{show_tich(b,y_0)}+{show_tich(c,z_0)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={latex(d_IP)}<{latex(R)}$.\n\n"
+        f"Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính:\n\n"
+        f"$r=\\sqrt{{R^2-d^2(I,(P))}}=\\sqrt{{{R**2}-{latex(d_IP**2)}}}={latex(r)}$."
+        )
+    HDG=HDG.replace("+-","-")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    eq=Eq(a*(x_0+a*t)+b*(y_0+b*t)+c*(z_0+c*t),0)
+    solution=solve(eq,t)
+    t_0=solution[0]
+    x_H,y_H,z_H=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0),phan_so(z_0+c*t_0)
+    x_H_f,y_H_f,z_H_f=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0+random.randint(1,2)),phan_so(z_0+c*t_0+random.randint(-1,2))
+
+    kq4_T=f"* Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có tâm là điểm $H\\left({x_H};{y_H};{z_H}\\right)$"
+    kq4_F=f"Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có tâm là điểm $H\\left({x_H_f};{y_H_f};{z_H_f}\\right)$" 
+    kq4=random.choice([kq4_T, kq4_F])
+    
+    HDG=(f"Đường thẳng ${{IH}}$ qua $I({x_0};{y_0};{z_0})$ và nhận vectơ ${vec("n_P")}=({a};{b};{c})$ làm véctơ chỉ phương có phương trình:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        x={x_0}+{a}t \\\\ \n\
+        y={y_0}+{b}t \\\\ \n\
+        z={z_0}+{c}t\n\
+        \\end{{array}} \\right.$\n\n"
+        f"Gọi $H({latex(x_0+a*t)};{latex(y_0+b*t)};{latex(z_0+c*t)})$.\n\n"
+        f"Thay tọa độ ${{H}}$ vào phương trình mặt phẳng $(P)$ ta được:\n\n"
+        f"${a}({latex(x_0+a*t)})+{b}({latex(y_0+b*t)})+{c}({latex(z_0+c*t)})=0$"
+        f"$\\Leftrightarrow t={phan_so(t_0)}$.\n\n"
+        f"$\\Rightarrow H\\left({x_H};{y_H};{z_H}\\right)$"
+        )
+    HDG=HDG.replace("+-","-")
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C5_B3_12]-SA-M3. Cho mặt cầu có tâm I và cắt trục Ox(Oy,Oz). Tính bán kính.
+def htd_25_xyz_L12_C5_B3_12():
+    #Tạo bậc ngẫu nhiên
+    x,y,z,t=sp.symbols("x y z t")
+    
+    x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]    
+    
+    ten_diem=["A","B","C","D","I","E","F"]
+    I,B,C=random.sample(ten_diem,3)
+    BC=random.randint(1,8)
+    chon=random.randint(1,3)
+    chon=3
+
+    if chon==1:
+        IH=sqrt(y_0**2+z_0**2)
+        R=sqrt(IH**2+BC**2/4)    
+        dap_an=f"{round_half_up(R,1):.1f}".replace(".",",")
+
+        noi_dung = (
+        f"Trong hệ trục ${{Oxyz}}$, mặt cầu ${{(S)}}$ có tâm ${I}({x_0};{y_0};{z_0})$ và"
+        f" cắt trục ${{Ox}}$ tại các điểm ${{{B},{C}}}$ sao cho ${B}{C}={BC}$ có bán kính bằng bao nhiêu(kết quả làm tròn đến hàng phần mười)?"
+        )
+        noi_dung_loigiai=(
+        f"Hình chiếu vuông góc của điểm ${{{I}}}$ lên trục ${{Ox}}$ là $H({x_0};0;0)$.\n\n"
+        f"Bán kính mặt cầu là: $R=\\sqrt{{{I}H^2+\\dfrac{{{B}{C}^2}}{{4}}}}=\\sqrt{{{IH**2}+{phan_so(BC**2/4)}}}={latex(nsimplify(R))}={dap_an}$."
+        ) 
+    
+    if chon==2:
+        IH=sqrt(x_0**2+z_0**2)
+        R=sqrt(IH**2+BC**2/4)    
+        dap_an=f"{round_half_up(R,1):.1f}".replace(".",",")
+
+        noi_dung = (
+        f"Trong hệ trục ${{Oxyz}}$, mặt cầu ${{(S)}}$ có tâm ${I}({x_0};{y_0};{z_0})$ và"
+        f" cắt trục ${{Oy}}$ tại các điểm ${{{B},{C}}}$ sao cho ${B}{C}={BC}$ có bán kính bằng bao nhiêu(kết quả làm tròn đến hàng phần mười)?"
+        )
+        noi_dung_loigiai=(
+        f"Hình chiếu vuông góc của điểm ${{{I}}}$ lên trục ${{Oy}}$ là $H(0;{y_0};0)$.\n\n"
+        f"Bán kính mặt cầu là: $R=\\sqrt{{{I}H^2+\\dfrac{{{B}{C}^2}}{{4}}}}=\\sqrt{{{IH**2}+{phan_so(BC**2/4)}}}={latex(nsimplify(R))}={dap_an}$."
+        )
+
+    if chon==3:
+        IH=sqrt(x_0**2+y_0**2)
+        R=sqrt(IH**2+BC**2/4)    
+        dap_an=f"{round_half_up(R,1):.1f}".replace(".",",")
+
+        noi_dung = (
+        f"Trong hệ trục ${{Oxyz}}$, mặt cầu ${{(S)}}$ có tâm ${I}({x_0};{y_0};{z_0})$ và"
+        f" cắt trục ${{Oz}}$ tại các điểm ${{{B},{C}}}$ sao cho ${B}{C}={BC}$ có bán kính bằng bao nhiêu(kết quả làm tròn đến hàng phần mười)?"
+        )
+        noi_dung_loigiai=(
+        f"Hình chiếu vuông góc của điểm ${{{I}}}$ lên trục ${{Oz}}$ là $H(0;0;{z_0})$.\n\n"
+        f"Bán kính mặt cầu là: $R=\\sqrt{{{I}H^2+\\dfrac{{{B}{C}^2}}{{4}}}}=\\sqrt{{{IH**2}+{phan_so(BC**2/4)}}}={latex(nsimplify(R))}={dap_an}$."
+        )  
+    
+       
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 #BÀI 2 - PHƯƠNG TRÌNH ĐƯỜNG THẲNG
 #[D12_C5_B2_01]-M1. Viết PTDT qua điểm và có véctơ chỉ phương 

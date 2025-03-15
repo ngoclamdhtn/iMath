@@ -904,13 +904,13 @@ class Ui_MainWindow(object):
 
                 #Tạo label đang xử lí
                 self.label_dangxuli = QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label_dangxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+320, 400, 20))
+                self.label_dangxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+315, 400, 20))
                 self.label_dangxuli.setFont(font)
                 self.label_dangxuli.setObjectName("label_dangxuli")
 
                 #Tạo label đang xử lí
                 self.label_socau_daxuli = QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label_socau_daxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+345, 450, 100))
+                self.label_socau_daxuli.setGeometry(QtCore.QRect(le_trai+200, le_top+310, 450, 100))
                 self.label_socau_daxuli.setFont(font)
                 self.label_socau_daxuli.setObjectName("label_socau_daxuli")
 
@@ -8469,6 +8469,7 @@ class Ui_MainWindow(object):
 
                 L12_C5_B3_1 = QTreeWidgetItem(L12_C5_B3, ["Trắc Nghiệm"])
                 L12_C5_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C5_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_02]-M1. Đọc tọa độ tâm từ PTMC thu gọn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8504,12 +8505,25 @@ class Ui_MainWindow(object):
 
                 L12_C5_B3_2 = QTreeWidgetItem(L12_C5_B3, ["Đúng-Sai"])
                 L12_C5_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C5_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_09]-TF-M2. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, PTMP tiếp xúc mặt cầu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_10]-TF-M2. Cho PTMC. Xét Đ-S: Tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_11]-TF-M3. Cho PTMC và PTMP. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C5_B3_3 = QTreeWidgetItem(L12_C5_B3, ["Trả lời ngắn"])
+                L12_C5_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C5_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_3, ["[D12_C5_B3_12]-SA-M2. Cho PTMC và PTMP. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10642,8 +10656,6 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B3_07]-M3. Viết phương trình mặt cầu có đường kính AB
                                             if dang_toan == "[D12_C5_B3_07]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_07()                                     
-                                                
-
                                             #[D12_C5_B3_08]-M2. Viết phương trình mặt cầu có tâm và đi qua điểm
                                             if dang_toan == "[D12_C5_B3_08]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_08()
@@ -10656,6 +10668,13 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C5_B3_10]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_10()
 
+                                            #[D12_C5_B3_11]-TF-M2. Cho PTMC và PTMP. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu
+                                            if dang_toan == "[D12_C5_B3_11]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_11()
+
+                                            #[D12_C5_B3_12]-SA-M3. Cho mặt cầu có tâm I và cắt trục Ox(Oy,Oz). Tính bán kính.
+                                            if dang_toan == "[D12_C5_B3_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_12()
                                             
 
                                             #Chương 6 - Một số yếu tố xác suất

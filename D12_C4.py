@@ -1775,12 +1775,17 @@ def ckz_L12C4_B1_29():
     )
     
 
+
     kq=f"${phan_so(1/a)}e^{{{latex(a*x+b)}}}+C$"
     kq_false=[
     f"${a}e^{{{latex(a*x+b)}}}+C$",
     f"$e^{{{latex(a*x+b)}}}+C$",
-    f"$({latex(a*x+b)}).e^x+C$",
-  ]
+    f"$({latex(a*x+b)}).e^x+C$",]
+    if i==-1:
+        kq_false=[
+    f"$e^{{{latex(a*x+b)}}}+C$",
+    f"$e^{{{latex(a*x+b+random.randint(1,2))}}}+C$",
+    f"$({latex(a*x+b)}).e^{{{latex(a*x)}}}+C$",]
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
 
