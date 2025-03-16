@@ -2339,7 +2339,7 @@ def ve_hinhchop_hbh_canhvg(S,A,B,C,D):
 \\usepackage{{tikz}}\n\
 \\usetikzlibrary{{calc,angles}}\n\
 \\begin{{document}}\n\
-\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
 \\coordinate ({A}) at (0,0);\n\
 \\coordinate ({B}) at (-2,-3);\n\
 \\coordinate ({D}) at (7,0);\n\
@@ -2358,7 +2358,7 @@ def ve_hinhchop_hbh_matvg(S,A,B,C,D):
 \\usepackage{{tikz}}\n\
 \\usetikzlibrary{{calc,angles}}\n\
 \\begin{{document}}\n\
-\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
 \\coordinate ({A}) at (0,0);\n\
 \\coordinate ({B}) at (-2,-3);\n\
 \\coordinate ({D}) at (7,0);\n\
@@ -2376,7 +2376,7 @@ def ve_hinhchop_tugiacdeu(S,A,B,C,D):
 \\usepackage{{tikz}}\n\
 \\usetikzlibrary{{calc,angles}}\n\
 \\begin{{document}}\n\
-\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
 \\coordinate ({A}) at (0,0);\n\
 \\coordinate ({B}) at (2,-2);\n\
 \\coordinate ({D}) at (5,0);\n\
@@ -2398,7 +2398,7 @@ def codelatex_hinhchop_hbh_canhvg(s,a,b,c,d):
 \\usepackage{{tikz}}\n\
 \\usetikzlibrary{{calc,intersections,patterns}}\n\
 \\begin{{document}}\n\
-\\begin{{tikzpicture}}[scale=0.7]\n\
+\\begin{{tikzpicture}}[scale=0.6]\n\
 \\begin{{scriptsize}}\n\
 \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
 \\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\
@@ -2413,7 +2413,7 @@ def codelatex_hinhchop_hbh_canhvg(s,a,b,c,d):
     return code
 
 def code_hinhchop_hbh_canhvg(s,a,b,c,d):
-    code=f"\\begin{{tikzpicture}}[scale=0.7]\n\
+    code=f"\\begin{{tikzpicture}}[scale=0.6]\n\
 \\begin{{scriptsize}}\n\
 \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
 \\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\
@@ -2431,7 +2431,7 @@ def codelatex_hinhchop_hinhthang(s,a,b,c,d):
 \\usepackage{{tikz}}\n\
 \\usetikzlibrary{{calc,intersections,patterns}}\n\
 \\begin{{document}}\n\
-\\begin{{tikzpicture}}[scale=0.7]\n\
+\\begin{{tikzpicture}}[scale=0.6]\n\
 \\begin{{scriptsize}}\n\
 \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
 \\coordinate ({b}) at (5,0) node at ({b}) [right] {{${b}$}};\n\

@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 02.03.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.03.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 02.03.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.03.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2364,6 +2364,20 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_10]-M2. Cho biểu đồ cột thống kế số từ mới học mỗi ngày. Tính TBC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_11]-M2. Cho bảng tần số số anh chị em ruột. Tìm TBC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C6_B3_1, ["[D10_C6_B3_12]-M2. Cho bảng tần số điểm thi. Tìm TBC"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                 L10_C6_B3_2 = QTreeWidgetItem(L10_C6_B3, ["Đúng-Sai"])
                 L10_C6_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -2404,6 +2418,20 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_02]-M2. Cho dãy số liệu. Tính phương sai"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_07]-M2. Cho biểu đồ cột thống kế số từ mới học mỗi ngày. Tính phương sai"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_08]-M2. Cho bảng thống kế số anh chị em ruột. Tìm phương sai"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C6_B4_1, ["[D10_C6_B4_09]-M2. Cho bảng thống kế điểm. Tìm phương sai"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 L10_C6_B4_2 = QTreeWidgetItem(L10_C6_B4, ["Đúng-Sai"])
                 L10_C6_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -2500,7 +2528,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_13]-TF-M2. Cho bảng xét dấu hai nghiệm. Xét Đ-S."])
+                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_13]-TF-M2. Cho BXD dấu hai nghiệm. Xét Đ-S."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B1_2, ["[D10_C7_B1_16]-TF-M2. Cho BXD của Parabol có 2 nghiệm. Tìm khẳng định đúng về Parabol."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3851,27 +3883,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_06]-M2. Viết phương trình đường tròn có tâm và đường kính."])
+                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_06]-M2. Viết PT đường tròn có tâm và đường kính."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_07]-M3. Viết phương trình đường tròn có đường kính AB."])
+                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_07]-M3. Viết PT đường tròn có đường kính AB."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_08]-M3. Viết phương trình đường tròn đi qua 3 điểm."])
+                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_08]-M3. Viết PT đường tròn đi qua 3 điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_14]-M2. Viết phương trình đường tròn có tâm và đi qua điểm."])
+                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_14]-M2. Viết PT đường tròn có tâm và đi qua điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_15]-M2. Viết phương trình đường tròn có tâm và tiếp xúc đường thẳng."])
+                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_15]-M2. Viết PT đường tròn có tâm và tiếp xúc đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_16]-M2. Viết phương trình đường tròn có tâm và tiếp xúc trục Ox(Oy)."])
+                item = QTreeWidgetItem(L10_C10_B3_1_1, ["[D10_CX_B3_16]-M2. Viết PT đường tròn có tâm và tiếp xúc trục Ox(Oy)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
@@ -3899,9 +3931,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_1_3, ["[D10_CX_B3_18]-M2.  Tìm toạ độ tâm đường tròn ngoại tiếp tam giác."])
+                item = QTreeWidgetItem(L10_C10_B3_1_3, ["[D10_CX_B3_18]-M2. Tìm toạ độ tâm đường tròn ngoại tiếp tam giác."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_1_3, ["[D10_CX_B3_28]-M3. Biết đtron đi qua 2 điểm và tâm thuộc dt cho trước. Tìm bán kính"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_1_3, ["[D10_CX_B3_32]-M3. Cho họ đường tròn chứa tham số m tìm bán kính nhỏ nhất"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 L10_C10_B3_2 = QTreeWidgetItem(L10_C10_B3, ["Đúng-Sai"])
                 L10_C10_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -3911,9 +3953,43 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_13]-TF-M2. Cho phương trình đường tròn dạng khai triển. Tạo Đúng-Sai."])
+                item = QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_13]-TF-M2. Cho phương trình đường tròn dạng khai triển. Tạo đúng-sai."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_20]-TF-M3. Xét Đ-S: Tìm tâm, kiểm tra điểm thuộc, kiểm tra tiếp tuyến, viết pt tiếp tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_21]-TF-M3. Xét Đ-S: Tìm tâm, R, xét vị trí t.đối điểm và dtr, xét vị trí t.đối đth và dtr, viết pt t.tuyến."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_22]-TF-M2. Cho 3 điểm. Xét Đ-S: Tìm toạ độ vectơ, độ dài, trọng tâm, tiếp tuyến của đường tròn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_23]-TF-M3. Cho 3 điểm. Xét Đ-S: Tìm toạ độ vectơ, góc, pt trung trực, đường tròn ngoại tiếp."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_24]-TF-M3. Cho 3 điểm. Xét Đ-S: Tìm toạ độ vecto, góc, Diện tích, R ngoại tiếp"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_25]-TF-M4. Cho 3 điểm. Xét Đ-S: Tính chu vi, Diện tích, trung trực, đường tròn ngoại tiếp"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_26]-TF-M3. Cho 3 điểm. Xét Đ-S: Tính cạnh, viết các phương trình đường tròn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_2, ["[D10_CX_B3_30]-TF-M2. Cho đường tròn đi qua A và tiếp xúc với đường thẳng d tại điểm M. Xét Đ-S"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 L10_C10_B3_3 = QTreeWidgetItem(L10_C10_B3, ["Trả lời ngắn"])
                 L10_C10_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -3922,6 +3998,20 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L10_C10_B3_3, ["[D10_CX_B3_19]-SA-M3. Tìm toạ độ tâm đường tròn ngoại tiếp tam giác."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_3, ["[D10_CX_B3_27]-SA-M3. Biết đường tròn đi qua 2 điểm và tâm thuộc dt cho trước. Tìm bán kính"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_3, ["[D10_CX_B3_29]-SA-M3. Tìm điều kiện của m để đường thẳng là tiếp tuyến của đường tròn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B3_3, ["[D10_CX_B3_31]-SA-M3. Cho đường tròn đi qua A và tiếp xúc với đường thẳng d tại điểm M. Tìm bán kính đường tròn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
                 #Bài 3 
@@ -8503,6 +8593,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B3_1, ["[D12_C5_B3_16]-M2. Tìm điểm thuộc mặt cầu."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C5_B3_2 = QTreeWidgetItem(L12_C5_B3, ["Đúng-Sai"])
                 L12_C5_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8524,6 +8618,22 @@ class Ui_MainWindow(object):
                 L12_C5_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C5_B3_3, ["[D12_C5_B3_12]-SA-M2. Cho PTMC và PTMP. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_3, ["[D12_C5_B3_13]-SA-M2. Cho mặt cầu cắt mặt phẳng. Tìm bán kính đường tròn giao tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_3, ["[D12_C5_B3_14]-SA-M3. Cho mặt cầu cắt mặt phẳng. Tìm tọa độ tâm đường tròn giao tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_3, ["[D12_C5_B3_15]-SA-M3. Tìm bán kính mặt cầu ngoại tiếp OABC với A,B,C thuộc 3 trục tọa độ"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B3_3, ["[D12_C5_B3_17]-SA-M3. Tìm m để bán kính mặt cầu là nhỏ nhất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10675,6 +10785,26 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B3_12]-SA-M3. Cho mặt cầu có tâm I và cắt trục Ox(Oy,Oz). Tính bán kính.
                                             if dang_toan == "[D12_C5_B3_12]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_12()
+
+                                            #[D12_C5_B3_13]-SA-M3. Cho mặt cầu cắt mặt phẳng. Tìm bán kính đường tròn giao tuyến
+                                            if dang_toan == "[D12_C5_B3_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_13()
+
+                                            #[D12_C5_B3_14]-SA-M3. Cho mặt cầu cắt mặt phẳng. Tìm tọa độ tâm đường tròn giao tuyến
+                                            if dang_toan == "[D12_C5_B3_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_14()
+
+                                            #[D12_C5_B3_15]-SA-M3. Tìm bán kính mặt cầu ngoại tiếp OABC với A,B,C thuộc 3 trục tọa độ
+                                            if dang_toan == "[D12_C5_B3_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_15()
+
+                                            #[D12_C5_B3_16]-M2. Tìm điểm thuộc mặt cầu.
+                                            if dang_toan == "[D12_C5_B3_16]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_16()
+
+                                            #[D12_C5_B3_17]-SA-M3. Tìm m để bán kính mặt cầu là nhỏ nhất
+                                            if dang_toan == "[D12_C5_B3_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_17()
                                             
 
                                             #Chương 6 - Một số yếu tố xác suất
@@ -13810,6 +13940,20 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D10_C6_B3_09]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C6.tktk_L10_C6_B3_09()
 
+                                            #[D10_C6_B3_10]-M2. Cho biểu đồ cột thống kế số từ mới học mỗi ngày. Tính TBC
+                                            if dang_toan =="[D10_C6_B3_10]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_10()
+
+                                            #[D10_C6_B3_11]-M2. Cho bảng tần số số anh chị em ruột. Tìm TBC
+                                            if dang_toan =="[D10_C6_B3_11]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_11()
+
+                                            #[D10_C6_B3_12]-M2. Cho bảng tần số điểm thi. Tìm TBC
+                                            if dang_toan =="[D10_C6_B3_12]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_12()
+
+
+
                                         #Bài 4
                                         #[D10_C6_B4_01]. Cho dãy số liệu. Tính độ lệch chuẩn.
                                             if dang_toan == "[D10_C6_B4_01]":           
@@ -13834,6 +13978,20 @@ class Ui_MainWindow(object):
                                         #[D10_C6_B4_06]-M2. Cho dãy số liệu. Tính độ lệch chuẩn
                                             if dang_toan == "[D10_C6_B4_06]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B4_06()
+
+                                            #[D10_C6_B4_07]-M2. Cho biểu đồ cột thống kế số từ mới học mỗi ngày. Tính phương sai
+                                            if dang_toan =="[D10_C6_B4_07]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B4_07()
+
+                                            #[D10_C6_B4_08]-M2. Cho bảng thống kế số anh chị em ruột. Tìm phương sai
+                                            if dang_toan =="[D10_C6_B4_08]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B4_08()
+
+                                            #[D10_C6_B4_09]-M2. Cho bảng thống kế điểm. Tìm phương sai
+                                            if dang_toan =="[D10_C6_B4_09]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B4_09()
+
+
 
                                         
                                 #Toán 10- Chương 7- Bất phương trình bậc 2 một ẩn
@@ -13912,7 +14070,11 @@ class Ui_MainWindow(object):
 
                                         #[D10_C7_B1_15]-M2. Cho bxd bậc 2 có nghiệm kép. Tìm hàm số.
                                             if dang_toan == "[D10_C7_B1_15]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B1_15()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B1_15()
+
+                                            #[D10_C7_B1_16]-TF-M3. Cho bxd của Parabol có 2 nghiệm. Tìm khẳng định đúng về Parabol.
+                                            if dang_toan =="[D10_C7_B1_16]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C7.aaa_pry_L10_C7_B1_16()                                  
                                                 
 
 
@@ -15069,7 +15231,65 @@ class Ui_MainWindow(object):
 
                                             #[D10_CX_B3_19]-SA-M3. Tìm toạ độ tâm đường tròn ngoại tiếp tam giác
                                             if dang_toan =="[D10_CX_B3_19]":
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B3_19()                                     
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B3_19()
+
+                                            #[D10_CX_B3_20]-TF-M3. Cho ptr dtron. Tìm tâm, kiểm tra điểm thuộc, kiểm tra tiếp tuyến, viết pt tiếp tuyến
+                                            if dang_toan =="[D10_CX_B3_20]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_20()
+
+                                            #[D10_CX_B3_21]-TF-M3. CHo ptr dtron. Tìm tâm, r, xét vị trí t.đối điểm và dtr, xét vị trí t.đối đth và dtr, viết pt t.tuyến.
+                                            if dang_toan =="[D10_CX_B3_21]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_21()
+
+                                            #[D10_CX_B3_22]-TF-M2. Tổng hợp. cho 3 điểm. Tìm toạ độ vecto, độ dài, trọng tâm, viết ptr tiếp tuyến.
+                                            if dang_toan =="[D10_CX_B3_22]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_22()
+
+                                            #[D10_CX_B3_23]-TF-M3. Tổng hợp. cho 3 điểm. Tìm toạ độ vecto, góc, pt trung trực, ptr dtr ngoại tiếp.
+                                            if dang_toan =="[D10_CX_B3_23]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_23()
+
+                                            #[D10_CX_B3_24]-TF-M3. Tổng hợp. cho 3 điểm. Tìm toạ độ vecto, góc, Diện tích, R ngoại tiếp
+                                            if dang_toan =="[D10_CX_B3_24]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_24()
+
+                                            #[D10_CX_B3_25]-TF-M4. Tổng hợp. cho 3 điểm. Tính chu vi, Diện tích, trung trực, dtron ngoại tiếp
+                                            if dang_toan =="[D10_CX_B3_25]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_25()
+
+                                            #[D10_CX_B3_26]-TF-M3. Tổng hợp. cho 3 điểm. Tính cạnh, viết các ptr dtron
+                                            if dang_toan =="[D10_CX_B3_26]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_26()
+
+                                            #[D10_CX_B3_27]-SA-M3. Biết đtron đi qua 2 điểm và tâm thuộc dt cho trước. Tìm bán kính
+                                            if dang_toan =="[D10_CX_B3_27]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B3_27()
+
+                                            #[D10_CX_B3_28]-M3. Biết đtron đi qua 2 điểm và tâm thuộc dt cho trước. Tìm bán kính
+                                            if dang_toan =="[D10_CX_B3_28]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B3_28()
+
+                                            #[D10_CX_B3_29]-SA-M3. Tìm đk của m để dthang là tiếp tuyến của dtron
+                                            if dang_toan =="[D10_CX_B3_29]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B3_29()
+
+                                            #[D10_CX_B3_31]-SA-M3. Cho đường tròn đi qua A và tiếp xúc với dthang d tại điểm M. Tìm bán kính dtron
+                                            if dang_toan =="[D10_CX_B3_31]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B3_31()
+
+                                            #[D10_CX_B3_32]-M3. Cho họ đường tròn chứa tham số m tìm bán kính nhỏ nhất
+                                            if dang_toan =="[D10_CX_B3_32]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B3_32()
+
+
+
+
+
+                                            #[D10_CX_B3_30]-TF-M2. Cho đường tròn đi qua A và tiếp xúc với dthang d tại điểm M. Xét ĐS
+                                            if dang_toan =="[D10_CX_B3_30]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B3_30()
+
+                                    
                                                 
 
                                             #Bài 4: PHƯƠNG TRÌNH ĐƯỜNG ELIP

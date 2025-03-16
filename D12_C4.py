@@ -6753,7 +6753,7 @@ def ckz_L12C4_B4_36():
 
     
     kq2_T=f"* $\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$"
-    kq2_F=f"$\\int f'(x){d_x}={phan_so(c/a)}\\log |{latex(a*x+b)}|+C$$"
+    kq2_F=f"$\\int f'(x){d_x}={phan_so(c/a)}\\log |{latex(a*x+b)}|+C$"
     
     HDG=(thay_dau_cong_tru(f"$\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$." ))
 

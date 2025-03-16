@@ -3164,7 +3164,7 @@ def htd_25_xyz_L12_C5_B1_32():
         )
         
 
-        kq=f"${latex(x-z_A)}=0$"
+        kq=f"${latex(x-x_A)}=0$"
         kq_false=[
         f"${latex(z-z_A)}=0$",
         f"${latex(y-y_A)}=0$",    
@@ -4449,8 +4449,7 @@ def htd_25_xyz_L12_C5_B3_12():
     ten_diem=["A","B","C","D","I","E","F"]
     I,B,C=random.sample(ten_diem,3)
     BC=random.randint(1,8)
-    chon=random.randint(1,3)
-    chon=3
+    chon=random.randint(1,3)    
 
     if chon==1:
         IH=sqrt(y_0**2+z_0**2)
@@ -4504,6 +4503,278 @@ def htd_25_xyz_L12_C5_B3_12():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
     f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B3_13]-SA-M3. Cho mặt cầu cắt mặt phẳng. Tìm bán kính đường tròn giao tuyến
+def htd_25_xyz_L12_C5_B3_13():
+
+    #Tạo bậc ngẫu nhiên
+    x,y,z,t=sp.symbols("x y z t")
+    while True:        
+        x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]
+        a,b,c,d=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(4)]
+        R=random.choice([sqrt(i) for i in range(145)])
+        d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
+        d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+        if all([d_IP<R]):
+            break
+    d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
+    ptmp=f"{latex(a*x+b*y+c*z+d)}=0"
+    r=sqrt(R**2-d_IP**2)
+    
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ptmc=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}+{latex((z-z_0)**2)}={R**2}"
+    
+    if chon==2:
+        ptmc=f"x^2+y^2+z^2+{-2*x_0}x+{-2*y_0}y+{-2*z_0}z+{x_0**2+y_0**2+z_0**2-R**2}=0"
+        ptmc=ptmc.replace("+-","-")
+          
+
+    noi_dung= (f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu ${{(S)}}:{ptmc}$"
+                f" và mặt phẳng $(P):{ptmp}$. Mặt cầu ${{(S)}}$ cắt mặt phẳng $(P):{ptmp}$ theo một đường tròn có bán kính bằng bao nhiêu? (kết quả làm tròn đến hàng phần mười)")
+    dap_an=f"{round_half_up(r,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(f"$d(I,(P))=\\dfrac{{|{show_tich(a,x_0)}+{show_tich(b,y_0)}+{show_tich(c,z_0)}+{d}|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}}}={latex(d_IP)}<{latex(R)}$.\n\n"
+        f"Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có bán kính:\n\n"
+        f"$r=\\sqrt{{R^2-d^2(I,(P))}}=\\sqrt{{{R**2}-{latex(d_IP**2)}}}={latex(r)}={dap_an}$.")    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B3_14]-SA-M3. Cho mặt cầu cắt mặt phẳng. Tìm tọa độ tâm đường tròn giao tuyến
+def htd_25_xyz_L12_C5_B3_14():
+
+    #Tạo bậc ngẫu nhiên
+    x,y,z,t=sp.symbols("x y z t")
+    while True:        
+        x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]
+        a,b,c,d=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(4)]
+        R=random.choice([sqrt(i) for i in range(145)])
+        d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
+        d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+        if all([d_IP<R]):
+            break    
+    ptmp=f"{latex(a*x+b*y+c*z+d)}=0"    
+    eq=Eq(a*(x_0+a*t)+b*(y_0+b*t)+c*(z_0+c*t),0)
+    solution=solve(eq,t)
+    t_0=solution[0]
+    x_H,y_H,z_H=x_0+a*t_0, y_0+b*t_0, z_0+c*t_0
+    
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ptmc=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}+{latex((z-z_0)**2)}={R**2}"
+    
+    if chon==2:
+        ptmc=f"x^2+y^2+z^2+{-2*x_0}x+{-2*y_0}y+{-2*z_0}z+{x_0**2+y_0**2+z_0**2-R**2}=0"
+        ptmc=ptmc.replace("+-","-")
+          
+
+    noi_dung= (f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu ${{(S)}}:{ptmc}$"
+                f" và mặt phẳng $(P):{ptmp}$. Mặt cầu ${{(S)}}$ cắt mặt phẳng $(P):{ptmp}$ theo một đường tròn có tâm $H(a;b;c)$."
+    f" Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười).")
+    dap_an=f"{round_half_up(x_H+y_H+z_H,1):.1f}".replace(".",",")
+    x_H,y_H,z_H=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0),phan_so(z_0+c*t_0)
+    
+    noi_dung_loigiai=(f"Đường thẳng ${{IH}}$ qua $I({x_0};{y_0};{z_0})$ và nhận vectơ ${vec("n_P")}=({a};{b};{c})$ làm véctơ chỉ phương có phương trình:\n\n"
+        f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        x={x_0}+{a}t \\\\ \n\
+        y={y_0}+{b}t \\\\ \n\
+        z={z_0}+{c}t\n\
+        \\end{{array}} \\right.$\n\n"
+        f"Gọi $H({latex(x_0+a*t)};{latex(y_0+b*t)};{latex(z_0+c*t)})$.\n\n"
+        f"Thay tọa độ ${{H}}$ vào phương trình mặt phẳng $(P)$ ta được:\n\n"
+        f"${a}({latex(x_0+a*t)})+{b}({latex(y_0+b*t)})+{c}({latex(z_0+c*t)})=0$"
+        f"$\\Leftrightarrow t={phan_so(t_0)}$.\n\n"
+        f"$\\Rightarrow H\\left({x_H};{y_H};{z_H}\\right)$.\n\n"
+        f"$\\Rightarrow a+b+c={dap_an}$."
+        )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B3_15]-SA-M3. Tìm bán kính mặt cầu ngoại tiếp OABC với A,B,C thuộc 3 trục tọa độ
+def htd_25_xyz_L12_C5_B3_15():
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b= random.choice([i for i in range(-5, 6) if i!=0])
+    c= random.choice([i for i in range(-5, 6) if i!=0])
+    ten_diem=["A","B", "C", "D", "E", "F"]
+    A,B,C=random.sample(ten_diem,3)
+
+    noi_dung = (
+    f"Trong hệ trục ${{Oxyz}}$, cho ba điểm ${A}({a};0;0), {B}(0;{b};0), {C}(0;0;{c})$."
+    f" Tính bán kính mặt cầu ngoại tiếp tứ diện ${{O{A}{B}{C}}}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(sqrt(a**2/4+b**2/4+c**2/4),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi ${{S}}$ là mặt cầu ngoại tiếp tứ diện ${{O{A}{B}{C}}}$.\n\n"
+    f"Phương trình mặt cầu ${{S}}$ có dạng: $x^2+y^2+z^2+ax+by+cz+d=0$.\n\n"
+    f"Vì ${{O,{A},{B},{C}}}$ thuộc ${{S}}$ nên ta có:\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    d={0} \\\\ \n\
+    {a**2}+{a}a+d=0 \\\\ \n\
+    {b**2}+{b}b+d=0 \\\\ \n\
+    {c**2}+{c}c+d=0 \n\
+        \\end{{array}} \\right.$"
+    f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    a={-a} \\\\ \n\
+    b={-b} \\\\ \n\
+    c={-c}\n\
+    \\end{{array}} \\right.$\n\n"
+    
+    f"Bán kính mặt cầu ${{S}}$ là $R=\\sqrt{{{phan_so(a**2/4)}+{phan_so(b**2/4)}+{phan_so(c**2/4)}}}={latex(nsimplify(sqrt((a**2+b**2+c**2)/4)))}={dap_an}$.") 
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B3_16]-M2. Tìm điểm thuộc mặt cầu.
+def htd_25_xyz_L12_C5_B3_16():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+    while True:
+        a,b,c = [random.randint(-5,6) for i in range(3)]
+        x_0,y_0,z_0=[random.randint(-5,6) for i in range(3)]
+        if all([a!=x_0,b!=y_0, x_0!=0, y_0!=0]):
+            break
+    r=sqrt((a-x_0)**2+(b-y_0)**2+(c-z_0)**2)
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        ptmc=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}+{latex((z-z_0)**2)}={r**2}"
+    
+    if chon==2:
+        ptmc=f"x^2+y^2+z^2+{-2*x_0}x+{-2*y_0}y+{-2*z_0}z+{x_0**2+y_0**2+z_0**2-r**2}=0"
+        ptmc=ptmc.replace("+-","-")
+          
+
+    noi_dung= (f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu ${{(S)}}$ có phương trình"
+                f" ${ptmc}$. Mặt cầu ${{(S)}}$ đi qua điểm có tọa độ nào sau đây?")
+    while True:
+        x_1,y_1,z_1=[random.randint(-5,6) for i in range(3)]
+        x_2,y_2,z_2=[random.randint(-5,6) for i in range(3)]
+        x_3,y_3,z_3=[random.randint(-5,6) for i in range(3)]
+        r1=sqrt((x_1-x_0)**2+(y_1-y_0)**2+(z_1-z_0)**2)
+        r2=sqrt((x_2-x_0)**2+(y_2-y_0)**2+(z_2-z_0)**2)
+        r3=sqrt((x_3-x_0)**2+(y_3-y_0)**2+(z_3-z_0)**2)
+        
+        if all([r1!=r, r2!=r, r3!=r, x_1!=x_2, x_2!=x_3, x_1!=x_3]):
+            break      
+
+
+    kq=f"$({a};{b};{c})$"
+    kq_false=[f"$({x_1};{y_1};{z_1})$",
+    f"$({x_2};{y_2};{z_2})$",
+    f"$({x_3};{y_3};{z_3})$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Thay tọa độ các điểm vào phương trình mặt cầu ${{(S)}}$ ta được điểm $({a};{b};{c})$ thỏa mãn."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C5_B3_17]-SA-M3. Tìm m để bán kính mặt cầu là nhỏ nhất
+def htd_25_xyz_L12_C5_B3_17():
+
+    m=symbols("m")
+    a=random.choice([i for i in range(-5,6) if i!=0])
+    b=random.choice([i for i in range(-4,6) if i!=0])
+    a1=random.choice([i for i in range(-5,6) if i!=0 and i!=a])
+    b1=random.choice([i for i in range(-4,6) if i!=0])
+    a2=random.choice([i for i in range(-3,4) if i!=0])
+    c=random.randint(1,10)
+    expr = (a*m + b)**2 + (a1*m + b1)**2 + a2**2*m**2 + c
+    # Tính đạo hàm theo m
+    expr_diff = diff(expr, m)
+
+    # Tìm nghiệm của phương trình đạo hàm bằng 0
+    critical_points = solve(expr_diff, m)
+    m_min=critical_points[0]
+
+    # Kiểm tra giá trị nhỏ nhất
+    min_value = expr.subs(m,m_min)
+    
+    noi_dung=f"Trong hệ trục ${{Oxyz}}$, cho mặt cầu $(C_{{m}}): x^{{2}}+y^{{2}}+z^2+({latex(2*(a*m+b))})x+({latex(2*(a1*m+b1))})y+{2*a2}mz-{c}=0$ với ${{m}}$ là tham số. Mặt cầu có bán kính nhỏ nhất bằng ${{a}}$. Tính ${{a^{{2}}}}$. (kết quả làm tròn đến hàng phần mười)."
+    noi_dung_loigiai=(
+        f"$R^{{2}}= ({latex((a1*m+b1))})^{{2}}+({latex((a*m+b))})^{{2}}+{a2**2}m^2+{c}$ \n\n"
+        f"$={latex(expand((a*m+b)**2+(a1*m+b1)**2+a2**2*m**2+c))}$.\n\n"
+    f" ${{R^2}}$ đạt giá trị nhỏ nhất khi $m={phan_so(m_min)}$ \n\n"
+    f" Vậy min $R^{{2}}= {phan_so(min_value)}$.")
+    dap_an=f"{round_half_up(min_value,1):.1f}".replace(".",",")
+
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -7955,7 +8226,7 @@ def htd_25_xyz_L12_C5_B2_35():
     
     if chon==1:
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc ${{{ten_dt}}}$.")
@@ -7963,7 +8234,7 @@ def htd_25_xyz_L12_C5_B2_35():
     if chon==2:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")
@@ -7971,7 +8242,7 @@ def htd_25_xyz_L12_C5_B2_35():
     if chon==3:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")

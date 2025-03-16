@@ -566,7 +566,7 @@ def uz9zu_L11_C6_B1_07():
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -652,7 +652,7 @@ def uz9zu_L11_C6_B1_08():
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -3047,7 +3047,7 @@ def uz9zu_L11_C6_B3_12():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -3146,7 +3146,7 @@ def uz9zu_L11_C6_B3_13():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -3252,7 +3252,7 @@ def uz9zu_L11_C6_B3_14():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -3361,7 +3361,7 @@ def uz9zu_L11_C6_B3_15():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -3994,7 +3994,7 @@ def uz9zu_L11_C6_B3_22():
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    
@@ -4113,7 +4113,7 @@ def uz9zu_L11_C6_B3_23():
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    
@@ -4236,7 +4236,7 @@ def uz9zu_L11_C6_B3_24():
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    
@@ -4354,7 +4354,7 @@ def uz9zu_L11_C6_B3_25():
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    
@@ -5012,7 +5012,7 @@ def uz9zu_L11_C6_B4_09():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    
@@ -5091,7 +5091,7 @@ def uz9zu_L11_C6_B4_10():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    
@@ -6272,7 +6272,7 @@ def uz9zu_L11_C6_B5_10():
         list_PA[i]=list_PA[i].replace("*","\\True ")
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"    

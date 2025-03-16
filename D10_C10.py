@@ -1163,7 +1163,7 @@ def gghik_L10_CX_B0_15():
 	vt_A=f"\\overrightarrow{{{vt_A}}}"
 	vt_B=f"\\overrightarrow{{{vt_B}}}"
 
-	m=random.choice([random.randint(-6, -1), random.randint(1, 6)])
+	m=random.choice([random.randint(-6, -1), random.randint(2, 6)])
 	n=random.choice([random.randint(-6, -1), random.randint(2, 6)])
 	noi_dung= thay_dau_congtru(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai véctơ ${vt_A}({a1};{a2})$ và ${vt_B}({b1};{b2})$."\
 	f" Tọa độ vectơ ${m}{vt_A}+{n}{vt_B}$ là")
@@ -1171,7 +1171,7 @@ def gghik_L10_CX_B0_15():
 	kq=f"({m*a1+n*b1}; {m*a2+n*b2})"
 	kq2=f"({a1+b1}; {a2+b2})"
 	kq3=f"({m*a1+b1}; {n*a2+b2})"
-	kq4=f"({n*a1+b1}; {m*a2+n*b2})"
+	kq4=f"({m*a1}; {n*b2})"
 
 	noi_dung_loigiai=thay_dau_congtru(f"${m}{vt_A}+{n}{vt_B}={kq}$.")
 
@@ -3092,19 +3092,6 @@ def gghik_L10_CX_B1_11():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-
-
-
-
-
-
-
-
-
-
-
-#10.1.2 Phương trình tham số
-
 #[D10_CX_B1_12]-M1. Lập PTTS của d qua điểm và có VT chỉ phương
 def gghik_L10_CX_B1_12():   
 
@@ -3116,25 +3103,18 @@ def gghik_L10_CX_B1_12():
 	ten_d=random.choice(["d","d_1","\\Delta"])	
 	vecto_u="\\overrightarrow{{u}}"
 	
-	a=random.randint(-10,10)
-	b=random.randint(-10,10)
-	a1,b1 =a,b
-	if a==b: b=a+random.randint(1,5)
-	if a==b==0:
-		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:
+		a = random.choice([i for i in range(-5, 6) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])
+		x_0 = random.choice([i for i in range(-7, 7) if i!=0])
+		y_0 = random.choice([i for i in range(-7, 7) if i!=0])
+		if all([a!=x_0, b!=y_0]):
+			break
 
-	x_0=random.randint(-10,10)
-	y_0=random.randint(-10,10)
-	if x_0==y_0: y_0=x_0+random.randint(1,3)
-	if a==x_0 and b==y_0:
-		x_0=a+random.randint(1,5)
-		y_0=b+random.randint(1,5)
-	
 	#Tìm UCLN của véctơ pháp tuyến:
 	
 	ucln=math.gcd(abs(a),abs(b))
 	a, b=int(a/ucln), int(b/ucln)
-
 
 	f=f"\\left\\{{ \\begin{{array}}{{l}}\
 x = {show_ptts(x_0,a)} \\\\ \
@@ -3143,14 +3123,14 @@ y = {show_ptts(y_0,b)}\
 
 
 	f2=f"\\left\\{{ \\begin{{array}}{{l}}\
-x = {show_ptts(a,x_0)} \\\\ \
-y = {show_ptts(b,y_0)}\
+x = {show_ptts(x_0,a)} \\\\ \
+y = {show_ptts(y_0,-b)}\
 \\end{{array}} \\right."
 
 
 	f3=f"\\left\\{{ \\begin{{array}}{{l}}\
-x = {show_ptts(x_0,-a)} \\\\ \
-y = {show_ptts(x_0,-b)}\
+x = {show_ptts(x_0,a+random.randint(1,2))} \\\\ \
+y = {show_ptts(y_0,b)}\
 \\end{{array}} \\right."
 
 	f4=f"\\left\\{{ \\begin{{array}}{{l}}\
@@ -3164,7 +3144,7 @@ y = {show_ptts(-y_0,b)}\
 	kq4=f"{f4}"
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ đi qua điểm ${{{ten_diem}}}({x_0};{y_0})$"\
-			 f"và nhận vectơ ${vecto_u}({a1};{b1})$ làm véctơ chỉ phương. Viết phương trình tham số của đường thẳng ${{{ten_d}}}$."
+			 f"và nhận vectơ ${vecto_u}({a};{b})$ làm véctơ chỉ phương. Viết phương trình tham số của đường thẳng ${{{ten_d}}}$."
 	
     #Tạo các phương án
 	pa_A= f"*${{{kq}}}$"
@@ -4476,8 +4456,11 @@ def gghik_L10_CX_B1_26():
 	d=["d","d_1","\\Delta","\\Delta_1"]
 	i=random.randint(0,3)
 	d = d[i]
-	a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:
+		a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([a!=b, a!=-b]):
+			break
 	
 	x_0=random.randint(-8,8)
 	y_0=random.randint(-8,8)
@@ -4597,8 +4580,11 @@ def gghik_L10_CX_B1_27():
 	d=["d","d_1","\\Delta","\\Delta_1"]
 	i=random.randint(0,3)
 	d = d[i]
-	a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:
+		a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([a!=b, a!=-b]):
+			break
 	
 	x_0=random.randint(-8,8)
 	y_0=random.randint(-8,8)
@@ -4718,8 +4704,11 @@ def gghik_L10_CX_B1_28():
 	d=["d","d_1","\\Delta","\\Delta_1"]
 	i=random.randint(0,3)
 	d = d[i]
-	a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:
+		a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([a!=b, a!=-b]):
+			break
 	
 	x_0=random.randint(-8,8)
 	y_0=random.randint(-8,8)
@@ -4835,8 +4824,11 @@ def gghik_L10_CX_B1_29():
 	d=["d","\\Delta"]	
 	i=random.randint(0,1)
 	d = d[i]
-	a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:
+		a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([a!=b, a!=-b]):
+			break
 	c= random.randint(-10, 10)	
 	f=a*x+b*y+c	
 	noi_dung=f"Trong mặt phẳng ${{(Oxy)}}$, cho đường thẳng ${d}:{latex(f)}=0$. Xét tính đúng-sai của các khẳng định sau:"
@@ -4950,8 +4942,11 @@ def gghik_L10_CX_B1_30():
 	i=random.randint(0,1)
 	d = d[i]
 
-	a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:
+		a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([a!=b, a!=-b]):
+			break
 	
 	x_0, y_0 =random.randint(-8,8), random.randint(-8,8)
 	f_ts=f"\\left\\{{ \\begin{{array}}{{l}}\
@@ -5088,8 +5083,11 @@ def gghik_L10_CX_B1_30():
 #[D10_CX_B1_31]. Tìm A thuộc đường thẳng d cách B một khoảng cho trước.
 def gghik_L10_CX_B1_31():
 	x,y=sp.symbols("x y")
-	a= random.choice([random.randint(-6, -1), random.randint(1, 6)])
-	b= random.choice([random.randint(-6, -1), random.randint(1, 6)])
+	while True:
+		a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		if all([a!=b, a!=-b]):
+			break
 	x_0=random.choice([random.randint(-7, -1), random.randint(1, 7)])
 	y_0=a*x_0+b
 
@@ -9002,6 +9000,2165 @@ def gghik_L10_CX_B3_19():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+
+#[D10_CX_B3_20]-SA-M3. CHo ptr dtron. Tìm toạ độ tâm, kiểm tra điểm thuộc, kiểm tra tiếp tuyến, viết pt tiếp tuyến
+def gghik_L10_CX_B3_20():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	ptdt=f"x^2+y^2{dau_a}{hs_ax} {dau_b}{hs_by} {dau_d}{d} =0"
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ $(Oxy)$, cho đường tròn ${{(C)}}:{ptdt}$."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"*Đường tròn ${{(C)}}$ có tâm $I({x_I};{y_I})$"
+	kq1_F=f"Đường tròn ${{(C)}}$ có tâm $I({-x_I};{-y_I})$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"Đường tròn có tâm $I({x_I};{y_I})$ và bán kính là ${{{r}}}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	x1=random.randint(-10,10)
+	y1=random.randint(-10,10)
+	if (x1-x_I)**2+(y1-y_I)**2==r**2:
+
+		kq2_T=f"*Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$"
+		kq2_F=f"Điểm ${ten_diem}({x1};{y1})$ không thuộc đường tròn ${{(C)}}$ "
+		kq2=random.choice([kq2_T, kq2_F])	
+		HDG=f"Đường tròn ${{(C)}}$ đi qua điểm ${ten_diem}({x1};{y1})$ là khẳng định đúng"\
+			f" vì tọa độ điểm ${{{ten_diem}}}$ thỏa mãn phương trình đường tròn ${{(C)}}$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if (x1-x_I)**2+(y1-y_I)**2 !=r**2:
+
+		kq2_T=f"*Điểm ${ten_diem}({x1};{y1})$ không thuộc đường tròn ${{(C)}}$"
+		kq2_F=f"Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$ "
+		kq2=random.choice([kq2_T, kq2_F])	
+		HDG=f"Đường tròn ${{(C)}}$ không đi qua điểm ${ten_diem}({x1};{y1})$"\
+			f" vì tọa độ điểm ${{{ten_diem}}}$ không thỏa mãn phương trình đường tròn ${{(C)}}$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+
+	ten_diem=random.choice(["A","B","M","N"])
+
+	a1=random.randint(-5,5)
+	b1=random.choice([i for i in range(-5,5) if i!=a1])
+	c1=random.randint(-5,5)
+	d= abs( a1*x_I+b1*y_I+c1 )/ sqrt(a1**2+b1**2)
+	if d< r:
+
+		kq3_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt "
+		kq3_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"])
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt vì ${{d(I, dt)={latex(d)}< r}}$ "
+
+
+	if d ==r:
+
+		kq3_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"
+		kq3_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt"])
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn vì ${{d(I, dt)={latex(d)} = r}}$ "
+
+
+	if d > r:
+
+		kq3_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn "
+		kq3_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"])
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn vì ${{d(I, dt)={latex(d)} > r}}$ "
+
+
+
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+	ucln=math.gcd(x_I-x_B,y_I-y_B)
+	a1,b1=int((x_I-x_B)/ucln), int((y_I-y_B)/ucln)
+	ten_diem=random.choice(["E","G","H","P"])
+
+	kq4_T=f"*Tiếp tuyến của đường tròn ${{(C)}}$ tại điểm ${ten_diem}({x_B};{y_B})$ có phương trình là "\
+	f"${latex(a1*(x-x_B)+b1*(y-y_B))}=0$"
+
+	kq4_F=f"Tiếp tuyến của đường tròn ${{(C)}}$ tại điểm ${ten_diem}({x_B};{y_B})$ có phương trình là "\
+	f"${latex(b1*(x-x_B)-a1*(y-y_B))}=0$"
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"{kq4_T[1:]} là khẳng định đúng.\n\n"\
+	f"Đường tròn ${{(C)}}$ có tâm ${{I({x_I};{y_I})}}$.\n\n"\
+	f"Tiếp tuyến tại điểm ${ten_diem}({x_B};{y_B})$ nhận vectơ $\\overrightarrow{{{ten_diem}I}}=({x_I-x_B};{y_I-y_B})$ làm một véctơ pháp tuyến.\n\n"\
+	f"Phương trình tiếp tuyến là: ${x_I-x_B}({latex(x-x_B)})+{y_I-y_B}({latex(y-y_B)})=0\\Leftrightarrow {latex(expand(a1*(x-x_B)+b1*(y-y_B)))}=0$.".replace("+-","-")
+	if kq4==kq4_F:
+		loigiai_4=f"{kq4_F} là khẳng định sai.\n\n"\
+		f"Đường tròn ${{(C)}}$ có tâm ${{I({x_I};{y_I})}}$.\n\n"\
+	f"Tiếp tuyến tại điểm ${ten_diem}({x_B};{y_B})$ nhận vectơ $\\overrightarrow{{{ten_diem}I}}=({x_I-x_B};{y_I-y_B})$ làm một véctơ pháp tuyến.\n\n"\
+	f"Phương trình tiếp tuyến là: ${x_I-x_B}({latex(x-x_B)})+{y_I-y_B}({latex(y-y_B)})=0\\Leftrightarrow {latex(expand(a1*(x-x_B)+b1*(y-y_B)))}=0$.".replace("+-","-")
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+#[D10_CX_B3_21]-SA-M3. CHo ptr dtron. Tìm r, xét vị trí tương đối điểm và dtron, xét vị trí tương đối đthang và dtron, viết pt tiếp tuyến.
+def gghik_L10_CX_B3_21():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	ptdt=f"x^2+y^2{dau_a}{hs_ax} {dau_b}{hs_by} {dau_d}{d} =0"
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ $(Oxy)$, cho đường tròn ${{(C)}}:{ptdt}$."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"*Đường tròn ${{(C)}}$ có tâm $I({x_I};{y_I})$ và bán kính là ${{{r}}}$"
+	kq1_F=f"Đường tròn ${{(C)}}$ có tâm $I({-x_I};{-y_I})$ và bán kính là ${{{r}}}$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"Đường tròn có tâm $I({x_I};{y_I})$ và bán kính là ${{{r}}}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	x1=random.randint(-10,10)
+	y1=random.randint(-10,10)
+	if (x1-x_I)**2+(y1-y_I)**2==r**2:
+
+		kq2_T=f"*Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$"
+		kq2_F=random.choice([f"Điểm ${ten_diem}({x1};{y1})$ không thuộc đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$ "])
+		kq2=random.choice([kq2_T, kq2_F])	
+		HDG=f"Đường tròn ${{(C)}}$ đi qua điểm ${ten_diem}({x1};{y1})$ là khẳng định đúng"\
+			f" vì ${{d(I;{ten_diem})}} = {r}$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if (x1-x_I)**2+(y1-y_I)**2 < r**2:
+
+		kq2_T=f"*Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$"
+		kq2_F=random.choice([f"Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$ "])
+		kq2=random.choice([kq2_T, kq2_F])	
+		HDG=f"Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$"\
+			f" vì ${{d(I;{ten_diem})}} < {r}$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if (x1-x_I)**2+(y1-y_I)**2 > r**2:
+
+		kq2_T=f"*Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$"
+		kq2_F=random.choice([f"Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$ "])
+		kq2=random.choice([kq2_T, kq2_F])	
+		HDG=f"Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$"\
+			f" vì ${{d(I;{ten_diem})}} > {r}$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+
+	ten_diem=random.choice(["A","B","M","N"])
+
+	a1=random.randint(-5,5)
+	b1=random.choice([i for i in range(-5,5) if i!=a1])
+	c1=random.randint(-5,5)
+	d= abs( a1*x_I+b1*y_I+c1 )/ sqrt(a1**2+b1**2)
+	if d< r:
+
+		kq3_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt "
+		kq3_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"])
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt vì ${{d(I, dt)={latex(d)}< r}}$ "
+
+
+	if d ==r:
+
+		kq3_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"
+		kq3_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt"])
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn vì ${{d(I, dt)={latex(d)} = r}}$ "
+
+
+	if d > r:
+
+		kq3_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn "
+		kq3_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"])
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn vì ${{d(I, dt)={latex(d)} > r}}$ "
+
+
+
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+	ucln=math.gcd(x_I-x_B,y_I-y_B)
+	a1,b1=int((x_I-x_B)/ucln), int((y_I-y_B)/ucln)
+	ten_diem=random.choice(["E","G","H","P"])
+
+	kq4_T=f"*Tiếp tuyến của đường tròn ${{(C)}}$ tại điểm ${ten_diem}({x_B};{y_B})$ có phương trình là "\
+	f"${latex(a1*(x-x_B)+b1*(y-y_B))}=0$"
+
+	kq4_F=f"Tiếp tuyến của đường tròn ${{(C)}}$ tại điểm ${ten_diem}({x_B};{y_B})$ có phương trình là "\
+	f"${latex(b1*(x-x_B)-a1*(y-y_B))}=0$"
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"{kq4_T[1:]} là khẳng định đúng.\n\n"\
+	f"Đường tròn ${{(C)}}$ có tâm ${{I({x_I};{y_I})}}$.\n\n"\
+	f"Tiếp tuyến tại điểm ${ten_diem}({x_B};{y_B})$ nhận vectơ $\\overrightarrow{{{ten_diem}I}}=({x_I-x_B};{y_I-y_B})$ làm một véctơ pháp tuyến.\n\n"\
+	f"Phương trình tiếp tuyến là: ${x_I-x_B}({latex(x-x_B)})+{y_I-y_B}({latex(y-y_B)})=0\\Leftrightarrow {latex(expand(a1*(x-x_B)+b1*(y-y_B)))}=0$.".replace("+-","-")
+	if kq4==kq4_F:
+		loigiai_4=f"{kq4_F} là khẳng định sai.\n\n"\
+		f"Đường tròn ${{(C)}}$ có tâm ${{I({x_I};{y_I})}}$.\n\n"\
+	f"Tiếp tuyến tại điểm ${ten_diem}({x_B};{y_B})$ nhận vectơ $\\overrightarrow{{{ten_diem}I}}=({x_I-x_B};{y_I-y_B})$ làm một véctơ pháp tuyến.\n\n"\
+	f"Phương trình tiếp tuyến là: ${x_I-x_B}({latex(x-x_B)})+{y_I-y_B}({latex(y-y_B)})=0\\Leftrightarrow {latex(expand(a1*(x-x_B)+b1*(y-y_B)))}=0$.".replace("+-","-")
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[D10_CX_B3_22]-SA-M2. Tổng hợp. cho 3 điểm. Tìm toạ độ vecto, độ dài, trọng tâm, viết ptr tiếp tuyến.
+def gghik_L10_CX_B3_22():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	ptdt=f"x^2+y^2{dau_a}{hs_ax} {dau_b}{hs_by} {dau_d}{d} =0"
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho ${{A({x_A}; {y_A})}}$; ${{B({x_B}; {y_B})}}$; ${{C({x_C}; {y_C})}}$;."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"* $\\overrightarrow{{AC}}= \\left( {x_C-x_A}; {y_C-y_A}  \\right)$"
+	kq1_F=f"$\\overrightarrow{{AC}}= \\left( {x_A-x_C}; {y_A-y_C}  \\right)$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"$\\overrightarrow{{AC}}= \\left( {x_C-x_A}; {y_C-y_A}  \\right)$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq2_T=f"* $AC= {latex(sqrt( (x_C-x_A)**2+(y_C-y_A)**2 ))}$"
+	kq2_F=f" $AC= {latex(sqrt( (x_C-x_A)**2+(y_C-y_A+1)**2 ))}$"
+	kq2=random.choice([kq2_T, kq2_F])	
+	HDG=f"$AC= {latex(sqrt( (x_C-x_A)**2+(y_C-y_A)**2 ))}$"
+		
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+	kq3_T=f"* Toạ độ trọng tâm của tam giác ${{ABC}}$ là $\\left( {phan_so((x_A+x_B+x_C)/3)}  ; {phan_so((y_A+y_B+y_C)/3)}   \\right)$" 
+	kq3_F=f"Toạ độ trọng tâm của tam giác ${{ABC}}$ là $\\left( {phan_so((x_A+x_B+x_C)/2)}  ; {phan_so((y_A+y_B+y_C+1)/3)}   \\right)$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Toạ độ trọng tâm của tam giác ${{ABC}}$ là $\\left( {phan_so((x_A+x_B+x_C)/3)}  ; {phan_so((y_A+y_B+y_C)/3)}   \\right)$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+	ucln=math.gcd(x_I-x_B,y_I-y_B)
+	a1,b1=int((x_I-x_B)/ucln), int((y_I-y_B)/ucln)
+	ten_diem=random.choice(["E","G","H","P"])
+
+	kq4_T=f"*Tiếp tuyến của đường tròn ngoại tiếp tam giác ${{ABC}}$ tại điểm $B({x_B};{y_B})$ có phương trình là "\
+	f"${latex(a1*(x-x_B)+b1*(y-y_B))}=0$"
+
+	kq4_F=f"Tiếp tuyến của đường tròn ${{(C)}}$ tại điểm $B({x_B};{y_B})$ có phương trình là "\
+	f"${latex(b1*(x-x_B)-a1*(y-y_B))}=0$"
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"{kq4_T[1:]} là khẳng định đúng.\n\n"\
+	f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$.\n\n"\
+	f"Tiếp tuyến tại điểm $B({x_B};{y_B})$ nhận vectơ $\\overrightarrow{{BI}}=({x_I-x_B};{y_I-y_B})$ làm một véctơ pháp tuyến.\n\n"\
+	f"Phương trình tiếp tuyến là: ${x_I-x_B}({latex(x-x_B)})+{y_I-y_B}({latex(y-y_B)})=0\\Leftrightarrow {latex(expand(a1*(x-x_B)+b1*(y-y_B)))}=0$.".replace("+-","-")
+	if kq4==kq4_F:
+		loigiai_4=f"{kq4_F} là khẳng định sai.\n\n"\
+		f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$.\n\n"\
+	f"Tiếp tuyến tại điểm $B({x_B};{y_B})$ nhận vectơ $\\overrightarrow{{BI}}=({x_I-x_B};{y_I-y_B})$ làm một véctơ pháp tuyến.\n\n"\
+	f"Phương trình tiếp tuyến là: ${x_I-x_B}({latex(x-x_B)})+{y_I-y_B}({latex(y-y_B)})=0\\Leftrightarrow {latex(expand(a1*(x-x_B)+b1*(y-y_B)))}=0$.".replace("+-","-")
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+def angle_from_cos(cos_value):
+    return math.degrees(math.acos(cos_value)) if -1 <= cos_value <= 1 else "Giá trị cosine không hợp lệ!"
+
+# Ví dụ sử dụng
+
+
+
+#[D10_CX_B3_23]-TF-M3. Tổng hợp. cho 3 điểm. Tìm toạ độ vecto, góc, pt trung trực, ptr dtr ngoại tiếp.
+def gghik_L10_CX_B3_23():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	ptdt=f"x^2+y^2{dau_a}{hs_ax} {dau_b}{hs_by} {dau_d}{d} =0"
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho ${{A({x_A}; {y_A})}}$; ${{B({x_B}; {y_B})}}$; ${{C({x_C}; {y_C})}}$;."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"* $\\overrightarrow{{AC}}= \\left( {x_C-x_A}; {y_C-y_A}  \\right)$"
+	kq1_F=f"$\\overrightarrow{{AC}}= \\left( {x_A-x_C}; {y_A-y_C}  \\right)$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"$\\overrightarrow{{AC}}= \\left( {x_C-x_A}; {y_C-y_A}  \\right)$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	if ((x_C-x_A)*(x_B-x_A)+(y_C-y_A)*(y_B-y_A)) /(sqrt((x_C-x_A)**2+(y_C-y_A)**2)* sqrt((x_B-x_A)**2+(y_B-y_A)**2)) <0:
+
+	    m=round( ((x_C-x_A)*(x_B-x_A)+(y_C-y_A)*(y_B-y_A)) /(sqrt((x_C-x_A)**2+(y_C-y_A)**2)* sqrt((x_B-x_A)**2+(y_B-y_A)**2)),2 ) 
+	    m=str(m).replace(".",",")
+
+	    kq2_T=f"* $\\widehat{{BAC}}$ là góc tù" 
+	    kq2_F=f"$\\widehat{{BAC}}$ là góc nhọn"
+	    kq2=random.choice([kq2_T, kq2_F])
+	    HDG=f"$\\cos{{BAC}}\\approx {m} < 0$ nên $\\widehat{{BAC}}$ là góc tù " 
+	if ((x_C-x_A)*(x_B-x_A)+(y_C-y_A)*(y_B-y_A)) /(sqrt((x_C-x_A)**2+(y_C-y_A)**2)* sqrt((x_B-x_A)**2+(y_B-y_A)**2)) >0:
+
+	    m=round( ((x_C-x_A)*(x_B-x_A)+(y_C-y_A)*(y_B-y_A)) /(sqrt((x_C-x_A)**2+(y_C-y_A)**2)* sqrt((x_B-x_A)**2+(y_B-y_A)**2)),2 ) 
+	    m=str(m).replace(".",",")
+
+	    kq2_T=f"* $\\widehat{{A}}$ là góc nhọn" 
+	    kq2_F=f"$\\widehat{{A}}$ là góc tù"
+	    kq2=random.choice([kq2_T, kq2_F])
+	    HDG=f"$\\cos{{A}}\\approx {round( ((x_C-x_A)*(x_B-x_A)+(y_C-y_A)*(y_B-y_A)) /(sqrt((x_C-x_A)**2+(y_C-y_A)**2)* sqrt((x_B-x_A)**2+(y_B-y_A)**2)),2 )} > 0$ nên $\\widehat{{A}}$ là góc nhọn "
+
+	if ((x_C-x_A)*(x_B-x_A)+(y_C-y_A)*(y_B-y_A)) /(sqrt((x_C-x_A)**2+(y_C-y_A)**2)* sqrt((x_B-x_A)**2+(y_B-y_A)**2)) ==0:
+
+	    kq2_T=f"* $\\widehat{{A}}$ là góc vuông" 
+	    kq2_F=f"$\\widehat{{A}}$ là góc tù"
+	    kq2=random.choice([kq2_T, kq2_F])
+	    HDG=f"$\\cos{{A}}= 0$ nên $\\widehat{{A}}$ là góc vuông "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	
+
+
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	xM= (x_A+x_B)/2
+	yM= (y_A+y_B)/2
+
+	a, b =x_B-x_A, y_B-y_A	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+	
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+
+
+	kq3_T=f"* Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$" 
+	kq3_F=f" Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${latex(nsimplify(a*(x-xM)+b*(y-yM)+1))}=0$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ đi qua $\\left(  {phan_so(xM)}; {phan_so(yM)} \\right)$ và nhận vecto $({a}; {b})$ làm VTPT có phương trình tổng quát ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq4_T=f"*Phương trình đường tròn ngoại tiếp tam giác ${{ABC}}$ là  $ {latex((x-x_I)**2+(y-y_I)**2) } = {r**2} $"
+	
+
+	kq4_F=f"Phương trình đường tròn ngoại tiếp tam giác ${{ABC}}$ là  $ {latex((x-x_I+1)**2+(y-y_I)**2) } = {r**2} $ "
+
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Viết phương trình hai đường trung trực của tam giác \n\n"
+		f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r}}}$.\n\n"
+	f"Phương trình đường tròn ngoại tiếp tam giác ${{ABC}}$ là  $ {latex((x-x_I)**2+(y-y_I)**2) } = {r**2} $.\n\n")
+	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[D10_CX_B3_24]-TF-M3. Tổng hợp. cho 3 điểm. Tìm toạ độ vecto, góc, Diện tích, dtron ngoại tiếp
+def gghik_L10_CX_B3_24():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+	
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	ptdt=f"x^2+y^2{dau_a}{hs_ax} {dau_b}{hs_by} {dau_d}{d} =0"
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho ${{A({x_A}; {y_A})}}$; ${{B({x_B}; {y_B})}}$; ${{C({x_C}; {y_C})}}$;."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"* $\\overrightarrow{{BC}}= \\left( {x_C-x_B}; {y_C-y_B}  \\right)$"
+	kq1_F=f"$\\overrightarrow{{BC}}= \\left( {x_B-x_C}; {y_B-y_C}  \\right)$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"$\\overrightarrow{{BC}}= \\left( {x_C-x_B}; {y_C-y_B}  \\right)$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	a,b=x_C-x_B,y_C-y_B
+
+	kq2_T=f"* Diện tích tam giác ${{ABC}}$ bằng ${{{phan_so(abs(b*(x_A-x_B)-a*(y_A-y_B))/2)} }}$"
+	kq2_F=f" Diện tích tam giác ${{ABC}}$ bằng ${{{phan_so(abs(b*(x_A-x_B)-a*(y_A-y_B))/3)} }}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=(f"Phương trình tổng quát của đường thẳng ${{BC}}$ là ${{{latex(nsimplify(expand(b*(x-x_B)-a*(y-y_B))))}=0}}$  \n\n"
+		f" $d(A, BC)=\\dfrac{{ |{phan_so(b*(x_A-x_B)-a*(y_A-y_B))}|}} {{\\sqrt{{{a}^{{2}}+{b}^{{2}} }}}}= {latex(nsimplify( abs(b*(x_A-x_B)-a*(y_A-y_B))/(sqrt(a**2+b**2))))}$\n\n"
+	   f" ${{BC={latex(nsimplify(sqrt(a**2+b**2)))} }}$ \n\n"
+	   f" $S= \\dfrac{{1}}{{2}} \\cdot d(A, BC) \\cdot BC=\\dfrac{{1}}{{2}} \\cdot  {latex(nsimplify( abs(b*(x_A-x_B)-a*(y_A-y_B))/(sqrt(a**2+b**2))))} \\cdot {latex(nsimplify(sqrt(a**2+b**2)))} = {phan_so(abs(b*(x_A-x_B)-a*(y_A-y_B))/2)}  $")
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	
+
+	xM= (x_A+x_B)/2
+	yM= (y_A+y_B)/2
+
+	a, b =x_B-x_A, y_B-y_A	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+	
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+
+
+	kq3_T=f"* Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$" 
+	kq3_F=f" Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${latex(nsimplify(a*(x-xM)+b*(y-yM)+1))}=0$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ đi qua $\\left(  {phan_so(xM)}; {phan_so(yM)} \\right)$ và nhận vecto $({a}; {b})$ làm VTPT có phương trình tổng quát ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq4_T=f"*Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r}}}$"
+	
+
+	kq4_F=f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r+1}}}$ "
+
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Viết phương trình hai đường trung trực của tam giác \n\n"
+		f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r}}}$."
+	)
+	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+#[D10_CX_B3_25]-TF-M4. Tổng hợp. cho 3 điểm. Tính chu vi, Diện tích, trung trực, dtron ngoại tiếp
+def gghik_L10_CX_B3_25():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+	
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	ptdt=f"x^2+y^2{dau_a}{hs_ax} {dau_b}{hs_by} {dau_d}{d} =0"
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho ${{A({x_A}; {y_A})}}$; ${{B({x_B}; {y_B})}}$; ${{C({x_C}; {y_C})}}$;."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"* Chu vi tam giác ${{ABC}}$ là ${latex(nsimplify( sqrt((x_C-x_B)**2+(y_C-y_B)**2)+sqrt((x_C-x_A)**2+(y_C-y_A)**2)+sqrt((x_A-x_B)**2+(y_A-y_B)**2)))}$"
+	kq1_F=f"Chu vi tam giác ${{ABC}}$ là ${latex(nsimplify( sqrt((x_C-x_B)**2+(y_C-y_B)**2)+sqrt((x_C-x_A)**2+(y_C-y_A)**2)+sqrt((x_A-x_B)**2+(y_A-y_B+1)**2)))}$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"   Chu vi tam giác ${{ABC}}$ là ${latex(nsimplify( sqrt((x_C-x_B)**2+(y_C-y_B)**2)+sqrt((x_C-x_A)**2+(y_C-y_A)**2)+sqrt((x_A-x_B)**2+(y_A-y_B)**2)))}$"
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	a,b=x_C-x_B,y_C-y_B
+
+	kq2_T=f"* Diện tích tam giác ${{ABC}}$ bằng ${{{phan_so(abs(b*(x_A-x_B)-a*(y_A-y_B))/2)} }}$"
+	kq2_F=f" Diện tích tam giác ${{ABC}}$ bằng ${{{phan_so(abs(b*(x_A-x_B)-a*(y_A-y_B))/3)} }}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=(f"Phương trình tổng quát của đường thẳng ${{BC}}$ là ${{{latex(nsimplify(expand(b*(x-x_B)-a*(y-y_B))))}=0}}$  \n\n"
+		f" $d(A, BC)=\\dfrac{{ |{phan_so(b*(x_A-x_B)-a*(y_A-y_B))}|}} {{\\sqrt{{{a}^{{2}}+{b}^{{2}} }}}}= {latex(nsimplify( abs(b*(x_A-x_B)-a*(y_A-y_B))/(sqrt(a**2+b**2))))}$\n\n"
+	   f" ${{BC={latex(nsimplify(sqrt(a**2+b**2)))} }}$ \n\n"
+	   f" $S= \\dfrac{{1}}{{2}} \\cdot d(A, BC) \\cdot BC=\\dfrac{{1}}{{2}} \\cdot  {latex(nsimplify( abs(b*(x_A-x_B)-a*(y_A-y_B))/(sqrt(a**2+b**2))))} \\cdot {latex(nsimplify(sqrt(a**2+b**2)))} = {phan_so(abs(b*(x_A-x_B)-a*(y_A-y_B))/2)}  $")
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	
+
+	xM= (x_A+x_B)/2
+	yM= (y_A+y_B)/2
+
+	a, b =x_B-x_A, y_B-y_A	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+	
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+
+
+	kq3_T=f"* Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$" 
+	kq3_F=f" Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${latex(nsimplify(a*(x-xM)+b*(y-yM)+1))}=0$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ đi qua $\\left(  {phan_so(xM)}; {phan_so(yM)} \\right)$ và nhận vecto $({a}; {b})$ làm VTPT có phương trình tổng quát ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq4_T=f"*Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r}}}$"
+	
+
+	kq4_F=f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r+1}}}$ "
+
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Viết phương trình hai đường trung trực của tam giác \n\n"
+		f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r}}}$."
+	)
+	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+def thay_cong_tru(st):
+    return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y").replace("- +","-").replace("- -","+").replace("+ -","-").replace("++","+")
+
+
+#[D10_CX_B3_26]-TF-M3. Tổng hợp. cho 3 điểm. Tính cạnh, viết các ptr dtron
+def gghik_L10_CX_B3_26():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho ${{A({x_A}; {y_A})}}$; ${{B({x_B}; {y_B})}}$; ${{C({x_C}; {y_C})}}$;."\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"* $AC= {latex(nsimplify( sqrt((x_C-x_A)**2+(y_C-y_A)**2 )))}$"
+	kq1_F=f"$AC= {latex(nsimplify(sqrt( (x_C-x_A)**2+(y_C-y_A+1)**2 )))}$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"$\\overrightarrow{{AC}}= \\left( {x_C-x_A}; {y_C-y_A}  \\right)$ nên $AC= {latex(nsimplify(sqrt( (x_C-x_A)**2+(y_C-y_A)**2 )))}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+
+
+	kq2_T=f"*Phương trình đường tròn tâm ${{A}}$ đi qua ${{C}}$ là ${latex( (x-x_A)**2+(y-y_A)**2 )}= {phan_so( (x_C-x_A)**2+(y_C-y_A)**2 )}$" 
+	kq2_F=f"Phương trình đường tròn tâm ${{A}}$ đi qua ${{C}}$ là ${latex( (x-x_A-1)**2+(y-y_A)**2 )}= {phan_so( (x_C-x_A)**2+(y_C-y_A)**2 )}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"  Phương trình đường tròn tâm ${{A}}$ đi qua ${{C}}$ là ${latex( (x-x_A)**2+(y-y_A)**2 )}= {phan_so( (x_C-x_A)**2+(y_C-y_A)**2 )}$"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	xM= (x_A+x_B)/2
+	yM= (y_A+y_B)/2
+
+	x_AC, y_AC =(x_C+x_A)/2, (y_C+y_A)/2	
+
+
+	kq3_T=f"* Phương trình đường tròn đường kính ${{AC}}$ là $\\left(x-{phan_so(x_AC)} \\right)^{{2}}+\\left(y-{phan_so(y_AC)}\\right)^{{2}}= {phan_so(( (x_C-x_A)**2+(y_C-y_A)**2 )/4)}$" 
+	kq3_F=f"  Phương trình đường tròn đường kính ${{AC}}$ là $\\left(x-{phan_so(x_AC)} \\right)^{{2}}+\\left(y-{phan_so(y_AC)}\\right)^{{2}}= {phan_so(( (x_C-x_A)**2+(y_C-y_A)**2 )/2)}$ "
+	kq3_T=thay_cong_tru(kq3_T)
+	kq3_F=thay_cong_tru(kq3_F)
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f" Phương trình đường tròn đường kính ${{AC}}$ là $\\left(x-{phan_so(x_AC)} \\right)^{{2}}+\\left(y-{phan_so(y_AC)}\\right)^{{2}}= {phan_so(( (x_C-x_A)**2+(y_C-y_A)**2 )/4)}$"
+	HDG=thay_cong_tru(HDG)
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq4_T=f"*Phương trình đường tròn ngoại tiếp tam giác ${{ABC}}$ là  $ {latex((x-x_I)**2+(y-y_I)**2) } = {r**2} $"
+	
+
+	kq4_F=f"Phương trình đường tròn ngoại tiếp tam giác ${{ABC}}$ là  $ {latex((x-x_I+1)**2+(y-y_I)**2) } = {r**2} $ "
+
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Viết phương trình hai đường trung trực của tam giác \n\n"
+		f"Đường tròn ngoại tiếp tam giác ${{ABC}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính là ${{{r}}}$.\n\n"
+	f"Phương trình đường tròn ngoại tiếp tam giác ${{ABC}}$ là  $ {latex((x-x_I)**2+(y-y_I)**2) } = {r**2} $.\n\n")
+	
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+
+
+#[D10_CX_B3_27]-SA-M3. Biết đtron đi qua 2 điểm và tâm thuộc dt cho trước. Tìm bán kính
+def gghik_L10_CX_B3_27():
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+	x_AB, y_AB =x_B-x_A, y_B-y_A	
+
+	xM= (x_A+x_B)/2
+	yM= (y_A+y_B)/2
+
+	a, b =x_B-x_A, y_B-y_A	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+	
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+	if x_AB !=0:
+
+		noi_dung=f" Cho đường tròn $(C)$ đi qua hai điểm $A({x_A}; {y_A})$; $B({x_B}; {y_B})$ và có tâm thuộc $\\Delta: {latex(x_AB*(x-x_I)+(y_AB+1)*(y-y_I))}=0$. Hỏi bán kính của đường tròn $(C)$ bằng bao nhiêu? "
+	
+	if x_AB ==0:
+
+		noi_dung=f" Cho đường tròn $(C)$ đi qua hai điểm $A({x_A}; {y_A})$; $B({x_B}; {y_B})$ và có tâm thuộc $\\Delta: {latex((x_AB+random.randint(1,5))*(x-x_I)+y_AB*(y-y_I))}=0$. Hỏi bán kính của đường tròn $(C)$ bằng bao nhiêu? "
+
+	noi_dung_loigiai=(f"Tâm của đường tròn là ${{I}}$ thì ${{I}}$ là giao điểm của đường trung trực của đoạn thẳng ${{AB}}$ và đường thẳng $\\Delta$ \n\n "
+	f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ đi qua $\\left(  {phan_so(xM)}; {phan_so(yM)} \\right)$ và nhận vecto $({a}; {b})$ làm VTPT có phương trình tổng quát ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$ \n\n"
+	f" Ta tìm được $I({x_I}; {y_I})$ \n\n $R= IA ={{{r}}}$")
+
+	kq=r
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+
+
+
+#[D10_CX_B3_28]-M3. Biết đtron đi qua 2 điểm và tâm thuộc dt cho trước. Tìm bán kính
+def gghik_L10_CX_B3_28():
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+	x_AB, y_AB =x_B-x_A, y_B-y_A	
+
+	xM= (x_A+x_B)/2
+	yM= (y_A+y_B)/2
+
+	a, b =x_B-x_A, y_B-y_A	
+
+	#Tìm UCLN của véctơ pháp tuyến:
+	
+	ucln=math.gcd(abs(a),abs(b))
+	a,b=int(a/ucln),int(b/ucln)
+	if x_AB !=0:
+
+		noi_dung=f" Cho đường tròn $(C)$ đi qua hai điểm $A({x_A}; {y_A})$; $B({x_B}; {y_B})$ và có tâm thuộc $\\Delta: {latex(x_AB*(x-x_I)+(y_AB+1)*(y-y_I))}=0$. Hỏi bán kính của đường tròn $(C)$ bằng bao nhiêu? "
+	
+	if x_AB ==0:
+
+		noi_dung=f" Cho đường tròn $(C)$ đi qua hai điểm $A({x_A}; {y_A})$; $B({x_B}; {y_B})$ và có tâm thuộc $\\Delta: {latex((x_AB+random.randint(1,5))*(x-x_I)+y_AB*(y-y_I))}=0$. Hỏi bán kính của đường tròn $(C)$ bằng bao nhiêu? "
+
+	noi_dung_loigiai=(f"Tâm của đường tròn là ${{I}}$ thì ${{I}}$ là giao điểm của đường trung trực của đoạn thẳng ${{AB}}$ và đường thẳng $\\Delta$ \n\n "
+	f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ đi qua $\\left(  {phan_so(xM)}; {phan_so(yM)} \\right)$ và nhận vecto $({a}; {b})$ làm VTPT có phương trình tổng quát ${latex(nsimplify(a*(x-xM)+b*(y-yM)))}=0$ \n\n"
+	f" Ta tìm được $I({x_I}; {y_I})$ \n\n $R= IA ={{{r}}}$")
+
+
+	ds = [
+	            f"${{{r +random.randint(8, 9)}}}$", 
+	            f"${{{r + random.randint(6, 7)}}}$  ", 
+	            f"${{{r + random.randint(1, 3)}}}$ ", 
+	            f"${{{r + random.randint(4, 5)}}}$ "
+	    ]    
+	# Chọn ngẫu nhiên 3 phần tử từ ds để gán cho kq2, kq3, kq4
+	kq2, kq3, kq4 = random.sample(ds, 3)
+
+	kq = f"${{{r}}}$ "
+	pa_A = f"*{kq}"
+	pa_B = f"{kq2}"
+	pa_C = f"{kq3}"
+	pa_D = f"{kq4}"
+
+
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)    
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+	    #f"{file_name}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t    D. { list_PA[3]}.\n"
+
+	  
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+#[D10_CX_B3_29]-SA-M3. Tìm đk của m để dthang là tiếp tuyến của dtron
+def gghik_L10_CX_B3_29():
+	#Tạo bậc ngẫu nhiên
+	x,y,z=sp.symbols("x y z")
+	diem_A=random.choice(["A","B","M","N","P"])
+	x_I,y_I = [random.randint(-8,8) for i in range(2)]
+	a = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+
+	a,b = [random.choice([random.randint(-5, -1), random.randint(1, 5)]) for i in range(2)]
+	ucln=math.gcd(a,b)
+	a, b = int(a/ucln), int(b/ucln)
+
+	r=random.randint(1,10)
+	c=-a*x_I-b*y_I +random.randint(1,5)
+	c1=r*sqrt(a**2+b**2)-a*x_I-b*y_I
+	c2=-r*sqrt(a**2+b**2)-a*x_I-b*y_I  
+	kq= f"${latex(a*x+b*y+c1)}=0$ hoặc ${latex(a*x+b*y+c2)}=0$".replace("+-","-")	   
+	noi_dung=( f"Trong mặt phẳng với hệ tọa độ $(Oxy)$, cho đường tròn ${{(C)}}:{latex((x-x_I)**2)}+{latex((y-y_I)**2)}={r**2}$.\n\n"
+	f"Có hai giá trị của ${{m}}$ để đường thẳng $d:{latex(a*x+b*y)}+m=0$ là tiếp tuyến của đường tròn $(C)$. Tính tổng hai giá trị đó.") 
+
+	noi_dung_loigiai=(f"Đường tròn ${{(C)}}$ có tâm ${{I({x_I};{y_I})}}$ và bán kính $R={latex(r)}$.\n\n"
+	f"$\\Delta$ tiếp xúc với ${{(C)}} \\Leftrightarrow d(I,\\Delta)=R \\Leftrightarrow \\dfrac{{|{show_tich(a,x_I)} + {show_tich(b,y_I)} +m|}} {{{latex(sqrt(a**2+b**2))}}}={r}$\n\n"
+	f"$\\Leftrightarrow |m+{latex(a*x_I+b*y_I)}|={latex(r*sqrt(a**2+b**2))} \\Leftrightarrow m={latex(c1)}, c={latex(c2)}$.\n\n"
+	f"Phương trình các đường tiếp tuyến là: {kq} \n\n"
+	f" Tổng các giá trị của $m={phan_so(-2*a*x_I-2*b*y_I)}$")
+	noi_dung_loigiai=thay_cong_tru(noi_dung_loigiai)
+
+	kq=phan_so(-2*a*x_I-2*b*y_I)
+
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+#[D10_CX_B3_30]-TF-M2. Cho đường tròn đi qua A và tiếp xúc với dthang d tại điểm M. Xét ĐS
+def gghik_L10_CX_B3_30():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+	d=x_I**2+y_I**2-r**2
+	dau_a, dau_b, dau_d = tao_dau(-x_I),tao_dau(-y_I), tao_dau(d)
+	if x_I!=0:
+	    hs_ax=latex(-2*x_I*x)
+	else:
+	    hs_ax=""
+
+	if y_I!=0:
+	    hs_by=latex(-2*y_I*y)
+	else:
+	    hs_by=""    
+
+	if d!=0:
+		hs_d=d
+	else:
+		hs_d=""
+	ucln=math.gcd(x_I-x_B,y_I-y_B)
+	a1,b1=int((x_I-x_B)/ucln), int((y_I-y_B)/ucln)
+	ucln=math.gcd(x_A-x_B,y_A-y_B)
+	a2,b2=int((x_A-x_B)/ucln), int((y_A-y_B)/ucln)
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho đường tròn $(C)$ đi qua điểm ${{A({x_A}; {y_A})}}$ và tiếp xúc với $\\Delta: {latex(a1*(x-x_B)+b1*(y-y_B))}=0$ tại điểm $B({x_B};{y_B})$. "\
+	f" Xét tính đúng sai của các khẳng định sau"
+
+	kq1_T=f"*Đường thẳng đi qua ${{B}}$ và vuông góc với $\\Delta$ có phương trình là $\\Delta': {latex(-b1*(x-x_B)+a1*(y-y_B))}=0$ "
+	kq1_F=f"Đường thẳng đi qua ${{B}}$ và vuông góc với $\\Delta$ có phương trình là $\\Delta': {latex(-b1*(x-x_B-1)+a1*(y-y_B))}=0$"
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=f"Đường thẳng đi qua ${{B}}$ và vuông góc với $\\Delta$ có phương trình là $\\Delta': {latex(-b1*(x-x_B)+a1*(y-y_B))}=0$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	kq2_T=f"* Tâm ${{I}}$ của đường tròn $(C)$ có toạ độ là ${{{x_I}}}$"
+	kq2_F=f" Tâm ${{I}}$ của đường tròn $(C)$ có toạ độ là ${{{x_I+1}}}$"
+	kq2=random.choice([kq2_T, kq2_F])	
+	HDG=(f"  Ta có ${{IA=IB}}$ nên ${{I}}$ thuộc đường trung trực của đoạn thẳng ${{AB}}$, phương trình trung trực là ${latex(a2*(x-x_I)+b2*(y-y_I))}=0$ \n\n"
+				f"${{I}}$ là giao điểm của $\\Delta'$ và đường trung trực của đoạn thẳng ${{AB}}$ suy ra $I({x_I}; {y_I})$ ")
+		
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	x1=random.randint(-10,10)
+	y1=random.randint(-10,10)
+	if (x1-x_I)**2+(y1-y_I)**2==r**2:
+
+		kq3_T=f"*Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$"
+		kq3_F=random.choice([f"Điểm ${ten_diem}({x1};{y1})$ không thuộc đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$ "])
+		kq3=random.choice([kq3_T, kq3_F])	
+		HDG=f" Đường tròn $(C)$ có bán kính là $IA={{{r}}}$ \n\n"\
+		f"Đường tròn ${{(C)}}$ đi qua điểm ${ten_diem}({x1};{y1})$ là khẳng định đúng"\
+			f" vì ${{d(I;{ten_diem})}} = {r}$."
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if (x1-x_I)**2+(y1-y_I)**2 < r**2:
+
+		kq3_T=f"*Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$"
+		kq3_F=random.choice([f"Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$ "])
+		kq3=random.choice([kq3_T, kq3_F])	
+		HDG=f" Đường tròn $(C)$ có bán kính là $IA={{{r}}}$ \n\n"\
+		f"Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$"\
+			f" vì ${{d(I;{ten_diem})}} < {r}$."
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+	if (x1-x_I)**2+(y1-y_I)**2 > r**2:
+
+		kq3_T=f"*Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$"
+		kq3_F=random.choice([f"Điểm ${ten_diem}({x1};{y1})$ thuộc đường tròn ${{(C)}}$ ", f"Điểm ${ten_diem}({x1};{y1})$ nằm trong đường tròn ${{(C)}}$ "])
+		kq3=random.choice([kq3_T, kq3_F])	
+		HDG=f" Đường tròn $(C)$ có bán kính là $IA={{{r}}}$ \n\n"\
+		f"Điểm ${ten_diem}({x1};{y1})$ nằm ngoài đường tròn ${{(C)}}$"\
+			f" vì ${{d(I;{ten_diem})}} > {r}$."
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+
+
+
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	a1=random.randint(-5,5)
+	b1=random.choice([i for i in range(-5,5) if i!=a1])
+	c1=random.randint(-5,5)
+	d= abs( a1*x_I+b1*y_I+c1 )/ sqrt(a1**2+b1**2)
+	if d< r:
+
+		kq4_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt "
+		kq4_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"])
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt vì ${{d(I, dt)={latex(d)}< r}}$ "
+
+
+	if d ==r:
+
+		kq4_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"
+		kq4_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt"])
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn vì ${{d(I, dt)={latex(d)} = r}}$ "
+
+
+	if d > r:
+
+		kq4_T=f"*Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn "
+		kq4_F=random.choice([f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ cắt đường tròn tại hai điểm phân biệt", f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ tiếp xúc với đường tròn"])
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Đường thẳng ${latex(a1*x+b1*y+c1)}=0$ không cắt đường tròn vì ${{d(I, dt)={latex(d)} > r}}$ "
+
+
+
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+#[D10_CX_B3_31]-SA-M3. Cho đường tròn đi qua A và tiếp xúc với dthang d tại điểm M. Tìm bán kính dtron
+def gghik_L10_CX_B3_31():  
+	#Tạo bậc ngẫu nhiên
+	x,y,z,a,b=sp.symbols("x y z a b")
+	diem_A=["A","M","D","B", "C"]
+	diem_B=["B","N","E","C", "D"]
+	diem_C=["C","P","F","D", "E"]
+	i=random.randint(0,4)
+	diem_A,diem_B,diem_C =diem_A[i], diem_B[i], diem_C[i]
+
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	ten_diem=random.choice(["A","B","M","N"])
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for x_0 in range(-20,20):
+			for y_0 in range(-20,20):
+				if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+					list_diem.append([x_0, y_0])
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+	if chon==2:
+	#Tạo tọa độ tâm và bán kính  đường tròn tùy ý
+		x_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		y_I = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		#r=random.randint(2,10)
+
+		#Tìm các điểm có tọa độ nguyên và thuộc đường tròn và lưu vào list điểm
+		list_diem=[]
+		for r in range (1,10):
+			for x_0 in range(-20,20):
+				for y_0 in range(-20,20):
+					if (x_0-x_I)**2+(y_0-y_I)**2==r**2:
+						if x_0!= x_I and y_0!=y_I:
+							list_diem.append([x_0, y_0,r])
+							r_final=r
+
+		#Lấy 3 cặp tọa độ đầu tiên đã lưu trong list lưu vào bien diem_A,diem_B,diem_C
+		diem_A, diem_B, diem_C = list_diem[0],list_diem[1], list_diem[2]
+		x_A, y_A = diem_A[0], diem_A[1]
+		x_B, y_B = diem_B[0], diem_B[1]
+		x_C, y_C = diem_C[0], diem_C[1]
+		r=r_final
+
+
+
+	ucln=math.gcd(x_I-x_B,y_I-y_B)
+	a1,b1=int((x_I-x_B)/ucln), int((y_I-y_B)/ucln)
+	ucln=math.gcd(x_A-x_B,y_A-y_B)
+	a2,b2=int((x_A-x_B)/ucln), int((y_A-y_B)/ucln)
+
+	noi_dung= f"Trong mặt phẳng với hệ tọa độ ${{(Oxy)}}$, cho đường tròn $(C)$ đi qua điểm ${{A({x_A}; {y_A})}}$ và tiếp xúc với $\\Delta: {latex(a1*(x-x_B)+b1*(y-y_B))}=0$ tại điểm $B({x_B};{y_B})$. "\
+	f" Tính bán kính đường tròn $(C)$."
+
+	noi_dung_loigiai=(f"Đường thẳng đi qua ${{B}}$ và vuông góc với $\\Delta$ có phương trình là $\\Delta': {latex(-b1*(x-x_B)+a1*(y-y_B))}=0$ \n\n"
+	f"  Ta có ${{IA=IB}}$ nên ${{I}}$ thuộc đường trung trực của đoạn thẳng ${{AB}}$, phương trình trung trực là ${latex(a2*(x-x_I)+b2*(y-y_I))}=0$ \n\n"
+				f"${{I}}$ là giao điểm của $\\Delta'$ và đường trung trực của đoạn thẳng ${{AB}}$ suy ra $I({x_I}; {y_I})$ \n\n Bán kính đường tròn là $IA={{{r}}}$")
+
+
+	kq=r
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+
+
+#[D10_CX_B3_32]-M3. Cho họ đương tròn chứa tham số m, tìm bán kinh nhỏ nhất
+def gghik_L10_CX_B3_32(): 
+	m=symbols("m")
+	a=random.choice([i for i in range(-6,6) if i!=0])
+	b=random.choice([i for i in range(-6,6) if i!=0])
+	a1=random.choice([i for i in range(-6,6) if i!=0 and i!=a])
+	b1=random.choice([i for i in range(-6,6) if i!=0])
+	c=random.randint(2,20)
+	m1=(-a*b-a1*b1)/(a**2+a1**2)
+	gtr= (a*m1+b)**2+(a1*m1+b1)**2+c
+	noi_dung=f" Trong các họ đường tròn $(C_{{m}}): x^{{2}}+y^{{2}}+({latex(2*(a*m+b))})x+({latex(2*(a1*m+b1))})y-{c}=0$ với ${{m}}$ là tham số thì đường tròn có bán kính nhỏ nhất bằng ${{a}}$. Tính ${{a^{{2}}}}$."
+	noi_dung_loigiai=(f"$R^{{2}}= ({latex((a1*m+b1))})^{{2}}+({latex((a*m+b))})^{{2}}+{c} $ \n\n "
+	f" Giá trị nhỏ nhất của hàm số trên là ${{{phan_so(gtr)}}}$ \n\n"
+	f" Vậy min $R^{{2}}= {phan_so(gtr)}$")
+
+	ds = [
+	            f"${{{phan_so(gtr+1)}}}$", 
+	            f"${{{phan_so(abs(gtr-1))}}}$  ", 
+	            f"${{{phan_so(gtr+2)}}}$ ", 
+	            f"${{{phan_so(gtr+3)}}}$ "
+	    ]    
+	# Chọn ngẫu nhiên 3 phần tử từ ds để gán cho kq2, kq3, kq4
+	kq2, kq3, kq4 = random.sample(ds, 3)
+
+	kq = f"${{{phan_so(gtr)}}}$"
+	pa_A = f"*{kq}"
+	pa_B = f"{kq2}"
+	pa_C = f"{kq3}"
+	pa_D = f"{kq4}"
+
+
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)    
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+	    #f"{file_name}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t    D. { list_PA[3]}.\n"
+
+	  
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

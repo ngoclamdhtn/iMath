@@ -926,6 +926,8 @@ def aaa_pry_L10_C7_B1_10():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+
+
 #[D10_C7_B1_11]-M2. Cho bxd bậc hai có 2 nghiệm. Tìm khẳng định đúng về dấu.
 def aaa_pry_L10_C7_B1_11():
 	x=sp.symbols("x")
@@ -1160,8 +1162,8 @@ def aaa_pry_L10_C7_B1_13():
 	list_TF=my_module.tra_ve_TF(list_PA)
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
-	code_bxd = my_module.codelatex_bxd_bac2(a,b,c)
-	code = my_module.moi_truong_anh_latex(code_bxd)
+	code_hinh = my_module.codelatex_bxd_bac2(a,b,c)
+	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name = my_module.pdftoimage_timename(code) 
 
 	noi_dung=f"Cho biểu thức $f(x)$ xác định trên $\\mathbb{{R}}$ và có bảng xét dấu như hình vẽ. Xét tính đúng sai của các khẳng định sau:\n" \
@@ -1193,6 +1195,7 @@ def aaa_pry_L10_C7_B1_13():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 	    f"\\choice\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
@@ -1344,6 +1347,161 @@ def aaa_pry_L10_C7_B1_15():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+def thay_cong_tru(st):
+    return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y").replace("+0"," ")
+
+
+
+#[D10_C7_B1_16]-TF-M3. Cho bxd của Parabol có 2 nghiệm. Tìm khẳng định đúng về Parabol.
+def aaa_pry_L10_C7_B1_16():
+    x=sp.symbols("x")
+    x_I= random.choice([i for i in range(-5,10) if i!=0])
+    x_1=random.choice([i for i in range(-10,5) if i < x_I])
+    x_2= 2*x_I-x_1
+    a=random.choice([i for i in range(-5,5) if i!=0])
+    c= phan_so(a*x_1*x_2)
+    chon =random.randint(1,2)
+    if chon ==1:
+
+        code_hinh =f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,-,0,+,}}\n\
+                \\end{{tikzpicture}}\n"
+
+        code = my_module.moi_truong_anh_latex(code_hinh)
+        file_name=my_module.pdftoimage_timename(code)
+
+        noi_dung = f"Cho hàm số bậc hai $y=f(x)=ax^{{2}}+bx+{c}$ có đồ thị là Parabol $(P)$. Biết biểu thức ${{f(x)}}$ có bảng xét dấu như hình vẽ. Xét tính đúng-sai của các khẳng định sau. "   
+        noi_dung=thay_cong_tru(noi_dung)  
+        
+        kq1_T=f"* ${{(P)}}$ có bề lõm quay lên" 
+        kq1_F=f" ${{(P)}}$ có bề lõm quay xuống"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${{(P)}}$ có bề lõm quay lên vì $a>0$"
+
+
+    if chon ==2:
+
+        code_hinh =f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,+,0,-,}}\n\
+                \\end{{tikzpicture}}\n"
+
+        code = my_module.moi_truong_anh_latex(code_hinh)
+        file_name=my_module.pdftoimage_timename(code)
+
+        noi_dung = f"Cho hàm số bậc hai $y=f(x)=ax^{{2}}+bx+{c}$. Biết biểu thức ${{f(x)}}$ có bảng xét dầu như hình vẽ. Xét tính đúng-sai của các khẳng định sau. "   
+        noi_dung=thay_cong_tru(noi_dung)  
+        debai_word= f"{noi_dung}\n"\
+                    f"{file_name}"
+        
+        kq1_T=f"* ${{(P)}}$ có bề lõm quay xuống" 
+        kq1_F=f" ${{(P)}}$ có bề lõm quay lên"
+        kq1=random.choice([kq1_T, kq1_F])
+        HDG=f"${{(P)}}$ có bề lõm quay xuống vì $a<0$"
+
+
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $(P)$ có trục đối xứng là $x={x_I}$"
+    kq2_F=f"$(P)$ có trục đối xứng là $x={phan_so(2*x_I)}$ "
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=f" $(P)$ có trục đối xứng là $x=\\dfrac{{{x_1}+{x_2}}}{{2}}={x_I}$"
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $a={a}$" 
+    kq3_F=f"$a={a+random.randint(1,5)}$ "
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"  Ta có $f(x)=a(x-{x_1})(x-{x_2})$ suy ra ${c}= a. {x_1}. {x_2}$ vậy $a={a}$" 
+    HDG=thay_cong_tru(HDG)
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* $b ={phan_so(-2*a*x_I)}$"
+    kq4_F=f"$b ={phan_so(2*a*x_I)}$ " 
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=f"   Ta có $\\dfrac{{-b}}{{2a}}= {x_I}$ nên $b ={phan_so(-2*a*x_I)}$ "
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2056,16 +2214,16 @@ def aaa_pry_L10_C7_B2_09():
 	
 		kq= f"$D=\\left(-\\infty;{x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"
 		kq2= f"$D=\\left(-\\infty;{x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$" 
-		kq3= random.choice([f"$S=\\left({x_1};{x_2}\\right)$"])
-		kq4= random.choice([f"$S=\\left[{x_1};{x_2}\\right]$",f"$S=\\mathbb{{R}}$"])
+		kq3= random.choice([f"$D=\\left({x_1};{x_2}\\right)$"])
+		kq4= random.choice([f"$D=\\left[{x_1};{x_2}\\right]$",f"$S=\\mathbb{{R}}$"])
 		noi_dung_loigiai=f"Hàm số xác định khi ${latex(f)} \\ge 0 \\Leftrightarrow x\\le {x_1}$ hoặc $x\\ge {x_2}$.\n\n"\
 		f" Tập xác định là: {kq}." 
 
 	if a<0:		
-		kq= f"$S=\\left[{x_1};{x_2}\\right]$" 
-		kq2= f"$S=\\left(-\\infty;{x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$" 
-		kq3= random.choice([f"$S=\\left(-\\infty;{x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"])
-		kq4= random.choice([f"$S=\\left({x_1};{x_2}\\right)$" ,f"$S=\\mathbb{{R}}$"])
+		kq= f"$D=\\left[{x_1};{x_2}\\right]$" 
+		kq2= f"$D=\\left(-\\infty;{x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$" 
+		kq3= random.choice([f"$D=\\left(-\\infty;{x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"])
+		kq4= random.choice([f"$D=\\left({x_1};{x_2}\\right)$" ,f"$S=\\mathbb{{R}}$"])
 		noi_dung_loigiai=f"Hàm số xác định khi ${latex(f)} \\ge 0 \\Leftrightarrow  {x_1}\\le x \\le {x_2}$.\n\n"\
 		f" Tập xác định là: {kq}."
 			

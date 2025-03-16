@@ -49,7 +49,7 @@ def codelatex_hinhchop_tamgiac_canhvg(s,a,b,c):
     return code
 
 def codelatex_hinhchop_hbh_canhvg(s,a,b,c,d):
-    code=f"\\begin{{tikzpicture}}\n\
+    code=f"\\begin{{tikzpicture}}[scale=0.6]\n\
 \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
 \\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\
 \\coordinate ({c}) at (3,-1)  node at ({c}) [right] {{${c}$}};\n\
@@ -61,7 +61,7 @@ def codelatex_hinhchop_hbh_canhvg(s,a,b,c,d):
     return code
 
 def codelatex_hinh_hop(a,b,c,d,e,f,g,h):
-    code=f"\\begin{{tikzpicture}}[scale=0.8] \n\
+    code=f"\\begin{{tikzpicture}}[scale=0.6] \n\
 \\begin{{scriptsize}}\n\
 \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
 \\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\

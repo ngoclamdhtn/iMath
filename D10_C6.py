@@ -1007,6 +1007,289 @@ def tktk_L10_C6_B3_09():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+
+
+
+#[D10_C6_B3_10]-M2. CHo biểu đồ cột thống kế số từ mới học mỗi ngày. Tính TBC
+def tktk_L10_C6_B3_10():
+    A=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường","Khôi", "Giang", "Lam", "Hà", "Thái"])
+    n=random.randint(5,8)
+    b = random.randint(2*n-7, 2*n)
+    c = random.randint(2*n-7, 2*n)
+    d = random.randint(3, 2*n)
+
+    # Tính số còn lại e sao cho tổng đúng 100
+    a = random.randint(2*n-5, 2*n)
+    e = random.randint(6, 2*n)
+    
+    a1,b1,c1,d1,e1= sorted(random.sample(range(5, 21), 5))
+    so=random.choice([c1,d1,e1])
+    code_hinh = fr"""
+    \begin{{tikzpicture}}[y=0.3cm,x=0.8cm]
+        %\draw[color=gray!50,line width=1.5pt]  (-1,-2.4)--(14.6,-2.4)--(14.6,6.5)--(-1,6.5)--cycle ;
+        \foreach \i  in {{2,4,...,{2*n}}} 
+        {{
+            \draw (0,\i) node[left]{{$\i$}};
+            \draw (-0.1,\i)--(0.1,\i) ;
+            \draw[gray!40] (0.5,\i)--(11.5,\i);
+        }}
+        
+        \foreach \x/\y/\z in {{2/{a1}/{a},4/{b1}/{b},6/{c1}/{c},8/{d1}/{d},10/{e1}/{e}}} 
+        {{
+            \draw ({{\x}},0) node[below]{{$\y$}};
+            \draw ({{\x}},{{\z}}) node[above]{{$\z$}};
+        }}
+        \draw [->] (0,0)--(11.5,0) node[below right]{{Số từ mới}};
+        \draw [->] (0,0)--(0,{2*n+1}) node[above]{{\text{{Số ngày}}}};
+        \draw [pattern=north east lines]  (1.6,0)--(1.6,{a})--(2.4,{a})--(2.4,0)--cycle   
+        (3.6,0)--(3.6,{b})--(4.4,{b})--(4.4,0)--cycle  
+        (5.6,0)--(5.6,{c})--(6.4,{c})--(6.4,0)--cycle   
+         (7.6,0)--(7.6,{d})--(8.4,{d})--(8.4,0)--cycle   
+         (9.6,0)--(9.6,{e})--(10.4,{e})--(10.4,0)--cycle   ;
+        %[pattern=north east lines]
+    \end{{tikzpicture}}
+
+    """
+    ts=[a,b,c,d,e]
+    gt=[a1,b1,c1,d1,e1]
+    i=random.randint(0,4)
+    gt=gt[i]
+    ts=ts[i]
+    kc= (a*a1+b*b1+c*c1+d*d1+e*e1)/(a+b+c+d+e)
+    tbc="{:.1f}".format(kc).replace(".", ",")
+    noi_dung =(f"Vào đợt nghỉ hè vừa rồi, mỗi ngày bạn {A} đều học thêm một số từ vựng tiếng Anh mới. Số lượng từ vựng mới bạn {A} học mỗi ngày được biểu diễn ở biểu đồ cột như hình dưới.\n\n"
+        f"Tính trung bình cộng lượng từ mới học mỗi ngày.")
+
+    noi_dung_loigiai=(f"TBC là $\\overline{{x}}= \\dfrac{{{a} . {a1}+{b}.{b1}+{c}.{c1}+{d}.{d1}+{e}.{e1}}}{{{a}+{b}+{c}+{d}+{e}}} \\approx {tbc}$")
+
+    kq=f"${{{tbc}}}$ "
+    dss=[f"${{{"{:.1f}".format(kc+0.4).replace(".", ",")}}}$  ",
+    f"${{{"{:.1f}".format(kc+1).replace(".", ",")}}}$   ",
+    f" ${{{"{:.1f}".format(kc-1).replace(".", ",")}}}$ "  ,    
+    f" ${{{"{:.1f}".format(kc+0.5).replace(".", ",")}}}$  "  ]
+    kq2,kq3,kq4=random.sample(dss,3)    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+
+    phuongan = f"A. {list_PA[0]}\t   B. {list_PA[1]}\t    C. {list_PA[2]}\t   D. {list_PA[3]}\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề LaTeX
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+        
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+#[D10_C6_B3_11]-M2. CHo bảng thống kế số anh chị em ruột. Tìm TBC
+def tktk_L10_C6_B3_11():
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+
+    n0=random.randint(1,5)
+    n1=random.randint(15,25)
+    n2=random.randint(1,5)
+    n3=random.randint(1,3)
+    n4=random.randint(1,2)
+
+    ts=[n0,n1,n2,n3,n4]
+    gt=[0,1,2,3,4]
+    i=random.randint(0,4)
+    gt=gt[i]
+    ts=ts[i]
+    kc= (n0*0+n1*1+n2*2+n3*3+n4*4)/(n0+n1+n2+n3+n4)
+    tbc="{:.1f}".format(kc).replace(".", ",")
+    code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}}
+        \\hline
+                 Số anh chị em ruột & $0$ & 1& $2$ & $3$ & $4$   \\\\
+        \\hline
+       Số học sinh & ${n0}$ & $ {n1}$ & ${n2}$ & ${n3}$ & ${n4}$  \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+    noi_dung=f" Bạn {A} được cô giáo giao nhiệm vụ thống kê số anh chị em ruột của các bạn trong lớp. Kết quả thu được được bạn {A} thống kê bằng bảng dưới đây. Tìm trung bình cộng số lượng anh chị em ruột của mỗi bạn. "
+
+    noi_dung_loigiai=(f"TBC $\\overline{{x}}= \\dfrac{{{n0}. 0+ {n1}. 1+{n2}. 2+{n3}. 3+{n4}. 4  }}{{{n0}+ {n1}+{n2}+{n3}+{n4}}} \\approx {tbc}$.")
+
+    kq=f"${{{tbc}}}$ "
+    dss=[f"${{{"{:.1f}".format(kc+0.4).replace(".", ",")}}}$  ",
+    f"${{{"{:.1f}".format(kc+1).replace(".", ",")}}}$   ",
+    f" ${{{"{:.1f}".format(kc-1).replace(".", ",")}}}$ "  ,    
+    f" ${{{"{:.1f}".format(kc+0.5).replace(".", ",")}}}$  "  ]
+    kq2,kq3,kq4=random.sample(dss,3)    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+
+    phuongan = f"A. {list_PA[0]}\t   B. {list_PA[1]}\t    C. {list_PA[2]}\t   D. {list_PA[3]}\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề LaTeX
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+        
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+#[D10_C6_B3_12]-M2. CHo bảng thống kế điểm. Tìm TBC
+def tktk_L10_C6_B3_12():
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    X=random.choice(["Toán", "Ngoại ngữ", "Văn", "Lý", "Sử", "Địa", "Hoá", "Sinh"])
+    y=random.randint(9,12)
+
+    n0=random.randint(1,5)
+    n1=random.randint(5,25)
+    n2=random.randint(30,100)
+    n3=random.randint(100,150)
+    n4=random.randint(50,100)
+    n6=random.randint(1,5)
+    n5=random.randint(1,10)
+
+
+    ts=n0+n1+n2+n3+n4+n5+n6
+    kc= (n0*4+n1*5+n2*6+n3*7+n4*8 +n5*9+n6*10)/(n0+n1+n2+n3+n4+n5+n6)
+    tbc="{:.1f}".format(kc).replace(".", ",")
+    code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}}
+        \\hline
+                 Điểm số & $4$ & 5& $6$ & $7$ & $8$  & $9$ & $10$ \\\\
+        \\hline
+       Số học sinh & ${n0}$ & $ {n1}$ & ${n2}$ & ${n3}$ & ${n4}$ & ${n5}$ & ${n6}$ \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+    noi_dung=f"Nhà trường thống kê điểm thi môn {X} của tất cả học sinh khối ${{{y}}}$ trong kì thi khảo sát chất lượng. Kết quả thống kê bằng bảng dưới đây. Tính điểm trung bình cộng? "
+
+    noi_dung_loigiai=(f"Có $N={n0}+{n1}+{n2}+{n3}+{n4}+{n5}+{n6}={{{ts}}}$ học sinh khối ${{{y}}}$ .\n\n"
+    	f"TBC $\\overline{{x}}= \\dfrac{{{n0}.4+{n1}.5+{n2}.6+{n3}.7+{n4}.8+{n5}.9+{n6}.10 }}{{ N}} \\approx {tbc}$")
+
+    kq=f"${{{tbc}}}$ "
+    dss=[f"${{{"{:.1f}".format(kc+0.4).replace(".", ",")}}}$  ",
+    f"${{{"{:.1f}".format(kc+1).replace(".", ",")}}}$   ",
+    f" ${{{"{:.1f}".format(kc-1).replace(".", ",")}}}$ "  ,    
+    f" ${{{"{:.1f}".format(kc+0.5).replace(".", ",")}}}$  "  ]
+    kq2,kq3,kq4=random.sample(dss,3)    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+
+    phuongan = f"A. {list_PA[0]}\t   B. {list_PA[1]}\t    C. {list_PA[2]}\t   D. {list_PA[3]}\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề LaTeX
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+        
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+
 #BÀI 4
 #[D10_C6_B4_01]. Cho dãy số liệu. Tính độ lệch chuẩn
 def tktk_L10_C6_B4_01():
@@ -1155,6 +1438,9 @@ def tktk_L10_C6_B4_02():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+
+
+
 #[D10_C6_B4_03]-M2. Cho dãy số liệu. Tính khoảng biến thiên
 def tktk_L10_C6_B4_03():
 	# Tạo một mẫu số liệu ngẫu nhiên gồm 100 số nguyên dương
@@ -1232,6 +1518,22 @@ def tktk_L10_C6_B4_03():
 	    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #[D10_C6_B4_04]-TF-M2. Cho dãy số liệu. Xét Đ-S: khoảng biến thiên, độ lệch chuẩn, phương sai, khoảng tứ phân vị
 def tktk_L10_C6_B4_04():
@@ -1507,3 +1809,291 @@ def tktk_L10_C6_B4_06():
 
 
 
+#[D10_C6_B4_07]-M2. CHo biểu đồ cột thống kế số từ mới học mỗi ngày. Tính phương sai
+def tktk_L10_C6_B4_07():
+    A=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường","Khôi", "Giang", "Lam", "Hà", "Thái"])
+    n=random.randint(5,8)
+    b = random.randint(2*n-7, 2*n)
+    c = random.randint(2*n-7, 2*n)
+    d = random.randint(3, 2*n)
+
+    # Tính số còn lại e sao cho tổng đúng 100
+    a = random.randint(2*n-5, 2*n)
+    e = random.randint(6, 2*n)
+    
+    a1,b1,c1,d1,e1= sorted(random.sample(range(5, 21), 5))
+    so=random.choice([c1,d1,e1])
+    code_hinh = fr"""
+    \begin{{tikzpicture}}[y=0.3cm,x=0.8cm]
+        %\draw[color=gray!50,line width=1.5pt]  (-1,-2.4)--(14.6,-2.4)--(14.6,6.5)--(-1,6.5)--cycle ;
+        \foreach \i  in {{2,4,...,{2*n}}} 
+        {{
+            \draw (0,\i) node[left]{{$\i$}};
+            \draw (-0.1,\i)--(0.1,\i) ;
+            \draw[gray!40] (0.5,\i)--(11.5,\i);
+        }}
+        
+        \foreach \x/\y/\z in {{2/{a1}/{a},4/{b1}/{b},6/{c1}/{c},8/{d1}/{d},10/{e1}/{e}}} 
+        {{
+            \draw ({{\x}},0) node[below]{{$\y$}};
+            \draw ({{\x}},{{\z}}) node[above]{{$\z$}};
+        }}
+        \draw [->] (0,0)--(11.5,0) node[below right]{{Số từ mới}};
+        \draw [->] (0,0)--(0,{2*n+1}) node[above]{{\text{{Số ngày}}}};
+        \draw [pattern=north east lines]  (1.6,0)--(1.6,{a})--(2.4,{a})--(2.4,0)--cycle   
+        (3.6,0)--(3.6,{b})--(4.4,{b})--(4.4,0)--cycle  
+        (5.6,0)--(5.6,{c})--(6.4,{c})--(6.4,0)--cycle   
+         (7.6,0)--(7.6,{d})--(8.4,{d})--(8.4,0)--cycle   
+         (9.6,0)--(9.6,{e})--(10.4,{e})--(10.4,0)--cycle   ;
+        %[pattern=north east lines]
+    \end{{tikzpicture}}
+
+    """
+    ts=[a,b,c,d,e]
+    gt=[a1,b1,c1,d1,e1]
+    i=random.randint(0,4)
+    gt=gt[i]
+    ts=ts[i]
+    tb= (a*a1+b*b1+c*c1+d*d1+e*e1)/(a+b+c+d+e)
+    tbc="{:.1f}".format(tb).replace(".", ",")
+    kc=(a*(a1-tb)**2+b*(b1-tb)**2+c*(c1-tb)**2+d*(d1-tb)**2+e*(e1-tb)**2)/(a+b+c+d+e)
+    ps="{:.1f}".format(kc).replace(".", ",")
+
+    noi_dung =(f"Vào đợt nghỉ hè vừa rồi, mỗi ngày bạn {A} đều học thêm một số từ vựng tiếng Anh mới. Số lượng từ vựng mới bạn {A} học mỗi ngày được biểu diễn ở biểu đồ cột như hình dưới.\n\n"
+        f"Tính phương sai.")
+
+    noi_dung_loigiai=(f"TBC là $\\overline{{x}}= \\dfrac{{{a} . {a1}+{b}.{b1}+{c}.{c1}+{d}.{d1}+{e}.{e1}}}{{{a}+{b}+{c}+{d}+{e}}} \\approx {tbc}$\n\n"
+    	f" Phương sai $s^{{2}}= \\dfrac{{{a} . ({a1}-{tbc})^{{2}}+{b}.({b1}-{tbc})^{{2}}+{c}.({c1}-{tbc})^{{2}}+{d}.({d1}-{tbc})^{{2}}+{e}.({e1}-{tbc})^{{2}}}}{{{a}+{b}+{c}+{d}+{e}}} \\approx {ps}$ ")
+
+    kq=f"${{{ps}}}$ "
+    dss=[f"${{{"{:.1f}".format(kc+0.4).replace(".", ",")}}}$  ",
+    f"${{{"{:.1f}".format(kc+1).replace(".", ",")}}}$   ",
+    f" ${{{"{:.1f}".format(kc-1).replace(".", ",")}}}$ "  ,    
+    f" ${{{"{:.1f}".format(kc+0.5).replace(".", ",")}}}$  "  ]
+    kq2,kq3,kq4=random.sample(dss,3)    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+
+    phuongan = f"A. {list_PA[0]}\t   B. {list_PA[1]}\t    C. {list_PA[2]}\t   D. {list_PA[3]}\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề LaTeX
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+        
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+#[D10_C6_B4_08]-M2. CHo bảng thống kế số anh chị em ruột. Tìm phương sai
+def tktk_L10_C6_B4_08():
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+
+    n0=random.randint(1,5)
+    n1=random.randint(15,25)
+    n2=random.randint(1,5)
+    n3=random.randint(1,3)
+    n4=random.randint(1,2)
+
+    ts=[n0,n1,n2,n3,n4]
+    gt=[0,1,2,3,4]
+    i=random.randint(0,4)
+    gt=gt[i]
+    ts=ts[i]
+    tb= (n0*0+n1*1+n2*2+n3*3+n4*4)/(n0+n1+n2+n3+n4)
+    tbc="{:.1f}".format(tb).replace(".", ",")
+
+    kc=(n0*(0-tb)**2+n1*(1-tb)**2+n2*(2-tb)**2+n3*(3-tb)**2+n4*(4-tb)**2)/(n0+n1+n2+n3+n4)
+    ps="{:.1f}".format(kc).replace(".", ",")
+
+    code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}}
+        \\hline
+                 Số anh chị em ruột & $0$ & 1& $2$ & $3$ & $4$   \\\\
+        \\hline
+       Số học sinh & ${n0}$ & $ {n1}$ & ${n2}$ & ${n3}$ & ${n4}$  \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+    noi_dung=f" Bạn {A} được cô giáo giao nhiệm vụ thống kê số anh chị em ruột của các bạn trong lớp. Kết quả thu được được bạn {A} thống kê bằng bảng dưới đây. Tìm phương sai. "
+
+    noi_dung_loigiai=(f"TBC $\\overline{{x}}= \\dfrac{{{n0}. 0+ {n1}. 1+{n2}. 2+{n3}. 3+{n4}. 4  }}{{{n0}+ {n1}+{n2}+{n3}+{n4}}} \\approx {tbc}$.\n\n"
+    
+    	f" Phương sai $s^{{2}}= \\dfrac{{{n0} . (0-{tbc})^{{2}}+{n1}.(1-{tbc})^{{2}}+{n2}.(2-{tbc})^{{2}}+{n3}.(3-{tbc})^{{2}}+{n4}.(4-{tbc})^{{2}}}}{{{n0}+ {n1}+{n2}+{n3}+{n4}}} \\approx {ps}$ ")
+
+    kq=f"${{{ps}}}$ "
+    dss=[f"${{{"{:.1f}".format(kc+0.4).replace(".", ",")}}}$  ",
+    f"${{{"{:.1f}".format(kc+1).replace(".", ",")}}}$   ",
+    f" ${{{"{:.1f}".format(kc-0.4).replace(".", ",")}}}$ "  ,    
+    f" ${{{"{:.1f}".format(kc+0.5).replace(".", ",")}}}$  "  ]
+    kq2,kq3,kq4=random.sample(dss,3)    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+
+    phuongan = f"A. {list_PA[0]}\t   B. {list_PA[1]}\t    C. {list_PA[2]}\t   D. {list_PA[3]}\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề LaTeX
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+        
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
+
+
+
+
+
+
+#[D10_C6_B4_09]-M2. CHo bảng thống kế điểm. Tìm phương sai
+def tktk_L10_C6_B4_09():
+    A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+    X=random.choice(["Toán", "Ngoại ngữ", "Văn", "Lý", "Sử", "Địa", "Hoá", "Sinh"])
+    y=random.randint(9,12)
+
+    n0=random.randint(1,5)
+    n1=random.randint(5,25)
+    n2=random.randint(30,100)
+    n3=random.randint(100,150)
+    n4=random.randint(50,100)
+    n6=random.randint(1,5)
+    n5=random.randint(1,10)
+
+
+    ts=n0+n1+n2+n3+n4+n5+n6
+    tb= (n0*4+n1*5+n2*6+n3*7+n4*8 +n5*9+n6*10)/(n0+n1+n2+n3+n4+n5+n6)
+    tbc="{:.1f}".format(tb).replace(".", ",")
+
+    kc=(n0*(4-tb)**2+n1*(5-tb)**2+n2*(6-tb)**2+n3*(7-tb)**2+n4*(8-tb)**2 +n5*(9-tb)**2+n6*(10-tb)**2 )/(n0+n1+n2+n3+n4)
+    ps="{:.1f}".format(kc).replace(".", ",")
+
+
+
+
+    code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}}
+        \\hline
+                 Điểm số & $4$ & 5& $6$ & $7$ & $8$  & $9$ & $10$ \\\\
+        \\hline
+       Số học sinh & ${n0}$ & $ {n1}$ & ${n2}$ & ${n3}$ & ${n4}$ & ${n5}$ & ${n6}$ \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+    noi_dung=f"Nhà trường thống kê điểm thi môn {X} của tất cả học sinh khối ${{{y}}}$ trong kì thi khảo sát chất lượng. Kết quả thống kê bằng bảng dưới đây. Tính phương sai? "
+
+    noi_dung_loigiai=(f"Có $N={n0}+{n1}+{n2}+{n3}+{n4}+{n5}+{n6}={{{ts}}}$ học sinh khối ${{{y}}}$ .\n\n"
+    	f"TBC $\\overline{{x}}= \\dfrac{{{n0}.4+{n1}.5+{n2}.6+{n3}.7+{n4}.8+{n5}.9+{n6}.10 }}{{ N}} \\approx {tbc}$ \n\n"
+
+    	f" Phương sai \n\n $s^{{2}}= \\dfrac{{{n0} . (4-{tbc})^{{2}}+{n1}.(5-{tbc})^{{2}}+{n2}.(6-{tbc})^{{2}}+{n3}.(7-{tbc})^{{2}}+{n4}.(8-{tbc})^{{2}}+{n5}.(9-{tbc})^{{2}}+{n6}.(10-{tbc})^{{2}}}}{{{n0}+ {n1}+{n2}+{n3}+{n4}+{n5}+{n6}}} \\approx {ps}$ ")
+
+    kq=f"${{{ps}}}$ "
+    dss=[f"${{{"{:.1f}".format(kc+0.4).replace(".", ",")}}}$  ",
+    f"${{{"{:.1f}".format(kc+1).replace(".", ",")}}}$   ",
+    f" ${{{"{:.1f}".format(kc-0.4).replace(".", ",")}}}$ "  ,    
+    f" ${{{"{:.1f}".format(kc+0.5).replace(".", ",")}}}$  "  ]
+    kq2,kq3,kq4=random.sample(dss,3)    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai=(f"{noi_dung}\n"
+        f"{file_name}\n")
+
+    phuongan = f"A. {list_PA[0]}\t   B. {list_PA[1]}\t    C. {list_PA[2]}\t   D. {list_PA[3]}\n"
+    
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề LaTeX
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+        
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
