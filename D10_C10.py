@@ -3765,7 +3765,7 @@ def gghik_L10_CX_B1_19():
 		t=random.choice([random.randint(-3, -1), random.randint(2, 4)])
 		a2=t*a1
 		b2= t*b1
-		c2= (t+random.randint(4,7))*c1
+		c2= (t+random.randint(1,5))*c1
 
 		kq=f"${{{d1}}}$ và ${{{d2}}}$ song song"
 		kq2=f"${{{d1}}}$ và ${{{d2}}}$ trùng nhau"
@@ -3775,15 +3775,18 @@ def gghik_L10_CX_B1_19():
 		f" nên ${{{d1}}}$ và ${{{d2}}}$ song song.".replace("+-","-").replace("\\frac","\\dfrac")
 
 	#Tạo giả thiết cắt không vuông góc
-
+	
 	if chon==3:
-		a1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-		b1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-		c1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-		t=random.choice([random.randint(-3, -1), random.randint(2, 4)])
-		a2=b1*t
-		b2=a1*t
-		c2= random.randint(-10,10)
+		while True:
+			a1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			b1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			c1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2!=0]):
+				break
+		
 
 		kq=f"${{{d1}}}$ và ${{{d2}}}$ cắt nhau và không vuông góc"
 		kq2=f"${{{d1}}}$ và ${{{d2}}}$ song song"
@@ -3793,13 +3796,15 @@ def gghik_L10_CX_B1_19():
 		f" nên ${{{d1}}}$ và ${{{d2}}}$ cắt nhau và ${{{d1}}}$ không vuông góc với ${{{d2}}}$.".replace("+-","-").replace("\\frac","\\dfrac")
 
 	if chon==4:
-		a1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-		b1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-		c1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-		t=random.choice([random.randint(-3, -1), random.randint(2, 4)])
-		a2=-b1*t
-		b2= a1*t
-		c2= random.randint(-10,10)
+		while True:
+			a1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			b1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			c1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2==0]):
+				break
 		kq=f"${{{d1}}}$ và ${{{d2}}}$ cắt nhau và vuông góc"
 		kq2=f"${{{d1}}}$ và ${{{d2}}}$ song song"
 		kq3=f"${{{d1}}}$ và ${{{d2}}}$ trùng nhau"

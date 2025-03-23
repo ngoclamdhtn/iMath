@@ -1781,7 +1781,7 @@ def ckz_L12C4_B1_29():
     f"${a}e^{{{latex(a*x+b)}}}+C$",
     f"$e^{{{latex(a*x+b)}}}+C$",
     f"$({latex(a*x+b)}).e^x+C$",]
-    if i==-1:
+    if a==-1:
         kq_false=[
     f"$e^{{{latex(a*x+b)}}}+C$",
     f"$e^{{{latex(a*x+b+random.randint(1,2))}}}+C$",
@@ -6235,7 +6235,7 @@ def ckz_L12C4_B4_32():
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     # Biểu diễn đa thức với thứ tự biến: a trước, b sau
-    p4 = P4(F.subs(x,b)-F.subs(x,a), a, b)
+    p4 = F.subs(x,b)-F.subs(x,a)
 
     # Chuyển lại thành biểu thức (sắp xếp theo thứ tự a trước b)
     sorted_p4 = p4.as_expr()

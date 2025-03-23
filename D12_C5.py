@@ -2863,7 +2863,7 @@ def htd_25_xyz_L12_C5_B1_28():
     a = random.choice([i for i in range(-5, 6) if i!=0])
     b = random.choice([i for i in range(-5, 6) if i!=0])
     c = random.choice([i for i in range(-5, 6) if i!=0])
-    d = random.randint(-10,11)    
+    d = random.choice([i for i in range(-8, 9) if i!=0])   
     ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
 
     x_A,y_A,z_A=-d/a,0,0
@@ -2924,7 +2924,7 @@ def htd_25_xyz_L12_C5_B1_29():
     a = random.choice([i for i in range(-5, 6) if i!=0])
     b = random.choice([i for i in range(-5, 6) if i!=0])
     c = random.choice([i for i in range(-5, 6) if i!=0])
-    d = random.randint(-10,11)
+    d = random.choice([i for i in range(-8, 9) if i!=0])
     ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
 
     x_A,y_A,z_A=-d/a,0,0
@@ -5584,7 +5584,7 @@ z = {show_ptts(z_0,c)}\
 
     debai= f"{noi_dung}\n"
         #f"{file_name}\n"
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 
       
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -7870,7 +7870,7 @@ def htd_25_xyz_L12_C5_B2_33():
     
     if chon==1:
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc ${{{ten_dt}}}$.")
@@ -7878,7 +7878,7 @@ def htd_25_xyz_L12_C5_B2_33():
     if chon==2:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")
@@ -7886,7 +7886,7 @@ def htd_25_xyz_L12_C5_B2_33():
     if chon==3:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")
@@ -8043,7 +8043,7 @@ def htd_25_xyz_L12_C5_B2_34():
     
     if chon==1:
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc ${{{ten_dt}}}$.")
@@ -8051,7 +8051,7 @@ def htd_25_xyz_L12_C5_B2_34():
     if chon==2:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A};{z_A+k})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")
@@ -8059,7 +8059,7 @@ def htd_25_xyz_L12_C5_B2_34():
     if chon==3:
         k= random.choice([i for i in range(-3, 3) if i!=0])
         kq2_T=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ không thuộc đường thẳng ${{{ten_dt}}}$"
-        kq2_F=f"* Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
+        kq2_F=f"Điểm ${A}({x_A};{y_A+k};{z_A})$ thuộc đường thẳng ${{{ten_dt}}}$"
         
         HDG=(f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình ${{{ten_dt}}}$"
             f" nên điểm ${A}({x_A};{y_A};{z_A+k})$ không thuộc ${{{ten_dt}}}$.")

@@ -1201,3 +1201,59 @@ def newy25_L12_C6_B2_07():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_08]-SA-M3. X.S Bayes: 
+def newy25_L12_C6_B2_08():
+    p_b=random.randint(40,70)
+    p_b_ngang=100-p_b
+    st_p_b=f"{round_half_up(p_b/100,2)}".replace(".",",")
+    st_p_b_ngang=f"{round_half_up(p_b_ngang/100,2)}".replace(".",",")
+    while True:
+        p_a_dk_b=random.randint(2,10)
+        p_a_dk_b_ngang=random.randint(2,10)
+        if p_a_dk_b_ngang!=p_a_dk_b:
+            break
+
+    st_p_a_dk_b=f"{round(p_a_dk_b/100,2):.2f}".replace(".",",")
+    st_p_a_dk_b_ngang=f"{round(p_a_dk_b/100,2):.2f}".replace(".",",")
+    p_a=(p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang)/10000
+    st_p_a=f"{round_half_up(p_a,3)}".replace(".",",")
+
+    p_b_dk_a=(p_b*p_a_dk_b/p_a)/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,3)}".replace(".",",")
+
+    noi_dung = (
+    f"Một nhà máy có hai phân xưởng I và II. Phân xưởng I sản xuất ${p_b}\\%$ số sản phẩm"
+f"và phân xưởng II sản xuất ${p_b_ngang}\\%$ số sản phẩm. "
+f"Tỉ lệ sản phẩm bị lỗi của phân xưởng I là ${p_a_dk_b}%$ và của phân xưởng II là ${p_a_dk_b_ngang}\\%$."
+f" Kiểm tra ngẫu nhiên 1 sản phẩm của nhà máy và thấy sản phẩm bị lỗi."
+f" Tính xác suất sản phẩm lỗi đó do phân xưởng I sản xuất."
+    )
+    dap_an=st_p_b_dk_a
+
+    noi_dung_loigiai=(
+    f'Gọi A là biến cố "Sản phẩm được kiểm tra bị lỗi"'
+    f' và B là biến cố "Sản phẩm được kiểm tra do phân xưởng I sản xuất".\n\n'
+    f'Do phân xưởng I sản xuất ${p_b}\\%$ số sản phẩm và phân xưởng II sản xuất ${p_b_ngang}\\%$ số sản phẩm nên\n\n'
+    f'$P(B)={st_p_b}$ và $P(\\overline{{B}})={st_p_b_ngang}$.\n\n'
+    f'Do tỉ lệ sản phẩm bị lỗi của phân xưởng I là ${st_p_a_dk_b}%$ và của phân xưởng II là ${st_p_a_dk_b_ngang}%$ nên:\n\n'
+    f'$P(A|B)={st_p_a_dk_b}$ và $P(A|\\overline{{B}})={st_p_a_dk_b_ngang}$.\n\n'
+    f'Xác suất để sản phẩm được kiểm tra bị lỗi là:\n\n'
+    f'$P(A)=P(B)P(A|B)+P(\\overline{{B}})P(A|\\overline{{B}})={st_p_b}.{st_p_a_dk_b}+{st_p_b_ngang}.{st_p_a_dk_b_ngang}={st_p_a}$.\n\n'
+    f'Xác suất sản phẩm lỗi đó do phân xưởng I sản xuất:\n\n'
+    f'$P(B|A)=\\dfrac{{P(B).P(A|B)}}{{P(A)}}=\\dfrac{{{st_p_b}.{st_p_a_dk_b}}}{{{st_p_a}}}={st_p_b_dk_a}.$'
+
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
