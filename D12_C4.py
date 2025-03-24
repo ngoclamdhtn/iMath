@@ -3761,6 +3761,70 @@ f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi đư�
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C4_B1_54]-M2. Tìm khẳng định đúng về tính chất nguyên hàm
+def ckz_L12C4_B1_54():
+    d_x=f"\\mathrm{{\\,d}}x"
+    noi_dung=(
+    f"Khẳng định nào sau đây là khẳng định đúng?")   
+
+    kq=random.choice([
+        f"$\\int {d_x}=x+C$",
+        f"$\\int k{d_x}=kx+C, k \\in \\mathbb{{R}}$",
+        f"$\\int x^{{\\alpha}}{d_x}=\\dfrac{{x^{{\\alpha+1}}}}{{\\alpha+1}}$ với $\\alpha \\ne -1$",
+        f"$\\int \\dfrac{{1}}{{x}}=\\ln |x|+C$ với $x\\ne 0$",
+        f"$\\int f'(x){d_x}=f(x)+C$",
+        f"$\\int kf(x){d_x}=k\\int f(x){d_x},(k\\in  \\mathbb{{R}}, k\\ne 0)$",
+        f"$\\int {{[f(x)+g(x)]}}{d_x}=\\int f(x){d_x}+\\int g(x){d_x}$",
+        f"$\\int {{[f(x)-g(x)]}}{d_x}=\\int f(x){d_x}-\\int g(x){d_x}$",
+        f"$\\int {{[g(x)-f(x)]}}{d_x}=\\int g(x){d_x}-\\int g(x){d_x}$",
+        f"Nếu $F(x)$ và $G(x)$ đều là nguyên hàm của hàm số $f(x)$ thì tồn tại số ${{C}}$ sao cho$F(x)=G(x)+C$",])
+    kq_false=[
+    f"$\\int 0{d_x}=x+C$",
+    f"$\\int x^{{\\alpha}}{d_x}=\\dfrac{{x^{{\\alpha+1}}}}{{\\alpha+1}}$",
+    f"$\\int \\dfrac{{1}}{{x}}=\\ln x+C$",
+    f"Nếu $F(x)$ và $G(x)$ đều là nguyên hàm của hàm số $f(x)$ thì $F(x)=G(x)$",
+    f"$\\int f(x){d_x}=f'(x)+C$",
+    f"$\\int {{[f(x).g(x)]}}{d_x}= \\int f(x){d_x}. \\int g(x) {d_x}$",
+    f"$\\int \\dfrac{{f(x)}}{{g(x)}}{d_x}=\\dfrac{{\\int f(x){d_x}}}{{\\int g(x) {d_x}}}$",    
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"{kq} là khẳng định đúng."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 
 #------------------------------------------------------------->

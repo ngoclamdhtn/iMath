@@ -1202,55 +1202,302 @@ def newy25_L12_C6_B2_07():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C6_B2_08]-SA-M3. X.S Bayes: 
+#[D12_C6_B2_08]-SA-M3. X.S Bayes: Tính xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất.
 def newy25_L12_C6_B2_08():
-    p_b=random.randint(40,70)
-    p_b_ngang=100-p_b
+    p_a=random.randint(40,70)
+    p_b=100-p_a
+    st_p_a=f"{round_half_up(p_a/100,2)}".replace(".",",")
     st_p_b=f"{round_half_up(p_b/100,2)}".replace(".",",")
-    st_p_b_ngang=f"{round_half_up(p_b_ngang/100,2)}".replace(".",",")
     while True:
-        p_a_dk_b=random.randint(2,10)
-        p_a_dk_b_ngang=random.randint(2,10)
-        if p_a_dk_b_ngang!=p_a_dk_b:
+        p_l_dk_a=random.randint(2,10)
+        p_l_dk_b=random.randint(2,10)
+        if p_l_dk_a!=p_l_dk_b:
             break
 
-    st_p_a_dk_b=f"{round(p_a_dk_b/100,2):.2f}".replace(".",",")
-    st_p_a_dk_b_ngang=f"{round(p_a_dk_b/100,2):.2f}".replace(".",",")
-    p_a=(p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang)/10000
-    st_p_a=f"{round_half_up(p_a,3)}".replace(".",",")
+    st_p_l_dk_a=f"{round(p_l_dk_a/100,2):.2f}".replace(".",",")
+    st_p_l_dk_b=f"{round(p_l_dk_b/100,2):.2f}".replace(".",",")
 
-    p_b_dk_a=(p_b*p_a_dk_b/p_a)/100
-    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,3)}".replace(".",",")
+    p_l=p_a*p_l_dk_a+p_b*p_l_dk_b
+    st_p_l=f"{round_half_up(p_l/10000,3)}".replace(".",",")
 
-    noi_dung = (
-    f"Một nhà máy có hai phân xưởng I và II. Phân xưởng I sản xuất ${p_b}\\%$ số sản phẩm"
-f"và phân xưởng II sản xuất ${p_b_ngang}\\%$ số sản phẩm. "
-f"Tỉ lệ sản phẩm bị lỗi của phân xưởng I là ${p_a_dk_b}%$ và của phân xưởng II là ${p_a_dk_b_ngang}\\%$."
-f" Kiểm tra ngẫu nhiên 1 sản phẩm của nhà máy và thấy sản phẩm bị lỗi."
-f" Tính xác suất sản phẩm lỗi đó do phân xưởng I sản xuất."
-    )
-    dap_an=st_p_b_dk_a
+    p_a_dk_l=((p_a/100)*(p_l_dk_a/100))/(p_l/10000)
+    st_p_a_dk_l=f"{round_half_up(p_a_dk_l,2):.2f}".replace(".",",")
+    chon=random.randint(1,2)
+    if chon==1:
+        ten_1="I"
+        ten_2="II"
+    
+    if chon==2:
+        ten_1="A"
+        ten_2="B"  
+    noi_dung = (f"Một nhà máy có hai phân xưởng {ten_1} và {ten_2}. Phân xưởng {ten_1} sản xuất ${p_a}\\%$ số sản phẩm"
+f"và phân xưởng {ten_2} sản xuất ${p_b}\\%$ số sản phẩm. "
+f"Tỉ lệ sản phẩm bị lỗi của phân xưởng {ten_1} là ${p_l_dk_a}\\%$ và của phân xưởng {ten_2} là ${p_l_dk_b}\\%$."
+f" Kiểm tra ngẫu nhiên một sản phẩm của nhà máy và thấy sản phẩm bị lỗi."
+f" Tính xác suất sản phẩm lỗi đó do phân xưởng {ten_1} sản xuất (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=st_p_a_dk_l
 
     noi_dung_loigiai=(
-    f'Gọi A là biến cố "Sản phẩm được kiểm tra bị lỗi"'
-    f' và B là biến cố "Sản phẩm được kiểm tra do phân xưởng I sản xuất".\n\n'
-    f'Do phân xưởng I sản xuất ${p_b}\\%$ số sản phẩm và phân xưởng II sản xuất ${p_b_ngang}\\%$ số sản phẩm nên\n\n'
-    f'$P(B)={st_p_b}$ và $P(\\overline{{B}})={st_p_b_ngang}$.\n\n'
-    f'Do tỉ lệ sản phẩm bị lỗi của phân xưởng I là ${st_p_a_dk_b}%$ và của phân xưởng II là ${st_p_a_dk_b_ngang}%$ nên:\n\n'
-    f'$P(A|B)={st_p_a_dk_b}$ và $P(A|\\overline{{B}})={st_p_a_dk_b_ngang}$.\n\n'
-    f'Xác suất để sản phẩm được kiểm tra bị lỗi là:\n\n'
-    f'$P(A)=P(B)P(A|B)+P(\\overline{{B}})P(A|\\overline{{B}})={st_p_b}.{st_p_a_dk_b}+{st_p_b_ngang}.{st_p_a_dk_b_ngang}={st_p_a}$.\n\n'
-    f'Xác suất sản phẩm lỗi đó do phân xưởng I sản xuất:\n\n'
-    f'$P(B|A)=\\dfrac{{P(B).P(A|B)}}{{P(A)}}=\\dfrac{{{st_p_b}.{st_p_a_dk_b}}}{{{st_p_a}}}={st_p_b_dk_a}.$'
+    f'Gọi A là biến cố "Sản phẩm do phân xưởng {ten_1} sản xuất".\n\n'
+    f'Gọi B là biến cố "Sản phẩm do phân xưởng {ten_2} sản xuất".\n\n'
+    f'Gọi L là biến cố "Sản phẩm được kiểm tra bị lỗi".\n\n'
+    f'Xác suất sản phẩm do phân xưởng {ten_1} sản xuất: $P(A)={p_a}\\%={st_p_a}$.\n\n'
+    f'Xác suất sản phẩm do phân xưởng {ten_2} sản xuất: $P(B)={p_b}\\%={st_p_b}$.\n\n'
+    f'Xác suất sản phẩm lỗi nếu do phân xưởng {ten_1} sản xuất: $P(L|A)={p_l_dk_a}\\%={st_p_l_dk_a}$.\n\n'
+    f'Xác suất sản phẩm lỗi nếu do phân xưởng {ten_1} sản xuất: $P(L|B)={p_l_dk_b}\\%={st_p_l_dk_b}$.\n\n'
 
-
-    )    
+    f'Xác suất để sản phẩm kiểm tra bị lỗi từ toàn bộ nhà máy:\n\n'
+    f'$P(L)=P(A)P(L|A)+P(B)P(L|B)={st_p_a}.{st_p_l_dk_a}+{st_p_b}.{st_p_l_dk_b}={st_p_l}$.\n\n'
+    f'Xác suất sản phẩm kiểm tra bị lỗi do phân xưởng {ten_1} sản xuất:\n\n'
+    f'$P(A|L)=\\dfrac{{P(A).P(L|A)}}{{P(L)}}=\\dfrac{{{st_p_a}.{st_p_l_dk_a}}}{{{st_p_l}}}={st_p_a_dk_l}.$')    
         
     debai_word= f"{noi_dung}\n"
 
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
         f"Đáp án: {dap_an}\n")
 
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_09]-SA-M3. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng
+def newy25_L12_C6_B2_09():
+    p_a=random.randint(40,70)
+    p_b=100-p_a
+    st_p_a=f"{round_half_up(p_a/100,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_b/100,2)}".replace(".",",")
+    while True:
+        p_l_dk_a=random.randint(2,10)
+        p_l_dk_b=random.randint(2,10)
+        if p_l_dk_a!=p_l_dk_b:
+            break
+
+    st_p_l_dk_a=f"{round(p_l_dk_a/100,2):.2f}".replace(".",",")
+    st_p_l_dk_b=f"{round(p_l_dk_b/100,2):.2f}".replace(".",",")
+
+    p_l=p_a*p_l_dk_a+p_b*p_l_dk_b
+    st_p_l=f"{round_half_up(p_l/10000,3)}".replace(".",",")
+
+    p_a_dk_l=((p_a/100)*(p_l_dk_a/100))/(p_l/10000)
+    st_p_a_dk_l=f"{round_half_up(p_a_dk_l,2):.2f}".replace(".",",")
+    chon=random.randint(1,2)
+    if chon==1:
+        ten_1="I"
+        ten_2="II"
+    
+    if chon==2:
+        ten_1="A"
+        ten_2="B"  
+    noi_dung = (f"Một công ty có hai chi nhánh {ten_1} và {ten_2}. Chi nhánh {ten_1} chiếm ${p_a}\\%$ tổng số khác hàng"
+f"và chi nhánh {ten_2} chiếm ${p_b}\\%$ tổng số khác hàng. "
+f"Theo khảo sát, có {ten_1} ${p_l_dk_a}\\%$ không hài lòng về dịch vụ trong khi ở chi nhánh {ten_2} tỷ lệ này là ${p_l_dk_b}\\%$."
+f" Chọn ngẫu nhiên một khách hàng không hài lòng."
+f" Tính xác suất khách hàng đó thuộc chi nhánh {ten_1} sản xuất (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=st_p_a_dk_l
+
+    noi_dung_loigiai=(
+    f'Gọi A là biến cố "Khách hàng do chi nhánh {ten_1} phục vụ".\n\n'
+    f'Gọi B là biến cố "Khách hàng do chi nhánh {ten_2} sản xuất".\n\n'
+    f'Gọi L là biến cố "Khách hàng không hài lòng".\n\n'
+    f'Xác suất khách hàng do chi nhánh {ten_1} phục vụ: $P(A)={p_a}\\%={st_p_a}$.\n\n'
+    f'Xác suất khách hàng do chi nhánh {ten_1} phục vụ: $P(B)={p_b}\\%={st_p_b}$.\n\n'
+    f'Xác suất khách hàng không hài lòng do chi nhánh {ten_1} phục vụ: $P(L|A)={p_l_dk_a}\\%={st_p_l_dk_a}$.\n\n'
+    f'Xác suất khách hàng không hài lòng do chi nhánh {ten_2} phục vụ: $P(L|B)={p_l_dk_b}\\%={st_p_l_dk_b}$.\n\n'
+
+    f'Xác suất để khách hàng không hài lòng của toàn bộ công ty:\n\n'
+    f'$P(L)=P(A)P(L|A)+P(B)P(L|B)={st_p_a}.{st_p_l_dk_a}+{st_p_b}.{st_p_l_dk_b}={st_p_l}$.\n\n'
+    f'Xác suất khách hàng không hài lòng do phân xưởng {ten_1} khi kiểm tra toàn bộ công ty:\n\n'
+    f'$P(A|L)=\\dfrac{{P(A).P(L|A)}}{{P(L)}}=\\dfrac{{{st_p_a}.{st_p_l_dk_a}}}{{{st_p_l}}}={st_p_a_dk_l}.$')    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_10]-SA-M3. X.S Bayes: Tính xác suất sản xuất xe bị lỗi
+def newy25_L12_C6_B2_10():
+    p_a=random.randint(40,70)
+    p_b=100-p_a
+    st_p_a=f"{round_half_up(p_a/100,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_b/100,2)}".replace(".",",")
+    while True:
+        p_l_dk_a=random.randint(2,10)
+        p_l_dk_b=random.randint(2,10)
+        if p_l_dk_a!=p_l_dk_b:
+            break
+
+    st_p_l_dk_a=f"{round(p_l_dk_a/100,2):.2f}".replace(".",",")
+    st_p_l_dk_b=f"{round(p_l_dk_b/100,2):.2f}".replace(".",",")
+
+    p_l=p_a*p_l_dk_a+p_b*p_l_dk_b
+    st_p_l=f"{round_half_up(p_l/10000,3)}".replace(".",",")
+
+    p_a_dk_l=((p_a/100)*(p_l_dk_a/100))/(p_l/10000)
+    st_p_a_dk_l=f"{round_half_up(p_a_dk_l,2):.2f}".replace(".",",")
+    chon=random.randint(1,2)
+    if chon==1:
+        ten_1="Sedan"
+        ten_2="SUV"
+    
+    if chon==2:
+        ten_1="xe 5 chỗ"
+        ten_2="xe 7 chỗ"
+    
+
+     
+    noi_dung = (f"Một nhà máy sản xuất hai dòng xe {ten_1} và {ten_2}. Dòng {ten_1} chiếm ${p_a}\\%$ tổng sản lượng,"
+f"còn dòng {ten_2} chiếm ${p_b}\\%$ tổng sản lượng. "
+f"Xác suất một chiếc Sedan gặp lỗi kỹ thuật là ${p_l_dk_a}\\%$ và trong khi xác suất này với {ten_2} là ${p_l_dk_b}\\%$."
+f" Một chiếc xe được chọn ngẫu nhiên và phát hiện bị lỗi."
+f" Tính  xác suất chiếc xe đó thuộc dòng {ten_1} (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=st_p_a_dk_l
+
+    noi_dung_loigiai=(
+    f'Gọi A là biến cố "Xe được chọn là dòng {ten_1}".\n\n'
+    f'Gọi B là biến cố "Xe được chọn là dòng {ten_2}".\n\n'
+    f'Gọi L là biến cố "Xe được chọn bị lỗi kỹ thuật".\n\n'
+    f'Xác suất xe được chọn là dòng {ten_1}: $P(A)={p_a}\\%={st_p_a}$.\n\n'
+    f'Xác suất xe được chọn là dòng {ten_2}: $P(B)={p_b}\\%={st_p_b}$.\n\n'
+    f'Xác suất xe được chọn bị lỗi kỹ thuật là dòng {ten_1}: $P(L|A)={p_l_dk_a}\\%={st_p_l_dk_a}$.\n\n'
+    f'Xác suất xe được chọn bị lỗi kỹ thuật là dòng {ten_2}: $P(L|B)={p_l_dk_b}\\%={st_p_l_dk_b}$.\n\n'
+    f'Xác suất để xe được chọn bị lỗi kỹ thuật của tổng sản lượng sản xuất:\n\n'
+    f'$P(L)=P(A)P(L|A)+P(B)P(L|B)={st_p_a}.{st_p_l_dk_a}+{st_p_b}.{st_p_l_dk_b}={st_p_l}$.\n\n'
+    f'Xác suất xe được chọn bị lỗi kỹ thuật là dòng {ten_1} khi chọn ngẫu nhiên toàn bộ các xe:\n\n'
+    f'$P(A|L)=\\dfrac{{P(A).P(L|A)}}{{P(L)}}=\\dfrac{{{st_p_a}.{st_p_l_dk_a}}}{{{st_p_l}}}={st_p_a_dk_l}.$')    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_11]-SA-M3. X.S Bayes: Tính xác suất mắc bệnh
+def newy25_L12_C6_B2_11():
+    p_a=random.randint(40,70)
+    p_b=100-p_a
+    st_p_a=f"{round_half_up(p_a/100,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_b/100,2)}".replace(".",",")
+    while True:
+        p_l_dk_a=random.randint(2,10)
+        p_l_dk_b=random.randint(60,95)
+        if p_l_dk_a!=p_l_dk_b:
+            break
+
+    st_p_l_dk_a=f"{round(p_l_dk_a/100,2):.2f}".replace(".",",")
+    st_p_l_dk_b=f"{round(p_l_dk_b/100,2):.2f}".replace(".",",")
+
+    p_l=p_a*p_l_dk_a+p_b*p_l_dk_b
+    st_p_l=f"{round_half_up(p_l/10000,3)}".replace(".",",")
+
+    p_b_dk_l=((p_b/100)*(p_l_dk_b/100))/(p_l/10000)
+    st_p_b_dk_l=f"{round_half_up(p_b_dk_l,2):.2f}".replace(".",",")
+    chon=random.randint(1,2)
+    ten_1="khỏe mạnh"
+    ten_2="mắc bệnh"
+
+     
+    noi_dung = (f"Một bệnh viện thực hiện xét nghiệm phát hiện một loại bệnh."
+        f" Trong số các bệnh nhân đến xét nghiệm, có ${p_a}\\%$ là người khỏe mạnh và ${p_b}\\%$ là người mắc bệnh."
+f" Xét nghiệm có xác suất cho kết quả dương tính sai ở người khỏe mạnh là ${p_l_dk_a}\\%$ "
+f"và xác suất cho kết quả dương tính đúng ở người mắc bệnh là ${p_l_dk_b}\\%$."
+f" Một người có kết quả xét nghiệm là dương tính."
+f" Tính xác suất người đó thực sự mắc bệnh (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=st_p_b_dk_l
+
+    noi_dung_loigiai=(
+    f'Gọi K là biến cố "Người xét nghiệm là {ten_1}".\n\n'
+    f'Gọi M là biến cố "Người xét nghiệm là {ten_2}".\n\n'
+    f'Gọi D là biến cố "người có kết quả xét nghiệm là dương tính".\n\n'
+    f'Xác suất người xét nghiệm là {ten_1}: $P(K)={p_a}\\%={st_p_a}$.\n\n'
+    f'Xác suất người xét nghiệm là {ten_2}: $P(M)={p_b}\\%={st_p_b}$.\n\n'
+    f'Xác suất dương tính sai (người khỏe mạnh có kết quả dương tính): $P(D|K)={p_l_dk_a}\\%={st_p_l_dk_a}$.\n\n'
+    f'Xác suất dương tính đúng (người mắc bệnh có kết quả dương tính): $P(D|M)={p_l_dk_b}\\%={st_p_l_dk_b}$.\n\n'
+    f'Xác suất tổng thể của việc có kết quả dương tính:\n\n'
+    f'$P(D)=P(K)P(D|K)+P(M)P(D|M)={st_p_a}.{st_p_l_dk_a}+{st_p_b}.{st_p_l_dk_b}={st_p_l}$.\n\n'
+    f'Xác suất người đó thực sự mắc bệnh:\n\n'
+    f'$P(M|D)=\\dfrac{{P(M).P(D|M)}}{{P(D)}}=\\dfrac{{{st_p_b}.{st_p_l_dk_b}}}{{{st_p_l}}}={st_p_b_dk_l}.$')    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_12]-SA-M3. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng
+def newy25_L12_C6_B2_12():
+    p_a=random.randint(40,70)
+    p_b=100-p_a
+    st_p_a=f"{round_half_up(p_a/100,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_b/100,2)}".replace(".",",")
+    while True:
+        p_l_dk_a=random.randint(2,10)
+        p_l_dk_b=random.randint(2,10)
+        if p_l_dk_a!=p_l_dk_b:
+            break
+
+    st_p_l_dk_a=f"{round(p_l_dk_a/100,2):.2f}".replace(".",",")
+    st_p_l_dk_b=f"{round(p_l_dk_b/100,2):.2f}".replace(".",",")
+
+    p_l=p_a*p_l_dk_a+p_b*p_l_dk_b
+    st_p_l=f"{round_half_up(p_l/10000,3)}".replace(".",",")
+
+    p_a_dk_l=((p_a/100)*(p_l_dk_a/100))/(p_l/10000)
+    st_p_a_dk_l=f"{round_half_up(p_a_dk_l,2):.2f}".replace(".",",")
+    chon=random.randint(1,2)
+    if chon==1:
+        ten_1="Team Alpha"
+        ten_2="Team Beta"
+    
+    if chon==2:
+        ten_1="Team Quantum"
+        ten_2="Team Nexus"
+
+    if chon==2:
+        ten_1="Team Phoenix"
+        ten_2="Team Dragon" 
+    noi_dung = (f"Một công ty phần mềm có hai đội phát triển là {ten_1} và {ten_2}. Biết rằng {ten_1} phát triển ${p_a}\\%$ số sản phẩm"
+f"và {ten_2} phát triển ${p_b}\\%$ số sản phẩm. "
+f"Tỉ lệ sản phẩm có lỗi từ {ten_1} là ${p_l_dk_a}\\%$ và từ {ten_2} là ${p_l_dk_b}\\%$."
+f" Chọn ngẫu nhiên một sản phẩm do các đội phát triển và thấy sản phẩm bị lỗi."
+f" Tính xác suất sản phẩm đó được phát triển bởi {ten_1} (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=st_p_a_dk_l
+
+    noi_dung_loigiai=(
+    f'Gọi A là biến cố "Sản phẩm do {ten_1} phát triển".\n\n'
+    f'Gọi B là biến cố "Sản phẩm do {ten_2} sản xuất".\n\n'
+    f'Gọi L là biến cố "Sản phẩm phát triển bị lỗi".\n\n'
+    f'Xác suất sản phẩm do {ten_1} phát triển: $P(A)={p_a}\\%={st_p_a}$.\n\n'
+    f'Xác suất sản phẩm do {ten_2} phát triển: $P(B)={p_b}\\%={st_p_b}$.\n\n'
+    f'Xác suất sản phẩm lỗi do {ten_1}: $P(L|A)={p_l_dk_a}\\%={st_p_l_dk_a}$.\n\n'
+    f'Xác suất sản phẩm lỗi do {ten_2}: $P(L|B)={p_l_dk_b}\\%={st_p_l_dk_b}$.\n\n'
+
+    f'Xác suất để sản phẩm bị lỗi khi chọn ngẫu nhiên toàn bộ sản phẩm:\n\n'
+    f'$P(L)=P(A)P(L|A)+P(B)P(L|B)={st_p_a}.{st_p_l_dk_a}+{st_p_b}.{st_p_l_dk_b}={st_p_l}$.\n\n'
+    f'Xác suất sản phẩm bị lỗi do {ten_1} phát triển:\n\n'
+    f'$P(A|L)=\\dfrac{{P(A).P(L|A)}}{{P(L)}}=\\dfrac{{{st_p_a}.{st_p_l_dk_a}}}{{{st_p_l}}}={st_p_a_dk_l}.$')    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
     f"\\shortans[oly]{{{dap_an}}}\n\n"\

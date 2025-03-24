@@ -7555,6 +7555,10 @@ class Ui_MainWindow(object):
                 L12_C4_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B1_1, ["[D12_C4_B1_54]-M2. Tìm khẳng định đúng về tính chất nguyên hàm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C4_B1_11 = QTreeWidgetItem(L12_C4_B1_1, ["Nguyên hàm đa thức-phân thức"])
                 L12_C4_B1_11.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B1_11.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8725,7 +8729,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2.  X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2. X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_08]-SA-M2. X.S Bayes: Tính xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_09]-SA-M2. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_10]-SA-M2. X.S Bayes: X.S Bayes: Tính xác suất sản xuất xe bị lỗi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_11]-SA-M3. X.S Bayes: X.S Bayes: Tính xác suất người thực sự mắc bệnh."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10002,6 +10022,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B1_53]-TF-M3. T.c nguyên hàm, công thức vận tốc-gia tốc, tìm nguyên hàm biết F(x_0), bài toán quãng đường
                                             if dang_toan == "[D12_C4_B1_53]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_53()
+
+                                            #[D12_C4_B1_54]-M2. Tìm khẳng định đúng về tính chất nguyên hàm
+                                            if dang_toan == "[D12_C4_B1_54]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B1_54()
                                                 
 
                                         #Bài 2. Nguyên hàm đổi biến
@@ -10873,6 +10897,28 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B2_07]-SA-M2. X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại
                                             if dang_toan == "[D12_C6_B2_07]":                                        
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_07()
+
+                                            #[D12_C6_B2_08]-SA-M2. X.S Bayes: Tính xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất.
+                                            if dang_toan == "[D12_C6_B2_08]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_08()
+
+                                            #[D12_C6_B2_08]-SA-M2. X.S Bayes: Tính xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất.
+                                            if dang_toan == "[D12_C6_B2_08]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_08()
+
+                                            #[D12_C6_B2_09]-SA-M2. X.S Bayes: X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng
+                                            if dang_toan == "[D12_C6_B2_09]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_09()
+
+                                            #[D12_C6_B2_10]-SA-M2. X.S Bayes: X.S Bayes: Tính xác suất sản xuất xe bị lỗi
+                                            if dang_toan == "[D12_C6_B2_10]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_10()
+
+                                            #[D12_C6_B2_11]-SA-M2. X.S Bayes: X.S Bayes: Tính xác suất mắc bệnh
+                                            if dang_toan == "[D12_C6_B2_11]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_11()
+
+                                            #-------------------------LỚP 11---------------------->
 
 
                                             #[D11_C1_B1_02]-M1. Đổi số đo từ độ sang radian
