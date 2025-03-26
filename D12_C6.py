@@ -805,12 +805,13 @@ def newy25_L12_C6_B2_02():
     dap_an=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
     dap_an=f"{round_half_up(dap_an,2):.2f}".replace(".",",")
     chon=random.randint(1,8)
+
     if chon==1:
         noi_dung = (
             f"Số khán giả đến xem buổi biểu diễn ca nhạc ngoài trời phụ thuộc vào thời tiết."
             f" Giả sử, nếu trời không mưa thì xác suất để bán hết vé là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu trời mưa thì xác suất để bán hết vé chỉ là ${{{st_p_b_dk_a}}}$. "
-            f"Dự báo thời tiết cho thấy xác suất để trời mưa vào buổi biểu diễn là ${{{st_p_a}}}$. "
+            f"Dự báo thời tiết cho thấy xác suất để trời mưa vào buổi biểu diễn là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để nhà tổ chức sự kiện bán hết vé? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Trời mưa", ${{B}}$ là biến cố "Bán hết vé".\n\n')
@@ -821,7 +822,7 @@ def newy25_L12_C6_B2_02():
             f"Một nhà hàng hải sản phục vụ ngoài trời phụ thuộc vào thời tiết."
             f" Giả sử, nếu trời không mưa thì xác suất để khách ngồi kín các bàn là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu trời mưa thì xác suất để khách ngồi kín các bàn chỉ là ${{{st_p_b_dk_a}}}$. "
-            f"Dự báo thời tiết cho thấy xác suất để trời mưa vào ngày mai là ${{{st_p_a}}}$. "
+            f"Dự báo thời tiết cho thấy xác suất để trời mưa vào ngày mai là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để nhà hàng kín chỗ vào ngày mai? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Trời mưa", ${{B}}$ là biến cố "Khách ngồi kín các bàn".\n\n')
@@ -831,7 +832,7 @@ def newy25_L12_C6_B2_02():
             f"Một công ty vận tải đánh giá xác suất giao hàng đúng hạn phụ thuộc vào tình trạng giao thông."
             f" Nếu đường thông thoáng, xác suất giao đúng hạn là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu đường tắc, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
-            f"Dữ liệu giao thông cho thấy xác suất xảy ra ùn tắc vào ngày giao hàng là ${{{st_p_a}}}$. "
+            f"Dữ liệu giao thông cho thấy xác suất xảy ra ùn tắc vào ngày giao hàng là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để hàng được giao đúng hạn? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Đường bị tắc", ${{B}}$ là biến cố "Hàng được giao đúng hạn".\n\n')
@@ -841,7 +842,7 @@ def newy25_L12_C6_B2_02():
             f"Năng suất thu hoạch nông sản của một nông trại phụ thuộc vào điều kiện thời tiết."
             f" Nếu trời thuận lợi, xác suất để đạt năng suất cao là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu thời tiết xấu, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
-            f"Theo dự báo, xác suất thời tiết xấu trong mùa thu hoạch là ${{{st_p_a}}}$. "
+            f"Theo dự báo, xác suất thời tiết xấu trong mùa thu hoạch là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để nông trại đạt năng suất cao? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Thời tiết xấu", ${{B}}$ là biến cố "Đạt năng suất cao".\n\n')
@@ -851,7 +852,7 @@ def newy25_L12_C6_B2_02():
             f"Tỷ lệ học sinh đạt điểm cao trong một kỳ thi chịu ảnh hưởng bởi mức độ khó của đề thi."
             f" Nếu đề thi dễ, xác suất học sinh đạt điểm cao là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu đề thi khó, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
-            f"Theo phân tích, xác suất đề thi khó là ${{{st_p_a}}}$. "
+            f"Theo phân tích, xác suất đề thi khó là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để một học sinh bất kỳ đạt điểm cao trong kỳ thi? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Đề thi khó", ${{B}}$ là biến cố "các học sinh đạt điểm cao".\n\n')
@@ -861,7 +862,7 @@ def newy25_L12_C6_B2_02():
             f"Một cửa hàng điện thoại bán chạy hơn vào dịp cuối tuần."
             f" Nếu hôm đó là cuối tuần, xác suất để bán hết số điện thoại nhập về là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu là ngày trong tuần, xác suất này chỉ là ${{{st_p_b_dk_a}}}$. "
-            f"Xác suất để một ngày bất kỳ trong tháng là cuối tuần là ${{{st_p_a}}}$. "
+            f"Xác suất để một ngày bất kỳ trong tháng là cuối tuần là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để cửa hàng bán hết số điện thoại nhập về trong một ngày bất kỳ? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Ngày trong tuần", ${{B}}$ là biến cố "Bán hết số điện thoại nhập về".\n\n')
@@ -871,7 +872,7 @@ def newy25_L12_C6_B2_02():
             f"Một nhà máy sản xuất linh kiện điện tử có tỷ lệ sản phẩm đạt tiêu chuẩn phụ thuộc vào nguồn nguyên liệu."
             f" Nếu nguyên liệu đầu vào là loại tốt, xác suất sản phẩm đạt tiêu chuẩn là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu nguyên liệu loại trung bình, xác suất này giảm xuống còn ${{{st_p_b_dk_a}}}$. "
-            f"Nhà máy nhập nguyên liệu từ hai nguồn với tỷ lệ nguyên liệu tốt chiếm ${{{st_p_a}}}$. "
+            f"Nhà máy nhập nguyên liệu từ hai nguồn với tỷ lệ nguyên liệu tốt chiếm ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để một sản phẩm bất kỳ đạt tiêu chuẩn? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Nguyên liệu loại trung bình", ${{B}}$ là biến cố "Sản phẩm bất kỳ đạt tiêu chuẩn".\n\n')
@@ -881,7 +882,7 @@ def newy25_L12_C6_B2_02():
             f"Hiệu quả của một loại thuốc điều trị bệnh phụ thuộc vào phản ứng của bệnh nhân."
             f" Nếu bệnh nhân không có cơ địa kháng thuốc, xác suất thuốc có hiệu quả là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu bệnh nhân có cơ địa kháng thuốc, xác suất này chỉ là ${{{st_p_b_dk_a}}}$. "
-            f"Theo thống kê, xác suất một bệnh nhân có cơ địa kháng thuốc là ${{{st_p_a}}}$. "
+            f"Theo thống kê, xác suất một bệnh nhân có cơ địa kháng thuốc là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để thuốc có hiệu quả trên một bệnh nhân bất kỳ? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Bệnh nhân có cơ địa kháng thuốc", ${{B}}$ là biến cố "Thuốc có hiệu quả".\n\n')
@@ -891,7 +892,7 @@ def newy25_L12_C6_B2_02():
             f"Một hệ thống máy chủ có nguy cơ bị quá tải trong giờ cao điểm."
             f" Nếu không bị quá tải, xác suất xử lý yêu cầu thành công là ${{{st_p_b_dk_a_ngang}}}$; "
             f"còn nếu bị quá tải, xác suất này chỉ là ${{{st_p_b_dk_a}}}$. "
-            f"Theo số liệu theo dõi, xác suất xảy ra tình trạng quá tải trong một khoảng thời gian bất kỳ là ${{{st_p_a}}}$. "
+            f"Theo số liệu theo dõi, xác suất xảy ra tình trạng quá tải trong một khoảng thời gian bất kỳ là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để một yêu cầu gửi đến hệ thống được xử lý thành công? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
             f'Gọi ${{A}}$ là biến cố "Hệ thống máy chủ bị quá tải", ${{B}}$ là biến cố "Một yêu cầu gửi đến hệ thống được xử lý thành công".\n\n')  

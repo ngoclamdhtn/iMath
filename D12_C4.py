@@ -9179,6 +9179,7 @@ def ckz_L12C4_B5_22():
     a=random.randint(10,20)
     AB=random.randint(4,8)
     OH= int(a/2)-random.randint(2,5)
+    if OH==0:OH=1
     k=-4*OH/AB**2
     f=k*x**2+OH
     S_0=integrate(f,(x,-AB/2,AB/2))

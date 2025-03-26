@@ -4500,19 +4500,10 @@ def gghik_L10_CX_B1_26():
 	if kq2==kq2_F:
 		loigiai_2=f"${{{d}}}$ có một véctơ chỉ phương là $\\vec{{u}}=({t*a};{t*b})$ là khẳng định sai vì ${{{d}}}$ có một véctơ chỉ phương là $({b};{-a})$."
 
-	# kq3_T=f"*${{{d}}}$ có phương trình tham số là ${f_ts}$"
-	# kq3_F=f"${{{d}}}$ có phương trình tham số là ${f_tsfalse}$"
-	# kq3=random.choice([kq3_T, kq3_F])
-	# loigiai_3=f"${{{d}}}$ có phương trình tham số là ${f_ts}$ là khẳng định đúng."\
-	# f" Vì ${{{d}}}$ qua điểm $({x_0};{y_0})$ và nhận vectơ $\\vec{{n}}({a};{b})$ làm véctơ pháp tuyến thì nhận vectơ $\\vec{{u}}({b};{-a})$ làm véctơ chỉ phương."
-	# if kq3==kq3_F:
-	# 	loigiai_3=f"${{{d}}}$ có phương trình tham số là ${f_tsfalse}$ là khẳng định sai."\
-	# 	f" Vì ${{{d}}}$ qua điểm $({x_0};{y_0})$ và nhận vectơ $\\vec{{n}}({a};{b})$ làm véctơ pháp tuyến thì nhận vectơ $\\vec{{u}}({b};{-a})$ làm véctơ chỉ phương."
 	
 	t=random.choice([random.randint(-2,-1),random.randint(1,2)])
-	x_1,y_1=x_0+b*t, y_0-a*t
-	t1=t+random.randint(1,3)
-	x_2,y_2=x_0+b*t1, y_0+a*t1
+	x_1,y_1=x_0+b*t, y_0-a*t	
+	x_2,y_2=x_0+b*t, y_0-a*t+random.randint(1,3)
 	ten_diem=random.choice(["A","B","C","D"])	
 
 	kq3_T=f"*Điểm ${ten_diem}({x_1};{y_1})$ thuộc đường thẳng ${{{d}}}$"
@@ -4636,7 +4627,7 @@ def gghik_L10_CX_B1_27():
 	
 	t=random.choice([random.randint(-3,-1),random.randint(1,3)])
 	x_1,y_1=x_0+b*t, y_0-a*t
-	x_2,y_2=x_0+a*t, y_0+b*t
+	x_2,y_2=x_0+b*t, y_0-a*t+random.randint(1,2)
 	ten_diem=random.choice(["A","B","C","D"])	
 
 	kq3_T=f"*Điểm ${ten_diem}({x_1};{y_1})$ thuộc đường thẳng ${{{d}}}$"

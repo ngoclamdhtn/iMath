@@ -4568,7 +4568,7 @@ def htd_25_xyz_L12_C5_B3_14():
         if all([d_IP<R]):
             break    
     ptmp=f"{latex(a*x+b*y+c*z+d)}=0"    
-    eq=Eq(a*(x_0+a*t)+b*(y_0+b*t)+c*(z_0+c*t),0)
+    eq=Eq(a*(x_0+a*t)+b*(y_0+b*t)+c*(z_0+c*t)+d,0)
     solution=solve(eq,t)
     t_0=solution[0]
     x_H,y_H,z_H=x_0+a*t_0, y_0+b*t_0, z_0+c*t_0

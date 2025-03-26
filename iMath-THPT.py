@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 17.03.2025")
+                self.label.setText(f"iMath\u00A92025 ver 26.03.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 17.03.2025")
+                self.label.setText(f"iMath\u00A92025 ver 26.03.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2845,6 +2845,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_28]-M1. Số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)   "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_29]-M2. Số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0) "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C8_B2_2, ["[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 #8.3.1
                 L10_C8_B2_3 = QTreeWidgetItem(L10_C8_B2, ["8.2.3. Tổ hợp"])
                 L10_C8_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -2900,19 +2912,7 @@ class Ui_MainWindow(object):
 
                 item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_27]-M2. Xếp n người vào bàn tròn "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_28]-M1. Số có n chữ số khác nhau tạo từ n chữ số (không có chữ số 0)   "])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_29]-M2. Số có n chữ số khác nhau tạo từ n chữ số (có chữ số 0) "])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_30]-M2. Tính số vecto tạo từ n điểm phân biệt"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 item=QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_31]-M2. Số tam giác được tạo từ các điểm trên 2 đường thẳng song song"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -3764,19 +3764,19 @@ class Ui_MainWindow(object):
                 L10_C10_B1_TF.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B1_TF.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_26]-TF-M2. Tạo câu Đ-S: Cho PTTQ, xét đúng-sai về VTCP, VTPT, điểm thuộc đường thẳng."])
+                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_26]-TF-M2. Cho PTTQ. Xét Đ-S: VTCP, VTPT, điểm thuộc đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_27]-TF-M2. Tạo câu Đ-S: Cho PTTS, xét đúng-sai về VTCP, VTPT, điểm thuộc đường thẳng."])
+                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_27]-TF-M2. Cho PTTQ. Xét Đ-S:  VTCP, VTPT, điểm thuộc đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_28]-TF-M2. Tạo câu Đ-S: Cho PTTS, xét đúng-sai về VTCP, VTPT, PTTS, PTTQ."])
+                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_28]-TF-M2. Cho PTTS. Xét Đ-S:  VTCP, VTPT, PTTS, PTTQ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_29]-TF-M2. Tạo câu Đ-S: Cho PTTQ, xét đúng-sai về vị trí tương đối của 3 đường thẳng."])
+                item = QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_29]-TF-M2. Cho PTTQ. Xét Đ-S: vị trí tương đối của 3 đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -3784,23 +3784,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_32]-TF-M3. Cho t.giác ABC, biết toạ độ A, pt đường cao BD, CE. Viết pt BC"])
+                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_32]-TF-M3. Cho tam giác ABC, biết toạ độ A, pt đường cao BD, CE. Viết pt BC"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_33]-TF-M3. Cho t.giác ABC, biết toạ độ A, pt trung tuyến BD, CE. Viết pt BC"])
+                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_33]-TF-M3. Cho tam giác ABC, biết toạ độ A, pt trung tuyến BD, CE. Viết pt BC"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_34]-TF-M3. Cho t.giác ABC, biết toạ độ A,trung tuyến BN, đường cao CE. Viết pt BC"])
+                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_34]-TF-M3. Cho tam giác ABC, biết toạ độ A,trung tuyến BN, đường cao CE. Viết pt BC"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_35]-TF-M3. Cho t.giác ABC, biết toạ độ A,2 phân giác BD, CE. Viết pt BC"])
+                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_35]-TF-M3. Cho tam giác ABC, biết toạ độ A,2 phân giác BD, CE. Viết pt BC"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_36]-TF-M3. Cho t.giác ABC biết toạ độ A phân giác BN đường cao CE. Viết pt BC"])
+                item=QTreeWidgetItem(L10_C10_B1_TF, ["[D10_CX_B1_36]-TF-M3. Cho tam giác ABC biết toạ độ A phân giác BN đường cao CE. Viết pt BC"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
