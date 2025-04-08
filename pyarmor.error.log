@@ -1,0 +1,17 @@
+16968 MainProcess 2025-03-26 15:55:00,035
+Traceback (most recent call last):
+  File "C:\Users\NGOC LAM\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyarmor\cli\__main__.py", line 757, in main
+    main_entry(sys.argv[1:])
+  File "C:\Users\NGOC LAM\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyarmor\cli\__main__.py", line 745, in main_entry
+    return args.func(ctx, args)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NGOC LAM\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyarmor\cli\__main__.py", line 237, in cmd_gen
+    builder.process(options)
+  File "C:\Users\NGOC LAM\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyarmor\cli\generate.py", line 155, in process
+    Pytransform3.pre_build(self.ctx)
+  File "C:\Users\NGOC LAM\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyarmor\cli\core\__init__.py", line 120, in pre_build
+    m = Pytransform3.init(ctx)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NGOC LAM\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyarmor\cli\core\__init__.py", line 100, in init
+    m.init_ctx(ctx)
+RuntimeError: request license token failed (104): No error

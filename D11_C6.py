@@ -1501,12 +1501,12 @@ def uz9zu_L11_C6_B2_11():
     s_m, s_n, s_p=sp.symbols("m n p")
 
     noi_dung = (
-    f"Biết $\\log_{a}{phan_so(a**m*b**n*c**p)}=m+n\\log_{a}{b}+p\\log_{a}{c}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
+    f"Biết $\\log_{a}{phan_so(a**m*b**n*c**p)}=m+n\\log_{a} {{{b}}}+p\\log_{a} {{{c}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
     )
     dap_an=t_1*m+t_2*n+t_3*p
 
     noi_dung_loigiai=(
-    f"$\\log_{a}{phan_so(a**m*b**n*c**p)}=\\log_{a}({a}^{{{m}}}.{b}^{{{n}}}.{c}^{{{p}}})={m}+{n}\\log_{a}{b}+{p}\\log_{a}{c}$.\n\n"
+    f"$\\log_{a}{phan_so(a**m*b**n*c**p)}=\\log_{a}({a}^{{{m}}}.{b}^{{{n}}}.{c}^{{{p}}})={m}+{n}\\log_{a} {{{b}}}+{p}\\log_{a} {{{c}}}$.\n\n"
     f"$\\Rightarrow {latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$."
     )
     noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)   
