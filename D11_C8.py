@@ -3695,7 +3695,7 @@ def uvxy9_L11_C8_B3_08():
 		
 	noi_dung_loigiai=f"Gọi M là trung điểm của ${{{B1}{C1}}}, {A1}M={latex(AB*sqrt(3)/2)}a$.\n\n"\
 	f"Góc giữa $(S{B1}{C1})$ và ${{(ABC)}}$ là $\\widehat{{S{A1}M}}$.\n\n"\
-	f"$\\tan \\widehat{{S{A1}M}}=\\dfrac{{S{A1}}}{{{A1}M}}=\\dfrac{{{latex(SA)}a}}{{{latex(AM)}a}}={latex(t)}\\Rightarrow \\widehat{{S{A1}M}}={return_number_vn(goc)}^\\circ$."
+	f"$\\tan \\widehat{{SM{A1}}}=\\dfrac{{S{A1}}}{{{A1}M}}=\\dfrac{{{latex(SA)}a}}{{{latex(AM)}a}}={latex(t)}\\Rightarrow \\widehat{{S{A1}M}}={return_number_vn(goc)}^\\circ$."
 		
 	
     #Tạo các phương án

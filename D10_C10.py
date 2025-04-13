@@ -1162,11 +1162,16 @@ def gghik_L10_CX_B0_15():
 
 	vt_A=f"\\overrightarrow{{{vt_A}}}"
 	vt_B=f"\\overrightarrow{{{vt_B}}}"
+	
+	while True:
+		m=random.choice([random.randint(-6, -1), random.randint(2, 6)])
+		n=random.choice([random.randint(-6, -1), random.randint(2, 6)])
+		if all([m*a1+n*b1!=a1+b1,m*a1+n*b1!=m*a1+b1, m*a1+b1!=m*a1, a1+b1!=m*a1+b1, a1+b1!=m*a1, m*a1+b1!=m*a1]):
+			break
 
-	m=random.choice([random.randint(-6, -1), random.randint(2, 6)])
-	n=random.choice([random.randint(-6, -1), random.randint(2, 6)])
 	noi_dung= thay_dau_congtru(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai véctơ ${vt_A}({a1};{a2})$ và ${vt_B}({b1};{b2})$."\
 	f" Tọa độ vectơ ${m}{vt_A}+{n}{vt_B}$ là")
+		
 
 	kq=f"({m*a1+n*b1}; {m*a2+n*b2})"
 	kq2=f"({a1+b1}; {a2+b2})"
@@ -3784,7 +3789,7 @@ def gghik_L10_CX_B1_19():
 			a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2!=0]):
+			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2!=0, a1/a2!=b1/b2]):
 				break
 		
 
@@ -3803,7 +3808,7 @@ def gghik_L10_CX_B1_19():
 			a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2==0]):
+			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2==0, a1/a2!=b1/b2]):
 				break
 		kq=f"${{{d1}}}$ và ${{{d2}}}$ cắt nhau và vuông góc"
 		kq2=f"${{{d1}}}$ và ${{{d2}}}$ song song"

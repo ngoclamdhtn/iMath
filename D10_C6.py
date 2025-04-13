@@ -1220,9 +1220,8 @@ def tktk_L10_C6_B3_12():
     ts=n0+n1+n2+n3+n4+n5+n6
     kc= (n0*4+n1*5+n2*6+n3*7+n4*8 +n5*9+n6*10)/(n0+n1+n2+n3+n4+n5+n6)
     tbc="{:.1f}".format(kc).replace(".", ",")
-    code_hinh = f"""
-    \\centering
-    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    code_hinh = f"""    
+    \\setlength{{\\tabcolsep}}{{12pt}} 
     \\begin{{tabular}}{{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}}
         \\hline
                  Điểm số & $4$ & 5& $6$ & $7$ & $8$  & $9$ & $10$ \\\\

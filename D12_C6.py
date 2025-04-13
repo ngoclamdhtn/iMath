@@ -5,6 +5,10 @@ import random
 from fractions import Fraction
 import my_module
 from decimal import Decimal, ROUND_HALF_UP
+#Hàm tạo kí hiệu C^k_n
+def ckn(k,n):
+    return f"C^{{{k}}}_{{{n}}}"
+
 # Hàm làm tròn half-up
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
@@ -183,7 +187,7 @@ def newy25_L12_C6_B1_03():
     f" Bạn {Binh} lấy ngẫu nhiên một viên bi trong hộp, không trả lại."
     f" Sau đó bạn {An} lấy ngẫu nhiên một viên bi trong hộp đó."
     f" Gọi A là biến cố: “{An} lấy được viên {bi_trang}”; B là biến cố: “{Binh} lấy được viên {bi_trang}”"
-    f" Tính $P(A|B)$."
+    f" Tính xác suất $P(A|B)$."
     )
     
 
@@ -411,7 +415,7 @@ def newy25_L12_C6_B1_06():
     st_p_a_dk_b=f"{round(p_a_dk_b,2):.2f}".replace(".",",")
 
     noi_dung=(
-    f"Cho hai biến cố ${{A}}$ và ${{B}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(A|B)= {st_p_a_dk_b}$. Tính $P(\\overline{{A}}B)$."
+    f"Cho hai biến cố ${{A}}$ và ${{B}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(A|B)= {st_p_a_dk_b}$. Tính xác suất $P(\\overline{{A}}B)$."
     )
         
 
@@ -496,7 +500,7 @@ def newy25_L12_C6_B1_07():
 
 
     noi_dung=(
-    f"Cho hai biến cố ${{A}}$ và ${{B}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(AB)= {st_p_ab}$. Tính $P(\\overline{{A}}|B)$ (kết quả làm tròn đến hàng phần trăm)."
+    f"Cho hai biến cố ${{A}}$ và ${{B}}$ có $P(A)={st_p_a}, P(B)={st_p_b}, P(AB)= {st_p_ab}$. Tính xác suất $P(\\overline{{A}}|B)$ (kết quả làm tròn đến hàng phần trăm)."
     )
         
 
@@ -737,6 +741,1380 @@ def newy25_L12_C6_B1_09():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C6_B1_10]-SA-M2. Tính xác suất học sinh chơi được môn A biết học sinh chơi được môn B
+def newy25_L12_C6_B1_10():
+    clb=["cờ tướng", "cờ vua", " cầu lông", "bóng đá", "bóng chuyền"]
+    co_vua,co_tuong=random.sample(clb,2)
+    lop=random.choice([f"10A{random.randint(1,9)}", f"11A{random.randint(1,9)}",f"12A{random.randint(1,9)}" ])
+    n_cahai=random.randint(6,12)
+    n_vua=random.randint(15,20)
+    n_tuong=random.choice([i for i in range(15,20) if i!= n_vua])
+    n_lop=n_vua+n_tuong-n_cahai
+
+    noi_dung = (
+    f"Lớp {lop} có ${{{n_lop}}}$ học sinh, mỗi học sinh biết chơi ít nhất một trong hai môn {co_vua} hoặc {co_tuong}."
+    f" Biết rằng có ${{{n_vua}}}$ học sinh biết chơi {co_vua} và ${{{n_tuong}}}$ thành viên biết chơi {co_tuong}."
+    f" Chọn ngẫu nhiên ${{1}}$ học sinh của lớp. Tính xác suất học sinh được chọn biết chơi {co_vua}, biết rằng học sinh đó biết chơi {co_tuong} (kết quả làm tròn đến hàng phần trăm)."
+    )
+    
+    p_AB=n_cahai/n_lop
+    p_B=n_tuong/n_lop
+    p=p_AB/p_B
+    dap_an=f"{round_half_up(p,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f'Gọi ${{A}}$ là biến cố "Học sinh được chọn biết chơi {co_vua}.\n\n'
+    f' Gọi ${{B}}$ là biến cố "Học sinh được chọn biết chơi {co_tuong}.\n\n'
+    f' Số học sinh biết chơi cả hai: ${n_vua}+{n_tuong}-{n_lop}={n_cahai}$.\n\n'
+    f' $P(AB)=\\dfrac{{{n_cahai}}}{{{n_lop}}}={phan_so(p_AB)}$.\n\n'
+    f' $P(B)=\\dfrac{{{n_tuong}}}{{{n_lop}}}={phan_so(p_B)}$.\n\n'
+    f' Xác suất cần tính là: $P(A|B)=\\dfrac{{P(AB)}}{{P(B)}}=\\dfrac{{{phan_so(p_AB)}}}{{{phan_so(p_B)}}}={phan_so(p)}={dap_an}$.'
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_11]-SA-M2. Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính xác suất hai bi cùng màu 
+def newy25_L12_C6_B1_11():
+    while True:
+        X1=random.randint(4,10)
+        D1=random.randint(5,10)
+        X2=random.randint(5,10)
+        D2=random.randint(4,10)
+        if all([X1!=D1, X2!=D2,X1!=X2]):
+            break
+
+    noi_dung = (
+    f"Hộp thứ nhất có ${{{X1}}}$ viên bi xanh và ${{{D1}}}$ viên bi đỏ. Hộp thứ hai có ${{{X2}}}$ viên bi xanh và ${{{D2}}}$ viên bi đỏ."
+    f" Các viên bi có cùng kích thước và khối lượng. Lấy ra ngẫu nhiên ${{1}}$ viên bi từ hộp thứ nhất chuyển sang hộp thứ hai."
+    f" Sau đó lại lấy ra ngẫu nhiên ${{1}}$ viên bi từ hộp thứ hai."
+    f" Tính xác suất của các biến cố hai viên bi lấy ra có cùng màu (kết quả làm tròn đến hàng phần trăm).")
+    p_x=X1/(X1+D1)
+    p_x_ngang=1-p_x
+    p_y_dk_x=D2/(X2+D2+1)
+    p_y_ngang_dk_x=1-p_y_dk_x
+    p_y_dk_x_ngang=(D2+1)/(X2+D2+1)
+    p_y_ngang_dk_x_ngang=1-p_y_dk_x_ngang
+
+    p_a=p_x*p_y_ngang_dk_x+p_x_ngang*p_y_dk_x_ngang
+    dap_an=f"{round_half_up(p_a,2):.2f}".replace(".",",")
+
+    code_hinh=f"\\begin{{tikzpicture}}\n\
+                \\def\\gocm{{20}}\n\
+                \\def\\gocn{{10}}\n\
+                \\def\\r{{4}}\n\
+                \\tikzset{{s/.style={{outer sep=0.5 mm,draw=magenta,rectangle,minimum width=2.75cm,rounded corners=1mm}}}}\n\
+                \\path(0,0)node(O){{}}++(\\gocm:\\r)node[s](A1){{X}}++(\\gocn:\\r)node[s](A2){{$Y$}};\n\
+                \\path(A1)++({{-\\gocn}}:\\r)node[s](a2){{$\\overline{{Y}}$}};\n\
+                \\path(O)++(-\\gocm:\\r)node[s](B1){{$\\overline{{X}}$}}++(\\gocn:\\r)node[s](B2){{$Y$}};\n\
+                \\path(B1)++({{-\\gocn}}:\\r)node[s](b2){{$\\overline{{Y}}$}};\n\
+                \\foreach \\x/\\y in {{\n\
+                    O/A1,A1/A2,\n\
+                    O/B1,B1/B2,\n\
+                    A1/a2,\n\
+                    B1/b2}}\n\
+                \\draw[-stealth](\\x.east)--(\\y.west);\n\
+                \\path(O)--(A1.west)node[pos=0.5,above,sloped]{{${phan_so(p_x)}$}}(O)--(B1.west)node[pos=0.5,below,sloped]{{${phan_so(p_x_ngang)}$}}(B1.east)--(B2.west)node[pos=0.5,above,sloped]{{${phan_so(p_y_dk_x_ngang)}$}}(A1.east)--(A2.west)node[pos=0.5,above,sloped]{{${phan_so(p_y_dk_x)}$}}\n\
+                (A1.east)--(a2.west)node[pos=0.5,below,sloped]{{${phan_so(p_y_ngang_dk_x)}$}}\n\
+                (B1.east)--(b2.west)node[pos=0.5,below,sloped]{{${phan_so(p_y_ngang_dk_x_ngang)}$}};\n\
+                \n\
+            \\end{{tikzpicture}}" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung_loigiai=(    
+    f'Gọi ${{X}}$ là biến cố: "Viên bi lấy ra từ hộp thứ nhất có màu xanh".\n\n'
+    f'Gọi ${{Y}}$ là biến cố: "Viên bi lấy ra từ hộp thứ hai có màu đỏ".\n\n'
+    f'Gọi ${{A}}$ là biến cố: "Hai viên bi lấy ra có cùng màu".\n\n'
+    f'$P(X)={phan_so(p_x)}, P(Y|X)={phan_so(p_y_dk_x)}$.\n\n'
+    f"$P(\\overline{{Y}}|X)=1-P(Y|X)=1-{phan_so(p_y_dk_x)}={phan_so(p_y_ngang_dk_x)}$.\n\n"
+    f'$P(\\overline{{X}})=1-P(X)={phan_so(p_x_ngang)}$.\n\n'
+    f'$P(Y|\\overline{{X}})={phan_so(p_y_dk_x_ngang)}$.\n\n'
+    f'Ta có: $P(A)=P(X\\overline{{Y}})+P(\\overline{{X}}Y)={phan_so(p_x)}.{phan_so(p_y_ngang_dk_x)}+{phan_so(p_x_ngang)}.{phan_so(p_y_dk_x_ngang)}={phan_so(p_a)}={dap_an}$.'
+    )
+
+        
+    debai_word= f"{noi_dung}"
+    loigiai_word=(f"Lời giải:\n {file_name} {noi_dung_loigiai} \n")
+    dap_an=noi_dung_loigiai
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+   
+    f"\\loigiai{{ \\begin{{center}}\n {code_hinh}\n \\end{{center}}\n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_12]-SA-M2. Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính xác suất hai bi khác màu 
+def newy25_L12_C6_B1_12():
+    while True:
+        X1=random.randint(4,10)
+        D1=random.randint(5,10)
+        X2=random.randint(5,10)
+        D2=random.randint(4,10)
+        if all([X1!=D1, X2!=D2]):
+            break
+
+    noi_dung = (
+    f"Hộp thứ nhất có ${{{X1}}}$ viên bi xanh và ${{{D1}}}$ viên bi đỏ. Hộp thứ hai có ${{{X2}}}$ viên bi xanh và ${{{D2}}}$ viên bi đỏ."
+    f" Các viên bi có cùng kích thước và khối lượng. Lấy ra ngẫu nhiên ${{1}}$ viên bi từ hộp thứ nhất chuyển sang hộp thứ hai."
+    f" Sau đó lại lấy ra ngẫu nhiên ${{1}}$ viên bi từ hộp thứ hai."
+    f" Tính xác suất của các biến cố hai viên bi lấy ra khác màu (kết quả làm tròn đến hàng phần trăm).")
+    p_x=X1/(X1+D1)
+    p_x_ngang=1-p_x
+    p_y_dk_x=D2/(X2+D2+1)
+    p_y_ngang_dk_x=1-p_y_dk_x
+    p_y_dk_x_ngang=(D2+1)/(X2+D2+1)
+    p_y_ngang_dk_x_ngang=1-p_y_dk_x_ngang
+
+    p_a=p_x*p_y_dk_x+p_x_ngang*p_y_ngang_dk_x_ngang
+    
+    dap_an=f"{round_half_up(p_a,2):.2f}".replace(".",",")
+
+    code_hinh=f"\\begin{{tikzpicture}}\n\
+                \\def\\gocm{{20}}\n\
+                \\def\\gocn{{10}}\n\
+                \\def\\r{{4}}\n\
+                \\tikzset{{s/.style={{outer sep=0.5 mm,draw=magenta,rectangle,minimum width=2.75cm,rounded corners=1mm}}}}\n\
+                \\path(0,0)node(O){{}}++(\\gocm:\\r)node[s](A1){{X}}++(\\gocn:\\r)node[s](A2){{$Y$}};\n\
+                \\path(A1)++({{-\\gocn}}:\\r)node[s](a2){{$\\overline{{Y}}$}};\n\
+                \\path(O)++(-\\gocm:\\r)node[s](B1){{$\\overline{{X}}$}}++(\\gocn:\\r)node[s](B2){{$Y$}};\n\
+                \\path(B1)++({{-\\gocn}}:\\r)node[s](b2){{$\\overline{{Y}}$}};\n\
+                \\foreach \\x/\\y in {{\n\
+                    O/A1,A1/A2,\n\
+                    O/B1,B1/B2,\n\
+                    A1/a2,\n\
+                    B1/b2}}\n\
+                \\draw[-stealth](\\x.east)--(\\y.west);\n\
+                \\path(O)--(A1.west)node[pos=0.5,above,sloped]{{${phan_so(p_x)}$}}(O)--(B1.west)node[pos=0.5,below,sloped]{{${phan_so(p_x_ngang)}$}}(B1.east)--(B2.west)node[pos=0.5,above,sloped]{{${phan_so(p_y_dk_x_ngang)}$}}(A1.east)--(A2.west)node[pos=0.5,above,sloped]{{${phan_so(p_y_dk_x)}$}}\n\
+                (A1.east)--(a2.west)node[pos=0.5,below,sloped]{{${phan_so(p_y_ngang_dk_x)}$}}\n\
+                (B1.east)--(b2.west)node[pos=0.5,below,sloped]{{${phan_so(p_y_ngang_dk_x_ngang)}$}};\n\
+                \n\
+            \\end{{tikzpicture}}" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung_loigiai=(    
+    f'Gọi ${{X}}$ là biến cố: "Viên bi lấy ra từ hộp thứ nhất có màu xanh".\n\n'
+    f'Gọi ${{Y}}$ là biến cố: "Viên bi lấy ra từ hộp thứ hai có màu đỏ".\n\n'
+    f'Gọi ${{A}}$ là biến cố: "Hai viên bi lấy ra có cùng màu".\n\n'
+    f'$P(X)={phan_so(p_x)}, P(Y|X)={phan_so(p_y_dk_x)}$.\n\n'
+    f"$P(\\overline{{Y}}|X)=1-P(Y|X)=1-{phan_so(p_y_dk_x)}={phan_so(p_y_ngang_dk_x)}$.\n\n"
+    f'$P(\\overline{{X}})=1-P(X)={phan_so(p_x_ngang)}$.\n\n'
+    f'$P(Y|\\overline{{X}})={phan_so(p_y_dk_x_ngang)}$.\n\n'
+    f'$P(A)=P(XY)+P(\\overline{{X}}\\overline{{Y}})={phan_so(p_x)}.{phan_so(p_y_dk_x)}+{phan_so(p_x_ngang)}.{phan_so(p_y_ngang_dk_x_ngang)}={phan_so(p_a)}={dap_an}$.'
+    
+    )
+
+        
+    debai_word= f"{noi_dung}"
+    loigiai_word=(f"Lời giải:\n {file_name} {noi_dung_loigiai} \n")
+    dap_an=noi_dung_loigiai
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"    
+    f"\\loigiai{{\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_13]-SA-M2. x.s giao: Tính x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành
+def newy25_L12_C6_B1_13():
+    p_g=random.randint(10,30)
+    p_k=100-p_g
+    p_d_dk_g=random.randint(78,95)
+    p_d_dk_k=random.randint(55,75)
+    p_d_ngang_dk_g=100-p_d_dk_g
+    p_d_ngang_dk_k=100-p_d_dk_k
+    st_p_g=f"{round_half_up(p_g/100,2):.2f}".replace(".",",")
+    st_p_k=f"{round_half_up(p_k/100,2):.2f}".replace(".",",")
+    st_p_d_dk_g=f"{round_half_up(p_d_dk_g/100,2):.2f}".replace(".",",")
+    st_p_d_dk_k=f"{round_half_up(p_d_dk_k/100,2):.2f}".replace(".",",")
+    st_p_d_ngang_dk_g=f"{round_half_up(p_d_ngang_dk_g/100,2):.2f}".replace(".",",")
+    st_p_d_ngang_dk_k=f"{round_half_up(p_d_ngang_dk_k/100,2):.2f}".replace(".",",")
+
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        noi_dung = (
+        f"Một trường đại học tiến hành khảo sát tình trạng việc làm sau khi tốt nghiệp của sinh viên."
+        f" Kết quả khảo sát cho thấy tỉ lệ người tìm được việc làm đúng chuyên ngành là ${p_d_dk_g}\\%$ đối với sinh viên tốt nghiệp loại giỏi"
+        f" và ${p_d_dk_k}\\%$ đối với sinh viên tốt nghiệp loại khác."
+        f" Tỉ lệ sinh viên tốt nghiệp loại giỏi là ${p_g}\\%$."
+        f" Chọn ngẫu nhiên một sinh viên đã tốt nghiệp của trường."
+        f" Tính xác suất sinh viên đó không tốt nghiệp loại giỏi và được việc làm đúng chuyên ngành (kết quả làm tròn đến hàng phần trăm)."
+
+        )
+        dap_an=f"{round_half_up((p_k*p_d_dk_k)/10000,2):.2f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f'Gọi G là biến cố: "Sinh viên tốt nghiệp loại giỏi".\n\n'
+        f'Gọi $K=\\overline{{G}}$ là biến cố: "Sinh viên tốt nghiệp loại khác".\n\n'
+        f'Khi đó D|G là biến cố: "Sinh viên làm đúng chuyên ngành nếu tốt nghiệp loại giỏi".\n\n'
+        f'Khi đó D|K là biến cố: "Sinh viên làm đúng chuyên ngành nếu tốt nghiệp loại khác".\n\n'
+        f"Ta có: $P(G)={st_p_g},P(K)={st_p_k}, P(D|G)={st_p_d_dk_g}, P(D|K)={st_p_d_dk_k}$.\n\n"
+        f"Xác suất để sinh viên đó không tốt nghiệp loại giỏi và được việc làm đúng chuyên ngành:\n\n"
+        f"$P(KD)=P(K).P(D|K)={st_p_k}.{st_p_d_dk_k}={dap_an}$."
+        )   
+    
+    if chon==2:
+        noi_dung = (
+        f"Một trường đại học tiến hành khảo sát tình trạng việc làm sau khi tốt nghiệp của sinh viên."
+        f" Kết quả khảo sát cho thấy tỉ lệ người tìm được việc làm đúng chuyên ngành là ${p_d_dk_g}\\%$ đối với sinh viên tốt nghiệp loại giỏi"
+        f" và ${p_d_dk_k}\\%$ đối với sinh viên tốt nghiệp loại khác."
+        f" Tỉ lệ sinh viên tốt nghiệp loại giỏi là ${p_g}\\%$."
+        f" Chọn ngẫu nhiên một sinh viên đã tốt nghiệp của trường."
+        f" Tính xác suất sinh viên đó tốt nghiệp loại giỏi và được việc làm đúng chuyên ngành (kết quả làm tròn đến hàng phần trăm)."
+
+        )
+        dap_an=f"{round_half_up((p_g*p_d_dk_g)/10000,2):.2f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f'Gọi G là biến cố: "Sinh viên tốt nghiệp loại giỏi".\n\n'
+        f'Gọi $K=\\overline{{G}}$ là biến cố: "Sinh viên tốt nghiệp loại khác".\n\n'
+        f'Khi đó D|G là biến cố: "Sinh viên làm đúng chuyên ngành nếu tốt nghiệp loại giỏi".\n\n'
+        f'Khi đó D|K là biến cố: "Sinh viên làm đúng chuyên ngành nếu tốt nghiệp loại khác".\n\n'
+        f"Ta có: $P(G)={st_p_g},P(K)={st_p_k}, P(D|G)={st_p_d_dk_g}, P(D|K)={st_p_d_dk_k}$.\n\n"
+        f"Xác suất để sinh viên đó tốt nghiệp loại giỏi và được việc làm đúng chuyên ngành:\n\n"
+        f"$P(GD)=P(G).P(D|G)={st_p_g}.{st_p_d_dk_g}={dap_an}$."
+        )
+
+    code_hinh=f"\\begin{{tikzpicture}}\n\
+                \\def\\gocm{{20}}\n\
+                \\def\\gocn{{10}}\n\
+                \\def\\r{{4}}\n\
+                \\tikzset{{s/.style={{outer sep=0.5 mm,draw=magenta,rectangle,minimum width=2.75cm,rounded corners=1mm}}}}\n\
+                \\path(0,0)node(O){{}}++(\\gocm:\\r)node[s](A1){{$G$}}++(\\gocn:\\r)node[s](A2){{$D$}};\n\
+                \\path(A1)++({{-\\gocn}}:\\r)node[s](a2){{$\\overline{{D}}$}};\n\
+                \\path(O)++(-\\gocm:\\r)node[s](B1){{$K$}}++(\\gocn:\\r)node[s](B2){{$D$}};\n\
+                \\path(B1)++({{-\\gocn}}:\\r)node[s](b2){{$\\overline{{D}}$}};\n\
+                \\foreach \\x/\\y in {{\n\
+                    O/A1,A1/A2,\n\
+                    O/B1,B1/B2,\n\
+                    A1/a2,\n\
+                    B1/b2}}\n\
+                \\draw[-stealth](\\x.east)--(\\y.west);\n\
+                \\path(O)--(A1.west)node[pos=0.5,above,sloped]{{${st_p_g}$}}(O)--(B1.west)node[pos=0.5,below,sloped]{{${st_p_k}$}}(B1.east)--(B2.west)node[pos=0.5,above,sloped]{{${st_p_d_dk_k}$}}(A1.east)--(A2.west)node[pos=0.5,above,sloped]{{${st_p_d_dk_g}$}}\n\
+                (A1.east)--(a2.west)node[pos=0.5,below,sloped]{{${st_p_d_ngang_dk_g}$}}\n\
+                (B1.east)--(b2.west)node[pos=0.5,below,sloped]{{${st_p_d_ngang_dk_k}$}};\n\
+                \n\
+            \\end{{tikzpicture}}" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    
+
+
+     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_14]-M2. X.S giao: Cho x% thực hiện việc A, trong số đó có y% thực hiện việc B. Tính P(AB)
+def newy25_L12_C6_B1_14():
+    p_a=random.randint(15,40)
+    st_p_a=f"{round_half_up(p_a/100,2):.2f}".replace(".",",")
+    p_b_dk_a=random.randint(65,95)
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a/100,2):.2f}".replace(".",",")
+
+    kq=p_a*p_b_dk_a/10000
+    st_kq=f"{round_half_up(p_a*p_b_dk_a/10000,2):.2f}".replace(".",",")
+    # Tạo 10 số ngẫu nhiên khác nhau trong [0, 1), làm tròn 2 chữ số
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    chon=random.randint(1,6)     
+
+    if chon==1:
+        noi_dung=(
+        f" Một nhà máy có ${p_a}\\%$ công nhân đã qua lớp đào tạo kỹ năng nâng cao."
+        f" Trong số công nhân đã được đào tạo, có ${p_b_dk_a}\\%$ hoàn thành công việc đúng thời hạn."
+        f" Chọn ngẫu nhiên một công nhân."
+        f" Tính xác suất người đó được đào tạo và hoàn thành công việc đúng hạn (kết quả làm tròn đến hàng phần trăm).")
+
+        noi_dung_loigiai=(
+        f'Gọi ${{A}}$ là biến cố: "công nhân được đào tạo kỹ năng nâng cao".\n\n'
+        f'Gọi ${{B}}$ là biến cố: "công nhân hoàn thành công việc đúng thời hạn".\n\n'
+        f"Ta có: $P(A)={st_p_a}, P(B|A)={st_p_b_dk_a}$.\n\n"
+        f'Xác suất cần tính: $P(AB)=P(A).P(B|A)={st_kq}$.')
+    
+    if chon==2:
+        noi_dung=(
+        f" Một khảo sát sử dụng laptop cho thấy có ${p_a}\\%$ người dùng là sinh viên."
+        f" Trong số các người dùng là sinh viên, có ${p_b_dk_a}\\%$ sử dụng laptop cá nhân để học tập."
+        f" Chọn ngẫu nhiên một người tham gia khảo sát."
+        f" Tính xác suất người đó là sinh viên và có sử dụng laptop cá nhân để học (kết quả làm tròn đến hàng phần trăm).")
+
+        noi_dung_loigiai=(
+        f'Gọi ${{A}}$ là biến cố: "người dùng là sinh viên".\n\n'
+        f'Gọi ${{B}}$ là biến cố: "người dùng sử dụng laptop cá nhân để học tập".\n\n'
+        f"Ta có: $P(A)={st_p_a}, P(B|A)={st_p_b_dk_a}$.\n\n"
+        f'Xác suất cần tính: $P(AB)=P(A).P(B|A)={st_kq}$.')
+
+    if chon==3:
+        noi_dung=(
+        f" Qua khảo sát một trường THPT cho thấy có ${p_a}\\%$ học sinh tham gia câu lạc bộ thể thao."
+        f" Trong số đó có ${p_b_dk_a}\\%$ tham gia đều đặn hàng tuần."
+        f" Chọn ngẫu nhiên một học sinh tham gia khảo sát."
+        f" Tính xác suất học sinh đó tham gia câu lạc bộ thể thao và đi tập đều đặn hàng tuần (kết quả làm tròn đến hàng phần trăm).")
+
+        noi_dung_loigiai=(
+        f'Gọi ${{A}}$ là biến cố: "học sinh tham gia câu lạc bộ thể thao".\n\n'
+        f'Gọi ${{B}}$ là biến cố: "học sinh đi tập đều đặn hàng tuần".\n\n'        
+        f"Ta có: $P(A)={st_p_a}, P(B|A)={st_p_b_dk_a}$.\n\n"
+        f'Xác suất cần tính: $P(AB)=P(A).P(B|A)={st_kq}$.')
+
+    if chon==4:
+        noi_dung=(
+        f" Một trang thương mại điện tử thống kê có ${p_a}\\%$ khách hàng là thành viên VIP."
+        f" Trong số đó có ${p_b_dk_a}\\%$ sẽ mua hàng ít nhất một lần mỗi tháng."
+        f" Chọn ngẫu nhiên một khách hàng."
+        f" Tính xác suất người đó là thành viên VIP và có mua hàng mỗi tháng (kết quả làm tròn đến hàng phần trăm).")
+
+        noi_dung_loigiai=(
+        f'Gọi ${{A}}$ là biến cố: "khách hàng là thành viên VIP".\n\n'
+        f'Gọi ${{B}}$ là biến cố: "khách hàng mua hàng ít nhất một lần mỗi tháng".\n\n'        
+        f"Ta có: $P(A)={st_p_a}, P(B|A)={st_p_b_dk_a}$.\n\n"
+        f'Xác suất cần tính: $P(AB)=P(A).P(B|A)={st_kq}$.')
+
+    if chon==5:
+        noi_dung=(
+        f" Một công ty có ${p_a}\\%$ nhân viên đi làm bằng xe buýt."
+        f" Trong số đó có ${p_b_dk_a}\\%$ đến đúng giờ mỗi ngày."
+        f" Chọn ngẫu nhiên một nhân viên của công ty."
+        f" Tính xác suất người đó đi làm bằng xe buýt và đến đúng giờ (kết quả làm tròn đến hàng phần trăm).")
+
+        noi_dung_loigiai=(
+        f'Gọi ${{A}}$ là biến cố: "nhân viên đi làm bằng xe buýt".\n\n'
+        f'Gọi ${{B}}$ là biến cố: "nhân viên đến đúng giờ mỗi ngày".\n\n'        
+        f"Ta có: $P(A)={st_p_a}, P(B|A)={st_p_b_dk_a}$.\n\n"
+        f'Xác suất cần tính: $P(AB)=P(A).P(B|A)={st_kq}$.')
+
+    if chon==6:
+        noi_dung=(
+        f" Một công ty khảo sát kỹ năng ngoại ngữ của ứng viên. Kết quả cho thấy có ${p_a}\\%$ ứng viên có chứng chỉ IELTS."
+        f" Trong số ứng viên có chứng chỉ IELTS có ${p_b_dk_a}\\%$ có khả năng giao tiếp tiếng Anh tốt."
+        f" Chọn ngẫu nhiên một ứng viên."
+        f" Tính xác suất ứng viên đó có chứng chỉ IELTS và giao tiếp tiếng Anh tốt (kết quả làm tròn đến hàng phần trăm).")
+
+        noi_dung_loigiai=(
+        f'Gọi ${{A}}$ là biến cố: "ứng viên có chứng chỉ IELTS".\n\n'
+        f'Gọi ${{B}}$ là biến cố: "ứng viên giao tiếp tiếng Anh tốt".\n\n'        
+        f"Ta có: $P(A)={st_p_a}, P(B|A)={st_p_b_dk_a}$.\n\n"
+        f'Xác suất cần tính: $P(AB)=P(A).P(B|A)={st_kq}$.')
+    
+
+    
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D12_C6_B1_15]-SA-M2. X.S A|B: Tính xác suất chọn k bạn cùng giới tính có ít nhất 1 nam (hoặc 1 nữ)
+def newy25_L12_C6_B1_15():
+    so_nam=random.randint(5,9)
+    so_nu=random.randint(5,9)
+    tong=so_nam+so_nu
+    k=random.randint(2,4)
+    nhiemvu=random.choice(["tưới cây", "quét sân", "lau dọn phòng học", "đổ rác" ])
+    giaovien=random.choice(["Thầy chủ nhiệm", "Cô chủ nhiệm", "Giáo viên" ])
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        noi_dung = (
+        f" Một nhóm ${{{so_nam}}}$ học sinh nam và ${{{so_nu}}}$ học sinh nữ tham gia lao động trên sân trường."
+        f" {giaovien} chọn ngẫu nhiên đồng thời ${{{k}}}$ bạn trong nhóm đi {nhiemvu}."
+        f" Tính xác suất để các bạn được chọn có cùng giới tính, biết rằng có ít nhất ${{1}}$ bạn nam được chọn (kết quả làm tròn đến hàng phần trăm)."
+        )
+        
+        n_B=binomial(tong,k)-binomial(so_nu,k)
+        n_AB=binomial(so_nam,k)
+        dap_an=f"{round_half_up(n_AB/n_B,2):.2f}".replace(".",",")
+
+        noi_dung_loigiai=(
+
+        f"Số cách chọn ${{{k}}}$ bạn tùy ý: $n(\\Omega)=C^{k}_{{{tong}}}={binomial(tong,k)}$.\n\n"
+        f'Gọi ${{A}}$ là biến cố "${{{k}}}$ bạn được chọn cùng giới tính".\n\n'
+        f'Gọi ${{B}}$ là biến cố "${{{k}}}$ bạn được chọn có ít nhất ${{1}}$ nam".\n\n'
+        f"$n(B)=C^{k}_{{{tong}}}-C^{k}_{{{so_nu}}}={binomial(tong,k)}-{binomial(so_nu,k)}={n_B}.$\n\n"
+        f"Số cách chọn vừa cùng giới tính vừa ít nhất ${{1}}$ nam: $n(AB)=C^{k}_{{{so_nam}}}={n_AB}$.\n\n"
+        f'Xác suất cần tính: $P(A|B)=\\dfrac{{n(AB)}}{{n(B)}}=\\dfrac{{{n_AB}}}{{{n_B}}}={dap_an}$.'
+        )  
+    
+    if chon==2:
+        noi_dung = (
+        f" Một nhóm ${{{so_nam}}}$ học sinh nam và ${{{so_nu}}}$ học sinh nữ tham gia lao động trên sân trường."
+        f" {giaovien} chọn ngẫu nhiên đồng thời ${{{k}}}$ bạn trong nhóm đi {nhiemvu}."
+        f" Tính xác suất để các bạn được chọn có cùng giới tính, biết rằng có ít nhất ${{1}}$ bạn nữ được chọn (kết quả làm tròn đến hàng phần trăm)."
+        )
+        
+        n_B=binomial(tong,k)-binomial(so_nam,k)
+        n_AB=binomial(so_nu,k)
+        dap_an=f"{round_half_up(n_AB/n_B,2):.2f}".replace(".",",")
+
+        noi_dung_loigiai=(
+
+        f"Số cách chọn ${{{k}}}$ bạn tùy ý: $n(\\Omega)=C^{k}_{{{tong}}}={binomial(tong,k)}$.\n\n"
+        f'Gọi ${{A}}$ là biến cố "${{{k}}}$ bạn được chọn cùng giới tính".\n\n'
+        f'Gọi ${{B}}$ là biến cố "${{{k}}}$ bạn được chọn có ít nhất ${{1}}$ nữ".\n\n'
+        f"$n(B)=C^{k}_{{{tong}}}-C^{k}_{{{so_nam}}}={binomial(tong,k)}-{binomial(so_nam,k)}={n_B}.$\n\n"
+        f"Số cách chọn vừa cùng giới tính vừa ít nhất ${{1}}$ nữ: $n(AB)=C^{k}_{{{so_nu}}}={n_AB}$.\n\n"
+        f'Xác suất cần tính: $P(A|B)=\\dfrac{{n(AB)}}{{n(B)}}=\\dfrac{{{n_AB}}}{{{n_B}}}={dap_an}$.'
+        )     
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_16]-M2. X.S giao: cho sơ đồ cây có P(A), P(B|A), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)
+def newy25_L12_C6_B1_16():
+    bien_co=["A","B","C","D","E","F", "X", "Y"]
+    random.shuffle(bien_co)
+    A,B=bien_co[0:2]
+
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(1-p_a,2)}".replace(".",",")
+
+    b=random.randint(10,20)
+    p_b=b/100
+    st_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    #P(B|A)
+    b_dk_a=random.randint(5,45)
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+
+    #P(B|A_ngang)
+    b_dk_a_ngang=random.randint(5,45)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    p_b_ngang_dk_a_ngang=1-b_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")    
+
+    code_hinh=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{${st_a}$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{$$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{${st_b_dk_a}$}};\n\
+            %X.S B|A_ngang \n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{$$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq=p_a*p_b_ngang_dk_a
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Ta có: $P({A})={st_a},P({B}|{A})={st_b_dk_a}\\Rightarrow P(\\overline{{{B}}}|{A})=1-{st_b_dk_a}={st_b_ngang_dk_a}$.\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|{A})={st_a}.{st_b_ngang_dk_a}={st_kq}$." )
+    
+    if chon==2:
+        kq=p_a_ngang*p_b_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}{B}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Ta có: $P({A})={st_a},P({B}|{A})={st_b_dk_a}\\Rightarrow P(\\overline{{{B}}}|{A})=1-{st_b_dk_a}={st_b_ngang_dk_a}$.\n\n"
+        f"$P({B}|\\overline{{{A}}})=1-P(\\overline{{{B}}}|\\overline{{{A}}})={st_b_dk_a_ngang}$.\n\n"
+        f"$P(\\overline{{{A}}}{B})=P(\\overline{{{A}}}).P({B}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==3:
+        kq=p_a_ngang*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}\\,\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Ta có: $P({A})={st_a},P({B}|{A})={st_b_dk_a}\\Rightarrow P(\\overline{{{B}}}|{A})=1-{st_b_dk_a}={st_b_ngang_dk_a}$.\n\n"
+        f"$P({B}|\\overline{{{A}}})=1-P(\\overline{{{B}}}|\\overline{{{A}}})={st_b_dk_a_ngang}$.\n\n"
+        f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==4:
+        kq=p_a*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+
+    p_b_a=f"{round_half_up(p_a*p_b_dk_a,2):.2f}".replace(".",",")
+    p_b_ngang_a=f"{round_half_up(p_a*p_b_ngang_dk_a,2):.2f}".replace(".",",")
+    p_b_a_ngang=f"{round_half_up(p_a_ngang*p_b_dk_a_ngang,2):.2f}".replace(".",",")
+    p_b_ngang_a_ngang=f"{round_half_up(p_a_ngang*p_b_ngang_dk_a_ngang,2):.2f}".replace(".",",")
+    code_hinh_giai=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{${st_a}$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{${st_a_ngang}$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{${st_b_dk_a}$}};\n\
+            %X.S B_ngang|A \n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a}$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{${st_b_dk_a_ngang}$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A_ngang, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+            %Kết quả\n\
+            \\draw (9.5,3.7) node{{\\textbf{{Kết quả}}}};   \n\
+            \\draw (9.5,2.7) node{{${A}{B}$}};\n\
+            \\draw (9.5,0.7) node{{${A}\\overline{{{B}}}$}};\n\
+            \\draw (9.5,-1.6) node{{$\\overline{{{A}}}{B}$}};\n\
+            \\draw (9.5,-3.4) node{{$\\overline{{{A}}}\\cdot\\overline{{{B}}}$}};\n\
+            %Xác suất\n\
+            \\draw (12.5,3.7) node{{\\textbf{{Xác suất}}}}; \n\
+            \\draw (12.5,2.7) node{{${p_b_a}$}};\n\
+            \\draw (12.5,0.7) node{{${p_b_ngang_a}$}};\n\
+            \\draw (12.5,-1.6) node{{${p_b_a_ngang}$}};\n\
+            \\draw (12.5,-3.4) node{{${p_b_ngang_a_ngang}$}};\n\
+        \\end{{tikzpicture}}" 
+)
+    
+
+    
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+
+    code = my_module.moi_truong_anh_latex(code_hinh_giai)
+    file_name=my_module.pdftoimage_timename(code)
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n{file_name}\n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \\begin{{center}}\n{code_hinh_giai}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B1_17]-M2. X.S giao: cho sơ đồ cây có P(A), P(B|A_), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)
+def newy25_L12_C6_B1_17():
+    bien_co=["A","B","C","D","E","F", "X", "Y"]
+    random.shuffle(bien_co)
+    A,B=bien_co[0:2]
+
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(1-p_a,2)}".replace(".",",")
+
+    b=random.randint(10,20)
+    p_b=b/100
+    st_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    #P(B|A)
+    b_dk_a=random.randint(5,45)
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+
+    #P(B|A_ngang)
+    b_dk_a_ngang=random.randint(5,45)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    p_b_ngang_dk_a_ngang=1-b_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")    
+
+    code_hinh=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{${st_a}$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{$$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            %X.S B_ngang|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{${st_b_dk_a_ngang}$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq=p_a*p_b_ngang_dk_a
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|{A})={st_a}.{st_b_ngang_dk_a}={st_kq}$." )
+    
+    if chon==2:
+        kq=p_a_ngang*p_b_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}{B}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P(\\overline{{{A}}}{B})=P(\\overline{{{A}}}).P({B}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==3:
+        kq=p_a_ngang*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}\\,\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==4:
+        kq=p_a*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+
+    p_b_a=f"{round_half_up(p_a*p_b_dk_a,2):.2f}".replace(".",",")
+    p_b_ngang_a=f"{round_half_up(p_a*p_b_ngang_dk_a,2):.2f}".replace(".",",")
+    p_b_a_ngang=f"{round_half_up(p_a_ngang*p_b_dk_a_ngang,2):.2f}".replace(".",",")
+    p_b_ngang_a_ngang=f"{round_half_up(p_a_ngang*p_b_ngang_dk_a_ngang,2):.2f}".replace(".",",")
+    code_hinh_giai=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{${st_a}$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{${st_a_ngang}$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{${st_b_dk_a}$}};\n\
+            %X.S B|A_ngang \n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a}$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{${st_b_dk_a_ngang}$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+            %Kết quả\n\
+            \\draw (9.5,3.7) node{{\\textbf{{Kết quả}}}};   \n\
+            \\draw (9.5,2.7) node{{${A}{B}$}};\n\
+            \\draw (9.5,0.7) node{{${A}\\overline{{{B}}}$}};\n\
+            \\draw (9.5,-1.6) node{{$\\overline{{{A}}}{B}$}};\n\
+            \\draw (9.5,-3.4) node{{$\\overline{{{A}}}\\cdot\\overline{{{B}}}$}};\n\
+            %Xác suất\n\
+            \\draw (12.5,3.7) node{{\\textbf{{Xác suất}}}}; \n\
+            \\draw (12.5,2.7) node{{${p_b_a}$}};\n\
+            \\draw (12.5,0.7) node{{${p_b_ngang_a}$}};\n\
+            \\draw (12.5,-1.6) node{{${p_b_a_ngang}$}};\n\
+            \\draw (12.5,-3.4) node{{${p_b_ngang_a_ngang}$}};\n\
+        \\end{{tikzpicture}}" 
+)
+    
+
+    
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+
+    code = my_module.moi_truong_anh_latex(code_hinh_giai)
+    file_name=my_module.pdftoimage_timename(code)
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n{file_name}\n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \\begin{{center}}\n{code_hinh_giai}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B1_18]-M2. X.S giao: cho sơ đồ cây có P(A_), P(B|A), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)
+def newy25_L12_C6_B1_18():
+    bien_co=["A","B","C","D","E","F", "X", "Y"]
+    random.shuffle(bien_co)
+    A,B=bien_co[0:2]
+
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(1-p_a,2)}".replace(".",",")
+
+    b=random.randint(10,20)
+    p_b=b/100
+    st_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    #P(B|A)
+    b_dk_a=random.randint(5,45)
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+
+    #P(B|A_ngang)
+    b_dk_a_ngang=random.randint(5,45)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    p_b_ngang_dk_a_ngang=1-b_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")    
+
+    code_hinh=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{${st_a_ngang}$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{${st_b_dk_a}$}};\n\
+            %X.S B_ngang|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{$$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq=p_a*p_b_ngang_dk_a
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|{A})={st_a}.{st_b_ngang_dk_a}={st_kq}$." )
+    
+    if chon==2:
+        kq=p_a_ngang*p_b_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}{B}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P(\\overline{{{A}}}{B})=P(\\overline{{{A}}}).P({B}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==3:
+        kq=p_a_ngang*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}\\,\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==4:
+        kq=p_a*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+
+    p_b_a=f"{round_half_up(p_a*p_b_dk_a,2):.2f}".replace(".",",")
+    p_b_ngang_a=f"{round_half_up(p_a*p_b_ngang_dk_a,2):.2f}".replace(".",",")
+    p_b_a_ngang=f"{round_half_up(p_a_ngang*p_b_dk_a_ngang,2):.2f}".replace(".",",")
+    p_b_ngang_a_ngang=f"{round_half_up(p_a_ngang*p_b_ngang_dk_a_ngang,2):.2f}".replace(".",",")
+    code_hinh_giai=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{${st_a}$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{${st_a_ngang}$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{${st_b_dk_a}$}};\n\
+            %X.S B|A_ngang \n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a}$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{${st_b_dk_a_ngang}$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+            %Kết quả\n\
+            \\draw (9.5,3.7) node{{\\textbf{{Kết quả}}}};   \n\
+            \\draw (9.5,2.7) node{{${A}{B}$}};\n\
+            \\draw (9.5,0.7) node{{${A}\\overline{{{B}}}$}};\n\
+            \\draw (9.5,-1.6) node{{$\\overline{{{A}}}{B}$}};\n\
+            \\draw (9.5,-3.4) node{{$\\overline{{{A}}}\\cdot\\overline{{{B}}}$}};\n\
+            %Xác suất\n\
+            \\draw (12.5,3.7) node{{\\textbf{{Xác suất}}}}; \n\
+            \\draw (12.5,2.7) node{{${p_b_a}$}};\n\
+            \\draw (12.5,0.7) node{{${p_b_ngang_a}$}};\n\
+            \\draw (12.5,-1.6) node{{${p_b_a_ngang}$}};\n\
+            \\draw (12.5,-3.4) node{{${p_b_ngang_a_ngang}$}};\n\
+        \\end{{tikzpicture}}" 
+)
+    
+
+    
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+
+    code = my_module.moi_truong_anh_latex(code_hinh_giai)
+    file_name=my_module.pdftoimage_timename(code)
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n{file_name}\n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \\begin{{center}}\n{code_hinh_giai}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B1_19]-M2. X.S giao: cho sơ đồ cây có P(A_), P(B_|A), P(B|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)
+def newy25_L12_C6_B1_19():
+    bien_co=["A","B","C","D","E","F", "X", "Y"]
+    random.shuffle(bien_co)
+    A,B=bien_co[0:2]
+
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(1-p_a,2)}".replace(".",",")
+
+    b=random.randint(10,20)
+    p_b=b/100
+    st_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    #P(B|A)
+    b_dk_a=random.randint(5,45)
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+
+    #P(B|A_ngang)
+    b_dk_a_ngang=random.randint(5,45)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    p_b_ngang_dk_a_ngang=1-b_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")    
+
+    code_hinh=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{${st_a_ngang}$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{$$}};\n\
+            %X.S B_ngang|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{${st_b_dk_a_ngang}$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{${st_b_ngang_dk_a}$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{$$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq=p_a*p_b_ngang_dk_a
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|{A})={st_a}.{st_b_ngang_dk_a}={st_kq}$." )
+    
+    if chon==2:
+        kq=p_a_ngang*p_b_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}{B}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P(\\overline{{{A}}}{B})=P(\\overline{{{A}}}).P({B}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==3:
+        kq=p_a_ngang*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left(\\overline{{{A}}}\\,\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+    if chon==4:
+        kq=p_a*p_b_ngang_dk_a_ngang
+        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+        noi_dung=(
+        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
+        )
+        noi_dung_loigiai=(
+        f"Dựa vào sơ đồ cây ta được:\n\n"
+        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+
+    p_b_a=f"{round_half_up(p_a*p_b_dk_a,2):.2f}".replace(".",",")
+    p_b_ngang_a=f"{round_half_up(p_a*p_b_ngang_dk_a,2):.2f}".replace(".",",")
+    p_b_a_ngang=f"{round_half_up(p_a_ngang*p_b_dk_a_ngang,2):.2f}".replace(".",",")
+    p_b_ngang_a_ngang=f"{round_half_up(p_a_ngang*p_b_ngang_dk_a_ngang,2):.2f}".replace(".",",")
+    code_hinh_giai=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            %Mui ten A, A_ngang\n\
+            %X.S A\n\
+            \\draw [->] (2.2,-0.5)--(3.8,1.6) node[pos=0.5,sloped,above]{{${st_a}$}};\n\
+            %X.S A_ngang\n\
+            \\draw [->] (2.2,-0.5)--(3.8,-2.6) node[pos=0.5,sloped,below]{{${st_a_ngang}$}}; \n\
+            %Khung A\n\
+            \\draw (3.8,1.1) rectangle (5.1,2.1);\n\
+            \\draw (8.9/2,1.6) node{{${A}$}} ;\n\
+            %Khung A_ngang\n\
+            \\draw (3.8,-2.1) rectangle (5.1,-3.1);\n\
+            \\draw (8.9/2,-2.6) node{{$\\overline{{{A}}}$}} ;\n\
+            %Mui ten B|A, B_ngang|A\n\
+            %X.S B|A\n\
+            \\draw [->] (5.1,1.6)--(6.5,2.6) node[pos=0.5,sloped,above]{{${st_b_dk_a}$}};\n\
+            %X.S B|A_ngang \n\
+            \\draw [->] (5.1,1.6)--(6.5,0.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a}$}}; \n\
+            %Mui ten B|A_ngang, B_ngang|A_ngang\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-1.6) node[pos=0.5,sloped,above]{{${st_b_dk_a_ngang}$}};\n\
+            \\draw [->] (5.1,-2.6)--(6.5,-3.6) node[pos=0.5,sloped,below]{{${st_b_ngang_dk_a_ngang}$}};\n\
+            %Khung 3.1\n\
+            \\draw (6.5,2.2) rectangle (7.7,3.2);\n\
+            \\draw (7.1,5.4/2) node{{${B}$}} ;\n\
+            %Khung B|A, B|A_ngang\n\
+            \\draw (6.5,1.2) rectangle (7.7,0.2);\n\
+            \\draw (7.1,1.4/2) node{{$\\overline{{{B}}}$}} ;\n\
+            %Khung B_ngang|A, B_ngang|A_ngang\n\
+            \\draw (6.5,-1.1) rectangle (7.7,-2.1);\n\
+            \\draw (7.1,-3.2/2) node{{${B}$}} ;           \n\
+            \\draw (6.5,-2.9) rectangle (7.7,-3.9);\n\
+            \\draw (7.1,-3.4) node{{$\\overline{{{B}}}$}} ;\n\
+            %Kết quả\n\
+            \\draw (9.5,3.7) node{{\\textbf{{Kết quả}}}};   \n\
+            \\draw (9.5,2.7) node{{${A}{B}$}};\n\
+            \\draw (9.5,0.7) node{{${A}\\overline{{{B}}}$}};\n\
+            \\draw (9.5,-1.6) node{{$\\overline{{{A}}}{B}$}};\n\
+            \\draw (9.5,-3.4) node{{$\\overline{{{A}}}\\cdot\\overline{{{B}}}$}};\n\
+            %Xác suất\n\
+            \\draw (12.5,3.7) node{{\\textbf{{Xác suất}}}}; \n\
+            \\draw (12.5,2.7) node{{${p_b_a}$}};\n\
+            \\draw (12.5,0.7) node{{${p_b_ngang_a}$}};\n\
+            \\draw (12.5,-1.6) node{{${p_b_a_ngang}$}};\n\
+            \\draw (12.5,-3.4) node{{${p_b_ngang_a_ngang}$}};\n\
+        \\end{{tikzpicture}}" 
+)
+    
+
+    
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+
+    code = my_module.moi_truong_anh_latex(code_hinh_giai)
+    file_name=my_module.pdftoimage_timename(code)
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n{file_name}\n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \\begin{{center}}\n{code_hinh_giai}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+
 #Bài 2: Công thức xác suất toàn phần
 #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
 def newy25_L12_C6_B2_01():
@@ -761,7 +2139,7 @@ def newy25_L12_C6_B2_01():
 
     noi_dung = (
     f"Cho hai biến cố ${{{A}}}$, ${{{B}}}$ với $P({B})={st_p_b}$; $P({A}|{B}) ={st_p_a_dk_b}$ và $P\\left({A}|\\overline{{{B}}}\\right)={st_p_a_dk_b_ngang}$."
-    f" Tính $P({A})$ (kết quả làm tròn đến hàng phần trăm)."
+    f" Tính xác suất $P({A})$ (kết quả làm tròn đến hàng phần trăm)."
     )
     dap_an=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
     dap_an=f"{round_half_up(dap_an,2):.2f}".replace(".",",")
@@ -771,7 +2149,7 @@ def newy25_L12_C6_B2_01():
     f"Áp dụng công thức toàn phần ta có:\n\n"
     f"$P({A}) = P({A}|{B}). P({B}) + P\\left({A}|\\overline{{{B}}}\\right).P\\left(\\overline{{{B}}}\\right)$"
     f"$={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={dap_an}$."
-    )    
+    )   
         
     debai_word= f"{noi_dung}"
 
@@ -1505,3 +2883,1757 @@ f" Tính xác suất sản phẩm đó được phát triển bởi {ten_1} (k�
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_13]-SA-M2. X.s toàn phần: Tính x.s sinh viên làm việc đúng chuyên ngành
+def newy25_L12_C6_B2_13():
+    p_g=random.randint(10,30)
+    p_k=100-p_g
+    p_d_dk_g=random.randint(80,95)
+    p_d_dk_k=random.randint(65,78)
+    st_p_g=f"{round_half_up(p_g/100,2):.2f}".replace(".",",")
+    st_p_k=f"{round_half_up(p_k/100,2):.2f}".replace(".",",")
+    st_p_d_dk_g=f"{round_half_up(p_d_dk_g/100,2):.2f}".replace(".",",")
+    st_p_d_dk_k=f"{round_half_up(p_d_dk_k/100,2):.2f}".replace(".",",")
+
+
+    noi_dung = (
+    f"Một trường đại học tiến hành khảo sát tình trạng việc làm sau khi tốt nghiệp của sinh viên."
+    f" Kết quả khảo sát cho thấy tỉ lệ người tìm được việc làm đúng chuyên ngành là ${p_d_dk_g}\\%$ đối với sinh viên tốt nghiệp loại giỏi"
+    f" và ${p_d_dk_k}\\%$ đối với sinh viên tốt nghiệp loại khác."
+    f" Tỉ lệ sinh viên tốt nghiệp loại giỏi là ${p_g}\\%$."
+    f" Chọn ngẫu nhiên một sinh viên đã tốt nghiệp của trường."
+    f" Tính xác suất sinh viên đó tìm được việc làm đúng chuyên ngành (kết quả làm tròn đến hàng phần trăm)."
+
+    )
+    dap_an=f"{round_half_up((p_g*p_d_dk_g+p_k*p_d_dk_k)/10000,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f'Gọi G là biến cố: "Sinh viên tốt nghiệp loại giỏi".\n\n'
+    f'Gọi K là biến cố: "Sinh viên tốt nghiệp loại khác".\n\n'
+    f'Khi đó D|G là biến cố: "Sinh viên làm đúng chuyên ngành nếu tốt nghiệp loại giỏi".\n\n'
+    f'Khi đó D|K là biến cố: "Sinh viên làm đúng chuyên ngành nếu tốt nghiệp loại khác".\n\n'
+    f"Ta có: $P(G)={st_p_g},P(K)={st_p_k}, P(D|G)={st_p_d_dk_g}, P(D|K)={st_p_d_dk_k}$.\n\n"
+    f"Xác suất để sinh viên đó tìm được việc làm đúng chuyên ngành:\n\n"
+    f"$P(D)=P(G).P(D|G)+P(K).P(D|K)={st_p_g}.{st_p_d_dk_g}+{st_p_k}.{st_p_d_dk_k}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_14]-M2. X.s toàn phần:  Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
+def newy25_L12_C6_B2_14():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=random.randint(55,70)
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(5,20)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(45,75)
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    noi_dung = (
+    f"Cho hai biến cố ${{{A}}}$, ${{{B}}}$ với $P({B})={st_p_b}$; $P({A}|{B}) ={st_p_a_dk_b}$ và $P\\left({A}|\\overline{{{B}}}\\right)={st_p_a_dk_b_ngang}$."
+    f" Tính xác suất $P({A})$ (kết quả làm tròn đến hàng phần trăm)."
+    )
+    kq=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Ta có: $P(\\overline{{{B}}})=1-P({B})={st_p_b_ngang}$.\n\n"
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P({A}) = P({A}|{B}). P({B}) + P\\left({A}|\\overline{{{B}}}\\right).P\\left(\\overline{{{B}}}\\right)$"
+    f"$={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={kq}$."
+    )   
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_15]-M2. X.s toàn phần:  Cho P(B), tỉ lệ A xảy ra nếu B, A xảy ra nếu B không xảy ra. Tính P(A).
+def newy25_L12_C6_B2_15():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=random.randint(10,70)
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(5,40)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(45,75)
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    noi_dung=(
+    f"Cho ${{{A},{B}}}$ là các biến cố. Biết $P({B})={st_p_b}$."
+    f" Nếu ${{{B}}}$ xảy ra thì tỉ lệ ${{{A}}}$ xảy ra là ${a_dk_b}\\%$."
+    f" Nếu ${{{B}}}$ không xảy ra thì tỉ lệ ${{{A}}}$ xảy ra là ${a_dk_b_ngang}\\%$."
+    f" Tính xác suất của biến cố ${{{A}}}$ (kết quả làm tròn đến hàng phần trăm)." )
+    
+
+    kq=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+  
+
+    noi_dung_loigiai=(
+    f"Ta có: $P(\\overline{{{B}}})=1-P({B})={st_p_b_ngang}, P({A}|{B})={st_p_a_dk_b}, P({A}|\\overline{{{B}}})={st_p_a_dk_b_ngang}$.\n\n"
+    f"$P({A})=P({A}|{B}).P({B})+P({A}|\\overline{{{B}}}).P(\\overline{{{B}}})$"
+    f" $={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={kq}$."
+    )
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_16]-M2. X.s toàn phần:  Cho P(A), P(A|B), P(A|B_ngang). Tính P(B).
+def newy25_L12_C6_B2_16():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=random.randint(35,70)
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(45,60)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(5,20)
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    a=random.randint(22,40)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    noi_dung = (
+    f"Cho hai biến cố ${{{A}}}$, ${{{B}}}$ với $P({A})={st_p_a}$; $P({A}|{B}) ={st_p_a_dk_b}$ và $P\\left({A}|\\overline{{{B}}}\\right)={st_p_a_dk_b_ngang}$."
+    f" Tính xác suất $P({B})$ (kết quả làm tròn đến hàng phần trăm)."
+    )
+    
+    
+
+    
+    x=sp.symbols("x")
+    eq=Eq(p_a,p_a_dk_b*x+p_a_dk_b_ngang*(1-x))
+    tap_nghiem=solve(eq,x)
+    p_b=tap_nghiem[0]
+    kq=f"{round_half_up(p_b,2):.2f}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    noi_dung_loigiai=(
+    f"Đặt $P({B})=x \\Rightarrow P(\\overline{{{B}}})=1-x$.\n\n"
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P({A}) = P({A}|{B}). P({B}) + P\\left({A}|\\overline{{{B}}}\\right).P\\left(\\overline{{{B}}}\\right)$\n\n"
+    f"$\\Leftrightarrow {st_p_a}={st_p_a_dk_b}x+{st_p_a_dk_b_ngang}(1-x)$\n\n"
+    f"$\\Rightarrow x={kq}$."
+    )   
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_17]-M2. X.s tphần:  Cho P(B):Tỉ lệ tiêm vắc xin, P(A|B):tỉ lệ mắc bệnh nếu tiêm , P(A|B_ngang):tỉ lệ mắc bệnh nếu chưa tiêm. Tính P(A): x.s mắc bệnh
+def newy25_L12_C6_B2_17():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=random.randint(50,75)
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(5,20)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(45,85)
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    noi_dung = (
+    f"Tỉ lệ người dân đã tiêm vắc xin phòng bệnh X ở một địa phương là ${b}\\%$."
+    f" Trong số những người đã tiêm phòng, tỉ lệ mắc bệnh X là ${a_dk_b}\\%$,"
+    f" còn trong số những người chưa tiêm, tỉ lệ mắc bệnh X là ${a_dk_b_ngang}\\%$."
+    f" Gặp ngẫu nhiên một người ở địa phương đó. Xác suất người đó mắc bệnh X là (kết quả làm tròn đến hàng phần trăm)."
+    )
+    kq=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f' Gọi ${{M}}$ là biến cố "người được gặp mắc bệnh".\n\n'
+    f' Gọi ${{T}}$ là biến cố "người được gặp đã tiêm phòng vắc xin".\n\n'
+    f' Suy ra $\\overline{{T}}$ là biến cố "người được gặp chưa tiêm phòng vắc xin".\n\n'
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(M) = P(M|T). P(T) + P\\left(M|\\overline{{T}}\\right).P\\left(\\overline{{T}}\\right)$"
+    f"$={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={kq}$."
+    )   
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_18]-M2. X.s tphần:  Cho tỉ lệ hút thuốc, tỉ lệ mắc bệnh nếu hút, tỉ lệ mắc bệnh nếu không hút. Tính x.s mắc bệnh
+def newy25_L12_C6_B2_18():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=random.randint(15,35)
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(55,85)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(5,25)
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    noi_dung = (
+    f"Kết quả khảo sát tại một xã cho thấy có ${b}\\%$ cư dân hút thuốc lá."
+    f" Tỉ lệ cư dân thường xuyên gặp các vấn đề sức khoẻ về đường hô hấp trong số những người hút thuốc lá và không hút thuốc lá lần lượt là ${a_dk_b}\\%$, ${a_dk_b_ngang}\\%$."
+    f" Tỉ lệ gặp một cư dân của xã thì xác suất người đó thường xuyên gặp các vấn đề sức khoẻ về đường hô hấp là bao nhiêu phần trăm (kết quả làm tròn đến hàng đơn vị)?"
+    )
+    kq=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    kq=f"{round_half_up(kq*100,0)}".replace(".0","")
+
+    noi_dung_loigiai=(
+    f' Gọi ${{B}}$ là biến cố "người được gặp thường xuyên gặp các vấn đề sức khoẻ về đường hô hấp".\n\n'
+    f' Gọi ${{H}}$ là biến cố "người được gặp có hút thuốc lá".\n\n'
+    f' Suy ra $\\overline{{H}}$ là biến cố "người được gặp không hút thuốc lá".\n\n'
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(B) = P(B|H). P(H) + P\\left(B|\\overline{{H}}\\right).P\\left(\\overline{{H}}\\right)$"
+    f"$={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={kq}\\%$."
+    )   
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2*100,0)}".replace(".0","")
+    kq3=f"{round_half_up(kq3*100,0)}".replace(".0","")
+    kq4=f"{round_half_up(kq4*100,0)}".replace(".0","")
+    
+
+    pa_A= f"*${{{kq}}}\\%$"
+    pa_B= f"${{{kq2}}}\\%$"
+    pa_C= f"${{{kq3}}}\\%$"
+    pa_D= f"${{{kq4}}}\\%$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_19]-M3. X.s tphần:  Cho 2 phòng khả năng chọn như nhau, cho tỉ lệ bệnh nhân nam ở các phòng. Tính x.s người bệnh là nam
+def newy25_L12_C6_B2_19():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    b=50
+    p_b=b/100
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    p_b_ngang=1-p_b
+    st_p_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+
+
+    a_dk_b=random.randint(55,75)
+    p_a_dk_b=a_dk_b/100
+    st_p_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+
+    a_dk_b_ngang=random.randint(45,65)
+    if a_dk_b_ngang==a_dk_b:
+        a_dk_b_ngang+=5
+    p_a_dk_b_ngang=a_dk_b_ngang/100
+    st_p_a_dk_b_ngang=f"{round_half_up(p_a_dk_b_ngang,2)}".replace(".",",")
+
+    nam=random.choice(["nam", "nữ"])
+
+    noi_dung = (
+    f"Một bệnh viện có hai phòng khám là phòng ${{A}}$ và phòng ${{B}}$ với khả năng lựa chọn của bệnh nhân là như nhau."
+    f" Tỉ lệ bệnh nhân {nam} có ở phòng ${{A}}$ và phòng ${{B}}$ lần lượt là lần lượt là ${a_dk_b}\\%$ và ${a_dk_b_ngang}\\%$."
+    f" Chọn ngẫu nhiên một người bệnh từ hai phòng khám. Xác suất người bệnh này là {nam} là (kết quả làm tròn đến hàng phần trăm)"
+    )
+    kq=p_a_dk_b*p_b+p_a_dk_b_ngang*p_b_ngang
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f' Gọi ${{N}}$ là biến cố "người bệnh được chọn là {nam}".\n\n'
+    f' Gọi ${{A}}$ là biến cố "người bệnh được chọn ở phòng khám A".\n\n'
+    f' Gọi ${{B}}$ là biến cố "người bệnh được chọn ở phòng khám B".\n\n'
+    f' Ta có: $P(A)=P(B)=0,5$.\n\n'
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(N) = P(N|A). P(A) + P\\left(N|B\\right).P(B)$"
+    f"$={st_p_a_dk_b}.{st_p_b}+{st_p_a_dk_b_ngang}.{st_p_b_ngang}={kq}$."
+    )   
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_20]-M3. X.s tphần:  Lấy 1 bi từ hộp I bỏ qua hộp II. Tính x.s hai bi lấy từ hộp hai có màu nào đó.
+def newy25_L12_C6_B2_20():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)   
+
+    mau=["xanh", "đỏ", "trắng", "đen", "vàng"]
+    xanh, do=random.sample(mau,2)
+    while True:
+        X1=random.randint(3,8)
+        D1=random.randint(3,9)
+        X2=random.randint(3,10)
+        D2=random.randint(4,11)
+        if X1!=X2 or D1!=D2:
+            break
+
+    noi_dung = (
+    f"Hộp thứ nhất có ${{{X1}}}$ viên bi {xanh} và ${{{D1}}}$ viên bi {do}. Hộp thứ hai có ${{{X2}}}$ viên bi {xanh} và ${{{D2}}}$ viên bi {do}."
+    f" Các viên bi có cùng kích thước và khối lượng. Lấy ra ngẫu nhiên 1 viên bi từ hộp thứ nhất" 
+    f" chuyển sang hộp thứ hai. Sau đó lại lấy ra ngẫu nhiên đồng thời 2 viên bi từ hộp thứ hai." 
+    f" Xác suất để hai viên bi lấy ra từ hộp thứ hai là bi {xanh} là"   )   
+
+    
+    tong=X2+D2+1
+    p_a=X1/(X1+D1)
+    p_a_ngang=1-p_a
+    p_b_dk_a=binomial(X2+1,2)/binomial(tong,2)
+    p_b_dk_a_ngang=binomial(X2,2)/binomial(tong,2)
+    kq=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    noi_dung_loigiai=(
+    f' Gọi ${{A}}$ là biến cố "Viên bi được chuyển từ hộp thứ nhất sang hộp thứ hai là viên bi {xanh}".\n\n'
+    f' Gọi ${{B}}$ là biến cố "Hai viên bi được lấy ngẫu nhiên đồng thời từ hộp thứ hai là bi {xanh}".\n\n'
+    f' Ta có: $P(A)=\\dfrac{{{X1}}}{{{X1}+{D1}}}={phan_so(p_a)}$.\n\n'
+    f' Ta có: $P(\\overline{{A}})=1-{phan_so(X1/(X1+D1))}={phan_so(p_a_ngang)}$.\n\n'
+    f' $P(B|A)=\\dfrac{{{ckn(2,X1+X2)}}}{{{ckn(2,tong)}}}={phan_so(p_b_dk_a)}$.\n\n'
+    f' $P(B|\\overline{{A}})=\\dfrac{{{ckn(2,X2)}}}{{{ckn(2,tong)}}}={phan_so(p_b_dk_a_ngang)}$.\n\n'
+
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(B) = P(B|A). P(A) + P\\left(B|\\overline{{A}}\\right).P(\\overline{{A}})$"
+    f"$={phan_so(p_b_dk_a)}.{phan_so(p_a)}+{phan_so(p_b_dk_a_ngang)}.{phan_so(p_a_ngang)}={phan_so(kq)}$."
+    )  
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=phan_so(kq2)
+    kq3=phan_so(kq3)
+    kq4=phan_so(kq4)
+    
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_21]-SA-M3. X.s tphần:  Lấy 1 bi từ hộp I bỏ qua hộp II. Tính x.s hai bi lấy từ hộp hai có màu nào đó.
+def newy25_L12_C6_B2_21():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)   
+
+    mau=["xanh", "đỏ", "trắng", "đen", "vàng"]
+    xanh, do=random.sample(mau,2)
+    while True:
+        X1=random.randint(3,8)
+        D1=random.randint(3,9)
+        X2=random.randint(3,10)
+        D2=random.randint(4,11)
+        if X1!=X2 or D1!=D2:
+            break
+
+    noi_dung = (
+    f"Hộp thứ nhất có ${{{X1}}}$ viên bi {xanh} và ${{{D1}}}$ viên bi {do}. Hộp thứ hai có ${{{X2}}}$ viên bi {xanh} và ${{{D2}}}$ viên bi {do}."
+    f" Các viên bi có cùng kích thước và khối lượng. Lấy ra ngẫu nhiên 1 viên bi từ hộp thứ nhất" 
+    f" chuyển sang hộp thứ hai. Sau đó lại lấy ra ngẫu nhiên đồng thời 2 viên bi từ hộp thứ hai." 
+    f" Xác suất để hai viên bi lấy ra từ hộp thứ hai là bi {xanh} là (kết quả làm tròn đến hàng phần trăm)"   )   
+
+    
+    tong=X2+D2+1
+    p_a=X1/(X1+D1)
+    p_a_ngang=1-p_a
+    p_b_dk_a=binomial(X2+1,2)/binomial(tong,2)
+    p_b_dk_a_ngang=binomial(X2,2)/binomial(tong,2)
+    kq=f"{round_half_up(p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang,2):.2f}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    noi_dung_loigiai=(
+    f' Gọi ${{A}}$ là biến cố "Viên bi được chuyển từ hộp thứ nhất sang hộp thứ hai là viên bi {xanh}".\n\n'
+    f' Gọi ${{B}}$ là biến cố "Hai viên bi được lấy ngẫu nhiên đồng thời từ hộp thứ hai là bi {xanh}".\n\n'
+    f' Ta có: $P(A)=\\dfrac{{{X1}}}{{{X1}+{D1}}}={phan_so(p_a)}$.\n\n'
+    f' Ta có: $P(\\overline{{A}})=1-{phan_so(X1/(X1+D1))}={phan_so(p_a_ngang)}$.\n\n'
+    f' $P(B|A)=\\dfrac{{{ckn(2,X1+X2)}}}{{{ckn(2,tong)}}}={phan_so(p_b_dk_a)}$.\n\n'
+    f' $P(B|\\overline{{A}})=\\dfrac{{{ckn(2,X2)}}}{{{ckn(2,tong)}}}={phan_so(p_b_dk_a_ngang)}$.\n\n'
+
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(B) = P(B|A). P(A) + P\\left(B|\\overline{{A}}\\right).P(\\overline{{A}})$"
+    f"$={phan_so(p_b_dk_a)}.{phan_so(p_a)}+{phan_so(p_b_dk_a_ngang)}.{phan_so(p_a_ngang)}={kq}$." )  
+    
+    
+    dap_an=kq
+    
+
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_22]-M2. X.s tphần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư
+def newy25_L12_C6_B2_22():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    a=random.randint(5,15)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    p_a_ngang=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(55,80)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(5,30)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+    tuoi=random.choice([10*i for i in range(3,7) ])
+
+    noi_dung = (
+    f"Ở một địa phương $X$, xác suất để một người lớn trên ${{40}}$ tuổi mắc bệnh ung thư là ${{{st_p_a}}}$."
+    f"  Xác suất bác sĩ chẩn đoán đúng một người mắc bệnh ung thư là ${{{st_p_b_dk_a}}}$"
+    f" và chẩn đoán sai (không bị ung thư nhưng được chẩn đoán mắc bệnh) là ${{{st_p_b_dk_a_ngang}}}$."
+    f" Xác suất để một người nhận được kết quả chẩn đoán không bị ung thư bằng (kết quả làm tròn đến hàng phần trăm)."
+    )
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    kq=1-p_b
+
+    
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f' Gọi ${{A}}$ là biến cố "Người đó mắc ung thư".\n\n'
+    f' Gọi ${{B}}$ là biến cố "Bác sĩ chẩn đoán người đó bị ung thư".\n\n'
+    f' $\\overline{{B}}$ là biến cố "Bác sĩ chẩn đoán người đó không bị ung thư".\n\n'
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(B) = P(B|A). P(A) + P\\left(B|\\overline{{A}}\\right).P\\left(\\overline{{A}}\\right)$"
+    f"$={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={phan_so(p_b)}$.\n\n"
+    f"Xác suất để một người nhận được kết quả chẩn đoán không bị ung thư:\n\n"
+    f"$P(\\overline{{B}})=1-P(B)=1-{phan_so(p_b)}={kq}$."
+    )
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")
+    
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_23]-SA-M3. x.s tphần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư
+def newy25_L12_C6_B2_23():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    a=random.randint(5,15)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    p_a_ngang=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(55,80)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(5,30)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+    tuoi=random.choice([10*i for i in range(3,7) ])
+
+    noi_dung = (
+    f"Ở một địa phương $X$, xác suất để một người lớn trên ${{40}}$ tuổi mắc bệnh ung thư là ${{{st_p_a}}}$."
+    f"  Xác suất bác sĩ chẩn đoán đúng một người mắc bệnh ung thư là ${{{st_p_b_dk_a}}}$"
+    f" và chẩn đoán sai (không bị ung thư nhưng được chẩn đoán mắc bệnh) là ${{{st_p_b_dk_a_ngang}}}$."
+    f" Xác suất để một người nhận được kết quả chẩn đoán không bị ung thư bằng (kết quả làm tròn đến hàng phần trăm)."
+    )
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    kq=1-p_b
+
+    
+    kq_false = []
+    while len(kq_false) < 10:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=kq, num!=0]):
+            kq_false.append(num)
+
+    dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f' Gọi ${{A}}$ là biến cố "Người đó mắc ung thư".\n\n'
+    f' Gọi ${{B}}$ là biến cố "Bác sĩ chẩn đoán người đó bị ung thư".\n\n'
+    f' $\\overline{{B}}$ là biến cố "Bác sĩ chẩn đoán người đó không bị ung thư".\n\n'
+    f"Áp dụng công thức toàn phần ta có:\n\n"
+    f"$P(B) = P(B|A). P(A) + P\\left(B|\\overline{{A}}\\right).P\\left(\\overline{{A}}\\right)$"
+    f"$={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={phan_so(p_b)}$.\n\n"
+    f"Xác suất để một người nhận được kết quả chẩn đoán không bị ung thư:\n\n"
+    f"$P(\\overline{{B}})=1-P(B)=1-{phan_so(p_b)}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B2_24]-TF-M3. Cho tỉ lệ nam tham gia, tỉ lệ nam đậu sát hạch, nữ đậu sát hạch. Xét Đ-S: tỉ lệ nữ, x.s nam đậu, x.s nữ đậu, x.s đậu
+def newy25_L12_C6_B2_24():
+    a=random.randint(60,75)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    b=100-a
+    p_a_ngang=1-p_a
+    p_b=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(65,90)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(55,85)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    p_not_d_dk_nu=1-p_b_dk_a_ngang
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+
+    noi_dung = f" Trong một kì sát hạch lái xe có ${a}\\%$ thí sinh nam. Biết rằng ${b_dk_a}\\%$ thí sinh nam và ${b_dk_a_ngang}\\% $ thí sinh nữ đỗ sát hạch kì này. Chọn ngẫu nhiên một thí sinh trong kỳ sát hạch. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Tỉ lệ chọn được một thí sinh nữ là ${b}\\%$" 
+    kq1_F=f"Tỉ lệ chọn được một thí sinh nữ là ${b-random.randint(1,5)}\\%$"
+    
+    HDG=f"Theo đề bài ta có: $P(M)={a}\\%={st_p_a} \\Rightarrow P(N)={b}\\%={st_p_b}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b_dk_a*p_a, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_d_nam_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+
+    kq2_T=f"* Xác suất chọn được một thí sinh nam và đỗ sát hạch là ${{{p_d_nam}}}$"
+    kq2_F=f"Xác suất chọn được một thí sinh nam và đỗ sát hạch là ${{{p_d_nam_false}}}$"
+    
+    HDG=f"Xác suất chọn được một thí sinh nam và đỗ sát hạch là: \n\n $P(DM)=P(D|M).P(M)={b_dk_a}.{p_a}={p_d_nam}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_not_d_nu=f"{round_half_up(p_not_d_dk_nu*p_b,2):.2f}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_not_d_dk_nu*p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_not_d_nu_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+    kq3_T=f"* Xác suất chọn được một thí sinh nữ và không đỗ sát hạch là ${{{p_not_d_nu}}}$" 
+    kq3_F=f"Xác suất chọn được một thí sinh nữ và không đỗ sát hạch là ${{{p_not_d_nu_false}}}$"
+    
+    HDG=(f" Xác suất chọn được một không đỗ sát hạch là nữ bằng:\n\n"
+        f" $P(\\overline{{D}}N)=P(\\overline{{D}}|N).P(N)={st_p_not_d_dk_nu}.{st_p_b}={p_not_d_nu}$.\n\n"
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq_false=random.choice(kq_false)
+    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+
+    kq4_T=f"* Xác suất chọn được một thí sinh đỗ sát hạch là ${{{st_p_b}}}$"
+    kq4_F=f"Xác suất chọn được một thí sinh đỗ sát hạch là ${{{st_p_b_false}}}$" 
+    
+    HDG=(f"Xác suất chọn được một thí sinh đỗ sát hạch là:\n\n"
+        f"$P(D)=P(D|M).P(M)+P(D|N).P(N)={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={st_p_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n\n"
+        f"Xét các biến cố sau:\n\n"
+        f"${{D}}$: Thí sinh đỗ kì sát hạch\n\n"
+        f"${{M}}$: Thí sinh là nam giới\n\n"
+        f"${{N}}$: Thí sinh là nữ giới\n\n"
+        f"${{D|M}}$: Thí sinh nam đỗ kì sát hạch\n\n"
+        f"${{D|N}}$: Thí sinh nữ đỗ kì sát hạch\n\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_25]-TF-M3. Cho tỉ lệ ứng viên có kinh nghiệm, tỉ lệ ứng viên có kinh nghiệ vượt qua vòng phỏng vấn. Xét Đ-S: x.s giao, x.s toàn phần
+def newy25_L12_C6_B2_25():
+    a=random.randint(60,75)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    b=100-a
+    p_a_ngang=1-p_a
+    p_b=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(65,90)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(45,65)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    p_not_d_dk_nu=1-p_b_dk_a_ngang
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+
+    noi_dung = f" Trong một đợt tuyển dụng của công ty, có ${a}\\%$ ứng viên có kinh nghiệm. Biết rằng ${b_dk_a}\\%$ ứng viên có kinh nghiệm và ${b_dk_a_ngang}\\% $ ứng viên chưa có kinh nghiệm vượt qua vòng phỏng vấn. Chọn ngẫu nhiên một ứng viên trong đợt tuyển dụng. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Tỉ lệ chọn được một ứng viên chưa có kinh nghiệm là ${b}\\%$" 
+    kq1_F=f"Tỉ lệ chọn được một ứng viên chưa có kinh nghiệm ${b-random.randint(1,5)}\\%$"
+    
+    HDG=f"Theo đề bài ta có: $P(M)={a}\\%={st_p_a} \\Rightarrow P(N)={b}\\%={st_p_b}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b_dk_a*p_a, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_d_nam_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+
+    kq2_T=f"* Xác suất chọn được một ứng viên có kinh nghiệm và vượt qua phỏng vấn là ${{{p_d_nam}}}$"
+    kq2_F=f"Xác suất chọn được một ứng viên có kinh nghiệm và vượt qua phỏng vấn là ${{{p_d_nam_false}}}$"
+    
+    HDG=f"Xác suất chọn được một ứng viên có kinh nghiệm và vượt qua phỏng vấn là: \n\n $P(DM)=P(D|M).P(M)={b_dk_a}.{p_a}={p_d_nam}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_not_d_nu=f"{round_half_up(p_not_d_dk_nu*p_b,2):.2f}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_not_d_dk_nu*p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_not_d_nu_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+    kq3_T=f"* Xác suất chọn được một ứng viên chưa có kinh nghiệm và không vượt qua phỏng vấn là ${{{p_not_d_nu}}}$" 
+    kq3_F=f"Xác suất chọn được một ứng viên chưa có kinh nghiệm và không vượt qua phỏng vấn là ${{{p_not_d_nu_false}}}$"
+    
+    HDG=(f" Xác suất chọn được một ứng viên chưa có kinh nghiệm và không vượt qua phỏng vấn là:\n\n"
+        f" $P(\\overline{{D}}N)=P(\\overline{{D}}|N).P(N)={st_p_not_d_dk_nu}.{st_p_b}={p_not_d_nu}$.\n\n"
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq_false=random.choice(kq_false)
+    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+
+    kq4_T=f"* Xác suất chọn được một ứng viên vượt qua phỏng vấn là ${{{st_p_b}}}$"
+    kq4_F=f"Xác suất chọn được một ứng viên vượt qua phỏng vấn là ${{{st_p_b_false}}}$" 
+    
+    HDG=(f"Xác suất chọn được một ứng viên vượt qua phỏng vấn là:\n\n"
+        f"$P(D)=P(D|M).P(M)+P(D|N).P(N)={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={st_p_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n\n"
+        f"Xét các biến cố sau:\n\n"
+        f"${{D}}$: ứng viên vượt qua vòng phỏng vấn\n\n"
+        f"${{M}}$: ứng viên có kinh nghiệm\n\n"
+        f"${{N}}$: ứng viên không có kinh nghiệm\n\n"
+        f"${{D|M}}$: ứng viên vượt qua vòng phỏng vấn với điều kiện có kinh nghiệm\n\n"
+        f"${{D|N}}$: ứng viên vượt qua vòng phỏng vấn với điều kiện không có kinh nghiệm\n\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_26]-TF-M3. Cho tỉ lệ sinh viên ngành kĩ thuật-kinh thế, tỉ lệ sinh viên vượt qua kỳ thi cuối kỳ. Xét Đ-S: x.s giao, x.s toàn phần
+def newy25_L12_C6_B2_26():
+    a=random.randint(60,75)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    b=100-a
+    p_a_ngang=1-p_a
+    p_b=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(65,90)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(55,85)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    p_not_d_dk_nu=1-p_b_dk_a_ngang
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+
+    noi_dung = f" Trong một khoá học, có ${a}\\%$ sinh viên học ngành Kỹ thuật, số còn lại học ngành Kinh tế. Biết rằng ${b_dk_a}\\%$ sinh viên Kỹ thuật và ${b_dk_a_ngang}\\% $ sinh viên Kinh tế vượt qua kỳ thi cuối kỳ. Chọn ngẫu nhiên một sinh viên trong khóa học. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Tỉ lệ sinh viên học ngành Kinh tế là ${b}\\%$" 
+    kq1_F=f"Tỉ lệ sinh viên học ngành Kinh tế là ${b-random.randint(1,5)}\\%$"
+    
+    HDG=f"Theo đề bài ta có: $P(M)={a}\\%={st_p_a} \\Rightarrow P(N)={b}\\%={st_p_b}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b_dk_a*p_a, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_d_nam_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+
+    kq2_T=f"* Xác suất chọn được sinh viên Kỹ thuật vượt qua kỳ thi là ${{{p_d_nam}}}$"
+    kq2_F=f"Xác suất chọn được sinh viên Kỹ thuật vượt qua kỳ thi là ${{{p_d_nam_false}}}$"
+    
+    HDG=f"Xác suất chọn được sinh viên Kỹ thuật vượt qua kỳ thi là: \n\n $P(DM)=P(D|M).P(M)={b_dk_a}.{p_a}={p_d_nam}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_not_d_nu=f"{round_half_up(p_not_d_dk_nu*p_b,2):.2f}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_not_d_dk_nu*p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_not_d_nu_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+    kq3_T=f"* Xác suất chọn được sinh viên Kinh tế không vượt qua kỳ thi là ${{{p_not_d_nu}}}$" 
+    kq3_F=f"Xác suất chọn được sinh viên Kinh tế không vượt qua kỳ thi là ${{{p_not_d_nu_false}}}$"
+    
+    HDG=(f" Xác suất chọn được sinh viên Kinh tế không vượt qua kỳ thi là:\n\n"
+        f" $P(\\overline{{D}}N)=P(\\overline{{D}}|N).P(N)={st_p_not_d_dk_nu}.{st_p_b}={p_not_d_nu}$.\n\n"
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq_false=random.choice(kq_false)
+    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+
+    kq4_T=f"*  Xác suất chọn được sinh viên vượt qua kỳ thi là ${{{st_p_b}}}$"
+    kq4_F=f"Xác suất chọn được sinh viên vượt qua kỳ thi là ${{{st_p_b_false}}}$" 
+    
+    HDG=(f" Xác suất chọn được sinh viên vượt qua kỳ thi là:\n\n"
+        f"$P(D)=P(D|M).P(M)+P(D|N).P(N)={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={st_p_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n\n"
+        f"Xét các biến cố sau:\n\n"
+        f"${{D}}$: sinh viên vượt qua kỳ thi\n\n"
+        f"${{M}}$: sinh viên học Kỹ thuật\n\n"
+        f"${{N}}$: sinh viên học Kinh tế\n\n"
+        f"${{D|M}}$: sinh viên vượt qua kỳ thi với điều kiện là sinh viên Kỹ thuật\n\n"
+        f"${{D|N}}$: sinh viên vượt qua kỳ thi với điều kiện là sinh viên Kinh tế\n\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_27]-TF-M3. Cho tỉ lệ người có bảo hiểm, tỉ lệ người có-không có bảo hiểm và được hỗ trợ chi phí. Xét Đ-S: x.s giao, x.s toàn phần
+def newy25_L12_C6_B2_27():
+    a=random.randint(60,75)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    b=100-a
+    p_a_ngang=1-p_a
+    p_b=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(80,90)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(45,65)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    p_not_d_dk_nu=1-p_b_dk_a_ngang
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+
+    noi_dung = f" Trong một khảo sát, có ${a}\\%$ người tham gia có bảo hiểm y tế. Biết rằng ${b_dk_a}\\%$ người có bảo hiểm và ${b_dk_a_ngang}\\% $ người không có bảo hiểm được hỗ trợ chi phí khám chữa bệnh. Chọn ngẫu nhiên một người từ khảo sát. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Tỉ lệ người không có bảo hiểm y tế là ${b}\\%$" 
+    kq1_F=f"Tỉ lệ người không có bảo hiểm y tế là ${b-random.randint(1,5)}\\%$"
+    
+    HDG=f"Theo đề bài ta có: $P(M)={a}\\%={st_p_a} \\Rightarrow P(N)={b}\\%={st_p_b}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b_dk_a*p_a, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_d_nam_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+
+    kq2_T=f"* Xác suất chọn được người có bảo hiểm và được hỗ trợ chi phí là ${{{p_d_nam}}}$"
+    kq2_F=f"Xác suất chọn được người có bảo hiểm và được hỗ trợ chi phí là ${{{p_d_nam_false}}}$"
+    
+    HDG=f"Xác suất chọn được người có bảo hiểm và được hỗ trợ chi phí là: \n\n $P(DM)=P(D|M).P(M)={b_dk_a}.{p_a}={p_d_nam}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_not_d_nu=f"{round_half_up(p_not_d_dk_nu*p_b,2):.2f}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_not_d_dk_nu*p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_not_d_nu_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+    kq3_T=f"* Xác suất chọn được người không có bảo hiểm và không được hỗ trợ là ${{{p_not_d_nu}}}$" 
+    kq3_F=f"Xác suất chọn được người không có bảo hiểm và không được hỗ trợ là ${{{p_not_d_nu_false}}}$"
+    
+    HDG=(f" Xác suất chọn được người không có bảo hiểm và không được hỗ trợ là:\n\n"
+        f" $P(\\overline{{D}}N)=P(\\overline{{D}}|N).P(N)={st_p_not_d_dk_nu}.{st_p_b}={p_not_d_nu}$.\n\n"
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq_false=random.choice(kq_false)
+    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+
+    kq4_T=f"*  Xác suất chọn được người được hỗ trợ là ${{{st_p_b}}}$"
+    kq4_F=f"Xác suất chọn được người được hỗ trợ là ${{{st_p_b_false}}}$" 
+    
+    HDG=(f" Xác suất chọn được người được hỗ trợ là:\n\n"
+        f"$P(D)=P(D|M).P(M)+P(D|N).P(N)={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={st_p_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n\n"
+        f"Xét các biến cố sau:\n\n"
+        f"${{D}}$: Người được hỗ trợ\n\n"
+        f"${{M}}$: Người có bảo hiểm y tế\n\n"
+        f"${{N}}$: Người không có bảo hiểm y tế\n\n"
+        f"${{D|M}}$: Người được hỗ trợ với điều kiện có bảo hiểm y tế\n\n"
+        f"${{D|N}}$: Người được hỗ trợ với điều kiện không có bảo hiểm y tế\n\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_28]-TF-M3. Cho tỉ lệ khách hàng thân thiết, tỉ lệ khách mua hàng. Xét Đ-S: x.s giao, x.s toàn phần
+def newy25_L12_C6_B2_28():
+    a=random.randint(35,55)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    b=100-a
+    p_a_ngang=1-p_a
+    p_b=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(80,90)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(45,65)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    p_not_d_dk_nu=1-p_b_dk_a_ngang
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+
+    noi_dung = f" Trong một sàn thương mại điện tử, có ${a}\\%$ khách hàng là khách hàng thân thiết. Biết rằng ${b_dk_a}\\%$ khách hàng thân thiết và ${b_dk_a_ngang}\\% $ khách hàng không phải là khách hàng thân thiết thường xuyên quay lại mua hàng. Chọn ngẫu nhiên một khách hàng của sàn thương mại điện tử đó. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Tỉ lệ khách hàng không thân thiết là ${b}\\%$" 
+    kq1_F=f"Tỉ lệ khách hàng không thân thiết là ${b-random.randint(1,5)}\\%$"
+    
+    HDG=f"Theo đề bài ta có: $P(M)={a}\\%={st_p_a} \\Rightarrow P(N)={b}\\%={st_p_b}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b_dk_a*p_a, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_d_nam_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+
+    kq2_T=f"* Xác suất chọn được khách hàng thân thiết và quay lại mua là  ${{{p_d_nam}}}$"
+    kq2_F=f"Xác suất chọn được khách hàng thân thiết và quay lại mua là  ${{{p_d_nam_false}}}$"
+    
+    HDG=f"Xác suất chọn được khách hàng thân thiết và quay lại mua là : \n\n $P(DM)=P(D|M).P(M)={b_dk_a}.{p_a}={p_d_nam}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_not_d_nu=f"{round_half_up(p_not_d_dk_nu*p_b,2):.2f}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_not_d_dk_nu*p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_not_d_nu_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+    kq3_T=f"* Xác suất chọn được khách hàng không thân thiết và không quay lại mua là ${{{p_not_d_nu}}}$" 
+    kq3_F=f"Xác suất chọn được khách hàng không thân thiết và không quay lại mua là ${{{p_not_d_nu_false}}}$"
+    
+    HDG=(f"Xác suất chọn được khách hàng không thân thiết và không quay lại mua là:\n\n"
+        f" $P(\\overline{{D}}N)=P(\\overline{{D}}|N).P(N)={st_p_not_d_dk_nu}.{st_p_b}={p_not_d_nu}$.\n\n"
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq_false=random.choice(kq_false)
+    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+
+    kq4_T=f"* Xác suất chọn được khách hàng quay lại mua là ${{{st_p_b}}}$"
+    kq4_F=f"Xác suất chọn được khách hàng quay lại mua là ${{{st_p_b_false}}}$" 
+    
+    HDG=(f" Xác suất chọn được khách hàng quay lại mua là:\n\n"
+        f"$P(D)=P(D|M).P(M)+P(D|N).P(N)={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={st_p_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n\n"
+        f"Xét các biến cố sau:\n\n"
+        f"${{D}}$: Khách hàng quay lại mua\n\n"
+        f"${{M}}$: Khách hàng là thân thiết\n\n"
+        f"${{N}}$: Khách hàng không phải là khách hàng thân thiết\n\n"
+        f"${{D|M}}$: Khách hàng quay lại mua với điều kiện khách hàng thân thiết\n\n"
+        f"${{D|N}}$: Khách hàng quay lại mua với điều kiện không phải là khách hàng thân thiết\n\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_29]-TF-M3. Cho tỉ lệ diện tích trồng cây, tỉ lệ đạt năng suất cao. Xét Đ-S: x.s giao, x.s toàn phần
+def newy25_L12_C6_B2_29():
+    a=random.randint(55,65)
+    p_a=a/100
+    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    b=100-a
+    p_a_ngang=1-p_a
+    p_b=1-p_a
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+
+
+    b_dk_a=random.randint(75,85)
+    p_b_dk_a=b_dk_a/100
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    b_dk_a_ngang=random.randint(65,75)
+    p_b_dk_a_ngang=b_dk_a_ngang/100
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    p_not_d_dk_nu=1-p_b_dk_a_ngang
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+    cay=["lúa", "ngô", "củ mì", "đậu xanh", "đậu đen", "khoai lang"]
+    lua,ngo=random.sample(cay,2)
+
+    noi_dung = f"Trong một trang trại trồng 2 loại cây, có ${a}\\%$ diện tích trồng {lua}, phần còn lại trồng {ngo}. Biết rằng ${b_dk_a}\\%$ diện tích trồng {lua} và ${b_dk_a_ngang}\\% $ diện tích trồng {ngo} cho năng suất cao. Chọn ngẫu nhiên một mảnh đất. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
+    debai_word= f"{noi_dung}\n"
+
+    
+    kq1_T=f"* Tỉ lệ diện tích trồng {ngo} là ${b}\\%$" 
+    kq1_F=f"Tỉ lệ diện tích trồng {ngo} là ${b-random.randint(1,5)}\\%$"
+    
+    HDG=f"Theo đề bài ta có: $P(M)={a}\\%={st_p_a} \\Rightarrow P(N)={b}\\%={st_p_b}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b_dk_a*p_a, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_d_nam_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+
+    kq2_T=f"* Xác suất chọn được mảnh trồng {lua} và cho năng suất cao là ${{{p_d_nam}}}$"
+    kq2_F=f"Xác suất chọn được mảnh trồng {lua} và cho năng suất cao là ${{{p_d_nam_false}}}$"
+    
+    HDG=f"Xác suất chọn được mảnh trồng {lua} và cho năng suất cao là: \n\n $P(DM)=P(D|M).P(M)={b_dk_a}.{p_a}={p_d_nam}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_not_d_nu=f"{round_half_up(p_not_d_dk_nu*p_b,2):.2f}".replace(".",",")
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_not_d_dk_nu*p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+    p_not_d_nu_false=f"{round_half_up(random.choice(kq_false),2):.2f}".replace(".",",")
+
+    kq3_T=f"* Xác suất chọn được mảnh trồng {ngo} và không cho năng suất cao là ${{{p_not_d_nu}}}$" 
+    kq3_F=f"Xác suất chọn được mảnh trồng {ngo} và không cho năng suất cao là ${{{p_not_d_nu_false}}}$"
+    
+    HDG=(f"Xác suất chọn được mảnh trồng {ngo} và không cho năng suất cao là:\n\n"
+        f" $P(\\overline{{D}}N)=P(\\overline{{D}}|N).P(N)={st_p_not_d_dk_nu}.{st_p_b}={p_not_d_nu}$.\n\n"
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_b=p_b_dk_a*p_a+p_b_dk_a_ngang*p_a_ngang
+    st_p_b=f"{round_half_up(p_b,2)}".replace(".",",")
+
+    kq_false = []
+    while len(kq_false) < 3:
+        num = round(random.random(), 2)
+        if all([num not in kq_false, num!=p_b, num!=0]):  # Kiểm tra trùng lặp
+            kq_false.append(num)
+
+    kq_false=random.choice(kq_false)
+    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+
+    kq4_T=f"* Xác suất chọn được mảnh đất cho năng suất cao là ${{{st_p_b}}}$"
+    kq4_F=f"Xác suất chọn được mảnh đất cho năng suất cao là ${{{st_p_b_false}}}$" 
+    
+    HDG=(f" Xác suất chọn được mảnh đất cho năng suất cao là:\n\n"
+        f"$P(D)=P(D|M).P(M)+P(D|N).P(N)={st_p_b_dk_a}.{st_p_a}+{st_p_b_dk_a_ngang}.{st_p_a_ngang}={st_p_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n\n"
+        f"Xét các biến cố sau:\n\n"
+        f"${{D}}$: Mảnh đất cho năng suất cao\n\n"
+        f"${{M}}$: Mảnh đất trồng {lua}\n\n"
+        f"${{N}}$: Mảnh đất trồng {ngo}\n\n"
+        f"${{D|M}}$: Mảnh đất cho năng suất cao với điều kiện trồng {lua}\n\n"
+        f"${{D|N}}$: Mảnh đất cho năng suất cao với điều kiện trồng {ngo}\n\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an

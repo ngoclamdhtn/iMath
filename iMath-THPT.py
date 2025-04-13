@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 26.03.2025")
+                self.label.setText(f"iMath\u00A92025 ver 14.04.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 26.03.2025")
+                self.label.setText(f"iMath\u00A92025 ver 14.04.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -8658,29 +8658,53 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_01]-M2. Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_02]-M2. Câu lạc bộ gồm những người biết chơi môn X, môn Y. Tính xác suất người biết chơi môn X biết rằng người đó chơi được môn Y."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_03]-M2. Lấy lần lượt 2 bi. Tính xác suất A lấy được bi màu x biết B lấy được bi màu x."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_04]-M2. Hộp I và II đều chứa 2 loại bi. Lấy 1 bi từ hộp I bỏ vào hộp II. Lấy tiếp 1 bi hộp II. Tính xác suất."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_05]-M2.  Tính xác suất người mua sản phẩm trên độ tuổi nào đó."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
                 item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_06]-M2. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)B)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_01]-M2. x.s A|B: Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_02]-M2. x.s A|B: Câu lạc bộ gồm những người biết chơi môn X, môn Y. Tính xác suất người biết chơi môn X biết rằng người đó chơi được môn Y."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_03]-M2. x.s A|B: Lấy lần lượt 2 bi. Tính xác suất A lấy được bi màu x biết B lấy được bi màu x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_04]-M2. x.s A|B: Hộp I và II đều chứa 2 loại bi. Lấy 1 bi từ hộp I bỏ vào hộp II. Lấy tiếp 1 bi hộp II. Tính xác suất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_05]-M2.  x.s A|B: Tính xác suất người mua sản phẩm trên độ tuổi nào đó."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_14]-M2.  x.s giao: Cho x% thực hiện việc A, trong số đó có y% thực hiện việc B. Tính P(AB)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_16]-M2.  x.s giao: sơ đồ cây có P(A), P(B|A), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_17]-M2.  x.s giao: sơ đồ cây có P(A), P(B|A_), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_18]-M2.  x.s giao: sơ đồ cây có P(A_), P(B|A), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_19]-M2. X.S giao: cho sơ đồ cây có P(A_), P(B_|A), P(B|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
+                
 
                 L12_C6_B1_2 = QTreeWidgetItem(L12_C6_B1, ["Đúng-Sai"])
                 L12_C6_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8698,8 +8722,94 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_10]-SA-M2. x.s A|B: Tính xác suất học sinh chơi được môn A biết học sinh chơi được môn B"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_11]-SA-M2. x.s A|B: Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính x.s hai bi cùng màu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_12]-SA-M2. x.s A|B: Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính x.s hai bi khác màu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_15]-SA-M2. x.s A|B: x.s chọn k bạn cùng giới tính có ít nhất 1 nam (hoặc 1 nữ)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_13]-SA-M2. x.s giao: x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                 L12_C6_B2 = QTreeWidgetItem(L12_C6, ["Bài 2 - Công thức xác suất toàn phần, xác suất Bayes"])
                 L12_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+
+                L12_C6_B2_1 = QTreeWidgetItem(L12_C6_B2, ["Trắc nghiệm"])
+                L12_C6_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_14]-M2. x.s t.phần: Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_15]-M2. x.s t.phần:  Cho P(B), tỉ lệ A xảy ra nếu B, A xảy ra nếu B không xảy ra. Tính P(A)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_16]-M3. x.s t.phần:  Cho P(A), P(A|B), P(A|B_ngang). Tính P(B)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_17]-M2.  x.s t.phần: Cho tỉ lệ tiêm vắc xin, tỉ lệ mắc bệnh nếu tiêm, tỉ lệ mắc bệnh nếu chưa tiêm. Tính  x.s mắc bệnh"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_18]-M3.  x.s t.phần: Cho tỉ lệ hút thuốc, tỉ lệ mắc bệnh nếu hút, tỉ lệ mắc bệnh nếu không hút. Tính x.s mắc bệnh"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_19]-M3.  x.s tphần:  Cho 2 phòng khả năng chọn như nhau, cho tỉ lệ bệnh nhân nam ở các phòng. Tính x.s người bệnh là nam"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_20]-M3.  x.s t.phần:  Lấy 1 bi từ hộp I bỏ qua hộp II. Tính x.s hai bi lấy từ hộp hai có màu nào đó."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_22]-M3.  x.s t.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C6_B2_2 = QTreeWidgetItem(L12_C6_B2, ["Đúng-Sai"])
+                L12_C6_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_24]-TF-M3. Cho tỉ lệ nam tham gia, tỉ lệ nam đậu sát hạch, nữ đậu sát hạch. Xét Đ-S: tỉ lệ nữ, x.s nam đậu, x.s nữ đậu, x.s đậu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_25]-TF-M3. Cho tỉ lệ ứng viên có kinh nghiệm, tỉ lệ ứng viên có kinh nghiệm vượt qua vòng phỏng vấn. Xét Đ-S: x.s giao, x.s toàn phần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_26]-TF-M3. Cho tỉ lệ sinh viên ngành kĩ thuật-kinh thế, tỉ lệ sinh viên vượt qua kỳ thi cuối kỳ. Xét Đ-S: x.s giao, x.s toàn phần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_27]-TF-M3. Cho tỉ lệ người có bảo hiểm, tỉ lệ người có-không có bảo hiểm và được hỗ trợ chi phí. Xét Đ-S: x.s giao, x.s toàn phần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_28]-TF-M3. Cho tỉ lệ khách hàng thân thiết, tỉ lệ khách mua hàng. Xét Đ-S: x.s giao, x.s toàn phần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_29]-TF-M3. Cho tỉ lệ diện tích trồng cây, tỉ lệ đạt năng suất cao. Xét Đ-S: x.s giao, x.s toàn phần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 L12_C6_B2_3 = QTreeWidgetItem(L12_C6_B2, ["Trả lời ngắn"])
                 L12_C6_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8709,27 +8819,39 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. X.S toàn phần: tổng hợp"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. x.s t.phần: tổng hợp"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_03]-SA-M2. X.S toàn phần: Tính X.S đậu đại học khi chọn khối."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_03]-SA-M2. x.s t.phần: Tính X.S đậu đại học khi chọn khối."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_04]-SA-M2. X.S toàn phần: Tính X.S hái bông hoa có thưởng."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_04]-SA-M2. x.s t.phần: Tính X.S hái bông hoa có thưởng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_05]-SA-M2. X.S toàn phần: Tính X.S lấy viên bi có màu nào đó."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_05]-SA-M2. x.s t.phần: Tính X.S lấy viên bi có màu nào đó."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_06]-SA-M2. X.S toàn phần: Tính xác suất chọn ly thủy tinh."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_06]-SA-M2. x.s t.phần: Tính xác suất chọn ly thủy tinh."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2. X.S toàn phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2. x.s t.phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_13]-SA-M2.  x.s t.phần: Tính x.s sinh viên làm việc đúng chuyên ngành"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_21]-SA-M3.  x.s tphần:  Lấy 1 bi từ hộp I bỏ qua hộp II. Tính x.s hai bi lấy từ hộp hai có màu nào đó."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_23]-SA-M3.  x.s t.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8748,6 +8870,12 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_11]-SA-M3. X.S Bayes: X.S Bayes: Tính xác suất người thực sự mắc bệnh."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_12]-SA-M3. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
         #Chương 7 - Mặt nón - Mặt trụ - Mặt cầu
                 # L12_C7 = QTreeWidgetItem(L12, ["Chương 7 - Mặt nón - Mặt trụ - Mặt cầu"])
@@ -10869,6 +10997,42 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C6_B1_09]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_09()
 
+                                            #[D12_C6_B1_10]-SA-M2.  X.S điều kiện: Tính xác suất học sinh chơi được môn A biết học sinh chơi được môn B
+                                            if dang_toan == "[D12_C6_B1_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_10()
+
+                                            #[D12_C6_B1_11]-SA-M2.  X.S điều kiện: Cho 2 hộp bi chứa 2 loại màu. Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính xác suất hai bi cùng màu
+                                            if dang_toan == "[D12_C6_B1_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_11()
+
+                                            #[D12_C6_B1_12]-SA-M2.  X.S điều kiện: Cho 2 hộp bi chứa 2 loại màu. Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính xác suất hai bi cùng màu
+                                            if dang_toan == "[D12_C6_B1_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_12()
+
+                                            #[D12_C6_B1_13]-SA-M2.  X.S giao: Tính x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành
+                                            if dang_toan == "[D12_C6_B1_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_13()
+
+                                            #[D12_C6_B1_14]-M2.  X.S giao: Cho x% thực hiện việc A, trong số đó có y% thực hiện việc B. Tính P(AB)
+                                            if dang_toan == "[D12_C6_B1_14]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_14()
+
+                                            #[D12_C6_B1_15]-SA-M2.  x.s A|B: Tính xác suất chọn k bạn cùng giới tính có ít nhất 1 nam (hoặc 1 nữ)
+                                            if dang_toan == "[D12_C6_B1_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_15()
+
+                                            #[D12_C6_B1_16]-M2. X.S giao: cho sơ đồ cây có P(A), P(B|A), P(B_|A_). Tính P(AB_) 
+                                            if dang_toan == "[D12_C6_B1_16]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_16()
+
+                                            #[D12_C6_B1_17]-M2. X.S giao: cho sơ đồ cây có P(A), P(B|A_), P(B_|A_). Tính P(AB_) 
+                                            if dang_toan == "[D12_C6_B1_17]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_17()
+
+                                            #[D12_C6_B1_18]-M2. X.S giao: cho sơ đồ cây có P(A_), P(B|A), P(B_|A_). Tính P(AB_) 
+                                            if dang_toan == "[D12_C6_B1_18]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_18()
+
                                             #----------------------Toán 12 - Chương 6 - Bài 2-------------------->
                                             #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
                                             if dang_toan == "[D12_C6_B2_01]":                                        
@@ -10917,6 +11081,78 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B2_11]-SA-M2. X.S Bayes: X.S Bayes: Tính xác suất mắc bệnh
                                             if dang_toan == "[D12_C6_B2_11]":                                        
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_11()
+
+                                            #[D12_C6_B2_12]-SA-M2. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng
+                                            if dang_toan == "[D12_C6_B2_12]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_12()
+
+                                            #[D12_C6_B2_13]-SA-M2. X.s toàn phần: Tính x.s sinh viên làm việc đúng chuyên ngành
+                                            if dang_toan == "[D12_C6_B2_13]":                                        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_13()
+
+                                            #[D12_C6_B2_14]-M2. X.s toàn phần:  Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
+                                            if dang_toan == "[D12_C6_B2_14]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_14()
+
+                                            #[D12_C6_B2_15]-M2. X.s toàn phần:  Cho P(B), tỉ lệ A xảy ra nếu B, A xảy ra nếu B không xảy ra. Tính P(A).
+                                            if dang_toan == "[D12_C6_B2_15]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_15()
+
+                                            #[D12_C6_B2_16]-M3. X.s toàn phần:  Cho P(A), P(A|B), P(A|B_ngang). Tính P(B).
+                                            if dang_toan == "[D12_C6_B2_16]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_16()
+
+                                            #[D12_C6_B2_17]-M3. X.s toàn phần:  Cho P(B):Tỉ lệ tiêm vắc xin, P(A|B):tỉ lệ mắc bệnh nếu tiêm , P(A|B_ngang):tỉ lệ mắc bệnh nếu chưa tiêm. Tính P(A): x.s mắc bệnh
+                                            if dang_toan == "[D12_C6_B2_17]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_17()
+
+                                            #[D12_C6_B2_18]-M3. X.s toàn phần:  Cho tỉ lệ hút thuốc, tỉ lệ mắc bệnh nếu hút, tỉ lệ mắc bệnh nếu không hút. Tính x.s mắc bệnh
+                                            if dang_toan == "[D12_C6_B2_18]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_18()
+
+                                            #[D12_C6_B2_19]-M3. x.s tphần:  Cho 2 phòng khả năng chọn như nhau, cho tỉ lệ bệnh nhân nam ở các phòng. Tính x.s người bệnh là nam
+                                            if dang_toan == "[D12_C6_B2_19]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_19()
+
+                                            #[D12_C6_B2_20]-M3. x.s tphần:  Cho 2 phòng khả năng chọn như nhau, cho tỉ lệ bệnh nhân nam ở các phòng. Tính x.s người bệnh là nam
+                                            if dang_toan == "[D12_C6_B2_20]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_20()
+
+                                            #[D12_C6_B2_21]-SA-M3. x.s tphần:  Cho 2 phòng khả năng chọn như nhau, cho tỉ lệ bệnh nhân nam ở các phòng. Tính x.s người bệnh là nam
+                                            if dang_toan == "[D12_C6_B2_21]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_21()
+
+                                            #[D12_C6_B2_22]-M3. x.s tphần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư
+                                            if dang_toan == "[D12_C6_B2_22]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_22()
+
+                                            #[D12_C6_B2_23]-SA-M3. x.s tphần:  Cho 2 phòng khả năng chọn như nhau, cho tỉ lệ bệnh nhân nam ở các phòng. Tính x.s người bệnh là nam
+                                            if dang_toan == "[D12_C6_B2_23]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_23()
+
+                                            #[D12_C6_B2_24]-TF-M3. Cho tỉ lệ nam tham gia, tỉ lệ nam đậu sát hạch, nữ đậu sát hạch. Xét Đ-S: tỉ lệ nữ, x.s nam đậu, x.s nữ đậu, x.s đậu
+                                            if dang_toan == "[D12_C6_B2_24]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_24()
+
+                                            #[D12_C6_B2_25]-TF-M3. Cho tỉ lệ ứng viên có kinh nghiệm, tỉ lệ ứng viên có kinh nghiệ vượt qua vòng phỏng vấn. Xét Đ-S: x.s giao, x.s toàn phần
+                                            if dang_toan == "[D12_C6_B2_25]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_25()
+
+                                            #[D12_C6_B2_26]-TF-M3. Cho tỉ lệ sinh viên ngành kĩ thuật-kinh thế, tỉ lệ sinh viên vượt qua kỳ thi cuối kỳ. Xét Đ-S: x.s giao, x.s toàn phần
+                                            if dang_toan == "[D12_C6_B2_26]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_26()
+
+                                            #[D12_C6_B2_27]-TF-M3. Cho tỉ lệ người có bảo hiểm, tỉ lệ người có-không có bảo hiểm và được hỗ trợ chi phí. Xét Đ-S: x.s giao, x.s toàn phần
+                                            if dang_toan == "[D12_C6_B2_27]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_27()
+
+                                            #[D12_C6_B2_28]-TF-M3. Cho tỉ lệ khách hàng thân thiết, tỉ lệ khách mua hàng. Xét Đ-S: x.s giao, x.s toàn phần
+                                            if dang_toan == "[D12_C6_B2_28]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_28()
+
+                                            #[D12_C6_B2_29]-TF-M3. Cho tỉ lệ diện tích trồng cây, tỉ lệ đạt năng suất cao. Xét Đ-S: x.s giao, x.s toàn phần
+                                            if dang_toan == "[D12_C6_B2_29]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_29()
 
                                             #-------------------------LỚP 11---------------------->
 
@@ -17391,7 +17627,7 @@ class Ui_MainWindow(object):
         def btn_version_update_click(self):
                 try:
                     current_directory = os.path.dirname(os.path.abspath(__file__))
-                    update_folder_path = os.path.join(current_directory, 'UPDATE\\update list.txt')                    
+                    update_folder_path = os.path.join(current_directory, 'UPDATE\\update list.xlsx')                    
                     subprocess.Popen(['explorer', update_folder_path])
                         
                 except Exception as e:

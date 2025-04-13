@@ -276,7 +276,7 @@ def zz8zz_L11_C9_B1_04():
 	random.shuffle(list_PA)
 	dap_an=my_module.tra_ve_dap_an(list_PA)   
 
-	noi_dung=f"Gieo một con xúc xắc cân đối và đồng chất hai lần." \
+	noi_dung=f"Gieo đồng thời một con xúc xắc cân đối và đồng chất hai lần." \
 	f" Gọi ${{A}}$ là biến cố “Tổng số chấm của hai lần gieo lớn hơn {k}”, $B$ là biến cố “Tổng số chấm của hai lần gieo nhỏ hơn {m}”."\
 	f" Xác định số phần tử của biến cố ${{AB}}$."
 	debai= f"{noi_dung}\n"
@@ -564,7 +564,7 @@ def zz8zz_L11_C9_B1_08():
 
 	p_a_text=xu_li_dau_cham(p_a)
 	p_b_text=xu_li_dau_cham(p_b)
-	chon=random.choice(["\\overline{{A}}B", "A\\overline{{B}}", "\\overline{{A}}\\overline{{B}}"])
+	chon=random.choice(["\\overline{{A}}B", "A\\overline{{B}}", "\\overline{{A}}\\,\\overline{{B}}"])
 	if chon=="\\overline{{A}}B":
 		kq=round((1-p_a)*p_b,2)
 		kq2=round(p_a*p_b,2)
@@ -583,7 +583,7 @@ def zz8zz_L11_C9_B1_08():
 		kq2=round(p_a*p_b,2)
 		kq3=round((1-p_a)*p_b,2)
 		kq4=round((1-p_b)*p_a,2)
-		noi_dung_loigiai=f"$P\\left(\\overline{{A}}\\overline{{B}}\\right)=P(\\overline{{A}}).P(\\overline{{B}})=(1-{p_a_text}).(1-{p_b_text})={p_a_ngang}.{p_b_ngang}={kq}$ .\n"
+		noi_dung_loigiai=f"$P\\left(\\overline{{A}}\\,\\overline{{B}}\\right)=P(\\overline{{A}}).P(\\overline{{B}})=(1-{p_a_text}).(1-{p_b_text})={p_a_ngang}.{p_b_ngang}={kq}$ .\n"
 
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
@@ -724,7 +724,7 @@ def zz8zz_L11_C9_B1_10():
 	noi_dung_loigiai=f'Gọi ${{A}}$ là biến cố "Bệnh nhân ${{X}}$ bị biến chứng nặng". Ta có: $P(A)={p_a_text}$ và $P\\left(\\overline{{A}}\\right)={p_a_ngang}$.\n\n'\
 	f'Gọi ${{B}}$ là biến cố "Bệnh nhân ${{Y}}$ bị biến chứng nặng". Ta có: $P(B)={p_b_text}$ và $P\\left(\\overline{{B}}\\right)={p_b_ngang}$.\n\n'\
 	f"Do $\\overline{{A}}$ và $\\overline{{B}}$ là độc lập nên xác suất để cả hai bệnh nhân đều không bị biến chứng nặng là:\n\n"\
-	f"$P\\left(\\overline{{A}}\\overline{{B}}\\right)=P(\\overline{{A}}).P(\\overline{{B}})={p_a_ngang}.{p_b_ngang}={xu_li_dau_cham(xacsuat)}$ .\n"
+	f"$P\\left(\\overline{{A}}\\,\\overline{{B}}\\right)=P(\\overline{{A}}).P(\\overline{{B}})={p_a_ngang}.{p_b_ngang}={xu_li_dau_cham(xacsuat)}$ .\n"
 
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
@@ -891,7 +891,7 @@ def zz8zz_L11_C9_B1_12():
 	noi_dung_loigiai=f'Gọi ${{A}}$ là biến cố viên thứ nhất bắn trúng. Ta có: $P(A)={p_a_text}$ và $P\\left(\\overline{{A}}\\right)={p_a_ngang}$.\n\n'\
 	f'Gọi ${{B}}$ là biến cố viên thứ hai bắn trúng. Ta có: $P(B)={p_b_text}$ và $P\\left(\\overline{{B}}\\right)={p_b_ngang}$.\n\n'\
 	f"Do $\\overline{{A}}$ và $\\overline{{B}}$ là độc lập nên xác suất để cả hai lần bắn đều không trúng đích là:\n\n"\
-	f"$P\\left(\\overline{{A}}\\overline{{B}}\\right)=P(\\overline{{A}}).P(\\overline{{B}})={p_a_ngang}.{p_b_ngang}={xu_li_dau_cham(xacsuat)}$ .\n"
+	f"$P\\left(\\overline{{A}}\\,\\overline{{B}}\\right)=P(\\overline{{A}}).P(\\overline{{B}})={p_a_ngang}.{p_b_ngang}={xu_li_dau_cham(xacsuat)}$ .\n"
 
 	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
 	kq2=pa_kotrung[1]
@@ -1317,7 +1317,7 @@ def zz8zz_L11_C9_B2_02():
 def zz8zz_L11_C9_B2_03():   
 	chon=random.randint(1,8)	
 	if chon==1:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt sấp và xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1331,7 +1331,7 @@ def zz8zz_L11_C9_B2_03():
 			set_B.add(f"N{i}")
 
 	if chon==2:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt sấp và xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1344,7 +1344,7 @@ def zz8zz_L11_C9_B2_03():
 			set_B.add(f"S{i}")
 			set_B.add(f"N{i}")
 	if chon==3:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1357,7 +1357,7 @@ def zz8zz_L11_C9_B2_03():
 			set_B.add(f"S{i}")
 			set_B.add(f"N{i}")
 	if chon==4:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1372,7 +1372,7 @@ def zz8zz_L11_C9_B2_03():
 	
 	if chon==5:
 		k=random.randint(1,5)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số lớn hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1386,7 +1386,7 @@ def zz8zz_L11_C9_B2_03():
 			set_B.add(f"N{i}")
 	if chon==6:
 		k=random.randint(1,5)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số lớn hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1400,7 +1400,7 @@ def zz8zz_L11_C9_B2_03():
 			set_B.add(f"N{i}")
 	if chon==7:
 		k=random.randint(2,6)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số nhỏ hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1414,7 +1414,7 @@ def zz8zz_L11_C9_B2_03():
 			set_B.add(f"N{i}")
 	if chon==8:
 		k=random.randint(2,6)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số nhỏ hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Số phần tử của biến cố $A \\cup B$.'
@@ -1560,7 +1560,7 @@ def zz8zz_L11_C9_B2_05():
 	chon=random.randint(1,8)
 	
 	if chon==1:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt sấp và xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1575,7 +1575,7 @@ def zz8zz_L11_C9_B2_05():
 
 
 	if chon==2:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt sấp và xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1589,7 +1589,7 @@ def zz8zz_L11_C9_B2_05():
 			set_B.add(f"N{i}")
 
 	if chon==3:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1603,7 +1603,7 @@ def zz8zz_L11_C9_B2_05():
 			set_B.add(f"N{i}")
 
 	if chon==4:
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số nguyên tố".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1619,7 +1619,7 @@ def zz8zz_L11_C9_B2_05():
 
 	if chon==5:
 		k=random.randint(1,5)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số lớn hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1634,7 +1634,7 @@ def zz8zz_L11_C9_B2_05():
 
 	if chon==6:
 		k=random.randint(1,5)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số lớn hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1649,7 +1649,7 @@ def zz8zz_L11_C9_B2_05():
 
 	if chon==7:
 		k=random.randint(2,6)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số nhỏ hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số lẻ".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'
@@ -1664,7 +1664,7 @@ def zz8zz_L11_C9_B2_05():
 
 	if chon==8:
 		k=random.randint(2,6)
-		noi_dung=f'Gieo một đồng xu và một con xúc xắc.\n\n' \
+		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
 		f'Gọi ${{A}}$ là biến cố: "Đồng xu xuất hiện mặt ngửa và xúc xắc xuất hiện mặt chứa số nhỏ hơn {k}".\n\n'\
 		f'Gọi ${{B}}$ là biến cố: "Xúc xắc xuất hiện mặt chứa số chẵn".\n\n'\
 		f'Tính xác suất của biến cố $A \\cup B$.'

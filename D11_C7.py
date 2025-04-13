@@ -1459,7 +1459,7 @@ def ui5io_L11_C7_B2_23():
 
     x=sp.symbols("x")
     k=random.randint(2,4)    
-    a = [random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(k)]    
+    a = [random.choice([random.randint(-5,-2),random.randint(2,5)]) for i in range(k)]    
     f = sum(a[i]* x**i for i in range(k))
     if k==3:
         a = random.randint(1, 10)
@@ -4027,7 +4027,7 @@ def ui5io_L11_C7_B4_02():
     kq=f"\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)}}}"
 
 
-    noi_dung=f"Cho hàm số ${ham_so}$. Xét tính đúng sai của các khẳng định sau"
+    noi_dung=f"Cho hàm số $y={ham_so}$. Xét tính đúng sai của các khẳng định sau"
 
     kq1_T=f"*Hàm số có $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)}}}$"
     kq1_F=f"Hàm số có $y'=\\dfrac{{{a*d+b*c}}}{{{latex((c*x+d)**2)}}}$ "

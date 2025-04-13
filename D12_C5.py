@@ -1385,27 +1385,21 @@ def htd_25_xyz_L12_C5_B1_14():
 def htd_25_xyz_L12_C5_B1_15():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
-
-    x_A,y_A,z_A = [random.randint(-7,7) for i in range(3)]
-    if x_A ==0: x_A=random.randint(1,7)
-
-    x_B, y_B, z_B = random.randint(-7,7),random.randint(-7,7),random.randint(-7,7)
-    x_C, y_C, z_C = [random.randint(-8,8) for i in range(3)]
-    if y_C ==0: y_C=random.randint(1,7)
-
-    if x_A==x_B==x_C: x_A=x_A+random.randint(1,3)
-    if y_A==y_B==y_C: y_B=y_B+random.randint(1,3)
-    if z_A==z_B==z_C: z_C=z_C+random.randint(1,3)
-
-    if (x_B-x_A)*(y_C-y_A)==(x_C-x_A)*(y_B-y_A):
-        x_B = x_B + random.randint(1,3)
-
-    m=[x_B-x_A, y_B-y_A, z_B-z_A]
-    n=[x_C-x_A, y_C-y_A, z_C-z_A]
-    a, b, c = tich_co_huong(m,n)
-
-    t=ucln_ba_so(a,b,c)
-    a1,b1,c1=int(a/t),int(b/t),int(c/t)
+    x_A=random.choice([i for i in range(-5, 5) if i!=0])
+    y_A=random.choice([i for i in range(-3, 3) if i!=0])
+    z_A=random.choice([i for i in range(-3, 3)])
+    a,b,c=[random.choice([i for i in range(-4, 4) if i!=0]) for i in range(3)]
+    mp=latex(a*(x-x_A)+b*(y-y_A)+c*(z-z_A))
+    while True:
+        x_2,y_2,z_2=[random.choice([i for i in range(-5, 5)]) for i in range(3)]
+        x_3,y_3,z_3=[random.choice([i for i in range(-5, 5)]) for i in range(3)]
+        x_4,y_4,z_4=[random.choice([i for i in range(-5, 5)]) for i in range(3)]
+        f2=a*(x_2-x_A)+b*(y_2-y_A)+c*(z_2-z_A)
+        f3=a*(x_3-x_A)+b*(y_3-y_A)+c*(z_3-z_A)
+        f4=a*(x_4-x_A)+b*(y_4-y_A)+c*(z_4-z_A)
+        
+        if all([x_2!=x_3,x_2!=x_4,x_3!=x_4,f2!=0,f3!=0,f4!=0]):
+            break   
 
 
     ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
@@ -1413,16 +1407,16 @@ def htd_25_xyz_L12_C5_B1_15():
     ten_B=random.choice(["B","N", "E"])
     ten_C=random.choice(["C", "G", "I"])
     ten_D=random.choice(["D", "K", "H"])    
-    mp=latex(a1*(x-x_A)+b1*(y-y_A)+c1*(z-z_A))
+    
 
-    d1=-a1*x_A-b1*y_A-c1*z_A+random.randint(1,6)
+    
     noi_dung= f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({ten_mp})}}$ có phương trình ${mp}=0$."\
                 f" Điểm nào trong các điểm sau thuộc mặt phẳng ${{({ten_mp})}}$?"
 
     kq=f"{ten_A}({x_A};{y_A};{z_A})"
-    kq2=f"{ten_B}({x_B};{y_B};{-z_B})"
-    kq3=f"{ten_C}({-x_C};{-y_C};{z_C})"
-    kq4=f"{ten_D}({x_A+x_B};{y_C};{z_A+z_B})"
+    kq2=f"{ten_B}({x_2};{y_2};{z_2})"
+    kq3=f"{ten_C}({x_3};{y_3};{z_3})"
+    kq4=f"{ten_D}({x_4};{y_4};{z_4})"
 
 
     noi_dung_loigiai=my_module.thay_dau_congtru(f"Thay tọa độ các điểm vào phương trình mặt phẳng ${{({ten_mp})}}$"
@@ -5566,8 +5560,8 @@ z = {show_ptts(-z_0,c)}\
     
     kq4=f"\\left\\{{ \\begin{{array}}{{l}}\
 x = {show_ptts(x_0,a)}\\\\ \
-y = {show_ptts(-y_0,-b)}\\\\\
-z = {show_ptts(z_0,c)}\
+y = {show_ptts(y_0,-b)}\\\\\
+z = {show_ptts(z_0,-c)}\
 \\end{{array}} \\right."
     
     noi_dung_loigiai=my_module.thay_dau_congtru(f"Đường thẳng ${{{ten_dt}}}$ đi qua điểm ${{{ten_diem}({x_0};{y_0};{z_0})}}$ nhận vectơ $\\vec{{u}}=({a};{b};{c})$ làm véctơ chỉ phương có phương có phương trình là: ${kq}$.")
