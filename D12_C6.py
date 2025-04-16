@@ -5,6 +5,10 @@ import random
 from fractions import Fraction
 import my_module
 from decimal import Decimal, ROUND_HALF_UP
+
+#Kí hiệu biến cố đối
+def ngang(A):
+    return f"\\overline{{{A}}}"
 #Hàm tạo kí hiệu C^k_n
 def ckn(k,n):
     return f"C^{{{k}}}_{{{n}}}"
@@ -832,6 +836,7 @@ def newy25_L12_C6_B1_11():
 
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
+    
 
     noi_dung_loigiai=(    
     f'Gọi ${{X}}$ là biến cố: "Viên bi lấy ra từ hộp thứ nhất có màu xanh".\n\n'
@@ -847,7 +852,7 @@ def newy25_L12_C6_B1_11():
         
     debai_word= f"{noi_dung}"
     loigiai_word=(f"Lời giải:\n {file_name} {noi_dung_loigiai} \n")
-    dap_an=noi_dung_loigiai
+    
 
 
     latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
@@ -921,7 +926,7 @@ def newy25_L12_C6_B1_12():
         
     debai_word= f"{noi_dung}"
     loigiai_word=(f"Lời giải:\n {file_name} {noi_dung_loigiai} \n")
-    dap_an=noi_dung_loigiai
+    
 
 
     latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"    
@@ -1305,7 +1310,7 @@ def newy25_L12_C6_B1_16():
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
 
-    chon=random.randint(1,4)
+    chon=random.randint(1,3)
     
     if chon==1:
         kq=p_a*p_b_ngang_dk_a
@@ -1339,15 +1344,7 @@ def newy25_L12_C6_B1_16():
         f"$P({B}|\\overline{{{A}}})=1-P(\\overline{{{B}}}|\\overline{{{A}}})={st_b_dk_a_ngang}$.\n\n"
         f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
 
-    if chon==4:
-        kq=p_a*p_b_ngang_dk_a_ngang
-        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
-        noi_dung=(
-        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
-        )
-        noi_dung_loigiai=(
-        f"Dựa vào sơ đồ cây ta được:\n\n"
-        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
 
 
     kq_false = []
@@ -1455,7 +1452,7 @@ def newy25_L12_C6_B1_16():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C6_B1_17]-M2. X.S giao: cho sơ đồ cây có P(A), P(B|A_), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)
+#[D12_C6_B1_17]-M2. X.S giao: cho sơ đồ cây có P(A), P(B_|A), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)
 def newy25_L12_C6_B1_17():
     bien_co=["A","B","C","D","E","F", "X", "Y"]
     random.shuffle(bien_co)
@@ -1526,7 +1523,7 @@ def newy25_L12_C6_B1_17():
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
 
-    chon=random.randint(1,4)
+    chon=random.randint(1,3)
     
     if chon==1:
         kq=p_a*p_b_ngang_dk_a
@@ -1558,15 +1555,7 @@ def newy25_L12_C6_B1_17():
         f"Dựa vào sơ đồ cây ta được:\n\n"
         f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
 
-    if chon==4:
-        kq=p_a*p_b_ngang_dk_a_ngang
-        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
-        noi_dung=(
-        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
-        )
-        noi_dung_loigiai=(
-        f"Dựa vào sơ đồ cây ta được:\n\n"
-        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
+
 
 
     kq_false = []
@@ -1745,7 +1734,7 @@ def newy25_L12_C6_B1_18():
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
 
-    chon=random.randint(1,4)
+    chon=random.randint(1,3)
     
     if chon==1:
         kq=p_a*p_b_ngang_dk_a
@@ -1777,15 +1766,6 @@ def newy25_L12_C6_B1_18():
         f"Dựa vào sơ đồ cây ta được:\n\n"
         f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
 
-    if chon==4:
-        kq=p_a*p_b_ngang_dk_a_ngang
-        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
-        noi_dung=(
-        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
-        )
-        noi_dung_loigiai=(
-        f"Dựa vào sơ đồ cây ta được:\n\n"
-        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
 
 
     kq_false = []
@@ -1964,7 +1944,7 @@ def newy25_L12_C6_B1_19():
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
 
-    chon=random.randint(1,4)
+    chon=random.randint(1,3)
     
     if chon==1:
         kq=p_a*p_b_ngang_dk_a
@@ -1995,16 +1975,6 @@ def newy25_L12_C6_B1_19():
         noi_dung_loigiai=(
         f"Dựa vào sơ đồ cây ta được:\n\n"
         f"$P(\\overline{{{A}}}\\overline{{{B}}})=P(\\overline{{{A}}}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
-
-    if chon==4:
-        kq=p_a*p_b_ngang_dk_a_ngang
-        st_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
-        noi_dung=(
-        f"Cho các biến cố ${{{A},{B}}}$ có sơ đồ cây như hình vẽ. Tính xác suất $P\\left({A}\\overline{{{B}}}\\right)$ (kết quả làm tròn đến hàng phần trăm)."
-        )
-        noi_dung_loigiai=(
-        f"Dựa vào sơ đồ cây ta được:\n\n"
-        f"$P({A}\\overline{{{B}}})=P({A}).P(\\overline{{{B}}}|\\overline{{{A}}})={st_kq}$." )
 
 
     kq_false = []
@@ -2111,6 +2081,266 @@ def newy25_L12_C6_B1_19():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B1_20]-M2. Cho P(A) và P(B|A). Xét Đ-S: P(A_), P(AB_), P(AB)
+def newy25_L12_C6_B1_20():
+    bien_co=["A","B","C","D","E","F"]    
+    A,B=random.sample(bien_co,2)
+
+    a=random.randint(15,75)
+    p_a=a/100
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    p_a_ngang=1-p_a
+    st_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    while True:
+        x = random.random()
+        if x!=p_a_ngang:
+            break
+    st_a_ngang_f=f"{round_half_up(x,2)}".replace(".",",")
+
+    b_dk_a=random.randint(40,70)
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    p_ba=p_b_dk_a*p_a
+    st_ba=f"{round_half_up(p_ba,2)}".replace(".",",")
+    while True:
+        x = random.random()
+        if x!=p_ba:
+            break
+    st_ba_f=f"{round_half_up(x,2)}".replace(".",",")
+
+    p_a_ngangb=p_a-p_ba
+    st_a_ngangb=f"{round_half_up(p_a_ngangb,2)}".replace(".",",")
+    while True:
+        x = random.random()
+        if x!=p_a_ngangb:
+            break
+    st_a_ngangb_f=f"{round_half_up(x,2)}".replace(".",",")
+
+
+
+    noi_dung = f"Cho hai biến cố ${{{A},{B}}}$ có $P({A})={st_a}$ và $P({B}|{A})={st_b_dk_a}$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):"        
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"*$P({ngang(A)})={st_a_ngang}$" 
+    kq1_F=f"$P({ngang(A)})={st_a_ngang_f}$"
+    
+    HDG=f"$P({ngang(A)})=1-P({A})=1-{st_a}={st_a_ngang}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    chon=random.randint(1,2)
+    if chon==1:
+        kq2_T=f"* $P({A}{ngang(B)})=P({A})-P({A}{B})$"
+            
+    if chon==2:
+        kq2_T=f"* $P({A}{ngang(B)})+P({A}{B})=P({A})$"        
+    
+    kq2_F=random.choice([
+        f"$P({A}{ngang(B)})=P({A})+P({A}{B})$",
+        f"$P({A}{ngang(B)})=1-P({A}{B})$"
+        ])
+    HDG=f"$P({A}{ngang(B)})=P({A})-P({A}{B})\\Rightarrow P({A}{ngang(B)})+P({A}{B})=P({A})$."    
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $P({B}{A})={st_ba}$" 
+    kq3_F=f"$P({B}{A})={st_ba_f}$"
+    
+    HDG=f"$P({B}{A})=P({B}|{A}).P({A})={st_b_dk_a}.{st_a}={st_ba}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* $P({A}{ngang(B)})={st_a_ngangb}$"
+    kq4_F=f"$P({A}{ngang(B)})={st_a_ngangb_f}$" 
+    
+    HDG=f"$P({A}{ngang(B)})=P({A})-P({A}{B})={st_a}-{st_ba}={st_a_ngangb}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B1_21]-M2. Chọn lần lượt 2 học sinh lên bảng. Xét Đ-S: không gian mẫu, n(A), n(A|B), n(B|A)
+def newy25_L12_C6_B1_21():
+    tong=random.randint(30,35)
+    n_nam=random.randint(10,20)
+    n_nu=tong-n_nam
+    lop=[]
+    for i in range(1,10):
+        lop.append(f"12A{i}")
+        lop.append(f"11A{i}")
+        lop.append(f"10A{i}")
+    lop=random.choice(lop)
+    chon=random.randint(1,2)
+    if chon==1:
+        nam="nam"
+        nu="nữ"    
+    if chon==2:
+        nam="nữ"
+        nu="nam"
+    
+    noi_dung = (f"Lớp ${{{lop}}}$ có ${{{tong}}}$ học sinh trong đó có ${{{n_nam}}}$ học sinh {nam}."
+        f" Giáo viên gọi ngẫu nhiên lần lượt hai bạn lên bảng làm bài tập."
+        f'  Gọi ${{A}}$ là biến cố "Bạn thứ nhất được chọn là một học sinh {nam}".'
+        f'  Gọi ${{B}}$ là biến cố "Bạn thứ hai được chọn là một học sinh {nam}".'
+        f" Xét tính đúng-sai của các khẳng định sau." )      
+    debai_word= f"{noi_dung}\n"
+    n_kgm=n_nam*n_nu
+    
+    kq1_T=f"* Số phần tử của không gian mẫu là ${{{n_kgm}}}$" 
+    kq1_F=f"Số phần tử của không gian mẫu là ${{{tong}}}$"
+    
+    HDG=(f"Lớp có ${{{n_nam}}}$ nam và ${{{n_nu}}}$ nữ.\n\n"
+        f"Số phần tử của không gian mẫu là ${n_nam}.{n_nu}={{{n_kgm}}}$.")
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    n_B=n_nam*(n_nam-1)+n_nu*n_nam
+    kq2_T=f"* $n(B)={n_B}$"
+    kq2_F=f"$n(B)={n_nam*(n_nam-1)}$"
+    
+    HDG=(f"TH1: Bạn thứ nhất là {nam} và bạn thứ hai là {nam} thì số cách chọn là ${n_nam}.{n_nam-1}={n_nam*(n_nam-1)}$.\n\n"
+        f"TH2: Bạn thứ nhất là {nu} và bạn thứ hai là {nam} thì số cách chọn là ${n_nu}.{n_nam}={n_nu*n_nam}$.\n\n"
+        f" Số cách chọn để bạn thứ hai được chọn là {nam} là: ${n_nam*(n_nam-1)}+{n_nu*n_nam}={n_B}$.")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Xác suất để bạn thứ hai là {nam} biết bạn thứ nhất là {nam} bằng ${phan_so((n_nam-1)/(tong-1))}$" 
+    kq3_F=f"Xác suất để bạn thứ hai là {nam} biết bạn thứ nhất là {nam} bằng ${phan_so((n_nam-1)/(tong))}$"
+    
+    HDG=(f"Chọn bạn thứ nhất là {nam} thì lúc này lớp còn lại ${{{n_nam-1}}}$ {nam} và ${{{n_nu}}}$ {nu}.\n\n"
+        f"Xác suất để chọn được tiếp bạn thứ hai là {nam} từ số người còn lại là:\n\n"
+        f" $\\dfrac{{{n_nam-1}}}{{{n_nam-1}+{n_nu}}}={phan_so((n_nam-1)/(tong-1))}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    n_4=phan_so((n_nu/tong)*(n_nu-1)/(tong-1))
+    n_4_f=phan_so((n_nu-1)/(tong-1))
+
+    kq4_T=f"* Xác suất để cả hai bạn được chọn đều là {nu} là ${n_4}$"
+    kq4_F=f"Xác suất để cả hai bạn được chọn đều là {nu} là ${n_4_f}$" 
+    
+    HDG=(f"Xác suất chọn ngẫu nhiên một học sinh {nu} đầu tiên là: $P(\\text{{{nu} thứ 1}})=\\dfrac{{{n_nu}}}{{{tong}}}={phan_so(n_nu/tong)}$.\n\n"
+        f"Xác suất bạn thứ hai là {nu} (sau khi đã chọn một {nu} đầu tiên) là:\n\n"
+        f"$P(\\text{{{nu} thứ 2}}|\\text{{{nu} thứ 1}})=\\dfrac{{{n_nu-1}}}{{{tong-1}}}={phan_so((n_nu-1)/(tong-1))}$.\n\n"
+        f"Xác suất để cả hai bạn được chọn đều là {nu} là:\n\n"
+        f"$P(\\text{{Cả hai {nu}}})={phan_so(n_nu/tong)}.{phan_so((n_nu-1)/(tong-1))}={n_4}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 
 
 

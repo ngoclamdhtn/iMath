@@ -1162,16 +1162,11 @@ def gghik_L10_CX_B0_15():
 
 	vt_A=f"\\overrightarrow{{{vt_A}}}"
 	vt_B=f"\\overrightarrow{{{vt_B}}}"
-	
-	while True:
-		m=random.choice([random.randint(-6, -1), random.randint(2, 6)])
-		n=random.choice([random.randint(-6, -1), random.randint(2, 6)])
-		if all([m*a1+n*b1!=a1+b1,m*a1+n*b1!=m*a1+b1, m*a1+b1!=m*a1, a1+b1!=m*a1+b1, a1+b1!=m*a1, m*a1+b1!=m*a1]):
-			break
 
+	m=random.choice([random.randint(-6, -1), random.randint(2, 6)])
+	n=random.choice([random.randint(-6, -1), random.randint(2, 6)])
 	noi_dung= thay_dau_congtru(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai véctơ ${vt_A}({a1};{a2})$ và ${vt_B}({b1};{b2})$."\
 	f" Tọa độ vectơ ${m}{vt_A}+{n}{vt_B}$ là")
-		
 
 	kq=f"({m*a1+n*b1}; {m*a2+n*b2})"
 	kq2=f"({a1+b1}; {a2+b2})"
@@ -3789,7 +3784,7 @@ def gghik_L10_CX_B1_19():
 			a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2!=0, a1/a2!=b1/b2]):
+			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2!=0]):
 				break
 		
 
@@ -3808,7 +3803,7 @@ def gghik_L10_CX_B1_19():
 			a2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 			c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2==0, a1/a2!=b1/b2]):
+			if all([a1*b2-a2*b1!=0, a1*a2+b1*b2==0]):
 				break
 		kq=f"${{{d1}}}$ và ${{{d2}}}$ cắt nhau và vuông góc"
 		kq2=f"${{{d1}}}$ và ${{{d2}}}$ song song"
@@ -12573,3 +12568,788 @@ def gghik_L10_CX_B4_25():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[D10_CX_B4_26]-TF-M2. Cho pt elip, tìm tiêu cự, tiêu điểm, điểm thuộc
+def gghik_L10_CX_B4_26():
+	x,y=sp.symbols("x y")
+	b=random.randint(1,20)
+	a=b+random.randint(1,5)
+	e=x**2/a**2+y**2/b**2    
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, cho elip $ {{(E)}}:{latex(x**2/a**2)}+\\dfrac{{y^2}}{{{b**2}}}=1$ có 2 tiêu điểm là $F_{{1}}$ và $F_{{2}}$. Xét tính đúng sai của các khẳng định sau?"       	
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* $M \\in (E)$ thì $MF_{{1}}+MF_{{2}}= {2*a}$" 
+	kq1_F=f"$M \\in (E) $ thì $ MF_{{1}}+MF_{{2}}= {2*b}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Ta có $a={a}; b={b} $ suy ra $M \\in (E) $ thì $MF_{{1}}+MF_{{2}}= {2*a}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=random.choice([  f"*$A(0;{b}) \\in (E)$ ", f"*$A(0;{-b}) \\in (E)$ ", f"*$A({a}; 0) \\in (E)$"])
+	kq2_F=random.choice([  f"*$A({b};0) \\in (E)$ ", f"*$A({-b};0) \\in (E)$ ", f"*$A(0;{a}) \\in (E)$"])
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Thay toạ độ điểm đã cho vào phương trình elip."
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Tiêu cự của elip bằng ${latex(nsimplify(2*sqrt(a**2-b**2)))}$ " 
+	kq3_F=f"Tiêu cự của elip bằng ${latex(nsimplify(sqrt(a**2-b**2)))}$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Tiêu cự của elip bằng $2c= 2\\sqrt {{a^{{2}}-b^{{2}}}}= {latex(nsimplify(2*sqrt(a**2-b**2)))}$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*$F_{{1}} \\left(-{latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$ và $F_{{2}} \\left({latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$"
+	kq4_F=f"$F_{{1}} \\left(-{latex(nsimplify((a**2-b**2)))}; 0 \\right)$ và $F_{{2}} \\left({latex(nsimplify((a**2-b**2)))}; 0 \\right)$ " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Elip có 2 tiêu điểm là $F_{{1}} \\left(-{latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$ và $F_{{2}} \\left({latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[D10_CX_B4_27]-TF-M2. Cho phương trình Hypebol. Đọc tiêu điểm, tiêu cự, giao điểm
+def gghik_L10_CX_B4_27():
+	x,y=sp.symbols("x y")
+	b=random.randint(1,20)
+	a=random.randint(1,20)
+	if a==b: a=a+random.randint(1,3)
+	c=sqrt(a**2+b**2)
+	e=x**2/a**2-y**2/b**2    
+	t=random.randint(-5,5)
+	x1=(sqrt(b**2+t**2)/(b))*(a)
+	x2=(sqrt(b**2+t**2)/(b))
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, cho hypebol ${{(H)}}:\\dfrac{{x^2}}{{{a**2}}}-\\dfrac{{y^2}}{{{b**2}}}=1$ có 2 tiêu điểm là $F_{{1}}$ và $F_{{2}}$. Xét tính đúng sai của các khẳng định sau?"     
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tiêu cự của hypebol ${{(H)}}$ là ${latex(nsimplify(2*c))}$" 
+	kq1_F=f"Tiêu cự của hypebol ${{(H)}}$ là ${latex(nsimplify(c))}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Ta có $a={a}, b={b}$  \n\n Tiêu cự của hypebol ${{(H)}}$ là $2c= 2\\sqrt {{a^{{2}}+b^{{2}}}}={latex(nsimplify(2*c))}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* $F_{{1}} \\left(-{latex(nsimplify(c))} ;0 \\right)$ ; $F_{{2}}\\left({latex(nsimplify(c))} ;0 \\right)$ "
+	kq2_F=f"$F_{{1}} \\left(-{latex(nsimplify(2*c))} ;0 \\right)$ ; $F_{{2}}\\left({latex(nsimplify(2*c))} ;0 \\right)$ "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"$F_{{1}} \\left(-{latex(nsimplify(c))} ;0 \\right)$ ; $F_{{2}}\\left({latex(nsimplify(c))} ;0 \\right)$"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*$\\mid{{MF_1-MF_2}} \\mid= {2*a}$ với mọi $M \\in (H)$" 
+	kq3_F=f"$\\mid{{MF_1-MF_2}} \\mid= {a}$ với mọi $M \\in (H)$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f" $\\mid{{MF_1-MF_2}} \\mid= {2*a}$ với mọi $M \\in (H)$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x1)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x1)))}; {t}\\right)$ "
+	kq4_F=f"${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x2)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x2)))}; {t}\\right)$  " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f" Thay $y={t}$ vào phương trình của $(H)$ giải phương trình tìm được $x_1= {latex(nsimplify((x1)))}$, $x_2= -{latex(nsimplify((x1)))}$ \n\n ${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x1)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x1)))}; {t}\\right)$ "
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+#[D10_CX_B4_28]-TF-M1. Cho parabol. Tìm đường chuẩn, tiêu điểm, tham số tiêu, điểm thuộc
+def gghik_L10_CX_B4_28():
+	x,y=sp.symbols("x y")
+	p=random.randint(1,20)
+	y0=random.choice([i for i in range(-5,5) if i!=0])
+	x0=y0**2/(2*p)
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, cho parabol $(P):y^2={2*p}x$ với tiêu điểm ${{F}}$, đường chuẩn $\\Delta$. Xét tính đúng sai của các khẳng định sau?"   
+
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tham số tiêu của Parabol là $p={p}$" 
+	kq1_F=f"Tham số tiêu của Parabol là $p={2*p}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Tham số tiêu của Parabol là $p={p}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Tiêu điểm $F \\left({phan_so(p/2)}; 0 \\right)$ "
+	kq2_F=f"Tiêu điểm $F \\left({phan_so(p)};0 \\right)$  "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Tiêu điểm $F \\left({phan_so(p/2)};0 \\right)$ "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Đường chuẩn $\\Delta : x= {phan_so(-p/2)}$ " 
+	kq3_F=f"Đường chuẩn $\\Delta : x= {phan_so(-p)}$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f" Đường chuẩn $\\Delta : x= {phan_so(-p/2)}$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Điểm $\\left(  {phan_so(x0)}; {y0}\\right) \\in (P)$"
+	kq4_F=f"Điểm $\\left(  {phan_so(x0+1)}; {y0}\\right) \\in (P)$ " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Điểm $\\left(  {phan_so(x0)}; {y0}\\right) \\in (P)$ vì toạ độ thoả mãn phương trình của ${{(P)}}$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+#[D10_CX_B4_29]-TF-M2. Tìm pt elip biết một tiêu cự và một điểm thuộc elip
+def gghik_L10_CX_B4_29():
+	x,y=sp.symbols("x y")
+	b=random.randint(1,20)
+	a=b+random.randint(1,5)
+	e=x**2/a**2+y**2/b**2    
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, xét elip $ {{(E)}}:\\dfrac{{x^2}}{{a^2}}+\\dfrac{{y^2}}{{b^2}}=1$ có một tiêu điểm là $F_{{1}}\\left(-{latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$ và đi qua $A(0;{b})$. Xét tính đúng sai của các khẳng định sau?"       	
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tiêu điểm thứ hai là $F_{{2}} \\left({latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$" 
+	kq1_F=f"Tiêu điểm thứ hai là $F_{{2}} \\left({latex(nsimplify((a**2-b**2)))}; 0 \\right)$"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Tiêu điểm thứ hai là $F_{{2}} \\left({latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Tiêu cự của elip bằng ${latex(nsimplify(2*sqrt(a**2-b**2)))}$ "
+	kq2_F=f"Tiêu cự của elip bằng ${latex(nsimplify(sqrt(a**2-b**2)))}$ "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Ta có $c={latex(nsimplify(sqrt(a**2-b**2)))}$ \n\n Tiêu cự của elip bằng ${latex(nsimplify(2*sqrt(a**2-b**2)))}$ "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*$b ={b}$ " 
+	kq3_F=f"$b ={a}$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Vì elip đi qua $A(0;{b})$ nên $\\dfrac{{{b}^2}}{{b^2}}$\n\n $b ={b}$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Phương trình chính tắc của elip là $\\dfrac{{x^2}}{{{a**2}}}+\\dfrac{{y^2}}{{{b**2}}}=1$"
+	kq4_F=f"Phương trình chính tắc của elip là $\\dfrac{{x^2}}{{{(a+1)**2}}}+\\dfrac{{y^2}}{{{b**2}}}=1$" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Ta có $a^2=b^2+c^2$ \n\n $a={a}$ \n\n Phương trình chính tắc của elip là $\\dfrac{{x^2}}{{{a**2}}}+\\dfrac{{y^2}}{{{b**2}}}=1$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+#[D10_CX_B4_30]-TF-M3. Biết tiêu điểm và một điểm thuộc Hypebol tìm a,b,c, giao của H với dt khác
+def gghik_L10_CX_B4_30():
+	x,y=sp.symbols("x y")
+	b=random.randint(1,20)
+	a=random.randint(1,20)
+	if a==b: a=a+random.randint(1,3)
+	c=sqrt(a**2+b**2)
+	e=x**2/a**2-y**2/b**2    
+	t=random.randint(-5,5)
+	x1=(sqrt(b**2+t**2)/(b))*(a)
+	x2=(sqrt(b**2+t**2)/(b))
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, xét hypebol ${{(H)}}:\\dfrac{{x^2}}{{a^2}}-\\dfrac{{y^2}}{{b^2}}=1$ có 1 tiêu điểm là $F_{{1}} \\left(-{latex(nsimplify(c))} ;0 \\right)$ và đi qua $A({a};0)$. Xét tính đúng sai của các khẳng định sau?"     
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tiêu cự của hypebol ${{(H)}}$ là ${latex(nsimplify(2*c))}$" 
+	kq1_F=f"Tiêu cự của hypebol ${{(H)}}$ là ${latex(nsimplify(c))}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Ta có $c={ latex(nsimplify(c))}$  \n\n Tiêu cự của hypebol ${{(H)}}$ là $2c= {latex(nsimplify(2*c))}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* $a={a}$ "
+	kq2_F=f"$a={a+1}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Vì Hypebol đi qua $A({a};0)$ nên $a={a}$"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*$\\mid{{MF_1-MF_2}} \\mid= {2*a}$ với mọi $M \\in (H)$ và ${{F_2}}$ là tiêu điểu còn lại của Hypebol" 
+	kq3_F=f"$\\mid{{MF_1-MF_2}} \\mid= {a}$ với mọi $M \\in (H)$ và ${{F_2}}$ là tiêu điểu còn lại của Hypebol "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f" $\\mid{{MF_1-MF_2}} \\mid= {2*a}$ với mọi $M \\in (H)$ và ${{F_2}}$ là tiêu điểu còn lại của Hypebol"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x1)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x1)))}; {t}\\right)$ "
+	kq4_F=f"${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x2)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x2)))}; {t}\\right)$  " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f" Ta có $b={b}$ từ đó có phương trình Hypebol là $\\dfrac{{x^2}}{{{a**2}}}-\\dfrac{{y^2}}{{{b**2}}}=1$\n\n Thay $y={t}$ vào phương trình của $(H)$ giải phương trình tìm được $x_1= {latex(nsimplify((x1)))}$, $x_2= -{latex(nsimplify((x1)))}$ \n\n ${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x1)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x1)))}; {t}\\right)$ "
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+#[D10_CX_B4_31]-TF-M3. Cho parabol đi qua một điểm. Tìm đường chuẩn, tiêu điểm, tham số tiêu, điểm thuộc
+def gghik_L10_CX_B4_31():
+	x,y=sp.symbols("x y")
+	p=random.randint(1,20)
+	y0=random.choice([i for i in range(-5,5) if i!=0])
+	x0=y0**2/(2*p)
+	y1=random.choice([i for i in range(-5,5) if i!=0 and i!=y0])
+	x1=y1**2/(2*p)
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, xét $(P):y^2=2px$ (với $p >0$) biết $(P)$ đi qua điểm $M \\left( {phan_so(x1)}; {y1} \\right)$. Xét tính đúng sai của các khẳng định sau?"   
+
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tham số tiêu của Parabol là $p={p}$" 
+	kq1_F=f"Tham số tiêu của Parabol là $p={2*p}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Vì $(P)$ đi qua điểm $M \\left( {phan_so(x1)}; {y1} \\right)$ nên thay vào pt tìm được tham số tiêu của Parabol là $p={p}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Tiêu điểm $F \\left({phan_so(p/2)}; 0 \\right)$ "
+	kq2_F=f"Tiêu điểm $F \\left({phan_so(p)};0 \\right)$  "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Tiêu điểm $F \\left({phan_so(p/2)};0 \\right)$ "
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Đường chuẩn $\\Delta : x= {phan_so(-p/2)}$ " 
+	kq3_F=f"Đường chuẩn $\\Delta : x= {phan_so(-p)}$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f" Đường chuẩn $\\Delta : x= {phan_so(-p/2)}$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Điểm $\\left(  {phan_so(x0)}; {y0}\\right) \\in (P)$"
+	kq4_F=f"Điểm $\\left(  {phan_so(x0+1)}; {y0}\\right) \\in (P)$ " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG1=f"Phương trình chính tắc của $(P):y^2={2*p}x$ \n\n Điểm $\\left(  {phan_so(x0)}; {y0}\\right) \\in (P)$ vì toạ độ thoả mãn phương trình của ${{(P)}}$"
+	HDG2=f"Phương trình chính tắc của $(P):y^2={2*p}x$ \n\n Điểm $\\left(  {phan_so(x0+1)}; {y0}\\right) \\in (P)$ vì toạ độ không thoả mãn phương trình của ${{(P)}}$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG1}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG2}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[D10_CX_B4_32]-TF-M3. Cho pt elip dạng ax^2+by^c=c, tìm tiêu cự, tiêu điểm, điểm thuộc
+def gghik_L10_CX_B4_32():
+	x,y=sp.symbols("x y")
+	b=random.randint(1,10)
+	a=b+random.randint(1,5)
+	e=x**2/a**2+y**2/b**2    
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, cho elip $ {{(E)}}:{latex(x**2*b**2)}+{latex(y**2*a**2)}={(a*b)**2} $ có 2 tiêu điểm là $F_{{1}}$ và $F_{{2}}$. Xét tính đúng sai của các khẳng định sau?"       	
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* $M \\in (E)$ thì $MF_{{1}}+MF_{{2}}= {2*a}$" 
+	kq1_F=f"$M \\in (E) $ thì $ MF_{{1}}+MF_{{2}}= {2*b}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"$ {{(E)}}:{latex(x**2*b**2)}+{latex(y**2*a**2)}={(a*b)**2} $ tương đương  $\\dfrac{{x^2}}{{{a**2}}} + \\dfrac{{y^2}}{{{b**2}}} =1 $ \n\n         Ta có $a={a}; b={b} $ suy ra $M \\in (E) $ thì $MF_{{1}}+MF_{{2}}= {2*a}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=random.choice([  f"*$A(0;{b}) \\in (E)$ ", f"*$A(0;{-b}) \\in (E)$ ", f"*$A({a}; 0) \\in (E)$"])
+	kq2_F=random.choice([  f"*$A({b};0) \\in (E)$ ", f"*$A({-b};0) \\in (E)$ ", f"*$A(0;{a}) \\in (E)$"])
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Thay toạ độ điểm đã cho vào phương trình elip."
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Tiêu cự của elip bằng ${latex(nsimplify(2*sqrt(a**2-b**2)))}$ " 
+	kq3_F=f"Tiêu cự của elip bằng ${latex(nsimplify(sqrt(a**2-b**2)))}$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f"Tiêu cự của elip bằng $2c= 2\\sqrt {{a^{{2}}-b^{{2}}}}= {latex(nsimplify(2*sqrt(a**2-b**2)))}$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*$F_{{1}} \\left(-{latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$ và $F_{{2}} \\left({latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$"
+	kq4_F=f"$F_{{1}} \\left(-{latex(nsimplify((a**2-b**2)))}; 0 \\right)$ và $F_{{2}} \\left({latex(nsimplify((a**2-b**2)))}; 0 \\right)$ " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Elip có 2 tiêu điểm là $F_{{1}} \\left(-{latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$ và $F_{{2}} \\left({latex(nsimplify(sqrt(a**2-b**2)))}; 0 \\right)$"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[D10_CX_B4_33]-TF-M3. Cho phương trình Hypebol. Đọc tiêu điểm, tiêu cự, giao điểm
+def gghik_L10_CX_B4_33():
+	x,y=sp.symbols("x y")
+	b=random.randint(1,10)
+	a=random.randint(1,10)
+	if a==b: a=a+random.randint(1,3)
+	c=sqrt(a**2+b**2)
+	e=x**2/a**2-y**2/b**2    
+	t=random.randint(-5,5)
+	x1=(sqrt(b**2+t**2)/(b))*(a)
+	x2=(sqrt(b**2+t**2)/(b))
+
+	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, cho hypebol ${{(H)}}:{latex(x**2*b**2)}-{latex(y**2*a**2)}={(a*b)**2}$ có 2 tiêu điểm là $F_{{1}}$ và $F_{{2}}$. Xét tính đúng sai của các khẳng định sau?"     
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"* Tiêu cự của hypebol ${{(H)}}$ là ${latex(nsimplify(2*c))}$" 
+	kq1_F=f"Tiêu cự của hypebol ${{(H)}}$ là ${latex(nsimplify(c))}$ "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"${{(H)}}:{latex(x**2*b**2)}-{latex(y**2*a**2)}={(a*b)**2}$ tương đương ${{(H)}}:\\dfrac{{x^2}}{{{a**2}}}-\\dfrac{{y^2}}{{{b**2}}}=1$ \n\n Ta có $a={a}, b={b}$  \n\n Tiêu cự của hypebol ${{(H)}}$ là $2c= 2\\sqrt {{a^{{2}}+b^{{2}}}}={latex(nsimplify(2*c))}$ "
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* $F_{{1}} \\left(-{latex(nsimplify(c))} ;0 \\right)$ ; $F_{{2}}\\left({latex(nsimplify(c))} ;0 \\right)$ "
+	kq2_F=f"$F_{{1}} \\left(-{latex(nsimplify(2*c))} ;0 \\right)$ ; $F_{{2}}\\left({latex(nsimplify(2*c))} ;0 \\right)$ "
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"$F_{{1}} \\left(-{latex(nsimplify(c))} ;0 \\right)$ ; $F_{{2}}\\left({latex(nsimplify(c))} ;0 \\right)$"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*$\\mid{{MF_1-MF_2}} \\mid= {2*a}$ với mọi $M \\in (H)$" 
+	kq3_F=f"$\\mid{{MF_1-MF_2}} \\mid= {a}$ với mọi $M \\in (H)$ "
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=f" $\\mid{{MF_1-MF_2}} \\mid= {2*a}$ với mọi $M \\in (H)$"
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x1)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x1)))}; {t}\\right)$ "
+	kq4_F=f"${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x2)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x2)))}; {t}\\right)$  " 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f" Thay $y={t}$ vào phương trình của $(H)$ giải phương trình tìm được $x_1= {latex(nsimplify((x1)))}$, $x_2= -{latex(nsimplify((x1)))}$ \n\n ${{(H)}}$ cắt đường thẳng $y={t}$ tại hai điểm là $\\left( {latex(nsimplify((x1)))}; {t}\\right)$ và $\\left( -{latex(nsimplify((x1)))}; {t}\\right)$ "
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an

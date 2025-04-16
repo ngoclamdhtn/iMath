@@ -5659,7 +5659,7 @@ def uz9zu_L11_C6_B5_03():
             noi_dung_loigiai=f"Điều kiện:${latex(a*x+b)}>0, {latex(c*x+d)}>0$.\n\n"\
     f"$\\log_{m}({latex(a*x+b)}) {latex_dau_bpt} \\log_{m}({latex(c*x+d)}) \\Leftrightarrow {latex(a*x+b)} {latex_dau_bpt} {latex(c*x+d)}$\n\n"\
     f"$\\Leftrightarrow x {latex_dau_bpt} {latex(my_module.hien_phan_so(x_1))}$. Kết hợp điều kiện ta được nghiệm là: \n\n"\
-    f"$x {latex_dau_bpt} {latex(my_module.hien_phan_so(x_2))}$."
+    f"$x > {latex(my_module.hien_phan_so(x_2))}$."
 
         kq2=f"$S=({latex(my_module.hien_phan_so(x_min))};+\\infty)$"
         kq3=f"$S=({latex(my_module.hien_phan_so(x_min))};{latex(my_module.hien_phan_so(x_max))}]$"

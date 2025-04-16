@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 14.04.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.04.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 14.04.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.04.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -3391,6 +3391,28 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_59]-SA-M4. Bài toán về chọn số của 2 bạn, ai chọn dc số lớn hơn thì thắng "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_60]-SA-M4. Bài toán về chia phần thưởng. Xs 2 bạn nhận thưởng giống nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_61]-SA-M4. XS chọn k người trong đó có đúng 1 cặp vợ chồng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_62]-SA-M4. XS chọn số chia hết cho 11 có tận cùng là a"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_63]-SA-M4. XS để tổng k thẻ được chọn có 2 thẻ có tổng bằng a"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                 
 
 
@@ -4153,8 +4175,43 @@ class Ui_MainWindow(object):
 
 
 
-                L10_C10_B4_4 = QTreeWidgetItem(L10_C10_B4, ["4.4 - Câu hỏi đúng sai"])
+                L10_C10_B4_4 = QTreeWidgetItem(L10_C10_B4, ["Đúng-Sai"])
                 L10_C10_B4_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C10_B4_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_26]-TF-M2. Cho pt elip, tìm tiêu cự, tiêu điểm, điểm thuộc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_27]-TF-M2. Cho pt Hypebol. Đọc tiêu điểm, tiêu cự, giao điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_28]-TF-M2. Cho parabol. Tìm đường chuẩn, tiêu điểm, tham số tiêu, điểm thuộc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_29]-TF-M2. Tìm pt elip biết một tiêu cự và một điểm thuộc elip"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_30]-TF-M3. Biết tiêu điểm và một điểm thuộc Hypebol tìm a,b,c, giao của H với dt khác"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_31]-TF-M3. Cho parabol đi qua một điểm. Tìm đường chuẩn, tiêu điểm, tham số tiêu, điểm thuộc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_32]-TF-M3. Cho pt elip dạng ax^2+by^c=c, tìm tiêu cự, tiêu điểm, điểm thuộc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B4_4, ["[D10_CX_B4_33]-TF-M3. Cho Hypebol ax^2+by^c=c. Đọc tiêu điểm tiêu cự giao điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
                 
 
         #Tạo cây lớp 11
@@ -8690,7 +8747,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_17]-M2.  x.s giao: sơ đồ cây có P(A), P(B|A_), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)."])
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_17]-M2.  x.s giao: sơ đồ cây có P(A), P(B_|A), P(B_|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8702,13 +8759,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
-
                 
 
                 L12_C6_B1_2 = QTreeWidgetItem(L12_C6_B1, ["Đúng-Sai"])
                 L12_C6_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C6_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_2, ["[D12_C6_B1_20]-TF-M2. Cho P(A) và P(B|A). Xét Đ-S: P(A_), P(AB_), P(AB)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_2, ["[D12_C6_B1_21]-TF-M2. Chọn lần lượt 2 học sinh lên bảng. Xét Đ-S: không gian mẫu, n(A), n(A|B), n(B|A)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B1_2, ["[D12_C6_B1_08]-TF-M3. Cho tỉ lệ % mua hàng thỏa mãn 2 biến cố A,B. Xét Đ-S: P(ngang(A)), P(B|A), P(AB), P(ngang(A)ngang(B))"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -11032,6 +11095,18 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B1_18]-M2. X.S giao: cho sơ đồ cây có P(A_), P(B|A), P(B_|A_). Tính P(AB_) 
                                             if dang_toan == "[D12_C6_B1_18]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_18()
+
+                                            #[D12_C6_B1_19]-M2. X.S giao: cho sơ đồ cây có P(A_), P(B_|A), P(B|A_). Tính P(AB_) hoặc P(A_B) hoặc P(A_B_).
+                                            if dang_toan == "[D12_C6_B1_19]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_19()
+
+                                            #[D12_C6_B1_20]-M2. Cho P(A) và P(B|A). Xét Đ-S: P(A_), P(AB_), P(AB) 
+                                            if dang_toan == "[D12_C6_B1_20]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B1_20()
+
+                                            #[D12_C6_B1_21]-TF-M2. Chọn lần lượt 2 học sinh lên bảng. Xét Đ-S: không gian mẫu, n(A), n(A|B), n(B|A)
+                                            if dang_toan == "[D12_C6_B1_21]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B1_21()
 
                                             #----------------------Toán 12 - Chương 6 - Bài 2-------------------->
                                             #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
@@ -15109,6 +15184,10 @@ class Ui_MainWindow(object):
                                             if dang_toan =="[D10_C9_B2_50]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_50()
 
+                                            #[D10_C9_B2_51]-TF-M3. XS các bài toán xếp m nam m nữ hàng dọc. Xét tính ĐS
+                                            if dang_toan =="[D10_C9_B2_51]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_51()
+
                                             #[D10_C9_B2_52]-SA-M3. XS bài toán xếp m nam, m nữ hàng dọc(nhiều kiểu)
                                             if dang_toan =="[D10_C9_B2_52]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_52()
@@ -15137,9 +15216,29 @@ class Ui_MainWindow(object):
                                             if dang_toan =="[D10_C9_B2_58]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_58()
 
-                                            #[D10_C9_B2_51]-TF-M3. XS các bài toán xếp m nam m nữ hàng dọc. Xét tính ĐS
-                                            if dang_toan =="[D10_C9_B2_51]":
-                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C9.mjulk_L10_C9_B2_51()
+                                            #[D10_C9_B2_59]-SA-M4. Btoán về chọn số của 2 bạn, ai chọn dc số lớn hơn thì thắng 
+                                            if dang_toan =="[D10_C9_B2_59]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_59()
+
+                                            #[D10_C9_B2_60]-SA-M4. Bài toán về chia phần thưởng. Xs 2 bạn nhận thưởng giống nhau
+                                            if dang_toan =="[D10_C9_B2_60]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_60()
+
+                                            #[D10_C9_B2_61]-SA-M4. XS chọn k người trong đó có đúng 1 cặp vợ chồng
+                                            if dang_toan =="[D10_C9_B2_61]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_61()
+
+                                            #[D10_C9_B2_62]-SA-M4. XS chọn số chia hết cho 11 có tận cùng là a
+                                            if dang_toan =="[D10_C9_B2_62]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_62()
+
+                                            #[D10_C9_B2_63]-SA-M4. XS để tổng k thẻ được chọn có 2 thẻ có tổng bằng a
+                                            if dang_toan =="[D10_C9_B2_63]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_63()
+
+
+
+                                            
 
 
 
@@ -15697,7 +15796,41 @@ class Ui_MainWindow(object):
 
                                         #[D10_CX_B4_25]-M2. Viết phương trình parabol có đường chuẩn.
                                             if dang_toan == "[D10_CX_B4_25]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B4_24()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B4_24()
+
+                                            #[D10_CX_B4_26]-TF-M2. Cho pt elip, tìm tiêu cự, tiêu điểm, điểm thuộc
+                                            if dang_toan =="[D10_CX_B4_26]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_26()
+
+                                            #[D10_CX_B4_27]-TF-M2. Cho pt Hypebol. Đọc tiêu điểm, tiêu cự, giao điểm
+                                            if dang_toan =="[D10_CX_B4_27]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_27()
+
+                                            #[D10_CX_B4_28]-TF-M2. Cho parabol. Tìm đường chuẩn, tiêu điểm, tham số tiêu, điểm thuộc
+                                            if dang_toan =="[D10_CX_B4_28]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_28()
+
+                                            #[D10_CX_B4_29]-TF-M2. Tìm pt elip biết một tiêu cự và một điểm thuộc elip
+                                            if dang_toan =="[D10_CX_B4_29]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_29()
+
+                                            #[D10_CX_B4_30]-TF-M3. Biết tiêu điểm và một điểm thuộc Hypebol tìm a,b,c, giao của H với dt khác
+                                            if dang_toan =="[D10_CX_B4_30]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_30()
+
+                                            #[D10_CX_B4_31]-TF-M3. Cho parabol đi qua một điểm. Tìm đường chuẩn, tiêu điểm, tham số tiêu, điểm thuộc
+                                            if dang_toan =="[D10_CX_B4_31]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_31()
+
+                                            #[D10_CX_B4_32]-TF-M3. Cho pt elip dạng ax^2+by^c=c, tìm tiêu cự, tiêu điểm, điểm thuộc
+                                            if dang_toan =="[D10_CX_B4_32]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_32()
+
+                                            #[D10_CX_B4_33]-TF-M3. Cho Hypebol ax^2+by^c=c. Đọc tiêu điểm tiêu cự giao điểm
+                                            if dang_toan =="[D10_CX_B4_33]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B4_33()
+
+                               
                                                                                      
                                                                            
                                         #Xử lí xuất câu hỏi                                                

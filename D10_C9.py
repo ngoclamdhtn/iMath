@@ -8538,8 +8538,6 @@ def mjulk_L10_C9_B2_56():
 
 
 
-
-
 #[D10_C9_B2_57]-SA-M3. Có a phiếu trong đó có b phiếu trúng thưởng, m người rút. XS để A trúng thưởng
 def mjulk_L10_C9_B2_57():
 	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
@@ -8568,10 +8566,6 @@ def mjulk_L10_C9_B2_57():
 	return debai_word, loigiai_word, latex_tuluan, dap_an	
 
 
-
-
-
-
 #[D10_C9_B2_58]-SA-M3. Tính xs chọn được k số có tổng bình phương chia hết cho 4
 def mjulk_L10_C9_B2_58():
 	a=random.randint(1,30)
@@ -8588,6 +8582,229 @@ def mjulk_L10_C9_B2_58():
 	f'A:" Tổng bình phương của ${{{k}}}$ số đó chia hết cho ${{4}}$ \n\n'
 	f'A" Chọn được ${{{k}}}$ số chẵn" suy ra $n(A)= C_{{{chan}}}^{{{k}}}$ \n\n'
 	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}} \\approx {kq}$" )
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+#[D10_C9_B2_59]-SA-M4. Bài toán về chọn số của 2 bạn, ai chọn dc số lơn hơn thì thắng 
+def mjulk_L10_C9_B2_59():
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	m=random.randint(5,7)
+	n=0
+	if m ==5 : n =m+random.randint(1,4)
+	if m ==6 : n =m+random.randint(1,3)
+	if m ==7 : n =m+random.randint(1,2)
+	k=random.choice([2,3,4])
+	kgm=binomial(n,k)*binomial(m,k)
+	nA= binomial(m,k)*(binomial(n,k)- binomial(m,k))+binomial(m,k)*(binomial(m,k)-1)/2
+	t=(nA/kgm)
+	kq="{:.2f}".format(t).replace(".", ",")
+	dap_an= kq
+	noi_dung=(f"Bạn {A} có ${{{n}}}$ viên bi được đánh số từ ${{1}}$ đến ${{{n}}}$, bạn {B} có ${{{m}}}$ viên bi được đánh số từ ${{1}}$ đến ${{{m}}}$. Hai bạn cùng chơi một trò chơi bằng cách mỗi bạn rút ra ${{{k}}}$ viên bi và ghép lại theo thứ tự giảm dần để được số tự nhiên có ${{{k}}}$ chữ số. "
+	f"Người thắng cuộc là người có số lớn hơn. Hỏi xác suất để bạn {A} thắng bạn {B} là bao nhiêu? (Làm tròn kết quả đến hàng phần trăm) ")
+	noi_dung_loigiai=(f" $n(\\Omega)= C_{{{n}}}^{{{k}}}.C_{{{m}}}^{{{k}}} ={kgm} $ \n\n "
+	f'A: "Bạn {A} thắng bạn {B} " \n\n'
+	f" Trong tập hợp các số của {A} có $C_{{{n}}}^{{{k}}} - C_{{{m}}}^{{{k}}} ={binomial(n,k)-binomial(m,k)}$ số có chữ số đứng đầu lớn hơn ${{{m}}}$ và các số này đều lớn hơn bất cứ số nào mà {B} tạo ra \n\n"
+	f"Tập các số của {B} có tất cả $C_{{{m}}}^{{{k}}}={binomial(m,k)}$ số và ta sẽ sắp xếp chúng theo thứ tự tăng dần như vậy nếu {B} tạo được số x nào đó mà số đó đứng ở vị trí thứ k khi sắp xếp thứ tự thì {A} có $C_{{{m}}}^{{{k}}}-k= {binomial(m,k)}-k$ số lớn hơn số x mà các chữ số được tạo từ ${{1}}$ đến ${{{m}}}$ \n\n   "
+	f'Vậy $n(A)= C_{{{m}}}^{{{k}}} . ( C_{{{n}}}^{{{k}}} - C_{{{m}}}^{{{k}}}  ) +  (1+2+3+...+{binomial(m,k)-1}) ={nA} $    \n\n'
+	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}} \\approx {kq}$" )
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+#[D10_C9_B2_60]-SA-M4. Bài toán về chia phần thưởng. Xs 2 bạn nhận thưởng giống nhau
+def mjulk_L10_C9_B2_60():
+	A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
+	B=random.choice(["Hoà", "Minh", "Hiếu", "Hùng", "Hoàng", "Hưng", "Công", "Thành", "Long", "Tân", "Trường"])
+	x=random.randint(3,25)
+	y=random.randint(3,20)
+	z=random.randint(3,20)
+	t=x+y+z
+	kgm=binomial(t,x)*binomial(y+z,y)
+	nA= binomial(t-2,y-2)*binomial(x+z,x)+ binomial(t-2,x-2)*binomial(y+z,y)+binomial(t-2,z-2)*binomial(y+x,y)
+	t1=(nA/kgm)
+	kq="{:.2f}".format(t1).replace(".", ",")
+	dap_an= kq
+	noi_dung=(f"Người ta dùng ${{{2*t}}}$ cuốn sách bao gồm ${{{x+y}}}$ cuốn Toán, ${{{x+z}}}$ cuốn Hoá, ${{{z+y}}}$ cuốn Lí( các cuốn sách cùng loại thì giống nhau) để làm phần thưởng cho ${{{phan_so(t)}}}$ học sinh. (Làm tròn kết quả đến hàng phần trăm) "
+	f"(trong đó có hai học sinh {A} và {B}) mỗi học sinh nhận được hai cuốn sách khác thể loại (không tính thứ tự các cuốn sách ). Tính xác suất để hai học sinh {A} và {B } nhận thưởng giống nhau.")
+	noi_dung_loigiai=(f"$n(\\Omega)= C_{{{t}}}^{{{x}}}.C_{{{y+z}}}^{{{y}}} .C_{{{z}}}^{{{z}}} $ \n\n "
+	f"Gọi ${{x,y,z}}$ là số học sinh nhận được bộ Toán và Hoá, Toán và Lí, Hoá + Lí \n\n"
+	f" Ta có $x+y={x+y}; x+z={x+z} ; z+y={z+y} $ suy ra $x={x}; y={y}; z={z}$ \n\n"
+	f" TH1: {A} và {B} cùng nhận bộ Toán + lí là $C_{{{t-2}}}^{{{y-2}}}.C_{{{x+z}}}^{{{x}}}  $ \n\n "
+	f" TH2: {A} và {B} cùng nhận bộ Toán +Hoá là $C_{{{t-2}}}^{{{x-2}}}.C_{{{y+z}}}^{{{y}}}  $ \n\n "
+	f" TH3: {A} và {B} cùng nhận bộ Lí +Hoá là $C_{{{t-2}}}^{{{z-2}}}.C_{{{y+x}}}^{{{y}}}  $ \n\n "
+	f" $n(A)= C_{{{t-2}}}^{{{y-2}}}.C_{{{x+z}}}^{{{x}}}  + C_{{{t-2}}}^{{{x-2}}}.C_{{{y+z}}}^{{{y}}}+ C_{{{t-2}}}^{{{z-2}}}.C_{{{y+x}}}^{{{y}}} $ \n\n"
+	f" $P(A)= {kq}$")
+
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+#[D10_C9_B2_61]-SA-M4. XS chọn k người trong đó có đúng 1 cặp vợ chồng
+def mjulk_L10_C9_B2_61():
+	n=1
+	k=n+1
+	m=5
+	x=random.randint(5,20)
+	y=random.randint(10,25)
+
+	kgm=binomial(x+y,5)
+	nA= 2*binomial(y+x-4,3)+4*binomial(x+y-4,2)
+	t1=(nA/kgm)
+	kq="{:.2f}".format(t1).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Một công ty có ${{{x}}}$ nhân viên nam và ${{{y}}}$ nhân viên nữ trong đó có đúng ${{{k}}}$ cặp vợ chồng. Công ty chọn ngẫu nhiên ${{{m}}}$ người trong số ${{{x+y}}}$ nhân viên đi công tác. Tính xác suất sao cho trong ${{{m}}}$ người được chọn có đúng ${{{n}}}$ cặp vợ chồng. (Làm tròn kết quả đến hàng phần trăm)"
+	noi_dung_loigiai=(f"$n(\\Omega)= C_{{{x+y}}}^{{{m}}} $ \n\n "
+	
+	f" TH1: Trong  ${{{m}}}$ người có ${{{n}}}$ cặp vợ chồng và ${{{m-2*n}}}$ người còn lại không có ai có vợ hoặc chồng trong công ty $C_{{{k}}}^{{{n}}}.C_{{{x+y-2*k}}}^{{{m-2*n}}}  $ \n\n "
+	f" TH2: Trong  ${{{m}}}$ người có ${{{n}}}$ cặp vợ chồng, ${{{1}}}$ người có vợ hoặc chồng và ${{{m-2*n-1}}}$ người còn lại không phải vợ hoặc chồng với người đã chọn $C_{{{2}}}^{{{1}}}.C_{{{2}}}^{{{1}}}.C_{{{x+y-4}}}^{{{2}}}  $ \n\n "
+	f" $n(A)= C_{{{k}}}^{{{n}}}.C_{{{x+y-2*k}}}^{{{m-2*n}}}+C_{{{2}}}^{{{1}}}.C_{{{2}}}^{{{1}}}.C_{{{x+y-4}}}^{{{2}}}  $ \n\n"
+	f" $P(A)= {kq}$")
+
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+#[D10_C9_B2_62]-SA-M4. XS chọn số chia hết cho 11 có tận cùng là a
+def mjulk_L10_C9_B2_62():
+	n=random.choice([8,1,7,5,2,9,6,3,4])
+	k=random.randint(4,7)
+	m=11
+	if k==4:
+		dem=sum(1 for i in range(1000, 10000) if i % m == 0 and (i-n)%10==0) 
+		kgm=9*10**3
+		nA= dem
+		t1=(nA/kgm)
+	if k==5:
+		dem=sum(1 for i in range(10000, 100000) if i % m == 0 and (i-n)%10==0) 
+		kgm=9*10**4
+		nA= dem
+		t1=(nA/kgm)
+	if k==6:
+		dem=sum(1 for i in range(100000, 1000000) if i % m == 0 and (i-n)%10==0) 
+		kgm=9*10**5
+		nA= dem
+		t1=(nA/kgm)
+	if k==7:
+		dem=sum(1 for i in range(1000000, 10000000) if i % m == 0 and (i-n)%10==0) 
+		kgm=9*10**6
+		nA= dem
+		t1=(nA/kgm)
+	kq="{:.2f}".format(t1).replace(".", ",")
+	dap_an= kq
+	noi_dung=f"Gọi A là tập hợp các số tự nhiên có ${{{k}}}$ chữ số. Chọn ngẫu nhiên một số trong A, tính xác suất để số được chọn chia hết cho ${{{m}}}$ và có chữ số tận cùng là ${{{n}}}$."
+	noi_dung_loigiai=(f"$n(\\Omega)= 9.10^{{{k-1}}} $ \n\n "
+		f"Xét ${10**(k-1)} \\le {m}q \\le {10**k-1}$ \n\n "
+		f" ${int((10**(k-1))/m)+1} \\le q \\le {int((10**k-1)/m)}$ \n\n"
+		f" Vì q có tận cùng là ${{{n}}}$ nên $q=10a+{n}$ \n\n"
+		f" ${int((10**(k-1))/m)+1} \\le 10a+{n} \\le {int((10**k-1)/m)}$ \n\n"
+		f" $ {phan_so((int((10**(k-1))/m)+1-n)/10)} \\le a \\le  {phan_so((int((10**k-1)/m)+1-n)/10)}$ \n\n"
+	f" $n(A)= {dem}$ \n\n"
+	f" $P(A)= {kq}$")
+
+	debai_word= f"{noi_dung}\n"
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	dap_an= kq
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an	
+
+
+
+
+
+
+#[D10_C9_B2_63]-SA-M4. XS để tỏng k thẻ được chọn có 2 thẻ có tổng bằng a
+def mjulk_L10_C9_B2_63():
+	n=random.randint(8,20)
+	m=random.choice([3,4,5,6])
+	if m==4:
+		kgm=binomial(2*n,m)
+		nA= 2*n*(2*n-2)*(2*n-4)*(2*n-6)/factorial(4)
+		t1=1-(nA/kgm)
+		kq="{:.2f}".format(t1).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Có ${{{2*n}}}$ tấm thẻ được đánh số từ 1 đến ${{{2*n}}}$. Chọn ngẫu nhiên ra ${{{m}}}$ tấm thẻ. Tính xác suất để trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$. (Làm tròn kết quả đến hàng phần trăm)"
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{2*n}}}^{{{m}}} $ \n\n "
+		f" Gọi A là biến cố trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$ \n\n "
+		f" $\\overline{{A}} $: trong ${{{m}}}$ tấm thẻ chọn ra không có hai tấm thẻ nào mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$\n\n"
+		f" $n(\\overline {{A}})= \\dfrac{{ C_{{{2*n}}}^{{{1}}}.C_{{{2*n-2}}}^{{{1}}}.C_{{{2*n-4}}}^{{{1}}}. C_{{{2*n-6}}}^{{{1}}} }}{{4!}}$ \n\n"
+		f" $P(A)=1-P(\\overline{{A}})$\n\n"
+		f" $P(A)= {kq}$")
+	if m==3:
+		kgm=binomial(2*n,m)
+		nA= 2*n*(2*n-2)*(2*n-4)/factorial(3)
+		t1=1-(nA/kgm)
+		kq="{:.2f}".format(t1).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Có ${{{2*n}}}$ tấm thẻ được đánh số từ 1 đến ${{{2*n}}}$. Chọn ngẫu nhiên ra ${{{m}}}$ tấm thẻ. Tính xác suất để trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$.(Làm tròn kết quả đến hàng phần trăm)"
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{2*n}}}^{{{m}}} $ \n\n "
+		f" Gọi A là biến cố trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$ \n\n "
+		f" $\\overline{{A}} $: trong ${{{m}}}$ tấm thẻ chọn ra không có hai tấm thẻ nào mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$\n\n"
+		f" $n(\\overline {{A}})= \\dfrac{{ C_{{{2*n}}}^{{{1}}}.C_{{{2*n-2}}}^{{{1}}}.C_{{{2*n-4}}}^{{{1}}}}}{{3!}}$ \n\n"
+		f" $P(A)=1-P(\\overline{{A}})$\n\n"
+		f" $P(A)= {kq}$")
+	if m==5:
+		kgm=binomial(2*n,m)
+		nA= 2*n*(2*n-2)*(2*n-4)*(2*n-6)*(2*n-8)/factorial(5)
+		t1=1-(nA/kgm)
+		kq="{:.2f}".format(t1).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Có ${{{2*n}}}$ tấm thẻ được đánh số từ 1 đến ${{{2*n}}}$. Chọn ngẫu nhiên ra ${{{m}}}$ tấm thẻ. Tính xác suất để trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$. (Làm tròn kết quả đến hàng phần trăm)"
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{2*n}}}^{{{m}}} $ \n\n "
+		f" Gọi A là biến cố trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$ \n\n "
+		f" $\\overline{{A}} $: trong ${{{m}}}$ tấm thẻ chọn ra không có hai tấm thẻ nào mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$\n\n"
+		f" $n(\\overline {{A}})= \\dfrac{{ C_{{{2*n}}}^{{{1}}}.C_{{{2*n-2}}}^{{{1}}}.C_{{{2*n-4}}}^{{{1}}}.C_{{{2*n-6}}}^{{{1}}}.C_{{{2*n-8}}}^{{{1}}}}}{{5!}}$ \n\n"
+		f" $P(A)=1-P(\\overline{{A}})$\n\n"
+		f" $P(A)= {kq}$")
+
+	if m==6:
+		kgm=binomial(2*n,m)
+		nA= 2*n*(2*n-2)*(2*n-4)*(2*n-6)*(2*n-8)*(2*n-10)/factorial(6)
+		t1=1-(nA/kgm)
+		kq="{:.2f}".format(t1).replace(".", ",")
+		dap_an= kq
+		noi_dung=f"Có ${{{2*n}}}$ tấm thẻ được đánh số từ 1 đến ${{{2*n}}}$. Chọn ngẫu nhiên ra ${{{m}}}$ tấm thẻ. Tính xác suất để trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$. (Làm tròn kết quả đến hàng phần trăm)"
+		noi_dung_loigiai=(f"$n(\\Omega)= C_{{{2*n}}}^{{{m}}} $ \n\n "
+		f" Gọi A là biến cố trong ${{{m}}}$ tấm thẻ chọn ra có hai tấm thẻ mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$ \n\n "
+		f" $\\overline{{A}} $: trong ${{{m}}}$ tấm thẻ chọn ra không có hai tấm thẻ nào mà tổng hai số trên hai tấm thẻ bằng ${{{2*n+1}}}$\n\n"
+		f" $n(\\overline {{A}})= \\dfrac{{ C_{{{2*n}}}^{{{1}}}.C_{{{2*n-2}}}^{{{1}}}.C_{{{2*n-4}}}^{{{1}}}.C_{{{2*n-6}}}^{{{1}}} .C_{{{2*n-8}}}^{{{1}}}.C_{{{2*n-10}}}^{{{1}}} }}{{6!}}$ \n\n"
+		f" $P(A)=1-P(\\overline{{A}})$\n\n"
+		f" $P(A)= {kq}$")
 	debai_word= f"{noi_dung}\n"
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
