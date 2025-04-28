@@ -5000,8 +5000,7 @@ def ngh_kjg_L11_C1_B5_14():
     a=random.randint(1,4)
     m=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6, -pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4])    
     b=random.randint(1,10)
-    chon=random.randint(1,6)
-    chon=2 
+    chon=random.randint(1,6)    
     
     if chon==1:
         noi_dung = f"Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $\\cos \\left({latex(a*x+m)}\\right)=0$ là"

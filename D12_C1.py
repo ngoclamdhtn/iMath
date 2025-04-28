@@ -11724,14 +11724,14 @@ def prt_34_L12_C1_B5_06():
 
 	chon=random.randint(1,2)
 	if chon==1:
-		kq1_T=f"* Nếu cắt ở mỗi góc quá ${int(a/2)+random.randint(3,5)}$ cm thì không tạo được chiếc hộp có dạng hình hộp chữ nhật" 
-		kq1_F=f"Nếu cắt ở mỗi góc quá ${int(a/2)+random.randint(3,5)}$ cm thì tạo được chiếc hộp có dạng hình hộp chữ nhật"
+		kq1_T=f"* Nếu cắt ở mỗi góc quá ${{{int(a/2)+random.randint(3,5)}}}$ cm thì không tạo được chiếc hộp có dạng hình hộp chữ nhật" 
+		kq1_F=f"Nếu cắt ở mỗi góc quá ${{{int(a/2)+random.randint(3,5)}}}$ cm thì tạo được chiếc hộp có dạng hình hộp chữ nhật"
 		
 		HDG=f"Điều kiện: $0<2x<{a} \\Rightarrow 0<x<{phan_so(a/2)}$"
 	
 	if chon==2:
-		kq1_T=f"* Nếu cắt ở mỗi góc nhỏ hơn ${int(a/2)-random.randint(1,3)}$ cm thì tạo được chiếc hộp có dạng hình hộp chữ nhật" 
-		kq1_F=f"Nếu cắt ở mỗi góc nhỏ hơn ${int(a/2)-random.randint(1,3)}$ cm thì không tạo được chiếc hộp có dạng hình hộp chữ nhật"
+		kq1_T=f"* Nếu cắt ở mỗi góc nhỏ hơn ${{{int(a/2)-random.randint(1,3)}}}$ cm thì tạo được chiếc hộp có dạng hình hộp chữ nhật" 
+		kq1_F=f"Nếu cắt ở mỗi góc nhỏ hơn ${{{int(a/2)-random.randint(1,3)}}}$ cm thì không tạo được chiếc hộp có dạng hình hộp chữ nhật"
 		
 		HDG=f"Điều kiện: $0<2x<{a} \\Rightarrow 0<x<{phan_so(a/2)}$."
 	
@@ -11776,12 +11776,12 @@ def prt_34_L12_C1_B5_06():
 	
 	if chon==2:
 		t1, t2=int(x_1)+random.randint(1,3), a/2
-		kq3_T=f"* Thể tích của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến {phan_so(t2)} cm" 
-		kq3_F=f"Thể tích của hộp tăng dần nếu cắt trong khoảng từ {t1} cm đến {phan_so(t2)} cm"
+		kq3_T=f"* Thể tích của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến ${{{phan_so(t2)}}}$ cm" 
+		kq3_F=f"Thể tích của hộp tăng dần nếu cắt trong khoảng từ {t1} cm đến ${{{phan_so(t2)}}}$ cm"
 		
 		HDG=(f"$V'(x)={latex(expand(f_dh))}$.\n\n"
 			f"$V'(x)=0 \\Leftrightarrow x={phan_so(x_1)}, x={phan_so(x_2)}$.\n\n"
-			f"$V'(x)<0, \\forall x \\in ({t1};{t2})$ nên thể tích $V(x)$ của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến {t2} cm")
+			f"$V'(x)<0, \\forall x \\in ({t1};{t2})$ nên thể tích $V(x)$ của hộp giảm dần nếu cắt trong khoảng từ {t1} cm đến ${{{phan_so(t2)}}}$ cm")
 	
 	
 	kq3=random.choice([kq3_T, kq3_F])

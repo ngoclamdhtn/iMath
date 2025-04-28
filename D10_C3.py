@@ -3402,7 +3402,7 @@ def npl_mk_L10_C3_B2_33():
     \draw (10,0)--(10,1)--++(60:5)--++(-90:1);
  \end{{tikzpicture}}  
  """
-    noi_dung = f"Một miếng tôn có bề ngang ${{{4*a}}}$ cm được uốn cong tạo thành máng dẫn nước bằng chia tấm tôn thành ba phần rồi gấp 2 bên lại theo một góc vuông. Hỏi cần gấp hai đầu cùng một đoạn bao nhiêu để tạo ra máng có diện tích bề ngang lớn nhất cho nước chảy qua được nhiều nhất?"
+    noi_dung = f"Một miếng tôn có bề ngang ${{{4*a}}}$ cm được uốn cong tạo thành máng dẫn nước bằng chia tấm tôn thành ba phần rồi gấp 2 bên lại theo một góc vuông. Hỏi cần gấp hai đầu cùng một đoạn bao nhiêu để tạo ra máng có diện tích mặt cắt lớn nhất cho nước chảy qua được nhiều nhất?"
 
     noi_dung_loigiai=(f" Gọi ${{x}}$ là độ dài hai đầu gấp tấm tôn \n\n"
     f" Diện tích bề ngang là $S(x)={latex(expand((4*a-2*x)*x))}$\n\n"

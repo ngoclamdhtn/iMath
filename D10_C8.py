@@ -2293,7 +2293,7 @@ def mcn__L10_C8_B2_01():
 
 
 	noi_dung_loigiai=f"Mỗi cách chọn là một hoán vị của ${{{k}}}$ phần tử.\n "\
-					f"Số cách chọn là: $A{{{k}!={kq}}}$.\n"
+					f"Số cách chọn là: ${{{k}!={kq}}}$.\n"
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
@@ -6353,7 +6353,117 @@ def mcn__L10_C8_B2_52():
 	dap_an= kq
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D10_C8_B2_53]-SA-M3. Tìm số cách chọn có ít nhất một vật được chọn
+def mcn__L10_C8_B2_53():
+	while True:
+		n1=random.randint(4,8)
+		n2=random.randint(4,8)
+		n3=random.randint(4,8)
 
+		k=random.randint(3,6)
+		n=n1+n2+n3
+		dap_an=binomial(n,k)-binomial(n2+n3,k)
+		if all([n1!=n2,n2!=n3,n3!=n1,dap_an<9999]):
+			break
+	chon=random.randint(1,6)
+		
+	if chon==1:
+		hoa=["hoa hồng", "hoa lan", "hoa mai", "hoa cúc", "hoa đào", "hoa ly", ]
+		vat1, vat2, vat3=random.sample(hoa,3)
+		
+		noi_dung = (
+		f"Cửa hàng bán hoa có ${{{n1}}}$ bó {vat1}, ${{{n2}}}$ bó {vat2} và ${{{n3}}}$ bó {vat3}."
+		f" Chọn ngẫu nhiên ${{{k}}}$ bó hoa. Tính số cách chọn để có ít nhất một bó {vat1} được chọn."
+		)	
+
+		noi_dung_loigiai=(
+		f"Số cách chọn ${{{k}}}$ bó hoa tùy ý: $C^{{{k}}}_{{{n}}}={binomial(n,k)}$.\n\n"
+		f"Số cách chọn không có bó {vat1} nào: $C^{{{k}}}_{{{n2+n3}}}={binomial(n2+n3,k)}$.\n\n"
+		f"số cách chọn để có ít nhất một bó {vat1}: ${binomial(n,k)}-{binomial(n2+n3,k)}={dap_an}$.")
+	
+	if chon==2:
+		sach=["sách Toán", "sách Vật Lí", "sách Văn", "sác Tiếng Anh", "sách Hóa Học", "sách Tin học", ]
+		vat1, vat2, vat3=random.sample(sach,3)
+		
+		noi_dung = (
+		f"Thư viện có ${{{n1}}}$ cuốn {vat1}, ${{{n2}}}$ cuốn {vat2} và ${{{n3}}}$ cuốn {vat3}, các cuốn sách là khác nhau."
+		f" Chọn ngẫu nhiên ${{{k}}}$ cuốn sách. Tính số cách chọn để có ít nhất một cuốn {vat1} được chọn."
+		)	
+
+		noi_dung_loigiai=(
+		f"Số cách chọn ${{{k}}}$ cuốn sách tùy ý: $C^{{{k}}}_{{{n}}}={binomial(n,k)}$.\n\n"
+		f"Số cách chọn không có cuốn {vat1} nào: $C^{{{k}}}_{{{n2+n3}}}={binomial(n2+n3,k)}$.\n\n"
+		f"số cách chọn để có ít nhất một cuốn {vat1}: ${binomial(n,k)}-{binomial(n2+n3,k)}={dap_an}$.")
+
+	if chon==3:
+		qua=["cam", "táo", "ổi", "xoài", "lê", "mận", ]
+		vat1, vat2, vat3=random.sample(qua,3)
+		
+		noi_dung = (
+		f"Cửa hàng bán hoa quả có ${{{n1}}}$ quả {vat1}, ${{{n2}}}$ quả {vat2} và ${{{n3}}}$ quả {vat3}."
+		f" Chọn ngẫu nhiên ${{{k}}}$ quả. Tính số cách chọn để có ít nhất một quả {vat1} được chọn."
+		)	
+
+		noi_dung_loigiai=(
+		f"Số cách chọn ${{{k}}}$ quả tùy ý: $C^{{{k}}}_{{{n}}}={binomial(n,k)}$.\n\n"
+		f"Số cách chọn không có quả {vat1} nào: $C^{{{k}}}_{{{n2+n3}}}={binomial(n2+n3,k)}$.\n\n"
+		f"số cách chọn để có ít nhất một quả {vat1}: ${binomial(n,k)}-{binomial(n2+n3,k)}={dap_an}$.")
+
+	if chon==4:
+		but=["bút bi", "bút chì", "bút màu", "bút mực" ]
+		vat1, vat2, vat3=random.sample(but,3)
+		
+		noi_dung = (
+		f"Một nhà sách có ${{{n1}}}$ cái {vat1}, ${{{n2}}}$ cái {vat2} và ${{{n3}}}$ cái {vat3}."
+		f" Chọn ngẫu nhiên ${{{k}}}$ cái. Tính số cách chọn để có ít nhất một cái {vat1} được chọn."
+		)	
+
+		noi_dung_loigiai=(
+		f"Số cách chọn ${{{k}}}$ bút tùy ý: $C^{{{k}}}_{{{n}}}={binomial(n,k)}$.\n\n"
+		f"Số cách chọn không có cái {vat1} nào: $C^{{{k}}}_{{{n2+n3}}}={binomial(n2+n3,k)}$.\n\n"
+		f"số cách chọn để có ít nhất một cái {vat1}: ${binomial(n,k)}-{binomial(n2+n3,k)}={dap_an}$.")
+
+	if chon==5:
+		convat=["chó", "mèo", "thỏ", "gà", "dê", "vịt", "ngỗng" ]
+		vat1, vat2, vat3=random.sample(convat,3)
+		
+		noi_dung = (
+		f"Một trang trại có ${{{n1}}}$ con {vat1}, ${{{n2}}}$ con {vat2} và ${{{n3}}}$ con {vat3}."
+		f" Chọn ngẫu nhiên ${{{k}}}$ con vật. Tính số cách chọn để có ít nhất một con {vat1} được chọn."
+		)	
+
+		noi_dung_loigiai=(
+		f"Số cách chọn ${{{k}}}$ con vật tùy ý: $C^{{{k}}}_{{{n}}}={binomial(n,k)}$.\n\n"
+		f"Số cách chọn không có con {vat1} nào: $C^{{{k}}}_{{{n2+n3}}}={binomial(n2+n3,k)}$.\n\n"
+		f"số cách chọn để có ít nhất một con {vat1}: ${binomial(n,k)}-{binomial(n2+n3,k)}={dap_an}$.")
+
+	if chon==6:
+		banh=["bánh mì", "bánh kem", "bánh quy", "bánh bao", "bánh bông lan", "bánh trứng",]
+		vat1, vat2, vat3=random.sample(banh,3)
+		
+		noi_dung = (
+		f"Một tiệm bánh có ${{{n1}}}$ cái {vat1}, ${{{n2}}}$ cái {vat2} và ${{{n3}}}$ cái {vat3}."
+		f" Chọn ngẫu nhiên ${{{k}}}$ cái bánh. Tính số cách chọn để có ít nhất một cái {vat1} được chọn."
+		)	
+
+		noi_dung_loigiai=(
+		f"Số cách chọn ${{{k}}}$ cái bánh tùy ý: $C^{{{k}}}_{{{n}}}={binomial(n,k)}$.\n\n"
+		f"Số cách chọn không có cái {vat1} nào: $C^{{{k}}}_{{{n2+n3}}}={binomial(n2+n3,k)}$.\n\n"
+		f"số cách chọn để có ít nhất một cái {vat1}: ${binomial(n,k)}-{binomial(n2+n3,k)}={dap_an}$.")
+	
+		
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 
@@ -6635,16 +6745,23 @@ def mcn__L10_C8_B3_06():
 	pa_D= f"${{{kq4}}}$"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)  
+	random.shuffle(list_PA)
 
-	noi_dung=f"Tìm hệ số của ${{ x^{{{k}}} }}$ trong khai triển biểu thức ${latex(f)}$."
+	if k!=1:
+		noi_dung=f"Tìm hệ số của ${{ x^{{{k}}} }}$ trong khai triển biểu thức ${latex(f)}$."
+		noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"\
+						f"Hệ số của ${{ x^{{{k}}} }}$ là ${{{kq}}}$."
+	else:
+		noi_dung=f"Tìm hệ số của ${{x}}$ trong khai triển biểu thức ${latex(f)}$."
+		noi_dung_loigiai=f"Số hạng chứa ${{x}}$ là: $C^{{{k}}}_{{{n}}}.({a}).({b})^{{{n-k}}}.x={kq}{{x}}$. \n"\
+						f"Hệ số của ${{x}}$ là ${{{kq}}}$."
+
 
 	debai= f"{noi_dung}\n"
 			 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
-	noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"\
-					f"Hệ số của ${{ x^{{{k}}} }}$ là ${{{kq}}}$."
+	
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
@@ -6662,6 +6779,8 @@ def mcn__L10_C8_B3_06():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 
 #[D10_C8_B3_07]-M2. Tìm số hạng chứa x^k trong khai triển của (ax+b)^n, n=4,5
 def mcn__L10_C8_B3_07():
@@ -6681,10 +6800,10 @@ def mcn__L10_C8_B3_07():
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]
 
-	kq=f"{kq}x^{{{k}}}"
-	kq2=f"{kq2}x^{{{k}}}"
-	kq3=f"{kq3}x^{{{k}}}"
-	kq4=f"{kq4}x^{{{k}}}"
+	kq=f"{kq}x^{{{k}}}".replace("x^{1}","x")
+	kq2=f"{kq2}x^{{{k}}}".replace("x^{1}","x")
+	kq3=f"{kq3}x^{{{k}}}".replace("x^{1}","x")
+	kq4=f"{kq4}x^{{{k}}}".replace("x^{1}","x")
 
 	#Tạo các phương án
 	pa_A= f"*${{{kq}}}$"
@@ -6695,13 +6814,18 @@ def mcn__L10_C8_B3_07():
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  
 
-	noi_dung=f"Tìm số hạng chứa ${{ x^{{{k}}} }}$ trong khai triển biểu thức ${latex(f)}$."
+	if k!=1:
+		noi_dung=f"Tìm số hạng chứa ${{ x^{{{k}}} }}$ trong khai triển biểu thức ${latex(f)}$."
+		noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"
+	else:
+		noi_dung=f"Tìm số hạng chứa ${{x}}$ trong khai triển biểu thức ${latex(f)}$."
+		noi_dung_loigiai=f"Số hạng chứa ${{x}}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x={kq}{{x}}$. \n"
 
 	debai= f"{noi_dung}\n"
 			 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA)
-	noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"				
+					
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
@@ -6719,9 +6843,6 @@ def mcn__L10_C8_B3_07():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
-
-
 
 
 
@@ -6781,3 +6902,62 @@ def mcn__L10_C8_B3_08():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C8_B3_09]-M2. Tìm hệ số của x^k trong khai triển của (ax+b)^n, n=4,5
+def mcn__L10_C8_B3_09():
+	x=sp.symbols("x")
+	while True:
+		a = random.choice([random.randint(-6, -2), random.randint(2, 6)])
+		b = random.choice([random.randint(-4, -2), random.randint(2,5)])
+		n=random.randint(4,5)
+		k=random.randint(1,n)
+		f=(a*x+b)**n
+		kq=binomial(n,k)*a**k*b**(n-k)
+		if all([kq<9999, kq>-999]):
+			break
+
+	if k!=1:
+		noi_dung=f"Tìm hệ số của ${{ x^{{{k}}} }}$ trong khai triển biểu thức ${latex(f)}$."
+		noi_dung_loigiai=f"Số hạng chứa ${{ x^{{{k}}} }}$ là: $C^{{{k}}}_{{{n}}}.({a})^{{{k}}}.({b})^{{{n-k}}}.x^{{{k}}}={kq}{{ x^{{{k}}} }}$. \n"\
+						f"Hệ số của ${{ x^{{{k}}} }}$ là ${{{kq}}}$."
+	else:
+		noi_dung=f"Tìm hệ số của ${{x}}$ trong khai triển biểu thức ${latex(f)}$."
+		noi_dung_loigiai=f"Số hạng chứa ${{x}}$ là: $C^{{{k}}}_{{{n}}}.({a}).({b})^{{{n-k}}}.x={kq}{{x}}$. \n"\
+						f"Hệ số của ${{x}}$ là ${{{kq}}}$."
+
+		
+	debai_word= f"{noi_dung}"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+	dap_an=kq
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C8_B3_10]-SA-M2. Tìm số hạng không chứa x của (ax+b)^n, n=4,5
+def mcn__L10_C8_B3_10():
+	x=sp.symbols("x")
+	while True:
+		a = random.choice([random.randint(-6, -2), random.randint(2, 6)])
+		b = random.choice([random.randint(-4, -2), random.randint(2,5)])
+		n=random.randint(4,5)
+		k=0
+		f=(a*x+b)**n
+		kq=b**n
+		if all([kq<9999, kq>-999]):
+			break
+
+
+	noi_dung=f"Tìm số hạng không chứa ${{x}}$ trong khai triển biểu thức ${latex(f)}$."
+	noi_dung_loigiai=f"Số hạng không chứa ${{x}}$ là: $C^{{{n}}}_{{{n}}}.({b})^{{{n}}}={kq}$. \n"		
+
+
+		
+	debai_word= f"{noi_dung}"
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+	dap_an=kq
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+

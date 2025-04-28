@@ -3486,7 +3486,7 @@ def mjulk_L10_C9_B2_12():
 	chon=random.randint(1,2)
 	if chon ==1: 
 		c=math.comb(n,k)
-		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ít nhất bạn nam là:"
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ít nhất một bạn nam là:"
 
 		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
 						f" Gọi ${{A}}$ là biến cố không chọn được bạn nam nào\n\n"
@@ -3494,12 +3494,10 @@ def mjulk_L10_C9_B2_12():
 						f" ${{P(A) = {phan_so(c/a)}}}$ \n\n"
 						f"  ${{P(\\overline{{A}})= 1- {phan_so(c/a)}= {phan_so(1-(c/a))} }}$ ")
 
-	if chon ==2: 
-
-	
+	if chon ==2:
 		
 		c=math.comb(m,k)
-		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ít nhất bạn nam là:"
+		noi_dung=f" Một đội có ${{{m}}}$ bạn nam và ${{{n}}}$ bạn nữ, giáo viên chọn ngẫu nhiên ${{{k}}}$ bạn tham gia {A}. Xác suất chọn được ít nhất một bạn nữ là:"
 
 		noi_dung_loigiai=(f" ${{n(\\Omega)= C^{{{k}}}_{{{n+m}}} ={a}}}$ \n\n"
 						f" Gọi ${{A}}$ là biến cố không chọn được bạn nữ nào\n\n"

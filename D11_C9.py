@@ -4,6 +4,12 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+# Hàm làm tròn half-up
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 def xu_li_dau_cham(a):
 	str_a=str(a)
 	str_a=str_a.replace(".",",")
@@ -17,7 +23,7 @@ def chinh_hop(k,n):
 	return t
 ################ Bài 1: BIẾN CỐ GIAO VÀ QUY TẮC NHÂN ########################
 #[D11_C9_B1_01]-M2. Cho một hộp chứa n quả cầu. Tìm biến cố giao vừa là số chẵn (lẻ), vừa chia hết cho k.
-def zz8zz_L11_C9_B1_01():   
+def ut9kq_L11_C9_B1_01():   
     #Tạo bậc ngẫu nhiên
 	n =random.randint(15,40)
 	k=random.choice([3,4,5,6,7])
@@ -85,7 +91,7 @@ def zz8zz_L11_C9_B1_01():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_02]-M2. Cho một hộp chứa n tấm thẻ. Tìm biến cố giao: thẻ vừa thuộc phạm vi [a;b], vừa chia hết cho k.
-def zz8zz_L11_C9_B1_02():   
+def ut9kq_L11_C9_B1_02():   
     #Tạo bậc ngẫu nhiên
 	n =random.randint(15,40)
 	k=random.choice([3,4,5,6])	
@@ -149,7 +155,7 @@ def zz8zz_L11_C9_B1_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_03]-M2. Cho một hộp chứa n quả cầu. Tìm biến cố giao vừa chia hết cho m, vừa chia hết cho k.
-def zz8zz_L11_C9_B1_03():   
+def ut9kq_L11_C9_B1_03():   
     #Tạo bậc ngẫu nhiên
 	n =random.randint(25,50)
 	m=random.choice([2,4,6])
@@ -228,7 +234,7 @@ def zz8zz_L11_C9_B1_03():
 
 
 #[D11_C9_B1_04]-M2. Gieo 2 con xúc xắc. Tìm biến cố giao: k < i + j và i+j <m.
-def zz8zz_L11_C9_B1_04():   
+def ut9kq_L11_C9_B1_04():   
     #Tạo bậc ngẫu nhiên
 	
 	k=random.randint(6,8)
@@ -305,7 +311,7 @@ def zz8zz_L11_C9_B1_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_05]-M2. Gieo 2 con xúc xắc. Tìm biến cố giao: mặt k chấm xuất hiện và tổng số chấm =,>,< m.
-def zz8zz_L11_C9_B1_05():   
+def ut9kq_L11_C9_B1_05():   
     #Tạo bậc ngẫu nhiên
 	
 	k=random.randint(3,6)
@@ -393,7 +399,7 @@ def zz8zz_L11_C9_B1_05():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_06]-M2. Gieo 2 con xúc xắc. Tìm biến cố giao: i + j = k và i.j <(>) m.
-def zz8zz_L11_C9_B1_06():      
+def ut9kq_L11_C9_B1_06():      
 	
 	k=random.randint(6,8)
 	m=random.randint(8,11)
@@ -477,7 +483,7 @@ def zz8zz_L11_C9_B1_06():
 #9.1.2 Quy tắc nhân xác suất
 
 #[D11_C9_B1_07]-M1. Cho xác suất của 2 biến cố độc lập. Tìm xác suất của biến cố giao
-def zz8zz_L11_C9_B1_07():      
+def ut9kq_L11_C9_B1_07():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -546,7 +552,7 @@ def zz8zz_L11_C9_B1_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_08]-M2. Cho xác suất của 2 biến cố độc lập. Tìm xác suất của biến cố giao chứa biến cố đối
-def zz8zz_L11_C9_B1_08():      
+def ut9kq_L11_C9_B1_08():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -633,7 +639,7 @@ def zz8zz_L11_C9_B1_08():
 
 
 #[D11_C9_B1_09]-M2. Hộp chứa các viên bi có 2 màu. Phát biểu biến cố giao.
-def zz8zz_L11_C9_B1_09():   
+def ut9kq_L11_C9_B1_09():   
     #Tạo bậc ngẫu nhiên
 	m =random.randint(8,20)
 	so_lan =random.randint(5,9)
@@ -693,7 +699,7 @@ def zz8zz_L11_C9_B1_09():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_10]-M2. Cho xác suất bị bệnh của 2 bệnh nhân. Tìm xác suất cả hai không bị bệnh.
-def zz8zz_L11_C9_B1_10():      
+def ut9kq_L11_C9_B1_10():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -776,7 +782,7 @@ def zz8zz_L11_C9_B1_10():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_11]-M2. Cho xác suất bị bệnh của 2 bệnh nhân. Tìm xác suất chỉ một trong hai không bị biến chứng nặng.
-def zz8zz_L11_C9_B1_11():      
+def ut9kq_L11_C9_B1_11():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -860,7 +866,7 @@ def zz8zz_L11_C9_B1_11():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_12]-M2. Cho xác suất bắn trúng bia của 1 xạ thủ. Tính xác suất cả hai không bắn trúng.
-def zz8zz_L11_C9_B1_12():      
+def ut9kq_L11_C9_B1_12():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -944,7 +950,7 @@ def zz8zz_L11_C9_B1_12():
 
 
 #[D11_C9_B1_13]-M2. Cho xác suất bắn trúng bia của 1 xạ thủ. Tính xác suất chỉ một lần bắn trúng.
-def zz8zz_L11_C9_B1_13():      
+def ut9kq_L11_C9_B1_13():      
 	
 	a=random.randint(1,96)
 	b=random.randint(1,95)
@@ -1028,7 +1034,7 @@ def zz8zz_L11_C9_B1_13():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_14]-M2. Cho xác suất bắn trúng bia của 1 xạ thủ. Tính xác suất cả hai lần đều trúng.
-def zz8zz_L11_C9_B1_14():      
+def ut9kq_L11_C9_B1_14():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -1111,7 +1117,7 @@ def zz8zz_L11_C9_B1_14():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B1_15]-M2. Cho xác suất bị bệnh của 2 bệnh nhân. Tìm xác suất cả hai bị biến chứng.
-def zz8zz_L11_C9_B1_15():      
+def ut9kq_L11_C9_B1_15():      
 	
 	a=random.randint(1,95)
 	b=random.randint(1,95)
@@ -1194,10 +1200,939 @@ def zz8zz_L11_C9_B1_15():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
+#[D11_C9_B1_16]-TF-M3. Cho xác suất bắn trúng bia của ba người. Xét Đ-S.
+def ut9kq_L11_C9_B1_16():
+	while True:
+		a=random.randint(45,80)
+		b=random.randint(45,95)
+		c=random.randint(30,85)
+		if all([a!=b,b!=c,c!=a]):
+			break
+	p_1,p_2,p_3=a/100, b/100,c/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+	p_3_ngang=1-p_3
 
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+	s_3=f"{round_half_up(p_3,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	s_3_ngang=f"{round_half_up(p_3_ngang,2):.2f}".replace(".",",")
+	ten=["Minh", "Dũng", "Lam", "Thảo", "Phương", "Quân"]
+	n1,n2,n3=random.sample(ten,3)
+	noi_dung = (f"Trong giờ học môn giáo dục quốc phòng, các bạn {n1}, {n2} và {n3} lần lượt thực hành bắn vào bia."
+	f" Biết xác suất trúng bia của ba bạn lần lượt là ${{{s_1}}};{{{s_2}}}$ và ${{{s_3}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):"	)	
+	debai_word= f"{noi_dung}\n"
+
+	chon=random.randint(1,3)
+	if chon==1:
+		kq1_T=f"* Xác suất để bạn {n1} bắn không trúng bia là ${{{s_1_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n1} bắn không trúng bia là ${{{s_1}}}$"
+		
+		HDG=f"Xác suất để bạn {n1} bắn không trúng bia là: $1-{s_1}={s_1_ngang}$."
+	
+	if chon==2:
+		kq1_T=f"* Xác suất để bạn {n2} bắn không trúng bia là ${{{s_2_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n2} bắn không trúng bia là ${{{s_2}}}$"
+		
+		HDG=f"Xác suất để bạn {n2} bắn không trúng bia là: $1-{s_2}={s_2_ngang}$."
+
+	if chon==3:
+		kq1_T=f"* Xác suất để bạn {n3} bắn không trúng bia là ${{{s_3_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n3} bắn không trúng bia là ${{{s_3}}}$"
+		
+		HDG=f"Xác suất để bạn {n3} bắn không trúng bia là: $1-{s_3}={s_3_ngang}$."	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.choice([random.randint(10,50)/100, p_1])
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq2_T=f"* Xác suất để chỉ bạn {n1} bắn trúng bia là ${{{p}}}$"
+	kq2_F=f"Xác suất để chỉ bạn {n1} bắn trúng bia là ${{{p_f}}}$"
+	
+	HDG=f"Xác suất để chỉ bạn {n1} bắn trúng bia là: ${s_1}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq3_T=f"* Xác suất để có đúng hai bạn bắn trúng bia là ${{{p}}}$" 
+	kq3_F=f"Xác suất để có đúng hai bạn bắn trúng bia là ${{{p_f}}}$"
+	
+	HDG=(f"Xác suất để có đúng hai bạn bắn trúng bia là:\n\n"
+	f" ${s_1}.{s_2}.{s_3_ngang}+{s_1_ngang}.{s_2}.{s_3}+{s_1}.{s_2_ngang}.{s_3}={{{p}}}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(1-p_1_ngang*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+	kq4_T=f"* Xác suất để ít nhất một người bắn trúng bia là ${{{p}}}$"
+	kq4_F=f"Xác suất để ít nhất một người bắn trúng bia là ${{{p_f}}}$" 
+	
+	HDG=f" Xác suất để ít nhất một người bắn trúng bia là:$1-{s_1_ngang}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B1_17]-TF-M3. Cho xác suất chẩn đoán bệnh của 3 bác sĩ. Xét Đ-S.
+def ut9kq_L11_C9_B1_17():
+	while True:
+		a=random.randint(70,80)
+		b=random.randint(65,95)
+		c=random.randint(75,95)
+		if all([a!=b,b!=c,c!=a]):
+			break
+	p_1,p_2,p_3=a/100, b/100,c/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+	p_3_ngang=1-p_3
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+	s_3=f"{round_half_up(p_3,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	s_3_ngang=f"{round_half_up(p_3_ngang,2):.2f}".replace(".",",")
+	ten=["Nam", "Hà", "Sơn", "Hùng", "An", "Vinh", "Tùng", "Lâm", "Phúc", "Khoa"]
+	n1,n2,n3=random.sample(ten,3)
+	noi_dung = (f"Trong một cuộc kiểm tra sức khỏe, ba bác sĩ {n1}, {n2} và {n3} lần lượt xét nghiệm một bệnh nhân."
+	f" Biết xác suất chẩn đoán đúng bệnh của ba bác sĩ lần lượt là ${{{s_1}}};{{{s_2}}}$ và ${{{s_3}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):"	)	
+	debai_word= f"{noi_dung}\n"
+
+	chon=random.randint(1,3)
+	if chon==1:
+		kq1_T=f"* Xác suất để bác sĩ {n1} chẩn đoán không đúng bệnh là ${{{s_1_ngang}}}$" 
+		kq1_F=f"Xác suất để bác sĩ {n1} chẩn đoán không đúng bệnh là ${{{s_1}}}$"
+		
+		HDG=f"Xác suất để bác sĩ {n1} chẩn đoán không đúng bệnh là: $1-{s_1}={s_1_ngang}$."
+	
+	if chon==2:
+		kq1_T=f"* Xác suất để bác sĩ {n2} chẩn đoán không đúng bệnh là ${{{s_2_ngang}}}$" 
+		kq1_F=f"Xác suất để bác sĩ {n2} chẩn đoán không đúng bệnh là ${{{s_2}}}$"
+		
+		HDG=f"Xác suất để bác sĩ {n2} chẩn đoán không đúng bệnh là: $1-{s_2}={s_2_ngang}$."
+
+	if chon==3:
+		kq1_T=f"* Xác suất để bác sĩ {n3} chẩn đoán không đúng bệnh là ${{{s_3_ngang}}}$" 
+		kq1_F=f"Xác suất để bác sĩ {n3} chẩn đoán không đúng bệnh là ${{{s_3}}}$"
+		
+		HDG=f"Xác suất để bác sĩ {n3} chẩn đoán không đúng bệnh là: $1-{s_3}={s_3_ngang}$."	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.choice([random.randint(10,50)/100, p_1])
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq2_T=f"* Xác suất để chỉ bác sĩ {n1} chẩn đoán đúng bệnh là ${{{p}}}$"
+	kq2_F=f"Xác suất để chỉ bác sĩ {n1} chẩn đoán đúng bệnh là ${{{p_f}}}$"
+	
+	HDG=f"Xác suất để chỉ bác sĩ {n1} chẩn đoán đúng bệnh là: ${s_1}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq3_T=f"* Xác suất để có đúng hai bác sĩ chẩn đoán đúng bệnh là ${{{p}}}$" 
+	kq3_F=f"Xác suất để có đúng hai bác sĩ chẩn đoán đúng bệnh là ${{{p_f}}}$"
+	
+	HDG=(f"Xác suất để có đúng hai bác sĩ chẩn đoán đúng bệnh là:\n\n"
+	f" ${s_1}.{s_2}.{s_3_ngang}+{s_1_ngang}.{s_2}.{s_3}+{s_1}.{s_2_ngang}.{s_3}={{{p}}}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(1-p_1_ngang*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+	kq4_T=f"* Xác suất để ít nhất một bác sĩ chẩn đoán đúng bệnh là ${{{p}}}$"
+	kq4_F=f"Xác suất để ít nhất một bác sĩ chẩn đoán đúng bệnh là ${{{p_f}}}$" 
+	
+	HDG=f" Xác suất để ít nhất một bác sĩ chẩn đoán đúng bệnh là:$1-{s_1_ngang}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B1_18]-TF-M3. Cho xác suất giải được bài của ba học sinh. Xét Đ-S.
+def ut9kq_L11_C9_B1_18():
+	while True:
+		a=random.randint(65,80)
+		b=random.randint(70,95)
+		c=random.randint(70,85)
+		if all([a!=b,b!=c,c!=a]):
+			break
+	p_1,p_2,p_3=a/100, b/100,c/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+	p_3_ngang=1-p_3
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+	s_3=f"{round_half_up(p_3,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	s_3_ngang=f"{round_half_up(p_3_ngang,2):.2f}".replace(".",",")
+	ten=["Minh", "Dũng", "Lan", "Hà", "Sơn", "An", "Mai", "Tùng", "Linh", "Phúc"]
+	n1,n2,n3=random.sample(ten,3)
+	noi_dung = (f"Trong kỳ thi học sinh giỏi, các bạn {n1}, {n2} và {n3} lần lượt làm bài."
+	f" Biết xác suất mỗi bạn làm đúng phần bài khó nhất lần lượt là ${{{s_1}}};{{{s_2}}}$ và ${{{s_3}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):"	)	
+	debai_word= f"{noi_dung}\n"
+
+	chon=random.randint(1,3)
+	if chon==1:
+		kq1_T=f"* Xác suất để bạn {n1} làm sai là ${{{s_1_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n1} làm sai là ${{{s_1}}}$"
+		
+		HDG=f"Xác suất để bạn {n1} làm sai là: $1-{s_1}={s_1_ngang}$."
+	
+	if chon==2:
+		kq1_T=f"* Xác suất để bạn {n2} làm sai là ${{{s_2_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n2} làm sai là ${{{s_2}}}$"
+		
+		HDG=f"Xác suất để bạn {n2} làm sai là: $1-{s_2}={s_2_ngang}$."
+
+	if chon==3:
+		kq1_T=f"* Xác suất để bạn {n3} làm sai là ${{{s_3_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n3} làm sai là ${{{s_3}}}$"
+		
+		HDG=f"Xác suất để bạn {n3} làm sai là: $1-{s_3}={s_3_ngang}$."	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.choice([random.randint(10,50)/100, p_1])
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq2_T=f"* Xác suất để chỉ bạn {n1} làm đúng là ${{{p}}}$"
+	kq2_F=f"Xác suất để chỉ bạn {n1} làm đúng là ${{{p_f}}}$"
+	
+	HDG=f"Xác suất để chỉ bạn {n1} làm đúng là: ${s_1}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq3_T=f"* Xác suất để có đúng hai bạn làm đúng là ${{{p}}}$" 
+	kq3_F=f"Xác suất để có đúng hai bạn làm đúng là ${{{p_f}}}$"
+	
+	HDG=(f"Xác suất để có đúng hai bạn làm đúng là:\n\n"
+	f" ${s_1}.{s_2}.{s_3_ngang}+{s_1_ngang}.{s_2}.{s_3}+{s_1}.{s_2_ngang}.{s_3}={{{p}}}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(1-p_1_ngang*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+	kq4_T=f"* Xác suất để ít nhất một bạn làm đúng là ${{{p}}}$"
+	kq4_F=f"Xác suất để ít nhất một bạn làm đúng là ${{{p_f}}}$" 
+	
+	HDG=f" Xác suất để ít nhất một bạn làm đúng là:$1-{s_1_ngang}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B1_19]-TF-M3. Cho xác suất phát hiện lỗi của ba kỹ sư. Xét Đ-S.
+def ut9kq_L11_C9_B1_19():
+	while True:
+		a=random.randint(55,80)
+		b=random.randint(65,95)
+		c=random.randint(75,90)
+		if all([a!=b,b!=c,c!=a]):
+			break
+	p_1,p_2,p_3=a/100, b/100,c/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+	p_3_ngang=1-p_3
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+	s_3=f"{round_half_up(p_3,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	s_3_ngang=f"{round_half_up(p_3_ngang,2):.2f}".replace(".",",")
+	ten=["Quân", "Thảo", "Hùng", "Vy", "Khánh", "Nhung", "Long", "Trang", "Bảo", "Ngọc"]
+	n1,n2,n3=random.sample(ten,3)
+	noi_dung = (f"Ba kỹ sư {n1}, {n2} và {n3} lần lượt kiểm tra lỗi phần mềm của một ứng dụng mới."
+	f" Biết xác suất phát hiện đúng lỗi của ba kỹ sư lần lượt là ${{{s_1}}};{{{s_2}}}$ và ${{{s_3}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):"	)	
+	debai_word= f"{noi_dung}\n"
+
+	chon=random.randint(1,3)
+	if chon==1:
+		kq1_T=f"* Xác suất để kỹ sư {n1} không phát hiện lỗi là ${{{s_1_ngang}}}$" 
+		kq1_F=f"Xác suất để kỹ sư {n1} không phát hiện lỗi là ${{{s_1}}}$"
+		
+		HDG=f"Xác suất để kỹ sư {n1} không phát hiện lỗi là: $1-{s_1}={s_1_ngang}$."
+	
+	if chon==2:
+		kq1_T=f"* Xác suất để kỹ sư {n2} không phát hiện lỗi là ${{{s_2_ngang}}}$" 
+		kq1_F=f"Xác suất để kỹ sư {n2} không phát hiện lỗi là ${{{s_2}}}$"
+		
+		HDG=f"Xác suất để kỹ sư {n2} không phát hiện lỗi là: $1-{s_2}={s_2_ngang}$."
+
+	if chon==3:
+		kq1_T=f"* Xác suất để kỹ sư {n3} không phát hiện lỗi là ${{{s_3_ngang}}}$" 
+		kq1_F=f"Xác suất để kỹ sư {n3} không phát hiện lỗi là ${{{s_3}}}$"
+		
+		HDG=f"Xác suất để kỹ sư {n3} không phát hiện lỗi là: $1-{s_3}={s_3_ngang}$."	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.choice([random.randint(10,50)/100, p_1])
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq2_T=f"* Xác suất để chỉ kỹ sư {n1} phát hiện lỗi là ${{{p}}}$"
+	kq2_F=f"Xác suất để chỉ kỹ sư {n1} phát hiện lỗi là ${{{p_f}}}$"
+	
+	HDG=f"Xác suất để chỉ kỹ sư {n1} phát hiện lỗi là: ${s_1}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq3_T=f"* Xác suất để có đúng hai kỹ sư phát hiện lỗi là ${{{p}}}$" 
+	kq3_F=f"Xác suất để có đúng hai kỹ sư phát hiện lỗi là ${{{p_f}}}$"
+	
+	HDG=(f"Xác suất để có đúng hai kỹ sư phát hiện lỗi là:\n\n"
+	f" ${s_1}.{s_2}.{s_3_ngang}+{s_1_ngang}.{s_2}.{s_3}+{s_1}.{s_2_ngang}.{s_3}={{{p}}}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(1-p_1_ngang*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+	kq4_T=f"* Xác suất để ít nhất một kỹ sư phát hiện lỗi là ${{{p}}}$"
+	kq4_F=f"Xác suất để ít nhất một kỹ sư phát hiện lỗi là ${{{p_f}}}$" 
+	
+	HDG=f" Xác suất để ít nhất một kỹ sư phát hiện lỗi là:$1-{s_1_ngang}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B1_20]-TF-M3. Cho xác suất phản ứng tốt sau khi tiêm vắc xin của ba bạn. Xét Đ-S.
+def ut9kq_L11_C9_B1_20():
+	while True:
+		a=random.randint(78,95)
+		b=random.randint(80,99)
+		c=random.randint(80,95)
+		if all([a!=b,b!=c,c!=a]):
+			break
+	p_1,p_2,p_3=a/100, b/100,c/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+	p_3_ngang=1-p_3
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+	s_3=f"{round_half_up(p_3,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	s_3_ngang=f"{round_half_up(p_3_ngang,2):.2f}".replace(".",",")
+	ten=["Tuấn", "Yến", "Kiên", "Thu", "Đạt", "Hương", "Khang", "Chi", "Vũ", "Diễm"]
+	n1,n2,n3=random.sample(ten,3)
+	noi_dung = (f"Ba bệnh nhân {n1}, {n2} và {n3} lần lượt tiêm vắc xin."
+	f" Biết xác suất mỗi bạn phản ứng tốt sau tiêm lần lượt là ${{{s_1}}};{{{s_2}}}$ và ${{{s_3}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):"	)	
+	debai_word= f"{noi_dung}\n"
+
+	chon=random.randint(1,3)
+	if chon==1:
+		kq1_T=f"* Xác suất để bạn {n1} không phản ứng tốt là ${{{s_1_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n1} không phản ứng tốt là ${{{s_1}}}$"
+		
+		HDG=f"Xác suất để bạn {n1} không phản ứng tốt là: $1-{s_1}={s_1_ngang}$."
+	
+	if chon==2:
+		kq1_T=f"* Xác suất để bạn {n2} không phản ứng tốt là ${{{s_2_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n2} không phản ứng tốt là ${{{s_2}}}$"
+		
+		HDG=f"Xác suất để bạn {n2} không phản ứng tốt là: $1-{s_2}={s_2_ngang}$."
+
+	if chon==3:
+		kq1_T=f"* Xác suất để bạn {n3} không phản ứng tốt là ${{{s_3_ngang}}}$" 
+		kq1_F=f"Xác suất để bạn {n3} không phản ứng tốt là ${{{s_3}}}$"
+		
+		HDG=f"Xác suất để bạn {n3} không phản ứng tốt là: $1-{s_3}={s_3_ngang}$."	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.choice([random.randint(10,50)/100, p_1])
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq2_T=f"* Xác suất để chỉ bạn {n1} phản ứng tốt là ${{{p}}}$"
+	kq2_F=f"Xác suất để chỉ bạn {n1} phản ứng tốt là ${{{p_f}}}$"
+	
+	HDG=f"Xác suất để chỉ bạn {n1} phản ứng tốt là: ${s_1}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+
+	kq3_T=f"* Xác suất để có đúng hai bạn phản ứng tốt là ${{{p}}}$" 
+	kq3_F=f"Xác suất để có đúng hai bạn phản ứng tốt là ${{{p_f}}}$"
+	
+	HDG=(f"Xác suất để có đúng hai bạn phản ứng tốt là:\n\n"
+	f" ${s_1}.{s_2}.{s_3_ngang}+{s_1_ngang}.{s_2}.{s_3}+{s_1}.{s_2_ngang}.{s_3}={{{p}}}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p=f"{round_half_up(1-p_1_ngang*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
+	while True:
+		p_f=random.randint(10,60)/100
+		if p_f!=p:
+			break
+	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
+	kq4_T=f"* Xác suất để ít nhất một bạn phản ứng tốt là ${{{p}}}$"
+	kq4_F=f"Xác suất để ít nhất một bạn phản ứng tốt là ${{{p_f}}}$" 
+	
+	HDG=f" Xác suất để ít nhất một bạn phản ứng tốt là:$1-{s_1_ngang}.{s_2_ngang}.{s_3_ngang}={p}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B1_21]-SA-M3. Cho xác suất lây bệnh truyền nhiễm mỗi lần. Tính xác suất bị bệnh
+def ut9kq_L11_C9_B1_21():	
+	a=random.randint(70,95)
+	b=random.randint(3,15)
+
+	p_1,p_2=a/100, b/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	ten=random.choice(["Nam", "Oanh", "Duy", "My", "Phát", "Lan", "Thiện", "Quỳnh", "Hiếu", "Thanh"])
+
+	noi_dung = (
+	f"Một bệnh truyền nhiễm có xác suất lây bệnh là ${{{s_1}}}$ nếu tiếp xúc với người bệnh mà không đeo khẩu trang"
+	f" và là ${{{s_2}}}$ nếu tiếp xúc với người bệnh mà có đeo khẩu trang."
+	f" Ông {ten} tiếp xúc với người bệnh hai lần, trong đó có một lần không đeo khẩu trang và một lần có đeo khẩu trang. Xác suất ông {ten} bị bệnh do lây từ người bệnh đã tiếp xúc là bao nhiêu? (kết quả làm tròn đến hàng phần trăm)"
+	)
+	
+	p_khong=p_1_ngang*p_2_ngang
+	s_khong=f"{round_half_up(p_khong,4):.4f}".replace(".",",")
+	s_lay=f"{round_half_up(1-p_khong,2):.2f}".replace(".",",")
+	dap_an=s_lay
+
+	noi_dung_loigiai=(
+	f"Xác suất lây khi không đeo khẩu trang: $p_1={s_1}$.\n\n"
+	f"Xác suất lây khi đeo khẩu trang: $p_2={s_2}$.\n\n"
+	f"Ông {ten} tiếp xúc với người bệnh hai lần: 1 lần không đeo, 1 lần có đeo.\n\n"
+	f"Xác suất không bị lây trong lần không đeo là: $1-{s_1}={s_1_ngang}$.\n\n"
+	f"Xác suất không bị lây trong lần có đeo là: $1-{s_2}={s_2_ngang}$.\n\n"
+	f"Vì hai lần tiếp xúc độc lập, nên xác suất không bị lây cả hai lần là: ${s_1_ngang}.{s_2_ngang}={s_khong}$.\n\n"
+	f"Xác suất bị lây ít nhất một lần là: $1-{s_1_ngang}.{s_2_ngang}={s_lay}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B1_22]-SA-M3. Cho xác suất phát hiện virus của 2 phần mềm. Tính xác suất phát hiện virus ít nhất 1 lần
+def ut9kq_L11_C9_B1_22():	
+	a=random.randint(70,95)
+	b=random.randint(75,85)
+
+	p_1,p_2=a/100, b/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+	ten=random.choice(["Nam", "Oanh", "Duy", "My", "Phát", "Lan", "Thiện", "Quỳnh", "Hiếu", "Thanh"])
+
+	noi_dung = (
+	f"Một người dùng thử hai phần mềm chống virus. Với phần mềm thứ nhất, xác suất phát hiện virus là ${{{s_1}}}$,"
+	f" với phần mềm thứ hai, xác suất phát hiện virus là ${{{s_2}}}$."
+	f" Người dùng sử dụng lần lượt cả hai phần mềm. Tính xác suất người dùng phát hiện được virus ít nhất một lần (kết quả làm tròn đến hàng phần trăm)."
+	)
+	
+	p_khong=p_1_ngang*p_2_ngang
+	s_khong=f"{round_half_up(p_khong,4):.4f}".replace(".",",")
+	s_lay=f"{round_half_up(1-p_khong,2):.2f}".replace(".",",")
+	dap_an=s_lay
+
+	noi_dung_loigiai=(
+	f"Xác suất phát hiện virus của phần mềm thứ nhất: $p_1={s_1}$.\n\n"
+	f"Xác suất phát hiện virus của phần mềm thứ hai: $p_2={s_2}$.\n\n"
+	f"Xác suất không phát hiện virus của phần mềm thứ nhất: $1-{s_1}={s_1_ngang}$.\n\n"
+	f"Xác suất không phát hiện virus của phần mềm thứ hai: $1-{s_2}={s_2_ngang}$.\n\n"
+	f"Vì hai lần sử dụng độc lập, nên xác suất không phát hiện virus cả hai lần là: ${s_1_ngang}.{s_2_ngang}={s_khong}$.\n\n"
+	f"Xác suất phát hiện virus ít nhất một lần là: $1-{s_1_ngang}.{s_2_ngang}={s_lay}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B1_23]-SA-M3. Cho xác suất cải thiện làm đẹp bởi 2 sản phẩm. Tính x.s làn da được cải thiện
+def ut9kq_L11_C9_B1_23():	
+	a=random.randint(70,95)
+	b=random.randint(75,85)
+
+	p_1,p_2=a/100, b/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Một khách hàng trải nghiệm dịch vụ chăm sóc da. Khi sử dụng mặt nạ dưỡng da, xác suất cải thiện làn da là ${{{s_1}}}$"
+	f" còn khi sử dụng máy xông hơi da mặt, xác suất cải thiện là ${{{s_2}}}$."
+	f" Khách hàng sử dụng cả hai dịch vụ này một lần. Tính xác suất khách hàng cải thiện làn da ít nhất một lần (kết quả làm tròn đến hàng phần trăm)."
+	)
+	
+	p_khong=p_1_ngang*p_2_ngang
+	s_khong=f"{round_half_up(p_khong,4):.4f}".replace(".",",")
+	s_lay=f"{round_half_up(1-p_khong,2):.2f}".replace(".",",")
+	dap_an=s_lay
+
+	noi_dung_loigiai=(
+	f"Xác suất cải thiện làn da khi sử dụng mặt nạ dưỡng da: $p_1={s_1}$.\n\n"
+	f"Xác suất cải thiện làn da khi sử dụng máy xông hơi da mặt: $p_2={s_2}$.\n\n"
+	f"Xác suất không cải thiện làn da khi sử dụng mặt nạ dưỡng da: $1-{s_1}={s_1_ngang}$.\n\n"
+	f"Xác suất không cải thiện làn da khi sử dụng máy xông hơi da mặt: $1-{s_2}={s_2_ngang}$.\n\n"
+	f"Vì hai lần sử dụng độc lập, nên xác suất không cải thiện làn da cả hai lần là: ${s_1_ngang}.{s_2_ngang}={s_khong}$.\n\n"
+	f"Xác suất cải thiện làn da ít nhất một lần là: $1-{s_1_ngang}.{s_2_ngang}={s_lay}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B1_24]-SA-M3. Cho xác suất tránh được tai nạn khi dùng 2 hệ thống xử lí. Tính x.s tránh được tai nạn ít nhất một lần
+def ut9kq_L11_C9_B1_24():	
+	a=random.randint(70,95)
+	b=random.randint(75,85)
+
+	p_1,p_2=a/100, b/100
+	p_1_ngang=1-p_1
+	p_2_ngang=1-p_2
+
+	s_1=f"{round_half_up(p_1,2):.2f}".replace(".",",")
+	s_2=f"{round_half_up(p_2,2):.2f}".replace(".",",")
+
+	s_1_ngang=f"{round_half_up(p_1_ngang,2):.2f}".replace(".",",")
+	s_2_ngang=f"{round_half_up(p_2_ngang,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Một người lái xe ô tô đi qua hai đoạn đường. Nếu bật hệ thống cảnh báo va chạm, xác suất tránh được tai nạn là ${{{s_1}}}$"
+	f" còn nếu chỉ dùng hệ thống phanh tự động, xác suất tránh được tai nạn là ${{{s_2}}}$."
+	f" Người lái xe sử dụng lần lượt hai hệ thống này trên hai đoạn đường. Tính xác suất người đó tránh được tai nạn ít nhất một lần. (kết quả làm tròn đến hàng phần trăm)."
+	)
+	
+	p_khong=p_1_ngang*p_2_ngang
+	s_khong=f"{round_half_up(p_khong,4):.4f}".replace(".",",")
+	s_lay=f"{round_half_up(1-p_khong,2):.2f}".replace(".",",")
+	dap_an=s_lay
+
+	noi_dung_loigiai=(
+	f"Xác suất tránh được tai nạn khi bật hệ thống cảnh báo va chạm: $p_1={s_1}$.\n\n"
+	f"Xác suất tránh được tai nạn khi chỉ dùng hệ thống phanh tự động: $p_2={s_2}$.\n\n"
+	f"Xác suất không tránh được tai nạn khi bật hệ thống cảnh báo va chạm: $1-{s_1}={s_1_ngang}$.\n\n"
+	f"Xác suất không tránh được tai nạn khi chỉ dùng hệ thống phanh tự động: $1-{s_2}={s_2_ngang}$.\n\n"
+	f"Vì hai lần sử dụng độc lập, nên xác suất không tránh được tai nạn cả hai lần là: ${s_1_ngang}.{s_2_ngang}={s_khong}$.\n\n"
+	f"Xác suất tránh được tai nạn ít nhất một lần là: $1-{s_1_ngang}.{s_2_ngang}={s_lay}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 #BÀI 2- BIẾN CỐ HỢP - QUY TẮC CỘNG XÁC SUẤT
 #[D11_C9_B2_01]-M2. Hộp chứa các viên bi có 2 màu. Phát biểu biến cố hợp.
-def zz8zz_L11_C9_B2_01():   
+def ut9kq_L11_C9_B2_01():   
     #Tạo bậc ngẫu nhiên
 	n1 =random.randint(8,20)
 	n2 =random.randint(8,20)
@@ -1254,7 +2189,7 @@ def zz8zz_L11_C9_B2_01():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_02]-M2. Hộp chứa các viên bi, lấy ra rồi trả lại. Phát biểu biến cố hợp.
-def zz8zz_L11_C9_B2_02():   
+def ut9kq_L11_C9_B2_02():   
     #Tạo bậc ngẫu nhiên
 	m =random.randint(8,20)
 	so_lan =random.randint(5,9)
@@ -1314,7 +2249,7 @@ def zz8zz_L11_C9_B2_02():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_03]-M2. Gieo một con xúc xắc và 1 đồng xu.Tìm số phần tử của biến cố hợp.
-def zz8zz_L11_C9_B2_03():   
+def ut9kq_L11_C9_B2_03():   
 	chon=random.randint(1,8)	
 	if chon==1:
 		noi_dung=f'Gieo đồng thời một đồng xu và một con xúc xắc.\n\n' \
@@ -1487,7 +2422,7 @@ def zz8zz_L11_C9_B2_03():
 
 #9.1.4 Xác suất biến cố hợp
 #[D11_C9_B2_04]-M1. Cho A, B xung khắc và P(A), P(B). Tính P(AUB).
-def zz8zz_L11_C9_B2_04():      
+def ut9kq_L11_C9_B2_04():      
 	
 	a=random.randint(1,45)
 	b=random.randint(1,65)
@@ -1556,7 +2491,7 @@ def zz8zz_L11_C9_B2_04():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_05]-M2. Gieo một con xúc xắc và 1 đồng xu. Tính xác suất của biến cố hợp.
-def zz8zz_L11_C9_B2_05():   
+def ut9kq_L11_C9_B2_05():   
 	chon=random.randint(1,8)
 	
 	if chon==1:
@@ -1741,7 +2676,7 @@ def zz8zz_L11_C9_B2_05():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_06]-M2. Cho 2 nhóm đồ vật. Tính xác suất để số vật được chọn thuộc cùng 1 nhóm.
-def zz8zz_L11_C9_B2_06():   
+def ut9kq_L11_C9_B2_06():   
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
 	do_vat_3=["bức tranh lụa", "bức tranh gỗ","bức tranh sơn dầu", "bức tranh sơn mài", "bức tranh Đông Hồ"]
@@ -1837,7 +2772,7 @@ def zz8zz_L11_C9_B2_06():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_07]-M2. Cho 2 nhóm sách tham khảo. Tính xác suất để số vật được chọn thuộc cùng 1 loại.
-def zz8zz_L11_C9_B2_07():   
+def ut9kq_L11_C9_B2_07():   
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
 	do_vat_3=["bức tranh lụa", "bức tranh gỗ","bức tranh sơn dầu", "bức tranh sơn mài", "bức tranh Đông Hồ"]
@@ -1934,7 +2869,7 @@ def zz8zz_L11_C9_B2_07():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_08]-M2. Cho các viên bi. Tính xác suất để các bi được chọn cùng màu.
-def zz8zz_L11_C9_B2_08():   
+def ut9kq_L11_C9_B2_08():   
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
 	do_vat_3=["bức tranh lụa", "bức tranh gỗ","bức tranh sơn dầu", "bức tranh sơn mài", "bức tranh Đông Hồ"]
@@ -2033,7 +2968,7 @@ def zz8zz_L11_C9_B2_08():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C9_B2_09]-M2. Cho các cuốn truyện. Tính xác suất để các cuốn được chọn cùng thể loại.
-def zz8zz_L11_C9_B2_09():   
+def ut9kq_L11_C9_B2_09():   
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
 	do_vat_3=["bức tranh lụa", "bức tranh gỗ","bức tranh sơn dầu", "bức tranh sơn mài", "bức tranh Đông Hồ"]
@@ -2127,3 +3062,53 @@ def zz8zz_L11_C9_B2_09():
 	    f"\\end{{ex}}\n"
 
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D11_C9_B2_10]-SA-M2. Cho A,B độc lập có P(A) và P(AUB). Tính P(B) 
+def ut9kq_L11_C9_B2_10():
+	p_a=random.randint(5,55)/100
+	st_a=f"{round_half_up(p_a,2):.2f}".replace(".",",")
+
+	p_a_ngang=1-p_a
+	st_a_ngang=f"{round_half_up(p_a_ngang,2):.2f}".replace(".",",")
+
+	p_aub=random.randint(60,90)/100
+	st_aub=f"{round_half_up(p_aub,2):.2f}".replace(".",",")
+
+	p_ab=random.randint(10,45)/100
+	st_ab=f"{round_half_up(p_ab,2):.2f}".replace(".",",")
+	ten=["A","B","C","D","E","F"]
+	A,B=random.sample(ten,2)
+
+	p1=p_aub-p_a
+	st_p1=f"{round_half_up(p1,2):.2f}".replace(".",",")
+
+	p_b=p1/p_a_ngang
+	st_b=f"{round_half_up(p_b,2):.2f}".replace(".",",")
+
+
+
+	noi_dung = (
+	f"Cho hai biến cố ${{{A},{B}}}$ độc lập và thỏa mãn $P({A})={st_a}$ và $P({A}\\cup {B})={st_aub}$. Tính $P({B})$ (kết quả làm tròn đến hàng phần trăm)."
+	)
+	dap_an=st_b
+
+	noi_dung_loigiai=(
+	f"Ta có: $P({A}{B})=P({A}).P({B})={st_a}P({B})$.\n\n"
+	f"$P({A}\\cup {B})=P({A})+P({B})-P({A}{B})\\Leftrightarrow {st_aub}={st_a}+P({B})-{st_a}P({B})$\n\n"
+	f"$\\Leftrightarrow {st_a_ngang}P({B})={st_p1}$.\n\n"
+	f"$\\Rightarrow P({B})={st_b}$"
+	
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an

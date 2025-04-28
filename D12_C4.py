@@ -3776,7 +3776,7 @@ def ckz_L12C4_B1_54():
         f"$\\int kf(x){d_x}=k\\int f(x){d_x},(k\\in  \\mathbb{{R}}, k\\ne 0)$",
         f"$\\int {{[f(x)+g(x)]}}{d_x}=\\int f(x){d_x}+\\int g(x){d_x}$",
         f"$\\int {{[f(x)-g(x)]}}{d_x}=\\int f(x){d_x}-\\int g(x){d_x}$",
-        f"$\\int {{[g(x)-f(x)]}}{d_x}=\\int g(x){d_x}-\\int g(x){d_x}$",
+        f"$\\int {{[g(x)-f(x)]}}{d_x}=\\int g(x){d_x}-\\int f(x){d_x}$",
         f"Nếu $F(x)$ và $G(x)$ đều là nguyên hàm của hàm số $f(x)$ thì tồn tại số ${{C}}$ sao cho$F(x)=G(x)+C$",])
     kq_false=[
     f"$\\int 0{d_x}=x+C$",
@@ -6408,7 +6408,7 @@ def ckz_L12C4_B4_33():
     f" ${tphan(a,c)}{{[{m}{f}+{n}{g}]}}{d_x}={m*f_tp+n*g_tp}$, ${tphan(a,c)}{{[{p}{f}+{q}{g}]}}{d_x}={p*f_tp+q*g_tp}$"
     f" và ${tphan(a,b)}{f}{d_x}={f_tp_ab}$."
     f" Xét tính đúng-sai của các khẳng định sau. "  )
-    noi_dung=noi_dung.replace("[1f","[f").replace("[-1f","[-f").replace("+1f","+f").replace("+1g","+g").replace("-1g","-g").replace("[-1g","[-g").replace("[1h","[h").replace("[-1h","[-h").replace("+1h","h")
+    noi_dung=noi_dung.replace("[1f","[f").replace("-1f","-f").replace("+1g","+g").replace("-1g","-g").replace("[-1g","[-g").replace("[1h","[h").replace("[-1h","[-h")
 
     noi_dung=thay_dau_cong_tru(noi_dung)     
     debai_word= f"{noi_dung}\n"
@@ -6442,10 +6442,10 @@ def ckz_L12C4_B4_33():
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     kq3_T=f"* ${tphan(c,b)}{f}{d_x}={f_tp_ab-f_tp}$" 
-    kq3_F=f"${tphan(c,b)}{f}{d_x}={f_tp_ab+f_tp}$"
+    kq3_F=f"${tphan(c,b)}{f}{d_x}={f_tp_ab-f_tp+random.randint(1,2)}$"
     
     HDG=(f"${tphan(a,c)}{f}{d_x}+{tphan(c,b)}{f}{d_x}={tphan(a,b)}{f}{d_x}$\n\n"
-    f"$\\Rightarrow {tphan(c,b)}{f}{d_x}={tphan(a,b)}{f}{d_x}-{tphan(a,c)}{f}{d_x}={f_tp_ab}-{f_tp}={f_tp_ab-f_tp}$")
+    f"$\\Rightarrow {tphan(c,b)}{f}{d_x}={tphan(a,b)}{f}{d_x}-{tphan(a,c)}{f}{d_x}={f_tp_ab}-{f_tp}={f_tp_ab-f_tp}$.")
     HDG=thay_dau_cong_tru(HDG)
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -9034,11 +9034,11 @@ def ckz_L12C4_B5_19():
     f"Gọi ${{V}}$ là thể tích của khối tròn xoay khi quay hình phẳng giới hạn bởi đường thẳng $y={latex(expand(g))}$ và đồ thị hàm số"
     f" $y={latex(expand(f))}$ quanh trục ${{Ox}}$. Tính $\\dfrac{{V}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
     )
-    dap_an=f"{round_half_up(1/t*abs(pi*integrate(f**2-g**2,(x,x_1,x_2))),1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(abs(pi*integrate(f**2-g**2,(x,x_1,x_2)))/t,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
     f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={x_1},x={x_2}$.\n\n"
-    f" Thể tích của khối tròn xoay:\n\n $S=\\pi{tphan(x_1,x_2)}|({latex(expand(f))})^2-({latex(g)})^2|{d_x}={phan_so(abs(integrate(f**2-g**2,(x,x_1,x_2))))}\\pi$.\n\n"
+    f" Thể tích của khối tròn xoay:\n\n $V=\\pi{tphan(x_1,x_2)}|({latex(expand(f))})^2-({latex(g)})^2|{d_x}={phan_so(abs(integrate(f**2-g**2,(x,x_1,x_2))))}\\pi$.\n\n"
     f" Suy ra $\\dfrac{{V}}{{{15}}}={dap_an}$."
     )    
         

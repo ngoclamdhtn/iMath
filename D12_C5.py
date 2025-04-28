@@ -352,9 +352,9 @@ def htd_25_xyz_L12_C5_B1_02():
     x_0,y_0,z_0 = [random.randint(-8,8) for i in range(3)]
     if x_0 ==0: x_0=random.randint(1,7)
     ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
-    ten_A=random.choice(["A","M", "E", "I" ])
-    ten_B=random.choice(["B", "D","M", "H" ])
-    ten_C=random.choice(["C", "G", "K"])
+    ten=["A","B","C","D","M","E", "I", "H", "G", "K" ]
+    ten_A,ten_B,ten_C=random.sample(ten,3)
+
     d=-a*x_0-b*y_0-c*z_0+random.randint(1,20)
 
     noi_dung= f"Trong không gian ${{Oxyz}}$, viết phương trình mặt phẳng ${{({ten_mp})}}$ đi qua điểm ${{{ten_A}({x_0};{y_0};{z_0})}}$"\
@@ -1205,11 +1205,11 @@ def htd_25_xyz_L12_C5_B1_13():
                 f" Khoảng cách giữa hai mặt phẳng đã cho bằng"
 
     kq=abs(t3/(t2*sqrt(a**2+b**2+c**2)))
-    kq2=abs(d+d2)/sqrt(a**2+b**2+c**2)
+    kq2=abs((t3+1)/(t2*sqrt(a**2+b**2+c**2)))
     while True:        
         kq3=random.randint(1,10)/random.randint(12,20)
         kq4=random.randint(1,7)
-        if all([kq3!=kq, kq3!=kq2,kq4!=kq,kq4!=kq2, kq4!=kq3]):
+        if all([kq3!=kq, kq3!=kq2, kq4!=kq, kq4!=kq2, kq4!=kq3]):
             break
 
 
@@ -2822,7 +2822,7 @@ def htd_25_xyz_L12_C5_B1_27():
     dap_an=a+b+c
     noi_dung= (
     f"Trong không gian ${{Oxyz}}$, mặt phẳng ${{({mp_P})}}$ đi qua ba điểm ${A}({x_A};{y_A};{z_A})$, "
-        f" ${B}({x_B};{y_B};{z_B})$ và ${C}({x_C};{y_C};{z_C})$ có phương trình dạng $ax+by+c+{d}=0$."
+        f" ${B}({x_B};{y_B};{z_B})$ và ${C}({x_C};{y_C};{z_C})$ có phương trình dạng $ax+by+cz+{d}=0$."
         f" Tính tổng ${{a+b+c}}$.")
     noi_dung=noi_dung.replace("+-","-").replace("+0","")
 
@@ -3043,7 +3043,7 @@ def htd_25_xyz_L12_C5_B1_31():
     a = random.choice([i for i in range(-5, 6) if i!=0])
     b = random.choice([i for i in range(-5, 6) if i!=0])
     c = random.choice([i for i in range(-5, 6) if i!=0])
-    d = random.randint(-10,11)
+    d = random.randint(-3,4)
     ptmp_P=f"{latex(a*x+b*y+c*z+d)}=0"   
 
     
@@ -3062,7 +3062,7 @@ def htd_25_xyz_L12_C5_B1_31():
     noi_dung= (
     f"Trong không gian ${{Oxyz}}$, cho mặt phẳng $({mp_P}):{ptmp_P}$ và điểm ${A}({x_A};{y_A};{z_A})$."
         f" Biết ${M}(a;b;c)$ là điểm đối xứng với điểm ${{{A}}}$ qua mặt phẳng ${{({mp_P})}}$."
-        f" Tính ${{a+b+c}}$ (kết quả làm tròn đến hàng phần mười).")
+        f" Tính ${{|a+b+c|}}$ (kết quả làm tròn đến hàng phần mười).")
 
     t=sp.symbols("t")
     eq=Eq(a*(x_A+a*t)+b*(y_A+b*t)+c*(z_A+c*t)+d,0)
@@ -3072,7 +3072,7 @@ def htd_25_xyz_L12_C5_B1_31():
     x_H,y_H,z_H = x_A+a*t, y_A+b*t, z_A+c*t
     x_M,y_M,z_M=2*x_H-x_A, 2*y_H-y_A, 2*z_H-z_A
 
-    dap_an=f"{round_half_up(x_M+y_M+z_M,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(abs(x_M+y_M+z_M),1):.1f}".replace(".",",")
     noi_dung_loigiai=my_module.thay_dau_congtru(
         f"$(P)$ nhận ${vec("n")}=({a};{b};{c})$ làm một véctơ pháp tuyến.\n\n"
         f"Gọi ${{{H}}}$ là hình chiếu của ${{{A}}}$ lên $({mp_P})$.\n\n"
@@ -3725,10 +3725,12 @@ def htd_25_xyz_L12_C5_B3_04():
 def htd_25_xyz_L12_C5_B3_05():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
-    a,b,c = [random.choice([random.randint(-8,-1),random.randint(1,8)]) for i in range(3)]
-    if a==b==c:
-        b=random.randint(1,5)
-        c=random.randint(-10,-1)
+    while True:
+        a = random.choice([i for i in range(-5, 8) if i!=0])
+        b = random.choice([i for i in range(-6, 8) if i!=0])
+        c = random.choice([i for i in range(-6, 6) if i!=0])
+        if all([a!=b,b!=c,c!=a]):
+            break
     
     d=a**2 +b**2 + c**2-random.randint(1,30)
     dau_a, dau_b, dau_c, dau_d = tao_dau(-a),tao_dau(-b), tao_dau(-c), tao_dau(d)
@@ -4074,7 +4076,7 @@ def htd_25_xyz_L12_C5_B3_09():
     ptmp_false=f"{latex(n1*(x-a)+n2*(y-b)+n3*(z-c)+random.randint(1,2))}=0"
 
     kq4_T=f"* Mặt phẳng $(P)$ tiếp xúc với mặt cầu ${{(S)}}$ tại điểm ${B}({a};{b};{c})$ có phương trình là ${ptmp}$"
-    kq4_F=f"Mặt phẳng $(P)$ tiếp xúc với mặt cầu ${{(S)}}$ tại điểm ${B}({a};{b};{c})$ có phương trình là ${ptmp}$" 
+    kq4_F=f"Mặt phẳng $(P)$ tiếp xúc với mặt cầu ${{(S)}}$ tại điểm ${B}({a};{b};{c})$ có phương trình là ${ptmp_false}$" 
     
     HDG=(f"Mặt phẳng $(P)$ qua điểm ${B}({a};{b};{c})$, nhận vectơ ${vec2("I",B)}=({a-x_0};{b-y_0};{c-z_0})$ làm một véctơ pháp tuyến.\n\n"
         f"Phương trình $(P):{n1}({latex(x-a)})+{n2}({latex(y-b)})+{n3}({latex(z-c)})=0\\Leftrightarrow {ptmp}$."
@@ -4304,12 +4306,12 @@ def htd_25_xyz_L12_C5_B3_11():
         x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]
         a,b,c,d=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(4)]
         R=random.choice([sqrt(i) for i in range(145)])
-        d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
-        d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+        d_IP=abs(a*x_0+b*y_0+c*z_0+d)/(sqrt(a**2+b**2+c**2))
+        d_IP_false=abs(a*x_0+b*y_0+c*z_0+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
         if all([d_IP<R]):
             break
-    d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
-    d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+    d_IP=abs(a*x_0+b*y_0+c*z_0+d)/(sqrt(a**2+b**2+c**2))
+    d_IP_false=abs(a*x_0+b*y_0+c*z_0+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
     ptmp=f"{latex(a*x+b*y+c*z+d)}=0"
     
     chon=random.randint(1,2)
@@ -4361,7 +4363,7 @@ def htd_25_xyz_L12_C5_B3_11():
     solution=solve(eq,t)
     t_0=solution[0]
     x_H,y_H,z_H=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0),phan_so(z_0+c*t_0)
-    x_H_f,y_H_f,z_H_f=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0+random.randint(1,2)),phan_so(z_0+c*t_0+random.randint(-1,2))
+    x_H_f,y_H_f,z_H_f=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0+random.randint(1,2)),phan_so(z_0+c*t_0+random.randint(1,2))
 
     kq4_T=f"* Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có tâm là điểm $H\\left({x_H};{y_H};{z_H}\\right)$"
     kq4_F=f"Mặt phẳng ${{(P)}}$ cắt mặt cầu ${{(S)}}$ theo một đường tròn có tâm là điểm $H\\left({x_H_f};{y_H_f};{z_H_f}\\right)$" 
@@ -4503,18 +4505,17 @@ def htd_25_xyz_L12_C5_B3_12():
 
 #[D12_C5_B3_13]-SA-M3. Cho mặt cầu cắt mặt phẳng. Tìm bán kính đường tròn giao tuyến
 def htd_25_xyz_L12_C5_B3_13():
-
     #Tạo bậc ngẫu nhiên
     x,y,z,t=sp.symbols("x y z t")
     while True:        
         x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]
         a,b,c,d=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(4)]
         R=random.choice([sqrt(i) for i in range(145)])
-        d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
-        d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+        d_IP=abs(a*x_0+b*y_0+c*z_0+d)/(sqrt(a**2+b**2+c**2))
+        d_IP_false=abs(a*x_0+b*y_0+c*z_0+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
         if all([d_IP<R]):
             break
-    d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
+    d_IP=abs(a*x_0+b*y_0+c*z_0+d)/(sqrt(a**2+b**2+c**2))
     ptmp=f"{latex(a*x+b*y+c*z+d)}=0"
     r=sqrt(R**2-d_IP**2)
     
@@ -4557,8 +4558,8 @@ def htd_25_xyz_L12_C5_B3_14():
         x_0,y_0,z_0=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(3)]
         a,b,c,d=[random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(4)]
         R=random.choice([sqrt(i) for i in range(145)])
-        d_IP=abs(a*x_0+b*y_0+c*z_0+c+d)/(sqrt(a**2+b**2+c**2))
-        d_IP_false=abs(a*x_0+b*y_0+c*z_0+c+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
+        d_IP=abs(a*x_0+b*y_0+c*z_0+d)/(sqrt(a**2+b**2+c**2))
+        d_IP_false=abs(a*x_0+b*y_0+c*z_0+d+random.randint(1,2))/(sqrt(a**2+b**2+c**2))
         if all([d_IP<R]):
             break    
     ptmp=f"{latex(a*x+b*y+c*z+d)}=0"    
@@ -5450,7 +5451,7 @@ def htd_25_xyz_L12_C5_B2_10():
     t=ucln_ba_so(a,b,c)
     a,b,c=int(a/t),int(b/t),int(c/t)
 
-    t1=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    t1=random.choice([random.randint(-2, -1), random.randint(1, 3)])
     a1, b1, c1 = a*t1, b*t1, c*t1
 
     x_0,y_0,z_0 = [random.randint(-8,8) for i in range(3)]
@@ -5461,7 +5462,7 @@ def htd_25_xyz_L12_C5_B2_10():
 
 
     noi_dung= f"Trong không gian ${{Oxyz}}$, đường thẳng ${{{ten_dt}}}$ đi qua điểm ${{{ten_diem}({x_0};{y_0};{z_0})}}$"\
-                f" và song song với đường thẳng ${ten_dt2}:\\dfrac{{{latex(x-x_0+random.randint(1,4))}}}{{{a1}}}=\\dfrac{{{latex(y-y_0-random.randint(-4,4))}}}{{{b1}}}=\\dfrac{{{latex(z-z_0+random.randint(-4,4))}}}{{{c1}}}$ có phương trình là"
+                f" và song song với đường thẳng ${ten_dt2}:\\dfrac{{{latex(x-x_0+random.randint(1,4))}}}{{{a1}}}=\\dfrac{{{latex(y-y_0+random.randint(1,4))}}}{{{b1}}}=\\dfrac{{{latex(z-z_0+random.randint(1,4))}}}{{{c1}}}$ có phương trình là"
 
     kq= f"\\left\\{{ \\begin{{array}}{{l}}\
 x = {show_ptts(x_0,a)}\\\\ \
@@ -5469,19 +5470,19 @@ y = {show_ptts(y_0,b)}\\\\\
 z = {show_ptts(z_0,c)}\
 \\end{{array}} \\right."
     kq2=f"\\left\\{{ \\begin{{array}}{{l}}\
-x = {show_ptts(a,x_0)}\\\\ \
-y = {show_ptts(b,y_0)}\\\\\
-z = {show_ptts(c,z_0)}\
+x = {show_ptts(x_0,a)}\\\\ \
+y = {show_ptts(y_0,-b)}\\\\\
+z = {show_ptts(z_0,c)}\
 \\end{{array}} \\right."
     kq3=f"\\left\\{{ \\begin{{array}}{{l}}\
-x = {show_ptts(-x_0,a)}\\\\ \
-y = {show_ptts(-y_0,b)}\\\\\
-z = {show_ptts(-z_0,c)}\
+x = {show_ptts(x_0+random.randint(1,2),a)}\\\\ \
+y = {show_ptts(y_0,b)}\\\\\
+z = {show_ptts(z_0,c)}\
 \\end{{array}} \\right."
     
     kq4=f"\\left\\{{ \\begin{{array}}{{l}}\
-x = {show_ptts(x_0,a)}\\\\ \
-y = {show_ptts(-y_0,-b)}\\\\\
+x = {show_ptts(-x_0,a)}\\\\ \
+y = {show_ptts(-y_0,b)}\\\\\
 z = {show_ptts(z_0,c)}\
 \\end{{array}} \\right."
     
@@ -7455,7 +7456,7 @@ z = {show_ptts(z_1,c)}\
     if chon==2:
         t_0=random.randint(1,2)
         a1, b1, c1 =  a*t_0, b*t_0, c*t_0
-        x_1, y_1, z_1 = x_0+a*t_0+random.randint(-1,1), y_0+b*t_0, z_0+c*t_0+random.randint(1,2)
+        x_1, y_1, z_1 = x_0+a*t_0+random.randint(1,2), y_0+b*t_0, z_0+c*t_0+random.randint(1,2)
         ptdt_2= f"\\left\\{{ \\begin{{array}}{{l}}\
                 x = {show_ptts(x_1,a1)}\\\\ \
                 y = {show_ptts(y_1,b1)}\\\\\
@@ -7708,7 +7709,7 @@ def htd_25_xyz_L12_C5_B2_32():
     if chon==2:
         t_0=random.randint(1,2)
         a1, b1, c1 =  a*t_0, b*t_0, c*t_0
-        x_1, y_1, z_1 = x_0+a*t_0+random.randint(-1,1), y_0+b*t_0, z_0+c*t_0+random.randint(1,2)
+        x_1, y_1, z_1 = x_0+a*t_0+random.randint(1,2), y_0+b*t_0, z_0+c*t_0+random.randint(1,2)
         ptdt_2= f"\\left\\{{ \\begin{{array}}{{l}}\
                 x = {show_ptts(x_1,a1)}\\\\ \
                 y = {show_ptts(y_1,b1)}\\\\\
@@ -7839,7 +7840,7 @@ def htd_25_xyz_L12_C5_B2_33():
     A, H, B = random.sample(t_names, 3)
 
     t_A = random.choice([i for i in range(-2, 2) if i!=0])
-    x_A,y_A,z_A = x_1 + a*t_A, y_1 + b*t_A, z_1 + c*t_A    
+    x_A,y_A,z_A = x_0 + a*t_A, y_0 + b*t_A, z_0 + c*t_A    
     
     noi_dung = my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho đường thẳng ${{{ten_dt}}}:\\dfrac{{{latex(x-x_0)}}}{{{a}}}=\\dfrac{{{latex(y-y_0)}}}{{{b}}}=\\dfrac{{{latex(z-z_0)}}}{{{c}}}$"
         f" và điểm ${ten_diem}({x_1};{y_1};{z_1})$."
@@ -8005,7 +8006,7 @@ def htd_25_xyz_L12_C5_B2_34():
     A, H, B, ten_diem = random.sample(t_names, 4)
 
     t_A = random.choice([i for i in range(-2, 2) if i!=0])
-    x_A,y_A,z_A = x_1 + a*t_A, y_1 + b*t_A, z_1 + c*t_A
+    x_A,y_A,z_A = x_0 + a*t_A, y_0 + b*t_A, z_0 + c*t_A
 
     ptts= f"\\left\\{{ \\begin{{array}}{{l}}\
                 x = {show_ptts(x_0,a)}\\\\ \
@@ -8207,9 +8208,9 @@ def htd_25_xyz_L12_C5_B2_35():
     kq1_F= random.choice([
             f"${ten_mp}$ có một véctơ pháp tuyến là ${vec("n")}=({n1};{n2};{n3+random.randint(1,2)})$",
             f"${ten_mp}$ có một véctơ pháp tuyến là ${vec("n")}=({n1+random.randint(1,2)};{n2};{n3})$",
-            f"${ten_mp}$ có một véctơ pháp tuyến là ${vec("n")}=({-n1};{-n2};{n3+random.randint(1,2)})$"])
+  ])
     
-    HDG=f"$({ten_mp})$ có một véctơ pháp tuyến là ${vec("n")}=({n1};{n2};{n3})$."
+    HDG=f"${ten_mp}$ có một véctơ pháp tuyến là ${vec("n")}=({n1};{n2};{n3})$."
     kq1=random.choice([kq1_T, kq1_F])
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
@@ -8255,7 +8256,7 @@ def htd_25_xyz_L12_C5_B2_35():
     ptts_false= f"\\left\\{{ \\begin{{array}}{{l}}\
         x = {show_ptts(-x_1,a)}\\\\ \
         y = {show_ptts(-y_1,b)}\\\\\
-        z = {show_ptts(z_1+random.randint(-1,2),c)}\
+        z = {show_ptts(z_1+random.randint(1,2),c)}\
 \\end{{array}} \\right."
 
 

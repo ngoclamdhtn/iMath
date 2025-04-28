@@ -2729,7 +2729,7 @@ def uvxy9_L11_C8_B2_21():
 
 	AM=(SA*AB)/sqrt(SA**2+AB**2)
 	AC=AB*sqrt(2)
-	t=atan(AM/AC)
+	t=asin(AM/AC)
 	goc=f"{round_half_up(math.degrees(t),1):.1f}".replace(".",",")
 	goc_false=f"{round_half_up(math.degrees(t)+random.randint(1,3),1):.1f}".replace(".",",")
 
@@ -2745,7 +2745,7 @@ def uvxy9_L11_C8_B2_21():
 		HDG=(f"${A}{M}\\bot S{B}, {A}{M}\\bot {B}{C}$ (do ${B}{C} \\bot (S{A}{B})$) suy ra ${A}{M}\\bot {M}{C}$.\n\n"
 			f"${A}{C}={latex(AC*a)}$.\n\n"
 			f"${A}{M}=\\dfrac{{S{A}.{A}{B}}}{{\\sqrt{{S{A}^2+{A}{B}^2}}}} = \\dfrac{{{latex(SA*a)}.{latex(AB*a)}}}{{\\sqrt{{{latex((SA*a)**2)}+{latex((AB*a)**2)} }}}}={latex(nsimplify(AM)*a)}$.\n\n"
-			f"$\\tan \\widehat{{{A}{C}{M}}}=\\dfrac{{{A}{M}}}{{{A}{C}}}={latex(nsimplify(AM/AC))}$"
+			f"$\\sin\\widehat{{{A}{C}{M}}}=\\dfrac{{{A}{M}}}{{{A}{C}}}={latex(nsimplify(AM/AC))}$"
 			f"$\\Rightarrow \\widehat{{{A}{C}{M}}}={goc}^\\circ$."
 			)
 	
@@ -2759,7 +2759,7 @@ def uvxy9_L11_C8_B2_21():
 		HDG=(f"${A}{M}\\bot S{D}, {A}{M}\\bot {C}{D}$ (do ${C}{D} \\bot (S{A}{D})$) suy ra ${A}{M}\\bot {M}{C}$.\n\n"
 			f"${A}{C}={latex(AC*a)}$.\n\n"
 			f"${A}{M}=\\dfrac{{S{A}.{A}{D}}}{{\\sqrt{{S{A}^2+{A}{D}^2}}}} = \\dfrac{{{latex(SA*a)}.{latex(AB*a)}}}{{\\sqrt{{{latex((SA*a)**2)}+{latex((AB*a)**2)} }}}}={latex(nsimplify(AM)*a)}$.\n\n"
-			f"$\\tan \\widehat{{{A}{C}{M}}}=\\dfrac{{{A}{M}}}{{{A}{C}}}={latex(nsimplify(AM/AC))}$"
+			f"$\\sin \\widehat{{{A}{C}{M}}}=\\dfrac{{{A}{M}}}{{{A}{C}}}={latex(nsimplify(AM/AC))}$"
 			f"$\\Rightarrow \\widehat{{{A}{C}{M}}}={goc}^\\circ$."
 			)
 	AM=(SA*AB)/sqrt(SA**2+AB**2)
@@ -6577,7 +6577,7 @@ def uvxy9_L11_C8_B5_09():
 	AB= random.choice([sqrt(i) for i in range(1,64)])
 	SA= random.choice([sqrt(i) for i in range(1,64)])
 	OB=AB*sqrt(2)/2
-	SB=SA**2+AB**2
+	SB=sqrt(SA**2+AB**2)
 	t=OB/SB
 	goc_rad=asin(t)
 	goc_deg=math.degrees(goc_rad)
@@ -6659,13 +6659,12 @@ def uvxy9_L11_C8_B6_10():
 	ten_langtru = f"ABCD.{A1}{B1}{C1}{D1}"
 	noi_dung=f"Cho hình lăng trụ đều ${{{ten_langtru}}}$. Khẳng định nào sau đây đúng"
 	
-	kq=random.choice([f'${{{A1}{B1}{C1}{D1}}}$ là hình vuông',f'Các cạnh bên của hình lăng trụ vuông góc với 2 đáy',\
-	 f'Các cạnh bên của hình lăng trụ bằng nhau',f'Hai đáy có diện tích bằng nhau',\
-	 f'Các mặt bên vuông góc với các mặt đáy'])
+	kq=random.choice([f'${{{A1}{B1}{C1}{D1}}}$ là hình vuông',f'Các cạnh bên của hình lăng trụ vuông góc với 2 đáy',
+	 f'Các cạnh bên của hình lăng trụ bằng nhau',f'Hai đáy có diện tích bằng nhau',
+	 f'Các mặt bên vuông góc với các mặt đáy', f'Các mặt bên có diện tích bằng nhau'])
 	kq2=random.choice([f'${{{A1}{B1}{C1}{D1}}}$ là hình chữ nhật',f'${{ABCD}}$ là hình thang'])
-	kq3=random.choice([f'Các mặt bên là hình vuông',f'Các mặt bên có diện tích bằng nhau',\
-		f'Các mặt bên có diện tích bằng mặt đáy'])
-	kq4=random.choice([f'Độ dài các cạnh bên bằng độ dài các cạnh đáy',f'Hai đáy là các tam giác đều',\
+	kq3=random.choice([f'Các mặt bên là hình vuông',f'Các mặt bên có diện tích bằng mặt đáy'])
+	kq4=random.choice([f'Độ dài các cạnh bên bằng độ dài các cạnh đáy',f'Hai đáy là các tam giác đều',
 		f'Các cạnh bên có độ dài bằng cạnh đáy'])
 	
     #Tạo các phương án
@@ -7098,4 +7097,370 @@ def uvxy9_L11_C8_B7_02():
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C8_B7_03]-TF-M3. S.ABCD: đáy hình vuông. Xét Đ-S: đường cao, 2 mặt vuông góc, d(điểm,mp), V
+def uvxy9_L11_C8_B7_03():
+	a=sp.symbols("a")
+	S="S"
+	A=["A","B","C","D"]
+	B=["B","C","D","A"]
+	C=["C","D","A","B"]
+	D=["D","A","B","C"]
+	i=random.randint(0,3)
+	A, B, C, D = A[i], B[i], C[i], D[i]
+	O=random.choice(["O","I","E" ])
+
+	code_hinh = codelatex_hinhchop_hbh_canhvg("S",A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+
+	AB=random.randint(1,6)
+	SA=random.randint(1,6)
+	SB=sqrt(AB**2+SA**2)
+
+	noi_dung = f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có ${S}{A}\\bot ({A}{B}{C}{D})$, đáy là hình vuông tâm ${{{O}}}$ cạnh bằng ${{{AB}}}$, ${{{S}{B}={latex(SB)}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau."
+	
+	
+	kq1_T=f"* Chiều cao của hình chóp ${{S.{A}{B}{C}{D}}}$ là độ dài cạnh ${{{S}{A}}}$" 
+	kq1_F=f"Chiều cao của hình chóp ${{S.{A}{B}{C}{D}}}$ là độ dài cạnh ${{{random.choice([f"{S}{B}",f"{S}{C}", f"{S}{D}",  ])}}}$"
+	
+	HDG=f"Chiều cao của hình chóp ${{S.{A}{B}{C}{D}}}$ là độ dài cạnh ${{{S}{A}}}$."
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,6)
+	
+	
+	if chon==1:
+		kq2_T=f"* Hai mặt phẳng $({S}{A}{B})$ và $({S}{A}{D})$ là hai mặt phẳng vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{A}{D})$ là hai mặt phẳng không vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{A}{D})$ là vuông góc nhau vì có ${A}{B}\\bot ({S}{A}{D})$ và ${A}{B}\\subset ({S}{A}{B})$."	
+	if chon==2:
+		kq2_T=f"* Hai mặt phẳng $({S}{A}{B})$ và $({S}{B}{C})$ là hai mặt phẳng vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{B}{C})$ là hai mặt phẳng không vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{B}{C})$ là vuông góc nhau vì có ${B}{C}\\bot ({S}{A}{B})$ và ${B}{C}\\subset ({S}{B}{C})$."
+
+	if chon==3:
+		kq2_T=f"* Hai mặt phẳng $({S}{A}{D})$ và $({S}{C}{D})$ là hai mặt phẳng vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{A}{D})$ và $({S}{C}{D})$ là hai mặt phẳng không vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{A}{D})$ và $({S}{C}{D})$ là vuông góc nhau vì có ${C}{D}\\bot ({S}{A}{D})$ và ${C}{D}\\subset ({S}{C}{D})$."
+
+	if chon==4:
+		kq2_T=f"* Hai mặt phẳng $({S}{B}{D})$ và $({A}{B}{C}{D})$ là hai mặt phẳng không vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{B}{D})$ và $({A}{B}{C}{D})$ là hai mặt phẳng vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{B}{D})$ và $({A}{B}{C}{D})$ là không vuông góc nhau."
+
+	if chon==5:
+		kq2_T=f"* Hai mặt phẳng $({S}{B}{C})$ và $({A}{B}{C}{D})$ là hai mặt phẳng không vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{B}{C})$ và $({S}{C}{D})$ là hai mặt phẳng vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{B}{C})$ và $({A}{B}{C}{D})$ là hai mặt phẳng không vuông góc."
+
+	if chon==6:
+		kq2_T=f"* Hai mặt phẳng $({S}{B}{C})$ và $({S}{A}{D})$ là hai mặt phẳng không vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{B}{C})$ và $({S}{A}{D})$ là hai mặt phẳng vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{B}{C})$ và $({S}{A}{D})$ là hai mặt phẳng không vuông góc."
+	
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	V=1/3*AB**2*SA
+	V_f=AB**2*SA
+
+	kq3_T=f"* Thể tích của khối chóp đã cho bằng ${latex(nsimplify(V))}$" 
+	kq3_F=f"Thể tích của khối chóp đã cho bằng ${latex(nsimplify(V_f))}$"
+	
+	HDG=(f"${S}{A}^2={S}{B}^2-{A}{B}^2={SB**2}-{AB**2}={SA**2}\\Rightarrow S{A}={SA}$.\n\n"
+		f"Thể tích của khối chóp đã cho bằng:\n\n"
+		f" $V=\\dfrac{{1}}{{3}}.S_{{{A}{B}{C}{D}}}.S{A}=\\dfrac{{1}}{{3}}.{AB**2}.{SA}={latex(nsimplify(V))}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,3)
+
+	if chon==1:
+		d=latex(nsimplify((SA*AB)/sqrt(SA**2+AB**2)))
+		d_f=latex(nsimplify((SA*AB)/(SA**2+AB**2+random.randint(1,2))))
+		kq4_T=f"* Khoảng cách từ điểm ${{{D}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d}$"
+		kq4_F=f" Khoảng cách từ điểm ${{{D}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d_f}$"
+
+		
+		HDG=(f"Ta có: ${B}{C}\\bot S{A},{B}{C}\\bot {A}{B}$.\n\n"
+			f"Kẻ ${A}H\\bot {S}{B}$, suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+			f"Vì ${A}{D}//({S}{B}{C})$ nên $d({D},({S}{B}{C}))=d({A},({S}{B}{C}))={A}H=\\dfrac{{{S}{A}.{A}{B}}}{{\\sqrt{{{S}{A}^2+{A}{B}^2}}}}$"
+			f"$=\\dfrac{{{SA}.{AB}}}{{\\sqrt{{{SA**2}+{AB**2}}}}}={d}$.")
+	
+	if chon==2:
+		d=latex(nsimplify(1/2*(SA*AB)/sqrt(SA**2+AB**2)))
+		d_f=latex(nsimplify(2*(SA*AB)/sqrt(SA**2+AB**2)))
+		kq4_T=f"* Khoảng cách từ điểm ${{{O}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d}$"
+		kq4_F=f" Khoảng cách từ điểm ${{{O}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d_f}$"
+
+		
+		HDG=(f"Ta có: ${B}{C}\\bot S{A},{B}{C}\\bot {A}{B}$.\n\n"
+			f"Kẻ ${A}H\\bot {S}{B}$, suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+			f"$d({O},({S}{B}{C}))=\\dfrac{{1}}{{2}}d({A},({S}{B}{C}))=\\dfrac{{1}}{{2}}{A}H=\\dfrac{{1}}{{2}}\\dfrac{{{S}{A}.{A}{B}}}{{\\sqrt{{{S}{A}^2+{A}{B}^2}}}}$"
+			f"$=\\dfrac{{1}}{{2}}\\dfrac{{{SA}.{AB}}}{{\\sqrt{{{SA**2}+{AB**2}}}}}={d}$.")
+
+	if chon==3:
+		M=random.choice(["M","N","P"])
+		d=latex(nsimplify((SA*AB)/sqrt(SA**2+AB**2)))
+		d_f=latex(nsimplify((SA*AB)/(SA**2+AB**2+random.randint(1,2))))
+		kq4_T=(f"* Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{M}={random.randint(2,4)}{M}{D}$."
+			f" Khoảng cách từ điểm ${{{M}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d}$")
+		kq4_F=(f"Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{M}={random.randint(2,4)}{M}{D}$."
+			f" Khoảng cách từ điểm ${{{M}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d_f}$")
+
+		
+		HDG=(f"Ta có: ${B}{C}\\bot S{A},{B}{C}\\bot {A}{B}$.\n\n"
+			f"Kẻ ${A}H\\bot {S}{B}$, suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+			f"$d({M},({S}{B}{C}))=d({A},({S}{B}{C}))={A}H=\\dfrac{{{S}{A}.{A}{B}}}{{\\sqrt{{{S}{A}^2+{A}{B}^2}}}}$"
+			f"$=\\dfrac{{{SA}.{AB}}}{{\\sqrt{{{SA**2}+{AB**2}}}}}={d}$.")
+	
+	
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C8_B7_04]-TF-M3. S.ABCD: đáy hình chữ nhật. Xét Đ-S: đường cao, 2 mặt vuông góc, d(điểm,mp), V
+def uvxy9_L11_C8_B7_04():
+	a=sp.symbols("a")
+	S="S"
+	A=["A","B","C","D"]
+	B=["B","C","D","A"]
+	C=["C","D","A","B"]
+	D=["D","A","B","C"]
+	i=random.randint(0,3)
+	A, B, C, D = A[i], B[i], C[i], D[i]
+	O=random.choice(["O","I","E" ])
+
+	code_hinh = codelatex_hinhchop_hbh_canhvg("S",A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	#file_name = my_module.pdftoimage_timename(code)
+	file_name=""
+
+	AB=random.randint(1,5)
+	AD=AB+random.randint(1,3)
+	SA=random.choice([sqrt(i) for i in range(1,10)])
+	SB=sqrt(SA**2+AB**2)
+
+	noi_dung = f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có ${S}{A}\\bot ({A}{B}{C}{D})$, đáy là hình chữ nhật tâm ${{{O}}}$, ${A}{B}={AB},{A}{D}={AD}$, ${{{S}{B}={latex(SB)}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	
+	
+	kq1_T=f"* Chiều cao của hình chóp ${{S.{A}{B}{C}{D}}}$ bằng ${{{latex(SA)}}}$" 
+	kq1_F=f"Chiều cao của hình chóp ${{S.{A}{B}{C}{D}}}$ bằng ${{{latex(SB)}}}$"
+	
+	HDG=f"Chiều cao của hình chóp ${{S.{A}{B}{C}{D}}}$ là độ dài cạnh ${{{S}{A}}}=\\sqrt{{{S}{B}^2-{A}{B}^2}}=\\sqrt{{{SB**2}-{AB**2}}}={latex(SA)}$."
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,6)
+	
+	
+	if chon==1:
+		kq2_T=f"* Hai mặt phẳng $({S}{A}{B})$ và $({S}{A}{D})$ là hai mặt phẳng vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{A}{D})$ là hai mặt phẳng không vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{A}{D})$ là vuông góc nhau vì có ${A}{B}\\bot ({S}{A}{D})$ và ${A}{B}\\subset ({S}{A}{B})$."	
+	if chon==2:
+		kq2_T=f"* Hai mặt phẳng $({S}{A}{B})$ và $({S}{B}{C})$ là hai mặt phẳng vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{B}{C})$ là hai mặt phẳng không vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{A}{B})$ và $({S}{B}{C})$ là vuông góc nhau vì có ${B}{C}\\bot ({S}{A}{B})$ và ${B}{C}\\subset ({S}{B}{C})$."
+
+	if chon==3:
+		kq2_T=f"* Hai mặt phẳng $({S}{A}{D})$ và $({S}{C}{D})$ là hai mặt phẳng vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{A}{D})$ và $({S}{C}{D})$ là hai mặt phẳng không vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{A}{D})$ và $({S}{C}{D})$ là vuông góc nhau vì có ${C}{D}\\bot ({S}{A}{D})$ và ${C}{D}\\subset ({S}{C}{D})$."
+
+	if chon==4:
+		kq2_T=f"* Hai mặt phẳng $({S}{B}{D})$ và $({A}{B}{C}{D})$ là hai mặt phẳng không vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{B}{D})$ và $({A}{B}{C}{D})$ là hai mặt phẳng vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{B}{D})$ và $({A}{B}{C}{D})$ là không vuông góc nhau."
+
+	if chon==5:
+		kq2_T=f"* Hai mặt phẳng $({S}{B}{C})$ và $({A}{B}{C}{D})$ là hai mặt phẳng không vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{B}{C})$ và $({S}{C}{D})$ là hai mặt phẳng vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{B}{C})$ và $({A}{B}{C}{D})$ là hai mặt phẳng không vuông góc."
+
+	if chon==6:
+		kq2_T=f"* Hai mặt phẳng $({S}{B}{D})$ và $({S}{A}{D})$ là hai mặt phẳng không vuông góc"
+		kq2_F=f"Hai mặt phẳng $({S}{B}{D})$ và $({S}{A}{D})$ là hai mặt phẳng vuông góc"		
+		HDG=f"Hai mặt phẳng $({S}{B}{D})$ và $({S}{A}{D})$ là hai mặt phẳng không vuông góc."
+	
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	V=1/3*AB*AD*SA
+	V_f=AB*AD*SA
+
+	kq3_T=f"* Thể tích của khối chóp đã cho bằng ${latex(nsimplify(V))}$" 
+	kq3_F=f"Thể tích của khối chóp đã cho bằng ${latex(nsimplify(V_f))}$"
+	
+	HDG=(f"$S{A}={latex(SA)}$.\n\n"
+		f"Thể tích của khối chóp đã cho bằng:\n\n"
+		f" $V=\\dfrac{{1}}{{3}}.S_{{{A}{B}{C}{D}}}.S{A}=\\dfrac{{1}}{{3}}.{AB}.{AD}.{latex(SA)}={latex(nsimplify(V))}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,3)
+
+	if chon==1:
+		d=latex(nsimplify((SA*AB)/sqrt(SA**2+AB**2)))
+		d_f=latex(nsimplify((SA*AB)/(SA**2+AB**2+random.randint(1,2))))
+		kq4_T=f"* Khoảng cách từ điểm ${{{D}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d}$"
+		kq4_F=f" Khoảng cách từ điểm ${{{D}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d_f}$"
+
+		
+		HDG=(f"Ta có: ${B}{C}\\bot S{A},{B}{C}\\bot {A}{B}$.\n\n"
+			f"Kẻ ${A}H\\bot {S}{B}$, suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+			f"$d({D},({S}{B}{C}))=d({A},({S}{B}{C}))={A}H=\\dfrac{{{S}{A}.{A}{B}}}{{\\sqrt{{{S}{A}^2+{A}{B}^2}}}}$"
+			f"$=\\dfrac{{{latex(SA)}.{AB}}}{{\\sqrt{{{SA**2}+{AB**2}}}}}={d}$.")
+	
+	if chon==2:
+		d=latex(nsimplify(1/2*(SA*AB)/sqrt(SA**2+AB**2)))
+		d_f=latex(nsimplify(2*(SA*AB)/sqrt(SA**2+AB**2)))
+		kq4_T=f"* Khoảng cách từ điểm ${{{O}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d}$"
+		kq4_F=f" Khoảng cách từ điểm ${{{O}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d_f}$"
+
+		
+		HDG=(f"Ta có: ${B}{C}\\bot S{A},{B}{C}\\bot {A}{B}$.\n\n"
+			f"Kẻ ${A}H\\bot {S}{B}$, suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+			f"$d({O},({S}{B}{C}))=\\dfrac{{1}}{{2}}d({A},({S}{B}{C}))=\\dfrac{{1}}{{2}}{A}H=\\dfrac{{1}}{{2}}\\dfrac{{{S}{A}.{A}{B}}}{{\\sqrt{{{S}{A}^2+{A}{B}^2}}}}$"
+			f"$=\\dfrac{{1}}{{2}}\\dfrac{{{latex(SA)}.{AB}}}{{\\sqrt{{{SA**2}+{AB**2}}}}}={d}$.")
+
+	if chon==3:
+		M=random.choice(["M","N","P"])
+		d=latex(nsimplify((SA*AB)/sqrt(SA**2+AB**2)))
+		d_f=latex(nsimplify((SA*AB)/(SA**2+AB**2+random.randint(1,2))))
+		kq4_T=(f"* Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{M}={random.randint(2,4)}{M}{D}$."
+			f" Khoảng cách từ điểm ${{{M}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d}$")
+		kq4_F=(f"Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{M}={random.randint(2,4)}{M}{D}$."
+			f" Khoảng cách từ điểm ${{{M}}}$ đến mặt phẳng $({S}{B}{C})$ bằng ${d_f}$")
+
+		
+		HDG=(f"Ta có: ${B}{C}\\bot S{A},{B}{C}\\bot {A}{B}$.\n\n"
+			f"Kẻ ${A}H\\bot {S}{B}$, suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+			f"$d({M},({S}{B}{C}))=d({A},({S}{B}{C}))={A}H=\\dfrac{{{S}{A}.{A}{B}}}{{\\sqrt{{{S}{A}^2+{A}{B}^2}}}}$"
+			f"$=\\dfrac{{{latex(SA)}.{AB}}}{{\\sqrt{{{SA**2}+{AB**2}}}}}={d}$.")
+	
+	
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
 	return debai,debai_latex,loigiai_word,dap_an

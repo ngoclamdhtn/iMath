@@ -3653,22 +3653,18 @@ def gghik_L10_CX_B1_18():
 	ten_d=random.choice(["d","d_1","\\Delta"])	
 	vecto_u="\\overrightarrow{{u}}"
 	vecto_n="\\overrightarrow{{n}}"
-	
-	a= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:	
+		a= random.choice([random.randint(-5, -1), random.randint(1, 6)])
+		b= random.choice([random.randint(-5, -1), random.randint(1, 6)])
+		x_0=random.randint(-4,4)
+		y_0=random.randint(-5,5)
+		if all([a!=b, a!=x_0, b!=y_0, x_0!=y_0]):
+			break
 
-	if a==b: b=a+random.randint(1,5)
-	x_0=random.randint(-10,10)
-	y_0=random.randint(-10,10)
-	if x_0==y_0: y_0=x_0+random.randint(1,3)
-	if a==x_0 and b==y_0:
-		x_0=a+random.randint(1,5)
-		y_0=b+random.randint(1,5)
 	t1=random.randint(1,3)
 	t2=random.randint(-3,-1)
 	t3=random.randint(4,6)
-	t4=random.randint(-6,-4)
-	
+	t4=random.randint(-6,-4)	
 	
 	#Tìm UCLN của véctơ pháp tuyến:
 	
@@ -3692,7 +3688,7 @@ def gghik_L10_CX_B1_18():
 		kq4=f"({x_0+a*t4};{y_0+b*t4})"
 
 
-	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ có phương trình tổng quát là ${f}=0$."\
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ có phương trình ${f}=0$."\
 			 f" Điểm nào sau đây {chon} đường thẳng ${{{ten_d}}}$?"
 	
     #Tạo các phương án
@@ -8257,7 +8253,7 @@ def gghik_L10_CX_B3_11():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_CX_B3_12]-TF-M2. Cho phương trình đường tròn dạng thu gọn. Tạo câu hỏi đúng-sai   
+#[D10_CX_B3_12]-TF-M2. Cho đ.tròn thu gọn. Xét Đ-S: Tâm, bán kính, vị trí điểm, tiếp tuyến
 def gghik_L10_CX_B3_12():
 	#Tạo bậc ngẫu nhiên
 	x,y,z,a,b=sp.symbols("x y z a b")
@@ -8405,7 +8401,7 @@ def gghik_L10_CX_B3_12():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D10_CX_B3_13]-TF-M2. Cho phương trình đường tròn dạng thu gọn. Tạo câu hỏi đúng-sai   
+#[D10_CX_B3_13]-TF-M2. Cho đ.tròn khai triển. Xét Đ-S: Tâm, bán kính, vị trí điểm, tiếp tuyến   
 def gghik_L10_CX_B3_13():
 	#Tạo bậc ngẫu nhiên
 	x,y,z,a,b=sp.symbols("x y z a b")
@@ -13246,18 +13242,6 @@ def gghik_L10_CX_B4_32():
 	return debai,debai_latex,loigiai_word,dap_an
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 #[D10_CX_B4_33]-TF-M3. Cho phương trình Hypebol. Đọc tiêu điểm, tiêu cự, giao điểm
 def gghik_L10_CX_B4_33():
 	x,y=sp.symbols("x y")
@@ -13353,3 +13337,38 @@ def gghik_L10_CX_B4_33():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_CX_B4_34]-SA-M2. Hypebol: Cho trục thực, trục ảo. Tìm hệ số của phương trình.
+def gghik_L10_CX_B4_34():
+	x,y, s_a, s_b=sp.symbols("x y a b")
+	b=random.randint(1,15)
+	a=random.randint(1,10)
+	if a==b: b=b+random.randint(1,4)
+
+	m= random.randint(1,4)
+	n= random.choice([i for i in range(-4, 4) if i!=0])
+
+	noi_dung= (f"Trong mặt phẳng ${{Oxy}}$, cho hypebol có độ dài trục thực bằng ${{{2*a}}}$, độ dài trục ảo bằng ${{{2*b}}}$."
+	f" Phương trình của hypebol có dạng $\\dfrac{{x^2}}{{a}}+\\dfrac{{y^2}}{{b}}$. Tính $P={latex(m*s_a+n*s_b)}$.")         
+	
+	kq=f" \\dfrac{{x^2}}{{{a**2}}} - \\dfrac{{y^2}}{{{b**2}}}=1"
+	dap_an=m*a**2+n*b**2
+
+	noi_dung_loigiai=(f"Ta có: $2a={2*a}\\Rightarrow a={a} \\Rightarrow a^2={a**2}$, $2b={2*b}\\Rightarrow b={b} \\Rightarrow b^2={b**2}$.\n\n"
+	f"Phương trình của hypebol đã cho là: ${kq}$.\n\n"
+	f"Do đó: ${m*s_a+n*s_b}={m}.{a**2}+{n}.{b**2}={dap_an}$."
+	)
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an

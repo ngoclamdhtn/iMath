@@ -5,6 +5,11 @@ import random
 from fractions import Fraction
 import my_module
 
+# Hàm làm tròn half-up
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -2511,7 +2516,7 @@ def ui5io_L11_C7_B2_38():
         f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây."\
         f" Tính vận tốc của chuyển động tại thời điểm $t={x_0}$."
     noi_dung_loigiai=f"$v(t)=\\left({ham_so}\\right)'={latex(diff(f,t))}.$\n\n"\
-    f"$v({x_0})={kq} $ m/s."   
+    f"$v({x_0})={kq} $ m/s."  
     
     #Tạo các phương án
     pa_A= f"*${{{kq} }}$ m/s"
@@ -3593,6 +3598,564 @@ def ui5io_L11_C7_B2_50():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_51]-M2. Cho hàm số quãng đường. Tính vận tốc tại t_0
+def ui5io_L11_C7_B2_51():
+
+    t=sp.symbols("t")
+    while True:   
+        k=random.randint(2,3)
+        
+        if k==2:
+            a = random.randint(1, 5)
+            c = random.randint(1, 5)    
+            b=int(sqrt(4*a*c))-random.randint(1,5)    
+            f=a*t**2+b*t+c        
+            x_0=random.randint(1,10)   
+            ham_so =f"{latex(f)}"   
+
+        if k==3:
+            a = random.randint(1, 5)
+            b = random.randint(0, 5)    
+            c=  random.randint(-1, 5)
+            d=  random.randint(1, 6)        
+            if 3<=a<=5:
+                c = random.randint(-3, -1)
+                d=  random.randint(3, 6)
+
+            f=a*t**3+b*t**2+c*t+d        
+            x_0=random.randint(1,10)   
+            ham_so =f"{latex(f)}"
+        g1=diff(f,t)
+        dap_an= g1.subs(t,x_0)
+        if dap_an<300:
+            break
+
+
+   
+
+    noi_dung=f"Một vật chuyển động thẳng không đều xác định bởi phương trình $s(t)={ham_so}$, "\
+        f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây."\
+        f" Tính vận tốc của chuyển động tại thời điểm $t={x_0}$."
+    noi_dung_loigiai=f"$v(t)=\\left({ham_so}\\right)'={latex(diff(f,t))}.$\n\n"\
+    f"$v({x_0})={dap_an} $ m/s."   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B2_52]-M2. Cho hàm số quãng đường. Tính vận tốc tại thời điểm gia tốc triệt tiêu
+def ui5io_L11_C7_B2_52():
+
+    t=sp.symbols("t")
+    while True:   
+        k=random.randint(2,3)
+        
+        if k==2:
+            a = random.randint(1, 5)
+            c = random.randint(1, 5)    
+            b=int(sqrt(4*a*c))-random.randint(1,5)    
+            f=a*t**2+b*t+c        
+            x_0=random.randint(1,10)   
+            ham_so =f"{latex(f)}"   
+
+        if k==3:
+            a = random.randint(1, 5)
+            b = random.randint(0, 5)    
+            c=  random.randint(-1, 5)
+            d=  random.randint(1, 6)        
+            if 3<=a<=5:
+                c = random.randint(-3, -1)
+                d=  random.randint(3, 6)
+
+            f=a*t**3+b*t**2+c*t+d        
+            x_0=random.randint(1,10)   
+            ham_so =f"{latex(f)}"
+        g1=diff(f,t)
+        
+        if g1.subs(t,x_0)<300:
+            break
+    g1=diff(f,t)
+    g2=diff(g1,t)
+
+    dap_an= g2.subs(t,x_0)
+
+
+    noi_dung=f"Một vật chuyển động thẳng không đều xác định bởi phương trình $s(t)={ham_so}$, "\
+        f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây."\
+        f" Tính gia tốc của chuyển động tại thời điểm $t={x_0}$."
+    noi_dung_loigiai=f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$\n\n"\
+    f"$a(t)=\\left({latex(g1)}\\right)'={latex(g2)}$.\n\n"\
+    f"$a({x_0})={dap_an}$ $m/s^2$." 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B2_53]-M2. Cho hàm số quãng đường. Tính vận tốc tại thời điểm gia tốc triệt tiêu
+def ui5io_L11_C7_B2_53():
+    t=sp.symbols("t")
+
+    # Bước 1: Chọn ngẫu nhiên a > 0
+    a = random.randint(1, 5)
+
+    # Bước 2: Chọn ngẫu nhiên t0 > 0 (nơi gia tốc triệt tiêu)
+    t_0 = random.uniform(0.5, 4)
+    st_t0=f"{round_half_up(t_0,2)}".replace(".",",")
+
+    # Bước 3: Tính b sao cho gia tốc = 0 tại t0
+    b = -3 * a * t_0
+    b=round_half_up(b,1)
+    gia_toc=f"{latex(6*a*t+2*b)}".replace(".",",")
+
+    # Bước 4: Chọn c để v(t) luôn dương → chọn sao cho Δ < 0
+    # Δ = (2b)^2 - 4*3a*c < 0 ⇒ c > (4b^2) / (12a)
+    delta_min_c = (4 * b**2) / (12 * a)
+    c = round_half_up(random.uniform(delta_min_c + 1, delta_min_c + 5),1)
+
+    # Bước 5: Tạo hàm v(t) và tích phân để lấy s(t)
+    v = 3*a*t**2 + 2*b*t + c
+    s = sp.integrate(v, t) + random.randint(1, 10)  # d > 0 để s(t) luôn dương
+    v_0=v.subs(t,t_0)
+
+    s_t=f"{latex(s)}".replace("1.0","").replace(".0","").replace(".",",")
+    v_t=f"{latex(v)}".replace(".",",")
+    
+
+    noi_dung = (
+    f"Quãng đường chuyển động của một chất điểm xác định bởi $s(t)={s_t}$, "
+    f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây."
+    f" Tính vận tốc tại thời điểm gia tốc triệt tiêu"
+    f" (quá trình tính toán các kết quả làm tròn đến hàng phần trăm)."
+    )
+    dap_an=f"{round_half_up(v_0,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Vận tốc của chất điểm $v(t)=s'(t)={v_t}$.\n\n"
+    f"Gia tốc của chất điểm $a(t)=v'(t)={gia_toc}$.\n\n"
+    f"Gia tốc triệt tiêu khi: $a(t)=0\\Leftrightarrow {gia_toc}=0 \\Leftrightarrow t={st_t0}$.\n\n"
+    f"Vận tốc lúc đó của chất điểm là: $v\\left({st_t0}\\right)={dap_an}$ (m/s)."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B2_54]-M2. Cho hàm số quãng đường. Tính vận tốc nhỏ nhất
+def ui5io_L11_C7_B2_54():
+    t=sp.symbols("t")
+
+    while True:
+        a = random.randint(1,3)    # a > 0
+        b = random.randint(-5,-1)       # b >= 0 để tránh làm hàm giảm
+        c = random.randint(4, 10)      # c > 0
+
+        # Kiểm tra delta < 0 để v(t) > 0 với mọi t
+        delta = b**2 - 4*a*c
+        if delta < 0:
+            break
+    
+    v = a*t**2 + b*t + c    
+    s = sp.integrate(v, t) + random.randint(3,20)
+    t_0=-b/(2*a)
+    v_0=v.subs(t,t_0)
+
+    s_t=f"{latex(s)}".replace("1.0","").replace(".0","").replace(".",",")
+    v_t=f"{latex(v)}".replace(".",",")    
+
+    noi_dung = (
+    f"Quãng đường chuyển động của một chất điểm xác định bởi $s(t)={s_t}$, "
+    f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây."
+    f" Tính vận tốc nhỏ nhất của chuyển động."
+    f" (quá trình tính toán các kết quả làm tròn đến hàng phần mười)."   )
+    dap_an=f"{round_half_up(v_0,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Vận tốc của chất điểm $v(t)=s'(t)={v_t}$.\n\n"  
+    f"Vận tốc nhỏ nhất khi $t=-\\dfrac{{{b}}}{{{2}.{a}}}={phan_so(-b/(2*a))}$.\n\n"
+    
+    f"Vận tốc lúc đó của chất điểm là: $v\\left({phan_so(t_0)}\\right)={dap_an}$ (m/s)." )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B2_55]-M2. Cho hàm số quãng đường. Tính vận tốc lớn nhất
+def ui5io_L11_C7_B2_55():
+    t=sp.symbols("t")
+
+    a = random.randint(-3,-1)    # a > 0
+    b = random.randint(abs(2*a)+random.randint(1,5),abs(2*a)+random.randint(6,15))       # b >= 0 để tránh làm hàm giảm    
+    v = a*t**2 + b*t   
+    s = sp.integrate(v, t) + random.randint(3,20)
+    t_0=-b/(2*a)
+    v_0=v.subs(t,t_0)
+
+    s_t=f"{latex(s)}".replace("1.0","").replace(".0","").replace(".",",")
+    v_t=f"{latex(v)}".replace(".",",")    
+
+    noi_dung = (
+    f"Quãng đường chuyển động của một chất điểm xác định bởi $s(t)={s_t}$, "
+    f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây."
+    f" Tính vận tốc lớn nhất của chuyển động."
+    f" (quá trình tính toán các kết quả làm tròn đến hàng phần mười)."   )
+    dap_an=f"{round_half_up(v_0,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Vận tốc của chất điểm $v(t)=s'(t)={v_t}$.\n\n"  
+    f"Vận tốc nhỏ nhất khi $t=-\\dfrac{{{b}}}{{{2}.({a})}}={phan_so(-b/(2*a))}$.\n\n"
+    
+    f"Vận tốc lúc đó của chất điểm là: $v\\left({phan_so(t_0)}\\right)={dap_an}$ (m/s)." )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B2_56]-M3. Cho f(x)=cos(ax+b)+mx. Tìm số nghiệm thuộc khoảng đoạn của f'(x)=0
+def ui5io_L11_C7_B2_56():
+    x=sp.symbols("x")    
+    a=random.randint(1,4)
+    m=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6, -pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4])    
+    b=random.randint(1,10)
+    chon=random.randint(1,6)    
+    
+    if chon==1:
+        noi_dung = f"Cho hàm số $f(x)=\\cos({latex(a*x+m)})$. Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+x*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi)-1,int(b*pi+1)):
+            if x_1<=i and i<=x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow {-a}\\sin\\left({latex(a*x+m)}\\right)=0 \\Leftrightarrow {latex(a*x+m)} = k\\pi \\Leftrightarrow x={latex(-m/a)}+k{latex(pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in [{latex(-b*pi)};{latex(b*pi)}]$ nên ${latex(-b*pi)}\\le {latex(-m/a)}+k{latex(pi/a)} \\le {latex(b*pi)} \\Rightarrow {latex(x_1)}\\le k \\le {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+    
+    if chon==2:
+        noi_dung = f"Cho hàm số $f(x)=\\cos({latex(a*x+m)})$. Số nghiệm thuộc khoảng $({latex(-b*pi)};{latex(b*pi)})$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+x*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi)-1,int(b*pi+1)):
+            if x_1<i and i<x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow {-a}\\sin \\left({latex(a*x+m)}\\right)=0 \\Leftrightarrow {latex(a*x+m)} = k\\pi \\Leftrightarrow x={latex(-m/a)}+k{latex(pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in ({latex(-b*pi)};{latex(b*pi)})$ nên ${latex(-b*pi)}< {latex(-m/a)}+k{latex(pi/a)}< {latex(b*pi)} \\Rightarrow {latex(x_1)}< k <{latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==3:
+        noi_dung = f"Cho hàm số $f(x)={latex(a*x)}+\\cos({latex(a*x+m)})$. Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+pi/(2*a)+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+pi/(2*a)+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi)-1,int(b*pi+1)):
+            if x_1<=i and i<=x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0 \\Leftrightarrow \\sin \\left({latex(a*x+m)}\\right)=1 \\Leftrightarrow {latex(a*x+m)} ={latex(pi/2)}+k2\\pi \\Leftrightarrow x={latex(-m/a+pi/(2*a))}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in [{latex(-b*pi)};{latex(b*pi)}]$ nên ${latex(-b*pi)}\\le {latex(-m/a+pi/(2*a))}+k{latex(2*pi/a)} \\le {latex(b*pi)} \\Rightarrow {latex(x_1)}\\le k \\le {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==4:
+        noi_dung = f"Cho hàm số $f(x)={latex(a*x)}+\\cos({latex(a*x+m)})$. Số nghiệm thuộc khoảng $({latex(-b*pi)};{latex(b*pi)})$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+pi/(2*a)+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+pi/(2*a)+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi)-1,int(b*pi+1)):
+            if x_1<i and i<x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0 \\Leftrightarrow \\sin \\left({latex(a*x+m)}\\right)=1 \\Leftrightarrow {latex(a*x+m)} ={latex(pi/2)}+k2\\pi \\Leftrightarrow x={latex(-m/a+pi/(2*a))}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in ({latex(-b*pi)};{latex(b*pi)})$ nên ${latex(-b*pi)}<{latex(-m/a+pi/(2*a))}+k{latex(2*pi/a)} < {latex(b*pi)} \\Rightarrow {latex(x_1)}< k < {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==5:
+        noi_dung = f"Cho hàm số $f(x)=\\cos({latex(a*x+m)})-{latex(a*x)}$. Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a-pi/(2*a)+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a-pi/(2*a)+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi)-1,int(b*pi+1)):
+            if x_1<=i and i<=x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0 \\Leftrightarrow \\sin \\left({latex(a*x+m)}\\right)=-1 \\Leftrightarrow {latex(a*x+m)} ={latex(-pi/2)}+k2\\pi \\Leftrightarrow x={latex(-m/a-pi/(2*a))}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in [{latex(-b*pi)};{latex(b*pi)}]$ nên ${latex(-b*pi)}\\le {latex(-m/a-pi/(2*a))}+k{latex(2*pi/a)} \\le {latex(b*pi)} \\Rightarrow {latex(x_1)}\\le k \\le {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==6:
+        noi_dung = f"Cho hàm số $f(x)=\\cos({latex(a*x+m)})-{latex(a*x)}$. Số nghiệm thuộc khoảng $({latex(-b*pi)};{latex(b*pi)})$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a-pi/(2*a)+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a-pi/(2*a)+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi)-1,int(b*pi+1)):
+            if x_1<i and i<x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0 \\Leftrightarrow \\sin \\left({latex(a*x+m)}\\right)=-1 \\Leftrightarrow {latex(a*x+m)} ={latex(-pi/2)}+k2\\pi \\Leftrightarrow x={latex(-m/a-pi/(2*a))}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in ({latex(-b*pi)};{latex(b*pi)})$ nên ${latex(-b*pi)}<{latex(-m/a-pi/(2*a))}+k{latex(2*pi/a)} <{latex(b*pi)} \\Rightarrow {latex(x_1)}< k < {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dem}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    dap_an=dem
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C7_B2_57]-M3. Cho f(x)=sin(ax+b)+mx. Tìm số nghiệm thuộc khoảng đoạn của f'(x)=0
+def ui5io_L11_C7_B2_57():
+    x=sp.symbols("x")    
+    a=random.randint(1,4)
+    m=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6, -pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4])    
+    b=random.randint(1,10)
+    chon=random.randint(1,6)    
+    
+    if chon==1:
+        noi_dung = f"Cho hàm số $f(x)=\\sin \\left({latex(a*x+m)}\\right)$. Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+pi/(2*a)+x*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+pi/(2*a)+x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi-1),int(b*pi+1)):
+            if x_1<=i and i<=x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow {a}\\cos \\left({latex(a*x+m)}\\right)=0 \\Leftrightarrow {latex(a*x+m)} ={latex(pi/2)}+k\\pi \\Leftrightarrow x={latex(-m/a+pi/(2*a))}+k{latex(pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in ({latex(-b*pi)};{latex(b*pi)})$ nên ${latex(-b*pi)}< {latex(-m/a+pi/(2*a))}+k{latex(pi/a)} < {latex(b*pi)} \\Rightarrow {latex(x_1)}< k < {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số k thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==2:
+        noi_dung = f"Cho hàm số $f(x)=\\sin \\left({latex(a*x+m)}\\right)$. Số nghiệm thuộc khoảng $({latex(-b*pi)};{latex(b*pi)})$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+pi/(2*a)+x*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+pi/(2*a)+x*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi-1),int(b*pi+1)):
+            if x_1<i and i<x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow {a}\\cos \\left({latex(a*x+m)}\\right)=0 \\Leftrightarrow {latex(a*x+m)} ={latex(pi/2)}+k\\pi \\Leftrightarrow x={latex(-m/a+pi/(2*a))}+k{latex(pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in ({latex(-b*pi)};{latex(b*pi)})$ nên ${latex(-b*pi)}< {latex(-m/a+pi/(2*a))}+k{latex(pi/a)} < {latex(b*pi)} \\Rightarrow {latex(x_1)}< k < {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số k thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==3:
+        noi_dung = f"Cho hàm số $f(x)=\\sin \\left({latex(a*x+m)}\\right)-{latex(a*x)}$. Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi-1),int(b*pi+1)):
+            if x_1<=i and i<=x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow \\cos \\left({latex(a*x+m)}\\right)=1 \\Leftrightarrow {latex(a*x+m)} = k2\\pi \\Leftrightarrow x={latex(-m/a)}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in [{latex(-b*pi)};{latex(b*pi)}]$ nên ${latex(-b*pi)}\\le {latex(-m/a)}+k{latex(2*pi/a)} \\le {latex(b*pi)} \\Rightarrow {latex(x_1)}\\le k \\le {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số k thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==4:
+        noi_dung = f"Cho hàm số $f(x)=\\sin \\left({latex(a*x+m)}\\right)-{latex(a*x)}$. Số nghiệm thuộc khoảng $({latex(-b*pi)};{latex(b*pi)})$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi-1),int(b*pi+1)):
+            if x_1<i and i<x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow \\cos \\left({latex(a*x+m)}\\right)=1 \\Leftrightarrow {latex(a*x+m)} = k2\\pi \\Leftrightarrow x={latex(-m/a)}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in ({latex(-b*pi)};{latex(b*pi)})$ nên ${latex(-b*pi)} < {latex(-m/a)}+k{latex(2*pi/a)} < {latex(b*pi)} \\Rightarrow {latex(x_1)}< k < {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số k thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==5:
+        noi_dung = f"Cho hàm số $f(x)=\\sin \\left({latex(a*x+m)}\\right)+{latex(a*x)}$. Số nghiệm thuộc đoạn $[{latex(-b*pi)};{latex(b*pi)}]$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a+pi/a+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a+pi/a+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi-1),int(b*pi+1)):
+            if x_1<=i and i<=x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow \\cos \\left({latex(a*x+m)}\\right)=-1 \\Leftrightarrow {latex(a*x+m)} =\\pi+ k2\\pi \\Leftrightarrow x={latex(-m/a+pi/a)}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in [{latex(-b*pi)};{latex(b*pi)}]$ nên ${latex(-b*pi)}\\le {latex(-m/a+pi/a)}+k{latex(2*pi/a)} \\le {latex(b*pi)} \\Rightarrow {latex(x_1)}\\le k \\le {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số k thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+
+    if chon==6:
+        noi_dung = f"Cho hàm số $f(x)=\\sin \\left({latex(a*x+m)}\\right)+{latex(a*x)}$. Số nghiệm thuộc khoảng $({latex(-b*pi)};{latex(b*pi)})$ của phương trình $f'(x)=0$ là"
+
+        eq=Eq(-m/a-pi/a+x*2*pi/a,-b*pi)
+        sol= solve(eq , x)
+        x_1=sol[0]
+
+        eq=Eq(-m/a-pi/a+x*2*pi/a,b*pi)
+        sol= solve(eq , x)
+        x_2=sol[0]
+
+        dem=0
+        for i in range(int(-b*pi-1),int(b*pi+1)):
+            if x_1<i and i<x_2:
+                dem+=1
+
+        noi_dung_loigiai=(
+            f"$f'(x)=0\\Leftrightarrow \\cos \\left({latex(a*x+m)}\\right)=-1 \\Leftrightarrow {latex(a*x+m)} =-\\pi+ k2\\pi \\Leftrightarrow x={latex(-m/a-pi/a)}+k{latex(2*pi/a)}, k\\in \\mathbb{{Z}}$.\n\n"
+            f"Do $x\\in [{latex(-b*pi)};{latex(b*pi)}]$ nên ${latex(-b*pi)}< {latex(-m/a-pi/a)}+k{latex(2*pi/a)} < {latex(b*pi)} \\Rightarrow {latex(x_1)}< k < {latex(x_2)}$.\n\n"
+            f"Có ${{{dem}}}$ số k thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+            )
+    
+    dap_an=dem
+       
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
 
 ################################################################################
 #BÀI 3 - PHƯƠNG TRÌNH TIẾP TUYẾN 
