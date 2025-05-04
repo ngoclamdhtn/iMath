@@ -1713,7 +1713,7 @@ def y7y7u_L10_C5_B2_10():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word, loigiai_word, latex_tuluan, dap_an
@@ -1997,7 +1997,7 @@ def y7y7u_L10_C5_B2_12():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -2090,7 +2090,7 @@ def y7y7u_L10_C5_B2_13():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3094,7 +3094,7 @@ def y7y7u_L10_C5_B3_08():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{kq}}}\n\n"\
+    f"\\shortans[4]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq 
@@ -4073,7 +4073,7 @@ def y7y7u_L10_C5_B4_09():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
-	f"\\shortans[oly]{{{kq}}}\n\n"
+	f"\\shortans[4]{{{kq}}}\n\n"
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}\n"
 	f"\\end{{ex}}\n")
 
@@ -4113,7 +4113,7 @@ def y7y7u_L10_C5_B4_10():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an

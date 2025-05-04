@@ -7,6 +7,14 @@ import datetime
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
     return m
+
+#Trả về dấu ngoặc bao lấy hệ số a
+def tao_ngoac(a):
+    if a<0:
+        dau=f"({a})"
+    else:
+        dau=f"{a}"
+    return dau
 ############## BÀI 1-DÃY SỐ ##############
 #[D11_C2_B1_01]-M2. Cho dãy số có SHTQ. Hỏi số là số hạng thứ mấy
 def mn8mn_L11_C2_B1_01():
@@ -1778,6 +1786,177 @@ def mn8mn_L11_C2_B2_20():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C2_B2_21]-M1. CSC có 2 số hạng liên tiếp. Tìm d 
+def mn8mn_L11_C2_B2_21():
+    u_n=random.randint(-10,10)
+    d=random.choice([i for i in range(-8, 8) if i!=0])
+    u_m=u_n+d
+    n=random.randint(2,12)
+    m=n+1
+    noi_dung=(
+    f"Cho cấp số cộng $(u_n)$ có $u_{{{n}}}={u_n}$ và $u_{{{m}}}={u_m}$. Công sai ${{d}}$ của cấp số cộng đã cho là"
+    )
+    
+
+    kq=d
+    kq_false=[-d,2*d,u_m/u_n, u_m+u_n]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    noi_dung_loigiai=( f"Công sai của cấp số cộng là: $d={u_m}-{u_n}={d}$." )
+    if u_n<0:
+        noi_dung_loigiai=(f"Công sai của cấp số cộng là: $d={u_m}-({u_n})={d}$.")
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C2_B2_22]-M2. CSC có 2 số hạng liên tiếp. Tìm u tiếp theo.
+def mn8mn_L11_C2_B2_22():
+    u_n=random.randint(-10,10)
+    d=random.choice([i for i in range(-8, 8) if i!=0])
+    u_m=u_n+d
+    n=random.randint(2,12)
+    m=n+1
+    noi_dung=(
+    f"Cho cấp số cộng $(u_n)$ có $u_{{{n}}}={u_n}$ và $u_{{{m}}}={u_m}$. Số hạng $u_{{{m+1}}}$ là"
+    )
+    
+
+    kq=u_m+d
+    kq_false=[d,u_m*d,u_m/u_n, u_m+u_n]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    noi_dung_loigiai=(
+    f"Công sai của cấp số cộng là: $d={u_m}-{u_n}={d}$.\n\n"
+    f"Số hạng $u_{{{m+1}}}=u_{{{m}}}+d={u_m}+{d}={u_m+d}$."
+    )
+    if u_n<0:
+        noi_dung_loigiai=(f"Công sai của cấp số cộng là: $d={u_m}-({u_n})={d}$.\n\n"
+    f"Số hạng $u_{{{m+1}}}=u_{{{m}}}+d={u_m}+{d}={u_m+d}$." )
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C2_B2_23]-M2. CSC có u_1 và u_n. Tìm d.
+def mn8mn_L11_C2_B2_23():
+    u_1= random.choice([i for i in range(-15, 20) if i!=0])
+    d=random.choice([i for i in range(-8, 8) if i!=0])    
+    n=random.randint(5,15)
+    u_n=u_1+(n-1)*d
+    noi_dung=(
+    f"Cho cấp số cộng $(u_n)$ có $u_1={u_1}$ và $u_{{{n}}}={u_n}$. Công sai ${{d}}$ của cấp số cộng đã cho là"
+    )
+    
+
+    kq=d
+    kq_false=[u_1*u_n, u_1+u_n, u_n-u_1]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    noi_dung_loigiai=(
+    f"$u_{{{n}}}={u_n}\\Leftrightarrow {u_1}+{n-1}.d={u_n}\\Rightarrow d={d}$.")
+
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 ############## CẤP SỐ NHÂN ##############
 #D11_C2_B3_01. Cho cấp số nhân có u1, q. Tìm số hạng thứ k
 def mn8mn_L11_C2_B3_01():
@@ -2537,7 +2716,7 @@ def mn8mn_L11_C2_B3_12():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\n\n\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an

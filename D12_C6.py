@@ -436,6 +436,10 @@ def newy25_L12_C6_B1_06():
             kq_false.append(round(num,2))    
     
     kq2,kq3,kq4=random.sample(kq_false,3)
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
     st_kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
     st_kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
@@ -3252,7 +3256,7 @@ f" Tính xác suất sản phẩm lỗi đó do phân xưởng {ten_1} sản xu�
         f"Đáp án: {dap_an}\n")
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3312,7 +3316,7 @@ f" Tính xác suất khách hàng không hài lòng về dịch vụ thuộc chi
         f"Đáp án: {dap_an}\n")
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3374,7 +3378,7 @@ f" Tính  xác suất chiếc xe đó thuộc dòng {ten_1} (kết quả làm tr
         f"Đáp án: {dap_an}\n")
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3431,7 +3435,7 @@ f" Tính xác suất người đó thực sự mắc bệnh (kết quả làm tr
         f"Đáp án: {dap_an}\n")
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3495,7 +3499,7 @@ f" Tính xác suất sản phẩm đó được phát triển bởi {ten_1} (k�
         f"Đáp án: {dap_an}\n")
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3658,11 +3662,16 @@ def newy25_L12_C6_B2_15():
         num = round(random.random(), 2)
         if all([num not in kq_false, num!=kq, num!=0]):
             kq_false.append(num)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
 
     kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
 
-    random.shuffle(kq_false)
-    kq2,kq3,kq4=kq_false[0:3]
+    
     kq2=f"{round_half_up(kq2,2):.2f}".replace(".",",")
     kq3=f"{round_half_up(kq3,2):.2f}".replace(".",",")
     kq4=f"{round_half_up(kq4,2):.2f}".replace(".",",")

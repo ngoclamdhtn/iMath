@@ -8032,25 +8032,20 @@ def mjulk_L10_C9_B2_47():
 
 #[D10_C9_B2_48]-SA-M3. XS các bài toán chọn sản phẩm tốt, xấu
 def mjulk_L10_C9_B2_48():
-	chon=random.randint(1,2)
-	if chon ==1:
-		a=random.randint(1,3)*100
-		n=random.randint(10,20)
-		m=random.randint(10,20)
 
-	if chon ==2:
-		a=random.randint(1,3)*1000
-		n=random.randint(10,20)*10
-		m=random.randint(10,20)
+	a=random.randint(50,80)
+	n=random.randint(2,6)
+	m=random.randint(10,20)
+
 	a1=binomial(a,m)
 	b1=binomial(a-n,m)+binomial(a-n,m-1)*binomial(n,1)+binomial(n,2)*binomial(a-n,m-2)
 	t=b1/a1
 	kq="{:.2f}".format(t).replace(".", ",")
 	dap_an= kq
 	noi_dung=f"Một lô hàng gồm ${{{a}}}$ sản phẩm trong đó có ${{{n}}}$ phế phẩm. Người ta kiểm tra ngẫu nhiên ${{{m}}}$ sản phẩm. Tính xác suất để trong số các sản phẩm được kiểm tra có không quá ${{2}}$ phế phẩm. (Kết quả làm tròn đến hàng phần trăm)"
-	noi_dung_loigiai=(f"$n(\\Omega)=C_{{{a}}}^{{{m}}}= {a1}$\n\n "
-	f" $n(A)= C_{{{a-n}}}^{{{m}}} +C_{{{n}}}^{{{1}}}  C_{{{a-n}}}^{{{m-1}}} + C_{{{n}}}^{{{2}}}C_{{{a-n}}}^{{{m-2}}}={b1}$ \n\n"
-	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}}= {phan_so(b1/a1)} \\approx {dap_an} $")
+	noi_dung_loigiai=(f"$n(\\Omega)=C_{{{a}}}^{{{m}}}$\n\n "
+	f" $n(A)= C_{{{a-n}}}^{{{m}}} +C_{{{n}}}^{{{1}}}  C_{{{a-n}}}^{{{m-1}}} + C_{{{n}}}^{{{2}}}C_{{{a-n}}}^{{{m-2}}}$ \n\n"
+	f" $P(A)= \\dfrac{{n(A)}}{{n(\\Omega)}} \\approx {dap_an} $")
 	debai_word= f"{noi_dung}\n"
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"

@@ -78,6 +78,38 @@ def codelatex_hinh_hop(a,b,c,d,e,f,g,h):
 \\end{{tikzpicture}}\n"
     return code
 
+def code_hinh_langtruxien_tamgiac(a,b,c,a1,b1,c1):
+    code=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}}; \n\
+    \\coordinate ({b}) at (2,-1) node at ({b}) [below] {{${b}$}}; \n\
+    \\coordinate ({c}) at (4,0)  node at ({c}) [below] {{${c}$}}; \n\
+    \\coordinate ({a1}) at (1,4)   node at ({a1}) [above] {{${a1}$}}; \n\
+    \\coordinate ({b1}) at (3,3)   node at ({b1}) [above] {{${b1}$}}; \n\
+    \\coordinate ({c1}) at (5,4)   node at ({c1}) [above] {{${c1}$}};\n\
+    \\draw [dashed] ({a})--({c}); \n\
+    \\draw ({a})--({b})--({b1})--({a1})--({a}); \n\
+    \\draw ({b1})--({c1})--({c})--({b}) ({a1})--({c1})--({c}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+    return code
+
+def code_hinh_langtrudung_tamgiac(a,b,c,a1,b1,c1):
+    code=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}}; \n\
+    \\coordinate ({b}) at (2,-1) node at ({b}) [below] {{${b}$}}; \n\
+    \\coordinate ({c}) at (4,0)  node at ({c}) [below] {{${c}$}}; \n\
+    \\coordinate ({a1}) at (0,4)   node at ({a1}) [above] {{${a1}$}}; \n\
+    \\coordinate ({b1}) at (2,3)   node at ({b1}) [above] {{${b1}$}}; \n\
+    \\coordinate ({c1}) at (4,4)   node at ({c1}) [above] {{${c1}$}};\n\
+    \\draw [dashed] ({a})--({c}); \n\
+    \\draw ({a})--({b})--({b1})--({a1})--({a}); \n\
+    \\draw ({b1})--({c1})--({c})--({b}) ({a1})--({c1})--({c}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+    return code
+
 #Bài 1- Hai đường thẳng vuông góc
 #[D11_C8_B1_01]-M1. Cho hình lập phương. Xác định góc giữa hai đường thẳng.
 def uvxy9_L11_C8_B1_01():   	
@@ -5198,6 +5230,118 @@ def uvxy9_L11_C8_B4_09():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C8_B4_10]-SA-M4. L.trụ đứng tam giác. Tính khoảng cách điểm đến mặt.
+def uvxy9_L11_C8_B4_10():
+	chon=random.randint(1,3)
+	if chon==1:
+		A,B,C,A1,B1,C1="A","B","C","A'","B'","C'"
+	
+	if chon==2:
+		A,B,C,A1,B1,C1="A","B","C","A_1","B_1","C_1"
+
+	if chon==3:
+		A,B,C,A1,B1,C1="A","B","C","D","E","F"	
+	
+
+	code_hinh=my_module.code_hinh_langtrudung_tamgiac(A,B,C,A1,B1,C1)
+	
+	
+	ten_lt= f"{A}{B}{C}.{A1}{B1}{C1}"
+	ten_AB=random.choice([f"{A}{B}",f"{A1}{B1}"])
+	ten_BC=random.choice([f"{B}{C}",f"{B1}{C1}"])
+	ten_AC=random.choice([f"{A}{C}",f"{A1}{C1}"])
+	ten_AA1=random.choice([f"{A}{A1}", f"{B}{B1}", f"{C}{C1}"])
+	ten_diem=["M","N","P","Q"]
+	M,N=random.sample(ten_diem,2)
+	
+	BM=random.randint(1,4)
+	BC=BM*2
+	AB=sqrt(random.randint(1,9))	
+	AA1=random.choice([1,2,3,4,sqrt(2),sqrt(3),sqrt(5),sqrt(7)])
+	BI=(AB*BM)/sqrt(AB**2+BM**2)
+	BN=AA1/2
+	BH=(BN*BI)/sqrt(BN**2+BI**2)
+	dap_an=f"{round_half_up(BH,1):.1f}".replace(".",",")
+	
+	chon=random.randint(1,3)
+	code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+    \\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+    \\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+    \\coordinate ({A1}) at (0,4)   node at ({A1}) [above] {{${A1}$}}; \n\
+    \\coordinate ({B1}) at (2,3)   node at ({B1}) [above] {{${B1}$}}; \n\
+    \\coordinate ({C1}) at (4,4)   node at ({C1}) [above] {{${C1}$}};\n\
+    \\coordinate ({M}) at ($({B})!0.5!({C})$) node at ({M}) [below] {{${M}$}};\n\
+    \\coordinate ({N}) at ($({B1})!0.5!({B})$) node at ({N}) [above right] {{${N}$}};\n\
+    \\coordinate (I) at ($({A})!0.5!({M})$) node at (I) [below] {{$I$}};\n\
+    \\coordinate (H) at ($({N})!0.5!(I)$) node at (H) [left] {{$H$}};\n\
+    \\draw [dashed] ({A})--({C}) ({A})--({M})  ({B})--(I) ({B})--(H) ({N})--(I); \n\
+    \\draw ({A})--({B})--({B1})--({A1})--({A}) ({A})--({N}) ({M})--({N}) ; \n\
+    \\draw ({B1})--({C1})--({C})--({B}) ({A1})--({C1})--({C}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+	code = my_module.moi_truong_anh_latex(code_LG)
+	file_name = my_module.pdftoimage_timename(code)
+
+	
+	if chon==1:
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có đáy là tam giác vuông tại ${{{B}}}$ và có độ dài các cạnh"
+			f" ${ten_BC}={latex(BC)}, {ten_AB}={latex(AB)},{ten_AA1}={latex(AA1)}$."
+			f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{B}{C}}}$ và ${{{B}{B1}}}$."
+		f" Tính khoảng cách từ điểm ${{{B}}}$ đến mặt phẳng ${{({A}{M}{N})}}$(kết quả làm tròn đến hàng phần mười).")	
+
+		noi_dung_loigiai=(
+		f"Kẻ ${B}I\\bot {A}{M}, {B}H \\bot {N}I$. Chứng minh được ${B}H\\bot ({A}{M}{N})$,\n\n"
+		f"Suy ra $d({B},({A}{M}{N}))={B}H$.\n\n"
+		f"${B}{M}=\\dfrac{{{B}{C}}}{{2}}={BM}, {B}{N}=\\dfrac{{{B}{B1}}}{{2}}={latex(AA1/2)}$.\n\n"
+		f"${B}I=\\dfrac{{{B}{A}.{B}{M}}}{{\\sqrt{{{B}{A}^2+{B}{M}^2}}}}=\\dfrac{{{latex(AB)}.{BM} }}{{\\sqrt{{{AB**2}+{BM**2}}}}}={latex(nsimplify(BI))}$.\n\n"
+		f"${B}H=\\dfrac{{{B}{N}.{B}I}}{{\\sqrt{{{B}{N}^2+{B}{I}^2}}}}=\\dfrac{{{latex(BN)}.{latex(nsimplify(BI))}}}{{\\sqrt{{{phan_so(BN**2)}+{phan_so(BI**2)}}}}}$"
+		f"$={latex(nsimplify(BH))}={dap_an}$.")
+	
+	if chon==2:
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có đáy là tam giác vuông tại ${{{B}}}$ và có độ dài các cạnh"
+			f" ${ten_BC}={latex(BC)}, {ten_AB}={latex(AB)},{ten_AA1}={latex(AA1)}$."
+			f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{B}{C}}}$ và ${{{B}{B1}}}$."
+		f" Tính khoảng cách từ điểm ${{{C}}}$ đến mặt phẳng ${{({A}{M}{N})}}$(kết quả làm tròn đến hàng phần mười).")	
+
+		noi_dung_loigiai=(
+		f"Do ${{{B}{C}}}$ cắt mặt phẳng ${{({A}{M}{N})}}$ tại trung điểm ${{{M}}}$ nên $d({C},({A}{M}{N}))=d({B},({A}{M}{N}))$.\n\n"
+		f"Kẻ ${B}I\\bot {A}{M}, {B}H \\bot {N}I$. Chứng minh được ${B}H\\bot ({A}{M}{N})$,\n\n"
+		f"Suy ra $d({B},({A}{M}{N}))={B}H$.\n\n"
+		f"${B}{M}=\\dfrac{{{B}{C}}}{{2}}={BM}, {B}{N}=\\dfrac{{{B}{B1}}}{{2}}={latex(AA1/2)}$.\n\n"
+		f"${B}I=\\dfrac{{{B}{A}.{B}{M}}}{{\\sqrt{{{B}{A}^2+{B}{M}^2}}}}=\\dfrac{{{latex(AB)}.{BM} }}{{\\sqrt{{{AB**2}+{BM**2}}}}}={latex(nsimplify(BI))}$.\n\n"
+		f"${B}H=\\dfrac{{{B}{N}.{B}I}}{{\\sqrt{{{B}{N}^2+{B}{I}^2}}}}=\\dfrac{{{latex(BN)}.{latex(nsimplify(BI))}}}{{\\sqrt{{{phan_so(BN**2)}+{phan_so(BI**2)}}}}}$"
+		f"$={latex(nsimplify(BH))}={dap_an}$.")
+
+	if chon==3:
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có đáy là tam giác vuông tại ${{{B}}}$ và có độ dài các cạnh"
+			f" ${ten_BC}={latex(BC)}, {ten_AB}={latex(AB)},{ten_AA1}={latex(AA1)}$."
+			f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{B}{C}}}$ và ${{{B}{B1}}}$."
+		f" Tính khoảng cách từ điểm ${{{B1}}}$ đến mặt phẳng ${{({A}{M}{N})}}$(kết quả làm tròn đến hàng phần mười).")	
+
+		noi_dung_loigiai=(
+		f"Do ${{{B}{B1}}}$ cắt mặt phẳng ${{({A}{M}{N})}}$ tại trung điểm ${{{N}}}$ nên $d({B1},({A}{M}{N}))=d({B},({A}{M}{N}))$.\n\n"
+		f"Kẻ ${B}I\\bot {A}{M}, {B}H \\bot {N}I$. Chứng minh được ${B}H\\bot ({A}{M}{N})$,\n\n"
+		f"Suy ra $d({B},({A}{M}{N}))={B}H$.\n\n"
+		f"${B}{M}=\\dfrac{{{B}{C}}}{{2}}={BM}, {B}{N}=\\dfrac{{{B}{B1}}}{{2}}={latex(AA1/2)}$.\n\n"
+		f"${B}I=\\dfrac{{{B}{A}.{B}{M}}}{{\\sqrt{{{B}{A}^2+{B}{M}^2}}}}=\\dfrac{{{latex(AB)}.{BM} }}{{\\sqrt{{{AB**2}+{BM**2}}}}}={latex(nsimplify(BI))}$.\n\n"
+		f"${B}H=\\dfrac{{{B}{N}.{B}I}}{{\\sqrt{{{B}{N}^2+{B}{I}^2}}}}=\\dfrac{{{latex(BN)}.{latex(nsimplify(BI))}}}{{\\sqrt{{{phan_so(BN**2)}+{phan_so(BI**2)}}}}}$"
+		f"$={latex(nsimplify(BH))}={dap_an}$.")
+	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\\begin{{center}}\n{code_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 #KHOẢNG CÁCH GIỮA 2 ĐƯỜNG CHÉO NHAU
 #[D11_C8_B4_05]-M2. Cho hình lập phương. Tính khoảng cách giữa 2 đường chéo nhau (kẻ đường vuông góc chung)
@@ -5661,6 +5805,434 @@ def uvxy9_L11_C8_B4_08():
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B4_12]-SA-M4. L.trụ đứng tam giác. Tính khoảng cách hai đường chéo nhau.
+def uvxy9_L11_C8_B4_12():
+	chon=random.randint(1,3)
+	if chon==1:
+		A,B,C,A1,B1,C1="A","B","C","A'","B'","C'"
+	
+	if chon==2:
+		A,B,C,A1,B1,C1="A","B","C","A_1","B_1","C_1"
+
+	if chon==3:
+		A,B,C,A1,B1,C1="A","B","C","D","E","F"
+	
+	ten_lt= f"{A}{B}{C}.{A1}{B1}{C1}"
+	ten_AB=random.choice([f"{A}{B}",f"{A1}{B1}"])
+	ten_BC=random.choice([f"{B}{C}",f"{B1}{C1}"])
+	ten_AC=random.choice([f"{A}{C}",f"{A1}{C1}"])
+	ten_AA1=random.choice([f"{A}{A1}", f"{B}{B1}", f"{C}{C1}"])
+	ten_diem=["M","N","P","Q"]
+	M,N=random.sample(ten_diem,2)
+	
+	BM=random.randint(1,4)
+	BC=BM*2
+	AB=sqrt(random.randint(1,9))	
+	AA1=random.choice([1,2,3,4,sqrt(2),sqrt(3),sqrt(5),sqrt(7)])
+	BI=(AB*BM)/sqrt(AB**2+BM**2)
+	BN=AA1/2
+	BH=(BN*BI)/sqrt(BN**2+BI**2)
+	dap_an=f"{round_half_up(BH,2):.2f}".replace(".",",")
+	
+	code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+    \\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+    \\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+    \\coordinate ({A1}) at (0,4)   node at ({A1}) [above] {{${A1}$}}; \n\
+    \\coordinate ({B1}) at (2,3)   node at ({B1}) [above] {{${B1}$}}; \n\
+    \\coordinate ({C1}) at (4,4)   node at ({C1}) [above] {{${C1}$}};\n\
+    \\coordinate ({M}) at ($({B})!0.5!({C})$) node at ({M}) [below] {{${M}$}};\n\
+    \\coordinate ({N}) at ($({B1})!0.5!({B})$) node at ({N}) [above right] {{${N}$}};\n\
+    \\coordinate (I) at ($({A})!0.5!({M})$) node at (I) [below] {{$I$}};\n\
+    \\coordinate (H) at ($({N})!0.5!(I)$) node at (H) [left] {{$H$}};\n\
+    \\draw [dashed] ({A})--({C}) ({A})--({M})  ({B})--(I) ({B})--(H) ({N})--(I); \n\
+    \\draw ({A})--({B})--({B1})--({A1})--({A}) ({A})--({N}) ({M})--({N}) ({B1})--({C}) ; \n\
+    \\draw ({B1})--({C1})--({C})--({B}) ({A1})--({C1})--({C}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+	
+	code = my_module.moi_truong_anh_latex(code_LG)
+	file_name = my_module.pdftoimage_timename(code)
+	
+	
+	noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có đáy là tam giác vuông tại ${{{B}}}$ và có độ dài các cạnh"
+		f" ${ten_BC}={latex(BC)}, {ten_AB}={latex(AB)},{ten_AA1}={latex(AA1)}$."
+		f" Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$."
+	f" Tính khoảng cách giữa ${{{A}{M}}}$ và ${{{B1}{C}}}$(kết quả làm tròn đến hàng phần trăm).")	
+
+	noi_dung_loigiai=(
+	f"Gọi ${{{N}}}$ là trung điểm của ${B}{B1}$. Ta có: ${M}{N}//{B1}{C}\\Rightarrow {B1}{C}//({A}{M}{N})$.\n\n"
+	f"Do đó: $d({A}{M},{B1}{C})=d(({A}{M}{N}),{B1}{C})=d({B1},({A}{M}{N}))=d({B},({A}{M}{N}))$.\n\n"
+	f"Kẻ ${B}I\\bot {A}{M}, {B}H \\bot {N}I$. Chứng minh được ${B}H\\bot ({A}{M}{N})$,\n\n"
+	f"Suy ra $d({B},({A}{M}{N}))={B}H$.\n\n"
+	f"${B}{M}=\\dfrac{{{B}{C}}}{{2}}={BM}, {B}{N}=\\dfrac{{{B}{B1}}}{{2}}={latex(AA1/2)}$.\n\n"
+	f"${B}I=\\dfrac{{{B}{A}.{B}{M}}}{{\\sqrt{{{B}{A}^2+{B}{M}^2}}}}=\\dfrac{{{latex(AB)}.{BM} }}{{\\sqrt{{{AB**2}+{BM**2}}}}}={latex(nsimplify(BI))}$.\n\n"
+	f"${B}H=\\dfrac{{{B}{N}.{B}I}}{{\\sqrt{{{B}{N}^2+{B}{I}^2}}}}=\\dfrac{{{latex(BN)}.{latex(nsimplify(BI))}}}{{\\sqrt{{{phan_so(BN**2)}+{phan_so(BI**2)}}}}}$"
+	f"$={latex(nsimplify(BH))}={dap_an}$.")	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\\begin{{center}}\n{code_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B4_13]-SA-M3. L.trụ đứng tam giác có 3 cạnh. Tính khoảng cách cạnh bên và cạnh đáy
+def uvxy9_L11_C8_B4_13():
+	chon=random.randint(1,3)
+	if chon==1:
+		A,B,C,A1,B1,C1="A","B","C","A'","B'","C'"
+	
+	if chon==2:
+		A,B,C,A1,B1,C1="A","B","C","A_1","B_1","C_1"
+
+	if chon==3:
+		A,B,C,A1,B1,C1="A","B","C","D","E","F"	
+	
+
+	code_hinh=my_module.code_hinh_langtrudung_tamgiac(A,B,C,A1,B1,C1)
+	
+	
+	ten_lt= f"{A}{B}{C}.{A1}{B1}{C1}"
+	ten_AB=random.choice([f"{A}{B}",f"{A1}{B1}"])
+	ten_BC=random.choice([f"{B}{C}",f"{B1}{C1}"])
+	ten_AC=random.choice([f"{A}{C}",f"{A1}{C1}"])
+	ten_AA1=random.choice([f"{A}{A1}", f"{B}{B1}", f"{C}{C1}"])
+	ten_diem=["M","N","P","Q"]
+	M,N=random.sample(ten_diem,2)
+	
+	while True:
+		AB=random.randint(1,7)
+		AC=random.randint(1,7)
+		BC=random.randint(1,7)
+		if all([AB+AC>BC, AB+BC>AC, AC+BC>AB]):
+			break
+	
+	p=(AB+AC+BC)/2
+	S=sqrt(p*(p-AB)*(p-AC)*(p-BC))
+	AH=2*S/BC
+	dap_an=f"{round_half_up(AH,2):.2f}".replace(".",",")
+
+	chon=random.randint(1,4)	
+	
+	if chon==1:
+		code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+    \\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+    \\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+    \\coordinate ({A1}) at (0,4)   node at ({A1}) [above] {{${A1}$}}; \n\
+    \\coordinate ({B1}) at (2,3)   node at ({B1}) [above] {{${B1}$}}; \n\
+    \\coordinate ({C1}) at (4,4)   node at ({C1}) [above] {{${C1}$}};\n\
+    \\coordinate (H) at ($({B})!0.4!({C})$) node at (H) [right] {{$H$}};\n\
+    \\draw [dashed] ({A})--({C})  ({A})--(H) ; \n\
+    \\draw ({A})--({B})--({B1})--({A1})--({A}); \n\
+    \\draw ({B1})--({C1})--({C})--({B}) ({A1})--({C1})--({C}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có ${ten_AB}={AB}, {ten_BC}={BC}, {ten_AC}={AC}$."
+		f" Tính khoảng cách giữa ${{{A}{A1}}}$ và ${{{B}{C}}}$(kết quả làm tròn đến hàng phần trăm).")	
+
+		noi_dung_loigiai=(
+			f"Kẻ ${A}H\\bot {B}{C}$. Ta có: ${A}{A1}\\bot {A}H$ nên $d({A}{A1},{B}{C})={A}H$.\n\n"
+			f"Xét tam giác ${{{A}{B}{C}}}$ có $p=\\dfrac{{{AB}+{AC}+{BC}}}{{2}}={phan_so(p)}$.\n\n"
+			f"$S_{{{A}{B}{C}}}=\\sqrt{{{phan_so(p)}({phan_so(p)}-{AB})({phan_so(p)}-{AC})({phan_so(p)}-{BC})}}={{{latex(nsimplify(S))}}}$.\n\n"
+			f"${A}H=\\dfrac{{2S_{{{A}{B}{C}}}}}{{{B}{C}}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{BC}}}={{{latex(nsimplify(AH))}}}={dap_an}$.")
+	
+	if chon==2:
+		code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+    \\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+    \\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+    \\coordinate ({A1}) at (0,4)   node at ({A1}) [above] {{${A1}$}}; \n\
+    \\coordinate ({B1}) at (2,3)   node at ({B1}) [above] {{${B1}$}}; \n\
+    \\coordinate ({C1}) at (4,4)   node at ({C1}) [above] {{${C1}$}};\n\
+    \\coordinate (H) at ($({B1})!0.4!({C1})$) node at (H) [right] {{$H$}};\n\
+    \\draw [dashed] ({A})--({C}) ; \n\
+    \\draw ({A})--({B})--({B1})--({A1})--({A}) ({A1})--(H); \n\
+    \\draw ({B1})--({C1})--({C})--({B}) ({A1})--({C1})--({C}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có ${ten_AB}={AB}, {ten_BC}={BC}, {ten_AC}={AC}$."
+		f" Tính khoảng cách giữa ${{{A}{A1}}}$ và ${{{B1}{C1}}}$(kết quả làm tròn đến hàng phần trăm).")	
+
+		noi_dung_loigiai=(
+			f"Kẻ ${A1}H\\bot {B1}{C1}$. Ta có: ${A}{A1}\\bot {A1}H$ nên $d({A}{A1},{B1}{C1})={A1}H$.\n\n"
+			f"Xét tam giác ${{{A1}{B1}{C1}}}$ có $p=\\dfrac{{{AB}+{AC}+{BC}}}{{2}}={phan_so(p)}$.\n\n"
+			f"$S_{{{A1}{B1}{C1}}}=\\sqrt{{{phan_so(p)}({phan_so(p)}-{AB})({phan_so(p)}-{AC})({phan_so(p)}-{BC})}}={{{latex(nsimplify(S))}}}$.\n\n"
+			f"${A}H=\\dfrac{{2S_{{{A1}{B1}{C1}}}}}{{{B1}{C1}}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{BC}}}={{{latex(nsimplify(AH))}}}={dap_an}$.")
+	
+	BH=2*S/AC
+	dap_an=f"{round_half_up(BH,2):.2f}".replace(".",",")	
+
+	if chon==3:
+		code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+    \\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+    \\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+    \\coordinate ({A1}) at (0,4)   node at ({A1}) [above] {{${A1}$}}; \n\
+    \\coordinate ({B1}) at (2,3)   node at ({B1}) [above] {{${B1}$}}; \n\
+    \\coordinate ({C1}) at (4,4)   node at ({C1}) [above] {{${C1}$}};\n\
+    \\coordinate (H) at ($({A})!0.4!({C})$) node at (H) [above] {{$H$}};\n\
+    \\draw [dashed] ({A})--({C}) ({B})--(H); \n\
+    \\draw ({A})--({B})--({B1})--({A1})--({A}) ; \n\
+    \\draw ({B1})--({C1})--({C})--({B}) ({A1})--({C1})--({C}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có ${ten_AB}={AB}, {ten_BC}={BC}, {ten_AC}={AC}$."
+		f" Tính khoảng cách giữa ${{{B}{B1}}}$ và ${{{A}{C}}}$(kết quả làm tròn đến hàng phần trăm).")	
+
+		noi_dung_loigiai=(
+			f"Kẻ ${B}H\\bot {A}{C}$. Ta có: ${B}{B1}\\bot {B}H$ nên $d({B}{B1},{A}{C})={B}H$.\n\n"
+			f"Xét tam giác ${{{A}{B}{C}}}$ có $p=\\dfrac{{{AB}+{AC}+{BC}}}{{2}}={phan_so(p)}$.\n\n"
+			f"$S_{{{A}{B}{C}}}=\\sqrt{{{phan_so(p)}({phan_so(p)}-{AB})({phan_so(p)}-{AC})({phan_so(p)}-{BC})}}={{{latex(nsimplify(S))}}}$.\n\n"
+			f"${B}H=\\dfrac{{2S_{{{A}{B}{C}}}}}{{{A}{C}}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{AC}}}={{{latex(nsimplify(BH))}}}={dap_an}$.")
+
+	CH=2*S/AB
+	dap_an=f"{round_half_up(CH,2):.2f}".replace(".",",")	
+
+	if chon==4:
+		code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+    \\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+    \\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+    \\coordinate ({A1}) at (0,4)   node at ({A1}) [above] {{${A1}$}}; \n\
+    \\coordinate ({B1}) at (2,3)   node at ({B1}) [above] {{${B1}$}}; \n\
+    \\coordinate ({C1}) at (4,4)   node at ({C1}) [above] {{${C1}$}};\n\
+    \\coordinate (H) at ($({A})!0.4!({B})$) node at (H) [left] {{$H$}};\n\
+    \\draw [dashed] ({A})--({C}) ({C})--(H); \n\
+    \\draw ({A})--({B})--({B1})--({A1})--({A}) ; \n\
+    \\draw ({B1})--({C1})--({C})--({B}) ({A1})--({C1})--({C}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+		noi_dung=thay_hinh_hoc(f"Cho hình lăng trụ đứng ${{{ten_lt}}}$ có ${ten_AB}={AB}, {ten_BC}={BC}, {ten_AC}={AC}$."
+		f" Tính khoảng cách giữa ${{{C}{C1}}}$ và ${{{A}{B}}}$(kết quả làm tròn đến hàng phần trăm).")	
+
+		noi_dung_loigiai=(
+			f"Kẻ ${C}H\\bot {A}{B1}$. Ta có: ${C}{C1}\\bot {C}H$ nên $d({C}{C1},{A}{B})={C}H$.\n\n"
+			f"Xét tam giác ${{{A}{B}{C}}}$ có $p=\\dfrac{{{AB}+{AC}+{BC}}}{{2}}={phan_so(p)}$.\n\n"
+			f"$S_{{{A}{B}{C}}}=\\sqrt{{{phan_so(p)}({phan_so(p)}-{AB})({phan_so(p)}-{AC})({phan_so(p)}-{BC})}}={{{latex(nsimplify(S))}}}$.\n\n"
+			f"${C}H=\\dfrac{{2S_{{{A}{B}{C}}}}}{{{A}{B}}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{AB}}}={{{latex(nsimplify(CH))}}}={dap_an}$.")
+		
+	
+	code = my_module.moi_truong_anh_latex(code_LG)
+	file_name = my_module.pdftoimage_timename(code)
+		
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\\begin{{center}}\n{code_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B4_14]-SA-M3. H.chóp S.ABC, đáy tam giác đều. Tính d(A,(SBC))
+def uvxy9_L11_C8_B4_14():
+	A,B,C=random.sample(["A","B","C"],3)
+	AB=sqrt(random.randint(1,9))
+	SA=sqrt(random.randint(1,10))
+	AM=AB*sqrt(3)/2
+	AH=(SA*AM)/sqrt(SA**2+AM**2)
+	code_hinh=f"\\begin{{tikzpicture}}\n\
+\\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}};\n\
+\\coordinate ({B}) at (1,-2) node at ({B}) [left] {{${B}$}};\n\
+\\coordinate ({C}) at (4,0)   node at ({C}) [right] {{${C}$}};\n\
+\\coordinate ({S}) at (0,4)   node at ({S}) [above] {{${S}$}};\n\
+\\coordinate (M) at ($({B})!0.5!({C})$) node at (M) [right] {{$M$}};\n\
+\\coordinate (H) at ($({S})!0.5!(M)$) node at (H) [right] {{$H$}};\n\
+\\draw [dashed] ({A})--({C}) ({A})--(M) ({A})--(H); \n\
+\\draw ({A})--({B}) ({B})--({C}) ({S})--({A}) ({S})--({B}) ({S})--({C}) ({S})--(M); \n\
+\\end{{tikzpicture}}\n"	
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{M}}$ là trung điểm của ${{{B}{C}}}$. Ta có ${A}M={latex(AM)}$.\n\n"
+	f"Ta có: ${B}{C}\\bot (S{A}M)$. Dựng ${A}H\\bot SM$. Suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+	f"$d({A},(S{B}{C}))={A}H=\\dfrac{{S{A}.{A}M}}{{\\sqrt{{S{A}^2+{A}M^2}}}}="
+	f"\\dfrac{{{latex(SA)}.{latex(nsimplify(AM))} }}{{\\sqrt{{{latex(SA**2)}+{latex(AM**2)}}}}}$"
+	f"$={{{latex(nsimplify(AH))}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name} {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B4_15]-SA-M3. H.chóp S.ABC, đáy t.giác vuông. Tính d(A,(SBC))
+def uvxy9_L11_C8_B4_15():
+	A,B,C=random.sample(["A","B","C"],3)
+	AB=sqrt(random.randint(1,9))
+	AC=sqrt(random.randint(1,9))
+	SA=sqrt(random.randint(1,10))
+	AM=(AB*AC)/sqrt(AB**2+AC**2)
+	AH=(SA*AM)/sqrt(SA**2+AM**2)
+	code_hinh=f"\\begin{{tikzpicture}}\n\
+\\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}};\n\
+\\coordinate ({B}) at (1,-2) node at ({B}) [left] {{${B}$}};\n\
+\\coordinate ({C}) at (4,0)   node at ({C}) [right] {{${C}$}};\n\
+\\coordinate ({S}) at (0,4)   node at ({S}) [above] {{${S}$}};\n\
+\\coordinate (M) at ($({B})!0.5!({C})$) node at (M) [right] {{$M$}};\n\
+\\coordinate (H) at ($({S})!0.5!(M)$) node at (H) [right] {{$H$}};\n\
+\\draw [dashed] ({A})--({C}) ({A})--(M) ({A})--(H); \n\
+\\draw ({A})--({B}) ({B})--({C}) ({S})--({A}) ({S})--({B}) ({S})--({C}) ({S})--(M); \n\
+\\end{{tikzpicture}}\n"	
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông tại ${{{A}}}$, ${{{A}{B}={latex(AB)}, {A}{C}={latex(AC)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Dựng ${A}M\\bot {B}{C}$. Ta có ${A}M=\\dfrac{{{A}{B}.{A}{C}}} {{\\sqrt{{{A}{B}^2+{A}{C}^2}}}}=$"
+	f"$\\dfrac{{{latex(AB)}.{latex(AC)}}} {{\\sqrt{{{AB**2}+{AC**2}}}}}={{{latex(nsimplify(AM))}}}$.\n\n"
+	f"Ta có: ${B}{C}\\bot (S{A}M)$. Dựng ${A}H\\bot SM$. Suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+	f"$d({A},(S{B}{C}))={A}H=\\dfrac{{S{A}.{A}M}}{{\\sqrt{{S{A}^2+{A}M^2}}}}="
+	f"\\dfrac{{{latex(SA)}.{latex(nsimplify(AM))} }}{{\\sqrt{{{latex(SA**2)}+{latex(AM**2)}}}}}$"
+	f"$={{{latex(nsimplify(AH))}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name} {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B4_16]-SA-M3. H.chóp S.ABC, đáy t.giác vuông cân. Tính d(A,(SBC))
+def uvxy9_L11_C8_B4_16():
+	A,B,C=random.sample(["A","B","C"],3)
+	AB=sqrt(random.randint(1,9))
+	AC=AB
+	BC=sqrt(AB**2+AB**2)
+	SA=sqrt(random.randint(1,10))
+	AM=(AB*AC)/sqrt(AB**2+AC**2)
+	AH=(SA*AM)/sqrt(SA**2+AM**2)
+	code_hinh=f"\\begin{{tikzpicture}}\n\
+\\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}};\n\
+\\coordinate ({B}) at (1,-2) node at ({B}) [left] {{${B}$}};\n\
+\\coordinate ({C}) at (4,0)   node at ({C}) [right] {{${C}$}};\n\
+\\coordinate ({S}) at (0,4)   node at ({S}) [above] {{${S}$}};\n\
+\\coordinate (M) at ($({B})!0.5!({C})$) node at (M) [right] {{$M$}};\n\
+\\coordinate (H) at ($({S})!0.5!(M)$) node at (H) [right] {{$H$}};\n\
+\\draw [dashed] ({A})--({C}) ({A})--(M) ({A})--(H); \n\
+\\draw ({A})--({B}) ({B})--({C}) ({S})--({A}) ({S})--({B}) ({S})--({C}) ({S})--(M); \n\
+\\end{{tikzpicture}}\n"	
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông cân tại ${{{A}}}$, ${{{B}{C}={latex(BC)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Ta có: ${A}{B}^2+{A}{C}^2={B}{C}^2\\Rightarrow 2{A}{B}^2={B}{C}^2 \\Rightarrow {A}{B}={A}{C}=\\dfrac{{{B}{C}}}{{\\sqrt{{2}}}}={latex(AB)}$.\n\n"
+	f"Dựng ${A}M\\bot {B}{C}$. Ta có ${A}M=\\dfrac{{{A}{B}.{A}{C}}} {{\\sqrt{{{A}{B}^2+{A}{C}^2}}}}=$"
+	f"$\\dfrac{{{latex(AB)}.{latex(AC)}}} {{\\sqrt{{{AB**2}+{AC**2}}}}}={{{latex(nsimplify(AM))}}}$.\n\n"
+	f"Ta có: ${B}{C}\\bot (S{A}M)$. Dựng ${A}H\\bot SM$. Suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+	f"$d({A},(S{B}{C}))={A}H=\\dfrac{{S{A}.{A}M}}{{\\sqrt{{S{A}^2+{A}M^2}}}}="
+	f"\\dfrac{{{latex(SA)}.{latex(nsimplify(AM))} }}{{\\sqrt{{{latex(SA**2)}+{latex(AM**2)}}}}}$"
+	f"$={{{latex(nsimplify(AH))}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name} {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B4_17]-SA-M3. H.chóp S.ABC, đáy tam giác đều, trọng tâm G. Tính d(G,(SBC))
+def uvxy9_L11_C8_B4_17():
+	A,B,C=random.sample(["A","B","C"],3)
+	AB=sqrt(random.randint(1,9))
+	SA=sqrt(random.randint(1,10))
+	AM=AB*sqrt(3)/2
+	AH=(SA*AM)/sqrt(SA**2+AM**2)
+	d_G=1/3*AH
+	code_hinh=f"\\begin{{tikzpicture}}\n\
+\\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}};\n\
+\\coordinate ({B}) at (1,-2) node at ({B}) [left] {{${B}$}};\n\
+\\coordinate ({C}) at (4,0)   node at ({C}) [right] {{${C}$}};\n\
+\\coordinate ({S}) at (0,4)   node at ({S}) [above] {{${S}$}};\n\
+\\coordinate (M) at ($({B})!0.5!({C})$) node at (M) [right] {{$M$}};\n\
+\\coordinate (H) at ($({S})!0.5!(M)$) node at (H) [right] {{$H$}};\n\
+\\coordinate (G) at ($({A})!0.6!(M)$) node at (G) [below] {{$G$}};\n\
+\\draw [dashed] ({A})--({C}) ({A})--(M) ({A})--(H); \n\
+\\draw ({A})--({B}) ({B})--({C}) ({S})--({A}) ({S})--({B}) ({S})--({C}) ({S})--(M); \n\
+\\end{{tikzpicture}}\n"	
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f" Gọi ${{G}}$ là trọng tâm của tam giác ${{ABC}}$."
+	f" Tính khoảng cách từ điểm ${{G}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(d_G,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{M}}$ là trung điểm của ${{{B}{C}}}$. Ta có ${A}M={latex(AM)}$.\n\n"
+	f"Ta có: ${B}{C}\\bot (S{A}M)$. Dựng ${A}H\\bot SM$. Suy ra ${A}H\\bot (S{B}{C})$.\n\n"
+	f"$d({A},(S{B}{C}))={A}H=\\dfrac{{S{A}.{A}M}}{{\\sqrt{{S{A}^2+{A}M^2}}}}="
+	f"\\dfrac{{{latex(SA)}.{latex(nsimplify(AM))} }}{{\\sqrt{{{latex(SA**2)}+{latex(AM**2)}}}}}$"
+	f"$={{{latex(nsimplify(AH))}}}$.\n\n"
+	f"$\\dfrac{{d(G,(S{B}{C}))}}{{d({A},(S{B}{C}))}}=\\dfrac{{MG}}{{M{A}}}=\\dfrac{{1}}{{3}}$.\n\n"
+	f"Suy ra: $d(G,(S{B}{C}))=\\dfrac{{1}}{{3}}d({A},(S{B}{C}))=\\dfrac{{1}}{{3}}{{{latex(nsimplify(AH))}}}={latex(nsimplify(d_G))}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name} {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #BÀI 5 - GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG
 
@@ -6818,6 +7390,364 @@ def uvxy9_L11_C8_B6_12():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_13]-M2. H.chóp đáy tam giác vuông cân, mặt bên vuông góc đáy. Tính thể tích
+def uvxy9_L11_C8_B6_13():
+	a=sp.symbols("a")
+	AB=sqrt(random.randint(1,10))*a
+	A,B,C=random.sample(["A","B","C"],3)
+
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông cân tại ${{{B}}}$ và ${A}{B}={latex(AB)}$."
+	f" Tam giác ${{S{A}{B}}}$ đều nằm trong mặt phẳng vuông góc với đáy. Thể tích ${{V}}$ của khối chóp ${{S.ABC}}$ là"
+	)
+
+	
+	AM=AB*sqrt(3)/2
+	S=1/2*(AB)**2
+	V=1/3*S*AM
+	AM_f=AB*sqrt(2)/2
+
+	kq=latex(nsimplify(V))
+	kq2=latex(nsimplify(S*AM))
+	kq3=latex(nsimplify(S*AM_f))
+	kq4=latex(nsimplify(1/3*S*AM_f))
+
+	noi_dung_loigiai=(
+	f"$S_{{ABC}}=\\dfrac{{1}}{{2}}.{A}{B}.{B}{C}=\\dfrac{{1}}{{2}}.{latex(AB)}.{latex(AB)}={latex(nsimplify(S))}$.\n\n"
+	f"Gọi ${{M}}$ là trung điểm của ${{{A}{B}}}$. Khi đó: $SM\\bot (ABC)$.\n\n"
+	f" $SM=\\dfrac{{{latex(AB*sqrt(3))}}}{{2}}={{{latex(nsimplify(AM))}}}$.\n\n"
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABC}}}}.SM={{{latex(nsimplify(V))}}}$.")
+
+	pa_A= f"*$V={kq}$"
+	pa_B= f"$V={kq2}$"
+	pa_C= f"$V={kq3}$"
+	pa_D= f"$V={kq4}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_14]-M2. H.chóp đáy tam giác đều, mặt bên vuông góc đáy. Tính thể tích
+def uvxy9_L11_C8_B6_14():
+	a=sp.symbols("a")
+	AB=sqrt(random.randint(1,10))*a
+	A,B,C=random.sample(["A","B","C"],3)
+
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều và ${A}{B}={latex(AB)}$."
+	f" Tam giác ${{S{A}{B}}}$ đều nằm trong mặt phẳng vuông góc với đáy. Thể tích ${{V}}$ của khối chóp ${{S.ABC}}$ là"
+	)
+
+	
+	AM=AB*sqrt(3)/2
+	S=(AB)**2*sqrt(3)/4
+	V=1/3*S*AM
+	AM_f=AB*sqrt(2)/2
+
+	kq=latex(nsimplify(V))
+	kq2=latex(nsimplify(S*AM))
+	kq3=latex(nsimplify(S*AM_f))
+	kq4=latex(nsimplify(1/3*S*AM_f))
+
+	noi_dung_loigiai=(
+	f"$S_{{ABC}}=\\dfrac{{{A}{B}^2\\sqrt 3}}{{4}}={latex(nsimplify(S))}$.\n\n"
+	f"Gọi ${{M}}$ là trung điểm của ${{{A}{B}}}$. Khi đó: $SM\\bot (ABC)$.\n\n"
+	f" $SM=\\dfrac{{{latex(AB*sqrt(3))}}}{{2}}={{{latex(nsimplify(AM))}}}$.\n\n"
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABC}}}}.SM={{{latex(nsimplify(V))}}}$.")
+
+	pa_A= f"*$V={kq}$"
+	pa_B= f"$V={kq2}$"
+	pa_C= f"$V={kq3}$"
+	pa_D= f"$V={kq4}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_15]-M2. H.chóp đáy h.vuông, cạnh bên v.g đáy. Tính V
+def uvxy9_L11_C8_B6_15():
+	a=sp.symbols("a")
+	while True:
+		AB=sqrt(random.randint(1,10))*a
+		SA=sqrt(random.randint(1,10))*a
+		if AB!=SA:
+			break
+	A,B,C,D=random.sample(["A","B","C","D"],4)
+
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông và ${A}{B}={latex(AB)}$."
+	f" Biết $S{A}\\bot (ABCD)$ và $S{A}={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là"
+	)	
+	
+	S=(AB)**2
+	V=1/3*S*SA
+
+	kq=latex(nsimplify(V))
+	kq2=latex(nsimplify(S*SA))
+	kq3=latex(nsimplify(1/2*S*SA))
+	kq4=latex(nsimplify(2*S*SA))
+
+	noi_dung_loigiai=(
+	f"$S_{{ABCD}}={A}{B}^2={latex(nsimplify(S))}$.\n\n"		
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABCD}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$.")
+
+	pa_A= f"*$V={kq}$"
+	pa_B= f"$V={kq2}$"
+	pa_C= f"$V={kq3}$"
+	pa_D= f"$V={kq4}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_16]-M2. H.chóp đáy h.chữ nhật, cạnh bên v.g đáy. Tính V
+def uvxy9_L11_C8_B6_16():
+	a=sp.symbols("a")
+	SA=sqrt(random.randint(1,10))*a
+	while True:
+		AB=sqrt(random.randint(1,10))*a		
+		AD=sqrt(random.randint(1,10))*a
+		if AB!=AD:
+			break
+	A,B,C,D=random.sample(["A","B","C","D"],4)
+
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là chữ nhật với ${A}{B}={latex(AB)}, {A}{D}={latex(AD)}$."
+	f" Biết $S{A}\\bot (ABCD)$ và $S{A}={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là"
+	)	
+	
+	S=AB*AD
+	V=1/3*S*SA
+
+	kq=latex(nsimplify(V))
+	kq2=latex(nsimplify(S*SA))
+	kq3=latex(nsimplify(1/2*S*SA))
+	kq4=latex(nsimplify(2*S*SA))
+
+	noi_dung_loigiai=(
+	f"$S_{{ABCD}}={A}{B}.{A}{D}={latex(nsimplify(S))}$.\n\n"		
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABCD}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$.")
+
+	pa_A= f"*$V={kq}$"
+	pa_B= f"$V={kq2}$"
+	pa_C= f"$V={kq3}$"
+	pa_D= f"$V={kq4}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_17]-M2. H.chóp đáy tam giác vuông cân, cạnh bên v.g đáy. Tính V
+def uvxy9_L11_C8_B6_17():
+	a=sp.symbols("a")
+	SA=sqrt(random.randint(1,10))*a
+	BC=sqrt(random.randint(1,10))*a
+
+	A,B,C=random.sample(["A","B","C"],3)
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông cân tại ${{{A}}}$ với ${B}{C}={latex(BC)}$."
+	f" Biết $S{A}\\bot (ABC)$ và $S{A}={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là")	
+	
+	S=1/4*BC**2
+	V=1/3*S*SA
+
+	kq=latex(nsimplify(V))
+	kq2=latex(nsimplify(S*SA))
+	kq3=latex(nsimplify(1/2*S*SA))
+	kq4=latex(nsimplify(2*S*SA))
+
+	noi_dung_loigiai=(
+	f"$S_{{ABC}}=\\dfrac{{1}}{{4}}{B}{C}^2={latex(nsimplify(S))}$.\n\n"		
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABC}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$.")
+
+	pa_A= f"*$V={kq}$"
+	pa_B= f"$V={kq2}$"
+	pa_C= f"$V={kq3}$"
+	pa_D= f"$V={kq4}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_18]-M2. H.chóp đáy h.chữ nhật có cạnh đáy và cạnh bên SB. Tính V
+def uvxy9_L11_C8_B6_18():
+	a=sp.symbols("a")
+	SA=sqrt(random.randint(1,10))*a
+	while True:
+		AB=sqrt(random.randint(1,10))*a		
+		AD=sqrt(random.randint(1,10))*a
+		if AB!=AD:
+			break
+	SB=sqrt(SA**2+AB**2)
+	A,B,C,D=random.sample(["A","B","C","D"],4)
+
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là chữ nhật với ${A}{B}={latex(AB)}, {A}{D}={latex(AD)}$."
+	f" Biết $S{A}\\bot (ABCD)$ và $S{B}={latex(SB)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là"
+	)	
+	
+	S=AB*AD
+	V=1/3*S*SA
+
+	kq=latex(nsimplify(V))
+	kq2=latex(nsimplify(S*SA))
+	kq3=latex(nsimplify(1/2*S*SA))
+	kq4=latex(nsimplify(2*S*SA))
+
+	noi_dung_loigiai=(
+	f"$S{A}=\\sqrt{{S{B}^2-{A}{B}^2}}={latex(SA)}$.\n\n"
+	f"$S_{{ABCD}}={A}{B}.{A}{D}={latex(nsimplify(S))}$.\n\n"		
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABCD}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$.")
+
+	pa_A= f"*$V={kq}$"
+	pa_B= f"$V={kq2}$"
+	pa_C= f"$V={kq3}$"
+	pa_D= f"$V={kq4}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#BÀI 7 -  GÓC
 
 #[D11_C8_B7_01]-TF-M2. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Đường vuông góc mặt
 def uvxy9_L11_C8_B7_01():

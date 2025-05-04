@@ -608,7 +608,7 @@ def ui5io_L11_C7_B2_09():
     a= random.randint(2,9) 
     bac = random.randint(2,3)
     x = sp.symbols('x')
-    f = my_module.random_polynomial("x",bac)[0]
+    f = my_module.random_p4nomial("x",bac)[0]
 
     kq = latex(diff((a**f), x)).replace("log","ln")
     kq2= latex(diff((a**f/log(a)), x))
@@ -819,16 +819,16 @@ def ui5io_L11_C7_B2_12():
 def ui5io_L11_C7_B2_13():
     #Tạo bậc ngẫu nhiên
     x=sp.symbols("x")
-    k=random.randint(2,5)
-    a = [random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(k)]
-    m = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+    k=random.randint(2,3)
+    a = [random.choice([random.randint(-5,-2),random.randint(2,5)]) for i in range(k)]
+    m = random.choice([random.randint(-5, -1), random.randint(1, 6)])
     f = exp(sum(a[i]* x**i for i in range(k)))
     g = sum(a[i]* x**i for i in range(k))
    
     kq= diff(f, x)
-    kq2=exp(sum(a[i]* x**i for i in range(k)))
-    kq3=exp(sum(a[i]* x**i for i in range(k))) + diff(sum(a[i]* x**i for i in range(k)), x)
-    kq4=exp(diff(sum(a[i]* x**i for i in range(k)), x))
+    kq2=f
+    kq3=f*g
+    kq4=f+g
 
     #Tạo các phương án
     pa_A= f"*$y'={latex(kq)}$"
@@ -1713,8 +1713,8 @@ def ui5io_L11_C7_B2_26():
     g=diff(f,x)  
 
     kq=f"{latex(g/(2*sqrt(f)))}"
-    kq2=f"{latex(1/sqrt(f))}"
-    kq3=f"\\dfrac{{1}}{{({latex(f)}){latex(sqrt(f))}}}"
+    kq2=f"{latex(g/sqrt(f))}"
+    kq3=f"{latex(f*sqrt(f))}"
     kq4=f"{latex(g*sqrt(f))}"
 
     noi_dung_loigiai=f"$y'=\\left({latex(f)}\\right)'="\
@@ -3998,7 +3998,7 @@ def ui5io_L11_C7_B2_56():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dem}}}\n\n"\
+    f"\\shortans[4]{{{dem}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=dem
@@ -4151,10 +4151,104 @@ def ui5io_L11_C7_B2_57():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C7_B2_58]-M3. Đạo hàm k/sinax
+def ui5io_L11_C7_B2_58():
+    k= random.choice([i for i in range(-6, 7) if i not in [-1,0,1]])
+    a=random.randint(2,9)
+    noi_dung=(
+    f"Đạo hàm của hàm số $y=\\dfrac{{{k}}}{{\\sin {a}x}}$ là"
+    )
+    noi_dung_loigiai=(f"$y'={k}\\dfrac{{(\\sin {a}x)'}}{{\\sin^2 {a}x}}={k}\\dfrac{{({a}\\cos {a}x)'}}{{\\sin^2 {a}x}}=\\dfrac{{{k*a}\\cos {a}x}}{{\\sin^2 {a}x}}.$")
+    
+
+    kq=f"$y'=\\dfrac{{{k*a}\\cos {a}x}}{{\\sin^2 {a}x}}$"
+    kq2=f"$y'=\\dfrac{{{k}\\cos {a}x}}{{\\sin^2 {a}x}}$"
+    kq3=f"$y'=\\dfrac{{{k*a}}}{{\\sin^2 {a}x}}$"
+    kq4=f"$y'=\\dfrac{{{k}\\cos {a}x}}{{\\sin {a}x}}$"
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C7_B2_59]-M3. Đạo hàm k/cosax
+def ui5io_L11_C7_B2_59():
+    k= random.choice([i for i in range(-6, 7) if i not in [-1,0,1]])
+    a=random.randint(2,9)
+    noi_dung=(
+    f"Đạo hàm của hàm số $y=\\dfrac{{{k}}}{{\\cos {a}x}}$ là"
+    )
+    noi_dung_loigiai=(f"$y'={k}\\dfrac{{(\\cos {a}x)'}}{{\\cos^2 {a}x}}={k}\\dfrac{{({-a}\\sin {a}x)'}}{{\\cos^2 {a}x}}=\\dfrac{{{-k*a}\\sin {a}x}}{{\\cos^2 {a}x}}.$")
+    
+
+    kq=f"$y'=\\dfrac{{{-k*a}\\sin {a}x}}{{\\cos^2 {a}x}}$"
+    kq2=f"$y'=\\dfrac{{{k}\\sin {a}x}}{{\\cos^2 {a}x}}$"
+    kq3=f"$y'=\\dfrac{{{k*a}\\sin {a}x}}{{\\cos^2 {a}x}}$"
+    kq4=f"$y'=\\dfrac{{{k}\\sin {a}x}}{{\\cos {a}x}}$"
+
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 ################################################################################
@@ -4280,9 +4374,9 @@ def ui5io_L11_C7_B3_03():
     f_dh=g.subs(x,x_0)
 
     kq= f"$y={latex(f_dh*(x-x_0)+y_0)}$"
-    kq2=f"$y={latex(f_dh*(x+x_0)+y_0)}$"
-    kq3=f"$y={latex(f_dh*x-y_0)}$"
-    kq4=f"$y={latex(x-x_0+y_0)}$"
+    kq2=f"$y={latex(f_dh*(x-x_0)+y_0+random.randint(1,3))}$"
+    kq3=f"$y={latex(f_dh*random.randint(2,3)*(x-x_0)+y_0)}$"
+    kq4=f"$y={latex(f_dh*random.randint(2,3)*(x-x_0)+y_0+random.randint(1,2))}$"
 
     #Tạo các phương án
     pa_A= f"*{kq}"
@@ -4334,9 +4428,8 @@ def ui5io_L11_C7_B3_04():
     k=g.subs(x,x_0)    
 
     kq= k
-    kq2=y_0
-    kq3=k+random.randint(1,5)
-    kq4=y_0-random.randint(1,5)
+    kq_false=[i for i in range(-20, 30) if i!=k]
+    kq2,kq3,kq4 =random.sample(kq_false,3)
 
     #Tạo các phương án
     pa_A= f"*${{k={kq}}}$"
@@ -4462,6 +4555,275 @@ def ui5io_L11_C7_B3_05():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C7_B3_06]-SA-M2. Cho hàm số bậc ba. Viết tiếp tuyến biết hệ số góc
+def ui5io_L11_C7_B3_06():
+    x,s_a,s_b=sp.symbols("x a b")
+    a = random.choice([i for i in range(-3, 4) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.randint(-5,6)
+    f=a*x**2+b*x+c
+    f_dh=2*a*x+b
+
+    x_0=random.randint(-5,5)
+    k=2*a*x_0+b
+    y_0=f.subs(x,x_0)
+
+
+    m= random.choice([i for i in range(-4, 5) if i!=0])
+    n= random.choice([i for i in range(-3, 4) if i!=0])
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$. Biết một tiếp tuyến của đồ thị hàm số có hệ số góc $k={k}$ có phương trình dạng $y=ax+b$."
+    f" Tính ${latex(m*s_a+n*s_b)}$."
+    )
+    dap_an=m*k+n*(-k*x_0+y_0)
+
+    noi_dung_loigiai=(
+    f"Xét phương trình $y'={k}\\Leftrightarrow {latex(f_dh)}={k} \\Rightarrow x={x_0}$.\n\n"
+    f" Với $x={x_0}\\Rightarrow y=f({x_0})={y_0}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_0})+{y_0}\\Leftrightarrow y={k}x+{-k*x_0+y_0}$.\n\n"
+    f" Do đó: ${latex(m*s_a+n*s_b)}={dap_an}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_07]-SA-M2. Cho hàm số bậc ba. Viết tiếp tuyến biết hệ số góc
+def ui5io_L11_C7_B3_07():
+    x,s_a,s_b=sp.symbols("x a b")    
+    
+    x_0=random.randint(-3,3)
+    x_1=x_0+random.randint(1,3)
+    k=random.randint(-5,5)
+
+    a1, b1, c1 = 1, -(x_0+x_1), x_0*x_1+k
+    f_dh=a1*x**2+b1*x+c1
+
+    a,b,c = Rational(a1, 3),Rational(b1, 2),c1
+    d = random.randint(-2,2)    
+    f=a*x**3+b*x**2+c*x+d
+    
+    y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
+
+
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$. Biết các tiếp tuyến của đồ thị hàm số có hệ số góc $k={k}$ có các phương trình lần lượt là $y=a_1x+b_1$ và $y=a_2x+b_2$."
+    f" Tính $|b_1+b_2|$(kết quả làm tròn đến hàng phần mười)."
+    )
+    tong=(-k*x_0+y_0)+(-k*x_1+y_1)
+    dap_an=f"{round_half_up(abs(tong),1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n"
+    f" $y'={k}\\Leftrightarrow {latex(f_dh)}={k} \\Leftrightarrow {latex(f_dh-k)}=0 \\Rightarrow x={x_0},x={x_1}$.\n\n"
+    f" Với $x={x_0}\\Rightarrow y=f({x_0})={phan_so(y_0)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_0})+{phan_so(y_0)}\\Leftrightarrow y={k}x+{phan_so(-k*x_0+y_0)}$.\n\n"
+
+    f" Với $x={x_1}\\Rightarrow y=f({x_1})={phan_so(y_1)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_1})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$.\n\n"
+    f" Do đó: $|b_1+b_2|=|{phan_so(-k*x_0+y_0)}+{phan_so(-k*x_1+y_1)}|={phan_so(abs(tong))}={dap_an}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_08]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết tiếp tuyến biết hệ số góc
+def ui5io_L11_C7_B3_08():
+    x,s_a,s_b=sp.symbols("x a b")
+    while True:    
+        a= random.choice([i for i in range(-3, 3) if i!=0])
+        b= random.choice([i for i in range(-4, 5) if i!=0])
+        c= random.choice([i for i in range(-2, 2) if i!=0])
+        d= random.choice([i for i in range(-3, 3) if i!=0])
+        if a*d-b*c!=0:
+            break
+    f=(a*x+b)/(c*x+d)
+    k=a*d-b*c
+    f_dh=(a*d-b*c)/(c*x+d)**2
+
+    x_0,x_1=(1-d)/c,(-1-d)/c
+    
+    y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
+
+
+    noi_dung = (
+    f"Cho hàm số $y=\\dfrac{{{a}x+{b}}}{{{c}x+{d}}}$. Biết các tiếp tuyến của đồ thị hàm số có hệ số góc $k={k}$ có các phương trình lần lượt là $y=a_1x+b_1$ và $y=a_2x+b_2$."
+    f" Tính $|b_1+b_2|$."
+    )
+    noi_dung=noi_dung.replace("+-","-").replace("1x","x")
+    tong=(-k*x_0+y_0)+(-k*x_1+y_1)
+    dap_an=phan_so(tong)
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n"
+    f" $y'={k}\\Leftrightarrow \\dfrac{{{a*d-b*c}}}{{({c}x+{d})^2}}={k} \\Leftrightarrow ({c}x+{d})^2=1 \\Rightarrow x={phan_so(x_0)},x={phan_so(x_1)}$.\n\n"
+    f" Với $x={phan_so(x_0)}\\Rightarrow y=f({phan_so(x_0)})={phan_so(y_0)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_0)})+{phan_so(y_0)}\\Leftrightarrow y={k}x+{phan_so(-k*x_0+y_0)}$.\n\n"
+
+    f" Với $x={phan_so(x_1)}\\Rightarrow y=f({phan_so(x_1)})={phan_so(y_1)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_1)})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$.\n\n"
+    f" Do đó: $|b_1+b_2|=|{phan_so(-k*x_0+y_0)}+{phan_so(-k*x_1+y_1)}|={phan_so(abs(tong))}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-").replace("1x","x")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_09]-TL-M2. Cho hàm số bậc hai. Viết tiếp tuyến biết hệ số góc
+def ui5io_L11_C7_B3_09():
+    x,s_a,s_b=sp.symbols("x a b")
+    a = random.choice([i for i in range(-3, 4) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.randint(-5,6)
+    f=a*x**2+b*x+c
+    f_dh=2*a*x+b
+
+    x_0=random.randint(-5,5)
+    k=2*a*x_0+b
+    y_0=f.subs(x,x_0)
+
+
+    m= random.choice([i for i in range(-4, 5) if i!=0])
+    n= random.choice([i for i in range(-3, 4) if i!=0])
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$. Viết tiếp tuyến của đồ thị hàm số đã cho biết tiếp tuyến có hệ số góc $k={k}$."
+    )
+    dap_an=""
+
+    noi_dung_loigiai=(
+    f"Xét phương trình $y'={k}\\Leftrightarrow {latex(f_dh)}={k} \\Rightarrow x={x_0}$.\n\n"
+    f" Với $x={x_0}\\Rightarrow y=f({x_0})={y_0}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_0})+{y_0}\\Leftrightarrow y={k}x+{-k*x_0+y_0}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_10]-TL-M2. Cho hàm số bậc ba. Viết tiếp tuyến biết hệ số góc
+def ui5io_L11_C7_B3_10():
+    x,s_a,s_b=sp.symbols("x a b")    
+    
+    x_0=random.randint(-3,3)
+    x_1=x_0+random.randint(1,3)
+    k=random.randint(-5,5)
+
+    a1, b1, c1 = 1, -(x_0+x_1), x_0*x_1+k
+    f_dh=a1*x**2+b1*x+c1
+
+    a,b,c = Rational(a1, 3),Rational(b1, 2),c1
+    d = random.randint(-2,2)    
+    f=a*x**3+b*x**2+c*x+d
+    
+    y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
+
+
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$. Viết phương trình tiếp tuyến của đồ thị hàm số đã cho biết tiếp tuyến có hệ số góc $k={k}$."
+
+    )
+    tong=(-k*x_0+y_0)+(-k*x_1+y_1)
+    dap_an=""
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n"
+    f" $y'={k}\\Leftrightarrow {latex(f_dh)}={k} \\Leftrightarrow {latex(f_dh-k)}=0 \\Rightarrow x={x_0},x={x_1}$.\n\n"
+    f" Với $x={x_0}\\Rightarrow y=f({x_0})={phan_so(y_0)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_0})+{phan_so(y_0)}\\Leftrightarrow y={k}x+{phan_so(-k*x_0+y_0)}$.\n\n"
+
+    f" Với $x={x_1}\\Rightarrow y=f({x_1})={phan_so(y_1)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_1})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$.\n\n")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_11]-TL-M3. Cho hàm số y=(ax+b)/(cx+d). Viết tiếp tuyến biết hệ số góc
+def ui5io_L11_C7_B3_11():
+    x,s_a,s_b=sp.symbols("x a b")
+    while True:    
+        a= random.choice([i for i in range(-3, 3) if i!=0])
+        b= random.choice([i for i in range(-4, 5) if i!=0])
+        c= random.choice([i for i in range(-2, 2) if i!=0])
+        d= random.choice([i for i in range(-3, 3) if i!=0])
+        if a*d-b*c!=0:
+            break
+    f=(a*x+b)/(c*x+d)
+    k=a*d-b*c
+    f_dh=(a*d-b*c)/(c*x+d)**2
+
+    x_0,x_1=(1-d)/c,(-1-d)/c
+    
+    y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
+
+
+    noi_dung = (
+    f"Cho hàm số $y=\\dfrac{{{a}x+{b}}}{{{c}x+{d}}}$. Viết phương trình tiếp tuyến của đồ thị hàm số đã cho biết tiếp tuyến có hệ số góc $k={k}$"
+     )
+    noi_dung=noi_dung.replace("+-","-").replace("1x","x")
+    tong=(-k*x_0+y_0)+(-k*x_1+y_1)
+    dap_an=""
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n"
+    f" $y'={k}\\Leftrightarrow \\dfrac{{{a*d-b*c}}}{{({c}x+{d})^2}}={k} \\Leftrightarrow ({c}x+{d})^2=1 \\Rightarrow x={phan_so(x_0)},x={phan_so(x_1)}$.\n\n"
+    f" Với $x={phan_so(x_0)}\\Rightarrow y=f({phan_so(x_0)})={phan_so(y_0)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_0)})+{phan_so(y_0)}\\Leftrightarrow y={k}x+{phan_so(-k*x_0+y_0)}$.\n\n"
+
+    f" Với $x={phan_so(x_1)}\\Rightarrow y=f({phan_so(x_1)})={phan_so(y_1)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_1)})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$.\n\n")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-").replace("1x","x")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+
 #Bài 4
 
 #[D11_C7_B4_01]-TF-M2. Tạo câu đúng-sai: Đạo hàm của hàm số đa thức 
@@ -4577,10 +4939,10 @@ def ui5io_L11_C7_B4_01():
 #[D11_C7_B4_02]-TF-M2. Tạo câu đúng-sai: Đạo hàm cấp 1,2,tiếp tuyến của y=(ax+b)/(cx+d)
 def ui5io_L11_C7_B4_02():
     x=sp.symbols("x")
-    a =random.randint(-10,10)
-    b =random.choice([random.randint(-10, -1), random.randint(1, 10)])
-    c =random.choice([random.randint(-10, -1), random.randint(1, 10)])
-    d =random.randint(-10,10)
+    a =random.randint(-3,3)
+    b =random.choice([random.randint(-5, -1), random.randint(1, 5)])
+    c =random.choice([random.randint(-2, -1), random.randint(1, 3)])
+    d =random.randint(-6,6)
     if a*d-b*c==0:d=d+random.randint(1,3)
 
     f = (a*x+b)/(c*x+d)  
@@ -4627,7 +4989,6 @@ def ui5io_L11_C7_B4_02():
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là sai vì:\n\n"\
     f"$y'=\\left({ham_so}\\right)'=\\dfrac{{{show_tich(a,d)}-{show_tich(b,c)}}}{{{latex((c*x+d)**2)}}}=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)}}}$ nên hệ số góc là $k=y'({x_0})={phan_so(hsg)}$."
-
     
 
     x_0=x_0+random.randint(-3, 3)

@@ -2255,11 +2255,6 @@ def mcn__L10_C8_B1_30():
 
 
 
-
-
-
-
-
 #8.2.1 Hoán vị
 #[D10_C8_B2_01]-M1. Xếp k bạn vào một hàng
 def mcn__L10_C8_B2_01():  	
@@ -2375,7 +2370,7 @@ def mcn__L10_C8_B2_03():
 	nguoi=random.choice(["học sinh"])
 	chuc_vu_1=["lớp trưởng", "lớp phó học tập", "bí thư", "lớp phó lao động", "lớp phó văn nghệ", "thủ quỹ"]
 
-	n=random.randint(30,45)
+	n=random.randint(25,35)
 	k=random.randint(2,4)
 	chuc_vu=""
 	for i in range(k):
@@ -2752,10 +2747,10 @@ def mcn__L10_C8_B2_08():
 		st_khac=f", các {ten_chung} là khác nhau"
 
 
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,13)
 	tong_so=so_vat_1+so_vat_2
-	k=random.randint(3,10)		
+	k=random.randint(3,7)		
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Xét tính đúng sai của các khẳng định sau:"
 
@@ -2763,7 +2758,7 @@ def mcn__L10_C8_B2_08():
 	kq1_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là ${{{chinh_hop(k, tong_so)}}}$"
 	loigiai_1=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là $C^{{{k}}}_{{{tong_so}}}={binomial(tong_so,k)}$."\
 
-	k=random.randint(5,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 
@@ -2774,7 +2769,7 @@ def mcn__L10_C8_B2_08():
 	loigiai_2=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
 				f"$C^{{{k_1}}}_{{{so_vat_1}}}.C^{{{k_2}}}_{{{so_vat_2}}}={binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)-binomial(so_vat_2,k)
@@ -2786,7 +2781,7 @@ def mcn__L10_C8_B2_08():
 	loigiai_3=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có cả {vat_1} và {vat_2} là: "\
 			 f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_1}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_2,k)
@@ -2798,7 +2793,7 @@ def mcn__L10_C8_B2_08():
 	loigiai_4=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có ít nhất ${{1}}$ {vat_1} là:"\
 				f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)
@@ -2869,8 +2864,8 @@ def mcn__L10_C8_B2_08():
 
 #[D10_C8_B2_09]-M1. Chọn k đối tượng từ n đối tượng.
 def mcn__L10_C8_B2_09():  	
-	k=random.randint(3,10)
-	n=k+random.randint(6,20)
+	k=random.randint(3,8)
+	n=k+random.randint(6,12)
 
 	do_vat_1=["cuốn sách tham khảo môn Toán 10", "cuốn sách tham khảo môn Văn 10", "cuốn sách tham khảo môn Tiếng Anh 10", "cuốn sách tham khảo môn Vật Lí 10", "cuốn sách tham khảo môn Hóa Học 10", "cuốn sách tham khảo môn Sinh Học 10"]
 	do_vat_2=["cuốn truyện cổ tích", "cuốn truyện tuyển thuyết", "cuốn truyện khoa học viễn tưởng", "cuốn truyện trinh thám", "cuốn truyện ngắn"]
@@ -2981,9 +2976,9 @@ def mcn__L10_C8_B2_10():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 
-	k=random.randint(3,10)
-	so_vat_1=random.randint(6,20)
-	so_vat_2=random.randint(6,20)
+	k=random.randint(3,8)
+	so_vat_1=random.randint(6,15)
+	so_vat_2=random.randint(5,12)
 	n=so_vat_1 + so_vat_2
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Số cách chọn ${{{k}}}$ {ten_chung} từ {address} là"
@@ -3064,13 +3059,13 @@ def mcn__L10_C8_B2_11():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 	#Khai báo số lượng ban đầu
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,13)
 	tong_so= so_vat_1 + so_vat_2
 
 	
 	#Tạo số lượng cần lấy
-	k=random.randint(5,11)
+	k=random.randint(3,7)
 	k_1=random.randint(2,k-1)
 	k_2=k-k_1
 
@@ -3286,7 +3281,7 @@ def mcn__L10_C8_B2_13():
 #[D10_C8_B2_14]-M2. Số đoạn thẳng tạo bởi 2 điểm
 def mcn__L10_C8_B2_14():   
 	
-	n=random.randint(6,30)
+	n=random.randint(6,18)
 	kq=binomial(n,2)
 	kq2=chinh_hop(2,n)
 	kq3=random.choice([kq2+random.randint(100,400)])
@@ -3337,7 +3332,7 @@ def mcn__L10_C8_B2_14():
 #[D10_C8_B2_15]-M2. Số tam giác tạo bởi 3 điểm
 def mcn__L10_C8_B2_15():   
 	
-	n=random.randint(6,30)
+	n=random.randint(6,18)
 	kq=binomial(n,3)
 	kq2=chinh_hop(3,n)
 	kq3=random.choice([kq2+random.randint(100,400)])
@@ -3388,7 +3383,7 @@ def mcn__L10_C8_B2_15():
 #[D10_C8_B2_16]-M1. Số tập hợp con gồm k phần tử của n phần tử
 def mcn__L10_C8_B2_16():   
 	
-	n=random.randint(6,30)
+	n=random.randint(6,18)
 	k=random.randint(2,n-2)
 	kq=binomial(n,k)
 	kq2=chinh_hop(k,n)
@@ -3439,8 +3434,8 @@ def mcn__L10_C8_B2_16():
 #[D10_C8_B2_17]-M3. Số tập hợp con có số phần tử < hơn k 
 def mcn__L10_C8_B2_17():   
 	
-	n=random.randint(7,30)
-	k=random.randint(4,8)
+	n=random.randint(7,15)
+	k=random.randint(2,6)
 	t=0
 	text=""
 	for i in range(k):
@@ -3497,7 +3492,7 @@ def mcn__L10_C8_B2_17():
 #[D10_C8_B2_18]-M2. Số giao điểm tối đa của n đường thẳng phân biệt
 def mcn__L10_C8_B2_18():   
 	
-	n=random.randint(6,30)
+	n=random.randint(6,15)
 	kq=binomial(n,2)
 	kq2=chinh_hop(2,n)
 	kq3=random.choice([kq2+random.randint(100,400)])
@@ -3548,8 +3543,8 @@ def mcn__L10_C8_B2_18():
 #[D10_C8_B2_19]-M3. Số hình chữ nhật tạo từ n đường song song và m đường vuông góc
 def mcn__L10_C8_B2_19():   
 	
-	m=random.randint(6,20)
-	n=random.randint(6,20)
+	m=random.randint(6,12)
+	n=random.randint(4,10)
 	kq=binomial(m,2)*binomial(n,2)
 	kq2=chinh_hop(4,m+n)
 	kq3=binomial(m+n,4)
@@ -3602,7 +3597,7 @@ def mcn__L10_C8_B2_19():
 #[D10_C8_B2_20]-M2. Số giao điểm tối đa của n đường tròn
 def mcn__L10_C8_B2_20():   
 	
-	n=random.randint(10,25)
+	n=random.randint(5,15)
 	kq=2*binomial(n,2)
 	kq2=2*chinh_hop(2,n)
 	kq3=random.choice([binomial(n,2), kq2+random.randint(100,400)])
@@ -3653,8 +3648,8 @@ def mcn__L10_C8_B2_20():
 
 #[D10_C8_B2_21]-M3. Số giao điểm tối đa của m đường thẳng và n đường tròn.
 def mcn__L10_C8_B2_21():  
-	m=random.randint(10,25) 	
-	n=random.randint(10,25)
+	m=random.randint(8,15) 	
+	n=random.randint(5,10)
 	kq=binomial(m,2)+2*binomial(n,2)+m*n*2
 	kq2=binomial(m+n,2)
 	kq3=random.choice([m*n*2, kq+random.randint(100,200)])
@@ -3733,10 +3728,10 @@ def mcn__L10_C8_B2_22():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,12)
 	tong_so=so_vat_1+so_vat_2
-	k=random.randint(3,10)		
+	k=random.randint(3,6)		
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Xét tính đúng sai của các khẳng định sau:"
 
@@ -3744,18 +3739,18 @@ def mcn__L10_C8_B2_22():
 	kq1_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là ${{{chinh_hop(k, tong_so)}}}$"
 	loigiai_1=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là $C^{{{k}}}_{{{tong_so}}}={binomial(tong_so,k)}$."\
 
-	k=random.randint(5,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 
 	kq2_T=f"*Số cách chọn ${{{k}}}$ {ten_chung} {in_where} trong đó có đúng ${{{k_1}}}$ {vat_1} là " \
 		f"${{{binomial(so_vat_1,k_1)*binomial(so_vat_2,k-k_1)}}}$"
-	kq2_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} trong đó có đúng ${{{k_1}}}$ {vat_1} là "\
-			 f" ${{{binomial(so_vat_1,k_1)}}}$"
+	kq2_F=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
+			 f"${{{binomial(so_vat_1,k_1)}}}$"
 	loigiai_2=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
 				f"$C^{{{k_1}}}_{{{so_vat_1}}}.C^{{{k_2}}}_{{{so_vat_2}}}={binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)-binomial(so_vat_2,k)
@@ -3767,7 +3762,7 @@ def mcn__L10_C8_B2_22():
 	loigiai_3=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có cả {vat_1} và {vat_2} là: "\
 			 f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_1}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_2,k)
@@ -3779,7 +3774,7 @@ def mcn__L10_C8_B2_22():
 	loigiai_4=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có ít nhất ${{1}}$ {vat_1} là:"\
 				f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)
@@ -3877,10 +3872,10 @@ def mcn__L10_C8_B2_23():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,12)
 	tong_so=so_vat_1+so_vat_2
-	k=random.randint(3,10)		
+	k=random.randint(3,6)		
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Xét tính đúng sai của các khẳng định sau:"
 
@@ -3888,18 +3883,18 @@ def mcn__L10_C8_B2_23():
 	kq1_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là ${{{chinh_hop(k, tong_so)}}}$"
 	loigiai_1=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là $C^{{{k}}}_{{{tong_so}}}={binomial(tong_so,k)}$."\
 
-	k=random.randint(5,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 
 	kq2_T=f"*Số cách chọn ${{{k}}}$ {ten_chung} {in_where} trong đó có đúng ${{{k_1}}}$ {vat_1} là " \
-		f"${binomial(so_vat_1,k_1)*binomial(so_vat_2,k-k_1)}$"
+		f"${{{binomial(so_vat_1,k_1)*binomial(so_vat_2,k-k_1)}}}$"
 	kq2_F=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
-			 f" {binomial(so_vat_1,k_1)}"
+			 f"${{{binomial(so_vat_1,k_1)}}}$"
 	loigiai_2=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
 				f"$C^{{{k_1}}}_{{{so_vat_1}}}.C^{{{k_2}}}_{{{so_vat_2}}}={binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)-binomial(so_vat_2,k)
@@ -3911,7 +3906,7 @@ def mcn__L10_C8_B2_23():
 	loigiai_3=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có cả {vat_1} và {vat_2} là: "\
 			 f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_1}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_2,k)
@@ -3923,7 +3918,7 @@ def mcn__L10_C8_B2_23():
 	loigiai_4=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có ít nhất ${{1}}$ {vat_1} là:"\
 				f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)
@@ -4021,10 +4016,10 @@ def mcn__L10_C8_B2_24():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,12)
 	tong_so=so_vat_1+so_vat_2
-	k=random.randint(3,10)		
+	k=random.randint(3,6)		
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Xét tính đúng sai của các khẳng định sau:"
 
@@ -4032,18 +4027,18 @@ def mcn__L10_C8_B2_24():
 	kq1_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là ${{{chinh_hop(k, tong_so)}}}$"
 	loigiai_1=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là $C^{{{k}}}_{{{tong_so}}}={binomial(tong_so,k)}$."\
 
-	k=random.randint(5,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 
 	kq2_T=f"*Số cách chọn ${{{k}}}$ {ten_chung} {in_where} trong đó có đúng ${{{k_1}}}$ {vat_1} là " \
-		f"${binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$"
+		f"${{{binomial(so_vat_1,k_1)*binomial(so_vat_2,k-k_1)}}}$"
 	kq2_F=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
-			 f" {binomial(so_vat_1,k_1)}"
+			 f"${{{binomial(so_vat_1,k_1)}}}$"
 	loigiai_2=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
 				f"$C^{{{k_1}}}_{{{so_vat_1}}}.C^{{{k_2}}}_{{{so_vat_2}}}={binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)-binomial(so_vat_2,k)
@@ -4055,7 +4050,7 @@ def mcn__L10_C8_B2_24():
 	loigiai_3=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có cả {vat_1} và {vat_2} là: "\
 			 f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_1}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_2,k)
@@ -4067,7 +4062,7 @@ def mcn__L10_C8_B2_24():
 	loigiai_4=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có ít nhất ${{1}}$ {vat_1} là:"\
 				f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)
@@ -4165,10 +4160,10 @@ def mcn__L10_C8_B2_25():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,12)
 	tong_so=so_vat_1+so_vat_2
-	k=random.randint(3,10)		
+	k=random.randint(3,6)		
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Xét tính đúng sai của các khẳng định sau:"
 
@@ -4176,7 +4171,7 @@ def mcn__L10_C8_B2_25():
 	kq1_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là ${{{chinh_hop(k, tong_so)}}}$"
 	loigiai_1=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là $C^{{{k}}}_{{{tong_so}}}={binomial(tong_so,k)}$."\
 
-	k=random.randint(5,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 
@@ -4187,7 +4182,7 @@ def mcn__L10_C8_B2_25():
 	loigiai_2=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
 				f"$C^{{{k_1}}}_{{{so_vat_1}}}.C^{{{k_2}}}_{{{so_vat_2}}}={binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)-binomial(so_vat_2,k)
@@ -4199,7 +4194,7 @@ def mcn__L10_C8_B2_25():
 	loigiai_3=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có cả {vat_1} và {vat_2} là: "\
 			 f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_1}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_2,k)
@@ -4211,7 +4206,7 @@ def mcn__L10_C8_B2_25():
 	loigiai_4=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có ít nhất ${{1}}$ {vat_1} là:"\
 				f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)
@@ -4309,10 +4304,10 @@ def mcn__L10_C8_B2_26():
 	if i != 0:
 		st_khac=f", các {ten_chung} là khác nhau"
 
-	so_vat_1=random.randint(20,25)
-	so_vat_2=random.randint(15,20)
+	so_vat_1=random.randint(10,15)
+	so_vat_2=random.randint(7,12)
 	tong_so=so_vat_1+so_vat_2
-	k=random.randint(3,10)		
+	k=random.randint(3,6)		
 
 	noi_dung=f"Một {address} có ${{{so_vat_1}}}$ {vat_1} và ${{{so_vat_2}}}$ {vat_2}{st_khac}. Xét tính đúng sai của các khẳng định sau:"
 
@@ -4320,7 +4315,7 @@ def mcn__L10_C8_B2_26():
 	kq1_F=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là ${{{chinh_hop(k, tong_so)}}}$"
 	loigiai_1=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where}  là $C^{{{k}}}_{{{tong_so}}}={binomial(tong_so,k)}$."\
 
-	k=random.randint(5,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 
@@ -4331,7 +4326,7 @@ def mcn__L10_C8_B2_26():
 	loigiai_2=f"Số cách chọn {k} {ten_chung} {in_where} trong đó có đúng {k_1} {vat_1} là "\
 				f"$C^{{{k_1}}}_{{{so_vat_1}}}.C^{{{k_2}}}_{{{so_vat_2}}}={binomial(so_vat_1,k_1)*binomial(so_vat_2,k_2)}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,8)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)-binomial(so_vat_2,k)
@@ -4343,7 +4338,7 @@ def mcn__L10_C8_B2_26():
 	loigiai_3=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có cả {vat_1} và {vat_2} là: "\
 			 f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_1}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_2,k)
@@ -4355,7 +4350,7 @@ def mcn__L10_C8_B2_26():
 	loigiai_4=f"Số cách chọn ${{{k}}}$ {ten_chung} {in_where} có ít nhất ${{1}}$ {vat_1} là:"\
 				f"$C^{{{k}}}_{{{tong_so}}}-C^{{{k}}}_{{{so_vat_2}}}={kq_true}$."
 
-	k=random.randint(4,11)
+	k=random.randint(3,7)
 	k_1 =random.randint(2,k-1)
 	k_2=k-k_1
 	kq_true=binomial(tong_so,k)-binomial(so_vat_1,k)
@@ -4421,11 +4416,6 @@ def mcn__L10_C8_B2_26():
 		f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"	
 	return debai,debai_latex,loigiai_word,dap_an
-
-
-
-
-
 
 
 

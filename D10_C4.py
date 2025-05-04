@@ -1703,7 +1703,7 @@ def yy3yy_L10_C4_B2_12():
         f"\\end{{ex}}\n")
 
     latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
-        f"\\shortans[oly]{{{l_b}}}\n"
+        f"\\shortans[4]{{{l_b}}}\n"
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -1755,7 +1755,7 @@ def yy3yy_L10_C4_B2_13():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1840,7 +1840,7 @@ def yy3yy_L10_C4_B2_14():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n{code_hinh1} \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -1942,7 +1942,7 @@ def yy3yy_L10_C4_B2_15():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n{code_hinh1} \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2009,7 +2009,7 @@ def yy3yy_L10_C4_B2_16():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2062,7 +2062,7 @@ def yy3yy_L10_C4_B2_17():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2113,7 +2113,7 @@ def yy3yy_L10_C4_B2_18():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2170,7 +2170,7 @@ def yy3yy_L10_C4_B2_19():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2225,7 +2225,7 @@ def yy3yy_L10_C4_B2_20():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2266,7 +2266,7 @@ def yy3yy_L10_C4_B2_21():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2292,7 +2292,7 @@ def yy3yy_L10_C4_B2_22():
     \draw[fill=blue!30]  plot[smooth  cycle] coordinates{{(-1.75,0.53)(-1.46,0.79) (-1.01,0.58) (-1.08,1.06) (-0.64,1.08)(-0.93,1.59)(-0.53,1.85)(-0.93,2.2)(-1.38,2.7)(-2.04,3.18)(-2.49,2.91)(-3.07,2.91)(-3.2,2.22)(-3.73,1.96)(-3.1,1.3)(-3.31,1.01)(-2.83,1.01)(-2.99,0.69)(-2.14,0.58)}};
     \tkzDefPoints{{-1.38/-0.13/C,-2/-3/B,3/-2/A}}
     \tkzDrawPoints[fill=black](A,B,C)
-    \tkzDrawPolygon(A,B,C)
+    \tkzDrawP4gon(A,B,C)
     \tkzDefMidPoint(A,B) 
     \tkzLabelPoints[below](A,B)
     \tkzLabelPoints[above right](C)
@@ -2318,7 +2318,7 @@ def yy3yy_L10_C4_B2_22():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -2385,7 +2385,7 @@ def yy3yy_L10_C4_B2_23():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq

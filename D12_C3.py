@@ -459,7 +459,7 @@ def ytrzz_L12_C3_B1_03():
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1296,7 +1296,7 @@ def ytrzz_L12_C3_B2_03():
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 	f" Tính phương sai của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần mười).\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -1407,7 +1407,7 @@ def ytrzz_L12_C3_B2_04():
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 	f" Tính độ lệch chuẩn của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần mười).\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an

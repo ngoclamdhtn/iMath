@@ -3060,7 +3060,7 @@ def mjulk_L10_C1_B3_12():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${{{n_A_giao_B}}}$}}\n\n"\
+	f"\\shortans[4]{{${{{n_A_giao_B}}}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=n_A_giao_B
@@ -3093,7 +3093,7 @@ def mjulk_L10_C1_B3_13():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${{{n_lop}}}$}}\n\n"\
+	f"\\shortans[4]{{${{{n_lop}}}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=n_lop
@@ -3143,7 +3143,7 @@ def mjulk_L10_C1_B3_14():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{${{{n_lop}}}$}}\n\n"\
+	f"\\shortans[4]{{${{{n_lop}}}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=n_lop
@@ -3572,7 +3572,7 @@ def mjulk_L10_C1_B3_18():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -3697,7 +3697,7 @@ def mjulk_L10_C1_B3_19():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -4450,7 +4450,7 @@ def mjulk_L10_C1_B4_08():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -4524,7 +4524,7 @@ def mjulk_L10_C1_B4_09():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -4599,7 +4599,7 @@ def mjulk_L10_C1_B4_10():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -4667,7 +4667,7 @@ def mjulk_L10_C1_B4_11():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -4717,7 +4717,7 @@ def mjulk_L10_C1_B4_12():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{kq}}}\n\n"\
+	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	dap_an=kq
@@ -5524,7 +5524,7 @@ def mjulk_L10_C1_B4_18():
 
 
 	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an

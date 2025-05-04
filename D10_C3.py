@@ -672,7 +672,7 @@ def npl_mk_L10_C3_B1_09():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -2577,7 +2577,7 @@ def npl_mk_L10_C3_B2_21():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n{code_hinh1} \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an= kq
@@ -2792,7 +2792,7 @@ def npl_mk_L10_C3_B2_25():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an= kq
@@ -2925,7 +2925,7 @@ def npl_mk_L10_C3_B2_27():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an= kq
@@ -2972,7 +2972,7 @@ def npl_mk_L10_C3_B2_28():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an= kq
@@ -3417,7 +3417,7 @@ def npl_mk_L10_C3_B2_33():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -3451,7 +3451,7 @@ def npl_mk_L10_C3_B2_34():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-        f"\\shortans[oly]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
             f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an= kq

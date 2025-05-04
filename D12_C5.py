@@ -583,8 +583,8 @@ def htd_25_xyz_L12_C5_B1_05():
 
     kq= my_module.thay_dau_congtru(f"{latex(a1*(x-x_0)+b1*(y-y_0)+c1*(z-z_0))}=0")
     kq2=my_module.thay_dau_congtru(f"{latex(a1*(x+x_0)+b1*(y+y_0)+c1*(z+z_0))}=0")
-    kq3=my_module.thay_dau_congtru(f"{latex(x_0*(x-a1)+y_0*(y-b1)+z_0*(z-c1))}=0")
-    kq4=my_module.thay_dau_congtru(f"{latex(a1*x+b1*y+c1*z+x_0+y_0+z_0)}=0")
+    kq3=my_module.thay_dau_congtru(f"{latex(a1*x-b1*y-c1*z+x_0)}=0")
+    kq4=my_module.thay_dau_congtru(f"{latex(a1*x-b1*y-c1*z+x_0+random.randint(1,3))}=0")
 
     noi_dung_loigiai=my_module.thay_dau_congtru(f"Ta có: $\\overrightarrow{{{ten_B}{ten_C}}}=({a};{b};{c})$ là một véctơ pháp tuyến của mặt phẳng ${{({ten_mp})}}$.\n\n"\
         f"Mặt phẳng ${{({ten_mp})}}$ qua trung điểm $I({x_0};{y_0};{z_0})$ của đoạn thẳng ${{{ten_B}{ten_C}}}$.\n\n"
@@ -3470,10 +3470,144 @@ def htd_25_xyz_L12_C5_B1_35():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B1_36]-M2. Viết phương trình mặt phẳng qua điểm và vuông góc với d(PTCT)
+def htd_25_xyz_L12_C5_B1_36():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+    a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
+    b = random.choice([random.randint(-7, -1), random.randint(1, 7)])
+    c = random.choice([random.randint(-5, -1), random.randint(1, 5)])
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+    x_0,y_0,z_0 = [random.randint(-8,8) for i in range(3)]
+    if x_0 ==0: x_0=random.randint(1,7)
+
+    x_1,y_1,z_1 = [random.choice([i for i in range(-5, 6) if i!=0]) for i in range(3)]
+    ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
+    ten_diem=random.choice(["A","B", "C", "D","M", "N", "E", "I" ])
+    dt_d=f"\\dfrac{{{latex(x-x_1)}}}{{{a}}}=\\dfrac{{{latex(y-y_1)}}}{{{b}}}=\\dfrac{{{latex(z-z_1)}}}{{{c}}}"
+
+
+    noi_dung= f"Trong không gian ${{Oxyz}}$, mặt phẳng ${{({ten_mp})}}$ đi qua điểm ${{{ten_diem}({x_0};{y_0};{z_0})}}$"\
+                f" và vuông góc với đường thẳng ${random.choice(["d","\\Delta"])}:{dt_d}$ có phương trình là"
+
+    kq= my_module.thay_dau_congtru(f"{latex(a*(x-x_0)+b*(y-y_0)+c*(z-z_0))}=0")
+    kq2=my_module.thay_dau_congtru(f"{latex(a*(x+x_0)+b*(y+y_0)+c*(z+z_0))}=0")
+    kq3=my_module.thay_dau_congtru(f"{latex(x_0*(x-a)+y_0*(y-b)+z_0*(z-c))}=0")
+    kq4=my_module.thay_dau_congtru(f"{latex(a*x+b*y+c*z-a*x_0-b*y_0-c*z_0+random.randint(1,5))}=0")
+
+    noi_dung_loigiai=my_module.thay_dau_congtru(f"Mặt phẳng ${{({ten_mp})}}$ có phương trình là:\n\n"\
+        f" ${a}(x-{x_0})+{b}(y-{y_0})+{c}(z-{z_0})=0\\Leftrightarrow {kq}$.")  
+
+    #Tạo các phương án
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C5_B1_37]-M2. Viết phương trình mặt phẳng qua điểm và vuông góc với d(PTTS)
+def htd_25_xyz_L12_C5_B1_37():
+    #Tạo bậc ngẫu nhiên
+    x,y,z=sp.symbols("x y z")
+    a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
+    b = random.choice([random.randint(-7, -1), random.randint(1, 7)])
+    c = random.choice([random.randint(-5, -1), random.randint(1, 5)])
+
+    t=ucln_ba_so(a,b,c)
+    a,b,c=int(a/t),int(b/t),int(c/t)
+
+    x_0,y_0,z_0 = [random.randint(-8,8) for i in range(3)]
+    if x_0 ==0: x_0=random.randint(1,7)
+
+    x_1,y_1,z_1 = [random.choice([i for i in range(-5, 6) if i!=0]) for i in range(3)]
+    ten_mp=random.choice(["P","Q", "R", "\\alpha","\\beta" ])
+    ten_diem=random.choice(["A","B", "C", "D","M", "N", "E", "I" ])
+    dt_d= f"\\left\\{{ \\begin{{array}}{{l}}\
+x = {show_ptts(x_1,a)}\\\\ \
+y = {show_ptts(y_1,b)}\\\\\
+z = {show_ptts(z_1,c)}\
+\\end{{array}} \\right."
+
+
+    noi_dung= f"Trong không gian ${{Oxyz}}$, mặt phẳng ${{({ten_mp})}}$ đi qua điểm ${{{ten_diem}({x_0};{y_0};{z_0})}}$"\
+                f" và vuông góc với đường thẳng ${random.choice(["d","\\Delta"])}:{dt_d}$ có phương trình là"
+
+    kq= my_module.thay_dau_congtru(f"{latex(a*(x-x_0)+b*(y-y_0)+c*(z-z_0))}=0")
+    kq2=my_module.thay_dau_congtru(f"{latex(a*(x+x_0)+b*(y+y_0)+c*(z+z_0))}=0")
+    kq3=my_module.thay_dau_congtru(f"{latex(x_0*(x-a)+y_0*(y-b)+z_0*(z-c))}=0")
+    kq4=my_module.thay_dau_congtru(f"{latex(a*x+b*y+c*z-a*x_0-b*y_0-c*z_0+random.randint(1,5))}=0")
+
+    noi_dung_loigiai=my_module.thay_dau_congtru(f"Mặt phẳng ${{({ten_mp})}}$ có phương trình là:\n\n"\
+        f" ${a}(x-{x_0})+{b}(y-{y_0})+{c}(z-{z_0})=0\\Leftrightarrow {kq}$.")  
+
+    #Tạo các phương án
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)    
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+        #f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+      
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
@@ -4498,7 +4632,7 @@ def htd_25_xyz_L12_C5_B3_12():
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an

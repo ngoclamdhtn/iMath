@@ -6511,12 +6511,12 @@ def gghik_L10_CX_B1_45():
 	solution = solve((eq1, eq2), (x, y))
 	x_M = solution[x]
 	y_M = solution[y]
-	t=x_M+y_M
+	t=abs(x_M+y_M)
 	dap_an="{:.1f}".format(t).replace(".", ",")
 
 	ABC=f"{ten_diem_1}{ten_diem_2}{ten_diem_3}"
 
-	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${ten_diem_2}({x_2};{y_2})$ và ${{{ten_diem_3}({x_3};{y_3})}}$ và đường thẳng $(\\Delta) : {latex(a1*x+b1*y+c1 )}=0$. Điểm ${{M(a;b)}}$ thuộc đường thẳng $\\Delta$ thoả mãn $M{ten_diem_2}=M{ten_diem_3}$. Tính ${{a+b}}$. (Kết quả làm tròn đến hàng phần mười)"
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${ten_diem_2}({x_2};{y_2})$ và ${{{ten_diem_3}({x_3};{y_3})}}$ và đường thẳng $(\\Delta) : {latex(a1*x+b1*y+c1 )}=0$. Điểm ${{M(a;b)}}$ thuộc đường thẳng $\\Delta$ thoả mãn $M{ten_diem_2}=M{ten_diem_3}$. Tính ${{|a+b|}}$. (Kết quả làm tròn đến hàng phần mười)"
 
 	noi_dung_loigiai=(f" $I=({x_I};{y_I})$ là trung điểm của đoạn ${{{ten_diem_2}{ten_diem_3}}}$.\n\n"
 		f"Đường trung trực ${{d}}$ của đoạn thẳng ${{{ten_diem_2}{ten_diem_3}}}$ đi qua trung điểm $I=({x_I};{y_I})$ "
@@ -6524,7 +6524,7 @@ def gghik_L10_CX_B1_45():
 		f" $(d):{latex(nsimplify(expand(a*(x-x_I)+b*(y-y_I))))} =0$.\n\n"
 		f" Điểm ${{M}}$ là giao điểm của ${{d}}$ và $\\Delta$\n\n"
 		f" Giải hệ phương trình ta tìm được $M \\left( {phan_so(x_M)}; {phan_so(y_M)} \\right)$ \n\n"
-		f" Vậy ${{a+b \\approx {dap_an}}}$")
+		f" Vậy ${{|a+b| \\approx {dap_an}}}$")
 	
 	debai_word= f"{noi_dung}\n"
 

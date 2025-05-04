@@ -631,7 +631,7 @@ def ngh_kjg_L11_C1_B1_10():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-    f"\\shortans[oly]{{{kq}}}\n\n"\
+    f"\\shortans[4]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -667,7 +667,7 @@ def ngh_kjg_L11_C1_B1_11():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
-    f"\\shortans[oly]{{{kq}}}\n\n"\
+    f"\\shortans[4]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
 
@@ -729,7 +729,7 @@ def ngh_kjg_L11_C1_B1_12():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-    f"\\shortans[oly]{{{kq}}}\n\n"\
+    f"\\shortans[4]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -796,7 +796,7 @@ def ngh_kjg_L11_C1_B2_02():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-    f"\\shortans[oly]{{{kq}}}\n\n"\
+    f"\\shortans[4]{{{kq}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq
@@ -4988,7 +4988,7 @@ def ngh_kjg_L11_C1_B5_13():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dem}}}\n\n"\
+    f"\\shortans[4]{{{dem}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=dem
@@ -5141,7 +5141,7 @@ def ngh_kjg_L11_C1_B5_14():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word, loigiai_word, latex_tuluan, dap_an
@@ -5208,7 +5208,7 @@ def ngh_kjg_L11_C1_B5_15():
     loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word, loigiai_word, latex_tuluan, dap_an
