@@ -1788,14 +1788,16 @@ def mn8mn_L11_C2_B2_20():
 
 #[D11_C2_B2_21]-M1. CSC có 2 số hạng liên tiếp. Tìm d 
 def mn8mn_L11_C2_B2_21():
-    u_n=random.randint(-10,10)
-    d=random.choice([i for i in range(-8, 8) if i!=0])
-    u_m=u_n+d
+    while True:
+        u_n=random.randint(-10,10)
+        d=random.choice([i for i in range(-8, 8) if i!=0])
+        u_m=u_n+d
+        if all([u_n!=0,u_m!=0]):
+            break
     n=random.randint(2,12)
     m=n+1
     noi_dung=(
-    f"Cho cấp số cộng $(u_n)$ có $u_{{{n}}}={u_n}$ và $u_{{{m}}}={u_m}$. Công sai ${{d}}$ của cấp số cộng đã cho là"
-    )
+    f"Cho cấp số cộng $(u_n)$ có $u_{{{n}}}={u_n}$ và $u_{{{m}}}={u_m}$. Công sai ${{d}}$ của cấp số cộng đã cho là" )
     
 
     kq=d
@@ -1957,6 +1959,7 @@ def mn8mn_L11_C2_B2_23():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+
 ############## CẤP SỐ NHÂN ##############
 #D11_C2_B3_01. Cho cấp số nhân có u1, q. Tìm số hạng thứ k
 def mn8mn_L11_C2_B3_01():
@@ -2000,16 +2003,11 @@ def mn8mn_L11_C2_B3_01():
 
 #D11_C2_B3_02. Cho cấp số nhân có u_n, u_m. Tìm  q.
 def mn8mn_L11_C2_B3_02():
-    u1 = random.choice([random.randint(-6, -1), random.randint(1, 6)])    
-    if u1==0:
-        u1=random.randint(1,6)
-
-    u2 = random.randint(-6,6)
-    if u2==0:
-        u2=random.randint(1,6)
-
-    if u2==u1:
-        u2=u1 + random.randint(1,6)
+    while True:
+        u1 = random.choice([random.randint(-6, -1), random.randint(1, 6)])
+        u2 = random.choice([random.randint(-6, -1), random.randint(1, 6)])
+        if u1!=u2:
+            break    
     n = random.randint(1,10)
     
     kq=u2/u1

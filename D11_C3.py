@@ -37,8 +37,8 @@ def gh11gh_L11_C3_B1_01():
     #Tạo bậc ngẫu nhiên
     bac = random.randint(2,5)
     #Tạo hai đa thức biến n với bậc ngẫu nhiên
-    f, heso_bac_f, heso_tudo_f= my_module.random_p4nomial("n", bac)[0:3] 
-    g, heso_bac_g, heso_tudo_g = my_module.random_p4nomial("n", bac)[0:3]
+    f, heso_bac_f, heso_tudo_f= my_module.random_polynomial("n", bac)[0:3] 
+    g, heso_bac_g, heso_tudo_g = my_module.random_polynomial("n", bac)[0:3]
 
     kq=heso_bac_f/heso_bac_g
     kq2=heso_bac_f/heso_tudo_g
@@ -92,8 +92,8 @@ def gh11gh_L11_C3_B1_02():
     bac = random.randint(3,5)
     k= random.randint(2, bac-1)
     #Tạo hai đa thức biến n với bậc ngẫu nhiên
-    f, heso_bac_f, heso_tudo_f= my_module.random_p4nomial("n", k)[0:3] 
-    g, heso_bac_g, heso_tudo_g = my_module.random_p4nomial("n", bac)[0:3]
+    f, heso_bac_f, heso_tudo_f= my_module.random_polynomial("n", k)[0:3] 
+    g, heso_bac_g, heso_tudo_g = my_module.random_polynomial("n", bac)[0:3]
     if heso_tudo_g==0:
         heso_tudo_g=heso_bac_f+ random.randint(3,5)
     if heso_tudo_f==0:
@@ -152,7 +152,7 @@ def gh11gh_L11_C3_B1_03():
 
     #Tạo hai đa thức biến n với bậc ngẫu nhiên
     f, heso_bac_f, heso_tudo_f= my_module.random_dathuc_bac2_luon_duong("n")[0:3] 
-    g, heso_bac_g, heso_tudo_g = my_module.random_p4nomial("n", 2)[0:3]
+    g, heso_bac_g, heso_tudo_g = my_module.random_polynomial("n", 2)[0:3]
     if heso_tudo_g==0:
         heso_tudo_g =random.randint(1,10)
     
@@ -1781,8 +1781,8 @@ def gh11gh_L11_C3_B2_04():
 #[D11_C3_B2_05]. Tính giới hạn x-->00: Bậc tử = Bậc mẫu
 def gh11gh_L11_C3_B2_05():
     bac = random.randint(2,4)
-    f, heso_bac_f, heso_tudo_f = my_module.random_p4nomial("x",bac)[0:3]
-    g, heso_bac_g, heso_tudo_g  = my_module.random_p4nomial("x",bac)[0:3]
+    f, heso_bac_f, heso_tudo_f = my_module.random_polynomial("x",bac)[0:3]
+    g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",bac)[0:3]
     if heso_tudo_g==0:
         heso_tudo_g=heso_bac_f+1
 
@@ -1838,8 +1838,8 @@ def gh11gh_L11_C3_B2_05():
 #[D11_C3_B2_06]. Tính giới hạn x-->00: Bậc tử < Bậc mẫu
 def gh11gh_L11_C3_B2_06():
     bac = random.randint(3,4)
-    f, heso_bac_f, heso_tudo_f = my_module.random_p4nomial("x",bac-1)[0:3]
-    g, heso_bac_g, heso_tudo_g  = my_module.random_p4nomial("x",bac)[0:3]
+    f, heso_bac_f, heso_tudo_f = my_module.random_polynomial("x",bac-1)[0:3]
+    g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",bac)[0:3]
 
     if heso_tudo_g==0:
         heso_tudo_g=heso_bac_f+1
@@ -1962,7 +1962,7 @@ def gh11gh_L11_C3_B2_07():
 def gh11gh_L11_C3_B2_08():
        
     f, heso_bac_f, heso_tudo_f = my_module.random_dathuc_bac2_luon_duong("x")[0:3]
-    g, heso_bac_g, heso_tudo_g  = my_module.random_p4nomial("x",2)[0:3]
+    g, heso_bac_g, heso_tudo_g  = my_module.random_polynomial("x",2)[0:3]
     if heso_tudo_g==0:
         heso_tudo_g=heso_bac_f+1      
 
@@ -2083,7 +2083,7 @@ def gh11gh_L11_C3_B2_09():
 #[D11_C3_B2_10]. Tính giới hạn x-->00: Đa thức
 def gh11gh_L11_C3_B2_10():
     bac=random.randint(3,5)
-    f, heso_bac_f, heso_tudo_f  = my_module.random_p4nomial("x",bac)[0:3]      
+    f, heso_bac_f, heso_tudo_f  = my_module.random_polynomial("x",bac)[0:3]      
 
     dau = random.choice(["+","-"])
     vo_cung=dau + "oo"

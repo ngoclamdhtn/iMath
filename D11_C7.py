@@ -608,7 +608,7 @@ def ui5io_L11_C7_B2_09():
     a= random.randint(2,9) 
     bac = random.randint(2,3)
     x = sp.symbols('x')
-    f = my_module.random_p4nomial("x",bac)[0]
+    f = my_module.random_polynomial("x",bac)[0]
 
     kq = latex(diff((a**f), x)).replace("log","ln")
     kq2= latex(diff((a**f/log(a)), x))
@@ -2375,7 +2375,7 @@ def ui5io_L11_C7_B2_36():
         kq= f"$x_1={latex(x1)},x_2={latex(x2)} $"
         kq2=f"$x={phan_so(c/a)}$"
         kq3=f"Phương trình vô nghiệm"
-        kq4=f"$x_1={phan_so(-b/a)},x_2={phan_so(c/a)} $"
+        kq4=f"$x_1={phan_so((x1+x2)/2)},x_2={latex(x2)} $"
         noi_dung_loigiai=f"$y'=({latex(f)})'={latex(diff(f, x))}$.\n\n"\
     f"$y''=({latex(dh_1)})'={latex(dh_2)}$.\n\n"\
     f"$y''={t}\\Leftrightarrow {latex(dh_2)}={t}\\Leftrightarrow {latex(dh_2-t)}=0 \\Leftrightarrow x_1={latex(x1)},x_2={latex(x2)}$."

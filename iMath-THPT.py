@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 05.05.2025")
+                self.label.setText(f"iMath\u00A92025 ver 12.05.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 05.05.2025")
+                self.label.setText(f"iMath\u00A92025 ver 12.05.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -6498,21 +6498,38 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_14]-SA-M3. H.chóp S.ABC, đáy tam giác đều. Tính d(A,(SBC))"])
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_14]-SA-M2. H.chóp S.ABC, đáy tam giác đều. Tính d(A,(SBC))"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_15]-SA-M3. H.chóp S.ABC, đáy tam giác vuông. Tính d(A,(SBC))"])
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_15]-SA-M2. H.chóp S.ABC, đáy t.giác vuông. Tính d(A,(SBC))"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_16]-SA-M3. H.chóp S.ABC, đáy tam giác vuông cân. Tính d(A,(SBC))"])
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_16]-SA-M2. H.chóp S.ABC, đáy t.giác vuông cân. Tính d(A,(SBC))"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_17]-SA-M4. H.chóp S.ABC, đáy tam giác đều, trọng tâm G. Tính d(G,(SBC))"])
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_17]-SA-M3. H.chóp S.ABC, đáy t.giác đều, trọng tâm G. Tính d(G,(SBC))"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_18]-SA-M3. H.chóp S.ABC, đáy t.giác đều, I thuộc AB(AC). Tính d(I,(SBC))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_19]-SA-M3. H.chóp S.ABCD, đáy h.vuông có SA,AB,. Tính d(A,(SBC)) hoặc d(A,(SCD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_21]-SA-M3. H.chóp S.ABCD, đáy h.chữ nhật, có AB,AD SA. Tính d(A,(SBC)) hoặc d(A,(SCD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_20]-SA-M3. H.chóp S.ABCD, đáy h.vuông có SA,AB. M thuộc AB, Tính d(M,(SBC)) hoặc d(M,(SCD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
                 item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_10]-SA-M4. L.trụ đứng, tam giác vuông. Tính k.c từ điểm đến mặt"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -13542,7 +13559,23 @@ class Ui_MainWindow(object):
 
                                             #[D11_C8_B4_17]-M2. H.chóp S.ABC, đáy tam giác đều, trọng tâm G. Tính d(G,(SBC))
                                             if dang_toan == "[D11_C8_B4_17]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_17()              
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_17()
+
+                                            #[D11_C8_B4_18]-M2. H.chóp S.ABC, đáy tam giác đều, I thuộc AB(AC). Tính d(I,(SBC))
+                                            if dang_toan == "[D11_C8_B4_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_18() 
+
+                                            #[D11_C8_B4_19]-M2. H.chóp S.ABCD, đáy h.vuông, có AB, SA. Tính d(A,(SBC)) hoặc d(A,(SCD)) 
+                                            if dang_toan == "[D11_C8_B4_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_19()
+
+                                            #[D11_C8_B4_20]-M2. H.chóp S.ABCD, đáy h.vuông, có AB, SA. Tính d(M,(SBC)) hoặc d(M,(SCD)) 
+                                            if dang_toan == "[D11_C8_B4_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_20()   
+
+                                            #[D11_C8_B4_21]-M2. H.chóp S.ABCD, đáy h.chữ nhật, có AB,AD SA. Tính d(M,(SBC)) hoặc d(M,(SCD)) 
+                                            if dang_toan == "[D11_C8_B4_21]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_21()     
                                                 
 
                                         #BÀI 5-GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG.

@@ -10479,3 +10479,4 @@ def ckz_L12C4_B5_33():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
