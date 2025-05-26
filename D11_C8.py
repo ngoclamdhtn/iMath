@@ -5617,7 +5617,7 @@ def uvxy9_L11_C8_B4_07():
 	chon=random.randint(1,3)
 
 	if chon==1:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{A1}}}$ và ${{{B1}{C1}}}$.")
 		kq= f"${{{AB}a}}$"
 		kq2= f"${{{AD}a}}$"
@@ -5627,7 +5627,7 @@ def uvxy9_L11_C8_B4_07():
 		noi_dung_loigiai=thay_hinh_hoc(f"Ta có: ${A1}{B1}\\bot {B1}{C1}, {A1}{B1}\\bot S{A1} \\Rightarrow d(S{A1},{B1}{C1})={A1}{B1}={AB}a$.")
 	
 	if chon==2:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{A1}}}$ và ${{{C1}{D1}}}$.")
 		kq= f"${{{AD}a}}$"
 		kq2= f"${{{AB}a}}$"
@@ -5638,7 +5638,7 @@ def uvxy9_L11_C8_B4_07():
 
 	
 	if chon==3:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{A1}}}$ và ${{{B1}{D1}}}$.")
 		d=(AB*AD)/sqrt(AB**2+AD**2)
 		kq= f"${{{latex(d)}a}}$"
@@ -5705,7 +5705,7 @@ def uvxy9_L11_C8_B4_08():
 	chon=random.randint(1,4)
 	
 	if chon==1:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{B1}}}$ và ${{{A1}{D1}}}$.")
 		d=(SA*AB)/sqrt(SA**2+AB**2)
 		d1=(SA*AD)/sqrt(SA**2+AD**2)
@@ -5721,7 +5721,7 @@ def uvxy9_L11_C8_B4_08():
 			f"\\Rightarrow d({A1},(S{B1}{C1}))={A1}H=\\dfrac{{{latex(SA)}a.{AB}a}}{{\\sqrt{{{SA**2}a^2+{AB**2}a^2}} }}={latex(d)}a$.")
 
 	if chon==2:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{D1}}}$ và ${{{A1}{B1}}}$.")
 		d=(SA*AD)/sqrt(SA**2+AD**2)
 		d1=(SA*AB)/sqrt(SA**2+AB**2)
@@ -5737,7 +5737,7 @@ def uvxy9_L11_C8_B4_08():
 			f"\\Rightarrow d({A1},(S{C1}{D1}))={A1}H=\\dfrac{{{latex(SA)}a.{AD}a}}{{\\sqrt{{{SA**2}a^2+{AD**2}a^2}} }}={latex(d)}a$.")
 	
 	if chon==3:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{C1}}}$ và ${{{A1}{D1}}}$.")
 		d=(SA*AB)/sqrt(SA**2+AB**2)
 		d1=(SA*AD)/sqrt(SA**2+AD**2)
@@ -5753,7 +5753,7 @@ def uvxy9_L11_C8_B4_08():
 			f"\\Rightarrow d({A1},(S{B1}{C1}))={A1}H=\\dfrac{{{latex(SA)}a.{AB}a}}{{\\sqrt{{{SA**2}a^2+{AB**2}a^2}} }}={latex(d)}a$.")
     
 	if chon==4:
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{C1}}}$ và ${{{A1}{B1}}}$.")
 		d=(SA*AD)/sqrt(SA**2+AD**2)
 		d1=(SA*AB)/sqrt(SA**2+AB**2)
@@ -6062,7 +6062,7 @@ def uvxy9_L11_C8_B4_14():
 	file_name=my_module.pdftoimage_timename(code)
 
 	noi_dung = (
-	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
 	f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 	)
 	dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6109,7 +6109,7 @@ def uvxy9_L11_C8_B4_15():
 	file_name=my_module.pdftoimage_timename(code)
 
 	noi_dung = (
-	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông tại ${{{A}}}$, ${{{A}{B}={latex(AB)}, {A}{C}={latex(AC)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$, ${{{A}{B}={latex(AB)}, {A}{C}={latex(AC)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
 	f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 	)
 	dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6156,7 +6156,7 @@ def uvxy9_L11_C8_B4_16():
 	file_name=my_module.pdftoimage_timename(code)
 
 	noi_dung = (
-	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông cân tại ${{{A}}}$, ${{{B}{C}={latex(BC)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác vuông cân tại ${{{A}}}$, ${{{B}{C}={latex(BC)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
 	f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 	)
 	dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6206,7 +6206,7 @@ def uvxy9_L11_C8_B4_17():
 	file_name=my_module.pdftoimage_timename(code)
 
 	noi_dung = (
-	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+	f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
 	f" Gọi ${{G}}$ là trọng tâm của tam giác ${{ABC}}$."
 	f" Tính khoảng cách từ điểm ${{G}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 	)
@@ -6261,7 +6261,7 @@ def uvxy9_L11_C8_B4_18():
 	chon=random.randint(1,2)
 	if chon==1:
 		noi_dung = (
-		f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+		f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
 		f" Gọi ${{{I}}}$ là điểm thuộc đoạn ${{{A}{B}}}$ sao cho ${A}{I}={t}{I}{B}$."
 		f" Tính khoảng cách từ điểm ${{{I}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 		)
@@ -6279,7 +6279,7 @@ def uvxy9_L11_C8_B4_18():
 	
 	if chon==2:
 		noi_dung = (
-		f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
+		f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác đều có cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABC),S{A}={latex(SA)}$."
 		f" Gọi ${{{I}}}$ là điểm thuộc đoạn ${{{A}{C}}}$ sao cho ${A}{I}={t}{I}{C}$."
 		f" Tính khoảng cách từ điểm ${{{I}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 		)
@@ -6354,7 +6354,7 @@ def uvxy9_L11_C8_B4_19():
 		\\end{{tikzpicture}}\n"
 
 			noi_dung = (
-			f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
+			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
 			f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{C}{D})$ (kết quả làm tròn đến hàng phần mười)."
 			)
 			dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6403,7 +6403,7 @@ def uvxy9_L11_C8_B4_20():
 		\\end{{tikzpicture}}\n"
 
 			noi_dung = (
-			f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
+			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
 			f" Gọi ${{{I}}}$ là điểm thuộc cạnh ${A}{D}$ sao cho ${A}{I}={t}{A}{D}$."
 			f" Tính khoảng cách từ điểm ${{{I}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 			)
@@ -6431,7 +6431,7 @@ def uvxy9_L11_C8_B4_20():
 		\\end{{tikzpicture}}\n"
 
 			noi_dung = (
-			f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
+			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
 			f" Gọi ${{{I}}}$ là điểm thuộc cạnh ${A}{B}$ sao cho ${A}{I}={t}{A}{B}$."
 			f" Tính khoảng cách từ điểm ${{{I}}}$ đến mặt phẳng $(S{C}{D})$ (kết quả làm tròn đến hàng phần mười)."
 			)
@@ -6486,7 +6486,7 @@ def uvxy9_L11_C8_B4_21():
 	\\end{{tikzpicture}}\n"
 
 		noi_dung = (
-		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, ${A}{B}={latex(AB)},{A}{D}={latex(AD)}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
+		f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, ${A}{B}={latex(AB)},{A}{D}={latex(AD)}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
 		f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 		)
 		dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6512,7 +6512,7 @@ def uvxy9_L11_C8_B4_21():
 	\\end{{tikzpicture}}\n"
 
 		noi_dung = (
-		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, ${A}{B}={latex(AB)},{A}{D}={latex(AD)}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
+		f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, ${A}{B}={latex(AB)},{A}{D}={latex(AD)}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
 		f" Tính khoảng cách từ điểm ${{{A}}}$ đến mặt phẳng $(S{C}{D})$ (kết quả làm tròn đến hàng phần mười)."
 		)
 		dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")

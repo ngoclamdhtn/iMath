@@ -3311,23 +3311,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_35]-TF-M3. XS các btoán về rút thẻ số 2lần không hoàn lại "])
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_35]-TF-M3. XS về rút thẻ số 2 lần không hoàn lại "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_36]-TF-M3. XS các btoán về rút thẻ số 2lần có hoàn trả lại "])
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_36]-TF-M3. XS về rút thẻ số 2 lần có hoàn trả lại "])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_37]-TF-M3. XS các bài toán rút đồng thời 2 thẻ một lúc"])
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_37]-TF-M3. XS rút đồng thời 2 thẻ một lúc"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_38]-TF-M3. XS các bài toán chọn 2 người từ một nhóm"])
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_38]-TF-M3. XS chọn 2 người từ một nhóm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_39]-TF-M3. XS các bài toán chọn 3 người từ một nhóm kiểu 1"])
+                item=QTreeWidgetItem(L10_C9_B2_2, ["[D10_C9_B2_39]-TF-M3. XS chọn 3 người từ một nhóm kiểu 1"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6530,12 +6530,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
                 item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_10]-SA-M4. L.trụ đứng, tam giác vuông. Tính k.c từ điểm đến mặt"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_11]-SA-M4. L.trụ đứng, tam giác vuông. Tính k.c giữa hai đường chéo nhau"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8436,6 +8431,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_33]-TF-M3. Xét Đ-S: Diện tích, thể tích giới hạn bởi y=e^x, x=a,x=k,x=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_34]-TF-M3. 2 chất điểm chuyển động. Xét Đ-S: hàm số quãng đường, quãng đường đi được, k.c giữa 2 chất điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_35]-TF-M3. Bài toán về ôtô. Xét Đ-S: vận tốc, gia tốc, tìm v(t_0), tìm t để đi được quãng đường s"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10916,7 +10919,15 @@ class Ui_MainWindow(object):
 
                                             #[D12_C4_B5_33]-M3. Xét Đ-S: diện tích giới hạn bởi y=e^x, x=a,x=k,x=b.
                                             if dang_toan == "[D12_C4_B5_33]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_33()           
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_33()
+
+                                            #[D12_C4_B5_34]-M3. Cho 2 chất điểm chuyển động ngược chiều. Xét Đ-S: hàm số quãng đường, quãng đường đi được, khoảng cách giữa 2 chất điểm
+                                            if dang_toan == "[D12_C4_B5_34]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_34()
+
+                                            #[D12_C4_B5_35]-M3. Bài toán về oto. Xét Đ-S: vận tốc, gia tốc, tìm v(t_0), tìm t để đi được quãng đường s
+                                            if dang_toan == "[D12_C4_B5_35]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_35()
                                                 
 
                                             ##################################################################
@@ -13533,11 +13544,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C8_B4_10]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_10()
 
-                                            #[D11_C8_B4_11]-M4. L.trụ đứng tam giác. Tính khoảng cách hai đường chéo nhau.
-                                            if dang_toan == "[D11_C8_B4_11]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_11()
-
-                                            #[D11_C8_B4_12]-M3. L.trụ đứng tam giác có 3 cạnh. Tính khoảng cách cạnh bên và cạnh đáy
+                                                                    #[D11_C8_B4_12]-M3. L.trụ đứng tam giác có 3 cạnh. Tính khoảng cách cạnh bên và cạnh đáy
                                             if dang_toan == "[D11_C8_B4_12]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_12()
 

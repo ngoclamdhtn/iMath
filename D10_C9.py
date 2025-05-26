@@ -8738,9 +8738,6 @@ def mjulk_L10_C9_B2_62():
 
 
 
-
-
-
 #[D10_C9_B2_63]-SA-M4. XS để tỏng k thẻ được chọn có 2 thẻ có tổng bằng a
 def mjulk_L10_C9_B2_63():
 	n=random.randint(8,20)

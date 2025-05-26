@@ -10480,3 +10480,248 @@ def ckz_L12C4_B5_33():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C4_B5_34]-TF-M3. Cho 2 chất điểm chuyển động ngược chiều. Xét Đ-S: hàm số quãng đường, quãng đường đi được, khoảng cách giữa 2 chất điểm
+def ckz_L12C4_B5_34():
+    while True:
+        t1=random.randint(2,6)
+        a1=random.randint(1,4)
+        b1=a1*t1
+
+        t2=random.randint(2,7)
+        a2=random.randint(1,5)
+        b2=a2*t2
+
+        if all([t1!=t2, a1!=a2]):
+            break    
+    t=sp.symbols("t")
+    v1=b1-a1*t
+    v2=b2-a2*t
+
+
+    noi_dung =(f"Hai chất điểm chuyển động ngược chiều nhau thì xảy ra va chạm, hai chất điểm tiếp tục di"
+f" chuyển theo chiều ban đầu thêm một quãng đường nữa thì dừng hẳn."
+f" Biết rằng sau khi va chạm, một chất điểm di chuyển tiếp với vận tốc $v_1(t)={latex(v1)}$,"
+f" chất điểm còn lại di chuyển với vận tốc $v_2(t)={latex(v2)}$."
+ f" Xét tính đúng-sai của các khẳng định sau." )      
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"* Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_1(t)={latex(integrate(v1,t))}+C$" 
+    kq1_F=f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_1(t)={latex(integrate(v1,t)+random.randint(1,2)*t)}+C$"
+    
+    HDG=(f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số:\n\n"
+    f" $s_1(t)=\\int ({latex(v1)})dt={latex(integrate(v1,t))}+C$.")
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_2(t)={latex(integrate(v2,t))}+C$" 
+    kq2_F=f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_1(t)={latex(integrate(v2,t)+random.randint(1,2)*t)}+C$"
+    
+    HDG=(f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số:\n\n"
+    f" $s_2(t)=\\int ({latex(v2)})dt={latex(integrate(v2,t))}+C$.")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    s1=integrate(v1,(t,0,t1))
+
+    kq3_T=f"* Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm là ${{{phan_so(s1)}}}$ m" 
+    kq3_F=f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm là ${{{phan_so(s1+random.randint(1,2))}}}$ m"
+    
+    HDG=(f" Thời gian để chất điểm thứ nhất dừng lại là: ${latex(v1)}=0\\Rightarrow t={t1}$.\n\n"
+        f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm là:\n\n ${tphan(0,t1)}({latex(v1)})dt={phan_so(s1)}$ m.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    s2=integrate(v2,(t,0,t2))
+    kq4_T=f"* Khoảng cách hai chất điểm khi đã dừng hẳn là ${phan_so(s1+s2)}$ m"
+    kq4_F=f"Khoảng cách hai chất điểm khi đã dừng hẳn là ${phan_so(abs(s1-s2))}$ m" 
+    
+    HDG=(f" Thời gian để chất điểm thứ hai dừng lại là: ${latex(v2)}=0\\Rightarrow t={t2}$.\n\n"
+        f"Quãng đường chất điểm thứ hai di chuyển sau khi va chạm là:\n\n ${tphan(0,t2)}({latex(v2)})dt={phan_so(s2)}$ m.\n\n"
+        f"Khoảng cách hai chất điểm khi đã dừng hẳn: ${phan_so(s1)}+{phan_so(s2)}={phan_so(s1+s2)} m.$")
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B5_35]-TF-M3. Bài toán về oto. Xét Đ-S: vận tốc, gia tốc, tìm v(t_0), tìm t để đi được quãng đường s
+def ckz_L12C4_B5_35():
+    t=sp.symbols("t")
+
+    v=random.randint(2,4)*18
+    v_met=int(v*5/18)
+    t1=random.randint(2,4)
+    s1=v_met*t1
+
+    a=random.randint(3,6)
+
+    v_t=a*t+v_met
+    t2=random.choice([4,6,8,10])
+    s2=integrate(v_t,(t,0,t2))
+    s_tong=s1+s2
+    s_round=f"{round_half_up(s_tong,1):.1f}".replace(".",",")
+
+    noi_dung = (
+        f"Một người điều khiển ô tô với tốc độ không đổi của ô tô là {v} km/h trên quãng đường dài {s_tong}m."
+        f" Sau {t1} giây thì ô tô bắt đầu tăng tốc với gia tốc không đổi $a(a\\in \\mathbb{{R}}, a>0)$"
+        f" trong đó ${{t}}$ là thời gian tính bằng giây kể từ khi bắt đầu tăng tốc."
+        f" Biết rằng ô tô đi hết quãng đường trên trong {t2} giây."
+        f" Xét tính đúng-sai của các khẳng định sau. "  )      
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"* Vận tốc của ô tô vào thời điểm bắt đầu tăng tốc là ${{{phan_so(v_met)}}}$ m/s" 
+    kq1_F=f"Vận tốc của ô tô vào thời điểm bắt đầu tăng tốc là ${{{phan_so(v_met+random.randint(1,2))}}}$ m/s"
+    
+    HDG=(f"Đổi {v} km/h = {v}. $\\dfrac{{5}}{{18}}$ m/s $= {phan_so(v_met)}$ m/s.\n\n"
+        f"Gia tốc của vật là ${{a}}$ nên phương trình vận tốc của vật là: $v(t)=at+C$.\n\n"
+        f"Do ô tô đang có tốc độ là ${{{phan_so(v_met)}}}$ m/s và bắt đầu tăng tốc nên $v(0)=C={phan_so(v_met)}$."
+
+        )
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Gia tốc của ô tô là ${{{a}m/s^2}}$"
+    kq2_F=f" Gia tốc của ô tô là ${{{a+random.randint(1,4)}m/s^2}}$"
+    
+    HDG=(f"Quãng đường ô tô đi được khi bắt đầu tăng tốc là: ${s_tong}-{phan_so(v_met)}.{t1}={s2}$ m.\n\n"
+        f" Ta có: ${tphan(0,t2)}(at+{v_met})dt={s2}$\n\n"
+        f"$\\Rightarrow a{tphan(0,t2)} tdt+{tphan(0,t2)}{v_met}dt={s2}\\Rightarrow a={a}$."
+   
+        )
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    t_3=random.randint(5,10)
+    v_3=a*t_3+v_met
+    v_3_cong=v_3+random.randint(1,5)
+    kq3_T=f"* Kể từ lúc bắt đầu tăng tốc, sau {t_3} giây vận tốc của ô tô không vượt quá {v_3_cong} m/s" 
+    kq3_F=f"Kể từ lúc bắt đầu tăng tốc, sau {t_3} giây vận tốc của ô tô lớn hơn {v_3_cong} m/s"
+    
+    HDG=(f"Ta có: $v(t)={a}t+{v_met}$.\n\n"
+        f"$v(t) \\le {v_3_cong}\\Rightarrow {a}t+{v_met}\\le {v_3_cong} \\Rightarrow t\\le {phan_so((v_3_cong-v_met)/a)}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    t_4=random.randint(8,15)
+    s_4=integrate(v_t,(t,0,t_4))
+    s_4_km=f"{round_half_up(s_4/1000,4):.4f}".replace(".",",")
+
+    kq4_T=f"* Kể từ lúc bắt đầu tăng tốc, thời gian để ô tô đi được quãng đường {s_4_km} km là {t_4} giây"
+    kq4_F=f"Kể từ lúc bắt đầu tăng tốc, thời gian để ô tô đi được quãng đường {s_4_km} km là {t_4-random.randint(1,3)} giây" 
+    
+    HDG=(f"${s_4_km}km={phan_so(s_4)}m$.\n\n"
+        f" Quãng đường đi được là: ${tphan(0,"t_2")}({latex(v_t)})dt={s_4}\\Rightarrow ({phan_so(a/2)}t^2+{v_met}t)\\bigg|^{{t_2}}_0={s_4}$\n\n"
+        f"$\\Rightarrow {phan_so(a/2)}t_2^2+{v_met}t_2={s_4} \\Rightarrow {phan_so(a/2)}t_2^2+{v_met}t_2-{s_4}=0\\Rightarrow t_2={t_4}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
