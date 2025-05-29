@@ -7377,47 +7377,86 @@ def mnj_34_jkl_L12_C2_B3_37():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D12_C2_B3_38]-TF-M3. 
+#[D12_C2_B3_38]-TF-M2. Cho rađa và máy bay. Xét Đ-S: Vị trí máy bay, vị trí ra đa, k.c từ máy bay đến rađa, khả năng phát hiện máy bay
 def mnj_34_jkl_L12_C2_B3_38():
+	A=random.choice(["A","B","C","D"])
+	x=random.randint(-300,-100)
+	y=random.randint(-300,-100)
+	z=random.randint(10,25)
+
+	h=random.randint(50,90)
+	h_round=f"{round_half_up(h/1000,3):.3f}".replace(".",",")
+
+	AG=sqrt(x**2+y**2+(z-h/1000)**2)
+	AG_round=f"{round_half_up(AG,2):.2f}".replace(".",",")
+	AG_round_f=f"{round_half_up(sqrt(x**2+y**2+(z-h)**2),2):.2f}".replace(".",",")
+	r=random.randint(int(AG)-50,int(AG)+50)
+
+	code_hinh=f" \\begin{{tikzpicture}}[>=stealth,line join=round,line cap=round,font=\\footnotesize,scale=1]\n\
+			\\def\\h{{3.5}}\\def\\d{{0.4}}\\def\\dd{{0.8}}\\def\\hh{{0.5}}\n\
+			\\draw[ball color=cyan!50] (-0.5*\\d,0) rectangle +(\\d,\\h);\n\
+			\\draw[fill=yellow] (-0.5*\\dd,\\h) rectangle +(\\dd,\\hh);\n\
+			\\draw[fill=red] (-0.6*\\dd,\\h+\\hh)--(0,\\h+\\hh+0.3) --(0.6*\\dd,\\h+\\hh)--cycle;\n\
+			\\coordinate(O) at (0,0); \n\
+			\\draw[->,line width=1.5pt,red] (O)--++(3,0) node[above]{{$y$}};\n\
+			\\draw[->,line width=1.5pt,red] (O)--++(0,\\h+\\hh+1) node[right]{{$z$}};\n\
+			\\draw[->,line width=1.5pt,red] (O)--++(-150:2cm) node[left]{{$x$}};\n\
+			\\fill[ball color=red] (O) circle (2.5pt) node[below right,red]{{$O$}};\n\
+		\\end{{tikzpicture}}" 
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
 
 	noi_dung = (
-			f"Một tháp trung tâm kiểm soát không lưu ở sân bay cao $80$ m sử dụng ra đa có phạm vi theo dõi $500$ km được đặt trên đỉnh tháp. Chọn hệ trục toạ độ ${{O x y z}}$ có gốc ${{O}}$ trùng với vị trí chân tháp, mặt phẳng ${{(Oxy)}}$ trùng với mặt đất sao cho trục ${{Ox}}$ hướng về phía tây, trục ${{Oy}}$ hướng về phía nam, trục ${{Oz}}$ hướng thẳng đứng lên phía trên (Hình bên) (đơn vị trên mỗi trục tính theo kilômét)."
-			f"	Một máy bay tại vị trí $A$ cách mặt đất $10 \\mathrm{{~km}}$, cách $300 \\mathrm{{~km}}$ về phía đông và $200 \\mathrm{{~km}}$ về phía bắc so với tháp trung tâm kiểm soát không lưu."
+			f"Một tháp trung tâm kiểm soát không lưu ở sân bay cao ${{{h}}}$ m sử dụng ra đa có phạm vi theo dõi ${{{r}}}$ km được đặt trên đỉnh tháp. Chọn hệ trục toạ độ ${{O x y z}}$ có gốc ${{O}}$ trùng với vị trí chân tháp, mặt phẳng ${{(Oxy)}}$ trùng với mặt đất sao cho trục ${{Ox}}$ hướng về phía tây, trục ${{Oy}}$ hướng về phía nam, trục ${{Oz}}$ hướng thẳng đứng lên phía trên (Hình bên) (đơn vị trên mỗi trục tính theo kilômét)."
+			f"	Một máy bay tại vị trí ${{{A}}}$ cách mặt đất ${z} \\mathrm{{~km}}$, cách ${abs(x)} \\mathrm{{~km}}$ về phía đông và ${abs(y)} \\mathrm{{~km}}$ về phía bắc so với tháp trung tâm kiểm soát không lưu."
 
-		f" Xét tính đúng-sai của các khẳng định sau. ")		
-	debai_word= f"{noi_dung}\n"
+		f" Xét tính đúng-sai của các khẳng định sau: ")		
 	
-	kq1_T=f"* Vị trí $A$ có tọa độ $(300; 200; 10)$" 
-	kq1_F=f" "
+	kq1_T=f"* Vị trí ${{{A}}}$ có tọa độ $({x}; {y}; {z})$" 
+	kq1_F=random.choice([
+		f"Vị trí ${{{A}}}$ có tọa độ $({-x}; {-y}; {z})$",
+		f"Vị trí ${{{A}}}$ có tọa độ $({x}; {-y}; {z})$",
+		f"Vị trí ${{{A}}}$ có tọa độ $({-x}; {y}; {z})$",
+		f"Vị trí ${{{A}}}$ có tọa độ $({x}; {y}; {-z})$",
+	 ])
 	
-	HDG=f" "
+	HDG=f"Vị trí ${{{A}}}$ có tọa độ $({x}; {y}; {z})$."
 	kq1=random.choice([kq1_T, kq1_F])
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=f"* "
-	kq2_F=f" "
+	kq2_T=f"* Vị trí của ra đa có tọa độ là $(0;0;{h_round})$"
+	kq2_F=f"Vị trí của ra đa có tọa độ là $(0;0;{h})$"
 	
-	HDG=f""
+	HDG=f"Vị trí của ra đa có tọa độ là $(0;0;{h_round})$."
 	kq2=random.choice([kq2_T, kq2_F])
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
-
-	kq3_T=f"* " 
-	kq3_F=f" "
 	
-	HDG=f""
+
+	kq3_T= f"* Khoảng cách từ máy bay đến ra đa xấp xỉ bằng ${{{AG_round}}}$ (kết quả làm tròn đến hàng phần trăm)" 
+	kq3_F= f"Khoảng cách từ máy bay đến ra đa xấp xỉ bằng ${{{AG_round_f}}}$ (kết quả làm tròn đến hàng phần trăm)"
+	
+	HDG=(f"Ra đa đặt tại vị trí $G(0;0;{h_round})$.\n\n"
+		f" Khoảng cách từ máy bay đến ra đa bằng:\n\n"
+		f"$\\sqrt{{({x})^2+({y})^2+({z}-{h_round})^2}}\\equiv {AG_round}$."
+		)
 	kq3=random.choice([kq3_T, kq3_F])
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
-
-	kq4_T=f"* "
-	kq4_F=f" " 
+	if r>AG:
+		kq4_T=f"* Ra đa của trung tâm kiểm soát không lưu phát hiện được máy bay tại vị trí ${{{A}}}$"
+		kq4_F=f"Ra đa của trung tâm kiểm soát không lưu không phát hiện được máy bay tại vị trí ${{{A}}}$" 
+		HDG=f"Vì ${r}>{AG_round}$ nên ra đa phát hiện được máy bay tại vị trí ${{{A}}}$."
+	else:
+		kq4_T=f"* Ra đa của trung tâm kiểm soát không lưu không phát hiện được máy bay tại vị trí ${{{A}}}$"
+		kq4_F=f"Ra đa của trung tâm kiểm soát không lưu phát hiện được máy bay tại vị trí ${{{A}}}$" 
+		HDG=f"Vì ${r}<{AG_round}$ nên ra đa không phát hiện được máy bay tại vị trí ${{{A}}}$."	
 	
-	HDG=f""
 	kq4=random.choice([kq4_T, kq4_F])
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
@@ -7428,7 +7467,7 @@ def mnj_34_jkl_L12_C2_B3_38():
 	#random.shuffle(list_PA)
 	list_TF=my_module.tra_ve_TF(list_PA)
 
-	debai= f"{noi_dung}\n\n"\
+	debai= f"{noi_dung}\n{file_name}\n"\
 	f"a) {list_PA[0]}.\n"\
 	f"b) {list_PA[1]}.\n"\
 	f"c) {list_PA[2]}.\n"\
@@ -7463,6 +7502,7 @@ def mnj_34_jkl_L12_C2_B3_38():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 	    f"\\choiceTFt\n"
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"

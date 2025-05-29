@@ -7723,6 +7723,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_38]-TF-M2. Cho rađa và máy bay. Xét Đ-S: Vị trí máy bay, vị trí ra đa, k.c từ máy bay đến rađa, khả năng phát hiện máy bay"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C2_B3_3 = QTreeWidgetItem(L12_C2_B3, ["Trả lời ngắn"])
                 L12_C2_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C2_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -9094,6 +9098,7 @@ class Ui_MainWindow(object):
 
                 L12_C6_B2 = QTreeWidgetItem(L12_C6, ["Bài 2 - Công thức xác suất toàn phần, xác suất Bayes"])
                 L12_C6_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C6_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 L12_C6_B2_1 = QTreeWidgetItem(L12_C6_B2, ["Trắc nghiệm"])
                 L12_C6_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -9190,6 +9195,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_29]-TF-M3. Cho tỉ lệ diện tích trồng cây, tỉ lệ đạt năng suất cao. Xét Đ-S: x.s giao, x.s toàn phần"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_38]-TF-M3. Cho x.s nhận ra tiền giả của 2 người. Xét Đ-S: x.s giao, x.s toàn phần, x.s Bayes"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10260,6 +10269,10 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_37]-TF-M3. Cho tam giác. Xét Đ-S: Trung điểm hoặc trọng tâm, Góc nhọn hay tù, Điểm đối xứng, tìm M để MA+MB min.
                                             if dang_toan == "[D12_C2_B3_37]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_37()
+
+                                        #[D12_C2_B3_38]-TF-M2. Cho rađa và máy bay. Xét Đ-S: Vị trí máy bay, vị trí ra đa, k.c từ máy bay đến rađa, khả năng phát hiện máy bay.
+                                            if dang_toan == "[D12_C2_B3_38]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_38()
 
 
 
@@ -11619,6 +11632,10 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B2_37]-M3. X.S Bayes: cho sơ đồ cây có P(A_), P(B_|A), P(B|A_). Tính P(A|B_)
                                             if dang_toan == "[D12_C6_B2_37]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B2_37()
+
+                                            #[D12_C6_B2_38]-M3. Cho x.s nhận ra tiền giả của 2 người. Xét Đ-S.
+                                            if dang_toan == "[D12_C6_B2_38]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_38()
 
                                             #-------------------------LỚP 11---------------------->
 

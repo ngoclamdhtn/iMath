@@ -6643,4 +6643,152 @@ def newy25_L12_C6_B2_37():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C6_B2_38]-M3. Cho x.s nhận ra tiền giả của 2 người. Xét Đ-S.
+def newy25_L12_C6_B2_38():
+    bien_co=["Lan","Đào","Minh","Phương","Quân","Hùng", "Yến", "Vương"]
+    random.shuffle(bien_co)
+    A,B=bien_co[0:2]
+
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_a_ngang_false=f"{round_half_up(p_a_ngang+random.randint(1,3)/10,2)}".replace(".",",")
+
+    #P(B|A)
+    while True:
+        b_dk_a=random.randint(55,60)
+        if b_dk_a!=a:
+            break
+
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    b_ngang_dk_a_ngang=random.randint(10,45)
+    p_b_ngang_dk_a_ngang=b_ngang_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B|A_ngang)    
+    p_b_dk_a_ngang=1-p_b_ngang_dk_a_ngang
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    noi_dung = (
+    f"Một tờ tiền giả lần lượt bị hai bạn {A} và {B} kiểm tra. Xác suất để bạn {A} phát hiện ra tờ này giả là {st_a}."
+    f" Nếu bạn {A} cho rằng tờ này tiền giả, thì xác suất để bạn {B} cũng nhận định như thế là {st_b_dk_a}."
+    f" Ngược lại, nếu bạn {A} cho rằng tờ này là tiền thật thì xác suất để bạn {B} cũng nhận định như thế là {st_b_ngang_dk_a_ngang}."
+        f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")
+    debai_word= f"{noi_dung}\n"
+    
+    kq1_T=f"* Xác suất để bạn {A} không phát hiện ra tờ tiền đó giả là {st_a_ngang}" 
+    kq1_F=f"Xác suất để bạn {A} không phát hiện ra tờ tiền đó giả là {st_a_ngang_false}"
+    
+    HDG=f"Xác suất để bạn {A} không phát hiện ra tờ tiền đó giả là: $1-{st_a}={st_a_ngang}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_a_ngang_vs_b_ngang=p_a_ngang*p_b_ngang_dk_a_ngang
+    st_a_ngang_vs_b_ngang=f"{round_half_up(p_a_ngang_vs_b_ngang,2)}".replace(".",",")
+    st_a_ngang_vs_b_ngang_f=f"{round_half_up(p_a_ngang_vs_b_ngang+random.randint(1,2)/10,2)}".replace(".",",")
+
+    kq2_T=f"* Xác suất để hai người này đều không phát hiện đây là tờ tiền giả là ${{{st_a_ngang_vs_b_ngang}}}$"
+    kq2_F=f"Xác suất để hai người này đều không phát hiện đây là tờ tiền giả là ${{{st_a_ngang_vs_b_ngang_f}}}$"
+    
+    HDG=(f'Gọi ${{A}}$ là biến cố "Bạn {A} phát hiện ra tờ tiền là giả".\n\n'
+        f'Gọi ${{B}}$ là biến cố "Bạn {B} phát hiện ra tờ tiền là giả".\n\n'
+        f'$P(A)={st_a}, P(\\overline{{A}})={st_a_ngang}, P(B|A)={st_b_dk_a}, P(\\overline{{B}}|\\overline{{A}})={st_b_ngang_dk_a_ngang}$.\n\n'
+        f"Xác suất để hai người này đều không phát hiện đây là tờ tiền giả là:\n\n"
+        f"$P(\\overline{{A}}\\,\\overline{{B}})=P(\\overline{{A}}).P(\\overline{{B}}|\\overline{{A}})={st_a_ngang}.{st_b_ngang_dk_a_ngang}={st_a_ngang_vs_b_ngang}$.")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_A_hop_B=1-p_a_ngang_vs_b_ngang
+    st_A_hop_B=f"{round_half_up(p_A_hop_B,2)}".replace(".",",")
+    st_A_hop_B_f=f"{round_half_up(p_A_hop_B+0.05,2)}".replace(".",",")
+
+    kq3_T=f"* Xác suất để ít nhất một trong hai người này phát hiện ra tờ tiền đó là giả là ${{{st_A_hop_B}}}$" 
+    kq3_F=f"Xác suất để ít nhất một trong hai người này phát hiện ra tờ tiền đó là giả là ${{{st_A_hop_B_f}}}$"
+    
+    HDG=(f"Xác suất để ít nhất một trong hai người này phát hiện ra tờ tiền đó là giả là:\n\n"
+        f"$P(A\\cup B)=1-P(\\overline{{A}}\\,\\overline{{B}})=1-{st_a_ngang_vs_b_ngang}={st_A_hop_B}$")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    p_a_dk_b=p_a/p_A_hop_B
+    st_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+    st_a_dk_b_f=f"{round_half_up(p_a_dk_b+0.05,2)}".replace(".",",")
+
+    kq4_T=f"* Biết tờ tiền đó đã bị ít nhất một trong hai người này phát hiện là giả, xác suất để Bạn {A} phát hiện ra nó giả là ${{{st_a_dk_b}}}$"
+    kq4_F=f"Biết tờ tiền đó đã bị ít nhất một trong hai người này phát hiện là giả, xác suất để Bạn {A} phát hiện ra nó giả là ${{{st_a_dk_b_f}}}$" 
+    
+
+    
+    HDG=(f"$A\\cup B$ là biến cố tờ tiền đó đã bị ít nhất một trong hai người này phát hiện là giả.\n\n"
+        f"$P\\left(A|(A\\cup B)\\right)=\\dfrac{{P\\left(A\\cap (A\\cup B) \\right) }}{{P(A\\cup B)}}=\\dfrac{{P(A)}}{{P(A\\cup B)}}=\\dfrac{{{st_a}}}{{{st_A_hop_B}}}={st_a_dk_b}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
     
