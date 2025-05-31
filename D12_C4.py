@@ -10725,3 +10725,70 @@ def ckz_L12C4_B5_35():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B5_36]-SA-M3. Tính diện tích cánh hoa trong hình vuông
+def ckz_L12C4_B5_36():
+    x=sp.symbols("x")
+    a=random.randint(2,10)
+    b=a*2
+    S=8*integrate(x-x**2/a,(x,0,a))
+
+    code_hinh=f"\\begin{{tikzpicture}}[>=stealth, line join=round,line cap=round,scale=0.9]\n\
+    \\foreach \\i in {{0,90,180,270}}\n\
+    \\draw [rotate=\\i, fill=gray,smooth, samples=200] (0,0)-- plot [domain=0:2] (\\x, {{0.5*(\\x)^2}}) -- plot [domain=2:0](\\x, {{sqrt(2*\\x)}})--cycle;\n\
+    \\draw (-2,-2) rectangle (2,2);\n\
+    \\end{{tikzpicture}}"
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    code_hinh_LG=f"\\begin{{tikzpicture}}[>=stealth, line join=round,line cap=round,scale=0.9]\n\
+    \\foreach \\i in {{0,90,180,270}}\n\
+    \\draw [rotate=\\i, fill=gray,smooth, samples=200] (0,0)-- plot [domain=0:2] (\\x, {{0.5*(\\x)^2}}) -- plot [domain=2:0](\\x, {{sqrt(2*\\x)}})--cycle;\n\
+    \\draw (-2,-2) rectangle (2,2);\n\
+    \\draw[->] (-2.2,0) -- (2.2,0) node[below right] {{$x$}};\n\
+    \\draw[->] (0,-2.2) -- (0,2.2) node[above left] {{$y$}};\n\
+    \\draw[dashed, thick, red] (-2,-2) -- (2,2) node[above right] {{$y = x$}};\n\
+    \\end{{tikzpicture}}"
+    code = my_module.moi_truong_anh_latex(code_hinh_LG)
+    file_name_LG=my_module.pdftoimage_timename(code)
+
+    if S.is_integer:
+        noi_dung = (
+        f"Một viên gạch hoa hình vuông có cạnh bằng ${b}$ cm. Người ta thiết kế sử dụng 4 đường parabol cùng chung đỉnh tại tâm của viên gạch và đi qua hai đỉnh kề nhau của viên gạch để tạo thành bông hoa như hình vẽ. Diện tích của bông hoa (phần tô đậm trong hình vẽ) là."
+        )
+        dap_an=S
+        noi_dung_loigiai=(
+        f"Chọn hệ trục tọa độ $(Oxy)$ sao cho ${{O}}$ là tâm của hình vuông.\n\n"
+        f" Xét cánh hoa thuộc góc phần tư thứ nhất.\n\n"
+        f" Cánh hoa được tạo bởi đường thẳng $y=x$ và parabol $y=mx^2 (P)$.\n\n"
+        f" $(P)$ qua A({a};{a}) nên: ${a}=m.{a}^2\\Rightarrow m={phan_so(1/a)}$.\n\n"
+        f" Suy ra $(P):y={phan_so(1/a)}x^2$.\n\n"
+        f" Diện tích của bông hoa là:\n\n"
+        f"$S=4.2{tphan(0,a)} (x-\\dfrac{{x^2}}{{{a}}})={dap_an}$."
+        )  
+    else:
+        noi_dung = (
+        f"Một viên gạch hoa hình vuông có cạnh bằng ${b}$ cm. Người ta thiết kế sử dụng 4 đường parabol cùng chung đỉnh tại tâm của viên gạch và đi qua hai đỉnh kề nhau của viên gạch để tạo thành bông hoa như hình vẽ. Diện tích của bông hoa (phần tô đậm trong hình vẽ) là (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(S,1):.1f}".replace(".",",")
+        noi_dung_loigiai=(
+        f"Chọn hệ trục tọa độ $(Oxy)$ sao cho ${{O}}$ là tâm của hình vuông.\n\n"
+        f" Xét cánh hoa thuộc góc phần tư thứ nhất.\n\n"
+        f" Cánh hoa được tạo bởi đường thẳng $y=x$ và parabol $y=mx^2 (P)$.\n\n"
+        f" $(P)$ qua A({a};{a}) nên: ${a}=m.{a}^2\\Rightarrow m={phan_so(1/a)}$.\n\n"
+        f" Suy ra $(P):y={phan_so(1/a)}x^2$.\n\n"
+        f" Diện tích của bông hoa là:\n\n"
+        f"$S=4.2{tphan(0,a)} (x-\\dfrac{{x^2}}{{{a}}})={phan_so(S)}={dap_an}$.")  
+       
+    debai_word= f"{noi_dung}\n{file_name}"
+
+    loigiai_word=(f"Lời giải:\n {file_name_LG}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n \\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n}}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

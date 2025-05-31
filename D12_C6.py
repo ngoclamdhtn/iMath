@@ -2733,9 +2733,199 @@ def newy25_L12_C6_B1_27():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C6_B1_28]-M2.  x.s giá gạo và giá thịt heo: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)
+def newy25_L12_C6_B1_28():
+    while True:
+        m=random.randint(1,9)
+        n=random.randint(1,9)
+        p_a_dk_b_ngang=m/n
+        p=random.randint(1,9)
+        q=random.randint(1,9)
+        p_b_dk_a_ngang=p/q
+        if all([m/n<1, p/q<1, m/n!=p/q]):
+            break
+    p_ab=random.randint(10,30)/100
+    s_ab=f"{round_half_up(p_ab,2):.2f}".replace(".",",")
+    x, y = symbols('x y')
+    # Khai báo các phương trình
+    eq1 = Eq(x + p_a_dk_b_ngang*y, p_ab+p_a_dk_b_ngang)
+    eq2 = Eq(p_b_dk_a_ngang*x +y, p_ab+p_b_dk_a_ngang)
+
+    # Giải hệ phương trình
+    solution = solve((eq1, eq2), (x, y)) 
+    if solution:
+        p_a = solution[x]
+        p_b = solution[y]        
+
+    noi_dung = (
+    f"  Quan sát hai hàng hoá thịt lợn và gạo người ta nhận thấy trong mỗi ngày giao dịch, nếu gạo không giảm giá thì thịt lợn giảm giá với xác suất ${phan_so(p_a_dk_b_ngang)}$. Ngược lại, nếu thịt lợn không giảm giá thì gạo giảm giá với xác suất ${phan_so(p_b_dk_a_ngang)}$. Hơn nữa, xác suất để cả thịt lợn và gạo giảm giá trong cùng một ngày là ${{{s_ab}}}$."
+    f" Tính xác suất để có ít nhất một trong hai hàng hoá thịt lợn và gạo giảm giá trong một ngày giao dịch (kết quả làm tròn đến hàng phần trăm)."
+    )
+    dap_an=f"{round_half_up(p_a+p_b-p_ab,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f'Gọi A: "thịt lợn giảm giá".\n\n'
+    f'Gọi B: "gạo giảm giá".\n\n'
+    f"Nếu gạo không giảm giá (tức ${ngang("B")}$) thì thịt lợn giảm giá với xác suất ${phan_so(p_a_dk_b_ngang)}$ tức là: "
+    f"$P(A|{ngang("B")})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Nếu thịt lợn không giảm giá (tức ${ngang("A")}$) thì gạo giảm giá với xác suất ${phan_so(p_b_dk_a_ngang)}$ tức là: "
+    f"$P(B|{ngang("A")})={phan_so(p_b_dk_a_ngang)}$.\n\n"
+    f"Xác suất để ít nhất một trong hai mặt hàng giảm giá là:\n\n"
+    f"$P(A\\cup B)=P(A)+P(B)-P(AB)$.\n\n"
+    f"Ta có: \n\n $P(A)=P(A\\cap B)+P(A\\cap {ngang("B")})=P(A\\cap B)+P(A|{ngang("B")}).P({ngang("B")})={phan_so(p_ab)}+{phan_so(p_a_dk_b_ngang)}.(1-P(B))$\n\n"
+    f"$P(B)=P(B\\cap A) + P(B\\cap {ngang("A")})=P(B\\cap A) +P(B|{ngang("A")}).P({ngang("A")})={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)}.(1-P(A))$.\n\n"
+    f"Ta có hệ:\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}}\
+P(A)+{phan_so(p_a_dk_b_ngang)}P(B)={phan_so(p_ab)}+{phan_so(p_a_dk_b_ngang)} \\\\ \
+P(B)+{phan_so(p_b_dk_a_ngang)}P(A)={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)} \
+\\end{{array}} \\right.$\n\n"
+    f"Giải hệ ta được $P(A)={phan_so(p_a)}, P(B)={phan_so(p_b)}$.\n\n"
+    f"$P(A\\cup B)={phan_so(p_a)}+{phan_so(p_b)}-{phan_so(p_ab)}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
 
 
-#Bài 2: Công thức xác suất toàn phần
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_29]-SA-M2.  x.s đeo khẩu trang và tiêm vắcxin: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)
+def newy25_L12_C6_B1_29():
+    while True:
+        m=random.randint(1,9)
+        n=random.randint(1,9)
+        p_a_dk_b_ngang=m/n
+        p=random.randint(1,9)
+        q=random.randint(1,9)
+        p_b_dk_a_ngang=p/q
+        if all([m/n<1, p/q<1, m/n!=p/q]):
+            break
+    p_ab=random.randint(10,30)/100
+    s_ab=f"{round_half_up(p_ab,2):.2f}".replace(".",",")
+    x, y = symbols('x y')
+    # Khai báo các phương trình
+    eq1 = Eq(x + p_a_dk_b_ngang*y, p_ab+p_a_dk_b_ngang)
+    eq2 = Eq(p_b_dk_a_ngang*x +y, p_ab+p_b_dk_a_ngang)
+
+    # Giải hệ phương trình
+    solution = solve((eq1, eq2), (x, y)) 
+    if solution:
+        p_a = solution[x]
+        p_b = solution[y]        
+
+    noi_dung = (
+    f" Trong một cuộc khảo sát về ý thức phòng dịch, người ta thấy rằng: nếu một người không đeo khẩu trang, thì xác suất người đó đã tiêm vaccine là  ${phan_so(p_a_dk_b_ngang)}$, nếu một người không tiêm vaccine, thì xác suất người đó đeo khẩu trang là ${phan_so(p_b_dk_a_ngang)}$ và xác suất để một người vừa tiêm vaccine và vừa đeo khẩu trang là ${{{s_ab}}}$."
+    f" Tính xác suất để người đó có ít nhất một trong hai biện pháp phòng dịch là bao nhiêu (kết quả làm tròn đến hàng phần trăm)."
+    )
+    dap_an=f"{round_half_up(p_a+p_b-p_ab,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f'Gọi A: "người đó tiêm vaccine".\n\n'
+    f'Gọi B: "người đó đeo khẩu trang".\n\n'
+    f"Nếu người đó không đeo khẩu trang (tức ${ngang("B")}$) thì người đó đã tiêm vaccine với xác suất ${phan_so(p_a_dk_b_ngang)}$ tức là: "
+    f"$P(A|{ngang("B")})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Nếu người đó không tiêm vaccine (tức ${ngang("A")}$) thì người đó đeo khẩu trang với xác suất ${phan_so(p_b_dk_a_ngang)}$ tức là: "
+    f"$P(B|{ngang("A")})={phan_so(p_b_dk_a_ngang)}$.\n\n"
+    f"Xác suất để người đó có ít nhất một trong hai biện pháp phòng dịch:\n\n"
+    f"$P(A\\cup B)=P(A)+P(B)-P(AB)$.\n\n"
+    f"Ta có: \n\n $P(A)=P(A\\cap B)+P(A\\cap {ngang("B")})=P(A\\cap B)+P(A|{ngang("B")}).P({ngang("B")})={phan_so(p_ab)}+{phan_so(p_a_dk_b_ngang)}.(1-P(B))$\n\n"
+    f"$P(B)=P(B\\cap A) + P(B\\cap {ngang("A")})=P(B\\cap A) +P(B|{ngang("A")}).P({ngang("A")})={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)}.(1-P(A))$.\n\n"
+    f"Ta có hệ:\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}}\
+P(A)+{phan_so(p_a_dk_b_ngang)}P(B)={phan_so(p_ab)}+{phan_so(p_a_dk_b_ngang)} \\\\ \
+P(B)+{phan_so(p_b_dk_a_ngang)}P(A)={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)} \
+\\end{{array}} \\right.$\n\n"
+    f"Giải hệ ta được $P(A)={phan_so(p_a)}, P(B)={phan_so(p_b)}$.\n\n"
+    f"$P(A\\cup B)={phan_so(p_a)}+{phan_so(p_b)}-{phan_so(p_ab)}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C6_B1_30]-SA-M2.  x.s chơi 2 môn thể thao: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)
+def newy25_L12_C6_B1_30():
+    mon=["bóng đá", "bóng chuyền", "cầu lông", "bóng bàn"]
+    bongda, caulong=random.sample(mon,2)
+    while True:
+        m=random.randint(1,9)
+        n=random.randint(1,9)
+        p_a_dk_b_ngang=m/n
+        p=random.randint(1,9)
+        q=random.randint(1,9)
+        p_b_dk_a_ngang=p/q
+        if all([m/n<1, p/q<1, m/n!=p/q]):
+            break
+    p_ab=random.randint(10,30)/100
+    s_ab=f"{round_half_up(p_ab,2):.2f}".replace(".",",")
+    x, y = symbols('x y')
+    # Khai báo các phương trình
+    eq1 = Eq(x + p_a_dk_b_ngang*y, p_ab+p_a_dk_b_ngang)
+    eq2 = Eq(p_b_dk_a_ngang*x +y, p_ab+p_b_dk_a_ngang)
+
+    # Giải hệ phương trình
+    solution = solve((eq1, eq2), (x, y)) 
+    if solution:
+        p_a = solution[x]
+        p_b = solution[y]        
+
+    noi_dung = (
+    f" Trong một nhóm học sinh:, người ta thấy rằng: nếu một học sinh không chơi {bongda}, thì xác suất học sinh đó chơi {caulong} là ${phan_so(p_a_dk_b_ngang)}$, nếu một học sinh không chơi {caulong}, thì xác suất học sinh đó chơi {bongda} là ${phan_so(p_b_dk_a_ngang)}$ và xác suất để một học sinh vừa chơi {bongda} vừa chơi {caulong} là ${{{s_ab}}}$."
+    f" Tính xác suất để học sinh đó tham gia ít nhất một trong hai môn thể thao trên là bao nhiêu (kết quả làm tròn đến hàng phần trăm)."
+    )
+    dap_an=f"{round_half_up(p_a+p_b-p_ab,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f'Gọi A: "học sinh đó chơi {caulong}".\n\n'
+    f'Gọi B: "học sinh đó chơi {bongda}".\n\n'
+    f"Nếu học sinh đó không chơi {bongda} (tức ${ngang("B")}$) thì học sinh đó chơi {caulong} với xác suất ${phan_so(p_a_dk_b_ngang)}$ tức là: "
+    f"$P(A|{ngang("B")})={phan_so(p_a_dk_b_ngang)}$.\n\n"
+    f"Nếu học sinh đó không chơi {caulong} (tức ${ngang("A")}$) thì học sinh đó chơi {bongda} với xác suất ${phan_so(p_b_dk_a_ngang)}$ tức là: "
+    f"$P(B|{ngang("A")})={phan_so(p_b_dk_a_ngang)}$.\n\n"
+    f"Xác suất để học sinh đó tham gia ít nhất một trong hai môn thể thao trên:\n\n"
+    f"$P(A\\cup B)=P(A)+P(B)-P(AB)$.\n\n"
+    f"Ta có: \n\n $P(A)=P(A\\cap B)+P(A\\cap {ngang("B")})=P(A\\cap B)+P(A|{ngang("B")}).P({ngang("B")})={phan_so(p_ab)}+{phan_so(p_a_dk_b_ngang)}.(1-P(B))$\n\n"
+    f"$P(B)=P(B\\cap A) + P(B\\cap {ngang("A")})=P(B\\cap A) +P(B|{ngang("A")}).P({ngang("A")})={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)}.(1-P(A))$.\n\n"
+    f"Ta có hệ:\n\n"
+    f"$\\left\\{{ \\begin{{array}}{{l}}\
+P(A)+{phan_so(p_a_dk_b_ngang)}P(B)={phan_so(p_ab)}+{phan_so(p_a_dk_b_ngang)} \\\\ \
+P(B)+{phan_so(p_b_dk_a_ngang)}P(A)={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)} \
+\\end{{array}} \\right.$\n\n"
+    f"Giải hệ ta được $P(A)={phan_so(p_a)}, P(B)={phan_so(p_b)}$.\n\n"
+    f"$P(A\\cup B)={phan_so(p_a)}+{phan_so(p_b)}-{phan_so(p_ab)}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#------------------------Bài 2: Công thức xác suất toàn phần-------------------------------------------------------->
 #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
 def newy25_L12_C6_B2_01():
     bien_co=["A","B","C","D","E","F"]    

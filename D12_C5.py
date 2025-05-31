@@ -4908,6 +4908,200 @@ def htd_25_xyz_L12_C5_B3_17():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C5_B3_18]-TF-M2. Cho vị trí trạm phát sóng. Xét Đ-S: Điện thoại bắt được sóng, phương trình mặt cầu, điểm nằm trong hay ngoài mặt cầu
+def htd_25_xyz_L12_C5_B3_18():
+
+    r=random.randint(3,10)
+    x_I=random.randint(1,7)
+    y_I=random.randint(-7,7)
+    z_I=random.randint(25,50)
+    z_I_km=f"{round_half_up(z_I/1000,3):.2f}".replace(".",",")
+
+    noi_dung = (
+    f"Trong không gian ${{Oxyz}}$ (đơn vị trên mỗi trục tính theo kilômét), một trạm thu phát sóng điện thoại di động được đặt ở vị trí $I({x_I};{y_I};{z_I_km})$. Trạm thu phát sóng đó được thiết kế với bán kính phủ sóng là ${r} \\mathrm{{~km}}$."
+
+    f" Xét tính đúng-sai của các khẳng định sau:"   )     
+    chon=random.randint(1,2)    
+    if chon==1:
+        while True:
+            x_M=random.randint(-10,10)
+            y_M=random.randint(-10,10)
+            z_M=random.randint(0,10)
+            z_M_km=f"{round_half_up(z_M/1000,3):.2f}".replace(".",",")
+            IM=sqrt((x_I-x_M)**2+(y_I-y_M)**2+(z_I/1000-z_M/1000)**2)       
+            if IM<r:
+                break
+        IM_round=f"{round_half_up(IM,2):.2f}".replace(".",",")        
+        
+        kq1_T=f"* Nếu người dùng điện thoại ở vị trí có tọa độ $({x_M};{y_M};{z_M_km})$ thì có thể sử dụng dịch vụ của trạm thu phát sóng đó" 
+        kq1_F=f"Nếu người dùng điện thoại ở vị trí có tọa độ $({x_M};{y_M};{z_M_km})$ thì không thể sử dụng dịch vụ của trạm thu phát sóng đó"
+        
+        HDG=(f"Khoảng cách từ người dùng đến trạm phát sóng là: \n\n"
+            f"$\\sqrt{{({x_M}-{x_I})^2 + ({y_M}-{y_I})^2 + ({z_M_km}-{z_I_km})^2}}={IM_round}<{r}$.\n\n"
+            f"Do đó người dùng có thể sử dụng dịch vụ của trạm thu phát sóng đó.")
+    
+    if chon==2:
+        while True:
+            x_M=random.randint(-10,10)
+            y_M=random.randint(-10,10)
+            z_M=random.randint(0,20)
+            z_M_km=f"{round_half_up(z_M/1000,3):.2f}".replace(".",",")
+            IM=sqrt((x_I-x_M)**2+(y_I-y_M)**2+(z_I/1000-z_M/1000)**2)       
+            if IM>r:
+                break
+        IM_round=f"{round_half_up(IM,2):.2f}".replace(".",",")        
+        
+        kq1_T=f"* Nếu người dùng điện thoại ở vị trí có tọa độ $({x_M};{y_M};{z_M_km})$ thì không thể sử dụng dịch vụ của trạm thu phát sóng đó" 
+        kq1_F=f"Nếu người dùng điện thoại ở vị trí có tọa độ $({x_M};{y_M};{z_M_km})$ thì có thể sử dụng dịch vụ của trạm thu phát sóng đó"
+        
+        HDG=(f"Khoảng cách từ người dùng đến trạm phát sóng là: \n\n"
+            f"$\\sqrt{{({x_M}-{x_I})^2 + ({y_M}-{y_I})^2 + ({z_M_km}-{z_I_km})^2}}={IM_round}>{r}$.\n\n"
+            f"Do đó người dùng không thể sử dụng dịch vụ của trạm thu phát sóng đó.")
+    HDG=HDG.replace("--","+").replace("+-","-").replace("0,00","0")
+    
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq1=kq1.replace("--","+").replace("+-","-").replace("0,00","0")
+
+    kq2_T=f"* Phương trình mặt cầu ${{(S)}}$ để mô tả ranh giới bên ngoài của vùng phủ sóng trong không gian là $(x-{x_I})^2+(y-{y_I})^2+(z-{z_I_km})^2={r**2}$"
+    kq2_F=f"Phương trình mặt cầu ${{(S)}}$ để mô tả ranh giới bên ngoài của vùng phủ sóng trong không gian là $(x+{x_I})^2+(y+{y_I})^2+(z+{z_I_km})^2={r**2}$"
+    
+    HDG=f"Phương trình mặt cầu ${{(S)}}$ để mô tả ranh giới bên ngoài của vùng phủ sóng trong không gian là:\n\n $(x-{x_I})^2+(y-{y_I})^2+(z-{z_I_km})^2={r**2}$"
+    HDG=HDG.replace("--","+").replace("+-","-").replace("0,00","0")
+    kq2=random.choice([kq2_T, kq2_F])
+    kq2=kq2.replace("--","+").replace("+-","-").replace("0,00","0")
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    A=random.choice(["A","B","C","D","E"])
+
+    chon=random.randint(1,2)
+
+    if chon==1:
+        while True:
+                x_A=random.randint(-10,10)
+                y_A=random.randint(-10,10)
+                z_A=random.randint(1,50)
+                z_A_km=f"{round_half_up(z_A/1000,2):.2f}".replace(".",",")
+                IA=sqrt((x_I-x_A)**2+(y_I-y_A)**2+(z_I/1000-z_A/1000)**2)       
+                if all([x_A!=x_I, y_A!=y_I, z_A!=z_I, x_A!=x_M,y_A!=y_M,IA>r]):
+                    break
+        IA_round=f"{round_half_up(IA,2):.2f}".replace(".",",")
+        IA_round_f=f"{round_half_up(IA+random.randint(1,5)/10,2):.2f}".replace(".",",") 
+
+        kq3_T=f"* Điểm ${A}({x_A};{y_A};{z_A_km})$ nằm ngoài mặt cầu ${{(S)}}$" 
+        kq3_F=f"Điểm ${A}({x_A};{y_A};{z_A_km})$ nằm trong mặt cầu ${{(S)}}$"
+        
+        HDG=(f"Ta có: $I{A}=\\sqrt{{({x_A}-{x_I})^2 + ({y_A}-{y_I})^2 + ({z_A_km}-{z_I_km})^2}}={IA_round}>{r}$.\n\n"
+            f"Do đó Điểm ${A}({x_A};{y_A};{z_A_km})$ nằm ngoài mặt cầu ${{(S)}}$.")
+        HDG=HDG.replace("--","+").replace("+-","-").replace("0,00","0")
+        kq3=random.choice([kq3_T, kq3_F])
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+        kq3=kq3.replace("--","+")
+
+        kq4_T=f"* $I{A}={IA_round}$ (kết quả làm tròn đến hàng phần trăm)"
+        kq4_F=f" $I{A}= {IA_round_f}$ (kết quả làm tròn đến hàng phần trăm)" 
+        
+        HDG=f"$I{A}=\\sqrt{{({x_A}-{x_I})^2 + ({y_A}-{y_I})^2 + ({z_A_km}-{z_I_km})^2}}={IA_round}$.\n\n"
+        HDG=HDG.replace("--","+").replace("+-","-").replace("0,00","0")
+        kq4=random.choice([kq4_T, kq4_F])
+        kq4=kq4.replace("--","+")
+        loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq4==kq4_F:
+            loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    if chon==2:
+        while True:
+                x_A=random.randint(-10,10)
+                y_A=random.randint(-10,10)
+                z_A=random.randint(1,50)
+                z_A_km=f"{round_half_up(z_A/1000,2):.2f}".replace(".",",")
+                IA=sqrt((x_I-x_A)**2+(y_I-y_A)**2+(z_I/1000-z_A/1000)**2)       
+                if all([x_A!=x_I, y_A!=y_I, z_A!=z_I, x_A!=x_M,y_A!=y_M,IA<r]):
+                    break
+        IA_round=f"{round_half_up(IA,2):.2f}".replace(".",",")
+        IA_round_f=f"{round_half_up(IA+random.randint(1,5)/10,2):.2f}".replace(".",",") 
+
+        kq3_T=f"* Điểm ${A}({x_A};{y_A};{z_A_km})$ nằm trong mặt cầu ${{(S)}}$" 
+        kq3_F=f"Điểm ${A}({x_A};{y_A};{z_A_km})$ nằm ngoài mặt cầu ${{(S)}}$"
+        
+        HDG=(f"Ta có: $I{A}=\\sqrt{{({x_A}-{x_I})^2 + ({y_A}-{y_I})^2 + ({z_A_km}-{z_I_km})^2}}={IA_round}<{r}$.\n\n"
+            f"Do đó Điểm ${A}({x_A};{y_A};{z_A_km})$ nằm trong mặt cầu ${{(S)}}$.")
+        HDG=HDG.replace("--","+")
+        kq3=random.choice([kq3_T, kq3_F])
+        loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq3==kq3_F:
+            loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+        kq3=kq3.replace("--","+")
+
+        kq4_T=f"* $I{A}={IA_round}$ (kết quả làm tròn đến hàng phần trăm)"
+        kq4_F=f" $I{A}= {IA_round_f}$ (kết quả làm tròn đến hàng phần trăm)" 
+        
+        HDG=f"$I{A}=\\sqrt{{({x_A}-{x_I})^2 + ({y_A}-{y_I})^2 + ({z_A_km}-{z_I_km})^2}}={IA_round}$.\n\n"
+        HDG=HDG.replace("--","+")
+        kq4=random.choice([kq4_T, kq4_F])
+        kq4=kq4.replace("--","+")
+        loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+        if kq4==kq4_F:
+            loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}" 
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq4, kq3]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+
+
 
 #BÀI 2 - PHƯƠNG TRÌNH ĐƯỜNG THẲNG
 #[D12_C5_B2_01]-M1. Viết PTDT qua điểm và có véctơ chỉ phương 
@@ -8986,3 +9180,50 @@ def htd_25_xyz_L12_C5_B2_40():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C5_B2_41]-SA-M2. Tìm góc giữa đường bay và sân bay 
+def htd_25_xyz_L12_C5_B2_41():
+    A,B=random.sample(["A","B","C","D","E","M","N"],2)
+    while True:
+        x_A = random.choice([i for i in range(-5, 7) if i!=0])
+        y_A = random.choice([i for i in range(-5, 7) if i!=0])
+        z_A = random.randint(1,8)
+
+        x_B = random.choice([i for i in range(-5, 7) if i!=0])
+        y_B = random.choice([i for i in range(-5, 7) if i!=0])
+        z_B = 0
+        if all([x_A!=x_B, y_A!=y_B]):
+            break
+    a,b,c=x_B-x_A, y_B-y_A, z_B-z_A
+
+    noi_dung = (
+    f"Người ta gắn hệ trục tọa độ ${{Oxyz}}$ (đơn vị đo trên các trục tính theo kilomét) vào một quãng trường, mặt phẳng $\\left(Oxy\\right)$ trùng với mặt sân của quãng trường."
+    f" Một chiếc flycam ở vị trí ${A}\\left({x_A};{y_A};{z_A}\\right)$ chuẩn bị hạ cánh tới vị trí ${B}\\left({x_B};{y_B};{z_B}\\right)$."
+    f"Góc giữa đường thẳng ${{{A}{B}}}$ (quỹ đạo bay thẳng của flycam) và mặt sân của quãng trường bằng bao nhiêu độ (làm tròn kết quả đến hàng đơn vị)?"
+    )
+    sin_goc=abs(c/sqrt(a**2+b**2+c**2))
+    goc_rad=math.asin(sin_goc)
+    goc_deg=math.degrees(goc_rad)
+    dap_an=f"{round_half_up(goc_deg,1):.1f}".replace(".",",")
+    
+
+    noi_dung_loigiai=(
+    f"Gọi $\\alpha$ là góc giữa đường bay và mặt sân. Khi đó $\\alpha = \\left({A}{B},\\left(Oxy\\right)\\right)$.\n\n"
+    f"Đường thẳng $AB$, nhận véctơ $\\overrightarrow{{{A}{B}}}=({a};{b};{c})$ làm véc-tơ chỉ phương.\n\n"
+    f"Mặt phẳng $(Oxy)$ có véctơ pháp tuyến là ${vec("k")}=(0;0;1)$.\n\n"
+    f"$\\sin \\alpha = \\dfrac{{|{vec2(A,B)}.{vec("k")}|}}{{|{vec2(A,B)}|.|{vec("k")}|}}=\\dfrac{{|{a}.0+{b}.0+{c}.1|}}{{\\sqrt{{{a**2}+{b**2}+{c**2}}}.1}}$"
+    f" $={latex(nsimplify(sin_goc))}$.\n\n"
+    f" Suy ra $\\alpha = {dap_an}^\\circ$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

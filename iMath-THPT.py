@@ -8470,6 +8470,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_36]-SA-M3. Toán thực tế: Tính diện tích cánh hoa trong hình vuông"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8865,6 +8869,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_41]-SA-M2. Tìm góc giữa đường bay và sân bay"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_28]-SA-M3. Bài toán đường thẳng cắt và vuông góc với đường thẳng khác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8935,9 +8943,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_18]-TF-M2. Cho vị trí trạm phát sóng. Xét Đ-S: Điện thoại bắt được sóng, phương trình mặt cầu, điểm nằm trong hay ngoài mặt cầu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C5_B3_2, ["[D12_C5_B3_11]-TF-M3. Cho PTMC và PTMP. Xét Đ-S: tâm, bán kính, vị trí của điểm, mặt phẳng cắt mặt cầu"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 L12_C5_B3_3 = QTreeWidgetItem(L12_C5_B3, ["Trả lời ngắn"])
                 L12_C5_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -9091,6 +9105,18 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_13]-SA-M2. x.s giao: x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_28]-SA-M3. x.s giá gạo và giá thịt heo: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_29]-SA-M3. x.s đeo khẩu trang và tiêm vaccine: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_30]-SA-M3. x.s chơi 2 môn thể thao: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10941,6 +10967,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_35]-M3. Bài toán về oto. Xét Đ-S: vận tốc, gia tốc, tìm v(t_0), tìm t để đi được quãng đường s
                                             if dang_toan == "[D12_C4_B5_35]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_35()
+                                            
+                                            #[D12_C4_B5_36]-SA-M3.  Tính diện tích cánh hoa trong hình vuông
+                                            if dang_toan == "[D12_C4_B5_36]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_36()
                                                 
 
                                             ##################################################################
@@ -11293,7 +11323,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B2_40]-M2. Cho đường thẳng và mặt phẳng. Tìm góc.
                                             if dang_toan == "[D12_C5_B2_40]":
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_40()  
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_40()
+
+                                            #[D12_C5_B2_41]-SA-M2.  Tìm góc giữa đường bay và sân bay
+                                            if dang_toan == "[D12_C5_B2_41]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_41()
                                                 
 
                                         #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
@@ -11368,6 +11402,10 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B3_17]-SA-M3. Tìm m để bán kính mặt cầu là nhỏ nhất
                                             if dang_toan == "[D12_C5_B3_17]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_17()
+
+                                            #[D12_C5_B3_18]-TF-M2. Cho vị trí trạm phát sóng. Xét Đ-S: Điện thoại bắt được sóng, phương trình mặt cầu, điểm nằm trong hay ngoài mặt cầu
+                                            if dang_toan == "[D12_C5_B3_18]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B3_18()
                                             
 
                                             #Chương 6 - Một số yếu tố xác suất
@@ -11479,6 +11517,18 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B1_27]-M2. Cho P(A), P(B), P(AUB). Tính xác suất P(B|A)
                                             if dang_toan == "[D12_C6_B1_27]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C6.newy25_L12_C6_B1_27()
+
+                                            #[D12_C6_B1_28]-SA-M3.  x.s giá gạo và giá thịt heo: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)
+                                            if dang_toan == "[D12_C6_B1_28]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_28()
+
+                                            #[D12_C6_B1_29]-SA-M3.  x.s đeo khẩu trang và tiêm vắcxin: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)
+                                            if dang_toan == "[D12_C6_B1_29]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_29()
+
+                                            #[D12_C6_B1_30]-SA-M3.  x.s chơi 2 môn thể thao: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)
+                                            if dang_toan == "[D12_C6_B1_30]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_30()
 
                                             #----------------------Toán 12 - Chương 6 - Bài 2-------------------->
                                             #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
