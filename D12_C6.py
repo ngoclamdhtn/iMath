@@ -3083,13 +3083,11 @@ def newy25_L12_C6_B2_02():
             f"Theo số liệu theo dõi, xác suất xảy ra tình trạng quá tải trong một khoảng thời gian bất kỳ là ${{{st_p_a_ngang}}}$. "
             f"Tính xác suất để một yêu cầu gửi đến hệ thống được xử lý thành công? (kết quả làm tròn đến hàng phần trăm)")
         noi_dung_loigiai=(
-            f'Gọi ${{A}}$ là biến cố "Hệ thống máy chủ bị quá tải", ${{B}}$ là biến cố "Một yêu cầu gửi đến hệ thống được xử lý thành công".\n\n')  
-
-    
+            f'Gọi ${{A}}$ là biến cố "Hệ thống máy chủ bị quá tải", ${{B}}$ là biến cố "Một yêu cầu gửi đến hệ thống được xử lý thành công".\n\n')   
     
 
     noi_dung_loigiai+=(    
-    f"$P(\\overline{{A}})={st_p_a_ngang}, P(B|A)={st_p_b_dk_a}, P(B|\\overline{{A}})={st_p_b_dk_a_ngang}$.\n\n"
+    f"$P(A)={st_p_a_ngang}, P(B|A)={st_p_b_dk_a}, P(B|\\overline{{A}})={st_p_b_dk_a_ngang}$.\n\n"
     f"Xác suất cần tìm: \n\n"
     f"$P(B)=P(A).P(B|A)+P(\\overline{{A}}).P(B|\\overline{{A}})={st_p_a}.{st_p_b_dk_a}+{st_p_a_ngang}.{st_p_b_dk_a_ngang}={dap_an}$."
     )    
@@ -3128,7 +3126,7 @@ def newy25_L12_C6_B2_03():
     st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
 
     dap_an=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
-    dap_an=f"{round_half_up(dap_an,2):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(dap_an,2):.2f}".replace(".",",")
     
     to_hop_mon = {
     "A00": ["Toán", "Vật lí", "Hóa học"],

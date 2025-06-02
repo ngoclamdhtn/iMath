@@ -1357,7 +1357,7 @@ def ngh_kjg_L11_C1_B2_08():
         kq2_T=f"*$\\cos x={latex(cos_value)}$"
         kq2_F=f"$\\cos x={latex(-cos_value)}$"
         kq2=random.choice([kq2_T, kq2_F])
-        HDG=f"Vì $\\alpha \\in {cung}$ nên $\\cos x < 0$.\n\n"\
+        HDG=f"Vì $x\\in {cung}$ nên $\\cos x < 0$.\n\n"\
                 f"$\\cos x=-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."  
         loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq2==kq2_F:
@@ -1400,7 +1400,7 @@ def ngh_kjg_L11_C1_B2_08():
         kq2_T=f"*$\\cos x={latex(cos_value)}$"
         kq2_F=f"$\\cos x={latex(-cos_value)}$"
         kq2=random.choice([kq2_T, kq2_F])
-        HDG=f"Vì $\\alpha \\in {cung}$ nên $\\cos x < 0$.\n\n"\
+        HDG=f"Vì $x \\in {cung}$ nên $\\cos x < 0$.\n\n"\
                 f"$\\cos x=-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."  
         loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq2==kq2_F:
@@ -1441,7 +1441,7 @@ def ngh_kjg_L11_C1_B2_08():
         kq2_T=f"*$\\cos x={latex(cos_value)}$"
         kq2_F=f"$\\cos x={latex(-cos_value)}$"
         kq2=random.choice([kq2_T, kq2_F])
-        HDG=f"Vì $\\alpha \\in {cung}$ nên $\\cos x > 0$.\n\n"\
+        HDG=f"Vì $x \\in {cung}$ nên $\\cos x > 0$.\n\n"\
                 f"$\\cos x=\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."  
         loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq2==kq2_F:
@@ -3085,14 +3085,14 @@ def ngh_kjg_L11_C1_B3_13():
             sin_value_latex=latex(sin_value)
 
 
-        noi_dung = f"Cho $\\sin x={sin_value_latex}, x\\in {cung}$. Xét tính đúng-sai của các khẳng định sau."
+        noi_dung = f"Cho $\\sin {x}={sin_value_latex}, {x}\\in {cung}$. Xét tính đúng-sai của các khẳng định sau."
         debai_word= f"{noi_dung}\n"      
 
         kq1_T=f"*$\\cos {x}={cos_value_latex}$"
         kq1_F=f"$\\cos {x}={latex(cos_value_false)}$"
         kq1=random.choice([kq1_T, kq1_F])
-        HDG=f"Vì $x \\in {cung}$ nên $\\cos x < 0$.\n\n"\
-                f"$\\cos x =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."  
+        HDG=f"Vì ${x} \\in {cung}$ nên $\\cos {x} < 0$.\n\n"\
+                f"$\\cos {x} =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."  
         loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
         if kq1==kq1_F:
             loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"  

@@ -773,9 +773,9 @@ def ui5io_L11_C7_B2_11():
 def ui5io_L11_C7_B2_12():
     #Tạo bậc ngẫu nhiên
     x=sp.symbols("x")
-    k=random.randint(2,5)
+    k=random.randint(2,4)
     a = [random.choice([random.randint(-5,-1),random.randint(1,5)]) for i in range(k)]
-    m = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+    m = random.choice([random.randint(-4, -2), random.randint(2, 4)])
     f = sum(a[i]* x**i for i in range(k)) 
     g = m*exp(x)
     kq= diff(f, x) + g
@@ -4268,8 +4268,8 @@ def ui5io_L11_C7_B3_01():
 
     kq= f"$y={latex(f_dh*(x-x_0)+y_0)}$"
     kq2=f"$y={latex(f_dh*(x+x_0)+y_0)}$"
-    kq3=f"$y={latex(f_dh*x-y_0)}$"
-    kq4=f"$y={latex(x-x_0+y_0)}$"
+    kq3=f"$y={latex(f_dh*x+y_0)}$"
+    kq4=f"$y={latex((f_dh+random.randint(1,2))*x)}$"
 
     #Tạo các phương án
     pa_A= f"*{kq}"
@@ -4321,8 +4321,9 @@ def ui5io_L11_C7_B3_02():
 
     kq= f"$y={latex(f_dh*(x-x_0)+y_0)}$"
     kq2=f"$y={latex(f_dh*(x+x_0)+y_0)}$"
-    kq3=f"$y={latex(f_dh*x-y_0)}$"
-    kq4=f"$y={latex(x-x_0+y_0)}$"
+    kq3=f"$y={latex(f_dh*x+y_0)}$"
+    kq4=f"$y={latex((f_dh+random.randint(1,2))*x)}$"
+
 
     #Tạo các phương án
     pa_A= f"*{kq}"

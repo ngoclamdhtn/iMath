@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 12.05.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.06.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 12.05.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.06.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -13611,7 +13611,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C8_B4_10]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_10()
 
-                                                                    #[D11_C8_B4_12]-M3. L.trụ đứng tam giác có 3 cạnh. Tính khoảng cách cạnh bên và cạnh đáy
+                                            #[D11_C8_B4_12]-M3. L.trụ đứng tam giác có 3 cạnh. Tính khoảng cách cạnh bên và cạnh đáy
                                             if dang_toan == "[D11_C8_B4_12]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_12()
 

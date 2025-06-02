@@ -2523,9 +2523,9 @@ def mjulk_L10_C9_B2_35():
 
     c= k*(k-1)
 
-    kq4_T=f"*Xác suất để hai số ghi trên hai thẻ đều là số nguyên tố là ${{{phan_so(c/a)}}}$ "
+    kq4_T=f"*Xác suất để hai số ghi trên hai thẻ đều là số nguyên tố là ${{{phan_so(c/a)}}}$"
     kq4_F=f"Xác suất để hai số ghi trên hai thẻ đều là số nguyên tố là " 
-    kq3_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
+    kq4_F+=random.choice([f"${{{phan_so(c/(a-1))}}}$ ",   f"${{{phan_so(c/(a-2))}}}$ "
         ,f" ${{{phan_so(c/(a+4))}}}$",f" ${{{phan_so(c/(a+1))}}}$",f" ${{{phan_so(c/(a+2))}}}$" ,
         f" ${{{phan_so(c/(a+3))}}} $",f" ${{{phan_so(c/(a-3))}}}$",f" ${{{phan_so(c/(a+5))}}} $",f" ${{{phan_so(c/(a-4))}}}$",f" ${{{phan_so(c/(a+6))}}}$ "]) 
     kq4=random.choice([kq4_T, kq4_F])
