@@ -5617,7 +5617,7 @@ def uvxy9_L11_C8_B4_07():
 	chon=random.randint(1,3)
 
 	if chon==1:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{A1}}}$ và ${{{B1}{C1}}}$.")
 		kq= f"${{{AB}a}}$"
 		kq2= f"${{{AD}a}}$"
@@ -5627,7 +5627,7 @@ def uvxy9_L11_C8_B4_07():
 		noi_dung_loigiai=thay_hinh_hoc(f"Ta có: ${A1}{B1}\\bot {B1}{C1}, {A1}{B1}\\bot S{A1} \\Rightarrow d(S{A1},{B1}{C1})={A1}{B1}={AB}a$.")
 	
 	if chon==2:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{A1}}}$ và ${{{C1}{D1}}}$.")
 		kq= f"${{{AD}a}}$"
 		kq2= f"${{{AB}a}}$"
@@ -5638,7 +5638,7 @@ def uvxy9_L11_C8_B4_07():
 
 	
 	if chon==3:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{A1}}}$ và ${{{B1}{D1}}}$.")
 		d=(AB*AD)/sqrt(AB**2+AD**2)
 		kq= f"${{{latex(d)}a}}$"
@@ -5705,7 +5705,7 @@ def uvxy9_L11_C8_B4_08():
 	chon=random.randint(1,4)
 	
 	if chon==1:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{B1}}}$ và ${{{A1}{D1}}}$.")
 		d=(SA*AB)/sqrt(SA**2+AB**2)
 		d1=(SA*AD)/sqrt(SA**2+AD**2)
@@ -5721,7 +5721,7 @@ def uvxy9_L11_C8_B4_08():
 			f"\\Rightarrow d({A1},(S{B1}{C1}))={A1}H=\\dfrac{{{latex(SA)}a.{AB}a}}{{\\sqrt{{{SA**2}a^2+{AB**2}a^2}} }}={latex(d)}a$.")
 
 	if chon==2:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{D1}}}$ và ${{{A1}{B1}}}$.")
 		d=(SA*AD)/sqrt(SA**2+AD**2)
 		d1=(SA*AB)/sqrt(SA**2+AB**2)
@@ -5737,7 +5737,7 @@ def uvxy9_L11_C8_B4_08():
 			f"\\Rightarrow d({A1},(S{C1}{D1}))={A1}H=\\dfrac{{{latex(SA)}a.{AD}a}}{{\\sqrt{{{SA**2}a^2+{AD**2}a^2}} }}={latex(d)}a$.")
 	
 	if chon==3:		
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{C1}}}$ và ${{{A1}{D1}}}$.")
 		d=(SA*AB)/sqrt(SA**2+AB**2)
 		d1=(SA*AD)/sqrt(SA**2+AD**2)
@@ -5753,7 +5753,7 @@ def uvxy9_L11_C8_B4_08():
 			f"\\Rightarrow d({A1},(S{B1}{C1}))={A1}H=\\dfrac{{{latex(SA)}a.{AB}a}}{{\\sqrt{{{SA**2}a^2+{AB**2}a^2}} }}={latex(d)}a$.")
     
 	if chon==4:
-		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
+		noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD), {A1}{B1}={AB}a, {A1}{D1}={AD}a,S{A1}={latex(SA)}a$."\
 			f" Tính khoảng cách giữa các đường thẳng ${{S{C1}}}$ và ${{{A1}{B1}}}$.")
 		d=(SA*AD)/sqrt(SA**2+AD**2)
 		d1=(SA*AB)/sqrt(SA**2+AB**2)

@@ -121,6 +121,11 @@ def frac_to_dfrac(st):
     return ketqua
 
 #Trả về dạng phân số 
+def phan_so(t):
+    m=latex(Rational(t).limit_denominator(100000000000))
+    return m
+
+#Trả về dạng phân số 
 def hien_phan_so(t):
     m=Rational(t).limit_denominator(100000000000)
     return m
@@ -1335,7 +1340,7 @@ def codelatex_bbt_phanthucbac2(a,b,c,d,e):
     equation=Eq(g,0)
     tap_nghiem=solve(equation,x)
     if "I" in str(tap_nghiem[0]):  
-        if a>0:
+        if a*d>0:
             code =f"\\documentclass[border=2pt]{{standalone}}\n\
     \\usepackage{{tkz-tab,tikz}}\n\
     \\usetikzlibrary{{calc,intersections,patterns}}\n\
@@ -1379,7 +1384,7 @@ def codelatex_bbt_phanthucbac2(a,b,c,d,e):
             y_1=latex(y_1)
             y_2=latex(y_2)
 
-        if a>0:
+        if a*d>0:
             code =f"\\documentclass[border=2pt]{{standalone}}\n\
     \\usepackage{{tkz-tab,tikz}}\n\
     \\usetikzlibrary{{calc,intersections,patterns}}\n\
@@ -1440,9 +1445,9 @@ def codelatex_bbt_bac3_2nghiem(a,x_1,x_2,y_1,y_2):
             \\begin{{tikzpicture}}\n \
             \\tkzTabInit[nocadre=false, lgt=1, espcl=2] \n \
             {{$x$ /0.7,$y'$ /0.7,$y$ /1.7}}\n \
-            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            {{$-\\infty$,${phan_so(x_1)}$,${phan_so(x_2)}$,$+\\infty$}}\n \
             \\tkzTabLine{{,+,0,-,0,+,}} \n \
-            \\tkzTabVar{{-/$-\\infty$ ,+/ ${y_1}$, -/ ${y_2}$ /, +/$+\\infty$ /}} \n\
+            \\tkzTabVar{{-/$-\\infty$ ,+/ ${phan_so(y_1)}$, -/ ${phan_so(y_2)}$ /, +/$+\\infty$ /}} \n\
             \\end{{tikzpicture}}\n \
             \\end{{document}}\n"
     else:
@@ -1453,9 +1458,9 @@ def codelatex_bbt_bac3_2nghiem(a,x_1,x_2,y_1,y_2):
             \\begin{{tikzpicture}}\n \
             \\tkzTabInit[nocadre=false, lgt=1, espcl=2] \n \
             {{$x$ /0.7,$y'$ /0.7,$y$ /1.7}}\n \
-            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            {{$-\\infty$,${phan_so(x_1)}$,${phan_so(x_2)}$,$+\\infty$}}\n \
             \\tkzTabLine{{,-,0,+,0,-,}} \n \
-            \\tkzTabVar{{+/$+\\infty$ ,-/ ${y_1}$, +/ ${y_2}$ /, -/$-\\infty$ /}} \n\
+            \\tkzTabVar{{+/$+\\infty$ ,-/ ${phan_so(y_1)}$, +/ ${phan_so(y_2)}$ /, -/$-\\infty$ /}} \n\
             \\end{{tikzpicture}}\n \
             \\end{{document}}\n"
     return code
@@ -1467,7 +1472,7 @@ def code_bbt_bac3_2nghiem(a,x_1,x_2,y_1,y_2):
             {{$x$ /0.7,$y'$ /0.7,$y$ /1.7}}\n \
             {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
             \\tkzTabLine{{,+,0,-,0,+,}} \n \
-            \\tkzTabVar{{-/$-\\infty$ ,+/ ${y_1}$, -/ ${y_2}$ /, +/$+\\infty$ /}} \n\
+            \\tkzTabVar{{-/$-\\infty$ ,+/ ${phan_so(y_1)}$, -/ ${phan_so(y_2)}$ /, +/$+\\infty$ /}} \n\
             \\end{{tikzpicture}}\n"         
     else:
             code = f"\\begin{{tikzpicture}}\n \
@@ -1475,7 +1480,7 @@ def code_bbt_bac3_2nghiem(a,x_1,x_2,y_1,y_2):
             {{$x$ /0.7,$y'$ /0.7,$y$ /1.7}}\n \
             {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
             \\tkzTabLine{{,-,0,+,0,-,}} \n \
-            \\tkzTabVar{{+/$+\\infty$ ,-/ ${y_1}$, +/ ${y_2}$ /, -/$-\\infty$ /}} \n\
+            \\tkzTabVar{{+/$+\\infty$ ,-/ ${phan_so(y_1)}$, +/ ${phan_so(y_2)}$ /, -/$-\\infty$ /}} \n\
             \\end{{tikzpicture}}\n"
 
     return code
