@@ -3472,7 +3472,7 @@ def ngh_kjg_L11_C1_B4_03():
 
 #[D11_C1_B4_04]. Tìm GTLN,GTNN của hàm số sin, cos
 def ngh_kjg_L11_C1_B4_04():
-    a = random.randint(-10,10)
+    a = random.choice([i for i in range(-10, 10) if i!=0 and i!=1])
     b = random.choice([-10,10])
     m = random.choice([2,5])
     dau=""
@@ -5863,4 +5863,66 @@ def ngh_kjg_L11_C1_B5_18():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C1_B5_19]-M2. Giải phương trình tan(ax+b)=m
+def ngh_kjg_L11_C1_B5_19():
+    x=sp.symbols("x")    
+    a=random.randint(2,6)
+    while True:
+        b=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6, -pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4])
+        m=random.choice([0,1,-1,sqrt(3),sqrt(3)/3])
+        x_0=atan(m)
+        if x_0-b !=0:
+            break
+    
+    noi_dung = f"Nghiệm của phương trình $\\tan \\left({latex(a*x+b)}\\right)={latex(m)}$ là"
+    
+
+    kq=random.choice([f"$x={latex((x_0-b)/a)}+k\\pi, k \\in \\mathbb{{Z}}$"])
+    kq_false=[
+    f"$x={latex((x_0-b)/a)}+k2\\pi, k \\in \\mathbb{{Z}}$ ",
+    f"$x={latex((x_0-b)/a)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k\\pi, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k\\2pi, k \\in \\mathbb{{Z}}$",
+
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f" $\\tan \\left({latex(a*x+b)}\\right)={latex(m)}\\Leftrightarrow {latex(a*x+b)}={latex(x_0)}+k\\pi$\n\n"
+    f" $\\Leftrightarrow x={latex((x_0-b)/a)}+k\\pi,k \\in \\mathbb{{Z}}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
