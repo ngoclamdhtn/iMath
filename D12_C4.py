@@ -10792,3 +10792,156 @@ def ckz_L12C4_B5_36():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n \\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n}}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_37]-TF-M3. Cho đường gấp khúc. Xét Đ-S: tích phân các đoạn, diện tích
+def ckz_L12C4_B5_37():
+    x=sp.symbols("x")
+    x_1=random.randint(-4,-1)
+    x_2=x_1+random.randint(1,3)
+    x_3=x_2+random.randint(1,2)
+    x_4=2*x_3-x_2
+    y_1=random.randint(1,3)
+    y_4=-y_1
+
+    st=""
+    for i in range(x_1,x_4+1):
+        if all([i!=0, i!=x_4]):
+            st+=f"{i},"
+
+    code_hinh=f" \\begin{{tikzpicture}}[scale=1,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\tikzset{{label style/.style={{font=\\footnotesize}}}}\n\
+            \\def \\xmin{{{x_1-0.5}}}\\def \\xmax{{{x_4+0.5}}}\\def \\ymin{{{y_4-0.5}}}\\def \\ymax{{{y_1+1}}}\n\
+            \\draw[->] (\\xmin,0)--(\\xmax,0) node[shift=(-90:0.25)] {{$x$}};\n\
+            \\draw[->] (0,\\ymin)--(0,\\ymax) node[shift=(0:0.25)] {{$y$}};\n\
+            \\foreach \\x in {{{st}}}\n\
+            \\fill[black] (\\x,0) node[below]{{$\\x$}}circle(1pt);\n\
+            \\fill[black]\n\
+            (0,0) node [below left]{{$O$}} circle(1pt)\n\
+            ({x_4},0)node [above]{{${x_4}$}} circle(1pt)\n\
+            (0,{y_4})node [left]{{${y_4}$}} circle(1pt)\n\
+            (0,{y_1})node [above left]{{${y_1}$}} circle(1pt)\n\
+            ;\n\
+            \\draw[dashed] ({x_4},0)|-(0,{y_4}) ({x_1},0)--({x_1},{y_1}) ({x_2},0)--({x_2},{y_1});\n\
+            \\draw[thick] ({x_1},{y_1})node[above]{{$A$}}--({x_2},{y_1})node[above]{{$B$}}--({x_4},{y_4})node[below]{{$C$}};\n\
+        \\end{{tikzpicture}} "
+    if x_4+0.5<=0:
+        code_hinh=f" \\begin{{tikzpicture}}[scale=1,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\tikzset{{label style/.style={{font=\\footnotesize}}}}\n\
+            \\def \\xmin{{{x_1-0.5}}}\\def \\xmax{{1.5}}\\def \\ymin{{{y_4-0.5}}}\\def \\ymax{{{y_1+1}}}\n\
+            \\draw[->] (\\xmin,0)--(\\xmax,0) node[shift=(-90:0.25)] {{$x$}};\n\
+            \\draw[->] (0,\\ymin)--(0,\\ymax) node[shift=(0:0.25)] {{$y$}};\n\
+            \\foreach \\x in {{{st}}}\n\
+            \\fill[black] (\\x,0) node[below]{{$\\x$}}circle(1pt);\n\
+            \\fill[black]\n\
+            (0,0) node [below left]{{$O$}} circle(1pt)\n\
+            ({x_4},0)node [above]{{${x_4}$}} circle(1pt)\n\
+            (0,{y_4})node [left]{{${y_4}$}} circle(1pt)\n\
+            (0,{y_1})node [above left]{{${y_1}$}} circle(1pt)\n\
+            ;\n\
+            \\draw[dashed] ({x_4},0)|-(0,{y_4}) ({x_1},0)--({x_1},{y_1}) ({x_2},0)--({x_2},{y_1});\n\
+            \\draw[thick] ({x_1},{y_1})node[above]{{$A$}}--({x_2},{y_1})node[above]{{$B$}}--({x_4},{y_4})node[below]{{$C$}};\n\
+        \\end{{tikzpicture}} "
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+    noi_dung = (
+    f"Đường gấp khúc ${{ABC}}$ trong hình bên là đồ thị của hàm số $y=f(x)$ trên đoạn ${{[{x_1};{x_4}]}}$. Xét tính đúng-sai của các khẳng định sau. "
+    )
+
+    solve1=integrate(y_1,(x,x_1,x_2))
+    solve1_f= integrate(y_1,(x,x_1,x_2))+random.randint(1,3)  
+    
+    kq1_T=f"* Tích phân ${tphan(x_1,x_2)} f(x)dx$ bằng ${{{solve1}}}$" 
+    kq1_F=f"Tích phân ${tphan(x_1,x_2)} f(x)dx$ bằng ${{{solve1_f}}}$"
+    
+    HDG=f"${tphan(x_1,x_2)} f(x)dx = {tphan(x_1,x_2)} {y_1}dx={solve1}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    solve2=1/2*(x_3-x_2)*y_1
+    solve2_f= 1/2*(x_3-x_2)*y_1+random.randint(1,3) 
+
+    kq2_T=f"* Tích phân ${tphan(x_2,x_3)} f(x)dx$ bằng ${{{phan_so(solve2)}}}$"
+    kq2_F=f"Tích phân ${tphan(x_2,x_3)} f(x)dx$ bằng ${{{phan_so(solve2_f)}}}$"
+    
+    HDG=f"${tphan(x_2,x_3)} f(x)dx = {phan_so(1/2)}.{x_3-x_2}.{y_1}={phan_so(solve2)}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    kq3_T=f"* Tích phân ${tphan(x_2,x_4)} f(x)dx$ bằng ${{{phan_so(2*solve2)}}}$" 
+    kq3_F=f" Tích phân ${tphan(x_2,x_4)} f(x)dx$ bằng ${{{phan_so(2*solve2+random.randint(1,2))}}}$"
+    
+    HDG=f"${tphan(x_2,x_4)} f(x)dx = 2.{tphan(x_2,x_3)}f(x)d(x)={phan_so(2*solve2)}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    S=solve1+2*solve2
+
+    kq4_T=f"* Diện tích hình phẳng giới hạn bởi đồ thị $y=f(x)$, trục Ox, các đường thẳng $x={x_1},x={x_4}$ bằng ${phan_so(S)}$"
+    kq4_F=f"Diện tích hình phẳng giới hạn bởi đồ thị $y=f(x)$, trục Ox, các đường thẳng $x={x_1},x={x_4}$ bằng ${phan_so(S+random.randint(1,3))}$" 
+    
+    HDG=f"$S={tphan(x_1,x_2)}f(x)+2{tphan(x_2,x_3)}f(x)dx={phan_so(solve1)}+2.{phan_so(solve2)}={phan_so(S)}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n\n"\
+
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an

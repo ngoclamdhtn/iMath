@@ -9227,3 +9227,66 @@ def htd_25_xyz_L12_C5_B2_41():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B2_42]-SA-M3. Bài toán thực tế: Tìm điểm thỏa mãn AB+BC+AC min
+def htd_25_xyz_L12_C5_B2_42():
+    a=random.randint(1,10)
+    b=random.randint(1,10)    
+    while True:
+        c=random.randint(1,10)
+        z_0=random.randint(5,20)
+        if z_0>c:
+            break
+    ptd=f"\\left\\{{ \\begin{{array}}{{l}}\
+x = 0\\\\ \
+y = t\\\\\
+z = {z_0}\
+\\end{{array}} \\right."
+
+    noi_dung = (
+    f"Đường ống dẫn dầu trên không là hệ thống đường ống được treo trên các giá đỡ hoặc cột cao, dùng để vận chuyển dầu thô hoặc các sản phẩm dầu mỏ từ nơi này đến nơi khác mà không cần chôn dưới lòng đất. Hệ thống này thường được sử dụng trong các khu vực có địa hình khó khăn, vùng băng giá, rừng rậm..., những nơi mà việc đào đường ống ngầm không khả thi."
+    f" Với hệ trục tọa độ ${{(Oxyz)}}$ thích hợp, mặt đất là mặt phẳng ${{(Oxy)}}$, đơn vị trên mỗi trục là mét, người ta thiết lập một đường ống dẫn dầu trên không dọc theo đường thẳng $d:{ptd}$."
+    f" Vì địa hình phức tạp, người ta chọn điểm  ${{A({a};{b};{c})}}$ để làm điểm trung chuyển dầu từ mặt đất đến đường ống này."
+    f" Do thực tế công việc, người ta cần xác định vị trí điểm $B(0;b;{z_0})$ thuộc đường ống và vị trí điểm $C(m;n;0)$ thuộc mặt đất sao cho tổng độ dài các đoạn đường ${{AB,BC,CA}}$ là nhỏ nhất. Tính m+n+b (kết quả làm tròn đến hàng phần mười)." )
+    
+
+    pt_A1B=f"\\left\\{{ \\begin{{array}}{{l}}\
+x = {-a}t\\\\ \
+y = {b}\\\\\
+z = {z_0}+{z_0+c}t\
+\\end{{array}} \\right."
+    t_0=-z_0/(z_0+c)
+    x_C, y_C, z_C = -a*t_0, b, 0
+    dap_an=f"{round_half_up(x_C+y_C+b,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi ${{A'}}$ là điểm đối xứng với điểm ${{A}}$ qua mặt phẳng $(Oxy)$. Suy ra $A'({a};{b};{-c})$.\n\n"
+    f"Ta có: $AB+BC+AC=AB+BC+A'C \\ge AB+A'B$.\n\n"
+    f"Vì ${{A}}$ cố định nên $AB_{{min}}$ khi $AB\\bot d$.\n\n"
+    f"Tương tự: $A'B_{{min}}$ khi $A'B\\bot d$. Suy ra $d \\bot (AA'B)$.\n\n"
+    f"d có véctơ chỉ phương ${vec("j")}=(0;1;0)$.\n\n"
+    f"${vec2("A","B")}=({-a};b-{b};{z_0})$.\n\n"
+    f"Từ ${vec2("A","B")}.{vec("j")}=0 \\Rightarrow b={b}$.\n\n"
+    f"Ta có: $C=A'B \\cap (Oxy)$.\n\n"
+
+    f"${vec2("A'","B")}=({-a};0;{z_0+c})$.\n\n"
+    f"Phương trình đường thẳng ${{A'B}}$ là:\n\n"
+    f"${pt_A1B}$\n\n"
+    f"Phương trình $(Oxy):z=0$.\n\n"
+    f"Suy ra: ${z_0}+{z_0+c}t=0\\Rightarrow t={phan_so(t_0)}$.\n\n"
+    f"Do đó: $C({phan_so(x_C)}; {phan_so(y_C)}; 0)$.\n\n"
+
+    f"Vậy: $m+n+b={phan_so(x_C)}+{b}+{b}={phan_so(x_C+2*b)}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

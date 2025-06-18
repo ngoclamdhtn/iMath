@@ -8446,6 +8446,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_37]-TF-M3. Cho đường gấp khúc. Xét Đ-S: tích phân các đoạn, diện tích"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["Trả lời ngắn"])
                 L12_C4_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8882,6 +8886,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_30]-SA-M3. Tìm đường thẳng đi qua điểm, cắt đường thẳng khác và song song mặt phẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_42]-SA-M3. Bài toán thực tế: Tìm điểm thỏa mãn AB+BC+AC min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10971,6 +10979,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_36]-SA-M3.  Tính diện tích cánh hoa trong hình vuông
                                             if dang_toan == "[D12_C4_B5_36]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_36()
+
+                                            #[D12_C4_B5_37]-TF-M3. Cho đường gấp khúc. Xét Đ-S: tích phân các đoạn, diện tích
+                                            if dang_toan == "[D12_C4_B5_37]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_37()
                                                 
 
                                             ##################################################################
@@ -11328,6 +11340,10 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B2_41]-SA-M2.  Tìm góc giữa đường bay và sân bay
                                             if dang_toan == "[D12_C5_B2_41]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_41()
+
+                                            #[D12_C5_B2_42]-SA-M2.  Bài toán thực tế: Tìm điểm thỏa mãn AB+BC+AC min
+                                            if dang_toan == "[D12_C5_B2_42]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_42()
                                                 
 
                                         #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
