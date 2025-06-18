@@ -4514,6 +4514,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_19]-M2. Giải phương trình tan(ax+b) = m"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_20]-M2. Giải phương trình cot(ax+b) = m"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_08]-M3. Giải phương trình cos(ax+m)=cos(bx+n)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -4569,6 +4577,23 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_15]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của tanu=m"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_21]-SA-M3. Tìm số nghiệm của  cosax - sinbx = 0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                #Lớp 11 - Chương1 - Bài 6 - Bài toán thực tế
+                L11_C1_B6 = QTreeWidgetItem(L11_C1, ["Bài 6-Bài toán thực tế"])
+                L11_C1_B6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C1_B6.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C1_B6_3 = QTreeWidgetItem(L11_C1_B6, ["Trả lời ngắn"])
+                L11_C1_B6_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C1_B6_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B6_3, ["[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11963,6 +11988,24 @@ class Ui_MainWindow(object):
                                             #[D11_C1_B5_18]-TF-M3. Cho tanax=m. Xét Đ-S: tanax=tanv, tập nghiệm, số nghiệm thuộc khoảng, tổng các nghiệm thuộc đoạn
                                             if dang_toan == "[D11_C1_B5_18]": 
                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B5_18()
+
+                                            #[D11_C1_B5_19]-M2. Giải phương trình tan(ax+b)=m
+                                            if dang_toan == "[D11_C1_B5_19]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_19()
+
+                                            #[D11_C1_B5_20]-M2. Giải phương trình cot(ax+b)=m
+                                            if dang_toan == "[D11_C1_B5_20]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_20()
+
+                                            #[D11_C1_B5_21]-SA-M2. Số nghiệm của  cosax - sinbx=0
+                                            if dang_toan == "[D11_C1_B5_21]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_21()
+
+                                            #Bài 6: Bài toán thực tế lượng giác 
+
+                                            #[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin
+                                            if dang_toan == "[D11_C1_B6_01]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B6_01()
                                             
 
                                 ######### Toán 11_ Chương 2 _ Dãy số _ Cấp số cộng _ Cấp số nhân ########

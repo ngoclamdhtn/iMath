@@ -5882,8 +5882,10 @@ def ngh_kjg_L11_C1_B5_19():
     kq_false=[
     f"$x={latex((x_0-b)/a)}+k2\\pi, k \\in \\mathbb{{Z}}$ ",
     f"$x={latex((x_0-b)/a)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",
+    f"$x={latex((x_0-b)/a)}+k{latex(pi/4)}, k \\in \\mathbb{{Z}}$",
     f"$x={latex(x_0-b)}+k\\pi, k \\in \\mathbb{{Z}}$",
-    f"$x={latex(x_0-b)}+k\\2pi, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k2\\pi, k \\in \\mathbb{{Z}}$",
 
     ]
     random.shuffle(kq_false)
@@ -5894,6 +5896,7 @@ def ngh_kjg_L11_C1_B5_19():
     f" $\\tan \\left({latex(a*x+b)}\\right)={latex(m)}\\Leftrightarrow {latex(a*x+b)}={latex(x_0)}+k\\pi$\n\n"
     f" $\\Leftrightarrow x={latex((x_0-b)/a)}+k\\pi,k \\in \\mathbb{{Z}}$."
     )
+
 
     pa_A= f"*{kq}"
     pa_B= f"{kq2}"
@@ -5906,7 +5909,7 @@ def ngh_kjg_L11_C1_B5_19():
 
     debai= f"{noi_dung}\n"
 
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -5926,3 +5929,183 @@ def ngh_kjg_L11_C1_B5_19():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C1_B5_20]-M2. Giải phương trình cot(ax+b)=m
+def ngh_kjg_L11_C1_B5_20():
+    x=sp.symbols("x")    
+    a=random.randint(2,6)
+    while True:
+        b=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6, -pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4])
+        m=random.choice([1,-1,sqrt(3),sqrt(3)/3])
+        x_0=atan(m)
+        if x_0-b !=0:
+            break
+    
+    noi_dung = f"Nghiệm của phương trình $\\cot \\left({latex(a*x+b)}\\right)={latex(1/m)}$ là"
+    noi_dung=noi_dung.replace("1.0","1")
+    
+
+    kq=random.choice([f"$x={latex((x_0-b)/a)}+k\\pi, k \\in \\mathbb{{Z}}$"])
+    kq_false=[
+    f"$x={latex((x_0-b)/a)}+k2\\pi, k \\in \\mathbb{{Z}}$ ",
+    f"$x={latex((x_0-b)/a)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",
+    f"$x={latex((x_0-b)/a)}+k{latex(pi/4)}, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k\\pi, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",
+    f"$x={latex(x_0-b)}+k2\\pi, k \\in \\mathbb{{Z}}$",
+
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f" $\\cot \\left({latex(a*x+b)}\\right)={latex(1/m)}\\Leftrightarrow {latex(a*x+b)}={latex(x_0)}+k\\pi$\n\n"
+    f" $\\Leftrightarrow x={latex((x_0-b)/a)}+k\\pi,k \\in \\mathbb{{Z}}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("1.0","1")
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B5_21]-SA-M2. Số nghiệm của  cosax - sinbx=0
+def ngh_kjg_L11_C1_B5_21():
+
+    m=random.randint(3,10)
+    m1=latex(-m*pi)
+    m2=latex(m*pi)
+
+    while True:
+        a=random.randint(2,5)
+        b=random.randint(1,5)
+        if a>b:
+            break
+
+    noi_dung = (
+    f"Tìm số nghiệm thuộc khoảng ${{({m1};{m2})}}$ của phương trình $\\cos {a}x - \\sin {b}x=0$."
+    )
+    noi_dung=noi_dung.replace("1x","x")
+    
+    k1=(-2*m*(a+b)-1)/4
+    k2=(2*m*(a+b)-1)/4
+    dem_1=0
+    for i in range(int(k1-2),int(k2+2)):
+        if k1<i<k2:
+            dem_1+=1
+
+    k3=(-2*m*(a-b)+1)/4
+    k4=(2*m*(a-b)+1)/4
+    dem_2=0
+    for i in range(int(k3-2),int(k4+2)):
+        if k3<i<k4:
+            dem_2+=1
+
+    dap_an=dem_1+dem_2
+
+
+    noi_dung_loigiai=(
+    f"$\\cos {a}x - \\sin {b}x=0 \\Leftrightarrow \\cos {a}x=\\sin {b}x$\n\n"
+    f"$\\Leftrightarrow \\cos {a}x = \\cos ({latex(pi/2)}-{b}x)$\n\n"
+    f"$\\Leftrightarrow \\left[ \\begin{{array}}{{l}}\
+        {a}x = {latex(pi/2)}-{b}x + k2\\pi \\\\ \
+        {a}x = {b}x - {latex(pi/2)} + k2\\pi \
+        \\end{{array}} \\right.$\n\n"
+
+    f"$\\Leftrightarrow \\left[ \\begin{{array}}{{l}}\
+        {a+b}x = {latex(pi/2)} + k2\\pi \\\\ \
+        {a-b}x = - {latex(pi/2)} + k2\\pi \
+        \\end{{array}} \\right.$\n\n"
+
+    f"$\\Leftrightarrow \\left[ \\begin{{array}}{{l}}\
+        x = {latex(pi/(2*(a+b)))} + k{latex(2*pi/(a+b))} \\\\ \
+        x = - {latex(pi/(2*(a-b)))} + k{latex(2*pi/(a-b))} \
+        \\end{{array}} \\right.$\n\n"
+
+    f"TH1: ${m1}<{latex(pi/(2*(a+b)))} + k{latex(2*pi/(a+b))}< {m2}$\n\n"
+    f"$\\Rightarrow {phan_so(k1)} < k < {phan_so(k2)} $. Có {dem_1} số ${{k}}$ thỏa mãn.\n\n"
+
+    f"TH2: ${m1}<{latex(-pi/(2*(a-b)))} + k{latex(2*pi/(a-b))}< {m2}$\n\n"
+    f"$\\Rightarrow {phan_so(k3)} < k < {phan_so(k4)} $. Có {dem_2} số ${{k}}$ thỏa mãn.\n\n"
+
+    f"Vậy phương trình đã cho có tổng cộng {dap_an}."
+    )   
+    noi_dung_loigiai=noi_dung_loigiai.replace("1x","x") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin
+def ngh_kjg_L11_C1_B6_01():
+    
+    a = round(random.uniform(2.5, 3.5), 1)  # biên độ
+    b = random.randint(20, 90)             # pha
+    c = round(random.uniform(12.0, 14.0), 1)  # đường trung bình
+
+    noi_dung = (
+        f"Số giờ có ánh sáng mặt trời tại một địa phương được cho bởi hàm số:\n\n" \
+        f" $y={phan_so(a)}\\sin \\left[{latex(pi/180)}(x+{b})\\right]+{phan_so(c)}$, với $1 \\le x \\le 365$.\n\n" \
+        f" Hỏi ngày nào trong năm thì số giờ ánh sáng là lớn nhất?"
+    )
+
+    results = []
+    for k in range(-2, 2):  # kiểm tra vài giá trị k quanh 0 là đủ
+        x = 90 - b + 360 * k
+        if 1 <= x <= 365:
+            results.append(x)
+    dap_an=results[0]
+
+    x=sp.symbols("x")
+    noi_dung_loigiai=(
+    f"Số giờ ánh sáng là lớn nhất ứng với $\\sin \\left[{latex(pi/180)}(x+{b})\\right]=1$\n\n"
+    f"$\\Leftrightarrow {latex(pi/180)}(x+{b})={latex(pi/2)}+k2\\pi$\n\n"
+    f"$\\Leftrightarrow \\dfrac{{x+{b}}}{{180}}={phan_so(1/2)}+2k $\n\n"
+    f"$\\Leftrightarrow x={90-b}+360k, k \\in \\mathbb{{Z}}$.\n\n"
+    f"Ta được $k={k-1}$ và $x={results[0]}$ thỏa mãn."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
