@@ -6070,8 +6070,7 @@ def ngh_kjg_L11_C1_B5_21():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin
-def ngh_kjg_L11_C1_B6_01():
-    
+def ngh_kjg_L11_C1_B6_01():    
     a = round(random.uniform(2.5, 3.5), 1)  # biên độ
     b = random.randint(20, 90)             # pha
     c = round(random.uniform(12.0, 14.0), 1)  # đường trung bình
@@ -6079,7 +6078,7 @@ def ngh_kjg_L11_C1_B6_01():
     noi_dung = (
         f"Số giờ có ánh sáng mặt trời tại một địa phương được cho bởi hàm số:\n\n" \
         f" $y={phan_so(a)}\\sin \\left[{latex(pi/180)}(x+{b})\\right]+{phan_so(c)}$, với $1 \\le x \\le 365$.\n\n" \
-        f" Hỏi ngày nào trong năm thì số giờ ánh sáng là lớn nhất?"
+        f" Hỏi ngày nào trong năm thì số giờ ánh sáng của địa phương đó là lớn nhất?"
     )
 
     results = []
@@ -6096,6 +6095,120 @@ def ngh_kjg_L11_C1_B6_01():
     f"$\\Leftrightarrow \\dfrac{{x+{b}}}{{180}}={phan_so(1/2)}+2k $\n\n"
     f"$\\Leftrightarrow x={90-b}+360k, k \\in \\mathbb{{Z}}$.\n\n"
     f"Ta được $k={k-1}$ và $x={results[0]}$ thỏa mãn."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C1_B6_02]-SA-M2. Tìm nhiệt độ trung bình lớn nhất cho bởi hàm cos
+def ngh_kjg_L11_C1_B6_02():    
+    #Sinh đề bài ngẫu nhiên với hệ số a, b, c.
+    #Hàm cos đạt max khi cos(...) = 1, tức x = b + 360k
+    
+    a = round(random.uniform(6.0, 10.0), 1)    # biên độ
+    b = random.randint(150, 220)              # pha
+    c = round(random.uniform(20.0, 26.0), 1)   # trung bình
+
+    noi_dung = (
+        f"Nhiệt độ trung bình hàng ngày ở một địa phương trong năm được xấp xỉ bởi hàm số :\n\n" \
+        f" $y={phan_so(a)}\\cos \\left[{latex(pi/180)}(x-{b})\\right]+{phan_so(c)}$, với $1 \\le x \\le 365$.\n\n" \
+        f" Hỏi ngày nào trong năm nhiệt độ trung bình của địa phương đó là lớn nhất?")
+
+    results = []
+    for k in range(-2, 2):  # kiểm tra vài giá trị k quanh 0 là đủ
+        x = b + 360 * k
+        if 1 <= x <= 365:
+            results.append(x)
+    dap_an=results[0]
+
+    x=sp.symbols("x")
+    noi_dung_loigiai=(
+    f"Nhiệt độ trung bình là lớn nhất ứng với $\\cos \\left[{latex(pi/180)}(x-{b})\\right]=1$\n\n"
+    f"$\\Leftrightarrow {latex(pi/180)}(x-{b})=k2\\pi$\n\n"
+    f"$\\Leftrightarrow \\dfrac{{x-{b}}}{{180}}=2k $\n\n"
+    f"$\\Leftrightarrow x={b}+360k, k \\in \\mathbb{{Z}}$.\n\n"
+    f"Ta được $k={k-1}$ và $x={results[0]}$ thỏa mãn."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C1_B6_03]-SA-M2. Tìm độ dài ban đêm ngắn nhất bởi hàm cos
+def ngh_kjg_L11_C1_B6_03():    
+    #Sinh đề bài ngẫu nhiên với hệ số a, b, c.
+    #Hàm cos đạt max khi cos(...) = 1, tức x = b + 360k
+    
+    a = round(random.uniform(1.5, 3.5), 1)     # biên độ dao động
+    b = random.randint(20, 100)                # pha (lùi, tiến)
+    c = round(random.uniform(10.0, 12.0), 1)   # trung bình độ dài ban đêm
+
+    noi_dung = (
+        f"Độ dài ban đêm (tính bằng giờ) tại một địa phương trong năm được xấp xỉ bởi hàm số :\n\n" \
+        f" $y={phan_so(a)}\\cos \\left[{latex(pi/180)}(x+{b})\\right]+{phan_so(c)}$, với $1 \\le x \\le 365$.\n\n" \
+        f" Hỏi ngày nào trong năm độ dài ban đêm của địa phương đó là ngắn nhất?")
+
+    results = []
+    for k in range(-2, 2):  # kiểm tra vài giá trị k quanh 0 là đủ
+        x = 180 - b + 360*k
+        if 1 <= x <= 365:
+            results.append(x)
+    dap_an=results[0]
+
+    x=sp.symbols("x")
+    noi_dung_loigiai=(
+    f"Độ dài ban đêm là ngắn nhất ứng với $\\cos \\left[{latex(pi/180)}(x+{b})\\right]=-1$\n\n"
+    f"$\\Leftrightarrow {latex(pi/180)}(x+{b})=\\pi + k2\\pi$\n\n"
+    f"$\\Leftrightarrow \\dfrac{{x+{b}}}{{180}}=1+2k $\n\n"
+    f"$\\Leftrightarrow x=180-{b}+360k, k \\in \\mathbb{{Z}}$.\n\n"
+    f"Ta được $k={k-1}$ và $x={results[0]}$ thỏa mãn."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C1_B6_04]-SA-M2. Tìm số lượng thỏ lớn nhất.
+def ngh_kjg_L11_C1_B6_04():    
+    a = random.randint(300, 600)   # Giá trị trung bình của quần thể thỏ
+    b = random.randint(100, 300)   # Biên độ dao động
+    c = random.randint(0, 365)     # Độ trễ pha (ngày dịch chuyển)
+    noi_dung = (
+        f"Trong một khu vực đất rừng nhất định, số lượng thỏ ${{R}}$ tăng và giảm theo chu kỳ trong suốt cả năm. Biết số lượng thỏ có thể được mô hình hóa bởi hàm số:\n\n" \
+        f" $R={a}+{b}\\sin \\left[{latex(pi/365)}(d-{c})\\right]$.\n\n" \
+        f" Trong đó ${{d}}$ là ngày thứ ${{d}}$ trong năm. Tìm số lượng thỏ lớn nhất trong năm."
+    )
+    dap_an= a+b
+
+    x=sp.symbols("x")
+    noi_dung_loigiai=(
+    f"Số lượng thỏ lớn nhất ứng với $\\sin \\left[{latex(pi/180)}(d-{b})\\right]=1$\n\n"
+    f"Số lượng thỏ lớn nhất là: ${a}+{b}={dap_an}$"
     )    
         
     debai_word= f"{noi_dung}\n"

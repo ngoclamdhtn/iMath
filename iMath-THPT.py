@@ -4597,6 +4597,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C1_B6_3, ["[D11_C1_B6_02]-SA-M2. Tìm nhiệt độ trung bình lớn nhất cho bởi hàm cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B6_3, ["[D11_C1_B6_03]-SA-M2. Tìm độ dài ban đêm ngắn nhất cho bởi hàm cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B6_3, ["[D11_C1_B6_04]-SA-M2. Tìm số lượng thỏ lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
         #Lớp 11 - Chương 2 - Dãy số. Cấp số cộng. Cấp số nhân
@@ -12006,6 +12018,18 @@ class Ui_MainWindow(object):
                                             #[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin
                                             if dang_toan == "[D11_C1_B6_01]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B6_01()
+
+                                            #[D11_C1_B6_02]-SA-M2. Tìm nhiệt độ trung bình lớn nhất cho bởi hàm cos
+                                            if dang_toan == "[D11_C1_B6_02]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B6_02()
+
+                                            #[D11_C1_B6_03]-SA-M2. Tìm độ dài ban đêm ngắn nhất
+                                            if dang_toan == "[D11_C1_B6_03]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B6_03()
+
+                                            #[D11_C1_B6_04]-SA-M2. Tìm số lượng thỏ lớn nhất.
+                                            if dang_toan == "[D11_C1_B6_04]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B6_04()
                                             
 
                                 ######### Toán 11_ Chương 2 _ Dãy số _ Cấp số cộng _ Cấp số nhân ########
