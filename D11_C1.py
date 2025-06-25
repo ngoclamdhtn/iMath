@@ -735,6 +735,834 @@ def ngh_kjg_L11_C1_B1_12():
     dap_an=kq
     return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D11_C1_B1_13]-M1. Cho x. Tìm tất cả các góc có cùng điểm biểu diễn với x
+def ngh_kjg_L11_C1_B1_13():
+    x=random.choice([(random.randint(1,9)*pi)/random.randint(1,9), ])
+    noi_dung=(
+    f"Trên đường tròn lượng giác, cho góc lượng giác có số đo ${{{latex(x)}}}$ thì mọi góc lượng giác có cùng tia đầu và tia cuối với góc lượng giác trên đều có số đo dạng nào trong các dạng sau?"
+    )
+    
+
+    kq=f"${latex(x)}+k2\\pi, k\\in \\mathbb{{Z}}$"
+    kq_false=[f"${latex(x)}+k\\pi, k\\in \\mathbb{{Z}}$", 
+    f"${latex(x)}+k3\\pi, k\\in \\mathbb{{Z}}$", 
+    f"${latex(x)}+k4\\pi, k\\in \\mathbb{{Z}}$", 
+    f"${latex(x)}+\\dfrac{{k\\pi }}{{2}}, k\\in \\mathbb{{Z}}$",
+    f"${latex(x)}+\\dfrac{{k\\pi }}{{3}}, k\\in \\mathbb{{Z}}$",
+    f"${latex(x)}+\\dfrac{{k\\pi }}{{4}}, k\\in \\mathbb{{Z}}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"{kq} là khẳng định đúng." )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_14]-M1. Tìm tất cả các góc có cùng điểm biểu diễn với x và -x
+def ngh_kjg_L11_C1_B1_14():
+    x=random.choice([(random.randint(1,9)*pi)/random.randint(1,9), ])
+    noi_dung=(
+    f"Trên đường tròn lượng giác, cho các góc lượng giác ${{{latex(x)}}}$ và ${{{latex(-x)}}}$ có điểm biểu diễn lần lượt là ${{M}}$ và ${{N}}$."
+    f" Góc lượng giác nào sau đây cũng chỉ có đúng hai điểm biểu diễn là ${{M}}$ và ${{N}}$?"
+    )    
+
+    kq=f"${latex(x)}+k\\pi, k\\in \\mathbb{{Z}}$"
+    kq_false=[f"${latex(x)}+k2\\pi, k\\in \\mathbb{{Z}}$", 
+    f"${latex(x)}+k4\\pi, k\\in \\mathbb{{Z}}$", 
+    f"${latex(x)}+\\dfrac{{k\\pi }}{{2}}, k\\in \\mathbb{{Z}}$",
+    f"${latex(x)}+\\dfrac{{k\\pi }}{{3}}, k\\in \\mathbb{{Z}}$",
+    f"${latex(x)}+\\dfrac{{k\\pi }}{{4}}, k\\in \\mathbb{{Z}}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"{kq} là khẳng định đúng." )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_15]-M2. Tìm số điểm biểu diễn của góc dạng a+k2pi/n
+def ngh_kjg_L11_C1_B1_15():
+    t=random.randint(1,10)
+    x=t*pi/(t+random.randint(1,5))
+    n=random.randint(1,8)
+    ten_goc=random.choice(["x","a","\\alpha","\\beta" ])
+
+    noi_dung=(
+    f"Số điểm biểu diễn của góc ${ten_goc}={latex(x)}+k{latex(2*pi/n)}\\, (k\\in \\mathbb{{Z}})$ trên đường tròn lượng giác là"
+    )
+    
+
+    kq=n
+    kq_false=[i for i in range(10) if i != n and i!=0]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"góc lượng giác ${latex(x)}+k{latex(2*pi/n)}$ có ${{{n}}}$ điểm biểu diễn."
+    )
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_16]-M2. Tìm điểm biểu diễn ứng với 4 góc đặc biệt
+def ngh_kjg_L11_C1_B1_16():
+    code_hinh=f"\\begin{{tikzpicture}}[scale=.7,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\draw[fill=black](0,0) coordinate (O) node[below left]{{$O$}} circle (1.5pt) (2,0) coordinate (A) node[above right] {{$A$}} circle (1.5pt) (180:2) coordinate (A2) node [above left] {{$A'$}} circle (1.5 pt) (90:2) coordinate (B1) node [above right] {{$B$}} circle (1.5pt) (270:2) coordinate (B2) node [below left] {{$B'$}} circle (1.5pt);\n\
+            \\draw[very thick] (0,0) circle (2 cm);\n\
+            \\draw[->] (-3,0)--(3,0) node [below]{{$x$}};\n\
+            \\draw[->] (0,-3)--(0,3) node [left]{{$y$}};\n\
+            \\clip (-5,-5) rectangle (5,5);\n\
+    \\end{{tikzpicture}} "
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    
+    chon=random.randint(1,4)
+    if chon==1:
+        x=random.randint(1,4)*2*pi
+
+        kq="Điểm ${{A}}$"
+        kq_false=[
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",]
+    
+    if chon==2:
+        x=pi/2+random.randint(-2,3)*2*pi
+
+        kq="Điểm ${{B}}$"
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",        
+        "Điểm ${{B'}}$",]
+
+    if chon==3:
+        x=pi+random.randint(-2,3)*2*pi
+        kq="Điểm ${{A'}}$"
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{B}}$",               
+        "Điểm ${{B'}}$",]
+
+    if chon==4:
+        x=-pi/2+random.randint(-2,3)*2*pi
+        kq="Điểm ${{B'}}$",
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",               
+        ]
+
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung=(
+    f"Trong mặt phẳng tọa độ ${{Oxy}},$ cho đường tròn lượng giác như hình vẽ bên dưới. Tìm điểm biểu diễn của góc có số đo bằng ${latex(x)}$."
+    )
+
+    noi_dung_loigiai=(
+    f"Điểm biểu diễn của góc ${latex(x)}$ là {kq}.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_17]-M2. Tìm điểm biểu diễn trên hình ứng với các góc pi/4, -pi/4, 3pi/4, -3pi/4
+def ngh_kjg_L11_C1_B1_17():
+    a=pi/4
+    code_hinh=f" \\begin{{tikzpicture}}[scale=.7,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\draw[fill=black](0,0) coordinate (O) node[below left]{{$O$}} circle (1.5pt) (2,0) coordinate (A) (45:2) coordinate (M) node [above] {{$M$}} circle (1.5 pt) (135:2) coordinate (N) node [above] {{$N$}} circle (1.5pt) (225:2) coordinate (P) node [below left] {{$P$}} circle (1.5pt) (-45:2) coordinate (Q) node [below] {{$Q$}} circle (1.5pt);\n\
+            \\draw[very thick] (0,0) circle (2 cm);\n\
+            \\draw[->] (-3,0)--(3,0) node [below]{{$x$}};\n\
+            \\draw[->] (0,-3)--(0,3) node [left]{{$y$}};\n\
+            \\clip (-5,-5) rectangle (5,5);\n\
+    \\end{{tikzpicture}}" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    
+    chon=random.randint(1,4)
+    if chon==1:
+        x=a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{M}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{P}}$",
+        "Điểm ${{Q}}$", ]
+    
+    if chon==2:
+        x=-a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{Q}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(-a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{P}}$", ]
+
+    if chon==3:
+        x=pi-a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{N}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(pi-a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{P}}$",
+        "Điểm ${{Q}}$", ]
+
+    if chon==4:
+        x=a-pi+random.randint(-2,2)*2*pi
+        kq="Điểm ${{P}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(a-pi)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{Q}}$", ]       
+        
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung=(
+    f"Trong mặt phẳng tọa độ ${{Oxy}},$ cho đường tròn lượng giác như hình vẽ bên dưới. Điểm biểu diễn của góc có số đo bằng ${latex(x)}$ là điểm nào trong các điểm sau?"
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_18]-M2. Cho góc x có điểm biểu diễn M. Tìm góc có điểm biểu diễn đối xứng với M qua O.
+def ngh_kjg_L11_C1_B1_18():
+    t=random.randint(1,6)
+    x=t*pi/(t+random.randint(0,5))
+    M,N=random.sample(["M","N","P","Q","E"],2)
+    noi_dung=(
+    f"  Trong mặt phẳng tọa độ ${{Oxy}}$, trên đường tròn lượng giác gọi điểm ${{{M}}}$ là điểm biểu diễn của góc ${latex(x)}$. Lấy điểm ${{{N}}}$ đối xứng với ${{{M}}}$ qua gốc tọa độ. Hỏi ${{{N}}}$ là điểm biểu diễn của góc có số đo bằng bao nhiêu?"
+    )
+    
+
+    kq=random.choice([f"${latex(x+pi)}$"])
+    kq_false=[
+    f"${latex(-x)}$",
+    f"${latex(pi-x)}$",  
+    f"${latex(x+pi/2)}$",
+    f"${latex(x-pi/2)}$",
+    f"${latex(x+pi/3)}$",
+    f"${latex(x+pi/4)}$",
+    f"${latex(x+2*pi)}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${{{N}}}$ là điểm biểu diễn của góc ${latex(x)}+\\pi={latex(x+pi)}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_19]-M2. Cho góc x có điểm biểu diễn M. Tìm góc có điểm biểu diễn đối xứng với M qua trục Ox.
+def ngh_kjg_L11_C1_B1_19():
+    t=random.randint(1,6)
+    x=t*pi/(t+random.randint(1,5))
+    M,N=random.sample(["M","N","P","Q","E"],2)
+    noi_dung=(
+    f"  Trong mặt phẳng tọa độ ${{Oxy}}$, trên đường tròn lượng giác gọi điểm ${{{M}}}$ là điểm biểu diễn của góc ${latex(x)}$. Lấy điểm ${{{N}}}$ đối xứng với ${{{M}}}$ qua trục ${{Ox}}$. Hỏi ${{{N}}}$ là điểm biểu diễn của góc có số đo bằng bao nhiêu?"
+    )
+    
+
+    kq=random.choice([f"${latex(-x)}$",])
+    kq_false=[
+    f"${latex(x+pi)}$",
+    f"${latex(pi-x)}$",  
+    f"${latex(x+pi/2)}$",
+    f"${latex(x-pi/2)}$",
+    f"${latex(x+pi/3)}$",
+    f"${latex(x+pi/4)}$",
+    f"${latex(x+2*pi)}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${{{N}}}$ là điểm biểu diễn của góc ${latex(-x)}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_20]-M2. Cho góc x có điểm biểu diễn M. Tìm góc có điểm biểu diễn đối xứng với M qua trục Oy.
+def ngh_kjg_L11_C1_B1_20():
+    t=random.randint(1,6)
+    x=t*pi/(t+random.randint(1,3))
+    M,N=random.sample(["M","N","P","Q","E"],2)
+    noi_dung=(
+    f"  Trong mặt phẳng tọa độ ${{Oxy}}$, trên đường tròn lượng giác gọi điểm ${{{M}}}$ là điểm biểu diễn của góc ${latex(x)}$. Lấy điểm ${{{N}}}$ đối xứng với ${{{M}}}$ qua trục ${{Oy}}$. Hỏi ${{{N}}}$ là điểm biểu diễn của góc có số đo bằng bao nhiêu?"
+    )
+    
+
+    kq=random.choice([f"${latex(pi-x)}$",])
+    kq_false=[
+    f"${latex(x+pi)}$",
+    f"${latex(-x)}$",  
+    f"${latex(x+pi/2)}$",
+    f"${latex(x-pi/2)}$",
+    f"${latex(x+pi/3)}$",
+    f"${latex(x+pi/4)}$",
+    f"${latex(x+2*pi)}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${{{N}}}$ là điểm biểu diễn của góc ${latex(pi-x)}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_21]-M2. Tìm điểm biểu diễn trên hình ứng với các góc pi/6, 5pi/6, -pi/6, -5pi/6
+def ngh_kjg_L11_C1_B1_21():
+    a=pi/6
+    code_hinh=f" \\begin{{tikzpicture}}[scale=.7,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\draw[fill=black](0,0) coordinate (O) node[below left]{{$O$}} circle (1.5pt)\n\
+            (2,0) coordinate (A)\n\
+            (30:2) coordinate (M) node [above] {{$M$}} circle (1.5 pt)\n\
+            (150:2) coordinate (N) node [above] {{$N$}} circle (1.5pt)\n\
+            (-150:2) coordinate (P) node [below left] {{$P$}} circle (1.5pt)\n\
+            (-30:2) coordinate (Q) node [below] {{$Q$}} circle (1.5pt);\n\
+            \n\
+            \\draw[very thick] (0,0) circle (2 cm);\n\
+            \\draw[->] (-3,0)--(3,0) node [below]{{$x$}};\n\
+            \\draw[->] (0,-3)--(0,3) node [left]{{$y$}};\n\
+            \\draw[dashed] (O)--(M);\n\
+            \n\
+            % Vẽ cung góc và ký hiệu góc 30°\n\
+            \\draw[->, thin] (1,0) arc (0:30:1);\n\
+            \\node at (1.5,0.25) {{\\scriptsize $30^\\circ$}};\n\
+            \n\
+            \\clip (-5,-5) rectangle (5,5);\n\
+        \\end{{tikzpicture}} " 
+
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    
+    chon=random.randint(1,4)
+    if chon==1:
+        x=a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{M}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{P}}$",
+        "Điểm ${{Q}}$", ]
+    
+    if chon==2:
+        x=-a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{Q}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(-a)}$ là {kq}.")
+
+       
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{P}}$", ]
+
+    if chon==3:
+        x=pi-a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{N}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(pi-a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{P}}$",
+        "Điểm ${{Q}}$", ]
+
+    if chon==4:
+        x=a-pi+random.randint(-2,2)*2*pi
+        kq="Điểm ${{P}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(a-pi)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{Q}}$", ]       
+        
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung=(
+    f"Trong mặt phẳng tọa độ ${{Oxy}},$ cho đường tròn lượng giác như hình vẽ bên dưới. Điểm biểu diễn của góc có số đo bằng ${latex(x)}$ là điểm nào trong các điểm sau?"
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_22]-M2. Tìm điểm biểu diễn trên hình ứng với các góc pi/3, 2pi/3, -pi/3, -2pi/3
+def ngh_kjg_L11_C1_B1_22():
+    a=pi/3
+    code_hinh=f" \\begin{{tikzpicture}}[scale=.7,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n\
+            \\draw[fill=black](0,0) coordinate (O) node[below left]{{$O$}} circle (1.5pt)\n\
+            (2,0) coordinate (A)\n\
+            (60:2) coordinate (M) node [above] {{$M$}} circle (1.5 pt)\n\
+            (120:2) coordinate (N) node [above] {{$N$}} circle (1.5pt)\n\
+            (-120:2) coordinate (P) node [below left] {{$P$}} circle (1.5pt)\n\
+            (-60:2) coordinate (Q) node [below] {{$Q$}} circle (1.5pt);\n\
+            \n\
+            \\draw[very thick] (0,0) circle (2 cm);\n\
+            \\draw[->] (-3,0)--(3,0) node [below]{{$x$}};\n\
+            \\draw[->] (0,-3)--(0,3) node [left]{{$y$}};\n\
+            \\draw[dashed] (O)--(M);\n\
+            \n\
+            % Vẽ cung góc và ký hiệu góc 60°\n\
+            \\draw[->, thin] (1,0) arc (0:60:1);\n\
+            \\node at (1.5,0.25) {{\\scriptsize $60^\\circ$}};\n\
+            \n\
+            \\clip (-5,-5) rectangle (5,5);\n\
+        \\end{{tikzpicture}} " 
+
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    
+    chon=random.randint(1,4)
+    if chon==1:
+        x=a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{M}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{P}}$",
+        "Điểm ${{Q}}$", ]
+    
+    if chon==2:
+        x=-a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{Q}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(-a)}$ là {kq}.")
+
+       
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{P}}$", ]
+
+    if chon==3:
+        x=pi-a+random.randint(-2,2)*2*pi
+        kq="Điểm ${{N}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(pi-a)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{P}}$",
+        "Điểm ${{Q}}$", ]
+
+    if chon==4:
+        x=a-pi+random.randint(-2,2)*2*pi
+        kq="Điểm ${{P}}$"
+        noi_dung_loigiai=(
+        f"Điểm biểu diễn của góc ${latex(x)}$ trùng với điểm biểu diễn của góc ${latex(a-pi)}$ là {kq}.")
+
+        
+        kq_false=[
+        "Điểm ${{A}}$",
+        "Điểm ${{A'}}$",
+        "Điểm ${{B}}$",
+        "Điểm ${{B'}}$",
+        "Điểm ${{M}}$",
+        "Điểm ${{N}}$",
+        "Điểm ${{Q}}$", ]       
+        
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung=(
+    f"Trong mặt phẳng tọa độ ${{Oxy}},$ cho đường tròn lượng giác như hình vẽ bên dưới. Điểm biểu diễn của góc có số đo bằng ${latex(x)}$ là điểm nào trong các điểm sau?"
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B1_23]-M2. Tìm điểm biểu diễn các góc thường gặp
+def ngh_kjg_L11_C1_B1_23():
+    chon=random.randint(1,4)
+    if chon==1:
+        debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an=ngh_kjg_L11_C1_B1_16()
+    
+    if chon==2:
+        debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an=ngh_kjg_L11_C1_B1_17()
+
+    if chon==3:
+        debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an=ngh_kjg_L11_C1_B1_21()
+
+    if chon==4:
+        debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an=ngh_kjg_L11_C1_B1_22()
+
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    
+
+#BÀI 2 -  GIÁ TRỊ LƯỢNG GIÁC 
+
 #[D11_C1_B2_02]-TL-M2. Cho sinx (hoặc cosx), x thuộc (a;b). Tìm cosx (hoặc sinx)
 def ngh_kjg_L11_C1_B2_02():
     cung_I=random.choice([f"\\left( 0;{latex(pi/2)} \\right)", f"\\left( 2\\pi;{latex(5*pi/2)} \\right)"])
@@ -878,7 +1706,7 @@ def ngh_kjg_L11_C1_B2_03():
                 kq=str(round(tan_value,1)).replace(".",",")
 
                 noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha > 0$.\n\n"\
-                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}={kq}$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
                 f"$\\tan\\alpha={latex(sin_value)}:{phan_so(cos_value)}={kq}$.\n\n"\
                 f"Đáp án: {kq}"
 
@@ -887,7 +1715,7 @@ def ngh_kjg_L11_C1_B2_03():
                 kq=str(round(cot_value,1)).replace(".",",")
 
                 noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha > 0$.\n\n"\
-                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}={kq}$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
                 f"$\\cot\\alpha={latex(cos_value)}:{latex(sin_value)}={kq}$.\n\n"\
                 f"Đáp án: {kq}"
 
@@ -899,7 +1727,7 @@ def ngh_kjg_L11_C1_B2_03():
                 kq=str(round(tan_value,1)).replace(".",",")
 
                 noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha < 0$.\n\n"\
-                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}={kq}$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
                 f"$\\tan\\alpha={latex(sin_value)}:{latex(cos_value)}={kq}$.\n\n"\
                 f"Đáp án: {kq}"
 
@@ -908,7 +1736,7 @@ def ngh_kjg_L11_C1_B2_03():
                 kq=str(round(cot_value,1)).replace(".",",")
 
                 noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha < 0$.\n\n"\
-                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}={kq}$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
                 f"$\\cot\\alpha={latex(cos_value)}:{latex(sin_value)}={kq}$.\n\n"\
                 f"Đáp án: {kq}"   
            
@@ -2080,7 +2908,363 @@ def ngh_kjg_L11_C1_B2_10():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D11_C1_B2_11]-M1. Cho góc x (a<x<b). Tìm khẳng định đúng về dấu của GTLG
+def ngh_kjg_L11_C1_B2_11():
+    x=random.choice(["x","a", "\\alpha", "\\beta", "b" ])
+    cung_I=random.choice([f"\\left( 0;{latex(pi/2)} \\right)", f"\\left( 2\\pi;{latex(5*pi/2)} \\right)"])
+    cung_II=random.choice([f"\\left( {latex(pi/2)};\\pi \\right)", f"\\left( {latex(5*pi/2)};3\\pi \\right)", f"\\left( {latex(-3*pi/2)};{latex(-pi)} \\right)"])
+    cung_III=random.choice([f"\\left( \\pi;{latex(3*pi/2)} \\right)", f"\\left( {latex(3*pi)};{latex(7*pi/2)} \\right)", f"\\left( {latex(-pi)}; {latex(-pi/2)} \\right)"])
+    cung_IV=random.choice([f"\\left( {latex(3*pi/2)}; 2\\pi \\right)", f"\\left( {latex(7*pi/2)}; 4\\pi \\right)", f"\\left( {latex(-pi/2)}; 0 \\right)"])
+  
+    chon=random.randint(1,2)
+    if chon==1:
+        noi_dung=(f"Cho góc lượng giác ${{{x}}}$ thỏa mãn ${x}\\in {cung_I}$."
+        f" Khẳng định nào sau đây là khẳng định đúng.")
 
+        kq=random.choice([f"$\\sin {x} >0$ ", 
+            f"$\\cos {x} >0$ ",
+            f"$\\tan {x} >0$ ",
+            f"$\\cot {x} >0$ "])
+
+        kq_false=[f"$\\sin {x} <0$ ",
+        f"$\\cos {x} <0$ ",
+        f"$\\tan {x} <0$ ",
+        f"$\\cot {x} <0$ "]
+    
+    if chon==2:
+        noi_dung=(f"Cho góc lượng giác ${{{x}}}$ thỏa mãn ${x}\\in {cung_II}$."
+        f" Khẳng định nào sau đây là khẳng định đúng.")
+        
+        kq=random.choice([f"$\\sin {x} >0$ ", 
+            f"$\\cos {x} <0$ ",
+            f"$\\tan {x} <0$ ",
+            f"$\\cot {x} <0$ "])
+
+        kq_false=[f"$\\sin {x} <0$ ",
+        f"$\\cos {x} >0$ ",
+        f"$\\tan {x} >0$ ",
+        f"$\\cot {x} >0$ "]
+
+    if chon==3:
+        noi_dung=(f"Cho góc lượng giác ${{{x}}}$ thỏa mãn ${x}\\in {cung_III}$."
+        f" Khẳng định nào sau đây là khẳng định đúng.")
+        
+        kq=random.choice([f"$\\sin {x} <0$ ", 
+            f"$\\cos {x} <0$ ",
+            f"$\\tan {x} >0$ ",
+            f"$\\cot {x} >0$ "])
+
+        kq_false=[f"$\\sin {x} >0$ ",
+        f"$\\cos {x} >0$ ",
+        f"$\\tan {x} <0$ ",
+        f"$\\cot {x} <0$ "]
+
+    if chon==4:
+        noi_dung=(f"Cho góc lượng giác ${{{x}}}$ thỏa mãn ${x}\\in {cung_IV}$."
+        f" Khẳng định nào sau đây là khẳng định đúng.")
+        
+        kq=random.choice([f"$\\sin {x} <0$ ", 
+            f"$\\cos {x} >0$ ",
+            f"$\\tan {x} <0$ ",
+            f"$\\cot {x} <0$ "])
+
+        kq_false=[f"$\\sin {x} >0$ ",
+        f"$\\cos {x} <0$ ",
+        f"$\\tan {x} >0$ ",
+        f"$\\cot {x} >0$ "]   
+    
+
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"{kq} là khẳng định đúng"    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B2_12]-M2. Cho sinx (hoặc cosx), x thuộc (a;b). Tìm cosx (hoặc sinx)
+def ngh_kjg_L11_C1_B2_12():
+    cung_I=random.choice([f"\\left( 0;{latex(pi/2)} \\right)", f"\\left( 2\\pi;{latex(5*pi/2)} \\right)"])
+    cung_II=random.choice([f"\\left( {latex(pi/2)};\\pi \\right)", f"\\left( {latex(5*pi/2)};3\\pi \\right)", f"\\left( {latex(-3*pi/2)};{latex(-pi)} \\right)"])
+    cung_III=random.choice([f"\\left( \\pi;{latex(3*pi/2)} \\right)", f"\\left( {latex(3*pi)};{latex(7*pi/2)} \\right)", f"\\left( {latex(-pi)}; {latex(-pi/2)} \\right)"])
+    cung_IV=random.choice([f"\\left( {latex(3*pi/2)}; 2\\pi \\right)", f"\\left( {latex(7*pi/2)}; 4\\pi \\right)", f"\\left( {latex(-pi/2)}; 0 \\right)"])
+
+    cung=random.choice([cung_I, cung_II, cung_III, cung_IV])  
+
+    a = random.randint(1,15)
+    b = a+ random.randint(1,5)
+    chon=random.choice(["sin", "cos"])
+    if chon=="sin":
+        gia_tri_LG=f"\\cos\\alpha"
+
+        if cung in [cung_I, cung_II]:
+            sin_value=a/b
+        else:
+            sin_value=-a/b
+        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\sin \\alpha={phan_so(sin_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$."
+
+        if cung in [cung_I, cung_IV]:       
+            cos_value=sqrt(b**2-a**2)/b            
+            kq=cos_value
+            noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha > 0$.\n\n"\
+            f"$\\cos\\alpha =\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."            
+
+        if cung in [cung_II, cung_III]:
+            cos_value=-sqrt(b**2-a**2)/b           
+            kq=cos_value
+            noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha < 0$.\n\n"\
+            f"$\\cos\\alpha =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$."            
+
+    if chon=="cos":
+        gia_tri_LG=f"\\sin\\alpha"
+        if cung in [cung_I, cung_IV]:
+            cos_value=a/b
+        else:
+            cos_value=-a/b
+        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."
+
+        if cung in [cung_I, cung_II]:       
+            sin_value=sqrt(b**2-a**2)/b            
+            kq=sin_value
+            noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha > 0$.\n\n"\
+            f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$."            
+
+        if cung in [cung_III, cung_IV]:
+            sin_value=-sqrt(b**2-a**2)/b            
+            kq=sin_value
+            noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha < 0$.\n\n"\
+            f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$."
+    
+    results = set()
+
+    while len(results) < 6:
+        a = random.randint(1, 15)
+        b = random.randint(2, 20)
+
+        value = sqrt(a) / b
+
+        # Giới hạn giá trị trong khoảng (-1, 1), khác x và khác các giá trị đã có (xấp xỉ 1e-6)
+        if -1 < value < 1 and all(abs(value - v) > 1e-6 for v in results) and abs(value - kq) > 1e-6:
+            results.add(value)
+    
+    kq_false=list(results)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{latex(kq2)}}}$"
+    pa_C= f"${{{latex(kq3)}}}$"
+    pa_D= f"${{{latex(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B2_13]-M3. Cho sinx (hoặc cosx), x thuộc (a;b). Tìm tanx (hoặc cotx)
+def ngh_kjg_L11_C1_B2_13():
+    cung_I=random.choice([f"\\left( 0;{latex(pi/2)} \\right)", f"\\left( 2\\pi;{latex(5*pi/2)} \\right)"])
+    cung_II=random.choice([f"\\left( {latex(pi/2)};\\pi \\right)", f"\\left( {latex(5*pi/2)};3\\pi \\right)", f"\\left( {latex(-3*pi/2)};{latex(-pi)} \\right)"])
+    cung_III=random.choice([f"\\left( \\pi;{latex(3*pi/2)} \\right)", f"\\left( {latex(3*pi)};{latex(7*pi/2)} \\right)", f"\\left( {latex(-pi)}; {latex(-pi/2)} \\right)"])
+    cung_IV=random.choice([f"\\left( {latex(3*pi/2)}; 2\\pi \\right)", f"\\left( {latex(7*pi/2)}; 4\\pi \\right)", f"\\left( {latex(-pi/2)}; 0 \\right)"])
+
+    cung=random.choice([cung_I, cung_II, cung_III, cung_IV])    
+    a = random.randint(1,15)
+    b = a+random.randint(1,5)
+    gia_tri_LG=random.choice([f"\\tan\\alpha", f"\\cot\\alpha"])
+    chon=random.choice(["sin", "cos"])
+    if chon=="sin":        
+        if cung in [cung_I, cung_II]:
+            sin_value=a/b
+        else:
+            sin_value=-a/b
+        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\sin \\alpha={phan_so(sin_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$."
+
+        if cung in [cung_I, cung_IV]:       
+            cos_value=sqrt(b**2-a**2)/b            
+
+            if gia_tri_LG==f"\\tan\\alpha":
+                tan_value=sin_value/cos_value
+                kq=tan_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha > 0$.\n\n"\
+                f"$\\cos\\alpha =\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$.\n\n"\
+                f"$\\tan\\alpha={phan_so(sin_value)}:{latex(cos_value)}={latex(nsimplify(kq))}$.\n\n"
+
+            if gia_tri_LG==f"\\cot\\alpha":
+                cot_value=cos_value/sin_value
+                kq=cot_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha > 0$.\n\n"\
+                f"$\\cos\\alpha =\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$.\n\n"\
+                f"$\\cot\\alpha={latex(cos_value)}:{phan_so(sin_value)}={latex(nsimplify(kq))}$.\n\n"
+
+
+        if cung in [cung_II, cung_III]:
+            cos_value=-sqrt(b**2-a**2)/b           
+
+            if gia_tri_LG==f"\\tan\\alpha":
+                tan_value=sin_value/cos_value
+                kq=tan_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha < 0$.\n\n"\
+                f"$\\cos\\alpha =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$.\n\n"\
+                f"$\\tan\\alpha={phan_so(sin_value)}:{latex(cos_value)}={latex(nsimplify(kq))}$.\n\n"
+ 
+
+            if gia_tri_LG==f"\\cot\\alpha":
+                cot_value=cos_value/sin_value
+                kq=cot_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha < 0$.\n\n"\
+                f"$\\cos\\alpha =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$.\n\n"\
+                f"$\\cot\\alpha={latex(cos_value)}:{phan_so(sin_value)}={latex(nsimplify(kq))}$.\n\n"
+
+
+    if chon=="cos":
+        if cung in [cung_I, cung_IV]:
+            cos_value=a/b
+        else:
+            cos_value=-a/b
+        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."
+
+        if cung in [cung_I, cung_II]:       
+            sin_value=sqrt(b**2-a**2)/b
+
+            if gia_tri_LG==f"\\tan\\alpha":
+                tan_value=sin_value/cos_value
+                kq=tan_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha > 0$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
+                f"$\\tan\\alpha={latex(sin_value)}:{phan_so(cos_value)}={latex(nsimplify(kq))}$.\n\n"\
+          
+
+            if gia_tri_LG==f"\\cot\\alpha":
+                cot_value=cos_value/sin_value
+                kq=cot_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha > 0$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
+                f"$\\cot\\alpha={latex(cos_value)}:{latex(sin_value)}={latex(nsimplify(kq))}$.\n\n"\
+            
+
+        if cung in [cung_III, cung_IV]:
+            sin_value=-sqrt(b**2-a**2)/b
+
+            if gia_tri_LG==f"\\tan\\alpha":
+                tan_value=sin_value/cos_value
+                kq=tan_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha < 0$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
+                f"$\\tan\\alpha={latex(sin_value)}:{latex(cos_value)}={latex(nsimplify(kq))}$.\n\n"\
+     
+
+            if gia_tri_LG==f"\\cot\\alpha":
+                cot_value=cos_value/sin_value
+                kq=cot_value
+
+                noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha < 0$.\n\n"\
+                f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}$.\n\n"\
+                f"$\\cot\\alpha={latex(cos_value)}:{latex(sin_value)}={latex(nsimplify(kq))}$.\n\n"
+    results = set()
+
+    while len(results) < 6:
+        a = random.randint(1, 15)
+        b = random.randint(2, 20)
+
+        value = sqrt(a) / b
+
+        # Giới hạn giá trị trong khoảng (-1, 1), khác x và khác các giá trị đã có (xấp xỉ 1e-6)
+        if -1 < value < 1 and all(abs(value - v) > 1e-6 for v in results) and abs(value - kq) > 1e-6:
+            results.add(value)
+    
+    kq_false=list(results)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    {latex(nsimplify(kq))}
+    pa_A= f"*${latex(nsimplify(kq))}$"
+    pa_B= f"${latex(nsimplify(kq2))}$"
+    pa_C= f"${latex(nsimplify(kq3))}$"
+    pa_D= f"${latex(nsimplify(kq4))}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 

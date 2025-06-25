@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 09.06.2025")
+                self.label.setText(f"iMath\u00A92025 ver 25.06.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 09.06.2025")
+                self.label.setText(f"iMath\u00A92025 ver 25.06.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -3880,10 +3880,6 @@ class Ui_MainWindow(object):
 
 
 
-
-
-
-
                 #Bài 3
                 L10_C10_B3 = QTreeWidgetItem(L10_C10, ["Bài 3 - Phương trình đường tròn"])
                 L10_C10_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4250,7 +4246,7 @@ class Ui_MainWindow(object):
                 L11_C1_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C1_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C1_B1_1 = QTreeWidgetItem(L11_C1_B1, ["Trắc nghiệm-Trả lời ngắn"])
+                L11_C1_B1_1 = QTreeWidgetItem(L11_C1_B1, ["Trắc nghiệm"])
                 L11_C1_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C1_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -4266,7 +4262,51 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_05]-M2. Tìm góc lượng giác có điểm biểu diễn cho trước"])
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_05]-M2. Tìm góc ứng với điểm biểu diễn trên hình"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_13]-M1. Cho góc x. Tìm tất cả các góc có cùng điểm biểu diễn với x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_14]-M2. Tìm tất cả các góc có cùng điểm biểu diễn với x và -x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_15]-M2. Tìm số điểm biểu diễn của góc dạng a+k2pi/n"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_23]-M2. Tìm điểm biểu diễn các góc thường gặp"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_16]-M2. Tìm điểm biểu diễn trên hình ứng với 4 điểm A, A', B, B'"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_17]-M2. Tìm điểm biểu diễn các góc pi/4, -pi/4, 3pi/4, -3pi/4"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_21]-M2. Tìm điểm biểu diễn các góc pi/6, -pi/6, 5pi/6, -5pi/6"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_22]-M2. Tìm điểm biểu diễn các góc pi/3, -pi/3, 2pi/3, -2pi/3"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_18]-M2. Tìm góc có điểm biểu diễn đối xứng với M qua O."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_19]-M2. Tìm góc có điểm biểu diễn đối xứng với M qua Ox."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B1_1, ["[D11_C1_B1_20]-M2. Tìm góc có điểm biểu diễn đối xứng với M qua Oy."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -4313,11 +4353,23 @@ class Ui_MainWindow(object):
                 L11_C1_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C1_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C1_B2_1 = QTreeWidgetItem(L11_C1_B2, ["Trắc nghiệm-Trả lời ngắn"])
+                L11_C1_B2_1 = QTreeWidgetItem(L11_C1_B2, ["Trắc nghiệm"])
                 L11_C1_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C1_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C1_B2_1, ["[D11_C1_B2_01]-M1. Tính giá trị đặc biệt của một góc lượng giác."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B2_1, ["[D11_C1_B2_11]-M1. Cho góc x (a<x<b). Tìm khẳng định đúng về dấu của GTLG."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B2_1, ["[D11_C1_B2_12]-M2. Cho sinx (hoặc cosx), x thuộc (a;b). Tìm cosx (hoặc sinx)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B2_1, ["[D11_C1_B2_13]-M2.Cho sinx (hoặc cosx), x thuộc (a;b). Tìm tanx (hoặc cotx)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11785,7 +11837,53 @@ class Ui_MainWindow(object):
 
                                             #[D11_C1_B1_12]-SA-M3. Cho đường kính của bánh trước và bánh sau, vận tốc n vòng/phút. Tính quãng đường xe đi.
                                             if dang_toan == "[D11_C1_B1_12]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_12()                                                 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_12()
+
+                                            #[D11_C1_B1_13]-M2. Cho x. Tìm tất cả các góc có cùng điểm biểu diễn với x
+                                            if dang_toan == "[D11_C1_B1_13]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_13()
+
+                                            #[D11_C1_B1_14]-M2. Tìm tất cả các góc có cùng điểm biểu diễn với x và -x.
+                                            if dang_toan == "[D11_C1_B1_14]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_14()
+
+                                            #[D11_C1_B1_15]-M2. Tìm số điểm biểu diễn của góc dạng a+k2pi/n
+                                            if dang_toan == "[D11_C1_B1_15]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_15()
+
+                                            #[D11_C1_B1_16]-M2. Tìm điểm biểu diễn ứng với 4 góc đặc biệt
+                                            if dang_toan == "[D11_C1_B1_16]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_16()
+
+                                            #[D11_C1_B1_17]-M2. Tìm điểm biểu diễn trên hình ứng với các góc pi/4, -pi/4, 3pi/4, -3pi/4
+                                            if dang_toan == "[D11_C1_B1_17]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_17()
+
+                                            #[D11_C1_B1_18]-M2. Cho góc x có điểm biểu diễn M. Tìm góc có điểm biểu diễn đối xứng với M qua O.
+                                            if dang_toan == "[D11_C1_B1_18]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_18()
+
+                                            #[D11_C1_B1_19]-M2. Cho góc x có điểm biểu diễn M. Tìm góc có điểm biểu diễn đối xứng với M qua Ox.
+                                            if dang_toan == "[D11_C1_B1_19]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_19()
+
+                                            #[D11_C1_B1_20]-M2. Cho góc x có điểm biểu diễn M. Tìm góc có điểm biểu diễn đối xứng với M qua Oy.
+                                            if dang_toan == "[D11_C1_B1_20]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_20()
+
+                                            #[D11_C1_B1_21]-M2. Tìm điểm biểu diễn các góc pi/6, 5pi/6, -pi/6, -5pi/6
+                                            if dang_toan == "[D11_C1_B1_21]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_21()
+
+                                            #[D11_C1_B1_22]-M2. Tìm điểm biểu diễn trên hình ứng với các góc pi/3, 2pi/3, -pi/3, -2pi/3
+                                            if dang_toan == "[D11_C1_B1_22]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_22()
+
+                                            #[D11_C1_B1_23]-M2. Tìm điểm biểu diễn các góc thường gặp
+                                            if dang_toan == "[D11_C1_B1_23]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B1_23()
+
+
                                    
                                 
                                             
@@ -11828,6 +11926,18 @@ class Ui_MainWindow(object):
                                             #[D11_C1_B2_09]-TF-M3.  Chon cosx (a<x<b). Xét đúng sai: dấu của sinx, sinx, sin(x+kpi/2), P=f(tanx).
                                             if dang_toan == "[D11_C1_B2_09]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C1.ngh_kjg_L11_C1_B2_09()
+
+                                            #[D11_C1_B2_11]-M1. Cho góc x (a<x<b). Tìm khẳng định đúng về dấu của GTLG
+                                            if dang_toan == "[D11_C1_B2_11]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B2_11()
+
+                                            #[D11_C1_B2_12]-M2. Cho sinx (hoặc cosx), x thuộc (a;b). Tìm cosx (hoặc sinx)
+                                            if dang_toan == "[D11_C1_B2_12]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B2_12()
+
+                                            #[D11_C1_B2_13]-M2. Cho sinx (hoặc cosx), x thuộc (a;b). Tìm tanx (hoặc cotx)
+                                            if dang_toan == "[D11_C1_B2_13]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B2_13()
 
                                             
 

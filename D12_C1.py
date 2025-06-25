@@ -11653,7 +11653,7 @@ def prt_34_L12_C1_B5_05():
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"        
