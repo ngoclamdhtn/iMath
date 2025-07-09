@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 25.06.2025")
+                self.label.setText(f"iMath\u00A92025 ver 09.07.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 25.06.2025")
+                self.label.setText(f"iMath\u00A92025 ver 09.07.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1645,9 +1645,55 @@ class Ui_MainWindow(object):
                 L10_C2_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C2_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_07]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm min F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_09]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm max F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_10]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm min F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_11]-SA-M3.  Hệ: ax+by+c>=0, x>=0, y>=0. Tìm min F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_12]-SA-M3.  Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_13]-SA-M3.  Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm min F=mx+n+p."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_14]-SA-M3.  Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm max F=mx+n+p."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_15]-SA-M3.  Hệ: 3 BPT hai ẩn. Tìm max F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_05]-SA-M3. Toán thực tế ứng dụng bpt bậc nhất 2 ẩn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_16]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất 2 sản phẩm bằng 2 máy."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_17]-SA-M3.Tìm lợi nhuận lớn nhất khi sản xuất bàn và ghế."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
                 #CHƯƠNG 3 - HÀM SỐ VÀ ĐỒ THỊ       
@@ -14406,6 +14452,50 @@ class Ui_MainWindow(object):
                                             #[D10_C2_B2_06]-M2. Tìm m để hệ bất phương trình vô nghiệm
                                             if dang_toan == "[D10_C2_B2_06]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C2.bch_12_L10_C2_B2_06()
+
+                                            #[D10_C2_B2_07]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm min F=mx+n
+                                            if dang_toan == "[D10_C2_B2_07]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_07()
+
+                                            #[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n
+                                            if dang_toan == "[D10_C2_B2_08]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_08()
+
+                                            #[D10_C2_B2_09]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm max F=mx+n.
+                                            if dang_toan == "[D10_C2_B2_09]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_09()
+
+                                            #[D10_C2_B2_10]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm min F=mx+n.
+                                            if dang_toan == "[D10_C2_B2_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_10()
+
+                                            #[D10_C2_B2_11]-SA-M3.  Hệ: ax+by+c>=0, x>=0, y>=0. Tìm min F=mx+n.
+                                            if dang_toan == "[D10_C2_B2_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_11()
+
+                                            #[D10_C2_B2_12]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n.
+                                            if dang_toan == "[D10_C2_B2_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_12()
+
+                                            #[D10_C2_B2_13]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm min F=mx+n+p.
+                                            if dang_toan == "[D10_C2_B2_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_13()
+
+                                            #[D10_C2_B2_14]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n+p.
+                                            if dang_toan == "[D10_C2_B2_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_14()
+
+                                            #[D10_C2_B2_15]-SA-M3. Hệ: 3 BPT hai ẩn. Tìm max F=mx+n+p.
+                                            if dang_toan == "[D10_C2_B2_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_15()
+
+                                            #[D10_C2_B2_16]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất 2 sản phẩm bằng 2 máy.
+                                            if dang_toan == "[D10_C2_B2_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_16()
+
+                                            #[D10_C2_B2_17]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất bàn và ghế
+                                            if dang_toan == "[D10_C2_B2_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_17()
 
 
 

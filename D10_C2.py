@@ -4,6 +4,11 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
@@ -856,7 +861,9 @@ def bch_12_L10_C2_B1_08():
         a = random.choice([i for i in range(-3, 3) if i!=0])
         b = random.choice([i for i in range(1, 4) if i!=0])
         c = random.choice([i for i in range(-3, 4) if i!=0])
-        f=a*x+b*y+c   
+        f=a*x+b*y+c 
+        x_0=random.randint(-3,3)
+        y_0=int((-a*x_0-c)/b) - random.randint(1,2)  
 
         noi_dung = f"Xét bất phương trình ${latex(f)}<0$. Xét tính đúng-sai của các khẳng định sau. "        
         debai_word= f"{noi_dung}\n"
@@ -892,7 +899,6 @@ def bch_12_L10_C2_B1_08():
         kq4_T=f"*Miền nghiệm là nửa mặt phẳng chứa điểm $({x_0};{y_0})$ và không chứa đường thẳng $d:{latex(f)}=0$"
         kq4_F=random.choice([f"Miền nghiệm là nửa mặt phẳng không chứa điểm $({x_0};{y_0})$ và không chứa đường thẳng $d:{latex(f)}=0$",
             f"Miền nghiệm là nửa mặt phẳng chứa điểm $({x_0};{y_0})$ và chứa đường thẳng $d:{latex(f)}=0$",
-            f"Miền nghiệm là nửa mặt phẳng không chứa điểm $({x_1};{y_1})$ và không chứa đường thẳng $d:{latex(f)}=0$"
             ])
         kq4=random.choice([kq4_T, kq4_F])
         HDG=f"Miền nghiệm là nửa mặt phẳng chứa điểm $({x_0};{y_0})$ và không chứa đường thẳng $d:{latex(f)}=0$."
@@ -1105,6 +1111,7 @@ def bch_12_L10_C2_B1_09():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 #---------------------------->
 #Bài 2 - HỆ BẤT PHƯƠNG TRÌNH
@@ -1717,3 +1724,1018 @@ def bch_12_L10_C2_B2_06():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+#[D10_C2_B2_07]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm min F=mx+n
+def bch_12_L10_C2_B2_07():
+    x,y=sp.symbols("x y")
+    while True:
+        
+        a=random.randint(1,5)
+        b=random.randint(-5,-1)
+        c=random.randint(-6,-1)
+        d=random.randint(1,6)
+        m=random.choice([i for i in range(-5, 6) if i!=0])
+        n=random.choice([i for i in range(-5, 6) if i!=0])
+
+        # Khai báo các phương trình
+        eq1 = Eq(a*x-y+b, 0)
+        eq2 = Eq(c*x-y+d, 0)
+
+        # Giải hệ phương trình
+        solution = solve((eq1, eq2), (x, y))
+
+        # In kết quả
+        if solution:
+            x_C = solution[x]
+            y_C = solution[y]
+        x_A,y_A=-b/a, 0
+        x_B,y_B=-d/c, 0
+
+        F_A=m*x_A + n*y_A
+        F_B=m*x_B + n*y_B
+        F_C=m*x_C + n*y_C
+        min_F=min(F_A,F_B,F_C)
+        if all([min_F>-9, min_F<999]):
+            break
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a*x-y+b)} \\ge 0 \\\\ \n\
+    {latex(c*x-y+d)} \\ge 0 \\\\ \n\
+    y \\le 0 \n\
+    \\end{{array}} \\right."
+
+    
+    t=min_F.is_integer
+    if t:
+        noi_dung = (
+        f"Tìm giá trị nhỏ nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
+        dap_an=int(min_F)
+    else:
+        noi_dung = (
+        f"Tìm giá trị nhỏ nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(min_F,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Đường thẳng $d_1:{latex(a*x-y+b)}=0$ cắt ${{Ox}}$ tại điểm $A({phan_so(-b/a)};0)$.\n\n"
+    f"Đường thẳng $d_2:{latex(c*x-y+d)}=0$ cắt ${{Ox}}$ tại điểm $B({phan_so(-d/c)};0)$.\n\n"
+    f"$d_1$ cắt $d_2$ tại điểm $C({phan_so(x_C)};{phan_so(y_C)})$.\n\n"
+    f"Miền nghiệm là hình tam giác ${{ABC}}$.\n\n"
+    f"$F({phan_so(x_A)};0)={phan_so(F_A)}, F({phan_so(x_B)};0)={phan_so(F_B)}, F({phan_so(x_C)};0)={phan_so(F_C)}$.\n\n"
+    f"Giá trị nhỏ nhất của $F(x;y)$ là ${{{phan_so(min_F)}}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n
+def bch_12_L10_C2_B2_08():
+    x,y=sp.symbols("x y")
+    while True:
+        
+        a=random.randint(1,5)
+        b=random.randint(-5,-1)
+        c=random.randint(-6,-1)
+        d=random.randint(1,6)
+        m=random.choice([i for i in range(-5, 6) if i!=0])
+        n=random.choice([i for i in range(-5, 6) if i!=0])
+
+        # Khai báo các phương trình
+        eq1 = Eq(a*x-y+b, 0)
+        eq2 = Eq(c*x-y+d, 0)
+
+        # Giải hệ phương trình
+        solution = solve((eq1, eq2), (x, y))
+
+        # In kết quả
+        if solution:
+            x_C = solution[x]
+            y_C = solution[y]
+        x_A,y_A=-b/a, 0
+        x_B,y_B=-d/c, 0
+
+        F_A=m*x_A + n*y_A
+        F_B=m*x_B + n*y_B
+        F_C=m*x_C + n*y_C
+        max_F=max(F_A,F_B,F_C)
+        if all([max_F>-9, max_F<999]):
+            break
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a*x-y+b)} \\ge 0 \\\\ \n\
+    {latex(c*x-y+d)} \\ge 0 \\\\ \n\
+    y \\le 0 \n\
+    \\end{{array}} \\right."
+
+    
+    t=max_F.is_integer
+    if t:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
+        dap_an=int(max_F)
+    else:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(max_F,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Đường thẳng $d_1:{latex(a*x-y+b)}=0$ cắt ${{Ox}}$ tại điểm $A({phan_so(-b/a)};0)$.\n\n"
+    f"Đường thẳng $d_2:{latex(c*x-y+d)}=0$ cắt ${{Ox}}$ tại điểm $B({phan_so(-d/c)};0)$.\n\n"
+    f"$d_1$ cắt $d_2$ tại điểm $C({phan_so(x_C)};{phan_so(y_C)})$.\n\n"
+    f"Miền nghiệm là hình tam giác ${{ABC}}$.\n\n"
+    f"$F({phan_so(x_A)};0)={phan_so(F_A)}, F({phan_so(x_B)};0)={phan_so(F_B)}, F({phan_so(x_C)};0)={phan_so(F_C)}$.\n\n"
+    f"Giá trị lớn nhất của $F(x;y)$ là ${{{phan_so(max_F)}}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_09]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm max F=mx+n.
+def bch_12_L10_C2_B2_09():
+    x,y=sp.symbols("x y")
+    while True:
+        a1=random.randint(-5,-1)
+        b1=random.randint(1,4)
+        c1=a1*b1
+
+        a2=a1
+        b2=random.randint(5,8)
+        c2=a2*b2
+
+        if all([gcd(a1,b1)==1, gcd(a2,b2)==1]):
+            break
+
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    n=random.choice([i for i in range(-5, 6) if i!=0])
+    x_A1, y_A1 = a1, 0
+    x_A2, y_A2 = a1, 0
+    x_B1, y_B1 = 0, b1
+    x_B2, y_B2 = 0, b2
+
+    F_A=m*x_A1 + n*y_A1
+    F_B1=m*x_B1 + n*y_B1
+    F_B2=m*x_B2 + n*y_B2
+    max_F=max(F_A,F_B1,F_B2)
+ 
+    f1=b1*x+a1*y-c1
+    f2=b2*x+a2*y-c2
+
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f1)} \\le 0 \\\\ \n\
+    {latex(f2)} \\ge 0 \\\\ \n\
+    x \\le 0 \n\
+    \\end{{array}} \\right."
+
+    
+
+    noi_dung = (
+    f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
+    dap_an=int(max_F)
+
+    noi_dung_loigiai=(
+        f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
+        f"Đường thẳng $d_2:{latex(f2)}=0$ qua điểm $A({phan_so(x_A2)};0)$ và $B_2(0;{phan_so(y_B2)})$.\n\n"
+        f"Miền nghiệm của ${latex(f1)} \\ge 0$ là nửa mặt phẳng chứa $d_1$ và không chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của ${latex(f2)} \\le 0$ là nửa mặt phẳng chứa $d_2$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của $x\\le 0$ là nửa mặt phẳng bên trái trục ${{Oy}}$.\n\n"
+        f"Miện nghiệm của hệ đã cho là hình tam giác ${{AB_1B_2}}$.\n\n"
+        f"$F({phan_so(x_A1)};0)={phan_so(F_A)}, F(0;{phan_so(y_B1)})={phan_so(F_B1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}$.\n\n"
+        f"Giá trị lớn nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_10]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm min F=mx+n.
+def bch_12_L10_C2_B2_10():
+    x,y=sp.symbols("x y")
+    while True:
+        a1=random.randint(-5,-1)
+        b1=random.randint(1,4)
+        c1=a1*b1
+
+        a2=a1
+        b2=random.randint(5,8)
+        c2=a2*b2
+
+        if all([gcd(a1,b1)==1, gcd(a2,b2)==1]):
+            break
+
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    n=random.choice([i for i in range(-5, 6) if i!=0])
+    x_A1, y_A1 = a1, 0
+    x_A2, y_A2 = a1, 0
+    x_B1, y_B1 = 0, b1
+    x_B2, y_B2 = 0, b2
+
+    F_A=m*x_A1 + n*y_A1
+    F_B1=m*x_B1 + n*y_B1
+    F_B2=m*x_B2 + n*y_B2
+    min_F=min(F_A,F_B1,F_B2)
+ 
+    f1=b1*x+a1*y-c1
+    f2=b2*x+a2*y-c2
+
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f1)} \\le 0 \\\\ \n\
+    {latex(f2)} \\ge 0 \\\\ \n\
+    x \\le 0 \n\
+    \\end{{array}} \\right."
+
+    
+
+    noi_dung = (
+    f"Tìm giá trị nhỏ nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
+    dap_an=min_F
+
+    noi_dung_loigiai=(
+        f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
+        f"Đường thẳng $d_2:{latex(f2)}=0$ qua điểm $A({phan_so(x_A2)};0)$ và $B_2(0;{phan_so(y_B2)})$.\n\n"
+        f"Miền nghiệm của ${latex(f1)} \\ge 0$ là nửa mặt phẳng chứa $d_1$ và không chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của ${latex(f2)} \\le 0$ là nửa mặt phẳng chứa $d_2$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của $x\\le 0$ là nửa mặt phẳng bên trái trục ${{Oy}}$.\n\n"
+        f"Miện nghiệm của hệ đã cho là hình tam giác ${{AB_1B_2}}$.\n\n"
+        f"$F({phan_so(x_A1)};0)={phan_so(F_A)}, F(0;{phan_so(y_B1)})={phan_so(F_B1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}$.\n\n"
+        f"Giá trị nhỏ nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_11]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm min F=mx+n.
+def bch_12_L10_C2_B2_11():
+    x,y=sp.symbols("x y")
+    while True:
+        a1=random.randint(-5,-1)
+        b1=random.randint(1,4)
+        c1=a1*b1
+
+        a2=a1
+        b2=random.randint(5,8)
+        c2=a2*b2
+
+        if all([gcd(a1,b1)==1, gcd(a2,b2)==1]):
+            break
+
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    n=random.choice([i for i in range(-5, 6) if i!=0])
+    x_A1, y_A1 = a1, 0
+    x_A2, y_A2 = a1, 0
+    x_B1, y_B1 = 0, b1
+    x_B2, y_B2 = 0, b2
+
+    F_A=m*x_A1 + n*y_A1
+    F_B1=m*x_B1 + n*y_B1
+    F_B2=m*x_B2 + n*y_B2
+    min_F=min(F_A,F_B1,F_B2)
+ 
+    f1=b1*x+a1*y-c1
+    f2=b2*x+a2*y-c2
+
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f1)} \\le 0 \\\\ \n\
+    {latex(f2)} \\ge 0 \\\\ \n\
+    x \\le 0 \n\
+    \\end{{array}} \\right."
+
+    
+
+    noi_dung = (
+    f"Tìm giá trị nhỏ nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
+    dap_an=min_F
+
+    noi_dung_loigiai=(
+        f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
+        f"Đường thẳng $d_2:{latex(f2)}=0$ qua điểm $A({phan_so(x_A2)};0)$ và $B_2(0;{phan_so(y_B2)})$.\n\n"
+        f"Miền nghiệm của ${latex(f1)} \\ge 0$ là nửa mặt phẳng chứa $d_1$ và không chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của ${latex(f2)} \\le 0$ là nửa mặt phẳng chứa $d_2$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của $x\\le 0$ là nửa mặt phẳng bên trái trục ${{Oy}}$.\n\n"
+        f"Miện nghiệm của hệ đã cho là hình tam giác ${{AB_1B_2}}$.\n\n"
+        f"$F({phan_so(x_A1)};0)={phan_so(F_A)}, F(0;{phan_so(y_B1)})={phan_so(F_B1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}$.\n\n"
+        f"Giá trị nhỏ nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_12]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n.
+def bch_12_L10_C2_B2_13():
+    x,y=sp.symbols("x y")
+    while True:
+        a1=random.randint(-5,-1)
+        b1=random.randint(1,4)
+        c1=a1*b1
+
+        a2=a1
+        b2=random.randint(5,8)
+        c2=a2*b2
+
+        if all([gcd(a1,b1)==1, gcd(a2,b2)==1]):
+            break
+
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    n=random.choice([i for i in range(-5, 6) if i!=0])
+    x_A1, y_A1 = a1, 0
+    x_A2, y_A2 = a1, 0
+    x_B1, y_B1 = 0, b1
+    x_B2, y_B2 = 0, b2
+
+    F_A=m*x_A1 + n*y_A1
+    F_B1=m*x_B1 + n*y_B1
+    F_B2=m*x_B2 + n*y_B2
+    min_F=max(F_A,F_B1,F_B2)
+ 
+    f1=b1*x+a1*y-c1
+    f2=b2*x+a2*y-c2
+
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f1)} \\le 0 \\\\ \n\
+    {latex(f2)} \\ge 0 \\\\ \n\
+    x \\le 0 \n\
+    \\end{{array}} \\right."
+
+    
+
+    noi_dung = (
+    f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
+    dap_an=min_F
+
+    noi_dung_loigiai=(
+        f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
+        f"Đường thẳng $d_2:{latex(f2)}=0$ qua điểm $A({phan_so(x_A2)};0)$ và $B_2(0;{phan_so(y_B2)})$.\n\n"
+        f"Miền nghiệm của ${latex(f1)} \\ge 0$ là nửa mặt phẳng chứa $d_1$ và không chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của ${latex(f2)} \\le 0$ là nửa mặt phẳng chứa $d_2$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của $x\\le 0$ là nửa mặt phẳng bên trái trục ${{Oy}}$.\n\n"
+        f"Miện nghiệm của hệ đã cho là hình tam giác ${{AB_1B_2}}$.\n\n"
+        f"$F({phan_so(x_A1)};0)={phan_so(F_A)}, F(0;{phan_so(y_B1)})={phan_so(F_B1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}$.\n\n"
+        f"Giá trị lớn nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D10_C2_B2_13]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm min F=mx+n+p.
+def bch_12_L10_C2_B2_13():
+    x,y=sp.symbols("x y")
+    while True:
+        a1=random.randint(1,5)
+        b1=random.randint(-5,-1)
+        a2=random.randint(1,10)
+        b2=random.randint(1,6)
+        c1, c2 = -a1*b1, -a2*b2
+
+        m=random.choice([i for i in range(-5, 6) if i!=0])
+        n=random.choice([i for i in range(-5, 6) if i!=0])
+        p=random.choice([i for i in range(-5, 6) if i!=0])
+        x_A1, y_A1 = a1, 0
+        x_A2, y_A2 = a2, 0
+        x_B1, y_B1 = 0, b1
+        x_B2, y_B2 = 0, b2
+
+        # Khai báo các phương trình
+        eq1 = Eq(b1*x+a1*y+c1, 0)
+        eq2 = Eq(b2*x+a2*y+c2, 0)
+
+        # Giải hệ phương trình
+        solution = solve((eq1, eq2), (x, y))
+
+        # In kết quả
+        if solution:
+            x_C = solution[x]
+            y_C = solution[y]
+
+        f=m*x+n*y+p
+        F_A1=f.subs({x:x_A1, y:y_A1})
+        F_B1=f.subs({x:x_B1, y:y_B1})
+        F_B2=f.subs({x:x_B2, y:y_B2})
+        F_C=f.subs({x:x_C, y:y_C})
+        min_F=min(0,F_A1,F_B2, F_C)  
+        if all([a2>a1, min_F>-9]):
+            break
+    
+ 
+    f1=b1*x+a1*y+c1
+    f2=b2*x+a2*y+c2
+
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f1)} \\ge 0 \\\\ \n\
+    {latex(f2)} \\le 0 \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+
+    t=min_F.is_integer
+    if t:
+        noi_dung = (
+        f"Tìm giá trị nhỏ nhất của biểu thức $F(x;y)={latex(f)}$ thỏa mãn điều kiện ${hedk}$.")
+        dap_an=min_F
+    else:
+        noi_dung = (
+        f"Tìm giá trị nhỏ nhất của biểu thức $F(x;y)={latex(f)}$ thỏa mãn điều kiện ${hedk}$ (kết quả làm tròn đến hàng phần mười).")
+        dap_an=f"{round_half_up(min_F,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+        f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A_1({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
+        f"Đường thẳng $d_2:{latex(f2)}=0$ qua điểm $A_2({phan_so(x_A2)};0)$ và $B_2(0;{phan_so(y_B2)})$.\n\n"
+        f"Miền nghiệm của ${latex(f1)} \\ge 0$ là nửa mặt phẳng chứa $d_1$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của ${latex(f2)} \\le 0$ là nửa mặt phẳng chứa $d_2$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của $x\\ge 0$ là nửa mặt phẳng bên phải trục ${{Oy}}$.\n\n"
+        f"Miền nghiệm của $y\\ge 0$ là nửa mặt phẳng bên trên trục ${{Ox}}$.\n\n"
+        f"$d_1$ và $d_2$ cắt nhau tại điểm $C({phan_so(x_C)};{phan_so(y_C)})$.\n\n"
+        f"Miện nghiệm của hệ đã cho là miền trong hình tứ giác ${{OA_1CB_2}}$.\n\n"
+        f"$F(0;0)=0; F({phan_so(x_A1)};0)={phan_so(F_A1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}, F({phan_so(x_C)};{phan_so(y_C)})={phan_so(F_C)}$.\n\n"
+        f"Giá trị nhỏ nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_14]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm max F=mx+n+p.
+def bch_12_L10_C2_B2_14():
+    x,y=sp.symbols("x y")
+    while True:
+        a1=random.randint(1,5)
+        b1=random.randint(-5,-1)
+        a2=random.randint(1,10)
+        b2=random.randint(1,6)
+        c1, c2 = -a1*b1, -a2*b2
+
+        m=random.choice([i for i in range(-5, 6) if i!=0])
+        n=random.choice([i for i in range(-5, 6) if i!=0])
+        p=random.choice([i for i in range(-5, 6) if i!=0])
+        x_A1, y_A1 = a1, 0
+        x_A2, y_A2 = a2, 0
+        x_B1, y_B1 = 0, b1
+        x_B2, y_B2 = 0, b2
+
+        # Khai báo các phương trình
+        eq1 = Eq(b1*x+a1*y+c1, 0)
+        eq2 = Eq(b2*x+a2*y+c2, 0)
+
+        # Giải hệ phương trình
+        solution = solve((eq1, eq2), (x, y))
+
+        # In kết quả
+        if solution:
+            x_C = solution[x]
+            y_C = solution[y]
+
+        f=m*x+n*y+p
+        F_A1=f.subs({x:x_A1, y:y_A1})
+        F_B1=f.subs({x:x_B1, y:y_B1})
+        F_B2=f.subs({x:x_B2, y:y_B2})
+        F_C=f.subs({x:x_C, y:y_C})
+        max_F=max(0,F_A1,F_B2, F_C)  
+        if all([a2>a1, max_F>-9]):
+            break
+    
+ 
+    f1=b1*x+a1*y+c1
+    f2=b2*x+a2*y+c2
+
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(f1)} \\ge 0 \\\\ \n\
+    {latex(f2)} \\le 0 \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+
+    t=max_F.is_integer
+    if t:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(f)}$ thỏa mãn điều kiện ${hedk}$.")
+        dap_an=max_F
+    else:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(f)}$ thỏa mãn điều kiện ${hedk}$ (kết quả làm tròn đến hàng phần mười).")
+        dap_an=f"{round_half_up(max_F,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+        f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A_1({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
+        f"Đường thẳng $d_2:{latex(f2)}=0$ qua điểm $A_2({phan_so(x_A2)};0)$ và $B_2(0;{phan_so(y_B2)})$.\n\n"
+        f"Miền nghiệm của ${latex(f1)} \\ge 0$ là nửa mặt phẳng chứa $d_1$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của ${latex(f2)} \\le 0$ là nửa mặt phẳng chứa $d_2$ và chứa điểm ${{O}}$.\n\n"
+        f"Miền nghiệm của $x\\ge 0$ là nửa mặt phẳng bên phải trục ${{Oy}}$.\n\n"
+        f"Miền nghiệm của $y\\ge 0$ là nửa mặt phẳng bên trên trục ${{Ox}}$.\n\n"
+        f"$d_1$ và $d_2$ cắt nhau tại điểm $C({phan_so(x_C)};{phan_so(y_C)})$.\n\n"
+        f"Miện nghiệm của hệ đã cho là miền trong hình tứ giác ${{OA_1CB_2}}$.\n\n"
+        f"$F(0;0)=0; F({phan_so(x_A1)};0)={phan_so(F_A1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}, F({phan_so(x_C)};{phan_so(y_C)})={phan_so(F_C)}$.\n\n"
+        f"Giá trị lớn nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+def sinh_duong_thang_khong_qua_O():
+        while True:
+            a = random.choice([i for i in range(-4, 4) if i!=0])
+            b = random.choice([i for i in range(-4, 4) if i!=0])
+            c = random.choice([i for i in range(-4, 6) if i!=0])
+            # Không đồng thời bằng 0 và không đi qua gốc tọa độ
+            if all([a*0 + b*0 + c != 0]):
+                return (a, b, c)
+
+def kiem_tra_cat_nhau(d1, d2):
+    x,y=symbols("x y")
+    # Giải hệ hai phương trình d1 và d2
+    a1, b1, c1 = d1
+    a2, b2, c2 = d2
+
+    pt1 = Eq(a1*x + b1*y + c1, 0)
+    pt2 = Eq(a2*x + b2*y + c2, 0)
+    nghiem = solve((pt1, pt2), (x, y), dict=True)
+    return len(nghiem) == 1  # Có nghiệm duy nhất (giao điểm)
+
+#[D10_C2_B2_15]-SA-M3. Hệ: 3 BPT hai ẩn. Tìm max F=mx+n+p.
+def bch_12_L10_C2_B2_15():
+    x,y=symbols("x y")   
+
+    while True:
+        # Sinh ba đường thẳng
+        d1 = sinh_duong_thang_khong_qua_O()
+        d2 = sinh_duong_thang_khong_qua_O()
+        d3 = sinh_duong_thang_khong_qua_O()
+        a1,b1,c1=d1
+        a2,b2,c2=d2
+        a3,b3,c3=d3
+        if any([a1/b1>0, a2/b2>0, a3/b3<0]):
+            continue
+        # Kiểm tra đôi một cắt nhau
+        if all([kiem_tra_cat_nhau(d1, d2),
+            kiem_tra_cat_nhau(d1, d3),
+            kiem_tra_cat_nhau(d2, d3)]):
+            break
+    
+
+    f1=a1*x+b1*y+c1
+    f2=a2*x+b2*y+c2
+    f3=a3*x+b3*y+c3
+
+    if c1>0:
+        bpt_1=f"{latex(f1)}\\ge 0"
+    else:
+        bpt_1=f"{latex(f1)}\\le 0"
+
+    if c2>0:
+        bpt_2=f"{latex(f2)}\\ge 0"
+    else:
+        bpt_2=f"{latex(f2)}\\le 0"
+
+    if c3>0:
+        bpt_3=f"{latex(f3)}\\ge 0"
+    else:
+        bpt_3=f"{latex(f3)}\\le 0"
+
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {bpt_1} \\\\ \n\
+    {bpt_2} \\\\ \n\
+    {bpt_3}\n\
+    \\end{{array}} \\right."
+
+    # Khai báo các phương trình
+    eq1 = Eq(a1*x+b1*y+c1, 0)
+    eq2 = Eq(a2*x+b2*y+c2, 0)
+    eq3 = Eq(a3*x+b3*y+c3, 0)
+
+    # Giải hệ phương trình
+    sol_1 = solve((eq1, eq2), (x, y))
+    x_1, y_1 = sol_1[x], sol_1[y]
+
+    sol_2 = solve((eq2, eq3), (x, y))
+    x_2, y_2 = sol_2[x], sol_2[y]
+
+    sol_3 = solve((eq1, eq3), (x, y))
+    x_3, y_3 = sol_3[x], sol_3[y]
+
+    m=random.choice([i for i in range(-5, 6) if i!=0])
+    n=random.choice([i for i in range(-5, 6) if i!=0])
+
+    f=m*x+n*y
+    F_1=f.subs({x:x_1, y:y_1})
+    F_2=f.subs({x:x_2, y:y_2})
+    F_3=f.subs({x:x_3, y:y_3})
+    max_F=max(F_1,F_2,F_3)
+
+    t=max_F.is_integer
+    if t:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(f)}$ thỏa mãn điều kiện ${hedk}$.")
+        dap_an=max_F
+    else:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(f)}$ thỏa mãn điều kiện ${hedk}$ (kết quả làm tròn đến hàng phần mười).")
+        dap_an=f"{round_half_up(max_F,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+        f"$d_1$ và $d_2$ cắt nhau tại điểm $A({phan_so(x_1)};{phan_so(y_1)})$.\n\n"
+        f"$d_2$ và $d_3$ cắt nhau tại điểm $B({phan_so(x_2)};{phan_so(y_2)})$.\n\n"
+        f"$d_1$ và $d_3$ cắt nhau tại điểm $C({phan_so(x_3)};{phan_so(y_3)})$.\n\n"
+        f"Miện nghiệm của hệ đã cho là miền trong hình tam giác ${{ABC}}$.\n\n"
+        f"$F({phan_so(x_1)};{phan_so(y_1)})={phan_so(F_1)}, F({phan_so(x_2)};{phan_so(y_2)})={phan_so(F_2)}, F({phan_so(x_3)};{phan_so(y_3)})={phan_so(F_3)}$.\n\n"
+        f"Giá trị lớn nhất của $F(x;y)$ là ${{{dap_an}}}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_16]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất 2 sản phẩm bằng 2 máy.
+def bch_12_L10_C2_B2_16():
+    x,y=symbols("x y")
+    X, Y ="X", "Y"
+    A, B ="A", "B"
+    while True:
+
+        #Hệ số thời gian cho máy A
+        a1=random.randint(1,6)
+        b1=random.randint(1,4)
+        c1=random.randint(7,12)
+
+        #Hệ số thời gian cho máy B
+        a2=random.randint(1,6)
+        b2=random.randint(1,4)
+        c2=random.randint(7,10)
+
+        x_1, x_2 = c1/a1, c2/a2
+        y_1, y_2 = c1/b1, c2/b2
+        if all([x_2 > x_1, y_1>y_2]):
+            break
+    while True:
+        m=random.randint(2,10)
+        n=random.randint(2,10)
+        if m!=n:
+            break
+    f1=a1*x+b1*y-c1
+    f2=a2*x+b2*y-c2
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a1*x+b1*y)}\\le {c1} \\\\ \n\
+    {latex(a2*x+b2*y)}\\le {c2} \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        a1*x + b1*y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(a1*x + b1*y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow T = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+    noi_dung = (
+    f"Một xưởng sản xuất có hai máy đặc chủng là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
+    f" Để sản xuất 1 tấn sản phẩm loại {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
+    f" Để sản xuất 1 tấn sản phẩm loại {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
+    f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
+    f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
+    f" Một cái {X} lãi {m} triệu đồng và một sản phẩm loại {Y} lãi {n} triệu đồng."
+    f" Tính số tiền lãi có thể thu được lớn nhất."
+    )
+    t=best_Z .is_integer
+    if t:
+        dap_an=best_Z
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+
+    noi_dung_loigiai=(
+    f"Gọi ${{x}}$, ${{y}}$ là số tấn sản phẩm loại ${{{X}}}$, ${{{Y}}}$ cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
+    f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
+    f"Ta có hệ điều kiện:\n\n"
+    f"${hedk}$.\n\n"
+    f"Lợi nhuận thu được: $T={latex(m*x+n*y)}$.\n\n"
+    f" Các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n"
+    f" Lợi nhuận lớn nhất: T = {dap_an} triệu đồng."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_17]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất bàn và ghế
+def bch_12_L10_C2_B2_17():
+    x,y=symbols("x y")
+    chon=random.randint(1,4)
+    chon=1
+    if chon==1:
+        X = " bàn học sinh"
+        Y = " ghế gỗ"
+        A = "cưa gỗ tự động"
+        B = "đánh bóng bề mặt"
+    
+    if chon==2:
+        X = "Áo sơ mi nam"
+        Y = "Quần tây nữ"
+        A = "cắt vải CNC"
+        B = "may công nghiệp"
+
+    if chon==3:
+        X = "khung xe đạp"
+        Y = "tay lái xe máy"
+        A = "hàn tự động"
+        B = "phay CNC"
+
+    if chon==4:
+        X = "bình hoa sứ"
+        Y = "tô sứ cao cấp"
+        A = "tạo hình khuôn"
+        B = "nung điện công nghiệp"
+
+
+
+    while True:
+        while True:
+            m=random.randint(100,150)
+            n=random.randint(70,90)
+            if m!=n:
+                break
+
+        #Hệ số thời gian cho máy A
+        a1=random.randint(1,4)
+        b1=random.randint(1,4)
+        c1=random.randint(8,12)
+
+        #Hệ số thời gian cho máy B
+        a2=random.randint(1,4)
+        b2=random.randint(1,4)
+        c2=random.randint(8,12)
+
+        x_1, x_2 = c1/a1, c2/a2
+        y_1, y_2 = c1/b1, c2/b2
+
+        if a1*b2-a2*b1==0:
+            continue
+
+        #Giải hệ giao điểm 
+        eq1=Eq(a1*x + b1*y , c1)
+        eq2=Eq(a2*x + b2*y , c2)
+        sol = solve((eq1, eq2), (x, y))
+        if sol:
+            x_0, y_0 = sol[x], sol[y]
+
+        constraints = [
+            a1*x + b1*y - c1 <= 0,
+            a2*x + b2*y - c2 <= 0,
+            x >= 0,
+            y >= 0
+        ]
+
+        # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+        lines = [
+            Eq(a1*x + b1*y , c1),
+            Eq(a2*x + b2*y , c2),
+            Eq(x, 0),
+            Eq(y, 0)
+        ]
+
+        # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+        from itertools import combinations
+
+        vertices = []
+        for eq1, eq2 in combinations(lines, 2):
+            sol = solve((eq1, eq2), (x, y), dict=True)
+            if sol:
+                pt = sol[0]
+                # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+                if all(ineq.subs(pt) for ineq in constraints):
+                    vertices.append(pt)
+
+        # Tính giá trị hàm mục tiêu tại các đỉnh
+        best_Z = -float('inf')
+        best_point = None
+
+        for pt in vertices:
+            Z = m * pt[x] + n * pt[y]
+            if Z > best_Z:
+                best_Z = Z
+                best_point = pt
+
+        if all([x_2 > x_1, y_1>y_2, c1%a1==0, c2%a2==0, c1%b1==0, c2%b2==0, x_0.is_integer, y_0.is_integer]):
+            break
+
+    f1=a1*x+b1*y-c1
+    f2=a2*x+b2*y-c2
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a1*x+b1*y)}\\le {c1} \\\\ \n\
+    {latex(a2*x+b2*y)}\\le {c2} \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        a1*x + b1*y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(a1*x + b1*y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow T = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+    noi_dung = (
+    f"Một xưởng sản xuất có hai loại máy là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
+    f" Để sản xuất 1 cái {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
+    f" Để sản xuất 1 cái {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
+    f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
+    f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
+    f" Một cái {X} lãi {m} ngàn đồng và một cái {Y} lãi {n} ngàn đồng."
+    f" Tính số tiền lãi (ngàn đồng) có thể thu được lớn nhất."
+    )
+    t=best_Z.is_integer
+    if t:
+        dap_an=best_Z
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+
+    noi_dung_loigiai=(
+    f"Gọi $x$, $y$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
+    f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
+    f"Ta có hệ điều kiện:\n\n"
+    f"${hedk}$.\n\n"
+    f"Lợi nhuận thu được: $T={latex(m*x+n*y)}$.\n\n"
+    f" Các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n"
+    f" Lợi nhuận lớn nhất: T = {dap_an} ngàn đồng."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
