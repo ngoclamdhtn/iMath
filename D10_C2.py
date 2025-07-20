@@ -2094,7 +2094,7 @@ def bch_12_L10_C2_B2_13():
     F_A=m*x_A1 + n*y_A1
     F_B1=m*x_B1 + n*y_B1
     F_B2=m*x_B2 + n*y_B2
-    min_F=max(F_A,F_B1,F_B2)
+    max_F=max(F_A,F_B1,F_B2)
  
     f1=b1*x+a1*y-c1
     f2=b2*x+a2*y-c2
@@ -2110,7 +2110,7 @@ def bch_12_L10_C2_B2_13():
 
     noi_dung = (
     f"Tìm giá trị lớn nhất của biểu thức $F(x;y)={latex(m*x+n*y)}$ thỏa mãn điều kiện ${hedk}$.")
-    dap_an=min_F
+    dap_an=max_F
 
     noi_dung_loigiai=(
         f"Đường thẳng $d_1:{latex(f1)}=0$ qua điểm $A({phan_so(x_A1)};0)$ và $B_1(0;{phan_so(y_B1)})$.\n\n"
@@ -2550,33 +2550,11 @@ def bch_12_L10_C2_B2_16():
 #[D10_C2_B2_17]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất bàn và ghế
 def bch_12_L10_C2_B2_17():
     x,y=symbols("x y")
-    chon=random.randint(1,4)
-    chon=1
-    if chon==1:
-        X = " bàn học sinh"
-        Y = " ghế gỗ"
-        A = "cưa gỗ tự động"
-        B = "đánh bóng bề mặt"
-    
-    if chon==2:
-        X = "Áo sơ mi nam"
-        Y = "Quần tây nữ"
-        A = "cắt vải CNC"
-        B = "may công nghiệp"
 
-    if chon==3:
-        X = "khung xe đạp"
-        Y = "tay lái xe máy"
-        A = "hàn tự động"
-        B = "phay CNC"
-
-    if chon==4:
-        X = "bình hoa sứ"
-        Y = "tô sứ cao cấp"
-        A = "tạo hình khuôn"
-        B = "nung điện công nghiệp"
-
-
+    X = "bàn học sinh"
+    Y = "ghế gỗ"
+    A = "cưa gỗ tự động"
+    B = "đánh bóng bề mặt" 
 
     while True:
         while True:
@@ -2701,6 +2679,194 @@ def bch_12_L10_C2_B2_17():
 
     noi_dung = (
     f"Một xưởng sản xuất có hai loại máy là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
+    f" Để sản xuất 1 cái {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
+    f" Để sản xuất 1 cái {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
+    f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
+    f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
+    f" Một cái {X} lãi {m} ngàn đồng và một cái {Y} lãi {n} ngàn đồng."
+    f" Tính số tiền lãi (ngàn đồng) có thể thu được lớn nhất."
+    )
+    t=best_Z.is_integer
+    if t:
+        dap_an=best_Z
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+
+    noi_dung_loigiai=(
+    f"Gọi $x$, $y$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
+    f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
+    f"Ta có hệ điều kiện:\n\n"
+    f"${hedk}$.\n\n"
+    f"Lợi nhuận thu được: $T={latex(m*x+n*y)}$.\n\n"
+    f" Các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n"
+    f" Lợi nhuận lớn nhất: T = {dap_an} ngàn đồng."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_18]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất áo và quần
+def bch_12_L10_C2_B2_18():
+    x,y=symbols("x y")
+    chon=random.randint(1,4)
+    chon=2
+    
+    if chon==2:
+        X = "áo sơ mi nam"
+        Y = "quần tây nữ"
+        A = "cắt vải CNC"
+        B = "may công nghiệp"
+
+    if chon==3:
+        X = "khung xe đạp"
+        Y = "tay lái xe máy"
+        A = "hàn tự động"
+        B = "phay CNC"
+
+    if chon==4:
+        X = "bình hoa sứ"
+        Y = "tô sứ cao cấp"
+        A = "tạo hình khuôn"
+        B = "nung điện công nghiệp"
+
+
+
+    while True:
+        while True:
+            m=random.randint(80,120)
+            n=random.randint(80,120)
+            if m!=n:
+                break
+
+        #Hệ số thời gian cho máy A
+        a1=random.randint(1,5)
+        b1=random.randint(1,4)
+        c1=random.randint(8,12)
+
+        #Hệ số thời gian cho máy B
+        a2=random.randint(1,4)
+        b2=random.randint(1,4)
+        c2=random.randint(8,12)
+
+        x_1, x_2 = c1/a1, c2/a2
+        y_1, y_2 = c1/b1, c2/b2
+
+        if a1*b2-a2*b1==0:
+            continue
+
+        #Giải hệ giao điểm 
+        eq1=Eq(a1*x + b1*y , c1)
+        eq2=Eq(a2*x + b2*y , c2)
+        sol = solve((eq1, eq2), (x, y))
+        if sol:
+            x_0, y_0 = sol[x], sol[y]
+
+        constraints = [
+            a1*x + b1*y - c1 <= 0,
+            a2*x + b2*y - c2 <= 0,
+            x >= 0,
+            y >= 0
+        ]
+
+        # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+        lines = [
+            Eq(a1*x + b1*y , c1),
+            Eq(a2*x + b2*y , c2),
+            Eq(x, 0),
+            Eq(y, 0)
+        ]
+
+        # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+        from itertools import combinations
+
+        vertices = []
+        for eq1, eq2 in combinations(lines, 2):
+            sol = solve((eq1, eq2), (x, y), dict=True)
+            if sol:
+                pt = sol[0]
+                # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+                if all(ineq.subs(pt) for ineq in constraints):
+                    vertices.append(pt)
+
+        # Tính giá trị hàm mục tiêu tại các đỉnh
+        best_Z = -float('inf')
+        best_point = None
+
+        for pt in vertices:
+            Z = m * pt[x] + n * pt[y]
+            if Z > best_Z:
+                best_Z = Z
+                best_point = pt
+
+        if all([x_2 > x_1, y_1>y_2, c1%a1==0, c2%a2==0, c1%b1==0, c2%b2==0, x_0.is_integer, y_0.is_integer]):
+            break
+
+    f1=a1*x+b1*y-c1
+    f2=a2*x+b2*y-c2
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a1*x+b1*y)}\\le {c1} \\\\ \n\
+    {latex(a2*x+b2*y)}\\le {c2} \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        a1*x + b1*y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(a1*x + b1*y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow T = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+    noi_dung = (
+    f"Một công ty may mặc có hai loại máy là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
     f" Để sản xuất 1 cái {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
     f" Để sản xuất 1 cái {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
     f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."

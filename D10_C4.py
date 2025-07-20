@@ -4,6 +4,10 @@ import sympy as sp
 import random
 from fractions import Fraction #Thư viện chuyển về dạng phân thức
 import my_module
+
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
@@ -505,11 +509,1077 @@ def yy3yy_L10_C4_B1_07():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
 
 
+#[D10_C4_B1_08]-TF-M2. Cho cos. Xét Đ-S: dấu của sin, sinx, sin(180-x), tan(90-x)
+def yy3yy_L10_C4_B1_08():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+
+    cosx=random.choice([1/random.randint(2,7),2/3,2/5,3/4,3/5,4/5,5/6])
+    noi_dung = (
+    f"Cho góc ${{{x}}}$ thỏa mãn $\\cos {x}={phan_so(cosx)}$. Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"* $\\sin {x}>0$" 
+    kq1_F=f"$\\sin {x}<0$"
+    
+    HDG=f"$\\sin {x}>0$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    sinx=sqrt(1-cosx**2)
+    sinx_f=sqrt(1+cosx**2)
+
+    kq2_T=f"* $\\sin {x}={latex(nsimplify(sinx))}$"
+    kq2_F=f" $\\sin {x}={latex(nsimplify(sinx_f))}$"
+    
+    HDG=f"$\\sin {x}=\\sqrt{{1-{phan_so(cosx**2)}}}={latex(nsimplify(sinx))}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $\\sin (180^\\circ-{x})={latex(nsimplify(sinx))}$" 
+    kq3_F=f"$\\sin (180^\\circ-{x})=-{latex(nsimplify(sinx))}$"
+    
+    HDG=f" $\\sin (180^\\circ-{x})=\\sin {x} = {latex(nsimplify(sinx))}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    tanx=sinx/cosx
+    cotx=cosx/sinx
+    chon=random.randint(1,2)
+
+    if chon==1:
+        kq4_T=f"* $\\tan (90^\\circ-{x})={latex(nsimplify(cotx))}$"
+        kq4_F=f"$\\tan (90^\\circ-{x})=-{latex(nsimplify(cotx))}$" 
+        
+        HDG=(f"$\\cot {x}={latex(nsimplify(cosx))}:{latex(nsimplify(sinx))}={latex(nsimplify(cotx))}$.\n\n"
+            f" $\\tan (90^\\circ-{x})=\\cot {x}={latex(nsimplify(cotx))}$.")
+    
+    if chon==2:
+        kq4_T=f"* $\\cot (90^\\circ-{x})={latex(nsimplify(tanx))}$"
+        kq4_F=f"$\\cot (90^\\circ-{x})=-{latex(nsimplify(tanx))}$" 
+        
+        HDG=(f"$\\tan {x}={latex(nsimplify(sinx))}:{latex(nsimplify(cosx))}={latex(nsimplify(tanx))}$.\n\n"
+            f" $\\cot (90^\\circ-{x})=\\tan {x}={latex(nsimplify(tanx))}$.")
+    
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
 
 
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B1_09]-TF-M2. Cho sin. Xét Đ-S: dấu của cos, cosx, cos(180-x), tan(90-x)
+def yy3yy_L10_C4_B1_09():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sinx=random.choice([1/random.randint(2,7),2/3,2/5,3/4,3/5,4/5,5/6])
+    noi_dung = (
+    f"Cho góc ${x}(0^\\circ<{x}<90^\\circ) $ thỏa mãn $\\sin {x}={phan_so(sinx)}$. Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"* $\\cos {x}>0$" 
+    kq1_F=f"$\\cos {x}<0$"
+    
+    HDG=f"$\\cos {x}>0$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    cosx=sqrt(1-sinx**2)
+    cosx_f=sqrt(1+sinx**2)
+
+    kq2_T=f"* $\\cos {x}={latex(nsimplify(cosx))}$"
+    kq2_F=f" $\\cos {x}={latex(nsimplify(cosx_f))}$"
+    
+    HDG=f"$\\cos {x}=\\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $\\cos (180^\\circ-{x})=-{latex(nsimplify(cosx))}$" 
+    kq3_F=f"$\\cos (180^\\circ-{x})={latex(nsimplify(cosx))}$"
+    
+    HDG=f" $\\cos (180^\\circ-{x})=-\\cos {x} = -{latex(nsimplify(cosx))}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    
+    tanx=sinx/cosx
+    cotx=cosx/sinx
+    chon=random.randint(1,2)
+
+    if chon==1:
+        kq4_T=f"* $\\tan (90^\\circ-{x})={latex(nsimplify(cotx))}$"
+        kq4_F=f"$\\tan (90^\\circ-{x})=-{latex(nsimplify(cotx))}$" 
+        
+        HDG=(f"$\\cot {x}={latex(nsimplify(cosx))}:{latex(nsimplify(sinx))}={latex(nsimplify(cotx))}$.\n\n"
+            f" $\\tan (90^\\circ-{x})=\\cot {x}={latex(nsimplify(cotx))}$.")
+    
+    if chon==2:
+        kq4_T=f"* $\\cot (90^\\circ-{x})={latex(nsimplify(tanx))}$"
+        kq4_F=f"$\\cot (90^\\circ-{x})=-{latex(nsimplify(tanx))}$" 
+        
+        HDG=(f"$\\tan {x}={latex(nsimplify(sinx))}:{latex(nsimplify(cosx))}={latex(nsimplify(tanx))}$.\n\n"
+            f" $\\cot (90^\\circ-{x})=\\tan {x}={latex(nsimplify(tanx))}$.")
+    
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
 
 
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
 
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B1_10]-SA-M2. Cho sin (góc tù). Tính biểu thức chứa sin,cosx,tan
+def yy3yy_L10_C4_B1_10():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos=sp.symbols("sinx cosx")
+    chon=random.randint(1,2)
+
+    if chon==1:
+        while True:
+            sinx=random.choice([1/random.randint(2,7),2/3,2/5,3/4,3/5,4/5,5/6])
+            m=random.randint(1,5)
+            n= random.choice([i for i in range(-4, 4) if i!=0])
+            cosx=sqrt(1-sinx**2)
+            f=m*sin+n*cos
+            kq=m*sinx+n*cosx
+            if kq>-8:
+                break
+
+        noi_dung = (
+        f"Cho góc ${{{x}}}$ là góc nhọn và thỏa mãn $\\sin {x}={phan_so(sinx)}$."
+        f" Tính giá trị biểu thức $P={latex(f)}$ (kết quả làm tròn đến hàng phần mười)"
+        )
+        noi_dung=noi_dung.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}")    
+
+
+        dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"$\\cos {x}=\\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$.\n\n"
+        f"${latex(f)}={dap_an}$."
+        )
+    
+    if chon==2:
+        while True:
+            sinx=random.choice([1/random.randint(2,7),2/3,2/5,3/4,3/5,4/5,5/6])
+            m=random.randint(1,5)
+            n= random.choice([i for i in range(-4, 4) if i!=0])
+
+            cosx=-sqrt(1-sinx**2)            
+            f=m*sin+n*cos
+            kq=m*sinx+n*cosx
+            if kq>-8:
+                break
+
+        noi_dung = (
+        f"Cho góc ${{{x}}}$ là góc tù và thỏa mãn $\\sin {x}={phan_so(sinx)}$."
+        f" Tính giá trị biểu thức $P={latex(f)}$ (kết quả làm tròn đến hàng phần mười)"
+        )
+        noi_dung=noi_dung.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}")    
+
+
+        dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"$\\cos {x}=-\\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$.\n\n"
+        f"${latex(f)}={dap_an}$."
+        )
+    
+    
+
+    noi_dung_loigiai=noi_dung_loigiai.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}")  
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B1_11]-SA-M2. Cho tan. Tính biểu thức chứa sin, cos
+def yy3yy_L10_C4_B1_11():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan=sp.symbols("sinx cosx tanx")
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        tanx=a/b
+        
+        m,n,p,q=[random.choice([i for i in range(-5, 6) if i!=0]) for i in range(4)]
+        if p*tanx+q==0:
+            continue
+        t=(m*tanx+n)/(p*tanx+q)
+
+        if all([m*q-n*p!=0, t>-8]) :
+            break
+
+    f=(m*sin+n*cos)/(p*sin+q*cos)
+    g=(m*tan+n)/(p*tan+q)
+
+    noi_dung = (
+    f"Cho góc ${{{x}}}$ thỏa mãn $\\tan {x} ={phan_so(tanx)}$. Tính giá trị biểu thức"
+    f" $P={latex(f)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P={latex(f)}={latex(g)}={phan_so(t)}={dap_an}$."
+    )
+
+    noi_dung=noi_dung.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("tanx", f"\\tan {x}")  
+    noi_dung_loigiai=noi_dung_loigiai.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("tanx", f"\\tan {x}")   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B1_12]-SA-M2. Cho cotan. Tính biểu thức chứa sin, cos
+def yy3yy_L10_C4_B1_12():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, cot=sp.symbols("sinx cosx cotx")
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        cotx=a/b
+        
+        m,n,p,q=[random.choice([i for i in range(-5, 6) if i!=0]) for i in range(4)]
+        if p+q*cotx==0:
+            continue
+        t=(m+n*cotx)/(p+q*cotx)
+
+        if all([m*q-n*p!=0, t>-8]) :
+            break
+
+    f=(m*sin+n*cos)/(p*sin+q*cos)
+    g=(m+n*cot)/(p+q*cot)
+
+    noi_dung = (
+    f"Cho góc ${{{x}}}$ thỏa mãn $\\cot {x} ={phan_so(cotx)}$. Tính giá trị biểu thức"
+    f" $P={latex(f)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P={latex(f)}={latex(g)}={phan_so(t)}={dap_an}$."
+    )
+
+    noi_dung=noi_dung.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("cotx", f"\\cot {x}")  
+    noi_dung_loigiai=noi_dung_loigiai.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("cotx", f"\\cot {x}")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B1_13]-SA-M2. Cho cos. Tính biểu thức chứa tan,cot
+def yy3yy_L10_C4_B1_13():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])
+        cosx=a/b
+        if cosx<=-1 or cosx>=1:
+            continue
+        k=1/cosx**2-1
+
+        m,n,p,q=[random.choice([i for i in range(-5, 6) if i!=0]) for i in range(4)]
+        if p*k+q==0:
+            continue
+
+        t=(m*k+n)/(p*k+q)
+
+        if all([m*q-n*p!=0, t>-8]) :
+            break
+
+    f=(m*tan+n*cot)/(p*tan+q*cot)
+    g=(m*(1/cos**2-1)+n)/(p*(1/cos**2-1)+q)
+
+    noi_dung = (
+    f"Cho góc ${{{x}}}$ thỏa mãn $\\cos {x} ={phan_so(cosx)}$. Tính giá trị biểu thức"
+    f" $P={latex(f)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"$P={latex(f)}={latex((m*tan**2+n)/(p*tan**2+q))}={latex(g)}={phan_so(t)}={dap_an}$."
+    )
+
+    noi_dung=noi_dung.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("tanx", f"\\tan {x}").replace("cotx", f"\\cot {x}")  
+    noi_dung_loigiai=noi_dung_loigiai.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("tanx", f"\\tan {x}").replace("cotx", f"\\cot {x}")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B1_14]-SA-M2. Cho sin. Tính biểu thức chứa tan,cot
+def yy3yy_L10_C4_B1_14():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])
+        cosx=a/b
+        if cosx<=-1 or cosx>=1:
+            continue
+        k=1/cosx**2-1
+
+        m,n,p,q=[random.choice([i for i in range(-5, 6) if i!=0]) for i in range(4)]
+        if p*k+q==0:
+            continue
+
+        t=(m*k+n)/(p*k+q)
+
+        if all([m*q-n*p!=0, t>-8]) :
+            break
+
+    f=(m*tan+n*cot)/(p*tan+q*cot)
+    g=(m*(1/cos**2-1)+n)/(p*(1/cos**2-1)+q)
+    sinx=sqrt(1-cosx**2)
+
+    noi_dung = (
+    f"Cho góc ${{{x}}}$ thỏa mãn $\\sin {x} ={latex(nsimplify(sinx))}$. Tính giá trị biểu thức"
+    f" $P={latex(f)}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+        f"Ta có: $\\cos^2 {x}=1-\\sin^2 {x}={phan_so(cosx**2)}$.\n\n"
+    f"$P={latex(f)}={latex((m*tan**2+n)/(p*tan**2+q))}={latex(g)}={phan_so(t)}={dap_an}$."
+    )
+
+    noi_dung=noi_dung.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("tanx", f"\\tan {x}").replace("cotx", f"\\cot {x}")  
+    noi_dung_loigiai=noi_dung_loigiai.replace("sinx", f"\\sin {x}").replace("cosx", f"\\cos {x}").replace("tanx", f"\\tan {x}").replace("cotx", f"\\cot {x}")     
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B1_15]-M2. Tìm khẳng định đúng về công thức lượng giác
+def yy3yy_L10_C4_B1_15():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    noi_dung=(
+    f"Tìm mệnh đề đúng trong các mệnh đề sau"
+    )
+    
+    kq=random.choice([
+        f"\\sin (90^\\circ-{x})=\\cos {x}",
+        f"\\cos (90^\\circ-{x})=\\sin {x}",
+        f"\\tan (90^\\circ-{x})=\\cot {x}",
+        f"\\cot (90^\\circ-{x})=\\tan {x}",
+        f"\\sin (180^\\circ-{x})=\\sin {x}",
+        f"\\cos (180^\\circ-{x})=-\\cos {x}",
+        f"\\tan (180^\\circ-{x})=-\\tan {x} ({x}\\ne 90^\\circ)",
+        f"\\cot (180^\\circ-{x})=-\\cot {x}, (0^\\circ < {x} < 180^\\circ)",
+        f"\\sin^2 {x} + \\cos^2{x}=1",
+        f"1+\\tan^2 {x}=\\dfrac{{1}}{{\\cos^2 {x}}}, ({x}\\ne 90^\\circ)",
+        f"1+\\cot^2 {x}=\\dfrac{{1}}{{\\sin^2 {x}}}, (0^\\circ < {x} < 180^\\circ)",
+        ])
+    kq_false=[
+    f"\\sin (90^\\circ-{x})=\\sin {x}",
+    f"\\cos (90^\\circ-{x})=\\cos {x}",
+    f"\\sin (180^\\circ-{x})=-\\sin {x}",
+    f"\\cos (180^\\circ-{x})=\\cos {x}",
+    f"\\tan (180^\\circ-{x})=\\tan {x} ({x}\\ne 90^\\circ)",
+    f"\\cot (180^\\circ-{x})=\\cot {x}, (0^\\circ < {x} < 180^\\circ)",
+    f"\\sin ({random.randint(2,8)*10}^\\circ-{x})=\\cos {x}",
+    f"\\cos({random.randint(2,8)*10}^\\circ-{x})=\\sin {x}",
+    f"\\sin^2 {x} - \\cos^2{x}=1",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B1_16]-TF-M2. Cho sinx (0<x<90). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 90-x
+def yy3yy_L10_C4_B1_16():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    while True:
+        a = random.choice([i for i in range(1, 9) if i!=0])
+        b = random.choice([i for i in range(1, 9) if i!=0])
+        sinx=a/b
+        if -1<sinx<1:
+            break
+
+    noi_dung = (
+    f"Cho góc ${{{x}}} (0^\\circ < {x} <90^\\circ)$ thỏa mãn $\\sin {x}={phan_so(sinx)}$ . Xét tính đúng-sai của các khẳng định sau:"
+    )    
+
+    cosx=sqrt(1-sinx**2)
+    
+    kq1_T=f"* $\\cos {x}={latex(nsimplify(cosx))}$" 
+    kq1_F=f" $\\cos {x}={latex(nsimplify(-cosx))}$"
+    
+    HDG=f"$\\cos {x}=\\sqrt{{1-\\sin^2 {x}}}= \\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    tanx=sinx/cosx
+
+    kq2_T=f"* $\\tan {x}= {latex(nsimplify(tanx))}$"
+    kq2_F=f"$\\tan {x}= {latex(nsimplify(-tanx))}$"
+    
+    HDG=f"$\\tan {x}={phan_so(sinx)}:{latex(nsimplify(cosx))}={latex(nsimplify(tanx))}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    cotx=cosx/sinx
+    kq3_T=f"* $\\cot {x}= {latex(nsimplify(cotx))}$" 
+    kq3_F=f"$\\cot {x}= {latex(nsimplify(-cotx))}$"
+    
+    HDG=f"$\\cot {x}={latex(nsimplify(cosx))}:{phan_so(sinx)}={latex(nsimplify(cotx))}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq4_T=f"* $\\sin(90^\\circ - {x})={latex(nsimplify(cosx))}$"
+        kq4_F=f"$\\sin(90^\\circ - {x})={latex(nsimplify(-cosx))}$" 
+        
+        HDG=f"$\\sin(90^\\circ - {x})=\\cos {x}={latex(nsimplify(cosx))}$."
+    
+    if chon==2:
+        kq4_T=f"* $\\cos(90^\\circ - {x})={phan_so(sinx)}$"
+        kq4_F=f"$\\cos(90^\\circ - {x})={phan_so(-sinx)}$" 
+        
+        HDG=f"$\\cos(90^\\circ - {x})=\\sin {x}={phan_so(sinx)}$."
+
+    if chon==3:
+        kq4_T=f"* $\\tan(90^\\circ - {x})={latex(nsimplify(cotx))}$"
+        kq4_F=f"$\\tan(90^\\circ - {x})={latex(nsimplify(-cotx))}$" 
+        
+        HDG=f"$\\tan(90^\\circ - {x})=\\cot {x}={latex(nsimplify(cotx))}$."
+
+    if chon==4:
+        kq4_T=f"* $\\cot(90^\\circ - {x})={latex(nsimplify(tanx))}$"
+        kq4_F=f"$\\cot(90^\\circ - {x})={latex(nsimplify(-tanx))}$" 
+        
+        HDG=f"$\\cot(90^\\circ - {x})=\\tan {x}={latex(nsimplify(tanx))}$."
+    
+
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B1_17]-TF-M2. Cho sinx (0<x<90). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 180-x
+def yy3yy_L10_C4_B1_17():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    while True:
+        a = random.choice([i for i in range(1, 9) if i!=0])
+        b = random.choice([i for i in range(1, 9) if i!=0])
+        sinx=a/b
+        if -1<sinx<1:
+            break
+
+    noi_dung = (
+    f"Cho góc ${{{x}}} (0^\\circ < {x} <90^\\circ)$ thỏa mãn $\\sin {x}={phan_so(sinx)}$ . Xét tính đúng-sai của các khẳng định sau:"
+    )    
+
+    cosx=sqrt(1-sinx**2)
+    
+    kq1_T=f"* $\\cos {x}={latex(nsimplify(cosx))}$" 
+    kq1_F=f" $\\cos {x}={latex(nsimplify(-cosx))}$"
+    
+    HDG=f"$\\cos {x}=\\sqrt{{1-\\sin^2 {x}}}= \\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    tanx=sinx/cosx
+
+    kq2_T=f"* $\\tan {x}= {latex(nsimplify(tanx))}$"
+    kq2_F=f"$\\tan {x}= {latex(nsimplify(-tanx))}$"
+    
+    HDG=f"$\\tan {x}={phan_so(sinx)}:{latex(nsimplify(cosx))}={latex(nsimplify(tanx))}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    cotx=cosx/sinx
+    kq3_T=f"* $\\cot {x}= {latex(nsimplify(cotx))}$" 
+    kq3_F=f"$\\cot {x}= {latex(nsimplify(-cotx))}$"
+    
+    HDG=f"$\\cot {x}={latex(nsimplify(cosx))}:{phan_so(sinx)}={latex(nsimplify(cotx))}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq4_T=f"* $\\sin(180^\\circ - {x})={phan_so(sinx)}$"
+        kq4_F=f"$\\sin(180^\\circ - {x})={phan_so(-sinx)}$" 
+        
+        HDG=f"$\\sin(180^\\circ - {x})=\\sin {x}={phan_so(sinx)}$."
+    
+    if chon==2:
+        kq4_T=f"* $\\cos(180^\\circ - {x})={latex(nsimplify(-cosx))}$"
+        kq4_F=f"$\\cos(180^\\circ - {x})={latex(nsimplify(cosx))}$" 
+        
+        HDG=f"$\\cos(180^\\circ - {x})=-\\cos {x}={latex(nsimplify(-cosx))}$."
+
+    if chon==3:
+        kq4_T=f"* $\\tan(180^\\circ - {x})={latex(nsimplify(-tanx))}$"
+        kq4_F=f"$\\tan(180^\\circ - {x})={latex(nsimplify(tanx))}$" 
+        
+        HDG=f"$\\tan(180^\\circ - {x})=-\\tan {x}={latex(nsimplify(-tanx))}$."
+
+    if chon==4:
+        kq4_T=f"* $\\cot(180^\\circ - {x})={latex(nsimplify(-cotx))}$"
+        kq4_F=f"$\\cot(180^\\circ - {x})={latex(nsimplify(cotx))}$" 
+        
+        HDG=f"$\\cot(180^\\circ - {x})=-\\cot {x}={latex(nsimplify(-cotx))}$."
+    
+
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B1_18]-TF-M2. Cho sinx (90<x<180). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 90-x
+def yy3yy_L10_C4_B1_18():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    while True:
+        a = random.choice([i for i in range(1, 9) if i!=0])
+        b = random.choice([i for i in range(1, 9) if i!=0])
+        sinx=a/b
+        if -1<sinx<1:
+            break
+
+    noi_dung = (
+    f"Cho góc ${{{x}}} (90^\\circ < {x} <180^\\circ)$ thỏa mãn $\\sin {x}={phan_so(sinx)}$ . Xét tính đúng-sai của các khẳng định sau:"
+    )    
+
+    cosx=-sqrt(1-sinx**2)
+    
+    kq1_T=f"* $\\cos {x}={latex(nsimplify(cosx))}$" 
+    kq1_F=f" $\\cos {x}={latex(nsimplify(-cosx))}$"
+    
+    HDG=f"$\\cos {x}=-\\sqrt{{1-\\sin^2 {x}}}=-\\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    tanx=sinx/cosx
+
+    kq2_T=f"* $\\tan {x}= {latex(nsimplify(tanx))}$"
+    kq2_F=f"$\\tan {x}= {latex(nsimplify(-tanx))}$"
+    
+    HDG=f"$\\tan {x}={phan_so(sinx)}:{latex(nsimplify(cosx))}={latex(nsimplify(tanx))}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    cotx=cosx/sinx
+    kq3_T=f"* $\\cot {x}= {latex(nsimplify(cotx))}$" 
+    kq3_F=f"$\\cot {x}= {latex(nsimplify(-cotx))}$"
+    
+    HDG=f"$\\cot {x}={latex(nsimplify(cosx))}:{phan_so(sinx)}={latex(nsimplify(cotx))}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq4_T=f"* $\\sin(90^\\circ - {x})={latex(nsimplify(cosx))}$"
+        kq4_F=f"$\\sin(90^\\circ - {x})={latex(nsimplify(-cosx))}$" 
+        
+        HDG=f"$\\sin(90^\\circ - {x})=\\cos {x}={latex(nsimplify(cosx))}$."
+    
+    if chon==2:
+        kq4_T=f"* $\\cos(90^\\circ - {x})={phan_so(sinx)}$"
+        kq4_F=f"$\\cos(90^\\circ - {x})={phan_so(-sinx)}$" 
+        
+        HDG=f"$\\cos(90^\\circ - {x})=\\sin {x}={phan_so(sinx)}$."
+
+    if chon==3:
+        kq4_T=f"* $\\tan(90^\\circ - {x})={latex(nsimplify(cotx))}$"
+        kq4_F=f"$\\tan(90^\\circ - {x})={latex(nsimplify(-cotx))}$" 
+        
+        HDG=f"$\\tan(90^\\circ - {x})=\\cot {x}={latex(nsimplify(cotx))}$."
+
+    if chon==4:
+        kq4_T=f"* $\\cot(90^\\circ - {x})={latex(nsimplify(tanx))}$"
+        kq4_F=f"$\\cot(90^\\circ - {x})={latex(nsimplify(-tanx))}$" 
+        
+        HDG=f"$\\cot(90^\\circ - {x})=\\tan {x}={latex(nsimplify(tanx))}$."
+    
+
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B1_19]-TF-M2. Cho sinx (90<x<180). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 180-x
+def yy3yy_L10_C4_B1_19():
+    x=random.choice(["x", "a", "\\alpha", "\\beta"])
+    sin, cos, tan, cot=sp.symbols("sinx cosx tanx cotx")
+    while True:
+        a = random.choice([i for i in range(1, 9) if i!=0])
+        b = random.choice([i for i in range(1, 9) if i!=0])
+        sinx=a/b
+        if -1<sinx<1:
+            break
+
+    noi_dung = (
+    f"Cho góc ${{{x}}} (90^\\circ < {x} <180^\\circ)$ thỏa mãn $\\sin {x}={phan_so(sinx)}$ . Xét tính đúng-sai của các khẳng định sau:"
+    )    
+
+    cosx=-sqrt(1-sinx**2)
+    
+    kq1_T=f"* $\\cos {x}={latex(nsimplify(cosx))}$" 
+    kq1_F=f" $\\cos {x}={latex(nsimplify(-cosx))}$"
+    
+    HDG=f"$\\cos {x}=-\\sqrt{{1-\\sin^2 {x}}}= -\\sqrt{{1-{phan_so(sinx**2)}}}={latex(nsimplify(cosx))}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    tanx=sinx/cosx
+
+    kq2_T=f"* $\\tan {x}= {latex(nsimplify(tanx))}$"
+    kq2_F=f"$\\tan {x}= {latex(nsimplify(-tanx))}$"
+    
+    HDG=f"$\\tan {x}={phan_so(sinx)}:{latex(nsimplify(cosx))}={latex(nsimplify(tanx))}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    cotx=cosx/sinx
+    kq3_T=f"* $\\cot {x}= {latex(nsimplify(cotx))}$" 
+    kq3_F=f"$\\cot {x}= {latex(nsimplify(-cotx))}$"
+    
+    HDG=f"$\\cot {x}={latex(nsimplify(cosx))}:{phan_so(sinx)}={latex(nsimplify(cotx))}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,4)
+    
+    if chon==1:
+        kq4_T=f"* $\\sin(180^\\circ - {x})={phan_so(sinx)}$"
+        kq4_F=f"$\\sin(180^\\circ - {x})={phan_so(-sinx)}$" 
+        
+        HDG=f"$\\sin(180^\\circ - {x})=\\sin {x}={phan_so(sinx)}$."
+    
+    if chon==2:
+        kq4_T=f"* $\\cos(180^\\circ - {x})={latex(nsimplify(-cosx))}$"
+        kq4_F=f"$\\cos(180^\\circ - {x})={latex(nsimplify(cosx))}$" 
+        
+        HDG=f"$\\cos(180^\\circ - {x})=-\\cos {x}={latex(nsimplify(-cosx))}$."
+
+    if chon==3:
+        kq4_T=f"* $\\tan(180^\\circ - {x})={latex(nsimplify(-tanx))}$"
+        kq4_F=f"$\\tan(180^\\circ - {x})={latex(nsimplify(tanx))}$" 
+        
+        HDG=f"$\\tan(180^\\circ - {x})=-\\tan {x}={latex(nsimplify(-tanx))}$."
+
+    if chon==4:
+        kq4_T=f"* $\\cot(180^\\circ - {x})={latex(nsimplify(-cotx))}$"
+        kq4_F=f"$\\cot(180^\\circ - {x})={latex(nsimplify(cotx))}$" 
+        
+        HDG=f"$\\cot(180^\\circ - {x})=-\\cot {x}={latex(nsimplify(-cotx))}$."
+    
+
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 
 
 
@@ -1529,7 +2599,7 @@ def yy3yy_L10_C4_B2_11():
     kq1_T=f"* $\\widehat{{{C}}} = {goc_C_degree}^\\circ$"
     kq1_F=f"$\\widehat{{{C}}} = {goc_C_degree_false}^\\circ$"
     kq1=random.choice([kq1_T, kq1_F])
-    HDG=f"$\\widehat{{{C}}}=180^\\circ-{goc_A_degree}^\\circ-{goc_B_degree}^\\circ={goc_C_degree}^\\circ$"
+    HDG=f"$\\widehat{{{C}}}=180^\\circ - {goc_A_degree}^\\circ-{goc_B_degree}^\\circ={goc_C_degree}^\\circ$"
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2292,7 +3362,7 @@ def yy3yy_L10_C4_B2_22():
     \draw[fill=blue!30]  plot[smooth  cycle] coordinates{{(-1.75,0.53)(-1.46,0.79) (-1.01,0.58) (-1.08,1.06) (-0.64,1.08)(-0.93,1.59)(-0.53,1.85)(-0.93,2.2)(-1.38,2.7)(-2.04,3.18)(-2.49,2.91)(-3.07,2.91)(-3.2,2.22)(-3.73,1.96)(-3.1,1.3)(-3.31,1.01)(-2.83,1.01)(-2.99,0.69)(-2.14,0.58)}};
     \tkzDefPoints{{-1.38/-0.13/C,-2/-3/B,3/-2/A}}
     \tkzDrawPoints[fill=black](A,B,C)
-    \tkzDrawP4gon(A,B,C)
+    \tkzDrawPolygon(A,B,C)
     \tkzDefMidPoint(A,B) 
     \tkzLabelPoints[below](A,B)
     \tkzLabelPoints[above right](C)
@@ -2305,6 +3375,7 @@ def yy3yy_L10_C4_B2_22():
 
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
+
     noi_dung = f"   Để đo khoảng cách từ một điểm ${{A}}$ trên bờ sông đến gốc cây ${{C}}$ trên cù lao giữa sông, người ta chọn một điểm ${{B}}$ cùng ở trên bờ với ${{A}}$ sao cho từ ${{A}}$ và ${{B}}$ có thể nhìn thấy điểm ${{C}}$. Ta đo được khoảng cách $ {{AB={a}}}$ m, $ \\widehat{{CAB}}={b}^{{\\circ}}$ và $ \\widehat{{CBA}}={c}^{{\\circ}}$. Tính độ dài ${{AC}}$ (Làm tròn kết quả đến hàng phần mười)."
 
     noi_dung_loigiai=( f"$\\widehat{{C}}=180^{{\\circ}}-(\\widehat{{A}}+\\widehat{{B}})={180-b-c}^{{\\circ}}$.\n\n"

@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 09.07.2025")
+                self.label.setText(f"iMath\u00A92025 ver 20.07.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 09.07.2025")
+                self.label.setText(f"iMath\u00A92025 ver 20.07.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1661,23 +1661,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_11]-SA-M3.  Hệ: ax+by+c>=0, x>=0, y>=0. Tìm min F=mx+n."])
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_11]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm min F=mx+n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_12]-SA-M3.  Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n."])
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_12]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_13]-SA-M3.  Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm min F=mx+n+p."])
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_13]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm min F=mx+n+p."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_14]-SA-M3.  Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm max F=mx+n+p."])
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_14]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x>=0, y>=0. Tìm max F=mx+n+p."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_15]-SA-M3.  Hệ: 3 BPT hai ẩn. Tìm max F=mx+n."])
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_15]-SA-M3. Hệ: 3 BPT hai ẩn. Tìm max F=mx+n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -1689,7 +1689,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_17]-SA-M3.Tìm lợi nhuận lớn nhất khi sản xuất bàn và ghế."])
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_17]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất bàn và ghế."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_18]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất áo và quần."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -1973,9 +1977,13 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_01]-M1. Tìm dấu của một giá trị lượng giác từ 0 đến 180 độ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
 
                 item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_02]-M1. Cho giá trị lượng giác, tìm góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_15]-M2. Tìm khẳng định đúng về công thức lượng giác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -1996,6 +2004,58 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item=QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_07]-M2. Cho tan tính giá trị của biểu thức"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C4_B1_2 = QTreeWidgetItem(L10_C4_B1, ["Đúng-Sai"])
+                L10_C4_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C4_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_2, ["[D10_C4_B1_08]-TF-M2. Cho cos. Xét Đ-S: dấu của sin, sinx, sin(180-x), tan(90-x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_2, ["[D10_C4_B1_09]-TF-M2. Cho sin. Xét Đ-S: dấu của cos, cosx, cos(180-x), tan(90-x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_2, ["[D10_C4_B1_16]-TF-M2. Cho sinx (0<x<90). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 90-x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_2, ["[D10_C4_B1_18]-TF-M2. Cho sinx (90<x<180). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 90-x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_2, ["[D10_C4_B1_17]-TF-M2. Cho sinx (0<x<90). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 180-x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_2, ["[D10_C4_B1_19]-TF-M2. Cho sinx (90<x<180). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 180-x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C4_B1_3 = QTreeWidgetItem(L10_C4_B1, ["Trả lời ngắn"])
+                L10_C4_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C4_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_3, ["[D10_C4_B1_10]-SA-M2. Cho sin (góc tù). Tính biểu thức chứa sin,cosx,tan"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_3, ["[D10_C4_B1_11]-SA-M2. Cho tan. Tính biểu thức chứa sin, cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_3, ["[D10_C4_B1_12]-SA-M2. Cho cotan. Tính biểu thức chứa sin, cos"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_3, ["[D10_C4_B1_13]-SA-M2. Cho cos. Tính biểu thức chứa tan,cot"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C4_B1_3, ["[D10_C4_B1_14]-SA-M2. Cho sin. Tính biểu thức chứa tan,cot"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -14497,6 +14557,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D10_C2_B2_17]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_17()
 
+                                            #[D10_C2_B2_18]-SA-M3. Tìm lợi nhuận lớn nhất khi sản xuất áo và quần
+                                            if dang_toan == "[D10_C2_B2_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_18()
+
 
 
                                 #Toán 10- Chương 3 - Hàm số và đồ thị
@@ -14749,23 +14813,72 @@ class Ui_MainWindow(object):
 
                                             #[D10_C4_B1_03]-M2. Cho sin tìm cos
                                             if dang_toan =="[D10_C4_B1_03]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_03()
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_03()
 
                                             #[D10_C4_B1_04]-M2. Cho sin tìm tan
                                             if dang_toan =="[D10_C4_B1_04]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_04()
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_04()
 
                                             #[D10_C4_B1_05]-M2. Cho cos tìm sin
                                             if dang_toan =="[D10_C4_B1_05]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_05()
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_05()
 
                                             #[D10_C4_B1_06]-M2. Cho cos tìm tan
                                             if dang_toan =="[D10_C4_B1_06]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_06()
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_06()
 
                                             #[D10_C4_B1_07]-M2. Cho tan tính giá trị của biểu thức
                                             if dang_toan =="[D10_C4_B1_07]":
-                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_07()
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_07()
+
+                                            #[D10_C4_B1_08]-TF-M2. Cho cos. Xét Đ-S: dấu của sin, sinx, sin(180-x), tan(90-x)                                  
+                                            if dang_toan == "[D10_C4_B1_08]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_08()
+
+                                            #[D10_C4_B1_09]-TF-M2. Cho sin. Xét Đ-S: dấu của cos, cosx, cos(180-x), tan(90-x)                                 
+                                            if dang_toan == "[D10_C4_B1_09]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_09()
+
+                                            #[D10_C4_B1_10]-SA-M2. Cho sin (góc tù). Tính biểu thức chứa sin,cosx,tan
+                                            if dang_toan == "[D10_C4_B1_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B1_10()
+
+                                            #[D10_C4_B1_11]-SA-M2. Cho tan. Tính biểu thức chứa sin, cos
+                                            if dang_toan == "[D10_C4_B1_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B1_11()
+
+                                            #[D10_C4_B1_12]-SA-M2. Cho cotan. Tính biểu thức chứa sin, cos
+                                            if dang_toan == "[D10_C4_B1_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B1_12()
+
+                                            #[D10_C4_B1_13]-SA-M2. Cho cos. Tính biểu thức chứa tan,cot
+                                            if dang_toan == "[D10_C4_B1_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B1_13()
+
+                                            #[D10_C4_B1_14]-SA-M2. Cho sin. Tính biểu thức chứa tan,cot
+                                            if dang_toan == "[D10_C4_B1_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B1_14()
+
+                                            #[D10_C4_B1_15]-M2. Tìm khẳng định đúng về công thức lượng giác
+                                            if dang_toan =="[D10_C4_B1_15]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_15()
+
+                                            #[D10_C4_B1_16]-TF-M2. Cho sinx (0<x<90). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 90-x                                 
+                                            if dang_toan == "[D10_C4_B1_16]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_16()
+
+                                            #[D10_C4_B1_17]-TF-M2. Cho sinx (0<x<90). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 180-x                                
+                                            if dang_toan == "[D10_C4_B1_17]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_17()
+
+                                            #[D10_C4_B1_18]-TF-M2. Cho sinx (90<x<180). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 90-x                             
+                                            if dang_toan == "[D10_C4_B1_18]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_18()
+
+                                            #[D10_C4_B1_19]-TF-M2. Cho sinx (90<x<180). Xét Đ-S: cosx, tanx, cotx, GTLG của góc 180-x                            
+                                            if dang_toan == "[D10_C4_B1_19]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_19()
+
 
                                             
 
