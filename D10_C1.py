@@ -3703,7 +3703,194 @@ def mjulk_L10_C1_B3_19():
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
+#[D10_C1_B3_20]-M2. Cho n(A),n(B),n(hợp). Tìm n(giao)
+def mjulk_L10_C1_B3_20():
+	A,B=random.sample(["A","B","C","D","E","M","N"],2)
+	giao=random.randint(7,15)
+	while True:
+		a=random.randint(8,15)+giao
+		b=random.randint(8,20)+giao
+		if a!=b:
+			break
+	hop=a+b-giao
+	noi_dung=(
+	f"Cho hai tập hợp ${{{A}}}$ và ${{{B}}}$ biết "
+	f"$n({A})={a},n({B})={b}, n({A}\\cup {B})={hop}$."
+	f" Tính $n({A}\\cap {B})$."
+	)
+ 
+	kq=giao
+	kq_false=[a+b,
+	abs(a-b),
+	random.randint(b,a+b),
+	hop-a,
+	hop-b
+	]
+	kq_false=[i for i in kq_false if i!=kq]
 
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"$n({A}\\cap {B})=n({A})+n({B})-n({A}\\cup {B}) ={a}+{b}-{hop}={giao}$."
+	)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C1_B3_21]-M2. Cho n(A),n(B),n(giao). Tìm n(hợp)
+def mjulk_L10_C1_B3_21():
+	A,B=random.sample(["A","B","C","D","E","M","N"],2)
+	giao=random.randint(7,15)
+	while True:
+		a=random.randint(8,15)+giao
+		b=random.randint(8,20)+giao
+		if a!=b:
+			break
+	hop=a+b-giao
+	noi_dung=(
+	f"Cho hai tập hợp ${{{A}}}$ và ${{{B}}}$ biết "
+	f"$n({A})={a},n({B})={b}, n({A}\\cap {B})={giao}$."
+	f" Tính $n({A}\\cup {B})$."
+	)
+ 
+	kq=hop
+	kq_false=[a+b,
+	random.randint(b,a+b),
+	giao+a,
+	giao+b,
+	hop+random.randint(1,5)
+	]
+	kq_false=[i for i in kq_false if i!=kq]
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"$n({A}\\cup {B})=n({A})+n({B})-n({A}\\cap {B}) ={a}+{b}-{giao}={hop}$."
+	)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C1_B3_22]-M2. Cho n(A), n(giao), n(hợp). Tính n(B).
+def mjulk_L10_C1_B3_22():
+	A,B=random.sample(["A","B","C","D","E","M","N"],2)
+	giao=random.randint(7,15)
+	while True:
+		a=random.randint(8,15)+giao
+		b=random.randint(8,20)+giao
+		if a!=b:
+			break
+	hop=a+b-giao
+	noi_dung=(
+	f"Cho hai tập hợp ${{{A}}}$ và ${{{B}}}$ biết "
+	f"$n({A})={a},n({A}\\cap {B})={giao}, n({A}\\cup {B})={hop}$."
+	f" Tính $n({B})$."
+	)
+ 
+	kq=b
+	kq_false=[a+b,
+	random.randint(b,a+b),
+	hop-a,
+	hop-b,
+	hop+random.randint(1,5)
+	]
+	kq_false=[i for i in kq_false if i!=kq]
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"$n({B})=n({A}\\cup {B})+n({A}\\cap {B})-n({A})={hop}+{giao}-{a}={b}$."
+	)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 

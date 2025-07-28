@@ -1903,7 +1903,7 @@ def yy3yy_L10_C4_B2_06():
     goc_C_degree=random.randint(10,130)
     goc_C= math.radians(goc_C_degree)
 
-    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},\\widehat{{{C}}}={goc_C_degree}^\\circ$. Xét tính đúng-sai của các khẳng định sau. "        
+    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},\\widehat{{{C}}}={goc_C_degree}^\\circ$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm). "        
     debai_word= f"{noi_dung}\n"
 
     S=f"{1/2*l_a*l_b*sin(goc_C):.2f}".replace(".",",")
@@ -2028,8 +2028,8 @@ def yy3yy_L10_C4_B2_07():
     goc_C_degree=random.randint(10,130)
     goc_C= math.radians(goc_C_degree)
 
-    noi_dung = (f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},\\widehat{{{C}}}={goc_C_degree}^\\circ$. Xét tính đúng-sai của các khẳng định sau. "        
-    f"(Các kết quả làm tròn đến hàng phần trăm)"
+    noi_dung = (f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},\\widehat{{{C}}}={goc_C_degree}^\\circ$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm). "    
+
     )
     debai_word= f"{noi_dung}\n"
 
@@ -2173,7 +2173,7 @@ def yy3yy_L10_C4_B2_08():
     goc_C_degree=random.randint(10,130)
     goc_C= math.radians(goc_C_degree)
 
-    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau."        
+    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):"        
     debai_word= f"{noi_dung}\n"
 
     p=(l_a+l_b+l_c)/2
@@ -2281,7 +2281,7 @@ def yy3yy_L10_C4_B2_09():
     goc_C_degree=random.randint(10,130)
     goc_C= math.radians(goc_C_degree)
 
-    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau."        
+    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau(kết quả làm tròn đến hàng phần trăm):"        
     debai_word= f"{noi_dung}\n"
 
     cosA=(l_b**2+l_c**2-l_a**2)/(2*l_b*l_c)
@@ -2440,7 +2440,7 @@ def yy3yy_L10_C4_B2_10():
     goc_C_degree=random.randint(10,130)
     goc_C= math.radians(goc_C_degree)
 
-    noi_dung = f"Cho tam giác ${{{tamgiac}}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau."        
+    noi_dung = f"Cho tam giác ${{{tamgiac}}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):"        
     debai_word= f"{noi_dung}\n"
 
     cosA=(l_b**2+l_c**2-l_a**2)/(2*l_b*l_c)
@@ -2593,7 +2593,7 @@ def yy3yy_L10_C4_B2_11():
     goc_C_degree_false=goc_A_degree+goc_B_degree
     goc_C=math.radians(goc_C_degree)
 
-    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},\\widehat{{{A}}}={goc_A_degree}^\\circ, \\widehat{{{B}}}={goc_B_degree}^\\circ$. Xét tính đúng-sai của các khẳng định sau. "        
+    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},\\widehat{{{A}}}={goc_A_degree}^\\circ, \\widehat{{{B}}}={goc_B_degree}^\\circ$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm): "        
     debai_word= f"{noi_dung}\n"    
 
     kq1_T=f"* $\\widehat{{{C}}} = {goc_C_degree}^\\circ$"
@@ -2729,7 +2729,7 @@ def yy3yy_L10_C4_B2_12():
     HDG=f"$\\dfrac{{{b}}}{{\\sin {B}}}=\\dfrac{{{a}}}{{\\sin {A}}}\\Rightarrow {b}=\\dfrac{{{a}\\sin {B}}}{{\\sin {A}}}={l_b}$."
 
     noi_dung = (f"Cho tam giác ${{ABC}}$ có ${a}={l_a},\\widehat{{{A}}}={goc_A_degree}^\\circ, \\widehat{{{B}}}={goc_B_degree}^\\circ$."
-        f" Độ dài cạnh ${{{c}}}$ bằng "
+        f" Độ dài cạnh ${{{c}}}$ bằng (kết quả làm tròn đến hàng phần chục)."
     )    
 
     kq=l_a*sin(goc_C)/sin(goc_A)
@@ -3488,4 +3488,621 @@ def yy3yy_L10_C4_B2_24():
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D10_C4_B2_25]-M2. Cho hình thoi có cạnh và một góc. Tính S.
+def yy3yy_L10_C4_B2_25():
+    a=random.randint(1,7)
+    ten_goc=random.choice(["\\widehat{BAD}", "\\widehat{ABC}", "\\widehat{BCD}", "\\widehat{ADC}"])
+    goc=random.choice([30,45,60,120,135,150])
+    goc_rad= math.radians(goc)
+    noi_dung=(
+    f"Cho hình thoi ${{ABCD}}$ có cạnh bằng ${{{a}}}$ và góc ${ten_goc}={goc}^\\circ$."
+    f" Diện tích hình thoi đã cho bằng"
+    )
     
+
+    kq=a**2*sin(goc_rad)
+    kq_f=[
+    1/2*a**2*sin(goc_rad),
+    abs(a**2*cos(goc_rad)),
+    4*a**2*sin(goc_rad),
+    3*a**2*sin(goc_rad)
+    ]
+    kq_false=[i for i in kq_f if i != kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$S_{{ABCD}}=2.{a}.{a}.\\sin {goc}^\\circ={latex(nsimplify(kq))}.$"
+    )
+    
+    pa_A= f"*${{{latex(nsimplify(kq))}}}$"
+    pa_B= f"${{{latex(nsimplify(kq2))}}}$"
+    pa_C= f"${{{latex(nsimplify(kq3))}}}$"
+    pa_D= f"${{{latex(nsimplify(kq4))}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_26]-M2. Cho a,b,c. Tính R.
+def yy3yy_L10_C4_B2_26():
+    while True:
+        a,b,c=[random.randint(1,6) for i in range(3)]
+        if all([a+b>c,a+c>b,b+c>a]):
+            break
+
+    noi_dung=(
+    f"Cho tam giác ${{ABC}}$ có độ dài ba cạnh lần lượt là ${{{a},{b},{c}}}$."
+    f" Bán kính đường tròn ngoại tiếp tam giác ${{ABC}}$ bằng (kết quả làm tròn đến hàng phần mười)"
+    )
+
+    p=(a+b+c)/2
+    S=sqrt(p*(p-a)*(p-b)*(p-c))
+    R=(a*b*c)/(4*S)
+    
+
+    kq=R
+    kq_f=[
+    (a*b*c)/(2*S),
+    (a*b*c)/(S),
+    S/p,
+    S/(2*p)
+    ]
+    kq_false=[i for i in kq_f if i != kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    kq=f"{round_half_up(kq,1):.1f}".replace(".",",")
+    kq2=f"{round_half_up(kq2,1):.1f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,1):.1f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Ta có: $p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$.\n\n"
+    f"Diện tích tam giác ${{ABC}}$:\n\n"
+    f"$S=\\sqrt{{{phan_so(p)}.({phan_so(p)}-{a}).({phan_so(p)}-{b}).({phan_so(p)}-{c})}}={latex(nsimplify(S))}$.\n\n"
+    f"$S=\\dfrac{{abc}}{{4R}}\\Rightarrow R=\\dfrac{{abc}}{{4S}}=\\dfrac{{{a}.{b}.{c}}}{{4.{latex(nsimplify(S))}}}={kq}$."
+
+    )
+
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_27]-M2. Cho a,b,c. Tính r.
+def yy3yy_L10_C4_B2_27():
+    while True:
+        a,b,c=[random.randint(1,6) for i in range(3)]
+        if all([a+b>c,a+c>b,b+c>a]):
+            break
+
+    noi_dung=(
+    f"Cho tam giác ${{ABC}}$ có độ dài ba cạnh lần lượt là ${{{a},{b},{c}}}$."
+    f" Bán kính đường tròn nội tiếp tam giác ${{ABC}}$ bằng (kết quả làm tròn đến hàng phần mười)"
+    )
+
+    p=(a+b+c)/2
+    S=sqrt(p*(p-a)*(p-b)*(p-c))
+    r=S/p
+    
+
+    kq=r
+    kq_f=[
+    (a*b*c)/(2*S),
+    (a*b*c)/(4*S),
+    S/(4*p),
+    S/(2*p)
+    ]
+    kq_false=[i for i in kq_f if i != kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    kq=f"{round_half_up(kq,1):.1f}".replace(".",",")
+    kq2=f"{round_half_up(kq2,1):.1f}".replace(".",",")
+    kq3=f"{round_half_up(kq3,1):.1f}".replace(".",",")
+    kq4=f"{round_half_up(kq4,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Ta có: $p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$.\n\n"
+    f"Diện tích tam giác ${{ABC}}$:\n\n"
+    f"$S=\\sqrt{{{phan_so(p)}.({phan_so(p)}-{a}).({phan_so(p)}-{b}).({phan_so(p)}-{c})}}={latex(nsimplify(S))}$.\n\n"
+    f"$S=p.r\\Rightarrow r=\\dfrac{{S}}{{p}}=\\dfrac{{{latex(nsimplify(S))}}}{{{phan_so(p)}}}={kq}$."
+
+    )
+
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_28]-M2. Cho a,b,c. Tính h.
+def yy3yy_L10_C4_B2_28():
+    while True:
+        a,b,c=[random.randint(1,6) for i in range(3)]
+        if all([a+b>c,a+c>b,b+c>a]):
+            break
+    chon=random.randint(1,3)
+
+    if chon==1:
+        noi_dung=(
+        f"Cho tam giác ${{ABC}}$ có độ dài ba cạnh lần lượt là ${{a={a},b={b},c={c}}}$."
+        f" Chiều cao xuất phát từ đỉnh ${{A}}$ của tam giác ${{ABC}}$ bằng (kết quả làm tròn đến hàng phần mười)"
+        )
+
+        p=(a+b+c)/2
+        S=sqrt(p*(p-a)*(p-b)*(p-c))
+        h_a=2*S/a
+        h_b=2*S/b
+        h_c=2*S/c    
+
+        kq=h_a
+        kq_f=[
+        h_b,
+        h_c,
+        S/a,
+        S/b,
+        S/c,
+        S/(2*b),
+        S/(2*a),
+        S/(2*c)
+        ]
+        kq_false=[i for i in kq_f if i != kq]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        kq=f"{round_half_up(kq,1):.1f}".replace(".",",")
+        kq2=f"{round_half_up(kq2,1):.1f}".replace(".",",")
+        kq3=f"{round_half_up(kq3,1):.1f}".replace(".",",")
+        kq4=f"{round_half_up(kq4,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"Ta có: $p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$.\n\n"
+        f"Diện tích tam giác ${{ABC}}$:\n\n"
+        f"$S=\\sqrt{{{phan_so(p)}.({phan_so(p)}-{a}).({phan_so(p)}-{b}).({phan_so(p)}-{c})}}={latex(nsimplify(S))}$.\n\n"
+        f"$S={phan_so(1/2)}a.h_a\\Rightarrow h_a=\\dfrac{{2S}}{{a}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{a}}}={kq}$.")
+    
+    if chon==2:
+        noi_dung=(
+        f"Cho tam giác ${{ABC}}$ có độ dài ba cạnh lần lượt là ${{a={a},b={b},c={c}}}$."
+        f" Chiều cao xuất phát từ đỉnh ${{B}}$ của tam giác ${{ABC}}$ bằng (kết quả làm tròn đến hàng phần mười)"
+        )
+
+        p=(a+b+c)/2
+        S=sqrt(p*(p-a)*(p-b)*(p-c))
+        h_a=2*S/a
+        h_b=2*S/b
+        h_c=2*S/c    
+
+        kq=h_b
+        kq_f=[
+        h_a,
+        h_c,
+        S/a,
+        S/b,
+        S/c,
+        S/(2*b),
+        S/(2*a),
+        S/(2*c)
+        ]
+        kq_false=[i for i in kq_f if i != kq]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        kq=f"{round_half_up(kq,1):.1f}".replace(".",",")
+        kq2=f"{round_half_up(kq2,1):.1f}".replace(".",",")
+        kq3=f"{round_half_up(kq3,1):.1f}".replace(".",",")
+        kq4=f"{round_half_up(kq4,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"Ta có: $p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$.\n\n"
+        f"Diện tích tam giác ${{ABC}}$:\n\n"
+        f"$S=\\sqrt{{{phan_so(p)}.({phan_so(p)}-{a}).({phan_so(p)}-{b}).({phan_so(p)}-{c})}}={latex(nsimplify(S))}$.\n\n"
+        f"$S={phan_so(1/2)}b.h_b\\Rightarrow h_b=\\dfrac{{2S}}{{b}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{b}}}={kq}$.")
+
+    if chon==3:
+        noi_dung=(
+        f"Cho tam giác ${{ABC}}$ có độ dài ba cạnh lần lượt là ${{a={a},b={b},c={c}}}$."
+        f" Chiều cao xuất phát từ đỉnh ${{C}}$ của tam giác ${{ABC}}$ bằng (kết quả làm tròn đến hàng phần mười)"
+        )
+
+        p=(a+b+c)/2
+        S=sqrt(p*(p-a)*(p-b)*(p-c))
+        h_a=2*S/a
+        h_b=2*S/b
+        h_c=2*S/c    
+
+        kq=h_c
+        kq_f=[
+        h_a,
+        h_b,
+        S/a,
+        S/b,
+        S/c,
+        S/(2*b),
+        S/(2*a),
+        S/(2*c)
+        ]
+        kq_false=[i for i in kq_f if i != kq]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        kq=f"{round_half_up(kq,1):.1f}".replace(".",",")
+        kq2=f"{round_half_up(kq2,1):.1f}".replace(".",",")
+        kq3=f"{round_half_up(kq3,1):.1f}".replace(".",",")
+        kq4=f"{round_half_up(kq4,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"Ta có: $p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$.\n\n"
+        f"Diện tích tam giác ${{ABC}}$:\n\n"
+        f"$S=\\sqrt{{{phan_so(p)}.({phan_so(p)}-{a}).({phan_so(p)}-{b}).({phan_so(p)}-{c})}}={latex(nsimplify(S))}$.\n\n"
+        f"$S={phan_so(1/2)}c.h_c\\Rightarrow h_c=\\dfrac{{2S}}{{c}}=\\dfrac{{2.{latex(nsimplify(S))}}}{{{c}}}={kq}$.")
+    
+    
+
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_29]-M1. Nhận dạng định lí sin
+def yy3yy_L10_C4_B2_29():
+    noi_dung=(
+    f"Cho tam giác ${{ABC}}$ có ${{BC=a, AC=b, AB=c}}$. Trong các khẳng định sau, khẳng định nào là khẳng định đúng?"
+    )
+    
+
+    kq=random.choice([
+        f"a^2=b^2+c^2-2bc\\cos A",
+        f"b^2=a^2+c^2-2ac\\cos B",
+        f"c^2=a^2+b^2-2ab\\cos C",
+        ])
+    kq_false=[
+        f"a^2=b^2+c^2+2bc\\cos A",
+        f"b^2=a^2+c^2+2ac\\cos B",
+        f"c^2=a^2+b^2+2ab\\cos C",
+
+        f"a^2=b^2+c^2-2bc\\sin A",
+        f"b^2=a^2+c^2-2ac\\sin B",
+        f"c^2=a^2+b^2-2ab\\sin C",
+
+        f"a^2=b^2-c^2+2bc\\cos A",
+        f"b^2=a^2-c^2+2ac\\cos B",
+        f"c^2=a^2-b^2+2ab\\cos C",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_30]-M1. Nhận dạng định lí sin
+def yy3yy_L10_C4_B2_30():
+    noi_dung=(
+    f"Cho tam giác ${{ABC}}$ có ${{BC=a, AC=b, AB=c}}$. Trong các khẳng định sau, khẳng định nào là khẳng định đúng?"
+    )
+    
+
+    kq=random.choice([
+        f"\\dfrac{{a}}{{\\sin A}}=\\dfrac{{b}}{{\\sin B}}",
+        f"\\dfrac{{a}}{{\\sin A}}=\\dfrac{{c}}{{\\sin C}}",
+        f"\\dfrac{{b}}{{\\sin B}}=\\dfrac{{c}}{{\\sin C}}",
+        ])
+    kq_false=[
+        f"a\\sin A = b\\sin B",
+        f"b\\sin B = c\\sin C",
+        f"a\\sin B = b\\sin A",
+        f"a\\sin C = c\\sin A",
+        f"\\dfrac{{a}}{{\\cos A}}=\\dfrac{{b}}{{\\cos B}}",
+        f"\\dfrac{{b}}{{\\cos B}}=\\dfrac{{c}}{{\\cos C}}",
+        f"\\dfrac{{a}}{{\\sin 2A}}=\\dfrac{{b}}{{\\sin 2B}}",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_31]-M1. Nhận dạng công thức diện tích
+def yy3yy_L10_C4_B2_31():
+    noi_dung=(
+    f"Cho tam giác ${{ABC}}$ có ${{BC=a, AC=b, AB=c}}$. Gọi ${{p,S,r,R}}$ lần lượt là nữa chu vi, diện tích, bán kính đường tròn nội tiếp và bán kính đường tròn ngoại tiếp của tam giác ${{ABC}}$. Trong các khẳng định sau, khẳng định nào là khẳng định đúng?"
+    )
+    
+
+    kq=random.choice([
+        f"S=pr",
+        f"S=\\dfrac{{abc}}{{4R}}",
+        f"S={phan_so(1/2)}ab\\sin C",
+        f"S={phan_so(1/2)}bc\\sin A",
+        f"S={phan_so(1/2)}ac\\sin B",
+        f"S=\\sqrt{{p(p-a)(p-b)(p-c)}}"
+
+        ])
+    kq_false=[
+    f"S=\\dfrac{{p}}{{r}}",
+    f"S=\\dfrac{{abc}}{{2R}}",
+    f"S={phan_so(1/2)}ab\\cos C",
+    f"S={phan_so(1/2)}bc\\cos A",
+    f"S={phan_so(1/2)}ac\\cos B",
+    f"S=bc\\sin A",
+    f"S=ab\\sin C",
+    f"S=p(p-a)(p-b)(p-c)",
+    f"S=\\sqrt{{(p-a)(p-b)(p-c)}}",
+
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_32]-M2. Nhận dạng công thức hỗn hợp
+def yy3yy_L10_C4_B2_32():
+    noi_dung=(
+    f"Cho tam giác ${{ABC}}$ có ${{BC=a, AC=b, AB=c}}$. Gọi ${{p,S,r,R}}$ lần lượt là nữa chu vi, diện tích, bán kính đường tròn nội tiếp và bán kính đường tròn ngoại tiếp của tam giác ${{ABC}}$. Trong các khẳng định sau, khẳng định nào là khẳng định đúng?"
+    )
+    
+
+    kq=random.choice([
+        f"a^2=b^2+c^2-2bc\\cos A",
+        f"b^2=a^2+c^2-2ac\\cos B",
+        f"c^2=a^2+b^2-2ab\\cos C",
+        f"S=pr",
+        f"S=\\dfrac{{abc}}{{4R}}",
+        f"S={phan_so(1/2)}ab\\sin C",
+        f"S={phan_so(1/2)}bc\\sin A",
+        f"S=\\sqrt{{p(p-a)(p-b)(p-c)}}",
+        f"\\dfrac{{a}}{{\\sin A}}=\\dfrac{{b}}{{\\sin B}}",
+        f"\\dfrac{{a}}{{\\sin A}}=\\dfrac{{c}}{{\\sin C}}",
+        f"\\dfrac{{b}}{{\\sin B}}=\\dfrac{{c}}{{\\sin C}}",
+
+        ])
+    kq_false=[
+    f"a^2=b^2+c^2+2bc\\cos A",
+    f"b^2=a^2+c^2+2ac\\cos B",
+    f"c^2=a^2+b^2+2ab\\cos C",
+    f"S=\\dfrac{{p}}{{r}}",
+    f"S=\\dfrac{{abc}}{{2R}}",
+    f"S={phan_so(1/2)}ac\\cos B",
+    f"a\\sin B = b\\sin A",
+    f"a\\sin C = c\\sin A",
+    f"\\dfrac{{a}}{{\\cos A}}=\\dfrac{{b}}{{\\cos B}}",
+    f"\\dfrac{{b}}{{\\cos B}}=\\dfrac{{c}}{{\\cos C}}",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an

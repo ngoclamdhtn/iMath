@@ -4741,6 +4741,88 @@ def prt_34_L12_C1_B1_37():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B1_38]-SA-M3. Hàm bậc 2/bậc 1. Tính khoảng cách liên quan điểm cực trị.
+def prt_34_L12_C1_B1_38():
+	#y=mx+n+p/(x+d)
+	#y'=m-p(x+d)^2
+	#y'=0 => (x+d)^2=p/m
+	#p/m in [1,4]
+	x=sp.symbols("x")
+	d=random.randint(-4,4)
+	k=random.choice([1,4])
+	m=random.randint(1,4)
+	p=k*m
+
+	n = random.choice([i for i in range(-5, 6) if i!=0])
+	a, b, c =m, m*d+n, n*d+p
+	f=(a*x**2+b*x+c)/(x+d)
+
+	#Nghiệm
+	t=int(sqrt(p/m))
+	x_1, x_2 = -d-t, -d+t
+	y_1, y_2 = f.subs(x,x_1), f.subs(x,x_2)
+	AB=sqrt((x_1-x_2)**2+(y_1-y_2)**2)
+	
+	chon=random.randint(1,2)
+
+	if chon==1:
+		noi_dung = (
+		f"Cho hàm số $y={latex(f)}$ có đồ thị $(C)$."
+		f" Gọi ${{d}}$ là khoảng cách giữa hai điểm cực trị của $(C)$ và $d_1$ là khoảng cách từ điểm cực đại của $(C)$ đến gốc tọa độ."
+		f" Giá trị của $d^2+d_1^2$ bằng bao nhiêu?")
+		
+		
+		OA=sqrt(x_1**2+y_1**2)
+		tong=AB**2+OA**2
+		noi_dung_loigiai=(
+		f"Ta có: $y'=\\dfrac{{{latex(a*x**2+2*a*d*x+b*d-c)}}}{{(x+{d})^2}}$.\n\n"
+		f"$y'=0 \\Leftrightarrow {latex(a*x**2+2*a*d*x+b*d-c)}=0 \\Leftrightarrow x_1={x_1}, x_1={x_2}$.\n\n"
+		f"$(C)$ có các điểm cực đại, cực tiểu lần lượt là $A({x_1};{phan_so(y_1)}), B({x_2};{phan_so(y_2)})$.\n\n"
+		f"$AB=\\sqrt{{({x_2}-{x_1})^2+({phan_so(y_2)}-{phan_so(y_1)})^2}}={latex(AB)}$.\n\n"
+		f"Khoảng cách từ gốc tọa độ đến điểm cực đại là:\n\n"
+		f"$OA=\\sqrt{{{x_1**2}+{phan_so(y_1**2)}}}={latex(OA)}$.\n\n"
+		f"$d^2+d_1^2={AB**2}+{phan_so(OA**2)}={phan_so(tong)}$.")
+	
+	if chon==2:
+		noi_dung = (
+		f"Cho hàm số $y={latex(f)}$ có đồ thị $(C)$."
+		f" Gọi ${{d}}$ là khoảng cách giữa hai điểm cực trị của $(C)$ và $d_1$ là khoảng cách từ điểm cực tiểu của $(C)$ đến gốc tọa độ."
+		f" Giá trị của $d^2+d_1^2$ bằng bao nhiêu?")
+		
+		
+		OB=sqrt(x_2**2+y_2**2)
+		tong=AB**2+OB**2
+		noi_dung_loigiai=(
+		f"Ta có: $y'=\\dfrac{{{latex(a*x**2+2*a*d*x+b*d-c)}}}{{(x+{d})^2}}$.\n\n"
+		f"$y'=0 \\Leftrightarrow {latex(a*x**2+2*a*d*x+b*d-c)}=0 \\Leftrightarrow x_1={x_1}, x_1={x_2}$.\n\n"
+		f"$(C)$ có các điểm cực đại, cực tiểu lần lượt là $A({x_1};{phan_so(y_1)}), B({x_2};{phan_so(y_2)})$.\n\n"
+		f"$AB=\\sqrt{{({x_2}-{x_1})^2+({phan_so(y_2)}-{phan_so(y_1)})^2}}={latex(AB)}$.\n\n"
+		f"Khoảng cách từ gốc tọa độ đến điểm cực tiểu là:\n\n"
+		f"$OB=\\sqrt{{{x_2**2}+{phan_so(y_2**2)}}}={latex(OB)}$.\n\n"
+		f"$d^2+d_1^2={AB**2}+{phan_so(OB**2)}={phan_so(tong)}$.")
+	
+	
+	
+
+
+	noi_dung=noi_dung.replace("+-","-").replace("--","+")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
+	dap_an=tong
+	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #BÀI 2: GIÁ TRỊ LỚN NHẤT- GIÁ TRỊ NHỎ NHẤT
 
 #[D12_C1_B2_01]-M2. Tìm GTLN-GTNN của hàm bậc 3 trên đoạn
@@ -11164,7 +11246,689 @@ def prt_34_L12_C1_B4_19():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+def code_dothi_bac_3_no_truc(a,b,c,d):
+    code = f"\\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.6]\n\
+\\tikzset{{every node/.style={{scale=0.9}}}}\n\
+\\draw[gray!20](-5,-5)grid(5,5);\n\
+\\draw[->] (-5,0)--(5,0) node[below left] {{$x$}};\n\
+\\draw[->] (0,-5)--(0,5) node[below left] {{$y$}};\n\
+\\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
+\\foreach \\x in {{}}\n\
+\\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize $\\x$}};\n\
+\\foreach \\y in {{}}\n\
+\\draw[thin] (1pt,\\y)--(-1pt,\\y) node [left] {{\\footnotesize $\\y$}};\n\
+\\begin{{scope}}\n\
+\\clip (-5,-5) rectangle (5,5);\n\
+\\draw[samples=200,domain=-5:5,smooth,variable=\\x]\n\
+plot (\\x,{{{a}*(\\x)^3+{b}*(\\x)^2+{c}*(\\x)+{d}}});\
+\\end{{scope}}\n\
+\\end{{tikzpicture}}\n"
+    return  code
+
+#[D12_C1_B4_20]-SA-M3. Cho đồ thị bậc 3. Tìm số hệ số dương
+def prt_34_L12_C1_B4_20():
+	x=sp.symbols("x")
+	chon=random.choice([11,12, 21,22, 31,32, 41,42])	
+	if chon==11:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S<0, P<0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=0
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy không có hệ số dương."
+		)
+
+	if chon==12:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S<0, P<0, d>0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=1
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 1 hệ số dương."
+		)
 	
+	if chon==21:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S<0, P<0, d>0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=4
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 4 hệ số dương."
+		)
+
+	if chon==22:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S<0, P<0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=3
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 3 hệ số dương."
+		)
+
+	if chon==31:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S>0, P>0, d>0]):
+				break		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 2 hệ số dương."
+		)
+
+	if chon==32:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S>0, P>0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=1
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 1 hệ số dương."
+		)
+
+	if chon==41:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S>0, P>0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 2 hệ số dương."
+		)
+
+	if chon==42:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S>0, P>0, d>0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=3
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 3 hệ số dương."
+		)
+	
+
+	code_hinh=code_dothi_bac_3_no_truc(a/3,b/3,c/3,d/3)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+		
+	debai_word= f"{noi_dung}\n{file_name}"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B4_21]-SA-M3. Cho đồ thị bậc 3. Tìm số hệ số âm
+def prt_34_L12_C1_B4_21():
+	x=sp.symbols("x")
+	chon=random.choice([11,12, 21,22, 31,32, 41,42])	
+	if chon==11:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S<0, P<0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=4
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 4 hệ số âm."
+		)
+
+	if chon==12:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S<0, P<0, d>0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=3
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 3 hệ số âm."
+		)
+	
+	if chon==21:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S<0, P<0, d>0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=0
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy không có hệ số âm."
+		)
+
+	if chon==22:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S<0, P<0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=1
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 1 hệ số âm."
+		)
+
+	if chon==31:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S>0, P>0, d>0]):
+				break		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 2 hệ số âm."
+		)
+
+	if chon==32:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a>0,delta>0, S>0, P>0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=3
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 3 hệ số âm."
+		)
+
+	if chon==41:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S>0, P>0, d<0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d<0$.\n\n"
+		f"Vậy có 2 hệ số âm."
+		)
+
+	if chon==42:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-4, 4) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			delta=b**2-3*a*c
+			S, P=-2*b/(3*a), c/(3*a)
+			if all([a<0,delta>0, S>0, P>0, d>0]):
+				break
+		
+
+		noi_dung = (
+		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
+		)
+		dap_an=1
+
+		noi_dung_loigiai=(
+		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
+		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
+		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
+		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x=0\\Rightarrow y=d>0$.\n\n"
+		f"Vậy có 1 hệ số âm."
+		)
+	
+
+	code_hinh=code_dothi_bac_3_no_truc(a/3,b/3,c/3,d/3)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+		
+	debai_word= f"{noi_dung}\n{file_name}"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#Code vẽ đồ thị hàm số y=(ax+b)/(cx+d)
+def code_dothi_phanthuc_bac1_no_truc(a,b,c,d):
+    x=sp.symbols("x")
+    t_1=-d/c-0.1
+    t_2=-d/c+0.1
+    f=(a*x+b)/(c*x+d)
+    x_0, y_0=-d/c, a/c
+    x_min,x_max=int(x_0)-5, int(x_0)+5
+    y_min, y_max=int(y_0)-5,int(y_0)+5
+    if x_min>0: x_min=-1.5
+    if x_max<0: x_max=1.5
+    if y_min>0: y_min=-1.5
+    if y_max<0: y_max=1.5
+
+    code = f"\\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.6]\n\
+\\tikzset{{every node/.style={{scale=0.9}}}}\n\
+\\draw[->] ({x_min},0)--({x_max},0) node[below left] {{$x$}};\n\
+\\draw[->] (0,{y_min})--(0,{y_max}) node[below left] {{$y$}};\n\
+\\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
+\\foreach \\x in {{}}\n\
+    \\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize $\\x$}};\n\
+\\foreach \\y in {{}}\n\
+    \\draw[thin] (1pt,\\y)--(-1pt,\\y) node [left] {{\\footnotesize $\\y$}};\n\
+\\begin{{scope}}\n\
+\\clip ({x_min},{y_min}) rectangle ({x_max},{y_max});\n\
+\\draw[samples=200,domain={x_min}:{t_1},smooth,variable=\\x]\n\
+plot (\\x,{{({a}*(\\x)+{b})/({c}*(\\x)+{d})}});\n\
+\\draw[samples=200,domain={t_2}:{x_max},smooth,variable=\\x]\n\
+plot (\\x,{{({a}*(\\x)+{b})/({c}*(\\x)+{d})}});\n\
+\\draw[dashed,samples=200,domain={x_min}:{x_max},smooth,variable=\\x]\n\
+plot (\\x,{{({a/c}}});\n\
+\\draw[dashed] ({-d/c},{y_min})--({-d/c},{y_max});\n\
+\\end{{scope}}\n\
+\\end{{tikzpicture}}\n"
+    return  code
+
+#[D12_C1_B4_22]-SA-M3. Cho đồ thị bậc 1/bậc 1. Tìm số hệ số dương
+def prt_34_L12_C1_B4_22():
+	chon=random.randint(1,6)
+	if chon==1:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a>0, b>0, c>0,d>0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a>0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=3
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a>0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}>0\\Rightarrow c>0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}<0\\Rightarrow d>0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}>0\\Rightarrow b>0$.\n\n"
+		f"Vậy có 3 hệ số dương trong các số ${{b,c,d}}$.")
+	
+	if chon==2:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a>0, b>0, c<0,d<0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a>0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=1
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a>0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}<0\\Rightarrow c<0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}<0\\Rightarrow d<0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}<0\\Rightarrow b>0$.\n\n"
+		f"Vậy có 1 hệ số dương trong các số ${{b,c,d}}$.")
+	
+	if chon==3:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a>0, b>0, c>0,d<0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a>0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a>0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}>0\\Rightarrow c>0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}>0\\Rightarrow d<0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}<0\\Rightarrow b>0$.\n\n"
+		f"Vậy có 2 hệ số dương trong các số ${{b,c,d}}$.")
+
+	if chon==4:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a>0, b>0, c<0,d>0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a>0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a>0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}<0\\Rightarrow c<0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}>0\\Rightarrow d>0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}>0\\Rightarrow b>0$.\n\n"
+		f"Vậy có 2 hệ số dương trong các số ${{b,c,d}}$.")
+
+	if chon==5:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a<0, b>0, c>0,d>0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a<0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=3
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a<0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}<0\\Rightarrow c>0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}<0\\Rightarrow d>0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}>0\\Rightarrow b>0$.\n\n"
+		f"Vậy có 3 hệ số dương trong các số ${{b,c,d}}$.")
+
+	if chon==5:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a<0, b<0, c>0,d>0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a<0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=2
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a<0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}<0\\Rightarrow c>0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}<0\\Rightarrow d>0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}<0\\Rightarrow b<0$.\n\n"
+		f"Vậy có 2 hệ số dương trong các số ${{b,c,d}}$.")
+
+	if chon==6:
+		while True:		
+			a = random.choice([i for i in range(-2, 2) if i!=0])
+			b = random.choice([i for i in range(-4, 4) if i!=0])
+			c = random.choice([i for i in range(-2, 2) if i!=0])
+			d = random.choice([i for i in range(-3, 3) if i!=0])
+			if all([a*d-b*c!=0, a<0, b<0, c<0,d>0]):
+				break
+
+		noi_dung = (
+		f"Cho hàm số $y=\\dfrac{{ax+b}}{{cx+d}}, a<0$ có đồ thị như hình vẽ bên. Có bao nhiêu số dương trong các số ${{b,c,d}}$?"
+		)
+		dap_an=1
+
+		noi_dung_loigiai=(
+		f"Ta đã có: $a<0$.\n\n"
+		f"Đường tiệm cận ngang: $y=\\dfrac{{a}}{{c}}>0\\Rightarrow c<0$.\n\n"
+		f"Đường tiệm cận đứng: $x=-\\dfrac{{d}}{{c}}>0\\Rightarrow d>0$.\n\n"
+		f"Đồ thị cắt ${{Oy}}$: $x=0\\Rightarrow y=\\dfrac{{b}}{{d}}<0\\Rightarrow b<0$.\n\n"
+		f"Vậy có 1 hệ số dương trong các số ${{b,c,d}}$.")
+
+	code_hinh=code_dothi_phanthuc_bac1_no_truc(a,b,c,d)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+		
+		
+	debai_word= f"{noi_dung}\n{file_name}"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 

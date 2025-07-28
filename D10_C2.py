@@ -2070,7 +2070,7 @@ def bch_12_L10_C2_B2_11():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D10_C2_B2_12]-SA-M3. Hệ: ax+by+c>=0, x>=0, y>=0. Tìm max F=mx+n.
-def bch_12_L10_C2_B2_13():
+def bch_12_L10_C2_B2_12():
     x,y=sp.symbols("x y")
     while True:
         a1=random.randint(-5,-1)

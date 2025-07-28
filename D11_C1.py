@@ -7253,6 +7253,54 @@ def ngh_kjg_L11_C1_B5_21():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C1_B5_22]-SA-M2. Số nghiệm của asin2x+bcosx=0
+def ngh_kjg_L11_C1_B5_22():
+    x=sp.symbols("x")
+    m=random.randint(3,10)
+    m1=latex(-m*pi)
+    m2=latex(m*pi)
+
+    while True:
+        a=random.choice([i for i in range(-5, 6) if i!=0])
+        b=random.choice([i for i in range(-5, 6) if i!=0])
+        if -b/(2*a)<=-1 or -b/(2*a)>=1:
+            break
+    f=a*sin(2*x)+b*cos(x)
+    dem=0
+    for i in range(int(-m-1/2-2),int(m-1/2+2)):
+        if -m-1/2<i<m-1/2:
+            dem+=1
+    noi_dung = (
+    f"Số nghiệm thuộc đoạn ${{[{m1};{m2}]}}$ của phương trình ${latex(f)}=0$ là"
+    )
+    dap_an=""
+    noi_dung=noi_dung.replace(f"\\left(","").replace(f"\\right)","")
+
+    noi_dung_loigiai=(
+    f"${latex(f)}=0\\Leftrightarrow {latex(2*a*sin(x)*cos(x)+b*cos(x))}=0"
+    f"\\Leftrightarrow {latex(cos(x))}({latex(2*a*sin(x)+b)})=0$.\n\n"
+    f"$\\Rightarrow \\cos x = 0$ hoặc $\\sin x={phan_so(-b/(2*a))}$ (vô nghiệm).\n\n"
+    f"$\\cos x = 0 \\Leftrightarrow x= {latex(pi/2)}+k\\pi, k \\in \\mathbb{{Z}}$."
+    f"${m1}\\le {latex(pi/2)}+k\\pi \\le {m2}\\Rightarrow {phan_so(-m-1/2)} \\le k \\le {phan_so(m-1/2)}$\n\n"
+    f"Có ${{{dem}}}$ số ${{k}}$ thỏa mãn nên phương trình có ${{{dem}}}$ nghiệm."
+    )  
+
+    noi_dung_loigiai=noi_dung_loigiai.replace(f"\\left(","").replace(f"\\right)","")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#----------------------BÀI 6 - TOÁN THỰC TẾ---------------->
+
 #[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin
 def ngh_kjg_L11_C1_B6_01():    
     a = round(random.uniform(2.5, 3.5), 1)  # biên độ

@@ -5333,7 +5333,7 @@ def uz9zu_L11_C6_B4_19():
     if n==2:
         noi_dung = (
         f"Giải phương trình $\\sqrt{{ {{{a}}}^{{{latex(m*x)}}} }}-{a}^{{{p}}}=0$." )
-        dap_an=f"{round_half_up(((n*p)/m)/t,1):.1f}".replace(".",",")
+        dap_an=f"{round_half_up(((n*p)/m),1):.1f}".replace(".",",")
 
         noi_dung_loigiai=(
         f"$\\sqrt{{ {{{a}}}^{{{latex(m*x)}}} }}-{a}^{{{p}}}=0$"

@@ -13,7 +13,7 @@ import pyperclip
 #Test trắc nghiệm
 # test, test_latex="",""
 # for i in range(1):
-# 	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_15()
+# 	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B3_21()
 # 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
 # 	test_latex=test_latex + f"{debai_latex}\n"
 # 	#print(test)
@@ -23,26 +23,26 @@ import pyperclip
 
 
 # # #Test đúng sai
-test, test_latex="",""
-for i in range(1):
-	debai,debai_latex,loigiai_word,dap_an = D10_C4.yy3yy_L10_C4_B1_19()
-	#print(debai)
-	#print(loigiai_word)
-	test=test + f"{debai}\n{loigiai_word}\n"
-	test_latex=test_latex + f"{debai_latex}\n"
-	print(test_latex)
-pyperclip.copy(test_latex)
-
-#Test tự luận
 # test, test_latex="",""
 # for i in range(1):
-# 	debai_word,loigiai_word,latex_tuluan,dap_an = D10_C4.yy3yy_L10_C4_B1_15()
-# 	#print(debai)\\log {d}
+# 	debai,debai_latex,loigiai_word,dap_an = D10_C4.yy3yy_L10_C4_B1_19()
+# 	#print(debai)
 # 	#print(loigiai_word)
-# 	test=test + f"{debai_word}\n{loigiai_word}\n"
-# 	test_latex=test_latex + f"{latex_tuluan}\n"
+# 	test=test + f"{debai}\n{loigiai_word}\n"
+# 	test_latex=test_latex + f"{debai_latex}\n"
 # 	print(test_latex)
 # pyperclip.copy(test_latex)
+
+#Test tự luận
+test, test_latex="",""
+for i in range(1):
+	debai_word,loigiai_word,latex_tuluan,dap_an = D10_C2.bch_12_L10_C2_B2_12()
+	#print(debai)\\log {d}
+	#print(loigiai_word)
+	test=test + f"{debai_word}\n{loigiai_word}\n"
+	test_latex=test_latex + f"{latex_tuluan}\n"
+	print(test_latex)
+pyperclip.copy(test_latex)
 
 
 
