@@ -3006,8 +3006,8 @@ def yy3yy_L10_C4_B2_15():
             f"Vậy diện tích của cánh buồm là \n\n"
             f"$S=\\dfrac{{1}}{{2}}\\cdot BA\\cdot BC\\cdot \\sin B=\\dfrac{{1}}{{2}}\\cdot {a1}\\cdot {c}\\cdot \\sin {y}^{{\\circ}}\\approx {kq} m^{{2}}$")
 
-    debai_word= f"{noi_dung}\n"\
-    f"{file_name}\n"
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
     loigiai_word=f"Lời giải:\n{file_name1} \n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\

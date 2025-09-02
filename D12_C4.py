@@ -3684,7 +3684,7 @@ def ckz_L12C4_B1_53():
     
     while True:
         v_0=random.randint(12,20)
-        a=v_0-random.randint(1,3)
+        a=v_0
         b=random.randint(2,7)
         v=a-b*t
         t_0=random.randint(1,5)
@@ -10900,12 +10900,11 @@ def ckz_L12C4_B5_37():
     #random.shuffle(list_PA)
     list_TF=my_module.tra_ve_TF(list_PA)
 
-    debai= f"{noi_dung}\n{file_name}\n\n"\
-
+    debai= (f"{noi_dung}\n{file_name}\n"\
     f"a) {list_PA[0]}.\n"\
     f"b) {list_PA[1]}.\n"\
     f"c) {list_PA[2]}.\n"\
-    f"d) {list_PA[3]}.\n"
+    f"d) {list_PA[3]}.\n")
     loigiai=[]
     for pa in list_PA:
         if pa==kq1:

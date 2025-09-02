@@ -12309,8 +12309,8 @@ def prt_34_L12_C1_B5_05():
     t_1=random.randint(1,10)
     a_1=g2.subs(t,t_1)
 
-    kq2_T=f"*Gia tốc chuyển động của vật tại thời điểm $t={t_1}$ là ${{{a_1}}}$ m/$s^2$"
-    kq2_F=f"Gia tốc chuyển động của vật tại thời điểm $t={t_1}$ là ${{{a_1+random.randint(1,6)}}}$ m/$s^2$"
+    kq2_T=f"*Gia tốc chuyển động của vật tại thời điểm $t={t_1}$ là ${{{a_1}}}$ m/${{s^2}}$"
+    kq2_F=f"Gia tốc chuyển động của vật tại thời điểm $t={t_1}$ là ${{{a_1+random.randint(1,6)}}}$ m/${{s^2}}$"
     kq2=random.choice([kq2_T, kq2_F])
     loigiai_2=f"Khẳng định đã cho là đúng.\n\n"\
     f"$v(t)=\\left({ham_so}\\right)'={latex(g1)}.$\n\n"\
@@ -12359,8 +12359,8 @@ def prt_34_L12_C1_B5_05():
         if chon=="v_max":
         
             v_max=g1.subs(t,t_2)
-            kq4_T=f"*Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${v_max}$ m/s"
-            kq4_F=f"Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${g1.subs(t,t_1)}$ m/s"
+            kq4_T=f"*Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${{{v_max}}}$ m/s"
+            kq4_F=f"Vận tốc lớn nhất vật đạt được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ là ${{{g1.subs(t,t_1)}}}$ m/s"
             kq4=random.choice([kq4_T, kq4_F])
 
             loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n"\

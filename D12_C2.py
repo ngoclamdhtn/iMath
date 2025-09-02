@@ -6424,7 +6424,7 @@ def mnj_34_jkl_L12_C2_B3_33():
 		kq4_T=(f"* Các điểm ${{{P}}}$ thuộc trục ${{Ox}}$ thỏa mãn ${A}{P}={latex(AP)}$."
 		f" Tổng hoành độ của các điểm ${{{P}}}$ bằng ${2*x_A}$")
 
-		kq4_F=(f"* Các điểm ${{{P}}}$ thuộc trục ${{Ox}}$ thỏa mãn ${A}{P}={latex(AP)}$."
+		kq4_F=(f"Các điểm ${{{P}}}$ thuộc trục ${{Ox}}$ thỏa mãn ${A}{P}={latex(AP)}$."
 		f" Tổng hoành độ của các điểm ${{{P}}}$ bằng ${2*x_A+random.randint(1,2)}$")
 		kq4=random.choice([kq4_T, kq4_F])
 

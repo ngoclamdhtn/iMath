@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 28.07.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.09.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 28.07.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.09.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1443,7 +1443,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B3_2, ["[D10_C1_B3_15]-TF-M3.  Bài thực tế: Cho n(A), n(B), n(A giao B), n_khôngAB. Xét Đ-S: Chỉ A, Chỉ B, A hoặc B, Tổng số."])
+                item = QTreeWidgetItem(L10_C1_B3_2, ["[D10_C1_B3_15]-TF-M3.  Bài thực tế: Cho n(A), n(B), n(A ∩ B), n_khôngAB. Xét Đ-S: Chỉ A, Chỉ B, A hoặc B, Tổng số."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -1516,17 +1516,65 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_28]-M2. Tìm GIAO khoảng, đoạn, nữa khoảng dạng {x in R| ....}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_29]-M2. Tìm HỢP khoảng, đoạn, nữa khoảng dạng {x in R| ....}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_30]-M2. Tìm HIỆU khoảng, đoạn, nữa khoảng dạng {x in R| ....}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_19]-M2. Tìm giao hai khoảng dạng {x in R| a<x<b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_20]-M2. Tìm hợp hai khoảng dạng {x in R| a<x<b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_21]-M2. Tìm hiệu hai khoảng dạng {x in R| a<x<b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_22]-M2. Tìm giao hai đoạn dạng {x in R| a<=x<=b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_23]-M2. Tìm hợp hai đoạn dạng {x in R| a<=x<=b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_24]-M2. Tìm hiệu hai đoạn dạng {x in R| a<=x<=b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_25]-M2. Tìm giao nữa khoảng dạng {x in R| a<=x<b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_26]-M2. Tìm hợp nữa khoảng dạng {x in R| a<=x<b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_1, ["[D10_C1_B4_27]-M2. Tìm hiệu nữa khoảng dạng {x in R| a<=x<b}"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C1_B4_2 = QTreeWidgetItem(L10_C1_B4, ["Đúng-Sai"])
                 L10_C1_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C1_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_2, ["[D10_C1_B4_07]-TF-M2. Cho A, B là các khoảng đoạn. Xét Đ-S: A giao B, A hợp B, A\\B, B\\A, C_R(A), C_R(B)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
                 item = QTreeWidgetItem(L10_C1_B4_2, ["[D10_C1_B4_13]-TF-M2. Xét Đ-S: Kí hiệu khoảng, đoạn, nữa khoảng"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_2, ["[D10_C1_B4_07]-TF-M2. Cho A, B là các khoảng đoạn. Xét Đ-S: A giao B, A hợp B, A\\B, B\\A, C_R(A), C_R(B)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 item = QTreeWidgetItem(L10_C1_B4_2, ["[D10_C1_B4_15]-TF-M2. Xét Đ-S: Kí hiệu, phép toán, giao với N-Z, tìm m"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -1536,27 +1584,39 @@ class Ui_MainWindow(object):
                 L10_C1_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C1_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_18]-SA-M2. Tìm số nguyên thuộc một phép toán khoảng đoạn"])
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_18]-SA-M2. Tìm số phần tử nguyên của A∩B (A∪B, A\\B)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_08]-SA-M3. Cho A, B. Cho A, B. Tìm m để A giao B có đúng 1 phần tử"])
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_31]-SA-M2. Tìm số phần tử nguyên của A∩B∩C."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_09]-SA-M3. Cho A, B. Tìm m để A giao B khác rỗng."])
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_32]-SA-M2. Tìm số phần tử nguyên của A∪B∪C."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_10]-SA-M3. Cho A, B. Tìm m để A giao B bằng rỗng."])
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_33]-SA-M2. Tìm số phần tử nguyên của (A∩B)\\C."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_11]-SA-M3. Cho A, B. Tìm m để (A U B)=A."])
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_08]-SA-M3. Tìm m để A∩B có đúng 1 phần tử"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_12]-SA-M3. Cho A, B. Tìm m để A con B."])
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_09]-SA-M3. Tìm m để A∩B ≠ ∅."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_10]-SA-M3.  Tìm m để A∩B = ∅."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_11]-SA-M3. Tìm m để (A ∪ B)=A."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_12]-SA-M3. Tìm m để A ⊂ B."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -14510,33 +14570,95 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D10_C1_B4_11]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_11()
 
-                                        #[D10_C1_B4_12]-SA-M3. Cho A, B là các khoảng đoạn. Tìm m để A con B.
+                                            #[D10_C1_B4_12]-SA-M3. Cho A, B là các khoảng đoạn. Tìm m để A con B.
                                             if dang_toan == "[D10_C1_B4_12]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_12()
 
-                                        #[D10_C1_B4_13]-TF-M2.  Xét đúng-sai về kí hiệu khoảng, đoạn, nữa khoảng.
+                                            #[D10_C1_B4_13]-TF-M2.  Xét đúng-sai về kí hiệu khoảng, đoạn, nữa khoảng.
                                             if dang_toan == "[D10_C1_B4_13]": 
                                                     debai_word,debai_latex,loigiai_word,dap_an=D10_C1.mjulk_L10_C1_B4_13()
 
-                                        #[D10_C1_B4_14]-M3. Tìm kí hiệu khoảng, đoạn ứng với tập hợp chứa điều kiện.
+                                            #[D10_C1_B4_14]-M3. Tìm kí hiệu khoảng, đoạn ứng với tập hợp chứa điều kiện.
                                             if dang_toan == "[D10_C1_B4_14]":
                                                     debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_14()
 
-                                        #[D10_C1_B4_15]-TF-M3. Xét Đ-S: Kí hiệu, phép toán, Giao với N,Z,  tìm m
+                                            #[D10_C1_B4_15]-TF-M3. Xét Đ-S: Kí hiệu, phép toán, Giao với N,Z,  tìm m
                                             if dang_toan == "[D10_C1_B4_15]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C1.mjulk_L10_C1_B4_15()
 
-                                        #[D10_C1_B4_16]-M2. Tìm giao (hoặc hợp, hiệu, phần bù) các tập con của R
+                                            #[D10_C1_B4_16]-M2. Tìm giao (hoặc hợp, hiệu, phần bù) các tập con của R
                                             if dang_toan == "[D10_C1_B4_16]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_16()
 
-                                        #[D10_C1_B4_17]-M2. Bài toán tìm m để thỏa mãn phép toán liên quan khoảng đoạn 
+                                            #[D10_C1_B4_17]-M2. Bài toán tìm m để thỏa mãn phép toán liên quan khoảng đoạn 
                                             if dang_toan == "[D10_C1_B4_17]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_17()
 
-                                        #[D10_C1_B4_18]-SA-M2. Tìm số phần tử là số nguyên của một phép toán khoảng đoạn
+                                            #[D10_C1_B4_18]-SA-M2. Tìm số phần tử là số nguyên của một phép toán khoảng đoạn
                                             if dang_toan == "[D10_C1_B4_18]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_18()
+
+                                            #[D10_C1_B4_19]-M2. Tìm giao hai khoảng dạng {x in R| a<x<b}
+                                            if dang_toan == "[D10_C1_B4_19]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_19()
+
+                                            #[D10_C1_B4_20]-M2. Tìm hợp hai khoảng dạng {x in R| a<x<b}
+                                            if dang_toan == "[D10_C1_B4_20]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_20()
+
+                                            #[D10_C1_B4_21]-M2. Tìm hiệu hai khoảng dạng {x in R| a<x<b}
+                                            if dang_toan == "[D10_C1_B4_21]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_21()
+
+                                            #[D10_C1_B4_22]-M2. Tìm giao hai đoạn dạng {x in R| a<=x<=b}
+                                            if dang_toan == "[D10_C1_B4_22]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_22()
+
+                                            #[D10_C1_B4_23]-M2. Tìm hợp hai đoạn dạng {x in R| a<=x<=b}
+                                            if dang_toan == "[D10_C1_B4_23]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_23()
+
+                                            #[D10_C1_B4_24]-M2. Tìm hiệu hai đoạn dạng {x in R| a<=x<=b}
+                                            if dang_toan == "[D10_C1_B4_24]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_24()
+
+                                            #[D10_C1_B4_25]-M2. Tìm giao nữa khoảng dạng {x in R| a<=x<b}
+                                            if dang_toan == "[D10_C1_B4_25]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_25()
+
+                                            #[D10_C1_B4_26]-M2. Tìm hợp nữa khoảng dạng {x in R| a<=x<b}
+                                            if dang_toan == "[D10_C1_B4_26]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_26()
+
+                                            #[D10_C1_B4_27]-M2. Tìm hiệu nữa khoảng dạng {x in R| a<=x<b}
+                                            if dang_toan == "[D10_C1_B4_27]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_27()
+
+                                            #[D10_C1_B4_28]-M2. Tìm giao các khoảng, đoạn, nữa khoảng dạng {x in R| ...x...}
+                                            if dang_toan == "[D10_C1_B4_28]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_28()
+
+                                            #[D10_C1_B4_29]-M2.  Tìm hợp các khoảng, đoạn, nữa khoảng dạng {x in R| ...x...}
+                                            if dang_toan == "[D10_C1_B4_29]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_29()
+
+                                            #[D10_C1_B4_30]-M2.  Tìm hiệu các khoảng, đoạn, nữa khoảng dạng {x in R| ...x...}
+                                            if dang_toan == "[D10_C1_B4_30]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C1.mjulk_L10_C1_B4_30()
+
+                                            #[D10_C1_B4_31]-SA-M2. Tìm số phần tử nguyên của A∩B∩C.
+                                            if dang_toan == "[D10_C1_B4_31]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_31()
+
+                                            #[D10_C1_B4_32]-SA-M2. Tìm số phần tử nguyên của A∪B∪C.
+                                            if dang_toan == "[D10_C1_B4_32]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_32()
+
+                                            #[D10_C1_B4_33]-SA-M2. Tìm số phần tử nguyên của (A∩B)\C.
+                                            if dang_toan == "[D10_C1_B4_33]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_33()
+
+                                            
 
                                 #TOÁN 10-CHƯƠNG 2 - BẤT PHƯƠNG TRÌNH VÀ HỆ BẤT PHƯƠNG TRÌNH BẬC NHẤT 2 ẨN
                                 # Bài 1: BẤT PHƯƠNG TRÌNH BẬC NHẤT 2 ẨN
