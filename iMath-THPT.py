@@ -7724,6 +7724,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_12]-SA-M3.  Bài toán doanh thu lớn nhất khi biết đơn giá của x sản phẩm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_02]-SA-M3. Cho hàm số chi phí. Tìm chi phí trung bình thấp nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -10350,6 +10354,10 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B5_11]-SA-M2. Tính chi phí trung bình sản xuất đồ chơi khi x đủ lớn.
                                             if dang_toan == "[D12_C1_B5_11]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_11()
+
+                                            #[D12_C1_B5_12]-SA-M2. Tính doanh thu lớn nhất biết đơn giá của x sản phẩm
+                                            if dang_toan == "[D12_C1_B5_12]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_12()
 
                                                 
 

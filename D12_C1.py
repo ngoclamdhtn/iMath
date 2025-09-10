@@ -13083,6 +13083,109 @@ def prt_34_L12_C1_B5_11():
 
 
 
+#[D12_C1_B5_12]-SA-M2. Tính doanh thu lớn nhất biết đơn giá của x sản phẩm
+def prt_34_L12_C1_B5_12():
+	x=sp.symbols("x")
+	chon=random.randint(1,4)
+
+	if chon==1:
+		while True:
+			a=random.randint(1000,8000)
+			b=random.randint(1,15)
+			if all([a % (2*b)==0, 100<a/(2*b)<500]):
+				break
+		f=x*(a-b*x)
+		M=int(f.subs(x,a/(2*b)))
+		noi_dung = (
+		f"Một hãng điện thoại đưa ra quy luật bán buôn cho từng đại lí, đó là đại lí càng nhập nhiều chiếc điện thoại của hãng thì giá thành một chiếc điện thoại càng giảm."
+		f" Cụ thể, nếu đại lí mua ${{x}}$ điện thoại thì giá tiền của mỗi điện thoại là ${{{latex(a-b*x)}}}$ (nghìn đồng)."
+		f" Hỏi đại lí nhập cùng một lúc bao nhiêu chiếc điện thoại thì hãng có thể thu về nhiều tiền nhất từ đại lí đó?"
+		)
+		dap_an=int(a/(2*b))
+
+		noi_dung_loigiai=(
+		f"Số tiền hãng thu được khi nhập ${{x}}$ chiếc điện thoại là: $x({latex(a-b*x)})={latex(-b*x**2+a*x)}$.\n\n"
+		f"$f'(x)={latex(-2*b*x+a)}$.\n\n $f'(x)=0 \\Leftrightarrow x={phan_so(a/(2*b))}$.\n\n"
+		f"Từ bảng biến thiên ta có $x={phan_so(a/(2*b))}$ thì hãng thu về được số tiền nhiều nhất là {M}000(đồng)."
+		)
+	
+	if chon==2:
+		while True:
+			a=random.randint(1000,3000)
+			b=random.randint(10,30)
+			if all([a % (2*b)==0, 15<a/(2*b)<50]):
+				break
+		f=x*(a-b*x)
+		M=int(f.subs(x,a/(2*b)))
+		noi_dung = (
+		f"Một trung tâm dạy các lớp học kỹ năng sống thu học phí cho mỗi học sinh được tính theo quy luật:"
+		f" nếu lớp có ${{x}}$ học sinh thì mỗi em nộp học phí là ${{{latex(a-b*x)}}}$ (nghìn đồng)."
+		f" Hỏi lớp nên có bao nhiêu học sinh để trung tâm thu được nhiều học phí nhất?"
+		)
+		dap_an=int(a/(2*b))
+
+		noi_dung_loigiai=(
+		f"Số tiền thu được khi lớp có ${{x}}$ học sinh là: $x({latex(a-b*x)})={latex(-b*x**2+a*x)}$.\n\n"
+		f"$f'(x)={latex(-2*b*x+a)}$.\n\n $f'(x)=0 \\Leftrightarrow x={phan_so(a/(2*b))}$.\n\n"
+		f"Từ bảng biến thiên ta có $x={phan_so(a/(2*b))}$ thì trung tâm thu được nhiều học phí nhất là {M}000(đồng)."
+		)
+
+	if chon==3:
+		while True:
+			a=random.randint(500,2000)
+			b=random.randint(5,30)
+			if all([a % (2*b)==0, 15<a/(2*b)<50]):
+				break
+		f=x*(a-b*x)
+		M=int(f.subs(x,a/(2*b)))
+		noi_dung = (
+		f"Một công ty phần mềm bán gói bản quyền cho các doanh nghiệp."
+		f" Nếu một doanh nghiệp mua ${{x}}$ gói thì giá gói là ${{{latex(a-b*x)}}}$ (nghìn đồng)."
+		f" Hỏi một doanh nghiệp mua bao nhiêu gói thì công ty phần mềm thu về số tiền lớn nhất?"
+		)
+		dap_an=int(a/(2*b))
+
+		noi_dung_loigiai=(
+		f"Số tiền thu được khi doanh nghiệp mua ${{x}}$ bản quyền là: $x({latex(a-b*x)})={latex(-b*x**2+a*x)}$.\n\n"
+		f"$f'(x)={latex(-2*b*x+a)}$. \n\n $f'(x)=0 \\Leftrightarrow x={phan_so(a/(2*b))}$.\n\n"
+		f"Từ bảng biến thiên ta có $x={phan_so(a/(2*b))}$ thì công ty phần mềm thu về số tiền lớn nhất là {M}000(đồng)."
+		)
+
+	if chon==4:
+		while True:
+			a=random.randint(500,1000)
+			b=random.randint(5,30)
+			if all([a % (2*b)==0, 5<a/(2*b)<30]):
+				break
+		f=x*(a-b*x)
+		M=int(f.subs(x,a/(2*b)))
+		noi_dung = (
+		f"Một công ty dịch vụ bảo vệ cho thuê nhân viên an ninh sự kiện."
+		f" Nếu sự kiện thuê ${{x}}$ nhân viên thì chi phí thuê mỗi nhân viên là ${{{latex(a-b*x)}}}$ (nghìn đồng)."
+		f" Hỏi sự kiện nên thuê bao nhiêu nhân viên để công ty bảo vệ thu được nhiều tiền nhất?"
+		)
+		dap_an=int(a/(2*b))
+
+		noi_dung_loigiai=(
+		f"Số tiền công ty dịch vụ bảo vệ thu được khi thuê ${{x}}$ nhân viên là: $x({latex(a-b*x)})={latex(-b*x**2+a*x)}$.\n\n"
+		f"$f'(x)={latex(-2*b*x+a)}$.\n\n $f'(x)=0 \\Leftrightarrow x={phan_so(a/(2*b))}$.\n\n"
+		f"Từ bảng biến thiên ta có $x={phan_so(a/(2*b))}$ thì công ty bảo vệ thu được số tiền lớn nhất là {M}000(đồng)."
+		)
+	
+		
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 
