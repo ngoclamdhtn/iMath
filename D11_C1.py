@@ -5,6 +5,10 @@ import random
 from fractions import Fraction
 import my_module
 
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+ 
 # Hàm kiểm tra số hữu tỉ
 def is_rational(number):
     # Chuyển đổi số thành biểu thức SymPy
@@ -620,7 +624,7 @@ def ngh_kjg_L11_C1_B1_10():
 
     noi_dung = f"Một bánh xe của một loại xe quay được {n} vòng trong {t1} giây."\
     f" Tính góc theo rađian mà bánh xe quay được trong {t2} giây (kết quả làm tròn đến hàng phần chục)."
-    kq=str(round((2*n*t2*pi)/t1,1)).replace(".",",")
+    kq=f"{round_half_up((2*n*t2*pi)/t1,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=f"Một giây bánh xe quay được số vòng là: ${phan_so(n/t1)}$.\n\n"\
     f"Một vòng quay ứng với góc $2\\pi$. Sau ${{{t2}}}$ giây có ${phan_so(n/t1)}.{t2}={phan_so(n/t1*t2)}$ vòng quay ứng với góc:\n\n"\
@@ -655,7 +659,7 @@ def ngh_kjg_L11_C1_B1_11():
     f" Tính độ dài quãng đường (theo đơn vị mét) xe đi được trong {t2} giây (kết quả làm tròn đến hàng phần mười)."
     r_m=r/100
     
-    kq=str(round((n*t2*2*r_m*pi)/t1,1)).replace(".",",")
+    kq=f"{round_half_up((n*t2*2*r_m*pi)/t1,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=f"Một giây bánh xe quay được số vòng là: ${phan_so(n/t1)}$.\n\n"\
     f"Một vòng quay ứng với quãng đường là $2\\pi.\\dfrac{{{r}}}{{100}}=2\\pi.{phan_so(r_m)}={phan_so(2*r_m)}\\pi$.\n\n"\
@@ -1582,19 +1586,21 @@ def ngh_kjg_L11_C1_B2_02():
             sin_value=a/b
         else:
             sin_value=-a/b
-        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\sin \\alpha={phan_so(sin_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."
+        
 
-        if cung in [cung_I, cung_IV]:       
+        if cung in [cung_I, cung_IV]: 
+            noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\sin \\alpha={phan_so(sin_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."      
             cos_value=sqrt(b**2-a**2)/b            
             kq=str(round(cos_value,1)).replace(".",",")
             noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha > 0$.\n\n"\
             f"$\\cos\\alpha =\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}={kq}$."            
 
         if cung in [cung_II, cung_III]:
+            noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\sin \\alpha={phan_so(sin_value)}, \\alpha \\in {cung}$. Tính $|{gia_tri_LG}|$ (kết quả làm tròn đến hàng phần mười)."
             cos_value=-sqrt(b**2-a**2)/b           
-            kq=str(round(cos_value,2)).replace(".",",")
+            kq=str(round(-cos_value,2)).replace(".",",")
             noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\cos\\alpha < 0$.\n\n"\
-            f"$\\cos\\alpha =-\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}={kq}$."            
+            f"$|\\cos\\alpha| =|-\\sqrt{{1-{phan_so(sin_value**2)}}}|=|{latex(cos_value)}|={kq}$."            
 
     if chon=="cos":
         gia_tri_LG=f"\\sin\\alpha"
@@ -1602,21 +1608,23 @@ def ngh_kjg_L11_C1_B2_02():
             cos_value=a/b
         else:
             cos_value=-a/b
-        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."
+        
 
-        if cung in [cung_I, cung_II]:       
+        if cung in [cung_I, cung_II]:   
+            noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."    
             sin_value=sqrt(b**2-a**2)/b            
             kq=str(round(sin_value,1)).replace(".",",")
             noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha > 0$.\n\n"\
             f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}={kq}$."            
 
         if cung in [cung_III, cung_IV]:
+            noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính $|{gia_tri_LG}|$ (kết quả làm tròn đến hàng phần mười)."
             sin_value=-sqrt(b**2-a**2)/b            
-            kq=str(round(sin_value,2)).replace(".",",")
+            kq=str(round(-sin_value,2)).replace(".",",")
             noi_dung_loigiai=f"Vì $\\alpha \\in {cung}$ nên $\\sin\\alpha < 0$.\n\n"\
-            f"$\\sin\\alpha =\\sqrt{{1-{phan_so(cos_value**2)}}}={latex(sin_value)}={kq}$."
+            f"$|\\sin\\alpha| =|-\\sqrt{{1-{phan_so(cos_value**2)}}}|=|{latex(sin_value)}|={kq}$."
 
-    noi_dung_loigiai+=f"Đáp án: {kq}"              
+    noi_dung_loigiai+=f"\n\nĐáp án: {kq}"              
    
         
     debai_word= f"{noi_dung}\n"
@@ -7062,7 +7070,7 @@ def ngh_kjg_L11_C1_B5_19():
     noi_dung = f"Nghiệm của phương trình $\\tan \\left({latex(a*x+b)}\\right)={latex(m)}$ là"
     
 
-    kq=random.choice([f"$x={latex((x_0-b)/a)}+k\\pi, k \\in \\mathbb{{Z}}$"])
+    kq=random.choice([f"$x={latex((x_0-b)/a)}+k{latex(pi/a)}, k \\in \\mathbb{{Z}}$"])
     kq_false=[
     f"$x={latex((x_0-b)/a)}+k2\\pi, k \\in \\mathbb{{Z}}$ ",
     f"$x={latex((x_0-b)/a)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",
@@ -7128,7 +7136,7 @@ def ngh_kjg_L11_C1_B5_20():
     noi_dung=noi_dung.replace("1.0","1")
     
 
-    kq=random.choice([f"$x={latex((x_0-b)/a)}+k\\pi, k \\in \\mathbb{{Z}}$"])
+    kq=random.choice([f"$x={latex((x_0-b)/a)}+k{latex(pi/a)}, k \\in \\mathbb{{Z}}$"])
     kq_false=[
     f"$x={latex((x_0-b)/a)}+k2\\pi, k \\in \\mathbb{{Z}}$ ",
     f"$x={latex((x_0-b)/a)}+k{latex(pi/2)}, k \\in \\mathbb{{Z}}$",

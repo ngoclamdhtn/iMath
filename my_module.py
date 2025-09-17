@@ -1605,6 +1605,7 @@ def moi_truong_latex(code):
 }
 
 \newcommand{\chantrang}[2]{\rfoot{Trang \thepage $-$ Mã đề #2}}
+
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt} 

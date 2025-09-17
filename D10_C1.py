@@ -465,8 +465,8 @@ def mjulk_L10_C1_B1_03():
 	kq4_F=f"Số các số nguyên n để $\\dfrac{{P(n)+{c}}}{{{latex(n-n_0)}}}$ là số nguyên là ${{{soluong+random.randint(1,3)}}}$".replace("+-","-") 
 	kq4=random.choice([kq4_T, kq4_F])
 	HDG=f"$A=\\dfrac{{P(n)+{c}}}{{{latex(n-n_0)}}}=\\dfrac{{{latex(expand(f))}+{c}}}{{{latex(n-n_0)}}}"\
-	f"=\\dfrac{{{latex(f+c)} }}{{{latex(n-n_0)}}}={a1}+\\dfrac{{{b+c}}}{{{latex(n-n_0)}}}$.\n\n"\
-	f"${{A}}$ là số nguyên khi $\\dfrac{{{c}}}{{{latex(n-n_0)}}}$ là số nguyên.\n\n"\
+	f"=\\dfrac{{{latex(f+c)} }}{{{latex(n-n_0)}}}={a1}(n-{n_0})+\\dfrac{{{b+c}}}{{{latex(n-n_0)}}}$.\n\n"\
+	f"${{A}}$ là số nguyên khi $\\dfrac{{{b+c}}}{{{latex(n-n_0)}}}$ là số nguyên.\n\n"\
 	f"Khi đó: $n\\in \\{{{str_list_uoc}\\}}$.\n\n"\
 	f"Số các số nguyên n để $\\dfrac{{P(n)+{c}}}{{{latex(n-n_0)}}}$ là số nguyên là ${{{soluong}}}$.".replace("+-","-")
 
@@ -547,7 +547,7 @@ def mjulk_L10_C1_B1_04():
 	x=sp.symbols("x")
 	x_1=random.randint(-4,4)
 	x_2=x_1+random.randint(1,4)
-	kq4=f"Phương trình ${latex(expand(random.randint(1,3)*(x-x_1)*(x-x_2)))}=0$ {random.choice(["vô nghiệm", "có đúng 1 nghiệm"])}"
+	kq4=f"Phương trình ${{{latex(expand(random.randint(1,3)*(x-x_1)*(x-x_2)))}=0}}$ {random.choice(["vô nghiệm", "có đúng 1 nghiệm"])}"
 	
 	noi_dung_loigiai=f"{kq} là khẳng định đúng."
 

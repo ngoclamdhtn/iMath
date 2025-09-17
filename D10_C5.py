@@ -4,6 +4,11 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(10000000000000))
@@ -1957,7 +1962,8 @@ def y7y7u_L10_C5_B2_12():
 		if int(sqrt(l_AB**2+l_AC**2))==sqrt(l_AB**2+l_AC**2):		
 			dap_an=f"{int(sqrt(l_AB**2+l_AC**2))}"
 		else:
-			dap_an=f"{round(sqrt(l_AB**2+l_AC**2),1):.1f}".replace(".",",")	
+			
+			dap_an=f"{round_half_up(sqrt(l_AB**2+l_AC**2),1):.1f}".replace(".",",")	
 
 		noi_dung_loigiai=(
 		f"Ta có: {dang_thuc} $\\Rightarrow {vec(f"{A}{C}")}-{vec(f"{A}{B}")}={vec(f"{A}{M}")}\\Rightarrow {vec(f"{A}{M}")}={vec(f"{B}{C}")}$.\n\n"
@@ -1967,7 +1973,7 @@ def y7y7u_L10_C5_B2_12():
 	
 	if chon==2:
 		vecto=random.choice([vec(f"{A}{I}"), vec(f"{B}{I}"), vec(f"{C}{I}") ])
-		dap_an=f"{round(sqrt(l_AB**2+l_AC**2)/2,1):1f}".replace(".",",")
+		dap_an=f"{round_half_up(sqrt(l_AB**2+l_AC**2)/2,1):1f}".replace(".",",")
 
 		dang_thuc=random.choice([
 		f"${vec(f"{I}{M}")}+{vec(f"{A}{C}")}={vec(f"{A}{I}")}+{vec(f"{B}{M}")}$",
@@ -2037,7 +2043,7 @@ def y7y7u_L10_C5_B2_13():
 			)
 
 		AC=sqrt(l_AB**2+l_AD**2)
-		dap_an=f"{round(AC,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(AC,1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(f"$|{vec(f"{A}{M}")}+{vec(f"{N}{D}")}|=|{vec(f"{A}{M}")}+{vec(f"{M}{C}")}|=|{vec(f"{A}{C}")}|"
 		f"=\\sqrt{{{l_AB}^2+{l_AD}^2}}={latex(AC)}$.\n\n"
@@ -2055,7 +2061,7 @@ def y7y7u_L10_C5_B2_13():
 			)
 
 		DK=sqrt(l_AD**2+(2*l_AB)**2)
-		dap_an=f"{round(DK,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(DK,1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(f"Gọi ${{K}}$ là điểm đối xứng với ${{{A}}}$ qua ${{{B}}}$.\n\n"
 			f"Tứ giác ${{{B}{D}{C}K}}$ là hình bình hành.\n\n"
@@ -2073,7 +2079,7 @@ def y7y7u_L10_C5_B2_13():
 			)
 
 		DK=sqrt(l_AD**2+(2*l_AB)**2)
-		dap_an=f"{round(DK,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(DK,1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(f"Gọi ${{K}}$ là điểm đối xứng với ${{{A}}}$ qua ${{{B}}}$.\n\n"
 			f"Tứ giác ${{{B}{D}{C}K}}$ là hình bình hành.\n\n"
@@ -2116,7 +2122,7 @@ def y7y7u_L10_C5_B2_14():
 		noi_dung = (
 		f"Cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ có ${A}{B}={AB},{A}{C}={AC}$. Tính độ dài của vectơ ${vec_AB}-{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 		f"$|{vec_AB}-{vec_AC}|=|{vec_CB}|=\\sqrt{{{AB}^2+{AC}^2}}={latex(sqrt(AB**2+AC**2))}={dap_an}$.")
@@ -2135,7 +2141,7 @@ def y7y7u_L10_C5_B2_14():
 		noi_dung = (
 		f"Cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$ có ${A}{B}={AB},{A}{C}={AC}$. Tính độ dài của vectơ ${vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 			f"Dựng hình chữ nhật ${{{A}{B}M{C}}}$.\n\n"
@@ -2769,7 +2775,7 @@ def y7y7u_L10_C5_B3_06():
 		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
 		f" Tính độ dài của vectơ ${vec_u}={vec_GB}+{vec_GC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(4/3*sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(4/3*sqrt(AB**2+AC**2),1):.1f}".replace(".",",")
 
 		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
 		\\coordinate ({A}) at (0,0);\n\
@@ -2809,7 +2815,7 @@ def y7y7u_L10_C5_B3_06():
 		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
 		f" Tính độ dài của vectơ ${vec_u}={vec_GB}+{vec_GC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(AB*sqrt(3)/3,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(AB*sqrt(3)/3,1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
@@ -2839,7 +2845,7 @@ def y7y7u_L10_C5_B3_06():
 		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
 		f" Tính độ dài của vectơ ${vec_u}={vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(AB*sqrt(3),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(AB*sqrt(3),1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
@@ -2869,7 +2875,7 @@ def y7y7u_L10_C5_B3_06():
 		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
 		f" Tính độ dài của vectơ ${vec_u}={vec_GB}+{vec_GC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(AB*sqrt(3)/3,1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(AB*sqrt(3)/3,1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
@@ -2899,7 +2905,7 @@ def y7y7u_L10_C5_B3_06():
 		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
 		f" Tính độ dài của vectơ ${vec_u}={vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(AB*sqrt(3),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(AB*sqrt(3),1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
@@ -2977,7 +2983,7 @@ def y7y7u_L10_C5_B3_07():
 		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
 		f" Tính độ dài vectơ ${vec_u}={vec_AB}+{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
 
 		noi_dung_loigiai=(
 		f"Gọi ${{{M}}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
@@ -3013,7 +3019,7 @@ def y7y7u_L10_C5_B3_07():
 		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
 		f" Tính độ dài vectơ ${vec_u}={vec_AB}+2{vec_AD}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
 
 		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
 			\\coordinate ({A}) at (0,3);\n\
@@ -3057,7 +3063,8 @@ def y7y7u_L10_C5_B3_08():
     a=random.randint(2,8)
     c=random.randint(1,5)
     b=(a+1)*c
-    e=str(round((sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)),1)).replace(".", ",").replace(".0", "")
+
+    e=f"{round_half_up((sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)),1):.1f}".replace(".",",").replace(".0", "")
     
     M=random.choice(["H ", "G", "D", "K", "O", "J", "E", "F", "N"])
 
@@ -3068,7 +3075,7 @@ def y7y7u_L10_C5_B3_08():
         f" $\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid $."
         f" Tính khoảng cách lớn nhất từ điểm ${{C}}$ đến điểm ${{{M}}}$ (kết quả làm tròn đến hàng phần mười).")
 
-        kq=str(round(sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)+c,1 )).replace(".", ",").replace(".0", "")
+        kq=f"{round_half_up(sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)+c,1):.1f}".replace(".",",").replace(".0", "")
         noi_dung_loigiai=(f" Gọi ${{I}}$ là điểm sao cho $\\overrightarrow{{IA}}+{a}\\overrightarrow{{IB}} = \\overrightarrow{{0}}$ \n\n"
         f"$\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid  $\n\n "
             f"  $\\mid {1+a}\\overrightarrow{{{M}I}} \\mid = \\mid \\overrightarrow{{BC}} \\mid $ \n\n"
@@ -3080,8 +3087,8 @@ def y7y7u_L10_C5_B3_08():
         noi_dung = (f" Cho tam giác ${{ABC}}$ đều cạnh bằng ${{{b}}}$ cm. ${{{M}}}$ là điểm thoả mãn hệ thức \n\n"
         f" $\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid$."
         f" Tính khoảng cách nhỏ nhất từ điểm ${{C}}$ đến điểm ${{{M}}}$ là (kết quả làm tròn đến hàng phần mười).")
-
-        kq=str(round(abs(sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)-c),1 )).replace(".", ",").replace(".0", "")
+        
+        kq=f"{round_half_up(abs(sqrt( (a*c)**2+ b**2-2*a*c*b* 0.5)-c),1):.1f}".replace(".",",").replace(".0", "")
         noi_dung_loigiai=(f" Gọi ${{I}}$ là điểm sao cho $\\overrightarrow{{IA}}+{a}\\overrightarrow{{IB}} = \\overrightarrow{{0}}$ \n\n"
         f"$\\mid \\overrightarrow{{{M}A}}+{a} \\overrightarrow{{{M}B}} \\mid=\\mid \\overrightarrow{{{M}C}}- \\overrightarrow{{{M}B}} \\mid  $\n\n "
             f"  $\\mid {1+a}\\overrightarrow{{{M}I}} \\mid = \\mid \\overrightarrow{{BC}} \\mid $ \n\n"
@@ -3903,18 +3910,18 @@ def y7y7u_L10_C5_B4_07():
 	noi_dung=noi_dung.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
 
 	kq=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)
-	dap_an=f"{round(kq,1):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(kq,1):.1f}".replace(".",",")
 
 	if tich_vh>0:
 		noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.{tich_vh}+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
-		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round_half_up(kq,1):.1f}$.")
 	else:
 		noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.({tich_vh})+{n**2}.{b}^2={(m*a)**2+2*m*n*tich_vh+(n*b)**2}$.\n\n"
-		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round(kq,1):.1f}$.")
+		f"Suy ra $|{m}{vec_a}+{n}{vec_b}|={round_half_up(kq,1):.1f}$.")
 
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("1\\overrightarrow","\\overrightarrow").replace("-1\\overrightarrow","-\\overrightarrow")
 
@@ -3951,7 +3958,7 @@ def y7y7u_L10_C5_B4_08():
 	vec_b=f"{vec(f"{ten_b}")}"
 	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
 
-	kq=f"{round(tich_vh/(a*b),1)}".replace(".",",")
+	kq=f"{round_half_up(tich_vh/(a*b),1)}".replace(".",",")
 	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và $|{m}{vec_a}+{n}{vec_b}|={latex(nsimplify(modun))}$."
 	f" Tính $\\cos({vec_a},{vec_b})$ (kết quả làm tròn đến hàng phần mười)."
 	)
@@ -4017,7 +4024,7 @@ def y7y7u_L10_C5_B4_09():
 	vec_y=f"{vec("y")}"
 	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
 
-	kq=f"{round(tich_vh/(a*b),1)}".replace(".",",")
+	kq=f"{round_half_up(tich_vh/(a*b),1)}".replace(".",",")
 	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và ${vec_a}.{vec_b}={tich_vh}$."
 	f" Xét hai vectơ ${vec_x}={m}{vec_a}+{n}{vec_b}$ và ${vec_y}={p}{vec_a}+{q}{vec_b}$. Tính $\\cos({vec_x},{vec_y})$ (kết quả làm tròn đến hàng phần mười)."
 	)
@@ -4027,7 +4034,7 @@ def y7y7u_L10_C5_B4_09():
 	modun_x=f"{latex(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh)))}"
 	modun_y=f"{latex(sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))}"
 	kq=xy/(sqrt((m*a)**2+(n*b)**2+(2*m*n*tich_vh))*sqrt((p*a)**2+(q*b)**2+(2*p*q*tich_vh)))
-	kq=f"{round(kq,1)}".replace(".",",")
+	kq=f"{round_half_up(kq,1)}".replace(".",",")
 	if tich_vh>0:
 		noi_dung_loigiai=(
 			f"${vec_x}.{vec_y}=({m}{vec_a}+{n}{vec_b}).({p}{vec_a}+{q}{vec_b})={m*p}{vec_a}^2+{n*q}{vec_b}^2+{m*q+n*p}{vec_a}.{vec_b}"
