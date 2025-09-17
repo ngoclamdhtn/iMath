@@ -7203,7 +7203,7 @@ def prt_34_L12_C1_B2_22():
 	dap_an=f_max
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C1_B2_23]-TL-M3. Tìm chi phí thấp nhất để xây cái bể hình hộp chữ nhật
+#[D12_C1_B2_23]-TL-M3. Cắt 4 góc tấm bìa tạo h.hộp chữ nhật. Tìm V_max
 def prt_34_L12_C1_B2_23():
 	x=sp.symbols("x")
 	
@@ -13081,9 +13081,548 @@ def prt_34_L12_C1_B5_11():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C1_B5_12]-SA-M3. Bể chứa nước có chiều rộng và V.  Tìm chiều dài để S_tp min. 
+def prt_34_L12_C1_B5_12():
+	ten=random.choice(["An", "Minh", "Nam", "Hùng", "Kiên", "Trí", "Dũng" ])	
+	while True:
+
+		V=round_half_up(random.choice([3+0.1*i for i in range(1,20)]),1)
+		r=round_half_up(random.choice([0.8+0.1*i for i in range(1,10)]),1)
+		if r<V-2:
+			break
+	st_V=str(V).replace(".0","").replace(".",",")
+	st_2V=str(2*V).replace(".0","").replace(".",",")
+	st_r=str(r).replace(".0","").replace(".",",")
+	st_2r=str(2*r).replace(".0","").replace(".",",")
+	st_rV=str(r*V).replace(".0","").replace(".",",")
+	noi_dung = (
+	f"Ông {ten} dự định xây một cái bể chứa nước có dạng hình hộp chữ nhật không nắp."
+	f" Biết đáy bể có một chiều bằng ${{{st_r}m}}$ và bể có thể tích là ${{{st_V}m^3}}$."
+	f" Để diện tích xây dựng bể ít nhất thì chiều còn lại của đáy bể bằng (kết quả làm tròn đến hàng phần mười)"
+	)
+	dap_an=f"{round_half_up(sqrt(2*V/r),1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x}}$ là chiều còn lại của đáy bể, ${{h}}$ là chiều cao của bể.\n\n"
+	f"Ta có: $V=x.{st_r}.h={st_V}\\Rightarrow h=\\dfrac{{{st_V}}}{{{st_r}x}}$.\n\n"
+	f"Diện tích xây dựng là:\n\n"
+	f"$S(x)=2.x.h+2.{st_r}.h+{st_r}.x=h(2x+{st_2r})+{st_r}x$\n\n"
+	f"$=\\dfrac{{{st_V}}}{{{st_r}x}}(2x+{st_2r}) +{st_r}x$\n\n"
+	f"$={st_r}x+\\dfrac{{{st_2V}}}{{x}} + \\dfrac{{{st_2V}}}{{{st_r}}}$.\n\n"
+	f"$S'(x)={st_r}-\\dfrac{{{st_2V}}}{{x^2}}$.\n\n"
+	f"$S'(x)=0 \\Leftrightarrow x= \\sqrt{{\\dfrac{{{st_2V} }}{{{st_r}}}}}$.\n\n"
+	f"Lập bảng biến thiên suy ra $S_{{min}}$ khi $x=\\sqrt{{\\dfrac{{{st_2V} }}{{{st_r}}}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
 
 
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_13]-SA-M3. Phòng học có chiều rộng và V.  Tìm chiều dài để S_tp min. 
+def prt_34_L12_C1_B5_13():
+	ten=random.choice(["An", "Minh", "Nam", "Hùng", "Kiên", "Trí", "Dũng" ])
+	while True:
+
+		V=random.randint(200,400)
+		r=round_half_up(random.choice([4+0.1*i for i in range(1,20)]),1)
+		d=sqrt(2*V/r)
+		if d>r:
+			break
+
+	st_V=str(V).replace(".0","").replace(".",",")
+	st_2V=str(2*V).replace(".0","").replace(".",",")
+	st_r=str(r).replace(".0","").replace(".",",")
+	st_2r=str(2*r).replace(".0","").replace(".",",")
+	st_rV=str(r*V).replace(".0","").replace(".",",")
+	noi_dung = (
+	f"Một trường học dự định xây một phòng học dạng hình hộp chữ nhật không có vách ngăn."
+	f" Biết nền phòng học có chiều rộng bằng ${{{st_r}m}}$ và phòng học có thể tích là ${{{st_V}m^3}}$."
+	f" Hãy tính chiều dài phòng học để diện tích sơn tường (4 mặt xung quanh và trần, không kể nền) là ít nhất (kết quả làm tròn đến hàng phần mười)"
+	)
+	dap_an=f"{round_half_up(sqrt(2*V/r),1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x,h}}$ lần lượt là chiều dài và chiều cao của phòng học.\n\n"
+	f"Ta có: $V=x.{st_r}.h={st_V}\\Rightarrow h=\\dfrac{{{st_V}}}{{{st_r}x}}$.\n\n"
+	f"Diện tích sơn tường là:\n\n"
+	f"$S(x)=2.x.h+2.{st_r}.h+{st_r}.x=h(2x+{st_2r})+{st_r}x$\n\n"
+	f"$=\\dfrac{{{st_V}}}{{{st_r}x}}(2x+{st_2r}) +{st_r}x$\n\n"
+	f"$={st_r}x+\\dfrac{{{st_2V}}}{{x}} + \\dfrac{{{st_2V}}}{{{st_r}}}$.\n\n"
+	f"$S'(x)={st_r}-\\dfrac{{{st_2V}}}{{x^2}}$.\n\n"
+	f"$S'(x)=0 \\Leftrightarrow x= \\sqrt{{\\dfrac{{{st_2V} }}{{{st_r}}}}}$.\n\n"
+	f"Lập bảng biến thiên suy ra $S_{{min}}$ khi $x=\\sqrt{{\\dfrac{{{st_2V} }}{{{st_r}}}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
 
 
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_14]-SA-M3. Thùng xe có chiều rộng và V. Tìm chiều dài để S_tp min. 
+def prt_34_L12_C1_B5_14():
+	ten=random.choice(["An", "Minh", "Nam", "Hùng", "Kiên", "Trí", "Dũng" ])
+	while True:
+
+		V=random.randint(18,30)
+		r=round_half_up(random.choice([1.8+0.1*i for i in range(1,10)]),1)
+		d=sqrt(V/r)
+		if d>r:
+			break
+
+	st_V=str(V).replace(".0","").replace(".",",")
+	st_2V=str(2*V).replace(".0","").replace(".",",")
+	st_r=str(r).replace(".0","").replace(".",",")
+	st_2r=str(2*r).replace(".0","").replace(".",",")
+	st_rV=str(r*V).replace(".0","").replace(".",",")
+	noi_dung = (
+	f"Một hãng vận tải thiết kế thùng xe tải hình hộp chữ nhật (mở phía trên)."
+	f" Chiều rộng của thùng bằng ${{{st_r}m}}$ và thể tích thùng là ${{{st_V}m^3}}$."
+	f" Hãy tính chiều dài của thùng xe để diện tích tôn làm các mặt thùng(đáy và 3 mặt bên, không kể phía trên) là ít nhất (kết quả làm tròn đến hàng phần mười)"
+	)
+	dap_an=f"{round_half_up(sqrt(V/r),1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x,h}}$ lần lượt là chiều dài và chiều cao của thùng xe.\n\n"
+	f"Ta có: $V=x.{st_r}.h={st_V}\\Rightarrow h=\\dfrac{{{st_V}}}{{{st_r}x}}$.\n\n"
+	f"Diện tích các mặt thùng là:\n\n"
+	f"$S(x)=2.x.h+{st_r}.h+{st_r}.x=h(2x+{st_r})+{st_r}x$\n\n"
+	f"$=\\dfrac{{{st_V}}}{{{st_r}x}}(2x+{st_r}) +{st_r}x$\n\n"
+	f"$={st_r}x+\\dfrac{{{st_V}}}{{x}} + \\dfrac{{{st_2V}}}{{{st_r}}}$.\n\n"
+	f"$S'(x)={st_r}-\\dfrac{{{st_V}}}{{x^2}}$.\n\n"
+	f"$S'(x)=0 \\Leftrightarrow x= \\sqrt{{\\dfrac{{{st_V} }}{{{st_r}}}}}$.\n\n"
+	f"Lập bảng biến thiên suy ra $S_{{min}}$ khi $x=\\sqrt{{\\dfrac{{{st_V} }}{{{st_r}}}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
 
 
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_15]-SA-M4. Tìm số máy in cần dùng để chi phí in ấn thấp nhất. 
+def prt_34_L12_C1_B5_15():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(10,30)
+		tien_baoduong = random.randint(30,50)*1000
+		tien_giamsat = random.randint(20,40)*1000
+		t=random.randint(10,40)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 7<=sqrt(b/a)<=30:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một xưởng in có {so_may} máy in được cài đặt tự động và được giám sát bởi một kỹ sư, mỗi máy in có thể in được {sl_in_1_gio} ấn phẩm trong 1 giờ."
+	f" Chi phí cài đặt và bảo dưỡng cho mỗi máy in cho một đợt hàng là {tien_baoduong} đồng."
+	f" Chi phí trả cho kỹ sư giám sát là {tien_giamsat} đồng/giờ."
+	f" Đợt hàng này xưởng in nhận {sl_can_in} ấn phẩm."
+	f" Tìm số máy in để tổng chi phí in ấn là thấp nhất."
+	)
+
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x}}$ là số lượng máy in cần sử dụng.\n\n"
+	f"Chi phí cài đặt và bảo dưỡng là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với  ${{x}}$ máy in thì in được số ấn phẩm là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để in hết {sl_can_in} ấn phẩm là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí cho giám sát là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_16]-SA-M4. Tìm số máy gặt cần dùng để chi phí gặt lúa thấp nhất. 
+def prt_34_L12_C1_B5_16():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(30,50)
+		tien_baoduong = random.randint(50,70)*1000
+		tien_giamsat = random.randint(50,65)*1000
+		t=random.randint(30,40)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 5<=sqrt(b/a)<=16:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một nông trại có {so_may} máy gặt lúa tự động và được giám sát bởi một kỹ sư, mỗi máy gặt có thể gặt được {sl_in_1_gio} kg lúa trong 1 giờ."
+	f" Chi phí vận hành cho mỗi máy gặt cho một vụ là {tien_baoduong} đồng."
+	f" Chi phí thuê kỹ sư giám sát là {tien_giamsat} đồng/giờ."
+	f" Vụ lúa này cần gặt {sl_can_in} kg lúa."
+	f" Hỏi nên sử dụng bao nhiêu máy để tổng chi phí thấp nhất."
+	)
+
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x}}$ là số lượng máy gặt cần sử dụng.\n\n"
+	f"Chi phí vận hành là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với ${{x}}$ máy gặt thì gặt được số kg lúa là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để gặt hết {sl_can_in} kg lúa là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí cho giám sát là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D12_C1_B5_17]-SA-M4. Tìm số xe tải cần dùng để chi phí vận tải thấp nhất. 
+def prt_34_L12_C1_B5_17():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(4,10)
+		tien_baoduong = random.randint(100,150)*1000
+		tien_giamsat = random.randint(80,100)*1000
+		t=random.randint(10,50)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 5<=sqrt(b/a)<=25:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một công ty vận tải có {so_may} xe tải, mỗi xe có thể chở được {sl_in_1_gio} tấn hàng trong 1 giờ."
+	f" Chi phí chuẩn bị và khấu hao mỗi xe cho một chuyến là {tien_baoduong} đồng."
+	f" Chi phí thuê nhân viên điều phối là {tien_giamsat} đồng/giờ."
+	f" Công ty cần vận chuyển {sl_can_in} tấn hàng."
+	f" Hãy tìm số xe tải cần sử dụng để chi phí nhỏ nhất."
+	)
+
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x}}$ là số lượng xe tải cần sử dụng.\n\n"
+	f"Chi phí chuẩn bị và khấu hao là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với ${{x}}$ xe tải thì chở được số tấn hàng là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để chở hết {sl_can_in} tấn hàng là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí thuê nhân viên điều phối là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số xe tải là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số xe tải để tổng chi phí nhỏ nhất là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_18]-SA-M4. Tìm số máy chủ để chi phí vận hành thấp nhất. 
+def prt_34_L12_C1_B5_18():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(700,800)
+		tien_baoduong = random.randint(150,250)*1000
+		tien_giamsat = random.randint(100,150)*1000
+		t=random.randint(20,40)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 10<=sqrt(b/a)<=50:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một trung tâm dữ liệu có {so_may} máy chủ (server). Mỗi máy xử lý được {sl_in_1_gio} tác vụ trong 1 giờ."
+	f" Chi phí điện năng cho mỗi máy trong một đợt chạy là {tien_baoduong} đồng."
+	f" Chi phí thuê kỹ sư giám sát hệ thống là {tien_giamsat} đồng/giờ."
+	f" Đợt này cần xử lý {sl_can_in} tác vụ."
+	f" Trung tâm dữ liệu nên dùng bao nhiêu máy chủ để tổng chi phí thấp nhất?"
+	)
+
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x}}$ là số lượng máy chủ cần sử dụng.\n\n"
+	f"Chi phí điện năng là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với  ${{x}}$ máy chủ thì xử lý được số tác vụ là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để xử lý hết {sl_can_in} tác vụ là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí thuê kỹ sư giám sát hệ thống là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy chủ là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy chủ để tổng chi phí nhỏ nhất là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D12_C1_B5_19]-SA-M4. Tìm số máy xét nghiệm cần dùng để chi phí thấp nhất. 
+def prt_34_L12_C1_B5_19():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(5,20)
+		tien_baoduong = random.randint(70,90)*1000
+		tien_giamsat = random.randint(40,60)*1000
+		t=random.randint(30,60)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 7<=sqrt(b/a)<=30:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một bệnh viện có {so_may} máy xét nghiệm tự động. Mỗi máy xét nghiệm được {sl_in_1_gio} mẫu trong 1 giờ."
+	f" Chi phí bảo dưỡng và khử khuẩn mỗi máy cho một ca trực là {tien_baoduong} đồng."
+	f" Chi phí thuê kỹ thuật viên giám sát là {tien_giamsat} đồng/giờ."
+	f" Trong ngày bệnh viện nhận {sl_can_in} mẫu xét nghiệm."
+	f" Hỏi cần bao nhiêu máy để chi phí là ít nhất?"
+	)
+
+
+	noi_dung_loigiai=(
+	f"Gọi ${{x}}$ là số lượng máy xét nghiệm cần sử dụng.\n\n"
+	f"Chi phí bảo dưỡng và khử khuẩn là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với  ${{x}}$ máy thì xét nghiệm được số mẫu là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để xét nghiệm hết {sl_can_in} mẫu là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí thuê kỹ thuật viên giám sát là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
