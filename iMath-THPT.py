@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 02.09.2025")
+                self.label.setText(f"iMath\u00A92025 ver 17.09.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 02.09.2025")
+                self.label.setText(f"iMath\u00A92025 ver 17.09.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2055,6 +2055,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_20]-M1. Tìm đẳng thức đúng(sinx=a, cosx=b,tanx=c, cotx=d)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_21]-M2. Tìm đẳng thức sai về 2 góc bù nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_22]-M2. Tìm đẳng thức sai về 2 góc phụ nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C4_B1_1, ["[D10_C4_B1_15]-M2. Tìm khẳng định đúng về công thức lượng giác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -2155,18 +2167,25 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_33]-M1. Nhận dạng công thức a/sinA = 2R."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_32]-M2. Nhận dạng công thức hỗn hợp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_02]-M2. Cho a,b góc C. Tính c."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_03]-M2. Cho a,b,c. Tính góc"])
+                item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_03]-M2. Cho a,b,c. Tính góc."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)          
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_34]-M2. Tính bình phương đường trung tuyến."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)         
 
                 item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_04]-M2. Cho a và A. Tính R."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -2177,6 +2196,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)      
 
                 item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_05]-M2. Cho a,b,c. Tính S."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B2_1, ["[D10_C4_B2_37]-M2. Cho a,b,cosC. Tính S."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -2234,6 +2257,14 @@ class Ui_MainWindow(object):
                 L10_C4_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_13]-SA-M2.  Cho b,c và góc C. Tính cạnh a"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_35]-SA-M2.  Cho a,b,c. Tính trung tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_36]-SA-M2.  Lấy điểm M thuộc BC. Tính AM"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7470,13 +7501,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B2_3, ["[D12_C1_B2_22]-SA-M3. Cắt hình chữ nhật từ nửa đường tròn. Tìm diện tích lớn nhất của hình chữ nhật."])
+                item = QTreeWidgetItem(L12_C1_B2_3, ["[D12_C1_B2_22]-SA-M3. Cắt hình chữ nhật từ nửa đường tròn. Tìm S_max."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B2_3, ["[D12_C1_B2_23]-SA-M3. Tìm chi phí thấp nhất để xây cái bể hình hộp chữ nhật."])
+                item = QTreeWidgetItem(L12_C1_B2_3, ["[D12_C1_B2_23]-SA-M3. Cắt 4 góc tấm bìa tạo h.hộp chữ nhật. Tìm V_max"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
 
@@ -7708,7 +7741,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_10]-TF-M3.Cho hàm số số lượng vi khuẩn. Xét Đ-S: SL vi khuẩn, đạo hàm, tăng-giảm, max."])
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_10]-TF-M3. Cho hàm số số lượng vi khuẩn. Xét Đ-S: SL vi khuẩn, đạo hàm, tăng-giảm, max."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7724,23 +7757,55 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_12]-SA-M3.  Bài toán doanh thu lớn nhất khi biết đơn giá của x sản phẩm."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_02]-SA-M3. Cho hàm số chi phí. Tìm chi phí trung bình thấp nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_01]-SA-M4. Bài toán thực tế tìm chi phí thấp nhất"])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_20]-SA-M2. Tính doanh thu lớn nhất biết đơn giá của x sản phẩm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_03]-SA-M3. Bài toán tìm số giếng dầu có thể khai thác thêm để sản lượng là lớn nhất"])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_01]-SA-M4. Bài toán thực tế tìm chi phí thấp nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_09]-SA-M3. Cho hàm số lượng vi khuẩn. Tìm số vi khuẩn lớn nhất"])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_03]-SA-M3. Bài toán tìm số giếng dầu có thể khai thác thêm để sản lượng là lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_09]-SA-M3. Cho hàm số lượng vi khuẩn. Tìm số vi khuẩn lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_12]-SA-M3. Bể nước có chiều rộng và V. Tìm chiều dài để S_tp min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_13]-SA-M3. Phòng học có chiều rộng và V.  Tìm chiều dài để S_tp min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_14]-SA-M3. Thùng xe có chiều rộng và V. Tìm chiều dài để S_tp min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_15]-SA-M4. Tìm số máy in để chi phí in ấn thấp nhất (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_16]-SA-M4. Tìm số máy gặt để chi phí gặt lúa thấp nhất (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_17]-SA-M4. Tìm số xe tải để chi phí vận tải thấp nhất (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_18]-SA-M4. Tìm số máy chủ để chi phí vận hành thấp nhất (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_19]-SA-M4. Tìm số máy xét nghiệm cần dùng để chi phí thấp nhất (mô hình f=ax+b/x)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10355,10 +10420,41 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_11]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_11()
 
-                                            #[D12_C1_B5_12]-SA-M2. Tính doanh thu lớn nhất biết đơn giá của x sản phẩm
+                                            #[D12_C1_B5_12]-SA-M3. Bể chứa nước có chiều rộng và V. Tìm chiều dài để S_tp max. 
                                             if dang_toan == "[D12_C1_B5_12]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_12()
 
+                                            #[D12_C1_B5_13]-SA-M3. Phòng học có chiều rộng và V. Tìm chiều dài để S_tp min. 
+                                            if dang_toan == "[D12_C1_B5_13]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_13()
+
+                                            #[D12_C1_B5_14]-SA-M3. Phòng học có chiều rộng và V. Tìm chiều dài để S_tp min. 
+                                            if dang_toan == "[D12_C1_B5_14]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_14()
+
+                                            #[D12_C1_B5_15]-SA-M4. Tìm số máy in cần dùng để chi phí thấp nhất.
+                                            if dang_toan == "[D12_C1_B5_15]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_15()
+
+                                            #[D12_C1_B5_16]-SA-M4. Tìm số máy gặt cần dùng để chi phí gặt lúa thấp nhất
+                                            if dang_toan == "[D12_C1_B5_16]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_16()
+
+                                            #[D12_C1_B5_17]-SA-M4. Tìm số xe tải cần dùng để chi phí vận tải thấp nhất. 
+                                            if dang_toan == "[D12_C1_B5_17]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_17()
+
+                                            #[D12_C1_B5_18]-SA-M4. Tìm số máy chủ để chi phí vận hành thấp nhất.
+                                            if dang_toan == "[D12_C1_B5_18]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_18()
+
+                                            #[D12_C1_B5_19]-SA-M4.  Tìm số máy xét nghiệm cần dùng để chi phí thấp nhất. 
+                                            if dang_toan == "[D12_C1_B5_19]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_19()
+
+                                            #[D12_C1_B5_20]-SA-M4. Tính doanh thu lớn nhất biết đơn giá của x sản phẩm 
+                                            if dang_toan == "[D12_C1_B5_20]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_20()
                                                 
 
                                 ######### Toán 12_ Chương 2 - TỌA ĐỘ VECTƠ TRONG KHÔNG GIAN ########
@@ -15097,6 +15193,18 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D10_C4_B1_19]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B1_19()
 
+                                            #[D10_C4_B1_20]-M1. Tìm đẳng thức đúng dạng (sinx=a, cosx=b,tanx=c, cotx=d)
+                                            if dang_toan =="[D10_C4_B1_20]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_20()
+
+                                            #[D10_C4_B1_21]-M2. Cho 2 góc bù nhau. Tìm khẳng định sai.
+                                            if dang_toan =="[D10_C4_B1_21]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_21()
+
+                                            #[D10_C4_B1_22]-M2. Cho 2 góc phụ nhau. Tìm khẳng định sai.
+                                            if dang_toan =="[D10_C4_B1_22]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_22()
+
 
                                             
 
@@ -15231,6 +15339,26 @@ class Ui_MainWindow(object):
                                             #[D10_C4_B2_32]-M2. Nhận dạng công thức hỗn hợp
                                             if dang_toan == "[D10_C4_B2_32]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B2_32()
+
+                                            #[D10_C4_B2_33]-M2. Tìm khẳng định đúng về bán kính R
+                                            if dang_toan == "[D10_C4_B2_33]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B2_33()
+
+                                            #[D10_C4_B2_34]-M2. Tính bình phương đường trung tuyến
+                                            if dang_toan == "[D10_C4_B2_34]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B2_34()
+
+                                            #[D10_C4_B2_35]-SA-M3.  Tính độ dài đường trung tuyến
+                                            if dang_toan =="[D10_C4_B2_35]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_35()
+
+                                            #[D10_C4_B2_36]-SA-M3.  Cho a,b,c. Lấy điểm M thuộc BC. Tính AM
+                                            if dang_toan =="[D10_C4_B2_36]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_36()
+
+                                            #[D10_C4_B2_37]-M2. Cho a,b, cosC. Tính diện tích tam giác.
+                                            if dang_toan == "[D10_C4_B2_37]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B2_37()
 
 
 
@@ -18860,7 +18988,7 @@ class Ui_MainWindow(object):
                 return
 
         #open latex và pdf
-        def open_latex_pdf(self,name_thu_muc, name_de,list_noi_dung):
+        def open_latex_pdf(self,name_thu_muc, name_de, list_noi_dung):
                 
                 code  = list_noi_dung                
                 code_debai = my_module.moi_truong_latex(code)
