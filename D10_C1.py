@@ -6397,10 +6397,10 @@ def mjulk_L10_C1_B4_31():
 	f"Cho các tập hợp ${A}=[{a};{b}], {B}=({c};{d})$ và ${C}=[{e};{f})$."
 	f" Tìm số phần tử là số nguyên của tập hợp ${A}\\cap {B}\\cap {C}$."
 	)
-	dap_an=b-e
+	dap_an=b-e+1
 
 	noi_dung_loigiai=(
-	f"${A}\\cap {B}\\cap {C}=[{e};{b})$.\n\n"
+	f"${A}\\cap {B}\\cap {C}=[{e};{b}]$.\n\n"
 	f" Số phần tử là số nguyên của tập hợp ${A}\\cap {B}\\cap {C}$ là: ${{{dap_an}}}$."
 	)
 

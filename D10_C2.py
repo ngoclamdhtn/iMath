@@ -2332,42 +2332,68 @@ def kiem_tra_cat_nhau(d1, d2):
 def bch_12_L10_C2_B2_15():
     x,y=symbols("x y")   
 
+    noi_dung=""
+    noi_dung_loigiai=""
+    dap_an=""
+
     while True:
-        # Sinh ba đường thẳng
-        d1 = sinh_duong_thang_khong_qua_O()
-        d2 = sinh_duong_thang_khong_qua_O()
-        d3 = sinh_duong_thang_khong_qua_O()
-        a1,b1,c1=d1
-        a2,b2,c2=d2
-        a3,b3,c3=d3
-        if any([a1/b1>0, a2/b2>0, a3/b3<0]):
-            continue
-        # Kiểm tra đôi một cắt nhau
-        if all([kiem_tra_cat_nhau(d1, d2),
-            kiem_tra_cat_nhau(d1, d3),
-            kiem_tra_cat_nhau(d2, d3)]):
-            break
-    
+            # Sinh ba đường thẳng
+            d1 = sinh_duong_thang_khong_qua_O()
+            d2 = sinh_duong_thang_khong_qua_O()
+            d3 = sinh_duong_thang_khong_qua_O()
+            a1,b1,c1=d1
+            a2,b2,c2=d2
+            a3,b3,c3=d3
+            x1,x2,x3=-c1/a1, -c2/a2,-c3/a3
+            y1,y2,y3=-c1/b1,-c2/b2,-c3/b3
+            k1,k2,k3=-a1/b1,-a2/b2,-a3/b3
+            if any([k1<0,k2<0,k3>0,y1<0,y2>0,y3<0,c1<0,c2<0,c3<0,k2>k1]):
+                continue
+            
+            # Kiểm tra đôi một cắt nhau
+            if all([kiem_tra_cat_nhau(d1, d2),
+                kiem_tra_cat_nhau(d1, d3),
+                kiem_tra_cat_nhau(d2, d3),x1<0,x3>0, x2>x3, y1>0,y2<0,y3>y1]):
+                break
+        
 
     f1=a1*x+b1*y+c1
     f2=a2*x+b2*y+c2
     f3=a3*x+b3*y+c3
 
-    if c1>0:
+    chon=random.randint(1,6)
+    
+    if chon==1:
         bpt_1=f"{latex(f1)}\\ge 0"
-    else:
-        bpt_1=f"{latex(f1)}\\le 0"
-
-    if c2>0:
         bpt_2=f"{latex(f2)}\\ge 0"
-    else:
-        bpt_2=f"{latex(f2)}\\le 0"
-
-    if c3>0:
         bpt_3=f"{latex(f3)}\\ge 0"
-    else:
-        bpt_3=f"{latex(f3)}\\le 0"
+    
+    if chon==2:
+        bpt_1=f"{latex(-f1)}\\le 0"
+        bpt_2=f"{latex(-f2)}\\le 0"
+        bpt_3=f"{latex(-f3)}\\le 0"
 
+    if chon==3:
+        bpt_1=f"{latex(-f1)}\\le 0"
+        bpt_2=f"{latex(f2)}\\ge 0"
+        bpt_3=f"{latex(f3)}\\ge 0"
+
+    if chon==4:
+        bpt_1=f"{latex(f1)}\\ge 0"
+        bpt_2=f"{latex(f2)}\\ge 0"
+        bpt_3=f"{latex(-f3)}\\le 0"
+
+    if chon==5:
+        bpt_1=f"{latex(f1)}\\ge 0"
+        bpt_2=f"{latex(-f2)}\\le 0"
+        bpt_3=f"{latex(-f3)}\\le 0"
+
+    if chon==6:
+        bpt_1=f"{latex(-f1)}\\le 0"
+        bpt_2=f"{latex(-f2)}\\le 0"
+        bpt_3=f"{latex(f3)}\\ge 0"
+
+    
     hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
     {bpt_1} \\\\ \n\
     {bpt_2} \\\\ \n\
@@ -2415,7 +2441,7 @@ def bch_12_L10_C2_B2_15():
         f"Miện nghiệm của hệ đã cho là miền trong hình tam giác ${{ABC}}$.\n\n"
         f"$F({phan_so(x_1)};{phan_so(y_1)})={phan_so(F_1)}, F({phan_so(x_2)};{phan_so(y_2)})={phan_so(F_2)}, F({phan_so(x_3)};{phan_so(y_3)})={phan_so(F_3)}$.\n\n"
         f"Giá trị lớn nhất của $F(x;y)$ là ${{{dap_an}}}$."
-    )    
+    )  
         
     debai_word= f"{noi_dung}\n"
 

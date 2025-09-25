@@ -447,14 +447,14 @@ def prt_34_L12_C1_B1_01():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -534,13 +534,13 @@ def prt_34_L12_C1_B1_02():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -1224,14 +1224,14 @@ def prt_34_L12_C1_B1_08():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -1323,13 +1323,13 @@ def prt_34_L12_C1_B1_09():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -1344,10 +1344,10 @@ def prt_34_L12_C1_B1_10():
 	
 	if chon==1:
 		f_dh=(x-x_1)*(x-x_2)*(x-x_3)
-		lenh_ve=f"plot (\\x,{{0.2*(\\x-{x_1})*(\\x-{x_2})*(\\x-{x_3})}});"
+		lenh_ve=f"plot (\\x,{{0.4*(\\x-{x_1})*(\\x-{x_2})*(\\x-{x_3})}});"
 	if chon==2:
 		f_dh=-(x-x_1)*(x-x_2)*(x-x_3)
-		lenh_ve=f"plot (\\x,{{-0.2*(\\x-{x_1})*(\\x-{x_2})*(\\x-{x_3})}});"
+		lenh_ve=f"plot (\\x,{{-0.4*(\\x-{x_1})*(\\x-{x_2})*(\\x-{x_3})}});"
 
 	g=diff(f_dh,x)
 	equation=Eq(g,0)
@@ -1447,14 +1447,14 @@ def prt_34_L12_C1_B1_10():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -2344,7 +2344,7 @@ def prt_34_L12_C1_B1_15():
 		for i in range(4):
 			list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-		debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+		debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
 		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 		f"Tìm {diem_cuc_tri} của hàm số $y=f(x)$.\n"\
 		f"\\choice\n"\
@@ -2352,7 +2352,7 @@ def prt_34_L12_C1_B1_15():
 			f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 			f"\\end{{ex}}\n"
 
-		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+		latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 		f"Tìm {diem_cuc_tri} của hàm số $y=f(x)$.\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
@@ -2431,7 +2431,7 @@ def prt_34_L12_C1_B1_16():
 		for i in range(4):
 			list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-		debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+		debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 		f"Tìm {gtri_cuc_tri} của hàm số $y=f(x)$.\n"\
 		f"\\choice\n"\
@@ -2439,7 +2439,7 @@ def prt_34_L12_C1_B1_16():
 			f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 			f"\\end{{ex}}\n"
 
-		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
 		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 		f"Tìm {gtri_cuc_tri} của hàm số $y=f(x)$.\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
@@ -2507,13 +2507,13 @@ def prt_34_L12_C1_B1_17():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -2587,13 +2587,13 @@ def prt_34_L12_C1_B1_18():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -3029,7 +3029,7 @@ def prt_34_L12_C1_B1_22():
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{p*x_CT + q*x_CD}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -3097,7 +3097,7 @@ def prt_34_L12_C1_B1_23():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 	
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -3146,7 +3146,7 @@ def prt_34_L12_C1_B1_24():
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{${p*x_CT + q*x_CD}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -3199,7 +3199,7 @@ def prt_34_L12_C1_B1_25():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 	dap_an=f"{round_half_up(p*y_CT + q*y_CD,1)}".replace(".",",")
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -3700,13 +3700,13 @@ def prt_34_L12_C1_B1_28():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -4673,7 +4673,7 @@ def prt_34_L12_C1_B1_36():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n Đáp án: {dap_an}"
 	
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -4736,7 +4736,7 @@ def prt_34_L12_C1_B1_37():
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n Đáp án: {dap_an}"
 	
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{${dap_an}$}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -4903,13 +4903,13 @@ def prt_34_L12_C1_B2_01():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -5008,13 +5008,13 @@ def prt_34_L12_C1_B2_02():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -5042,7 +5042,7 @@ def prt_34_L12_C1_B2_03():
 	if k>0:
 		chon=random.randint(1,2)
 		if chon==1:
-			m= random.randint(x_1,x_2-1)
+			m= random.randint(x_1+1,x_2-1)
 			khoang=random.choice([f"khoảng $({m};+\\infty)$", f"khoảng $({m};{x_2+random.randint(1,4)})$", f"nửa khoảng $({m};{x_2+random.randint(1,4)}]$"])
 			noi_dung = f"Tìm giá trị nhỏ nhất của hàm số $\\displaystyle y={latex(f)}$ trên {khoang}.\n"
 			noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
@@ -5062,7 +5062,7 @@ def prt_34_L12_C1_B2_03():
 			kq4=phan_so(y_2+random.randint(1,2))
 		if chon==2:
 			# Tạo khoảng (-vc; m)
-			m= random.randint(x_1,x_2-1)
+			m= random.randint(x_1+1,x_2-1)
 			khoang=random.choice([f"khoảng $(-\\infty;{m})$",f"khoảng $({x_1-random.randint(1,4)};{m})$",f"nửa khoảng $[{x_1-random.randint(1,4)};{m})$" ])
 			noi_dung = f"Tìm giá trị lớn nhất của hàm số $\\displaystyle y={latex(f)}$ trên {khoang}.\n"
 			noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
@@ -5085,7 +5085,7 @@ def prt_34_L12_C1_B2_03():
 		chon=random.randint(1,2)
 
 		if chon==1:
-			m= random.randint(x_1,x_2-1)
+			m= random.randint(x_1+1,x_2-1)
 			khoang=random.choice([f"khoảng $({m};+\\infty)$", f"khoảng $({m};{x_2+random.randint(1,4)})$", f"nửa khoảng $({m};{x_2+random.randint(1,4)}]$"])
 			noi_dung = f"Tìm giá trị lớn nhất của hàm số $\\displaystyle y={latex(f)}$ trên {khoang}.\n"
 			noi_dung_loigiai=f"$y'={latex(expand(g))}$.\n\n"\
@@ -5105,7 +5105,7 @@ def prt_34_L12_C1_B2_03():
 			kq4=phan_so(y_2+random.randint(1,2))
 		if chon==2:
 			# Tạo khoảng (-vc; m)
-			m= random.randint(x_1,x_2-1)
+			m= random.randint(x_1+1,x_2-1)
 			khoang=random.choice([f"khoảng $(-\\infty;{m})$",f"khoảng $({x_1-random.randint(1,4)};{m})$",f"nửa khoảng $[{x_1-random.randint(1,4)};{m})$" ])
 			noi_dung = f"Tìm giá trị nhỏ nhất của hàm số $\\displaystyle y={latex(f)}$ trên {khoang}.\n"
 			noi_dung_loigiai=f"$y'={latex(expand(g))}$.\n\n"\
@@ -5152,13 +5152,13 @@ def prt_34_L12_C1_B2_03():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -5262,13 +5262,13 @@ def prt_34_L12_C1_B2_04():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -5367,13 +5367,13 @@ def prt_34_L12_C1_B2_05():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -5491,13 +5491,13 @@ def prt_34_L12_C1_B2_06():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -6084,13 +6084,13 @@ def prt_34_L12_C1_B2_10():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -6164,13 +6164,13 @@ def prt_34_L12_C1_B2_11():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -6255,13 +6255,13 @@ def prt_34_L12_C1_B2_12():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -6327,13 +6327,13 @@ def prt_34_L12_C1_B2_13():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -6398,13 +6398,13 @@ def prt_34_L12_C1_B2_14():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -6509,7 +6509,7 @@ def prt_34_L12_C1_B2_15():
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -6633,7 +6633,7 @@ def prt_34_L12_C1_B2_16():
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -6700,7 +6700,7 @@ def prt_34_L12_C1_B2_17():
 				noi_dung_loigiai=f"$y'={latex((a*d-b*c)/(c*x+d)**2)}<0,\\forall x \\ne {phan_so(-d/c)}$.\n\n"\
 				f"Hàm số nghịch biến trên khoảng $({m};{n})$.\n\n"\
 				f"Hàm số đạt giá trị nhỏ nhất trên nửa khoảng ${{({m};{n}]}}$ bằng $f({n})={phan_so(y_n)}={kq}$."
-		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+		latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -6774,7 +6774,7 @@ def prt_34_L12_C1_B2_17():
 			f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 			f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left(-{latex(nsimplify(sqrt(b/a)))} \\right)={latex(y_1)}={kq}$.\n\n"
 
-		latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+		latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
@@ -6867,7 +6867,7 @@ def prt_34_L12_C1_B2_17():
 				f"Bảng biến thiên:\n\n"\
 				f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 				f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left({x_1} \\right)={latex(y_1)}$.\n\n"
-			latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+			latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai_latex} \n }}"\
 	f"\\end{{ex}}\n"
@@ -7523,13 +7523,13 @@ def prt_34_L12_C1_B3_01():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -7669,7 +7669,7 @@ def prt_34_L12_C1_B3_02():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"Tìm số {duong_tiem_can} của đồ thị hàm số $y=f(x)$.\n"\
 	f"\\choice\n"\
@@ -7677,7 +7677,7 @@ def prt_34_L12_C1_B3_02():
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"Tìm số {duong_tiem_can} của đồ thị hàm số $y=f(x)$.\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
@@ -7730,13 +7730,13 @@ def prt_34_L12_C1_B3_03():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -7783,13 +7783,13 @@ def prt_34_L12_C1_B3_04():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -7930,13 +7930,13 @@ def prt_34_L12_C1_B3_05():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -7948,11 +7948,11 @@ def prt_34_L12_C1_B3_06():
 	x=sp.symbols("x")
 	if chon==1:	
 		a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-		b = random.randint(-8,8)
-		c = random.choice([random.randint(-7, -1), random.randint(1, 7)])
+		b = random.randint(-5,5)
+		c = random.choice([random.randint(-5, -1), random.randint(1, 5)])
 
-		d = random.randint(1, 6)
-		e = random.randint(1, 8)
+		d = random.randint(1, 4)
+		e = random.randint(1, 5)
 
 		#f =(ax^2+bx+c)/(dx^2+e)
 		f=(a*x**2+b*x+c)/(d*x**2+e)
@@ -7969,7 +7969,7 @@ def prt_34_L12_C1_B3_06():
 	if chon==2:	
 		a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
 		b = random.randint(-8,8)
-		c = random.choice([random.randint(-7, -1), random.randint(1, 7)])
+		c = random.choice([random.randint(-7, -2), random.randint(1, 7)])
 		chon=random.randint(1,2)
 		if chon==1:
 			d = random.randint(1, 4)
@@ -7980,15 +7980,15 @@ def prt_34_L12_C1_B3_06():
 		g=a*x**2+b*x+c
 		x_0, x_1=sqrt(-e/d), -sqrt(-e/d)
 
-		if g.subs(x,x_0)==0 or g.subs(x,x_0)==1: c=c+1
+		if g.subs(x,x_0)==0 or g.subs(x,x_1)==0: c=c+1
 		f=(a*x**2+b*x+c)/(d*x**2+e)
 
-		x_0=nsimplify(sqrt(-e/d))
+		x_0=sqrt(-e/d)
 		t=f.subs(x,x_0+0.1)
 		if t>0: lim_x0=f"+\\infty"
 		if t<0: lim_x0=f"-\\infty"
 
-		x_1=nsimplify(-sqrt(-e/d))
+		x_1=-sqrt(-e/d)
 		t=f.subs(x,x_1+0.1)
 		if t>0: lim_x1=f"+\\infty"
 		if t<0: lim_x1=f"-\\infty"		
@@ -7999,37 +7999,44 @@ def prt_34_L12_C1_B3_06():
 		kq2=2
 		kq3=random.choice([0,4])
 		kq4=1
+
+		x_0=nsimplify(sqrt(-e/d))
+		x_1=nsimplify(-sqrt(-e/d))
 		noi_dung_loigiai=f"Ta có $\\mathop{{\\lim}}\\limits_{{x \\to  + \\infty }} {{{latex(f)}}} ={phan_so(a/d)}$.\n\n"\
 	f"Đường tiệm cận ngang của đồ thị hàm số là $y={phan_so(a/d)}$.\n\n"\
 	f"Ta có $\\mathop{{\\lim}}\\limits_{{x \\to {latex(x_0)}^+  }} {{{latex(f)}}} ={lim_x0}$.\n\n"\
 	f"Ta có $\\mathop{{\\lim}}\\limits_{{x \\to {latex(x_1)}^+  }} {{{latex(f)}}} ={lim_x1}$.\n\n"\
 	f"Đồ thị hàm số không có đường tiệm cận xiên."
 
-	if chon==3:	
-		a = random.randint(1, 5)
-		b = random.randint(-4,4)
-		c = random.randint(1, 7)
-		chon=random.randint(1,2)
-		if chon==1:
-			d = random.randint(1, 4)
-			e = random.randint(-4, -1)
-		if chon==2:
-			d = random.randint(-4, -1)
-			e = random.randint(1, 4)
-		g=a*x**2+b*x+c
-		
-		x_0, x_1=sqrt(-e/d), -sqrt(-e/d)
+	if chon==3:
+		while  True:
+			
+			a = random.randint(1, 5)
+			b = random.randint(-4,4)
+			c = random.randint(1, 5)
+			chon=random.randint(1,2)
+			if chon==1:
+				d = random.randint(1, 4)
+				e = random.randint(-4, -1)
+			if chon==2:
+				d = random.randint(-4, -1)
+				e = random.randint(1, 4)
+			g=a*x**2+b*x+c
+			
+			x_0, x_1=sqrt(-e/d), -sqrt(-e/d)
+			if all([g.subs(x,x_0)>0,g.subs(x,x_1)>0]):
+				break
 		y_0, y_1 = nsimplify(sqrt(a)/d), nsimplify(-sqrt(a)/d)
 
-		if g.subs(x,x_0)==0 or g.subs(x,x_0)==1: c=c+1
+		
 		f=sqrt((a*x**2+b*x+c))/(d*x**2+e)
 
-		x_0=nsimplify(sqrt(-e/d))
+		x_0=sqrt(-e/d)
 		t=f.subs(x,x_0+0.1)
 		if t>0: lim_x0=f"+\\infty"
 		if t<0: lim_x0=f"-\\infty"
 
-		x_1=nsimplify(-sqrt(-e/d))
+		x_1=-sqrt(-e/d)
 		t=f.subs(x,x_1+0.1)
 		if t>0: lim_x1=f"+\\infty"
 		if t<0: lim_x1=f"-\\infty"
@@ -8040,6 +8047,9 @@ def prt_34_L12_C1_B3_06():
 		kq2=2
 		kq3=random.choice([0,4])
 		kq4=1
+
+		x_0=nsimplify(sqrt(-e/d))
+		x_1=nsimplify(-sqrt(-e/d))
 		noi_dung_loigiai=f"Ta có $\\mathop{{\\lim}}\\limits_{{x \\to  + \\infty }} {{{latex(f)}}} =0$.\n\n"\
 		f"Ta có $\\mathop{{\\lim}}\\limits_{{x \\to  - \\infty }} {{{latex(f)}}} =0$.\n\n"\
 	f"Đồ thị hàm số tiệm cận ngang là $y=0$.\n\n"\
@@ -8097,13 +8107,13 @@ def prt_34_L12_C1_B3_06():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -8195,13 +8205,13 @@ def prt_34_L12_C1_B3_07():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -8482,7 +8492,7 @@ def prt_34_L12_C1_B3_10():
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
@@ -8894,13 +8904,13 @@ def prt_34_L12_C1_B3_14():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -8941,13 +8951,13 @@ def prt_34_L12_C1_B3_15():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -9278,14 +9288,14 @@ def prt_34_L12_C1_B4_01():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -9339,14 +9349,14 @@ def prt_34_L12_C1_B4_02():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -9408,14 +9418,14 @@ def prt_34_L12_C1_B4_03():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -9477,14 +9487,14 @@ def prt_34_L12_C1_B4_04():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -9636,14 +9646,14 @@ def prt_34_L12_C1_B4_05():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -10417,13 +10427,13 @@ def prt_34_L12_C1_B4_10():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\choice\n"\
 		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
@@ -10508,7 +10518,7 @@ def prt_34_L12_C1_B4_11():
 	for i in range(4):
 		list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"Số nghiệm của phương trình $f(x)={m}$ là:\n"\
 	f"\\choice\n"\
@@ -10516,7 +10526,7 @@ def prt_34_L12_C1_B4_11():
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 		f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 	f"Số nghiệm của phương trình $f(x)={m}$ là:\n"\
 	f"\\shortans[4]{{{kq}}}\n"\
@@ -11285,15 +11295,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=0
+		dap_an=1
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy không có hệ số dương."
+		f"Vậy có 1 hệ số dương."
 		)
 
 	if chon==12:
@@ -11311,15 +11321,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=1
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 1 hệ số dương."
+		f"Vậy có 2 hệ số dương."
 		)
 	
 	if chon==21:
@@ -11337,15 +11347,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=4
+		dap_an=3
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 4 hệ số dương."
+		f"Vậy có 3 hệ số dương."
 		)
 
 	if chon==22:
@@ -11363,15 +11373,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=3
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 3 hệ số dương."
+		f"Vậy có 2 hệ số dương."
 		)
 
 	if chon==31:
@@ -11388,15 +11398,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=2
+		dap_an=3
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 2 hệ số dương."
+		f"Vậy có 3 hệ số dương."
 		)
 
 	if chon==32:
@@ -11414,15 +11424,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=1
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 1 hệ số dương."
+		f"Vậy có 2 hệ số dương."
 		)
 
 	if chon==41:
@@ -11440,15 +11450,15 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=2
+		dap_an=1
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 2 hệ số dương."
+		f"Vậy có 1 hệ số dương."
 		)
 
 	if chon==42:
@@ -11466,19 +11476,19 @@ def prt_34_L12_C1_B4_20():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số dương trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=3
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 3 hệ số dương."
+		f"Vậy có 2 hệ số dương."
 		)
 	
 
-	code_hinh=code_dothi_bac_3_no_truc(a/3,b/3,c/3,d/3)
+	code_hinh=code_dothi_bac_3_no_truc(a/2,b/2,c/2,d/2)
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
 
@@ -11499,7 +11509,7 @@ def prt_34_L12_C1_B4_20():
 #[D12_C1_B4_21]-SA-M3. Cho đồ thị bậc 3. Tìm số hệ số âm
 def prt_34_L12_C1_B4_21():
 	x=sp.symbols("x")
-	chon=random.choice([11,12, 21,22, 31,32, 41,42])	
+	chon=random.choice([11,12, 21,22, 31,32, 41,42])
 	if chon==11:
 		while True:		
 			a = random.choice([i for i in range(-2, 2) if i!=0])
@@ -11507,6 +11517,8 @@ def prt_34_L12_C1_B4_21():
 			c = random.choice([i for i in range(-4, 4) if i!=0])
 			d = random.choice([i for i in range(-3, 3) if i!=0])
 			delta=b**2-3*a*c
+			if delta<=0:
+				continue
 			S, P=-2*b/(3*a), c/(3*a)
 			if all([a<0,delta>0, S<0, P<0, d<0]):
 				break
@@ -11515,15 +11527,15 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=4
+		dap_an=3
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 4 hệ số âm."
+		f"Vậy có 3 hệ số âm."
 		)
 
 	if chon==12:
@@ -11547,9 +11559,9 @@ def prt_34_L12_C1_B4_21():
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 3 hệ số âm."
+		f"Vậy có 2 hệ số âm."
 		)
 	
 	if chon==21:
@@ -11567,15 +11579,15 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=0
+		dap_an=1
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy không có hệ số âm."
+		f"Vậy có 1 hệ số âm."
 		)
 
 	if chon==22:
@@ -11593,15 +11605,15 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=1
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}<0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}<0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}<0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 1 hệ số âm."
+		f"Vậy có 2 hệ số âm."
 		)
 
 	if chon==31:
@@ -11618,15 +11630,15 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=2
+		dap_an=1
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 2 hệ số âm."
+		f"Vậy có 1 hệ số âm."
 		)
 
 	if chon==32:
@@ -11644,15 +11656,15 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=3
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a>0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b<0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 3 hệ số âm."
+		f"Vậy có 2 hệ số âm."
 		)
 
 	if chon==41:
@@ -11670,15 +11682,15 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=2
+		dap_an=3
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d<0$.\n\n"
-		f"Vậy có 2 hệ số âm."
+		f"Vậy có 3 hệ số âm."
 		)
 
 	if chon==42:
@@ -11696,21 +11708,22 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=1
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
 		f"$y'=3ax^2+2bx+c$ có hai nghiệm $x_1,x_2$ \n\n"
 		f"$x_1+x_2=-\\dfrac{{2b}}{{3a}}>0\\Rightarrow b>0$.\n\n"
-		f"$x_1x_2=-\\dfrac{{c}}{{3a}}>0\\Rightarrow c>0$.\n\n"
+		f"$x_1x_2=\\dfrac{{c}}{{3a}}>0\\Rightarrow c<0$.\n\n"
 		f"$x=0\\Rightarrow y=d>0$.\n\n"
-		f"Vậy có 1 hệ số âm."
+		f"Vậy có 2 hệ số âm."
 		)
 	
 
-	code_hinh=code_dothi_bac_3_no_truc(a/3,b/3,c/3,d/3)
+	code_hinh=code_dothi_bac_3_no_truc(a/2,b/2,c/2,d/2)
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
+
 
 		
 	debai_word= f"{noi_dung}\n{file_name}"
@@ -13562,12 +13575,14 @@ def prt_34_L12_C1_B5_19():
 
 		a=tien_baoduong
 		b=t*tien_giamsat
-		if 7<=sqrt(b/a)<=30:
+		x_0=sqrt(b/a)
+		so_may=int(x_0)+random.randint(2,4)
+		if all([7<=sqrt(b/a)<=30, sl_can_in<so_may*sl_in_1_gio*24]):
 			break
 
-	x_0=sqrt(b/a)
+	
 	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
-	so_may=int(x_0)+random.randint(2,4)
+	
 
 
 	x_1=math.floor(x_0)
@@ -13720,6 +13735,692 @@ def prt_34_L12_C1_B5_20():
 		)
 	
 		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_21]-TF-M2. Biết chi phí in. Xét Đ-S: Phí bảo dưỡng, thời gian, phí giám sát, chi phí min
+def prt_34_L12_C1_B5_21():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(10,30)
+		tien_baoduong = random.randint(30,50)*1000
+		tien_giamsat = random.randint(20,40)*1000
+		t=random.randint(10,40)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 7<=sqrt(b/a)<=30:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một xưởng in có {so_may} máy in được cài đặt tự động và được giám sát bởi một kỹ sư, mỗi máy in có thể in được {sl_in_1_gio} ấn phẩm trong 1 giờ."
+	f" Chi phí cài đặt và bảo dưỡng cho mỗi máy in cho một đợt hàng là {tien_baoduong} đồng."
+	f" Chi phí trả cho kỹ sư giám sát là {tien_giamsat} đồng/giờ."
+	f" Đợt hàng này xưởng in nhận {sl_can_in} ấn phẩm."
+	f" Gọi ${{x}}$ là số lượng máy in cần sử dụng."
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	
+	kq1_T=f"* Chi phí cài đặt và bảo dưỡng cho đợt hàng là ${{{tien_baoduong}}}x$" 
+	kq1_F=random.choice([f"Chi phí cài đặt và bảo dưỡng cho đợt hàng là ${{{tien_baoduong+random.randint(50,100)}}}x$",
+	f"Chi phí cài đặt và bảo dưỡng cho đợt hàng là ${{{tien_baoduong-random.randint(50,100)}}}x$" ])
+	
+	HDG=(f"Chi phí cài đặt và bảo dưỡng cho mỗi máy in cho một đợt hàng là {tien_baoduong} đồng.\n\n"
+		f"Có ${{x}}$ máy thì chi phí cài đặt và bảo dưỡng là ${{{tien_baoduong}}}x$.")
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Thời gian cần dùng để in hết {sl_can_in} ấn phẩm là $\\dfrac{{{t}}}{{x}}$"
+	kq2_F=f"Thời gian cần dùng để in hết {sl_can_in} ấn phẩm là $\\dfrac{{{t+random.randint(10,20)}}}{{x}}$"
+	
+	HDG=(f"Trong một giờ, với ${{x}}$ máy in thì in được số ấn phẩm là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để in hết {sl_can_in} ấn phẩm là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Chi phí trả cho kỹ sư giám sát là $\\dfrac{{{b}}}{{x}}$" 
+	kq3_F=f"Chi phí trả cho kỹ sư giám sát là $\\dfrac{{{b+random.randint(5,10)}}}{{x}}$"
+	
+	HDG=(f"Chi phí cho giám sát là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$"
+	kq4_F=random.choice([
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an-random.randint(1,3)}}}$",
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an+random.randint(1,3)}}}$"
+	 ])
+	
+	HDG=(f"Gọi ${{x}}$ là số lượng máy in cần sử dụng.\n\n"
+	f"Chi phí cài đặt và bảo dưỡng là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với ${{x}}$ máy in thì in được số ấn phẩm là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để in hết {sl_can_in} ấn phẩm là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí cho giám sát là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_22]-TF-M2. Biết chi phí gặt lúa. Xét Đ-S: Phí vận hành, thời gian, phí giám sát, chi phí min
+def prt_34_L12_C1_B5_22():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(30,50)
+		tien_baoduong = random.randint(50,70)*1000
+		tien_giamsat = random.randint(50,65)*1000
+		t=random.randint(30,40)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 5<=sqrt(b/a)<=16:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một nông trại có {so_may} máy gặt lúa tự động và được giám sát bởi một kỹ sư, mỗi máy gặt có thể gặt được {sl_in_1_gio} kg lúa trong 1 giờ."
+	f" Chi phí vận hành cho mỗi máy gặt cho một vụ là {tien_baoduong} đồng."
+	f" Chi phí thuê kỹ sư giám sát là {tien_giamsat} đồng/giờ."
+	f" Vụ lúa này cần gặt {sl_can_in} kg lúa."
+	f" Hỏi nên sử dụng bao nhiêu máy để tổng chi phí thấp nhất."
+	f" Gọi ${{x}}$ là số lượng máy gặt cần sử dụng."
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	
+	kq1_T=f"* Chi phí vận hành cho vụ lúa là ${{{tien_baoduong}}}x$" 
+	kq1_F=random.choice([f"Chi phí vận hành cho vụ lúa là ${{{tien_baoduong+random.randint(50,100)}}}x$",
+	f"Chi phí vận hành cho vụ lúa là ${{{tien_baoduong-random.randint(50,100)}}}x$" ])
+	
+	HDG=(f"Chi phí vận hành cho vụ lúa mỗi máy gặt trong một vụ là {tien_baoduong} đồng.\n\n"
+		f"Có ${{x}}$ máy thì chi phí vận hành là ${{{tien_baoduong}}}x$.")
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Thời gian cần dùng để gặt hết {sl_can_in} kg lúa là $\\dfrac{{{t}}}{{x}}$"
+	kq2_F=f"Thời gian cần dùng để gặt hết {sl_can_in} kg lúa là $\\dfrac{{{t+random.randint(10,20)}}}{{x}}$"
+	
+	HDG=(f"Trong một giờ, với ${{x}}$ máy gặt thì gặt được số kg lúa là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để gặt hết {sl_can_in} kg lúa là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Chi phí thuê kỹ sư giám sát là $\\dfrac{{{b}}}{{x}}$" 
+	kq3_F=f"Chi phí thuê kỹ sư giám sát là $\\dfrac{{{b+random.randint(5,10)}}}{{x}}$"
+	
+	HDG=(f"Chi phí thuê kỹ sư giám sát: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$"
+	kq4_F=random.choice([
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an-random.randint(1,3)}}}$",
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an+random.randint(1,3)}}}$"
+	 ])
+	
+	HDG=(f"Gọi ${{x}}$ là số lượng máy gặt cần sử dụng.\n\n"
+	f"Chi phí vận hành là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với ${{x}}$ máy gặt thì gặt được số kg lúa là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để gặt hết {sl_can_in} kg lúa là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí cho giám sát là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy để tổng chi phí nhỏ nhất là ${{{dap_an}}}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_23]-TF-M2. Biết chi phí vận tải. Xét Đ-S: Phí chuẩn bị, thời gian, phí điều phối, chi phí min
+def prt_34_L12_C1_B5_23():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(4,10)
+		tien_baoduong = random.randint(100,150)*1000
+		tien_giamsat = random.randint(80,100)*1000
+		t=random.randint(10,50)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 5<=sqrt(b/a)<=25:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+
+
+	noi_dung = (
+	f"Một công ty vận tải có {so_may} xe tải, mỗi xe có thể chở được {sl_in_1_gio} tấn hàng trong 1 giờ."
+	f" Chi phí chuẩn bị và khấu hao mỗi xe cho một chuyến là {tien_baoduong} đồng."
+	f" Chi phí thuê nhân viên điều phối là {tien_giamsat} đồng/giờ."
+	f" Công ty cần vận chuyển {sl_can_in} tấn hàng."
+	f" Gọi ${{x}}$ là số lượng xe tải cần sử dụng."
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	
+	kq1_T=f"* Chi phí chuẩn bị và khấu hao cho chuyến hàng là ${{{tien_baoduong}}}x$" 
+	kq1_F=random.choice([f"Chi phí chuẩn bị và khấu hao cho chuyến hàng là ${{{tien_baoduong+random.randint(50,100)}}}x$",
+	f"Chi phí chuẩn bị và khấu hao cho chuyến hàng là ${{{tien_baoduong-random.randint(50,100)}}}x$" ])
+	
+	HDG=(f"Chi phí chuẩn bị và khấu hao mỗi xe tải trong một chuyến hàng là {tien_baoduong} đồng.\n\n"
+		f"Có ${{x}}$ xe tải thì chi phí chuẩn bị và khấu hao là ${{{tien_baoduong}}}x$.")
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Thời gian cần dùng để vận chuyển hết {sl_can_in} tấn hàng là $\\dfrac{{{t}}}{{x}}$"
+	kq2_F=f"Thời gian cần dùng để vận chuyển hết {sl_can_in} tấn hàng là $\\dfrac{{{t+random.randint(10,20)}}}{{x}}$"
+	
+	HDG=(f"Trong một giờ, với ${{x}}$ xe tải thì vận chuyển được số tấn hàng là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để vận chuyển hết {sl_can_in} tấn hàng là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Chi phí thuê nhân viên điều phối là $\\dfrac{{{b}}}{{x}}$" 
+	kq3_F=f"Chi phí thuê nhân viên điều phối là $\\dfrac{{{b+random.randint(5,10)}}}{{x}}$"
+	
+	HDG=(f"Chi phí thuê nhân viên điều phối: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Số xe tải để tổng chi phí nhỏ nhất là ${{{dap_an}}}$"
+	kq4_F=random.choice([
+	f"Số xe tải để tổng chi phí nhỏ nhất là ${{{dap_an-random.randint(1,3)}}}$",
+	f"Số xe tải để tổng chi phí nhỏ nhất là ${{{dap_an+random.randint(1,3)}}}$"
+	 ])
+	
+	HDG=(f"Gọi ${{x}}$ là số lượng xe tải cần sử dụng.\n\n"
+	f"Chi phí chuẩn bị và khấu hao là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với ${{x}}$ xe tải thì chở được số tấn hàng là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để chở hết {sl_can_in} tấn hàng là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí thuê nhân viên điều phối là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số xe tải là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số xe tải để tổng chi phí nhỏ nhất là ${{{dap_an}}}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_24]-TF-M2. Biết chi phí máy chủ. Xét Đ-S: Phí điện năng, thời gian, phí giám sát, chi phí min
+def prt_34_L12_C1_B5_24():
+	x=sp.symbols("x")
+
+	while True:
+		sl_in_1_gio = random.randint(700,800)
+		tien_baoduong = random.randint(150,250)*1000
+		tien_giamsat = random.randint(100,150)*1000
+		t=random.randint(20,40)*10
+		sl_can_in=sl_in_1_gio*t
+
+		a=tien_baoduong
+		b=t*tien_giamsat
+		if 10<=sqrt(b/a)<=50:
+			break
+
+	x_0=sqrt(b/a)
+	round_x0=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	so_may=int(x_0)+random.randint(2,4)
+
+
+	x_1=math.floor(x_0)
+	x_2=x_1+1
+	x_3=x_1-1
+
+	f=a*x+b/x
+	y_1=f.subs(x,x_1)
+	y_2=f.subs(x,x_2)
+	y_3=f.subs(x,x_3)
+	round_y1=f"{round_half_up(y_1,0):.0f}".replace(".",",")
+	round_y2=f"{round_half_up(y_2,0):.0f}".replace(".",",")
+	round_y3=f"{round_half_up(y_3,0):.0f}".replace(".",",")
+
+	min_f=min(y_1,y_2,y_3)
+
+	if min_f==y_1:
+		dap_an=x_1
+
+	if min_f==y_2:
+		dap_an=x_2
+
+	if min_f==y_3:
+		dap_an=x_3
+
+	noi_dung = (
+	f"Một trung tâm dữ liệu có {so_may} máy chủ (server). Mỗi máy xử lý được {sl_in_1_gio} tác vụ trong 1 giờ."
+	f" Chi phí điện năng cho mỗi máy trong một đợt chạy là {tien_baoduong} đồng."
+	f" Chi phí thuê kỹ sư giám sát hệ thống là {tien_giamsat} đồng/giờ."
+	f" Đợt chạy này cần xử lý {sl_can_in} tác vụ."
+	f" Gọi ${{x}}$ là số lượng máy chủ cần sử dụng."
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	
+	kq1_T=f"* Chi phí điện năng cho đợt chạy này là ${{{tien_baoduong}}}x$" 
+	kq1_F=random.choice([f"Chi phí điện năng cho đợt chạy này là ${{{tien_baoduong+random.randint(50,100)}}}x$",
+	f"Chi phí điện năng cho đợt chạy này là ${{{tien_baoduong-random.randint(50,100)}}}x$" ])
+	
+	HDG=(f"Chi phí điện năng cho mỗi máy chủ trong một đợt chạy là {tien_baoduong} đồng.\n\n"
+		f"Có ${{x}}$ máy chủ thì chi phí điện năng là ${{{tien_baoduong}}}x$.")
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Thời gian cần dùng để xử lý hết {sl_can_in} tác vụ là $\\dfrac{{{t}}}{{x}}$"
+	kq2_F=f"Thời gian cần dùng để xử lý hết {sl_can_in} tác vụ là $\\dfrac{{{t+random.randint(10,20)}}}{{x}}$"
+	
+	HDG=(f"Trong một giờ, với ${{x}}$ máy chủ thì xử lý được số tác vụ là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để xử lý hết {sl_can_in} số tác vụ là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Chi phí thuê kỹ sư giám sát hệ thống cho đợt chạy là $\\dfrac{{{b}}}{{x}}$" 
+	kq3_F=f"Chi phí thuê kỹ sư giám sát hệ thống cho đợt chạy là $\\dfrac{{{b+random.randint(5,10)}}}{{x}}$"
+	
+	HDG=(f"Chi phí thuê kỹ sư giám sát hệ thống cho đợt chạy: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* Số máy chủ để tổng chi phí nhỏ nhất là ${{{dap_an}}}$"
+	kq4_F=random.choice([
+	f"Số máy chủ để tổng chi phí nhỏ nhất là ${{{dap_an-random.randint(1,3)}}}$",
+	f"Số máy chủ để tổng chi phí nhỏ nhất là ${{{dap_an+random.randint(1,3)}}}$"
+	 ])
+	
+	HDG=(	f"Gọi ${{x}}$ là số lượng máy chủ cần sử dụng.\n\n"
+	f"Chi phí điện năng là ${{{tien_baoduong}}}x$.\n\n"
+	f"Trong một giờ, với ${{x}}$ máy chủ thì xử lý được số tác vụ là ${{{sl_in_1_gio}x}}$.\n\n"
+	f"Số giờ để xử lý hết {sl_can_in} tác vụ là: $\\dfrac{{{sl_can_in}}}{{{sl_in_1_gio}x}}=\\dfrac{{{t}}}{{x}}$.\n\n"
+	f"Chi phí thuê kỹ sư giám sát hệ thống là: $\\dfrac{{{t}}}{{x}}.{tien_giamsat}=\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"Xét hàm số: $f(x)={a}x+\\dfrac{{{b}}}{{x}}$.\n\n"
+	f"$f'(x)={a}-\\dfrac{{{b}}}{{x^2}}=\\dfrac{{{a}x^2-{b}}}{{x^2}}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow x=\\sqrt{{\\dfrac{{{b}}}{{{a}}}}}=\\sqrt{{{phan_so(b/a)}}}={round_x0}$.\n\n"
+	f"Vì số máy chủ là số nguyên nên ta có:\n\n"
+	f"$f({x_3})={round_y3}$.\n\n"
+	f"$f({x_1})={round_y1}$.\n\n"
+	f"$f({x_2})={round_y2}$.\n\n"
+	f"Số máy chủ để tổng chi phí nhỏ nhất là ${{{dap_an}}}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
+#[D12_C1_B5_25]-SA-M4. Tìm số tiền cần tăng để lợi nhuận bán khăn lớn nhất-mô hình (p-qx)*(a+x)
+def prt_34_L12_C1_B5_25():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(10,30)
+		gia_hien_tai=a*1000
+		sl_ban_hien_tai=random.randint(5,20)*100
+		sl_giam=random.randint(5,12)*10
+		lai=random.randint(4,12)
+		von=gia_hien_tai-lai*1000
+
+		f"$f(x)=({sl_ban_hien_tai}-{sl_giam}x)({lai}+x)=$"
+		a1=-sl_giam
+		b1=sl_ban_hien_tai-sl_giam*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>2 ]):
+			break
+
+
+
+	noi_dung = (
+	f"Một cơ sở sản xuất khăn mặt đang bán mỗi chiếc khăn với giá {gia_hien_tai} đồng một chiếc"
+	f" và mỗi tháng cơ sở bán được trung bình {sl_ban_hien_tai} chiếc khăn. Cơ sở sản xuất đang có kế hoạch tăng giá bán để có lợi nhận tốt hơn."
+f" Sau khi tham khảo thị trường, người quản lý thấy rằng nếu từ mức giá"
+f" {gia_hien_tai} đồng mà cứ tăng giá thêm 1000 đồng thì mỗi tháng sẽ bán ít hơn {sl_giam} chiếc."
+f" Biết vốn sản xuất một chiếc khăn không thay đổi là {von} đồng."
+f" Tìm số tiền cần tăng để lợi nhuận là cao nhất."
+
+	)
+	dap_an=f"{int(x_0)}000"
+
+	noi_dung_loigiai=(
+	f" Gọi số tiền cần tăng giá mỗi chiếc khăn là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 1 (nghìn đồng) thì số khăn bán ra giảm {sl_giam} chiếc nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì số khăn bán ra giảm ${{{sl_giam}x}}$ chiếc.\n\n"
+	f" Do đó tổng số khăn bán ra mỗi tháng là: ${sl_ban_hien_tai}-{sl_giam}x$ chiếc.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi chiếc khăn có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi chiếc khăn thu được số lãi là: ${lai}+ x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận một tháng thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{sl_giam}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi chiếc khăn để được lợi nhuận cao nhất."
+	)	
 		
 	debai_word= f"{noi_dung}\n"
 
@@ -13732,3 +14433,594 @@ def prt_34_L12_C1_B5_20():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_26]-SA-M4. Tìm số tiền cần tăng để lợi nhuận bán cà phê max-mô hình (p-qx)*(a+x)
+def prt_34_L12_C1_B5_26():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(20,40)
+		gia_hien_tai=a*1000
+		sl_ban_hien_tai=random.randint(10,20)*10
+		sl_giam=random.randint(1,6)*2
+		lai=random.randint(5,10)
+		von=gia_hien_tai-lai*1000
+
+		f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/2)}x)({lai}+x)=$"
+		a1=-int(sl_giam/2)
+		b1=sl_ban_hien_tai-int(sl_giam/2)*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>=2, x_0<=10]):
+			break
+
+	noi_dung = (
+	f"Một quán cà phê đang bán mỗi cốc cà phê với giá {gia_hien_tai} đồng một cốc,"
+	f" mỗi ngày bán trung bình được {sl_ban_hien_tai} cốc. Sau khi khảo sát thị trường, người quản lý thấy rằng"
+f" nếu tăng giá mỗi cốc thêm 2000 đồng thì thì lượng tiêu thụ giảm {sl_giam} cốc/ngày."
+f" Biết chi phí cho mỗi cốc cà phê là {von} đồng."
+f" Hỏi quán nên tăng giá bao nhiêu để lợi nhuận mỗi ngày là lớn nhất?"
+
+	)
+	dap_an=f"{int(x_0)}000"
+
+	noi_dung_loigiai=(
+	f" Gọi số tiền cần tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 2 (nghìn đồng) thì quán bán ra giảm {sl_giam} cốc nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì quán bị giảm đi ${{{phan_so(sl_giam/2)}x}}$ cốc.\n\n"
+	f" Do đó tổng số cốc cà phê bán ra mỗi ngày là: ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$ cốc.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi cốc có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi cốc thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận một ngày thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/2)}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi cốc để được lợi nhuận cao nhất."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_27]-SA-M4. Tìm số tiền cần tăng để lợi nhuận vé phim max-mô hình (p-qx)*(a+x)
+def prt_34_L12_C1_B5_27():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(50,70)
+		gia_hien_tai=a*1000
+		sl_ban_hien_tai=random.randint(20,30)*10
+		sl_giam=random.randint(1,6)*2
+		lai=random.randint(20,30)
+		von=gia_hien_tai-lai*1000
+
+		f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/2)}x)({lai}+x)=$"
+		a1=-int(sl_giam/2)
+		b1=sl_ban_hien_tai-int(sl_giam/2)*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>2, x_0<=12]):
+			break
+
+	noi_dung = (
+	f"Một rạp chiếu phim bán vé với giá {gia_hien_tai} đồng một vé,"
+	f" trung bình mỗi suất có {sl_ban_hien_tai} khán giả. Kết quả khảo sát thị trường cho thấy,"
+f" nếu tăng giá vé thêm 2000 đồng thì số khán giả giảm {sl_giam} người."
+f" Biết chi phí phục vụ cho mỗi khán giả cố định là {von} đồng."
+f" Hãy xác định số tiền cần tăng để lợi nhuận từ một suất chiếu đạt mức cao nhất."
+
+	)
+	dap_an=f"{int(x_0)}000"
+
+	noi_dung_loigiai=(
+	f" Gọi số tiền cần tăng giá mỗi vé là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 2 (nghìn đồng) thì số người giảm {sl_giam} nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì số người bị giảm đi là ${{{phan_so(sl_giam/2)}x}}$.\n\n"
+	f" Do đó tổng số vé bán ra mỗi suất là: ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi vé có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi vé thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận một suất chiếu thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/2)}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi vé để được lợi nhuận cao nhất."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_28]-SA-M4. Tìm số tiền cần tăng để lợi nhuận vé du lịch max-mô hình (p-qx)*(a+x)
+def prt_34_L12_C1_B5_28():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(70,110)
+		gia_hien_tai=a*1000
+		sl_ban_hien_tai=random.randint(100,130)*10
+		sl_giam=random.randint(20,40)*3
+		lai=random.randint(30,50)
+		von=gia_hien_tai-lai*1000
+
+		f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/3)}x)({lai}+x)=$"
+		a1=-int(sl_giam/3)
+		b1=sl_ban_hien_tai-int(sl_giam/3)*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>3]):
+			break
+
+	noi_dung = (
+	f"Một khu du lịch bán vé vào cổng giá {gia_hien_tai} đồng một vé,"
+	f" trung bình có {sl_ban_hien_tai} khách/ngày. Ban quản lý dự định tăng giá vé, khảo sát cho thấy nếu giá vé tăng thêm"
+f" 3000 đồng thì số lượng khách giảm {sl_giam} người/ngày."
+f" Biết chi phí phục vụ cho mỗi khách là {von} đồng."
+f" Hãy xác định số tiền cần tăng để lợi nhuận trong ngày là cao nhất."
+
+	)
+	dap_an=f"{int(x_0)}000"
+
+	noi_dung_loigiai=(
+	f" Gọi số tiền cần tăng giá mỗi vé là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 3(nghìn đồng) thì số người giảm {sl_giam} nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì số người bị giảm đi là ${{{phan_so(sl_giam/3)}x}}$.\n\n"
+	f" Do đó tổng số vé bán ra mỗi suất là: ${sl_ban_hien_tai}-{phan_so(sl_giam/3)}x$.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi vé có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi vé thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận một suất chiếu thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/3)}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi vé để được lợi nhuận cao nhất."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_29]-SA-M4. Tìm số tiền cần tăng để lợi nhuận áo thun max-mô hình (p-qx)*(a+x)
+def prt_34_L12_C1_B5_29():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(100,140)
+		gia_hien_tai=a*1000
+		sl_ban_hien_tai=random.randint(80,100)*10
+		sl_giam=random.randint(8,12)*5
+		lai=random.randint(50,70)
+		von=gia_hien_tai-lai*1000
+
+		f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/5)}x)({lai}+x)=$"
+		a1=-int(sl_giam/5)
+		b1=sl_ban_hien_tai-int(sl_giam/5)*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>3]):
+			break
+
+	noi_dung = (
+	f"Một xưởng sản xuất bán áo thun với giá {gia_hien_tai} một chiếc,"
+	f" mỗi tháng bán trung bình {sl_ban_hien_tai} chiếc. Khảo sát cho thấy nếu tăng thêm"
+f" 5000 đồng thì số lượng tiêu thụ giảm {sl_giam} chiếc."
+f" Biết chi phí sản xuất một chiếc áo là {von} đồng."
+f" Hãy tìm số tiền cần tăng để lợi nhuận hàng tháng lớn nhất."
+
+	)
+	dap_an=f"{int(x_0)}000"
+
+
+	noi_dung_loigiai=(
+	f" Gọi số tiền cần tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 5(nghìn đồng) thì số lượng tiêu thụ {sl_giam} chiếc nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì số số lượng tiêu thụ giảm đi là ${{{phan_so(sl_giam/5)}x}}$.\n\n"
+	f" Do đó tổng số áo bán ra là: ${sl_ban_hien_tai}-{phan_so(sl_giam/5)}x$.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi chiếc có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi chiếc thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/5)}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi chiếc áo để được lợi nhuận cao nhất."
+	)
+	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D12_C1_B5_30]-TF-M4. Bán cà phê mô hình (p-qx)*(a+x) Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận
+def prt_34_L12_C1_B5_30():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(20,40)
+		gia_hien_tai=a*1000
+		sl_ban_hien_tai=random.randint(10,20)*10
+		sl_giam=random.randint(1,6)*2
+		lai=random.randint(5,10)
+		von=gia_hien_tai-lai*1000
+
+		f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/2)}x)({lai}+x)=$"
+		a1=-int(sl_giam/2)
+		b1=sl_ban_hien_tai-int(sl_giam/2)*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>=2, x_0<=10]):
+			break
+
+	dap_an=f"{int(x_0)}000"
+
+
+	noi_dung = (
+		f"Một quán cà phê đang bán mỗi cốc cà phê với giá {gia_hien_tai} đồng một cốc,"
+		f" mỗi ngày bán trung bình được {sl_ban_hien_tai} cốc. Sau khi khảo sát thị trường, người quản lý thấy rằng"
+		f" nếu tăng giá mỗi cốc thêm 2000 đồng thì thì lượng tiêu thụ giảm {sl_giam} cốc/ngày."
+		f" Biết chi phí cho mỗi cốc cà phê là {von} đồng."
+		f" Gọi số tiền cần tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng).\n\n"
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	
+	kq1_T=f"* Nếu bán với giá {gia_hien_tai} thì tiền lãi mỗi cốc cà phê là {lai}000 (đồng)" 
+	kq1_F=f"Nếu bán với giá {gia_hien_tai} thì tiền lãi mỗi cốc cà phê là {lai+random.randint(1,5)}000 (đồng)"
+	
+	HDG=f" Nếu bán với giá {gia_hien_tai} thì tiền lãi mỗi cốc cà phê là: ${gia_hien_tai}-{von}={lai}000$ (đồng)"
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Nếu tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng) thì số lượng tiêu thụ giảm đi ${{{phan_so(sl_giam/2)}x}}$ cốc ngày"
+	kq2_F=f"Nếu tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng) thì số lượng tiêu thụ giảm đi ${{{phan_so(sl_giam/2+random.randint(1,5))}x}}$ cốc/ngày"
+	
+	HDG=(f"Vì cứ tăng giá thêm 2 (nghìn đồng) thì quán bán ra giảm {sl_giam} cốc nên tăng ${{x}}$ (nghìn đồng)"
+		f" thì quán bị giảm đi bằng $\\dfrac{{{sl_giam}x}}{{2}}={{{phan_so(sl_giam/2)}x}}$ cốc.\n\n")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Nếu tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng) thì số lượng bán ra mỗi ngày là ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$ cốc" 
+	kq3_F=f"Nếu tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng) thì số lượng bán ra mỗi ngày là ${sl_ban_hien_tai}-{phan_so(sl_giam/2+random.randint(1,5))}x$ cốc"
+	
+	HDG=(f"Tăng ${{x}}$ (nghìn đồng) thì quán bị giảm đi ${{{phan_so(sl_giam/2)}x}}$ cốc.\n\n"
+	f" Do đó tổng số cốc cà phê bán ra mỗi ngày là: ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$ cốc.\n\n")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	dap_an_f=f"{int(x_0+random.randint(1,5))}000"
+	kq4_T=f"* Để lợi nhuận thu về cao nhất cần tăng thêm {dap_an} (đồng) mỗi cốc cà phê"
+	kq4_F=f"Để lợi nhuận thu về cao nhất cần tăng thêm {dap_an_f} (đồng) mỗi cốc cà phê" 
+	
+	HDG=(f" Gọi số tiền cần tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 2 (nghìn đồng) thì quán bán ra giảm {sl_giam} cốc nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì quán bị giảm đi ${{{phan_so(sl_giam/2)}x}}$ cốc.\n\n"
+	f" Do đó tổng số cốc cà phê bán ra mỗi ngày là: ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$ cốc.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi cốc có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi cốc thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận một ngày thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/2)}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi cốc để được lợi nhuận cao nhất.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_31]-TF-M4. Bán áo thun mô hình (p-qx)*(a+x) Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận
+def prt_34_L12_C1_B5_31():
+	while True:
+		x=sp.symbols("x")
+		a=random.randint(100,140)
+		gia_hien_tai=a*1000
+
+		sl_ban_hien_tai=random.randint(80,100)*10
+		sl_giam=random.randint(8,12)*5
+		lai=random.randint(50,70)
+		von=gia_hien_tai-lai*1000
+
+		a1=-int(sl_giam/5)
+		b1=sl_ban_hien_tai-int(sl_giam/5)*lai
+		c1=sl_ban_hien_tai*lai
+		x_0=-b1/(2*a1)
+		if all([int(x_0)==x_0, x_0>3]):
+			break
+
+
+	dap_an=f"{int(x_0)}000"
+
+	noi_dung = (
+	f"Một xưởng sản xuất bán áo thun với giá {gia_hien_tai} một chiếc,"
+	f" mỗi tháng bán trung bình {sl_ban_hien_tai} chiếc. Khảo sát cho thấy nếu giá bán tăng thêm"
+	f" 5000 đồng thì số lượng tiêu thụ giảm {sl_giam} chiếc."
+	f" Biết chi phí sản xuất một chiếc áo là {von} đồng."
+	f" Gọi số tiền cần tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng).\n\n"
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	
+	kq1_T=f"* Nếu bán với giá {gia_hien_tai} thì tiền lãi mỗi chiếc áo là {lai}000 (đồng)" 
+	kq1_F=f"Nếu bán với giá {gia_hien_tai} thì tiền lãi mỗi chiếc áo là {lai+random.randint(1,5)}000 (đồng)"
+	
+	HDG=f" Nếu bán với giá {gia_hien_tai} thì tiền lãi mỗi chiếc áo là: ${gia_hien_tai}-{von}={lai}000$ (đồng)"
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng tiêu thụ giảm đi ${{{phan_so(sl_giam/5)}x}}$ chiếc áo"
+	kq2_F=f"Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng tiêu thụ giảm đi ${{{phan_so(sl_giam/5+random.randint(1,5))}x}}$ chiếc áo"
+	
+	HDG=(f"Vì cứ tăng giá thêm 2 (nghìn đồng) thì cửa hàng bán ra giảm {sl_giam} chiếc áo nên tăng ${{x}}$ (nghìn đồng)"
+		f" thì cửa hàng bị giảm đi bằng $\\dfrac{{{sl_giam}x}}{{2}}={{{phan_so(sl_giam/5)}x}}$ chiếc áo.\n\n")
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng bán ra mỗi ngày là ${sl_ban_hien_tai}-{phan_so(sl_giam/5)}x$ chiếc áo" 
+	kq3_F=f"Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng bán ra mỗi ngày là ${sl_ban_hien_tai}-{phan_so(sl_giam/5+random.randint(1,5))}x$ chiếc áo"
+	
+	HDG=(f" Tăng ${{x}}$ (nghìn đồng) thì cửa hàng bị giảm đi ${{{phan_so(sl_giam/2)}x}}$ chiếc áo.\n\n"
+	f" Do đó tổng số chiếc áo bán ra mỗi ngày là: ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$ chiếc áo.\n\n")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	dap_an_f=f"{int(x_0+random.randint(1,5))}000"
+	kq4_T=f"* Để lợi nhuận thu về cao nhất cần tăng thêm {dap_an} (đồng) mỗi chiếc áo"
+	kq4_F=f"Để lợi nhuận thu về cao nhất cần tăng thêm {dap_an_f} (đồng) mỗi chiếc áo" 
+	
+	HDG=(
+	f" Gọi số tiền cần tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng).\n\n"
+	f" Vì cứ tăng giá thêm 5(nghìn đồng) thì số lượng tiêu thụ {sl_giam} chiếc nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì số số lượng tiêu thụ giảm đi là ${{{phan_so(sl_giam/5)}x}}$.\n\n"
+	f" Do đó tổng số áo bán ra là: ${sl_ban_hien_tai}-{phan_so(sl_giam/5)}x$.\n\n"
+	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi chiếc có lãi {lai} (nghìn đồng).\n\n"
+	f" Sau khi tăng giá, mỗi chiếc thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"
+	f" Do đó tổng số lợi nhuận thu được sau khi tăng giá là:\n\n"
+	f"$f(x)=({sl_ban_hien_tai}-{phan_so(sl_giam/5)}x)({lai}+x)={latex(a1*x**2+b1*x+c1)}$.\n\n"
+	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
+	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
+	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
+	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi chiếc áo để được lợi nhuận cao nhất."
+	)
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_32]-SA-M4. Hình hộp chữ nhật không nắp có diện tích. Tìm cạnh đáy để V_max
+def prt_34_L12_C1_B5_32():
+	a=random.randint(10,30)*4
+	k=math.sqrt(a/3)
+	if k.is_integer():
+
+		noi_dung = (
+		f"Một nhà sản xuất muốn thiết kế một chiếc hộp có dạng hình hộp chữ nhật không có nắp,"
+		f" có đáy là hình vuông và diện tích bề mặt bằng ${{{a} cm^2}}$. Tìm độ dài cạnh đáy để thể tích chiếc hộp là lớn nhất."
+		)
+		dap_an=int(sqrt(a/3))
+
+		noi_dung_loigiai=(
+		f"Gọi ${{x}}$ là cạnh đáy hình vuông, h là chiều cao của hình hộp.\n\n"
+		f"Diện tích các mặt của hình hộp là:\n\n"
+		f"$S=x^2+4xh={a}\\Rightarrow h=\\dfrac{{{a}-x^2}}{{4x}}$.\n\n"
+		f"$V(x)=x^2.h=x^2.\\dfrac{{{a}-x^2}}{{4x}}=-\\dfrac{{x^3}}{{4}}+\\dfrac{{{a}x}}{{4}}$\n\n"
+		f"$V'(x)=-\\dfrac{{3x^2}}{{4}}+{int(a/4)}$.\n\n"
+		f"$V'(x)=0\\Rightarrow x={latex(nsimplify(sqrt(a/3)))}$."
+		)
+	else:
+		noi_dung = (
+		f"Một nhà sản xuất muốn thiết kế một chiếc hộp có dạng hình hộp chữ nhật không có nắp,"
+		f" có đáy là hình vuông và diện tích bề mặt bằng ${{{a} cm^2}}$. Tìm độ dài cạnh đáy để thể tích chiếc hộp là lớn nhất (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(sqrt(a/3),1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{x}}$ là cạnh đáy hình vuông, h là chiều cao của hình hộp.\n\n"
+		f"Diện tích các mặt của hình hộp là:\n\n"
+		f"$S=x^2+4xh={a}\\Rightarrow h=\\dfrac{{{a}-x^2}}{{4x}}$.\n\n"
+		f"$V(x)=x^2.h=x^2.\\dfrac{{{a}-x^2}}{{4x}}=-\\dfrac{{x^3}}{{4}}+\\dfrac{{{a}x}}{{4}}$\n\n"
+		f"$V'(x)=-\\dfrac{{3x^2}}{{4}}+{int(a/4)}$.\n\n"
+		f"$V'(x)=0\\Rightarrow x={latex(nsimplify(sqrt(a/3)))}={dap_an}$."
+		)
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_33]-SA-M4. Hình hộp chữ nhật không nắp có diện tích. Tìm V_max
+def prt_34_L12_C1_B5_33():
+	a=random.randint(10,30)*4
+	k=math.sqrt(a/3)
+	V=(-k**3+a*k)/4
+	if V.is_integer():
+
+		noi_dung = (
+		f"Một nhà sản xuất muốn thiết kế một chiếc hộp có dạng hình hộp chữ nhật không có nắp,"
+		f" có đáy là hình vuông và diện tích bề mặt bằng ${{{a} cm^2}}$. Tìm thể tích lớn nhất mà chiếc hộp đạt được."
+		)
+		dap_an=int(V)
+
+		noi_dung_loigiai=(
+		f"Gọi ${{x}}$ là cạnh đáy hình vuông, h là chiều cao của hình hộp.\n\n"
+		f"Diện tích các mặt của hình hộp là:\n\n"
+		f"$S=x^2+4xh={a}\\Rightarrow h=\\dfrac{{{a}-x^2}}{{4x}}$.\n\n"
+		f"$V(x)=x^2.h=x^2.\\dfrac{{{a}-x^2}}{{4x}}=-\\dfrac{{x^3}}{{4}}+\\dfrac{{{a}x}}{{4}}$\n\n"
+		f"$V'(x)=-\\dfrac{{3x^2}}{{4}}+{int(a/4)}$.\n\n"
+		f"$V'(x)=0\\Rightarrow x={latex(nsimplify(sqrt(a/3)))}$.\n\n"
+		f"$V_{{max}}=V({latex(nsimplify(sqrt(a/3)))})={dap_an}.$"
+		)
+	else:
+		noi_dung = (
+		f"Một nhà sản xuất muốn thiết kế một chiếc hộp có dạng hình hộp chữ nhật không có nắp,"
+		f" có đáy là hình vuông và diện tích bề mặt bằng ${{{a} cm^2}}$. Tìm thể tích lớn nhất mà chiếc hộp đạt được (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(V,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{x}}$ là cạnh đáy hình vuông, h là chiều cao của hình hộp.\n\n"
+		f"Diện tích các mặt của hình hộp là:\n\n"
+		f"$S=x^2+4xh={a}\\Rightarrow h=\\dfrac{{{a}-x^2}}{{4x}}$.\n\n"
+		f"$V(x)=x^2.h=x^2.\\dfrac{{{a}-x^2}}{{4x}}=-\\dfrac{{x^3}}{{4}}+\\dfrac{{{a}x}}{{4}}$\n\n"
+		f"$V'(x)=-\\dfrac{{3x^2}}{{4}}+{int(a/4)}$.\n\n"
+		f"$V'(x)=0\\Rightarrow x={latex(nsimplify(sqrt(a/3)))}$.\n\n"
+		f"$V_{{max}}=V({latex(nsimplify(sqrt(a/3)))})={dap_an}.$"
+		)
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+

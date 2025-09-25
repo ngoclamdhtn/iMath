@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 17.09.2025")
+                self.label.setText(f"iMath\u00A92025 ver 25.09.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -830,7 +830,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 17.09.2025")
+                self.label.setText(f"iMath\u00A92025 ver 25.09.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1000,7 +1000,7 @@ class Ui_MainWindow(object):
                 # self.combo_loaihinh.addItem("Hình chóp đáy hình thang vuông")                
                 self.combo_loaihinh.addItem("Hình lăng trụ xiên tam giác")
                 self.combo_loaihinh.addItem("Hình lăng trụ đứng tam giác")
-                self.combo_loaihinh.addItem("Hình hộp")
+                self.combo_loaihinh.addItem("Hình hộp chữ nhật")
                 self.combo_loaihinh.addItem("Hình lập phương")
                
 
@@ -7745,11 +7745,35 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_21]-TF-M3. Chi phí in (f=ax+b/x). Xét Đ-S: Phí bảo dưỡng, thời gian, phí giám sát, chi phí min "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_22]-TF-M3. Chi phí gặt lúa (f=ax+b/x). Xét Đ-S: Phí vận hành, thời gian, phí giám sát, chi phí min"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_23]-TF-M3. Chi phí vận tải (f=ax+b/x). Xét Đ-S: Phí chuẩn bị, thời gian, phí điều phối, chi phí min"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_24]-TF-M3. Chi phí máy chủ (f=ax+b/x). Xét Đ-S: Phí điện năng, thời gian, phí kỹ sư, chi phí min"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_30]-TF-M4. Bán cà phê mô hình (p-qx)*(a+x). Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_31]-TF-M4. Bán áo thun mô hình (p-qx)*(a+x) Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B5_3 = QTreeWidgetItem(L12_C1_B5, ["Trả lời ngắn"])
                 L12_C1_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_11]-SA-M2.  Tính chi phí trung bình sản xuất đồ chơi khi x đủ lớn."])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_11]-SA-M2. Tính chi phí trung bình sản xuất đồ chơi khi x đủ lớn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7789,23 +7813,51 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_15]-SA-M4. Tìm số máy in để chi phí in ấn thấp nhất (mô hình f=ax+b/x)."])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_32]-SA-M3. Hình hộp chữ nhật không nắp có diện tích. Tìm cạnh đáy để V_max."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_16]-SA-M4. Tìm số máy gặt để chi phí gặt lúa thấp nhất (mô hình f=ax+b/x)."])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_33]-SA-M4. Hình hộp chữ nhật không nắp có diện tích. Tìm V_max."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_17]-SA-M4. Tìm số xe tải để chi phí vận tải thấp nhất (mô hình f=ax+b/x)."])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_15]-SA-M4. Tìm số máy in để chi phí in ấn min (mô hình f=ax+b/x)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_18]-SA-M4. Tìm số máy chủ để chi phí vận hành thấp nhất (mô hình f=ax+b/x)."])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_16]-SA-M4. Tìm số máy gặt để chi phí gặt lúa min(mô hình f=ax+b/x)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_19]-SA-M4. Tìm số máy xét nghiệm cần dùng để chi phí thấp nhất (mô hình f=ax+b/x)."])
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_17]-SA-M4. Tìm số xe tải để chi phí vận tải min (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_18]-SA-M4. Tìm số máy chủ để chi phí vận hành min (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_19]-SA-M4. Tìm số máy xét nghiệm cần dùng để chi phí min (mô hình f=ax+b/x)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_25]-SA-M4. Tìm số tiền tăng để lợi nhuận bán khăn max-mô hình (p(x)-c)*.q(x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_26]-SA-M4. Tìm số tiền tăng để lợi nhuận bán cà phê max-mô hình (p(x)-c)*.q(x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_27]-SA-M4. Tìm số tiền tăng để lợi nhuận vé phim max-mô hình (p-qx)*(a+x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_28]-SA-M4. Tìm số tiền tăng để lợi nhuận vé tham quan max-mô hình (p-qx)*(a+x)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_29]-SA-M4. Tìm số tiền tăng để lợi nhuận bán áo max-mô hình (p-qx)*(a+x)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10455,6 +10507,60 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B5_20]-SA-M4. Tính doanh thu lớn nhất biết đơn giá của x sản phẩm 
                                             if dang_toan == "[D12_C1_B5_20]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_20()
+
+                                            #[D12_C1_B5_21]-TF-M3. Biết chi phí in. Xét Đ-S: Phí bảo dưỡng, thời gian, phí giám sát, chi phí min
+                                            if dang_toan == "[D12_C1_B5_21]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_21()
+
+                                            #[D12_C1_B5_22]-TF-M3. Biết chi phí gặt lúa. Xét Đ-S: Phí vận hành, thời gian, phí giám sát, chi phí min
+                                            if dang_toan == "[D12_C1_B5_22]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_22()
+
+                                            #[D12_C1_B5_23]-TF-M3. Biết chi phí vận tải. Xét Đ-S: Phí vận hành, thời gian, phí giám sát, chi phí min
+                                            if dang_toan == "[D12_C1_B5_23]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_23()
+
+                                            #[D12_C1_B5_24]-TF-M3. Biết chi phí máy chủ. Xét Đ-S: Phí điện năng, thời gian, phí giám sát, chi phí min
+                                            if dang_toan == "[D12_C1_B5_24]": 
+                                                    debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_24()
+
+                                            #[D12_C1_B5_25]-SA-M4. Tìm số tiền cần tăng để lợi nhuận bán khăn lớn nhất-mô hình (p-qx)*(a+x)
+                                            if dang_toan == "[D12_C1_B5_25]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_25()
+
+                                            #[D12_C1_B5_26]-SA-M4. Tìm số tiền cần tăng để lợi nhuận bán cà phê lớn nhất-mô hình (p-qx)*(a+x)
+                                            if dang_toan == "[D12_C1_B5_26]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_26()
+
+                                            #[D12_C1_B5_27]-SA-M4. Tìm số tiền cần tăng để lợi nhuận bán vé max-mô hình (p-qx)*(a+x)
+                                            if dang_toan == "[D12_C1_B5_27]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_27()
+
+                                            #[D12_C1_B5_28]-SA-M4. Tìm số tiền cần tăng để lợi nhuận vé du lịch max-mô hình (p-qx)*(a+x)
+                                            if dang_toan == "[D12_C1_B5_28]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_28()
+
+                                            #[D12_C1_B5_29]-SA-M4. Tìm số tiền cần tăng để lợi nhuận áo thun max-mô hình (p-qx)*(a+x)
+                                            if dang_toan == "[D12_C1_B5_29]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_29()
+                                            
+                                            #[D12_C1_B5_30]-TF-M4. Bán cà phê mô hình (p-qx)*(a+x) Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận
+                                            if dang_toan == "[D12_C1_B5_30]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_30()
+
+                                            #[D12_C1_B5_31]-TF-M4. Bán áo thun mô hình (p-qx)*(a+x) Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận
+                                            if dang_toan == "[D12_C1_B5_31]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_31()
+
+                                            #[D12_C1_B5_32]-SA-M3. Hình hộp chữ nhật không nắp có diện tích. Tìm cạnh đáy để V_max
+                                            if dang_toan == "[D12_C1_B5_32]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_32()
+
+                                            #[D12_C1_B5_33]-SA-M3. Hình hộp chữ nhật không nắp có diện tích. Tìm V_max
+                                            if dang_toan == "[D12_C1_B5_33]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_33()
+
+                                            
                                                 
 
                                 ######### Toán 12_ Chương 2 - TỌA ĐỘ VECTƠ TRONG KHÔNG GIAN ########

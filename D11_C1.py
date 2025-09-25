@@ -795,14 +795,16 @@ def ngh_kjg_L11_C1_B1_13():
 def ngh_kjg_L11_C1_B1_14():
     x=random.choice([(random.randint(1,9)*pi)/random.randint(1,9), ])
     noi_dung=(
-    f"Trên đường tròn lượng giác, cho các góc lượng giác ${{{latex(x)}}}$ và ${{{latex(-x)}}}$ có điểm biểu diễn lần lượt là ${{M}}$ và ${{N}}$."
-    f" Góc lượng giác nào sau đây cũng chỉ có đúng hai điểm biểu diễn là ${{M}}$ và ${{N}}$?"
+    f"Trên đường tròn lượng giác, cho các góc lượng giác ${{{latex(x)}}}$ có điểm biểu diễn là ${{M}}$."
+    f" Điểm ${{N}}$ đối xứng với ${{M}}$ qua trục ${{Ox}}$."
+    f" Khi đó điểm ${{N}}$ là điểm biểu diễn cho các góc lượng giác nào sau đây?"
     )    
 
-    kq=f"${latex(x)}+k\\pi, k\\in \\mathbb{{Z}}$"
+    kq=f"${latex(-x)}+k2\\pi, k\\in \\mathbb{{Z}}$"
     kq_false=[f"${latex(x)}+k2\\pi, k\\in \\mathbb{{Z}}$", 
+    f"${latex(-x)}+k\\pi, k\\in \\mathbb{{Z}}$",
     f"${latex(x)}+k4\\pi, k\\in \\mathbb{{Z}}$", 
-    f"${latex(x)}+\\dfrac{{k\\pi }}{{2}}, k\\in \\mathbb{{Z}}$",
+    f"${latex(-x)}+\\dfrac{{k\\pi }}{{2}}, k\\in \\mathbb{{Z}}$",
     f"${latex(x)}+\\dfrac{{k\\pi }}{{3}}, k\\in \\mathbb{{Z}}$",
     f"${latex(x)}+\\dfrac{{k\\pi }}{{4}}, k\\in \\mathbb{{Z}}$",]
     random.shuffle(kq_false)
@@ -911,36 +913,36 @@ def ngh_kjg_L11_C1_B1_16():
     if chon==1:
         x=random.randint(1,4)*2*pi
 
-        kq="Điểm ${{A}}$"
+        kq="Điểm ${A}$"
         kq_false=[
-        "Điểm ${{A'}}$",
-        "Điểm ${{B}}$",
-        "Điểm ${{B'}}$",]
+        "Điểm ${A'}$",
+        "Điểm ${B}$",
+        "Điểm ${B'}$",]
     
     if chon==2:
         x=pi/2+random.randint(-2,3)*2*pi
 
-        kq="Điểm ${{B}}$"
+        kq="Điểm ${B}$"
         kq_false=[
-        "Điểm ${{A}}$",
-        "Điểm ${{A'}}$",        
-        "Điểm ${{B'}}$",]
+        "Điểm ${A}$",
+        "Điểm ${A'}$",        
+        "Điểm ${B'}$",]
 
     if chon==3:
         x=pi+random.randint(-2,3)*2*pi
-        kq="Điểm ${{A'}}$"
+        kq="Điểm ${A'}$"
         kq_false=[
-        "Điểm ${{A}}$",
-        "Điểm ${{B}}$",               
-        "Điểm ${{B'}}$",]
+        "Điểm ${A}$",
+        "Điểm ${B}$",               
+        "Điểm ${B'}$",]
 
     if chon==4:
         x=-pi/2+random.randint(-2,3)*2*pi
-        kq="Điểm ${{B'}}$",
+        kq="Điểm ${B'}$"
         kq_false=[
-        "Điểm ${{A}}$",
-        "Điểm ${{A'}}$",
-        "Điểm ${{B}}$",               
+        "Điểm ${A}$",
+        "Điểm ${A'}$",
+        "Điểm ${B}$",               
         ]
 
     
