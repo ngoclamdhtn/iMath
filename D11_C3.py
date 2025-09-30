@@ -1242,11 +1242,10 @@ def gh11gh_L11_C3_B1_13():
             noi_dung=f"Tính giới hạn $\\lim {latex(u)}$ (kết quả làm tròn đến hàng đơn vị)."
             dap_an=f"{round_half_up(a/e**2,0)}".replace(".",",")
         else:
-            noi_dung=f"Tính $\\lim {latex(u)}={phan_so(a/e**2)}$ (kết quả làm tròn đến hàng phần trăm)."
+            noi_dung=f"Tính $\\lim {latex(u)}$ (kết quả làm tròn đến hàng phần trăm)."
             dap_an=f"{round_half_up(a/e**2,2):.2f}".replace(".",",")
 
-        noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n+c/n**3+d/n**4)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**2)}$."
-        
+        noi_dung_loigiai=f"$\\lim {latex(u)}=\\lim \\dfrac{{{latex(a+b/n+c/n**3+d/n**4)} }}{{{latex((e+f/n**2)**2)} }}= {phan_so(a/e**2)}$."        
 
     if chon==2:
         u=(e*n**2+f)**2/(a*n**4+b*n**3+c*n+d)

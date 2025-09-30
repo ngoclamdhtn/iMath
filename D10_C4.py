@@ -1584,7 +1584,7 @@ def yy3yy_L10_C4_B1_19():
 #[D10_C4_B1_20]-M1. Tìm đẳng thức đúng dạng (sinx=a, cosx=b,tanx=c, cotx=d)
 def yy3yy_L10_C4_B1_20():
     noi_dung=(
-    f"Khẳng định nào sau đây là khẳng định đúng"
+    f"Khẳng định nào sau đây là khẳng định đúng?"
     )
     
 
@@ -1702,7 +1702,7 @@ def yy3yy_L10_C4_B1_20():
 def yy3yy_L10_C4_B1_21():
     a,b= random.sample(["\\alpha", "\\beta", "\\gamma", "a","b", "x","y"],2)
     noi_dung=(
-    f"Trong các khẳng định sau, khẳng định nào là khẳng định sai (giả thiết rằng các biểu thức đều có nghĩa)?"
+    f"Biết rằng ${{{a},{b}}}$ là hai góc bù nhau. Trong các khẳng định sau, khẳng định nào là khẳng định sai (giả thiết rằng các biểu thức đều có nghĩa)?"
     )
     
 
@@ -1770,7 +1770,7 @@ def yy3yy_L10_C4_B1_21():
 def yy3yy_L10_C4_B1_22():
     a,b= random.sample(["\\alpha", "\\beta", "\\gamma", "a","b", "x","y"],2)
     noi_dung=(
-    f"Trong các khẳng định sau, khẳng định nào là khẳng định sai (giả thiết rằng các biểu thức đều có nghĩa)?"
+    f"Biết rằng ${{{a},{b}}}$ là hai góc phụ nhau. Trong các khẳng định sau, khẳng định nào là khẳng định sai (giả thiết rằng các biểu thức đều có nghĩa)?"
     )
     
     kq=random.choice([

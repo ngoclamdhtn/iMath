@@ -6413,44 +6413,71 @@ def prt_34_L12_C1_B2_14():
 def prt_34_L12_C1_B2_15():
 	x = sp.symbols('x')
 	chon=random.randint(1,2)
+	chon=1
 	if chon==1:
-		x_1=random.randint(-4,1)
-		x_2=x_1+random.randint(3,5)
-		
-		k=random.choice([1,-1,3,-3])
-		g=(x-x_1)*(x-x_2)
-		f=k*integrate(g,x)+random.randint(-5,5)
+		while True:
+			x_1=random.randint(-4,1)
+			x_2=x_1+random.randint(3,5)
+			
+			k=random.choice([1,-1,3,-3])
+			g=(x-x_1)*(x-x_2)
+			f=k*integrate(g,x)+random.randint(-5,5)
 
-		a=f.coeff(x,3)
-		b=f.coeff(x,2)
-		c=f.coeff(x,1)
-		d=f.as_coefficients_dict()[1]
+			a=f.coeff(x,3)
+			b=f.coeff(x,2)
+			c=f.coeff(x,1)
+			d=f.as_coefficients_dict()[1]
 
-		# Tạo đoạn [m,n]
-		m= random.randint(x_1-4,x_1-1)
-		n= random.randint(x_2+1,x_2+4)
+			# Tạo đoạn [m,n]
+			m= random.randint(x_1-4,x_1-1)
+			n= random.randint(x_2+1,x_2+4)
 
-		#Tính giá trị tại các điểm
-		y_m=f.subs(x,m)
-		y_1=f.subs(x,x_1)
-		y_2=f.subs(x,x_2)
-		y_n=f.subs(x,n)
+			#Tính giá trị tại các điểm
+			y_m=f.subs(x,m)
+			y_1=f.subs(x,x_1)
+			y_2=f.subs(x,x_2)
+			y_n=f.subs(x,n)
 
-		giatri_max=max(y_m,y_1,y_2,y_n)
-		giatri_min=min(y_m,y_1,y_2,y_n)
+			giatri_max=max(y_m,y_1,y_2,y_n)
+			giatri_min=min(y_m,y_1,y_2,y_n)
+			if all([giatri_max>-5,giatri_min>-5]):
+				break
 
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":
-			kq=f"${{{round_half_up(giatri_max,1)}}}$".replace(".",",")
+			t=giatri_max.is_integer
+			if t:
+				kq=giatri_max
+				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$."	
+				noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
+				f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+				f"$f({m})={phan_so(y_m)}, f({x_1})={phan_so(y_1)},f({x_2})={phan_so(y_2)}, f({n})={phan_so(y_n)}$.\n\n"\
+				f"Vậy {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ là {kq}."
+			else:
+				kq=f"${{{round_half_up(giatri_max,1)}}}$".replace(".",",")
+				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."	
+				noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
+				f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+				f"$f({m})={phan_so(y_m)}, f({x_1})={phan_so(y_1)},f({x_2})={phan_so(y_2)}, f({n})={phan_so(y_n)}$.\n\n"\
+				f"Vậy {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ là {kq}."
+
+
 		else:
-			kq=f"${{{round_half_up(giatri_min,1)}}}$".replace(".",",")
-
-
-		noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."	
-		noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
-		f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
-		f"$f({m})={phan_so(y_m)}, f({x_1})={phan_so(y_1)},f({x_2})={phan_so(y_2)}, f({n})={phan_so(y_n)}$.\n\n"\
-		f"Vậy {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ là {kq}."
+			t=giatri_min.is_integer
+			if t:
+				kq=giatri_min
+				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$."	
+				noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
+				f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+				f"$f({m})={phan_so(y_m)}, f({x_1})={phan_so(y_1)},f({x_2})={phan_so(y_2)}, f({n})={phan_so(y_n)}$.\n\n"\
+				f"Vậy {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ là {kq}."
+			else:
+				kq=f"${{{round_half_up(giatri_min,1)}}}$".replace(".",",")
+				noi_dung = f"Tìm {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."	
+				noi_dung_loigiai=f"$y'={latex(expand(k*g))}$.\n\n"\
+				f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+				f"$f({m})={phan_so(y_m)}, f({x_1})={phan_so(y_1)},f({x_2})={phan_so(y_2)}, f({n})={phan_so(y_n)}$.\n\n"\
+				f"Vậy {gia_tri} của hàm số $\\displaystyle y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ là {kq}."
 	
 	#Hàm phân thức
 	if chon==2:
@@ -12279,7 +12306,7 @@ def prt_34_L12_C1_B5_05():
     k=random.randint(2,3)
     k=2
     if k==2:
-        a = random.randint(1, 10)
+        a = random.randint(1, 3)
         c = random.randint(1, 10)    
         b=  random.randint(-8, -1) 
         f=a*t**2+b*t+c     
@@ -12302,7 +12329,7 @@ def prt_34_L12_C1_B5_05():
     
 
     noi_dung=f"Một vật chuyển động thẳng không đều xác định bởi phương trình $s(t)={ham_so}$, "\
-        f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây. Xét tính đúng sai của các khẳng định sau"
+        f"trong đó ${{s}}$ tính bằng mét và ${{t}}$ tính bằng giây. Xét tính đúng sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười)"
         
     
     t_0=random.randint(1,10)
@@ -12336,15 +12363,17 @@ def prt_34_L12_C1_B5_05():
     f"$a({t_1})={a_1}$ m/$s^2$."
 
     t_3=random.randint(1,20)
-    s_3=f.subs(t,t_3)
-    kq3_T=f"*Quãng đường vật đi được sau ${{{t_3}}}$ giây kể từ khi bắt đầu chuyển động là ${{{s_3}}}$  m."
-    kq3_F=f"Quãng đường vật đi được sau ${{{t_3}}}$ giây kể từ khi bắt đầu chuyển động là ${{{s_3+random.randint(1,6)}}}$  m."
+    s_3=integrate(abs(g1), (t,0,t_3))
+    s3_round=f"{round_half_up(s_3,1):.1f}".replace(".",",")
+    s3_f_round=f"{round_half_up(s_3+random.randint(1,3),1):.1f}".replace(".",",")
+    kq3_T=f"*Quãng đường vật đi được sau ${{{t_3}}}$ giây kể từ khi bắt đầu chuyển động là ${{{s3_round}}}$  m."
+    kq3_F=f"Quãng đường vật đi được sau ${{{t_3}}}$ giây kể từ khi bắt đầu chuyển động là ${{{s3_f_round}}}$  m."
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là đúng.\n\n"\
-    f"$s({t_3})={s_3}$ m."
+    f"$s={s3_round}$ m."
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là sai.\n\n"\
-    f"$s({t_3})={s_3}$ m."
+    f"$s={s3_round}$ m."
 
     if a>0:        
 
@@ -13206,9 +13235,9 @@ def prt_34_L12_C1_B5_14():
 	st_2r=str(2*r).replace(".0","").replace(".",",")
 	st_rV=str(r*V).replace(".0","").replace(".",",")
 	noi_dung = (
-	f"Một hãng vận tải thiết kế thùng xe tải hình hộp chữ nhật (mở phía trên)."
+	f"Một hãng vận tải thiết kế thùng xe tải hình hộp chữ nhật (để trống mặt phía trên và mặt đằng sau)."
 	f" Chiều rộng của thùng bằng ${{{st_r}m}}$ và thể tích thùng là ${{{st_V}m^3}}$."
-	f" Hãy tính chiều dài của thùng xe để diện tích tôn làm các mặt thùng(đáy và 3 mặt bên, không kể phía trên) là ít nhất (kết quả làm tròn đến hàng phần mười)"
+	f" Hãy tính chiều dài của thùng xe để diện tích tôn làm các mặt thùng xe là ít nhất (kết quả làm tròn đến hàng phần mười)"
 	)
 	dap_an=f"{round_half_up(sqrt(V/r),1):.1f}".replace(".",",")
 

@@ -4495,6 +4495,142 @@ def ngh_kjg_L11_C1_B3_14():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C1_B3_15]-M2. Viết sinax+sinbx thành tích, a,b tùy ý.
+def ngh_kjg_L11_C1_B3_15():
+    while True:
+        a=random.randint(1,9)
+        b=random.randint(1,9)  
+        if all([a>b, (a+b)%2==0]):
+            break
+    u,v=phan_so((a+b)/2), phan_so((a-b)/2)
+    noi_dung=(
+    f"Tìm khẳng định đúng trong các khẳng định sau."
+    )
+    
+
+    kq=random.choice([
+        f"\\sin {a}x + \\sin {b}x = 2\\sin {u}x\\cos {v}x",
+        f"\\sin {a}x - \\sin {b}x = 2\\cos {u}x\\sin {v}x",
+        f"\\cos {a}x + \\cos {b}x = 2\\cos {u}x\\cos {v}x",
+        f"\\cos {a}x - \\cos {b}x = -2\\sin {u}x\\sin {v}x"
+        ])
+    kq_false=[
+f"\\sin {a}x + \\sin {b}x = 2\\cos {u}x\\cos {v}x",   # sai: đáng lẽ phải 2 sin u cos v
+    f"\\sin {a}x - \\sin {b}x = 2\\sin {u}x\\cos {v}x",   # sai: nhầm cos u sin v thành sin u cos v
+    f"\\sin {a}x + \\sin {b}x = 2\\sin {u}x\\sin {v}x",   # sai: nhầm cos v thành sin v
+    f"\\cos {a}x + \\cos {b}x = 2\\sin {u}x\\sin {v}x",   # sai: nhầm cos u cos v thành sin u sin v
+    f"\\cos {a}x - \\cos {b}x = 2\\cos {u}x\\cos {v}x",   # sai: thiếu dấu âm và đổi kết quả
+    f"\\cos {a}x - \\cos {b}x = -2\\cos {u}x\\sin {v}x",  # sai: nhầm sin u sin v thành cos u sin v
+    f"\\sin {a}x - \\sin {b}x = -2\\sin {u}x\\sin {v}x",  # sai: nhầm cos u sin v thành sin u sin v
+    f"\\cos {a}x + \\cos {b}x = 2\\sin {u}x\\cos {v}x"    # sai: trộn sin u cos v thay vì cos u cos v
+]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng.".replace("1x","x")
+    )
+
+    pa_A= f"*${kq}$".replace("1x","x")
+    pa_B= f"${kq2}$".replace("1x","x")
+    pa_C= f"${kq3}$".replace("1x","x")
+    pa_D= f"${kq4}$".replace("1x","x")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B3_16]-M2. Viết sinax.sinbx thành tổng, a,b tùy ý.
+def ngh_kjg_L11_C1_B3_16():
+    while True:
+        a=random.randint(1,9)
+        b=random.randint(1,9)  
+        if all([a>b]):
+            break
+    
+    noi_dung=(
+    f"Tìm khẳng định đúng trong các khẳng định sau."   )
+    
+
+    kq=random.choice([
+        f"\\cos {a}x\\cos {b}x = {phan_so(1/2)}[\\cos {a+b}x + \\cos {a-b}x ]",
+        f"\\sin {a}x \\sin {b}x = {phan_so(1/2)}[\\cos {a-b}x - \\cos {a+b}x ]",
+        f"\\sin {a}x\\cos {b}x = {phan_so(1/2)}[\\sin {a+b}x + \\sin {a-b}x ]",     
+
+        ])
+    kq_false=[
+    f"\\cos {a}x\\cos {b}x = {phan_so(1/2)}[\\cos {a+b}x - \\cos {a-b}x ]",   # sai: dấu nên là + giữa hai cos
+    f"\\cos {a}x\\cos {b}x = {phan_so(1/2)}[\\sin {a+b}x + \\sin {a-b}x ]",   # sai: đổi cos thành sin
+    f"\\sin {a}x \\sin {b}x = {phan_so(1/2)}[\\cos {a+b}x + \\cos {a-b}x ]",  # sai: đúng là cos(a-b)-cos(a+b)
+    f"\\sin {a}x \\sin {b}x = {phan_so(1/2)}[\\sin {a+b}x - \\sin {a-b}x ]",  # sai: đổi cos thành sin
+    f"\\sin {a}x\\cos {b}x = {phan_so(1/2)}[\\sin {a+b}x - \\sin {a-b}x ]",    # sai: dấu của sin(a-b) phải là + (theo công thức đúng)
+    f"\\sin {a}x\\cos {b}x = {phan_so(1/2)}[\\cos {a+b}x + \\cos {a-b}x ]"     # sai: đổi sin*cos thành tổ hợp cos
+]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+    kq2=kq2.replace("1x","x")
+    kq3=kq3.replace("1x","x")
+    kq4=kq4.replace("1x","x")
+  
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng.".replace("1x","x")
+    )
+
+    pa_A= f"*${kq}$".replace("1x","x")
+    pa_B= f"${kq2}$".replace("1x","x")
+    pa_C= f"${kq3}$".replace("1x","x")
+    pa_D= f"${kq4}$".replace("1x","x")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 ################  Bài 4: Hàm số lượng giác và đồ thị.################
 #[D11_C1_B4_01]. Tìm tập xác định hàm số y=a/sinx hoặc y=a/cosx
 def ngh_kjg_L11_C1_B4_01():
@@ -5877,8 +6013,8 @@ def ngh_kjg_L11_C1_B5_11():
     
     x_1=(n-m)/(a-b)
     x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
-    kq=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq2=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq2=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
 
@@ -5933,8 +6069,8 @@ def ngh_kjg_L11_C1_B5_12():
     
     x_1=(n-m)/(a-b)
     x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
-    kq=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq2=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq2=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
 
@@ -5990,8 +6126,8 @@ def ngh_kjg_L11_C1_B5_12():
     
     x_1=(n-m)/(a-b)
     x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
-    kq=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq2=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq2=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
 

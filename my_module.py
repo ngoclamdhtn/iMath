@@ -1526,7 +1526,7 @@ def start_latex_file():
 \usepackage{tabvar}
 %\usetkzobj{all}
 %\usepackage{tikz-3dplot}
-\usetikzlibrary{shapes.geometric,arrows,calc,intersections,angles,quotes,patterns,snakes,positioning}
+\usetikzlibrary{arrows,calc,intersections,angles,quotes,patterns,positioning}
 
 """
     return content
@@ -1537,7 +1537,7 @@ def moi_truong_anh_latex(code):
     \usepackage[vietnamese]{babel}
     \usepackage{tkz-tab,tikz,tkz-euclide,fontawesome}
     \usepackage[dethi]{ex_test}   
-    \usetikzlibrary{shapes.geometric,arrows,calc,intersections,angles,quotes,patterns,snakes,positioning}
+    \usetikzlibrary{arrows,calc,intersections,angles,quotes,patterns,positioning}
     \begin{document} """   
 
     code_footer=r"""\end{document} """
@@ -1559,7 +1559,7 @@ def moi_truong_latex(code):
 \usepackage[dethi]{ex_test} % Chỉ hiển thị đề thi
 %\usepackage[loigiai]{ex_test} % Hiển thị lời giải
 %\usepackage[color]{ex_test} % Khoanh các đáp án
-\usetikzlibrary{shapes.geometric,arrows,calc,intersections,angles,quotes,patterns,snakes,positioning}
+\usetikzlibrary{arrows,calc,intersections,angles,quotes,patterns,positioning}
 \everymath{\displaystyle}
 
 \def\colorEX{\color{purple}}

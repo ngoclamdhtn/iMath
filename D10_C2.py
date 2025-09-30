@@ -5,6 +5,19 @@ import random
 from fractions import Fraction
 import my_module
 
+def tao_chuoi_so_nguyen(a, b):
+    # Tạo danh sách các số nguyên từ a đến b
+    danh_sach_so = list(range(a, b))
+    danh_sach_so = [x for x in danh_sach_so if x != 0 and x%2!=0]
+    
+    # Chuyển đổi các số thành chuỗi
+    chuoi_so = [str(x) for x in danh_sach_so]
+    
+    # Nối chuỗi bằng dấu ,
+    chuoi_ket_qua = ",".join(chuoi_so)
+    
+    return chuoi_ket_qua
+
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
     return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
@@ -2538,7 +2551,7 @@ def bch_12_L10_C2_B2_16():
     f" Để sản xuất 1 tấn sản phẩm loại {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
     f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
     f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
-    f" Một cái {X} lãi {m} triệu đồng và một sản phẩm loại {Y} lãi {n} triệu đồng."
+    f" Một sản phẩm {X} lãi {m} triệu đồng và một sản phẩm loại {Y} lãi {n} triệu đồng."
     f" Tính số tiền lãi có thể thu được lớn nhất."
     )
     t=best_Z .is_integer
@@ -2720,7 +2733,7 @@ def bch_12_L10_C2_B2_17():
         noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
 
     noi_dung_loigiai=(
-    f"Gọi $x$, $y$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Gọi ${{x}}$, ${{y}}$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
     f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
     f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
     f"Ta có hệ điều kiện:\n\n"
@@ -2886,10 +2899,7 @@ def bch_12_L10_C2_B2_18():
             best_Z = Z
             best_point = pt
 
-    # Kết quả
-    st=""
-    for pt in vertices:
-        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow T = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+    
 
     noi_dung = (
     f"Một công ty may mặc có hai loại máy là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
@@ -2906,6 +2916,11 @@ def bch_12_L10_C2_B2_18():
     else:
         dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
         noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow T = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
 
     noi_dung_loigiai=(
     f"Gọi $x$, $y$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
@@ -2931,3 +2946,1738 @@ def bch_12_L10_C2_B2_18():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_19]-SA-M3. Tìm lợi nhuận lớn nhất khi trồng 2 loại cây
+def bch_12_L10_C2_B2_19():
+    x,y=sp.symbols("x y")
+    chon=random.randint(1,3)
+    if chon==1:
+        ngo,dauxanh="ngô", "đậu xanh"
+        m,n=random.randint(3,5),random.randint(5,8)
+    
+    if chon==2:
+        ngo,dauxanh="lúa", "khoai lang"
+        m,n=random.randint(3,6),random.randint(4,8)
+
+    if chon==3:
+        ngo,dauxanh="cà chua", "dưa leo"
+        m,n=random.randint(5,10),random.randint(4,8)
+    
+    
+    while True:
+        c1=random.randint(4,12)
+        c2=random.randint(20,40)
+        a2=random.randint(3,8)
+        b2=random.randint(3,8)
+        #Giao của đường ngày công với các trục
+        x2,y2 = c2/a2, c2/b2
+        if all([x2>c1, y2<c1, c2%a2==0,c2%b2==0]):
+            break
+    #Giải hệ giao điểm 
+    eq1=Eq(x + y , c1)
+    eq2=Eq(a2*x + b2*y , c2)
+    sol = solve((eq1, eq2), (x, y))
+    if sol:
+        x_0, y_0 = sol[x], sol[y]
+    f=m*x+n*y
+    f_A=int(f.subs({x: 0, y: y2}))
+    f_B=int(f.subs({x: x_0, y: y_0}))
+    f_C=int(f.subs({x: c1, y: 0}))
+
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(x + y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        x + y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow F = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+    
+
+    nguoi=random.choice(["Bác Nam", "Ông An", "Chú Minh", "Bác Hùng", "Ông Lâm", 
+"Chú Quang", "Bác Tín", "Ông Phúc", "Chú Hải", "Bác Sơn" ])
+
+    noi_dung = (
+    f"{nguoi} dự định trồng {ngo} và {dauxanh} trên một mảnh đất có diện tích {c1} sào."
+    f" Nếu trồng 1 sào {ngo} thì cần {a2} ngày công và thu được {m} triệu đồng."
+    f" Nếu trồng 1 sào {dauxanh} thì cần {b2} ngày công và thu được {n} triệu đồng."
+    f" Tổng số ngày công mà {nguoi} có thể sử dụng không quá {c2} ngày công."
+    f" Tìm số tiền (triệu đồng) mà {nguoi} có thể thu được nhiều nhất?"
+    )
+    t=best_Z.is_integer
+    if t:
+        dap_an=best_Z
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+    
+
+    
+    noi_dung_loigiai=(
+    f"Gọi ${{x,y}}$ là diện tích đất để trồng {ngo} và {dauxanh}.\n\n"
+    f"$x\\ge 0,y \\ge 0$.\n\n"
+    f"Diện tích đất cần dùng: $x+y \\le {c1}$.\n\n"
+    f"Số ngày công cần dùng: ${a2}x+{b2}y \\le {c2}$.\n\n"
+    f"Miền nghiệm của hệ điều kiện là tứ giác ${{OABC}}$"
+    f"với $O(0;0),A(0;{int(y2)}),B({phan_so(x_0)};{phan_so(y_0)}),C({c1};0)$.\n\n"
+    #f" Các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f"Lợi nhuận thu được: $F={m}x+{n}y$.\n\n"
+    f"$F(0;0)=0, F(0;{int(y2)})={f_A}, F({phan_so(x_0)};{phan_so(y_0)})={f_B}, F({c1};0)={f_C}$.\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n"
+    f" Lợi nhuận lớn nhất: {dap_an} triệu đồng."
+
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_20]-SA-M3. Tìm lợi nhuận lớn nhất khi làm 2 đồ vật bán chợ Tết
+def bch_12_L10_C2_B2_20():
+    x,y=sp.symbols("x y")
+    while True:
+        #Số lượng thiệp cần tạo tối thiểu
+        c1=random.randint(10,20)
+
+        #Số giờ làm 2 loại thiệp
+        a2=random.randint(2,8)
+        b2=random.randint(3,8)
+
+
+        #Số giờ tối đa để làm thiệp
+        c2=random.randint(20,40)
+
+        #Giao của đường ngày công với các trục
+        x2,y2 = c2/a2, c2/b2
+        if all([x2<c1, y2>c1, c2%a2==0,c2%b2==0]):
+            break
+    #Giá tiền mỗi loại
+    n=random.randint(8,15)
+    m=n+random.randint(5,15)
+    
+    
+
+    #Giải hệ giao điểm 
+    eq1=Eq(x + y , c1)
+    eq2=Eq(a2*x + b2*y , c2)
+    sol = solve((eq1, eq2), (x, y))
+    if sol:
+        x_0, y_0 = sol[x], sol[y]    
+
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(x + y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        x + y - c1 >= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow F = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+ 
+
+    t=best_Z.is_integer
+    if t:
+        dap_an=best_Z
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+    
+    
+        
+    ten=random.choice(["An", "Minh", "Hoa", "Nam", "Lan", 
+ "Bình", "Hương", "Phúc", "Mai", "Khôi"])
+
+    chon=random.randint(1,3)
+    
+    if chon==1:
+        vat_1, vat_2="tấm thiệp loại lớn"  ,"tấm thiệp loại nhỏ"   
+        ten_chung="tấm thiệp"
+    
+    if chon==2:
+        vat_1, vat_2="bao lì xì đặc biệt"  ,"bao lì xì thường"
+        ten_chung="bao lì xì"
+
+    if chon==3:
+        vat_1, vat_2="dây loại cầu kỳ", "dây loại đơn giản",         
+        ten_chung="dây trang trí"
+
+    noi_dung = (
+    f"Bạn {ten} dự định làm thủ công các {ten_chung} để bán trong một hội chợ Tết."
+    f" Cần {a2} giờ để làm một {vat_1} có giá {m} nghìn đồng và {b2} giờ để làm một {vat_2} có giá {n} nghìn đồng."
+    f" Bạn {ten} chỉ có {c2} giờ để làm các {ten_chung} và ban tổ chức hội chợ yêu cầu phải làm ít nhất {c1} {ten_chung}."
+    f" Tìm số tiền mà bạn {ten} có thể thu được nhiều nhất khi bán hết các {ten_chung}."
+    )
+
+    f=m*x+n*y
+    f_A=int(f.subs({x: 0, y: c1}))
+    f_B=int(f.subs({x: x_0, y: y_0}))
+    f_C=int(f.subs({x: 0, y: int(c2/b2)}))
+    
+    noi_dung_loigiai=(
+    f"Gọi ${{x,y}}$ là số lượng {vat_1} và {vat_2}.\n\n"
+   f"$x\\ge 0,y \\ge 0$.\n\n"
+   f"Số lượng {ten_chung} cần làm: $x+y \\ge {c1}$.\n\n"
+   f"Số giờ cần dùng: ${a2}x+{b2}y \\le {c2}$.\n\n"
+   f"Miền nghiệm của hệ điều kiện là tam giác ${{ABC}}$"
+   f" với $A(0;{c1}),B({phan_so(x_0)};{phan_so(y_0)}),C(0;{int(c2/b2)})$.\n\n"
+   f"{st}\n\n"
+   f"Số tiền thu được: $F={m}x+{n}y$.\n\n"
+   f"Số tiền thu về lớn nhất khi:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$."
+    f"Số tiền thu về lớn nhất là {dap_an} ngàn đồng."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_21]-TF-M3. Trồng 2 loại cây. Xét Đ-S: Diện tích đất, điều kiện, lợi nhuận max
+def bch_12_L10_C2_B2_21():
+    x,y=sp.symbols("x y")
+    chon=random.randint(1,3)
+    if chon==1:
+        ngo,dauxanh="ngô", "đậu xanh"
+        m,n=random.randint(3,5),random.randint(5,8)
+    
+    if chon==2:
+        ngo,dauxanh="lúa", "khoai lang"
+        m,n=random.randint(3,6),random.randint(4,8)
+
+    if chon==3:
+        ngo,dauxanh="cà chua", "dưa leo"
+        m,n=random.randint(5,10),random.randint(4,8)
+    
+    
+    while True:
+        c1=random.randint(4,12)
+        c2=random.randint(20,40)
+        a2=random.randint(3,8)
+        b2=random.randint(3,8)
+        #Giao của đường ngày công với các trục
+        x2,y2 = c2/a2, c2/b2
+        if all([x2>c1, y2<c1, c2%a2==0,c2%b2==0]):
+            break
+    #Giải hệ giao điểm 
+    eq1=Eq(x + y , c1)
+    eq2=Eq(a2*x + b2*y , c2)
+    sol = solve((eq1, eq2), (x, y))
+    if sol:
+        x_0, y_0 = sol[x], sol[y]
+    f=m*x+n*y
+    f_A=int(f.subs({x: 0, y: y2}))
+    f_B=int(f.subs({x: x_0, y: y_0}))
+    f_C=int(f.subs({x: c1, y: 0}))
+
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(x + y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        x + y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$({phan_so(pt[x])}, {phan_so(pt[y])}) \\Rightarrow F = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+    
+
+    nguoi=random.choice(["Bác Nam", "Ông An", "Chú Minh", "Bác Hùng", "Ông Lâm", 
+    "Chú Quang", "Bác Tín", "Ông Phúc", "Chú Hải", "Bác Sơn" ])
+
+    t=best_Z.is_integer
+    if t:
+        dap_an=best_Z
+        dap_an_f=best_Z+random.randint(1,5)
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        dap_an_f=f"{round_half_up(best_Z+random.randint(1,5),1):.1f}".replace(".",",")
+        
+
+    noi_dung = (f"{nguoi} dự định trồng {ngo} và {dauxanh} trên một mảnh đất có diện tích {c1} sào."
+        f" Nếu trồng 1 sào {ngo} thì cần {a2} ngày công và thu được {m} triệu đồng."
+        f" Nếu trồng 1 sào {dauxanh} thì cần {b2} ngày công và thu được {n} triệu đồng."
+        f" Tổng số ngày công mà {nguoi} có thể sử dụng không quá {c2} ngày công."
+        f" Gọi ${{x, y}}$ lần lượt là diện tích đất trồng {ngo} và {dauxanh} (đơn vị: sào)."
+        f" Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"* Tổng diện tích đất cần dùng là $x+y$" 
+    kq1_F=f" Tổng diện tích đất cần dùng là ${a2}x+{b2}y$"
+    
+    HDG=f"Tổng diện tích đất cần dùng là $x+y$"
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $x+y \\le {c1}$"
+    kq2_F=f"$x+y \\le {c1}$"
+    
+    HDG=f"$x+y \\le {c1}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"*  ${a2}x+{b2}y \\le {c2}$" 
+    kq3_F=f"${a2}x+{b2}y \\ge {c2}$"
+    
+    HDG=f"${a2}x+{b2}y \\le {c2}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Lợi nhuận lớn nhất thu được là {dap_an} triệu đồng"
+    kq4_F=f"Lợi nhuận lớn nhất thu được là {dap_an_f} triệu đồng" 
+    
+    HDG=(f"Gọi ${{x,y}}$ là diện tích đất để trồng {ngo} và {dauxanh}.\n\n"
+        f"$x\\ge 0,y \\ge 0$.\n\n"
+        f"Diện tích đất cần dùng: $x+y \\le {c1}$.\n\n"
+        f"Số ngày công cần dùng: ${a2}x+{b2}y \\le {c2}$.\n\n"
+        f"Miền nghiệm của hệ điều kiện là tứ giác ${{OABC}}$"
+        f"với $O(0;0),A(0;{int(y2)}),B({phan_so(x_0)};{phan_so(y_0)}),C({c1};0)$.\n\n"
+        #f" Các đỉnh của miền nghiệm:\n\n {st}\n\n"
+        f"Lợi nhuận thu được: $F={m}x+{n}y$.\n\n"
+        f"$F(0;0)=0, F(0;{int(y2)})={f_A}, F({phan_so(x_0)};{phan_so(y_0)})={f_B}, F({c1};0)={f_C}$.\n\n"
+        f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n"
+        f" Lợi nhuận lớn nhất: F = {dap_an} triệu đồng.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C2_B2_22]-TF-M3. Làm 2 đồ vật bán chợ Tết. Xét Đ-S: hệ điều kiện, lợi nhuận max
+def bch_12_L10_C2_B2_22():
+
+    x,y=sp.symbols("x y")
+    while True:
+       #Số lượng thiệp cần tạo tối thiểu
+       c1=random.randint(10,20)
+
+       #Số giờ làm 2 loại thiệp
+       a2=random.randint(2,8)
+       b2=random.randint(3,8)
+
+
+       #Số giờ tối đa để làm thiệp
+       c2=random.randint(20,40)
+
+       #Giao của đường ngày công với các trục
+       x2,y2 = c2/a2, c2/b2
+       if all([x2<c1, y2>c1, c2%a2==0,c2%b2==0]):
+           break
+    #Giá tiền mỗi loại
+    n=random.randint(8,15)
+    m=n+random.randint(5,15)
+
+
+
+    #Giải hệ giao điểm 
+    eq1=Eq(x + y , c1)
+    eq2=Eq(a2*x + b2*y , c2)
+    sol = solve((eq1, eq2), (x, y))
+    if sol:
+       x_0, y_0 = sol[x], sol[y]    
+
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+       Eq(x + y , c1),
+       Eq(a2*x + b2*y , c2),
+       Eq(x, 0),
+       Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+       x + y - c1 >= 0,
+       a2*x + b2*y - c2 <= 0,
+       x >= 0,
+       y >= 0
+    ]
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+       sol = solve((eq1, eq2), (x, y), dict=True)
+       if sol:
+           pt = sol[0]
+           # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+           if all(ineq.subs(pt) for ineq in constraints):
+               vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+       Z = m * pt[x] + n * pt[y]
+       if Z > best_Z:
+           best_Z = Z
+           best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+       st+=f"$F ({phan_so(pt[x])}, {phan_so(pt[y])}) = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+
+    t=best_Z.is_integer
+    if t:
+       dap_an=best_Z
+    else:
+       dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+       noi_dung+=f" (kết quả làm tròn đến hàng phần mười)"
+
+
+       
+    ten=random.choice(["An", "Minh", "Hoa", "Nam", "Lan", "Bình", "Hương", "Phúc", "Mai", "Khôi"])
+
+    chon=random.randint(1,3)
+   
+    if chon==1:
+       vat_1, vat_2="tấm thiệp loại lớn"  ,"tấm thiệp loại nhỏ"   
+       ten_chung="tấm thiệp"
+
+    if chon==2:
+       vat_1, vat_2="bao lì xì đặc biệt"  ,"bao lì xì thường"
+       ten_chung="bao lì xì"
+
+    if chon==3:
+       vat_1, vat_2="dây loại cầu kỳ", "dây loại đơn giản",         
+       ten_chung="dây trang trí"
+
+
+    f=m*x+n*y
+    f_A=int(f.subs({x: 0, y: c1}))
+    f_B=int(f.subs({x: x_0, y: y_0}))
+    f_C=int(f.subs({x: 0, y: int(c2/b2)}))
+   
+
+
+    noi_dung = (    f"Bạn {ten} dự định làm thủ công các {ten_chung} để bán trong một hội chợ Tết."
+    f" Cần {a2} giờ để làm một {vat_1} có giá {m} nghìn đồng và {b2} giờ để làm một {vat_2} có giá {n} nghìn đồng."
+    f" Bạn {ten} chỉ có {c2} giờ để làm các {ten_chung} và ban tổ chức hội chợ yêu cầu phải làm ít nhất {c1} {ten_chung}."
+    f" Gọi ${{x,y}}$ lần lượt là số lượng {vat_1} và {vat_2}."  
+    f" Xét tính đúng-sai của các khẳng định sau. "
+    )    
+    
+    kq1_T=f"* $x+y \\ge {c1}$" 
+    kq1_F=f" $x+y \\le {c1}$"
+    
+    HDG=f"$x+y \\ge {c1}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*  ${a2}x+{b2}y \\le {c2}$"
+    kq2_F=f" ${a2}x+{b2}y \\ge {c2}$"
+    
+    HDG=f"${a2}x+{b2}y \\le {c2}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Với $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$ thì số tiền thu về là lớn nhất" 
+    kq3_F=f"Với $x = {phan_so(best_point[x]+random.randint(1,2))}, y = {phan_so(best_point[y]+random.randint(1,2))}$ thì số tiền thu về là lớn nhất"
+    
+    HDG=(f"Gọi ${{x,y}}$ là số lượng {vat_1} và {vat_2}.\n\n"
+   f"$x\\ge 0,y \\ge 0$.\n\n"
+   f"Số lượng {ten_chung} cần làm: $x+y \\ge {c1}$.\n\n"
+   f"Số giờ cần dùng: ${a2}x+{b2}y \\le {c2}$.\n\n"
+   f"Miền nghiệm của hệ điều kiện là tam giác ${{ABC}}$"
+   f" với $A(0;{c1}),B({phan_so(x_0)};{phan_so(y_0)}),C(0;{int(c2/b2)})$.\n\n"
+   f"{st}\n\n"
+   f"Lợi nhuận thu được: $F={m}x+{n}y$.\n\n"
+   f"Số tiền thu về lớn nhất khi:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Số tiền có thể thu về được nhiều nhất khi bán hết các {ten_chung} là {dap_an} ngàn đồng"
+    kq4_F=f"Số tiền có thể thu về được nhiều nhất khi bán hết các {ten_chung} là {dap_an+random.randint(4,10)} ngàn đồng" 
+    
+    HDG=f"Số tiền có thể thu về được nhiều nhất: F({phan_so(best_point[x])},{phan_so(best_point[y])}) = {dap_an} ngàn đồng."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C2_B2_23]-TF-M3. Sản xuất bằng 2 máy. Xét Đ-S: hệ điều kiện, lợi nhuận max
+def bch_12_L10_C2_B2_23():
+    x,y=symbols("x y")
+    X, Y ="X", "Y"
+    A, B ="A", "B"
+    while True:
+
+        #Hệ số thời gian cho máy A
+        a1=random.randint(1,6)
+        b1=random.randint(1,4)
+        c1=random.randint(7,12)
+
+        #Hệ số thời gian cho máy B
+        a2=random.randint(1,6)
+        b2=random.randint(1,4)
+        c2=random.randint(7,10)
+
+        x_1, x_2 = c1/a1, c2/a2
+        y_1, y_2 = c1/b1, c2/b2
+        if all([x_2 > x_1, y_1>y_2]):
+            break
+    while True:
+        m=random.randint(2,10)
+        n=random.randint(2,10)
+        if m!=n:
+            break
+    f1=a1*x+b1*y-c1
+    f2=a2*x+b2*y-c2
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a1*x+b1*y)}\\le {c1} \\\\ \n\
+    {latex(a2*x+b2*y)}\\le {c2} \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        a1*x + b1*y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(a1*x + b1*y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$T({phan_so(pt[x])}, {phan_so(pt[y])}) = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+
+    t=best_Z .is_integer
+    if t:
+        dap_an=best_Z
+        dap_an_f=best_Z+random.randint(1,5)
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        dap_an_f=f"{round_half_up(best_Z+random.randint(1,5),1):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Một xưởng sản xuất có hai máy đặc chủng là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
+    f" Để sản xuất 1 tấn sản phẩm loại {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
+    f" Để sản xuất 1 tấn sản phẩm loại {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
+    f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
+    f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
+    f" Một cái {X} lãi {m} triệu đồng và một sản phẩm loại {Y} lãi {n} triệu đồng."
+    f" Gọi ${{x,y}}$ lần lượt là số tấn sản phẩm loại {X} và loại {Y} cần sản xuất."
+    f" Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"* ${latex(a1*x + b1*y - c1)} \\le 0$" 
+    kq1_F=f"${latex(a1*x + b1*y - c1)} \\ge 0$"
+    
+    HDG=f"Thời gian để máy {A} làm việc: ${latex(a1*x + b1*y - c1)} \\le 0$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* ${latex(a2*x + b2*y - c2)} \\le 0$"
+    kq2_F=f"${latex(a2*x + b2*y - c2)} \\ge 0$"
+    
+    HDG=f"Thời gian để máy {B} làm việc: ${latex(a2*x + b2*y - c2)} \\le 0$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Với $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$ thì lợi nhuận thu được là lớn nhất" 
+    kq3_F=f"Với $x = {phan_so(best_point[x]+random.randint(1,2))}, y = {phan_so(best_point[y]+random.randint(1,2))}$ thì lợi nhuận thu được là lớn nhất"
+    
+    HDG=(f"Gọi ${{x}}$, ${{y}}$ là số tấn sản phẩm loại ${{{X}}}$, ${{{Y}}}$ cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
+    f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
+    f"Ta có hệ điều kiện:\n\n"
+    f"${hedk}$.\n\n"
+    f"Lợi nhuận thu được: $T={latex(m*x+n*y)}$.\n\n"
+    f" Lợi nhuận tại các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Lợi nhuận lớn nhất đạt được là {dap_an} triệu đồng"
+    kq4_F=f"Lợi nhuận lớn nhất đạt được là {dap_an_f} triệu đồng " 
+    
+    HDG=f"Lợi nhuận lớn nhất đạt được là $F({phan_so(best_point[x])},{phan_so(best_point[y])})={dap_an}$ triệu đồng."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C2_B2_24]-TF-M3. Sản xuất bàn và ghế. Xét Đ-S: hệ điều kiện, lợi nhuận max
+def bch_12_L10_C2_B2_24():
+    x,y=symbols("x y")
+
+    X = "bàn học sinh"
+    Y = "ghế gỗ"
+    A = "cưa gỗ tự động"
+    B = "đánh bóng bề mặt" 
+
+    while True:
+        while True:
+            m=random.randint(100,150)
+            n=random.randint(70,90)
+            if m!=n:
+                break
+
+        #Hệ số thời gian cho máy A
+        a1=random.randint(1,4)
+        b1=random.randint(1,4)
+        c1=random.randint(8,12)
+
+        #Hệ số thời gian cho máy B
+        a2=random.randint(1,4)
+        b2=random.randint(1,4)
+        c2=random.randint(8,12)
+
+        x_1, x_2 = c1/a1, c2/a2
+        y_1, y_2 = c1/b1, c2/b2
+
+        if a1*b2-a2*b1==0:
+            continue
+
+        #Giải hệ giao điểm 
+        eq1=Eq(a1*x + b1*y , c1)
+        eq2=Eq(a2*x + b2*y , c2)
+        sol = solve((eq1, eq2), (x, y))
+        if sol:
+            x_0, y_0 = sol[x], sol[y]
+
+        constraints = [
+            a1*x + b1*y - c1 <= 0,
+            a2*x + b2*y - c2 <= 0,
+            x >= 0,
+            y >= 0
+        ]
+
+        # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+        lines = [
+            Eq(a1*x + b1*y , c1),
+            Eq(a2*x + b2*y , c2),
+            Eq(x, 0),
+            Eq(y, 0)
+        ]
+
+        # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+        from itertools import combinations
+
+        vertices = []
+        for eq1, eq2 in combinations(lines, 2):
+            sol = solve((eq1, eq2), (x, y), dict=True)
+            if sol:
+                pt = sol[0]
+                # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+                if all(ineq.subs(pt) for ineq in constraints):
+                    vertices.append(pt)
+
+        # Tính giá trị hàm mục tiêu tại các đỉnh
+        best_Z = -float('inf')
+        best_point = None
+
+        for pt in vertices:
+            Z = m * pt[x] + n * pt[y]
+            if Z > best_Z:
+                best_Z = Z
+                best_point = pt
+
+        if all([x_2 > x_1, y_1>y_2, c1%a1==0, c2%a2==0, c1%b1==0, c2%b2==0, x_0.is_integer, y_0.is_integer]):
+            break
+
+    f1=a1*x+b1*y-c1
+    f2=a2*x+b2*y-c2
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a1*x+b1*y)}\\le {c1} \\\\ \n\
+    {latex(a2*x+b2*y)}\\le {c2} \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        a1*x + b1*y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(a1*x + b1*y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$T({phan_so(pt[x])}, {phan_so(pt[y])}) = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+
+    t=best_Z .is_integer
+    if t:
+        dap_an=best_Z
+        dap_an_f=best_Z+random.randint(1,5)
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        dap_an_f=f"{round_half_up(best_Z+random.randint(1,5),1):.1f}".replace(".",",")
+
+
+    noi_dung = (
+    f"Một xưởng sản xuất có hai loại máy là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
+    f" Để sản xuất 1 cái {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
+    f" Để sản xuất 1 cái {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
+    f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
+    f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
+    f" Một cái {X} lãi {m} ngàn đồng và một cái {Y} lãi {n} ngàn đồng."
+    f" Gọi ${{x}}$, ${{y}}$ lần lượt là số cái {X} và {Y} cần sản xuất."
+    f" Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"* ${latex(a1*x + b1*y - c1)} \\le 0$" 
+    kq1_F=f"${latex(a1*x + b1*y - c1)} \\ge 0$"
+    
+    HDG=f"Thời gian để máy {A} làm việc: ${latex(a1*x + b1*y - c1)} \\le 0$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* ${latex(a2*x + b2*y - c2)} \\le 0$"
+    kq2_F=f"${latex(a2*x + b2*y - c2)} \\ge 0$"
+    
+    HDG=f"Thời gian để máy {B} làm việc: ${latex(a2*x + b2*y - c2)} \\le 0$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Với $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$ thì lợi nhuận thu được là lớn nhất" 
+    kq3_F=f"Với $x = {phan_so(best_point[x]+random.randint(1,2))}, y = {phan_so(best_point[y]+random.randint(1,2))}$ thì lợi nhuận thu được là lớn nhất"
+    
+    HDG=(f"Gọi ${{x}}$, ${{y}}$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
+    f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
+    f"Ta có hệ điều kiện:\n\n"
+    f"${hedk}$.\n\n"
+    f"Lợi nhuận thu được: $T={latex(m*x+n*y)}$.\n\n"
+    f" Lợi nhuận tại các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Lợi nhuận lớn nhất đạt được là {dap_an} ngàn đồng"
+    kq4_F=f"Lợi nhuận lớn nhất đạt được là {dap_an_f} ngàn đồng " 
+    
+    HDG=f"Lợi nhuận lớn nhất đạt được là $F({phan_so(best_point[x])},{phan_so(best_point[y])})={dap_an}$ ngàn đồng."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C2_B2_25]-TF-M3. Sản xuất áo và quần. Xét Đ-S: hệ điều kiện, lợi nhuận max
+def bch_12_L10_C2_B2_25():
+    x,y=symbols("x y")
+    chon=random.randint(1,4)
+    chon=2
+    
+    if chon==2:
+        X = "áo sơ mi nam"
+        Y = "quần tây nữ"
+        A = "cắt vải CNC"
+        B = "may công nghiệp"
+
+    if chon==3:
+        X = "khung xe đạp"
+        Y = "tay lái xe máy"
+        A = "hàn tự động"
+        B = "phay CNC"
+
+    if chon==4:
+        X = "bình hoa sứ"
+        Y = "tô sứ cao cấp"
+        A = "tạo hình khuôn"
+        B = "nung điện công nghiệp"
+
+
+
+    while True:
+        while True:
+            m=random.randint(80,120)
+            n=random.randint(80,120)
+            if m!=n:
+                break
+
+        #Hệ số thời gian cho máy A
+        a1=random.randint(1,5)
+        b1=random.randint(1,4)
+        c1=random.randint(8,12)
+
+        #Hệ số thời gian cho máy B
+        a2=random.randint(1,4)
+        b2=random.randint(1,4)
+        c2=random.randint(8,12)
+
+        x_1, x_2 = c1/a1, c2/a2
+        y_1, y_2 = c1/b1, c2/b2
+
+        if a1*b2-a2*b1==0:
+            continue
+
+        #Giải hệ giao điểm 
+        eq1=Eq(a1*x + b1*y , c1)
+        eq2=Eq(a2*x + b2*y , c2)
+        sol = solve((eq1, eq2), (x, y))
+        if sol:
+            x_0, y_0 = sol[x], sol[y]
+
+        constraints = [
+            a1*x + b1*y - c1 <= 0,
+            a2*x + b2*y - c2 <= 0,
+            x >= 0,
+            y >= 0
+        ]
+
+        # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+        lines = [
+            Eq(a1*x + b1*y , c1),
+            Eq(a2*x + b2*y , c2),
+            Eq(x, 0),
+            Eq(y, 0)
+        ]
+
+        # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+        from itertools import combinations
+
+        vertices = []
+        for eq1, eq2 in combinations(lines, 2):
+            sol = solve((eq1, eq2), (x, y), dict=True)
+            if sol:
+                pt = sol[0]
+                # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+                if all(ineq.subs(pt) for ineq in constraints):
+                    vertices.append(pt)
+
+        # Tính giá trị hàm mục tiêu tại các đỉnh
+        best_Z = -float('inf')
+        best_point = None
+
+        for pt in vertices:
+            Z = m * pt[x] + n * pt[y]
+            if Z > best_Z:
+                best_Z = Z
+                best_point = pt
+
+        if all([x_2 > x_1, y_1>y_2, c1%a1==0, c2%a2==0, c1%b1==0, c2%b2==0, x_0.is_integer, y_0.is_integer]):
+            break
+
+    f1=a1*x+b1*y-c1
+    f2=a2*x+b2*y-c2
+    hedk=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a1*x+b1*y)}\\le {c1} \\\\ \n\
+    {latex(a2*x+b2*y)}\\le {c2} \\\\ \n\
+    x \\ge 0 \\\\ \n\
+    y \\ge 0 \n\
+    \\end{{array}} \\right."
+    # Ràng buộc dưới dạng bất phương trình
+    constraints = [
+        a1*x + b1*y - c1 <= 0,
+        a2*x + b2*y - c2 <= 0,
+        x >= 0,
+        y >= 0
+    ]
+
+    # Các đường biên để tìm giao điểm (dưới dạng phương trình)
+    lines = [
+        Eq(a1*x + b1*y , c1),
+        Eq(a2*x + b2*y , c2),
+        Eq(x, 0),
+        Eq(y, 0)
+    ]
+
+    # Tìm tất cả giao điểm 2-2 của các đường để xét đỉnh miền nghiệm
+    from itertools import combinations
+
+    vertices = []
+    for eq1, eq2 in combinations(lines, 2):
+        sol = solve((eq1, eq2), (x, y), dict=True)
+        if sol:
+            pt = sol[0]
+            # Kiểm tra điểm có thỏa mãn tất cả ràng buộc không
+            if all(ineq.subs(pt) for ineq in constraints):
+                vertices.append(pt)
+
+    # Tính giá trị hàm mục tiêu tại các đỉnh
+    best_Z = -float('inf')
+    best_point = None
+
+    for pt in vertices:
+        Z = m * pt[x] + n * pt[y]
+        if Z > best_Z:
+            best_Z = Z
+            best_point = pt
+
+    
+
+    # Kết quả
+    st=""
+    for pt in vertices:
+        st+=f"$T({phan_so(pt[x])}, {phan_so(pt[y])}) = {phan_so(m*pt[x] + n*pt[y])}$\n\n"
+
+
+    t=best_Z .is_integer
+    if t:
+        dap_an=best_Z
+        dap_an_f=best_Z+random.randint(1,5)
+    else:
+        dap_an=f"{round_half_up(best_Z,1):.1f}".replace(".",",")
+        dap_an_f=f"{round_half_up(best_Z+random.randint(1,5),1):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Một công ty may mặc có hai loại máy là máy {A} và máy {B} để sản xuất hai loại sản phẩm {X} và {Y}."
+    f" Để sản xuất 1 cái {X} cần dùng máy {A} trong {a1} giờ và dùng máy {B} trong {a2} giờ."
+    f" Để sản xuất 1 cái {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
+    f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
+    f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
+    f" Một cái {X} lãi {m} ngàn đồng và một cái {Y} lãi {n} ngàn đồng."
+    f" Gọi $x$, $y$ lần lượt là số cái {X} và {Y} cần sản xuất."
+    f" Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"* ${latex(a1*x + b1*y - c1)} \\le 0$" 
+    kq1_F=f"${latex(a1*x + b1*y - c1)} \\ge 0$"
+    
+    HDG=f"Thời gian để máy {A} làm việc: ${latex(a1*x + b1*y - c1)} \\le 0$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* ${latex(a2*x + b2*y - c2)} \\le 0$"
+    kq2_F=f"${latex(a2*x + b2*y - c2)} \\ge 0$"
+    
+    HDG=f"Thời gian để máy {B} làm việc: ${latex(a2*x + b2*y - c2)} \\le 0$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Với $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$ thì lợi nhuận thu được là lớn nhất" 
+    kq3_F=f"Với $x = {phan_so(best_point[x]+random.randint(1,2))}, y = {phan_so(best_point[y]+random.randint(1,2))}$ thì lợi nhuận thu được là lớn nhất"
+    
+    HDG=(f"Gọi ${{x}}$, ${{y}}$ lần lượt là số cái {X} và {Y} cần sản xuất ($ x,y\\ge 0 $).\n\n"
+    f"Thời gian để máy {A} làm việc: ${latex(a1*x+b1*y)} \\le {c1}$.\n\n"
+    f"Thời gian để máy {B} làm việc: ${latex(a2*x+b2*y)} \\le {c2}$.\n\n"
+    f"Ta có hệ điều kiện:\n\n"
+    f"${hedk}$.\n\n"
+    f"Lợi nhuận thu được: $T={latex(m*x+n*y)}$.\n\n"
+    f" Lợi nhuận tại các đỉnh của miền nghiệm:\n\n {st}\n\n"
+    f" Điểm thỏa mãn lợi nhuận lớn nhất:  $x = {phan_so(best_point[x])}, y = {phan_so(best_point[y])}$\n\n")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Lợi nhuận lớn nhất đạt được là {dap_an} ngàn đồng"
+    kq4_F=f"Lợi nhuận lớn nhất đạt được là {dap_an_f} ngàn đồng " 
+    
+    HDG=f"Lợi nhuận lớn nhất đạt được là $F({phan_so(best_point[x])},{phan_so(best_point[y])})={dap_an}$ ngàn đồng."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C2_B2_26]-SA-M2. Cho miền đa giác. Tìm giá trị lớn nhất hoặc nhỏ nhất.
+def bch_12_L10_C2_B2_26():
+    x,y=sp.symbols("x y")
+    while True:
+        x_A,x_B,x_C,x_D=[random.randint(-5,5) for _ in range(4)]
+        y_A,y_B,y_C,y_D=[random.randint(-5,5) for _ in range(4)]
+        if all([x_A<x_B<x_C<x_D,y_B<y_A<=y_D<y_C]):
+            break
+    x_min,x_max=min(x_A,x_B,x_C,x_D)-1,max(x_A,x_B,x_C,x_D)+1
+    y_min,y_max=min(y_A,y_B,y_C,y_D)-1,max(y_A,y_B,y_C,y_D)+1
+    if x_min>=0:
+        x_min=-1
+    if y_min>=0:
+        y_min=-1
+    m,n=random.sample([i for i in range(-5,6) if i!=0],2)
+    f=m*x+n*y
+    F_A=f.subs({x:x_A, y:y_A})
+    F_B=f.subs({x:x_B, y:y_B})
+    F_C=f.subs({x:x_C, y:y_C})
+    F_D=f.subs({x:x_D, y:y_D})
+    max_F=max(F_A,F_B,F_C,F_D)
+    min_F=min(F_A,F_B,F_C,F_D)
+    so_truc_x=tao_chuoi_so_nguyen(int(x_min), int(x_max))
+    so_truc_y=tao_chuoi_so_nguyen(int(y_min), int(y_max) )
+
+    code_hinh=(
+
+    f" \\begin{{tikzpicture}}[scale=1]\n\
+    % Vẽ lưới\n\
+    \\draw [gray!50,thin] ({x_min},{y_min}) grid ({x_max},{y_max});\n\
+    % Vẽ trục tọa độ\n\
+    \\draw[->,thick] ({x_min},0) -- ({x_max},0) node[below] {{$x$}};\n\
+    \\draw[->,thick] (0,{y_min}) -- (0,{y_max}) node[left] {{$y$}};\n\
+    \n\
+    % Đặt tên gốc O\n\
+    \\node[below left] at (0,0) {{$O$}};\n\
+    \n\
+    % Đánh số trên trục x\n\
+    \\foreach \\x in {{{so_truc_x}}}\n\
+    \\node[below] at (\\x,0) {{\\x}};\n\
+    \n\
+    % Đánh số trên trục y\n\
+    \\foreach \\y in {{{so_truc_y}}}\n\
+    \\node[left] at (0,\\y) {{\\y}};\n\
+    \n\
+    % Vẽ và tô miền đa giác\n\
+    \\filldraw[pattern=north east lines,pattern color=blue,draw=black,thick] \n\
+    ({x_A},{y_A}) -- ({x_B},{y_B}) -- ({x_D},{y_D})-- ({x_C},{y_C}) -- cycle;\n\
+    \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    chon=random.randint(1,2)
+    if chon==1:
+        noi_dung = (
+        f"Tìm giá trị lớn nhất của biểu thức $F={latex(m*x+n*y)}$ với $(x;y)$ là các điểm thuộc miền tứ giác như hình vẽ.")
+        dap_an=max_F
+
+        noi_dung_loigiai=(
+        f"$F({x_A};{y_A})={F_A},F({x_B};{y_B})={F_B},F({x_C};{y_C})={F_C},F({x_D};{y_D})={F_D}$.\n\n"
+        f"Giá trị lớn nhất là ${{{max_F}}}$.")  
+    
+    if chon==2:
+        noi_dung = (
+        f"Tìm giá trị nhỏ nhất của biểu thức $F={latex(m*x+n*y)}$ với $(x;y)$ là các điểm thuộc miền tứ giác như hình vẽ.")
+        dap_an=max_F
+
+        noi_dung_loigiai=(
+        f"$F({x_A};{y_A})={F_A},F({x_B};{y_B})={F_B},F({x_C};{y_C})={F_C},F({x_D};{y_D})={F_D}$.\n\n"
+        f"Giá trị nhỏ nhất là ${{{max_F}}}$.")  
+
+  
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C2_B2_27]-M2. Cho miền đa giác. Tìm khẳng định đúng về F(x;y)
+def bch_12_L10_C2_B2_27():
+    x,y=sp.symbols("x y")
+    while True:
+        x_A,x_B,x_C,x_D=[random.randint(-4,5) for _ in range(4)]
+        y_A,y_B,y_C,y_D=[random.randint(-4,5) for _ in range(4)]
+        if all([x_A<x_B<x_D<x_C,y_B<y_A<y_C<y_D]):
+            break
+    x_min,x_max=min(x_A,x_B,x_C,x_D)-1,max(x_A,x_B,x_C,x_D)+1
+    y_min,y_max=min(y_A,y_B,y_C,y_D)-1,max(y_A,y_B,y_C,y_D)+1
+    if x_min>=0:
+        x_min=-1
+    if y_min>=0:
+        y_min=-1
+    m,n=random.sample([i for i in range(-5,6) if i!=0],2)
+    f=m*x+n*y
+    F_A=f.subs({x:x_A, y:y_A})
+    F_B=f.subs({x:x_B, y:y_B})
+    F_C=f.subs({x:x_C, y:y_C})
+    F_D=f.subs({x:x_D, y:y_D})
+    max_F=max(F_A,F_B,F_C,F_D)
+    min_F=min(F_A,F_B,F_C,F_D)
+    so_truc_x=tao_chuoi_so_nguyen(int(x_min), int(x_max))
+    so_truc_y=tao_chuoi_so_nguyen(int(y_min), int(y_max) )
+
+    code_hinh=(
+
+    f" \\begin{{tikzpicture}}[scale=1]\n\
+    % Vẽ lưới\n\
+    \\draw [gray!50,thin] ({x_min},{y_min}) grid ({x_max},{y_max});\n\
+    % Vẽ trục tọa độ\n\
+    \\draw[->,thick] ({x_min},0) -- ({x_max},0) node[below] {{$x$}};\n\
+    \\draw[->,thick] (0,{y_min}) -- (0,{y_max}) node[left] {{$y$}};\n\
+    \n\
+    % Đặt tên gốc O\n\
+    \\node[below left] at (0,0) {{$O$}};\n\
+    \n\
+    % Đánh số trên trục x\n\
+    \\foreach \\x in {{{so_truc_x}}}\n\
+    \\node[below] at (\\x,0) {{\\x}};\n\
+    \n\
+    % Đánh số trên trục y\n\
+    \\foreach \\y in {{{so_truc_y}}}\n\
+    \\node[left] at (0,\\y) {{\\y}};\n\
+    \n\
+    % Vẽ và tô miền đa giác\n\
+    %\\filldraw[pattern=north east lines,pattern color=blue,draw=black,thick] \n\
+    \\draw[-, very thick, color=blue]({x_A},{y_A}) -- ({x_B},{y_B}) -- ({x_C},{y_C})-- ({x_D},{y_D}) -- cycle;\n\
+    \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)   
+    #file_name=""
+    
+
+    noi_dung = (
+    f"Cho biểu thức $F={latex(m*x+n*y)}$ với $(x;y)$ là các điểm thuộc miền trong hình tứ giác như hình vẽ."
+    f" Tìm khẳng định đúng.")    
+    
+
+    kq=random.choice([
+        f"$F({x_A};{y_A})={F_A}$",
+        f"$F({x_B};{y_B})={F_B}$",
+        f"$F({x_C};{y_C})={F_C}$",
+        f"$F({x_D};{y_D})={F_D}$"
+        ])
+    kq_false=[
+    f"$F({x_A};{y_A})={F_A+random.randint(1,3)}$",
+    f"$F({x_B};{y_B})={F_B-random.randint(1,5)}$",
+    f"$F({x_C};{y_C})={F_C+random.randint(1,5)}$",
+    f"$F({x_D};{y_D})={F_D-random.randint(1,5)}$",
+    f"$F(0;0)={random.choice([random.randint(-5,-1),random.randint(1,5)])}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$F({x_A};{y_A})={F_A},F({x_B};{y_B})={F_B},F({x_C};{y_C})={F_C},F({x_D};{y_D})={F_D}$.\n\n"
+    f"{kq} là khẳng định đúng.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C2_B2_28]-M2. Tìm nghiệm của hệ ax+by+c>0, x>a, y<b
+def bch_12_L10_C2_B2_28():
+    x,y=sp.symbols("x y")
+    while True:
+        a=random.choice([i for i in range(-4,6) if i!=0  ])
+        b=random.choice([i for i in range(-4,6) if i!=0])
+        c=random.choice([i for i in range(-6,-1) if i!=0  ])
+        x_1, y_1=-c/a,-c/b
+        x_2=int(x_1)+random.randint(5,9)
+        y_3=int(y_1)+random.randint(5,9)
+        if all([x_1>0,y_1>0]):
+            break
+    #Tìm cặp nghiệm
+    while  True:
+        x_0=random.randint(0,9)
+        y_0=random.randint(0,9)
+        if all([a*x_0+b*y_0+c>=0,x_0>=x_2, y_0<=y_3]):
+            break
+    
+    #Tìm cặp không là nghiệm
+    no_sol = []
+    while len(no_sol) < 6:
+        # chọn ngẫu nhiên x,y trong khoảng [-10, 20] cho đa dạng
+        m = random.randint(-10, 20)
+        n = random.randint(-10, 20)
+        if any([a*m+b*n+c<0,m<x_2, n>y_3]):  # không thỏa mãn hệ        
+            no_sol.append((m, n))
+
+    f=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    {latex(a*x+b*y+c)} \\ge 0\\\\ \n\
+    x\\ge {x_2}\\\\ \n\
+    y \\le {y_3}\n\
+    \\end{{array}} \\right."
+
+    noi_dung=(
+    f"Cặp số nào sau đây là nghiệm của hệ bất phương trình ${f}$?"
+    )
+    
+
+    kq=random.choice([f"$({x_0};{y_0})$"])
+    kq_false= no_sol
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$({x_0};{y_0})$ thỏa mãn hệ bất phương trình đã cho."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C2_B2_29]-M2. Tính diện tích miền nghiệm của hệ ax+by+c>=0, x>=0, y>=0.
+def bch_12_L10_C2_B2_29():
+    x,y=sp.symbols("x y")
+    while True:
+        a=random.choice([i for i in range(-6,10) if i!=0  ])
+        b=random.choice([i for i in range(-6,10) if i!=0])
+        c=random.choice([i for i in range(-50,30) if i!=0  ])
+        x_1, y_1=-c/a,-c/b
+        if all([x_1>0,y_1>0,c>0,c%a==0,c%b==0]):
+            break
+    chon=random.randint(1,3)
+    if chon==1:
+        f=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(a*x+b*y+c)} \\ge 0\\\\ \n\
+        x\\ge 0\\\\ \n\
+        y \\ge 0\n\
+        \\end{{array}} \\right."
+    
+    if chon==2:    
+        f=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(a*x+b*y)} \\ge {-c}\\\\ \n\
+        x\\ge 0\\\\ \n\
+        y \\ge 0\n\
+        \\end{{array}} \\right."
+
+    if chon==3:    
+        f=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(-a*x-b*y-c)} \\le 0\\\\ \n\
+        x\\ge 0\\\\ \n\
+        y \\ge 0\n\
+        \\end{{array}} \\right."
+
+    noi_dung=(
+    f"Tính diện tích miền nghiệm của hệ bất phương trình sau\n\n ${f}$."
+    )
+    S=1/2*x_1*y_1
+    
+
+    kq=S
+    tap_hop= [
+    x_1*y_1,
+    x_1+y_1,
+    2*x_1*y_1,   
+    random.randint(10,60)
+    ]
+    kq_false=random.sample(tap_hop, 4)
+    kq2,kq3,kq4=kq_false[0:3]
+    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+    kq2=pa_kotrung[1]
+    kq3=pa_kotrung[2]
+    kq4=pa_kotrung[3]
+
+    noi_dung_loigiai=(
+    f"Miền nghiệm của hệ bất phương trình là tam giác ${{OAB}}$ với $A({phan_so(x_1)};0), B(0;{phan_so(y_1)})$.\n\n"
+    f" Diện tích tam giác ${{OAB}}$ là: $S={phan_so(1/2)}.{phan_so(x_1)}.{phan_so(y_1)}={phan_so(S)}$."
+    )
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
