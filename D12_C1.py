@@ -6742,7 +6742,7 @@ def prt_34_L12_C1_B2_17():
 		
 		code_hinh=code_bbt_phanthucbac2(a,0,b,1,0)
 		code = my_module.moi_truong_anh_latex(code_hinh)
-		file_name=my_module.pdftoimage_timename(code)
+		#file_name=my_module.pdftoimage_timename(code)
 
 		chon=random.randint(1,2)		
 		if chon==1:		
@@ -6762,7 +6762,6 @@ def prt_34_L12_C1_B2_17():
 			f"$y'={latex(a-b**2/x**2)}=\\dfrac{{{latex(a*x**2-b)}}}{{x^2}}$.\n\n"\
 			f"$y'=0 \\Leftrightarrow {latex(a*x**2-b)}=0 \\Leftrightarrow x_1=-{latex(nsimplify(sqrt(b/a)))}, x_2={latex(nsimplify(sqrt(b/a)))}$.\n\n"\
 			f"Bảng biến thiên:\n\n"\
-			f"{file_name}\n\n"\
 			f"$\\mathop{{\\min}}\\limits_{{{kihieu}}} {{y}}=y\\left({latex(nsimplify(sqrt(b/a)))} \\right)={latex(y_2)}={kq}$.\n\n"
 
 			
@@ -6770,7 +6769,6 @@ def prt_34_L12_C1_B2_17():
 			f"$y'={latex(a-b**2/x**2)}=\\dfrac{{{latex(a*x**2-b)}}}{{x^2}}$.\n\n"\
 			f"$y'=0 \\Leftrightarrow {latex(a*x**2-b)}=0 \\Leftrightarrow x_1=-{latex(nsimplify(sqrt(b/a)))}, x_2={latex(nsimplify(sqrt(b/a)))}$.\n\n"\
 			f"Bảng biến thiên:\n\n"\
-			f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 			f"$\\mathop{{\\min}}\\limits_{{{kihieu}}} {{y}}=y\\left({latex(nsimplify(sqrt(b/a)))} \\right)={latex(y_2)}={kq}$.\n\n"
 
 
@@ -6791,14 +6789,12 @@ def prt_34_L12_C1_B2_17():
 			f"$y'={latex(a-b**2/x**2)}=\\dfrac{{{latex(a*x**2-b)}}}{{x^2}}$.\n\n"\
 			f"$y'=0 \\Leftrightarrow {latex(a*x**2-b)}=0 \\Leftrightarrow x_1=-{latex(nsimplify(sqrt(b/a)))}, x_2={latex(nsimplify(sqrt(b/a)))}$.\n\n"\
 			f"Bảng biến thiên:\n\n"\
-			f"{file_name}\n\n"\
 			f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left(-{latex(nsimplify(sqrt(b/a)))} \\right)={latex(y_1)}={kq}$.\n\n"
 
 			noi_dung_loigiai_latex=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{0\\}}$.\n\n"\
 			f"$y'={latex(a-b**2/x**2)}=\\dfrac{{{latex(a*x**2-b)}}}{{x^2}}$.\n\n"\
 			f"$y'=0 \\Leftrightarrow {latex(a*x**2-b)}=0 \\Leftrightarrow x_1=-{latex(nsimplify(sqrt(b/a)))}, x_2={latex(nsimplify(sqrt(b/a)))}$.\n\n"\
 			f"Bảng biến thiên:\n\n"\
-			f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 			f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left(-{latex(nsimplify(sqrt(b/a)))} \\right)={latex(y_1)}={kq}$.\n\n"
 
 		latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
@@ -6838,7 +6834,7 @@ def prt_34_L12_C1_B2_17():
 		\\tkzTabVar{{-/$-\\infty$,+/${phan_so(y_1)}$,-D+/$-\\infty$/$+\\infty$,-/${phan_so(y_2)}$,+/$+\\infty$}}\n\
 		    \\end{{tikzpicture}}\n"
 			code = my_module.moi_truong_anh_latex(code_hinh)
-			file_name=my_module.pdftoimage_timename(code)
+			#file_name=my_module.pdftoimage_timename(code)
 
 			chon=random.randint(1,2)
 			if chon==1:		
@@ -6858,14 +6854,12 @@ def prt_34_L12_C1_B2_17():
 				f"$y'={latex(a*g)}$.\n\n"\
 				f"$y'=0 \\Leftrightarrow x={x_1}, x={x_2}$.\n\n"\
 				f"Bảng biến thiên:\n\n"\
-				f"{file_name}\n"\
 				f"$\\mathop{{\\min}}\\limits_{{{kihieu}}} {{y}}=y\\left({x_2} \\right)={latex(y_2)}={kq}$."
 
 				noi_dung_loigiai_latex=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{{x_0}\\}}$.\n\n"\
 				f"$y'={latex(a*g)}$.\n\n"\
 				f"$y'=0 \\Leftrightarrow x={x_1}, x={x_2}$.\n\n"\
 				f"Bảng biến thiên:\n\n"\
-				f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 				f"$\\mathop{{\\min}}\\limits_{{{kihieu}}} {{y}}=y\\left({x_2} \\right)={latex(y_2)}={kq}$."
 
 			if chon==2:
@@ -6885,14 +6879,12 @@ def prt_34_L12_C1_B2_17():
 				f"$y'={latex(a*g)}$.\n\n"\
 				f"$y'=0 \\Leftrightarrow x={x_1}, x={x_2}$.\n\n"\
 				f"Bảng biến thiên:\n\n"\
-				f"{file_name}\n"\
 				f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left({x_1} \\right)={latex(y_1)}$.\n\n"
 
 				noi_dung_loigiai_latex=f"Tập xác định: $D=\\mathbb{{R}}\\backslash \\{{{x_0}\\}}$.\n\n"\
 				f"$y'={latex(a*g)}$.\n\n"\
 				f"$y'=0 \\Leftrightarrow x={x_1}, x={x_2}$.\n\n"\
 				f"Bảng biến thiên:\n\n"\
-				f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
 				f"$\\mathop{{\\max}}\\limits_{{{kihieu}}} {{y}}=y\\left({x_1} \\right)={latex(y_1)}$.\n\n"
 			latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
 	f"\\shortans[4]{{{kq}}}\n\n"\

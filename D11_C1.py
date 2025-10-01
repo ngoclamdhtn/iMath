@@ -5301,7 +5301,7 @@ def ngh_kjg_L11_C1_B4_08():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C1_B4_09]-TF-M2. Tìm chu kì tuần hoàn của HSLG
+#[D11_C1_B4_09]-M2. Tìm chu kì tuần hoàn của HSLG
 def ngh_kjg_L11_C1_B4_09():
     x=sp.symbols("x")
     a= random.choice([i for i in range(-10, 10) if i!=0])
@@ -5337,12 +5337,8 @@ def ngh_kjg_L11_C1_B4_09():
         kq=f"{latex(pi/(abs(m)))}"
         kq2=f"{latex(2*pi/(abs(m)))}"
         kq3=f"{latex(2*pi*(abs(m)))}"
-        kq4=f"{latex(pi*(abs(m)))}"
+        kq4=f"{latex(pi*(abs(m)))}"   
     
-    
-
-    
-
     pa_A= f"*${kq}$"
     pa_B= f"${kq2}$"
     pa_C= f"${kq3}$"

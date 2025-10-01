@@ -4531,16 +4531,16 @@ def bch_12_L10_C2_B2_28():
     while  True:
         x_0=random.randint(0,9)
         y_0=random.randint(0,9)
-        if all([a*x_0+b*y_0+c>=0,x_0>=x_2, y_0<=y_3]):
+        if all([a*x_0+b*y_0+c>=0,x_0<=x_2, y_0<=y_3]):
             break
     
     #Tìm cặp không là nghiệm
     no_sol = []
-    while len(no_sol) < 6:
+    while len(no_sol) < 4:
         # chọn ngẫu nhiên x,y trong khoảng [-10, 20] cho đa dạng
         m = random.randint(-10, 20)
         n = random.randint(-10, 20)
-        if any([a*m+b*n+c<0,m<x_2, n>y_3]):  # không thỏa mãn hệ        
+        if any([a*m+b*n+c<0,m<x_1, m>x_2, n>y_3]):  # không thỏa mãn hệ        
             no_sol.append((m, n))
 
     f=f"\\left\\{{ \\begin{{array}}{{l}} \n\
