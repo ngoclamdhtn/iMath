@@ -11,7 +11,8 @@ import sympy as sp
 import my_module, license
 import D10_C1,D10_C2,D10_C3,D10_C4,D10_C5,D10_C6,D10_C7,D10_C10,D10_C8,D10_C9, D11_C1, D11_C2, D11_C3, D11_C4, D11_C5, D11_C6, D11_C7, D11_C8,D11_C9, D12_C1,D12_C2, D12_C4, D12_C3, D12_C5, D12_C6, D12_C7
 import pyperclip
-import os, shutil,re, sys, subprocess
+import os, shutil,re, sys, subprocess, glob
+from PyPDF2 import PdfMerger
 from docx import Document
 from docx.shared import Pt
 from docx.enum.table import WD_TABLE_ALIGNMENT
@@ -230,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 02.10.2025")
+                self.label.setText(f"iMath\u00A92025 ver 20.10.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -298,14 +299,14 @@ class Ui_MainWindow(object):
                 self.tab_ban_quyen_copy_ma_may.setGeometry(QtCore.QRect(520, 370, 150, 30))
                 self.tab_ban_quyen_copy_ma_may.setFont(font)
                 self.tab_ban_quyen_copy_ma_may.setObjectName("tab_ban_quyen_copy_ma_may")
-                self.tab_ban_quyen_copy_ma_may.setText("Copy mã máy")
+                self.tab_ban_quyen_copy_ma_may.setText("Lấy mã máy")
                 self.tab_ban_quyen_copy_ma_may.clicked.connect(self.copy_ma_may)
 
                 self.tab_ban_quyen_copy_old_key = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
                 self.tab_ban_quyen_copy_old_key.setGeometry(QtCore.QRect(1080, 370, 150, 30))
                 self.tab_ban_quyen_copy_old_key.setFont(font)
                 self.tab_ban_quyen_copy_old_key.setObjectName("tab_ban_quyen_copy_old_ley")
-                self.tab_ban_quyen_copy_old_key.setText("Copy old key")
+                self.tab_ban_quyen_copy_old_key.setText("Get old key")
                 self.tab_ban_quyen_copy_old_key.clicked.connect(self.copy_old_key)
 
                 #Button check update
@@ -830,34 +831,39 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 02.10.2025")
+                self.label.setText(f"iMath\u00A92025 ver 20.10.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #697DBA;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText("*Quy trình chung để tạo đề:")
+                self.label.setText("📋Hướng dẫn tạo đề:")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
-                self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+40, 800, 30))
+                self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+40, 850, 30))
                 self.label.setFont(font)        
-                self.label.setText("1. Sổ mũi tam giác phía trước, chọn vào mã dạng toán, nhập số lượng câu lấy ở tab Thiết lập ma trận.")
+                self.label.setText("\u2460 Sổ mũi tam giác phía trước, chọn vào mã dạng toán, nhập số lượng câu lấy ở tab Thiết lập ma trận.")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+80, 600, 30))
                 self.label.setFont(font)        
-                self.label.setText("2. Nhập thông tin đề ở tab Tạo đề và bấm nút Tạo đề.")
+                self.label.setText("\u2461 Nhập thông tin đề ở tab Tạo đề và bấm nút Tạo đề.")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+120, 700, 30))
                 self.label.setFont(font)        
-                self.label.setText("3. Chọn thư mục để xuất đề. Nếu muốn iMath tự đặt tên thư mục thì chọn Cancel.")
+                self.label.setText("\u2462 Chọn thư mục để xuất đề. Nếu muốn iMath tự đặt tên thư mục thì chọn Cancel.")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+160, 700, 30))
                 self.label.setFont(font)        
-                self.label.setText("4. Mở file Word. Chọn Word to PowerPoint. Chọn Xử lí câu hỏi iMath.")
+                self.label.setText("\u2463 Mở file Word. Chọn Word to PowerPoint. Chọn Xử lí câu hỏi iMath.")
+
+                self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
+                self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd+200, 700, 30))
+                self.label.setFont(font)        
+                self.label.setText('⚠️ Chú ý: Nếu xuất đề dạng Latex-PDF thì dấu "&" trong tiêu đề phải gõ là "\\&".')
 
                 #Nút tạo đề
                 style_taode_button=("""
@@ -1662,9 +1668,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B1_1, ["[D10_C2_B1_07]-M2. Tìm miền nghiệm của bất phương trình ax+by+c>0 (<0)."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                # Chờ sửa lỗi đáp án
+
+                # item = QTreeWidgetItem(L10_C2_B1_1, ["[D10_C2_B1_07]-M2. Tìm miền nghiệm của bất phương trình ax+by+c>0 (<0)."])
+                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C2_B1_1, ["[D10_C2_B1_09]-M2. Lập BPT bậc nhất 2 ẩn từ bài toán thực tế."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -1755,9 +1763,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                #Lỗi: Miền nghiệm không kín không tìm được max
+
+                # item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n."])
+                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_09]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm max F=mx+n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4884,6 +4894,10 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_12]-M2. Giải phương trình cot(ax+m)=cot(bx+n)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_23]-M2. Giải phương trình tan(ax+m)=cot(bx+n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
     
                 item = QTreeWidgetItem(L11_C1_B5_1, ["[D11_C1_B5_04]-M3. Tìm m để phương trình sin, cos có nghiệm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4911,19 +4925,23 @@ class Ui_MainWindow(object):
                 L11_C1_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C1_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_13]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của sinu=m"])
+                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_13]-SA-M3. Số nghiệm thuộc khoảng đoạn của sinu=m"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_14]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của cosu=m"])
+                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_14]-SA-M3. Số nghiệm thuộc khoảng đoạn của cosu=m"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_15]-SA-M3. Tìm số nghiệm thuộc khoảng đoạn của tanu=m"])
+                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_15]-SA-M3. Số nghiệm thuộc khoảng đoạn của tanu=m"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_21]-SA-M3. Tìm số nghiệm của  cosax - sinbx = 0"])
+                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_21]-SA-M3. Số nghiệm của  cosax - sinbx = 0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B5_3, ["[D11_C1_B5_22]-SA-M3. Số nghiệm của asin2x+bcosx=0"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5010,12 +5028,16 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_28]-M2. Tìm vị thứ của số hạng trong c.s.c"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_02]-M2. CSC có u_1 và d. Tìm S_n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
              
 
-                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_03]-M2. CSCcó u_m và u_k. Tìm u_1."])
+                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_03]-M2. CSC có u_m và u_k. Tìm u_1."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
 
@@ -5023,7 +5045,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_06]-M2. Cấp số cộng có SHTQ. Tìm d."])
+                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_06]-M2. CSC có SHTQ. Tìm d."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5031,7 +5053,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_08]-M2. Nhận dạng dãy các số hữu hạn là cấp số cộng"])
+                item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_08]-M2. Nhận dạng dãy hữu hạn là cấp số cộng"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5063,11 +5085,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_25]-SA-M2. CSC có au_m+bu_n=c, pu_i+qu_j=r. Tính u_1+d"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_26]-SA-M3. CSC có au_m+bu_n=c, pu_i+qu_j=r. Tính S_n"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_13]-SA-M3. CSC có u_k,u_m. Tính S_n"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_29]-SA-M3. Cho biểu thức S_n. Tìm u_k."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_14]-SA-M3. CSC có u_m+u_n=S. Tính u_p+u_q"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_24]-SA-M3. CSC có u_1 và d. Tính u_m+...+u_k"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5079,7 +5117,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_18]-SA-M2. Tính số vật khi xếp chồng và giảm dần theo cấp số cộng"])
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_18]-SA-M2. Tính số vật khi xếp chồng và giảm dần theo c.s.c"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5087,11 +5125,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_19]-SA-M3. Tính số hàng khi xếp đồ vật và giảm dần theo cấp số cộng"])
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_19]-SA-M3. Tính số hàng khi xếp đồ vật và giảm dần theo c.s.c"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_20]-SA-M3. Tính số hàng khi xếp đồ vật và tăng dần theo cấp số cộng"])
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_20]-SA-M3. Tính số hàng khi xếp đồ vật và tăng dần theo c.s.c"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_27]-SA-M3. Tìm tam giác vuông có 3 cạnh lập thành c.s.c"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_30]-SA-M3. Tính tổng tiền chi của công ty sau n năm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7563,7 +7609,7 @@ class Ui_MainWindow(object):
 
 
 
-                # BÀI 3: ĐƯỜNG TIỆM CẬN                    
+                # BÀI 3: ĐƯỜNG t.cận                    
 
                 L12_C1_B3 = QTreeWidgetItem(L12_C1, ["Bài 3 - Đường tiệm cận"])
                 L12_C1_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7573,35 +7619,51 @@ class Ui_MainWindow(object):
                 L12_C1_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_01]-M2. Tìm đường tiệm cận của đồ thị y=(ax+b)/(cx+d)"])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_19]-M1. Tìm tiệm cận ngang của đồ thị y=(ax+b)/(cx+d)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_03]-M1. Tìm đường tiệm cận đứng của đồ thị y=(ax^2+bx+c)/(dx+e)"])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_20]-M2. Tìm tiệm cận ngang của đồ thị y=(ax^2+bx+c)/(dx^2+e)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_04]-M2. Tìm đường tiệm cận xiên của đồ thị y=(ax^2+bx+c)/(dx+e)"])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_21]-M2. Tìm tiệm cận ngang của đồ thị y=sqrt(ax^2+bx+c)/(dx+e)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_05]-M2. Tìm số đường tiệm cận đứng của đồ thị hàm số khác"])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_01]-M2. Tìm tiệm cận của đồ thị y=(ax+b)/(cx+d)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_06]-M2. Tìm số đường tiệm cận của đồ thị hàm số khác"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_07]-M2. Tìm đường tiệm cận từ giới hạn"])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_03]-M1. Tìm tiệm cận đứng của đồ thị y=(ax^2+bx+c)/(dx+e)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_02]-M2. Cho BBT tìm số đường tiệm cận."])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_05]-M2. Tìm số tiệm cận đứng của đồ thị hàm số khác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_14]-M2. Cho đường tiệm cận xiên. Tìm khẳng định đúng."])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_06]-M2. Tìm số tiệm cận của đồ thị hàm số khác"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_07]-M2. Tìm tiệm cận từ giới hạn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_02]-M2. Cho BBT tìm số tiệm cận."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_16]-M2. Đọc tiệm cận từ đồ thị hàm số y=(ax+b)/(cx+d)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_04]-M2. Tìm tiệm cận xiên của đồ thị y=(ax^2+bx+c)/(dx+e)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_14]-M2. Cho tiệm cận xiên. Tìm khẳng định đúng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7609,23 +7671,21 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_16]-M2. Đọc đường tiệm cận từ đồ thị hàm số y=(ax+b)/(cx+d)"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                
 
                 L12_C1_B3_2 = QTreeWidgetItem(L12_C1_B3, ["Đúng-Sai"])
                 L12_C1_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_08]-TF-M2. Cho y=(ax+b)/(cx+d). Xét Đ-S: lim, tiệm cận đứng, tiệm cận ngang"])
+                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_08]-TF-M2. Cho y=(ax+b)/(cx+d). Xét Đ-S: lim, t.cận đứng, t.cận ngang"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_09]-TF-M2. Cho y=(ax^2+bx+c)/(dx+e). Xét Đ-S: lim, tiệm cận đứng, tiệm cận xiên"])
+                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_09]-TF-M2. Cho y=(ax^2+bx+c)/(dx+e). Xét Đ-S: lim, t.cận đứng, t.cận xiên"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_17]-TF-M2. Cho y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y',y'=0, tiệm cận đứng, tiệm cận xiên"])
+                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_17]-TF-M2. Cho y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y',y'=0, t.cận đứng, t.cận xiên"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7633,7 +7693,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_12]-TF-M3. Cho hàm số y=(ax+b)/(cx+d). Xét Đ-S: TCĐ, TCN, giao điểm của TC, HCN tạo bởi 2 tiệm cận"])
+                item = QTreeWidgetItem(L12_C1_B3_2, ["[D12_C1_B3_12]-TF-M3. Cho hàm số y=(ax+b)/(cx+d). Xét Đ-S: TCĐ, TCN, giao điểm của TC, HCN tạo bởi 2 t.cận"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7645,7 +7705,7 @@ class Ui_MainWindow(object):
                 L12_C1_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_3, ["[D12_C1_B3_10]-SA-M3. Tìm m để y=(ax+b)/(cx+d) có tiệm cận"])
+                item = QTreeWidgetItem(L12_C1_B3_3, ["[D12_C1_B3_10]-SA-M3. Tìm m để y=(ax+b)/(cx+d) có t.cận"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8000,6 +8060,10 @@ class Ui_MainWindow(object):
                 L12_C2_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C2_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B1_3, ["[D12_C2_B1_20]-SA-M2.  Tính độ lớn lực hấp dẫn tác động lên một vật."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C2_B1_3, ["[D12_C2_B1_09]-SA-M3. Cho 3 lực đôi một vuông góc. Tính tổng hợp lực."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8185,6 +8249,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_38]-TF-M2. Cho rađa và máy bay. Xét Đ-S: Vị trí máy bay, vị trí ra đa, k.c từ máy bay đến rađa, khả năng phát hiện máy bay"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_39]-TF-M2. Cho 2 khinh khí cầu A,B. Xét Đ-S: Vị trí, Khoảng cách từ O đến A(B), Khoảng cách AB"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_28]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài, tọa độ vectơ, R, S."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8209,9 +8281,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_38]-TF-M2. Cho rađa và máy bay. Xét Đ-S: Vị trí máy bay, vị trí ra đa, k.c từ máy bay đến rađa, khả năng phát hiện máy bay"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
                 L12_C2_B3_3 = QTreeWidgetItem(L12_C2_B3, ["Trả lời ngắn"])
                 L12_C2_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8241,15 +8311,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_40]-SA-M3. Tìm tâm đường tròn ngoại tiếp tam giác vuông"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_23]-SA-M3. Bài toán liên quan trung điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_30]-SA-M3. Cho tọa độ 2 vị trí. Tìm tọa độ của máy bay sau một khoảng thời gian"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_30]-SA-M3. Cho tọa độ 2 vị trí. Tìm tọa độ của máy bay sau một khoảng thời gian"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9910,7 +9984,8 @@ class Ui_MainWindow(object):
                         while len(unique_digits_set) < self.spin_soluong_de.value():
                             digit = random.randint(11, 99)  
                             unique_digits_set.add(digit)
-                        t_random=list(unique_digits_set)                            
+                        t_random=list(unique_digits_set)
+
                         #begin
                         code_bang_dap_an=""
                         list_ma_de=[]
@@ -9922,8 +9997,11 @@ class Ui_MainWindow(object):
                         list_dapan_word=[]
                         chuoi_QR="{"
                         chuoi_QR_QM="["
+                        chuoi_dapan_all=[]
+                        
 
                         for j in range(self.spin_soluong_de.value()):
+                            chuoi_dapan_one=[]
                             self.text_taode.setText("")
                             self.text_taode_HDG.setText("")
 
@@ -9971,6 +10049,7 @@ class Ui_MainWindow(object):
                             #Tao_qrcode
                             chuoi_QR+=f'"{name_de}":"'
                             chuoi_QR_QM+=f'["{name_de}",'
+                            chuoi_dapan_one.append(name_de)
                                                     
                             socau_daxuli=0
                             self.label_dangxuli.setText("Chương trình đang xử lý. Vui lòng đợi...")                                        
@@ -10311,44 +10390,44 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B2_24()
                                                 
 
-                                    #Bài 3. ĐƯỜNG TIỆM CẬN
-                                            #[D12_C1_B3_01]. Đọc đường tiệm cận của đồ thị hàm số y=(ax+b)/(cx+d)
+                                    #Bài 3. ĐƯỜNG t.cận
+                                            #[D12_C1_B3_01]. Đọc đường t.cận của đồ thị hàm số y=(ax+b)/(cx+d)
                                             if dang_toan == "[D12_C1_B3_01]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_01()                                     
 
-                                            #[D12_C1_B3_02]. Cho bảng biến thiên. Đọc số đường tiệm cận
+                                            #[D12_C1_B3_02]. Cho bảng biến thiên. Đọc số đường t.cận
                                             if dang_toan == "[D12_C1_B3_02]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_02()
 
-                                            #[D12_C1_B3_03]-M1. Đọc đường tiệm cận đứng của đồ thị hàm số y=(ax^2+bx+c)/(dx+e)
+                                            #[D12_C1_B3_03]-M1. Đọc đường t.cận đứng của đồ thị hàm số y=(ax^2+bx+c)/(dx+e)
                                             if dang_toan == "[D12_C1_B3_03]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_03()
 
-                                            #[D12_C1_B3_04]-M2. Đọc đường tiệm cận xiên của đồ thị hàm số y=(ax^2+bx+c)/(dx+e)
+                                            #[D12_C1_B3_04]-M2. Đọc đường t.cận xiên của đồ thị hàm số y=(ax^2+bx+c)/(dx+e)
                                             if dang_toan == "[D12_C1_B3_04]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_04()                                  
                                             
-                                            #[D12_C1_B3_05]-M2. Tìm số đường tiệm cận đứng của các hàm số khác
+                                            #[D12_C1_B3_05]-M2. Tìm số đường t.cận đứng của các hàm số khác
                                             if dang_toan == "[D12_C1_B3_05]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_05()
 
-                                            #[D12_C1_B3_06]-M2. Tìm số đường tiệm cận của các hàm số khác
+                                            #[D12_C1_B3_06]-M2. Tìm số đường t.cận của các hàm số khác
                                             if dang_toan == "[D12_C1_B3_06]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_06()
 
-                                            #[D12_C1_B3_07]-M2. Tìm đường tiệm cận từ giới hạn
+                                            #[D12_C1_B3_07]-M2. Tìm đường t.cận từ giới hạn
                                             if dang_toan == "[D12_C1_B3_07]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_07()
 
-                                            #[D12_C1_B3_08]-TF-M2. Cho hàm số y=(ax+b)/(cx+d). Xét Đ-S: lim, tiệm cận đứng, tiệm cận ngang    
+                                            #[D12_C1_B3_08]-TF-M2. Cho hàm số y=(ax+b)/(cx+d). Xét Đ-S: lim, t.cận đứng, t.cận ngang    
                                             if dang_toan == "[D12_C1_B3_08]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B3_08()
 
-                                            #[D12_C1_B3_09]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: lim, tiệm cận đứng, tiệm cận ngang    
+                                            #[D12_C1_B3_09]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: lim, t.cận đứng, t.cận ngang    
                                             if dang_toan == "[D12_C1_B3_09]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B3_09()
 
-                                            #[D12_C1_B3_10]-M3. Tìm m để y=(ax+b)/(cx+d) có tiệm cận 
+                                            #[D12_C1_B3_10]-M3. Tìm m để y=(ax+b)/(cx+d) có t.cận 
                                             if dang_toan == "[D12_C1_B3_10]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B3_10()
 
@@ -10356,7 +10435,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B3_11]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B3_11()
 
-                                            #[D12_C1_B3_12]-TF-M2. Cho hàm số y=(ax+b)/(cx+d). Xét Đ-S: TCĐ, TCN, giao điểm của TC, HCN tạo bởi 2 tiệm cận   
+                                            #[D12_C1_B3_12]-TF-M2. Cho hàm số y=(ax+b)/(cx+d). Xét Đ-S: TCĐ, TCN, giao điểm của TC, HCN tạo bởi 2 t.cận   
                                             if dang_toan == "[D12_C1_B3_12]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B3_12()
 
@@ -10364,25 +10443,37 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B3_13]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B3_13()
 
-                                            #[D12_C1_B3_14]-M2. Cho đường tiệm cận xiên. Tìm khẳng định đúng.
+                                            #[D12_C1_B3_14]-M2. Cho đường t.cận xiên. Tìm khẳng định đúng.
                                             if dang_toan == "[D12_C1_B3_14]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_14()
 
-                                            #[D12_C1_B3_15]-M2. Cho giới hạn. Tìm tiệm cận xiên.
+                                            #[D12_C1_B3_15]-M2. Cho giới hạn. Tìm t.cận xiên.
                                             if dang_toan == "[D12_C1_B3_15]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_15()
 
-                                            #[D12_C1_B3_16]-M2. Đọc đường tiệm cận từ đồ thị hàm số y=(ax+b)/(cx+d)
+                                            #[D12_C1_B3_16]-M2. Đọc đường t.cận từ đồ thị hàm số y=(ax+b)/(cx+d)
                                             if dang_toan == "[D12_C1_B3_16]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_16()
 
-                                            #[D12_C1_B3_17]-TF-M2. Cho y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y',y'=0, tiệm cận đứng, tiệm cận xiên 
+                                            #[D12_C1_B3_17]-TF-M2. Cho y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y',y'=0, t.cận đứng, t.cận xiên 
                                             if dang_toan == "[D12_C1_B3_17]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B3_17()
 
                                             #[D12_C1_B3_18]-SA-M2. Cho y=(ax^2+bx+c)/(dx+e) có TCX là y=ax+b. Tính ma+nb.
                                             if dang_toan == "[D12_C1_B3_18]": 
                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B3_18()
+
+                                            #[D12_C1_B3_19]-M2. Tìm tiệm cận ngang y=(ax+b)/(cx+d)
+                                            if dang_toan == "[D12_C1_B3_19]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_19()
+
+                                            #[D12_C1_B3_20]-M2. Tìm tiệm cận ngang y=(ax^2+bx+c)/(dx^2+e)
+                                            if dang_toan == "[D12_C1_B3_20]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_20()
+
+                                            #[D12_C1_B3_21]-M2. Tìm tiệm cận ngang y=sqrt(ax^2+bx+c)/(dx+e)
+                                            if dang_toan == "[D12_C1_B3_21]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_21()
 
 
 
@@ -10692,6 +10783,10 @@ class Ui_MainWindow(object):
                                             #[D12_C2_B1_19]-M2. Cho hình tứ diện đều. Tính tích vô hướng
                                             if dang_toan == "[D12_C2_B1_19]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_19()
+                                            
+                                            #[D12_C2_B1_20]-SA-M2. Tính độ lớn lực hấp dẫn tác động lên một vật
+                                            if dang_toan == "[D12_C2_B1_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B1_20()
 
                                 #------------------------Toán 12 - Chương 2 - Bài 2------------------------------------------------------------->
                                             #[D12_C2_B2_01]. Đọc tọa độ vectơ theo vectơ đơn vị i, j, k
@@ -10898,6 +10993,14 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_38]-TF-M2. Cho rađa và máy bay. Xét Đ-S: Vị trí máy bay, vị trí ra đa, k.c từ máy bay đến rađa, khả năng phát hiện máy bay.
                                             if dang_toan == "[D12_C2_B3_38]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_38()
+
+                                        #[D12_C2_B3_39]-TF-M2. Cho 2 khinh khí cầu A,B. Xét Đ-S: Vị trí, Khoảng cách từ O đến A(B), Khoảng cách AB
+                                            if dang_toan == "[D12_C2_B3_39]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_39()
+
+                                        #[D12_C2_B3_40]-SA-M3. Tìm tâm đường tròn ngoại tiếp tam giác vuông
+                                            if dang_toan == "[D12_C2_B3_40]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_40()
 
 
 
@@ -12633,6 +12736,14 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C1_B5_21]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_21()
 
+                                            #[D11_C1_B5_22]-SA-M2. Số nghiệm của asin2x+bcosx=0
+                                            if dang_toan == "[D11_C1_B5_22]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_22()
+
+                                            #[D11_C1_B5_23]-M2. Giải phương trình tan(ax+m)=cot(bx+n)
+                                            if dang_toan == "[D11_C1_B5_23]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B5_23()
+
                                             #Bài 6: Bài toán thực tế lượng giác 
 
                                             #[D11_C1_B6_01]-SA-M2. Tìm số giờ ánh sáng là lớn nhất cho bởi hàm sin
@@ -12762,6 +12873,36 @@ class Ui_MainWindow(object):
                                             #[D11_C2_B2_23]-M1. CSC có 2 số hạng liên tiếp. Tìm u tiếp theo.
                                             if dang_toan == "[D11_C2_B2_23]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C2.mn8mn_L11_C2_B2_23()
+
+                                            #[D11_C2_B2_24]-SA-M3. CSC có u_1 và d. Tính u_m+...+u_k
+                                            if dang_toan == "[D11_C2_B2_24]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_24()
+
+                                            #[D11_C2_B2_25]-SA-M3. CSC thỏa mãn hệ au_m+bu_n=c, pu_i+qu_j=r. Tính u_1+d
+                                            if dang_toan == "[D11_C2_B2_25]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_25()
+
+                                            #[D11_C2_B2_26]-SA-M3. CSC thỏa mãn hệ au_m+bu_n=c, pu_i+qu_j=r. Tính S_n
+                                            if dang_toan == "[D11_C2_B2_26]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_26()
+
+                                            #[D11_C2_B2_27]-SA-M3. Tìm tam giác vuông có 3 cạnh lập thành c.s.c
+                                            if dang_toan == "[D11_C2_B2_27]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_27()
+
+                                            #[D11_C2_B2_28]-M1. Tìm vị thứ của số hạng trong c.s.c
+                                            if dang_toan == "[D11_C2_B2_28]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C2.mn8mn_L11_C2_B2_28()
+
+                                            #[D11_C2_B2_29]-SA-M3. Cho biểu thức S_n. Tìm u_k.
+                                            if dang_toan == "[D11_C2_B2_29]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_29()
+
+                                            #[D11_C2_B2_30]-SA-M3. Tính tổng tiền chi của công ty sau n năm.
+                                            if dang_toan == "[D11_C2_B2_30]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_30()
+
+
 
                                           
                                              ####################### Bài 3 ######################
@@ -17483,6 +17624,7 @@ class Ui_MainWindow(object):
                                                     list_tracnghiem.append(debai_latex)
                                                     list_tracnghiem_HDG.append(debai_latex)
                                                 list_dapan_TN.append(f'{dap_an}')
+                                                
                                                     
 
                                             if loai_cau=="Đ-S":
@@ -17492,7 +17634,8 @@ class Ui_MainWindow(object):
                                                 else:                                                           
                                                     list_dungsai.append(f'{debai_word}\n')
                                                     list_dungsai_HDG.append(f'{debai_word}\n{loigiai_word}\n')
-                                                list_dapan_TF.append(f'{dap_an}')                                                    
+                                                list_dapan_TF.append(f'{dap_an}')
+                                                                                                 
                                                 
                                        
                                             if loai_cau=="SA":
@@ -17504,6 +17647,7 @@ class Ui_MainWindow(object):
                                                     list_traloingan.append(f'{debai_word}\n')                                                    
                                                     list_traloingan_HDG.append(f'{debai_word}\n{loigiai_word}\n')
                                                 list_dapan_SA.append(f'{dap_an}')
+
 
                                             if loai_cau=="TL":
                                                 if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
@@ -17588,7 +17732,10 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_TN:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu)
                                             #Add vào chuỗi QR
+                                            
                                             chuoi_QR+=phan_tu 
                                             chuoi_QR_QM+=f'"{phan_tu}",'                                               
                                     chuoi_QR+="#"
@@ -17605,6 +17752,13 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_TF:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu[0])
+                                            chuoi_dapan_one.append(phan_tu[1])
+                                            chuoi_dapan_one.append(phan_tu[2])
+                                            chuoi_dapan_one.append(phan_tu[3])
+                                            chuoi_dapan_one = [x.replace("Đ", "D") for x in chuoi_dapan_one]
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR+='_'
@@ -17623,6 +17777,9 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_SA:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu)
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR+='_'
@@ -17659,6 +17816,9 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_TN:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu)
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR_QM+=f'"{phan_tu}",'
@@ -17674,6 +17834,13 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_TF:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu[0])
+                                            chuoi_dapan_one.append(phan_tu[1])
+                                            chuoi_dapan_one.append(phan_tu[2])
+                                            chuoi_dapan_one.append(phan_tu[3])
+                                            chuoi_dapan_one = [x.replace("Đ", "D") for x in chuoi_dapan_one]
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR+='_'
@@ -17691,7 +17858,9 @@ class Ui_MainWindow(object):
 
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_SA:
-                                            list_dapan_word.append(phan_tu)                                                
+                                            list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu)                                             
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR+='_'
@@ -17730,6 +17899,9 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_TN:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu)
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR_QM+=f'"{phan_tu}",'
@@ -17747,6 +17919,13 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_TF:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu[0])
+                                            chuoi_dapan_one.append(phan_tu[1])
+                                            chuoi_dapan_one.append(phan_tu[2])
+                                            chuoi_dapan_one.append(phan_tu[3])
+                                            chuoi_dapan_one = [x.replace("Đ", "D") for x in chuoi_dapan_one]
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR+='_'
@@ -17766,6 +17945,9 @@ class Ui_MainWindow(object):
                                     #Lấy danh sách đáp án word:
                                     for phan_tu in list_dapan_SA:
                                             list_dapan_word.append(phan_tu)
+                                            #Add vào chuỗi xuất excel
+                                            chuoi_dapan_one.append(phan_tu)
+
                                             #Add vào chuỗi QR
                                             chuoi_QR+=phan_tu
                                             chuoi_QR+='_'
@@ -17828,7 +18010,7 @@ class Ui_MainWindow(object):
                                     code_bang_dap_an+=(f"{{\\bf Phần 4 }}\n"
                                 f"{xuat_dapan_TL}\n")
 
-                                list_tonghop+=f"{list_noi_dung}"                                
+                                list_tonghop+=f"{list_noi_dung}"                              
 
                                                                    
                                 self.text_taode.append(list_noi_dung)
@@ -17858,6 +18040,8 @@ class Ui_MainWindow(object):
                             #Kết thúc đáp án của mã đề hiện tại cho chuỗi QR
                             chuoi_QR+='",'
                             chuoi_QR_QM+="],"
+                            chuoi_dapan_all.append(chuoi_dapan_one)
+
 
                         #end
 
@@ -17865,6 +18049,9 @@ class Ui_MainWindow(object):
                         self.progress_bar.setValue(100)
                         self.label_dangxuli.setText("")
                         self.label_nhapmade.setText("")
+                        #add vào chuỗi đáp án tổng
+                        
+                        #print(chuoi_dapan_all)
 
                         #Kết thúc chuỗi QR
                         chuoi_QR+='"success":true,"type":5}'
@@ -17872,8 +18059,7 @@ class Ui_MainWindow(object):
 
                         chuoi_QR_QM+="]" 
                         chuoi_QR_QM=chuoi_QR_QM.replace("Đ","D").replace("],]","]]")                        
-                        #Tạo ảnh QRcode TNmaker
-                        
+                        #Tạo ảnh QRcode TNmaker                      
 
 
                         # Tạo đối tượng QRCode
@@ -17883,24 +18069,14 @@ class Ui_MainWindow(object):
                             box_size=10,  # Kích thước mỗi ô vuông (tùy chọn)
                             border=4,  # Độ dày viền (tùy chọn)
                         )
-
-                        # Thêm dữ liệu vào mã QR
-                        qr.add_data(chuoi_QR)
-
-                        # Tạo hình ảnh mã QR
-                        qr.make(fit=True)
-
-                        # Tạo đối tượng hình ảnh
-                        img = qr.make_image(fill_color="black", back_color="white")
-
-                        # Lưu hình ảnh
-                        img.save(f"{name_thu_muc}\\QRcode_TNMaker.png")
-
-                        #####
-                        #Tạo ảnh QRcode phần mềm QM                     
+                        
+                        qr.add_data(chuoi_QR)                        
+                        qr.make(fit=True)                        
+                        img = qr.make_image(fill_color="black", back_color="white")                        
+                        img.save(f"{name_thu_muc}\\QRcode_TNMaker.png")                  
 
 
-                        # Tạo đối tượng QRCode
+                        #Tạo ảnh QRcode Cham Thi
                         qr = qrcode.QRCode(
                             version=1,  # Độ lớn của mã QR (tùy chọn)
                             error_correction=qrcode.constants.ERROR_CORRECT_L,  # Mức độ sửa lỗi (tùy chọn)
@@ -17912,13 +18088,50 @@ class Ui_MainWindow(object):
                         qr.add_data(chuoi_QR_QM)
 
                         # Tạo hình ảnh mã QR
-                        qr.make(fit=True)
+                        qr.make(fit=True)                        
+                        img = qr.make_image(fill_color="black", back_color="white")                        
+                        img.save(f"{name_thu_muc}\\QRcode_QM_Chamthi.png")  
 
-                        # Tạo đối tượng hình ảnh
-                        img = qr.make_image(fill_color="black", back_color="white")
+                        #Xuất file excel đáp án Cham thi
+                        data=chuoi_dapan_all                  
+                        wb = Workbook()
+                        ws = wb.active
 
-                        # Lưu hình ảnh
-                        img.save(f"{name_thu_muc}\\QRcode_QM_Chamthi_2025.png")         
+                        
+                        ws["A1"] = "Đề\\câu"
+                        
+                        #Điền số câu trắc nghiệm
+                        for i in range(1,len(list_tracnghiem)+1):
+                            ws.cell(row=1, column=i+1, value=i)
+                        so_cot=i+1                     
+
+                        #Điền số câu đúng sai
+                        letters = ["a", "b", "c", "d"]
+                        count_TF=len(list_dungsai)
+                        for j in range(1,len(list_dungsai)+1):                            
+                            so_cot+=1                
+                            ws.cell(row=1, column=so_cot, value=f"{j}a")
+                            so_cot+=1
+                            ws.cell(row=1, column=so_cot, value=f"{j}b")
+                            so_cot+=1
+                            ws.cell(row=1, column=so_cot, value=f"{j}c")
+                            so_cot+=1
+                            ws.cell(row=1, column=so_cot, value=f"{j}d")
+
+                        #Điền số câu trả lời ngắn                        
+                        for i in range(1,len(list_traloingan)+1):
+                            so_cot+=1
+                            ws.cell(row=1, column=so_cot, value=i)                          
+
+
+
+                        # Ghi dữ liệu từ dòng 2
+                        for r, row in enumerate(data, start=2):
+                            for c, val in enumerate(row, start=1):
+                                ws.cell(row=r, column=c, value=val)
+
+                        # Lưu file
+                        wb.save(f"{name_thu_muc}\\Dap_an_excel_QM_Chamthi.xlsx")    
 
 
 
@@ -17934,6 +18147,29 @@ class Ui_MainWindow(object):
 
                             #self.tao_tnmaker_latex(name_thu_muc, list_ma_de,len(list_tracnghiem),len(list_dungsai),len(list_traloingan))
                             name_thu_muc=name_thu_muc.replace("/","\\")
+                            #Ghép các file đề
+                            # Thư mục chứa các file PDF
+                            folder_path = name_thu_muc
+
+                            # Tên file đầu ra
+                            output_file = os.path.join(folder_path, "De_tong_hop.pdf")
+
+                            # Tạo đối tượng merger
+                            merger = PdfMerger()
+
+                            # Lấy tất cả file pdf bắt đầu bằng 'de' và sắp xếp
+                            pdf_files = sorted(glob.glob(os.path.join(folder_path, "de*.pdf")))
+
+                            # Thêm từng file PDF vào merger (bỏ qua file đầu ra nếu đã tồn tại)
+                            for pdf in pdf_files:
+                                if os.path.basename(pdf) != output_file:
+                                    merger.append(pdf)                                    
+
+                            # Ghi file PDF tổng hợp
+                            merger.write(output_file)
+                            merger.close()
+
+
                             subprocess.Popen(['explorer', name_thu_muc])
 
                         if self.combo_taode.currentText() in ["Tạo đề Word - Equation", "Tạo đề Word - MathType"]:                                
@@ -18408,6 +18644,7 @@ class Ui_MainWindow(object):
                         item = QTableWidgetItem(so_cau)
                         item.setTextAlignment(Qt.AlignCenter)
                         self.tableWidget.setItem(i-1, 3, item)
+                    self.tableWidget.removeRow(0)
             except Exception as e:
                 show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
                 show_msg_box.exec_()
@@ -19667,7 +19904,7 @@ class Ui_MainWindow(object):
  
             wb = Workbook()
             ws = wb.active            
-            ws.cell(row=1,column=1, value=f"Đề \\ Câu")
+            ws.cell(row=1,column=1, value=f"Câu\\Mã đề")
 
             t=0
             #Điền đáp án cho từng dòng            
@@ -19682,7 +19919,7 @@ class Ui_MainWindow(object):
             #Điền số câu
             for i in range(1, so_cau+1):
                 ws.cell(row=i+1, column=1, value=i)            
-            wb.save(f"{goc_foler_path}\\Bang_dap_an.xlsx")
+            wb.save(f"{goc_foler_path}\\Dap_an_excel_TNMaker.xlsx")
             return
 
            

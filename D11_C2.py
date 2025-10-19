@@ -3,6 +3,13 @@ import math
 import my_module
 from sympy import *
 import datetime
+import sympy as sp
+from sympy import *
+
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -1846,7 +1853,7 @@ def mn8mn_L11_C2_B2_21():
 
 #[D11_C2_B2_22]-M2. CSC có 2 số hạng liên tiếp. Tìm u tiếp theo.
 def mn8mn_L11_C2_B2_22():
-    u_n=random.randint(-10,10)
+    u_n=random.choice([i for i in range(-10, 10) if i!=0])
     d=random.choice([i for i in range(-8, 8) if i!=0])
     u_m=u_n+d
     n=random.randint(2,12)
@@ -1959,6 +1966,417 @@ def mn8mn_L11_C2_B2_23():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C2_B2_24]-SA-M3. CSC có u_1 và d. Tính u_m+...+u_k
+def mn8mn_L11_C2_B2_24():
+    while True:
+        u_1=random.choice([random.randint(-10,-1),random.randint(1,10) ])
+        d=random.choice([random.randint(-7,-1),random.randint(1,7)])
+        m=random.randint(8,16)
+        k=m+random.randint(10,20)
+        n=m-1
+
+
+        noi_dung = (
+        f"Cho cấp số cộng $(u_n)$ có số hạng đầu $u_1={u_1}$ và công sai ${{d={d}}}$."
+        f" Tính tổng $T=u_{{{m}}}+u_{{{m+1}}}+...+u_{{{k}}}$."
+        )
+        S_k=k/2*(2*u_1+(k-1)*d)
+        S_n=n/2*(2*u_1+(n-1)*d)
+        dap_an=int(S_k-S_n)
+        if dap_an<9999 and dap_an>-90:
+            break
+    if u_1>0:
+
+        if d>0:
+            noi_dung_loigiai=(
+        f"$S_{{{k}}}={phan_so(k/2)}[2.u_1+{k-1}.d]={phan_so(k/2)}[2.{u_1}+{k-1}.{d}]={phan_so(S_k)}$.\n\n"
+        f"$S_{{{n}}}={phan_so(n/2)}[2.u_1+{n-1}.d]={phan_so(n/2)}[2.{u_1}+{n-1}.{d}]={phan_so(S_n)}$.\n\n"
+        f"$T=u_{{{m}}}+u_{{{m+1}}}+...+u_{{{k}}}=S_{{{k}}}-S_{{{n}}}={phan_so(S_k)}-{phan_so(S_n)}={dap_an}$")
+        
+        else:   
+
+            noi_dung_loigiai=(
+            f"$S_{{{k}}}={phan_so(k/2)}[2.u_1+{k-1}.d]={phan_so(k/2)}[2.{u_1}+{k-1}.({d})]={phan_so(S_k)}$.\n\n"
+            f"$S_{{{n}}}={phan_so(n/2)}[2.u_1+{n-1}.d]={phan_so(n/2)}[2.{u_1}+{n-1}.({d})]={phan_so(S_n)}$.\n\n"
+            f"$T=u_{{{m}}}+u_{{{m+1}}}+...+u_{{{k}}}=S_{{{k}}}-S_{{{n}}}={phan_so(S_k)}-{phan_so(S_n)}={dap_an}$"
+
+            )
+    else:
+        if d>0:
+            noi_dung_loigiai=(
+        f"$S_{{{k}}}={phan_so(k/2)}[2.u_1+{k-1}.d]={phan_so(k/2)}[2.({u_1})+{k-1}.{d}]={phan_so(S_k)}$.\n\n"
+        f"$S_{{{n}}}={phan_so(n/2)}[2.u_1+{n-1}.d]={phan_so(n/2)}[2.({u_1})+{n-1}.{d}]={phan_so(S_n)}$.\n\n"
+        f"$T=u_{{{m}}}+u_{{{m+1}}}+...+u_{{{k}}}=S_{{{k}}}-S_{{{n}}}={phan_so(S_k)}-{phan_so(S_n)}={dap_an}$")
+        
+        else:   
+
+            noi_dung_loigiai=(
+            f"$S_{{{k}}}={phan_so(k/2)}[2.u_1+{k-1}.d]={phan_so(k/2)}[2.({u_1})+{k-1}.({d})]={phan_so(S_k)}$.\n\n"
+            f"$S_{{{n}}}={phan_so(n/2)}[2.u_1+{n-1}.d]={phan_so(n/2)}[2.({u_1})+{n-1}.({d})]={phan_so(S_n)}$.\n\n"
+            f"$T=u_{{{m}}}+u_{{{m+1}}}+...+u_{{{k}}}=S_{{{k}}}-S_{{{n}}}={phan_so(S_k)}-{phan_so(S_n)}={dap_an}$"
+
+            )
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+def sign_str(x):
+    if x == 1:
+        return ""
+    elif x == -1:
+        return "-"
+    else:
+        return x
+
+#[D11_C2_B2_25]-SA-M3. CSC thỏa mãn hệ au_m+bu_n=c, pu_i+qu_j=r. Tính u_1+d
+def mn8mn_L11_C2_B2_25():
+    
+    u_1=random.choice([random.randint(-15,-1),random.randint(1,20) ])
+    d=random.choice([random.randint(-15,-3),random.randint(3,15)])
+    #Tạo chỉ số
+    m,n,i,j=random.sample(range(2, 9),4)
+
+    #Tạo hệ số
+    numbers = [i for i in range(-7, 9) if i != 0]
+    a,b,p,q=random.sample(numbers,4)
+    st_a, st_b, st_p, st_q = (sign_str(x) for x in (a, b, p, q))
+
+    u_m, u_n = u_1+(m-1)*d, u_1+(n-1)*d
+    u_i, u_j = u_1+(i-1)*d, u_1+(j-1)*d
+
+    s1, s2 = a*u_m+b*u_n, p*u_i+q*u_j
+
+    
+
+    noi_dung = (
+    f"Cho cấp số cộng $(u_n)$ thỏa mãn ${st_a}u_{m}+{st_b}u_{n}={s1}$ và ${st_p}u_{i}+{st_q}u_{j}={s2}$."
+    f" Tính tổng $u_1+d$."
+    )
+    noi_dung=noi_dung.replace("+-","-")
+    dap_an=u_1+d
+
+    noi_dung_loigiai=(
+
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    {st_a}u_{m}+{st_b}u_{n}={s1} \\\\ \n\
+    {st_p}u_{i}+{st_q}u_{j}={s2}\n\
+    \\end{{array}} \\right.$"
+   
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {st_a}u_{m}+{st_b}u_{n}={s1} \\\\ \n\
+        {st_p}u_{i}+{st_q}u_{j}={s2}\n\
+        \\end{{array}} \\right.$"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    {st_a}(u_1+{m-1}d)+{st_b}(u_1+{n-1}d)={s1} \\\\ \n\
+    {st_p}(u_1+{i-1}d)+{st_q}(u_1+{j-1}d)={s2}\n\
+    \\end{{array}} \\right.$\n\n"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {a+b}u_1+{a*(m-1)+b*(n-1)}d={s1-a*u_1-b*u_1} \\\\ \n\
+        {p+q}u_1+{p*(i-1)+q*(j-1)}d={s2-p*u_1-q*u_1}\n\
+        \\end{{array}} \\right.$"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1={u_1} \\\\ \n\
+        d={d}\n\
+        \\end{{array}} \\right.$\n\n"
+    f"$u_1+d={dap_an}$"
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_26]-SA-M3. CSC thỏa mãn hệ au_m+bu_n=c, pu_i+qu_j=r. Tính S_n
+def mn8mn_L11_C2_B2_26():
+    while True:
+    
+        u_1=random.choice([random.randint(-15,-1),random.randint(1,20) ])
+        d=random.choice([random.randint(-15,-3),random.randint(3,15)])
+        #Tạo chỉ số
+        m,n,i,j=random.sample(range(2, 9),4)
+
+        #Tạo hệ số
+        numbers = [i for i in range(-7, 9) if i != 0]
+        a,b,p,q=random.sample(numbers,4)
+        st_a, st_b, st_p, st_q = (sign_str(x) for x in (a, b, p, q))
+
+        u_m, u_n = u_1+(m-1)*d, u_1+(n-1)*d
+        u_i, u_j = u_1+(i-1)*d, u_1+(j-1)*d
+
+        s1, s2 = a*u_m+b*u_n, p*u_i+q*u_j 
+
+        k=random.randint(10,30)
+        s_k=n/2*(2*u_1+(k-1)*d)
+        if -90<s_k<9999:
+            break
+
+    noi_dung = (
+    f"Cho cấp số cộng $(u_n)$ thỏa mãn ${st_a}u_{m}+{st_b}u_{n}={s1}$ và ${st_p}u_{i}+{st_q}u_{j}={s2}$."
+    f" Tính tổng $S_{{{k}}}$."
+    )
+    noi_dung=noi_dung.replace("+-","-")
+    dap_an=int(s_k)
+    st_u1,st_d=(sign_str(x) for x in (u_1,d))
+
+    noi_dung_loigiai=(
+
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+    {st_a}u_{m}+{st_b}u_{n}={s1} \\\\ \n\
+    {st_p}u_{i}+{st_q}u_{j}={s2}\n\
+    \\end{{array}} \\right.$"
+   
+    f"$\\left\\{{ \\begin{{array}}{{l}} \n\
+        {st_a}u_{m}+{st_b}u_{n}={s1} \\\\ \n\
+        {st_p}u_{i}+{st_q}u_{j}={s2}\n\
+        \\end{{array}} \\right.$"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+    {st_a}(u_1+{m-1}d)+{st_b}(u_1+{n-1}d)={s1} \\\\ \n\
+    {st_p}(u_1+{i-1}d)+{st_q}(u_1+{j-1}d)={s2}\n\
+    \\end{{array}} \\right.$\n\n"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        {a+b}u_1+{a*(m-1)+b*(n-1)}d={s1-a*u_1-b*u_1} \\\\ \n\
+        {p+q}u_1+{p*(i-1)+q*(j-1)}d={s2-p*u_1-q*u_1}\n\
+        \\end{{array}} \\right.$"
+
+    f"$\\Leftrightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+        u_1={u_1} \\\\ \n\
+        d={d}\n\
+        \\end{{array}} \\right.$\n\n"
+    f"$S_{{{k}}}={phan_so(k/2)}.(2.{st_u1}+{k-1}.{st_d})={dap_an}$"
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_27]-SA-M3. Tìm tam giác vuông có 3 cạnh lập thành c.s.c
+def mn8mn_L11_C2_B2_27():
+    list_k = list(range(1, 20)) + [i/(i+1) for i in range(1, 4)]+[1/3,1/4,2/5,1/5]
+    k=random.choice(list_k)
+    a,b,c=3*k, 4*k, 5*k
+    d=b-a
+    P=a+b+c
+
+    if c.is_integer():    
+
+        noi_dung = (
+        f"Một mảnh vườn hình tam giác vuông có chu vi bằng ${{{phan_so(P)}}}$ và độ dài các cạnh lập thành cấp số cộng." 
+    f" Tính độ dài cạnh huyền của tam giác đó."
+        )
+        dap_an=int(c)
+
+        noi_dung_loigiai=(
+        f"Giả sử 3 cạnh là: $a-d,a,a+d$.\n\n"
+        f"Chu vi: $a-d+a+a+d=3a={phan_so(P)}\\Rightarrow a={phan_so(b)}$.\n\n"
+        f"Tam giác vuông nên:\n\n $({phan_so(b)}-d)^2+{phan_so(b)}^2=({phan_so(b)}+d)^2$"
+        f"$\\Rightarrow d={phan_so(d)}$.\n\n"
+        f"Độ dài ba cạnh là ${{{phan_so(a)},{phan_so(b)},{phan_so(c)}}}$.\n\n"
+        f"Độ dài cạnh huyền là: ${phan_so(c)}$."
+        )
+    else:
+            noi_dung = (
+            f"Một tam giác vuông có chu vi bằng ${{{phan_so(P)}}}$ và độ dài các cạnh lập thành cấp số cộng." 
+        f" Tính độ dài cạnh huyền của tam giác đó (kết quả làm tròn đến hàng phần mười)."
+            )
+            dap_an=f"{round_half_up(c,1):.1f}".replace(".",",")
+
+            noi_dung_loigiai=(
+            f"Giả sử 3 cạnh là: $a-d,a,a+d$.\n\n"
+            f"Chu vi: $a-d+a+a+d=3a={phan_so(P)}\\Rightarrow a={phan_so(b)}$.\n\n"
+            f"Tam giác vuông nên:\n\n $({phan_so(b)}-d)^2+{phan_so(b)}^2=({phan_so(b)}+d)^2$"
+            f"$\\Rightarrow d={phan_so(d)}$.\n\n"
+            f"Độ dài ba cạnh là ${{{phan_so(a)},{phan_so(b)},{phan_so(c)}}}$.\n\n"
+            f" Độ dài cạnh huyền là: ${phan_so(c)}={dap_an}$."
+            )
+
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_28]-M2. Tìm vị thứ của số hạng trong c.s.c
+def mn8mn_L11_C2_B2_28():
+    u_1=random.choice([random.randint(-15,-3),random.randint(3,20) ])
+    d=random.choice([random.randint(-15,-3),random.randint(3,15)])
+    n=random.randint(8,30)
+    u_n=u_1+(n-1)*d
+    st_d=d
+    if d<0:
+        st_d=f"({d})"
+
+    noi_dung = (
+    f"Cho cấp số cộng $(u_n)$ có $u_1={u_1}$ và $d={d}$."
+    f" Hỏi số ${{{u_n}}}$ là số hạng thứ mấy của cấp số cộng đã cho?"
+    )
+
+  
+    kq=n
+    kq_false=[n-1,n-2,n-random.randint(3,5),n+1,n+2,n+random.randint(3,6), n+random.randint(7,10)]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$u_n={u_n}\\Rightarrow {u_1}+(n-1).{st_d}={u_n}\\Rightarrow n={n}$."
+    )
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+     list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+     f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+     f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+     f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C2_B2_29]-SA-M2. Cho biểu thức S_n. Tìm u_k.
+def mn8mn_L11_C2_B2_29():
+    while True:
+        u_1=random.choice([random.randint(-15,-3),random.randint(3,20) ])
+        d=random.choice([random.randint(-15,-3),random.randint(3,15)])
+        k=random.randint(8,20)
+        u_k=u_1+(k-1)*d
+        if -99<u_k<9999:
+            break
+    n=sp.symbols("n")
+    S_n=n/2*(2*u_1+(n-1)*d)
+    S_1=S_n.subs(n,1)
+    S_2=S_n.subs(n,2)
+    u_2=u_1+d
+
+    st_d=d
+    if d<0:
+        st_d=f"({d})"
+
+    st_u1=u_1
+    if u_1<0:
+        st_u1=f"({u_1})"
+
+    noi_dung = (
+    f"Cho cấp số cộng $(u_n)$ có tổng ${{n}}$ số hạng đầu tiên là $S_n={latex(expand(S_n))}$. Tìm $u_{{{k}}}$."
+    )
+    dap_an=u_k
+
+    noi_dung_loigiai=(
+    f"$S_1=u_1={u_1}$.\n\n"
+    f"$S_2=u_1+u_2={int(S_2)}\\Rightarrow u_2={int(S_2)}-{st_u1}={u_2}$.\n\n"
+    f"$d={u_2}-{st_u1}={d}$.\n\n"
+    f"$u_{{{k}}}={u_1}+{k-1}.{st_d}={u_k}$"
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_30]-SA-M2. Tính tổng tiền chi của công ty sau n năm.
+def mn8mn_L11_C2_B2_30():
+    u_1=random.randint(20,40)
+    numbers = [round(x, 1) for x in [i / 10 for i in range(10, 41)]]
+    d = random.choice(numbers)
+    if d.is_integer():
+        st_d=d
+    else:
+        st_d=f"{round_half_up(d,1):.1f}".replace(".",",")
+    n=random.randint(3,10)
+    k=n*4
+    S_k=k/2*(2*u_1+(k-1)*d)
+
+    noi_dung = (
+    f"Một công ty dự kiến số tiền duy trì hoạt động như sau:"
+    f" Quý làm việc đầu tiên là {u_1} triệu/quý. Từ quý thứ hai thì quý sau tăng thêm {st_d} triệu so với quý trước."
+    f"Tính tổng tiền (triệu đồng) phải chi trả sau {n} năm hoạt động của công ty (kết quả làm tròn đến hàng đơn vị) ."
+    )
+    dap_an=f"{round_half_up(S_k,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Tiền chi trả các quý lập thành cấp số cộng với $u_1={u_1}$ và $d={st_d}$.\n\n"
+    f"{n} năm tương ứng với {k} quý.\n\n"
+    f"Tổng tiền chi trả sau {n} năm là:\n\n"
+    f"$S_{{{k}}}={phan_so(k/2)}(2.{u_1}+{k-1}.{st_d})={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+    
+    
 
 ############## CẤP SỐ NHÂN ##############
 #D11_C2_B3_01. Cho cấp số nhân có u1, q. Tìm số hạng thứ k
@@ -2814,7 +3232,7 @@ def mn8mn_L11_C2_B3_14():
     noi_dung = (
     f"Một đội thợ công nhân dùng gạch cỡ {size}x{size}cm để lát nền cho một toà tháp gồm {n} tầng theo cấu trúc"
     f" diện tích mặt sàn của tầng trên bằng {st_q}\\% diện tích mặt sàn của tầng dưới."
-    f" Biết diện tích mặt đáy của tháp là {S1} ${{m^2}}$. Hỏi đội công nhân dự định dùng tối thiểu khoảng bao nhiêu viên gạch?"
+    f" Biết diện tích tầng 1 của tháp là {S1} ${{m^2}}$. Hỏi đội công nhân dự định dùng tối thiểu khoảng bao nhiêu viên gạch?"
     )    
 
     noi_dung_loigiai=(

@@ -1898,7 +1898,7 @@ def mnj_34_jkl_L12_C2_B1_15():
 def mnj_34_jkl_L12_C2_B1_16():
 	a=random.randint(1,5)
 	b=random.randint(1,5)
-	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
+	cos=random.choice([1,-1,1/2,-1/2, 1/4,-1/4,1/3,-1/3])
 	tich_vh=int(a*b*cos)
 
 	m=random.choice([i for i in range(-3, 3) if i!=0])
@@ -1911,13 +1911,13 @@ def mnj_34_jkl_L12_C2_B1_16():
 	while math.isnan(kq):
 		a=random.randint(1,5)
 		b=random.randint(1,5)
-		cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])	
+		cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
 
 		m=random.choice([i for i in range(-3, 3) if i!=0])
 		n=random.choice([i for i in range(-3, 3) if i!=0])
 
 		p=random.choice([i for i in range(-3, 3) if i!=0])
-		q=random.choice([i for i in range(-3, 3) if i!=0])		
+		q=random.choice([i for i in range(-3, 3) if i!=0])
 
 	ten_a=["a","m","u"]
 	ten_b=["b","n","v"]
@@ -2407,7 +2407,54 @@ def mnj_34_jkl_L12_C2_B1_19():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-	
+#[D12_C2_B1_20]-M2. Tính độ lớn lực hấp dẫn tác động lên một vật
+def mnj_34_jkl_L12_C2_B1_20():
+	m=random.randint(100,700)
+	m_kg=f"{round_half_up(m/1000,3):.3f}".replace(".",",")
+	P=m*9.8/1000
+	if P.is_integer():
+		noi_dung = (
+		f"	Nếu một vật có khối lượng ${{m}}$ (kg) thì lực hấp dẫn $\\overrightarrow{{P}}$ của Trái Đất tác dụng lên vật được xác định theo công thức"
+		f" $\\overrightarrow{{P}}=m\\overrightarrow{{g}}$, trong đó $\\overrightarrow{{g}}$ là gia tốc rơi tự do có độ lớn $g=9,8 \\text{{ m/s}}^2$."
+		f" Tính độ lớn của lực hấp dẫn của Trái Đất tác dụng lên một vật có khối lượng ${{{m}}}$ gam."
+		)
+		
+		dap_an=int(P)
+
+		noi_dung_loigiai=(
+		f"$m={m_kg}$ kg.\n\n"
+		f"Độ lớn của lực hấp dẫn tác dụng lên vật:\n\n"
+		f"$|P|=|m.\\overrightarrow{{g}}=m.|\\overrightarrow{{g}}|={m_kg}.9,8={dap_an}$ (N)."
+
+		)
+	else:
+
+		noi_dung = (
+		f"	Nếu một vật có khối lượng ${{m}}$ (kg) thì lực hấp dẫn $\\overrightarrow{{P}}$ của Trái Đất tác dụng lên vật được xác định theo công thức"
+		f" $\\overrightarrow{{P}}=m\\overrightarrow{{g}}$, trong đó $\\overrightarrow{{g}}$ là gia tốc rơi tự do có độ lớn $g=9,8 \\text{{ m/s}}^2$."
+		f" Tính độ lớn của lực hấp dẫn của Trái Đất tác dụng lên một vật có khối lượng ${{{m}}}$ gam (kết quả làm tròn đến hàng phần trăm)."
+		)
+		
+		dap_an=f"{round_half_up(P,2):.2f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"$m={m_kg}$ kg.\n\n"
+		f"Độ lớn của lực hấp dẫn tác dụng lên vật:\n\n"
+		f"$|P|=|m.\\overrightarrow{{g}}=m.|\\overrightarrow{{g}}|={m_kg}.9,8={dap_an} $(N)."
+
+		)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 #--------------------------------------------------------------->
 #Bài 2 - Tọa độ vectơ 
 #[D12_C2_B2_01]. Đọc tọa độ vectơ theo vectơ đơn vị i, j, k
@@ -7236,7 +7283,7 @@ def mnj_34_jkl_L12_C2_B3_37():
 	f"$={latex(cosA)}$.\n\n"
 		)
 
-	if cosA<0:
+	if cosA>0:
 
 		kq2_T=f"* Góc $\\widehat{{{B}{A}{C}}}$ là góc nhọn"
 		kq2_F=f"Góc $\\widehat{{{B}{A}{C}}}$ là góc tù"
@@ -7248,7 +7295,7 @@ def mnj_34_jkl_L12_C2_B3_37():
 		kq2_F=f"Góc $\\widehat{{{B}{A}{C}}}$ là góc {random.choice(["tù", "nhọn" ])}"
 		HDG+=(f"$\\cos\\widehat{{{B}{A}{C}}}<0$ nên $\\widehat{{{B}{A}{C}}}=90^\\circ$.")
 
-	if cosA>0:
+	if cosA<0:
 
 		kq2_T=f"* Góc $\\widehat{{{B}{A}{C}}}$ là góc tù"
 		kq2_F=f"Góc $\\widehat{{{B}{A}{C}}}$ là góc nhọn"
@@ -7408,7 +7455,7 @@ def mnj_34_jkl_L12_C2_B3_38():
 	file_name=my_module.pdftoimage_timename(code)
 
 	noi_dung = (
-			f"Một tháp trung tâm kiểm soát không lưu ở sân bay cao ${{{h}}}$ m sử dụng ra đa có phạm vi theo dõi ${{{r}}}$ km được đặt trên đỉnh tháp. Chọn hệ trục toạ độ ${{O x y z}}$ có gốc ${{O}}$ trùng với vị trí chân tháp, mặt phẳng ${{(Oxy)}}$ trùng với mặt đất sao cho trục ${{Ox}}$ hướng về phía tây, trục ${{Oy}}$ hướng về phía nam, trục ${{Oz}}$ hướng thẳng đứng lên phía trên (Hình bên) (đơn vị trên mỗi trục tính theo kilômét)."
+			f"Một tháp trung tâm kiểm soát không lưu ở sân bay cao ${{{h}}}$ m sử dụng ra đa có phạm vi theo dõi ${{{r}}}$ km được đặt trên đỉnh tháp. Chọn hệ trục toạ độ ${{Oxyz}}$ có gốc ${{O}}$ trùng với vị trí chân tháp, mặt phẳng ${{(Oxy)}}$ trùng với mặt đất sao cho trục ${{Ox}}$ hướng về phía tây, trục ${{Oy}}$ hướng về phía nam, trục ${{Oz}}$ hướng thẳng đứng lên phía trên (Hình bên) (đơn vị trên mỗi trục tính theo kilômét)."
 			f"	Một máy bay tại vị trí ${{{A}}}$ cách mặt đất ${z} \\mathrm{{~km}}$, cách ${abs(x)} \\mathrm{{~km}}$ về phía đông và ${abs(y)} \\mathrm{{~km}}$ về phía bắc so với tháp trung tâm kiểm soát không lưu."
 
 		f" Xét tính đúng-sai của các khẳng định sau: ")		
@@ -7511,6 +7558,279 @@ def mnj_34_jkl_L12_C2_B3_38():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C2_B3_39]-TF-M3. Cho 2 khinh khí cầu A,B. Xét Đ-S: Vị trí, Khoảng cách từ O đến A(B), Khoảng cách AB
+def mnj_34_jkl_L12_C2_B3_39():
+	while True:
+		a1=random.randint(5,18)/10
+		a2=random.randint(5,18)/10
+		a3=random.randint(5,20)/10
+		if all([a1!=a2, a2!=a3, a1!=a3]):
+			break
+	while True:
+		b1=random.randint(3,20)/10
+		b2=random.randint(3,20)/10
+		b3=random.randint(3,20)/10
+		if all([b1!=b2,b1!=b3, b2!=b3, a1!=b1, a2!=b2]):
+			break
+	s_a1=f"{round_half_up(a1,1):.1f}".replace(".",",").replace(",0","")
+	s_a2=f"{round_half_up(a2,1):.1f}".replace(".",",").replace(",0","")
+	s_a3=f"{round_half_up(a3,1):.1f}".replace(".",",").replace(",0","")
+
+	s_b1=f"{round_half_up(b1,1):.1f}".replace(".",",").replace(",0","")
+	s_b2=f"{round_half_up(b2,1):.1f}".replace(".",",").replace(",0","")
+	s_b3=f"{round_half_up(b3,1):.1f}".replace(".",",").replace(",0","")
+
+	code_hinh=(f"\\begin{{tikzpicture}}[smooth,samples=300,scale=0.8,>=stealth,font=\\footnotesize]\n\
+			\\draw[->] (-4,0)node[above right]{{Bắc}}--(6,0) node[below]{{$x$}} node[above left]{{Nam}};\n\
+			\\draw[->] (3,3)node[above right]{{Tây}}--(-2.3,-2.3) node[left]{{$y$}}node[below right]{{Đông}};\n\
+			\\draw[->] (0,0)--(0,4.5) node[right]{{$z$}};\n\
+			\\draw (0,0) node[below]{{$O$}};\n\
+			\\fill [scale=.1,black,yshift=12 cm,xshift=25 cm]\n\
+			(-1,0) rectangle (1,1)\n\
+			(-1,2).. controls +(135:1) and +(180:4) .. (0,7)\n\
+			.. controls +(180:2) and +(135:2).. (-.5,2)\n\
+			.. controls +(120:2) and +(180:1) .. (0,6.99)\n\
+			.. controls +(0:1) and +(60:2) .. (.5,2)\n\
+			.. controls +(45:2) and +(0:2) .. (0,7)\n\
+			.. controls +(0:4) and +(45:1).. (1,2)\n\
+			;\n\
+			\\draw[scale=.1,yshift=12 cm,xshift=25 cm] (-1,0) rectangle (1,2) (0,1)--(0,2);\n\
+			;\n\
+			\\fill [scale=.1,blue,yshift=37 cm,xshift=-20 cm]\n\
+			(-1,0) rectangle (1,1)\n\
+			(-1,2).. controls +(135:1) and +(180:4) .. (0,7)\n\
+			.. controls +(180:2) and +(135:2).. (-.5,2)\n\
+			.. controls +(120:2) and +(180:1) .. (0,6.99)\n\
+			.. controls +(0:1) and +(60:2) .. (.5,2)\n\
+			.. controls +(45:2) and +(0:2) .. (0,7)\n\
+			.. controls +(0:4) and +(45:1).. (1,2)\n\
+			;\n\
+			\\draw[blue,scale=.1,yshift=37 cm,xshift=-20 cm] (-1,0) rectangle (1,2) (0,1)--(0,2);\n\
+			;\n\
+			\\draw[dashed] (4,0)--(2.5,-1.5)--(-1.5,-1.5) \n\
+			(2.5,1)--(0,0)--(2.5,-1.5)--(2.5,1);\n\
+			\\draw[dashed] (-3,0)--(-2,1)--(1,1) (-2,1)--(0,0)--(-2,3.5)--(-2,1)\n\
+			;\n\
+			\\draw[fill=black] (2.5,1) circle(2pt) (-2,3.5) circle(2pt);\n\
+	\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+
+	#Tọa độ khinh khí cầu 1
+	chon=random.randint(1,2)
+	#Hướng dương: Ox-Nam, Oy-Đông
+	if chon==1:
+		a_Ox="nam"
+		a_Oy="đông"
+		toado_1=f"({s_a1};{s_a2};{s_a3})"
+		toado_1_f=f"(-{s_a1};{s_a2};{s_a3})"
+
+		b_Ox="bắc"
+		b_Oy="tây"
+		b1,b2=-b1,-b2
+		toado_2=f"(-{s_b1};-{s_b2};{s_b3})"
+		toado_2_f=f"({s_b1};-{s_b2};{s_b3})"
+	
+	if chon==2:
+		a_Ox="nam"
+		a_Oy="tây"
+		a2=-a2
+		toado_1=f"({s_a1};-{s_a2};{s_a3})"
+		toado_1_f=f"({s_a1};{s_a2};{s_a3})"
+
+		b_Ox="bắc"
+		b_Oy="đông"
+		b1=-b1
+		toado_2=f"(-{s_b1};{s_b2};{s_b3})"
+		toado_2_f=f"({s_b1};-{s_b2};{s_b3})"
+
+	if chon==3:
+		a_Ox="bắc"
+		a_Oy="tây"
+		a1, a2 =-a1, -a2
+		toado_1=f"(-{s_a1};-{s_a2};{s_a3})"
+		toado_1_f=f"({s_a1};{s_a2};{s_a3})"
+
+		b_Ox="nam"
+		b_Oy="đông"
+		
+		toado_2=f"({s_b1};{s_b2};{s_b3})"
+		toado_2_f=f"(-{s_b1};-{s_b2};{s_b3})"
+
+	if chon==4:
+		a_Ox="bắc"
+		a_Oy="đông"
+		a1= -a1
+		toado_1=f"(-{s_a1};{s_a2};{s_a3})"
+		toado_1_f=f"({s_a1};-{s_a2};{s_a3})"
+
+		b_Ox="nam"
+		b_Oy="tây"
+		b2=-b2
+		
+		toado_2=f"({s_b1};-{s_b2};{s_b3})"
+		toado_2_f=f"(-{s_b1};-{s_b2};{s_b3})"
+	
+
+	noi_dung = (
+	f"Hai chiếc khinh khí cầu bay lên từ cùng một địa điểm. Chiếc thứ nhất cách điểm xuất phát ${{{s_a1}}}$ km về phía {a_Ox} và ${{{s_a2}}}$ km về phía {a_Oy}, đồng thời cách mặt đất ${{{s_a3}}}$ km."
+	f" Chiếc thứ hai nằm cách điểm xuất phát ${{{s_b1}}}$ km về phía {b_Ox} và ${{{s_b2}}}$ km về phía {b_Oy}, đồng thời cách mặt đất ${{{s_b3}}}$ km."
+	f" Chọn hệ trục ${{Oxyz}}$ với gốc ${{O}}$ đặt tại điểm xuất phát của hai khinh khí cầu,"
+	f" mặt phẳng $(Oxy)$ trùng với mặt đất với trục ${{Ox}}$ hướng về phía nam,"
+	f" trục ${{Oy}}$ hướng về phía đông và trục ${{Oz}}$ hướng thẳng đứng lên trời (Hình bên dưới), đơn vị đo lấy theo kilomet."
+	f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"
+	)	
+	
+	kq1_T=f"* Toạ độ khinh khí cầu thứ nhất là ${toado_1}$" 
+	kq1_F=f"Tọa độ đã chọn, toạ độ khinh khí cầu thứ nhất là ${toado_1_f}$"
+	
+	HDG=f"Toạ độ khinh khí cầu thứ nhất là ${toado_1}$."
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Toạ độ khinh khí cầu thứ nhất là ${toado_2}$"
+	kq2_F=f"Tọa độ đã chọn, toạ độ khinh khí cầu thứ nhất là ${toado_2_f}$"
+	
+	HDG=f"Toạ độ khinh khí cầu thứ nhất là ${toado_2}$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		OA=sqrt(a1**2+a2**2+a3**2)
+		s_OA=f"{round_half_up(OA,1):.1f}".replace(".",",")
+		s_OA_f=f"{round_half_up(sqrt(a1**2+a2**2+a3**2+random.randint(1,3)),1):.1f}".replace(".",",")
+
+		kq3_T=f"* Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ nhất bằng ${{{s_OA}}}$ km" 
+		kq3_F=f"Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ nhất bằng ${{{s_OA_f}}}$ km"
+		
+		HDG=f"$A{toado_1}\\Rightarrow OA=\\sqrt{{{s_a1}^2+{s_a2}^2+{s_a3}^2}}={s_OA}$."
+	
+	if chon==2:
+		OB=sqrt(b1**2+b2**2+b3**2)
+		s_OB=f"{round_half_up(OB,1):.1f}".replace(".",",")
+		s_OB_f=f"{round_half_up(sqrt(b1**2+b2**2+b3**2+random.randint(1,3)),1):.1f}".replace(".",",")
+
+		kq3_T=f"* Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ nhất bằng ${{{s_OB}}}$ km" 
+		kq3_F=f"Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ nhất bằng ${{{s_OB_f}}}$ km"
+		
+		HDG=f"$B{toado_2}\\Rightarrow OB=\\sqrt{{{s_b1}^2+{s_b2}^2+{s_b3}^2}}={s_OB}$ km."	
+
+	
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	AB=sqrt((a1-b1)**2+(a2-b2)**2+(a3-b3)**2)
+	s_AB=f"{round_half_up(AB,1):.1f}".replace(".",",")
+	s_AB_f=f"{round_half_up(sqrt((a1-b1)**2+(a2-b2)**2+(a3-b3)**2+random.randint(1,3)),1):.1f}".replace(".",",")
+
+	kq4_T=f"* Khoảng cách hai chiếc khinh khí cầu là ${{{s_AB}}}$ km"
+	kq4_F=f"Khoảng cách hai chiếc khinh khí cầu là ${{{s_AB_f}}}$ km" 
+	
+	HDG=f"Khoảng cách hai chiếc khinh khí cầu là: $AB={s_AB}$ km"
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C2_B3_40]-SA-M3. Tìm tâm đường tròn ngoại tiếp tam giác vuông
+def mnj_34_jkl_L12_C2_B3_40():
+	ten=["A","B","C","D","E","M","N","P"]
+	random.shuffle(ten)
+	A,B,C=ten[0:3]
+	G=random.choice(["G", "H", "I", "K" ])
+	bo_toa_do=tao_3dinh_tamgiacvuong()
+	a1,a2,a3=bo_toa_do[0]
+	b1,b2,b3=bo_toa_do[1]
+	c1,c2,c3=bo_toa_do[2]
+	x_I,y_I,z_I=(b1+c1)/2,(b2+c2)/2,(b3+c3)/2
+
+	noi_dung = (
+	f"Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ có ${A}({a1};{a2};{a3}),{B}({b1};{b2};{b3}),{C}({c1};{c2};{c3})$."
+	f"Gọi ${{I}}$ là tâm đường tròn ngoại tiếp tam giác ${{{A}{B}{C}}}$. Tính giá trị ${{OI^2}}$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(sqrt(x_I**2+y_I**2+z_I**2),1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"${vec2(A,B)}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
+	f"${vec2(A,C)}=({c1-a1};{c2-a2};{c3-a3})$.\n\n"
+	f"${vec2(A,B)}.{vec2(A,C)}=0\\Rightarrow {A}{B}{C}$ vuông tại ${{{A}}}$.\n\n"
+	f"Tâm ${{I}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+	f"$I({phan_so(x_I)},{phan_so(y_I)},{phan_so(z_I)})$.\n\n"
+	f"$OI^2=\\sqrt{{{phan_so(x_I**2)}+{phan_so(y_I**2)}+{phan_so(z_I**2)}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 

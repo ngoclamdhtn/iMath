@@ -731,7 +731,7 @@ f"miền nghiệm của bất phương trình ${latex(f)}>0$?")
     else:
         noi_dung_loigiai+=f"Điểm $O(0;0)$ không thỏa mãn bất phương trình nên miền nghiệm là nửa mặt phẳng không chứa điểm ${{O}}$."
 
-    pa_A= f"*\n{kq}"
+    pa_A= f"* \n{kq}"
     pa_B= f"\n{kq2}"
     pa_C= f"\n{kq3}"
     pa_D= f"\n{kq4}"
@@ -2180,11 +2180,12 @@ def bch_12_L10_C2_B2_13():
             y_C = solution[y]
 
         f=m*x+n*y+p
+        F_0=p
         F_A1=f.subs({x:x_A1, y:y_A1})
         F_B1=f.subs({x:x_B1, y:y_B1})
         F_B2=f.subs({x:x_B2, y:y_B2})
         F_C=f.subs({x:x_C, y:y_C})
-        min_F=min(0,F_A1,F_B2, F_C)  
+        min_F=min(F_0,F_A1,F_B2, F_C)  
         if all([a2>a1, min_F>-9]):
             break
     
@@ -2219,7 +2220,7 @@ def bch_12_L10_C2_B2_13():
         f"Miền nghiệm của $y\\ge 0$ là nửa mặt phẳng bên trên trục ${{Ox}}$.\n\n"
         f"$d_1$ và $d_2$ cắt nhau tại điểm $C({phan_so(x_C)};{phan_so(y_C)})$.\n\n"
         f"Miện nghiệm của hệ đã cho là miền trong hình tứ giác ${{OA_1CB_2}}$.\n\n"
-        f"$F(0;0)=0; F({phan_so(x_A1)};0)={phan_so(F_A1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}, F({phan_so(x_C)};{phan_so(y_C)})={phan_so(F_C)}$.\n\n"
+        f"$F(0;0)={p}; F({phan_so(x_A1)};0)={phan_so(F_A1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}, F({phan_so(x_C)};{phan_so(y_C)})={phan_so(F_C)}$.\n\n"
         f"Giá trị nhỏ nhất của $F(x;y)$ là ${{{dap_an}}}$."
     )    
         
@@ -2264,13 +2265,13 @@ def bch_12_L10_C2_B2_14():
         if solution:
             x_C = solution[x]
             y_C = solution[y]
-
         f=m*x+n*y+p
+        F_0=p
         F_A1=f.subs({x:x_A1, y:y_A1})
         F_B1=f.subs({x:x_B1, y:y_B1})
         F_B2=f.subs({x:x_B2, y:y_B2})
         F_C=f.subs({x:x_C, y:y_C})
-        max_F=max(0,F_A1,F_B2, F_C)  
+        max_F=max(F_0,F_A1,F_B2, F_C)   
         if all([a2>a1, max_F>-9]):
             break
     
@@ -2305,7 +2306,7 @@ def bch_12_L10_C2_B2_14():
         f"Miền nghiệm của $y\\ge 0$ là nửa mặt phẳng bên trên trục ${{Ox}}$.\n\n"
         f"$d_1$ và $d_2$ cắt nhau tại điểm $C({phan_so(x_C)};{phan_so(y_C)})$.\n\n"
         f"Miện nghiệm của hệ đã cho là miền trong hình tứ giác ${{OA_1CB_2}}$.\n\n"
-        f"$F(0;0)=0; F({phan_so(x_A1)};0)={phan_so(F_A1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}, F({phan_so(x_C)};{phan_so(y_C)})={phan_so(F_C)}$.\n\n"
+        f"$F(0;0)={p}; F({phan_so(x_A1)};0)={phan_so(F_A1)}, F(0;{phan_so(y_B2)})={phan_so(F_B2)}, F({phan_so(x_C)};{phan_so(y_C)})={phan_so(F_C)}$.\n\n"
         f"Giá trị lớn nhất của $F(x;y)$ là ${{{dap_an}}}$."
     )    
         
@@ -2551,7 +2552,7 @@ def bch_12_L10_C2_B2_16():
     f" Để sản xuất 1 tấn sản phẩm loại {Y} cần dùng máy {A} trong {b1} giờ và dùng máy {B} trong {b2} giờ."
     f" Cho biết mỗi máy không thể sản xuất đồng thời hai loại sản phẩm."
     f" Máy {A} làm việc không quá {c1} giờ một ngày, máy {B} làm việc không quá {c2} giờ một ngày."
-    f" Một sản phẩm {X} lãi {m} triệu đồng và một sản phẩm loại {Y} lãi {n} triệu đồng."
+    f" Một tấn sản phẩm {X} lãi {m} triệu đồng và một tấn sản phẩm loại {Y} lãi {n} triệu đồng."
     f" Tính số tiền lãi có thể thu được lớn nhất."
     )
     t=best_Z .is_integer
@@ -4382,11 +4383,11 @@ def bch_12_L10_C2_B2_26():
     if chon==2:
         noi_dung = (
         f"Tìm giá trị nhỏ nhất của biểu thức $F={latex(m*x+n*y)}$ với $(x;y)$ là các điểm thuộc miền tứ giác như hình vẽ.")
-        dap_an=max_F
+        dap_an=min_F
 
         noi_dung_loigiai=(
         f"$F({x_A};{y_A})={F_A},F({x_B};{y_B})={F_B},F({x_C};{y_C})={F_C},F({x_D};{y_D})={F_D}$.\n\n"
-        f"Giá trị nhỏ nhất là ${{{max_F}}}$.")  
+        f"Giá trị nhỏ nhất là ${{{min_F}}}$.")  
 
   
         
@@ -4545,7 +4546,7 @@ def bch_12_L10_C2_B2_28():
 
     f=f"\\left\\{{ \\begin{{array}}{{l}} \n\
     {latex(a*x+b*y+c)} \\ge 0\\\\ \n\
-    x\\ge {x_2}\\\\ \n\
+    x\\le {x_2}\\\\ \n\
     y \\le {y_3}\n\
     \\end{{array}} \\right."
 

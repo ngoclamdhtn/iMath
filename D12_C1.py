@@ -1397,7 +1397,7 @@ def prt_34_L12_C1_B1_10():
 			kq4=f"({x_2};+\\infty)"
 		if don_dieu=="nghịch biến":
 			kq=random.choice([f"(-\\infty;{x_1})", f"({x_2};{x_3})"])
-			kq2=random.choice([f"({x_1};{x_2})", f"({x_3};+\\infty)"])
+			kq2=random.choice([f"({x_1};{x_2})"])
 			kq3=f"({x_3};+\\infty)"
 			kq4=f"({x_2};+\\infty)"
 
@@ -1414,7 +1414,7 @@ def prt_34_L12_C1_B1_10():
 			kq4=f"({x_2};+\\infty)"
 		if don_dieu=="đồng biến":
 			kq=random.choice([f"(-\\infty;{x_1})", f"({x_2};{x_3})"])
-			kq2=random.choice([f"({x_1};{x_2})", f"({x_3};+\\infty)"])
+			kq2=random.choice([f"({x_1};{x_2})"])
 			kq3=f"({x_3};+\\infty)"
 			kq4=f"({x_2};+\\infty)"
 
@@ -4278,9 +4278,9 @@ def prt_34_L12_C1_B1_32():
 		
 		noi_dung_loigiai=f"Đặt $K=({t};+\\infty)$.\n\n"\
 		f"Ta có $y'= -3x^2 + 6x + {latex(m+a)}$.\n\n"\
-		f"Hàm số đã cho nghịch biến trên khoảng $(0; +\\infty) \\Leftrightarrow y' \\leq 0, \\forall x \\in K$\n\n"\
-		f"$\\Leftrightarrow -3x^2 + 6x + m \\leq 0, \\forall x \\in (0; +\\infty) \\Leftrightarrow m \\leq 3x^2 - 6x, \\forall x \\in K.$\n\n"\
-		f"Xét hàm số $f(x) = 3x^2 - 6x$ với $x > 0$.\n\n"\
+		f"Hàm số đã cho nghịch biến trên khoảng $({t}; +\\infty) \\Leftrightarrow y' \\leq 0, \\forall x \\in K$\n\n"\
+		f"$\\Leftrightarrow -3x^2 + 6x + m \\leq 0, \\forall x \\in ({t}; +\\infty) \\Leftrightarrow m \\leq 3x^2 - 6x, \\forall x \\in K.$\n\n"\
+		f"Xét hàm số $f(x) = 3x^2 - 6x$ với $x > {t}$.\n\n"\
 		f"Ta có $f'(x) = 6x - 6$.\n\n"\
 		f"Khi đó $f'(x) = 0 \\Leftrightarrow x =1$.\n\n"\
 		f"Bảng biến thiên\n\n"\
@@ -4289,9 +4289,9 @@ def prt_34_L12_C1_B1_32():
 
 		noi_dung_loigiai_latex=f"Đặt $K=({t};+\\infty)$.\n\n"\
 		f"Ta có $y'= -3x^2 + 6x + {latex(m+a)}$.\n\n"\
-		f"Hàm số đã cho nghịch biến trên khoảng $(0; +\\infty) \\Leftrightarrow y' \\leq 0, \\forall x \\in K$\n\n"\
-		f"$\\Leftrightarrow -3x^2 + 6x + m \\leq 0, \\forall x \\in (0; +\\infty) \\Leftrightarrow m \\leq 3x^2 - 6x, \\forall x \\in K.$\n\n"\
-		f"Xét hàm số $f(x) = 3x^2 - 6x$ với $x > 0$.\n\n"\
+		f"Hàm số đã cho nghịch biến trên khoảng $({t}; +\\infty) \\Leftrightarrow y' \\leq 0, \\forall x \\in K$\n\n"\
+		f"$\\Leftrightarrow -3x^2 + 6x + m \\leq 0, \\forall x \\in ({t}; +\\infty) \\Leftrightarrow m \\leq 3x^2 - 6x, \\forall x \\in K.$\n\n"\
+		f"Xét hàm số $f(x) = 3x^2 - 6x$ với $x > {t}$.\n\n"\
 		f"Ta có $f'(x) = 6x - 6$.\n\n"\
 		f"Khi đó $f'(x) = 0 \\Leftrightarrow x =1$.\n\n"\
 		f"Bảng biến thiên\n\n"\
@@ -4307,7 +4307,7 @@ def prt_34_L12_C1_B1_32():
 		noi_dung_loigiai=f"Ta có $y'=\\dfrac{{x^2+6x+9-m^2}}{{(x+3)^2}}$, $\\forall x\\neq -3$.\n\n\
 		Hàm số đồng biến trên $({t};+\\infty)$ khi và chỉ khi $y'\\ge 0$, $\\forall x>{t}$ \n\n\
 			$\\Leftrightarrow  x^2+6x+9-m^2\\ge 0, \\forall x>{t}$ \n\n\
-			$\\Leftrightarrow  m^2\\le (x+3)^2, \\forall x>1$\n\n\
+			$\\Leftrightarrow  m^2\\le (x+3)^2, \\forall x>{t}$\n\n\
 			$\\Leftrightarrow  m^2\\le \\min\\limits_{{[{t};+\\infty)}} (x+3)^2$ \n\n\
 			$\\Leftrightarrow  m^2\\le {(t+3)**2}\\Leftrightarrow {-t-3}\\le m\\le {t+3}$."
 
@@ -4647,7 +4647,7 @@ def prt_34_L12_C1_B1_36():
 
 	st_a,st_b=sp.symbols("a b")
 			
-	noi_dung =(f"Đồ thị hàm số $y=f(x)={latex(f)}$ có các điểm cực trị là $A,B$."
+	noi_dung =(f"Đồ thị hàm số $y=f(x)={latex(f)}$ có các điểm cực trị là ${{A,B}}$."
 	f" Đường thẳng đi qua ${{A}}$ và ${{B}}$ có phương trình $y=ax+b$. Tính ${latex(p*st_a+q*st_b)}$ (kết quả làm tròn đến hàng phần mười).")
 
 	
@@ -4708,7 +4708,7 @@ def prt_34_L12_C1_B1_37():
 
 	st_a,st_b=sp.symbols("a b")
 			
-	noi_dung =(f"Đồ thị hàm số $y=f(x)={latex(f_ok)}$ có các điểm cực trị là $A,B$."
+	noi_dung =(f"Đồ thị hàm số $y=f(x)={latex(f_ok)}$ có các điểm cực trị là ${{A,B}}$."
 	f" Đường thẳng đi qua ${{A}}$ và ${{B}}$ có phương trình $y=ax+b$. Tính ${latex(p*st_a+q*st_b)}$ (kết quả làm tròn đến hàng phần mười).")
 
 	
@@ -7143,7 +7143,7 @@ def prt_34_L12_C1_B2_21():
 	if chon==1:
 		kq=max(a,v_0,v_1)
 		noi_dung=f"Một chất điểm chuyển động có vận tốc tức thời $v(t)$ phụ thuộc vào thời gian ${{t}}$ theo hàm số $v(t)={latex(v)}$ (m/s)."\
-		f" Trong khoảng thời gian từ $t=0$ (s) đến $t={t_1}$ (s) chất điểm đạt vận tốc lớn nhất nhất bằng?"
+		f" Trong khoảng thời gian từ $t=0$ (s) đến $t={t_1}$ (s) chất điểm đạt vận tốc lớn nhất bằng?"
 		noi_dung_loigiai=(f"$v'(t)={latex(v_dh)}$.\n\n"
 		f"$v'(t)=0\\Leftrightarrow t=0, t=\\pm {latex(sqrt(t_0))}$.\n\n"
 		f'$v(0)={a},v({latex(sqrt(t_0))})={latex(v_0)}, v({t_1})={latex(v_1)}$.\n\n'
@@ -7153,7 +7153,7 @@ def prt_34_L12_C1_B2_21():
 	if chon==2:
 		kq=min(a,v_0,v_1)
 		noi_dung=f"Một chất điểm chuyển động có vận tốc tức thời $v(t)$ phụ thuộc vào thời gian ${{t}}$ theo hàm số $v(t)={latex(v)}$ (m/s)."\
-		f" Trong khoảng thời gian từ $t=0$ (s) đến $t={t_1}$ (s) chất điểm đạt vận tốc nhỏ nhất nhất bằng?"
+		f" Trong khoảng thời gian từ $t=0$ (s) đến $t={t_1}$ (s) chất điểm đạt vận tốc nhỏ nhất bằng?"
 		noi_dung_loigiai=(f"$v'(t)={latex(v_dh)}$.\n\n"
 		f"$v'(t)=0\\Leftrightarrow t=0, t=\\pm {latex(sqrt(t_0))}$.\n\n"
 		f'$v(0)={a},v({latex(sqrt(t_0))})={latex(v_0)}, v({t_1})={latex(v_1)}$.\n\n'
@@ -7560,28 +7560,32 @@ def prt_34_L12_C1_B3_02():
 	
 	duong_tiem_can=random.choice(["đường tiệm cận đứng", "đường tiệm cận ngang", "đường tiệm cận đứng và tiệm cận ngang"])
 	if chon==1:
-		x_1=random.randint(-6,0)
-		#Điểm phân chia và không xác định
-		x_2 = x_1 + random.randint(1,5)
-		x_3=x_2 + random.randint(1,5)
-		
-		#Thiết lập thông tin cột trái
-		y_1=random.choice(["-\\infty", random.randint(-10,10)])
-		if y_1 == "-\\infty":
-			y_2 = random.randint(-5,5)
-		else:
-			y_2 = y_1 + random.randint(1,10)		
+		while True:
+			x_1=random.randint(-6,0)
+			#Điểm phân chia và không xác định
+			x_2 = x_1 + random.randint(1,5)
+			x_3=x_2 + random.randint(1,5)
+			
+			#Thiết lập thông tin cột trái
+			y_1=random.choice(["-\\infty", random.randint(-10,10)])
+			if y_1 == "-\\infty":
+				y_2 = random.randint(-5,5)
+			else:
+				y_2 = y_1 + random.randint(1,10)		
 
-		y_3=random.choice(["-\\infty", y_2 - random.randint(1,10)])
+			y_3=random.choice(["-\\infty", y_2 - random.randint(1,10)])
 
-		#Thiết lập thông tin cột phải
-		y_4=random.choice(["+\\infty", random.randint(-10,10)])
-		if y_4 == "+\\infty":
-			y_5 = random.randint(-5,5)
-		else:		
-			y_5 = y_4 - random.randint(1,10)
+			#Thiết lập thông tin cột phải
+			y_4=random.choice(["+\\infty", random.randint(-10,10)])
+			if y_4 == "+\\infty":
+				y_5 = random.randint(-5,5)
+			else:		
+				y_5 = y_4 - random.randint(1,10)
 
-		y_6=random.choice(["+\\infty", y_5 + random.randint(1,10)])
+			y_6=random.choice(["+\\infty", y_5 + random.randint(1,10)])
+			if y_1!=y_6:
+				break
+
 		#Tìm số tiệm cận ngang
 		so_tiemcan_ngang = 0	
 		if y_1 != "-\\infty":
@@ -9253,6 +9257,204 @@ def prt_34_L12_C1_B3_18():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B3_19]-M2. Tìm tiệm cận ngang y=(ax+b)/(cx+d)
+def prt_34_L12_C1_B3_19():
+	x=sp.symbols("x")
+	while True:
+		a=random.choice([i for i in range(-6,8) if i != 0 ])
+		b=random.choice([i for i in range(-10,10) if i != 0 ])
+		c=random.choice([i for i in range(-10,10) if i != 0 ])
+		d=random.choice([i for i in range(-8,8) if i != 0 ])
+		if a/c==b/d:
+			continue
+		if a/c==-d/c:
+			continue
+		if all([a*d-b*c!=0,b/d!=-a/c]):
+			break
+	f=(a*x+b)/(c*x+d)
+	noi_dung=(
+	f"Đồ thị hàm số $y={latex(f)}$ có đường tiệm cận ngang là"
+	)
+	
+
+	kq=f"$y={phan_so(a/c)}$"
+	kq_false=[
+	f"$y={phan_so(b/d)}$",
+	f"$y={phan_so(-a/c)}$",
+	f"$x={phan_so(a/c)}$",
+	f"$x={phan_so(-d/c)}$",
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"Đồ thị hàm số $y={latex(f)}$ có đường tiệm cận ngang là $y={phan_so(a/c)}$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B3_20]-M2. Tìm tiệm cận ngang y=(ax^2+bx+c)/(dx^2+e)
+def prt_34_L12_C1_B3_20():
+	x=sp.symbols("x")
+	while True:
+		a=random.choice([i for i in range(-6,8) if i != 0 ])
+		b=random.choice([i for i in range(-10,10) if i != 0 ])
+		c=random.choice([i for i in range(-10,10) if i != 0 ])
+		d=random.choice([i for i in range(-8,8) if i != 0 ])
+		e=random.choice([i for i in range(-8,8) if i != 0 ])		
+		if all([b/d!=a/d, b/d!=c/e, a/d!=c/e ]):
+			break
+	f=(a*x**2+b*x+c)/(d*x**2+e)
+	noi_dung=(
+	f"Đồ thị hàm số $y={latex(f)}$ có đường tiệm cận ngang là"
+	)
+	
+
+	kq=f"$y={phan_so(a/d)}$"
+	kq_false=[
+	f"$y={phan_so(b/d)}$",
+	f"$y={phan_so(c/e)}$",
+	f"$x={phan_so(a/d)}$",
+	f"$x={phan_so(a/e)}$",
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"Đồ thị hàm số $y={latex(f)}$ có đường tiệm cận ngang là $y={phan_so(a/d)}$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B3_21]-M2. Tìm tiệm cận ngang y=căn(ax^2+bx+c)/(dx+e)
+def prt_34_L12_C1_B3_21():
+	x=sp.symbols("x")
+	while True:
+		a=random.choice([i for i in range(1,9) if i != 0 ])
+		b=random.choice([i for i in range(-8,8) if i != 0 ])
+		c=random.choice([i for i in range(-10,10) if i != 0 ])
+		delta=b**2-4*a*c
+		if delta>=0:
+			continue
+		d=random.choice([i for i in range(-8,8) if i != 0 ])
+		e=random.choice([i for i in range(-8,8) if i != 0 ])		
+		if all([b/d!=sqrt(a)/d, b/d!=c/e, sqrt(a)/d!=c/e ]):
+			break
+	f=sqrt(a*x**2+b*x+c)/(d*x+e)
+	noi_dung=(
+	f"Đồ thị hàm số $y={latex(f)}$ một có đường tiệm cận ngang là"
+	)
+	
+
+	kq=random.choice([
+		f"$y={latex(nsimplify(sqrt(a)/d))}$",
+		f"$y={latex(nsimplify(-sqrt(a)/d))}$",
+	 ])
+	kq_false=[
+	f"$y={phan_so(b/d)}$",
+	f"$y={phan_so(c/e)}$",
+	f"$x={latex(nsimplify(sqrt(a)/d))}$",
+	f"$x={latex(nsimplify(-sqrt(a)/d))}$",
+	
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"Đồ thị hàm số $y={latex(f)}$ có các đường tiệm cận ngang là $y={latex(nsimplify(sqrt(a)/d))}$ và $y={latex(nsimplify(-sqrt(a)/d))}$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #BÀI 5 - ĐỒ THỊ HÀM SỐ
 
@@ -11076,13 +11278,15 @@ def prt_34_L12_C1_B4_17():
 #[D12_C1_B4_18]-TL-M3. Cho đồ thị hàm y=(ax+b)/(cx+d). Tính tổng các hệ số
 def prt_34_L12_C1_B4_18():
 	x = sp.symbols('x')
-	a = random.choice([i for i in range(-3, 3) if i!=0])
-	b = random.choice([a,-a,2*a,-2*a,3*a])
-	c = random.choice([i for i in range(-2, 2) if i!=0])
-	d = random.choice([c,-c,2*c,-2*c,3*c])	
+	while True:
+		a = random.choice([i for i in range(-3, 3) if i!=0])
+		b = random.choice([a, -a, 2*a, -2*a, 3*a])
+		c = random.choice([i for i in range(-2, 2) if i!=0])
+		d = random.choice([c,-c,2*c,-2*c,3*c])
+		if a*d-b*c!=0:
+			break
 
-	if a*d-b*c==0: 
-		b = b+1
+
 	f=(a*x+b)/(c*x+d)
 	x_0, y_0=-d/c, a/c
 	x_Ox,y_Oy=-b/a,b/d
@@ -11572,7 +11776,7 @@ def prt_34_L12_C1_B4_21():
 		noi_dung = (
 		f"Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị là đường cong trong hình bên. Có bao nhiêu số âm trong các số ${{a,b,c,d}}$?"
 		)
-		dap_an=3
+		dap_an=2
 
 		noi_dung_loigiai=(
 		f"Dựa vào đồ thị suy ra $a<0$.\n\n"
@@ -14643,14 +14847,14 @@ def prt_34_L12_C1_B5_29():
 			break
 
 	noi_dung = (
-	f"Một xưởng sản xuất bán áo thun với giá {gia_hien_tai} một chiếc,"
+	f"Một xưởng sản xuất bán một chiếc áo thun với giá {gia_hien_tai} đồng ,"
 	f" mỗi tháng bán trung bình {sl_ban_hien_tai} chiếc. Khảo sát cho thấy nếu tăng thêm"
 f" 5000 đồng thì số lượng tiêu thụ giảm {sl_giam} chiếc."
 f" Biết chi phí sản xuất một chiếc áo là {von} đồng."
-f" Hãy tìm số tiền cần tăng để lợi nhuận hàng tháng lớn nhất."
+f" Hãy tìm số tiền (ngàn đồng) cần tăng để lợi nhuận hàng tháng lớn nhất."
 
 	)
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 
 	noi_dung_loigiai=(
@@ -14665,7 +14869,7 @@ f" Hãy tìm số tiền cần tăng để lợi nhuận hàng tháng lớn nh�
 	f"$f'(x)={latex(2*a1*x+b1)}$.\n\n"
 	f"$f'(x)=0\\Leftrightarrow {latex(2*a1*x+b1)}=0\\Leftrightarrow x={int(x_0)}$.\n\n"
 	f"Lập bảng biến thiên ta thấy $f(x)$ đạt giá trị lớn nhất khi $x={int(x_0)}$.\n\n"
-	f" Vậy cần tăng thêm {dap_an} đồng cho mỗi chiếc áo để được lợi nhuận cao nhất."
+	f" Vậy cần tăng thêm {dap_an} ngàn đồng cho mỗi chiếc áo để được lợi nhuận cao nhất."
 	)
 	
 		

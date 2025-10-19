@@ -2957,18 +2957,22 @@ def yy3yy_L10_C4_B2_12():
     a,b,c,A,B,C=a[i], b[i], c[i], A[i], B[i], C[i]
 
     l_a=random.randint(1,7)
+
+    while True:
     
-    goc_A_degree=random.randint(10,80)
-    goc_A= math.radians(goc_A_degree)
+        goc_A_degree=random.randint(10,80)
+        goc_A= math.radians(goc_A_degree)
 
-    goc_B_degree=random.randint(10,60)
-    if goc_B_degree==goc_A_degree:
-        goc_B_degree=goc_B_degree+random.randint(5,10)
-    goc_B= math.radians(goc_B_degree)
+        goc_B_degree=random.randint(10,60)
+        if goc_B_degree==goc_A_degree:
+            goc_B_degree=goc_B_degree+random.randint(5,10)
+        goc_B= math.radians(goc_B_degree)
 
-    goc_C_degree=180-goc_A_degree-goc_B_degree
-    goc_C_degree_false=goc_A_degree+goc_B_degree
-    goc_C=math.radians(goc_C_degree)
+        goc_C_degree=180-goc_A_degree-goc_B_degree
+        goc_C_degree_false=goc_A_degree+goc_B_degree
+        goc_C=math.radians(goc_C_degree)
+        if all([goc_C_degree!=45]):
+            break
 
     l_c=f"{round(l_a*sin(goc_C)/sin(goc_A),2):.1f}".replace(".",",")
     l_c_false=f"{round(2*l_a*sin(goc_C)/sin(goc_C),2):.1f}".replace(".",",")
@@ -2979,18 +2983,25 @@ def yy3yy_L10_C4_B2_12():
     HDG=f"$\\dfrac{{{b}}}{{\\sin {B}}}=\\dfrac{{{a}}}{{\\sin {A}}}\\Rightarrow {b}=\\dfrac{{{a}\\sin {B}}}{{\\sin {A}}}={l_b}$."
 
     noi_dung = (f"Cho tam giác ${{ABC}}$ có ${a}={l_a},\\widehat{{{A}}}={goc_A_degree}^\\circ, \\widehat{{{B}}}={goc_B_degree}^\\circ$."
-        f" Độ dài cạnh ${{{c}}}$ bằng (kết quả làm tròn đến hàng phần chục)."
+        f" Độ dài cạnh ${{{c}}}$ bằng (kết quả làm tròn đến hàng phần mười)."
     )    
 
     kq=l_a*sin(goc_C)/sin(goc_A)
-    kq2=2*l_a*sin(goc_C)/sin(goc_C)
-    kq3=l_a*sin(goc_B)/sin(goc_A)
+    kq2=2*l_a*sin(goc_C)/sin(goc_A)
+    kq3=l_a*cos(goc_C)/sin(goc_A)
     kq4=l_a*sin(goc_A)/sin(goc_B)
+   
+    numbers = set()
+    if all([kq3 not in [kq,kq2]]):
+         numbers.add(kq3)
+    if all([kq4 not in [kq,kq2,kq3]]):
+         numbers.add(kq4)
 
-    pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-    kq2=pa_kotrung[1]
-    kq3=pa_kotrung[2]
-    kq4=pa_kotrung[3]
+    while len(numbers) <5:        
+        numbers.add(round(random.uniform(1, 10), 1))  # 4 chữ số thập phân
+
+    kq_false = list(numbers)
+    kq2,kq3,kq4=kq_false[0:3]
 
     noi_dung_loigiai=(f"$\\widehat{{{C}}}=180^\\circ-{goc_A_degree}^\\circ-{goc_B_degree}^\\circ={goc_C_degree}^\\circ$.\n\n"
         f"$\\dfrac{{{c}}}{{\\sin {C}}}=\\dfrac{{{a}}}{{\\sin {A}}}\\Rightarrow {c}=\\dfrac{{{a}\\sin {C}}}{{\\sin {A}}}={l_c}$."
@@ -3171,7 +3182,7 @@ def yy3yy_L10_C4_B2_14():
 #[D10_C4_B2_15]-TL-M3. Ứng dụng hệ thức lượng vào thực tế 2
 def yy3yy_L10_C4_B2_15():
     a=random.choice([2.7, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 3, 3.2, 3.4, 3.5, 3.6 ])
-    a1=str(a).replace(".",",")
+    a1=str(a).replace(".","{,}")
     
     x=random.randint(40,50)
     y=x+random.randint(60,65)
@@ -3210,42 +3221,21 @@ def yy3yy_L10_C4_B2_15():
     \draw[line width=3pt,brown] (O)--(O');
     \fill[cyan!40] (A)--(M1)--(N1)--cycle;
     \fill[ball color=yellow!50] (O2)--(M2)--(N2)--cycle;
-    \draw (A)--(M1)--(N1)--cycle (O2)--(M2)--(N2)--cycle
-    pic[draw, angle radius=7mm]{{angle=M1--A--N1}}
-    pic["\scriptsize ${x}^\circ$",angle radius=16mm]{{angle=M1--A--N1}}
-    pic[draw, angle radius=4mm]{{angle=N1--M1--A}}
-    pic["\scriptsize ${y}^\circ$",angle radius=12mm]{{angle=N1--M1--A}}
-    ;
-    \path (A)--(M1) node[below,midway,sloped,scale=.8]{{\scriptsize ${a1}$m }}
-    ;
+    \draw (A)--(M1)--(N1)--cycle (O2)--(M2)--(N2)--cycle;
+    \pic[draw, angle radius=7mm]{{angle=M1--A--N1}};
+    \pic[ draw=none, angle radius=16mm]{{angle=M1--A--N1}};
+    
+    \pic[draw, angle radius=4mm]{{angle=N1--M1--A}};
+    \pic[draw=none, angle radius=12mm]{{angle=N1--M1--A}};
+    \path (A)--(M1) node[below,midway,sloped,scale=.8]{{\scriptsize ${a1}$m }};
 \end{{tikzpicture}}
 
     """
-    code_hinh1=fr"""
-\begin{{tikzpicture}}[line join=round, line cap=round, >=stealth,scale=1]     
-    \path (0,0)     coordinate(A)
-    ++(10:3)coordinate(B)
-    +(90:3)coordinate(C);
-    \draw
-    (A)--(B)--(C)--cycle    
-    (A)+(30:1)node[scale=.7]{{${x}^\circ$}}
-    (B)+(135:.7)node[scale=.7]{{${y}^\circ$}}
-    
-    ;
-    \path
-    (A)--(B)node[midway,below,scale=0.7]{{${a1}$ m}}
-    
-    
-    
-    ;   
-    \tkzMarkAngles[size=.4](B,A,C C,B,A)
-    \foreach \x/\g in {{C/90,A/210,B/-30}} \draw (\x)+(\g:0.3)node{{$\x$}};
-\end{{tikzpicture}} """
-
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
-    code1 = my_module.moi_truong_anh_latex(code_hinh1)
-    file_name1=my_module.pdftoimage_timename(code1)
+   
+    
+    
 
     noi_dung = f" Tính diện tích một cánh buồm hình tam giác. Biết cánh buồm đó có chiều dài một cạnh là ${{{a1}}}$ m và hai góc kề cạnh đó có số đo là ${x}^{{\\circ}}$ và ${y}^{{\\circ}}$. Làm tròn kết quả đến hàng phần mười."
 
@@ -3258,7 +3248,26 @@ def yy3yy_L10_C4_B2_15():
 
     debai_word= f"{noi_dung}\n{file_name}\n"
 
-    loigiai_word=f"Lời giải:\n{file_name1} \n {noi_dung_loigiai} \n"
+    code_hinh1=fr"""
+\begin{{tikzpicture}}[line join=round, line cap=round, >=stealth,scale=1]     
+    \path (0,0)     coordinate(A)
+    ++(10:3)coordinate(B)
+    +(90:3)coordinate(C);
+    \draw
+    (A)--(B)--(C)--cycle    
+    (A)+(30:1)node[scale=.7]{{${x}^\circ$}}
+    (B)+(135:.7)node[scale=.7]{{${y}^\circ$}};
+    \path
+    (A)--(B)node[midway,below,scale=0.7]{{${a1}$ m}};   
+    \tkzMarkAngles[size=.4](B,A,C C,B,A)
+    \foreach \x/\g in {{C/90,A/210,B/-30}} \draw (\x)+(\g:0.3)node{{$\x$}};
+\end{{tikzpicture}} """
+
+    code1 = my_module.moi_truong_anh_latex(code_hinh1)
+    file_name1=my_module.pdftoimage_timename(code1)
+    
+
+    loigiai_word=f"Lời giải:\n\n {noi_dung_loigiai} \n"
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
@@ -3400,7 +3409,7 @@ def yy3yy_L10_C4_B2_18():
 
     c=random.randint(150,300)
     
-    kq=f"{round(c*math.sin(math.radians(a))/math.sin(math.radians(180-a-b)),1):.1f}".replace(".",",")
+    kq=f"{round(c*math.sin(math.radians(a))/math.sin(math.radians(180-a-b)),0):.0f}".replace(".",",")
     
     code_hinh=r"""
     \begin{tikzpicture}[scale=1]
@@ -3420,7 +3429,7 @@ def yy3yy_L10_C4_B2_18():
     file_name=my_module.pdftoimage_timename(code)
 
 
-    noi_dung = f"Để đo chiều rộng ${{AB}}$ của một khúc sông, người ta chọn điểm ${{C}}$.  Sau đó,  đo khoảng cách ${{BC}}$, các góc ${{B}}$ và ${{C}}$. Biết rằng ${{BC = {c}}}$ m, $\\widehat{{B}} = {b}^{{\\circ}}$,  $\\widehat{{C}} = {a}^{{\\circ}}$. Tìm chiều rộng ${{AB}}$ của khúc sông đó (làm tròn đến chữ số thập phân thứ nhất)."
+    noi_dung = f"Để đo chiều rộng ${{AB}}$ của một khúc sông, người ta chọn điểm ${{C}}$.  Sau đó,  đo khoảng cách ${{BC}}$, các góc ${{B}}$ và ${{C}}$. Biết rằng ${{BC = {c}}}$ m, $\\widehat{{B}} = {b}^{{\\circ}}$,  $\\widehat{{C}} = {a}^{{\\circ}}$. Tìm chiều rộng ${{AB}}$ của khúc sông đó (làm tròn đến chữ số hàng đơn vị)."
 
     noi_dung_loigiai=( f" Ta có $\\widehat{{A}}= 180^{{\\circ}} -  \\widehat{{B}} -\\widehat{{C}} =180^{{\\circ}}- {b}^{{\\circ}} - {c}^{{\\circ}}={180-b-a}^{{\\circ}}$. \n\n"
        f" Áp dụng định lí sin ta có \n\n" 
@@ -3562,8 +3571,8 @@ def yy3yy_L10_C4_B2_21():
     b=random.randint(100,120)
     c=random.randint(100,110)
     g=random.randint(50,80)
-    kq1=f"{round((b)**2+(c)**2-2*b*c*math.sin(math.radians(g)),1):.1f}".replace(".",",")
-    kq=f"{round(sqrt((b)**2+(c)**2-2*b*c*math.sin(math.radians(g))),1):.1f}".replace(".",",").replace(",0"," ")    
+    kq1=f"{round((b)**2+(c)**2-2*b*c*math.sin(math.radians(g)),0):.0f}".replace(".",",")
+    kq=f"{round(sqrt((b)**2+(c)**2-2*b*c*math.sin(math.radians(g))),0):.0f}".replace(".",",").replace(",0"," ")    
     code_hinh=r"""
   \begin{tikzpicture}[scale=1, font=\footnotesize, line join = round, line cap = round]
         \tkzDefPoints{0/0/A,5/0/B,2/3/C,1/0/M,4/0/N}
@@ -3578,7 +3587,7 @@ def yy3yy_L10_C4_B2_21():
 
     code = my_module.moi_truong_anh_latex(code_hinh)
     file_name=my_module.pdftoimage_timename(code)
-    noi_dung = f"Khoảng cách từ ${{A}}$ đến ${{B}}$ không thể đo trực tiếp được vì phải qua một đầm lầy. Người ta xác định được một điểm ${{C}}$ mà từ đó có thể nhìn được ${{A}}$ và ${{B}}$ dưới một góc ${g}^{{\\circ}}$. Biết ${{CA={b}}}$ m, ${{CB={c}}}$ m. Khoảng cách ${{AB}}$ bằng bao nhiêu?(Làm trong đến hàng phần mười)"
+    noi_dung = f"Khoảng cách từ ${{A}}$ đến ${{B}}$ không thể đo trực tiếp được vì phải qua một đầm lầy. Người ta xác định được một điểm ${{C}}$ mà từ đó có thể nhìn được ${{A}}$ và ${{B}}$ dưới một góc ${g}^{{\\circ}}$. Biết ${{CA={b}}}$ m, ${{CB={c}}}$ m. Khoảng cách ${{AB}}$ bằng bao nhiêu?(kết quả làm tròn đến hàng đơn vị)"
 
     noi_dung_loigiai=( f"  $ AB^{{2}}=CA^{{2}}+CB^{{2}}-2\\cdot CA\\cdot CB\\cdot \\cos {g}^{{\\circ}} \\Rightarrow AB={kq}$ m")
 
@@ -4179,8 +4188,8 @@ def yy3yy_L10_C4_B2_30():
     kq_false=[
         f"a\\sin A = b\\sin B",
         f"b\\sin B = c\\sin C",
-        f"a\\sin B = b\\sin A",
-        f"a\\sin C = c\\sin A",
+        f"a\\sin B = b\\sin C",
+        f"a\\sin C = c\\sin B",
         f"\\dfrac{{a}}{{\\cos A}}=\\dfrac{{b}}{{\\cos B}}",
         f"\\dfrac{{b}}{{\\cos B}}=\\dfrac{{c}}{{\\cos C}}",
         f"\\dfrac{{a}}{{\\sin 2A}}=\\dfrac{{b}}{{\\sin 2B}}",
@@ -4317,8 +4326,8 @@ def yy3yy_L10_C4_B2_32():
     f"S=\\dfrac{{p}}{{r}}",
     f"S=\\dfrac{{abc}}{{2R}}",
     f"S={phan_so(1/2)}ac\\cos B",
-    f"a\\sin B = b\\sin A",
-    f"a\\sin C = c\\sin A",
+    f"a\\sin B = b\\sin C",
+    f"a\\sin C = c\\sin B",
     f"\\dfrac{{a}}{{\\cos A}}=\\dfrac{{b}}{{\\cos B}}",
     f"\\dfrac{{b}}{{\\cos B}}=\\dfrac{{c}}{{\\cos C}}",
     ]

@@ -246,7 +246,7 @@ def tao_taphop(so_phantu,so_batdau,so_ketthuc):
     return my_set
 
 def thay_kihieu_taphop(string):
-    st = string.replace(f"\\{{set()\\}}",f"\\emptyset") 
+    st = string.replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
     return st
 def xoa_ngoac_vuong(string):
     find_what="["

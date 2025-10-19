@@ -1014,10 +1014,10 @@ def mjulk_L10_C1_B2_01():
 	kq4=my_module.xoa_ngoac_vuong(kq4)
 
 	#Tạo các phương án
-	pa_A=f"*$A=\\{{{kq}\\}}$"
-	pa_B=f"$A=\\{{{kq2}\\}}$"
-	pa_C=f"$A=\\{{{kq3}\\}}$"
-	pa_D=f"$A=\\{{{kq4}\\}}$"
+	pa_A=f"*$A=\\{{{kq}\\}}$".replace(",",";")
+	pa_B=f"$A=\\{{{kq2}\\}}$".replace(",",";")
+	pa_C=f"$A=\\{{{kq3}\\}}$".replace(",",";")
+	pa_D=f"$A=\\{{{kq4}\\}}$".replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -1133,10 +1133,10 @@ def mjulk_L10_C1_B2_02():
 
 
 	#Tạo các phương án
-	pa_A=f"*{kq}"
-	pa_B=f"{kq2}"
-	pa_C=f"{kq3}"
-	pa_D=f"{kq4}"
+	pa_A=f"*{kq}".replace(",",";")
+	pa_B=f"{kq2}".replace(",",";")
+	pa_C=f"{kq3}".replace(",",";")
+	pa_D=f"{kq4}".replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -1205,10 +1205,10 @@ def mjulk_L10_C1_B2_03():
 	pa_C=f"$\\{{{kq3}\\}}$"
 	pa_D=f"$\\{{{kq4}\\}}$"
 
-	pa_A=pa_A.replace("*$\\{\\}$","*${{\\emptyset}}$")
-	pa_B=pa_B.replace("*$\\{\\}$","*${{\\emptyset}}$")
-	pa_C=pa_C.replace("*$\\{\\}$","*${{\\emptyset}}$")
-	pa_D=pa_D.replace("*$\\{\\}$","*${{\\emptyset}}$")
+	pa_A=pa_A.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
+	pa_B=pa_B.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
+	pa_C=pa_C.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
+	pa_D=pa_D.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -1271,10 +1271,10 @@ def mjulk_L10_C1_B2_04():
 	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
 	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
 
-	pa_A=pa_A.replace("*$\\{\\}$","*${{\\emptyset}}$")
-	pa_B=pa_B.replace("*$\\{\\}$","*${{\\emptyset}}$")
-	pa_C=pa_C.replace("*$\\{\\}$","*${{\\emptyset}}$")
-	pa_D=pa_D.replace("*$\\{\\}$","*${{\\emptyset}}$")
+	pa_A=pa_A.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
+	pa_B=pa_B.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
+	pa_C=pa_C.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
+	pa_D=pa_D.replace("*$\\{\\}$","*${{\\emptyset}}$").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -1482,10 +1482,10 @@ def mjulk_L10_C1_B2_06():
 	A_fasle=set(range(a1, a2))
 	noi_dung=f"Cho tập hợp ${ten_A}=\\{{x\\in \\mathbb{{Z}}|{a1} \\le x \\le {a2}\\}}$. Xét tính đúng-sai của các khẳng định sau?"
 	
-	kq1_T=f"*${ten_A}=\\{{x\\in \\mathbb{{Z}}| {A} \\}}$"
-	kq1_F=f"${ten_A}=\\{{x\\in \\mathbb{{Z}}| {A_fasle} \\}}$"
+	kq1_T=f"*${ten_A}=\\{{x\\in \\mathbb{{Z}}| {A} \\}}$".replace(",",";")
+	kq1_F=f"${ten_A}=\\{{x\\in \\mathbb{{Z}}| {A_fasle} \\}}$".replace(",",";")
 	kq1=random.choice([kq1_T, kq1_F])
-	HDG=f"Liệt kê các phần tử của tập hợp ta được: ${ten_A}=\\{{ {A} \\}}$."
+	HDG=f"Liệt kê các phần tử của tập hợp ta được: ${ten_A}=\\{{ {A} \\}}$.".replace(",",";")
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -1939,7 +1939,7 @@ def mjulk_L10_C1_B2_09():
 	f"${ten}=\\{{{primerange}\\}}$.\n\n"
 	f"Số phần tử là: {so_phantu}."
 	)
-	noi_dung_loigiai=noi_dung_loigiai.replace("[","").replace("]","")
+	noi_dung_loigiai=noi_dung_loigiai.replace("[","").replace("]","").replace(",",";")
 
 	kq=so_phantu
 	kq_false=[so_phantu-1, so_phantu+1, so_phantu+random.randint(1,3), so_phantu-random.randint(1,3)]
@@ -1950,10 +1950,10 @@ def mjulk_L10_C1_B2_09():
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]	
 
-	pa_A= f"*${{{kq}}}$"
-	pa_B= f"${{{kq2}}}$"
-	pa_C= f"${{{kq3}}}$"
-	pa_D= f"${{{kq4}}}$"
+	pa_A= f"*${{{kq}}}$".replace(",",";")
+	pa_B= f"${{{kq2}}}$".replace(",",";")
+	pa_C= f"${{{kq3}}}$".replace(",",";")
+	pa_D= f"${{{kq4}}}$".replace(",",";")
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
@@ -2073,10 +2073,10 @@ def mjulk_L10_C1_B2_10():
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]	
 
-	pa_A= f"*${{{kq}}}$"
-	pa_B= f"${{{kq2}}}$"
-	pa_C= f"${{{kq3}}}$"
-	pa_D= f"${{{kq4}}}$"
+	pa_A= f"*${{{kq}}}$".replace(",",";")
+	pa_B= f"${{{kq2}}}$".replace(",",";")
+	pa_C= f"${{{kq3}}}$".replace(",",";")
+	pa_D= f"${{{kq4}}}$".replace(",",";")
 
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -2087,8 +2087,8 @@ def mjulk_L10_C1_B2_10():
 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
-	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n".replace(",",";")
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n".replace(",",";")
 
 	#Tạo đề latex
 	for i in range(4):
@@ -2262,10 +2262,10 @@ def mjulk_L10_C1_B3_03():
 	kq4=my_module.thay_kihieu_taphop(str(kq4))
 
 	#Tạo các phương án
-	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
-	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
-	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
-	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
+	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
+	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
+	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
+	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -2330,10 +2330,10 @@ def mjulk_L10_C1_B3_04():
 
 	noi_dung= f"Cho hai tập hợp ${ten_A}=\\{{{A}\\}}$ và ${ten_B}=\\{{{B}\\}}$. Tìm tập hợp $C_{ten_A} {ten_B}$."
 	#Tạo các phương án
-	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
-	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
-	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset")
+	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
+	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
+	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
@@ -2432,10 +2432,10 @@ def mjulk_L10_C1_B3_05():
 	
 	
 	#Tạo các phương án
-	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
+	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án	
@@ -2534,10 +2534,10 @@ def mjulk_L10_C1_B3_06():
 	
 	
 	#Tạo các phương án
-	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
+	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án	
@@ -2641,10 +2641,10 @@ def mjulk_L10_C1_B3_07():
 	
 	
 	#Tạo các phương án
-	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
-	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset")
+	pa_A=f"*$\\{{{kq}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_B=f"$\\{{{kq2}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_C=f"$\\{{{kq3}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
+	pa_D=f"$\\{{{kq4}\\}}$".replace(f"\\{{set()\\}}",f"\\emptyset").replace(f"\\{{\\emptyset\\}}",f"\\emptyset").replace(",",";")
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án	
@@ -2699,7 +2699,7 @@ def mjulk_L10_C1_B3_08():
 	#Trộn các phương án   
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-	noi_dung= f"Cho tập hợp $A=\\{{{set_A}\\}}$. Tìm số tập hợp con của tập hợp ${{A}}$. "
+	noi_dung= f"Cho tập hợp $A=\\{{{set_A}\\}}$. Tìm số tập hợp con của tập hợp ${{A}}$.".replace(",",";")
 	noi_dung_loigiai=f""
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -2807,10 +2807,10 @@ def mjulk_L10_C1_B3_10():
 	giao_false= giao_false.add(random.choice([min_ab-1,max_ab+1]))
 	giao_false=thay_kihieu_rong(f"\\{{{str(giao_false)}\\}}")
 
-	kq1_T=f"*$A\\cap B= {giao}$" 
-	kq1_F=f"$A\\cap B= {giao_false}$"
+	kq1_T=f"*$A\\cap B= {giao}$".replace(",",";")
+	kq1_F=f"$A\\cap B= {giao_false}$".replace(",",";")
 	kq1=random.choice([kq1_T, kq1_F])
-	HDG=f"$A\\cap B= {giao}$."
+	HDG=f"$A\\cap B= {giao}$.".replace(",",";")
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2833,10 +2833,10 @@ def mjulk_L10_C1_B3_10():
 	A_hieu_B=thay_kihieu_rong(f"\\{{{str(A_hieu_B)}\\}}")
 	B_hieu_A= thay_kihieu_rong(f"\\{{{str(B_hieu_A)}\\}}")
 
-	kq3_T=f"*$A \\backslash B = {A_hieu_B}$" 
-	kq3_F=f"$A \\backslash B = {B_hieu_A}$ "
+	kq3_T=f"*$A \\backslash B = {A_hieu_B}$".replace(",",";")
+	kq3_F=f"$A \\backslash B = {B_hieu_A}$ ".replace(",",";")
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=f"$A \\backslash B = {A_hieu_B}$."
+	HDG=f"$A \\backslash B = {A_hieu_B}$.".replace(",",";")
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2932,8 +2932,8 @@ def mjulk_L10_C1_B3_11():
 	giao_false= giao_false.add(random.choice([min_ab-1,max_ab+1]))
 	giao_false=thay_kihieu_rong(f"\\{{{str(giao_false)}\\}}")
 
-	kq1_T=f"*$A\\cap B= {giao}$" 
-	kq1_F=f"$A\\cap B= {giao_false}$"
+	kq1_T=f"*$A\\cap B= {giao}$".replace(",",";")
+	kq1_F=f"$A\\cap B= {giao_false}$".replace(",",";")
 	kq1=random.choice([kq1_T, kq1_F])
 	HDG=f"$A=\\{{{A}\\}},B=\\{{{B}\\}}\\Rightarrow A\\cap B= {giao}$."
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -2958,10 +2958,10 @@ def mjulk_L10_C1_B3_11():
 	A_hieu_B=thay_kihieu_rong(f"\\{{{str(A_hieu_B)}\\}}")
 	B_hieu_A= thay_kihieu_rong(f"\\{{{str(B_hieu_A)}\\}}")
 
-	kq3_T=f"*$A \\backslash B = {A_hieu_B}$" 
-	kq3_F=f"$A \\backslash B = {B_hieu_A}$ "
+	kq3_T=f"*$A \\backslash B = {A_hieu_B}$".replace(",",";")
+	kq3_F=f"$A \\backslash B = {B_hieu_A}$".replace(",",";")
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=f"$A=\\{{{A}\\}},B=\\{{{B}\\}}\\Rightarrow A \\backslash B = {A_hieu_B}$."
+	HDG=f"$A=\\{{{A}\\}},B=\\{{{B}\\}}\\Rightarrow A \\backslash B = {A_hieu_B}$.".replace(",",";")
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -4316,7 +4316,7 @@ def mjulk_L10_C1_B4_06():
 		kq=f"[{a};+\\infty)"
 		kq2=f"({a};+\\infty)"
 		kq3=f"[{a};{a+random.randint(1,10)}]"
-		kq4=f"(-\\infty;a]"
+		kq4=f"(-\\infty;{a}]"
 
 	elif chon_dang=="(a;b]":
 		tap_hop_A=f"({a};{b}]"
@@ -4720,20 +4720,24 @@ def mjulk_L10_C1_B4_09():
 #[D10_C1_B4_10]-TL-M3. Cho A, B là các khoảng đoạn. Tìm m để A giao B là tập rỗng.
 def mjulk_L10_C1_B4_10():
 	m,a,b=sp.symbols("m a b")
-	t=random.randint(1,4)
-	a1=random.randint(-5,3)
-	a2=a1+random.randint(1,10)	
-	ten_A=random.choice(["A","M","C","E"])
+	while True:
+		t=random.randint(1,4)
+		a1=random.randint(-5,3)
+		a2=a1+random.randint(1,10)	
+		ten_A=random.choice(["A","M","C","E"])
 
-	b1=random.randint(-10,5)
-	b2=b1+random.randint(1,10)	
-	ten_B=random.choice(["B","G","D","F"])
+		b1=random.randint(-10,5)
+		b2=b1+random.randint(1,10)	
+		ten_B=random.choice(["B","G","D","F"])
 
-	A=f"[{latex(t*m+a1)};{latex(t*m+a2)}]"
-	B=random.choice([f"({b1};{b2})"])
+		A=f"[{latex(t*m+a1)};{latex(t*m+a2)}]"
+		B=random.choice([f"({b1};{b2})"])
 
-	c=random.randint(1,4)
-	d=random.choice([i for i in range(-5, 6) if i!=0])
+		c=random.randint(1,4)
+		d=random.choice([i for i in range(-5, 6) if i!=0])
+		kq=c*((b1-a2)/t)+d*((b2-a1)/t)
+		if -9<kq<999:
+			break
 
 	kq=f"{c*((b1-a2)/t)+d*((b2-a1)/t):.1f}".replace(".",",")
 	chon=random.randint(1,2)

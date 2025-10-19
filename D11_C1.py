@@ -6009,18 +6009,18 @@ def ngh_kjg_L11_C1_B5_11():
     
     x_1=(n-m)/(a-b)
     x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
-    kq=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq2=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq2=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
 
     noi_dung_loigiai=(f"$\\tan \\left({latex(a*x+m)}\\right)=\\tan\\left({latex(b*x+n)}\\right)$"
 
-        f"$\\Leftrightarrow {latex(a*x+m)}={latex(b*x+n)} +k{latex(2*pi)}$\n\n"
+        f"$\\Leftrightarrow {latex(a*x+m)}={latex(b*x+n)} +k{latex(pi)}$\n\n"
 
-        f"$\\Leftrightarrow  {latex((a-b)*x)}={latex(n-m)} +k{latex(2*pi)}$ "
+        f"$\\Leftrightarrow  {latex((a-b)*x)}={latex(n-m)} +k{latex(pi)}$ "
 
-        f"$\\Leftrightarrow x={latex(x_1)} + k{latex(2*pi/(a-b))}, k\\in \\mathbb{{Z}} $\n\n"
+        f"$\\Leftrightarrow x={latex(x_1)} + k{latex(pi/(a-b))}, k\\in \\mathbb{{Z}} $\n\n"
         )
 
     pa_A= f"*{kq}"
@@ -6065,18 +6065,18 @@ def ngh_kjg_L11_C1_B5_12():
     
     x_1=(n-m)/(a-b)
     x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
-    kq=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq2=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq2=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
     kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
 
     noi_dung_loigiai=(f"$\\cot \\left({latex(a*x+m)}\\right)=\\cot\\left({latex(b*x+n)}\\right)$"
 
-        f"$\\Leftrightarrow {latex(a*x+m)}={latex(b*x+n)} +k{latex(2*pi)}$\n\n"
+        f"$\\Leftrightarrow {latex(a*x+m)}={latex(b*x+n)} +k{latex(pi)}$\n\n"
 
-        f"$\\Leftrightarrow  {latex((a-b)*x)}={latex(n-m)} +k{latex(2*pi)}$ "
+        f"$\\Leftrightarrow  {latex((a-b)*x)}={latex(n-m)} +k{latex(pi)}$ "
 
-        f"$\\Leftrightarrow x={latex(x_1)} + k{latex(2*pi/(a-b))}, k\\in \\mathbb{{Z}} $\n\n"
+        f"$\\Leftrightarrow x={latex(x_1)} + k{latex(pi/(a-b))}, k\\in \\mathbb{{Z}} $\n\n"
         )
 
     pa_A= f"*{kq}"
@@ -6111,62 +6111,7 @@ def ngh_kjg_L11_C1_B5_12():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-#[D11_C1_B5_12]-M2. Giải phương trình tan(ax+m)=cot(bx+n)
-def ngh_kjg_L11_C1_B5_12():
-    x,k=sp.symbols("x,k")
-    b=random.randint(1,3)
-    a=b+random.randint(1,3)
-    m=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6])
-    n=random.choice([-pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4, ])
-    noi_dung=f"Nghiệm của phương trình $\\tan\\left({latex(a*x+m)}\\right)=\\cot\\left({latex(pi/2-b*x-n)}\\right)$ là"
-    
-    x_1=(n-m)/(a-b)
-    x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
-    kq=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq2=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
-    kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
 
-    noi_dung_loigiai=(f"$\\tan\\left({latex(a*x+m)}\\right)=\\cot\\left({latex(pi/2-b*x-n)}\\right)$"
-        f"$\\Leftrightarrow \\tan\\left({latex(a*x+m)}\\right)=\\tan\\left({latex(pi/2)}-({latex(pi/2-b*x-n)})\\right)$\n\n"
-        f"$\\Leftrightarrow \\tan \\left({latex(a*x+m)}\\right)=\\tan\\left({latex(b*x+n)}\\right)$"
-        f"$\\Leftrightarrow {latex(a*x+m)}={latex(b*x+n)} +k{latex(2*pi)}$\n\n"
-
-        f"$\\Leftrightarrow  {latex((a-b)*x)}={latex(n-m)} +k{latex(2*pi)}$ "
-
-        f"$\\Leftrightarrow x={latex(x_1)} + k{latex(2*pi/(a-b))}, k\\in \\mathbb{{Z}} $\n\n"
-        )
-
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-    debai= f"{noi_dung}\n"
-
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
-    
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-    f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
-    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C1_B5_13]-M2. Tìm số nghiệm thuộc khoảng đoạn của sinu=m
 def ngh_kjg_L11_C1_B5_13():
@@ -7440,6 +7385,63 @@ def ngh_kjg_L11_C1_B5_22():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C1_B5_23]-M2. Giải phương trình tan(ax+m)=cot(bx+n)
+def ngh_kjg_L11_C1_B5_23():
+    x,k=sp.symbols("x,k")
+    b=random.randint(1,3)
+    a=b+random.randint(1,3)
+    m=random.choice([pi, pi/2, pi/3, pi/4,pi/5,pi/6, -pi/2, -pi/3, -pi/4,-pi/5,-pi/6])
+    n=random.choice([-pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4, ])
+    noi_dung=f"Nghiệm của phương trình $\\tan\\left({latex(a*x+m)}\\right)=\\cot\\left({latex(pi/2-b*x-n)}\\right)$ là"
+    
+    x_1=(n-m)/(a-b)
+    x_2 = random.choice([(m-n)/(a-b), (-n-m)/(a+b), (n-m)/(a+b), (m-n)/(a+b)])
+    kq=f"$x={latex(x_1)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq2=f"$x={latex(x_1)}+k{latex(2*pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq3=f"$x={latex(x_2)}+k{latex(pi/(a-b))} (k\\in \\mathbb{{Z}})$"
+    kq4=f"$x={latex(x_2)}+k{latex(2*pi/(a-b))}, (k\\in \\mathbb{{Z}})$"
+
+    noi_dung_loigiai=(f"$\\tan\\left({latex(a*x+m)}\\right)=\\cot\\left({latex(pi/2-b*x-n)}\\right)$"
+        f"$\\Leftrightarrow \\tan\\left({latex(a*x+m)}\\right)=\\tan\\left({latex(pi/2)}-({latex(pi/2-b*x-n)})\\right)$\n\n"
+        f"$\\Leftrightarrow \\tan \\left({latex(a*x+m)}\\right)=\\tan\\left({latex(b*x+n)}\\right)$"
+        f"$\\Leftrightarrow {latex(a*x+m)}={latex(b*x+n)} +k{latex(pi)}$\n\n"
+
+        f"$\\Leftrightarrow  {latex((a-b)*x)}={latex(n-m)} +k{latex(pi)}$ "
+
+        f"$\\Leftrightarrow x={latex(x_1)} + k{latex(pi/(a-b))}, k\\in \\mathbb{{Z}} $\n\n"
+        )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #----------------------BÀI 6 - TOÁN THỰC TẾ---------------->
 
