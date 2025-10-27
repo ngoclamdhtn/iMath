@@ -31,6 +31,10 @@ def thay_sin_cos(st):
     st_new=st.replace(f"\\tan{{\\left(x \\right)}}",f"\\tan x").replace(f"\\tan^{{2}}{{\\left(x \\right)}}",f"\\tan^2 x")
     st_new=st_new.replace(f"\\sin{{\\left(x \\right)}}",f"\\sin x").replace(f"\\sin^{{2}}{{\\left(x \\right)}}",f"\\sin^2 x")
     st_new=st_new.replace(f"\\cos{{\\left(x \\right)}}",f"\\cos x").replace(f"\\cos^{{2}}{{\\left(x \\right)}}",f"\\cos^2 x")
+    for i in range(10):
+        st_new=st_new.replace(f"\\sin{{\\left( x \\right)}}",f"\\sin x")
+        st_new=st_new.replace(f"\\sin{{\\left({i} x \\right)}}",f"\\sin {i}x")
+        st_new=st_new.replace(f"\\cos{{\\left({i} x \\right)}}",f"\\cos {i}x")
     return st_new
 
 ################ Bài 1: Góc lượng giác #################
@@ -4630,6 +4634,78 @@ def ngh_kjg_L11_C1_B3_16():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C1_B3_17]-SA-M2. Cho sinx, x in (a;b). Tính sin(x+b)
+def ngh_kjg_L11_C1_B3_17():
+    x=random.choice(["x","a","\\alpha","\\beta", "\\gamma" ])
+    cung_I=random.choice([f"\\left( 0;{latex(pi/2)} \\right)", f"\\left( 2\\pi;{latex(5*pi/2)} \\right)"])
+    cung_II=random.choice([f"\\left( {latex(pi/2)};\\pi \\right)", f"\\left( {latex(5*pi/2)};3\\pi \\right)", f"\\left( {latex(-3*pi/2)};{latex(-pi)} \\right)"])
+    cung_III=random.choice([f"\\left( \\pi;{latex(3*pi/2)} \\right)", f"\\left( {latex(3*pi)};{latex(7*pi/2)} \\right)", f"\\left( {latex(-pi)}; {latex(-pi/2)} \\right)"])
+    cung_IV=random.choice([f"\\left( {latex(3*pi/2)}; 2\\pi \\right)", f"\\left( {latex(7*pi/2)}; 4\\pi \\right)", f"\\left( {latex(-pi/2)}; 0 \\right)"])
+    cung=cung_I      
+    
+    if cung==cung_I:    
+        chon=random.randint(1,2)        
+        if chon==1:        
+            a=random.randint(1,9)
+            b=a+random.randint(1,3) 
+            sin_value=a/b
+            cos_value=sqrt(b**2-a**2)/b
+
+            if is_rational(cos_value):
+                cos_value_latex=phan_so(cos_value)
+            else:
+                cos_value_latex=latex(cos_value)
+
+            tan_value=sqrt(a**2)/sqrt(b**2-a**2)
+            tan_value_latex=tan_value.rewrite(sqrt)
+
+            cos_value_false=-sqrt(b**2-a**2)/b
+            sin_value_latex=phan_so(sin_value)            
+
+        if chon==2:            
+            a=random.choice([2,3,5,6,7])
+            t=a+random.randint(1,3)
+            sin_value=sqrt(a)/t
+            cos_value=sqrt(t**2-a)/t
+            if is_rational(cos_value):
+                cos_value_latex=phan_so(cos_value)
+            else:
+                cos_value_latex=latex(cos_value)
+
+            tan_value=sqrt(a)/sqrt(t**2-a)
+            tan_value_latex=tan_value.rewrite(sqrt)
+
+            cos_value_false=-sqrt(t**2-a)/t
+            sin_value_latex=latex(sin_value)
+
+    m=random.choice([pi, pi/2, pi/3, pi/4,pi/6, -pi/2, -pi/3, -pi/4,-pi/6,-pi, 2*pi/3, 3*pi/4, -2*pi/3, -3*pi/4])
+    t=sin_value*cos(m)+cos_value*sin(m)
+    noi_dung = (
+    f"Cho $\\sin {x}={sin_value_latex}, {x}\\in {cung}$. Tính $\\sin\\left({x}+{latex(m)}\\right)$(kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Vì ${x} \\in {cung}$ nên $\\cos {x} > 0$.\n\n"
+    f"$\\cos {x} =\\sqrt{{1-{phan_so(sin_value**2)}}}={latex(cos_value)}$.\n\n"
+    f"$\\sin\\left({x}+{latex(m)}\\right)=\\sin {x}\\cos ({latex(m)})+\\cos {x} \\sin ({latex(m)})=$"
+    f"${sin_value_latex}.({latex(cos(m))})+{latex(cos_value)}.({latex(sin(m))})={latex(nsimplify(t))}$.\n\n"   
+    )
+    noi_dung=noi_dung.replace("+-","-") 
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\shortans[oly]{{{dap_an}}}\n\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 ################  Bài 4: Hàm số lượng giác và đồ thị.################
 #[D11_C1_B4_01]. Tìm tập xác định hàm số y=a/sinx hoặc y=a/cosx
@@ -5368,6 +5444,125 @@ def ngh_kjg_L11_C1_B4_09():
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C1_B4_10]-M2. Tìm tập xác định hàm số y=a/(sinbx+m)
+def ngh_kjg_L11_C1_B4_10():
+    x=sp.symbols("x")
+    a=random.choice([i for i in range(-10,10) if i!=0 ])
+    b=random.randint(1,6)
+
+    chon=random.randint(1,3)
+    if chon==1:
+        f=a/(sin(b*x)-1)
+
+        noi_dung=(
+        f"Tập xác định của hàm số $y={latex(f)}$ là"
+        )    
+
+        kq=f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$"
+        kq_false=[
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k3{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k{latex(pi/(2*b))}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$", 
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k{latex(pi/b)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k4{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k3{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",        
+        ]
+        noi_dung_loigiai=(
+        f"Điều kiện xác định:\n\n"
+        f"${latex(sin(b*x)-1)}\\ne 0 \\Rightarrow {latex(b*x)}\\ne {latex(pi/2)}+k2\\pi$\n\n"
+        f"$\\Rightarrow x\\ne {latex(pi/(2*b))}+k{latex(2*pi/b)}$.\n\n"
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$"
+        )
+    
+    if chon==2:
+        f=a/(sin(b*x)+1)
+
+        noi_dung=(
+        f"Tập xác định của hàm số $y={latex(f)}$ là"
+        )    
+
+        kq=f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$"
+        kq_false=[
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k3{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k{latex(pi/(2*b))}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$", 
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(b))}+k{latex(pi/b)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k4{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k3{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",        
+        ]
+        noi_dung_loigiai=(
+        f"Điều kiện xác định:\n\n"
+        f"${latex(sin(b*x)+1)}\\ne 0 \\Rightarrow {latex(b*x)}\\ne {latex(-pi/2)}+k2\\pi$\n\n"
+        f"$\\Rightarrow x\\ne {latex(-pi/(2*b))}+k{latex(2*pi/b)}$.\n\n"
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$"
+        )
+
+    if chon==3:
+        f=a/(sin(b*x))
+
+        noi_dung=(
+        f"Tập xác định của hàm số $y={latex(f)}$ là"
+        )    
+
+        kq=f"$D=\\mathbb{{R}}\\backslash \\{{k{latex(pi/b)}, k\\in \\mathbb{{Z}} \\}}$"
+        kq_false=[
+        f"$D=\\mathbb{{R}}\\backslash \\{{k{latex(2*pi/(b))}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k3{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(2*b))}+k{latex(pi/(2*b))}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(2*b))}+k{latex(2*pi/b)}, k\\in \\mathbb{{Z}} \\}}$", 
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(-pi/(b))}+k{latex(pi/b)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k4{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{latex(pi/(b))}+k3{latex(pi)}, k\\in \\mathbb{{Z}} \\}}$",        
+        ]
+        noi_dung_loigiai=(
+        f"Điều kiện xác định:\n\n"
+        f"${latex(sin(b*x))}\\ne 0 \\Rightarrow {latex(b*x)}\\ne k\\pi$\n\n"
+        f"$\\Rightarrow x\\ne k{latex(pi/b)}$.\n\n"
+        f"$D=\\mathbb{{R}}\\backslash \\{{k{latex(pi/b)}, k\\in \\mathbb{{Z}} \\}}$"
+        )
+    
+    
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    
+    noi_dung=thay_sin_cos(noi_dung)
+    noi_dung_loigiai=thay_sin_cos(noi_dung_loigiai)
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 

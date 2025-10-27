@@ -4782,16 +4782,25 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C1_B3_3 = QTreeWidgetItem(L11_C1_B3, ["Đúng-Sai"])
+                L11_C1_B3_2 = QTreeWidgetItem(L11_C1_B3, ["Đúng-Sai"])
+                L11_C1_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C1_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B3_2, ["[D11_C1_B3_12]-TF-M2. Cho tanx. Xét Đ-S: cotx, cos2x, sin2x, tan2x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B3_2, ["[D11_C1_B3_13]-TF-M2. Cho sinx. Xét Đ-S: cosx, sin2x, sin(x+a), cos(x+b)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C1_B3_3 = QTreeWidgetItem(L11_C1_B3, ["Trả lời ngắn"])
                 L11_C1_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C1_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B3_3, ["[D11_C1_B3_12]-TF-M2. Cho tanx. Xét Đ-S: cotx, cos2x, sin2x, tan2x"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C1_B3_3, ["[D11_C1_B3_13]-TF-M2. Cho sinx. Xét Đ-S: cosx, sin2x, sin(x+a), cos(x+b)"])
+                item = QTreeWidgetItem(L11_C1_B3_3, ["[D11_C1_B3_17]-SA-M2. Cho sinx, x in (a;b). Tính sin(x+b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -4810,7 +4819,11 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L11_C1_B4_1, ["[D11_C1_B4_02]-M2. Tìm tập xác định hàm số y=a/sin(mx) hoặc y=a/cos(mx)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)            
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C1_B4_1, ["[D11_C1_B4_10]-M2. Tìm tập xác định hàm số y=a/(sinbx+m)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)           
 
                 item = QTreeWidgetItem(L11_C1_B4_1, ["[D11_C1_B4_03]-M2. Tìm tập xác định hàm số y=tan(ax+bpi)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -5008,6 +5021,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C2_B1_1, ["[D11_C2_B1_05]-M2. Cho dãy truy hồi có u1, u_n=a*u_(n-1)+b. Tìm u_k"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C2_B1_1, ["[D11_C2_B1_04]-M2. Cho dãy số có SHQT xét tính tăng giảm, bị chặn"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5045,8 +5062,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_02]-M2. CSC có u_1 và d. Tìm S_n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-             
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
 
                 item = QTreeWidgetItem(L11_C2_B2_1, ["[D11_C2_B2_03]-M2. CSC có u_m và u_k. Tìm u_1."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -12637,6 +12653,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C1_B3_16]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B3_16()
 
+                                            #[D11_C1_B3_17]-SA-M2. Cho sinx, x in (a;b). Tính sin(x+b)
+                                            if dang_toan == "[D11_C1_B3_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.ngh_kjg_L11_C1_B3_17()
+
                                             ####################### Bài 4: Hàm số lượng giác và đồ thị. ######################
                                             #[D11_C1_B4_01].Tìm tập xác định hàm số y=a/sinx hoặc y=a/cosx
                                             if dang_toan == "[D11_C1_B4_01]":           
@@ -12673,6 +12693,10 @@ class Ui_MainWindow(object):
                                             #[D11_C1_B4_09]. Tìm chu kì tuần hoàn của HSLG
                                             if dang_toan == "[D11_C1_B4_09]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B4_09()
+
+                                            #[D11_C1_B4_10]. Tìm tập xác định hàm số y=a/(sinbx+m)
+                                            if dang_toan == "[D11_C1_B4_10]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C1.ngh_kjg_L11_C1_B4_10()
 
                                             ################  Bài 5: Phương trình lượng giác.################
                                             
@@ -12805,6 +12829,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C2_B1_04]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C2.mn8mn_L11_C2_B1_04()
 
+                                            #[D11_C2_B1_05]-M2.  Tìm u_k từ dãy truy hồi có u1, u_n=a*u_(n-1)+b
+                                            if dang_toan == "[D11_C2_B1_05]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C2.mn8mn_L11_C2_B1_05()
+
                                             ####################### Bài 2 - Cấp số cộng ######################
                                             #[DS11_C2_B2_01]. Cho cấp số cộng có u1, d tìm u_k
                                             if dang_toan == "[D11_C2_B2_01]":           
@@ -12933,6 +12961,8 @@ class Ui_MainWindow(object):
                                             #[D11_C2_B2_32]-SA-M3. Tìm m để dãy bậc 2 lập thành cấp số cộng.
                                             if dang_toan == "[D11_C2_B2_32]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_32()
+
+                                            
 
 
 

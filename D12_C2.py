@@ -7719,8 +7719,8 @@ def mnj_34_jkl_L12_C2_B3_39():
 		s_OB=f"{round_half_up(OB,1):.1f}".replace(".",",")
 		s_OB_f=f"{round_half_up(sqrt(b1**2+b2**2+b3**2+random.randint(1,3)),1):.1f}".replace(".",",")
 
-		kq3_T=f"* Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ nhất bằng ${{{s_OB}}}$ km" 
-		kq3_F=f"Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ nhất bằng ${{{s_OB_f}}}$ km"
+		kq3_T=f"* Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ hai bằng ${{{s_OB}}}$ km" 
+		kq3_F=f"Khoảng cách từ điểm xuất phát đến khinh khí cầu thứ hai bằng ${{{s_OB_f}}}$ km"
 		
 		HDG=f"$B{toado_2}\\Rightarrow OB=\\sqrt{{{s_b1}^2+{s_b2}^2+{s_b3}^2}}={s_OB}$ km."	
 

@@ -340,6 +340,79 @@ def mn8mn_L11_C2_B1_04():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C2_B1_05]-M2. Tìm u_k từ dãy truy hồi có u1, u_n=a*u_(n-1)+b
+def mn8mn_L11_C2_B1_05():
+    def u_k(u1, a, b, k):
+        u = u1
+        for i in range(2, k + 1):
+            u = a * u + b
+        return u
+    while True:
+        a=random.choice([random.randint(-4,-1),random.randint(2,6) ])
+        b=random.choice([random.randint(-5,-1),random.randint(1,5) ])
+        u_1=random.choice([random.randint(-5,-1),random.randint(1,5) ])
+        if all([a!=b, a!=u_1, u_1!=b]):
+            break
+    un=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    u_1={u_1} \\\\ \n\
+    u_{{n+1}}={a}u_n+{b}\n\
+    \\end{{array}} \\right."
+    k=random.randint(2,5)
+
+    noi_dung=(
+    f"Cho dãy số $(u_n)$ thỏa mãn ${un}$. Tìm ${{u_{k}}}$."
+    )
+    noi_dung_loigiai=(
+    f"$u_1={u_1},u_2={u_k(u_1,a,b,2)}, u_3={u_k(u_1,a,b,3)}, u_4={u_k(u_1,a,b,4)}, u_5={u_k(u_1,a,b,5)}$."
+    )
+    noi_dung=noi_dung.replace("+-","-")
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+    
+
+    kq=u_k(u_1,a,b,k)
+
+    kq_false = set()
+    while len(kq_false) < 10:
+        n = random.randint(-20, 50)
+        if n != kq:
+            kq_false.add(n)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 ############## BÀI 2-CẤP SỐ CỘNG ##############
 
 #D11_C2_B2_01. Cho cấp số cộng có u1, d tìm u_k
@@ -2494,75 +2567,7 @@ def mn8mn_L11_C2_B2_32():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
-#[D11_C2_B2_33]-SA-M2. Tìm u_k từ dãy truy hồi có u1, u_n=a*u_(n-1)+b
-def mn8mn_L11_C2_B2_33():
-    def u_k(u1, a, b, k):
-        u = u1
-        for i in range(2, k + 1):
-            u = a * u + b
-        return u
-    while True:
-        a=random.choice([random.randint(-4,-1),random.randint(2,5) ])
-        b=random.choice([random.randint(-5,-1),random.randint(1,5) ])
-        u_1=random.choice([random.randint(-5,-1),random.randint(1,5) ])
-        if all([a!=b, a!=u_1, u_1!=b]):
-            break
-    un=f"\\left\\{{ \\begin{{array}}{{l}} \n\
-    u_1={u_1} \\\\ \n\
-    u_{{n+1}}={a}u_n+{b}\n\
-    \\end{{array}} \\right."
-    k=random.randint(2,5)
 
-    noi_dung=(
-    f"Cho dãy số $(u_n)$ thỏa mãn ${un}$. Tìm ${{u_{k}}}$."
-    )
-    
-
-    kq=u_k(u_1,a,b,k)
-
-    kq_false = set()
-    while len(kq_false) < 10:
-        n = random.randint(-20, 50)
-        if n != kq:
-            kq_false.add(n)
-    kq_false=list(kq_false)
-    random.shuffle(kq_false)
-    kq2,kq3,kq4=kq_false[0:3]
-
-    noi_dung_loigiai=(
-    f"$u_1={u_1},u_2={u_k(u_1,a,b,2)}, u_3={u_k(u_1,a,b,3)}, u_4={u_k(u_1,a,b,4)}, u_5={u_k(u_1,a,b,5)}$."
-    )
-
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
-    #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)
-    dap_an=my_module.tra_ve_dap_an(list_PA)
-
-    debai= f"{noi_dung}"
-
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
-    
-    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
-    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-    #Tạo đề latex
-    for i in range(4):
-        list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
-    f"\\choice\n"
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
-        f"\\end{{ex}}\n")
-
-    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
-    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
-        f"\\end{{ex}}\n")
-    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 ############## CẤP SỐ NHÂN ##############
 #D11_C2_B3_01. Cho cấp số nhân có u1, q. Tìm số hạng thứ k
