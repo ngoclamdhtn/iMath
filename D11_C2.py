@@ -2375,8 +2375,194 @@ def mn8mn_L11_C2_B2_30():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_31]-SA-M2. Tìm m để dãy bậc 1 lập thành cấp số cộng.
+def mn8mn_L11_C2_B2_31():
+    #am+b + cm+d = 2(pm+q)
+    m=sp.symbols("m")
+    while True:
+        a,b,c,d,p,q=[random.randint(-7,10) for i in range(6)]
+        if a+c==2*p:
+            continue
+        equation=Eq(a*m+b+c*m+d,2*(p*m+q))
+        solution=solve(equation,m)
+        m_0=float(solution[0])
+        if all([a!=0, c!=0, p!=0, b!=0, d!=0, m_0>1]):
+            break
     
+    if m_0.is_integer():
+        noi_dung = (
+        f"Tìm giá trị của ${{m}}$ để dãy số ${{{latex(a*m+b)}, {latex(p*m+q)}, {latex(c*m+d)}}}$ theo thứ tự đó lập thành cấp số cộng."
+        )
+        dap_an=int(m_0)
+
+        noi_dung_loigiai=(
+        f"${{{latex(a*m+b)}, {latex(p*m+q)}, {latex(c*m+d)}}}$ lập thành cấp số cộng\n\n"
+        f"$\\Leftrightarrow {latex(a*m+b)}+{latex(c*m+d)}={latex(2*(p*m+q))}$\n\n"
+        f"$\\Leftrightarrow m={phan_so(m_0)}$."
+        )  
+    else:
+        noi_dung = (
+        f"Tìm giá trị của ${{m}}$ để dãy số ${{{latex(a*m+b)}, {latex(p*m+q)}, {latex(c*m+d)}}}$ theo thứ tự đó lập thành cấp số cộng (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(m_0,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"${{{latex(a*m+b)}, {latex(p*m+q)}, {latex(c*m+d)}}}$ lập thành cấp số cộng\n\n"
+        f"$\\Leftrightarrow {latex(a*m+b)}+{latex(c*m+d)}={latex(2*(p*m+q))}$\n\n"
+        f"$\\Leftrightarrow m={phan_so(m_0)}={dap_an}$."
+        )
+    noi_dung=noi_dung.replace("+-","-")
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_32]-SA-M2. Tìm m để dãy 3 số - bậc 2 lập thành cấp số cộng.
+def mn8mn_L11_C2_B2_32():
+    #am+b + cm+d = 2(pm+q)
+    m=sp.symbols("m")
+
+    while True:
+        a,b,p,q=[random.randint(-10,10) for i in range(4)]
+        if any([a==0, b==0, a+b==0]):
+            continue
+        a1, b1, c1= a+b, -2*p, -2*q
+        if b1**2-4*a1*c1<=0:
+            continue
+        equation=Eq(a1*m**2+b1*m+c1,0)
+        solution=solve(equation,m)
+        m_1, m_2= solution[0],solution[1]      
+        if all([a+b!=0]):
+            break
+    while True:
+        e,f,g=[random.randint(-10,10) for i in range(3)]
+        if all([e+f==2*g, e!=0, f!=0, g!=0]):
+            break
+
     
+    tong=-b1/a1
+    if tong.is_integer():
+        noi_dung = (
+        f"Tính tổng giá trị của ${{m}}$ để dãy số ${{{latex(a*m**2+e)}, {latex(p*m+q+g)}, {latex(b*m**2+f)}}}$ theo thứ tự đó lập thành cấp số cộng."
+        )
+        dap_an=int(tong)
+
+        noi_dung_loigiai=(
+        f"${{{latex(a*m**2+e)}, {latex(p*m+q+g)}, {latex(b*m**2+f)}}}$ lập thành cấp số cộng\n\n"
+        f"$\\Leftrightarrow {latex(a*m**2+e)}+{latex(b*m**2+f)}={latex(2*(p*m+q+g))}$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}=0$\n\n"
+        f"$\\Leftrightarrow m={latex(m_1)}, m={latex(m_2)}$.\n\n"
+        f"Tổng các giá trị của ${{m}}$ là ${{{dap_an}}}$."
+        )
+    else:
+    
+        noi_dung = (
+        f"Tính tổng giá trị của ${{m}}$ để dãy số ${{{latex(a*m**2)}, {latex(p*m+q)}, {latex(b*m**2)}}}$ theo thứ tự đó lập thành cấp số cộng (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"${{{latex(a*m**2)}, {latex(p*m+q)}, {latex(b*m**2)}}}$ lập thành cấp số cộng\n\n"
+        f"$\\Leftrightarrow {latex(a*m**2)}+{latex(b*m**2)}={latex(2*(p*m+q))}$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}=0$\n\n"
+        f"$\\Leftrightarrow m={latex(m_1)}, m={latex(m_2)}$.\n\n"
+        f"Tổng các giá trị của ${{m}}$ là ${{{dap_an}}}$."
+        )
+    noi_dung=noi_dung.replace("+-","-")
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D11_C2_B2_33]-SA-M2. Tìm u_k từ dãy truy hồi có u1, u_n=a*u_(n-1)+b
+def mn8mn_L11_C2_B2_33():
+    def u_k(u1, a, b, k):
+        u = u1
+        for i in range(2, k + 1):
+            u = a * u + b
+        return u
+    while True:
+        a=random.choice([random.randint(-4,-1),random.randint(2,5) ])
+        b=random.choice([random.randint(-5,-1),random.randint(1,5) ])
+        u_1=random.choice([random.randint(-5,-1),random.randint(1,5) ])
+        if all([a!=b, a!=u_1, u_1!=b]):
+            break
+    un=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    u_1={u_1} \\\\ \n\
+    u_{{n+1}}={a}u_n+{b}\n\
+    \\end{{array}} \\right."
+    k=random.randint(2,5)
+
+    noi_dung=(
+    f"Cho dãy số $(u_n)$ thỏa mãn ${un}$. Tìm ${{u_{k}}}$."
+    )
+    
+
+    kq=u_k(u_1,a,b,k)
+
+    kq_false = set()
+    while len(kq_false) < 10:
+        n = random.randint(-20, 50)
+        if n != kq:
+            kq_false.add(n)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$u_1={u_1},u_2={u_k(u_1,a,b,2)}, u_3={u_k(u_1,a,b,3)}, u_4={u_k(u_1,a,b,4)}, u_5={u_k(u_1,a,b,5)}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 ############## CẤP SỐ NHÂN ##############
 #D11_C2_B3_01. Cho cấp số nhân có u1, q. Tìm số hạng thứ k

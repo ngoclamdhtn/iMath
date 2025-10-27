@@ -7685,7 +7685,7 @@ def mnj_34_jkl_L12_C2_B3_39():
 	)	
 	
 	kq1_T=f"* Toạ độ khinh khí cầu thứ nhất là ${toado_1}$" 
-	kq1_F=f"Tọa độ đã chọn, toạ độ khinh khí cầu thứ nhất là ${toado_1_f}$"
+	kq1_F=f"Toạ độ khinh khí cầu thứ nhất là ${toado_1_f}$"
 	
 	HDG=f"Toạ độ khinh khí cầu thứ nhất là ${toado_1}$."
 	kq1=random.choice([kq1_T, kq1_F])
@@ -7693,10 +7693,10 @@ def mnj_34_jkl_L12_C2_B3_39():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=f"* Toạ độ khinh khí cầu thứ nhất là ${toado_2}$"
-	kq2_F=f"Tọa độ đã chọn, toạ độ khinh khí cầu thứ nhất là ${toado_2_f}$"
+	kq2_T=f"* Toạ độ khinh khí cầu thứ hai là ${toado_2}$"
+	kq2_F=f"Toạ độ khinh khí cầu thứ hai là ${toado_2_f}$"
 	
-	HDG=f"Toạ độ khinh khí cầu thứ nhất là ${toado_2}$."
+	HDG=f"Toạ độ khinh khí cầu thứ hai là ${toado_2}$."
 	kq2=random.choice([kq2_T, kq2_F])
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:

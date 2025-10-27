@@ -788,16 +788,27 @@ class Ui_MainWindow(object):
                 self.combo_taode.addItem("Tạo đề Latex - PDF")
                 self.combo_taode.addItem("Tạo code Latex")
 
+                #Nút tạo đề word
+                self.combo_made = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
+                self.combo_made.setGeometry(QtCore.QRect(le_trai+200, le_top-50, 120, 30))
+                self.combo_made.setFont(font_10)
+                self.combo_made.setObjectName("combo_made")
+                self.combo_made.addItem("Mã đề 3 số")
+                self.combo_made.addItem("Mã đề 4 số")
+                
+
                 #Nút tạo mã đề ngẫu nhiên
                 self.checkbox_made_random = QtWidgets.QCheckBox(parent=self.tab_thongtin_dethi)        
-                self.checkbox_made_random.setGeometry(QtCore.QRect(le_trai+200, le_top-50, 170, 30))
+                self.checkbox_made_random.setGeometry(QtCore.QRect(le_trai+200, le_top-20, 180, 30))
                 self.checkbox_made_random.setFont(font_10)
-                self.checkbox_made_random.setObjectName("checkbox_made_random")
-                self.checkbox_made_random.setText("Mã đề ngẫu nhiên") 
+                self.checkbox_made_random.setObjectName("checkbox_made_made_random")
+                self.checkbox_made_random.setText("Mã đề ngẫu nhiên")
+
+                
 
                 #Tạo nút nhập mã đề
                 self.btn_nhapmade = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)
-                self.btn_nhapmade.setGeometry(QtCore.QRect(le_trai+200, le_top-20, 120, 30))
+                self.btn_nhapmade.setGeometry(QtCore.QRect(le_trai+420, le_top-20, 120, 30))
                 self.btn_nhapmade.setFont(font_10)
                 self.btn_nhapmade.setObjectName("btn_nhapmade")
                 self.btn_nhapmade.setText("Tự nhập mã đề")
@@ -807,7 +818,7 @@ class Ui_MainWindow(object):
 
                 #Nút tự trộn dạng toán
                 self.checkbox_shuffle_dangtoan = QtWidgets.QCheckBox(parent=self.tab_thongtin_dethi)        
-                self.checkbox_shuffle_dangtoan.setGeometry(QtCore.QRect(le_trai+400, le_top-50, 170, 30))
+                self.checkbox_shuffle_dangtoan.setGeometry(QtCore.QRect(le_trai+420, le_top-50, 170, 30))
                 self.checkbox_shuffle_dangtoan.setFont(font_10)
                 self.checkbox_shuffle_dangtoan.setObjectName("checkbox_shuffle_dangtoan")
                 self.checkbox_shuffle_dangtoan.setText("Trộn câu hỏi")
@@ -5106,6 +5117,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_24]-SA-M3. CSC có u_1 và d. Tính u_m+...+u_k"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_31]-SA-M2. Tìm m để dãy 3 số bậc 1 lập thành c.s.c."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_32]-SA-M3. Tìm m để dãy 3 số bậc 2 lập thành c.s.c."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9940,7 +9959,7 @@ class Ui_MainWindow(object):
         
 #begin
         def tao_de(self):
-                try:
+                #try:
                     if license.kiemtra_banquyen_new():                
                         self.text_taode.clear()
                         self.save_thongtin_dethi()                            
@@ -9975,17 +9994,8 @@ class Ui_MainWindow(object):
                                             os.makedirs(new_folder_path)
                                     name_thu_muc=new_folder_path
                         else:
-                            name_thu_muc=""
-
-                                     
+                            name_thu_muc=""                            
                         
-                        #Tạo list mã đề ngẫu nhiên
-                        unique_digits_set = set()
-                        while len(unique_digits_set) < self.spin_soluong_de.value():
-                            digit = random.randint(11, 99)  
-                            unique_digits_set.add(digit)
-                        t_random=list(unique_digits_set)
-
                         #begin
                         code_bang_dap_an=""
                         list_ma_de=[]
@@ -9998,6 +10008,22 @@ class Ui_MainWindow(object):
                         chuoi_QR="{"
                         chuoi_QR_QM="["
                         chuoi_dapan_all=[]
+
+                        #Tạo list mã đề 3 số ngẫu nhiên                                                            
+                        tat_ca = [str(n) for n in range(100, 1000) if len(set(str(n))) == 3]                                    
+                        ds_made_3so = random.sample(tat_ca, 100)
+                        #ds_made_3so.sort()
+
+                        #Tạo list mã đề 3 số ngẫu nhiên                                                            
+                        tat_ca = [str(n) for n in range(1000, 10000) if len(set(str(n))) == 4]                                    
+                        ds_made_4so = random.sample(tat_ca, 100)
+                        #ds_made_4so.sort()
+
+                        #Tạo list tuần tự 3 số:
+                        ds_made_3so_lientiep = [f"{i:03}" for i in range(1, 101)]
+
+                        #Tạo list tuần tự 3 số:
+                        ds_made_4so_lientiep = [f"{i:04}" for i in range(1, 101)]
                         
 
                         for j in range(self.spin_soluong_de.value()):
@@ -10017,8 +10043,7 @@ class Ui_MainWindow(object):
                             ghep_dungsai, ghep_dungsai_HDG="", ""
                             ghep_traloingan, ghep_traloingan_HDG="",""
                             ghep_tuluan, ghep_tuluan_HDG="",""
-                            ghep_dapan_TN, ghep_dapan_TF, ghep_dapan_SA,ghep_dapan_TL= "","","",""                                      
-                                
+                            ghep_dapan_TN, ghep_dapan_TF, ghep_dapan_SA,ghep_dapan_TL= "","","",""                                 
 
                             #Thiết lập mã đề tự nhập
                             text_nhapmade=self.label_nhapmade.toPlainText()
@@ -10026,23 +10051,22 @@ class Ui_MainWindow(object):
                                 text_nhapmade=text_nhapmade.split(',')
                                 ma_de=text_nhapmade[j]
                                 name_de=f"{ma_de}"
-                            else:
-                            #Thiết lập mã đề ngẫu nhiên hoặc thứ tự
-                                t=j+1
-                                if j>9: t=int(j/10)                              
 
-                                if self.checkbox_made_random.isChecked():                                
-                                    
-                                    ma_de= t*100 + t_random[j]
-                                    if ma_de>1000:
-                                        ma_de= t*10 + t_random[j]
-                                    name_de=f"{ma_de}"
-                                else:
-                                    ma_de = j+1                                        
-                                    if ma_de>9: 
-                                        name_de=f"0{ma_de}"
-                                    else:
-                                        name_de=f"00{ma_de}"
+                            #Thiết lập mã đề ngẫu nhiên
+                            if self.combo_made.currentText() == "Mã đề 3 số" and self.checkbox_made_random.isChecked():
+                                name_de=ds_made_3so[j]
+
+                            if self.combo_made.currentText() == "Mã đề 4 số" and self.checkbox_made_random.isChecked():
+                                name_de=ds_made_4so[j]
+
+                            #Thiết lập mã đề tuần tự
+                            if self.combo_made.currentText() == "Mã đề 3 số" and not(self.checkbox_made_random.isChecked()):
+                                name_de=ds_made_3so_lientiep[j]
+
+                            if self.combo_made.currentText() == "Mã đề 4 số" and not(self.checkbox_made_random.isChecked()):
+                                name_de=ds_made_4so_lientiep[j]
+                                                
+
                                 
                             list_ma_de.append(name_de)
 
@@ -12901,6 +12925,14 @@ class Ui_MainWindow(object):
                                             #[D11_C2_B2_30]-SA-M3. Tính tổng tiền chi của công ty sau n năm.
                                             if dang_toan == "[D11_C2_B2_30]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_30()
+
+                                            #[D11_C2_B2_31]-SA-M3. Tìm m để dãy bậc 1 lập thành cấp số cộng.
+                                            if dang_toan == "[D11_C2_B2_31]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_31()
+
+                                            #[D11_C2_B2_32]-SA-M3. Tìm m để dãy bậc 2 lập thành cấp số cộng.
+                                            if dang_toan == "[D11_C2_B2_32]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_32()
 
 
 
@@ -17968,10 +18000,10 @@ class Ui_MainWindow(object):
                                 list_noi_dung+=(f"\n \\begin{{center}}\n-----HẾT-----\n\\end{{center}}\n"
                                 f"\n %\\newpage \n"
                                 f"%\\begin{{center}}\n"
-                                f"%{{\\bf BẢNG ĐÁP ÁN MÃ ĐỀ {ma_de} }}\n"
+                                f"%{{\\bf BẢNG ĐÁP ÁN MÃ ĐỀ {name_de} }}\n"
                                 f"%\\end{{center}}\n")
 
-                                code_bang_dap_an+=(f"\\begin{{center}}\n{{\\bf BẢNG ĐÁP ÁN MÃ ĐỀ {ma_de} }}\n\\end{{center}}\n")
+                                code_bang_dap_an+=(f"\\begin{{center}}\n{{\\bf BẢNG ĐÁP ÁN MÃ ĐỀ {name_de} }}\n\\end{{center}}\n")
 
                                 if len(list_tracnghiem)>0:
                                     list_noi_dung+=(
@@ -18191,10 +18223,10 @@ class Ui_MainWindow(object):
                         show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo bản quyền', 'Thầy(cô) cần đăng kí bản quyền để sử dụng chức năng này.\nHãy ủng hộ tác giả để tác giả có động lực hỗ trợ cho thầy (cô) nhé.\nVui lòng vào tab Bản Quyền, copy Mã máy gửi cho tác giả để được cung cấp key sử dụng.')
                         show_msg_box.exec_()
 
-                except Exception as e:
-                    show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
-                    show_msg_box.exec_()
-                return
+                # except Exception as e:
+                #     show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
+                #     show_msg_box.exec_()
+                #return
 #end2
 
         def updateProgressBar(self):
