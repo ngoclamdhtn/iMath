@@ -2467,6 +2467,22 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C5_B2_1, ["[D10_C5_B2_16]-M2. Cho h.vuông. Tính độ dài tổng hai vectơ kết quả là cạnh."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B2_1, ["[D10_C5_B2_15]-M2. Cho h.vuông. Tính độ dài tổng hai vectơ kết quả là đường chéo."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B2_1, ["[D10_C5_B2_18]-M2. Cho h.vuông. Tính độ dài hiệu vectơ kết quả là cạnh."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B2_1, ["[D10_C5_B2_17]-M2. Cho h.vuông. Tính độ dài hiệu vectơ kết quả là đường chéo."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C5_B2_2 = QTreeWidgetItem(L10_C5_B2, ["Đúng-Sai"])
                 L10_C5_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C5_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -15885,7 +15901,23 @@ class Ui_MainWindow(object):
 
                                             #[D10_C5_B2_14]-SA-M3. Cho tam giác vuông. Tính độ dài tổng-hiệu các vectơ
                                             if dang_toan == "[D10_C5_B2_14]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_14()                          
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_14()
+
+                                            #[D10_C5_B2_15]-M2. Cho h.vuông. Tính độ dài tổng hai vectơ kết quả đường chéo
+                                            if dang_toan == "[D10_C5_B2_15]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C5.y7y7u_L10_C5_B2_15()
+
+                                            #[D10_C5_B2_16]-M2. Cho h.vuông. Tính độ dài tổng hai vectơ kết quả cạnh
+                                            if dang_toan == "[D10_C5_B2_16]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C5.y7y7u_L10_C5_B2_16()
+
+                                            #[D10_C5_B2_17]-M2. Cho h.vuông. Tính độ dài hiệu hai vectơ kết quả đường chéo
+                                            if dang_toan == "[D10_C5_B2_17]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C5.y7y7u_L10_C5_B2_17()
+
+                                            #[D10_C5_B2_18]-M2. Cho h.vuông. Tính độ dài hiệu hai vectơ kết quả cạnh
+                                            if dang_toan == "[D10_C5_B2_18]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C5.y7y7u_L10_C5_B2_18()                       
 
                                         #Bài 3 - Tích vectơ với một số
                                             #[D10_C5_B3_01]-M2. Cho tứ giác. Tìm khẳng định đúng về quy tắc cộng trừ.

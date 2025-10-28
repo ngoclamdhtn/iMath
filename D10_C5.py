@@ -2162,6 +2162,400 @@ def y7y7u_L10_C5_B2_14():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D10_C5_B2_15]-M2. Cho h.vuông. Tính độ dài tổng hai vectơ kết quả đường chéo
+def y7y7u_L10_C5_B2_15():
+	chon=random.randint(1,2)
+	ten=random.choice([
+		["A","B","C","D"],["A","B","E","F",], 
+		["M","N","P","Q"], ["C","D","E","F"],])
+	A,B,C,D=ten
+	O=random.choice(["O","I","H"])
+
+	a=random.randint(1,8)
+
+	chon=random.randint(1,5)
+	if chon==1:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{A}{B}")}+{vec(f"{B}{C}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{B}")}+{vec(f"{B}{C}")}|$"
+		f"$=|{vec(f"{A}{C}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{B}{C}")}+{vec(f"{C}{D}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{C}")}+{vec(f"{C}{D}")}|$"
+		f"$=|{vec(f"{B}{D}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{A}{D}")}+{vec(f"{D}{C}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{D}")}+{vec(f"{D}{C}")}|$"
+		f"$=|{vec(f"{A}{C}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+
+	if chon==4:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{C}")}+{vec(f"{A}{O}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{C}")}+{vec(f"{A}{O}")}|$"
+		f"$=|{vec(f"{A}{O}")}+{vec(f"{O}{C}")}|$"
+		f"$=|{vec(f"{A}{C}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+
+	if chon==5:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{B}")}+{vec(f"{D}{O}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{B}")}+{vec(f"{D}{O}")}|$"
+		f"$=|{vec(f"{D}{O}")}+{vec(f"{O}{B}")}|$"
+		f"$=|{vec(f"{D}{B}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+	
+
+	kq=a*sqrt(2)
+	kq_false=[a, a*sqrt(3),2*a,random.randint(3,5)*a,a*sqrt(5),a*sqrt(2)/2]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*${{{latex(kq)}}}$"
+	pa_B= f"${{{latex(kq2)}}}$"
+	pa_C= f"${{{latex(kq3)}}}$"
+	pa_D= f"${{{latex(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C5_B2_16]-M2. Cho h.vuông. Tính độ dài tổng hai vectơ kết quả là cạnh.
+def y7y7u_L10_C5_B2_16():
+	chon=random.randint(1,2)
+	ten=random.choice([
+		["A","B","C","D"],["A","B","E","F",], 
+		["M","N","P","Q"], ["C","D","E","F"],])
+	A,B,C,D=ten
+	O=random.choice(["O","I","H"])
+
+	a=random.randint(1,8)
+
+	chon=random.randint(1,6)
+	if chon==1:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{B}{C}")}+{vec(f"{C}{A}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{C}")}+{vec(f"{C}{A}")}|$"
+		f"$=|{vec(f"{B}{A}")}|={a}$.")
+
+	if chon==2:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{A}{D}")}+{vec(f"{D}{B}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{D}")}+{vec(f"{D}{B}")}|$"
+		f"$=|{vec(f"{A}{B}")}|={a}$.")
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{D}{B}")}+{vec(f"{A}{D}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{D}")}+{vec(f"{D}{B}")}|$"
+		f"$=|{vec(f"{A}{B}")}|={a}$.")
+
+	if chon==4:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{B}")}+{vec(f"{A}{O}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{O}")}+{vec(f"{O}{B}")}|$"
+		f"$=|{vec(f"{A}{B}")}|={a}$.")
+
+	if chon==5:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{D}")}+{vec(f"{A}{O}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{O}")}+{vec(f"{O}{D}")}|$"
+		f"$=|{vec(f"{A}{D}")}|={a}$.")
+
+	if chon==6:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{D}")}+{vec(f"{C}{O}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{O}")}+{vec(f"{O}{D}")}|$"
+		f"$=|{vec(f"{C}{D}")}|={a}$.")	
+
+	kq=a
+	kq_false=[a*sqrt(2), a*sqrt(3),2*a,random.randint(3,5)*a,a*sqrt(5),a*sqrt(2)/2]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*${{{latex(kq)}}}$"
+	pa_B= f"${{{latex(kq2)}}}$"
+	pa_C= f"${{{latex(kq3)}}}$"
+	pa_D= f"${{{latex(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C5_B2_17]-M2. Cho h.vuông. Tính độ dài hiệu hai vectơ kết quả đường chéo
+def y7y7u_L10_C5_B2_17():
+	chon=random.randint(1,2)
+	ten=random.choice([
+		["A","B","C","D"],["A","B","E","F",], 
+		["M","N","P","Q"], ["C","D","E","F"],])
+	A,B,C,D=ten
+	O=random.choice(["O","I","H"])
+
+	a=random.randint(1,8)
+
+	chon=random.randint(1,5)
+	if chon==1:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{B}{A}")}-{vec(f"{B}{C}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{A}")}-{vec(f"{B}{C}")}|$"
+		f"$=|{vec(f"{C}{A}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{C}{D}")}-{vec(f"{C}{B}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{D}")}+{vec(f"{C}{B}")}|$"
+		f"$=|{vec(f"{B}{D}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{D}{C}")}-{vec(f"{D}{A}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{D}{C}")}-{vec(f"{D}{A}")}|$"
+		f"$=|{vec(f"{A}{C}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+
+	if chon==4:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{C}")}-{vec(f"{O}{A}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{C}")}-{vec(f"{O}{A}")}|$"
+		f"$=|{vec(f"{A}{C}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+
+	if chon==5:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{B}")}-{vec(f"{O}{D}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{B}")}-{vec(f"{O}{D}")}|$"	
+		f"$=|{vec(f"{D}{B}")}|=\\sqrt{{{a**2}+{a**2}}}={latex(a*sqrt(2))}$.")
+	
+
+	kq=a*sqrt(2)
+	kq_false=[a, a*sqrt(3),2*a,random.randint(3,5)*a,a*sqrt(5),a*sqrt(2)/2]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*${{{latex(kq)}}}$"
+	pa_B= f"${{{latex(kq2)}}}$"
+	pa_C= f"${{{latex(kq3)}}}$"
+	pa_D= f"${{{latex(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C5_B2_18]-M2. Cho h.vuông. Tính độ dài hiệu hai vectơ kết quả là cạnh.
+def y7y7u_L10_C5_B2_18():
+	chon=random.randint(1,2)
+	ten=random.choice([
+		["A","B","C","D"],["A","B","E","F",], 
+		["M","N","P","Q"], ["C","D","E","F"],])
+	A,B,C,D=ten
+	O=random.choice(["O","I","H"])
+
+	a=random.randint(1,8)
+
+	chon=random.randint(1,6)
+	if chon==1:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{C}{B}")}-{vec(f"{C}{A}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{B}")}-{vec(f"{C}{A}")}|$"
+		f"$=|{vec(f"{A}{B}")}|={a}$.")
+
+	if chon==2:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{D}{A}")}-{vec(f"{D}{B}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{D}{A}")}-{vec(f"{D}{B}")}|$"
+		f"$=|{vec(f"{B}{A}")}|={a}$.")
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{D}{B}")}-{vec(f"{D}{C}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{D}{B}")}-{vec(f"{D}{C}")}|$"
+		f"$=|{vec(f"{C}{B}")}|={a}$.")
+
+	if chon==4:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{B}")}-{vec(f"{O}{A}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{B}")}-{vec(f"{O}{A}")}|$"
+		f"$=|{vec(f"{A}{B}")}|={a}$.")
+
+	if chon==5:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{D}")}-{vec(f"{O}{A}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{D}")}-{vec(f"{O}{A}")}|$"
+		f"$=|{vec(f"{A}{D}")}|={a}$.")
+
+	if chon==6:
+		noi_dung=(
+		f"Cho hình vuông ${{{A}{B}{C}{D}}}$ tâm ${{{O}}}$, có cạnh bằng ${{{a}}}$."
+		f" Tính độ dài vectơ ${vec("u")}={vec(f"{O}{D}")}-{vec(f"{O}{C}")}$.")
+		
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{O}{D}")}-{vec(f"{O}{C}")}|$"
+		f"$=|{vec(f"{C}{D}")}|={a}$.")	
+
+	kq=a
+	kq_false=[a*sqrt(2), a*sqrt(3),2*a,random.randint(3,5)*a,a*sqrt(5),a*sqrt(2)/2]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*${{{latex(kq)}}}$"
+	pa_B= f"${{{latex(kq2)}}}$"
+	pa_C= f"${{{latex(kq3)}}}$"
+	pa_D= f"${{{latex(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 #--------------------------------------------------------------------------->
 #Bài 3 - Tích vectơ với một số
 #[D10_C5_B3_01]-M2. Cho tứ giác. Tìm khẳng định đúng về quy tắc cộng trừ.

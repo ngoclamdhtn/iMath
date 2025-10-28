@@ -3063,7 +3063,7 @@ def yy3yy_L10_C4_B2_13():
     goc_A=pi-goc_B-goc_C
 
 
-    l_a=f"{round(l_c*sin(goc_A)/sin(goc_C),2):.1f}".replace(".",",")
+    l_a=f"{round(l_c*sin(goc_A)/sin(goc_C),1):.1f}".replace(".",",")
     dap_an=l_a
 
 
@@ -3463,7 +3463,7 @@ def yy3yy_L10_C4_B2_19():
     t=random.randint(2,4)
     c=random.choice([i for i in range(15,30) if i!=b])
 
-    khoangcach=(t*b)**2+(t*c)**2-2*t*b*t*c*sin(a_radian)
+    khoangcach=(t*b)**2+(t*c)**2-2*t*b*t*c*cos(a_radian)
     
     kq1=f"{round(khoangcach,1):.1f}".replace(".",",")
     kq=f"{round(sqrt(khoangcach),1):.1f}".replace(".",",")    
