@@ -7866,6 +7866,18 @@ class Ui_MainWindow(object):
                 L12_C1_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L12_C1_B5_1 = QTreeWidgetItem(L12_C1_B5, ["Trắc nghiệm"])
+                L12_C1_B5_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C1_B5_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_1, ["[D12_C1_B5_34]-M2. Tìm vận tốc sau t giây của vật phóng thẳng đứng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_1, ["[D12_C1_B5_35]-M2. Tìm tốc độ tăng trưởng của quần thể nấm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B5_2 = QTreeWidgetItem(L12_C1_B5, ["Đúng-Sai"])
                 L12_C1_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -10735,11 +10747,20 @@ class Ui_MainWindow(object):
 
                                             #[D12_C1_B5_32]-SA-M3. Hình hộp chữ nhật không nắp có diện tích. Tìm cạnh đáy để V_max
                                             if dang_toan == "[D12_C1_B5_32]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_32()
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_32()
 
                                             #[D12_C1_B5_33]-SA-M3. Hình hộp chữ nhật không nắp có diện tích. Tìm V_max
                                             if dang_toan == "[D12_C1_B5_33]": 
-                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_33()
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_33()
+
+                                            #[D12_C1_B5_34]-M2. Tìm vận tốc sau t giây của vật phóng thẳng đứng. 
+                                            if dang_toan == "[D12_C1_B5_34]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B5_34()
+
+                                            #[D12_C1_B5_35]-M2. Tìm tốc độ tăng trưởng của quần thể nấm 
+                                            if dang_toan == "[D12_C1_B5_35]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B5_35()
+
 
                                             
                                                 

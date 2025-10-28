@@ -15249,3 +15249,150 @@ def prt_34_L12_C1_B5_33():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C1_B5_34]-M2. Tìm vận tốc sau t giây của vật phóng thẳng đứng. 
+def prt_34_L12_C1_B5_34():
+	t=sp.symbols("t")
+	while True:		
+		v_0=random.randint(350,950)/10
+		s_v0=f"{round_half_up(v_0,1):.1f}".replace(".",",")
+		t_0=random.randint(2,10)
+		f=v_0*t-4.9*t**2
+		f_dh=diff(f,t)
+		v_t0=f_dh.subs(t,t_0)
+		if v_t0>0:
+			break
+	s_kq=f"{round_half_up(v_t0,1):.1f}".replace(".",",")	
+	noi_dung=(
+	f" Một vật được phóng thẳng đứng lên trên từ mặt đất với tốc độ ban đầu là  ${{{s_v0}}}$ m/s,"
+	f" độ cao  của vật sau ${{t}}$ giây được cho bởi công thức $h(t)={s_v0}t-4,9t^2$. Vận tốc của vật sau ${{{t_0}}}$ giây bằng "
+	)
+	
+	noi_dung_loigiai=(
+	f"Vận tốc của vật sau t giây là:\n\n"
+	f"$v(t)=h'(t)={s_v0}-9,8t$.\n\n"
+	f"Vận tốc của vật sau {t_0} giây là:\n\n"
+	f"$v({t_0})={s_kq}$ m/s.")
+
+	numbers = []
+
+	while len(numbers) < 5:
+	    x = random.uniform(1, v_t0+random.randint(5,15))
+	    # kiểm tra x khác t (chênh lệch đủ lớn để tránh sai số số thực)
+	    if abs(x - v_t0) > 1e-6:
+	        numbers.append(round(x, 4))
+
+	kq=s_kq
+	kq_false=numbers
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{round_half_up(kq2,1):.1f}}}$".replace(".",",")
+	pa_C= f"${{{round_half_up(kq3,1):.1f}}}$".replace(".",",")
+	pa_D= f"${{{round_half_up(kq4,1):.1f}}}$".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B5_35]-M2. Tìm tốc độ tăng trưởng của quần thể nấm
+def prt_34_L12_C1_B5_35():
+	t=sp.symbols("t")
+	while True:		
+		a=random.randint(100,300)		
+		t_0=random.randint(0,7)
+		k=random.randint(1,50)/100
+		s_k=f"{round_half_up(k,2):.2f}".replace(".",",")
+
+
+		f=a*exp(k*t)
+		f_dh=diff(f,t)
+		v_t0=f_dh.subs(t,t_0)
+		if v_t0>0:
+			break
+	s_kq=f"{round_half_up(v_t0,1):.1f}".replace(".",",")
+
+	s_ak=f"{round_half_up(a*k,2):.2f}".replace(".",",")
+
+	X=random.choice(["A","B","C","X","Y","N" ])
+
+	noi_dung=(
+	f"Giả sử số lượng của một quần thể nấm ${{{X}}}$ tại môi trường nuôi cấy trong phòng thí nghiệm được mô hình hóa bằng hàm số "
+	f"$P(t)={a}e^{{{s_k}t}}$, trong đó thời gian ${{t}}$ được tính bằng giờ."
+	f" Tại thời điểm ban đầu $t={t_0}$, tốc độ tăng trưởng của quần thể nấm ${{{X}}}$ là"
+	)
+	
+	noi_dung_loigiai=(
+	f"Tốc độ tăng trưởng của quần thể nấm tại thời điểm ${{t}}$ là: :\n\n"
+	f"$P'(t)={s_ak}e^{{{s_k}t}}$.\n\n"
+	f"Tốc độ tăng trưởng tại thời điểm $t={t_0}$ là:\n\n"
+	f"$v({t_0})={s_kq}$ tế bào/giờ.")
+
+	numbers = []
+
+	while len(numbers) < 5:
+	    x = random.uniform(1, v_t0+random.randint(5,15))
+	    # kiểm tra x khác t (chênh lệch đủ lớn để tránh sai số số thực)
+	    if abs(x - v_t0) > 1e-6:
+	        numbers.append(round(x, 4))
+
+	kq=s_kq
+	kq_false=numbers
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+	pa_A= f"*${{{kq}}}$ tế bào/giờ"
+	pa_B= f"${{{round_half_up(kq2,1):.1f}}}$ tế bào/giờ".replace(".",",")
+	pa_C= f"${{{round_half_up(kq3,1):.1f}}}$ tế bào/giờ".replace(".",",")
+	pa_D= f"${{{round_half_up(kq4,1):.1f}}}$ tế bào/giờ".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
