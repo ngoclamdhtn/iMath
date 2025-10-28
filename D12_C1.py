@@ -15396,3 +15396,102 @@ def prt_34_L12_C1_B5_35():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C1_B5_36]-M2. Tìm hàm chi phí biên của hàm số
+def prt_34_L12_C1_B5_36():
+	x=sp.symbols("x")
+	A=random.choice(["A","B","X","Y","Z" ])
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		a=random.randint(1000,5000)
+		b=random.randint(10,100)
+		c=-random.randint(5,50)/10
+		d=random.randint(1,100)/1000
+		f=a+b*x+c*x**2+d*x**3
+		f_latex=f"{latex(f)}".replace(".",",")
+
+		f_dh=diff(f,x)
+		fdh_latex=f"{latex(f_dh)}".replace(".",",")
+
+		noi_dung=(
+		f"Giả sử chi phí để sản xuất ${{x}}$ đơn vị hàng hóa {A} là"
+		f" $C(x)={f_latex}$. Khi đó hàm chi phí biên tương ứng là"
+		)
+
+		noi_dung_loigiai=(
+		f"Hàm chi phí biên tương ứng là $C'(x)={fdh_latex}$.")		
+
+		kq=fdh_latex
+		kq_false=[
+		latex(b*x+c*x**2+d*x**3),
+		latex(a+b*x+c*x**2),
+		latex(b+2*c*x+d*x**2),
+		latex(b+2*c*x+x**3),]
+	
+	if chon==2:
+		a=random.randint(1,100)/1000
+		b=random.randint(10,100)
+		c=random.randint(1000,4000)
+	
+		f=a*x**2+b*x+c
+		f_latex=f"{latex(f)}".replace(".",",")
+
+		f_dh=diff(f,x)
+		fdh_latex=f"{latex(f_dh)}".replace(".",",")
+
+		noi_dung=(
+		f"Giả sử chi phí để sản xuất ${{x}}$ đơn vị hàng hóa {A} là"
+		f" $C(x)={f_latex}$. Khi đó hàm chi phí biên tương ứng là"
+		)
+
+		noi_dung_loigiai=(
+		f"Hàm chi phí biên tương ứng là $C'(x)={fdh_latex}$.")		
+
+		kq=fdh_latex
+		kq_false=[
+		latex(a*x**2+b),
+		latex(a*x+b),
+		latex(a*x**2+b*x),
+		latex(a*x+c),]
+	
+	
+
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+	
+
+	pa_A= f"*$C'(x)={kq}$".replace(".",",")
+	pa_B= f"$C'(x)={kq2}$".replace(".",",")
+	pa_C= f"$C'(x)={kq3}$".replace(".",",")
+	pa_D= f"$C'(x)={kq4}$".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+

@@ -7889,6 +7889,10 @@ class Ui_MainWindow(object):
                 L12_C1_B5_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B5_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_1, ["[D12_C1_B5_36]-M1. Tìm hàm số chi phí biên."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C1_B5_1, ["[D12_C1_B5_34]-M2. Tìm vận tốc sau t giây của vật phóng thẳng đứng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7896,6 +7900,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C1_B5_1, ["[D12_C1_B5_35]-M2. Tìm tốc độ tăng trưởng của quần thể nấm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 L12_C1_B5_2 = QTreeWidgetItem(L12_C1_B5, ["Đúng-Sai"])
                 L12_C1_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -10779,6 +10785,10 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B5_35]-M2. Tìm tốc độ tăng trưởng của quần thể nấm 
                                             if dang_toan == "[D12_C1_B5_35]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B5_35()
+
+                                            #[D12_C1_B5_36]-M2. Tìm hàm chi phí biên của hàm số
+                                            if dang_toan == "[D12_C1_B5_36]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B5_36()
 
 
                                             
