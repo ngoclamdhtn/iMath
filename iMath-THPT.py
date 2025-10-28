@@ -2286,7 +2286,6 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
                 L10_C4_B2_2 = QTreeWidgetItem(L10_C4_B2, ["Đúng-Sai"])
                 L10_C4_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C4_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -2324,6 +2323,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_35]-SA-M2.  Cho a,b,c. Tính trung tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_38]-SA-M2. Cho AB,BC,AC. Tính đường cao AH (hoặc BH,CH)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -15807,6 +15810,11 @@ class Ui_MainWindow(object):
                                             #[D10_C4_B2_37]-M2. Cho a,b, cosC. Tính diện tích tam giác.
                                             if dang_toan == "[D10_C4_B2_37]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B2_37()
+
+                                            #[D10_C4_B2_38]-SA-M2. Cho AB,BC,AC. Tính đường cao AH (hoặc BH,CH)
+                                            if dang_toan =="[D10_C4_B2_38]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_38()
+                                            
 
 
 

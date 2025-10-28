@@ -4716,3 +4716,128 @@ def yy3yy_L10_C4_B2_37():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C4_B2_38]-SA-M3. Cho AB,BC,AC. Tính đường cao AH (hoặc BH,CH)
+def yy3yy_L10_C4_B2_38():
+    while True:
+        a=random.randint(1,7)
+        b=random.randint(1,7)
+        c=random.randint(1,7)
+        if all([a+b>c, a+c>b, b+c>a]):
+            break
+    chon=random.randint(1,3)
+    
+    if chon==1:
+        p=(a+b+c)/2
+        S=sqrt(p*(p-a)*(p-b)*(p-c))
+        r_S=f"{round_half_up(S,2):.2f}".replace(".",",")
+        AH=float(2*S/a)
+
+        if AH.is_integer():
+            noi_dung = (
+            f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{AH}}$."
+            )
+            dap_an=int(AH)
+
+            noi_dung_loigiai=(
+            f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"
+
+            f"Diện tích tam giác là:\n\n"
+            f"$S=\\sqrt{{{phan_so(p)}.{phan_so(p-a)}.{phan_so(p-b)}.{phan_so(p-c)}}}={r_S}$.\n\n"
+            f"$S={phan_so(1/2)}AH.BC\\Rightarrow AH=\\dfrac{{2S}}{{BC}}=\\dfrac{{2.{r_S}}}{{{a}}}={dap_an}$."
+             )
+        else:
+            noi_dung = (
+            f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{AH}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+            dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
+
+            noi_dung_loigiai=(
+            f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"
+
+            f"Diện tích tam giác là:\n\n"
+            f"$S=\\sqrt{{{phan_so(p)}.{phan_so(p-a)}.{phan_so(p-b)}.{phan_so(p-c)}}}={r_S}$.\n\n"
+            f"$S={phan_so(1/2)}AH.BC\\Rightarrow AH=\\dfrac{{2S}}{{BC}}=\\dfrac{{2.{r_S}}}{{{a}}}={dap_an}$"
+        
+            )  
+    
+    if chon==2:
+        p=(a+b+c)/2
+        S=sqrt(p*(p-a)*(p-b)*(p-c))
+        r_S=f"{round_half_up(S,2):.2f}".replace(".",",")
+        BH=float(2*S/b)
+
+        if BH.is_integer():
+            noi_dung = (
+            f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{BH}}$."
+            )
+            dap_an=int(BH)
+
+            noi_dung_loigiai=(
+            f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"
+
+            f"Diện tích tam giác là:\n\n"
+            f"$S=\\sqrt{{{phan_so(p)}.{phan_so(p-a)}.{phan_so(p-b)}.{phan_so(p-c)}}}={r_S}$.\n\n"
+            f"$S={phan_so(1/2)}BH.AC\\Rightarrow BH=\\dfrac{{2S}}{{AC}}=\\dfrac{{2.{r_S}}}{{{b}}}={dap_an}$."
+             )
+        else:
+            noi_dung = (
+            f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{BH}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+            dap_an=f"{round_half_up(BH,1):.1f}".replace(".",",")
+
+            noi_dung_loigiai=(
+            f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"
+
+            f"Diện tích tam giác là:\n\n"
+            f"$S=\\sqrt{{{phan_so(p)}.{phan_so(p-a)}.{phan_so(p-b)}.{phan_so(p-c)}}}={r_S}$.\n\n"
+            f"$S={phan_so(1/2)}BH.AC\\Rightarrow BH=\\dfrac{{2S}}{{AC}}=\\dfrac{{2.{r_S}}}{{{b}}}={dap_an}$."      
+            )
+
+    if chon==3:
+        p=(a+b+c)/2
+        S=sqrt(p*(p-a)*(p-b)*(p-c))
+        r_S=f"{round_half_up(S,2):.2f}".replace(".",",")
+        CH=float(2*S/c)
+
+        if CH.is_integer():
+            noi_dung = (
+            f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{CH}}$."
+            )
+            dap_an=int(BH)
+
+            noi_dung_loigiai=(
+            f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"
+
+            f"Diện tích tam giác là:\n\n"
+            f"$S=\\sqrt{{{phan_so(p)}.{phan_so(p-a)}.{phan_so(p-b)}.{phan_so(p-c)}}}={r_S}$.\n\n"
+            f"$S={phan_so(1/2)}BH.AC\\Rightarrow CH=\\dfrac{{2S}}{{AB}}=\\dfrac{{2.{r_S}}}{{{b}}}={dap_an}$."
+             )
+        else:
+            noi_dung = (
+            f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{CH}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+            dap_an=f"{round_half_up(CH,1):.1f}".replace(".",",")
+
+            noi_dung_loigiai=(
+            f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"
+
+            f"Diện tích tam giác là:\n\n"
+            f"$S=\\sqrt{{{phan_so(p)}.{phan_so(p-a)}.{phan_so(p-b)}.{phan_so(p-c)}}}={r_S}$.\n\n"
+            f"$S={phan_so(1/2)}CH.AB\\Rightarrow CH=\\dfrac{{2S}}{{AB}}=\\dfrac{{2.{r_S}}}{{{b}}}={dap_an}$."      
+            )
+    
+
+      
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
