@@ -15495,3 +15495,63 @@ def prt_34_L12_C1_B5_36():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C1_B5_37]-M2. Tìm chi phí trung bình để sản xuất x_0 đơn vị hàng hóa.
+def prt_34_L12_C1_B5_37():
+	x=sp.symbols("x")
+	A=random.choice(["A","B","X","Y","Z" ])
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		while True:
+			a=random.randint(1000,5000)
+			b=random.randint(10,100)
+			c=-random.randint(5,50)/10
+			d=random.randint(1,100)/1000
+			f=a+b*x+c*x**2+d*x**3
+			f_tb=f/x
+			f_latex=f"{latex(f)}".replace(".",",")	
+			x_0=random.randint(10,30)
+			kq=f_tb.subs(x,x_0)
+			if 1<kq<999:
+				break		
+
+	if chon==2:
+		while True:
+			a=random.randint(1,100)/1000
+			b=random.randint(10,100)
+			c=random.randint(1000,4000)
+		
+			f=a*x**2+b*x+c
+			f_tb=f/x
+			f_latex=f"{latex(f)}".replace(".",",")	
+			x_0=random.randint(10,30)
+			kq=f_tb.subs(x,x_0)
+			if 1<kq<999:
+				break
+
+	dap_an=f"{round_half_up(kq,0):.0f}".replace(".",",")
+
+	noi_dung=(
+	f"Giả sử chi phí để sản xuất ${{x}}$ đơn vị hàng hóa {A} là $C(x)={f_latex}$ (ngàn đồng)."
+	f" Tính chi phí trung bình (ngàn đồng) để sản xuất ${{{x_0}}}$ đơn vị hàng hóa {A} (kết quả làm tròn đến hàng đơn vị)."
+	)
+
+	noi_dung_loigiai=(
+	f"Hàm chi phí trung bình là $\\overline{{C}}(x)=\\dfrac{{{f_latex}}}{{x}}$.\n\n"
+	f"Chi phí trung bình để sản xuất ${{{x_0}}}$ đơn vị hàng hóa là:\n\n"
+	f"$\\overline{{C}}({x_0})={dap_an}$.")	
+
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+

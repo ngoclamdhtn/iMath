@@ -7959,6 +7959,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_37]-SA-M2. Tính chi phí trung bình để sản xuất x đơn vị hàng hóa"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_04]-SA-M2. Bài toán tìm tốc độ trung bình để chi phí xăng nhỏ nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8306,7 +8310,15 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_18]-M3. Cho A,B,G. Tìm C để ABC nhận G làm trọng tâm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)          
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_41]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trọng tâm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_42]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trung điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)     
 
                 
                 L12_C2_B3_2 = QTreeWidgetItem(L12_C2_B3, ["Đúng-Sai"])
@@ -10790,6 +10802,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_36]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B5_36()
 
+                                            #[D12_C1_B5_37]-SA-M3. Tìm chi phí trung bình để sản xuất x_0 đơn vị hàng hóa.
+                                            if dang_toan == "[D12_C1_B5_37]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_37()
+
 
                                             
                                                 
@@ -11091,6 +11107,14 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_40]-SA-M3. Tìm tâm đường tròn ngoại tiếp tam giác vuông
                                             if dang_toan == "[D12_C2_B3_40]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_40()
+
+                                        #[D12_C2_B3_41]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trọng tâm
+                                            if dang_toan == "[D12_C2_B3_41]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_41()
+
+                                        #[D12_C2_B3_42]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trung điểm
+                                            if dang_toan == "[D12_C2_B3_42]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_42()
 
 
 

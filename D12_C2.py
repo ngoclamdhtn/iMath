@@ -7832,5 +7832,325 @@ def mnj_34_jkl_L12_C2_B3_40():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C2_B3_41]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trọng tâm
+def mnj_34_jkl_L12_C2_B3_41():
+	ten=random.choice([
+		["S","A","B","C"],
+		["A","B","C","D"],
+		["S","B","C","D"],
+		["I","A","B","C"],
+		["I","B","C","D"],])
+	S,A,B,C=ten
+	while True:		
+		x_0=random.randint(1,10)
+		y_0=random.randint(1,10)
+		z_0=random.randint(1,10)
+		if all([x_0!=y_0, x_0!=z_0, y_0!=z_0]):
+			break
+	chon=random.randint(1,3)
+	if chon==1:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trọng tâm ${{G}}$ của tam giác ${{{S}{B}{C}}}$ là"
+		)
+		x_G, y_G, z_G=x_0/3, y_0/3, z_0/3
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trọng tâm ${{G}}$ của tam giác ${{{S}{B}{C}}}$ là: $G\\left({phan_so(x_G)};{phan_so(y_G)};{phan_so(z_G)}\\right)$."
+		)
+		kq=f"$G\\left({phan_so(x_G)};{phan_so(y_G)};{phan_so(z_G)}\\right)$"
+		kq_false=[
+		f"$G\\left({phan_so(x_0/3)};{phan_so(y_0/3)};{phan_so(z_0)}\\right)$",
+		f"$G\\left({phan_so(x_0/2)};{phan_so(y_0/2)};{phan_so(z_0/2)}\\right)$",
+		f"$G\\left({x_0};0;0\\right)$",
+		f"$G\\left({x_0};{y_0};0\\right)$",
+		f"$G\\left({x_0};0;{z_0}\\right)$",
+		f"$G\\left({phan_so((x_0+y_0)/2)};{phan_so((x_0+z_0)/2)};{phan_so((y_0+z_0)/2)}\\right)$",
+		f"$G\\left({phan_so((x_0+y_0)/3)};{phan_so((x_0+z_0)/3)};{phan_so((y_0+z_0)/3)}\\right)$",]
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trọng tâm ${{G}}$ của tam giác ${{{S}{A}{B}}}$ là"
+		)
+		x_G, y_G, z_G=x_0/3, 0, z_0/3
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trọng tâm ${{G}}$ của tam giác ${{{S}{A}{B}}}$ là: $G\\left({phan_so(x_G)};{phan_so(y_G)};{phan_so(z_G)}\\right)$."
+		)
+		kq=f"$G\\left({phan_so(x_G)};{phan_so(y_G)};{phan_so(z_G)}\\right)$"
+		kq_false=[
+		f"$G\\left({phan_so(x_0/3)};{phan_so(y_0/3)};{phan_so(z_0)}\\right)$",
+		f"$G\\left({phan_so(x_0/2)};{phan_so(y_0/2)};{phan_so(z_0/2)}\\right)$",
+		f"$G\\left({x_0};0;0\\right)$",
+		f"$G\\left({x_0};{y_0};0\\right)$",
+		f"$G\\left({x_0};0;{z_0}\\right)$",
+		f"$G\\left({phan_so((x_0+y_0)/2)};{phan_so((x_0+z_0)/2)};{phan_so((y_0+z_0)/2)}\\right)$",
+		f"$G\\left({phan_so((x_0+y_0)/3)};{phan_so((x_0+z_0)/3)};{phan_so((y_0+z_0)/3)}\\right)$",]
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trọng tâm ${{G}}$ của tam giác ${{{S}{A}{C}}}$ là"
+		)
+		x_G, y_G, z_G=0, y_0/3, z_0/3
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trọng tâm ${{G}}$ của tam giác ${{{S}{A}{C}}}$ là: $G\\left({phan_so(x_G)};{phan_so(y_G)};{phan_so(z_G)}\\right)$."
+		)
+		kq=f"$G\\left({phan_so(x_G)};{phan_so(y_G)};{phan_so(z_G)}\\right)$"
+		kq_false=[
+		f"$G\\left({phan_so(x_0/3)};{phan_so(y_0/3)};{phan_so(z_0)}\\right)$",
+		f"$G\\left({phan_so(x_0/2)};{phan_so(y_0/2)};{phan_so(z_0/2)}\\right)$",
+		f"$G\\left({x_0};0;0\\right)$",
+		f"$G\\left({x_0};{y_0};0\\right)$",
+		f"$G\\left({x_0};0;{z_0}\\right)$",
+		f"$G\\left({phan_so((x_0+y_0)/2)};{phan_so((x_0+z_0)/2)};{phan_so((y_0+z_0)/2)}\\right)$",
+		f"$G\\left({phan_so((x_0+y_0)/3)};{phan_so((x_0+z_0)/3)};{phan_so((y_0+z_0)/3)}\\right)$",]
+	
+
+	
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C2_B3_42]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trung điểm
+def mnj_34_jkl_L12_C2_B3_42():
+	ten=random.choice([
+		["S","A","B","C"],
+		["A","B","C","D"],
+		["S","B","C","D"],
+		["I","A","B","C"],
+		["I","B","C","D"],])
+	S,A,B,C=ten
+	while True:		
+		x_0=random.randint(1,10)
+		y_0=random.randint(1,10)
+		z_0=random.randint(1,10)
+		if all([x_0!=y_0, x_0!=z_0, y_0!=z_0]):
+			break
+	chon=random.randint(1,6)
+	
+	if chon==1:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trung điểm ${{M}}$ của đoạn thẳng ${{{S}{C}}}$ là"
+		)
+		x_M, y_M, z_M=0, y_0/2, z_0/2
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trung điểm ${{M}}$ của đoạn thẳng ${{{S}{C}}}$ là: $M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$."
+		)
+		kq=f"$M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$"
+		kq_false=[
+		f"$M\\left({phan_so(x_0/3)};{phan_so(y_0/3)};{phan_so(z_0)}\\right)$",
+		f"$M\\left({phan_so(x_0/2)};{phan_so(y_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};0;{phan_so(z_0/2)}\\right)$",	
+		f"$M\\left({phan_so((x_0+y_0)/2)};{phan_so((x_0+z_0)/2)};{phan_so((y_0+z_0)/2)}\\right)$",
+		]
+
+	if chon==2:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trung điểm ${{M}}$ của đoạn thẳng ${{{S}{B}}}$ là"
+		)
+		x_M, y_M, z_M=x_0/2, 0, z_0/2
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trung điểm ${{M}}$ của đoạn thẳng ${{{S}{B}}}$ là: $M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$."
+		)
+		kq=f"$M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$"
+		kq_false=[
+		f"$M\\left({phan_so(x_0/3)};{phan_so(y_0/3)};{phan_so(z_0)}\\right)$",
+		f"$M\\left({phan_so(x_0/2)};{phan_so(z_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};0;{phan_so(y_0/2)}\\right)$",	
+		f"$M\\left({phan_so((x_0+y_0)/2)};{phan_so((x_0+z_0)/2)};{phan_so((y_0+z_0)/2)}\\right)$",
+		]
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trung điểm ${{M}}$ của đoạn thẳng ${{{B}{C}}}$ là"
+		)
+		x_M, y_M, z_M=x_0/2, y_0/2, 0
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trung điểm ${{M}}$ của đoạn thẳng ${{{B}{C}}}$ là: $M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$."
+		)
+		kq=f"$M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$"
+		kq_false=[
+		f"$M\\left({phan_so(x_0/3)};{phan_so(y_0/3)};{phan_so(z_0)}\\right)$",
+		f"$M\\left({phan_so(x_0/2)};{phan_so(z_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};0;{phan_so(y_0/2)}\\right)$",	
+		f"$M\\left({phan_so((x_0+y_0)/2)};{phan_so((x_0+z_0)/2)};{phan_so((y_0+z_0)/2)}\\right)$",
+		]
+
+	if chon==4:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trung điểm ${{M}}$ của đoạn thẳng ${{{A}{B}}}$ là"
+		)
+		x_M, y_M, z_M=x_0/2, 0, 0
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trung điểm ${{M}}$ của đoạn thẳng ${{{A}{B}}}$ là: $M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$."
+		)
+		kq=f"$M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$"
+		kq_false=[
+		f"$M\\left(0;{phan_so(y_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};{phan_so(z_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};0;{phan_so(y_0/2)}\\right)$",	
+		f"$M\\left(0;0;{phan_so(z_0/2)}\\right)$",
+		]
+
+	if chon==5:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trung điểm ${{M}}$ của đoạn thẳng ${{{A}{C}}}$ là"
+		)
+		x_M, y_M, z_M=0, y_0/2, 0
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trung điểm ${{M}}$ của đoạn thẳng ${{{A}{C}}}$ là: $M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$."
+		)
+		kq=f"$M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$"
+		kq_false=[
+		f"$M\\left({phan_so(x_0/2)};0;0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};{phan_so(z_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};0;{phan_so(y_0/2)}\\right)$",	
+		f"$M\\left(0;0;{phan_so(z_0/2)}\\right)$",
+		]
+
+	if chon==6:
+		noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác vuông tại ${{{A}}}$,"
+		f" ${A}{B}={x_0}, {A}{C}={y_0}, {S}{A}={z_0}.$"
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{C}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$."
+		f" Tọa độ trung điểm ${{M}}$ của đoạn thẳng ${{{S}{A}}}$ là"
+		)
+		x_M, y_M, z_M=0,0,z_0/2
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_0};0;0), {C}(0;{y_0};0), {S}(0;0;{z_0})$.\n\n"
+		f"Trung điểm ${{M}}$ của đoạn thẳng ${{{S}{A}}}$ là: $M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$."
+		)
+		kq=f"$M\\left({phan_so(x_M)};{phan_so(y_M)};{phan_so(z_M)}\\right)$"
+		kq_false=[
+		f"$M\\left({phan_so(x_0/2)};0;0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};{phan_so(z_0/2)};0\\right)$",
+		f"$M\\left({phan_so(x_0/2)};0;{phan_so(y_0/2)}\\right)$",	
+		f"$M\\left(0;{phan_so(y_0/2)};0\\right)$",
+		f"$M\\left(0;{phan_so(z_0/2)};0\\right)$",
+		]
+	
+	
+
+	
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 
