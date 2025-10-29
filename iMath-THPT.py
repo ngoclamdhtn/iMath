@@ -10012,7 +10012,7 @@ class Ui_MainWindow(object):
         
 #begin
         def tao_de(self):
-                #try:
+                try:
                     if license.kiemtra_banquyen_new():                
                         self.text_taode.clear()
                         self.save_thongtin_dethi()                            
@@ -18324,11 +18324,11 @@ class Ui_MainWindow(object):
                         show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo bản quyền', 'Thầy(cô) cần đăng kí bản quyền để sử dụng chức năng này.\nHãy ủng hộ tác giả để tác giả có động lực hỗ trợ cho thầy (cô) nhé.\nVui lòng vào tab Bản Quyền, copy Mã máy gửi cho tác giả để được cung cấp key sử dụng.')
                         show_msg_box.exec_()
 
-                # except Exception as e:
-                #     show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
-                #     show_msg_box.exec_()
-                #return
-#end2
+                except Exception as e:
+                    show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
+                    show_msg_box.exec_()
+                return
+#end body
 
         def updateProgressBar(self):
                 # Cập nhật giá trị của progress bar
