@@ -662,8 +662,8 @@ def mn8mn_L11_C2_B2_05():
     Sn=n*(2*u1+(n-1)*d)/2
     Sn_false=n*(u1+(n-1)*d)/2
 
-    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn)}$" 
-    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn_false)}$"
+    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn)}}}$" 
+    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn_false)}}}$"
     kq3=random.choice([kq3_T, kq3_F])    
         
     HDG=f"$S_{{{n}}}={phan_so(n/2)}[2.{st_u1}+{n-1}.{st_d}]={phan_so(Sn)}$."
@@ -970,8 +970,8 @@ def mn8mn_L11_C2_B2_09():
     Sn=n*(2*u1+(n-1)*d)/2
     Sn_false=n*(u1+(n-1)*d)/2
 
-    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn)}$" 
-    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${phan_so(Sn_false)}$"
+    kq3_T=f"* Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn)}}}$" 
+    kq3_F=f"Tổng của ${{{n}}}$ số hạng đầu tiên của $(u_n)$ bằng ${{{phan_so(Sn_false)}}}$"
     kq3=random.choice([kq3_T, kq3_F])    
         
     HDG=f"$S_{{{n}}}={phan_so(n/2)}[2.{st_u1}+{n-1}.{st_d}]={phan_so(Sn)}$."

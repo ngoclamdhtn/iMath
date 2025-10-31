@@ -7619,6 +7619,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B2_2, ["[D12_C1_B2_25]-TF-M2. Cho đồ thị f'(x). Xét đúng-sai:đơn điệu, so sánh, cực trị, GTLN-GTNN."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C1_B2_3 = QTreeWidgetItem(L12_C1_B2, ["Trả lời ngắn"])
                 L12_C1_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8318,7 +8322,15 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_42]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trung điểm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)     
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_43]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trọng tâm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_44]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trung điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked) 
 
                 
                 L12_C2_B3_2 = QTreeWidgetItem(L12_C2_B3, ["Đúng-Sai"])
@@ -10477,6 +10489,10 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B2_24]-M3. Cho đồ thị f(x).Tìm GTLN-GTNN
                                             if dang_toan == "[D12_C1_B2_24]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B2_24()
+
+                                            #[D12_C1_B2_25]-TF-M2. Cho đồ thị f'(x). Xét đúng-sai:đơn điệu, so sánh, cực trị, GTLN-GTNN.    
+                                            if dang_toan == "[D12_C1_B2_25]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B2_25()
                                                 
 
                                     #Bài 3. ĐƯỜNG t.cận
@@ -11115,6 +11131,14 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_42]-M2. H.chóp tam giác vuông gắn tọa độ. Tìm tọa độ trung điểm
                                             if dang_toan == "[D12_C2_B3_42]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_42()
+
+                                        #[D12_C2_B3_43]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trọng tâm
+                                            if dang_toan == "[D12_C2_B3_43]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_43()
+
+                                        #[D12_C2_B3_44]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trung điểm
+                                            if dang_toan == "[D12_C2_B3_44]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_44()
 
 
 

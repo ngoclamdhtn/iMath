@@ -4556,7 +4556,7 @@ def prt_34_L12_C1_B1_35():
 \\draw[samples=200,domain={x_1-1}:{x_3+1},smooth,magenta, variable=\\x]\n\
 {lenh_ve}\
 \\end{{scope}}\n\
-\\end{{tikzpicture}}\n"	
+\\end{{tikzpicture}}\n"
 	
 	if chon==1:
 		noi_dung=(f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ và có đồ thị $f'(x)$ như hình vẽ."
@@ -7476,7 +7476,311 @@ def prt_34_L12_C1_B2_24():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C1_B2_25]-TF-M2. Cho đồ thị f'(x). Xét đúng-sai:đơn điệu, so sánh, cực trị, GTLN-GTNN.	
+def prt_34_L12_C1_B2_25():
+	x=sp.symbols("x")
+	x_1=random.randint(-5,1)
+	x_2=x_1+random.randint(1,3)
+	x_3=x_2+random.randint(1,3)
 
+	chon=random.randint(1,2)
+
+	if chon==1:
+		f_dh=(x-x_1)*(x-x_2)*(x-x_3)
+		lenh_ve=f"plot (\\x,{{0.2*(\\x-{x_1})*(\\x-{x_2})*(\\x-{x_3})}});"
+		g=diff(f_dh,x)
+		equation=Eq(g,0)
+		solution = solve(equation, x)
+		a,b=solution[0],solution[1]
+		y_a,y_b=f_dh.subs(x,a),f_dh.subs(x,b)
+		x_min, x_max= round_half_up(min(a,b)-3,1), round_half_up(max(a,b)+3,1)
+		if x_max<=0: x_max=1.5
+		if x_min>=0: x_min=-1.5
+		y_min, y_max=round_half_up(0.5*min(y_a,y_b)-1,1), round_half_up(0.5*max(y_a,y_b)+1,1)
+		chuoi_so_x=f"\\foreach \\x in {{{x_1}, {x_2},{x_3}}}\n"
+
+		if x_1==0:
+			chuoi_so_x=f"\\foreach \\x in {{{x_2},{x_3}}}\n"
+		if x_2==0:
+			chuoi_so_x=f"\\foreach \\x in {{{x_1},{x_3}}}\n"
+		if x_3==0:
+			chuoi_so_x=f"\\foreach \\x in {{{x_1},{x_2}}}\n"
+
+		code_hinh=f"\\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.6]\n\
+	\\tikzset{{every node/.style={{scale=0.9}}}}\n\
+	\\draw[gray!20]({x_min},{y_min})grid({x_max},{y_max});\n\
+	\\draw[->] ({x_min},0)--({x_max},0) node[below left] {{$x$}};\n\
+	\\draw[->] (0,{y_min})--(0,{y_max}) node[below left] {{$y$}};\n\
+	\\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
+	{chuoi_so_x}\
+	\\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize $\\x$}};\n\
+	\\foreach \\y in {{}}\n\
+	\\draw[thin] (1pt,\\y)--(-1pt,\\y) node [left] {{\\footnotesize $\\y$}};\n\
+	\\begin{{scope}}\n\
+	\\clip ({x_min},{y_min}) rectangle ({x_max},{y_max});\n\
+	\\draw[samples=200,domain={x_1-1}:{x_3+1},smooth,magenta, variable=\\x]\n\
+	{lenh_ve}\
+	\\end{{scope}}\n\
+	\\end{{tikzpicture}}\n"
+
+
+
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)  			
+
+		noi_dung=f"Cho hàm số $y=f(x)$ xác định trên $\\mathbb{{R}}$ và có bảng xét dấu của $f'(x)$ như hình vẽ."\
+		f" Xét tính đúng sai của các khẳng định sau?"
+		chon = random.randint(1,2)
+		if chon==1:
+
+			khoang_db=random.choice([f"$(-\\infty;{x_1})$", f"$({x_2};{x_3})$"])
+			khoang_db_false=random.choice([f"$(-\\infty;{x_2})$", f"$({x_2};+\\infty)$",f"$({x_1};{x_3})$"])
+			kq1_T=f'*Hàm số đồng biến trên khoảng {khoang_db}' 
+			kq1_F=f'Hàm số đồng biến trên khoảng {khoang_db_false}'
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ đồng biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};{x_3})$.'
+			
+			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq1==kq1_F:
+				loigiai_1=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+		if chon==2:
+
+			khoang_nb=random.choice([f"$({x_3};+\\infty)$", f"$({x_1};{x_2})$"])
+			khoang_nb_false=random.choice([f"$(-\\infty;{x_1+random.randint(1,5)})$", f"$({x_1};+\\infty)$"])
+
+			kq1_T=f'*Hàm số nghịch biến trên khoảng {khoang_nb}'
+			kq1_F=f'Hàm số nghịch biến trên khoảng {khoang_nb_false}'
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ nghịch biến trên các khoảng $({x_1};{x_2})$ và $({x_3};+\\infty)$.'
+
+			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq1==kq1_F:
+				loigiai_1=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+		so_sanh=random.choice([f"f({x_1})>f({x_2})", f"f({x_3})>f({x_2})",f"f({x_1-random.randint(1,3)})<f({x_1})", f"f({x_3+random.randint(1,3)})<f({x_3})"])
+		so_sanh_false=random.choice([f"f({x_1})<f({x_2})", f"f({x_3})<f({x_2})",f"f({x_1-random.randint(1,3)})>f({x_1})", f"f({x_3+random.randint(1,3)})>f({x_3})"])
+		kq2_T=f'*${so_sanh}$' 
+		kq2_F=f'${so_sanh_false}$'
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f''
+		loigiai_2=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+		if kq2==kq2_F:
+			loigiai_2=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+		if chon==1:
+			kq3_T=f'*Điểm cực tiểu của hàm số đã cho là $x={x_2}$' 
+			kq3_F=f'Điểm cực tiểu của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$'
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực tiểu tại điểm $x={x_2}$.'
+			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq3==kq3_F:
+				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+			chon_4=random.randint(1,2)
+			if chon_4==1:
+				kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$"
+				kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_2})}}$" 
+				kq4=random.choice([kq4_T, kq4_F])
+				HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$."
+			
+			if chon_4==2:
+				kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$"
+				kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_2})}}$" 
+				kq4=random.choice([kq4_T, kq4_F])
+				HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$."
+
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon==2:
+			kq3_T=f'*Điểm cực đại của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$' 
+			kq3_F=f'Điểm cực đại của hàm số đã cho là $x={x_2}$'
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực đại tại điểm $x={x_1}$ hoặc $x={x_3}$.'
+			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq3==kq3_F:
+				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+			kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$"
+			kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_1})}}$" 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$."
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon==2:
+
+		f_dh=-(x-x_1)*(x-x_2)*(x-x_3)
+		lenh_ve=f"plot (\\x,{{-0.2*(\\x-{x_1})*(\\x-{x_2})*(\\x-{x_3})}});"
+		g=diff(f_dh,x)
+		equation=Eq(g,0)
+		solution = solve(equation, x)
+		a,b=solution[0],solution[1]
+		y_a,y_b=f_dh.subs(x,a),f_dh.subs(x,b)
+		x_min, x_max= round_half_up(min(a,b)-3,1), round_half_up(max(a,b)+3,1)
+		if x_max<=0: x_max=1.5
+		if x_min>=0: x_min=-1.5
+		y_min, y_max=round_half_up(0.5*min(y_a,y_b)-1,1), round_half_up(0.5*max(y_a,y_b)+1,1)
+		chuoi_so_x=f"\\foreach \\x in {{{x_1}, {x_2},{x_3}}}\n"
+
+		if x_1==0:
+			chuoi_so_x=f"\\foreach \\x in {{{x_2},{x_3}}}\n"
+		if x_2==0:
+			chuoi_so_x=f"\\foreach \\x in {{{x_1},{x_3}}}\n"
+		if x_3==0:
+			chuoi_so_x=f"\\foreach \\x in {{{x_1},{x_2}}}\n"
+
+		code_hinh=f"\\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.6]\n\
+	\\tikzset{{every node/.style={{scale=0.9}}}}\n\
+	\\draw[gray!20]({x_min},{y_min})grid({x_max},{y_max});\n\
+	\\draw[->] ({x_min},0)--({x_max},0) node[below left] {{$x$}};\n\
+	\\draw[->] (0,{y_min})--(0,{y_max}) node[below left] {{$y$}};\n\
+	\\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
+	{chuoi_so_x}\
+	\\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize $\\x$}};\n\
+	\\foreach \\y in {{}}\n\
+	\\draw[thin] (1pt,\\y)--(-1pt,\\y) node [left] {{\\footnotesize $\\y$}};\n\
+	\\begin{{scope}}\n\
+	\\clip ({x_min},{y_min}) rectangle ({x_max},{y_max});\n\
+	\\draw[samples=200,domain={x_1-1}:{x_3+1},smooth,magenta, variable=\\x]\n\
+	{lenh_ve}\
+	\\end{{scope}}\n\
+	\\end{{tikzpicture}}\n"  
+
+		code = my_module.moi_truong_anh_latex(code_hinh)
+		file_name=my_module.pdftoimage_timename(code)  			
+
+		noi_dung=f"Cho hàm số $y=f(x)$ xác định trên $\\mathbb{{R}}$ và có bảng xét dấu của $f'(x)$ như hình vẽ."\
+		f" Xét tính đúng sai của các khẳng định sau?"
+		chon = random.randint(1,2)
+		if chon==1:
+
+			khoang_nb=random.choice([f"$(-\\infty;{x_1})$", f"$({x_2};{x_3})$"])
+			khoang_nb_false=random.choice([f"$(-\\infty;{x_2})$", f"$({x_2};+\\infty)$",f"$({x_1};{x_3})$"])
+			kq1_T=f'*Hàm số nghịch biến trên khoảng {khoang_nb}' 
+			kq1_F=f'Hàm số nghịch biến trên khoảng {khoang_nb_false}'
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ nghịch biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};{x_3})$.'
+			
+			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq1==kq1_F:
+				loigiai_1=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+		
+		if chon==2:
+			khoang_db=random.choice([f"$({x_3};+\\infty)$", f"$({x_1};{x_2})$"])
+			khoang_db_false=random.choice([f"$(-\\infty;{x_1+random.randint(1,5)})$", f"$({x_1};+\\infty)$"])
+			kq1_T=f'*Hàm số đồng biến trên khoảng {khoang_db}'
+			kq1_F=f'Hàm số đồng biến trên khoảng {khoang_db_false}'
+			kq1=random.choice([kq1_T, kq1_F])
+			HDG=HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ đồng biến trên các khoảng $({x_1};{x_2})$ và $({x_3};+\\infty)$.'
+
+			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq1==kq1_F:
+				loigiai_1=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+		so_sanh=random.choice([f"f({x_1})<f({x_2})", f"f({x_3})<f({x_2})",f"f({x_1-random.randint(1,3)})>f({x_1})", f"f({x_3+random.randint(1,3)})>f({x_3})"])
+		so_sanh_false=random.choice([f"f({x_1})>f({x_2})", f"f({x_3})>f({x_2})",f"f({x_1-random.randint(1,3)})<f({x_1})", f"f({x_3+random.randint(1,3)})<f({x_3})"])
+		kq2_T=f'*${so_sanh}$' 
+		kq2_F=f'${so_sanh_false}$'
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f''
+		loigiai_2=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+		if kq2==kq2_F:
+			loigiai_2=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+		if chon==1:
+			kq3_T=f'*Điểm cực đại của hàm số đã cho là $x={x_2}$' 
+			kq3_F=f'Điểm cực đại của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$'
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực đại tại điểm $x={x_2}$.'
+			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq3==kq3_F:
+				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+			chon_4=random.randint(1,2)
+			if chon_4==1:
+				kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$"
+				kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_2})}}$" 
+				kq4=random.choice([kq4_T, kq4_F])
+				HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$."
+			
+			if chon_4==2:
+				kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$"
+				kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_2})}}$" 
+				kq4=random.choice([kq4_T, kq4_F])
+				HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$."
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		if chon==2:
+			kq3_T=f'*Điểm cực tiểu của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$' 
+			kq3_F=f'Điểm cực tiểu của hàm số đã cho là $x={x_2}$'
+			kq3=random.choice([kq3_T, kq3_F])
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực tiểu tại điểm $x={x_1}$ hoặc $x={x_3}$.'
+			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
+			if kq3==kq3_F:
+				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
+
+			kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$"
+			kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_1})}}$" 
+			kq4=random.choice([kq4_T, kq4_F])
+			HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$."
+			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+			if kq4==kq4_F:
+				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	debai= f"{noi_dung}\n\n"\
+	f"{file_name}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+		if pa==kq1:
+			loigiai.append(loigiai_1)
+		if pa==kq2:
+			loigiai.append(loigiai_2)
+		if pa==kq3:
+			loigiai.append(loigiai_3)
+		if pa==kq4:
+			loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+ 		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
+		f"\\choiceTFt\n"\
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+		f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai,debai_latex,loigiai_word,dap_an
 	
 
 #BÀI 3 - ĐƯỜNG TIỆM CẬN

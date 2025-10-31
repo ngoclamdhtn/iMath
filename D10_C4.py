@@ -2423,7 +2423,7 @@ def yy3yy_L10_C4_B2_08():
     goc_C_degree=random.randint(10,130)
     goc_C= math.radians(goc_C_degree)
 
-    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):"        
+    noi_dung = f"Cho tam giác ${{ABC}}$ có ${a}={l_a},{b}={l_b},{c}={l_c}$. Xét tính đúng-sai của các khẳng định sau:"        
     debai_word= f"{noi_dung}\n"
 
     p=(l_a+l_b+l_c)/2
@@ -2987,18 +2987,10 @@ def yy3yy_L10_C4_B2_12():
     )    
 
     kq=l_a*sin(goc_C)/sin(goc_A)
-    kq2=2*l_a*sin(goc_C)/sin(goc_A)
-    kq3=l_a*cos(goc_C)/sin(goc_A)
-    kq4=l_a*sin(goc_A)/sin(goc_B)
    
     numbers = set()
-    if all([kq3 not in [kq,kq2]]):
-         numbers.add(kq3)
-    if all([kq4 not in [kq,kq2,kq3]]):
-         numbers.add(kq4)
-
     while len(numbers) <5:        
-        numbers.add(round(random.uniform(1, 10), 1))  # 4 chữ số thập phân
+        numbers.add(round(random.uniform(2, 10), 1))  # 4 chữ số thập phân
 
     kq_false = list(numbers)
     kq2,kq3,kq4=kq_false[0:3]
