@@ -3563,8 +3563,8 @@ def yy3yy_L10_C4_B2_21():
     b=random.randint(100,120)
     c=random.randint(100,110)
     g=random.randint(50,80)
-    kq1=f"{round((b)**2+(c)**2-2*b*c*math.sin(math.radians(g)),0):.0f}".replace(".",",")
-    kq=f"{round(sqrt((b)**2+(c)**2-2*b*c*math.sin(math.radians(g))),0):.0f}".replace(".",",").replace(",0"," ")    
+    kq1=f"{round((b)**2+(c)**2-2*b*c*math.cos(math.radians(g)),0):.0f}".replace(".",",")
+    kq=f"{round(sqrt((b)**2+(c)**2-2*b*c*math.cos(math.radians(g))),0):.0f}".replace(".",",").replace(",0"," ")    
     code_hinh=r"""
   \begin{tikzpicture}[scale=1, font=\footnotesize, line join = round, line cap = round]
         \tkzDefPoints{0/0/A,5/0/B,2/3/C,1/0/M,4/0/N}
@@ -3581,7 +3581,7 @@ def yy3yy_L10_C4_B2_21():
     file_name=my_module.pdftoimage_timename(code)
     noi_dung = f"Khoảng cách từ ${{A}}$ đến ${{B}}$ không thể đo trực tiếp được vì phải qua một đầm lầy. Người ta xác định được một điểm ${{C}}$ mà từ đó có thể nhìn được ${{A}}$ và ${{B}}$ dưới một góc ${g}^{{\\circ}}$. Biết ${{CA={b}}}$ m, ${{CB={c}}}$ m. Khoảng cách ${{AB}}$ bằng bao nhiêu?(kết quả làm tròn đến hàng đơn vị)"
 
-    noi_dung_loigiai=( f"  $ AB^{{2}}=CA^{{2}}+CB^{{2}}-2\\cdot CA\\cdot CB\\cdot \\cos {g}^{{\\circ}} \\Rightarrow AB={kq}$ m")
+    noi_dung_loigiai=( f"$AB^{{2}}=CA^{{2}}+CB^{{2}}-2\\cdot CA\\cdot CB\\cdot \\cos {g}^{{\\circ}} \\Rightarrow AB={kq}$ m")
 
 
     debai_word= f"{noi_dung}\n"\

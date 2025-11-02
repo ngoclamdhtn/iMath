@@ -191,7 +191,7 @@ def code_dothi_phanthuc_bac2(a,b,c,d,e):
     f=(a/d)*x+(-a*e+b*d)/d**2
     y_0=f.subs(x,-e/d)
 
-    y_min,y_max=int(y_0)-15,int(y_0)+15    
+    y_min,y_max=int(y_0)-10,int(y_0)+10    
     numbers = [f'{i}' for i in range(y_min+1, y_max) if (i!=0 and i%2==0 )]    
     chuoi_so_y = ','.join(numbers)
 
@@ -12458,6 +12458,163 @@ def prt_34_L12_C1_B4_22():
 		
 		
 	debai_word= f"{noi_dung}\n{file_name}"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B4_23]-SA-M3. Cho đồ thị bậc 1/bậc 1. Tìm số hệ số dương
+def prt_34_L12_C1_B4_23():
+	x,s_a,s_b,s_c = sp.symbols('x a b c')
+	chon=random.randint(1,6)
+	
+	
+	if chon==1:
+		while True:
+			#Hàm: y=(x^2-x_0*x+a)/(x-x_0)$"
+			#a=1, b=-x_0, c=-x_0
+			x_0=random.randint(-3,3)
+			a=random.choice([random.randint(-4, -1), random.randint(1, 4)])		
+			f=x+a/(x-x_0)
+			nums = [i for i in range(-4, 5) if i != 0]
+			m, n, p = random.sample(nums, 3)
+			dap_an=m+n*(-x_0)+p*(-x_0)
+			if dap_an>-9:
+				break
+		dap_an=m+n*(-x_0)+p*(-x_0)
+		f=m*s_a+n*s_b+p*s_c
+
+		noi_dung=(f"Cho hàm số $y=\\dfrac{{ax^2+bx+{a}}}{{x+c}}$ có đồ thị như hình vẽ dưới đây."
+			f" Tính ${latex(f)}$.")
+
+		noi_dung_loigiai=(
+		f"Đồ thị có tiệm cận đứng là $x={x_0}\\Rightarrow c={-x_0}$.\n\n"
+		f"Đồ thị có tiệm cận xiên là $y=x$ suy ra $a=1,b={-x_0}$.\n\n"
+		f"Do đó: ${latex(f)}={dap_an}$.")
+		#Vẽ đồ thị
+		code_hinh=code_dothi_phanthuc_bac2(1,-x_0,a,1,-x_0)			
+
+	if chon==2:
+		while True:
+			#Hàm: y=(x^2-x_0^2+a)/(x-x_0)$"
+			#a=1, b=0, c=-x_0
+			x_0=random.choice([random.randint(-4, -1), random.randint(1, 4)])
+			a=random.choice([random.randint(-4, -1), random.randint(1, 4)])	
+			f=x+x_0 +a/(x-x_0)
+			nums = [i for i in range(-4, 5) if i != 0]
+			m, n, p = random.sample(nums, 3)
+			dap_an=m+p*(-x_0)
+			if dap_an>-9:
+				break
+		dap_an=m+p*(-x_0)
+		f=m*s_a+n*s_b+p*s_c
+		
+		noi_dung=(f"Cho hàm số $y=\\dfrac{{ax^2+bx+{a}}}{{x+c}}$ có đồ thị như hình vẽ dưới đây."
+			f" Tính ${latex(f)}$.")
+
+		noi_dung_loigiai=(
+		f"Đồ thị có tiệm cận đứng là $x={x_0}\\Rightarrow c={-x_0}$.\n\n"
+		f"Đồ thị có tiệm cận xiên là $y=x+{x_0}$ suy ra $a=1,b=0$.\n\n"
+		f"Do đó: ${latex(f)}={dap_an}$.")
+
+		#Vẽ đồ thị
+		code_hinh=code_dothi_phanthuc_bac2(1,-x_0,a,1,-x_0)	
+
+
+	
+	if chon==3:	
+
+		while True:
+			#Hàm: y=(x^2-x_0^2+a**2)/(x-x_0)$"
+			#a=1, b=-x_0, c=-x_0
+			x_0=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+			a=random.choice([1,2])
+			f=(x**2-x_0*x+a**2)/(x-x_0)
+			nums = [i for i in range(-4, 5) if i != 0]
+			m, n, p = random.sample(nums, 3)
+			dap_an=m+n*(-x_0)+p*(-x_0)
+			if dap_an>-9:
+				break
+		dap_an=m+n*(-x_0)+p*(-x_0)
+		f=m*s_a+n*s_b+p*s_c
+		
+		noi_dung=(f"Cho hàm số $y=\\dfrac{{ax^2+bx+{a**2}}}{{x+c}}$ có đồ thị như hình vẽ dưới đây."
+			f" Tính ${latex(f)}$.")
+
+		noi_dung_loigiai=(
+		f"Đồ thị có tiệm cận đứng là $x={x_0}\\Rightarrow c={-x_0}$.\n\n"
+		f"Đồ thị có tiệm cận xiên là $y=x$ suy ra $a=1,b={-x_0}$.\n\n"
+		f"Do đó: ${latex(f)}={dap_an}$.")
+		
+		#Vẽ đồ thị
+		code_hinh=code_dothi_phanthuc_bac2(1,-x_0,a**2,1,-x_0)	
+
+
+	chon=4
+	if chon==4:
+		
+		while True:
+			#Hàm: y=(-x^2+x_0^2+a**2)/(x-x_0)$"
+			#a=-1, b=x_0, c=-x_0
+			x_0=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+			a=random.choice([1,2])
+			f=(-x**2+x_0*x-a**2)/(x-x_0)
+			nums = [i for i in range(-4, 5) if i != 0]
+			m, n, p = random.sample(nums, 3)
+			dap_an=-m+n*x_0+p*(-x_0)
+			if dap_an>-9:
+				break
+		dap_an=-m+n*x_0+p*(-x_0)
+		f=m*s_a+n*s_b+p*s_c
+		
+		noi_dung=(f"Cho hàm số $y=\\dfrac{{ax^2+bx+{-a**2}}}{{x+c}}$ có đồ thị như hình vẽ dưới đây."
+			f" Tính ${latex(f)}$.")
+
+		noi_dung_loigiai=(
+		f"Đồ thị có tiệm cận đứng là $x={x_0}\\Rightarrow c={-x_0}$.\n\n"
+		f"Đồ thị có tiệm cận xiên là $y=x$ suy ra $a=-1,b={x_0}$.\n\n"
+		f"Do đó: ${latex(f)}={dap_an}$.")
+		#Vẽ đồ thị
+		code_hinh=code_dothi_phanthuc_bac2(-1,x_0,-a**2,1,-x_0)	
+
+
+
+	if chon==5:
+		x_0=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+		a=random.choice([random.randint(-2, -1), random.randint(1, 2)])
+		m=random.choice([1,2])		
+		f=(x**2+(a-x_0)*x-a*x_0-m)/(x-x_0)
+
+		kq=f"$y={latex(f)}$"
+
+
+
+		
+		#Vẽ đồ thị
+		code_hinh=code_dothi_phanthuc_bac2(1,a-x_0,-a*x_0-m,1,-x_0)	
+
+
+
+	if chon==6:
+		x_0=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+		a=random.choice([random.randint(-2, -1), random.randint(1, 2)])
+		m=random.choice([1,2])		
+		f=(-x**2-(a-x_0)*x+a*x_0+m)/(x-x_0)
+		
+		#Vẽ đồ thị
+		code_hinh=code_dothi_phanthuc_bac2(-1,-a+x_0,a*x_0+m,1,-x_0)	
+
+	#file_name=my_module.pdftoimage_timename(code)
+	noi_dung=noi_dung.replace("+-","-")
+
+	debai_word= f"{noi_dung}\n"
 
 	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
 		f"Đáp án: {dap_an}\n")

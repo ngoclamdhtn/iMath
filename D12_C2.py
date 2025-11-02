@@ -4263,22 +4263,26 @@ def mnj_34_jkl_L12_C2_B3_10():
 
 #[D12_C2_B3_11]-TL-M2. Tìm vectơ x để m.vec(a)+nvec(x)=p.vec(b)
 def mnj_34_jkl_L12_C2_B3_11():
-	m = random.choice([i for i in range(2, 4) if i!=0])
-	n = random.choice([i for i in range(-2, 2) if i!=0])
-	p = random.choice([i for i in range(-3, 4) if i!=0])
+	while True:
+		m = random.choice([i for i in range(2, 4) if i!=0])
+		n = random.choice([i for i in range(-2, 2) if i!=0])
+		p = random.choice([i for i in range(-3, 4) if i!=0])
 
-	a1,a2,a3=[random.randint(-8, 8) for _ in range(3)]
-	b1,b2,b3=[random.randint(-8, 8) for _ in range(3)]
-	while a1==b1 and a2==b2:
 		a1,a2,a3=[random.randint(-8, 8) for _ in range(3)]
 		b1,b2,b3=[random.randint(-8, 8) for _ in range(3)]
-	ten=["a","b","c","d","u","v","m","n"]
-	random.shuffle(ten)
-	ten_a,ten_b=ten[0:2]
-	vec_a, vec_b, vec_x=vec(f"{ten_a}"), vec(f"{ten_b}"), vec("x")
-	a,b,c=(p*b1-m*a1)/n,(p*b2-m*a2)/n, (p*b3-m*a3)/n
+		while a1==b1 and a2==b2:
+			a1,a2,a3=[random.randint(-8, 8) for _ in range(3)]
+			b1,b2,b3=[random.randint(-8, 8) for _ in range(3)]
+		ten=["a","b","c","d","u","v","m","n"]
+		random.shuffle(ten)
+		ten_a,ten_b=ten[0:2]
+		vec_a, vec_b, vec_x=vec(f"{ten_a}"), vec(f"{ten_b}"), vec("x")
+		a,b,c=(p*b1-m*a1)/n,(p*b2-m*a2)/n, (p*b3-m*a3)/n
+		if -9<a+b+c<200:
+			break
+	s=float(a+b+c)
 
-	if a+b+c==int(a+b+c):
+	if s.is_integer():
 		noi_dung =(f"Trong không gian ${{Oxyz}}$, cho hai vectơ ${vec_a}=({a1};{a2};{a3}),{vec_b}=({b1};{b2};{b3})$.\n"
 			f" Biết vectơ ${vec_x}=(a;b;c)$ thỏa mãn ${m}{vec_a}+{n}{vec_x}={p}{vec_b}$."
 			f" Tính $a+b+c$.")
@@ -7160,16 +7164,20 @@ def mnj_34_jkl_L12_C2_B3_35():
 def mnj_34_jkl_L12_C2_B3_36():
 	ten=["A","B","C","D","E","M","N","P", "H", "I", "K"]
 	random.shuffle(ten)
-	A,B,C,M=ten[0:4]	
-	bo_toa_do=tao_3dinh_tamgiac()
-	a1,a2,a3=bo_toa_do[0]
-	b1,b2,b3=bo_toa_do[1]
-	c1,c2,c3=bo_toa_do[2]
+	A,B,C,M=ten[0:4]
+	while True:
+		bo_toa_do=tao_3dinh_tamgiac()
+		a1,a2,a3=bo_toa_do[0]
+		b1,b2,b3=bo_toa_do[1]
+		c1,c2,c3=bo_toa_do[2]
+		x,y,z=(a1+b1+c1)/3,(a2+b2+c2)/3,(a3+b3+c3)/3
+		if all([x+y>-9,y+z>-9,x+z>-9]):
+			break
 
 	noi_dung=(
 	f" Trong không gian ${{Oxyz}}$, cho ba điểm ${{{A}{B}{C}}}$ với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$.")
 
-	x,y,z=(a1+b1+c1)/3,(a2+b2+c2)/3,(a3+b3+c3)/3	
+		
 	x_G,y_G,z_G=phan_so(x),phan_so(y),phan_so(z)
 
 	chon=random.randint(1,3)

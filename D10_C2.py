@@ -1125,6 +1125,150 @@ def bch_12_L10_C2_B1_09():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C2_B1_10]-M2. Miền nghiệm từ hình là của bất phương trình nào
+def bch_12_L10_C2_B1_10():
+    x,y=sp.symbols("x y")
+    a = random.choice([i for i in range(-3, 3) if i!=0])
+    b = random.choice([i for i in range(1, 4) if i!=0])
+    c = random.choice([i for i in range(-3, 4) if i!=0])
+    f=a*x+b*y+c
+    chon=random.randint(1,4)
+    if chon==1:
+        noi_dung=(f"Phần không bị gạch trong hình vẽ (không kể đường thẳng ${{d}}$) là "
+    f"miền nghiệm của bất phương trình nào sau đây?")
+        
+        code_hinh=code_latex_mien_nghiem(a,b,c,">0")
+        code = my_module.moi_truong_anh_latex(code_hinh)
+        file_name=my_module.pdftoimage_timename(code)
+
+        kq=f"${latex(a*x+b*y+c)}>0$"
+        kq_false=[
+        f"${latex(a*x+b*y+c)}\\ge 0$",
+        f"${latex(a*x+b*y+c)}< 0$",
+        f"${latex(a*x+b*y+c)}\\le 0$",
+        f"${latex(-a*x+b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}\\ge 0$",
+        f"${latex(a*x-b*y+c)}\\le 0$",
+        ]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        noi_dung_loigiai=(
+        f"Miền nghiệm là của bất phương trình ${latex(a*x+b*y+c)}>0$."
+        )
+    
+    if chon==2:
+        noi_dung=(f"Phần không bị gạch trong hình vẽ (không kể đường thẳng ${{d}}$) là "
+    f"miền nghiệm của bất phương trình nào sau đây?")
+        
+        code_hinh=code_latex_mien_nghiem(a,b,c,"<0")
+        code = my_module.moi_truong_anh_latex(code_hinh)
+        file_name=my_module.pdftoimage_timename(code)
+
+
+        kq=f"${latex(a*x+b*y+c)}<0$"
+        kq_false=[
+        f"${latex(a*x+b*y+c)}\\ge 0$",
+        f"${latex(a*x+b*y+c)}> 0$",
+        f"${latex(a*x+b*y+c)}\\le 0$",
+        f"${latex(-a*x+b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}\\ge 0$",
+        f"${latex(a*x-b*y+c)}\\le 0$",
+        ]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        noi_dung_loigiai=(
+        f"Miền nghiệm là của bất phương trình ${latex(a*x+b*y+c)}<0$."
+        )
+
+    if chon==3:
+        noi_dung=(f"Phần không bị gạch (kể cả đường thẳng ${{d}}$) trong hình vẽ là "
+    f"miền nghiệm của bất phương trình nào sau đây?")
+        
+        code_hinh=code_latex_mien_nghiem(a,b,c,">0")
+        code = my_module.moi_truong_anh_latex(code_hinh)
+        file_name=my_module.pdftoimage_timename(code)
+
+        kq=f"${latex(a*x+b*y+c)}\\ge0$"
+        kq_false=[
+        f"${latex(a*x+b*y+c)}> 0$",
+        f"${latex(a*x+b*y+c)}< 0$",
+        f"${latex(a*x+b*y+c)}\\le 0$",
+        f"${latex(-a*x+b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}\\ge 0$",
+        f"${latex(a*x-b*y+c)}\\le 0$",
+        ]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        noi_dung_loigiai=(
+        f"Miền nghiệm là của bất phương trình ${latex(a*x+b*y+c)}>0$."
+        )
+    
+    if chon==4:
+        noi_dung=(f"Phần không bị gạch(kể cả đường thẳng ${{d}}$) trong hình vẽ là "
+    f"miền nghiệm của bất phương trình nào sau đây?")
+        
+        code_hinh=code_latex_mien_nghiem(a,b,c,"<0")
+        code = my_module.moi_truong_anh_latex(code_hinh)
+        file_name=my_module.pdftoimage_timename(code)
+
+
+        kq=f"${latex(a*x+b*y+c)}\\le 0$"
+        kq_false=[
+        f"${latex(a*x+b*y+c)}\\ge 0$",
+        f"${latex(a*x+b*y+c)}> 0$",
+        f"${latex(a*x+b*y+c)}< 0$",
+        f"${latex(-a*x+b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}>0$",
+        f"${latex(a*x-b*y+c)}\\ge 0$",
+        f"${latex(a*x-b*y+c)}\\le 0$",
+        ]
+        random.shuffle(kq_false)
+        kq2,kq3,kq4=kq_false[0:3]
+
+        noi_dung_loigiai=(
+        f"Miền nghiệm là của bất phương trình ${latex(a*x+b*y+c)}\\le 0$."
+        )
+    
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 #---------------------------->
 #Bài 2 - HỆ BẤT PHƯƠNG TRÌNH
@@ -1744,7 +1888,7 @@ def bch_12_L10_C2_B2_07():
     while True:
         
         a=random.randint(1,5)
-        b=random.randint(-5,-1)
+        b=random.randint(1,6)
         c=random.randint(-6,-1)
         d=random.randint(1,6)
         m=random.choice([i for i in range(-5, 6) if i!=0])
@@ -1817,7 +1961,7 @@ def bch_12_L10_C2_B2_08():
     while True:
         
         a=random.randint(1,5)
-        b=random.randint(-5,-1)
+        b=random.randint(1,6)
         c=random.randint(-6,-1)
         d=random.randint(1,6)
         m=random.choice([i for i in range(-5, 6) if i!=0])
@@ -4682,3 +4826,4 @@ def bch_12_L10_C2_B2_29():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+

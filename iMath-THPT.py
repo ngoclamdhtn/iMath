@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 20.10.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.11.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 20.10.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.11.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1679,6 +1679,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C2_B1_1, ["[D10_C2_B1_10]-M2. Tìm bất phương trình ứng với miền nghiệm từ hình vẽ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
                 # Chờ sửa lỗi đáp án
 
                 # item = QTreeWidgetItem(L10_C2_B1_1, ["[D10_C2_B1_07]-M2. Tìm miền nghiệm của bất phương trình ax+by+c>0 (<0)."])
@@ -1776,9 +1781,9 @@ class Ui_MainWindow(object):
 
                 #Lỗi: Miền nghiệm không kín không tìm được max
 
-                # item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n."])
-                # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_08]-SA-M3. Hệ: ax-y+b>=0, cx-y+d>=0, y>=0. Tìm max F=mx+n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_09]-SA-M3. Hệ: ax+by+c>=0, dx+ey+f>=0, x<=0. Tìm max F=mx+n."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4958,7 +4963,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C1_B5_2, ["[D11_C1_B5_18]-TF-M3. Cho cosax=m. Xét Đ-S: tanax=tanv, nghiệm, số nghiệm thuộc khoảng, nghiệm âm_max, dương_min"])
+                item = QTreeWidgetItem(L11_C1_B5_2, ["[D11_C1_B5_18]-TF-M3. Cho tanax=m. Xét Đ-S: tanax=tanv, nghiệm, số nghiệm thuộc khoảng, nghiệm âm_max, dương_min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10122,13 +10127,7 @@ class Ui_MainWindow(object):
                             ghep_tuluan, ghep_tuluan_HDG="",""
                             ghep_dapan_TN, ghep_dapan_TF, ghep_dapan_SA,ghep_dapan_TL= "","","",""                                 
 
-                            #Thiết lập mã đề tự nhập
-                            text_nhapmade=self.label_nhapmade.toPlainText()
-                            if len(text_nhapmade)>0:                                    
-                                text_nhapmade=text_nhapmade.split(',')
-                                ma_de=text_nhapmade[j]
-                                name_de=f"{ma_de}"
-
+                            
                             #Thiết lập mã đề ngẫu nhiên
                             if self.combo_made.currentText() == "Mã đề 3 số" and self.checkbox_made_random.isChecked():
                                 name_de=ds_made_3so[j]
@@ -10142,7 +10141,13 @@ class Ui_MainWindow(object):
 
                             if self.combo_made.currentText() == "Mã đề 4 số" and not(self.checkbox_made_random.isChecked()):
                                 name_de=ds_made_4so_lientiep[j]
-                                                
+
+                            #Thiết lập mã đề tự nhập
+                            text_nhapmade=self.label_nhapmade.toPlainText()
+                            if len(text_nhapmade)>0:                                    
+                                text_nhapmade=text_nhapmade.split(',')
+                                ma_de=text_nhapmade[j]
+                                name_de=f"{ma_de}"                                              
 
                                 
                             list_ma_de.append(name_de)
@@ -15266,6 +15271,10 @@ class Ui_MainWindow(object):
                                             #[D10_C2_B1_09]-M2. Lập BPT bậc nhất 2 ẩn từ bài toán thực tế
                                             if dang_toan == "[D10_C2_B1_09]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C2.bch_12_L10_C2_B1_09()
+
+                                            #[D10_C2_B1_10]-M2. Miền nghiệm từ hình là của bất phương trình nào
+                                            if dang_toan == "[D10_C2_B1_10]":           
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C2.bch_12_L10_C2_B1_10()
 
                                             #Bài 2
                                             #[D10_C2_B2_01]-M2. Cho Hệ BPT ax+by+c>0 (<0). Tìm cặp số là nghiệm của hệ.
