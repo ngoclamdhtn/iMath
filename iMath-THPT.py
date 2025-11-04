@@ -7870,7 +7870,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B4_3, ["[D12_C1_B4_18]-SA-M2. Cho đồ thị hàm y=(ax+b)/(cx+d). Tính tổng các hệ số"])
+                item = QTreeWidgetItem(L12_C1_B4_3, ["[D12_C1_B4_18]-SA-M2. Cho đồ thị hàm y=(ax+b)/(cx+d). Tính các hệ số"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7883,6 +7883,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C1_B4_3, ["[D12_C1_B4_22]-SA-M3. Cho đồ thị y=(ax+b)/(cx+d). Tìm số hệ số dương"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B4_3, ["[D12_C1_B4_23]-SA-M3. Cho đồ thị y=(ax^2+bx+c)/(dx+e). Tính các hệ số"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8329,13 +8333,21 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_43]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trọng tâm"])
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_43]-M2. H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trọng tâm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_44]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trung điểm"])
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_44]-M2. H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trung điểm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked) 
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_45]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm tọa độ trung điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_2, ["[D12_C2_B3_46]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm tọa độ trọng tâm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 
                 L12_C2_B3_2 = QTreeWidgetItem(L12_C2_B3, ["Đúng-Sai"])
@@ -10678,6 +10690,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B4_22]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B4_22()
 
+                                            #[D12_C1_B4_23]-SA-M3. Cho đồ thị bậc 2/bậc 1. Tìm hệ số
+                                            if dang_toan == "[D12_C1_B4_23]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B4_23()
+
                                             #Toán 12 - Chương 1 - Bài 5------------------------------------------------->
                                             #[D12_C1_B5_01]-SA-M3. Bài toán thực tế tìm chi phí thấp nhất
                                             if dang_toan == "[D12_C1_B5_01]": 
@@ -11144,6 +11160,14 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_44]-M2.  H.chóp tam giác đều gắn tọa độ. Tìm tọa độ trung điểm
                                             if dang_toan == "[D12_C2_B3_44]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_44()
+
+                                        #[D12_C2_B3_45]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm tọa độ trung điểm
+                                            if dang_toan == "[D12_C2_B3_45]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_45()
+
+                                        #[D12_C2_B3_46]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm tọa độ trọng tâm
+                                            if dang_toan == "[D12_C2_B3_46]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_46()
 
 
 
