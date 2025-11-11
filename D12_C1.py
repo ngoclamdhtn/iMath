@@ -950,19 +950,17 @@ def prt_34_L12_C1_B1_06():
 	for i in range(4):
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
-		f"Hàm số đã cho {don_dieu} trên khoảng nào dưới đây?"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n \n"
+		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"
+	    f"\\choice\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"
+	    f"\\end{{ex}}\n")
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"\
-	f"Hàm số đã cho {don_dieu} trên khoảng nào?"\
-	f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n \n"
+	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"
+	    f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D12_C1_B1_07]-M2. Cho hàm số f'(x). Tìm khoảng đơn điệu
@@ -4802,9 +4800,6 @@ def prt_34_L12_C1_B1_38():
 		f"$OB=\\sqrt{{{x_2**2}+{phan_so(y_2**2)}}}={latex(OB)}$.\n\n"
 		f"$d^2+d_1^2={AB**2}+{phan_so(OB**2)}={phan_so(tong)}$.")
 	
-	
-	
-
 
 	noi_dung=noi_dung.replace("+-","-").replace("--","+")
 	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
@@ -4822,6 +4817,406 @@ def prt_34_L12_C1_B1_38():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B1_39]-M1. Cho bảng xét dấu f'(x). Tìm số điểm cực trị
+def prt_34_L12_C1_B1_39():
+	chon=random.randint(1,6)
+	
+	while True:
+		x_1,x_2,x_3=random.sample(range(-9,10),3)
+		if x_1<x_2<x_3:
+			break
+	a=random.choice([1,-1])
+
+	noi_dung=(f"Cho hàm số $y=f(x)$ liên tục với mọi $x\\in \\mathbb{{R}}$ và có bảng xét dấu $f'(x)$ như hình vẽ dưới đây."
+			f" Số điểm cực trị của hàm số $y=f(x)$ là")
+	
+	if chon==1:
+		if a > 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,+,0,-,0,+,}} \n \
+            \\end{{tikzpicture}}\n"  
+		if a < 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,-,0,+,0,-,}} \n \
+            \\end{{tikzpicture}}\n"
+		kq=2
+		kq_false=[1,3,0,4]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+		noi_dung_loigiai=f"Hàm số $y=f(x)$ có {kq} điểm cực trị."
+
+	if chon==2:
+		if a > 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,+,0,+,0,-,}} \n \
+            \\end{{tikzpicture}}\n"  
+		if a < 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,-,0,+,0,+,}} \n \
+            \\end{{tikzpicture}}\n"
+		kq=1
+		kq_false=[0,2,3,4]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+		noi_dung_loigiai=f"Hàm số $y=f(x)$ có {kq} điểm cực trị."
+	
+	if chon==3:
+		if a > 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,+,0,+,0,+,}} \n \
+            \\end{{tikzpicture}}\n"  
+		if a < 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,-,0,-,0,-,}} \n \
+            \\end{{tikzpicture}}\n"
+		kq=0
+		kq_false=[1,2,3,4]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+		noi_dung_loigiai=f"Hàm số $y=f(x)$ có {kq} điểm cực trị."
+
+	
+	if chon==4:
+		if a > 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,${x_3}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,+,0,+,0,-,0,+,}} \n \
+            \\end{{tikzpicture}}\n"  
+		if a < 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,${x_3}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,-,0,+,0,-,0,-,}} \n \
+            \\end{{tikzpicture}}\n"
+		kq=2
+		kq_false=[0,1,3,4]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+		noi_dung_loigiai=f"Hàm số $y=f(x)$ có {kq} điểm cực trị."
+
+	
+	if chon==5:
+		if a > 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,${x_3}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,+,0,+,0,+,0,-,}} \n \
+            \\end{{tikzpicture}}\n"  
+		if a < 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,${x_3}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,-,0,+,0,+,0,+,}} \n \
+            \\end{{tikzpicture}}\n"
+		kq=1
+		kq_false=[0,2,3,4]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+		noi_dung_loigiai=f"Hàm số $y=f(x)$ có {kq} điểm cực trị."
+
+	
+	if chon==6:
+		if a > 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,${x_3}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,+,0,-,0,+,0,-,}} \n \
+            \\end{{tikzpicture}}\n"  
+		if a < 0:
+			code_hinh = f"\\begin{{tikzpicture}}\n \
+            \\tkzTabInit[nocadre=false, lgt=1.5, espcl=2] \n \
+            {{$x$ /0.7,$f'(x)$ /0.7}}\n \
+            {{$-\\infty$,${x_1}$,${x_2}$,${x_3}$,$+\\infty$}}\n \
+            \\tkzTabLine{{,-,0,+,0,-,0,+,}} \n \
+            \\end{{tikzpicture}}\n"
+		kq=3
+		kq_false=[0,1,3,4]
+		random.shuffle(kq_false)
+		kq2,kq3,kq4=kq_false[0:3]
+		noi_dung_loigiai=f"Hàm số $y=f(x)$ có {kq} điểm cực trị."
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B1_40]-M2. Cho đồ thị y=(ax^2+bx+c)/(dx+e). Đọc điểm cực trị.
+def prt_34_L12_C1_B1_40():
+	x = sp.symbols('x')
+	chon=random.randint(1,2)	
+	
+	if chon==1:
+		x_0=random.randint(-3,3)
+		a=random.choice([1,4,9,16])	
+		f=x+a/(x-x_0)
+		x_CD, x_CT=int(x_0-sqrt(a)), int(x_0+sqrt(a))
+		x_1, x_2=int(x_0-sqrt(a)), int(x_0+sqrt(a))
+
+		code_hinh=code_dothi_phanthuc_bac2(1,-x_0,a,1,-x_0)
+
+		cuctri=random.choice(["cực đại", "cực tiểu"])
+		if cuctri=="cực đại":
+			noi_dung=(f"Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Điểm cực đại của hàm số đã cho là")
+			noi_dung_loigiai=f"Hàm số có điểm cực đại là $x={x_CD}$."			
+
+			kq=f"$x={x_CD}$"
+			kq_false=[f"$x={x_CT}$",
+			f"$x={x_0}$",
+			f"$x={x_1-random.randint(1,3)}$",
+			f"$x={x_2+random.randint(1,3)}$"]
+
+		
+		if cuctri=="cực tiểu":
+			noi_dung=(f"Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Điểm cực tiểu của hàm số đã cho là")
+			noi_dung_loigiai=f"Hàm số có điểm cực tiểu là $x={x_CT}$."			
+
+			kq=f"$x={x_CT}$"
+			kq_false=[f"$x={x_CD}$",
+			f"$x={x_0}$",
+			f"$x={x_1-random.randint(1,3)}$",
+			f"$x={x_2+random.randint(1,3)}$"]
+
+	
+	if chon==2:
+		x_0=random.randint(-3,3)
+		a=random.choice([1,4,9,16])	
+		f=-x-a/(x-x_0)
+		x_CT, x_CD=int(x_0-sqrt(a)), int(x_0+sqrt(a))
+		x_1, x_2=int(x_0-sqrt(a)), int(x_0+sqrt(a))
+
+		code_hinh=code_dothi_phanthuc_bac2(-1,x_0,-a,1,-x_0)
+
+		cuctri=random.choice(["cực đại", "cực tiểu"])
+		if cuctri=="cực đại":
+			noi_dung=(f"Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Điểm cực đại của hàm số đã cho là")
+			noi_dung_loigiai=f"Hàm số có điểm cực đại là $x={x_CD}$."			
+
+			kq=f"$x={x_CD}$"
+			kq_false=[f"$x={x_CT}$",
+			f"$x={x_0}$",
+			f"$x={x_1-random.randint(1,3)}$",
+			f"$x={x_2+random.randint(1,3)}$"]
+
+		
+		if cuctri=="cực tiểu":
+			noi_dung=(f"Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Điểm cực tiểu của hàm số đã cho là")
+			noi_dung_loigiai=f"Hàm số có điểm cực tiểu là $x={x_CT}$."			
+
+			kq=f"$x={x_CT}$"
+			kq_false=[f"$x={x_CD}$",
+			f"$x={x_0}$",
+			f"$x={x_1-random.randint(1,3)}$",
+			f"$x={x_2+random.randint(1,3)}$"]	
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B1_41]-M2. Cho đồ thị bậc 3. Tìm điểm cực trị. 
+def prt_34_L12_C1_B1_41():
+	x=sp.symbols("x")
+	dau=random.choice(['+','-'])
+	
+	if dau=='+':
+		chon=random.randint(1,4)		
+		if chon==1:
+			a,b,c,d=1,-3,0,random.randint(-2,2)
+			x_1,x_2=0,2
+		if chon==2:
+			a,b,c,d=1,0,-3,random.randint(-2,3)
+			x_1,x_2=-1,1
+		if chon==3:
+			a,b,c,d=1,-3/2,0,random.randint(-3,3)
+			x_1,x_2=0,1
+		if chon==4:
+			a,b,c,d=1/3,-2,3,random.randint(-3,3)
+			x_1,x_2=1,3
+		# if chon==5:
+		# 	a,b,c,d=1/3,1/2,0,random.randint(-3,3)
+		# 	x_1,x_2=-1,0
+
+		diem_cuc_tri=random.choice(["điểm cực đại", "điểm cực tiểu"])
+		noi_dung = (f"Cho hàm số $y=f(x)$ là hàm số bậc ba có đồ thị là đường cong trong hình dưới đây."
+		f" Hàm số đã cho có {diem_cuc_tri} là")
+		if diem_cuc_tri=="điểm cực đại":
+			kq=f"$x={x_1}$"
+			kq2=f"$x={x_2}$"
+			kq3=f"$x={x_1-random.randint(1,2)}$"
+			kq4=f"$x={x_2+random.randint(1,2)}$"			
+			noi_dung_loigiai=f"Dựa vào đồ thị ta thấy hàm số có {diem_cuc_tri} là $x={x_1}$."
+
+		if diem_cuc_tri=="điểm cực tiểu":
+			kq=f"$x={x_2}$"
+			kq2=f"$x={x_1}$"
+			kq3=f"$x={x_1-random.randint(1,2)}$"
+			kq4=f"$x={x_2+random.randint(1,2)}$"
+			noi_dung_loigiai=f"Dựa vào đồ thị ta thấy hàm số có {diem_cuc_tri} là $x={x_2}$."
+
+
+	if dau=='-':
+		chon=random.randint(1,5)		
+		if chon==1:
+			a,b,c,d=-1,3,0,random.randint(-2,2)
+			x_1,x_2=0,2
+		if chon==2:
+			a,b,c,d=-1,0,3,random.randint(-2,3)
+			x_1,x_2=-1,1
+		if chon==3:
+			a,b,c,d=-1/3,-3/2,-2,random.randint(-3,3)
+			x_1,x_2=-2,-1
+		if chon==4:
+			a,b,c,d=-1/3,2,-3,random.randint(-3,3)
+			x_1,x_2=1,3
+		if chon==5:
+			a,b,c,d=-1/3,-1/2,0,random.randint(-3,3)
+			x_1,x_2=-1,0
+
+		diem_cuc_tri=random.choice(["điểm cực đại", "điểm cực tiểu"])
+		noi_dung = (f"Cho hàm số $y=f(x)$ là hàm số bậc ba có đồ thị là đường cong trong hình dưới đây."
+		f" Hàm số đã cho có {diem_cuc_tri} là")
+		if diem_cuc_tri=="điểm cực đại":
+			kq=f"$x={x_2}$"
+			kq2=f"$x={x_1}$"
+			kq3=f"$x={x_1-random.randint(1,2)}$"
+			kq4=f"$x={x_2+random.randint(1,2)}$"			
+			noi_dung_loigiai=f"Dựa vào đồ thị ta thấy hàm số có {diem_cuc_tri} là $x={x_1}$."
+
+		if diem_cuc_tri=="điểm cực tiểu":
+			kq=f"$x={x_1}$"
+			kq2=f"$x={x_2}$"
+			kq3=f"$x={x_1-random.randint(1,2)}$"
+			kq4=f"$x={x_2+random.randint(1,2)}$"
+			noi_dung_loigiai=f"Dựa vào đồ thị ta thấy hàm số có {diem_cuc_tri} là $x={x_2}$."
+
+	code_hinh = my_module.code_dothi_bac_3(a,b,c,d)	
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)    
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"{file_name}\n"	 
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t    D. { list_PA[3]}.\n"
+	  
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n\n"
+		f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"
+	    f"\\choice\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"
+	    f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n \n"
+	f"\\begin{{center}}{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"
+	    f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #BÀI 2: GIÁ TRỊ LỚN NHẤT- GIÁ TRỊ NHỎ NHẤT
 
@@ -7528,7 +7923,7 @@ def prt_34_L12_C1_B2_25():
 		code = my_module.moi_truong_anh_latex(code_hinh)
 		file_name=my_module.pdftoimage_timename(code)  			
 
-		noi_dung=f"Cho hàm số $y=f(x)$ xác định trên $\\mathbb{{R}}$ và có bảng xét dấu của $f'(x)$ như hình vẽ."\
+		noi_dung=f"Cho hàm số $y=f(x)$ xác định trên $\\mathbb{{R}}$ và có đồ thị của hàm số $y=f'(x)$ như hình vẽ."\
 		f" Xét tính đúng sai của các khẳng định sau?"
 		chon = random.randint(1,2)
 		if chon==1:
@@ -7651,7 +8046,7 @@ def prt_34_L12_C1_B2_25():
 		code = my_module.moi_truong_anh_latex(code_hinh)
 		file_name=my_module.pdftoimage_timename(code)  			
 
-		noi_dung=f"Cho hàm số $y=f(x)$ xác định trên $\\mathbb{{R}}$ và có bảng xét dấu của $f'(x)$ như hình vẽ."\
+		noi_dung=f"Cho hàm số $y=f(x)$ xác định trên $\\mathbb{{R}}$ và có đồ thị của hàm số $y=f'(x)$ như hình vẽ."\
 		f" Xét tính đúng sai của các khẳng định sau?"
 		chon = random.randint(1,2)
 		if chon==1:
@@ -9727,6 +10122,139 @@ def prt_34_L12_C1_B3_21():
 
 	noi_dung_loigiai=(
 	f"Đồ thị hàm số $y={latex(f)}$ có các đường tiệm cận ngang là $y={latex(nsimplify(sqrt(a)/d))}$ và $y={latex(nsimplify(-sqrt(a)/d))}$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B3_22]-M1. Đọc tiệm cận đứng của đồ thị y=(ax+b)/(cx+d)
+def prt_34_L12_C1_B3_22():
+	a = random.choice([i for i in range(-7, 7) if i!=0])
+	b = random.choice([i for i in range(-5, 6) if i!=0])
+	c = random.choice([i for i in range(-5, 6) if i!=0])
+	d = random.choice([i for i in range(-5, 6) if i!=0])	
+
+	if a*d-b*c==0:
+		d = d+1
+	x=sp.symbols("x")
+
+	f=(a*x+b)/(c*x+d)
+
+	duong_tiem_can="đường tiệm cận đứng"
+
+	if duong_tiem_can == "đường tiệm cận đứng":
+		kq=-d/c
+		kq2=d/c
+		kq3=-d/c
+		kq4=a/c
+
+		pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
+		kq2=pa_kotrung[1]
+		kq3=pa_kotrung[2]
+		kq4=pa_kotrung[3]
+
+
+		kq=f"$\\displaystyle x={phan_so(kq)}$"
+		kq2=f"$\\displaystyle x={phan_so(kq2)}$"
+		kq3=f"$\\displaystyle y={phan_so(kq3)}$"
+		kq4=f"$\\displaystyle y={phan_so(kq4)}$"
+
+	else: 
+		kq=f"$\\displaystyle y={phan_so(a/c)}$"
+		kq2=f"$\\displaystyle x={phan_so(a/c)}$"
+		kq3=f"$\\displaystyle y={phan_so((a+random.randint(1,3))/c)}$"
+		kq4=f"$\\displaystyle x={phan_so(-a/c)}$"
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+
+	noi_dung = f"Tìm {duong_tiem_can} của đồ thị hàm số $\\displaystyle y={latex(f)}$."
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	noi_dung_loigiai=f"{duong_tiem_can} của đồ thị hàm số $\\displaystyle y={latex(f)}$ là {kq}."
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
+	f"\\choice\n"\
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C1_B3_23]-M1. Đọc tiệm cận xiên của đồ thị y=mx+n +a/(bx+c)
+def prt_34_L12_C1_B3_23():
+	x=sp.symbols("x")
+	while True:
+		m = random.choice([i for i in range(-8, 7) if i!=0])
+		n = random.choice([i for i in range(-9, 9) if i!=0])
+		a = random.choice([i for i in range(-7, 7) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])
+		c = random.choice([i for i in range(-5, 6) if i!=0])
+		if all([m*c != b*n,a/b!=-c/b]):
+			break
+
+	noi_dung=(f"Đường tiệm cận xiên của đồ thị hàm số $y={latex(m*x+n+a/(b*x+c))}$ là")
+
+	
+
+	kq=f"$y={latex(m*x+n)}$"
+	kq_false=[
+	f"$y={latex(m*x)}$",
+	f"$y={latex(-m*x-n)}$",
+	f"$y={latex(b*x+c)}$",
+	f"$y={phan_so(a/b)}$",
+	f"$y={phan_so(-c/b)}$",]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"Đường tiệm cận xiên của đồ thị hàm số $y={latex(m*x+n+a/(b*x+c))}$ là $y={latex(m*x+n)}$."
 	)
 
 	pa_A= f"*{kq}"
@@ -12600,6 +13128,224 @@ def prt_34_L12_C1_B4_23():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C1_B4_24]-TF-M2. Cho hàm số bậc 3. Xét Đ-S: y', đơn điệu, tâm đối xứng, đồ thị
+def prt_34_L12_C1_B4_24():
+	x=sp.symbols("x")
+	dau=random.choice(['+','-'])
+	if dau=='+':
+		chon=random.randint(1,5)		
+		if chon==1:
+			a,b,c,d=1,-3,0,random.randint(-2,2)
+			x_1,x_2=0,2
+			f=a*x**3+b*x**2+c*x+d
+		if chon==2:
+			a,b,c,d=1,0,-3,random.randint(-2,3)
+			x_1,x_2=-1,1
+			f=a*x**3+b*x**2+c*x+d
+		if chon==3:
+			a,b,c,d=1/3,3/2,2,random.randint(-3,3)
+			x_1,x_2=-2,-1
+			f=x**3/3+3*x**2/2+2*x+d
+		if chon==4:
+			a,b,c,d=1/3,-2,3,random.randint(-3,3)
+			x_1,x_2=1,3
+			f=x**3/3-2*x**2+3*x+d
+		if chon==5:
+			a,b,c,d=1/3,1/2,0,random.randint(-3,3)
+			x_1,x_2=-1,0
+			f=x**3/3+x**2/2+d
+
+	if dau=='-':
+		chon=random.randint(1,5)		
+		if chon==1:
+			a,b,c,d=-1,3,0,random.randint(-2,2)
+			x_1,x_2=0,2
+			f=a*x**3+b*x**2+c*x+d
+		if chon==2:
+			a,b,c,d=-1,0,3,random.randint(-2,3)
+			x_1,x_2=-1,1
+			f=a*x**3+b*x**2+c*x+d
+		if chon==3:
+			a,b,c,d=-1/3,-3/2,-2,random.randint(-3,3)
+			x_1,x_2=-2,-1
+			f=-x**3/3-3*x**2/2-2*x+d
+		if chon==4:
+			a,b,c,d=-1/3,2,-3,random.randint(-3,3)
+			x_1,x_2=1,3
+			f=-x**3/3+2*x**2-3*x+d
+		if chon==5:
+			a,b,c,d=-1/3,-1/2,0,random.randint(-3,3)
+			x_1,x_2=-1,0
+			f=-x**3/3-x**2/2+d	
+
+	noi_dung = f"Cho hàm số $y={latex(f)}$. Xét tính đúng-sai của các khẳng định sau. ".replace("+-","-")
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Hàm số có đạo hàm là $y'={latex(diff(f,x))}$" 
+	kq1_F=f"Hàm số có đạo hàm là $y'={latex(diff(f,x)+random.randint(1,5))}$"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"$y'={latex(diff(f,x))}$."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if dau=="+":
+		kq2_T=random.choice([f"*Hàm số đồng biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};+\\infty)$", f"*Hàm số nghịch biến trên khoảng $({x_1};{x_2})$"])
+		kq2_F=random.choice([f"Hàm số đồng biến trên khoảng $({x_1};{x_2})$", f"Hàm số nghịch biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};+\\infty)$"])
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+		f"$y'>0$ khi $x\\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$.\n\n"\
+		f"$y'<0$ khi $x\\in ({x_1};{x_2})$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if dau=="-":
+		kq2_T=random.choice([f"*Hàm số đồng biến trên khoảng $x\\in ({x_1};{x_2})$", f"*Hàm số nghịch biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};+\\infty)$"])
+		kq2_F=random.choice([f"Hàm số đồng biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};+\\infty)$", f"Hàm số nghịch biến trên khoảng $({x_1};{x_2})$"])
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+		f"$y'>0$ khi $x\\in ({x_1};{x_2})$.\n\n"\
+		f"$y'<0$ khi $x\\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
+
+	code_BBT=code_bbt_bac3_2nghiem(a,x_1,x_2,latex(y_1),latex(y_2))
+	code = my_module.moi_truong_anh_latex(code_BBT)
+	file_name=my_module.pdftoimage_timename(code)
+	file_name_BBT_HDG=my_module.pdftoimage_timename(code)
+
+
+	x_0=-b/(3*a)
+	y_0=f.subs(x,x_0)
+	kq3_T=f"*Đồ thị hàm số có tâm đối xứng là điểm $I({phan_so(x_0)};{phan_so(y_0)})$"
+	kq3_F=f"Đồ thị hàm số có tâm đối xứng là điểm $I({phan_so(x_0+random.randint(0,2))};{phan_so(y_0+random.randint(1,2))})$"
+
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"$y''={latex(6*a*x+2*b)}=0\\Rightarrow x_0={phan_so(x_0)}$.\n\n"
+	f"$y_0=f({phan_so(x_0)})={phan_so(y_0)}$.\n\n"
+	f"Đồ thị hàm số có tâm đối xứng là điểm $I({phan_so(x_0)};{phan_so(y_0)})$"
+)
+
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	code_dothi=code_dothi_bac_3(a,b,c,d)
+	code = my_module.moi_truong_anh_latex(code_dothi)
+	file_name=my_module.pdftoimage_timename(code)
+	file_name_dothi_HGD=my_module.pdftoimage_timename(code)
+
+	code_dothi_false=code_dothi_bac_3(-a,-b,-c,-d)
+	code = my_module.moi_truong_anh_latex(code_dothi_false)
+	file_name_false=my_module.pdftoimage_timename(code)
+	
+
+	kq4_T=f"*Hàm số có đồ thị là\n\n"\
+	f"{file_name}"
+	kq4_F=f"Hàm số có đồ thị là\n\n"\
+	f"{file_name_false}"
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Hàm số có đồ thị là\n\n"\
+	f"{file_name_dothi_HGD}"
+
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	list_TF=tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	# kq3_T=f"*Hàm số có bảng biến thiên là\n\n"\
+	# f"{code_BBT}"	
+	# kq3_F=f"Hàm số có bảng biến thiên là\n\n"\
+	# f"{code_BBT_false}"
+	# kq3=random.choice([kq3_T, kq3_F])
+	# HDG=f"$x={x_1}\\Rightarrow y={phan_so(y_1)}, x={x_2}\\Rightarrow y={phan_so(y_2)}$.\n\n"\
+	# f"Hàm số có bảng biến thiên là\n\n"\
+	# f"{code_BBT}"
+
+	# loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	# if kq3==kq3_F:
+	# 	loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*Hàm số có đồ thị là\\\\"\
+	f"{code_dothi}"
+	kq4_F=f"Hàm số có đồ thị là\\\\"\
+	f"{code_dothi_false}"
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=f"Hàm số có đồ thị là\n\n"\
+	f"{code_dothi}"
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)	
+
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+		st=list_PA[i]
+		if st[0]=="*":
+			st_new=f"\\True " + st[1:]
+			list_PA[i]=st_new
+		else:
+			list_PA[i]=st
+
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 
 
 #----------------------------BÀI 5 - TOÁN THỰC TẾ---------------------------------------#

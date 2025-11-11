@@ -12,8 +12,8 @@ import pyperclip
 
 #Test trắc nghiệm
 test, test_latex="",""
-for i in range(1):
-	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_46()
+for i in range(5):
+	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C4.yy3yy_L10_C4_B1_23()
 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
 	test_latex=test_latex + f"{debai_latex}\n"
 	#print(test)
@@ -24,8 +24,8 @@ for i in range(1):
 
 # # #Test đúng sai
 # test, test_latex="",""
-# for i in range(3):
-# 	debai,debai_latex,loigiai_word,dap_an = D12_C1.prt_34_L12_C1_B2_25()
+# for i in range(1):
+# 	debai,debai_latex,loigiai_word,dap_an = D12_C1.prt_34_L12_C1_B4_24()
 # 	#print(debai)
 # 	#print(loigiai_word)
 # 	test=test + f"{debai}\n{loigiai_word}\n"
@@ -35,8 +35,8 @@ for i in range(1):
 
 #Test tự luận
 # test, test_latex="",""
-# for i in range(1):
-# 	debai_word,loigiai_word,latex_tuluan,dap_an = D10_C2.bch_12_L10_C2_B2_29()
+# for i in range(3):
+# 	debai_word,loigiai_word,latex_tuluan,dap_an = D10_C1.mjulk_L10_C1_B4_34()
 # 	#print(debai)\\log {d}
 # 	#print(loigiai_word)
 # 	test=test + f"{debai_word}\n{loigiai_word}\n"

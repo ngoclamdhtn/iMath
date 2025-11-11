@@ -1289,7 +1289,7 @@ def npl_mk_L10_C3_B2_08():
         f=a*x**2 + b*x + c
         
 
-        x_0 = random.randint(-4,4)        
+        x_0 = random.choice([i for i in range(-4,5) if i!=0 ])       
         y_0 = f.subs(x, x_0)
 
         x_1=x_0 + random.randint(1,3)   

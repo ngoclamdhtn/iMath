@@ -2566,6 +2566,117 @@ def mn8mn_L11_C2_B2_32():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C2_B2_33]-SA-M2. Toán thực tế dẫn đến tổng nhóm các số nguyên liên tiếp
+def mn8mn_L11_C2_B2_33():
+    while True:
+        n=random.randint(20,50)
+        S_n=1/2*n*(n**2+1)
+        m=random.randint(100,1000)
+        dap_an=S_n/m
+        if all([10<dap_an<999]):
+            break
+
+    dap_an=f"{round_half_up(dap_an,0):.0f}".replace(".",",")
+
+    chon=random.randint(1,3)
+    if chon==1:
+        noi_dung = (
+            f"Một vận động viên nhảy dây đặt mục tiêu tập tăng dần theo ngày."
+        f" Ngày thứ 1, vận động viên tập 1 lần nhảy."
+        f" Ngày thứ 2, vận động viên tập 2 lần nhảy."
+        f" Ngày thứ 3, vận động viên tập 3 lần nhảy."
+        f"... và cứ mỗi ngày, số lượt nhảy tăng thêm 1 so với ngày trước đó."
+        f" Mỗi lượt nhảy được đánh số thứ tự liên tiếp từ 1 trở đi."
+        f" Gọi $S_n$ là tổng các số thứ tự của các lượt nhảy trong ngày thứ ${{n}}$."
+        f" Tính $\\dfrac{{S_{{{n}}}}}{{{m}}}$ (kết quả làm tròn đến hàng đơn vị).")
+
+    if chon==2:
+        noi_dung = (
+            f"Một giáo viên giao bài tập rèn luyện tư duy logic cho học sinh mỗi ngày."
+        f" Ngày thứ 1, giáo viên chỉ giao 1 bài đánh số là bài 1."
+        f" Ngày thứ 2, giáo viên giao 2 bài (các bài này được đánh số nối tiếp là bài 2, bài 3)."
+        f" Ngày thứ 3, giáo viên giao 3 bài (các bài này được đánh số nối tiếp là bài 4, bài 5, bài 6)."
+        f"... và cứ thế, mỗi ngày số bài được giao nhiều hơn ngày trước đó đúng 1 bài."
+        f" Các bài tập được đánh số thứ tự từ 1 trở đi, không trùng lặp."
+        f" Gọi $S_n$ là tổng các số thứ tự của bài tập được giao trong ngày thứ ${{n}}$."
+        f" Tính $\\dfrac{{S_{{{n}}}}}{{{m}}}$ (kết quả làm tròn đến hàng đơn vị).")
+    
+    if chon==3:
+        noi_dung = (
+            f"Trong một trò chơi, game thủ mỗi ngày phải làm nhiệm vụ Daily."
+        f" Ngày thứ 1, game mở 1 nhiệm vụ."
+        f" Ngày thứ 2, game mở 2 nhiệm vụ."
+        f" Ngày thứ 3, game mở 3 nhiệm vụ."
+        f"... và cứ mỗi ngày, game mở thêm 1 nhiệm vụ mới so với ngày trước."
+        f" Các nhiệm vụ được đánh số theo thứ tự mở từ 1 trở đi."
+        f" Gọi $S_n$ là tổng các số thứ tự của các nhiệm vụ được mở trong ngày thứ ${{n}}$."
+        f" Tính $\\dfrac{{S_{{{n}}}}}{{{m}}}$ (kết quả làm tròn đến hàng đơn vị).")
+    
+
+    
+    noi_dung_loigiai=(
+    f"Tập hợp số thứ tự của các ngày là: $\\{{1\\}}$, $\\{{2,3\\}}$, $\\{{4,5,6\\}}$,...\n\n"
+    f"Tập hợp thứ ${{n}}$ có phần tử cuối cùng là: $\\dfrac{{n(n+1)}}{{2}}$.\n\n"
+    f"Khi đó $S_n$ là tổng của ${{n}}$ số hạng một cấp số cộng có số hạng đầu là $\\dfrac{{n(n+1)}}{{2}}$, công sai $d=-1$.\n\n"
+    f"$S_n=\\dfrac{{n[2u_1+(n-1)d]}}{{2}}=\\dfrac{{n}}{{2}}[n(n+1)-(n-1)]=\\dfrac{{1}}{{2}}n(n^2+1)$.\n\n"
+    f"$S_{{{n}}}=\\dfrac{{1}}{{2}}.{n}({n}^2+1)={phan_so(S_n)}$.\n\n"
+    f"$\\dfrac{{S_{{{n}}}}}{{{m}}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B2_34]-SA-M3. Toán thực tế: Tổng số cây trồng trên khu đất hình chữ nhật 
+def mn8mn_L11_C2_B2_34():
+    wide=random.randint(20,40)
+    length=wide+random.randint(10,20)
+    S=wide*length
+    n=wide+1
+    u_1=random.randint(1,3)
+    d=random.randint(1,4)
+    S_n=n/2*(2*u_1+(n-1)*d)
+    ten=random.choice(["An", "Linh", "Tùng", "Minh", "Phong" ])
+
+    noi_dung = (
+    f"Ông {ten} xếp các chậu cây trên một khu đất hình chữ nhật ${{ABCD}}$ có diện tích ${{{S}}}$ mét vuông theo quy tắc như sau:"
+    f" Ông An đánh dấu các đường thẳng song song với chiều dài của khu đất,"
+    f" sao cho các đường này có hai đầu mút nằm trên hai cạnh chiều rộng và cách nhau 1 m."
+    f" Bắt đầu từ cạnh ${{AB}}$ ông xếp hàng đầu tiên với ${{{u_1}}}$ chậu cây."
+    f" Ở hàng thứ hai (cách hàng đầu tiên 1 m) ông xếp nhiều hơn hàng trước ${{{d}}}$ chậu cây."
+    f" Cứ như vậy, mỗi hàng tiếp theo được xếp nhiều hơn hàng liền trước ${{{d}}}$ chậu cây ${{{d}}}$."
+    f" Hàng cuối cùng được xếp nằm trên cạnh ${{CD}}$."
+    f" Hỏi ông {ten} đã xếp được tất cả bao nhiêu chậu cây trên khu đất đó biết rằng chiều dài của khu đất là {length} m?"
+    )
+    
+
+    noi_dung_loigiai=(
+    f"Chiều rộng của khu đất là: ${S}:{length}={wide}$.\n\n"
+    f" Số hàng xếp các chậu cây là: $n={n}$.\n\n"
+    f" Số cây ở các hàng lập thành cấp số cộng có $u_1={u_1},d={d}$.\n\n"
+    f" Tổng số cây xếp được là:\n\n"
+    f"$S_{{{n}}}=\\dfrac{{{n}}}{{2}}(2.{u_1}+{n-1}.{d})={int(S_n)}$."
+    )
+
+        
+    debai_word= f"{noi_dung}"
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
+    dap_an=int(S_n)
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 

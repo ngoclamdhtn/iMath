@@ -9605,6 +9605,7 @@ def ckz_L12C4_B5_25():
     abs(integrate(exp(x),(x,a,b))),
     abs(integrate(exp(-x),(x,a,b)))
     ]   
+    noi_dung_loigiai=noi_dung_loigiai.replace("\\log","\\ln")
 
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
@@ -9614,10 +9615,10 @@ def ckz_L12C4_B5_25():
     kq3=pa_kotrung[2]
     kq4=pa_kotrung[3] 
 
-    pa_A= f"*${{{latex(kq)}}}$"
-    pa_B= f"${{{latex(kq2)}}}$"
-    pa_C= f"${{{latex(kq3)}}}$"
-    pa_D= f"${{{latex(kq4)}}}$"
+    pa_A= f"*${{{latex(kq)}}}$".replace("\\log","\\ln")
+    pa_B= f"${{{latex(kq2)}}}$".replace("\\log","\\ln")
+    pa_C= f"${{{latex(kq3)}}}$".replace("\\log","\\ln")
+    pa_D= f"${{{latex(kq4)}}}$".replace("\\log","\\ln")
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)

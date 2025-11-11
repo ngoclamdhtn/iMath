@@ -1833,6 +1833,62 @@ def yy3yy_L10_C4_B1_22():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C4_B1_23]-M1. Tính giá trị lượng giác của một góc.
+def yy3yy_L10_C4_B1_23():
+    list_x=[pi/3,pi/6,2*pi/3,3*pi/4]
+    x=random.choice(list_x) 
+
+    list_ham=[sin(x), cos(x), tan(x), cot(x)]
+    ham =random.choice(list_ham)
+
+    list_hamkhac = [t for t in list_ham if t != ham]
+    list_hamkhac.append (random.randint(-5,5))
+    list_hamkhac.append (sqrt(2))  
+    if ham == list_ham[0]:
+        ten_ham = "sin"
+    if ham == list_ham[1]:
+        ten_ham = "cos"
+    if ham == list_ham[2]:
+        ten_ham = "tan"
+    if ham == list_ham[3]:
+        ten_ham = "cot"
+    #Tạo các phương án
+    pa_A= f"*${{ {latex((ham))} }}$"
+    pa_B= f"${{ {latex((list_hamkhac[0]))} }}$"
+    pa_C= f"${{ {latex((list_hamkhac[1]))} }}$"
+    pa_D= f"${{ {latex((list_hamkhac[2]))} }}$"
+     #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    noi_dung= f"Tính $\\{ten_ham}{latex(x*180/pi)}^\\circ$."
+    noi_dung_loigiai=f""
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+    
+
+    debai= f"{noi_dung}\n"      
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"     
+   
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
+    f"\\shortans[4]{{}}\n\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 
@@ -2041,8 +2097,11 @@ def yy3yy_L10_C4_B2_03():
 
 #[D10_C4_B2_04]. Cho tam giác có một cạnh và góc đối diện. Tính bán kính đường tròn ngoại tiếp.
 def yy3yy_L10_C4_B2_04():
-    a = random.randint(3,7)
-    C_degree=random.randint(10,170)
+    a = random.randint(2,12)
+    while True:
+        C_degree=random.randint(10,170)
+        if all([C_degree!=90, C_degree!=45, C_degree!=135]):
+            break
     C_radian= math.radians(C_degree)
     ten_goc =random.choice(["A", "B", "C"])
     if ten_goc == "A":
@@ -2053,8 +2112,8 @@ def yy3yy_L10_C4_B2_04():
         ten_canh = "AB"
     kq=a/(2*sin(C_radian))
     kq2=a/sin(C_radian)
-    kq3=a/abs(cos(C_radian))
-    kq4=a/(2*abs(cos(C_radian)))
+    kq3=a/(2*abs(cos(C_radian)))
+    kq4=a/(3*sin(C_radian))
     #Tìm công thức nghiệm và nghiệm ảo 
 
     #Tạo các phương án
@@ -2065,7 +2124,8 @@ def yy3yy_L10_C4_B2_04():
     #Trộn các phương án
     list_PA =[pa_A,pa_B,pa_C,pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Cho tam giác ${{ABC}}$ có $\\widehat{{{ten_goc}}}={C_degree}^\\circ$ và độ dài cạnh ${{{ten_canh}}}$ bằng ${{{a}}}$. Tính bán kính ${{R}}$ của đường tròn ngoại tiếp tam giác ${{ABC}}$."
+    noi_dung= f"Cho tam giác ${{ABC}}$ có $\\widehat{{{ten_goc}}}={C_degree}^\\circ$ và độ dài cạnh ${{{ten_canh}}}$ bằng ${{{a}}}$."
+    f" Tính bán kính ${{R}}$ của đường tròn ngoại tiếp tam giác ${{ABC}}$ (kết quả làm tròn đến hàng phần trăm)."
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  

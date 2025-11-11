@@ -2556,6 +2556,255 @@ def y7y7u_L10_C5_B2_18():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C5_B2_19]-M1. Cho tam giác đều. Tính độ dài tổng hai vectơ kết quả là cạnh.
+def y7y7u_L10_C5_B2_19():
+	a=random.randint(1,9)
+	ten=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"], ["A","D","E"], ["A","B","D"] ])
+	A,B,C=ten
+	chon=random.randint(1,3)
+	if chon==1:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{A}{B}")}+{vec(f"{B}{C}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{C}")}|={a}$."
+		)
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{B}{C}")}+{vec(f"{C}{A}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{A}")}|={a}$."
+		)
+
+	if chon==3:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{C}{A}")}+{vec(f"{A}{B}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{B}")}|={a}$."
+		)
+	
+	kq=a
+	kq_false=[2*a, a/2, a*sqrt(3), a*sqrt(3)/2,a/4]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+
+	pa_A= f"*${{{latex(kq)}}}$".replace(".",",")
+	pa_B= f"${{{latex(kq2)}}}$".replace(".",",")
+	pa_C= f"${{{latex(kq3)}}}$".replace(".",",")
+	pa_D= f"${{{latex(kq4)}}}$".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C5_B2_20]-M2. Cho tam giác đều. Tính độ dài tổng hai vectơ (đảo vị trí) kết quả là cạnh.
+def y7y7u_L10_C5_B2_20():
+	a=random.randint(1,9)
+	ten=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"], ["A","D","E"], ["A","B","D"] ])
+	A,B,C=ten
+	chon=random.randint(1,3)
+	if chon==1:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{B}{C}")}+{vec(f"{A}{B}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{B}")}+{vec(f"{B}{C}")}|=|{vec(f"{A}{C}")}|={a}$."
+		)
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{C}{A}")}+{vec(f"{B}{C}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{C}")}+{vec(f"{C}{A}")}|=|{vec(f"{B}{A}")}|={a}$."
+		)
+
+	if chon==3:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{A}{B}")}+{vec(f"{C}{A}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{A}")}+{vec(f"{A}{B}")}|=|{vec(f"{C}{B}")}|={a}$."
+		)
+	
+	kq=a
+	kq_false=[2*a, a/2, a*sqrt(3), a*sqrt(3)/2,a/4]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+
+	pa_A= f"*${{{latex(kq)}}}$".replace(".",",")
+	pa_B= f"${{{latex(kq2)}}}$".replace(".",",")
+	pa_C= f"${{{latex(kq3)}}}$".replace(".",",")
+	pa_D= f"${{{latex(kq4)}}}$".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C5_B2_21]-M1. Cho tam giác đều. Tính độ dài tổng hai vectơ kết quả là trung tuyến.
+def y7y7u_L10_C5_B2_21():
+	a=random.randint(1,9)
+	ten=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"], ["A","D","E"], ["A","B","D"] ])
+	A,B,C=ten
+	M=random.choice(["M","I","H"])
+	chon=random.randint(1,6)
+	if chon==1:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{{B}{C}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{A}{B}")}+{vec(f"{B}{M}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
+		)
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{{B}{C}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{B}{M}")}+{vec(f"{A}{B}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{A}{B}")}+{vec(f"{B}{M}")}|=|{vec(f"{A}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
+		)
+
+	if chon==3:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{{A}{C}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{B}{C}")}+{vec(f"{C}{M}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
+		)
+
+	if chon==4:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{{A}{C}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{C}{M}")}+{vec(f"{B}{C}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{B}{C}")}+{vec(f"{C}{M}")}|=|{vec(f"{B}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
+		)
+
+	if chon==5:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{{A}{B}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{C}{A}")}+{vec(f"{A}{M}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
+		)
+
+	if chon==6:
+		noi_dung=(
+		f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{{A}{B}}}$."
+		f" Độ dài của vectơ ${vec("u")}={vec(f"{A}{M}")}+{vec(f"{C}{A}")}$ là"
+		)
+		noi_dung_loigiai=(
+		f"$|{vec("u")}|=|{vec(f"{C}{A}")}+{vec(f"{A}{M}")}|=|{vec(f"{C}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
+		)
+
+	kq=a
+	kq_false=[2*a, a/2, a*sqrt(3), a*sqrt(3)/2,a/4]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+
+	pa_A= f"*${{{latex(kq)}}}$".replace(".",",")
+	pa_B= f"${{{latex(kq2)}}}$".replace(".",",")
+	pa_C= f"${{{latex(kq3)}}}$".replace(".",",")
+	pa_D= f"${{{latex(kq4)}}}$".replace(".",",")
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C5_B2_20]-M2. Cho tam giác đều. Tính độ dài tổng hai vectơ (đảo vị trí) kết quả là cạnh.
+
 #--------------------------------------------------------------------------->
 #Bài 3 - Tích vectơ với một số
 #[D10_C5_B3_01]-M2. Cho tứ giác. Tìm khẳng định đúng về quy tắc cộng trừ.

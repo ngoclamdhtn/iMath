@@ -3286,7 +3286,7 @@ def ngh_kjg_L11_C1_B2_13():
 
 #D11_C1_B2_01. Tính giá trị đặc biệt của một góc lượng giác.
 def ngh_kjg_L11_C1_B2_01():
-    list_x=[2*pi/3, 13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
+    list_x=[-random.randint(1,10)*pi/6, random.randint(1,10)*pi/6, -random.randint(1,10)*pi/3, random.randint(1,10)*pi/3, 13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
     x=random.choice(list_x) 
 
     list_ham=[sin(x), cos(x), tan(x), cot(x)]
@@ -3304,10 +3304,10 @@ def ngh_kjg_L11_C1_B2_01():
     if ham == list_ham[3]:
         ten_ham = "cot"
     #Tạo các phương án
-    pa_A= f"*$ {latex((ham))} $"
-    pa_B= f"$ {latex((list_hamkhac[0]))} $"
-    pa_C= f"$ {latex((list_hamkhac[1]))} $"
-    pa_D= f"$ {latex((list_hamkhac[2]))} $"
+    pa_A= f"*${{{latex((ham))} }}$"
+    pa_B= f"${{{latex((list_hamkhac[0]))}}}$"
+    pa_C= f"${{{latex((list_hamkhac[1]))}}}$"
+    pa_D= f"${{{latex((list_hamkhac[2]))}}}$"
      #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án

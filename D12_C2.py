@@ -6273,7 +6273,7 @@ def mnj_34_jkl_L12_C2_B3_32():
 	cos_goc=tich_vh/(do_dai_a*do_dai_b)
 	kq=acos(cos_goc)
 	kq=deg(kq)
-	round_kq=f"{round_half_up(kq,2):.2f}".replace(".",",")
+	round_kq=f"{round_half_up(kq,1):.1f}".replace(".",",")
 
 	kq_false=[
 	random.randint(0,60)+random.randint(1,9)/10,
@@ -8185,7 +8185,7 @@ def mnj_34_jkl_L12_C2_B3_43():
 	
 	if chon==1:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8206,7 +8206,7 @@ def mnj_34_jkl_L12_C2_B3_43():
 
 	if chon==2:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8227,7 +8227,7 @@ def mnj_34_jkl_L12_C2_B3_43():
 
 	if chon==3:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8248,7 +8248,7 @@ def mnj_34_jkl_L12_C2_B3_43():
 
 	if chon==4:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8326,7 +8326,7 @@ def mnj_34_jkl_L12_C2_B3_44():
 		
 	if chon==1:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8347,7 +8347,7 @@ def mnj_34_jkl_L12_C2_B3_44():
 
 	if chon==2:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8368,7 +8368,7 @@ def mnj_34_jkl_L12_C2_B3_44():
 
 	if chon==3:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
@@ -8389,7 +8389,7 @@ def mnj_34_jkl_L12_C2_B3_44():
 
 	if chon==4:
 		noi_dung=(
-		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$,"
+		f"Cho hình chóp ${{{S}.{A}{B}{C}}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, ${S}{A}\\bot ({A}{B}{C})$ và ${S}{A}={z_0}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với trung điểm ${{{M}}}$ của ${{{B}{C}}}$,"
 		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{A}}}$ thuộc tia ${{Oy}}$"
 		f" và tia ${{Oz}}$ cùng hướng với tia ${{{A}{S}}}$."
