@@ -6526,3 +6526,53 @@ def mjulk_L10_C1_B4_34():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C1_B4_35]-SA-M4. Tìm m để A\B = A.
+def mjulk_L10_C1_B4_35():
+	m=sp.symbols("m")
+	a1=random.randint(1,6)
+	a2=random.randint(1,6)
+	b1=random.randint(-8,-1)
+	c1=random.randint(1,6)
+	c2=c1+random.randint(1,5)
+
+	A,B=random.sample(["A","B","C","D","E","F"],2)
+	k=random.randint(50,100)
+	m1=(a2-c1)/(b1-a1)
+	m2=-c2/(b1-a1)
+	dem=0
+	for i in range(-k,k):
+		if i>(b2-a2)/c2:
+			dem+=1
+	dau_a1=random.choice(["[","(" ])
+	dau_b1=random.choice(["[","(" ])
+
+	noi_dung = (
+	f"Cho hai tập hợp ${A}=({latex(a1*m)};{latex(a1*m+a2)}]$ và ${B}=[{latex(b1*m+c1)};{latex(b1*m+c2)})$."
+	f" Tìm số các giá trị nguyên thuộc khoảng $({-k};{k})$ của ${{m}}$ để ${B}\\backslash {A} ={B}$."
+	)
+	dap_an=dem
+
+	noi_dung_loigiai=(
+	f"Trường hợp 1:\n\n "
+	f"${latex(b1*m+c1)}>{latex(a1*m+a2)} \\Rightarrow {latex((b1-a1)*m)}>{latex(a2-c1)}$"
+	f"$\\Rightarrow m<{phan_so(m1)}$.\n\n"
+
+	f"Trường hợp 2:\n\n "
+	f"${latex(b1*m+c2)}\\le {latex(a1*m)} \\Rightarrow {latex((b1-a1)*m)}\\le {-c2}$"
+	f"$\\Rightarrow m \\ge {phan_so(m2)}$.\n\n"
+
+	f"số các giá trị nguyên thuộc khoảng $({-k};{k})$ của ${{m}}$ là {dap_an}."	
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an

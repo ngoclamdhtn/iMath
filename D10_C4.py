@@ -4879,8 +4879,6 @@ def yy3yy_L10_C4_B2_38():
             f"$S={phan_so(1/2)}CH.AB\\Rightarrow CH=\\dfrac{{2S}}{{AB}}=\\dfrac{{2.{r_S}}}{{{b}}}={dap_an}$."      
             )
     
-
-      
         
     debai_word= f"{noi_dung}\n"
 
@@ -4892,4 +4890,55 @@ def yy3yy_L10_C4_B2_38():
     f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B2_39]-SA-M4. Cho tam giác đều. Tính tổng khoảng cách đến 3 cạnh.
+def yy3yy_L10_C4_B2_39():
+    a=random.randint(4,10)
+    S=a**2*sqrt(3)/4    
+    d=S/a
+    chon=random.randint(1,4)
+    if chon==1:
+        noi_dung = (
+        f"Một mảnh sân hình tam giác đều có độ dài cạnh bằng ${{{a}}}$ m."
+        f" Người thợ muốn đặt một vòi phun nước ở vị trí sao cho nằm trong sân. Tính tổng khoảng cách từ vòi phun nước đó đến ba cạnh của sân (kết quả làm tròn đến hàng phần mười).")
+    
+    if chon==2:
+        noi_dung = (
+        f"Một khu đất có dạng là một tam giác đều có độ dài cạnh bằng ${{{a}}}$ m."
+        f" Một cột đèn được đặt bên trong khu đất. Tính tổng khoảng cách từ chân cột đèn đó đến ba cạnh của khu đất (kết quả làm tròn đến hàng phần mười).")
+
+    if chon==3:
+        noi_dung = (
+        f"Một vườn cây hình tam giác đều có độ dài cạnh bằng ${{{a}}}$ m."
+        f" Người quản lý muốn đặt một trụ đo độ ẩm đất ở bên trong vườn. Tính tổng khoảng cách từ trụ đo độ ẩm đến ba cạnh của khu đất (kết quả làm tròn đến hàng phần mười).")
+
+    if chon==4:
+        noi_dung = (
+        f"Một vườn cây hình tam giác đều có độ dài cạnh bằng ${{{a}}}$ m."
+        f" Người quản lý muốn đặt một trụ đo độ ẩm đất ở bên trong vườn. Tính tổng khoảng cách từ trụ đo độ ẩm đến ba cạnh của khu đất (kết quả làm tròn đến hàng phần mười).")    
+
+    dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi ${{A,B,C}}$ là 3 đỉnh của khu đất và ${{I}}$ là chân trụ.\n\n"
+    f"Gọi ${{IM,IH,IK}}$ lần lượt là các khoảng cách từ điểm ${{I}}$ đến ${{AB,BC,AC}}$.\n\n"
+    f"$S_{{ABC}}=\\dfrac{{{a}^2\\sqrt{{3}} }}{{4}}={latex(S)}$.\n\n"
+    f"$S_{{ABC}}=S_{{IAB}}+S_{{IBC}}+S_{{IAC}}$\n\n"
+    f"$={phan_so(1/2)}IM.AB+{phan_so(1/2)}IH.BC+{phan_so(1/2)}IK.AC$\n\n"
+    f"$={phan_so(1/2)}.{a}(IM+IH+IK)$\n\n"
+    f"$\\Rightarrow IM+IH+IK=\\dfrac{{2S_{{ABC}}}}{{{a}}}={latex(d)}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\shortans[oly]{{{dap_an}}}\n\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an

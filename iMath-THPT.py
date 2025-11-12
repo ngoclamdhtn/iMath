@@ -2391,6 +2391,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C4_B2_3, ["[D10_C4_B2_39]-SA-M3. Toán thực tế: Cho tam giác đều. Tính tổng khoảng cách từ 1 điểm đến 3 cạnh."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
 
@@ -15997,6 +16001,10 @@ class Ui_MainWindow(object):
                                             #[D10_C4_B2_38]-SA-M2. Cho AB,BC,AC. Tính đường cao AH (hoặc BH,CH)
                                             if dang_toan =="[D10_C4_B2_38]":
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_38()
+
+                                            #[D10_C4_B2_39]-SA-M2. Toán thực tế: Cho tam giác đều. Tính tổng k.cách từ một điểm đến 3 cạnh.
+                                            if dang_toan =="[D10_C4_B2_39]":
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_39()
                                             
 
 
