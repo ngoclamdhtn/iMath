@@ -6497,7 +6497,7 @@ def mjulk_L10_C1_B4_34():
 	A,B=random.sample(["A","B","C","D","E","F"],2)
 	k=random.randint(50,100)
 	dem=0
-	for i in range(-k,k):
+	for i in range(-k+1,k):
 		if i>(b2-a2)/c2:
 			dem+=1
 	dau_a1=random.choice(["[","(" ])
@@ -6541,8 +6541,8 @@ def mjulk_L10_C1_B4_35():
 	m1=(a2-c1)/(b1-a1)
 	m2=-c2/(b1-a1)
 	dem=0
-	for i in range(-k,k):
-		if i>(b2-a2)/c2:
+	for i in range(-k+1,k):
+		if i<m1 or i>=m2:
 			dem+=1
 	dau_a1=random.choice(["[","(" ])
 	dau_b1=random.choice(["[","(" ])
@@ -6562,7 +6562,7 @@ def mjulk_L10_C1_B4_35():
 	f"${latex(b1*m+c2)}\\le {latex(a1*m)} \\Rightarrow {latex((b1-a1)*m)}\\le {-c2}$"
 	f"$\\Rightarrow m \\ge {phan_so(m2)}$.\n\n"
 
-	f"số các giá trị nguyên thuộc khoảng $({-k};{k})$ của ${{m}}$ là {dap_an}."	
+	f"Số các giá trị nguyên thuộc khoảng $({-k};{k})$ của ${{m}}$ là {dap_an}."	
 	)	
 		
 	debai_word= f"{noi_dung}\n"

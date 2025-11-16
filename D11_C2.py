@@ -1223,17 +1223,23 @@ def mn8mn_L11_C2_B2_11():
     solution=solve(equation,n)
     so_nam_goc=f"{round(solution[0],2):.2f}".replace(".",",")
 
-    if int(solution[0])<solution[0]:
-        so_nam=int(solution[0])+1
-    else:
-        so_nam=int(solution[0])
+    so_nam=0
+    for i in range(0, int(solution[0])+2):
+        if i<solution[0]:
+            so_nam+=1
+
+    # if int(solution[0])<solution[0]:
+    #     so_nam=int(solution[0])+1
+    # else:
+    #     so_nam=int(solution[0])
+
 
     kq4_T=f"* Sau ít nhất {so_nam} năm thì giá chiếc máy nhỏ hơn một nữa giá trị ban đầu"
     kq4_F=f"Sau ít nhất {so_nam-random.randint(2,3)} năm thì giá chiếc máy nhỏ một nữa giá trị ban đầu" 
     kq4=random.choice([kq4_T, kq4_F])
     HDG=(
     f"Ta có: $u_n<{phan_so(u1/2)}\\Rightarrow {u1}+({n-1}).({d})<{phan_so(u1/2)} \\Rightarrow n>{so_nam_goc}$.\n\n"
-    f"Sau ít nhất ${so_nam}$ thì giá chiếc máy nhỏ hơn một nữa giá trị ban đầu.")
+    f"Sau ít nhất ${{{so_nam}}}$ thì giá chiếc máy nhỏ hơn một nữa giá trị ban đầu.")
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

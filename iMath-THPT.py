@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 02.11.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.11.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 02.11.2025")
+                self.label.setText(f"iMath\u00A92025 ver 16.11.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1641,6 +1641,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_35]-SA-M4. Tìm m để A\\B = A."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C1_B4_3, ["[D10_C1_B4_17]-SA-M3. Tìm m thỏa điều kiện về phép toán khoảng đoạn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -1900,15 +1904,37 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_12]-M2. Tìm hàm số biểu diễn giá bán khi được giảm r% từ món thứ hai"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C3_B1_1, ["[D10_C3_B1_13]-M2. Tìm hàm số biểu diễn giá tiền taxi"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
                 L10_C3_B1_3 = QTreeWidgetItem(L10_C3_B1, ["Trả lời ngắn"])
                 L10_C3_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C3_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C3_B1_3, ["[D10_C3_B1_09]-SA-M3. Số các số nguyên thuộc TXĐ y=căn(ax+b)+căn(c-dx)"])
+                item = QTreeWidgetItem(L10_C3_B1_3, ["[D10_C3_B1_16]-SA-M2. Số giá trị nguyên thuộc TXĐ của y=căn(ax+b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B1_3, ["[D10_C3_B1_09]-SA-M3. Số giá trị nguyên thuộc TXĐ y=căn(ax+b)+căn(c-dx)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B1_3, ["[D10_C3_B1_14]-SA-M3. Tìm số vật có thể mua khi giảm giá r% từ vật thứ 2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C3_B1_3, ["[D10_C3_B1_15]-SA-M3. Tìm số nguyên m để y=ax+b đồng biến (nghịch biến) trên R"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
                
 
                 L10_C3_B2 = QTreeWidgetItem(L10_C3, ["Bài 2 - Hàm số bậc 2"])
@@ -1928,7 +1954,7 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 #item.setToolTip(0, "Tìm tọa độ đỉnh của hàm số bậc 2")
 
-                item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_02]-M1.Tìm trục đối xứng của đồ thị hàm số bậc 2"])
+                item = QTreeWidgetItem(L10_C3_B2_1, ["[D10_C3_B2_02]-M1. Tìm trục đối xứng của đồ thị hàm số bậc 2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8116,6 +8142,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_38]-SA-M4. Tìm tổng độ dài ngắn nhất nối 2 chiếc cọc qua 1 chốt."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 
 
 
@@ -8338,6 +8368,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_1_1, ["[D12_C2_B3_04]-M3. Tìm m để hai vectơ vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_1, ["[D12_C2_B3_47]-M2. Tìm điều kiện để 2 vectơ cùng phương."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_1_1, ["[D12_C2_B3_48]-M2. Tìm điều kiện để 3 điểm thẳng hàng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10923,6 +10961,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_37]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_37()
 
+                                            #[D12_C1_B5_38]-SA-M3. Tìm chi phí trung bình để sản xuất x_0 đơn vị hàng hóa.
+                                            if dang_toan == "[D12_C1_B5_38]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_38()
+
 
                                             
                                                 
@@ -11248,6 +11290,14 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_46]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm tọa độ trọng tâm
                                             if dang_toan == "[D12_C2_B3_46]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_46()
+
+                                        #[D12_C2_B3_47]-M2. Tìm điều kiện để 2 vectơ cùng phương
+                                            if dang_toan == "[D12_C2_B3_47]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_47()
+
+                                        #[D12_C2_B3_48]-M2. Tìm điều kiện để 3 điểm thẳng hàng
+                                            if dang_toan == "[D12_C2_B3_48]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_48()
 
 
 
@@ -15348,6 +15398,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D10_C1_B4_34]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_34()
 
+                                            #[D10_C1_B4_35]-SA-M2. Tìm m để A\B=A.
+                                            if dang_toan == "[D10_C1_B4_35]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C1.mjulk_L10_C1_B4_35()
+
                                             
 
                                 #TOÁN 10-CHƯƠNG 2 - BẤT PHƯƠNG TRÌNH VÀ HỆ BẤT PHƯƠNG TRÌNH BẬC NHẤT 2 ẨN
@@ -15562,6 +15616,26 @@ class Ui_MainWindow(object):
                                             #[D10_C3_B1_11]-M2.  Tìm hàm số đồng biến (nghịch biến) trên R
                                             if dang_toan =="[D10_C3_B1_11]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_11()
+
+                                            #[D10_C3_B1_12]-M2.  Tìm hàm số biểu diễn giá bán khi được giảm r% từ món thứ hai
+                                            if dang_toan =="[D10_C3_B1_12]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_12()
+
+                                            #[D10_C3_B1_13]-M2.  Tìm hàm số biểu diễn giá tiền taxi
+                                            if dang_toan =="[D10_C3_B1_13]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B1_13()
+
+                                            #[D10_C3_B1_14]-M2.  Tìm số vật có thể mua khi giảm giá r% từ vật thứ 2                                            
+                                            if dang_toan == "[D10_C3_B1_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B1_14()
+
+                                            #[D10_C3_B1_15]-SA-M2. Tìm số nguyên m để y=ax+b đồng biến (nghịch biến) trên R                                           
+                                            if dang_toan == "[D10_C3_B1_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B1_15()
+
+                                            #[D10_C3_B1_16]-SA-M2. Tìm số giá trị nguyên thuộc tập xác định của y=căn(ax+b)                                           
+                                            if dang_toan == "[D10_C3_B1_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C3.npl_mk_L10_C3_B1_16()
 
                           
                                                 

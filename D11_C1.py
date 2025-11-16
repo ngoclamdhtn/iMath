@@ -6916,7 +6916,7 @@ def ngh_kjg_L11_C1_B5_17():
 
     if m==1:
         kq2_T=f"*Phương trình (1) có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
-        kq2_F=f"Phương trình (1) có nghiệm là $x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$."
+        kq2_F=f"Phương trình (1) có nghiệm là $x=k{latex(pi/a)},k\\in \\mathbb{{Z}}$."
         HDG=f"$(1)\\Leftrightarrow {a}x=k2\\pi \\Leftrightarrow x=k{latex(2*pi/a)},k\\in \\mathbb{{Z}}$"
 
     if m==0:

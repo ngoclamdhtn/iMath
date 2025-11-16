@@ -6193,9 +6193,10 @@ def prt_34_L12_C1_B2_09():
 	f=integrate(f_dh,x)+random.randint(-3,3)
 
 	noi_dung=f"Cho hàm số $y={latex(f)}	$. Xét tính đúng-sai của các khẳng định sau"
+	t=random.choice([i for i in range(-2,3) if i!=0])
 
 	kq1_T=f"*$y'={latex(f_dh)}$" 
-	kq1_F=f"$y'={latex(f_dh+random.randint(-2,2)*x+random.randint(-2,2)*x**2)}$"
+	kq1_F=f"$y'={latex(f_dh+t*x+t*x**2)}$"
 	kq1=random.choice([kq1_T, kq1_F])
 	HDG=f"$y={latex(f)} \\Rightarrow y'={latex(f_dh)}$."
 	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -7808,9 +7809,9 @@ def prt_34_L12_C1_B2_24():
 \draw[gray!20]({x_min},{y_min}) grid({x_max},{y_max});
 \draw[->] ({x_min},0)--({x_max},0) node[below left] {{$x$}};
 \draw[->] (0,{y_min})--(0,{y_max}) node[below left] {{$y$}};
-\foreach \x in {{{chuoi_so_x}}}
+\foreach \x in {{-1,1}}
     \draw[thin] (\x,1pt)--(\x,-1pt) node [below] {{\footnotesize $\x$}};
-\foreach \y in {{{chuoi_so_y}}}
+\foreach \y in {{-1,1}}
     \draw[thin] (1pt,\y)--(-1pt,\y) node [left] {{\footnotesize $\y$}};
 \draw (0,0) node [below left] {{$O$}};
 \begin{{scope}}
@@ -16735,3 +16736,100 @@ def prt_34_L12_C1_B5_37():
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C1_B5_38]-SA-M4. Tìm tổng độ dài ngắn nhất nối 2 chiếc cọc qua 1 chốt.
+def prt_34_L12_C1_B5_38():
+	a=random.randint(7,15)
+	b=random.randint(18,30)
+	L=random.randint(20,30)
+
+	x=float(a*L/(a+b))
+	if x.is_integer():
+		noi_dung = (
+		f"Có hai chiếc cọc có chiều cao lần lượt là {a} m và {b} m, đặt cách nhau {L} m."
+		f" Chúng được buộc bởi hai sợi dây từ một cái chốt trên mặt đất nằm giữa hai chân cột tới đỉnh của mỗi cột."
+		f" Gọi ${{x}}$ (m) là khoảng cách từ chốt đến chân cọc ngắn. Tìm ${{x}}$ để tổng độ dài hai dây ngắn nhất."
+		)
+		dap_an=int(x)
+	else:
+		noi_dung = (
+		f"Có hai chiếc cọc có chiều cao lần lượt là {a} m và {b} m, đặt cách nhau {L} m."
+		f" Chúng được buộc bởi hai sợi dây từ một cái chốt trên mặt đất nằm giữa hai chân cột tới đỉnh của mỗi cột."
+		f" Gọi ${{x}}$ (m) là khoảng cách từ chốt đến chân cọc ngắn. Tìm ${{x}}$ để tổng độ dài hai dây ngắn nhất (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round(x,1):.1f}".replace(".",",")
+
+
+	noi_dung_loigiai=(
+		f"Gọi ${{A,B,M}}$ lần lượt là đỉnh của cọc thấp, cọc cao và chốt.\n\n"
+		f"$AM=\\sqrt{{x^2+{a**2}}},BM=\\sqrt{{{L}-x)^2+{b**2}}}$.\n\n"
+		f"Tổng chiều dài hai dây là:\n\n"
+		f"$f(x)=\\sqrt{{x^2+{a**2}}}+\\sqrt{{({L}-x)^2+{b**2}}}, 0<x<{L}$.\n\n"
+		f"$f'(x)=\\dfrac{{x}}{{\\sqrt{{x^2+{a**2}}}}}- \\dfrac{{{L}-x}}{{\\sqrt{{({L}-x)^2+{b**2}}}}}$.\n\n"
+		f"$f'(x)=0\\Leftrightarrow \\dfrac{{x}}{{\\sqrt{{x^2+{a**2}}}}}=\\dfrac{{{L}-x}}{{\\sqrt{{({L}-x)^2+{b**2}}}}}$\n\n"
+		f"$\\Leftrightarrow \\dfrac{{x^2}}{{x^2+{a**2}}}=\\dfrac{{({L}-x)^2}}{{({L}-x)^2+{b**2}}}$\n\n"
+		f"$\\Leftrightarrow \\dfrac{{x^2}}{{({L}-x)^2}}=\\dfrac{{{a**2}}}{{{b**2}}}$\n\n"
+		f"$\\Rightarrow \\dfrac{{x }}{{{L}-x}}={phan_so(a/b)}\\Rightarrow x={phan_so(x)}={dap_an}$."
+
+	)
+
+	code_hinh=(f" \\begin{{tikzpicture}}[scale=0.16, every node/.style={{font=\\small}}]\n\
+	% Coordinates: A = base of short pole at x=0, B = base of tall pole at x=30.\n\
+	\\coordinate (A) at (0,0);\n\
+	\\coordinate (B) at (30,0);\n\
+	\\def\\drawx{{10}} % stake position for visualization\n\
+	\\coordinate (C) at (\\drawx,0);\n\
+	\n\
+	\n\
+	% Tops of poles\n\
+	\\coordinate (T1) at ($(A)+(0,12)$); % short pole top\n\
+	\\coordinate (T2) at ($(B)+(0,28)$); % tall pole top\n\
+	\n\
+	\n\
+	% Ground line\n\
+	\\draw[thick, brown] (-2,0) -- (32,0);\n\
+	\n\
+	\n\
+	% Poles\n\
+	\\draw[line width=1.5pt, blue] (A) -- (T1);\n\
+	\\draw[line width=1.5pt, green!70!black] (B) -- (T2);\n\
+	\n\
+	\n\
+	% Wires from stake to tops\n\
+	\\draw[line width=1.2pt, red] (C) -- (T1);\n\
+	\\draw[line width=1.2pt, orange] (C) -- (T2);\n\
+	\n\
+	\n\
+	% Points\n\
+	\\fill[black] (A) circle (0.14) node[below=3pt] {{}};\n\
+	\\fill[black] (B) circle (0.14) node[below=3pt] {{cọc cao}};\n\
+	\\fill[black] (C) circle (0.14) node[below=6pt] {{chốt}};\n\
+	\\fill[black] (T1) circle (0.12) node[left=2pt] {{}};\n\
+	\\fill[black] (T2) circle (0.12) node[right=2pt] {{}};\n\
+	\n\
+	\n\
+	% Height labels\n\
+	\\node[left, blue] at ($(A)!0.5!(T1)$) {{{a} m}};\n\
+	\\node[right, green!70!black] at ($(B)!0.5!(T2)$) {{{b} m}};\n\
+	\n\
+	\n\
+	% Ground distances (x and 30-x)\n\
+	\\draw[<->] ($(A)+(0,-1.6)$) -- ($(C)+(0,-1.6)$) node[midway, below] {{$x$ m}};\n\
+\n\
+\n\
+\\end{{tikzpicture}}")
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an

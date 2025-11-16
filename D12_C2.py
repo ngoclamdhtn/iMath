@@ -8713,3 +8713,142 @@ def mnj_34_jkl_L12_C2_B3_46():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C2_B3_47]-M2. Tìm điều kiện để 2 vectơ cùng phương
+def mnj_34_jkl_L12_C2_B3_47():
+	u,v = random.sample(["a","b","c","d","u","v"],2)
+	a1,a2,a3=random.sample([i for i in range(-5,6) if i!= 0],3)
+	b1,b2,b3=random.sample([i for i in range(-5,6) if i!= 0],3)
+	x=a2*b1/a1-b2
+	y=a3*b1/a1-b3
+	noi_dung=(
+	f"Trong không gian ${{Oxyz}}$, cho hai vectơ ${vec(u)}=({a1};{a2};{a3})$ và ${vec(v)}=({b1};x+{b2};y+{b3})$."
+	f" Biết rằng ${vec(u)}$ và ${vec(v)}$ cùng phương. Tính tổng $x+y$."
+	)
+	
+
+	kq=x+y
+	kq_false = set()
+	while len(kq_false) < 5:
+	    numbers = round(random.uniform(x+y-random.randint(1,2), x+y+random.randint(1,2)),1)
+	    if numbers!=kq:
+	    	kq_false.add(numbers)
+	    
+
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"${vec(u)}$ và ${vec(v)}$ cùng phương khi:\n\n"
+	f"$\\dfrac{{{b1}}}{{{a1}}}=\\dfrac{{x+{b2}}}{{{a2}}}=\\dfrac{{y+{b3}}}{{{a3}}}$\n\n"
+	f"$\\Rightarrow \\dfrac{{x+{b2}}}{{{a2}}}={phan_so(b1/a1)}, \\dfrac{{y+{b3}}}{{{a3}}}={phan_so(b1/a1)}$\n\n"
+	f"$\\Rightarrow x={phan_so(x)}, y={phan_so(y)}$\n\n"
+	f"$\\Rightarrow x+y={phan_so(x+y)}$."
+	)
+	noi_dung=noi_dung.replace("+-","-")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+
+	pa_A= f"*${{{phan_so(kq)}}}$"
+	pa_B= f"${{{phan_so(kq2)}}}$"
+	pa_C= f"${{{phan_so(kq3)}}}$"
+	pa_D= f"${{{phan_so(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C2_B3_48]-M2. Tìm điều kiện để 3 điểm thẳng hàng
+def mnj_34_jkl_L12_C2_B3_48():
+	u,v = random.sample(["a","b","c","d","u","v"],2)
+	while True:
+		u1,u2,u3=random.sample([i for i in range(-5,6) if i!= 0],3)
+		v1,v2,v3=random.sample([i for i in range(-5,6) if i!= 0],3)
+		c3=random.choice([i for i in range(-5,6) if i!= 0])
+		if all([v1-u1!=0, v2-u2!=0, v3-u3!=0]):
+			break
+	A,B,C= random.sample(["A","B","C","D","E","F","M","N"],3)
+	noi_dung=(
+	f"Trong không gian ${{Oxyz}}$, cho các điểm ${A}({u1};{u2};{u3}),{B}({v1};{v2};{v3})$ và ${C}(x;y;{c3})$."
+	f" Biết rằng ba điểm ${{{A},{B},{C}}}$ thẳng hàng. Tính $x+y$."
+	)
+
+	a1,a2,a3=v1-u1, v2-u2, v3-u3
+	t=(c3-u3)/a3
+	x,y=a1*t+u1, a2*t+u2
+
+	kq=x+y
+	kq_false = set()
+	while len(kq_false) < 5:
+	    numbers = round(random.uniform(x+y-random.randint(1,2), x+y+random.randint(1,2)),1)
+	    if numbers!=kq:
+	    	kq_false.add(numbers)
+	    
+
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"${{{A},{B},{C}}}$ thẳng hàng khi ${vec(f"{A}{B}")}$ và ${vec(f"{A}{C}")}$ là cùng phương.\n\n"
+	f"${vec(f"{A}{B}")}=({a1};{a2};{a3})$ và ${vec(f"{A}{C}")}=(x-{u1};y-{u2};{c3-u3})$ cùng phương khi:\n\n"
+	f"$\\dfrac{{x-{u1}}}{{{a1}}}=\\dfrac{{y-{u2}}}{{{a2}}}=\\dfrac{{{c3-u3}}}{{{a3}}}$\n\n"
+	f"$\\Rightarrow \\dfrac{{x-{u1}}}{{{a1}}}={phan_so((c3-u3)/a3)}, \\dfrac{{y-{u2}}}{{{a2}}}={phan_so((c3-u3)/a3)}$\n\n"
+	f"$\\Rightarrow x={phan_so(x)}, y={phan_so(y)}$\n\n"
+	f"$\\Rightarrow x+y={phan_so(x+y)}$."
+	)
+	noi_dung=noi_dung.replace("+-","-").replace("--","+")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
+
+	pa_A= f"*${{{phan_so(kq)}}}$"
+	pa_B= f"${{{phan_so(kq2)}}}$"
+	pa_C= f"${{{phan_so(kq3)}}}$"
+	pa_D= f"${{{phan_so(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an

@@ -1791,8 +1791,8 @@ def yy3yy_L10_C4_B1_22():
     f"$\\cot {a} = \\tan {b}$",
     f"$\\sin {a} \\cdot \\sin {b} = \\sin {a} \\cos {a}$",
     f"$\\cos {a} \\cdot \\cos {b} = \\sin {a} \\cos {a}$",
-    f"$\\sin^2 {a} + \\cos^2 {b} = 1$",
-    f"$\\cos^2 {a} + \\sin^2 {b} = 1$",
+    f"$\\sin^2 {a} + \\sin^2 {b} = 1$",
+    f"$\\cos^2 {a} + \\cos^2 {b} = 1$",
     f"$\\tan {a} \\cdot \\tan {b} = 1$",
     f"$\\cot {a} \\cdot \\cot {b} = 1$",]
     random.shuffle(kq_false)
@@ -3483,7 +3483,7 @@ def yy3yy_L10_C4_B2_18():
 
     noi_dung = f"Để đo chiều rộng ${{AB}}$ của một khúc sông, người ta chọn điểm ${{C}}$.  Sau đó,  đo khoảng cách ${{BC}}$, các góc ${{B}}$ và ${{C}}$. Biết rằng ${{BC = {c}}}$ m, $\\widehat{{B}} = {b}^{{\\circ}}$,  $\\widehat{{C}} = {a}^{{\\circ}}$. Tìm chiều rộng ${{AB}}$ của khúc sông đó (làm tròn đến chữ số hàng đơn vị)."
 
-    noi_dung_loigiai=( f" Ta có $\\widehat{{A}}= 180^{{\\circ}} -  \\widehat{{B}} -\\widehat{{C}} =180^{{\\circ}}- {b}^{{\\circ}} - {c}^{{\\circ}}={180-b-a}^{{\\circ}}$. \n\n"
+    noi_dung_loigiai=( f" Ta có $\\widehat{{A}}= 180^{{\\circ}} -  \\widehat{{B}} -\\widehat{{C}} =180^{{\\circ}}- {b}^{{\\circ}} - {a}^{{\\circ}}={180-b-a}^{{\\circ}}$. \n\n"
        f" Áp dụng định lí sin ta có \n\n" 
         f"$\\dfrac{{AB}}{{\\sin C}} = \\dfrac{{BC}}{{\\sin A}} \\Rightarrow AB = \\dfrac{{BC\\sin C}}{{\\sin A}}  = \\dfrac{{{c}\\sin {a}^{{\\circ}}}}{{\\sin {180-b-a}^{{\\circ}}}} \\approx {kq} m $.")
 
@@ -3816,8 +3816,7 @@ def yy3yy_L10_C4_B2_25():
 
     kq=a**2*sin(goc_rad)
     kq_f=[
-    1/2*a**2*sin(goc_rad),
-    abs(a**2*cos(goc_rad)),
+    1/2*a**2*sin(goc_rad), 
     4*a**2*sin(goc_rad),
     3*a**2*sin(goc_rad)
     ]

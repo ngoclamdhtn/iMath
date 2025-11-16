@@ -4,7 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
-
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+ 
 #Code trả về latex phân số
 def hien_phan_so(t):
     m=latex(Rational(t).limit_denominator(1000000000000))
@@ -790,9 +793,399 @@ def npl_mk_L10_C3_B1_11():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C3_B1_12]-M2. Tìm hàm số biểu diễn giá bán khi được giảm r% từ món thứ hai
+def npl_mk_L10_C3_B1_12():
+    r=random.randint(3,10)    
+    dip=random.choice(["khai trương", "Noel", "Tết âm lịch" ])
+    chon=random.randint(1,3)
+    if chon==1:
+        a=random.randint(5,20)*1000        
+        keo=random.choice(["gói kẹo", "hộp bánh", "phần khoai chiên", "túi bánh snack", ])        
+    
+    if chon==2:
+        a=random.randint(15,30)*1000       
+        keo=random.choice(["hộp bút chì", "hộp bút màu", "bình nước", "bộ thước kẻ"])
+
+    if chon==3:
+        a=random.randint(50,80)*1000        
+        keo=random.choice([ "chai sữa tắm", "bộ xếp hình", "hộp mặt nạ dưỡng da", "tuýp kem dưỡng"])
+
+    
+    noi_dung=(
+        f"Một cửa hàng nhân dịp {dip} đã đồng loạt giảm giá các sản phẩm."
+        f" Trong đó có chương trình nếu mua một {keo} từ thứ hai trở đi sẽ được giảm ${{{r}\\%}}$ so với giá ban đầu."
+        f" Biết giá {keo} ban đầu là {a} đồng. Gọi ${{y}}$ là số tiền chi trả khi mua ${{x}}$ {keo}."
+        f" Khẳng định nào sau đây đúng?"
+        )
+    m=a-b
+    b=int(a*r/100)    
+
+    kq=random.choice([f"$y={m}x+{a-m}$"])
+    kq_false=[
+    f"$y={m}x+{a}$",
+    f"$y={a}x+{b}$",
+    f"$y={a}x+{a-m}$",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f" Gói thứ nhất người đó trả ${{{a}}}$ đồng.\n\n"
+    f" Số {keo} còn lại là $x-1$ và số tiền phải trả là:\n\n"
+    f" ${a}-{r}\\%.{a}={m}$.\n\n"
+    f" Số tiền chi trả khi mua ${{x}}$ {keo} là:\n\n"
+    f" $y={a}+(x-1).{m}={m}x+{a-m}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C3_B1_13]-M2. Tìm hàm số biểu diễn giá taxi
+def npl_mk_L10_C3_B1_13():
+    a= int(round(random.uniform(12, 16), 1)*1000)
+    b=int(round(random.uniform(9, 11), 1)*1000)
+    t=random.randint(1,5)
+    noi_dung=(
+    f"Một hãng taxi đặt giá cước vận chuyển như sau:"
+    f" Giá {t} km đầu tiên là {a} đồng, giá các km tiếp theo là {b} đồng."
+    f" Gọi ${{x}}$ là số km khách hàng di duyển, ${{y}}$ là số tiền chi trả."
+    f" Khẳng định nào sau đây đúng?"
+    )
 
 
+    kq=(
+    f"y=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {a}x, \\text{{ khi }} 0<x \\le {t} \\\\ \n\
+    {b}x+{a*t-b*t}, \\text{{ khi }} x>{t}\n\
+    \\end{{array}} \\right.")
+    kq_false=[
 
+    f"y=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {a}x, \\text{{ khi }} 0< x \\le {t} \\\\ \n\
+    {b}x, \\text{{ khi }} x>{t}\n\
+    \\end{{array}} \\right.",
+
+    f"y=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {a}x, \\text{{ khi }} 0< x \\le {t} \\\\ \n\
+    {b}x+{a*t}, \\text{{ khi }} x>{t}\n\
+    \\end{{array}} \\right.",
+
+    f"y=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {a}x, \\text{{ khi }} 0< x \\le {t} \\\\ \n\
+    {b}x-{b*t}, \\text{{ khi }} x>{t}\n\
+    \\end{{array}} \\right.",
+
+    f"y=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {a}x, \\text{{ khi }} 0< x \\le {t} \\\\ \n\
+    {b}x-{a}, \\text{{ khi }} x>{t}\n\
+    \\end{{array}} \\right.",
+
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Nếu $0<x\\le {t}$ thì số tiền chi trả là: ${{{a}x}}$.\n\n"
+    f"Nếu $x>{t}$ thì số tiền chi trả là:\n\n"
+    f"$y={a}.{t}+{b}.(x-{t})={b}x+{a*t-b*t}$.\n\n"
+    f"Số tiền chi trả là:\n\n"
+    f"$y=\\left\\{{ \\begin{{array}}{{l}} \n\
+    {a}x, \\text{{ khi }} 0< x \\le {t} \\\\ \n\
+    {b}x+{a*t-b*t}, \\text{{ khi }} x>{t}\n\
+    \\end{{array}} \\right.$"
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+
+    pa_A= f"*${kq}$".replace("+-","-")
+    pa_B= f"${kq2}$".replace("+-","-")
+    pa_C= f"${kq3}$".replace("+-","-")
+    pa_D= f"${kq4}$".replace("+-","-")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D10_C3_B1_14]-SA-M2. Tìm số vật có thể mua khi giảm giá r% từ vật thứ 2
+def npl_mk_L10_C3_B1_14():
+    x=sp.symbols("x")
+       
+    dip=random.choice(["khai trương", "Noel", "Tết âm lịch" ])
+    ten=random.choice(["An", "Nam", "Minh", "Phương", "Thảo", "Hoa", "Nga"])
+
+    chon=random.randint(1,3)
+    
+    if chon==1:
+        a=random.randint(5,20)*1000
+        tien=random.randint(80,150)*1000    
+        keo=random.choice(["gói kẹo", "hộp bánh", "phần khoai chiên", "túi bánh snack", ])
+    
+    if chon==2:
+        a=random.randint(15,30)*1000
+        tien=random.randint(100,200)*1000
+        keo=random.choice(["hộp bút chì", "hộp bút màu", "bình nước", "bộ thước kẻ"])
+
+    if chon==3:
+        a=random.randint(50,80)*1000
+        tien=random.randint(200,500)*1000     
+        keo=random.choice([ "chai sữa tắm", "bộ xếp hình", "hộp mặt nạ dưỡng da", "tuýp kem dưỡng"
+   ])
+
+    r=random.randint(3,10)
+    b=int(a*r/100)
+    m=a-b        
+    x=random.randint(10,20)
+    y=m*x+a-m
+    
+    noi_dung=(
+        f"Một cửa hàng nhân dịp {dip} đã đồng loạt giảm giá các sản phẩm."
+        f" Trong đó có chương trình nếu mua một {keo} từ thứ hai trở đi sẽ được giảm ${{{r}\\%}}$ so với giá ban đầu."
+        f" Biết giá {keo} ban đầu là {a} đồng."
+        f" Bạn {ten} có {tien} đồng. Hỏi bạn {ten} có thể mua được tối đa bao nhiêu {keo}?")    
+    
+    x_0=(tien-a+m)/m
+    x_0_round=f"{round_half_up(x_0,2):.2f}".replace(".",",")
+
+    dem=0
+    for i in range(1,int(x_0)+1):
+        if i <x_0:
+            dem+=1
+        
+    dap_an=dem
+
+    noi_dung_loigiai=(
+    f" Mua {keo} thứ nhất người đó trả ${{{a}}}$ đồng.\n\n"
+    f" Số {keo} còn lại là $x-1$ và số tiền phải trả là:\n\n"
+    f" ${a}-{r}\\%.{a}={m}$.\n\n"
+    f" Số tiền chi trả khi mua ${{x}}$ {keo} là:\n\n"
+    f" $y={a}+(x-1).{m}={m}x+{a-m}$.\n\n"
+    f" Ta có: ${m}x+{a-m}\\le {tien}\\Rightarrow x\\le ={x_0_round}$.\n\n"
+    f" Số {keo} mà bạn {ten} có thể mua là {dem}." )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B1_15]-SA-M2. Tìm số nguyên m để y=ax+b đồng biến (nghịch biến) trên R
+def npl_mk_L10_C3_B1_15():
+    x,m=sp.symbols("x,m")
+    k=random.randint(50,90)
+    a=random.randint(1,6)
+    b= random.choice([i for i in range(-9, 20) if i!=0])
+    c=random.choice([i for i in range(-9, 9) if i!=0])
+    d=random.choice([i for i in range(-9, 9) if i!=0])
+    chon=random.randint(1,4)   
+
+    if chon==1:
+        noi_dung = (
+        f"Tìm số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] để hàm số "
+        f" $y=({latex(a*m+b)})x+{latex(c*m+d)}$ đồng biến trên $\\mathbb{{R}}$."
+        )
+        m_0=-b/a
+        dem=0
+        for i in range(-k,k+1):
+            if i>m_0:
+                dem+=1
+        dap_an=dem
+
+        noi_dung_loigiai=(
+        f"$y=({latex(a*m+b)})x+{latex(c*m+d)}$ đồng biến trên $\\mathbb{{R}}$ khi\n\n"
+        f"${latex(a*m+b)}>0\\Rightarrow m>{phan_so(m_0)}$.\n\n"
+        f"Số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] là: {dem}."
+        )
+    
+    if chon==2:
+        noi_dung = (
+        f"Tìm số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] để hàm số "
+        f" $y=({latex(a*m+b)})x+{latex(c*m+d)}$ nghịch biến trên $\\mathbb{{R}}$."
+        )
+        m_0=-b/a
+        dem=0
+        for i in range(-k,k+1):
+            if i<m_0:
+                dem+=1
+        dap_an=dem
+
+        noi_dung_loigiai=(
+        f"$y=({latex(a*m+b)})x+{latex(c*m+d)}$ nghịch biến trên $\\mathbb{{R}}$ khi\n\n"
+        f"${latex(a*m+b)}<0\\Rightarrow m<{phan_so(m_0)}$.\n\n"
+        f"Số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] là: {dem}."
+        )
+
+    a=random.randint(-6,-1)
+    b= random.choice([i for i in range(-20, 20) if i!=0])
+    if chon==3:
+        noi_dung = (
+        f"Tìm số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] để hàm số "
+        f" $y=({latex(a*m+b)})x+{latex(c*m+d)}$ đồng biến trên $\\mathbb{{R}}$."
+        )
+        m_0=-b/a
+        dem=0
+        for i in range(-k,k+1):
+            if i<m_0:
+                dem+=1
+        dap_an=dem
+
+        noi_dung_loigiai=(
+        f"$y=({latex(a*m+b)})x+{latex(c*m+d)}$ đồng biến trên $\\mathbb{{R}}$ khi\n\n"
+        f"${latex(a*m+b)}>0\\Rightarrow m<{phan_so(m_0)}$.\n\n"
+        f"Số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] là: {dem}."
+        )
+
+    if chon==4:
+        noi_dung = (
+        f"Tìm số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] để hàm số "
+        f" $y=({latex(a*m+b)})x+{latex(c*m+d)}$ nghịch biến trên $\\mathbb{{R}}$."
+        )
+        m_0=-b/a
+        dem=0
+        for i in range(-k,k+1):
+            if i>m_0:
+                dem+=1
+        dap_an=dem
+
+        noi_dung_loigiai=(
+        f"$y=({latex(a*m+b)})x+{latex(c*m+d)}$ nghịch biến trên $\\mathbb{{R}}$ khi\n\n"
+        f"${latex(a*m+b)}<0\\Rightarrow m>{phan_so(m_0)}$.\n\n"
+        f"Số các giá trị nguyên của ${{m}}$ thuộc đoạn [{-k};{k}] là: {dem}."
+        )
+
+    
+
+    
+    noi_dung=noi_dung.replace("+-","-")
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B1_16]-SA-M2. Tìm số giá trị nguyên thuộc tập xác định của y=căn(ax+b)
+def npl_mk_L10_C3_B1_16():
+    x=sp.symbols("x")
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        a=random.randint(1,6)
+        b= random.choice([i for i in range(-20, 20) if i!=0])
+        f=sqrt(a*x+b)
+        k=random.randint(50,90)
+        dem=0
+        for i in range(-k,k+1):
+            if i>=-b/a:
+                dem+=1
+
+        noi_dung = (
+        f"Gọi ${{D}}$ là tập xác định của hàm số $y={latex(f)}$."
+        f" Tìm số các giá trị nguyên thuộc tập hợp $D\\cap [{-k};{k}]$." )
+        
+
+        noi_dung_loigiai=(
+        f"Hàm số xác định khi: ${latex(a*x+b)}\\ge 0 \\Rightarrow x\\ge {phan_so(-b/a)}$.\n\n"
+        f"Tập xác định: $D=[{phan_so(-b/a)};+\\infty)$.\n\n"
+        f"Số các giá trị nguyên thuộc tập hợp $D\\cap [{-k};{k}]$ là: {dem}." )
+        dap_an=dem 
+    
+    if chon==2:
+        a=random.randint(-6,-1)
+        b= random.choice([i for i in range(-20, 20) if i!=0])
+        f=sqrt(a*x+b)
+        k=random.randint(50,90)
+        dem=0
+        for i in range(-k,k+1):
+            if i<=-b/a:
+                dem+=1
+
+        noi_dung = (
+        f"Gọi ${{D}}$ là tập xác định của hàm số $y={latex(f)}$."
+        f" Tìm số các giá trị nguyên thuộc tập hợp $D\\cap [{-k};{k}]$." )
+        
+
+        noi_dung_loigiai=(
+        f"Hàm số xác định khi: ${latex(a*x+b)}\\ge 0 \\Rightarrow x\\le {phan_so(-b/a)}$.\n\n"
+        f"Tập xác định: $D=(-\\infty;{phan_so(-b/a)}]$.\n\n"
+        f"Số các giá trị nguyên thuộc tập hợp $D\\cap [{-k};{k}]$ là: {dem}." )
+        dap_an=dem 
+    
+       
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 ################ Bài 2: Hàm số bậc 2 #################
@@ -1203,23 +1596,15 @@ def npl_mk_L10_C3_B2_06():
 #[D10_C3_B2_07]. Tìm hàm số bậc 2 có đồ thị đi qua một điểm.
 def npl_mk_L10_C3_B2_07():
     x = sp.symbols('x')
-    a = random.randint(-5,5)
-    if a==0:
-        a = random.randint(1,3)              
-    b = random.randint(-6,6)
-    if b==0:
-        b = random.randint(-6,-1)   
-    c = random.randint(-5,5)
-
-    if c==0:
-        c = random.randint(1,5) 
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0]) 
 
     f=a*x**2 + b*x + c
     
 
-    x_0 = random.randint(-3,4)
-    if x_0==0:
-        x_0 = random.randint(-3,-1) 
+    x_0 = random.choice([i for i in range(-4, 5) if i!=0])
+
     y_0 = f.subs(x, x_0)        
    
     he_so_an = random.choice(["b","c"])
@@ -1229,20 +1614,38 @@ def npl_mk_L10_C3_B2_07():
             dau=""
         ham_so =f"y={latex(a*x**2)}+bx{dau}{c}"
         kq=f"${he_so_an}={b}$"
+
+        kq_false = set()
+        while len(kq_false) < 5:
+
+            numbers = random.randint(b-random.randint(1,5), b+random.randint(1,5))
+            if numbers!=b:
+                kq_false.add(numbers)
+        kq_false=list(kq_false)
+
         pa_A= f"*${he_so_an}={b}$"
-        pa_B= f"${he_so_an}={latex(-b)}$"
-        pa_C= f"${he_so_an}={latex(a+b)}$"
-        pa_D= f"${he_so_an}={latex(b**2)}$"
+        pa_B= f"${he_so_an}={kq_false[0]}$"
+        pa_C= f"${he_so_an}={kq_false[1]}$"
+        pa_D= f"${he_so_an}={kq_false[2]}$"
     else:
         dau ="+"
         if b<0:
             dau=""
         ham_so =f"y={latex(a*x**2)}{dau}{latex(b*x)}+c"
+
+        kq_false = set()
+        while len(kq_false) < 5:
+
+            numbers = random.randint(b-random.randint(1,5), b+random.randint(1,5))
+            if numbers!=c:
+                kq_false.add(numbers)
+
+        kq_false=list(kq_false)
         kq=f"${he_so_an}={c}$"
         pa_A= f"*${he_so_an}={c}$"
-        pa_B= f"${he_so_an}={latex(-c)}$"
-        pa_C= f"${he_so_an}={latex(c+b)}$"
-        pa_D= f"${he_so_an}={latex(c**2)}$"
+        pa_B= f"${he_so_an}={kq_false[0]}$"
+        pa_C= f"${he_so_an}={kq_false[1]}$"
+        pa_D= f"${he_so_an}={kq_false[2]}$"
 
     ten_diem=random.choice(["A","B","C","M","N","P"])       
 
@@ -2727,8 +3130,10 @@ def thay_cong_tru(st):
 #[D10_C3_B2_24]-M3. Tìm trục đối xứng của Parabol khi biết toạ độ giao điểm của nó với trục hoành.
 def npl_mk_L10_C3_B2_24():
     a=random.choice([i for i in range(-5,5) if i!=0])
-    x1=random.randint(-10,10)
-    x2=random.choice([i for i in range(-10,10) if i!=x1])
+    while True:
+        x1,x2=random.sample([i for i in range(-10,10)],2)
+        if x1+x2!=0:
+            break
     x0=(x1+x2)/2 
     x0=phan_so(x0)
     x=symbols("x")
@@ -2736,7 +3141,7 @@ def npl_mk_L10_C3_B2_24():
     noi_dung_loigiai=f" Trục đối xứng là đường thẳng $x= \\dfrac{{{x1}+{x2}}}{{2}}={x0}$"
 
     kq=f" $x={x0}$"
-    kq2=f"$x={phan_so(x1+x2 )}$ "
+    kq2=f"$x={phan_so(x1+x2)}$ "
     kq3=f"$x={phan_so((x1+x2)/3)}$"
     kq4=f"$x={phan_so((x1+x2)/4)}$ "
     noi_dung_loigiai=thay_cong_tru(noi_dung_loigiai)
