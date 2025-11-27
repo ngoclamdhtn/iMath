@@ -2182,6 +2182,140 @@ def gghik_L10_CX_B0_28():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_CX_B0_29]-SA-M2. Tìm m để 3 điểm thẳng hàng
+def gghik_L10_CX_B0_29():
+	m=sp.symbols("m")
+	A,B,C=random.sample(["A","B","C","D","E","F"],3)
+	while True:
+		a1,a2=random.sample(range(-10,10),2)
+		b1,b2=random.sample(range(-10,10),2)
+		c1,c2=random.sample(range(-10,10),2)
+		if c1==0:
+			continue
+		p=random.randint(-9,9)
+		x_AB, y_AB=b1-a1, b2-a2
+		x_AC, y_AC=c1*m+p-a1,c2-a2
+		eq = Eq(x_AC*y_AB,x_AB*y_AC)
+		nghiem=solve(eq,m)
+		m_value=nghiem[0]
+		if all([x_AB!=0, y_AB!=0, y_AC!=0, -5<m_value<99]):
+			break
+
+	noi_dung = (
+	f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2}),{C}({latex(c1*m+p)};{c2})$."
+	f" Tìm ${{m}}$ để ${{{A},{B},{C}}}$ thẳng hàng (kết quả làm tròn đến hàng phần mười)."
+	)
+	
+	dap_an=f"{round_half_up(m_value,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"${vec(f"{A}{B}")}=({x_AB};{y_AB}),{vec(f"{A}{C}")}=({latex(x_AC)};{y_AC})$.\n\n"
+	f"${{{A},{B},{C}}}$ thẳng hàng khi ${vec(f"{A}{B}")},{vec(f"{A}{C}")}$ cùng phương.\n\n"
+	f"$\\dfrac{{{latex(x_AC)}}}{{{x_AB}}}=\\dfrac{{{y_AC}}}{{{y_AB}}}$\n\n"
+	f"$\\Rightarrow m={phan_so(m_value)}={dap_an}$."
+
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_30]-SA-M2. Tìm M thuộc Ox(Oy) để |vecMA+vecMB| nhỏ nhất
+def gghik_L10_CX_B0_30():
+	A,B,M=random.sample(["A","B","C","D","E","F","M","N"],3)
+	while True:
+		a1,a2=random.sample(range(-10,10),2)
+		b1,b2=random.sample(range(-10,10),2)
+		if all([a1!=b1,a2!=b2]):
+			break
+	x_I,y_I=float((a1+b1)/2), float((a2+b2)/2)
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		if x_I.is_integer():
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b$."
+			)
+			dap_an=int(x_I)
+			
+
+			noi_dung_loigiai=(
+			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
+			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
+			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Ox}}$.\n\n"
+			f"Suy ra ${M}({phan_so(x_I)};0)\\Rightarrow a+b={dap_an}$."
+			)
+		else:
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+			)
+			dap_an=f"{round_half_up(x_I,1):.1f}".replace(".",",")
+
+			noi_dung_loigiai=(
+			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
+			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
+			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Ox}}$.\n\n"
+			f"Suy ra ${M}({phan_so(x_I)};0)\\Rightarrow a+b={dap_an}$.")
+	
+	if chon==2:
+		if y_I.is_integer():
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b$."
+			)
+			dap_an=int(y_I)
+			
+
+			noi_dung_loigiai=(
+			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
+			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
+			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Oy}}$.\n\n"
+			f"Suy ra ${M}(0;{phan_so(y_I)})\\Rightarrow a+b={dap_an}$."
+			)
+		else:
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+			)
+			dap_an=f"{round_half_up(y_I,1):.1f}".replace(".",",")
+
+			noi_dung_loigiai=(
+			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
+			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
+			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Oy}}$.\n\n"
+			f"Suy ra ${M}(0;{phan_so(y_I)})\\Rightarrow a+b={dap_an}$.")
+	
+
+	
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 

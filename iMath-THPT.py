@@ -3954,6 +3954,10 @@ class Ui_MainWindow(object):
                 L10_C10_B0_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_29]-SA-M2. Tìm m để 3 điểm thẳng hàng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_19]-SA-M3. Tìm vectơ x để m.vec(a)+nvec(x)=p.vec(b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -3967,6 +3971,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_30]-SA-M3. Tìm M thuộc Ox(Oy) để |vecMA+vecMB| nhỏ nhất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16475,6 +16483,14 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B0_28]-M2. Tìm toạ độ D để ABCD là Hình bình hành
                                             if dang_toan =="[D10_CX_B0_28]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_28()
+
+                                            #[D10_CX_B0_29]-M2. Tìm m để 3 điểm thẳng hàng
+                                            if dang_toan == "[D10_CX_B0_29]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_29()
+
+                                            #[D10_CX_B0_30]-M2. Tìm M thuộc Ox(Oy) để |vecMA+vecMB| nhỏ nhất
+                                            if dang_toan == "[D10_CX_B0_30]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_30()
 
 
                                                 
