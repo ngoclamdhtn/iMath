@@ -2353,6 +2353,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C4_B2_2, ["[D10_C4_B2_40]-TF-M2. Vật ở giữa sông. Xét Đ-S:góc B, định lí cosin, định lí sin, AB"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L10_C4_B2_2, ["[D10_C4_B2_42]-TF-M2. Quan sát tòa nhà từ 2 điểm A,B. Xét Đ-S: góc ACB, AC, BC, CH."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C4_B2_2, ["[D10_C4_B2_41]-TF-M3. Quan sát đỉnh núi từ A,B. Xét Đ-S:góc ABC, góc ACB, AC, CH."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C4_B2_3 = QTreeWidgetItem(L10_C4_B2, ["Trả lời ngắn"])
                 L10_C4_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C4_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5407,6 +5419,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_18]-TF-M3. Cho phóng xạ. Xét Đ-S: SHTQ, tìm u_n, limu_n, thời gian hết độc hại"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L11_C3_B1_2 = QTreeWidgetItem(L11_C3_B1, ["Trả lời ngắn"])
                 L11_C3_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C3_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5420,6 +5436,22 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_15]-SA-M3. Tính lim P(n)/Q(n) với P,Q là các cấp số nhân"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_19]-SA-M3. Tính tổng diện tích các hình vuông tăng vô hạn-1"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_20]-SA-M3. Tính tổng diện tích các hình vuông tăng vô hạn-2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_21]-SA-M3. Tính tổng diện tích các tam giác đều tăng vô hạn-2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_22]-SA-M3. Tính tổng các cạnh của các tam giác đều lùi vô hạn-2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -13364,6 +13396,26 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C3_B1_17]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B1_17()
 
+                                            #[D11_C3_B1_18]-M2. Cho phóng xạ. Xét Đ-S: SHTQ, tìm u_n, limu_n, thời gian hết độc hại 
+                                            if dang_toan == "[D11_C3_B1_18]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B1_18()
+
+                                            #[D11_C3_B1_19]-SA-M3. Tính tổng diện tích các hình vuông tăng vô hạn-1
+                                            if dang_toan == "[D11_C3_B1_19]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_19()
+
+                                            #[D11_C3_B1_20]-SA-M3. Tính tổng diện tích các hình vuông tăng vô hạn-2
+                                            if dang_toan == "[D11_C3_B1_20]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_20()
+
+                                            #[D11_C3_B1_21]-SA-M3. Tính tổng diện tích các tam giác đều
+                                            if dang_toan == "[D11_C3_B1_21]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_21()
+
+                                            #[D11_C3_B1_22]-SA-M3. Tính tổng các cạnh từ các tam giác đều lùi vô hạn
+                                            if dang_toan == "[D11_C3_B1_22]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_22()
+
                                             #Bài 2: GIỚI HẠN HÀM SỐ
                                             #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
                                             if dang_toan == "[D11_C3_B2_09]": 
@@ -16079,6 +16131,18 @@ class Ui_MainWindow(object):
                                             #[D10_C4_B2_39]-SA-M2. Toán thực tế: Cho tam giác đều. Tính tổng k.cách từ một điểm đến 3 cạnh.
                                             if dang_toan =="[D10_C4_B2_39]":
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D10_C4.yy3yy_L10_C4_B2_39()
+
+                                            #[D10_C4_B2_40]-TF-M2. Cho vật ở giữa sông. Xét Đ-S:góc B, định lí cosin, định lí sin, AB
+                                            if dang_toan == "[D10_C4_B2_40]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B2_40()
+
+                                            #[D10_C4_B2_41]-TF-M2. Quan sát đỉnh núi từ 2 điểm A,B. Xét Đ-S:góc ABC, góc ACB, AC, CH.
+                                            if dang_toan == "[D10_C4_B2_41]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B2_41()
+
+                                            #[D10_C4_B2_42]-TF-M2. Quan sát tòa nhà từ 2 điểm A,B. Xét Đ-S: góc ABC, AC, BC, CH.
+                                            if dang_toan == "[D10_C4_B2_42]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C4.yy3yy_L10_C4_B2_42()
                                             
 
 

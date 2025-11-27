@@ -3,7 +3,9 @@
 #[D12_C1_B1_01]-TF-M2. 
 def D12_C1_B1_01():
 
-	noi_dung = f" . Xét tính đúng-sai của các khẳng định sau. "		
+	noi_dung = (
+	f"
+	f"Xét tính đúng-sai của các khẳng định sau:"")		
 	debai_word= f"{noi_dung}\n"
 	
 	kq1_T=f"*" 

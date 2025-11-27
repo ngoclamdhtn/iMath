@@ -4941,3 +4941,437 @@ def yy3yy_L10_C4_B2_39():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
     f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C4_B2_40]-TF-M4. Vật ở giữa sông. Xét Đ-S:góc B, định lí cosin, định lí sin, AB.
+def yy3yy_L10_C4_B2_40():
+
+    ten=random.choice(["Minh", "Hùng", "An", "Dũng", "Linh" ])
+    vat=random.choice(["phao báo mực nước", "chiếc thuyền đánh cá bị mắc cạn", "một chiếc bè gỗ bị mắc kẹt", "một thân cây lớn trôi dạt bị mắc kẹt" ])
+    AC=random.randint(20,35)
+    goc_A, goc_C=random.sample([i for i in range(40,70)],2)
+    goc_B=180-goc_A-goc_C
+    goc_B_false=goc_B+random.randint(1,5)
+    goc_B_rad=math.radians(goc_B)
+    goc_C_rad= math.radians(goc_C)
+
+    AB=AC*sin(goc_C_rad)/sin(goc_B_rad)
+    AB_round=f"{round_half_up(AB,0):.0f}".replace(".",",")
+    AB_false=f"{round_half_up(AB+random.randint(2,4),0):.0f}".replace(".",",")
+    noi_dung = (
+    f" Để đo khoảng cách từ vị trí ${{A}}$ trên bờ sông đến vị trí ${{B}}$ của {vat} gần một cù lao giữa sông, bạn {ten} đi dọc bờ sông từ vị trí ${{A}}$ đến vị trí ${{C}}$ cách ${{A}}$ một khoảng bằng ${{{AC}}}$ m và đo các góc $\\widehat{{BAC}}={goc_A}^{{\\circ}}$, $\\widehat{{BCA}}={goc_C}^{{\\circ}}$."
+    f" Xét tính đúng-sai của các khẳng định sau(làm tròn kết quả đến hàng đơn vị): "
+    )    
+    
+    kq1_T=f"*$\\widehat{{BAC}}={goc_B}$" 
+    kq1_F=f"$\\widehat{{BAC}}={goc_B_false}$"
+
+    
+    HDG=f"$\\widehat{{BAC}}=180^\\circ - {goc_A}^\\circ-{goc_C}^\\circ={goc_B}^\\circ$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*$AB^2=BC^2+AC^2-{2*AC}\\cdot BC\\cdot \\cos {goc_C}^\\circ$"
+    kq2_F=f"$AB^2=BC^2+AC^2-{AC}\\cdot BC\\cdot\\cos {goc_C}^\\circ$"
+    
+    HDG=f"$AB^2=BC^2+AC^2-2\\cdot AC\\cdot BC\\cdot\\cos C=BC^2+AC^2-{2*AC}\\cdot BC\\cos {goc_C}^\\circ$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"*$AB=\\dfrac{{AC\\sin C}}{{\\sin B}}$" 
+    kq3_F=random.choice([
+        f"$AB=\\dfrac{{AC\\sin B}}{{\\sin C}}$",
+        f"$AB=\\dfrac{{AC\\cos B}}{{\\sin C}}$",
+        f"$AB=\\dfrac{{AC\\cos C}}{{\\cos B}}$"
+         ])
+    
+    HDG=f"$\\dfrac{{AB}}{{\\sin C}}=\\dfrac{{AC}}{{\\sin B}}\\Rightarrow AB=\\dfrac{{AC\\sin C}}{{\\sin B}}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* $AB={AB_round}$"
+    kq4_F=f"$AB={AB_false}$" 
+    
+    HDG=f"$AB=\\dfrac{{AC\\sin C}}{{\\sin B}}=\\dfrac{{{AC}\\sin {goc_C}^\\circ }}{{\\sin {goc_B}^\\circ }}={AB_round}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    code_hinh=(f"\\begin{{tikzpicture}}[scale=1, font=\\footnotesize,line join=round, line cap=round, >=stealth]\n\
+            \\path \n\
+            (0,0) coordinate (A)\n\
+            (1,3) coordinate (B)\n\
+            (6,0) coordinate (C)\n\
+            (-3,4) coordinate (D)\n\
+            (7,4) coordinate (E)\n\
+            (-3,1) coordinate (F)\n\
+            (7,1) coordinate (G);\n\
+            \\draw[line width=.2cm] (D)--(E) (F)--(G);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](2,2.5)  -- (4,2.5);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](-2,2.5)  -- (0,2.5);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](0,3)  -- (1,3);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](2,3)  -- (3,3);\n\
+            \\draw[decorate,decoration={{coil,aspect=0.4}}](1,2)  -- (2,2);\n\
+            \\draw[decorate,decoration={{coil,aspect=1}}](3,2)  -- (4,2);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](1,1)  -- (2,1);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](3,1.5)  -- (4,1.5);\n\
+            \\draw[decorate,decoration={{coil,aspect=0}}](4.3,1.5)  -- (5,1.5);\n\
+            \\draw (A)--(C) node[midway,above left]{{${AC}$m}}\n\
+            (A)--(B) (B)--(C); \n"
+            f'\\draw pic[draw,double,angle radius=.15cm]{{angle=C--A--B}};\n'
+            f'\\draw pic[draw,angle radius=.15cm]{{angle=B--C--A}};\n'
+            f'\\foreach \\i/\\g in {{A/-90,B/90,C/-90}}\n'
+            f'\\fill[black] (\\i) circle(1pt)+(\\g:4mm)node[scale=1]{{$\\i$}};\n \\end{{tikzpicture}}')
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai= f"{noi_dung}\n\n{file_name}"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B2_41]-TF-M4. Quan sát đỉnh núi từ 2 điểm A,B. Xét Đ-S:góc ABC, góc ACB, AC, CH.
+def yy3yy_L10_C4_B2_41():
+    AB=random.randint(50,70)
+    goc_A=random.randint(30,45)
+    goc_ACH=90-goc_A
+    goc_BCH=goc_ACH+random.randint(4,10)
+    goc_B=90-goc_BCH
+    goc_BAC=90-goc_A
+    goc_ABC=90+goc_B
+
+    goc_ACB=180-goc_BAC-goc_ABC
+    
+    goc_ABC_rad= math.radians(goc_ABC)
+    goc_ACB_rad= math.radians(goc_ACB)
+    goc_A_rad=math.radians(goc_A)
+
+    AC=AB*sin(goc_ABC_rad)/sin(goc_ACB_rad)
+    AC_round=f"{round_half_up(AC,1):.1f}".replace(".",",")
+    AC_false=f"{round_half_up(AC+random.randint(1,3),1):.1f}".replace(".",",")
+
+    CH=round_half_up(AC,1)*sin(goc_A_rad)
+    CH_round=f"{round_half_up(CH,1):.1f}".replace(".",",")
+    CH_false=f"{round_half_up(CH+random.randint(1,3),1):.1f}".replace(".",",")
+
+
+
+    noi_dung = (
+    f"Từ hai vị trí ${{A}}$, ${{B}}$ của một tòa nhà người ta quan sát đỉnh ${{C}}$ của ngọn núi. Biết rằng độ cao ${{AB}}$ bằng ${{{AB}}}$ m, phương nhìn ${{AC}}$ tạo với phương nằm ngang một góc ${goc_A}^{{\\circ}}$, phương nhìn ${{BC}}$ tạo với phương nằm ngang một góc ${goc_B}^\\circ$ (các kết quả làm tròn đến hàng phần trăm)."
+    f" Xét tính đúng-sai của các khẳng định sau:"
+    )    
+    
+    kq1_T=f"*$\\widehat{{ACB}}={goc_ACB}^\\circ$" 
+    kq1_F=f"$\\widehat{{ACB}}={goc_ACB+random.randint(1,5)}^\\circ$"
+    
+    HDG=f"$\\widehat{{ACB}}=180^\\circ-(\\widehat{{BAC}}+\\widehat{{ABC}})=180^\\circ-({goc_BAC}^\\circ+{goc_ABC}^\\circ)={goc_ACB}^\\circ$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*$\\widehat{{ABC}}={goc_ABC}^\\circ$"
+    kq2_F=f"$\\widehat{{ABC}}={goc_ABC+random.randint(3,6)}^\\circ$"
+    
+    HDG=f"$\\widehat{{ABC}}=90^\\circ+{goc_B}^\\circ={goc_ABC}^\\circ$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"*$AC={AC_round}$" 
+    kq3_F=f"$AC={AC_false}$"
+    
+    HDG=(f" Ta có $\\dfrac{{AB}}{{\\sin \\widehat{{ACB}}}}=\\dfrac{{AC}}{{\\sin \\widehat{{ABC}}}}$.\n\n"
+    f"Nên $AC=\\dfrac{{AB\\sin \\widehat{{ABC}}}}{{\\sin \\widehat{{ACB}}}}$"
+    f"$=\\dfrac{{{AB}\\sin {goc_ABC}^\\circ }}{{\\sin {goc_ACB}^\\circ}}={AC_round}$." )
+
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*$CH={CH_round}$"
+    kq4_F=f"$CH={CH_false}$" 
+    
+    HDG=f"$CH=AC.\\sin \\widehat{{CAH}}={AC_round}.\\sin {goc_A}^\\circ={CH_round}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq2, kq1, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    code_hinh=f'\\begin{{tikzpicture}}[scale=1, font=\\footnotesize,line join=round, line cap=round, >=stealth]\n\
+            \\path \n\
+            (0,0) coordinate (E)\n\
+            (1,0) coordinate (A)\n\
+            (1,2) coordinate (B)\n\
+            (0,2) coordinate (D)\n\
+            (6,5) coordinate (C)\n\
+            (6,0) coordinate (H)\n\
+            (6,2) coordinate (G);\n\
+            \\fill[pattern=fivepointed stars](E)--(A)--(B)--(D)--cycle;\n\
+            \\draw \n\
+            (E)--(A)--(B)--(D)--(E) \n\
+            (E)--(H)--(C)\n\
+            (C)--(B)--(G)\n\
+            (C)--(A)\n\
+            (A)--(B)node[midway,right]{{${AB}$}};\n\
+            \\draw pic[draw,double,angle eccentricity=2,angle radius=7mm]{{angle=G--B--C}};\n\
+            \\draw pic[draw,angle eccentricity=2,angle radius=4mm]{{angle=H--A--C}};\n\
+            \\node at ($(A)+(0.8,0.25)$) {{${goc_A}^\\circ$}}; \n\
+    \\node at ($(B)+(1,0.25)$) {{${goc_B}^\\circ$}};\n\
+            \\foreach \\i/\\g in {{A/-90,B/90,C/0,H/0}}\n\
+            \\fill[black] (\\i) circle(1pt)+(\\g:4mm)node[scale=1]{{$\\i$}};\n\
+        \\end{{tikzpicture}}\n'
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai= f"{noi_dung}\n{file_name}\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C4_B2_42]-TF-M2. Quan sát tòa nhà từ 2 điểm A,B. Xét Đ-S: góc ABC, AC, BC, CH.
+def yy3yy_L10_C4_B2_42():
+    AB=random.randint(15,30)
+    goc_A=random.randint(40,60)
+    goc_B=goc_A-random.randint(8,15)
+    goc_ACB=goc_A-goc_B
+
+    goc_A_rad=math.radians(goc_A)
+    goc_B_rad=math.radians(goc_B)
+    goc_ACB_rad=math.radians(goc_ACB)
+
+    AC=AB*sin(goc_B_rad)/sin(goc_ACB_rad)
+    AC_round=f"{round_half_up(AC,1):.1f}".replace(".",",")
+    AC_false=f"{round_half_up(AC+random.randint(1,3),1):.1f}".replace(".",",")
+
+    BC=AB*sin(goc_A_rad)/sin(goc_ACB_rad)
+    BC_round=f"{round_half_up(BC,1):.1f}".replace(".",",")
+    BC_false=f"{round_half_up(BC+random.randint(1,3),1):.1f}".replace(".",",")
+    
+
+    noi_dung = (
+    f"Hai người dân đứng cách nhau ${{{AB}}}$ m cùng nhìn lên đỉnh của một tòa nhà theo góc nhìn lần lượt là ${goc_B}^{{\\circ}}$ và ${goc_A}^{{\\circ}}$ (tham khảo hình vẽ). Kết quả làm tròn đến hàng phần chục."
+    f"Xét tính đúng-sai của các khẳng định sau:")
+
+    kq1_T=f"*Góc nhìn từ đỉnh tòa nhà về hai phía $A$ và $B$ nơi hai người đang đứng là góc $\\widehat{{ACB}}$ có số đo ${goc_ACB}^{{\\circ}}$" 
+    kq1_F=f"Góc nhìn từ đỉnh tòa nhà về hai phía $A$ và $B$ nơi hai người đang đứng là góc $\\widehat{{ACB}}$ có số đo ${goc_A+goc_B}^{{\\circ}}$"
+    
+    HDG=f"$\\widehat{{ACB}}={goc_A}^\\circ-{goc_B}^\\circ={goc_ACB}^{{\\circ}}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*Khoảng cách từ vị trí người ${{A}}$ tới nóc của tòa nhà là ${{{AC_round}}}$ (m)"
+    kq2_F=f"Khoảng cách từ vị trí người ${{A}}$ tới nóc của tòa nhà là ${{{AC_false}}}$ (m)"
+    
+    HDG=(f"$\\dfrac{{AB}}{{\\sin C}}=\\dfrac{{AC}}{{\\sin B}}$"
+        f"$\\Rightarrow AC=\\dfrac{{AB.\\sin B}}{{\\sin C}}=\\dfrac{{{AB}.\\sin {goc_B}^\\circ }}{{\\sin {goc_ACB}^\\circ}}={AC_round}$.")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"*Khoảng cách từ vị trí người ${{B}}$ tới nóc của tòa nhà là ${{{BC_round}}}$ (m)" 
+    kq3_F=f"Khoảng cách từ vị trí người ${{B}}$ tới nóc của tòa nhà là ${{{BC_false}}}$ (m)"
+    
+    HDG=(f"$\\dfrac{{AB}}{{\\sin C}}=\\dfrac{{BC}}{{\\sin A}}$"
+        f"$\\Rightarrow BC=\\dfrac{{AB.\\sin A}}{{\\sin C}}=\\dfrac{{{AB}.\\sin {goc_A}^\\circ }}{{\\sin {goc_ACB}^\\circ}}={BC_round}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    AC=round(AC,1)
+    AC_round=f"{AC:.1f}".replace(".",",")
+    CH=AC*sin(goc_A_rad)
+    CH_round=f"{round_half_up(CH,1):.1f}".replace(".",",")
+    CH_false=f"{round_half_up(CH+random.randint(1,3),1):.1f}".replace(".",",")
+
+    kq4_T=f"*Chiều cao của tòa nhà là khoảng ${{{CH_round}}}$ m"
+    kq4_F=f"Chiều cao của tòa nhà là khoảng ${{{CH_false}}}$ m" 
+    
+    HDG=f"$CH=AC.\\sin A={AC_round}.\\sin {goc_A}^\\circ={CH_round}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    code_hinh=f"\\begin{{tikzpicture}}[scale=1, font=\\footnotesize,line join=round, line cap=round, >=stealth]\n\
+        \\foreach \\n in {{0,1,...,2}}\n\
+        {{\n\
+            \\node [rectangle,draw,minimum width=1cm,minimum height=1cm,pattern=north west lines] at (1.1*\\n cm, 0) {{}};\n\
+            \\node [rectangle,draw,minimum width=1cm,minimum height=1cm,pattern=dots] at (1.1*\\n cm, 1.1) {{}};\n\
+            \\node [rectangle,draw,minimum width=1cm,minimum height=1cm,pattern=north west lines] at (1.1*\\n cm, 2.1) {{}};\n\
+            \\node [rectangle,draw,minimum width=1cm,minimum height=1cm,pattern=dots] at (1.1*\\n cm, 3.1) {{}};\n\
+            \\node [rectangle,draw,minimum width=1cm,minimum height=1cm,pattern=north west lines] at (1.1*\\n cm, 4.1) {{}};\n\
+            \\node [rectangle,draw,minimum width=1cm,minimum height=1cm,pattern=dots] at (1.1*\\n cm, 5.1) {{}};\n\
+        }}\n\
+        \\path \n\
+        (0,0) coordinate (E)\n\
+        (6,-.5) coordinate (A)\n\
+        (8,-.5) coordinate (B)\n\
+        (2.7,5.6) coordinate (C)\n\
+        (2.7,-.5) coordinate (H);\n\
+        \\draw \n\
+        (H)--(B)--(C)\n\
+        (C)--(A);\n\
+        \\draw [<->](6,-.6)--(8,-.6)node[midway,below]{{$30$m}};\n\
+        \\draw pic[draw,double,angle eccentricity=2,angle radius=5mm]{{angle=C--B--A}};\n\
+        \\draw pic[draw,angle eccentricity=2,angle radius=4mm]{{angle=C--A--H}};\n\
+        \\node at ($(A)-(0.8,-0.5)$) {{${goc_A}^\\circ$}};\n\
+        \\node at ($(B)-(0.8,-0.5)$) {{${goc_B}^\\circ$}};    \n\
+        \\foreach \\i/\\g in {{A/-90,B/-90,C/90,H/-90}}\n\
+        \\fill[black] (\\i) circle(1pt)+(\\g:4mm)node[scale=1]{{$\\i$}};\n\
+    \\end{{tikzpicture}}\n" 
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai= f"{noi_dung}\n{file_name}\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an

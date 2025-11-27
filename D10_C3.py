@@ -817,8 +817,9 @@ def npl_mk_L10_C3_B1_12():
         f" Biết giá {keo} ban đầu là {a} đồng. Gọi ${{y}}$ là số tiền chi trả khi mua ${{x}}$ {keo}."
         f" Khẳng định nào sau đây đúng?"
         )
+    b=int(a*r/100)
     m=a-b
-    b=int(a*r/100)    
+        
 
     kq=random.choice([f"$y={m}x+{a-m}$"])
     kq_false=[

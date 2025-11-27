@@ -1513,6 +1513,452 @@ def gh11gh_L11_C3_B1_17():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C3_B1_18]-M2. Cho phóng xạ. Xét Đ-S: SHTQ, tìm u_n, limu_n, thời gian hết độc hại
+def gh11gh_L11_C3_B1_18():
+    u1=random.randint(5,30)/10
+    u1_round=f"{round_half_up(u1,1):.1f}".replace(".",",")
+    T=random.randint(15,30)*1000
+    k=random.randint(-10,-5)
+    u2=u1/2
+    u2_round=f"{round_half_up(u2,1):.1f}".replace(".",",")
+    u2_false=random.choice([u1/4,u1/3 ])
+    u2_false=f"{round_half_up(u2,1):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"  Có ${{{u1_round}}}$ kg chất phóng xạ độc hại. Biết rằng, cứ sau một khoảng thời gian $T={{{T}}}$ năm thì một nửa số chất phóng xạ này bị phân rã thành chất khác không độc hại đối với sức khoẻ của con người (${{T}}$ được gọi là chu kì bán rã). Biết rằng chất phóng xạ này sẽ không độc hại nữa nếu khối lượng chất phóng xạ còn lại bé hơn $10^{{{k}}}$ gam."
+    f" Gọi ${{u_n}}$ là khối lượng chất phóng xạ còn lại sau chu kì thứ ${{n}}$"
+    f" Xét tính đúng-sai của các khẳng định sau:")    
+    
+    kq1_T=f"* $u_2={u2_round}$" 
+    kq1_F=f"$u_2={u2_false}$"
+    
+    HDG=f"$u_2={phan_so(1/2)}u_1={phan_so(1/2)}.{u1_round}={u2_round}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*$u_n={u1_round}.\\left({phan_so(1/2)}\\right)^{{n-1}}$, với $n \\in \\mathbb{{N}}$"
+    kq2_F=f"$u_n={u1_round}.\\left({phan_so(1/2)}\\right)^{{n}}$, với $n \\in \\mathbb{{N}}$"
+    
+    HDG=(f"$u_n$ là cấp số nhân với $u_1={u1_round}, q={phan_so(1/2)}$.\n\n"
+        f"Do đó: $u_n={u1_round}.\\left({phan_so(1/2)}\\right)^{{n-1}}$, với $n \\in \\mathbb{{N}}$."
+        )
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    t=random.choice([random.randint(-10,-1), random.randint(1,10) ])
+
+    kq3_T=f"* $\\lim (u_n+{t})={t}$" 
+    kq3_F=f"$\\lim (u_n+{t})={-t}$"
+    
+    HDG=f"$\\lim (u_n+{t})=0+{t}={t}$."
+    HDG=HDG.replace("+-","-").replace("-+","-").replace("--","+")
+    kq3=random.choice([kq3_T, kq3_F])
+    kq3=kq3.replace("+-","-").replace("-+","-").replace("--","+")
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+     
+    
+    a=10**(k-3)/u1
+    b=log(a)/log(1/2)
+    n_0=f"{round_half_up(b,2):.2f}".replace(".",",")
+    n_1=f"{round_half_up(b+1,2):.2f}".replace(".",",")
+    
+    n, n_2=int(b+1),int(b+2)
+    if n>b+1:
+        nam=n
+    else:
+        nam=n_2
+
+    kq4_T=f"* Sau ít nhất ${{{nam}}}$ chu kì khối lượng chất phóng xạ đã cho ban đầu không còn độc hại đối với con người"
+    kq4_F=f"Sau ít nhất ${{{nam-random.randint(1,2)}}}$ chu kì khối lượng chất phóng xạ đã cho ban đầu không còn độc hại đối với con người"
+    HDG=(f" Để chất phóng xạ bé hơn $10^{{{k}}}$ gam thì:\n\n"
+        f"${u1_round}.10^3.\\left({phan_so(1/2)}\\right)^{{n-1}} < 10^{{{k}}}$\n\n"
+        f"$\\Rightarrow \\left({phan_so(1/2)}\\right)^{{n-1}}<\\dfrac{{10^{{{k-3}}}}}{{{u1_round}}}$\n\n"
+        f"$\\Rightarrow n-1>{n_0} \\Rightarrow n>{n_1}$.\n\n"
+        f"Do đó: sau ít nhất ${{{nam}}}$ chu kì khối lượng chất phóng xạ đã cho ban đầu không còn độc hại đối với con người."
+
+        )
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B1_19]-M3. Tính tổng diện tích các hình vuông tăng vô hạn
+def gh11gh_L11_C3_B1_19():
+    a=sqrt(random.randint(2,16))
+    st_a=f"{latex(a)}".replace(".0","")
+    code_hinh=(f" \\begin{{tikzpicture}}\n\
+            \\def\\a{{3}}\n\
+            \\def\\b{{0.5}}\n\
+            \\def\\levels{{10}}\n\
+            \\coordinate (A0) at (0, \\a);\n\
+            \\coordinate (B0) at (\\a, 2*\\a);\n\
+            \\coordinate (C0) at (2*\\a, \\a);\n\
+            \\coordinate (D0) at (\\a, 0);\n\
+            \\foreach \\i in {{1,...,\\levels}} {{\n\
+                \\coordinate (A\\i) at ($(A\\the\\numexpr\\i-1\\relax)!\\b!(B\\the\\numexpr\\i-1\\relax)$);\n\
+                \\coordinate (B\\i) at ($(B\\the\\numexpr\\i-1\\relax)!\\b!(C\\the\\numexpr\\i-1\\relax)$);\n\
+                \\coordinate (C\\i) at ($(C\\the\\numexpr\\i-1\\relax)!\\b!(D\\the\\numexpr\\i-1\\relax)$);\n\
+                \\coordinate (D\\i) at ($(D\\the\\numexpr\\i-1\\relax)!\\b!(A\\the\\numexpr\\i-1\\relax)$);\n\
+                \\draw  (A\\i) -- (B\\i) -- (C\\i) -- (D\\i) -- cycle;\n\
+            }}\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Từ hình vuông đầu tiên có cạnh bằng ${{{st_a}}}$, nối các trung điểm của bốn cạnh để tạo hình vuông tiếp theo."
+    f" Tính tổng diện tích ${{T}}$ của các hình vuông khi cho số hình vuông tăng lên vô hạn."
+    )
+    dap_an=2*a**2
+    n=sp.symbols("n")
+    q=sqrt(2)/2
+    canh_2=a*sqrt(2)/2
+    canh_3=canh_2*sqrt(2)/2
+    canh_n=a*q**(n-1)
+    noi_dung_loigiai=(
+    f"Diện tích hình vuông đầu tiên: $S_1 = {latex(a**2)}$.\n\n"
+    f"Cạnh hình vuông thứ 2 là: ${latex(canh_2)}\\Rightarrow S_2 = {latex((canh_2)**2)}$.\n\n"
+    f"Cạnh hình vuông thứ 3 là: ${latex(canh_3)}\\Rightarrow S_2 = {latex((canh_3)**2)}$.\n\n"
+    f"Cạnh hình vuông thứ n là: ${latex(a)}\\left({latex(q)}\\right)^{{n-1}}\\Rightarrow S_n = {latex((canh_n)**2)}$.\n\n"
+    f" $S_n$ là cấp số nhân lùi vô hạn với $u_1={a**2},q={phan_so(1/2)}$.\n\n"
+
+    f"$T={latex(a**2)}+{latex((canh_2)**2)}+{latex((canh_3)**2)}+ \\cdots+ {latex((canh_n)**2)}=\\dfrac{{{a**2}}}{{1-{phan_so(1/2)}}}={2*a**2}$.\n\n"
+    )    
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B1_20]-SA-M3. Tính tổng diện tích các hình vuông tăng vô hạn
+def gh11gh_L11_C3_B1_20():
+    a=sqrt(random.randint(2,16))
+    S_1=a**2
+    st_a=f"{latex(a)}".replace(".0","")
+    q=5/8
+    T=float(S_1/(1-q))
+    if T.is_integer():
+        noi_dung = (
+        f"Cho hình vuông $C_1$ có cạnh bằng ${{{st_a}}}$. Người ta chia mỗi cạnh thành ${{4}}$ phần bằng nhau và nối các điểm chia để tạo hình vuông ${{C_2}}$."
+        f" Tiếp tục quá trình này, tính tổng diện tích của các hình vuông."
+        )
+        dap_an=int(T)
+        noi_dung_loigiai=(
+        f"  Gọi hình vuông $C_1$ có cạnh $a_1 = {st_a}$ và có diện tích là $S_1 = a_1^2$.\n\n\
+            Cạnh của hình vuông $C_2$ là\n\n\
+            $ a_2 = \\sqrt{{\\left( \\dfrac{{3}}{{4}} a_1 \\right)^2 + \\left( \\dfrac{{1}}{{4}} a_1 \\right)^2}} = \\dfrac{{a_1 \\sqrt{{10}}}}{{4}}.$\n\n\
+            Diện tích của hình vuông $C_2$ là\n\n\
+            $S_2 = \\dfrac{{5}}{{8}} a_1^2 = \\dfrac{{5}}{{8}} S_1.$\n\n\
+            Cạnh của hình vuông $C_3$ là\n\n\
+            $a_3 = \\sqrt{{\\left( \\dfrac{{3}}{{4}} a_2 \\right)^2 + \\left( \\dfrac{{1}}{{4}} a_2 \\right)^2}} = \\dfrac{{a_2 \\sqrt{{10}}}}{{4}} = a_1 \\left( \\dfrac{{\\sqrt{{10}}}}{{4}} \\right)^2.$\n\n\
+            Diện tích của hình vuông $C_3$ là\n\n\
+            $S_3 = \\left( \\dfrac{{5}}{{8}} \\right)^2 a_1^2 = \\left( \\dfrac{{5}}{{8}} \\right)^2 S_1.$\n\n\
+            Dãy các hình vuông $C_1$, $C_2$, $C_3$, $\\ldots$ , $C_n$, $\\ldots$ có các diện tích lần lượt là $S_1$, $S_2$, $S_3$, $\\ldots$ , $S_n$, $\\ldots$ tạo thành một cấp số nhân lùi vô hạn với số hạng đầu là $u_1 = S_1 = {S_1}$ và công bội $q = \\dfrac{{5}}{{8}}$.\n\n\n\
+            Vậy tổng diện tích của các hình vuông là\n\n\
+            $S = S_1 + S_2 + S_3 + \\cdots + S_n + \\cdots = \\dfrac{{u_1}}{{1 - q}} = \\dfrac{{16}}{{1 - \\dfrac{{5}}{{8}}}} = {dap_an}$." 
+
+        )  
+    else:
+        noi_dung = (
+        f"Cho hình vuông $C_1$ có cạnh bằng ${{{st_a}}}$. Người ta chia mỗi cạnh thành ${{4}}$ phần bằng nhau và nối các điểm chia để tạo hình vuông ${{C_2}}$."
+        f" Tiếp tục quá trình này, tính tổng diện tích của các hình vuông (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"  Gọi hình vuông $C_1$ có cạnh $a_1 = {st_a}$ và có diện tích là $S_1 = a_1^2$.\n\n\
+            Cạnh của hình vuông $C_2$ là\n\n\
+            $ a_2 = \\sqrt{{\\left( \\dfrac{{3}}{{4}} a_1 \\right)^2 + \\left( \\dfrac{{1}}{{4}} a_1 \\right)^2}} = \\dfrac{{a_1 \\sqrt{{10}}}}{{4}}.$\n\n\
+            Diện tích của hình vuông $C_2$ là\n\n\
+            $S_2 = \\dfrac{{5}}{{8}} a_1^2 = \\dfrac{{5}}{{8}} S_1.$\n\n\
+            Cạnh của hình vuông $C_3$ là\n\n\
+            $a_3 = \\sqrt{{\\left( \\dfrac{{3}}{{4}} a_2 \\right)^2 + \\left( \\dfrac{{1}}{{4}} a_2 \\right)^2}} = \\dfrac{{a_2 \\sqrt{{10}}}}{{4}} = a_1 \\left( \\dfrac{{\\sqrt{{10}}}}{{4}} \\right)^2.$\n\n\
+            Diện tích của hình vuông $C_3$ là\n\n\
+            $S_3 = \\left( \\dfrac{{5}}{{8}} \\right)^2 a_1^2 = \\left( \\dfrac{{5}}{{8}} \\right)^2 S_1.$\n\n\
+            Dãy các hình vuông $C_1$, $C_2$, $C_3$, $\\ldots$ , $C_n$, $\\ldots$ có các diện tích lần lượt là $S_1$, $S_2$, $S_3$, $\\ldots$ , $S_n$, $\\ldots$ tạo thành một cấp số nhân lùi vô hạn với số hạng đầu là $u_1 = S_1 = {S_1}$ và công bội $q = \\dfrac{{5}}{{8}}$.\n\n\n\
+            Vậy tổng diện tích của các hình vuông là\n\n\
+            $S = S_1 + S_2 + S_3 + \\cdots + S_n + \\cdots = \\dfrac{{u_1}}{{1 - q}} = \\dfrac{{16}}{{1 - \\dfrac{{5}}{{8}}}} = {dap_an}$." 
+
+        )  
+    code_hinh=(f" \\begin{{tikzpicture}}\n\
+            \\def\\a{{3}}\n\
+            \\def\\b{{0.25}}\n\
+            \\def\\levels{{10}}\n\
+            \\coordinate (A0) at (0, 0);\n\
+            \\coordinate (B0) at (\\a, 0);\n\
+            \\coordinate (C0) at (\\a, \\a);\n\
+            \\coordinate (D0) at (0, \\a);\n\
+            \\foreach \\i in {{1,...,\\levels}} {{\n\
+                \\coordinate (A\\i) at ($(A\\the\\numexpr\\i-1\\relax)!\\b!(B\\the\\numexpr\\i-1\\relax)$);\n\
+                \\coordinate (B\\i) at ($(B\\the\\numexpr\\i-1\\relax)!\\b!(C\\the\\numexpr\\i-1\\relax)$);\n\
+                \\coordinate (C\\i) at ($(C\\the\\numexpr\\i-1\\relax)!\\b!(D\\the\\numexpr\\i-1\\relax)$);\n\
+                \\coordinate (D\\i) at ($(D\\the\\numexpr\\i-1\\relax)!\\b!(A\\the\\numexpr\\i-1\\relax)$);\n\
+                \\draw  (A\\i) -- (B\\i) -- (C\\i) -- (D\\i) -- cycle;\n\
+            }}\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+      
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B1_21]-SA-M3. Tính tổng diện tích các tam giác đều lùi vô hạn
+def gh11gh_L11_C3_B1_21():
+    a=sqrt(random.randint(2,16))
+    S_0=a**2*sqrt(3)/4
+    S_1=S_0/4
+    st_a=f"{latex(a)}".replace(".0","")
+    q=1/4
+    T=S_1/(1-q)
+
+    noi_dung = (
+    f"Cho tam giác đều ${{ABC}}$ có cạnh bằng ${{{st_a}}}$. Nối các trung điểm $A_1$, $B_1$, $C_1$ của ${{BC}}$, ${{CA}}$, ${{AB}}$ được tam giác đều ${{A_1B_1C_1}}$."
+    f" Tiếp tục nối các trung điểm $A_2$, $B_2$, $C_2$ của các cạnh $B_1C_1, C_1A_1, A_1B_1$ ta được tam giác đều $A_2B_2C_2$."
+    f" Tiếp tục nối các trung điểm đến vô hạn. Gọi $S_n$ là diện tích tam giác $A_nB_nC_n$."
+    f" Tính $S_1+S_2+\\cdots+S_n+\\cdots$ (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=f"{round_half_up(T,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+
+    f" Diện tích tam giác ${{ABC}}$ là $S_0 = {latex(S_0)}$.\n\n\
+$S_1 = \\dfrac{{1}}{{4}} S_0$, $S_2 = \\dfrac{{1}}{{4}} S_1$, $S_3 = \\dfrac{{1}}{{4}} S_2$, $\\ldots $\n\n\
+Do đó, $(S_n)$ là một cấp số nhân với công bội $q = \\dfrac{{1}}{{4}}$.\n\n\
+Tổng diện tích các tam giác đều $A_n B_n C_n$ là tổng của một cấp số nhân lùi vô hạn với công bội $q = \\dfrac{{1}}{{4}}$.\n\n\
+Do đó, tổng diện tích là\n\n\
+$S = S_1 + S_2 + S_3 + \\cdots + S_n + \\cdots = \\dfrac{{S_1}}{{1 - q}} = \\dfrac{{{latex(S_1)}}}{{1 - \\dfrac{{1}}{{4}}}}={dap_an}$." 
+
+    )  
+    code_hinh=(f"   \\begin{{tikzpicture}}\n\
+            \\def\\a{{4}}\n\
+            \\newcommand{{\\drawtriangle}}[3]{{\n\
+                \\draw (#1) -- (#2) -- (#3) -- cycle;\n\
+            }}\n\
+            \\newcommand{{\\midpoint}}[3]{{\n\
+                \\coordinate (#3) at ($(#1)!0.5!(#2)$);\n\
+            }}\n\
+            \\newcommand{{\\equilateraltriangle}}[3]{{\n\
+                \\coordinate (#3) at (0, 0);\n\
+                \\coordinate (#3-1) at (#1, 0); t\n\
+                \\coordinate (#3-2) at ($(#3-1)!1!(#3)$);\n\
+                \\coordinate (#3-3) at (rotate around={{60:(#3-1)}});\n\
+                \\draw (#3-1) -- (#3-2) -- (#3-3) -- cycle;\n\
+            }}\n\
+            \\coordinate (A) at (\\a/2, {{\\a*sqrt(3)/2}});\n\
+            \\coordinate (B) at (0, 0);\n\
+            \\coordinate (C) at (\\a, 0);\n\
+            \\drawtriangle{{A}}{{B}}{{C}};\n\
+            \\node at (A) [above] {{\\scriptsize $A$}};\n\
+            \\node at (B) [left] {{\\scriptsize $B$}};\n\
+            \\node at (C) [right] {{\\scriptsize $C$}};\n\
+            \\midpoint{{B}}{{C}}{{A1}}\n\
+            \\midpoint{{C}}{{A}}{{B1}}\n\
+            \\midpoint{{A}}{{B}}{{C1}}\n\
+            \\fill[gray!20] (A1) -- (B1) -- (C1) -- cycle;\n\
+            \\drawtriangle{{A1}}{{B1}}{{C1}};\n\
+            \\node at (A1) [below] {{\\scriptsize $A_1$}};\n\
+            \\node at (B1) [right] {{\\scriptsize $B_1$}};\n\
+            \\node at (C1) [left] {{\\scriptsize $C_1$}};\n\
+            \\midpoint{{B1}}{{C1}}{{A2}}\n\
+            \\midpoint{{C1}}{{A1}}{{B2}}\n\
+            \\midpoint{{A1}}{{B1}}{{C2}}\n\
+            \\fill[gray!35] (A2) -- (B2) -- (C2) -- cycle;\n\
+            \\drawtriangle{{A2}}{{B2}}{{C2}};\n\
+            \\node at (A2) [above] {{\\scriptsize $A_2$}};\n\
+            \\node at (B2) [left] {{\\scriptsize $B_2$}};\n\
+            \\node at (C2) [right] {{\\scriptsize $C_2$}};\n\
+            \\midpoint{{B2}}{{C2}}{{A3}}\n\
+            \\midpoint{{C2}}{{A2}}{{B3}}\n\
+            \\midpoint{{A2}}{{B2}}{{C3}}\n\
+            \\fill[gray!50] (A3) -- (B3) -- (C3) -- cycle;\n\
+            \\drawtriangle{{A3}}{{B3}}{{C3}};\n\
+            \\node at (A3) [below] {{\\scriptsize $A_3$}};\n\
+            \\node at (B3) [right] {{\\scriptsize $B_3$}};\n\
+            \\node at (C3) [left] {{\\scriptsize $C_3$}};\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)  
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B1_22]-SA-M2. Tính tổng các cạnh của các tam giác đều lùi vô hạn
+def gh11gh_L11_C3_B1_22():
+    a=sqrt(random.randint(2,16))
+    u1=a*sqrt(3)/2
+    u2=u1*1/2
+    u3=u2*1/2
+    st_a=f"{latex(a)}".replace(".0","")
+    q=1/2
+    T=u1/(1-q)
+
+    noi_dung = (
+    f"Cho tam giác đều ${{ABC}}$ có cạnh bằng ${{{st_a}}}$. Nối các trung điểm $A_1$, $B_1$, $C_1$ của ${{BC}}$, ${{CA}}$, ${{AB}}$ được tam giác đều ${{A_1B_1C_1}}$."
+    f" Tiếp tục nối các trung điểm $A_2$, $B_2$, $C_2$ của các cạnh $B_1C_1, C_1A_1,A_1B_1$ ta được tam giác đều $A_2B_2C_2$."
+    f" Tiếp tục nối các trung điểm đến vô hạn."
+    f"  Tính tổng các độ dài $l = A A_1 + A_1 A_2 + A_2 A_3 + \\cdots + A_{{n-1}} A_n + \\cdots$ (kết quả làm tròn đến hàng phần trăm).")
+    dap_an=f"{round_half_up(T,2):.2f}".replace(".",",")
+
+    noi_dung_loigiai=(
+
+    f" Đặt $u_1 = A A_1$, $u_2 = A_1 A_2$, $u_3 = A_2 A_3$,$\\ldots$, $u_n = A_{{n-1}} A_n$.\n\n\
+$u_1 = {latex(u1)}$, $u_2 =\\dfrac{{1}}{{2}} u_1={latex(u2)}$, $u_3 =\\dfrac{{1}}{{2}} u_2={latex(u3)}$,$\\ldots$, $u_n = \\dfrac{{1}}{{2}} u_{{n-1}}$,$\\ldots$\n\n\
+Do đó, $(u_n)$ là một cấp số nhân lùi vô hạn với công bội $q = \\dfrac{{1}}{{2}}$.\n\n\
+$l = \\dfrac{{u_1}}{{1 - q}} = \\dfrac{{{latex(u1)}}}{{1 -{phan_so(1/2)}}} = {dap_an}.$\n\
+ " 
+
+
+    )  
+    code_hinh=(f"   \\begin{{tikzpicture}}\n\
+            \\def\\a{{4}}\n\
+            \\newcommand{{\\drawtriangle}}[3]{{\n\
+                \\draw (#1) -- (#2) -- (#3) -- cycle;\n\
+            }}\n\
+            \\newcommand{{\\midpoint}}[3]{{\n\
+                \\coordinate (#3) at ($(#1)!0.5!(#2)$);\n\
+            }}\n\
+            \\newcommand{{\\equilateraltriangle}}[3]{{\n\
+                \\coordinate (#3) at (0, 0);\n\
+                \\coordinate (#3-1) at (#1, 0); t\n\
+                \\coordinate (#3-2) at ($(#3-1)!1!(#3)$);\n\
+                \\coordinate (#3-3) at (rotate around={{60:(#3-1)}});\n\
+                \\draw (#3-1) -- (#3-2) -- (#3-3) -- cycle;\n\
+            }}\n\
+            \\coordinate (A) at (\\a/2, {{\\a*sqrt(3)/2}});\n\
+            \\coordinate (B) at (0, 0);\n\
+            \\coordinate (C) at (\\a, 0);\n\
+            \\drawtriangle{{A}}{{B}}{{C}};\n\
+            \\node at (A) [above] {{\\scriptsize $A$}};\n\
+            \\node at (B) [left] {{\\scriptsize $B$}};\n\
+            \\node at (C) [right] {{\\scriptsize $C$}};\n\
+            \\midpoint{{B}}{{C}}{{A1}}\n\
+            \\midpoint{{C}}{{A}}{{B1}}\n\
+            \\midpoint{{A}}{{B}}{{C1}}\n\
+            \\fill[gray!20] (A1) -- (B1) -- (C1) -- cycle;\n\
+            \\drawtriangle{{A1}}{{B1}}{{C1}};\n\
+            \\node at (A1) [below] {{\\scriptsize $A_1$}};\n\
+            \\node at (B1) [right] {{\\scriptsize $B_1$}};\n\
+            \\node at (C1) [left] {{\\scriptsize $C_1$}};\n\
+            \\midpoint{{B1}}{{C1}}{{A2}}\n\
+            \\midpoint{{C1}}{{A1}}{{B2}}\n\
+            \\midpoint{{A1}}{{B1}}{{C2}}\n\
+            \\fill[gray!35] (A2) -- (B2) -- (C2) -- cycle;\n\
+            \\drawtriangle{{A2}}{{B2}}{{C2}};\n\
+            \\node at (A2) [above] {{\\scriptsize $A_2$}};\n\
+            \\node at (B2) [left] {{\\scriptsize $B_2$}};\n\
+            \\node at (C2) [right] {{\\scriptsize $C_2$}};\n\
+            \\midpoint{{B2}}{{C2}}{{A3}}\n\
+            \\midpoint{{C2}}{{A2}}{{B3}}\n\
+            \\midpoint{{A2}}{{B2}}{{C3}}\n\
+            \\fill[gray!50] (A3) -- (B3) -- (C3) -- cycle;\n\
+            \\drawtriangle{{A3}}{{B3}}{{C3}};\n\
+            \\node at (A3) [below] {{\\scriptsize $A_3$}};\n\
+            \\node at (B3) [right] {{\\scriptsize $B_3$}};\n\
+            \\node at (C3) [left] {{\\scriptsize $C_3$}};\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)  
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
     
  

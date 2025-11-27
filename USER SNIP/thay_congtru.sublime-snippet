@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+.replace("+-","-").replace("-+","-").replace("--","+")
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>thay_congtru</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
