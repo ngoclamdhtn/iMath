@@ -3962,19 +3962,55 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_21]-SA-M3. Cho A,B. Tìm M thỏa mãn MA=kMB"])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_21]-SA-M3. Cho A,B. Tìm M thỏa mãn MA=kMB."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_22]-SA-M3. Cho A,B,C. Tìm M thỏa mãn mAM+nAB=pAC"])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_22]-SA-M3. Cho A,B,C. Tìm M thỏa mãn mAM+nAB=pAC."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB"])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_30]-SA-M3. Tìm M thuộc Ox(Oy) để |vecMA+vecMB| nhỏ nhất"])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_30]-SA-M3. Tìm M thuộc Ox(Oy) để |vecMA+vecMB| nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_31]-SA-M3. Tìm M thuộc Ox(Oy) để |vecMA+vecMB+vecMC| nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_32]-SA-M3. Tìm M thuộc BC sao cho S_ABN=k_ACN."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_33]-SA-M3. Tìm M thuộc Ox sao cho MA^2+MB^2 nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_34]-SA-M3. Tìm M thuộc Oy sao cho MA^2+MB^2 nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_35]-SA-M3. Tìm M thuộc Ox sao cho MA^2+MB^2+MC^2 nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_36]-SA-M3. Tìm M thuộc Oy sao cho MA^2+MB^2+MC^2 nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_37]-SA-M3.Tìm M thuộc Ox(Oy) sao cho |m.vecMA+n.vecMB+p.vecMC| nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_38]-SA-M3.Tìm trực tâm của tam giác."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_39]-SA-M3.Tìm tọa độ tâm đường tròn ngoại tiếp tam giác."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16491,6 +16527,42 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B0_30]-M2. Tìm M thuộc Ox(Oy) để |vecMA+vecMB| nhỏ nhất
                                             if dang_toan == "[D10_CX_B0_30]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_30()
+
+                                            #[D10_CX_B0_31]-M2. Tìm M thuộc Ox(Oy) để |vecMA+vecMB+vecMC| nhỏ nhất
+                                            if dang_toan == "[D10_CX_B0_31]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_31()
+
+                                            #[D10_CX_B0_32]-M2. Tìm M thuộc BC sao cho S_ABN=k_ACN
+                                            if dang_toan == "[D10_CX_B0_32]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_32()
+
+                                            #[D10_CX_B0_33]-M2. Tìm M thuộc Ox sao cho MA^2+MB^2 nhỏ nhất.
+                                            if dang_toan == "[D10_CX_B0_33]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_33()
+
+                                            #[D10_CX_B0_34]-M2. Tìm M thuộc Oy sao cho MA^2+MB^2 nhỏ nhất.
+                                            if dang_toan == "[D10_CX_B0_34]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_34()
+
+                                            #[D10_CX_B0_35]-M2. Tìm M thuộc Ox sao cho MA^2+MB^2+MC^2 nhỏ nhất.
+                                            if dang_toan == "[D10_CX_B0_35]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_35()
+
+                                            #[D10_CX_B0_36]-M2. Tìm M thuộc Oy sao cho MA^2+MB^2+MC^2 nhỏ nhất.
+                                            if dang_toan == "[D10_CX_B0_36]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_36()
+
+                                            #[D10_CX_B0_37]-M2. Tìm M thuộc Ox,Oy sao cho |m.vecMA+n.vecMB+p.vecMC| nhỏ nhất.
+                                            if dang_toan == "[D10_CX_B0_37]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_37()
+
+                                            #[D10_CX_B0_38]-M2.  Tìm tọa độ trực tâm tam giác.
+                                            if dang_toan == "[D10_CX_B0_38]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_38()
+
+                                            #[D10_CX_B0_39]-M2.  Tìm tọa độ tâm đường tròn ngoại tiếp tam giác.
+                                            if dang_toan == "[D10_CX_B0_39]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_39()
 
 
                                                 

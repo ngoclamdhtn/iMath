@@ -2300,10 +2300,7 @@ def gghik_L10_CX_B0_30():
 			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Oy}}$.\n\n"
 			f"Suy ra ${M}(0;{phan_so(y_I)})\\Rightarrow a+b={dap_an}$.")
 	
-
 	
-
-		
 	debai_word= f"{noi_dung}\n"
 
 	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -2315,6 +2312,654 @@ def gghik_L10_CX_B0_30():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_31]-SA-M3. Tìm M thuộc Ox(Oy) để |vecMA+vecMB+vecMC| nhỏ nhất
+def gghik_L10_CX_B0_31():
+	A,B,C,M=random.sample(["A","B","C","D","E","F","M","N"],4)
+	while True:
+		a1,a2=random.sample(range(-10,10),2)
+		b1,b2=random.sample(range(-10,10),2)
+		c1,c2=random.sample(range(-10,10),2)
+		x_AB,y_AB=b1-a1, b2-a2
+		x_AC,y_AC=c1-a1, c2-a2
+		if all([a1!=b1,a2!=b2,a1!=c1, x_AB*y_AC!=x_AC*y_AB]):
+			break
+	x_G,y_G=float((a1+b1+c1)/3), float((a2+b2+c2)/3)
+
+	chon=random.randint(1,2)
+	
+	if chon==1:
+		if x_G.is_integer():
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b$.")
+			dap_an=int(x_G)			
+
+		else:
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."	
+			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."			)
+			dap_an=f"{round_half_up(x_G,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{G}}$ là trọng tâm của ${{{A}{B}{C}}}\\Rightarrow G({phan_so(x_G)};{phan_so(y_G)})$.\n\n"
+		f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{C}")}|=|3{vec(f"{M}G")}|=3{M}G$.\n\n"
+		f"${{{M}G}}$ nhỏ nhất khi {M} là hình chiếu của ${{G}}$ trên trục ${{Ox}}$.\n\n"
+		f"Suy ra ${M}({phan_so(x_G)};0)\\Rightarrow a+b={dap_an}$."
+		)
+
+	if chon==2:
+		if y_G.is_integer():
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b$.")
+			dap_an=int(y_G)			
+
+		else:
+			noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."	
+			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."			)
+			dap_an=f"{round_half_up(y_G,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi ${{G}}$ là trọng tâm của ${{{A}{B}{C}}}\\Rightarrow G({phan_so(x_G)};{phan_so(y_G)})$.\n\n"
+		f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{C}")}|=|3{vec(f"{M}G")}|=3{M}G$.\n\n"
+		f"${{{M}G}}$ nhỏ nhất khi {M} là hình chiếu của ${{G}}$ trên trục ${{Oy}}$.\n\n"
+		f"Suy ra ${M}(0;{phan_so(y_G)})\\Rightarrow a+b={dap_an}$."
+		)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_32]-SA-M3. Tìm M thuộc BC sao cho S_ABN=k_ACN
+def gghik_L10_CX_B0_32():
+	A,B,C,M=random.sample(["A","B","C","D","E","F","M","N"],4)
+	while True:
+		a1,a2=random.sample(range(-10,10),2)
+		b1,b2=random.sample(range(-10,10),2)
+		c1,c2=random.sample(range(-10,10),2)
+		x_AB,y_AB=b1-a1, b2-a2
+		x_AC,y_AC=c1-a1, c2-a2
+		if all([a1!=b1,a2!=b2,a1!=c1, x_AB*y_AC!=x_AC*y_AB]):
+			break
+	k=random.randint(2,5)
+	a, b=(k*c1+b1)/(1+k), (k*c2+b2)/(1+k)
+	T=float(a+b)
+	if T.is_integer():
+		noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
+		f" Điểm ${M}(a;b)$ thuộc cạnh ${{{B}{C}}}$ cho diện tích tam giác ${{{A}{B}{M}}}$ gấp ${{{k}}}$ lần diện tích tam giác ${{{A}{C}{M}}}$."
+		f" Tính $a+b$.")
+		dap_an=int(T)
+	else:
+		noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
+		f" Điểm ${M}(a;b)$ thuộc cạnh ${{{B}{C}}}$ cho diện tích tam giác ${{{A}{B}{M}}}$ gấp ${{{k}}}$ lần diện tích tam giác ${{{A}{C}{M}}}$."
+		f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười).")
+		dap_an=dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+
+	noi_dung_loigiai=(
+	f"$S_{{{A}{B}{M}}}={k}S_{{{A}{C}{M}}}\\Rightarrow {B}{M}={k}{C}{M} \\Rightarrow {vec(f"{B}{M}")}={k}{vec(f"{M}{C}")}$\n\n"
+	f"$\\Rightarrow (a-{b1};b-{b2})={k}({c1}-a;{c2}-b)$\n\n"
+	f"$\\Rightarrow a-{b1}={k}({c1}-a)$ và $b-{b2}={k}({c2}-b)$\n\n"
+	f"$\\Rightarrow a={phan_so(a)}, b={phan_so(b)}$.\n\n"
+	f"$\\Rightarrow a+b={dap_an}$.")
+	noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+	
+			
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_33]-SA-M3. Tìm M thuộc Ox sao cho MA^2+MB^2 nhỏ nhất.
+def gghik_L10_CX_B0_33():
+	A,B,M=random.sample(["A","B","C","D","E","F","M","N"],3)
+	while True:
+		a1,a2=random.sample(range(-10,11),2)
+		b1,b2=random.sample(range(-10,11),2)
+		b=-(2*a1+2*b1)
+		c=a1**2+a2**2+b1**2+b2**2
+		T=float(-b/4)
+
+		if all([a1!=b1,a2!=b2,T>-5]):
+			break	
+	
+	b=-(2*a1+2*b1)
+	c=a1**2+a2**2+b1**2+b2**2
+	T=float(-b/4)
+	if T.is_integer():
+		noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}),{B}({b1};{b2})$."
+		f" Điểm ${M}(a;0)$ thuộc trục ${{Ox}}$ sao cho ${M}{A}^2+{M}{B}^2$ nhỏ nhất."
+		f" Tìm ${{a}}$."
+		)
+		dap_an=int(T)
+	else:
+		noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}),{B}({b1};{b2})$."
+		f" Điểm ${M}(a;0)$ thuộc trục ${{Ox}}$ sao cho ${M}{A}^2+{M}{B}^2$ nhỏ nhất."
+		f" Tìm ${{a}}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"${M}{A}^2=(a-{a1})^2+{a2**2}$.\n\n"
+	f"${M}{B}^2=(a-{b1})^2+{b2**2}$.\n\n"
+	f"${M}{A}^2+{M}{B}^2=2a^2+{b}a+{c}$.\n\n"
+	f"${M}{A}^2+{M}{B}^2$ nhỏ nhất khi $a=-\\dfrac{{{b}}}{{2.2}}={dap_an}$."
+	)
+	noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_34]-SA-M3. Tìm M thuộc Oy sao cho MA^2+MB^2 nhỏ nhất.
+def gghik_L10_CX_B0_34():
+	A,B,M=random.sample(["A","B","C","D","E","F","M","N"],3)
+	while True:
+		a1,a2=random.sample(range(-10,11),2)
+		b1,b2=random.sample(range(-10,11),2)
+		b=-(2*a2+2*b2)
+        # b đổi vì cực trị theo tung độ m
+		c=(a1**2)+(b1**2)+a2**2+b2**2
+		T=float(-b/4)
+
+		if all([a1!=b1,a2!=b2,T>-5]):
+			break	
+	
+	b=-(2*a2+2*b2)
+	c=a1**2+a2**2+b1**2+b2**2
+	T=float(-b/4)
+
+	if T.is_integer():
+		noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}),{B}({b1};{b2})$."
+		f" Điểm ${M}(0;a)$ thuộc trục ${{Oy}}$ sao cho ${M}{A}^2+{M}{B}^2$ nhỏ nhất."
+		f" Tìm ${{a}}$."
+		)
+		dap_an=int(T)
+	else:
+		noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({a1};{a2}),{B}({b1};{b2})$."
+		f" Điểm ${M}(0;a)$ thuộc trục ${{Oy}}$ sao cho ${M}{A}^2+{M}{B}^2$ nhỏ nhất."
+		f" Tìm ${{a}}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"${M}{A}^2=({a1})^2+(a-{a2})^2$.\n\n"
+	f"${M}{B}^2=({b1})^2+(a-{b2})^2$.\n\n"
+	f"${M}{A}^2+{M}{B}^2=2a^2+{b}a+{c}$.\n\n"
+	f"${M}{A}^2+{M}{B}^2$ nhỏ nhất khi $a=-\\dfrac{{{b}}}{{2.2}}={dap_an}$."
+	)
+
+	noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_35]-SA-M3. Tìm M thuộc Ox sao cho MA^2+MB^2+MC^2 nhỏ nhất.
+def gghik_L10_CX_B0_35():
+    # Chọn tên điểm
+    A, B, C, M = random.sample(["A", "B", "C", "D", "E", "F", "M", "N"], 4)
+
+    # Sinh tọa độ ngẫu nhiên, đảm bảo không trùng
+    while True:
+        a1, a2 = random.sample(range(-10, 11), 2)
+        b1, b2 = random.sample(range(-10, 11), 2)
+        c1, c2 = random.sample(range(-10, 11), 2)
+
+        b_coef = -2 * (a1 + b1 + c1)
+        c_const = a1**2 + a2**2 + b1**2 + b2**2 + c1**2 + c2**2
+        T = -b_coef / 6  # vì hệ số a^2 = 3
+
+        if len({(a1,a2),(b1,b2),(c1,c2)}) == 3 and T > -5:
+            break
+
+    # Nội dung đề
+    if float(T).is_integer():
+        noi_dung = (
+            f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+            f"Điểm ${M}(a;0)$ thuộc trục ${{Ox}}$ sao cho ${M}{A}^2+{M}{B}^2+{M}{C}^2$ nhỏ nhất. "
+            f"Tìm ${{a}}$."
+        )
+        dap_an = str(int(T))
+    else:
+        noi_dung = (
+            f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+            f"Điểm ${M}(a;0)$ thuộc trục ${{Ox}}$ sao cho ${M}{A}^2+{M}{B}^2+{M}{C}^2$ nhỏ nhất. "
+            f"Tìm ${{a}}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an = f"{round_half_up(T, 1):.1f}".replace(".", ",")
+
+    # Lời giải
+    noi_dung_loigiai = (
+        f"${M}{A}^2=(a-{a1})^2+{a2**2}$\n\n"
+        f"${M}{B}^2=(a-{b1})^2+{b2**2}$\n\n"
+        f"${M}{C}^2=(a-{c1})^2+{c2**2}$\n\n"
+        f"Tổng bình phương: ${M}{A}^2+{M}{B}^2+{M}{C}^2 = 3 a^2 +{b_coef}a + {c_const}$\n\n"
+        f"Tổng này nhỏ nhất khi $a=-\\dfrac{{{b_coef}}}{{6}}={dap_an}$."
+    )
+
+    # Làm sạch ký tự
+    for s in ["+-", "-+", "--"]:
+        rep = "+" if s == "--" else "-"
+        noi_dung = noi_dung.replace(s, rep)
+        noi_dung_loigiai = noi_dung_loigiai.replace(s, rep)
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n{noi_dung_loigiai}\n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_CX_B0_36]-SA-M3. Tìm M thuộc Oy sao cho MA^2+MB^2+MC^2 nhỏ nhất.
+def gghik_L10_CX_B0_36():
+    # Chọn tên điểm
+    A, B, C, M = random.sample(["A", "B", "C", "D", "E", "F", "M", "N"], 4)
+
+    # Sinh tọa độ ngẫu nhiên, đảm bảo không trùng
+    while True:
+        a1, a2 = random.sample(range(-10, 11), 2)
+        b1, b2 = random.sample(range(-10, 11), 2)
+        c1, c2 = random.sample(range(-10, 11), 2)
+
+        b_coef = -2 * (a2 + b2 + c2)  # hệ số b trong 3b^2 + b_coef*b + c
+        c_const = a1**2 + a2**2 + b1**2 + b2**2 + c1**2 + c2**2
+        T = -b_coef / 6  # 3b^2 → b_min = -b_coef/6
+
+        if len({(a1,a2),(b1,b2),(c1,c2)}) == 3 and T > -5:
+            break
+
+    # Nội dung đề
+    if float(T).is_integer():
+        noi_dung = (
+            f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+            f"Điểm ${M}(0;b)$ thuộc trục ${{Oy}}$ sao cho ${M}{A}^2+{M}{B}^2+{M}{C}^2$ nhỏ nhất. "
+            f"Tìm ${{b}}$."
+        )
+        dap_an = str(int(T))
+    else:
+        noi_dung = (
+            f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+            f"Điểm ${M}(0;b)$ thuộc trục ${{Oy}}$ sao cho ${M}{A}^2+{M}{B}^2+{M}{C}^2$ nhỏ nhất. "
+            f"Tìm ${{b}}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an = f"{round_half_up(T, 1):.1f}".replace(".", ",")
+
+    # Lời giải
+    noi_dung_loigiai = (
+        f"${M}{A}^2=(0-{a1})^2+(b-{a2})^2$\n\n"
+        f"${M}{B}^2=(0-{b1})^2+(b-{b2})^2$\n\n"
+        f"${M}{C}^2=(0-{c1})^2+(b-{c2})^2$\n\n"
+        f"Tổng bình phương: ${M}{A}^2+{M}{B}^2+{M}{C}^2 = 3b^2 +{b_coef}b +{c_const}$\n\n"
+        f"Tổng này nhỏ nhất khi $b=-\\dfrac{{{b_coef}}}{{6}}={dap_an}$."
+    )
+
+    # Làm sạch ký tự
+    for s in ["+-", "-+", "--"]:
+        rep = "+" if s == "--" else "-"
+        noi_dung = noi_dung.replace(s, rep)
+        noi_dung_loigiai = noi_dung_loigiai.replace(s, rep)
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n{noi_dung_loigiai}\n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_CX_B0_37]-SA-M3. Tìm M thuộc Ox sao cho |m.vecMA+n.vecMB+p.vecMC| nhỏ nhất.
+def gghik_L10_CX_B0_37():
+   
+    # Chọn tên điểm
+    A, B, C, M = random.sample(["A", "B", "C", "D", "E", "F", "M", "N"], 4)
+
+    # Sinh tọa độ không trùng
+    while True:
+        a1, a2 = random.sample(range(-10,10), 2)
+        b1, b2 = random.sample(range(-10,10), 2)
+        c1, c2 = random.sample(range(-10,10), 2)
+        # kiểm tra không thẳng hàng
+        x_AB, y_AB = b1 - a1, b2 - a2
+        x_AC, y_AC = c1 - a1, c2 - a2
+        if all([a1 != b1, a2 != b2, a1 != c1, x_AB*y_AC != x_AC*y_AB]):
+            break
+
+    # Hệ số trọng số m, n, p
+    while True:
+    	m, n, p = random.sample(range(-5,6),3)
+    	if all([m!=0,n!=0,p!=0, m+n+p!=0]):
+    		break
+
+    # Tính trọng tâm có trọng số
+    x_G = (m*a1 + n*b1 + p*c1)/(m+n+p)
+    y_G = (m*a2 + n*b2 + p*c2)/(m+n+p)
+
+    chon = random.randint(1,2)  # 1=Ox, 2=Oy
+
+    if chon == 1:  # M trên Ox
+        if x_G.is_integer():
+            dap_an = int(x_G)
+            noi_dung = (
+            f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với "
+            f"${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+            f"Điểm ${M}(a;0)$ thuộc trục ${{Ox}}$ sao cho "
+            f"$|{m}{vec(f'{M}{A}')}+{n}{vec(f'{M}{B}')}+{p}{vec(f'{M}{C}')}|$ nhỏ nhất. "
+            f"Tìm ${{a}}$."
+        )
+        else:
+            dap_an = f"{round_half_up(x_G,1):.1f}".replace(".",",")
+            noi_dung = (
+                f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với "
+                f"${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+                f"Điểm ${M}(a;0)$ thuộc trục ${{Ox}}$ sao cho "
+                f"$|{m}{vec(f'{M}{A}')}+{n}{vec(f'{M}{B}')}+{p}{vec(f'{M}{C}')}|$ nhỏ nhất. "
+                f"Tìm ${{a}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+
+
+
+        noi_dung_loigiai = (
+            f"Gọi $G$ là điểm thỏa mãn: ${m}{vec(f"G{A}")}+{n}{vec(f"G{B}")}+{p}{vec(f"G{C}")}={vec("0")}$.\n\n"
+            f"$\\Rightarrow G=\\dfrac{{{m}{A}+{n}{B}+{p}{C} }}{{{m}+{n}+{p}}}$.\n\n"
+            f"$x_G=\\dfrac{{{m}x_{A}+{n}x_{B}+{p}x_{C} }}{{{m}+{n}+{p}}}, y_G=\\dfrac{{{m}y_{A}+{n}y_{B}+{p}y_{C} }}{{{m}+{n}+{p}}}$.\n\n"
+            f"$G({phan_so(x_G)};{phan_so(y_G)})$.\n\n"
+            f"$|{m}{vec(f'{M}{A}')}+{n}{vec(f'{M}{B}')}+{p}{vec(f'{M}{C}')})| = "
+            f"|{m+n+p}{vec(f'{M}G')}|$.\n\n"
+            f"Tổng này nhỏ nhất khi ${{{M}}}$ là hình chiếu của $G$ trên trục $Ox$.\n\n"
+            f"Suy ra ${M}({phan_so(x_G)};0)$."
+        )
+
+    else:  # M trên Oy
+        if y_G.is_integer():
+            dap_an = int(y_G)
+            noi_dung = (
+                f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với "
+                f"${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+                f"Điểm ${M}(0;b)$ thuộc trục ${{Oy}}$ sao cho "
+                f"$|{m}{vec(f'{M}{A}')}+{n}{vec(f'{M}{B}')}+{p}{vec(f'{M}{C}')}|$ nhỏ nhất. "
+                f"Tìm ${{b}}$."
+            )
+
+
+        else:
+            dap_an = f"{round_half_up(y_G,1):.1f}".replace(".",",")
+            noi_dung = (
+                f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với "
+                f"${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. "
+                f"Điểm ${M}(0;b)$ thuộc trục ${{Oy}}$ sao cho "
+                f"$|{m}{vec(f'{M}{A}')}+{n}{vec(f'{M}{B}')}+{p}{vec(f'{M}{C}')}|$ nhỏ nhất. "
+                f"Tìm ${{b}}$ (kết quả làm tròn đến hàng phần mười)."
+            )
+
+
+
+        noi_dung_loigiai = (
+            f"Gọi $G$ là điểm thỏa mãn: ${m}{vec(f"G{A}")}+{n}{vec(f"G{B}")}+{p}{vec(f"G{C}")}={vec("0")}$.\n\n"
+            f"$\\Rightarrow G=\\dfrac{{{m}{A}+{n}{B}+{p}{C} }}{{{m}+{n}+{p}}}$.\n\n"
+            f"$x_G=\\dfrac{{{m}x_{A}+{n}x_{B}+{p}x_{C}}}{{{m}+{n}+{p}}}, y_G=\\dfrac{{{m}y_{A}+{n}y_{B}+{p}y_{C} }}{{{m}+{n}+{p}}}$.\n\n"
+            f"$G({phan_so(x_G)};{phan_so(y_G)})$.\n\n"
+            f"$|{m}{vec(f'{M}{A}')}+{n}{vec(f'{M}{B}')}+{p}{vec(f'{M}{C}')})| = "
+            f"|{m+n+p}{vec(f'{M}G')}|$.\n\n"
+            f"Tổng này nhỏ nhất khi ${{{M}}}$ là hình chiếu của ${{G}}$ trên trục ${{Oy}}$.\n\n"
+            f"Suy ra ${M}(0;{phan_so(y_G)})$."
+        )
+    noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+
+    debai_word = f"{noi_dung}\n"
+    loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_CX_B0_38]-SA-M3. Tìm tọa độ trực tâm tam giác.
+def gghik_L10_CX_B0_38():
+    # Sinh 3 điểm khác nhau A, B, C
+    while True:
+        (a1,a2), (b1,b2), (c1,c2) = random.sample(
+            [(x,y) for x in range(-8,9) for y in range(-8,9)], 3)
+        # Kiểm tra không thẳng hàng
+        # ===== Tính trực tâm H(a; b) =====
+        # Vector AB và AC
+        AB = (b1 - a1, b2 - a2)
+        AC = (c1 - a1, c2 - a2)
+
+        # Hệ số đường cao từ A: vuông góc BC
+        # BC = (c1 - b1, c2 - b2)
+        BC = (c1 - b1, c2 - b2)
+
+        # Phương trình đường cao từ A: (x - a1, y - a2) ⋅ BC = 0
+        # Tương tự đường cao từ B: (x - b1, y - b2) ⋅ AC = 0
+
+        # Giải hệ 2 phương trình để tìm trực tâm
+        # (x - a1)*BCx + (y - a2)*BCy = 0
+        # (x - b1)*ACx + (y - b2)*ACy = 0
+
+        import sympy as sp
+        x, y = sp.symbols('x y')
+
+        eq1 = (x - a1)*BC[0] + (y - a2)*BC[1]
+        eq2 = (x - b1)*AC[0] + (y - b2)*AC[1]
+
+        sol = sp.solve((eq1, eq2), (x, y))
+        Hx = float(sol[x])
+        Hy = float(sol[y])
+
+        # Đáp án
+        tong = Hx + Hy
+        if all([(b1-a1)*(c2-a2) != (b2-a2)*(c1-a1), tong>-5]):
+            break
+
+    
+
+    if float(tong).is_integer():
+        dap_an = str(int(tong))
+        noi_dung = (
+        f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
+        f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
+        f"Trực tâm của tam giác là $H(a;b)$. "
+        f"Tính $a+b$."
+    )
+    else:
+        dap_an = f"{round_half_up(tong,1):.1f}".replace(".",",")
+        noi_dung = (
+        f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
+        f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
+        f"Trực tâm của tam giác là $H(a;b)$. "
+        f"Tính $a+b$."
+    )
+
+    # ===== Lời giải chi tiết =====
+    noi_dung_loigiai = (
+        f"Ta có tam giác ${{ABC}}$ với $A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$.\n\n"
+        f"${vec("AH")}\\bot {vec("BC")}$ nên:\n\n"
+        f"$(a-{a1})({BC[0]}) + (b-{a2})({BC[1]}) = 0$.\n\n"
+        f"${vec("BH")}\\bot {vec("AC")}$ nên:\n\n"
+        f"$(a-{b1})({AC[0]}) + (b-{b2})({AC[1]}) = 0$.\n\n"
+        f"Giải hệ trên ta được:\n\n"
+        f"$H({phan_so(Hx)};{phan_so(Hy)})$.\n\n"
+        f"Suy ra $a+b = {dap_an}$."
+    )
+
+    # Fix dấu giống code bạn
+    noi_dung = noi_dung.replace("+-", "-").replace("-+", "-").replace("--", "+")
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-", "-").replace("-+", "-").replace("--", "+")
+
+    # Xuất Word
+    debai_word = f"{noi_dung}\n"
+    loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
+
+    # Xuất LaTeX
+    latex_tuluan = (
+        "\\begin{ex}\n"
+        f"{noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
+        "\\end{ex}\n"
+    )
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_CX_B0_39]-SA-M3. Tìm tọa độ tâm đường tròn ngoại tiếp tam giác.
+def gghik_L10_CX_B0_39():	
+    # Sinh 3 điểm khác nhau tạo thành tam giác
+    x, y = sp.symbols('x y')
+    while True:
+        (a1,a2), (b1,b2), (c1,c2) = random.sample(
+            [(x,y) for x in range(-7,7) for y in range(-7,7)], 3
+        )
+        # Phương trình đường trung trực AB
+        # Vector AB = (b1-a1, b2-a2)
+        # Trung điểm AB
+        mxAB = (a1 + b1) / 2
+        myAB = (a2 + b2) / 2
+        AB = (b1 - a1, b2 - a2)
+
+        # Điều kiện vuông góc: (x - mxAB, y - myAB) ⋅ AB = 0
+        eq1 = (x - mxAB)*AB[0] + (y - myAB)*AB[1]
+
+        # Phương trình đường trung trực AC
+        mxAC = (a1 + c1) / 2
+        myAC = (a2 + c2) / 2
+        AC = (c1 - a1, c2 - a2)
+
+        eq2 = (x - mxAC)*AC[0] + (y - myAC)*AC[1]
+
+        # Giải giao điểm = tâm ngoại tiếp
+        sol = sp.solve((eq1, eq2), (x, y))
+
+        Ox = float(sol[x])
+        Oy = float(sol[y])
+
+        # Tính a + b
+        tong = Ox + Oy
+        # Kiểm tra không thẳng hàng
+        if all([(b1-a1)*(c2-a2) != (b2-a2)*(c1-a1), tong>-5]):
+            break
+
+
+    if float(tong).is_integer():
+        dap_an = str(int(tong))
+        noi_dung = (
+            f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
+            f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
+            f"Tâm đường tròn ngoại tiếp tam giác ${{ABC}}$ là điểm $O(a;b)$. "
+            f"Tính $a+b$."
+        )
+    else:
+        dap_an = f"{round_half_up(tong,1):.1f}".replace(".",",")
+        noi_dung = (
+            f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
+            f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
+            f"Tâm đường tròn ngoại tiếp tam giác ${{ABC}}$ là điểm $O(a;b)$. "
+            f"Tính $a+b$ (làm tròn đến hàng phần mười)."
+        )
+
+
+    # ===== Lời giải =====
+    noi_dung_loigiai = (
+        f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$.\n\n"
+        f"Tâm đường tròn ngoại tiếp là giao của hai đường trung trực.\n\n"
+        f"${{AB}}$ có trung điểm $M({phan_so(mxAB)};{phan_so(myAB)})$.\n\n"
+        f"${vec("MO")}\\bot {vec("AB")}=({AB[0]};{AB[1]})$:\n\n"
+        f"$(a-{phan_so(mxAB)})({AB[0]}) + (b-{phan_so(myAB)})({AB[1]}) = 0$.\n\n"
+        f"${{AC}}$ có trung điểm $N({phan_so(mxAC)};{phan_so(myAC)})$.\n\n"
+        f"${vec("NO")}\\bot {vec("AC")}=({AC[0]};{AC[1]})$:\n\n"
+        f"$(a-{phan_so(mxAC)})({AC[0]}) + (b-{phan_so(myAC)})({AC[1]}) = 0$.\n\n"
+        f"Giải hệ hai phương trình trên, ta được:\n\n"
+        f"$O({phan_so(Ox)};{phan_so(Oy)})$.\n\n"
+        f"Suy ra $a+b = {dap_an}$."
+    )
+
+    # Xử lý dấu ±
+    noi_dung = noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+
+    # Xuất Word
+    debai_word = f"{noi_dung}\n"
+    loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
+
+    # Xuất LaTeX
+    latex_tuluan = (
+        "\\begin{ex}\n"
+        f"{noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
+        "\\end{ex}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
 
 
 
