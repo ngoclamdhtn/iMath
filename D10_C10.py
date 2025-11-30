@@ -2958,6 +2958,132 @@ def gghik_L10_CX_B0_39():
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D10_CX_B0_40]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng.
+def gghik_L10_CX_B0_40():
+	# Chọn tên điểm
+	A, B, C, D = random.sample(["A", "B", "C", "D", "E", "F", "M", "N"], 4)
+
+	# Sinh tọa độ không trùng
+	while True:
+		a1, a2 = random.sample(range(-10,10), 2)
+		b1, b2 = random.sample(range(-10,10), 2)
+		c1, c2 = random.sample(range(-10,10), 2)
+		# kiểm tra không thẳng hàng
+		x_AB, y_AB = b1 - a1, b2 - a2
+		x_AC, y_AC = c1 - a1, c2 - a2
+		if all([a1 != b1, a2 != b2, a1 != c1, x_AB*y_AC != x_AC*y_AB]):
+		    break
+
+	noi_dung = f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho các điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. Xét tính đúng-sai của các khẳng định sau:"		
+
+	AB=sqrt((a1-b1)**2+(a2-b2)**2)
+	AB_f=(a1-b1)**2+(a2-b2)**2
+	if AB_f==AB:
+		AB_f=sqrt((a1-b1)**2+(a2-b2)**2+random.randint(1,2))
+	
+	kq1_T=f"*${A}{B}={latex(AB)}$" 
+	kq1_F=f"${A}{B}={latex(AB_f)}$"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"${A}{B}=\\sqrt{{({b1}-{a1})^2+({b2}-{a2})^2}}={latex(AB)}$."
+	HDG=HDG.replace("+-","-").replace("--","+").replace("-+","-")
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	x_I, y_I=(a1+b1)/2,(a2+b2)/2
+
+	kq2_T=f"*Tọa độ trung điểm của đoạn thẳng ${{{B}{C}}}$ là điểm $I({phan_so(x_I)};{phan_so(y_I)})$"
+	kq2_F=f"Tọa độ trung điểm của đoạn thẳng ${{{B}{C}}}$ là điểm $I({phan_so(x_I+random.randint(1,2))};{phan_so(y_I)})$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Tọa độ trung điểm của đoạn thẳng ${{{B}{C}}}$ là điểm $I({phan_so(x_I)};{phan_so(y_I)})$."
+	HDG=HDG.replace("+-","-").replace("--","+").replace("-+","-")
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x_BA, y_BA = b1-a1, b2-a2
+	x_D, y_D=x_BA+c1, y_BA+c2
+
+	kq3_T=f"*Tứ giác ${{{A}{B}{C}{D}}}$ là hình bình hành khi có tọa độ điểm ${{{D}}}$ là $({x_D};{y_D})$" 
+	kq3_F=f"Tứ giác ${{{A}{B}{C}{D}}}$ là hình bình hành khi có tọa độ điểm ${{{D}}}$ là $({x_D+random.randint(1,2)};{y_D+random.randint(0,2)})$"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"${vec2(B,A)}=({x_BA};{y_BA})$.\n\n"
+		f"${{{A}{B}{C}{D}}}$ là hình bình hành khi:\n\n"
+		f"${vec2(B,A)}={vec2(C,D)}$\n\n"
+		f"$\\Rightarrow x_{D}={x_BA}+{c1}={x_D}, y_{D}={y_BA}+{c2}={y_D}$.\n\n"
+		f"$\\Rightarrow {D}({x_D};{y_D})$."
+		)
+	HDG=HDG.replace("+-","-").replace("--","+").replace("-+","-")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x_AB, y_AB = b1-a1, b2-a2
+	x_BC, y_BC = c1-b1, c2-b2
+	tich=x_AB*x_BC + y_AB*y_BC
+
+	kq4_T=f"*${vec2(A,B)}.{vec2(B,C)}={tich}$"
+	kq4_F=f"${vec2(A,B)}.{vec2(B,C)}={tich+random.randint(1,5)}$" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"${vec2(A,B)}=({x_AB};{y_AB}), {vec2(B,C)}=({x_BC};{y_BC})$.\n\n"
+		f"${vec2(A,B)}.{vec2(B,C)}={tich}$.")
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+	debai=debai.replace("+-","-").replace("--","+").replace("-+","-")
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+").replace("-+","-")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
 
 
 

@@ -3941,11 +3941,15 @@ class Ui_MainWindow(object):
                 L10_C10_B0_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_14]-TF-M2. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_14]-TF-M2. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_20]-TF-M3. Xét Đ-S: Tổng vectơ, hiệu vectơ, độ dài, cos."])
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_20]-TF-M3. Cho 2 vectơ. Xét Đ-S: Tổng vectơ, hiệu vectơ, độ dài, cos."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_40]-TF-M3.Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16563,6 +16567,10 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B0_39]-M2.  Tìm tọa độ tâm đường tròn ngoại tiếp tam giác.
                                             if dang_toan == "[D10_CX_B0_39]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_39()
+
+                                            #[D10_CX_B0_40]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng.
+                                            if dang_toan == "[D10_CX_B0_40]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_40()
 
 
                                                 
