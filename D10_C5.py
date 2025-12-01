@@ -4141,12 +4141,7 @@ def y7y7u_L10_C5_B4_04():
 #[D10_C5_B4_05]-TF-M2. Cho hình vuông. Xét Đ-S: các phép toán về vectơ, tích vô hướng
 def y7y7u_L10_C5_B4_05():
 
-	A=["A","O","A","O"]
-	B=["B","A","B","B"]
-	C=["C","B","E","C"]
-	D=["D","C","F","D"]
-	i=random.randint(0,3)
-	A, B, C, D = A[i], B[i], C[i], D[i]
+	A,B,C,D=random.choice([["A","B","C","D"], ["A","B","E","F"], ["B","C","D","E"], ["C","D","E","F"] ])
 	ten_tudien=f"{A}{B}{C}{D}"
 	G=random.choice(["G","H"])
 	M=["M","N","P"]
@@ -4232,24 +4227,54 @@ def y7y7u_L10_C5_B4_05():
 			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 	
-	chon=random.randint(1,2)	
+	chon=random.randint(1,4)
+
 	if chon==1:
-		kq4_T=f"*$({vec(f"{G}{B}")},{vec(f"{D}{G}")}) = 45^\\circ$"
-		kq4_F=f"$({vec(f"{G}{B}")},{vec(f"{D}{G}")}) = {random.choice([30,90,120,135,150])}^\\circ$" 
+		kq4_T=f"*$\\tan({vec(f"{G}{A}")},{vec(f"{G}{B}")}) = 3$"
+		kq4_F=f"$\\tan({vec(f"{G}{A}")},{vec(f"{G}{B}")}) = {random.choice([1,2,4,5])}$" 
 		kq4=random.choice([kq4_T, kq4_F])
-		HDG=f"$({vec(f"{G}{B}")},{vec(f"{D}{G}")})=180^\\circ-({vec(f"{G}{B}")},{vec(f"{G}{D}")})=180^\\circ - 135^\\circ=45^\\circ$"
+		HDG=(f"Gọi ${{O}}$ là tâm hình vuông.\n\n"
+			f"$\\tan({vec(f"{G}{A}")},{vec(f"{G}{B}")}) = \\dfrac{{O{B}}}{{O{G}}}=3$")
 		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 		if kq4==kq4_F:
 			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 	if chon==2:
-		kq4_T=f"*$({vec(f"{G}{B}")},{vec(f"{G}{D}")}) = 135^\\circ$"
-		kq4_F=f"$({vec(f"{G}{B}")},{vec(f"{G}{D}")}) = {random.choice([45,30,90,60,120,150])}^\\circ$" 
+		kq4_T=f"*$\\tan({vec(f"{G}{A}")},{vec(f"{G}{D}")}) = 3$"
+		kq4_F=f"$\\tan({vec(f"{G}{A}")},{vec(f"{G}{D}")}) = {random.choice([1,2,4,5])}$" 
 		kq4=random.choice([kq4_T, kq4_F])
-		HDG=f"$({vec(f"{G}{B}")},{vec(f"{G}{D}")})=\\widehat{{{B}{G}{C}}}=180^\\circ-\\widehat{{{G}{B}{D}}}-\\widehat{{{G}{D}{B}}}=135^\\circ$."
+		HDG=(f"Gọi ${{O}}$ là tâm hình vuông.\n\n"
+			f"$\\tan({vec(f"{G}{A}")},{vec(f"{G}{D}")}) = \\dfrac{{O{D}}}{{O{G}}}=3$")
 		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 		if kq4==kq4_F:
-			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"	
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon==3:
+		kq4_T=f"*${vec(f"{G}{C}")}={phan_so(1/3)}{vec(f"{A}{C}")}$"
+		kq4_F=f"${vec(f"{G}{C}")}={phan_so(-1/3)}{vec(f"{A}{C}")}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"${vec(f"{G}{C}")}={phan_so(1/3)}{vec(f"{A}{C}")}$.")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon==4:
+		kq4_T=f"*${vec(f"{G}{C}")}={phan_so(-1/3)}{vec(f"{C}{A}")}$"
+		kq4_F=f"${vec(f"{G}{C}")}={phan_so(1/3)}{vec(f"{C}{A}")}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"${vec(f"{G}{C}")}={phan_so(-1/3)}{vec(f"{C}{A}")}$.")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon==5:
+		kq4_T=f"*${vec(f"{G}{B}")}+{vec(f"{G}{D}")}=-{vec(f"{G}{C}")}$"
+		kq4_F=f"${vec(f"{G}{B}")}+{vec(f"{G}{D}")}={vec(f"{G}{C}")}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"${vec(f"{G}{B}")}+{vec(f"{G}{D}")}=-{vec(f"{G}{C}")}$.")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 	
 
 	#Trộn các phương án

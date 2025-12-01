@@ -7931,10 +7931,10 @@ def prt_34_L12_C1_B2_25():
 
 			khoang_db=random.choice([f"$(-\\infty;{x_1})$", f"$({x_2};{x_3})$"])
 			khoang_db_false=random.choice([f"$(-\\infty;{x_2})$", f"$({x_2};+\\infty)$",f"$({x_1};{x_3})$"])
-			kq1_T=f'*Hàm số đồng biến trên khoảng {khoang_db}' 
-			kq1_F=f'Hàm số đồng biến trên khoảng {khoang_db_false}'
+			kq1_T=f'*Hàm số nghịch biến trên khoảng {khoang_db}' 
+			kq1_F=f'Hàm số nghịch biến trên khoảng {khoang_db_false}'
 			kq1=random.choice([kq1_T, kq1_F])
-			HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ đồng biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};{x_3})$.'
+			HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ nghịch biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};{x_3})$.'
 			
 			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq1==kq1_F:
@@ -7944,10 +7944,10 @@ def prt_34_L12_C1_B2_25():
 			khoang_nb=random.choice([f"$({x_3};+\\infty)$", f"$({x_1};{x_2})$"])
 			khoang_nb_false=random.choice([f"$(-\\infty;{x_1+random.randint(1,5)})$", f"$({x_1};+\\infty)$"])
 
-			kq1_T=f'*Hàm số nghịch biến trên khoảng {khoang_nb}'
-			kq1_F=f'Hàm số nghịch biến trên khoảng {khoang_nb_false}'
+			kq1_T=f'*Hàm số đồng biến trên khoảng {khoang_nb}'
+			kq1_F=f'Hàm số đồng biến trên khoảng {khoang_nb_false}'
 			kq1=random.choice([kq1_T, kq1_F])
-			HDG=HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ nghịch biến trên các khoảng $({x_1};{x_2})$ và $({x_3};+\\infty)$.'
+			HDG=HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ đồng biến trên các khoảng $({x_1};{x_2})$ và $({x_3};+\\infty)$.'
 
 			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq1==kq1_F:
@@ -7964,41 +7964,41 @@ def prt_34_L12_C1_B2_25():
 			loigiai_2=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 
 		if chon==1:
-			kq3_T=f'*Điểm cực tiểu của hàm số đã cho là $x={x_2}$' 
-			kq3_F=f'Điểm cực tiểu của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$'
+			kq3_T=f'*Điểm cực đại của hàm số đã cho là $x={x_2}$' 
+			kq3_F=f'Điểm cực đại của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$'
 			kq3=random.choice([kq3_T, kq3_F])
-			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực tiểu tại điểm $x={x_2}$.'
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực đại tại điểm $x={x_2}$.'
 			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq3==kq3_F:
 				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 			chon_4=random.randint(1,2)
 			if chon_4==1:
-				kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$"
-				kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_2})}}$" 
+				kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$"
+				kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_2})}}$" 
 				kq4=random.choice([kq4_T, kq4_F])
-				HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$."
+				HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$."
 			
 			if chon_4==2:
-				kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$"
-				kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_2})}}$" 
+				kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$"
+				kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_2})}}$" 
 				kq4=random.choice([kq4_T, kq4_F])
-				HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$."
+				HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$."
 
 			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 			if kq4==kq4_F:
 				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 		if chon==2:
-			kq3_T=f'*Điểm cực đại của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$' 
-			kq3_F=f'Điểm cực đại của hàm số đã cho là $x={x_2}$'
+			kq3_T=f'*Điểm cực tiểu của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$' 
+			kq3_F=f'Điểm cực tiểu của hàm số đã cho là $x={x_2}$'
 			kq3=random.choice([kq3_T, kq3_F])
-			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực đại tại điểm $x={x_1}$ hoặc $x={x_3}$.'
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực tiểu tại điểm $x={x_1}$ hoặc $x={x_3}$.'
 			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq3==kq3_F:
 				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 
-			kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$"
-			kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_1})}}$" 
+			kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$"
+			kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_1})}}$" 
 			kq4=random.choice([kq4_T, kq4_F])
 			HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$."
 			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -8054,10 +8054,10 @@ def prt_34_L12_C1_B2_25():
 
 			khoang_nb=random.choice([f"$(-\\infty;{x_1})$", f"$({x_2};{x_3})$"])
 			khoang_nb_false=random.choice([f"$(-\\infty;{x_2})$", f"$({x_2};+\\infty)$",f"$({x_1};{x_3})$"])
-			kq1_T=f'*Hàm số nghịch biến trên khoảng {khoang_nb}' 
-			kq1_F=f'Hàm số nghịch biến trên khoảng {khoang_nb_false}'
+			kq1_T=f'*Hàm số đồng biến trên khoảng {khoang_nb}' 
+			kq1_F=f'Hàm số đồng biến trên khoảng {khoang_nb_false}'
 			kq1=random.choice([kq1_T, kq1_F])
-			HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ nghịch biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};{x_3})$.'
+			HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ đồng biến trên các khoảng $(-\\infty;{x_1})$ và $({x_2};{x_3})$.'
 			
 			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq1==kq1_F:
@@ -8066,17 +8066,17 @@ def prt_34_L12_C1_B2_25():
 		if chon==2:
 			khoang_db=random.choice([f"$({x_3};+\\infty)$", f"$({x_1};{x_2})$"])
 			khoang_db_false=random.choice([f"$(-\\infty;{x_1+random.randint(1,5)})$", f"$({x_1};+\\infty)$"])
-			kq1_T=f'*Hàm số đồng biến trên khoảng {khoang_db}'
-			kq1_F=f'Hàm số đồng biến trên khoảng {khoang_db_false}'
+			kq1_T=f'*Hàm số nghịch biến trên khoảng {khoang_db}'
+			kq1_F=f'Hàm số nghịch biến trên khoảng {khoang_db_false}'
 			kq1=random.choice([kq1_T, kq1_F])
-			HDG=HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ đồng biến trên các khoảng $({x_1};{x_2})$ và $({x_3};+\\infty)$.'
+			HDG=HDG=f'Dựa vào bảng xét dấu ta có hàm số $y=f(x)$ nghịch biến trên các khoảng $({x_1};{x_2})$ và $({x_3};+\\infty)$.'
 
 			loigiai_1=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq1==kq1_F:
 				loigiai_1=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 
-		so_sanh=random.choice([f"f({x_1})<f({x_2})", f"f({x_3})<f({x_2})",f"f({x_1-random.randint(1,3)})>f({x_1})", f"f({x_3+random.randint(1,3)})>f({x_3})"])
-		so_sanh_false=random.choice([f"f({x_1})>f({x_2})", f"f({x_3})>f({x_2})",f"f({x_1-random.randint(1,3)})<f({x_1})", f"f({x_3+random.randint(1,3)})<f({x_3})"])
+		so_sanh_false=random.choice([f"f({x_1})<f({x_2})", f"f({x_3})<f({x_2})",f"f({x_1-random.randint(1,3)})>f({x_1})", f"f({x_3+random.randint(1,3)})>f({x_3})"])
+		so_sanh=random.choice([f"f({x_1})>f({x_2})", f"f({x_3})>f({x_2})",f"f({x_1-random.randint(1,3)})<f({x_1})", f"f({x_3+random.randint(1,3)})<f({x_3})"])
 		kq2_T=f'*${so_sanh}$' 
 		kq2_F=f'${so_sanh_false}$'
 		kq2=random.choice([kq2_T, kq2_F])
@@ -8086,43 +8086,43 @@ def prt_34_L12_C1_B2_25():
 			loigiai_2=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 
 		if chon==1:
-			kq3_T=f'*Điểm cực đại của hàm số đã cho là $x={x_2}$' 
-			kq3_F=f'Điểm cực đại của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$'
+			kq3_T=f'*Điểm cực tiểu của hàm số đã cho là $x={x_2}$' 
+			kq3_F=f'Điểm cực tiểu của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$'
 			kq3=random.choice([kq3_T, kq3_F])
-			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực đại tại điểm $x={x_2}$.'
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực tiểu tại điểm $x={x_2}$.'
 			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq3==kq3_F:
 				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 
 			chon_4=random.randint(1,2)
 			if chon_4==1:
-				kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$"
-				kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_2})}}$" 
+				kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$"
+				kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_2})}}$" 
 				kq4=random.choice([kq4_T, kq4_F])
 				HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $(-\\infty;{x_2})$ là ${{f({x_1})}}$."
 			
 			if chon_4==2:
-				kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$"
-				kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_2})}}$" 
+				kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$"
+				kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_2})}}$" 
 				kq4=random.choice([kq4_T, kq4_F])
-				HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$."
+				HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_2};+\\infty)$ là ${{f({x_3})}}$."
 			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 			if kq4==kq4_F:
 				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 		if chon==2:
-			kq3_T=f'*Điểm cực tiểu của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$' 
-			kq3_F=f'Điểm cực tiểu của hàm số đã cho là $x={x_2}$'
+			kq3_T=f'*Điểm cực đại của hàm số đã cho là $x={random.choice([{x_1}, {x_3}])}$' 
+			kq3_F=f'Điểm cực đại của hàm số đã cho là $x={x_2}$'
 			kq3=random.choice([kq3_T, kq3_F])
-			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực tiểu tại điểm $x={x_1}$ hoặc $x={x_3}$.'
+			HDG=f'Dựa vào bảng biến thiên, hàm số đã cho đạt cực đại tại điểm $x={x_1}$ hoặc $x={x_3}$.'
 			loigiai_3=f'Khẳng định đã cho là khẳng định đúng.\n\n {HDG}'
 			if kq3==kq3_F:
 				loigiai_3=f'Khẳng định đã cho là khẳng định sai.\n\n {HDG}'
 
-			kq4_T=f"*Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$"
-			kq4_F=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_1})}}$" 
+			kq4_T=f"*Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$"
+			kq4_F=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_1})}}$" 
 			kq4=random.choice([kq4_T, kq4_F])
-			HDG=f"Giá trị lớn nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$."
+			HDG=f"Giá trị nhỏ nhất của hàm số $y=f(x)$ trên khoảng $({x_1};{x_3})$ là ${{f({x_2})}}$."
 			loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 			if kq4==kq4_F:
 				loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -9535,8 +9535,8 @@ def prt_34_L12_C1_B3_13():
 	ham_g=f"\\dfrac{{{a}f(x)+{b}}} {{{c}f(x)+d}}"
 	ham_g=(a*f+b)/(c*f+d)
 
-	kq4_T=f"*Đồ thị hàm số $y={latex(ham_g)}$ có một tiệm cận ngang là $y={phan_so(random.choice([t_1,t_2]))}$"
-	kq4_F=f"Đồ thị hàm số $y={latex(ham_g)}$ có một tiệm cận ngang là $y={phan_so(random.choice([t_1+t_2, t_1/random.randint(2,3), t_2/random.randint(2,3)]))}$" 
+	kq4_T=f"*Đường thẳng $y={phan_so(random.choice([t_1,t_2]))}$ là một tiệm cận ngang của đồ thị hàm số $y={latex(ham_g)}$"
+	kq4_F=f"Đường thẳng $y={phan_so(random.choice([t_1+t_2, t_1/random.randint(2,3), t_2/random.randint(2,3)]))}$ là một tiệm cận ngang của đồ thị hàm số $y={latex(ham_g)}$" 
 	kq4=random.choice([kq4_T, kq4_F]).replace("+-","-")
 	HDG=f"$\\mathop{{\\lim}}\\limits_{{x \\to  -\\infty}} {{{latex(ham_g)}}}={phan_so(t_1)}, \\mathop{{\\lim}}\\limits_{{x \\to  +\\infty}} {{{latex(ham_g)}}}={phan_so(t_2)}$.\n\n"\
 	f"Suy ra đồ thị hàm số $y={latex(ham_g)}$ có các tiệm cận ngang là $y={phan_so(t_1)}$ và $y={phan_so(t_2)}$.".replace("+-","-")
@@ -10103,7 +10103,7 @@ def prt_34_L12_C1_B3_21():
 			break
 	f=sqrt(a*x**2+b*x+c)/(d*x+e)
 	noi_dung=(
-	f"Đồ thị hàm số $y={latex(f)}$ một có đường tiệm cận ngang là"
+	f"Đồ thị hàm số $y={latex(f)}$ có một đường tiệm cận ngang là"
 	)
 	
 
@@ -12030,9 +12030,7 @@ def prt_34_L12_C1_B4_16():
 #[D12_C1_B4_17]-TL-M3. Cho đồ thị hàm bậc 3. Tính tổng các hệ số
 def prt_34_L12_C1_B4_17():
 	x = sp.symbols('x')
-	x1=random.randint(-2,0)
-	x2=random.randint(0,2)
-	x3=random.randint(1,2)
+	x1,x2,x3=random.sample(range(-2,3),3)
 	k=random.choice([1,-1])	
 	f=k*x**3 - k*x**2*x1 - k*x**2*x2 - k*x**2*x3 + k*x*x1*x2 + k*x*x1*x3 + k*x*x2*x3 - k*x1*x2*x3
 	a=f.coeff(x,3)

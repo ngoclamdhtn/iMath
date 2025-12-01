@@ -2097,8 +2097,8 @@ def npl_mk_L10_C3_B2_12():
 def npl_mk_L10_C3_B2_13():
     x=symbols("x")
     #Tạo hàm số bậc 2
-    a= random.choice([random.randint(1, 10)])
-    b, c = random.randint(-10, 10), random.randint(-10, 10)
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b, c = random.randint(-8, 8), random.randint(-8, 8)
     f = a*x**2+b*x+c
     x_0 = -b/(2*a)
     y_0 =f.subs(x,x_0)

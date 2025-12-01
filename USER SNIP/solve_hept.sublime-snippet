@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+	x, y = symbols('x y')
+	eq1 = Eq(a1*x + b1*y, c1)
+	eq2 = Eq(a2*x +b2*y, c2)
+	solution = solve((eq1, eq2), (x, y))
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+<tabTrigger>solve_he</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

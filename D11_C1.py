@@ -5341,10 +5341,10 @@ def ngh_kjg_L11_C1_B4_08():
     
     noi_dung=f"Tập giá trị của hàm số $y={latex(f)}$ là"
 
-    kq=f"$[{t_min};{t_max}]$"
-    kq2=f"$[{t_min-random.randint(1,3)};{t_max}]$"
-    kq3=f"$[{t_min};{t_max+random.randint(1,3)}]$"
-    kq4=f"$[{t_min-random.randint(1,3)};{t_max+random.randint(1,3)}]$"    
+    kq=f"${{[{t_min};{t_max}]}}$"
+    kq2=f"${{[{t_min-random.randint(1,3)};{t_max}]}}$"
+    kq3=f"${{[{t_min};{t_max+random.randint(1,3)}]}}$"
+    kq4=f"${{[{t_min-random.randint(1,3)};{t_max+random.randint(1,3)}]}}$"    
 
     pa_A= f"*{kq}"
     pa_B= f"{kq2}"

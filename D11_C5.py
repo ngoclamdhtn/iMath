@@ -1221,7 +1221,7 @@ def treqw_L11_C5_B2_08():
 	f_Q3 = Q3_class[1]
 	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
 	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
+	Q3_round=f"{round_half_up(Q3,1):.1f}".replace(".",",")
 
 	#Code latex
 	code_latex=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
@@ -1229,7 +1229,7 @@ def treqw_L11_C5_B2_08():
 	file_name=my_module.pdftoimage_timename(code)	
 
 	noi_dung=(f"Cho mẫu số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như bảng sau."
-		f" Tìm tứ phân vị thứ hai ${{Q_3}}$ của mẫu số liệu ghép nhóm đã cho (kết quả làm tròn đến hàng phần mười).")
+		f" Tìm tứ phân vị thứ ba ${{Q_3}}$ của mẫu số liệu ghép nhóm đã cho (kết quả làm tròn đến hàng phần mười).")
 	debai_word= f"{noi_dung} \n{file_name}\n"	
 	
 	noi_dung_loigiai=(f"Bước 1: Tổng tần số là: $N={N}$.\n\n"

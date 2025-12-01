@@ -539,7 +539,7 @@ def ytrzz_L12_C3_B1_04():
 	Q3_false_round=f"{round_half_up(Q3_false,2):.2f}".replace(".",",")
 
 	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round_half_up(Delta_Q,1):.2f}".replace(".",",")
+	Delta_Q_round=f"{round_half_up(Delta_Q,2):.2f}".replace(".",",")
 
 	Delta_Q_false=Delta_Q+random.randint(1,2)
 	Delta_Q_false_round=f"{round_half_up(Delta_Q_false,2):.2f}".replace(".",",")

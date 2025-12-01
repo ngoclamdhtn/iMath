@@ -1181,7 +1181,7 @@ def mn8mn_L11_C2_B2_11():
 
     noi_dung = (f"Giá của một cái máy phục vụ sản xuất lúc mới mua là ${{{u1}}}$ triệu đồng."
     f" Cứ sau mỗi năm sử dụng, giá của chiếc máy đó giảm ${{{-d}}}$ triệu đồng."
-    " Gọi $u_n$ (triệu đồng) là giá của chiếc máy trong năm thứ ${{n}}$ sử dụng." 
+    " Gọi $u_n$ (triệu đồng) là giá của chiếc máy sau năm thứ ${{n}}$ sử dụng." 
     f" Xét tính đúng-sai của các khẳng định sau.")        
     debai_word= f"{noi_dung}\n"
     
@@ -1504,7 +1504,7 @@ def mn8mn_L11_C2_B2_15():
 
     noi_dung = (f"Giá của một cái máy phục vụ sản xuất lúc mới mua là ${{{u1}}}$ triệu đồng."
     f" Cứ sau mỗi năm sử dụng, giá của chiếc máy đó giảm ${{{-d}}}$ triệu đồng."    
-    f" Giá của chiếc máy sau ${{{n}}}$ năm sử dụng.")        
+    f" Giá của chiếc máy sau ${{{n}}}$ năm sử dụng (Kết quả sử dụng đơn vị triệu đồng và làm tròn đến số nguyên).")        
     debai_word= f"{noi_dung}\n"    
     
     dap_an=u_n

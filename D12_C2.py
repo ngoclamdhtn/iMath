@@ -7211,7 +7211,7 @@ def mnj_34_jkl_L12_C2_B3_36():
 		dap_an=f"{N(y+z,2):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
 		f"${M}\\in (Oyz)$ nên $M(0;b;c)$. \n\n"
-		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxy)$.\n\n"
+		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oyz)$.\n\n"
 		f"Suy ra: ${M}(0;{y_G};{z_G})$.\n\n"
 		f"Vậy $a+b+c={dap_an}$.")
 
@@ -7219,7 +7219,7 @@ def mnj_34_jkl_L12_C2_B3_36():
 		dap_an=f"{N(x+z,2):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
 		f"${M}\\in (Oxz)$ nên ${M}(a;0;c)$. \n\n"
-		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxy)$.\n\n"
+		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxz)$.\n\n"
 		f"Suy ra: ${M}({x_G};0;{z_G})$.\n\n"
 		f"Vậy $a+b+c={dap_an}$.")
 		
@@ -7624,7 +7624,7 @@ def mnj_34_jkl_L12_C2_B3_39():
 	\\end{{tikzpicture}}" 
 )
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	file_name=my_module.pdftoimage_timename(code)
+	#file_name=my_module.pdftoimage_timename(code)
 
 
 	#Tọa độ khinh khí cầu 1
@@ -7688,7 +7688,7 @@ def mnj_34_jkl_L12_C2_B3_39():
 	f" Chiếc thứ hai nằm cách điểm xuất phát ${{{s_b1}}}$ km về phía {b_Ox} và ${{{s_b2}}}$ km về phía {b_Oy}, đồng thời cách mặt đất ${{{s_b3}}}$ km."
 	f" Chọn hệ trục ${{Oxyz}}$ với gốc ${{O}}$ đặt tại điểm xuất phát của hai khinh khí cầu,"
 	f" mặt phẳng $(Oxy)$ trùng với mặt đất với trục ${{Ox}}$ hướng về phía nam,"
-	f" trục ${{Oy}}$ hướng về phía đông và trục ${{Oz}}$ hướng thẳng đứng lên trời (Hình bên dưới), đơn vị đo lấy theo kilomet."
+	f" trục ${{Oy}}$ hướng về phía đông và trục ${{Oz}}$ hướng thẳng đứng lên trời, đơn vị đo lấy theo kilomet."
 	f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười):"
 	)	
 	
@@ -7756,7 +7756,7 @@ def mnj_34_jkl_L12_C2_B3_39():
 	#random.shuffle(list_PA)
 	list_TF=my_module.tra_ve_TF(list_PA)
 
-	debai= f"{noi_dung}\n{file_name}\n"\
+	debai= f"{noi_dung}\n"\
 	f"a) {list_PA[0]}.\n"\
 	f"b) {list_PA[1]}.\n"\
 	f"c) {list_PA[2]}.\n"\
@@ -7791,7 +7791,6 @@ def mnj_34_jkl_L12_C2_B3_39():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
-		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 	    f"\\choiceTFt\n"
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
@@ -7815,7 +7814,7 @@ def mnj_34_jkl_L12_C2_B3_40():
 
 	noi_dung = (
 	f"Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ có ${A}({a1};{a2};{a3}),{B}({b1};{b2};{b3}),{C}({c1};{c2};{c3})$."
-	f"Gọi ${{I}}$ là tâm đường tròn ngoại tiếp tam giác ${{{A}{B}{C}}}$. Tính giá trị ${{OI^2}}$ (kết quả làm tròn đến hàng phần mười)."
+	f"Gọi ${{I}}$ là tâm đường tròn ngoại tiếp tam giác ${{{A}{B}{C}}}$. Tính giá trị ${{OI}}$ (kết quả làm tròn đến hàng phần mười)."
 	)
 	dap_an=f"{round_half_up(sqrt(x_I**2+y_I**2+z_I**2),1):.1f}".replace(".",",")
 

@@ -13,6 +13,10 @@ def vec2(A,B):
 	return f"\\overrightarrow{{{A}{B}}}"
 def thay_cong_tru(st):
     return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y")
+
+def thay_dau(st):
+	return st.replace("+-","-").replace("-+","-").replace("--","+")
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -3034,7 +3038,7 @@ def gghik_L10_CX_B0_40():
 
 	#Trộn các phương án
 	list_PA =[kq1, kq2, kq3, kq4]
-	#random.shuffle(list_PA)
+	random.shuffle(list_PA)
 	list_TF=my_module.tra_ve_TF(list_PA)
 
 	debai= f"{noi_dung}\n\n"\
@@ -3079,6 +3083,266 @@ def gghik_L10_CX_B0_40():
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_CX_B0_41]-TF-M3. Cho 3 điểm. Xét Đ-S: Hình chiếu lên trục, trọng tâm, điểm đối xứng, điểm thỏa mãn đẳng thức.
+def gghik_L10_CX_B0_41():
+	# Chọn tên điểm
+	A, B, C, M, N = random.sample(["A", "B", "C", "D", "E", "F", "M", "N", "P","Q"], 5)
+
+	# Sinh tọa độ không trùng
+	while True:
+		a1, a2 = random.sample(range(-10,10), 2)
+		b1, b2 = random.sample(range(-10,10), 2)
+		c1, c2 = random.sample(range(-10,10), 2)
+		# kiểm tra không thẳng hàng
+		x_AB, y_AB = b1 - a1, b2 - a2
+		x_AC, y_AC = c1 - a1, c2 - a2
+		if all([a1 != 0, a2 != b2, a1 != c1, x_AB*y_AC != x_AC*y_AB]):
+		    break
+
+	noi_dung = f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$. Xét tính đúng-sai của các khẳng định sau:"	
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"*Hình chiếu của điểm ${A}({a1};{a2})$ lên trục ${{Ox}}$ là điểm ${A}'({a1};0)$" 
+		kq1_F=f"Hình chiếu của điểm ${A}({a1};{a2})$ lên trục ${{Ox}}$ là điểm ${A}'(0;{a1})$"
+		
+		HDG=f"Hình chiếu của điểm ${A}({a1};{a2})$ lên trục ${{Ox}}$ là điểm ${A}'({a1};0)$."
+	
+	if chon==2:
+		kq1_T=f"*Hình chiếu của điểm ${B}({b1};{b2})$ lên trục ${{Oy}}$ là điểm ${B}'(0;{b2})$" 
+		kq1_F=f"Hình chiếu của điểm ${B}({b1};{b2})$ lên trục ${{Oy}}$ là điểm ${B}'({b2};0)$"
+		
+		HDG=f"Hình chiếu của điểm ${B}({b1};{b2})$ lên trục ${{Oy}}$ là điểm ${B}'(0;{b2})$."
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x_G, y_G=(a1+b1+c1)/3, (a2+b2+c2)/3
+
+
+	kq2_T=f"*Trọng tâm tam giác ${{{A}{B}{C}}}$ là điểm $G({phan_so(x_G)}, {phan_so(y_G)})$"
+	kq2_F=f"Trọng tâm tam giác ${{{A}{B}{C}}}$ là điểm $G({phan_so((a1+b1+c1)/2)}, {phan_so((a1+b1+c1)/2+random.randint(1,2))})$"
+	
+	HDG=f"Trọng tâm tam giác ${{{A}{B}{C}}}$ là điểm $G({phan_so(x_G)}, {phan_so(y_G)})$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x_M, y_M = 2*c1-b1, 2*c2-b2
+
+
+	kq3_T=f"*Điểm ${{{M}}}$ đối xứng với điểm ${{{B}}}$ qua điểm ${{{C}}}$ có tọa độ là $({x_M};{y_M})$" 
+	kq3_F=f"Điểm ${{{M}}}$ đối xứng với điểm ${{{B}}}$ qua điểm ${{{C}}}$ có tọa độ là $({x_M+random.randint(1,2)};{y_M})$"
+	
+	HDG=f"Ta có: $x_{M}=2x_{C}-x_{B}={x_M}, y_{M}=2y_{C}-y_{B}={y_M}$. Vậy ${M}({x_M};{y_M})$."
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	k=random.choice([i for i in range(-4, 5) if i not in [0,1,-1]])
+	x_N,y_N=(a1+k*b1)/(1+k), (a2+k*b2)/(1+k)
+
+	kq4_T=f"*Điểm ${{{N}}}$ thỏa mãn ${vec2(A,N)}={k}{vec2(N,B)}$ có tọa độ là ${N}({phan_so(x_N)};{phan_so(y_N)})$"
+	kq4_F=f"Điểm ${{{N}}}$ thỏa mãn ${vec2(A,N)}={k}{vec2(N,B)}$ có tọa độ là ${N}({phan_so(x_N+1)};{phan_so(y_N+2)})$" 
+	
+	HDG=(f"${vec2(A,N)}={k}{vec2(N,B)}\\Rightarrow x_{N}=\\dfrac{{x_{A}+{k}x_{B} }}{{1+{k}}}={phan_so(x_N)},"
+	f" y_{N}=\\dfrac{{y_{A}+{k}y_{B} }}{{1+{k}}}={phan_so(y_N)}$.\n\n"
+	f"Vậy ${N}({phan_so(x_N)};{phan_so(y_N)})$.")
+	HDG=HDG.replace("+-","-").replace("-+","-").replace("--","+")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_CX_B0_42]-TF-M3. Cho 3 vectơ. Xét Đ-S: cùng phương, tổng hiệu, cos, phân tích 
+def gghik_L10_CX_B0_42():
+	# Chọn tên điểm
+	a,b,c,d = random.sample(["u", "v", "w", "m", "n", "p", "q", "a", "b","c"], 4)
+	while True:
+			a1, a2 = random.sample([i for i in range(-5,6) if i!=0], 2)
+			b1, b2 = random.sample([i for i in range(-5,6) if i!=0], 2)
+			c1, c2 = random.sample(range(-5,7), 2)
+			if b1==c1:
+				continue
+			if a1==b1:
+				continue
+			if all([a2 != b2, a1 != c1, a1*b2!=a2*b1]):
+				break
+
+	chon=random.randint(1,2)
+	k=random.choice([i for i in range(-4, 5) if i!=0])
+	if chon==1:		
+		kq1_T=f"*${vec(a)}$ và ${vec(d)}=({k*a1};{k*a2})$ cùng phương" 
+		kq1_F=f"${vec(a)}$ và ${vec(d)}=({k*a1};{k*a2})$ khác phương"
+		
+		HDG=f"Ta có: ${vec(a)}={k}{vec(d)}$ nên ${vec(a)}$ và ${vec(d)}$ cùng phương."
+
+	if chon==2:
+		x_d, y_d=k*a1,(k+random.randint(1,2))*a2
+		kq1_T=f"*${vec(a)}$ và ${vec(d)}=({x_d};{y_d})$ khác phương" 
+		kq1_F=f"${vec(a)}$ và ${vec(d)}=({x_d};{y_d})$ cùng phương"
+		
+		HDG=f"Ta có: $\\dfrac{{{a1}}}{{{x_d}}}\\ne \\dfrac{{{a2}}}{{{y_d}}}$ nên ${vec(a)}$ và ${vec(d)}$ khác phương."
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	noi_dung = f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho các vectơ ${vec(a)}=({a1};{a2}), {vec(b)}=({b1};{b2}), {vec(c)}=({c1};{c2})$. Xét tính đúng-sai của các khẳng định sau:"
+	
+	k1,k2,k3=random.sample([i for i in range(-3,4) if i!=0], 3)
+	x1, y1=k1*a1+k2*b1+k3*c1, k1*a2+k2*b2+k3*c2
+	T=f"{k1}{vec(a)}+{k2}{vec(b)}+{k3}{vec(c)}"
+
+	T=T.replace("1","").replace("-1","-").replace("+-","-").replace("-+","-").replace("--","+")
+
+	kq2_T=f"*${T}=({x1};{y1})$"
+	kq2_F=f"${T}=({x1+random.randint(1,2)};{y1})$"
+	
+	HDG=f"${T}=({x1};{y1})$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	cos_value=(b1*c1+b2*c2)/(sqrt(b1**2+b2**2)*sqrt(c1**2+c2**2))
+	cos_value_f=(b1*c1+b2*c2+random.randint(1,2))/(sqrt(b1**2+b2**2)*sqrt(c1**2+c2**2))
+
+	kq3_T=f"*$\\cos({vec(b)},{vec(c)})={latex(cos_value)}$" 
+	kq3_F=f"$\\cos({vec(b)},{vec(c)})={latex(cos_value_f)}$"
+	
+	HDG=f"$\\cos({vec(b)},{vec(c)})=\\dfrac{{{b1}.({c1})+{b2}.({c2})}}{{\\sqrt{{{b1**2+b2**2}}}\\sqrt{{{c1**2+c2**2}}} }}={latex(cos_value)}$"
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	x, y = symbols('x y')
+	
+	eq1 = Eq(a1*x + b1*y, c1)
+	eq2 = Eq(a2*x + b2*y, c2)
+	solution = solve((eq1, eq2), (x,y))
+	k=solution[x]
+	m=solution[y]
+
+	kq4_T=f"*Biết rằng ${vec(c)}=k{vec(a)}+m{vec(b)}$. Khi đó $k+m={phan_so(k+m)}$"
+	kq4_F=f"Biết rằng ${vec(c)}=k{vec(a)}+m{vec(b)}$. Khi đó $k+m={phan_so(k+m+random.randint(1,2))}$" 
+	
+	he=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+	{a1}k+{b1}m={c1} \\\\ \n\
+	{a2}k+{b2}m={c2}\n\
+	\\end{{array}} \\right."
+	HDG=(f"${vec(c)}=k{vec(a)}+m{vec(b)}\\Rightarrow {he} \\Rightarrow k={phan_so(k)}, m={phan_so(m)}$.\n\n"
+		f"$k+m={phan_so(k+m)}$.")
+	HDG=thay_dau(HDG)
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
 
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 

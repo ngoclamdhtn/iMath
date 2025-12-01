@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 16.11.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.12.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 16.11.2025")
+                self.label.setText(f"iMath\u00A92025 ver 02.12.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -3941,15 +3941,23 @@ class Ui_MainWindow(object):
                 L10_C10_B0_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_14]-TF-M2. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
                 item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_20]-TF-M3. Cho 2 vectơ. Xét Đ-S: Tổng vectơ, hiệu vectơ, độ dài, cos."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_40]-TF-M3.Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng."])
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_14]-TF-M2. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_40]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_41]-TF-M3. Cho 3 điểm. Xét Đ-S: Hình chiếu lên trục, trọng tâm, điểm đối xứng, điểm thỏa mãn đẳng thức."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_42]-TF-M3. Cho 3 vectơ. Xét Đ-S: cùng phương, tổng hiệu, cos, phân tích."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5805,12 +5813,44 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_08]-M2. Cho hình hộp. Xét sự song song của hai đường tùy ý."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-                ##item.setToolTip(0, 'Cho hình hộp. Xét sự song song của hai đường tùy ý.')
+
 
                 #Bài 5 - Phép chiếu song song.
                 L11_C4_B5 = QTreeWidgetItem(L11_C4, ["Bài 5 - Phép chiếu song song."])
                 L11_C4_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C4_B5_1 = QTreeWidgetItem(L11_C4_B5, ["Trắc nghiệm"])
+                L11_C4_B5_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B5_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B5_1, ["[D11_C4_B5_01]-M1. Tìm khẳng định đúng về phép chiếu song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B5_1, ["[D11_C4_B5_02]-M2. Tìm khẳng định sai về phép chiếu song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B5_1, ["[D11_C4_B5_03]-M2. Tìm khẳng định đúng về hình chiếu song song"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B5_1, ["[D11_C4_B5_04]-M2. Cho hình lăng trụ. Tìm hình chiếu của điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B5_1, ["[D11_C4_B5_05]-M2. Cho hình lăng trụ. Tìm hình chiếu của đường thẳng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C4_B5_2 = QTreeWidgetItem(L11_C4_B5, ["Đúng-Sai"])
+                L11_C4_B5_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B5_2, ["[D11_C4_B5_06]-TF-M3. Cho hình lăng trụ. Xét Đ-S:H. chiếu của đỉnh, trung điểm, đường thẳng, trọng tâm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
         #Lớp 11 - Chương 5 -  MẪU SỐ LIỆU GHÉP NHÓM
                 L11_C5 = QTreeWidgetItem(L11, ["Chương 5 - Mẫu số liệu ghép nhóm"])
@@ -13666,25 +13706,54 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C4_B4_03]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_03()                                    
 
-                                #[D11_C4_B4_05]. Tìm khẳng định đúng về hình lăng trụ.
+                                            #[D11_C4_B4_05]. Tìm khẳng định đúng về hình lăng trụ.
                                             if dang_toan == "[D11_C4_B4_05]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_05()
 
-                                #[D11_C4_B4_06]. Tìm cặp điểm đối diện của hình hộp.
+                                            #[D11_C4_B4_06]. Tìm cặp điểm đối diện của hình hộp.
                                             if dang_toan == "[D11_C4_B4_06]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_06()
 
-                                #[D11_C4_B4_07]. Cho hình hộp. Xét sự song song của một đường với các đường
+                                            #[D11_C4_B4_07]. Cho hình hộp. Xét sự song song của một đường với các đường
                                             if dang_toan == "[D11_C4_B4_07]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_07()
                                                 
-                                #[D11_C4_B4_08]. Cho hình hộp. Xét sự song song của hai đường tùy ý
+                                            #[D11_C4_B4_08]. Cho hình hộp. Xét sự song song của hai đường tùy ý
                                             if dang_toan == "[D11_C4_B4_08]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_08()
 
-                                #[D11_C4_B4_09]. Cho hình lăng trụ tam giác. Xét sự song song của 2 mp-Thông hiểu.
+                                            #[D11_C4_B4_09]. Cho hình lăng trụ tam giác. Xét sự song song của 2 mp-Thông hiểu.
                                             if dang_toan == "[D11_C4_B4_09]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_09()
+
+                                            #-------- BÀI 5: PHÉP CHIẾU SONG SONG--------->
+
+                                            #[D11_C4_B5_01]-M1. Tìm khẳng định đúng về phép chiếu song song.
+                                            if dang_toan == "[D11_C4_B5_01]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B5_01()
+
+                                            #[D11_C4_B5_02]-M1. Tìm khẳng định sai về phép chiếu song song.
+                                            if dang_toan == "[D11_C4_B5_02]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B5_02()
+
+                                            #[D11_C4_B5_03]-M2. Tìm khẳng định đúng về hình chiếu song song.
+                                            if dang_toan == "[D11_C4_B5_03]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B5_03()
+
+                                            #[D11_C4_B5_04]-M2. Cho hình lăng trụ. Tìm hình chiếu của điểm.
+                                            if dang_toan == "[D11_C4_B5_04]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B5_04()
+
+                                            #[D11_C4_B5_05]-M2. Cho hình lăng trụ. Tìm hình chiếu của đường thẳng.
+                                            if dang_toan == "[D11_C4_B5_05]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B5_04()
+
+                                            #[D11_C4_B5_06]-M2. Cho hình lăng trụ. Xét Đ-S:H. chiếu của đỉnh, trung điểm, đường thẳng, trọng tâm
+                                            if dang_toan == "[D11_C4_B5_06]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B5_06()
+
+
+
 
                                 ######### Toán 11_ Chương 5-MẪU SỐ LIỆU GHÉP NHÓM ########
                                 #Bài 1: SỐ TRUNG BÌNH VÀ MỐT CỦA MẪU SỐ LIỆU GHÉP NHÓM
@@ -16571,6 +16640,14 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B0_40]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng.
                                             if dang_toan == "[D10_CX_B0_40]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_40()
+
+                                            #[D10_CX_B0_41]-TF-M3. Cho 3 điểm. Xét Đ-S: Hình chiếu lên trục, trọng tâm, điểm đối xứng, điểm thỏa mãn đẳng thức.
+                                            if dang_toan == "[D10_CX_B0_41]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_41()
+
+                                            #[D10_CX_B0_42]-TF-M3. Cho 3 vectơ. Xét Đ-S: cùng phương, tổng hiệu, cos, phân tích
+                                            if dang_toan == "[D10_CX_B0_42]":
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_42()
 
 
                                                 

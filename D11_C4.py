@@ -4,6 +4,14 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+#Tạo hàm chứa chuỗi latex vecto
+def vec(st):
+	return f"\\overrightarrow{{{st}}}"
+
+def vec2(A,B):
+	return f"\\overrightarrow{{{A}{B}}}"
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -83,6 +91,22 @@ def code_hinh_chop_tugiac(S,A,B,C,D):
 			\\end{{scriptsize}}\n\
 			\\end{{tikzpicture}}\n"
 	return code
+
+def code_hinh_langtruxien_tamgiac(a,b,c,a1,b1,c1):
+    code=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}}; \n\
+    \\coordinate ({b}) at (2,-1) node at ({b}) [below] {{${b}$}}; \n\
+    \\coordinate ({c}) at (4,0)  node at ({c}) [below] {{${c}$}}; \n\
+    \\coordinate ({a1}) at (1,4)   node at ({a1}) [above] {{${a1}$}}; \n\
+    \\coordinate ({b1}) at (3,3)   node at ({b1}) [above] {{${b1}$}}; \n\
+    \\coordinate ({c1}) at (5,4)   node at ({c1}) [above] {{${c1}$}};\n\
+    \\draw [dashed] ({a})--({c}); \n\
+    \\draw ({a})--({b})--({b1})--({a1})--({a}); \n\
+    \\draw ({b1})--({c1})--({c})--({b}) ({a1})--({c1})--({c}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+    return code
 
 
 
@@ -4820,3 +4844,774 @@ def ghj_7_jkl_L11_C4_B4_08():
 	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#--------------BÀI 5: PHÉP CHIẾU SONG SONG------------------>
+#[D11_C4_B5_01]-M1. Tìm khẳng định đúng về phép chiếu song song.
+def ghj_7_jkl_L11_C4_B5_01():
+
+	noi_dung=(f"Khẳng định nào sau đây đúng?")	
+
+	kq=random.choice([
+		f"Phép chiếu song song biến ba điểm thẳng hàng thành ba điểm thẳng hàng",
+		f"Phép chiếu song song biến bảo toàn thứ tự của ba điểm thẳng hàng",
+		f"Phép chiếu song song biến ba đường thẳng đồng quy thành 3 đường thẳng đồng quy",
+		f"Hình chiếu song song của hai đường thẳng song song là hai đường thẳng song song hoặc trùng nhau",
+		f"Phép chiếu song song có thể biến đường tròn thành đường elip",
+
+		])
+	kq_false=[f"Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng song song",
+	f"Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng trùng nhau",
+	f"Phép chiếu song song có thể biến đường tròn thành một điểm",
+	f"Phép chiếu song song biến hai đường thẳng chéo nhau thành hai đường thẳng chéo nhau",
+	f"Phép chiếu song song bảo toàn độ dài của đoạn thẳng",
+	f"Phép chiếu song song bảo toàn diện tích",
+	f"Phép chiếu song song bảo toàn góc trong tam giác",
+	f"Phép chiếu song song bảo toàn hình dạng của một hình",
+	f"Phép chiếu song song bảo toàn tính vuông góc",
+	f"Phép chiếu song song không làm thay đổi tỉ số độ dài của hai đoạn thẳng"
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B5_02]-M2. Tìm khẳng định sai về phép chiếu song song.
+def ghj_7_jkl_L11_C4_B5_02():
+
+	noi_dung=(f"Khẳng định nào sau đây sai?")	
+
+	kq=random.choice([f"Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng song song",
+	f"Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng trùng nhau",
+	f"Phép chiếu song song có thể biến đường tròn thành một điểm",
+	f"Phép chiếu song song biến hai đường thẳng chéo nhau thành hai đường thẳng chéo nhau",
+	f"Phép chiếu song song bảo toàn độ dài của đoạn thẳng",
+	f"Phép chiếu song song bảo toàn diện tích",
+	f"Phép chiếu song song bảo toàn góc trong tam giác",
+	f"Phép chiếu song song bảo toàn hình dạng của một hình",
+	f"Phép chiếu song song bảo toàn tính vuông góc",
+	f"Phép chiếu song song không làm thay đổi tỉ số độ dài của hai đoạn thẳng"
+		])
+	kq_false=[
+
+		f"Phép chiếu song song biến ba điểm thẳng hàng thành ba điểm thẳng hàng",
+		f"Phép chiếu song song biến bảo toàn thứ tự của ba điểm thẳng hàng",
+		f"Phép chiếu song song biến ba đường thẳng đồng quy thành 3 đường thẳng đồng quy",
+		f"Hình chiếu song song của hai đường thẳng song song là hai đường thẳng song song hoặc trùng nhau",
+		f"Phép chiếu song song có thể biến đường tròn thành đường elip",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B5_03]-M2. Tìm khẳng định đúng về hình chiếu song song.
+def ghj_7_jkl_L11_C4_B5_03():
+
+	noi_dung=(f"Khẳng định nào sau đây đúng?")	
+
+	kq=random.choice([
+f"Hình chiếu song song của một đoạn thẳng là một đoạn thẳng hoặc một điểm",
+f"Hình chiếu song song của hình bình hành là một hình bình hành",
+f"Hình chiếu song song của hình chữ nhật là một hình bình hành",
+f"Hình chiếu song song của hình vuông là một hình bình hành",
+f"Hình chiếu song song của một tam giác là một tam giác",
+f"Hình chiếu song song của một đường tròn là một đường elip, hoặc một đường tròn hoặc một đoạn thẳng"
+f"Hình chiếu song song của một tam giác đều là một tam giác",
+f"Hình chiếu song song của một tam giác vuông là một tam giác",
+
+		])
+	kq_false=[
+f"Hình chiếu song song của hình tròn luôn là một hình tròn",
+f"Hình chiếu song song của tam giác vuông luôn là một tam giác vuông",
+f"Hình chiếu song song của hình vuông luôn là một hình vuông",
+f"Hình chiếu song song của hình chữ nhật luôn giữ nguyên tỉ lệ chiều dài và chiều rộng",
+f"Hình chiếu song song của hình thoi luôn cho một hình thoi",
+f"Hình chiếu song song của tam giác đều thành một tam giác đều",
+f"Hình chiếu song song của một đoạn thẳng là một đoạn thẳng",
+f"Hình chiếu song song của hình thang là một hình chữ nhật",
+f"Hình chiếu song song của một đường tròn là một đường elip hoặc một đường tròn",
+f"Hình chiếu song song của một tam giác đều là một tam giác cân",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B5_04]-M2. Cho hình lăng trụ. Tìm hình chiếu của điểm
+def ghj_7_jkl_L11_C4_B5_04():
+	D,E,F=random.choice([["A'","B'","C'"], ["D","E","F"], ["A_1","B_1","C_1"] ])
+	A,B,C="A","B","C"
+	chon=random.randint(1,12)
+	if chon==1:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{D}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{AB}}$ là điểm nào?")
+		
+		kq=E
+		kq_false=[F,A,B,C]
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{D}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{AC}}$ là điểm nào?")
+		
+		kq=F
+		kq_false=[E,A,B,C]
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(AC{F}{E})$ theo phương ${{AB}}$ là điểm nào?")
+		
+		kq=D
+		kq_false=[E,A,B,C,F]
+
+	if chon==4:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(AC{F}{E})$ theo phương ${{BC}}$ là điểm nào?")
+		
+		kq=F
+		kq_false=[E,A,B,C,D]
+
+	if chon==5:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(AB{F}{D})$ theo phương ${{BC}}$ là điểm nào?")
+		
+		kq=E
+		kq_false=[F,A,B,C,D]
+
+	if chon==6:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(AB{F}{D})$ theo phương ${{AC}}$ là điểm nào?")
+		
+		kq=D
+		kq_false=[F,A,B,C,E]
+
+	if chon==7:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{D}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{B}{E}", f"{C}{F}", f"{F}{C}"])}}}$ là điểm nào?")
+		
+		kq=A
+		kq_false=[F,D,B,C,E]
+
+	if chon==8:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{C}{F}", f"{F}{C}"])}}}$ là điểm nào?")
+		
+		kq=B
+		kq_false=[F,D,A,C,E]
+
+	if chon==9:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{E}{B}"])}}}$ là điểm nào?")
+		
+		kq=C
+		kq_false=[F,D,A,B,E]
+
+	if chon==10:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{C}}}$ lên mặt phẳng $({D}{F}{F})$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{E}{B}"])}}}$ là điểm nào?")
+		
+		kq=F
+		kq_false=[C,D,A,B,E]
+
+	if chon==11:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{B}}}$ lên mặt phẳng $({D}{F}{F})$ theo phương ${{{random.choice([f"{A}{D}", f"{C}{F}", f"{F}{C}"])}}}$ là điểm nào?")
+		
+		kq=E
+		kq_false=[C,D,A,B,F]
+
+	if chon==12:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của điểm ${{{A}}}$ lên mặt phẳng $({D}{F}{F})$ theo phương ${{{random.choice([f"{B}{E}", f"{C}{F}", f"{F}{C}"])}}}$ là điểm nào?")
+		
+		kq=D
+		kq_false=[C,E,A,B,F]
+	
+		
+
+	noi_dung_loigiai=(
+	f"Hình chiếu là điểm ${{{kq}}}$."
+	)
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*Điểm ${{{kq}}}$"
+	pa_B= f"Điểm ${{{kq2}}}$"
+	pa_C= f"Điểm ${{{kq3}}}$"
+	pa_D= f"Điểm ${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	code_hinh=code_hinh_langtruxien_tamgiac("A","B","C",D,E,F)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B5_05]-M2. Cho hình lăng trụ. Tìm hình chiếu của đường thẳng
+def ghj_7_jkl_L11_C4_B5_05():
+	D,E,F=random.choice([["A'","B'","C'"], ["D","E","F"], ["A_1","B_1","C_1"] ])
+	A,B,C="A","B","C"
+	chon=random.randint(1,13)
+	
+	if chon==1:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{E}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{AB}}$ là")
+		
+		kq=f"Điểm ${{{E}}}$"
+		kq_false=[
+		f"Điểm ${{{F}}}$",
+		f"Đường thẳng ${{{E}{F}}}$",
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		]
+	
+	if chon==2:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{E}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{AC}}$ là")
+		
+		kq=f"Đường thẳng ${{{F}{E}}}$"
+		kq_false=[
+		f"Điểm ${{{F}}}$",
+		f"Điểm ${{{E}}}$",		
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		]
+
+	if chon==3:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{E}}}$ lên mặt phẳng $(AC{F}{E})$ theo phương ${{BC}}$ là")
+		
+		kq=f"Đường thẳng ${{{D}{F}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{E}{F}}}$",
+		]
+
+	
+	if chon==4:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{E}}}$ lên mặt phẳng $(AC{F}{E})$ theo phương ${{AB}}$ là")
+		
+		kq=f"Điểm ${{{D}}}$"
+		kq_false=[
+		f"Điểm ${{{F}}}$",
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{E}{F}}}$",
+		]
+
+	
+	if chon==5:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{F}}}$ lên mặt phẳng $(AB{E}{D})$ theo phương ${{BC}}$ là")
+		
+		kq=f"Đường thẳng ${{{D}{E}}}$"
+		kq_false=[
+		f"Điểm ${{{D}}}$",
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",		
+		]
+
+	if chon==6:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{B}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{D}{E}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",		
+		]
+
+
+	if chon==7:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{D}{C}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{D}{F}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{D}{E}}}$"]
+
+	if chon==8:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{F}{A}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{D}{F}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{D}{E}}}$"]
+
+	if chon==9:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{F}{B}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{E}{F}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{D}{E}}}$"]
+
+	if chon==10:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{A}{E}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{E}{D}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{F}{E}}}$"]
+
+	if chon==11:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{A}{C}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{F}{D}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",
+		f"Đường thẳng ${{{F}{E}}}$"]
+
+	if chon==12:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{B}{C}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{F}{E}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",]
+
+	if chon==13:
+		noi_dung=(
+		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+		f" Hình chiếu song song của đường thẳng ${{{A}{B}}}$ lên mặt phẳng $({D}{E}{F})$"
+		f" theo phương ${random.choice([f"{{{F}C}}", f"{{{E}B}}", f"{{{D}A}}"])}$ là")
+		
+		kq=f"Đường thẳng ${{{D}{E}}}$"
+		kq_false=[
+		f"Đường thẳng ${{{E}{B}}}$",
+		f"Đường thẳng ${{{B}{C}}}$",
+		f"Đường thẳng ${{{C}{E}}}$",
+		f"Đường thẳng ${{{C}{F}}}$",]
+
+	noi_dung_loigiai=(f"Hình chiếu là {kq}.")
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	code_hinh=code_hinh_langtruxien_tamgiac("A","B","C",D,E,F)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C4_B5_06]-M2. Cho hình lăng trụ. Xét Đ-S:H. chiếu của đỉnh, trung điểm, đường thẳng, trọng tâm
+def ghj_7_jkl_L11_C4_B5_06():
+	D,E,F=random.choice([["A'","B'","C'"], ["D","E","F"], ["A_1","B_1","C_1"] ])	
+	A,B,C="A","B","C"
+	M,N,P,G=random.sample(["M","N","P","Q","G","H","I"],4)
+
+	noi_dung = (
+	f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+	f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{{D}{F},{B}{C}}}$."
+	f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{D}{B}{C}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+	chon=random.randint(1,3)
+	if chon==1:
+		kq1_T=f"*Hình chiếu song song của điểm ${{{D}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{E}{B}", f"{F}{C}"])}}}$ là điểm ${{A}}$" 
+		kq1_F=f"Hình chiếu song song của điểm ${{{D}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{E}{B}", f"{F}{C}"])}}}$ là điểm ${{B}}$"
+		
+		HDG=f"Hình chiếu song song của điểm ${{{D}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{E}{B}", f"{F}{C}"])}}}$ là điểm ${{A}}$"
+	
+	if chon==2:
+		kq1_T=f"*Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{F}{C}"])}}}$ là điểm ${{B}}$" 
+		kq1_F=f"Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{F}{C}"])}}}$ là điểm ${{C}}$"
+		
+		HDG=f"Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{F}{C}"])}}}$ là điểm ${{B}}$"
+
+	if chon==3:
+		kq1_T=f"*Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là điểm ${{C}}$" 
+		kq1_F=f"Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là điểm ${{B}}$"
+		
+		HDG=f"Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là điểm ${{C}}$"
+	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq2_T=f"*Hình chiếu song song của đường thẳng ${{{A}{M}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là đường thẳng ${{AC}}$"
+		kq2_F=f"Hình chiếu song song của đường thẳng ${{{A}{M}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là đường thẳng ${{{M}C}}$"
+		
+		HDG=f"Hình chiếu song song của đường thẳng ${{{A}{M}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là đường thẳng ${{AC}}$."
+	
+	if chon==2:
+		kq2_T=f"*Hình chiếu song song của đoạn thẳng ${{{B}{M}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là một trung tuyến của tam giác ${{ABC}}$"
+		kq2_F=f"Hình chiếu song song của đoạn thẳng ${{{B}{M}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là đoạn thẳng ${{B{N}}}$"
+		
+		HDG=f"Hình chiếu song song của đoạn thẳng ${{{B}{M}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}"])}}}$ là một trung tuyến xuất phát từ đỉnh ${{{B}}}$ của tam giác ${{ABC}}$."
+
+
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,3)
+	if chon==1:
+		kq3_T=f"*Hình chiếu song song của điểm ${{{M}}}$ lên mặt phẳng $(AB{E}{D})$ theo phương ${{{random.choice([f"{E}{F}", f"{B}{C}"])}}}$ là trung điểm của ${{{D}{E}}}$" 
+		kq3_F=f"Hình chiếu song song của điểm ${{{M}}}$ lên mặt phẳng $(AB{E}{D})$ theo phương ${{{random.choice([f"{E}{F}", f"{B}{C}"])}}}$ là trung điểm của ${{{A}{B}}}$"
+		
+		HDG=f"Hình chiếu song song của điểm ${{{M}}}$ lên mặt phẳng $(AB{E}{D})$ theo phương ${{{random.choice([f"{E}{F}", f"{B}{C}"])}}}$ là trung điểm của ${{{D}{E}}}$."
+	
+	if chon==2:
+		kq3_T=f"*Hình chiếu song song của điểm ${{{M}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{{random.choice([f"{E}{D}", f"{B}{A}"])}}}$ là trung điểm của ${{{E}{F}}}$" 
+		kq3_F=f"Hình chiếu song song của điểm ${{{M}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{{random.choice([f"{E}{D}", f"{B}{A}"])}}}$ là trung điểm của ${{{B}{C}}}$"
+		
+		HDG=f"Hình chiếu song song của điểm ${{{M}}}$ lên mặt phẳng $(BC{F}{E})$ theo phương ${{{random.choice([f"{E}{D}", f"{B}{A}"])}}}$ là trung điểm của ${{{E}{F}}}$."
+
+	if chon==3:
+		kq3_T=f"*Hình chiếu song song của điểm ${{{N}}}$ lên mặt phẳng $(AC{F}{D})$ theo phương ${{{random.choice([f"{E}{D}", f"{B}{A}"])}}}$ là trung điểm của ${{{A}{C}}}$" 
+		kq3_F=f"Hình chiếu song song của điểm ${{{N}}}$ lên mặt phẳng $(AC{F}{D})$ theo phương ${{{random.choice([f"{E}{D}", f"{B}{A}"])}}}$ là trung điểm của ${{{D}{F}}}$"
+		
+		HDG=f"Hình chiếu song song của điểm ${{{N}}}$ lên mặt phẳng $(AC{F}{D})$ theo phương ${{{random.choice([f"{E}{D}", f"{B}{A}"])}}}$ là trung điểm của ${{{A}{C}}}$."
+		
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,6)
+
+	if chon==1:
+		kq4_T=(f"*Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}=-2{vec(f"{N}{G}'")}$")
+
+		kq4_F=(f"Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}=2{vec(f"{N}{G}'")}$")
+		
+		HDG=(f"${{{G}'}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên ${A}{G}'=2{N}{G}'$.\n\n"
+			f"Suy ra: ${vec(f"{A}{G}'")}=-2{vec(f"{N}{G}'")}$.")
+	
+	if chon==2:
+		kq4_T=(f"*Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}={phan_so(2/3)}{vec(f"{A}{N}")}$")
+
+		kq4_F=(f"Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}={phan_so(3/2)}{vec(f"{A}{N}")}$")
+		
+		HDG=(f"${{{G}'}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên ${A}{G}'={phan_so(2/3)}{A}{N}$.\n\n"
+			f"Suy ra: ${vec(f"{A}{G}'")}={phan_so(2/3)}{vec(f"{A}{N}")}$.")
+
+	if chon==3:
+		kq4_T=(f"*Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}=-{phan_so(2/3)}{vec(f"{N}{A}")}$")
+
+		kq4_F=(f"Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}=-{phan_so(3/2)}{vec(f"{N}{A}")}$")
+		
+		HDG=(f"${{{G}'}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên ${A}{G}'={phan_so(2/3)}{A}{N}$.\n\n"
+			f"Suy ra: ${vec(f"{A}{G}'")}=-{phan_so(2/3)}{vec(f"{N}{A}")}$.")
+
+	if chon==4:
+		kq4_T=(f"*Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}=2{vec(f"{G}'{N}")}$")
+
+		kq4_F=(f"Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{A}{G}'")}=-2{vec(f"{G}'{N}")}$")
+		
+		HDG=(f"${{{G}'}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên ${A}{G}'=2{N}{G}'$.\n\n"
+			f"Suy ra: ${vec(f"{A}{G}'")}=2{vec(f"{G}'{N}")}$.")
+
+	if chon==5:
+		kq4_T=(f"*Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{G}{A}")}+{vec(f"{G}{B}")}+{vec(f"{G}{C}")}=3{vec(f"{G}{G}'")}$")
+
+		kq4_F=(f"Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó:  ${vec(f"{G}{A}")}+{vec(f"{G}{B}")}+{vec(f"{G}{C}")}={random.choice([2,4,5,6])}{vec(f"{G}{G}'")}$")
+		
+		HDG=(f"${{{G}'}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên:\n\n"
+			f"Suy ra: ${vec(f"{G}{A}")}+{vec(f"{G}{B}")}+{vec(f"{G}{C}")}=3{vec(f"{G}{G}'")}$.")
+
+	if chon==6:
+		kq4_T=(f"*Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó: ${vec(f"{D}{A}")}+{vec(f"{D}{N}")}=2{vec(f"{D}{G}'")}$")
+
+		kq4_F=(f"Gọi ${{{G}'}}$ là hình chiếu song song của ${{{G}}}$ lên mặt phẳng $(ABC)$ theo phương ${{{random.choice([f"{A}{D}", f"{B}{E}", f"{C}{F}"])}}}$."
+			f" Khi đó:  ${vec(f"{D}{A}")}+{vec(f"{D}{N}")}={random.choice([3,4,5,6])}{vec(f"{D}{G}'")}$")
+		
+		HDG=(f"${{{G}'}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$ nên:\n\n"
+			f"Suy ra: ${vec(f"{D}{A}")}+{vec(f"{D}{N}")}=2{vec(f"{D}{G}'")}$.")
+	
+
+	
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+	code_hinh=code_hinh_langtruxien_tamgiac("A","B","C",D,E,F)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an

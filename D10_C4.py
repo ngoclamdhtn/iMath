@@ -2124,8 +2124,8 @@ def yy3yy_L10_C4_B2_04():
     #Trộn các phương án
     list_PA =[pa_A,pa_B,pa_C,pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Cho tam giác ${{ABC}}$ có $\\widehat{{{ten_goc}}}={C_degree}^\\circ$ và độ dài cạnh ${{{ten_canh}}}$ bằng ${{{a}}}$."
-    f" Tính bán kính ${{R}}$ của đường tròn ngoại tiếp tam giác ${{ABC}}$ (kết quả làm tròn đến hàng phần trăm)."
+    noi_dung= (f"Cho tam giác ${{ABC}}$ có $\\widehat{{{ten_goc}}}={C_degree}^\\circ$ và độ dài cạnh ${{{ten_canh}}}$ bằng ${{{a}}}$."
+    f" Tính bán kính ${{R}}$ của đường tròn ngoại tiếp tam giác ${{ABC}}$ (kết quả làm tròn đến hàng phần trăm).")
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  

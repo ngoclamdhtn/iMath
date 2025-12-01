@@ -3595,6 +3595,7 @@ def ckz_L12C4_B1_53():
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     chon=random.randint(1,2)
+    
     if chon==1:
         while True:
             chon=random.randint(1,3)
@@ -3670,7 +3671,7 @@ def ckz_L12C4_B1_53():
         kq3_F = (f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$."
             f" Khi đó $F({x_1})={dap_an_false}$")       
 
-        noi_dung_loigiai=(
+        HDG=(
         f"$F(x)=\\int \\left({{{latex(f)}}}\\right){d_x}={latex(integrate(f, x))}+C$.\n\n"
         f"$F({x_0})={b}\\Leftrightarrow {phan_so(F.subs(x,x_0))}+C={b}\\Rightarrow C={phan_so(C)}$.\n\n"
         f"Vậy $F(x)={latex(F+C)}$.\n\n"
