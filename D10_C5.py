@@ -4863,7 +4863,8 @@ def y7y7u_L10_C5_B4_11():
 		f"$\\Rightarrow {G}{A}^2+{G}{B}^2+{G}{C}^2=-2({T})$.\n\n"
 		f"Lại có:\n\n ${A}{B}^2+{B}{C}^2+{C}{A}^2=({vec_GB}-{vec_GA})^2+({vec_GC}-{vec_GB})^2+({vec_GA}-{vec_GC})^2$\n\n"
 		f"$=({G}{A}^2+{G}{B}^2+{G}{C}^2)-2({T})$\n\n"
-		f"$=-4({T})-2({T})$\n\n$=-6({T})={phan_so(tich)}$."
+		f"$=-4({T})-2({T})$\n\n$=-6({T})$\n\n"
+		f"$\\Rightarrow {T}={phan_so(-1/6)}({A}{B}^2+{A}{C}^2+{B}{C}^2)={phan_so(tich)}$."
 
 		)
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -4918,3 +4919,152 @@ def y7y7u_L10_C5_B4_11():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C5_B4_13]-SA-M4. Cho tam giác có 3 cạnh. Tính vec(AB).vec(AC)
+def y7y7u_L10_C5_B4_13():
+	A,B,C=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"]])
+	G=random.choice(["G","I","H"])
+	while True:
+		AB=random.randint(1,7)
+		AC=random.randint(1,7)
+		BC=random.randint(1,7)
+		tich_vh=float((AC**2+AB**2-BC**2)/2)
+		if all([AB+AC>BC, AB+BC>AC, AC+BC>AB, tich_vh>-5]):
+			break
+	vec_AB, vec_AC, vec_BC=vec2(A,B), vec2(A,C), vec2(B,C)
+
+	if tich_vh.is_integer():
+		noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+		f" Tính ${vec_AB}.{vec_AC}$."	)
+		dap_an=int(tich_vh)
+		noi_dung_loigiai=f"${vec2(A,B)}.{vec2(A,C)}=\\dfrac{{{vec_AC}^2+{vec_AB}^2-{vec_BC}^2}}{{2}}={phan_so(tich_vh)}$."
+
+	else:
+		noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+		f" Tính ${vec_AB}.{vec_AC}$ (kết quả làm tròn đến hàng phần mười)."	)
+		dap_an=f"{round_half_up(tich_vh,1):.1f}".replace(".",",")
+		noi_dung_loigiai=f"${vec2(A,B)}.{vec2(A,C)}=\\dfrac{{{vec_AC}^2+{vec_AB}^2-{vec_BC}^2}}{{2}}={phan_so(tich_vh)}={dap_an}$."
+
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D10_C5_B4_13]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(AG).vec(BC)
+def y7y7u_L10_C5_B4_13():
+	A,B,C=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"]])
+	G=random.choice(["G","I","H"])
+	while True:
+		AB=random.randint(1,7)
+		AC=random.randint(1,7)
+		BC=random.randint(1,7)
+		if AB==AC:
+			continue
+		tich_vh=float(1/3*(AC**2-AB**2))
+		if all([AB+AC>BC, AB+BC>AC, AC+BC>AB, tich_vh>-5]):
+			break
+	vec_AB, vec_AC, vec_BC=vec2(A,B), vec2(A,C), vec2(B,C)
+	vec_AG, vec_AM=vec2(A,G), vec2(A,"M")
+
+	if tich_vh.is_integer():
+		noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+			f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+			f" Tính ${vec_AG}.{vec_BC}$."	)
+		dap_an=int(tich_vh)
+		noi_dung_loigiai=(f"Gọi ${{M}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${vec_AG}={phan_so(2/3)}{vec_AM}={phan_so(1/3)}({vec_AB}+{vec_AC})$.\n\n"
+		f"${vec_AG}.{vec_BC}={phan_so(1/3)}({vec_AC}+{vec_AB})({vec_AC}-{vec_AB})"
+		f"={phan_so(1/3)}({A}{C}^2-{A}{B}^2)={phan_so(1/3)}({AC**2}-{AB**2})={phan_so(tich_vh)}$.")
+
+	else:
+		noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+		f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+		f" Tính ${vec_AG}.{vec_BC}$ (kết quả làm tròn đến hàng phần mười)."	)
+		dap_an=f"{round_half_up(tich_vh,1):.1f}".replace(".",",")
+		noi_dung_loigiai=(f"Gọi ${{M}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${vec_AG}={phan_so(2/3)}{vec_AM}={phan_so(1/3)}({vec_AB}+{vec_AC})$.\n\n"
+		f"${vec_AG}.{vec_BC}={phan_so(1/3)}({vec_AC}+{vec_AB})({vec_AC}-{vec_AB})"
+		f"={phan_so(1/3)}({A}{C}^2-{A}{B}^2)={phan_so(1/3)}({AC**2}-{AB**2})={phan_so(tich_vh)}={dap_an}$.")
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C5_B4_14]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(GA).vec(GB)+vec(GB).vec(GC)+vec(GC).vec(GA)
+def y7y7u_L10_C5_B4_14():
+	A,B,C=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"]])
+	G=random.choice(["G","I","H"])
+	while True:
+		AB=random.randint(1,7)
+		AC=random.randint(1,7)
+		BC=random.randint(1,7)
+		if AB==AC:
+			continue
+		tich=float(-1/6*(AB**2+AC**2+BC**2))
+		if all([AB+AC>BC, AB+BC>AC, AC+BC>AB, tich>-5]):
+			break
+	vec_AB, vec_AC, vec_BC=vec2(A,B), vec2(A,C), vec2(B,C)
+	vec_AG, vec_AM=vec2(A,G), vec2(A,"M")
+	vec_GA, vec_GB, vec_GC=vec2(G,A), vec2(G,B), vec2(G,C)
+
+
+	T=f"{vec_GA}.{vec_GB}+{vec_GB}.{vec_GC}+{vec_GC}.{vec_GA}"
+
+	if tich.is_integer():
+		noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+			f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+			f" Tính ${T}$."	)
+		dap_an=int(tich)
+		noi_dung_loigiai = (f"Ta có: ${vec_GA}+{vec_GB}+{vec_GC}={vec("0")}\\Rightarrow ({vec_GA}+{vec_GB}+{vec_GC})^2=0$\n\n"
+		f"$\\Rightarrow {G}{A}^2+{G}{B}^2+{G}{C}^2=-2({T})$.\n\n"
+		f"Lại có:\n\n ${A}{B}^2+{B}{C}^2+{C}{A}^2=({vec_GB}-{vec_GA})^2+({vec_GC}-{vec_GB})^2+({vec_GA}-{vec_GC})^2$\n\n"
+		f"$=({G}{A}^2+{G}{B}^2+{G}{C}^2)-2({T})$\n\n"
+		f"$=-4({T})-2({T})$\n\n$=-6({T})$\n\n"
+		f"$\\Rightarrow {T}={phan_so(-1/6)}({A}{B}^2+{A}{C}^2+{B}{C}^2)={phan_so(tich)}$."
+
+		)
+
+	else:
+		noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+			f" Gọi ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+			f" Tính ${T}$ (kết quả làm tròn đến hàng phần mười)."	)
+		dap_an=f"{round_half_up(tich,1):.1f}".replace(".",",")
+		noi_dung_loigiai =( f"Ta có: ${vec_GA}+{vec_GB}+{vec_GC}={vec("0")}\\Rightarrow ({vec_GA}+{vec_GB}+{vec_GC})^2=0$\n\n"
+		f"$\\Rightarrow {G}{A}^2+{G}{B}^2+{G}{C}^2=-2({T})$.\n\n"
+		f"Lại có:\n\n ${A}{B}^2+{B}{C}^2+{C}{A}^2=({vec_GB}-{vec_GA})^2+({vec_GC}-{vec_GB})^2+({vec_GA}-{vec_GC})^2$\n\n"
+		f"$=({G}{A}^2+{G}{B}^2+{G}{C}^2)-2({T})$\n\n"
+		f"$=-4({T})-2({T})$\n\n$=-6({T})$\n\n"
+		f"$\\Rightarrow {T}={phan_so(-1/6)}({A}{B}^2+{A}{C}^2+{B}{C}^2)={phan_so(tich)}={dap_an}$."
+
+		)
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+

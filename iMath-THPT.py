@@ -2697,6 +2697,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C5_B4_3, ["[D10_C5_B4_12]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(AB).vec(AC)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B4_3, ["[D10_C5_B4_13]-SA-M3. Cho tam giác có 3 cạnh, trọng tâm G. Tính vec(AG).vec(BC)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B4_3, ["[D10_C5_B4_14]-SA-M4. Cho tam giác có 3 cạnh, trọng tâm G. Tính vec(GA).vec(GB)+vec(GB).vec(GC)+vec(GC).vec(GA)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
                 
@@ -16472,7 +16484,19 @@ class Ui_MainWindow(object):
 
                                             #[D10_C5_B4_11]-TF-M2. Cho tam giác có 3 cạnh. Xét Đ-S: vec_AB.vec_AC, góc A, vec_AG.vec_BC, GA.GB+GB.GC+GC.GA
                                             if dang_toan == "[D10_C5_B4_11]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C5.y7y7u_L10_C5_B4_11()                 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C5.y7y7u_L10_C5_B4_11()
+
+                                            #[D10_C5_B4_12]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(AB).vec(AC).
+                                            if dang_toan == "[D10_C5_B4_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_12()  
+
+                                            #[D10_C5_B4_13]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(AG).vec(BC)
+                                            if dang_toan == "[D10_C5_B4_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_13()
+
+                                            #[D10_C5_B4_14]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(GA).vec(GB)+vec(GB).vec(GC)+vec(GC).vec(GA)
+                                            if dang_toan == "[D10_C5_B4_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_14()        
                                                 
 
                                 #Bài 5 - Tọa độ vectơ
