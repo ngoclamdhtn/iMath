@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+A,B,C=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["M","N","P"] ])
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>tao_tam_giac</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

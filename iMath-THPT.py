@@ -2673,6 +2673,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C5_B4_2, ["[D10_C5_B4_11]-TF-M2. Cho tam giác có 3 cạnh. Xét Đ-S: vec_AB.vec_AC, góc A, vec_AG.vec_BC, GA.GB+GB.GC+GC.GA."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C5_B4_3 = QTreeWidgetItem(L10_C5_B4, ["Trả lời ngắn"])
                 L10_C5_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C5_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -16464,7 +16468,11 @@ class Ui_MainWindow(object):
 
                                             #[D10_C5_B4_10]-SA-M3. Quỹ tích điểm M thảo mãn đằng thức vecto
                                             if dang_toan == "[D10_C5_B4_10]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_10()                 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_10()
+
+                                            #[D10_C5_B4_11]-TF-M2. Cho tam giác có 3 cạnh. Xét Đ-S: vec_AB.vec_AC, góc A, vec_AG.vec_BC, GA.GB+GB.GC+GC.GA
+                                            if dang_toan == "[D10_C5_B4_11]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C5.y7y7u_L10_C5_B4_11()                 
                                                 
 
                                 #Bài 5 - Tọa độ vectơ

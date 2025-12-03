@@ -100,6 +100,12 @@ def code_latex_tamgiacdeu(A,B,C):
 \\end{{tikzpicture}}\n"
 	return code
 
+#Tạo hàm chứa chuỗi latex vecto
+def vec(st):
+	return f"\\overrightarrow{{{st}}}"
+
+def vec2(A,B):
+	return f"\\overrightarrow{{{A}{B}}}"
 
 #Bài 1 - Các định nghĩa véctơ
 #[D10_C5_B1_01]-M2. Cho tam giác đều. Tìm khẳng định sai
@@ -4792,3 +4798,123 @@ def y7y7u_L10_C5_B4_10():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C5_B4_11]-TF-M4. Cho tam giác có 3 cạnh. Xét Đ-S: vec_AB.vec_AC, góc A, vec_AG.vec_BC, GA.GB+GB.GC+GC.GA
+def y7y7u_L10_C5_B4_11():
+	A,B,C=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"]])
+	G=random.choice(["G","I","H"])
+	while True:
+		AB=random.randint(1,7)
+		AC=random.randint(1,7)
+		BC=random.randint(1,7)
+		if all([AB+AC>BC, AB+BC>AC, AC+BC>AB]):
+			break
+	vec_AB, vec_AC, vec_BC=vec2(A,B), vec2(A,C), vec2(B,C)
+
+
+	noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ có ${A}{B}={AB}, {A}{C}={AC}, {B}{C}={BC}$."
+	f" ${{{G}}}$ là trọng tâm của tam giác ${{{A}{B}{C}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau:")		
+	
+	
+	kq1_T=f"*${vec_BC}^2={vec_AC}^2-2.{vec_AC}.{vec_AB}+{vec_AB}^2$" 
+	kq1_F=random.choice([f"${vec_BC}^2={vec_AC}^2+2{vec_AC}.{vec_AB}+{vec_AB}^2$",
+	f"${vec_BC}^2={vec_AC}^2+{vec_AC}.{vec_AB}+{vec_AB}^2$",
+	f"${vec_BC}^2={vec_AC}^2-{vec_AC}.{vec_AB}+{vec_AB}^2$"
+	 ])
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"${vec_BC}^2=({vec_AC}-{vec_AB})^2={vec_AC}^2-2.{vec_AC}.{vec_AB}+{vec_AC}^2$."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	tich_vh=(AC**2+AB**2-BC**2)/2
+
+	kq2_T=f"*${vec2(A,B)}.{vec2(A,C)}={phan_so(tich_vh)}$"
+	kq2_F=f"${vec2(A,B)}.{vec2(A,C)}={phan_so(tich_vh+random.randint(1,2))}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"${vec2(A,B)}.{vec2(A,C)}=\\dfrac{{{vec_AC}^2+{vec_AB}^2-{vec_BC}^2}}{{2}}={phan_so(tich_vh)}$"
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	vec_AG, vec_AM=vec2(A,G), vec2(A,"M")
+	tich_vh=1/3*(AC**2-AB**2)
+
+	kq3_T=f"*${vec_AG}.{vec_BC}={phan_so(tich_vh)}$" 
+	kq3_F=f"${vec_AG}.{vec_BC}={phan_so(tich_vh+random.randint(1,2))}$"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"Gọi ${{M}}$ là trung điểm của ${{{B}{C}}}$.\n\n"
+		f"${vec_AG}={phan_so(2/3)}{vec_AM}={phan_so(1/3)}({vec_AB}+{vec_AC})$.\n\n"
+		f"${vec_AG}.{vec_BC}={phan_so(1/3)}({vec_AC}+{vec_AB})({vec_AC}-{vec_AB})"
+		f"={phan_so(1/3)}({A}{C}^2-{A}{B}^2)={phan_so(1/3)}({AC**2}-{AB**2})={phan_so(tich_vh)}$.")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	vec_GA, vec_GB, vec_GC=vec2(G,A), vec2(G,B), vec2(G,C)
+
+	tich=-1/6*(AB**2+AC**2+BC**2)
+	T=f"{vec_GA}.{vec_GB}+{vec_GB}.{vec_GC}+{vec_GC}.{vec_GA}"
+
+	kq4_T=f"*${vec_GA}.{vec_GB}+{vec_GB}.{vec_GC}+{vec_GC}.{vec_GA}={phan_so(tich)}$"
+	kq4_F=f"${vec_GA}.{vec_GB}+{vec_GB}.{vec_GC}+{vec_GC}.{vec_GA}={phan_so(tich+random.randint(1,2))}$" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(f"Ta có: ${vec_GA}+{vec_GB}+{vec_GC}={vec("0")}\\Rightarrow ({vec_GA}+{vec_GB}+{vec_GC})^2=0$\n\n"
+		f"$\\Rightarrow {G}{A}^2+{G}{B}^2+{G}{C}^2=-2({T})$.\n\n"
+		f"Lại có:\n\n ${A}{B}^2+{B}{C}^2+{C}{A}^2=({vec_GB}-{vec_GA})^2+({vec_GC}-{vec_GB})^2+({vec_GA}-{vec_GC})^2$\n\n"
+		f"$=({G}{A}^2+{G}{B}^2+{G}{C}^2)-2({T})$\n\n"
+		f"$=-4({T})-2({T})$\n\n$=-6({T})={phan_so(tich)}$."
+
+		)
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
