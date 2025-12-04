@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-f"{round(,1):.1f}".replace(".",",").
+f"{round(,1):.1f}".replace(".",",")
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>round_so</tabTrigger>

@@ -2809,7 +2809,139 @@ def y7y7u_L10_C5_B2_21():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_C5_B2_20]-M2. Cho tam giác đều. Tính độ dài tổng hai vectơ (đảo vị trí) kết quả là cạnh.
+#[D10_C5_B2_22]-M2. Cho 3 lực F1,F2,F3 tác động lên vật. Tìm F3 để vật đứng yên.
+def y7y7u_L10_C5_B2_22():
+	A,B,C=random.sample(["Lam", "Minh", "Phương", "Thảo", "Linh","Tuấn", "Tú"],3)
+	a=random.randint(20,40)
+	dap_an=f"{round_half_up(a*sqrt(3),1):.1f}".replace(".",",")
+
+	code_hinh=(f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate (M) at (0,0);\n\
+			\\coordinate (A) at (2,1);\n\
+			\\coordinate (B) at (2,-1);\n\
+			\\coordinate (x) at ($(A)+(B)-(M)$);\n\
+			\\coordinate (C) at ($(M)!-1!(x)$);\n\
+			\\draw[->] (M)node [above]{{$M$}}--node [above]{{$\\vec{{F_1}}$}}(A)node [above]{{$A$}};\n\
+			\\draw[->] (M)--node [below]{{$\\vec{{F_2}}$}}(B)node [above]{{$B$}};\n\
+			\\draw[->] (M)--node [above]{{$\\vec{{F_3}}$}}(C)node [above]{{$C$}};\n\
+			\\draw pic[draw,angle eccentricity=1.8,angle radius=0.5cm]{{angle=B--M--A}};\n\
+					\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Ba bạn {A}, {B}, {C} cùng cột dây vào vật ${{M}}$ và kéo về phía mình"
+	f" với ba lực ${vec("F1")}={vec2("M","A")}, {vec("F2")}={vec2("M","B")}, {vec("F3")}={vec2("M","C")}$"
+	f" như hình vẽ. Biết cường độ lực của ${vec("F1")}$ và ${vec("F2")}$ đều bằng ${{{a}}}N$"
+	f" và góc $\\widehat{{AMB}}=60^\\circ$."
+	f" Tính cường độ lực của ${vec("F3")}$ để vật đứng yên (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai=(
+	f"Vật đứng yên khi ${vec("F3")}=-({vec("F1")}+{vec("F2")})$.\n\n"
+	f"Dựng hình bình hành ${{AMBN}}$.\n\n"
+	f"$-({vec("F1")}+{vec("F2")})=-{vec2("M","N")}$.\n\n"
+	f"Suy ra: $|{vec("F3")}|=MN=\\dfrac{{{latex(2*sqrt(3))}MA}}{{2}}={a}{latex(sqrt(3))}={dap_an}$."
+
+	)	
+	code_hinh_LG=(f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+				\\coordinate (M) at (0,0);\n\
+				\\coordinate (A) at (2,1);\n\
+				\\coordinate (B) at (2,-1);\n\
+				\\coordinate (N) at ($(A)+(B)-(M)$);\n\
+				\\coordinate (C) at ($(M)!-1!(N)$);\n\
+				\\draw[->] (M) node [above]{{$M$}}--node [above]{{$\\vec{{F}}_1$}}(A);\n\
+				\\draw[->] (M)--node [below]{{$\\vec{{F}}_2$}}(B);\n\
+				\\draw[->] (M)--node [above]{{$\\vec{{F}}_{{12}}$}}(N);\n\
+				\\draw[->] (M)--node [above]{{$\\vec{{F}}_3$}}(C);\n\
+				\\draw pic["",draw,angle eccentricity=1.8,angle radius=0.5cm]{{angle=B--M--A}};\n\
+				\\draw[dashed] (A)--(N)--(B);\n\
+			\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	#file_name_LG=my_module.pdftoimage_timename(code)
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n{noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\loigiai{{\n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C5_B2_23]-M2. Vật được căng bởi 2 dây. Tính trọng lực tác động lên vật.
+def y7y7u_L10_C5_B2_23():
+	code_hinh=(f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate (O) at (0,0);\n\
+			\\coordinate (A) at (1.5,2);\n\
+			\\coordinate (A') at (-1.5,2);\n\
+			\\coordinate (T_1) at ($(O)!0.6!(A')$);\n\
+			\\coordinate (T_2) at ($(O)!0.6!(A)$);\n\
+			\\coordinate (P) at ($(O)-(0,3)$);\n\
+			\\draw[fill=black] (-0.5,-0.7)rectangle (0.5,0) node [below right]{{$m$}};\n\
+			\\draw[->, line width=1.2pt] (O)--node [right]{{$\\vec{{T}}_1$}}(T_2);\n\
+			\\draw[->, line width=1.2pt] (O)--node [left]{{$\\vec{{T}}_2$}}(T_1);\n\
+			\\draw[->] (O)--(P)node [below]{{$\\vec{{P}}$}};\n\
+			\\draw (O)--(A) (O)--(A');\n\
+			\\draw pic["",draw,angle eccentricity=1.8,angle radius=0.5cm]{{angle=T_2--O--T_1}};\n\
+		\\end{tikzpicture}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	a=random.randint(200,600)
+	noi_dung = (
+	f"Một vật có khối lượng ${{m}}$ được treo cố định trên trần nhà bằng hai sợi dây không dãn có độ dài như nhau. Biết rằng lực căng dây $\\vec{{T_1}}$ và $\\vec{{T_2}}$ có độ lớn như nhau bằng ${{{a}}}$ N và hợp với nhau một góc $60^{{\\circ}}$ (hình bên). Trọng lượng của vật bằng bao nhiêu (làm tròn kết quả đến hàng đơn vị)."
+	)
+	dap_an=f"{round_half_up(a*sqrt(3),0):.0f}"
+
+	noi_dung_loigiai=(
+		f" Xét tam giác ${{OAH}}$ như hình vẽ.\n\
+		$\\left|\\vec{{T_{{12}}}}\\right|=2\\cdot OH$\n\n\
+		$=2\\cdot OA\\cdot\\cos 30^\\circ$\n\n\
+		$=2 \\cdot\\left|\\vec{{T_1}}\\right|\\cdot\\cos 30^\\circ$\n\n\
+		$=2 \\cdot {a} \\cdot\\dfrac{{\\sqrt{{3}}}}{{2}}={a} \\sqrt{{3}}\\,\\text{{N}}$.\n\n\
+		Vậy trọng lượng của vật là ${a}\\sqrt{{3}}\\approx {dap_an}$ N.")	
+
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	code_hinh_LG=(f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+				\\coordinate (O) at (0,0);\n\
+				\\coordinate (A) at (1.5,2);\n\
+				\\coordinate (A') at (-1.5,2);\n\
+				\\coordinate (T) at ($(A)+(A')-(O)$);\n\
+				\\coordinate (P) at ($(O)!-1!(T)$);\n\
+				\\coordinate (H) at (intersection of A--A' and O--T);\n\
+				\\draw[->] (O)--node [right]{{$\\vec{{T}}_1$}}(A);\n\
+				\\draw[->] (O)--node [left]{{$\\vec{{T}}_2$}}(A');\n\
+				\\draw[->] (O)--(T)node [above]{{$\\vec{{T}}_{{12}}$}};\n\
+				\\draw[->] (O)--(P)node [below]{{$\\vec{{P}}$}};\n\
+				\\draw[dashed] (A)--(T)--(A')--(A);\n\
+				\\draw pic["",draw,angle eccentricity=2,angle radius=0.5cm]{{angle=A--O--H}};\n\
+				\\draw pic["",draw,angle eccentricity=2,angle radius=0.5cm]{{angle=H--O--A'}};\n\
+			\\end{tikzpicture}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+	loigiai_word=(f"Lời giải:\n {file_name_LG}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n \\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
 
 #--------------------------------------------------------------------------->
 #Bài 3 - Tích vectơ với một số

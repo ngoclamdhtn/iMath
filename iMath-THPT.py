@@ -2585,6 +2585,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C5_B2_2, ["[D10_C5_B2_22]-SA-M3. Cho 3 lực F1,F2,F3 tác động lên vật. Tìm F3 để vật đứng yên."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B2_2, ["[D10_C5_B2_23]-SA-M3. Vật được căng bởi 2 dây. Tính trọng lực tác động lên vật."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C5_B3 = QTreeWidgetItem(L10_C5, ["Bài 3 - Tích véctơ với một số"])
                 L10_C5_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C5_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -16399,7 +16407,15 @@ class Ui_MainWindow(object):
 
                                             #[D10_C5_B2_21]-M2.  Cho tam giác đều. Tính độ dài tổng hai vectơ kết quả là trung tuyến.
                                             if dang_toan == "[D10_C5_B2_21]":           
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C5.y7y7u_L10_C5_B2_21()                    
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C5.y7y7u_L10_C5_B2_21()
+
+                                            #[D10_C5_B2_22]-M2. Cho 3 lực F1,F2,F3 tác động lên vật. Tìm F3 để vật đứng yên.
+                                            if dang_toan == "[D10_C5_B2_22]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_22()
+
+                                            #[D10_C5_B2_23]-M2. Vật được căng bởi 2 dây. Tính trọng lực tác động lên vật.
+                                            if dang_toan == "[D10_C5_B2_23]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_23()                
 
                                         #Bài 3 - Tích vectơ với một số
                                             #[D10_C5_B3_01]-M2. Cho tứ giác. Tìm khẳng định đúng về quy tắc cộng trừ.
