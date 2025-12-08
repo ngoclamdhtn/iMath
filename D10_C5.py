@@ -2941,6 +2941,92 @@ def y7y7u_L10_C5_B2_23():
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D10_C5_B2_24]-M3. 3 lực tác động lên vật. Tính tổng của 2 lực
+def y7y7u_L10_C5_B2_24():
+	a=random.randint(20,50)
+	goc=random.choice([120,135,150])
+	goc_bu=180-goc
+	goc_rad=rad(goc_bu)
+	AB=a/tan(goc_rad)
+	AE=a/sin(goc_rad)
+	AB_latex=latex(nsimplify(AB))
+	AE_latex=latex(nsimplify(AE))
+	tong=float(AB+AE)
+
+	code_hinh=(f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate (A) at (0,0);\n\
+			\\coordinate (F2) at (2,0);\n\
+			\\coordinate (F1) at (0,-3);\n\
+			\\coordinate (f) at ($(F1)+(F2)-(A)$);\n\
+			\\coordinate (F3) at ($(A)!-1!(f)$);\n\
+			\\coordinate (B) at ($(A)+(0.5,0.5)$);\n\
+			\\draw (B) node[above]{{${goc}^\\circ$}};\n\
+			\\draw[->, line width=1.2pt] (A) --node [below]{{$\\vec{{F}}_2$}}(F2);\n\
+			\\draw[->, line width=1.2pt] (A)--node [left]{{$\\vec{{F}}_1$}}(F1);\n\
+			\\draw[->, line width=1.2pt] (A)--node [left]{{$\\vec{{F}}_3$}}(F3);		\n\
+			\\draw pic[draw,angle eccentricity=1.6,angle radius=0.5cm]{{angle=F2--A--F3}};\n\
+			\\draw pic[draw,angle radius=0.3cm]{{right angle=F2--A--F1}};\n\
+		\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Chất điểm $A$ chịu tác động của ba lực $\\vec{{F}}_1$, $\\vec{{F}}_2$, $\\vec{{F}}_3$ như hình và ở trạng thái cân bằng (tức là $\\vec{{F}}_1+\\vec{{F}}_2+\\vec{{F}}_3=\\vec{{0}}$)."
+	f"Góc tạo bởi $\\vec{{F}}_2$ và $\\vec{{F}}_3$ bằng ${goc}^\\circ$."
+	f" Gọi độ lớn của lực $\\vec{{F}}_2$, $\\vec{{F}}_3$ lần lượt là ${{a}}$ và ${{b}}$, biết $\\vec{{F}}_1$ có độ lớn là ${{{a}}}$ N."
+	f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=int(tong)
+
+	
+
+	noi_dung_loigiai=(
+f" Đặt $\\vec{{u}}=\\vec{{F}}_1+\\vec{{F}}_2$. Ta xác định các điểm như hình bên.\n\n\
+Dựng hình bình hành $ABED$.\n\n\
+Do đó vectơ $\\vec{{u}}$ chính là vectơ $\\vec{{AE}}$.\n\n\
+Vì chất điểm $A$ ở trạng thái cân bằng nên:\n\n "
+f" $\\vec{{F}}_1+\\vec{{F}}_2+\\vec{{F}}_3=\\vec{{0}}$ hay $\\vec{{u}}+\\vec{{F_3}}=\\vec{{0}}\\Leftrightarrow\\vec{{u}}$ và $\\vec{{F}}_3$ là hai vectơ đối nhau\n\n"
+f" $\\Leftrightarrow A$ là trung điểm của $EC$.\n\n\
+Ta có: $\\vec{{F}}_1|=AD=BE={a},\\vec{{F_2}}=AB, \\vec{{F}}_3|=AC.$\n\n"
+f"$|\\vec{{F}}_2|=AB=\\dfrac{{BE}}{{\\tan {goc_bu}^\\circ }}={AB_latex}$.\n\n"
+f"$|\\vec{{F}}_3|=AE=\\dfrac{{BE}}{{\\sin {goc_bu}^\\circ }}={AE_latex}$.\n\n"
+f"$a+b={dap_an}$")	
+		
+	debai_word= f"{noi_dung}\n{file_name}"
+
+	code_hinh_LG=(f" \\begin{{tikzpicture}}[scale=.7,line join=round, line cap=round,thick]\n\
+				\\coordinate (A) at (0,0);\n\
+				\\coordinate (B) at (2,0);\n\
+				\\coordinate (D) at (0,-3);\n\
+				\\coordinate (E) at ($(D)+(B)-(A)$);\n\
+				\\coordinate (C) at ($(A)!-1!(E)$);\n\
+				\n\
+				\\draw[->, line width=1.2pt] (A)--node [below]{{$\\vec{{F}}_2$}}(B);\n\
+				\\draw[->, line width=1.2pt] (A)--node [left]{{$\\vec{{F}}_1$}}(D);\n\
+				\\draw[->, line width=1.2pt] (A)--node [left]{{$\\vec{{F}}_3$}}(C);\n\
+				\\draw[->, line width=1.2pt] (A)--node [left]{{$\\vec{{u}}$}}(E);\n\
+				\\coordinate (F) at ($(A)+(0.5,0.5)$);\n\
+				\\draw (F) node[above]{{${goc}^\\circ$}};\n\
+				\\draw pic[draw,angle eccentricity=1.6,angle radius=0.5cm]{{angle=B--A--C}};\n\
+				\\draw pic[draw,angle radius=0.3cm]{{right angle=B--A--D}};\n\
+				\\draw[dashed] (D)--(E)--(B);				\n\
+			\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+	loigiai_word=(f"Lời giải:\n {file_name_LG}\n{noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\n\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n{noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 #--------------------------------------------------------------------------->

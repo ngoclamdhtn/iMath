@@ -30,6 +30,8 @@ def phan_so(t):
     return m
 def st_lim(x_0):
     return f"\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}}"
+
+
 ################ Bài 1: GIỚI HẠN DÃY SỐ #################
 
 #[D11_C3_B1_01]. Tính giới hạn phân thức bậc tử bằng mẫu.
@@ -3126,6 +3128,366 @@ def gh11gh_L11_C3_B2_14():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D11_C3_B2_15]-SA-M2. f(x)= (căn(ax+b)-c)/(x+d). Tìm lim->x_0
+def gh11gh_L11_C3_B2_15():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-7, 8) if i!=0])
+        b = random.choice([i for i in range(-7, 8) if i!=0])
+        if a>0:
+            x_0=int(-b/a)+random.randint(1,5)
+        else:
+            x_0=int(-b/a)-random.randint(1,5)
+
+        c=sqrt(a*x_0+b)
+        if sqrt(a*x_0+b)+c==0:
+            continue  
+
+        d=-x_0
+        f=(sqrt(a*x+b)-c)/(x+d)
+        thuong, du = div(a*x+b-c**2, x+d)
+        f_lh=(a*x+b-c**2)/((x+d)*(sqrt(a*x+b)+c))
+
+        g=thuong/(sqrt(a*x+b)+c)
+        #lim_value=g.subs(x,x_0)
+        lim_value=limit(f, x, x_0)
+        if all([x_0!=0,lim_value>-5]):
+            break
+    if float(lim_value).is_integer():
+        noi_dung = (
+        f"Tính giới hạn ${st_lim(x_0)}{latex(f)}$."
+        )
+        dap_an=f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+    else:
+
+        noi_dung = (
+        f"Tính giới hạn ${st_lim(x_0)}{latex(f)}$ (kết quả làm tròn đến hàng phần mười)"
+        )
+        dap_an=f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"${st_lim(x_0)}{latex(f)}={st_lim(x_0)}\\dfrac{{{latex(a*x+b)}-{c**2}}}{{({latex(x+d)})({latex(sqrt(a*x+b)+c)})}}$\n\n"
+    f"$={st_lim(x_0)}{latex(thuong/(sqrt(a*x+b)+c))}={latex(lim_value)}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B2_16]-SA-M2. f(x)= (x+d)/(căn(ax+b)-c). Tìm lim->x_0
+def gh11gh_L11_C3_B2_16():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-7, 8) if i!=0])
+        b = random.choice([i for i in range(-7, 8) if i!=0])
+        if a>0:
+            x_0=int(-b/a)+random.randint(1,5)
+        else:
+            x_0=int(-b/a)-random.randint(1,5)
+
+        c=sqrt(a*x_0+b)
+        if sqrt(a*x_0+b)+c==0:
+            continue  
+
+        d=-x_0
+        f=(x+d)/(sqrt(a*x+b)-c)
+        
+        f_lh=((x+d)*(sqrt(a*x+b)+c))/(a*x+b-c**2)
+        thuong, du = div(x+d, a*x+b-c**2)
+
+        g=thuong*(sqrt(a*x+b)+c)
+        #lim_value=g.subs(x,x_0)
+        lim_value=limit(f, x, x_0)
+        if all([x_0!=0,lim_value>-5]):
+            break
+    if float(lim_value).is_integer():
+        noi_dung = (
+        f"Tính giới hạn ${st_lim(x_0)}{latex(f)}$."
+        )
+        dap_an=f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+    else:
+
+        noi_dung = (
+        f"Tính giới hạn ${st_lim(x_0)}{latex(f)}$ (kết quả làm tròn đến hàng phần mười)"
+        )
+        dap_an=f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"${st_lim(x_0)}{latex(f)}={st_lim(x_0)}\\dfrac{{({latex(x+d)})({latex(sqrt(a*x+b)+c)})}}{{{latex(a*x+b)}-{c**2}}}$\n\n"
+    f"$={st_lim(x_0)}({latex(thuong*(sqrt(a*x+b)+c))})={latex(lim_value)}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B2_17]-SA-M2. f(x)= (ax^2+bx+c)/(mx^2+dx+e). Tìm lim->x_0
+def gh11gh_L11_C3_B2_17():
+    x=sp.symbols("x")
+    while True:
+        x1,x2,x3=random.sample(range(-6,7),3)
+        
+        a= random.choice([i for i in range(-3, 4) if i!=0])
+        m= random.choice([i for i in range(-3, 4) if i!=0])
+
+        f_tu=a*(x-x1)*(x-x2)
+        f_mau=m*(x-x1)*(x-x3)
+        f=f_tu/f_mau
+        lim_value=limit(f,x,x1)
+        if lim_value>-5:
+            break
+    ham=f"{st_lim(x1)}\\dfrac{{{latex(expand(f_tu))}}}{{{latex(expand(f_mau))}}}"
+    if float(lim_value).is_integer():
+
+        noi_dung = (
+        f"Tính giới hạn ${ham}$."
+        )
+        dap_an=lim_value
+
+        noi_dung_loigiai=(
+        f"${ham}={st_lim(x1)}\\dfrac{{{latex(f_tu)}}}{{{latex(f_mau)}}}={st_lim(x1)}\\dfrac{{{latex(a*(x-x2))}}}{{{latex(m*(x-x3))}}}={phan_so(lim_value)}.$"
+        )
+    else:
+        noi_dung = (
+        f"Tính giới hạn ${ham}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"${ham}={st_lim(x1)}\\dfrac{{{latex(f_tu)}}}{{{latex(f_mau)}}}={st_lim(x1)}\\dfrac{{{latex(a*(x-x2))}}}{{{latex(m*(x-x3))}}}={phan_so(lim_value)}={dap_an}.$"
+        )    
+              
+            
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B2_18]-SA-M2. f(x)= (ax^2+bx+c)/(dx+e). Tìm lim->x_0
+def gh11gh_L11_C3_B2_18():
+    x=sp.symbols("x")
+    while True:
+        x1,x2,x3=random.sample(range(-6,7),3)
+        
+        a= random.choice([i for i in range(-3, 4) if i!=0])
+        m= random.choice([i for i in range(-5, 6) if i not in [0,1,-2]])
+
+        f_tu=a*(x-x1)*(x-x2)
+        f_mau=m*(x-x1)
+        f=f_tu/f_mau
+        lim_value=limit(f,x,x1)
+        if lim_value>-5:
+            break
+    ham=f"{st_lim(x1)}\\dfrac{{{latex(expand(f_tu))}}}{{{latex(f_mau)}}}"
+    if float(lim_value).is_integer():
+
+        noi_dung = (
+        f"Tính giới hạn ${ham}$."
+        )
+        dap_an=lim_value
+
+        noi_dung_loigiai=(
+        f"${ham}={st_lim(x1)}\\dfrac{{{latex(f_tu)}}}{{{latex(f_mau)}}}={st_lim(x1)}\\dfrac{{{latex(a*(x-x2))}}}{{{m}}}={phan_so(lim_value)}.$"
+        )
+    else:
+        noi_dung = (
+        f"Tính giới hạn ${ham}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"${ham}={st_lim(x1)}\\dfrac{{{latex(f_tu)}}}{{{latex(f_mau)}}}={st_lim(x1)}\\dfrac{{{latex(a*(x-x2))}}}{{{m}}}={phan_so(lim_value)}={dap_an}.$"
+        )    
+              
+            
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B2_19]-SA-M2. f(x)= (ax^3+bx^2+cx+d)/(mx^2+nx+p). Tìm lim->x_0
+def gh11gh_L11_C3_B2_19(): 
+    x = sp.symbols("x")
+    while True:
+        # 3 nghiệm khác nhau cho tử
+        x1, x2, x3 = random.sample(range(-6, 6), 3)
+
+        # 2 nghiệm (1 trùng x1 để tạo 0/0) và 1 nghiệm khác
+        x4 = x1
+        while True:
+            x5 = random.choice(range(-6, 6))
+            if x5 not in [x1,x2,x3]:
+                break
+
+        # hệ số
+        a = random.choice([i for i in range(-3, 4) if i != 0])
+        m = random.choice([i for i in range(-4, 4) if i !=0])
+
+        # Tử bậc 3, mẫu bậc 2 (đảm bảo dạng 0/0 tại x1)
+        f_tu = a * (x - x1) * (x - x2) * (x - x3)
+        f_mau = m * (x - x4) * (x - x5)
+        f = f_tu / f_mau
+
+        lim_value = limit(f, x, x1)
+
+        # Điều kiện tránh số quá lớn
+        if lim_value>-5:
+            break
+
+    ham = f"{st_lim(x1)}\\dfrac{{{latex(expand(f_tu))}}}{{{latex(expand(f_mau))}}}"
+
+    # ======= TRƯỜNG HỢP ĐÁP ÁN LÀ SỐ NGUYÊN =======
+    if float(lim_value).is_integer():
+        dap_an = lim_value
+        noi_dung = f"Tính giới hạn ${ham}$."
+
+        noi_dung_loigiai = (
+            f"${ham}"
+            f"={st_lim(x1)}\\dfrac{{{latex(f_tu)}}}{{{latex(f_mau)}}}"
+            f"={st_lim(x1)}\\dfrac{{{latex(a*(x-x2)*(x-x3))}}}{{{latex(m*(x-x5))}}}"
+            f"={phan_so(lim_value)}.$"
+        )
+
+    # ======= TRƯỜNG HỢP KẾT QUẢ LẺ =======
+    else:
+        dap_an = f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+
+        noi_dung = (
+            f"Tính giới hạn ${ham}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+
+        noi_dung_loigiai = (
+            f"${ham}"
+            f"={st_lim(x1)}\\dfrac{{{latex(f_tu)}}}{{{latex(f_mau)}}}"
+            f"={st_lim(x1)}\\dfrac{{{latex(a*(x-x2)*(x-x3))}}}{{{latex(m*(x-x5))}}}"
+            f"={phan_so(lim_value)}={dap_an}.$"
+        )
+
+    # ====== XUẤT DỮ LIỆU ======
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai}\n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        "\\begin{ex}\n"
+        f"{noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
+        "\\end{ex}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C3_B2_20]-SA-M3. f(x)= (căn(ax+b)-c)/(mx^2+nx+p). Tìm lim->x_0
+def gh11gh_L11_C3_B2_20():
+    x = sp.symbols("x")
+
+    while True:
+        # ===== 1. Chọn nghiệm x0 =====
+        x0,x1 = random.sample(range(-5, 6),2)
+
+        m = random.choice([i for i in range(-2, 3) if i!=0])
+
+        # ===== 3. Tạo tử số bảo đảm √(a x0 + b) = c và ax0+b > 0 =====
+        a = random.choice([i for i in range(-5, 5) if i !=0])
+        c = random.choice([i for i in range(-5, 5) if i != 0])  # đảm bảo căn >0
+        b = c**2 - a * x0
+
+        if a*x0 + b <= 0:     # kiểm tra điều kiện căn
+            continue
+        if sqrt(a*x0+b)+c==0:
+            continue
+        f_tu=sp.sqrt(a*x + b) - c
+        f_mau=m*(x-x0)*(x-x1)
+        k=random.randint(4,10)
+
+        f = k*f_tu / f_mau
+        lim_value = limit(f, x, x0)
+        if lim_value>-5:
+            break
+    n=-m*x0-m*x1
+    p=m*x0*x1
+
+    ham = f"{st_lim(x0)}\\dfrac{{{latex(k*f_tu)}}}{{{latex(expand(f_mau))}}}"
+
+
+    if float(lim_value).is_integer():
+        dap_an = lim_value
+        noi_dung = f"Tính giới hạn ${ham}$."
+
+        noi_dung_loigiai = (
+            f"${ham}"
+            f"={st_lim(x0)}{k}\\dfrac{{{latex(a*x+b)}-{c**2}}}{{{latex(f_mau)}({latex(sqrt(a*x+b)+c)})}}"
+            f"={phan_so(lim_value)}.$"
+        )
+
+    else:
+        dap_an = f"{round_half_up(lim_value,1):.1f}".replace(".",",")
+
+        noi_dung = (
+            f"Tính giới hạn ${ham}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+
+        noi_dung_loigiai = (
+            f"${ham}"
+            f"={st_lim(x0)}{k}\\dfrac{{{latex(a*x+b)}-{c**2}}}{{{latex(f_mau)}({latex(sqrt(a*x+b)+c)})}}"
+            f"={phan_so(lim_value)}={dap_an}.$"
+        )
+
+    # ======== 10. Xuất dataset ========
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai}\n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        "\\begin{ex}\n"
+        f"{noi_dung}\n\n"
+        f"\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
+        "\\end{ex}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
 ############# BÀI 3 - HÀM SỐ LIÊN TỤC 
 #[D11_C3_B3_01]. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm.
 def gh11gh_L11_C3_B3_01():
@@ -3870,5 +4232,535 @@ def gh11gh_L11_C3_B3_08():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B3_09]-TF-M2. f(x)= đa thức + đa thức có m. Xét Đ-S: f(x_0),  lim->a, lim 1 bên, Tìm m để liên tục tại x_0.
+def gh11gh_L11_C3_B3_09():
+    x,m=sp.symbols("x,m")
+    a,b,c=random.sample([i for i in range(-5,5) if i!=0],3)
+    chon=random.randint(1,4)
+    if chon==1:
+        f=a*x**3+b*x+c   
+    if chon==2:
+        f=a*x**3+b*x**2+c
+    if chon==3:
+        f=a*x**3+b*x**2+c*x
+    if chon==4:
+        f=a*x**2+b*x**2+c
+    a2,b2,c2=random.sample([i for i in range(-5,5) if i!=0],3)
+    x_0 = random.choice([i for i in range(-6, 7) if i!=0])
+
+    chon=random.randint(1,2)
+    if chon==1:
+        g=(a2*m+b2)*x**2+c2
+        ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+        ({latex(a2*m+b2)})x^2+{c2} {{\\text{{ khi }}}} x< {x_0}\n\
+        \\end{{array}} \\right."
+    
+    if chon==2:
+        g=(a2*m+b2)*x**2+c2*x
+        ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+        ({latex(a2*m+b2)})x^2+{latex(c2*x)} {{\\text{{ khi }}}} x< {x_0}\n\
+        \\end{{array}} \\right."
+    
+
+    noi_dung = (
+    f"Cho hàm số ${ham}$."
+    f" Xét tính đúng-sai của các khẳng định sau:")
+
+    noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+
+    f_x0=f.subs(x,x_0)     
+    
+    kq1_T=f"*$f({x_0})={f_x0}$" 
+    kq1_F=f"$f({x_0})={f_x0+random.randint(1,5)}$"
+    
+    HDG=f"Thay $x={x_0}$ vào hàm số $f(x)={latex(f)}$ ta được $f({x_0})={f_x0}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        x_1=x_0+random.randint(1,5)
+        lim_x1=f.subs(x,x_1)
+
+        kq2_T=f"*${st_lim(x_1)}f(x)={lim_x1}$"
+        kq2_F=f"${st_lim(x_1)}f(x)={lim_x1+random.randint(1,3)}$"
+        
+        HDG=f"${st_lim(x_1)}f(x)={st_lim(x_1)}({latex(f)})={lim_x1}$."
+    
+    if chon==2:
+        x_1=x_0-random.randint(1,5)
+        lim_x1=g.subs(x,x_1)
+
+        kq2_T=f"*${st_lim(x_1)}f(x)={latex(lim_x1)}$"
+        kq2_F=f"${st_lim(x_1)}f(x)={latex(lim_x1+random.randint(1,3))}$"
+        if g==(a2*m+b2)*x**2+c2:
+        
+            HDG=f"${st_lim(x_1)}f(x)={st_lim(x_1)}(({latex(a2*m+b2)})x^2+{c2})={latex(lim_x1)}$."
+        else:
+            HDG=f"${st_lim(x_1)}f(x)={st_lim(x_1)}(({latex(a2*m+b2)})x^2+{latex(c2*x)})={latex(lim_x1)}$."
+
+
+    HDG=HDG.replace("+-","-").replace("-+","-").replace("--","+")    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        kq3_T=f"*${st_lim(f"{x_0}^+")}f(x)={f_x0}$" 
+        kq3_F=f"${st_lim(f"{x_0}^+")}f(x)={latex(g.subs(x,x_0))}$"
+        
+        HDG=f"${st_lim(f"{x_0}^+")}f(x)={f_x0}$."
+    
+    if chon==2:
+        kq3_T=f"*${st_lim(f"{x_0}^-")}f(x)={latex(g.subs(x,x_0))}$" 
+        kq3_F=f"${st_lim(f"{x_0}^-")}f(x)={f_x0}$"
+        
+        HDG=f"${st_lim(f"{x_0}^-")}f(x)={latex(g.subs(x,x_0))}$."    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    if g==(a2*m+b2)*x**2+c2:
+        eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2)
+    else:
+        eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2*x_0)
+    solution = solve(eq, m)
+    m_0=solution[0]
+
+    kq4_T=f"*Hàm số $f(x)$ liên tục tại $x={x_0}$ khi $m={phan_so(m_0)}$"
+    kq4_F=f"Hàm số $f(x)$ liên tục tại $x={x_0}$ khi $m={phan_so(m_0+random.randint(1,3))}$" 
+    
+    HDG=(f"Hàm số $f(x)$ liên tục tại $x={x_0}$ khi:\n\n"
+        f"${st_lim(f"{x_0}^-")}f(x)={st_lim(f"{x_0}^+")}f(x)=f({x_0})$\n\n"
+        f"$\\Rightarrow {latex(g.subs(x,x_0))}={f_x0} \\Rightarrow m={phan_so(m_0)}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B3_10]-TF-M2. f(x)= đa thức + đa thức có m. Xét Đ-S: f(x_0),  lim->a, lim 1 bên, Tìm m để liên tục trên R.
+def gh11gh_L11_C3_B3_10():
+    x,m=sp.symbols("x,m")
+    a,b,c=random.sample([i for i in range(-5,5) if i!=0],3)
+    chon=random.randint(1,4)
+    if chon==1:
+        f=a*x**3+b*x+c   
+    if chon==2:
+        f=a*x**3+b*x**2+c
+    if chon==3:
+        f=a*x**3+b*x**2+c*x
+    if chon==4:
+        f=a*x**2+b*x**2+c
+    a2,b2,c2=random.sample([i for i in range(-5,5) if i!=0],3)
+    x_0 = random.choice([i for i in range(-6, 7) if i!=0])
+
+    chon=random.randint(1,2)
+    if chon==1:
+        g=(a2*m+b2)*x**2+c2
+        ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+        ({latex(a2*m+b2)})x^2+{c2} {{\\text{{ khi }}}} x< {x_0}\n\
+        \\end{{array}} \\right."
+    
+    if chon==2:
+        g=(a2*m+b2)*x**2+c2*x
+        ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+        {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+        ({latex(a2*m+b2)})x^2+{latex(c2*x)} {{\\text{{ khi }}}} x< {x_0}\n\
+        \\end{{array}} \\right."
+    
+
+    noi_dung = (
+    f"Cho hàm số ${ham}$."
+    f" Xét tính đúng-sai của các khẳng định sau:")
+
+    noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+
+    f_x0=f.subs(x,x_0)     
+    
+    kq1_T=f"*$f({x_0})={f_x0}$" 
+    kq1_F=f"$f({x_0})={f_x0+random.randint(1,5)}$"
+    
+    HDG=f"Thay $x={x_0}$ vào hàm số $f(x)={latex(f)}$ ta được $f({x_0})={f_x0}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        x_1=x_0+random.randint(1,5)
+        lim_x1=f.subs(x,x_1)
+
+        kq2_T=f"*${st_lim(x_1)}f(x)={lim_x1}$"
+        kq2_F=f"${st_lim(x_1)}f(x)={lim_x1+random.randint(1,3)}$"
+        
+        HDG=f"${st_lim(x_1)}f(x)={st_lim(x_1)}({latex(f)})={lim_x1}$."
+    
+    if chon==2:
+        x_1=x_0-random.randint(1,5)
+        lim_x1=g.subs(x,x_1)
+
+        kq2_T=f"*${st_lim(x_1)}f(x)={latex(lim_x1)}$"
+        kq2_F=f"${st_lim(x_1)}f(x)={latex(lim_x1+random.randint(1,3))}$"
+        if g==(a2*m+b2)*x**2+c2:
+        
+            HDG=f"${st_lim(x_1)}f(x)={st_lim(x_1)}(({latex(a2*m+b2)})x^2+{c2})={latex(lim_x1)}$."
+        else:
+            HDG=f"${st_lim(x_1)}f(x)={st_lim(x_1)}(({latex(a2*m+b2)})x^2+{latex(c2*x)})={latex(lim_x1)}$."
+
+
+    HDG=HDG.replace("+-","-").replace("-+","-").replace("--","+")    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        kq3_T=f"*${st_lim(f"{x_0}^+")}f(x)={f_x0}$" 
+        kq3_F=f"${st_lim(f"{x_0}^+")}f(x)={latex(g.subs(x,x_0))}$"
+        
+        HDG=f"${st_lim(f"{x_0}^+")}f(x)={f_x0}$."
+    
+    if chon==2:
+        kq3_T=f"*${st_lim(f"{x_0}^-")}f(x)={latex(g.subs(x,x_0))}$" 
+        kq3_F=f"${st_lim(f"{x_0}^-")}f(x)={f_x0}$"
+        
+        HDG=f"${st_lim(f"{x_0}^-")}f(x)={latex(g.subs(x,x_0))}$."    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if g==(a2*m+b2)*x**2+c2:
+        eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2)
+    else:
+        eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2*x_0)
+
+    solution = solve(eq, m)
+    m_0=solution[0]
+
+    kq4_T=f"*Hàm số $f(x)$ liên tục với mọi $x\\in \\mathbb{{R}}$ khi $m={phan_so(m_0)}$"
+    kq4_F=f"Hàm số $f(x)$ liên tục với mọi $x\\in \\mathbb{{R}}$ khi $m={phan_so(m_0+random.randint(1,3))}$" 
+    
+    HDG=(f"Hàm số $f(x)$ liên tục với mọi $x\\in \\mathbb{{R}}$ khi liên tục tại $x={x_0}$:\n\n"
+        f"${st_lim(f"{x_0}^-")}f(x)={st_lim(f"{x_0}^+")}f(x)=f({x_0})$\n\n"
+        f"$\\Rightarrow {latex(g.subs(x,x_0))}={f_x0} \\Rightarrow m={phan_so(m_0)}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C3_B3_11]-SA-M2. f(x)= đa thức + đa thức có m. Tìm m để liên tục tại x_0.
+def gh11gh_L11_C3_B3_11():
+
+    x,m=sp.symbols("x,m")
+    while True:
+        a,b,c=random.sample([i for i in range(-5,5) if i!=0],3)
+        chon=random.randint(1,4)
+        if chon==1:
+            f=a*x**3+b*x+c   
+        if chon==2:
+            f=a*x**3+b*x**2+c
+        if chon==3:
+            f=a*x**3+b*x**2+c*x
+        if chon==4:
+            f=a*x**2+b*x**2+c
+
+        a2,b2,c2=random.sample([i for i in range(-5,5) if i!=0],3)
+        x_0 = random.choice([i for i in range(-6, 7) if i!=0])
+        chon=random.randint(1,2)
+        if chon==1:
+            g=(a2*m+b2)*x**2+c2
+            ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+            {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+            ({latex(a2*m+b2)})x^2+{c2} {{\\text{{ khi }}}} x< {x_0}\n\
+            \\end{{array}} \\right."
+            f_x0=f.subs(x,x_0) 
+            eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2)
+        
+        if chon==2:
+            g=(a2*m+b2)*x**2+c2*x
+            ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+            {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+            ({latex(a2*m+b2)})x^2+{latex(c2*x)} {{\\text{{ khi }}}} x< {x_0}\n\
+            \\end{{array}} \\right."
+            f_x0=f.subs(x,x_0) 
+            eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2*x_0)        
+        
+        solution = solve(eq, m)
+        m_0=float(solution[0])
+        if m_0>-5:
+            break
+    if m_0.is_integer():
+        dap_an=int(m_0)
+        noi_dung=f"Cho hàm số $f(x)={ham}$. Tìm giá trị của tham số ${{m}}$ để hàm số liên tục tại $x={x_0}$."
+    else:
+        dap_an=f"{round_half_up(m_0,1):.1f}".replace(".",",")
+        noi_dung=f"Cho hàm số $f(x)={ham}$. Tìm giá trị của tham số ${{m}}$ để hàm số liên tục tại $x={x_0}$ (kết quả làm tròn đến hàng phần mười)."
+    
+    noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+    noi_dung_loigiai=(
+f"Ta có: $f({x_0})={f_x0}$.\n\n"
+f"${st_lim(f"{x_0}^+")}f(x)={f_x0}$.\n\n"
+f"${st_lim(f"{x_0}^-")}f(x)={latex(g.subs(x,x_0))}$.\n\n"
+f"Hàm số $f(x)$ liên tục tại $x={x_0}$ khi:\n\n"
+f"${st_lim(f"{x_0}^-")}f(x)={st_lim(f"{x_0}^+")}f(x)=f({x_0})$\n\n"
+f"$\\Rightarrow {latex(g.subs(x,x_0))}={f_x0} \\Rightarrow m={phan_so(m_0)}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B3_12]-SA-M2. f(x)= đa thức + đa thức có m. Tìm m để liên tục trên R.
+def gh11gh_L11_C3_B3_12():
+
+    x,m=sp.symbols("x,m")
+    while True:
+        a,b,c=random.sample([i for i in range(-5,5) if i!=0],3)
+        chon=random.randint(1,4)
+        if chon==1:
+            f=a*x**3+b*x+c   
+        if chon==2:
+            f=a*x**3+b*x**2+c
+        if chon==3:
+            f=a*x**3+b*x**2+c*x
+        if chon==4:
+            f=a*x**2+b*x**2+c
+
+        a2,b2,c2=random.sample([i for i in range(-5,5) if i!=0],3)
+        x_0 = random.choice([i for i in range(-6, 7) if i!=0])
+        chon=random.randint(1,2)
+        if chon==1:
+            g=(a2*m+b2)*x**2+c2
+            ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+            {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+            ({latex(a2*m+b2)})x^2+{c2} {{\\text{{ khi }}}} x< {x_0}\n\
+            \\end{{array}} \\right."
+            f_x0=f.subs(x,x_0) 
+            eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2)
+        
+        if chon==2:
+            g=(a2*m+b2)*x**2+c2*x
+            ham=f"f(x)=\\left\\{{ \\begin{{array}}{{l}} \n\
+            {latex(f)} {{\\text{{ khi }}}} x\\ge {x_0}  \\\\ \n\
+            ({latex(a2*m+b2)})x^2+{latex(c2*x)} {{\\text{{ khi }}}} x< {x_0}\n\
+            \\end{{array}} \\right."
+            f_x0=f.subs(x,x_0) 
+            eq = Eq(f_x0, (a2*m+b2)*x_0**2+c2*x_0)        
+        
+        solution = solve(eq, m)
+        m_0=float(solution[0])
+        if m_0>-5:
+            break
+    if m_0.is_integer():
+        dap_an=int(m_0)
+        noi_dung=f"Cho hàm số $f(x)={ham}$. Tìm giá trị của tham số ${{m}}$ để hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$."
+    else:
+        dap_an=f"{round_half_up(m_0,1):.1f}".replace(".",",")
+        noi_dung=f"Cho hàm số $f(x)={ham}$. Tìm giá trị của tham số ${{m}}$ để hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$ (kết quả làm tròn đến hàng phần mười)."
+    
+    noi_dung=noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+    noi_dung_loigiai=(
+f"Ta có: $f({x_0})={f_x0}$.\n\n"
+f"${st_lim(f"{x_0}^+")}f(x)={f_x0}$.\n\n"
+f"${st_lim(f"{x_0}^-")}f(x)={latex(g.subs(x,x_0))}$.\n\n"
+f"Hàm số $f(x)$ liên tục với mọi $x\\in \\mathbb{{R}}$ khi liên tục tại $x={x_0}$:\n\n"
+f"${st_lim(f"{x_0}^-")}f(x)={st_lim(f"{x_0}^+")}f(x)=f({x_0})$\n\n"
+f"$\\Rightarrow {latex(g.subs(x,x_0))}={f_x0} \\Rightarrow m={phan_so(m_0)}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C3_B3_13]-SA-M2. Hỏi lý thuyết về liên tục tại điểm 
+def gh11gh_L11_C3_B3_13():
+    f=random.choice(["f", "g", "h" ])
+    a=random.randint(-7,8)
+
+    noi_dung=(
+    f"Cho hàm số $y={f}(x)$ xác định trên ${{D}}$ và ${a}\\in D$."
+    f" Hàm số $y={f}(x)$ liên tục tại $x={a}$ khi"
+    )
+    
+
+    kq=f"${st_lim(a)}{f}(x)={f}({a})$"
+    kq_false=[
+    f"${st_lim("+\\infty")}{f}(x)={f}({a})$",
+    f"${st_lim("-\\infty")}{f}(x)={f}({a})$",
+    f"${st_lim(f"{a}")}{f}({a})={f}(x)$",
+    f"${st_lim(f"{a}")}{f}(x)=0$",
+    f"${st_lim(f"{a}")}{f}(x)=+\\infty$",
+    f"${st_lim(f"{a}")}{f}(x)=-\\infty$",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+     f"Hàm số $y={f}(x)$ liên tục tại $x={a}$ khi ${st_lim(a)}{f}(x)={f}{a}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 
 

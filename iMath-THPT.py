@@ -2593,6 +2593,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C5_B2_2, ["[D10_C5_B2_24]-SA-M3. 3 lực tác động lên vật. Tính tổng của 2 lực."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C5_B3 = QTreeWidgetItem(L10_C5, ["Bài 3 - Tích véctơ với một số"])
                 L10_C5_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C5_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5604,6 +5608,38 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L11_C3_B2_3 = QTreeWidgetItem(L11_C3_B2, ["Trả lời ngắn"])
+                L11_C3_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C3_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B2_3, ["[D11_C3_B2_18]-SA-M2. f(x)= (ax^2+bx+c)/(dx+e). Tìm lim->x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B2_3, ["[D11_C3_B2_17]-SA-M2. f(x)= (ax^2+bx+c)/(mx^2+dx+e). Tìm lim->x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B2_3, ["[D11_C3_B2_19]-SA-M3. f(x)= (ax^3+bx^2+cx+d)/(mx^2+nx+p). Tìm lim->x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B2_3, ["[D11_C3_B2_15]-SA-M2. f(x)= (căn(ax+b)-c)/(x+d). Tìm lim->x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B2_3, ["[D11_C3_B2_20]-SA-M3. f(x)= (căn(ax+b)-c)/(mx^2+nx+p). Tìm lim->x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B2_3, ["[D11_C3_B2_16]-SA-M3. f(x)= (x+d)/(căn(ax+b)-c). Tìm lim->x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
+                
+
                 
   
 
@@ -5615,6 +5651,10 @@ class Ui_MainWindow(object):
                 L11_C3_B3_1 = QTreeWidgetItem(L11_C3_B3, ["Trắc nghiệm"])
                 L11_C3_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C3_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_13]-M2. Hỏi lý thuyết về liên tục tại điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_01]-M2. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -5652,6 +5692,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C3_B3_2, ["[D11_C3_B3_09]-TF-M2. f(x)= đa thức + đa thức có m. Xét Đ-S: f(x_0),  lim->a, lim 1 bên, liên tục tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_2, ["[D11_C3_B3_10]-TF-M2. f(x)= đa thức + đa thức có m. Xét Đ-S: f(x_0),  lim->a, lim 1 bên, liên tục trên R."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L11_C3_B3_3 = QTreeWidgetItem(L11_C3_B3, ["Trả lời ngắn"])
                 L11_C3_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C3_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5659,6 +5707,15 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C3_B3_3, ["[D11_C3_B3_08]-SA-M2. f(x)= phân thức + đa thức. Tìm m để f(x) liên tục tại x_0."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_3, ["[D11_C3_B3_11]-SA-M2. f(x)= đa thức + đa thức có m. Tìm m để liên tục tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_3, ["[D11_C3_B3_12]-SA-M2. f(x)= đa thức + đa thức có m. Tìm m để liên tục trên R."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                
 
         #Lớp 11 - Chương 4 - Quan hệ song song trong không gian
@@ -5931,11 +5988,15 @@ class Ui_MainWindow(object):
                 L11_C5_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C5_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_09]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: giá trị đại diện, số trung bình, Q1, Q3."])
+                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_09]-TF-M2. Cho bảng ghép nhóm. Xét Đ-S: giá trị đại diện, số trung bình, Q1, Q3."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_10]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: mốt, số trung bình, Q1, Q3."])
+                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_10]-TF-M2. Cho bảng ghép nhóm. Xét Đ-S: mốt, số trung bình, Q1, Q3."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C5_B2_2, ["[D11_C5_B2_11]-TF-M2. Cho bảng ghép nhóm. Xét Đ-S: độ dài nhóm,mốt, số trung bình, Q1, Q3."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -13585,6 +13646,30 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C3_B2_14]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B2_14()
 
+                                            #[D11_C3_B2_15]-SA-M2. f(x)= (căn(ax+b)-c)/(x+d). Tìm lim->x_0
+                                            if dang_toan == "[D11_C3_B2_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B2_15()
+
+                                            #[D11_C3_B2_16]-SA-M2. f(x)= (x+d)/(căn(ax+b)-c). Tìm lim->x_0
+                                            if dang_toan == "[D11_C3_B2_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B2_16()
+
+                                            #[D11_C3_B2_17]-SA-M2. f(x)= (ax^2+bx+c)/(mx^2+dx+e). Tìm lim->x_0
+                                            if dang_toan == "[D11_C3_B2_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B2_17()
+
+                                            #[D11_C3_B2_18]-SA-M2. f(x)= (ax^2+bx+c)/(mx^2+dx+e). Tìm lim->x_0
+                                            if dang_toan == "[D11_C3_B2_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B2_18()
+
+                                            #[D11_C3_B2_19]-SA-M2. f(x)= (ax^3+bx^2+cx+d)/(mx^2+nx+p). Tìm lim->x_0
+                                            if dang_toan == "[D11_C3_B2_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B2_19()
+
+                                            #[D11_C3_B2_20]-SA-M3. f(x)= (căn(ax+b)-c)/(mx^2+nx+p). Tìm lim->x_0
+                                            if dang_toan == "[D11_C3_B2_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B2_20()
+
                                             #Bài 3: HÀM SỐ LIÊN TỤC
 
                                             #[D11_C3_B3_01]. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm.
@@ -13618,6 +13703,28 @@ class Ui_MainWindow(object):
                                             #[D11_C3_B3_08]-SA-M2. f(x)= phân thức + đa thức. Tìm m để liên tục tại x_0.
                                             if dang_toan == "[D11_C3_B3_08]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B3_08()
+
+                                            #[D11_C3_B3_09]-TF-M2. f(x)= đa thức + đa thức có m. Xét Đ-S: f(x_0),  lim->a, lim 1 bên, Tìm m để liên tục tại x_0. 
+                                            if dang_toan == "[D11_C3_B3_09]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B3_09()
+
+                                            #[D11_C3_B3_10]-TF-M2. f(x)= đa thức + đa thức có m. Xét Đ-S: f(x_0),  lim->a, lim 1 bên, Tìm m để liên tục trên R. 
+                                            if dang_toan == "[D11_C3_B3_10]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C3.gh11gh_L11_C3_B3_10()
+
+                                            #[D11_C3_B3_11]-SA-M2.f(x)= đa thức + đa thức có m. Tìm m để liên tục tại x_0.
+                                            if dang_toan == "[D11_C3_B3_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B3_11()
+
+                                            #[D11_C3_B3_12]-SA-M2.f(x)= đa thức + đa thức có m. Tìm m để liên tục trên R.
+                                            if dang_toan == "[D11_C3_B3_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B3_12()
+
+                                            #[D11_C3_B3_13]. Hỏi lý thuyết về liên tục tại điểm 
+                                            if dang_toan == "[D11_C3_B3_13]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_13()
+
+
 
                                 ######### Toán 11_ Chương 4-QUAN HỆ SONG SONG ########
 
@@ -13837,7 +13944,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C5_B2_10]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Mốt, số trung bình, Q1, Q3
                                             if dang_toan == "[D11_C5_B2_10]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C5.treqw_L11_C5_B2_10()                   
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C5.treqw_L11_C5_B2_10()
+
+                                            #[D11_C5_B2_11]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Độ dài nhóm, Mốt, số trung bình, Q1, Q3
+                                            if dang_toan == "[D11_C5_B2_11]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C5.treqw_L11_C5_B2_11()                   
                                                 
 
                             
@@ -16415,7 +16526,11 @@ class Ui_MainWindow(object):
 
                                             #[D10_C5_B2_23]-M2. Vật được căng bởi 2 dây. Tính trọng lực tác động lên vật.
                                             if dang_toan == "[D10_C5_B2_23]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_23()                
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_23()
+
+                                            #[D10_C5_B2_24]-M2. 3 lực tác động lên vật. Tính tổng của 2 lực
+                                            if dang_toan == "[D10_C5_B2_24]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B2_24()               
 
                                         #Bài 3 - Tích vectơ với một số
                                             #[D10_C5_B3_01]-M2. Cho tứ giác. Tìm khẳng định đúng về quy tắc cộng trừ.
