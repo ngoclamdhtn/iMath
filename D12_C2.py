@@ -248,8 +248,7 @@ def ucln_ba_so(a, b, c):
         ucln_abc = 1
     return ucln_abc
 
-def tao_3dinh_tamgiac():
-	
+def tao_3dinh_tamgiac():	
 	
 	a = random.choice([random.randint(-3, -1), random.randint(1, 3)])
 	b = random.choice([random.randint(-3, -1), random.randint(1, 3)])
@@ -8851,3 +8850,414 @@ def mnj_34_jkl_L12_C2_B3_48():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C2_B3_49]-SA-M3. Tìm trực tâm của tam giác
+def mnj_34_jkl_L12_C2_B3_49():
+	ten=["A","B","C","D","E","M","N","P","H","I","K"]
+	A,B,C,M=random.sample(ten,4)
+	
+	while True:
+		bo_toa_do = tao_3dinh_tamgiac()
+		a1,a2,a3 = bo_toa_do[0]   # A
+		b1,b2,b3 = bo_toa_do[1]   # B
+		c1,c2,c3 = bo_toa_do[2]   # C
+
+		# Vectơ BC và BA
+		BC = sp.Matrix([c1-b1, c2-b2, c3-b3])
+		BA = sp.Matrix([a1-b1, a2-b2, a3-b3])
+
+		# Tính H = B + proj_{BC}(BA)
+		if BC.dot(BC) != 0:
+			t = BA.dot(BC) / BC.dot(BC)
+			h1 = b1 + t*(c1 - b1)
+			h2 = b2 + t*(c2 - b2)
+			h3 = b3 + t*(c3 - b3)
+
+			# tránh tạo điểm quá xấu
+			if -5 < h1+h2+h3 < 10:
+				break
+
+	noi_dung = (
+		f" Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$ với "
+		f"${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$. "
+		f"Giả sử ${{H}}(a;b;c)$ là chân đường cao hạ từ đỉnh ${{{A}}}$ của tam giác ${{{A}{B}{C}}}$. "
+		f"Tính tổng $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	# Đáp án: tổng tọa độ H
+	tong_H = h1 + h2 + h3
+	dap_an = f"{round_half_up(tong_H,1):.1f}".replace(".",",")
+
+	# Tạo mã phân số cho lời giải
+	H1 = phan_so(h1)
+	H2 = phan_so(h2)
+	H3 = phan_so(h3)
+	vec_AH=vec2(B,"H")
+	vec_BH=vec2(B,"H")
+	vec_BC=vec2(B,C)
+	vec_BA=vec2(B,A)
+
+	noi_dung_loigiai = (
+		f"Ta có $\\overrightarrow{{{B}{C}}}=({c1-b1};{c2-b2};{c3-b3})$, "
+		f"$\\overrightarrow{{{B}{A}}}=({a1-b1};{a2-b2};{a3-b3})$.\n\n"
+		f"${{{B},H,{C}}}$ thẳng hàng nên: ${vec_BH}=t{vec_BC}$.\n\n"
+		f"${vec_AH}.{vec_BC}=0\\Rightarrow ({vec_BH}-{vec_BA}).{vec_BC}=0$"
+		f"$\\Rightarrow (t{vec_BC}-{vec_BA}).{vec_BC}=0$\n\n"
+		f"$\\Rightarrow  t{vec_BC}.{vec_BC}={vec_BA}.{vec_BC}$"
+		f"$\\Rightarrow t=\\dfrac{{\\overrightarrow{{{B}{A}}}\\cdot\\overrightarrow{{{B}{A}}}}}{{"
+		f"\\overrightarrow{{{B}{A}}}\\cdot\\overrightarrow{{{B}{A}}}}}={phan_so(t)}$.\n\n"
+		f"Suy ra $H = {B} + t\\overrightarrow{{{B}{C}}}$, do đó\n"
+		f"$H({H1};{H2};{H3})$.\n\n"
+		f"$\\Rightarrow a+b+c={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai}\n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		"\\begin{ex}\n"
+		f"{noi_dung}\n\n"
+		f"\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
+		"\\end{ex}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C2_B3_50]-SA-M2. Tìm D sao cho ABCD là hình bình hành
+def mnj_34_jkl_L12_C2_B3_50():
+	ten=["A","B","C","D","E","M","N","P","H","I","K"]
+	A,B,C,D=random.sample(ten,4)
+
+	while True:
+		bo_toa_do = tao_3dinh_tamgiac()
+		a1,a2,a3 = bo_toa_do[0]   # A
+		b1,b2,b3 = bo_toa_do[1]   # B
+		c1,c2,c3 = bo_toa_do[2]   # C
+
+		# D = A + (C - B)
+		d1 = a1 + (c1 - b1)
+		d2 = a2 + (c2 - b2)
+		d3 = a3 + (c3 - b3)
+
+		# tránh tạo tổng quá xấu
+		if -5 < d1 + d2 + d3 :
+			break
+
+	# ======== TẠO NỘI DUNG ĐỀ ========
+	noi_dung = (
+		f"Trong không gian ${{Oxyz}}$, cho các điểm "
+		f"${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$. "
+		f"Điểm ${{{D}}}(a;b;c)$ được xác định sao cho tứ giác ${{{A}{B}{C}{D}}}$ là hình bình hành. "
+		f"Tính tổng $a+b+c$."
+	)
+
+	# Tổng tọa độ D
+	tong_D = d1 + d2 + d3
+	dap_an =int(tong_D)
+
+	# Mã phân số
+	D1 = phan_so(d1)
+	D2 = phan_so(d2)
+	D3 = phan_so(d3)
+
+	# ======== LỜI GIẢI ========
+	vec_BC=vec2(B,C)
+	vec_AD=vec2(A,D)
+	noi_dung_loigiai = (
+		f"${vec_BC}=({c1 - b1};{c2 - b2};{c3 - b3})$.\n\n"
+		f"Vì ${{{A}{B}{C}{D}}}$ là hình bình hành nên "
+		f"$\\overrightarrow{{{A}{D}}} = \\overrightarrow{{{B}{C}}}$.\n\n"
+		f"Do đó ${D} = {A}+ \\overrightarrow{{{B}{C}}}=({a1};{a2};{a3})+({c1 - b1};{c2 - b2};{c3 - b3})={D}({D1};{D2};{D3})$.\n\n"
+		f"$a+b+c={dap_an}$."
+)
+
+	# ======== XUẤT DỮ LIỆU ========
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai}\n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		"\\begin{ex}\n"
+		f"{noi_dung}\n\n"
+		f"\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
+		"\\end{ex}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C2_B3_51]-TF-M2. Cho tam giác ABC. Xét Đ-S: Độ dài, trung điểm, trọng tâm, h.b.h, chân đường cao
+def mnj_34_jkl_L12_C2_B3_51():
+	ten=["A","B","C","D","E","M","N","P"]
+	A,B,C,D=random.sample(ten,4)
+
+	while True:
+		bo_toa_do = tao_3dinh_tamgiac()
+		a1,a2,a3 = bo_toa_do[0]   # A
+		b1,b2,b3 = bo_toa_do[1]   # B
+		c1,c2,c3 = bo_toa_do[2]   # C
+
+		# Vectơ BC và BA
+		BC = sp.Matrix([c1-b1, c2-b2, c3-b3])
+		BA = sp.Matrix([a1-b1, a2-b2, a3-b3])
+
+		# Tính H = B + proj_{BC}(BA)
+		if BC.dot(BC) != 0:
+			t = BA.dot(BC) / BC.dot(BC)
+			h1 = b1 + t*(c1 - b1)
+			h2 = b2 + t*(c2 - b2)
+			h3 = b3 + t*(c3 - b3)
+
+			# tránh tạo điểm quá xấu
+			if -5 < h1+h2+h3 < 10:
+				break
+
+	noi_dung = (
+	f"Trong không gian ${{Oxyz}}$, cho tam giác ${{{A}{B}{C}}}$"
+	f" với ${A}({a1};{a2};{a3}), {B}({b1};{b2};{b3}), {C}({c1};{c2};{c3})$."
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+	AB=sqrt((a1-b1)**2+(a2-b2)**2+(a3-b3)**2)
+	AB_f=sqrt((a1-b1)**2+(a2-b2)**2+(a3-b3)**2+random.randint(1,2))
+	kq1_T=f"*${A}{B}={latex(AB)}$" 
+	kq1_F=f"${A}{B}={latex(AB_f)}$"
+	
+	HDG=f"${A}{B}=\\sqrt{{({a1}-{b1})^2+({a2}-{b2})^2+({a3}-{b3})^2}}={latex(AB)}$."
+	HDG=HDG.replace("+-","-").replace("-+","-").replace("--","+")
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	if chon==1:
+		x,y,z=(b1+c1)/2,(b2+c2)/2,(b3+c3)/2
+
+		kq2_T=f"*Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$"
+		kq2_F=f"Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x+random.randint(1,2))};{phan_so(y+random.randint(0,1))};{phan_so(z)})$"
+		
+		HDG=f"Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$."
+	
+	if chon==2:
+		x,y,z=(a1+b1+c1)/3,(a2+b2+c2)/3,(a3+b3+c3)/3
+
+		kq2_T=f"*Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$"
+		kq2_F=f"Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so((a1+b1+c1)/2)};{phan_so((a2+b2+c2)/2)};{phan_so(z)})$"
+		
+		HDG=f"Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$."
+
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	d1 = a1 + (c1 - b1)
+	d2 = a2 + (c2 - b2)
+	d3 = a3 + (c3 - b3)
+	vec_BC=vec2(B,C)
+	vec_AD=vec2(A,D)
+
+	kq3_T=f"*Tứ giác ${{{A}{B}{C}{D}}}$ là hình bình hành với ${D}({d1};{d2};{d3})$" 
+	kq3_F=f"Tứ giác ${{{A}{B}{C}{D}}}$ là hình bình hành với ${D}({-d1};{d2+random.randint(1,2)};{d3+random.randint(-2,2)})$ "
+
+	HDG=(
+		f"${vec_BC}=({c1 - b1};{c2 - b2};{c3 - b3})$.\n\n"
+		f"Vì ${{{A}{B}{C}{D}}}$ là hình bình hành nên "
+		f"$\\overrightarrow{{{A}{D}}} = \\overrightarrow{{{B}{C}}}$.\n\n"
+		f"Do đó ${D} = {A}+ \\overrightarrow{{{B}{C}}}=({a1};{a2};{a3})+({c1 - b1};{c2 - b2};{c3 - b3})={D}({d1};{d2};{d3})$.\n\n"
+
+)
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	tong_H = h1 + h2 + h3
+
+	kq4_T=f"*Chân đường cao hạ từ đỉnh ${{{A}}}$ của tam giác ${{{A}{B}{C}}}$ là $H(a;b;c)$. Khi đó $a+b+c={phan_so(tong_H)}$"
+	kq4_F=f"Chân đường cao hạ từ đỉnh ${{{A}}}$ của tam giác ${{{A}{B}{C}}}$ là $H(a;b;c)$. Khi đó $a+b+c={phan_so(tong_H+random.randint(1,2))}$"	
+
+
+	# Tạo mã phân số cho lời giải
+	H1 = phan_so(h1)
+	H2 = phan_so(h2)
+	H3 = phan_so(h3)
+	vec_AH=vec2(B,"H")
+	vec_BH=vec2(B,"H")
+	vec_BC=vec2(B,C)
+	vec_BA=vec2(B,A)
+
+	HDG= (
+		f"Ta có $\\overrightarrow{{{B}{C}}}=({c1-b1};{c2-b2};{c3-b3})$, "
+		f"$\\overrightarrow{{{B}{A}}}=({a1-b1};{a2-b2};{a3-b3})$.\n\n"
+		f"${{{B},H,{C}}}$ thẳng hàng nên: ${vec_BH}=t{vec_BC}$.\n\n"
+		f"${vec_AH}.{vec_BC}=0\\Rightarrow ({vec_BH}-{vec_BA}).{vec_BC}=0$"
+		f"$\\Rightarrow (t{vec_BC}-{vec_BA}).{vec_BC}=0$\n\n"
+		f"$\\Rightarrow  t{vec_BC}.{vec_BC}={vec_BA}.{vec_BC}$"
+		f"$\\Rightarrow t=\\dfrac{{\\overrightarrow{{{B}{A}}}\\cdot\\overrightarrow{{{B}{A}}}}}{{"
+		f"\\overrightarrow{{{B}{A}}}\\cdot\\overrightarrow{{{B}{A}}}}}={phan_so(t)}$.\n\n"
+		f"Suy ra $H = {B} + t\\overrightarrow{{{B}{C}}}$, do đó\n"
+		f"$H({H1};{H2};{H3})\\Rightarrow a+b+c={phan_so(tong_H)}$.\n\n"
+	)
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C2_B3_52]-SA-M2. Tìm M thuộc mặt phẳng tọa độ để A,B,M thẳng hàng.
+def mnj_34_jkl_L12_C2_B3_52():
+	ten=["A","B","C","D","E","M","N","P","H","I","K"]
+	A,B,M=random.sample(ten,3)
+
+	while True:
+		# Tọa độ A và B trong không gian
+		a1,a2,a3 = random.sample(range(-8,8),3)
+		b1,b2,b3 = random.sample(range(-8,8),3)
+		if any([b1-a1==0,b2-a2==0,b3-a3==0]):
+			continue
+
+		# Chọn mặt phẳng
+		plane = random.choice(["Oxy","Oyz","Oxz"])
+
+		if plane == "Oxy":
+			m3=0
+			k=-a3/(b3-a3)
+			m1=a1+k*(b1-a1)
+			m2=a2+k*(b2-a2)
+
+		if plane == "Oyz":
+			m1=0
+			k=-a1/(b1-a1)
+			m2=a2+k*(b2-a2)
+			m3=a3+k*(b3-a3)
+
+		if plane == "Oxz":
+			m2=0
+			k=-a2/(b2-a2)
+			m1=a1+k*(b1-a1)
+			m3=a3+k*(b3-a3)
+
+		# Tổng đẹp
+		if all([m1+m2+m3 >-5]):
+		    break
+
+
+	tong_M =float(m1+m2+m3)
+	if tong_M.is_integer():
+		noi_dung = (
+		    f" Trong không gian ${{Oxyz}}$, cho hai điểm ${A}({a1};{a2};{a3}),\\; {B}({b1};{b2};{b3})$."
+		    f" Tìm điểm ${{{M}}}(a;b;c)$ thuộc mặt phẳng $({plane})$ sao cho ${{{A},{B},{M}}}$ thẳng hàng."
+		    f" Tính tổng $a+b+c$.")
+		dap_an = int(tong_M)
+	else:
+		noi_dung = (
+		    f" Trong không gian ${{Oxyz}}$, cho hai điểm ${A}({a1};{a2};{a3}),\\; {B}({b1};{b2};{b3})$."
+		    f" Tìm điểm ${{{M}}}(a;b;c)$ thuộc mặt phẳng $({plane})$ sao cho ${{{A},{B},{M}}}$ thẳng hàng."
+		    f" Tính tổng $a+b+c$ (kết quả làm tròn đến hàng phần mười).")
+		dap_an = f"{round_half_up(tong_M,1):.1f}".replace(".",",")
+
+	# ======== LỜI GIẢI ========
+	vec_AM=vec2(A,M)
+	vec_AB=vec2(A,B)
+
+	if plane == "Oxy":
+	    noi_dung_loigiai = (
+	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(a;b;0)$.\n\n"
+	        f"${vec_AM}=(a-{a1};b-{a2};{-a3}), {vec_AB}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
+	        f"${{{A},{B},{M}}}$ thẳng hàng nên tồn tại tham số ${{k}}$ sao cho:\n\n"
+	        f"${vec_AM} = k{vec_AB}$\n\n"
+	        f"$\\Rightarrow k=\\dfrac{{{-a3}}}{{{b3-a3}}}={phan_so(k)}$.\n\n"
+	        f"Suy ra ${M}({phan_so(m1)};{phan_so(m2)};{phan_so(m3)})\\Rightarrow a+b+c={dap_an}$.")
+
+	if plane == "Oyz":
+	    noi_dung_loigiai = (
+	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(a;b;0)$.\n\n"
+	        f"${vec_AM}=(-{a1};b-{a2};c-{a3}), {vec_AB}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
+	        f"${{{A},{B},{M}}}$ thẳng hàng nên tồn tại tham số ${{k}}$ sao cho:\n\n"
+	        f"${vec_AM} = k{vec_AB}$\n\n"
+	        f"$\\Rightarrow k=\\dfrac{{{-a1}}}{{{b1-a1}}}={phan_so(k)}$.\n\n"
+	        f"Suy ra ${M}({phan_so(m1)};{phan_so(m2)};{phan_so(m3)})\\Rightarrow a+b+c={dap_an}$.")
+
+	if plane == "Oxz":
+	    noi_dung_loigiai = (
+	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(a;b;0)$.\n\n"
+	        f"${vec_AM}=(a-{a1};{-a2};c-{a3}), {vec_AB}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
+	        f"${{{A},{B},{M}}}$ thẳng hàng nên tồn tại tham số ${{k}}$ sao cho:\n\n"
+	        f"${vec_AM} = k{vec_AB}$\n\n"
+	        f"$\\Rightarrow k=\\dfrac{{{-a2}}}{{{b2-a2}}}={phan_so(k)}$.\n\n"
+	        f"Suy ra ${M}({phan_so(m1)};{phan_so(m2)};{phan_so(m3)})\\Rightarrow a+b+c={dap_an}$.")
+
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+	    f"Lời giải:\n {noi_dung_loigiai}\n"
+	    f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+	    "\\begin{ex}\n"
+	    f"{noi_dung}\n\n"
+	    f"\\shortans[4]{{{dap_an}}}\n\n"
+	    f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
+	    "\\end{ex}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+

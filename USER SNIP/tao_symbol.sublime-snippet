@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-n=sp.symbols("n")
+x=sp.symbols("x")
 ]]></content>
 	<tabTrigger>kihieu</tabTrigger>
 	<scope>source.python</scope>

@@ -5659,6 +5659,22 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_01]-M2. Cho f(x)=căn(ax+b). Xét tính liên tục tại điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_14]-M2. Cho f(x)=(ax+b)/(cx+d). Tìm điểm gián đoạn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_15]-M2. Cho f(x)=(ax+b)/(mx^2+nx+p). Tìm điểm gián đoạn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_16]-M2. Cho f(x)=(ax+b)/(mx^2+nx+p). Tìm khẳng định đúng về liên tục, gián đoạn tại điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_17]-M2. Tìm hàm số gián đoạn tại x_0."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
             
 
                 item = QTreeWidgetItem(L11_C3_B3_1, ["[D11_C3_B3_02]-M2. Cho f(x)=(ax+b)/(cx+d). Tìm khoảng liên tục."])
@@ -7721,7 +7737,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B1_1, ["[D12_C1_B1_34]-M2. Cho f'(x). Tìm số điểm cực trị"])
+                item = QTreeWidgetItem(L12_C1_B1_1, ["[D12_C1_B1_34]-M2. Cho hàm f'(x). Tìm số điểm cực trị"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B1_1, ["[D12_C1_B1_42]-M2. Cho hàm f'(x). Tìm điểm cực trị"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8146,6 +8166,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C1_B4_2, ["[D12_C1_B4_19]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: TXĐ, y', TCĐ, Tâm đối xứng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B4_2, ["[D12_C1_B4_25]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y', đơn điệu, TCX, Đường thẳng qua cực trị"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8693,6 +8717,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_51]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài, trung điểm, trọng tâm, h.b.h, chân đường cao."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
                 L12_C2_B3_3 = QTreeWidgetItem(L12_C2_B3, ["Trả lời ngắn"])
@@ -8708,6 +8736,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_13]-SA-M2. Cho hai điểm A,B. Tìm tọa độ C để AC nhận B làm trung điểm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_50]-SA-M2. Tìm D sao cho ABCD là hình bình hành."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_52]-SA-M2. Tìm M thuộc mặt phẳng tọa độ để A,B,M thẳng hàng.."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8729,7 +8765,11 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_23]-SA-M3. Bài toán liên quan trung điểm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_49]-SA-M3. Tìm trực tâm của tam giác"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_30]-SA-M3. Cho tọa độ 2 vị trí. Tìm tọa độ của máy bay sau một khoảng thời gian"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8738,6 +8778,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
         #Lớp 12 - Chương 3 - Các số đặc trưng đo mức độ phân tán cho mẫu số liệu ghép nhóm            
 
@@ -10719,7 +10761,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C1_B1_41]-M1. Cho đồ thị bậc 3. Đọc điểm cực trị.
                                             if dang_toan == "[D12_C1_B1_41]": 
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B1_41()                                
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B1_41()
+
+                                            #[D12_C1_B1_42]-M1. Cho f'(x). Tìm điểm cực đại hoặc cực tiểu
+                                            if dang_toan == "[D12_C1_B1_42]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B1_42()                                
 
                                     #Bài 2. GIÁ TRỊ LỚN NHẤT  - GIÁ TRỊ NHỎ NHẤT
                                             #[D12_C1_B2_01]-M2. Tìm GTLN-GTNN của hàm bậc 3 trên đoạn
@@ -11016,6 +11062,10 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B4_24]-TF-M2. Cho hàm số bậc 3. Xét Đ-S: y', đơn điệu, tâm đối xứng, đồ thị
                                             if dang_toan == "[D12_C1_B4_24]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B4_24()
+
+                                            #[D12_C1_B4_25]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y', đơn điệu, tiệm cận xiên, đường thẳng qua cực trị
+                                            if dang_toan == "[D12_C1_B4_25]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B4_25()
 
                                             #Toán 12 - Chương 1 - Bài 5------------------------------------------------->
                                             #[D12_C1_B5_01]-SA-M3. Bài toán thực tế tìm chi phí thấp nhất
@@ -11503,6 +11553,22 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_48]-M2. Tìm điều kiện để 3 điểm thẳng hàng
                                             if dang_toan == "[D12_C2_B3_48]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_48()
+
+                                        #[D12_C2_B3_49]-SA-M3. Tìm trực tâm của tam giác
+                                            if dang_toan == "[D12_C2_B3_49]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_49()
+
+                                        #[D12_C2_B3_50]-SA-M3. Tìm D sao cho ABCD là hình bình hành
+                                            if dang_toan == "[D12_C2_B3_50]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_50()
+
+                                        #[D12_C2_B3_51]-TF-M2. Cho tam giác ABC. Xét Đ-S: Độ dài, trung điểm, trọng tâm, h.b.h, chân đường cao
+                                            if dang_toan == "[D12_C2_B3_51]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_51()
+
+                                        #[D12_C2_B3_52]-SA-M3. Tìm M thuộc mặt phẳng tọa độ để A,B,M thẳng hàng.
+                                            if dang_toan == "[D12_C2_B3_52]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_52()
 
 
 
@@ -13723,6 +13789,22 @@ class Ui_MainWindow(object):
                                             #[D11_C3_B3_13]. Hỏi lý thuyết về liên tục tại điểm 
                                             if dang_toan == "[D11_C3_B3_13]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_13()
+
+                                            #[D11_C3_B3_14]. Cho y=(ax+b)/(cx+d). Tìm điểm gián đoạn 
+                                            if dang_toan == "[D11_C3_B3_14]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_14()
+
+                                            #[D11_C3_B3_15]. Cho y=(ax+b)/(mx^2+nx+p). Tìm điểm gián đoạn
+                                            if dang_toan == "[D11_C3_B3_15]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_15()
+
+                                            #[D11_C3_B3_16]. Cho y=(ax+b)/(mx^2+nx+p). Tìm khẳng định đúng về liên tục, gián đoạn tại điểm
+                                            if dang_toan == "[D11_C3_B3_16]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_16()
+
+                                            #[D11_C3_B3_17].  Tìm hàm số gián đoạn tại x_0
+                                            if dang_toan == "[D11_C3_B3_17]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C3.gh11gh_L11_C3_B3_17()
 
 
 
@@ -18988,7 +19070,7 @@ class Ui_MainWindow(object):
                                           
                        
                     else:
-                        show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo bản quyền', 'Thầy(cô) cần đăng kí bản quyền để sử dụng chức năng này.\nHãy ủng hộ tác giả để tác giả có động lực hỗ trợ cho thầy (cô) nhé.\nVui lòng vào tab Bản Quyền, copy Mã máy gửi cho tác giả để được cung cấp key sử dụng.')
+                        show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo bản quyền', 'Thầy(cô) cần đăng kí bản quyền để sử dụng chức năng này.\nHãy ủng hộ tác giả để tác giả có động lực hỗ trợ cho thầy (cô) nhé.\nVui lòng vào tab Bản Quyền, bấm nút Lấy mã máy gửi cho tác giả để được cung cấp key sử dụng.')
                         show_msg_box.exec_()
 
                 except Exception as e:
@@ -19764,14 +19846,14 @@ class Ui_MainWindow(object):
         def copy_ma_may(self):
                 text = license.encrypt_serial_number()
                 pyperclip.copy(text)
-                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo', 'Đã copy mã máy vào clipboard. Vui lòng gửi mã này cho tác giả để được cung cấp key sử dụng.')
+                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo', 'Đã copy mã máy vào clipboard. Vui lòng Ctrl V vào zalo tác giả để được cung cấp key sử dụng.')
                 show_msg_box.exec_()
                 return
 
         def copy_old_key(self):
                 text = license.read_registry_value()
                 pyperclip.copy(text)
-                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo', 'Đã copy mã máy vào clipboard. Vui lòng gửi mã này cho tác giả để được cung cấp key sử dụng.')
+                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo', 'Đã copy mã máy vào clipboard. Vui lòng Ctrl V vào zalo tác giả để được cung cấp key sử dụng.')
                 show_msg_box.exec_()
                 return
 

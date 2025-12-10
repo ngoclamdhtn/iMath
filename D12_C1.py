@@ -5218,6 +5218,167 @@ def prt_34_L12_C1_B1_41():
 	    f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C1_B1_42]-M2. Cho f'(x). Tìm điểm cực đại hoặc cực tiểu
+def prt_34_L12_C1_B1_42():
+	x=sp.symbols("x")
+	x_1,x_2,x_3=random.sample(range(-8,8),3)
+
+	chon=random.randint(1,8)
+	if chon==1:
+		f=(x-x_1)**2*(x-x_2)*(x-x_3)
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực tiểu của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_3}$"
+		kq_false=[f"$x={x_1}$",
+		f"$x={x_2}$",
+		f"$x={x_3+random.randint(1,3)}$"]
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực tiểu là $x={x_3}$.")
+	
+	if chon==2:
+		f=(x-x_1)**2*(x-x_2)*(x-x_3)
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực đại của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_2}$"
+		kq_false=[f"$x={x_1}$",
+		f"$x={x_3}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực đại là $x={x_2}$.")
+
+	if chon==3:
+		f=(x-x_1)*(x-x_2)**2*(x-x_3)
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực đại của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_1}$"
+		kq_false=[f"$x={x_2}$",
+		f"$x={x_3}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực đại là $x={x_1}$.")
+
+	if chon==4:
+		f=(x-x_1)*(x-x_2)**2*(x-x_3)
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực tiểu của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_3}$"
+		kq_false=[f"$x={x_2}$",
+		f"$x={x_1}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực tiểu là $x={x_3}$.")
+
+	if chon==5:
+		f=(x-x_1)*(x-x_2)*(x-x_3)**2
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực tiểu của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_2}$"
+		kq_false=[f"$x={x_3}$",
+		f"$x={x_1}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực tiểu là $x={x_2}$.")
+
+	if chon==6:
+		f=(x-x_1)*(x-x_2)*(x-x_3)**2
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực đại của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_1}$"
+		kq_false=[f"$x={x_3}$",
+		f"$x={x_2}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực đại là $x={x_1}$.")
+
+	if chon==7:
+		f=(x-x_1)**2*(x-x_2)**4*(x-x_3)
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực tiểu của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_3}$"
+		kq_false=[f"$x={x_1}$",
+		f"$x={x_2}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực tiểu là $x={x_3}$.")
+
+	if chon==8:
+		f=-(x-x_1)**2*(x-x_2)**4*(x-x_3)
+
+		noi_dung=(
+		f"Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{{R}}$ có $f'(x)={latex(f)}$."
+		f" Điểm cực đại của hàm số $y=f(x)$ là:"	)	
+
+		kq=f"$x={x_3}$"
+		kq_false=[f"$x={x_1}$",
+		f"$x={x_2}$",
+		f"$x={x_3+random.randint(1,3)}$",
+		f"$x={x_1-random.randint(1,3)}$",]	
+
+		noi_dung_loigiai=(f"Vẽ bảng xét dấu ta thấy điểm cực đại là $x={x_3}$.")
+	
+	
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 #BÀI 2: GIÁ TRỊ LỚN NHẤT- GIÁ TRỊ NHỎ NHẤT
 
 #[D12_C1_B2_01]-M2. Tìm GTLN-GTNN của hàm bậc 3 trên đoạn
@@ -13346,7 +13507,178 @@ def prt_34_L12_C1_B4_24():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C1_B4_25]-TF-M2. Cho hàm số y=(ax^2+bx+c)/(dx+e). Xét Đ-S: y', đơn điệu, tiệm cận xiên, đường thẳng qua cực trị
+def prt_34_L12_C1_B4_25():
+	x=sp.symbols("x")
+	chon=random.randint(1,2)
+	if chon==1:
+		x_0=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+		a=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+		m=random.randint(1, 2)
+		f=x+a+m**2/(x-x_0)	
+		ham=(x**2+(a-x_0)*x+m**2-a*x_0)/(x-x_0)
+		x_1, x_2 = x_0-m, x_0+m
+		a1,b1,c1,d1,e1=1, a-x_0, m**2-a*x_0, 1, -x_0
 
+		kq1_T=f"*Hàm số có đạo hàm là $y'=\\dfrac{{{latex(expand((x-x_0)**2-m**2))}}} {{{latex((x-x_0)**2)}}}$" 
+		kq1_F=f"Hàm số có đạo hàm là $y'=\\dfrac{{{latex(expand((x-x_0)**2+m**2))}}} {{{latex((x-x_0)**2)}}}$"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"$y'=\\dfrac{{{latex(expand((x-x_0)**2-m**2))}}} {{{latex((x-x_0)**2)}}}$."
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		kq2_T=random.choice([f"*$y'>0$ khi $x\\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$", f"*$y'<0$ khi $x\\in ({x_1};{x_0})$", f"*$y'<0$ khi $x\\in ({x_0};{x_2})$"])
+		kq2_F=random.choice([f"$y'>0$ khi $x\\in ({x_1};{x_2})$", f"$y'<0$ khi $x \\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$"])
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+		f"$y'>0$ khi $x\\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$.\n\n"\
+		f"$y'<0$ khi $x\\in ({x_1};{x_2})$."
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		g,h=div(x**2+(a-x_0)*x+m**2-a*x_0,x-x_0)
+
+		kq3_T=f"*Đồ thị hàm số có tiệm cận xiên là đường thẳng $y={latex(g)}$" 
+		kq3_F=f"Đồ thị hàm số có tiệm cận xiên là đường thẳng $y={latex(g+random.randint(1,3))}$"
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=(f"$y={latex(ham)}={latex(g)}+\\dfrac{{{h} }}{{{latex(x-x_0)}}}$.\n\n"
+			f"Đồ thị hàm số có tiệm cận xiên là đường thẳng $y={latex(g)}$")
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+		kq4_T=f"*Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là $y={latex(2*x+a-x_0)}$"
+		kq4_F=f"Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là $y={latex(random.randint(1,5)*x+a-x_0+random.randint(1,5))}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=f"Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là $y={latex(2*x+a-x_0)}$"
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	if chon==2:
+		x_0=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+		a=random.choice([random.randint(-3, -1), random.randint(1, 3)])
+		m=random.randint(1, 2)
+		f=-x+a-m**2/(x-x_0)
+		ham=(-x**2+(a+x_0)*x-m**2-a*x_0)/(x-x_0)
+		x_1, x_2 = x_0-m, x_0+m
+		a1,b1,c1,d1,e1=-1, a+x_0, -m**2-a*x_0, 1, -x_0
+
+		kq1_T=f"*Hàm số có đạo hàm là $y'=\\dfrac{{{latex(expand(-(x-x_0)**2+m**2))}}} {{{latex((x-x_0)**2)}}}$" 
+		kq1_F=f"Hàm số có đạo hàm là $y'=\\dfrac{{{latex(expand(-(x-x_0)**2-m**2))}}} {{{latex((x-x_0)**2)}}}$"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"$y'=\\dfrac{{{latex(expand(-(x-x_0)**2+m**2))}}} {{{latex((x-x_0)**2)}}}$."
+		loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq1==kq1_F:
+			loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		kq2_T=random.choice([f"*$y'>0$ khi $x\\in ({x_1};{x_0})$",f"*$y'>0$ khi $x\\in ({x_0};{x_2})$", f"*$y'<0$ khi $x \\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$"])		
+		kq2_F=random.choice([f"$y'>0$ khi $x\\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$", f"$y'<0$ khi $x\\in ({x_1};{x_2})$"])
+		kq2=random.choice([kq2_T, kq2_F])
+		HDG=f"$y'=0\\Leftrightarrow x={x_1},x={x_2}$.\n\n"\
+		f"$y'>0$ khi $x\\in ({x_1};{x_2})$.\n\n"\
+		f"$y'<0$ khi $x\\in (-\\infty;{x_1})\\cup ({x_2};+\\infty)$.\n\n"
+		
+		loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq2==kq2_F:
+			loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		g,h=div(-x**2+(a+x_0)*x-m**2-a*x_0,x-x_0)
+
+		kq3_T=f"*Đồ thị hàm số có tiệm cận xiên là đường thẳng $y={latex(g)}$" 
+		kq3_F=f"Đồ thị hàm số có tiệm cận xiên là đường thẳng $y={latex(g+random.randint(1,3))}$"
+		kq3=random.choice([kq3_T, kq3_F])
+		HDG=(f"$y={latex(ham)}={latex(g)}+\\dfrac{{{h} }}{{{latex(x-x_0)}}}$.\n\n"
+			f"Đồ thị hàm số có tiệm cận xiên là đường thẳng $y={latex(g)}$")
+		loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq3==kq3_F:
+			loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+		y_1,y_2=f.subs(x,x_1), f.subs(x,x_2)
+		kq4_T=f"*Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là $y={latex(-2*x+a+x_0)}$"
+		kq4_F=f"Đường thẳng đi qua hai điểm cực trị của đồ thị hàm số có phương trình là $y={latex(random.randint(1,5)*x+a+x_0+random.randint(1,5))}$" 
+		kq4=random.choice([kq4_T, kq4_F])
+		HDG=(f"Đồ thị hàm số có hai điểm cực trị là $A({x_1};{phan_so(y_1)}), B({x_2};{phan_so(y_2)})$.\n\n"
+			f"Đường thẳng ${{AB}}$ có phương trình là $y={latex(-2*x+a-x_0)}$")
+		loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+		if kq4==kq4_F:
+			loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	
+
+	noi_dung = f"Cho hàm số $y={latex(ham)}$. Xét tính đúng-sai của các khẳng định sau:"
+	debai_word= f"{noi_dung}\n"
+
+
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	list_TF=tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"	
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)	
+
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+		st=list_PA[i]
+		if st[0]=="*":
+			st_new=f"\\True " + st[1:]
+			list_PA[i]=st_new
+		else:
+			list_PA[i]=st
+
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 #----------------------------BÀI 5 - TOÁN THỰC TẾ---------------------------------------#
 
 #[D12_C1_B5_01]-TL-M4. Bài toán thực tế tìm chi phí thấp nhất

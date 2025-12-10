@@ -4845,6 +4845,229 @@ def ghj_7_jkl_L11_C4_B4_08():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+
+#[D11_C4_B4_10]-TF-M2. Cho l.trụ tam giác. Xét Đ-S: Tính chất
+def ghj_7_jkl_L11_C4_B4_10():
+	A,B,C="A","B","C"
+	D,E,F=random.choice([["D","E","F"], ["A_1","B_1","C_1"],  ["A'","B'","C'"] ])
+	D,E,F="D","E","F"
+	I,H,K=random.sample(["I","H","K","P","Q"],3)
+	I,H,K="I","H","K"
+
+	noi_dung = (
+	f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
+	f" Gọi ${{{I},{H},{K}}}$ lần lượt là trọng tâm các tam giác ${{ABC,{D}{E}{F},AC{F}}}$"
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+	chon=random.randint(1,4)
+	if chon==1:
+		kq1_T=f"*Các cạnh bên của hình lăng trụ song song và bằng nhau" 
+		kq1_F=f"Các cạnh bên của hình lăng trụ đồng quy tại một điểm"		
+		HDG=f"Các cạnh bên song song và bằng nhau."
+	
+	if chon==2:
+		kq1_T=f"*Hai đáy của hình lăng trụ là các tam giác bằng nhau" 
+		kq1_F=f"Hai đáy của hình lăng trụ là các tam giác {random.choice(["cân","đều","vuông"])}"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Hai đáy là các tam giác bằng nhau."
+
+	if chon==3:
+		kq1_T=f"*Hai đáy của hình lăng trụ nằm trong hai mặt phẳng song song nhau" 
+		kq1_F=f"Hai đáy của hình lăng trụ cắt nhau theo một giao tuyến"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Hai đáy nằm trong hai mặt phẳng song song nhau."
+
+	if chon==4:
+		kq1_T=f"*Các mặt bên của hình lăng trụ là các hình bình hành" 
+		kq1_F=f"Các mặt bên của hình lăng trụ là các hình {random.choice(["thoi", "hình chữ nhật"])}"
+		kq1=random.choice([kq1_T, kq1_F])
+		HDG=f"Các mặt bên là các hình bình hành."
+
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	chon=5
+	if chon==1:
+		kq2_T=f"*$A{K}\\subset (AC{F}{D})$"
+		kq2_F=f"Đường thẳng ${{A{K}}}$ cắt mặt phẳng $(AC{F}{D})$"
+		
+		HDG=f"$A{K}\\subset (AC{F}{D})$ vì $A\\in (AC{F}{D}), {K}\\in AN\\subset (AC{F}{D})$."
+	
+	if chon==2:
+		kq2_T=f"*$A{H}\\subset (A{D}{I})$"
+		kq2_F=f"Đường thẳng ${{A{H}}}$ không chứa trong mặt phẳng $(A{D}{I})$"
+		
+		HDG=f"$A{H}\\subset (A{D}{I})$ vì $A{I}{H}{D}$ là hình bình hành."
+
+	if chon==3:
+		kq2_T=f"*${D}{I}\\subset (A{D}{H})$"
+		kq2_F=f"Đường thẳng ${{{D}{I}}}$ không chứa trong mặt phẳng $(A{D}{H})$"
+		
+		HDG=f"${D}{I}\\subset (A{D}{H})$ vì $A{I}{H}{D}$ là hình bình hành."
+
+	if chon==4:
+		kq2_T=f"*Đường thẳng ${{{A}{K}}}$ cắt mặt phẳng $({B}{C}{F}{E})$"
+		kq2_F=f"Đường thẳng ${{{A}{K}}}$ và mặt phẳng $({B}{C}{F}{E})$ không có điểm chung"
+		
+		HDG=f"Đường thẳng ${{{A}{K}}}$ cắt mặt phẳng $({B}{C}{F}{E})$ tại trung điểm ${{N}}$ của ${{{F}C}}$."
+
+	if chon==5:
+		kq2_T=f"*Đường thẳng ${{{C}{K}}}$ cắt mặt phẳng $({D}{E}{F})$"
+		kq2_F=f"Đường thẳng ${{{C}{K}}}$ chứa trong mặt phẳng $({D}{E}{F})$"
+		
+		HDG=f"Đường thẳng ${{{C}{K}}}$ cắt mặt phẳng $({D}{E}{F})$ tại trung điểm thuộc ${{A{D}}}$."
+
+	if chon==6:
+		kq2_T=f"*Đường thẳng ${{{K}{C}}}$ chứa trong mặt phẳng $(A{D}{F})$"
+		kq2_F=f"Đường thẳng ${{{K}{C}}}$ cắt mặt phẳng $(A{D}{F})$"
+		
+		HDG=f"Đường thẳng ${{{K}{C}}}$ chứa trong mặt phẳng $(A{D}{F})$."
+
+	if chon==7:
+		kq2_T=f"*Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(ABC)$"
+		kq2_F=random.choice([
+		f"Đường thẳng ${{{F}{K}}}$ và mặt phẳng $(ABC)$ không có điểm chung",
+		f"Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(ABC)$." ])
+		
+		HDG=f"Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(ABC)$ tại điểm thuộc ${{AC}}$."
+
+	if chon==8:
+		kq2_T=f"*Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$"
+		kq2_F=f"Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(AC{D})$"
+		
+		HDG=f"Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$."
+
+
+	
+
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* " 
+	kq3_F=f" "
+	
+	HDG=f""
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"* "
+	kq4_F=f" " 
+	
+	HDG=f""
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	code_hinh=code_hinh_langtruxien_tamgiac(A,B,C,D,E,F)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	#file_name=my_module.pdftoimage_timename(code)
+
+	code_hinh_LG=(f" \\begin{{tikzpicture}}[scale=0.7]\n\
+	\\begin{{scriptsize}}\n\
+		\\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}}; \n\
+		\\coordinate ({B}) at (2,-1) node at ({B}) [below] {{${B}$}}; \n\
+		\\coordinate ({C}) at (4,0)  node at ({C}) [below] {{${C}$}}; \n\
+		\\coordinate ({D}) at (1,4)   node at ({D}) [above] {{${D}$}}; \n\
+		\\coordinate ({E}) at (3,3)   node at ($({E})+(0.2,-0.25)$) {{${E}$}}; \n\
+		\\coordinate ({F}) at (5,4)   node at ({F}) [above] {{${F}$}};\n\
+		% --- Trung điểm ---\n\
+		\\coordinate (M) at ($({B})!0.5!({C})$);\n\
+		\\coordinate (N) at ($({C})!0.5!({F})$);\n\
+		\\coordinate (P) at ($({E})!0.5!({F})$);\n\
+		\\node at (M) [below] {{$M$}};\n\
+		\\node at (N) [right] {{$N$}};\n\
+		\\node at (P) [above] {{$P$}};\n\
+		% --- TRỌNG TÂM THEO TỈ LỆ 2/3 ---\n\
+		% I: AI = 2/3 AM\n\
+		\\coordinate ({I}) at ($({A})!{{2/3}}!(M)$);\n\
+		\\node at ($({I})+(-0.2,-0.25)$) {{${I}$}};\n\
+		% K: AK = 2/3 AN\n\
+		\\coordinate ({K}) at ($({A})!{{2/3}}!(N)$);\n\
+		\\node at ({K}) [above] {{${K}$}};\n\
+		% H: DH = 2/3 DP\n\
+		\\coordinate ({H}) at ($({D})!{{2/3}}!(P)$);\n\
+		\\node at ($({H})+(0.2,-0.25)$) {{${H}$}};\n\
+		\n\
+		% --- Cạnh lăng trụ ---\n\
+		\\draw[dashed] ({A})--({C});\n\
+		\\draw ({A})--({B})--({E})--({D})--({A});\n\
+		\\draw ({E})--({F})--({C})--({B});\n\
+		\\draw ({D})--({F})--({C}) (M)--(N);\n\
+		% --- Các đoạn bổ sung ---\n\
+		\\draw[dashed] ({A})--(M) ({I})--({H}) ({I})--({K});\n\
+		\\draw[dashed] ({A})--(N);\n\
+		\\draw ({D})--(P);        % DP nét liền\n\
+		\\draw[dashed] ({A})--({F});\n\
+		\n\
+		% --- Các điểm ---\n\
+		\\foreach \\p in {{A,B,C,D,E,F,M,N,P,I,K,H}}\n\
+		\\fill (\\p) circle (1.4pt);\n\
+		\n\
+	\\end{{scriptsize}}\n\
+\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	#file_name_LG=my_module.pdftoimage_timename(code)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
 #--------------BÀI 5: PHÉP CHIẾU SONG SONG------------------>
 #[D11_C4_B5_01]-M1. Tìm khẳng định đúng về phép chiếu song song.
 def ghj_7_jkl_L11_C4_B5_01():

@@ -4762,5 +4762,262 @@ def gh11gh_L11_C3_B3_13():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
+#[D11_C3_B3_14]-SA-M2. Cho y=(ax+b)/(cx+d). Tìm điểm gián đoạn
+def gh11gh_L11_C3_B3_14():
+    x=sp.symbols("x")
+    while True:
+        a,b,c,d=random.sample([i for i in range(-8,9) if i!=0],4)
+        if a*d-b*c!=0:
+            break
+    f=(a*x+b)/(c*x+d)
+    x_0=-d/c
+    noi_dung=(
+    f"Cho hàm số $y={latex(f)}$. Hàm số gián đoạn tại điểm nào sau đây"
+    )
+    
+    list_1=[i for i in range(int(x_0)-15, int(x_0)-2)]
+    list_2=[i for i in range(int(x_0)+2, int(x_0)+15)]
+    list_lt=list_1+list_2
 
 
+    kq=x_0
+    kq_false=list_lt
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Hàm số gián đoạn khi ${latex(c*x+d)}= 0 \\Rightarrow x= {phan_so(-d/c)}$."
+    )
+
+    pa_A= f"*$x={phan_so(kq)}$"
+    pa_B= f"$x={kq2}$"
+    pa_C= f"$x={kq3}$"
+    pa_D= f"$x={kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_15]-SA-M2. Cho y=(ax+b)/(mx^2+nx+p). Tìm điểm gián đoạn
+def gh11gh_L11_C3_B3_15():
+    x=sp.symbols("x")
+    x_1,x_2=random.sample(range(-8,9),2)
+    while True:
+        a,b=random.sample([i for i in range(-5,5) if i!=0],2)
+        m= random.choice([i for i in range(-3, 4) if i!=0])
+        if -b/a not in [x_1,x_2]:
+            break
+    f=m*(x-x_1)*(x-x_2)
+
+    noi_dung=(
+    f"Cho hàm số $y=\\dfrac{{{latex(a*x+b)}}}{{{latex(expand(f))} }}$. Hàm số gián đoạn tại điểm nào sau đây"
+    )
+
+    kq=random.choice([x_1,x_2])
+    kq_false=[i for i in range(-10,10) if i not in [x_1,x_2]]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Hàm số gián đoạn khi ${latex(expand(f))}=0 \\Rightarrow x= {x_1}$ hoặc $x={x_2}$."
+    )
+
+    pa_A= f"*$x={phan_so(kq)}$"
+    pa_B= f"$x={kq2}$"
+    pa_C= f"$x={kq3}$"
+    pa_D= f"$x={kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_16]-SA-M2. Cho y=(ax+b)/(mx^2+nx+p). Tìm khẳng định đúng về liên tục, gián đoạn tại điểm
+def gh11gh_L11_C3_B3_16():
+    x=sp.symbols("x")
+    x_1,x_2=random.sample(range(-8,9),2)
+    while True:
+        a,b=random.sample([i for i in range(-5,5) if i!=0],2)
+        m= random.choice([i for i in range(-3, 4) if i!=0])
+        if -b/a not in [x_1,x_2]:
+            break
+    f=m*(x-x_1)*(x-x_2)
+    list_lt=[i for i in range(-10,10) if i not in [x_1,x_2]]
+    x_3,x_4,x_5,x_6=list_lt[0:4]
+
+    noi_dung=(
+    f"Cho hàm số $y=\\dfrac{{{latex(a*x+b)}}}{{{latex(expand(f))} }}$. Khẳng định nào sau đây đúng?"
+    )
+
+    kq=random.choice([        
+        f"Hàm số gián đoạn tại $x={x_1}$",
+        f"Hàm số gián đoạn tại $x={x_2}$",
+        f"Hàm số liên tục tại $x={x_2}$",
+        f"Hàm số liên tục tại $x={x_3}$"])
+    kq_false= [f"Hàm số liên tục tại $x={x_1}$",
+    f"Hàm số liên tục tại $x={x_2}$",
+    f"Hàm số gián đoạn tại $x={x_4}$",
+    f"Hàm số gián đoạn tại $x={x_5}$",
+    f"Hàm số gián đoạn tại $x={x_6}$",
+    f"Hàm số liên tục tại mọi $x\\in \\mathbb{{R}}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Hàm số gián đoạn khi ${latex(expand(f))}=0 \\Rightarrow x= {x_1}$ hoặc $x={x_2}$.\n\n"
+        f"Hàm số liên tục tại mọi $x\\in \\mathbb{{R}} \\backslash \\left\\{{{x_1},{x_2} \\right\\}}$.\n\n"
+    f"{kq} là khẳng định đúng."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C3_B3_17]-SA-M2. Tìm hàm số gián đoạn tại x_0
+def gh11gh_L11_C3_B3_17():
+    x=sp.symbols("x")
+    x_0= random.choice([i for i in range(-5, 6) if i!=0])
+    while True:
+        a= random.choice([i for i in range(-5, 6) if i!=0])
+        b= random.choice([i for i in range(-5, 6) if i!=0])
+        c= random.choice([i for i in range(-2, 2) if i!=0])
+        d=-c*x_0
+        if a*d-b*c!=0:
+            break
+    f=(a*x+b)/(c*x+d)
+    while True:
+        a= random.choice([i for i in range(-5, 6) if i!=0])
+        b= random.choice([i for i in range(-5, 6) if i!=0])
+        c= random.choice([i for i in range(-2, 2) if i!=0])
+        d=c*x_0
+        if a*d-b*c!=0:
+            break
+    f2=(a*x+b)/(c*x+d)
+
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b= random.choice([i for i in range(-5, 6) if i!=0])
+    c= random.choice([i for i in range(-2, 2) if i!=0])
+    f3=a*x**2+b*x+c
+
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    b= random.choice([i for i in range(-5, 6) if i!=0])
+    c= random.choice([i for i in range(-2, 2) if i!=0])
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+    f4=(a*x+b)/(c*x**2+d)
+
+    noi_dung=(
+    f"Hàm số nào sau đây gián đoạn tại điểm $x={x_0}$?"
+    )    
+
+    kq=f"$y={latex(f)}$"
+    kq_false=[
+    f"$y={latex(f2)}$",
+    f"$y={latex(f3)}$",
+    f"$y={latex(f4)}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Hàm số  {kq} là gián đoạn tại điểm $x={x_0}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
