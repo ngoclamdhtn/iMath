@@ -4846,7 +4846,7 @@ def ghj_7_jkl_L11_C4_B4_08():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-#[D11_C4_B4_10]-TF-M2. Cho l.trụ tam giác. Xét Đ-S: Tính chất
+#[D11_C4_B4_10]-TF-M2. Cho l.trụ tam giác. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song
 def ghj_7_jkl_L11_C4_B4_10():
 	A,B,C="A","B","C"
 	D,E,F=random.choice([["D","E","F"], ["A_1","B_1","C_1"],  ["A'","B'","C'"] ])
@@ -4888,8 +4888,8 @@ def ghj_7_jkl_L11_C4_B4_10():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	chon=random.randint(1,2)
-	chon=5
+	chon=random.randint(1,8)
+	
 	if chon==1:
 		kq2_T=f"*$A{K}\\subset (AC{F}{D})$"
 		kq2_F=f"Đường thẳng ${{A{K}}}$ cắt mặt phẳng $(AC{F}{D})$"
@@ -4938,30 +4938,95 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq2_T=f"*Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$"
 		kq2_F=f"Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(AC{D})$"
 		
-		HDG=f"Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$."
-
-
-	
-
-	
+		HDG=f"Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$."	
 	kq2=random.choice([kq2_T, kq2_F])
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq3_T=f"* " 
-	kq3_F=f" "
+	chon=random.randint(1,8)
+	if chon==1:
+		kq3_T=f"*Đường thẳng ${{{I}{K}}}$ song song với mặt phẳng $(BC{F})$" 
+		kq3_F=f"Đường thẳng ${{{I}{K}}}$ cắt mặt phẳng $(BC{F})$"
+		
+		HDG=(f"Gọi ${{M,N}}$ là trung điểm của ${{BC,C{F}}}$.\n\n"
+			f"${{{I}{K}}}$ không chứa trong $(BC{F})$.\n\n"
+			f"Vậy ${I}{K}//(BC{F})$.")
 	
-	HDG=f""
+	if chon==2:
+		kq3_T=f"*Đường thẳng ${{{I}{K}}}$ song song với mặt phẳng $(C{E}{F})$" 
+		kq3_F=f"Đường thẳng ${{{I}{K}}}$ cắt mặt phẳng $(C{E}{F})$"
+		
+		HDG=(f"Gọi ${{M,N}}$ là trung điểm của ${{BC,C{F}}}$.\n\n"
+			f"${{{I}{K}}}$ không chứa trong $(C{E}{F})$.\n\n"
+			f"Vậy ${I}{K}//(C{E}{F})$.")
+
+	if chon==3:
+		kq3_T=f"*Đường thẳng ${{{I}{H}}}$ song song với mặt phẳng $(C{E}{F})$" 
+		kq3_F=f"Đường thẳng ${{{I}{H}}}$ cắt mặt phẳng $(C{E}{F})$"
+		
+		HDG=(f"${{{I}{H}}}$ không chứa trong $(C{E}{F})$.\n\n"
+			f"${I}{H} // C{F} \\subset (C{E}{F})$.\n\n"
+			f"Vậy ${I}{K}//(C{E}{F})$.")
+
+	if chon==4:
+		kq3_T=f"*Đường thẳng ${{{I}{H}}}$ song song với mặt phẳng $({D}{E}{B})$" 
+		kq3_F=random.choice([f"Đường thẳng ${{{I}{H}}}$ cắt mặt phẳng $({D}{E}{B})$",
+		f"Đường thẳng ${{{I}{H}}}$ nằm trong mặt phẳng $({D}{E}{B})$" ])
+		
+		HDG=(f"${{{I}{H}}}$ không chứa trong $({D}{E}{B})$.\n\n"
+			f"${I}{H} // B{E} \\subset ({D}{E}{B})$.\n\n"
+			f"Vậy ${I}{H}//({D}{E}{B})$.")
+
+	if chon==5:
+		kq3_T=f"*Đường thẳng ${{{I}{H}}}$ song song với mặt phẳng $(A{D}{F})$" 
+		kq3_F=random.choice([f"Đường thẳng ${{{I}{H}}}$ cắt mặt phẳng $(A{D}{F})$",
+		f"Đường thẳng ${{{I}{H}}}$ nằm trong mặt phẳng $(A{D}{F})$" ])
+		
+		HDG=(f"${{{I}{H}}}$ không chứa trong $(A{D}{F})$.\n\n"
+			f"${I}{H} // A{D} \\subset (A{D}{F})$.\n\n"
+			f"Vậy ${I}{H}//(A{D}{F})$.")
+
+	if chon==6:
+		kq3_T=f"*Đường thẳng ${{{D}{H}}}$ song song với mặt phẳng $({F}{A}{I})$" 
+		kq3_F=random.choice([f"Đường thẳng ${{{D}{H}}}$ cắt mặt phẳng $({F}{A}{I})$",
+		f"Đường thẳng ${{{D}{H}}}$ nằm trong mặt phẳng $({F}{A}{I})$" ])
+		
+		HDG=(f"${{{D}{H}}}$ không chứa trong $({F}{A}{I})$.\n\n"
+			f"${D}{H} // A{I} \\subset ({F}{A}{I})$.\n\n"
+			f"Vậy ${D}{H}//({F}{A}{I})$.")
+
+	if chon==7:
+		kq3_T=f"*Đường thẳng ${{{A}{I}}}$ song song với mặt phẳng $({B}{D}{H})$" 
+		kq3_F=random.choice([f"Đường thẳng ${{{A}{I}}}$ cắt mặt phẳng $({B}{D}{H})$",
+		f"Đường thẳng ${{{A}{I}}}$ nằm trong mặt phẳng $({B}{D}{H})$" ])
+		
+		HDG=(f"${{{A}{I}}}$ không chứa trong $({B}{D}{H})$.\n\n"
+			f"${A}{I} // {D}{H} \\subset ({B}{D}{H})$.\n\n"
+			f"Vậy ${A}{I}//({B}{D}{H})$.")
+
 	kq3=random.choice([kq3_T, kq3_F])
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"* "
-	kq4_F=f" " 
+	chon=random.randint(1,2)
+	if chon==1:
+		kq4_T=f"*$({I}{K}{H}) // ({B}{C}{F}{E})$"
+		kq4_F=f"({I}{K}{H}) và ({B}{C}{F}{E}) có vô số điểm chung " 
+		
+		HDG=(f"${I}{K} // MN \\subset ({B}{C}{F}{E}), {I}{H}//B{E}\\subset ({B}{C}{F}{E})$.\n\n"
+			f"Do đó: $({I}{K}{H}) // ({B}{C}{F}{E})$.")
 	
-	HDG=f""
+	if chon==2:
+		kq4_T=f"*$({I}{K}{H}) // ({B}{C}{E})$"
+		kq4_F=f"({I}{K}{H}) và ({B}{C}{E}) có vô số điểm chung " 
+		
+		HDG=(f"${I}{K} // MN \\subset ({B}{C}{E}), {I}{H}//B{E}\\subset ({B}{C}{E})$.\n\n"
+			f"Do đó: $({I}{K}{H}) // ({B}{C}{E})$.")
+	
+
+	
 	kq4=random.choice([kq4_T, kq4_F])
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
