@@ -109,6 +109,24 @@ def code_hinh_langtruxien_tamgiac(a,b,c,a1,b1,c1):
     return code
 
 
+#Code latex vẽ hình học
+def codelatex_hinh_hop(a,b,c,d,e,f,g,h):
+    code=f"\\begin{{tikzpicture}}[scale=0.8] \n\
+\\begin{{scriptsize}}\n\
+\\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
+\\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\
+\\coordinate ({c}) at (3,-1)  node at ({c}) [right] {{${c}$}};\n\
+\\coordinate ({d}) at (4,0)   node at ({d}) [right] {{${d}$}};\n\
+\\coordinate ({e}) at (0,2)   node at ({e}) [left] {{${e}$}};\n\
+\\coordinate ({f}) at (-1,1) node at ({f}) [left] {{${f}$}};\n\
+\\coordinate ({g}) at (3,1)  node at ({g}) [right] {{${g}$}};\n\
+\\coordinate ({h}) at (4,2)   node at ({h}) [right] {{${h}$}};\n\
+\\draw [dashed] ({b})--({a})--({d}) ({e})--({a});\n\
+\\draw ({e})--({f})--({g})--({h})--({e}) ({f})--({b}) ({g})--({c}) ({h})--({d});\n\
+\\draw ({b})--({c})--({d});\n\
+\\end{{scriptsize}}\n\
+\\end{{tikzpicture}}"
+    return code
 
 #Bài 1 - Đường thẳng và mặt phẳng trong không gian
 #[D11_C4_B1_01]-M2. Cho tứ diện. Xét quan hệ giữa điểm và đường thẳng-mặt phẳng
@@ -4850,9 +4868,10 @@ def ghj_7_jkl_L11_C4_B4_08():
 def ghj_7_jkl_L11_C4_B4_10():
 	A,B,C="A","B","C"
 	D,E,F=random.choice([["D","E","F"], ["A_1","B_1","C_1"],  ["A'","B'","C'"] ])
-	D,E,F="D","E","F"
+	#D,E,F="D","E","F"
 	I,H,K=random.sample(["I","H","K","P","Q"],3)
-	I,H,K="I","H","K"
+	#I,H,K="I","H","K"
+	M,N,P="M","N","P"
 
 	noi_dung = (
 	f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
@@ -4944,7 +4963,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	chon=random.randint(1,8)
+	chon=random.randint(1,7)
 	if chon==1:
 		kq3_T=f"*Đường thẳng ${{{I}{K}}}$ song song với mặt phẳng $(BC{F})$" 
 		kq3_F=f"Đường thẳng ${{{I}{K}}}$ cắt mặt phẳng $(BC{F})$"
@@ -5010,20 +5029,46 @@ def ghj_7_jkl_L11_C4_B4_10():
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	chon=random.randint(1,2)
+	chon=random.randint(1,6)
 	if chon==1:
 		kq4_T=f"*$({I}{K}{H}) // ({B}{C}{F}{E})$"
-		kq4_F=f"({I}{K}{H}) và ({B}{C}{F}{E}) có vô số điểm chung " 
+		kq4_F=f"({I}{K}{H}) và ({B}{C}{F}{E}) có vô số điểm chung" 
 		
 		HDG=(f"${I}{K} // MN \\subset ({B}{C}{F}{E}), {I}{H}//B{E}\\subset ({B}{C}{F}{E})$.\n\n"
 			f"Do đó: $({I}{K}{H}) // ({B}{C}{F}{E})$.")
 	
 	if chon==2:
 		kq4_T=f"*$({I}{K}{H}) // ({B}{C}{E})$"
-		kq4_F=f"({I}{K}{H}) và ({B}{C}{E}) có vô số điểm chung " 
+		kq4_F=f"({I}{K}{H}) và ({B}{C}{E}) có vô số điểm chung" 
 		
 		HDG=(f"${I}{K} // MN \\subset ({B}{C}{E}), {I}{H}//B{E}\\subset ({B}{C}{E})$.\n\n"
 			f"Do đó: $({I}{K}{H}) // ({B}{C}{E})$.")
+
+	if chon==3:
+		kq4_T=f"*$({D}{H}{E}) // ({A}{B}{C})$"
+		kq4_F=f"$({D}{H}{E})$ và $({A}{B}{C})$ không song song" 
+		
+		HDG=(f"${D}{H} // A{I} \\subset ({A}{B}{C}), {D}{E}//AB\\subset ({A}{B}{C})$.\n\n"
+			f"Do đó: $({D}{H}{E}) // ({A}{B}{C})$.")
+
+	if chon==4:
+		kq4_T=f"*$({A}{I}{C}) // ({D}{H}{E})$"
+		kq4_F=f"$({A}{I}{C})$ và  $({D}{H}{E})$ không song song" 
+		
+		HDG=(f"${A}{I} // D{H} \\subset ({D}{H}{E}), {A}{B}//{D}{E}\\subset ({D}{H}{E})$.\n\n"
+			f"Do đó: $({A}{I}{C}) // ({D}{H}{E})$.")
+
+	if chon==5:
+		kq4_T=f"*$({A}{H}{B})$ và $({F}{I}{M})$ không song song"
+		kq4_F=f"$({A}{H}{B}) // ({F}{I}{M})$" 
+		
+		HDG=(f"$({A}{H}{B})$ và $({F}{I}{M})$ không song song.")
+
+	if chon==6:
+		kq4_T=f"*$({A}{K}{B})$ và $({I}{D}{E})$ không song song"
+		kq4_F=f"$({A}{K}{B}) // ({I}{D}{E})$" 
+		
+		HDG=(f"$({A}{K}{B})$ và $({I}{D}{E})$ không song song.")
 	
 
 	
@@ -5034,12 +5079,12 @@ def ghj_7_jkl_L11_C4_B4_10():
 
 	#Trộn các phương án
 	list_PA =[kq1, kq2, kq3, kq4]
-	#random.shuffle(list_PA)
+	random.shuffle(list_PA)
 	list_TF=my_module.tra_ve_TF(list_PA)
 
 	code_hinh=code_hinh_langtruxien_tamgiac(A,B,C,D,E,F)
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	#file_name=my_module.pdftoimage_timename(code)
+	file_name=my_module.pdftoimage_timename(code)
 
 	code_hinh_LG=(f" \\begin{{tikzpicture}}[scale=0.7]\n\
 	\\begin{{scriptsize}}\n\
@@ -5079,16 +5124,16 @@ def ghj_7_jkl_L11_C4_B4_10():
 		\\draw[dashed] ({A})--({F});\n\
 		\n\
 		% --- Các điểm ---\n\
-		\\foreach \\p in {{A,B,C,D,E,F,M,N,P,I,K,H}}\n\
+		\\foreach \\p in {{{A},{B},{C},{D},{E},{F},{M},{N},{P},{I},{K},{H}}}\n\
 		\\fill (\\p) circle (1.4pt);\n\
 		\n\
 	\\end{{scriptsize}}\n\
 \\end{{tikzpicture}}" 
 )
 	code = my_module.moi_truong_anh_latex(code_hinh_LG)
-	#file_name_LG=my_module.pdftoimage_timename(code)
+	file_name_LG=my_module.pdftoimage_timename(code)
 
-	debai= f"{noi_dung}\n\n"\
+	debai= f"{noi_dung}\n{file_name}\n\n"\
 	f"a) {list_PA[0]}.\n"\
 	f"b) {list_PA[1]}.\n"\
 	f"c) {list_PA[2]}.\n"\
@@ -5111,7 +5156,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 	f"c) {loigiai[2]}\n"
 	f"d) {loigiai[3]}\n")
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+	loigiai_word=f"Lời giải:\n {file_name_LG}\n {noi_dung_loigiai} \n"
 
 	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
 	f"b) {loigiai[1]}\n\n"
@@ -5127,6 +5172,284 @@ def ghj_7_jkl_L11_C4_B4_10():
 	    f"\\choiceTFt\n"
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
 	    f"\\loigiai{{ \n\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C4_B4_11]-TF-M2. Cho hình hộp. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song
+def ghj_7_jkl_L11_C4_B4_11():
+	A,B,C,D="A","B","C","D"
+	E,F,G,H=random.choice([["E","F","G","H"], ["A_1","B_1","C_1","D_1"],  ["A'","B'","C'","D'"] ])
+	E,F,G, H="E", "F", "G", "H"
+
+	code_hinh=codelatex_hinh_hop(A,B,C,D,E,F,G,H)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	noi_dung = (
+	f"Cho hình hộp ${{ABCD.{E}{F}{G}{H}}}$."
+	f" Gọi $G_1,G_2$ lần lượt là trọng tâm tam giác ${{{A}{H}{F}, {G}{B}{D}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau:")
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"*Hai đáy của hình hộp là các hình bình hành" 
+		kq1_F=f"Hai đáy của hình hộp là các {random.choice(["hình vuông", "hình chữ nhật", "hình thoi"])}"
+		
+		HDG=f"Hai đáy của hình hộp là các hình bình hành."
+	
+	if chon==2:
+		kq1_T=f"*Các mặt bên của hình hộp là các hình bình hành" 
+		kq1_F=f"Các mặt bên của hình hộp là các {random.choice(["hình vuông", "hình chữ nhật", "hình thoi"])}"
+		
+		HDG=f"Hai đáy của hình hộp là các hình bình hành."
+
+	if chon==3:
+		kq1_T=f"*Các cạnh bên của hình hộp đều song song và bằng nhau" 
+		kq1_F=f"Các cạnh bên của hình hộp đồng quy tại một điểm"
+		
+		HDG=f"Các cạnh bên của hình hộp đều song song và bằng nhau."
+	
+	
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,9)
+	
+	if chon==1:
+		kq2_T=f"*${E}G_1\\subset (AC{G}{E})$"
+		kq2_F=f"${E}G_1$ không chứa trong $(AC{G}{E})$"
+		
+		HDG=(f"Gọi ${{O'}}$ là tâm của hình bình hành ${{{E}{F}{G}{H}}}$.\n\n"
+			f"${E}G_1\\in AO'\\subset (AC{G}{E})$.")
+	
+	if chon==2:
+		kq2_T=f"*${C}G_2\\subset (AC{G}{E})$"
+		kq2_F=f"${C}G_2$ không chứa trong $(AC{G}{E})$"
+		
+		HDG=(f"Gọi ${{O}}$ là tâm của hình bình hành ${{{A}{B}{C}{D}}}$.\n\n"
+			f"${C}G_2\\in {G}O\\subset (AC{G}{E})$.")
+
+	if chon==3:
+		kq2_T=f"*${E}G_1$ không chứa trong $(AD{H}{E})$"
+		kq2_F=f"${E}G_1\\subset (AD{H}{E})$"
+		
+		HDG=(f"Gọi ${{O'}}$ là tâm của hình bình hành ${{{E}{F}{G}{H}}}$.\n\n"
+			f"${E}G_1\\in AO'\\subset (AC{G}{E})$.\n\n"
+			f"Do đó  ${E}G_1$ không chứa trong $(AD{H}{E})$.")
+
+	if chon==4:
+		kq2_T=f"*${C}G_2$ không chứa trong $(CD{H}{G})$"
+		kq2_F=f"${C}G_2\\subset (CD{H}{G})$"
+		
+		HDG=(f"Gọi ${{O}}$ là tâm của hình bình hành ${{{A}{B}{C}{D}}}$.\n\n"
+			f"${C}G_2\\in {G}O\\subset (AC{G}{E})$.\n\n"
+			f"Do đó ${C}G_2$ không chứa trong $(CD{H}{G})$.")
+
+	if chon==5:
+		kq2_T=f"*${{{A}{H}}}$ không chứa trong $(AB{F}{E})$"
+		kq2_F=f"${A}{H}\\subset (AB{F}{E})$"
+		
+		HDG=(f"${{{A}{H}}}$ không chứa trong $(AB{F}{E})$.")
+
+	if chon==6:
+		kq2_T=f"*${B}{G}\\subset (A{H}{G})$"
+		kq2_F=f"${{{B}{G}}}$ không chứa trong $(A{H}{G})$"
+		
+		HDG=(f"${B}{G}\\subset (A{H}B{G})$.")
+
+	if chon==7:
+		kq2_T=f"*${D}{G}\\subset (A{G}{F})$"
+		kq2_F=f"${{{D}{G}}}$ không chứa trong $(A{G}{F})$"
+		
+		HDG=(f"${D}{G}\\subset (A{G}{F})$.")
+
+	if chon==8:
+		kq2_T=f"*${B}{E}\\subset (C{E}{H})$"
+		kq2_F=f"${{{B}{E}}}$ không chứa trong $(C{E}{H})$"
+		
+		HDG=(f"${B}{E}\\subset (C{E}{H})$.")
+
+	if chon==9:
+		kq2_T=f"*${{{B}{E}}}$ không chứa trong $({F}{A}{D})$"
+		kq2_F=f"${B}{E}\\subset ({F}{A}{D})$"
+		
+		HDG=(f"${{{B}{E}}}$ không chứa trong $({F}{A}{D})$.")
+
+
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,6)
+
+	if chon==1:
+		kq3_T=f"*${H}{F}//(ACD)$" 
+		kq3_F=f"Đường thẳng ${{{H}{F}}}$ và mặt phẳng $(ACD)$ có điểm chung"
+		
+		HDG=f"${H}{F}//BD\\subset (ACD) \\Rightarrow {H}{F}//(ACD)$."
+	
+	if chon==2:
+		kq3_T=f"*${G}{B}//({E}AD)$" 
+		kq3_F=f"Đường thẳng ${{{G}{B}}}$ và mặt phẳng $({E}AD)$ có điểm chung"
+		
+		HDG=f"${G}{B}//{H}A\\subset ({E}AD) \\Rightarrow {G}{B}//({E}AD)$."
+
+	if chon==3:
+		kq3_T=f"*${C}{H}//({A}{B}{F})$" 
+		kq3_F=f"Đường thẳng ${{{C}{H}}}$ và mặt phẳng $({A}{B}{F})$ có điểm chung"
+		
+		HDG=f"${C}{H}//{B}{E}\\subset ({A}{B}{F}) \\Rightarrow {C}{H}//({E}AD)$."
+
+	if chon==4:
+		kq3_T=f"*${A}G_1//({B}{G}{D})$" 
+		kq3_F=f"${A}G_1\\subset ({B}{G}{D})$"
+		
+		HDG=f"${A}G_1//O{G}\\subset ({B}{G}{D}) \\Rightarrow {A}G_1//({B}{G}{D})$."
+
+	if chon==5:
+		kq3_T=f"*${G}G_2//({A}{F}{H})$" 
+		kq3_F=f"${G}G_2\\subset ({A}{F}{H})$"
+		
+		HDG=f"${G}G_2 // AO'\\subset ({A}{F}{H}) \\Rightarrow {G}G_2//({A}{F}{H})$."
+
+	if chon==6:
+		kq3_T=f"*${H}{E}//({A}{C}{D})$" 
+		kq3_F=f"${H}{E}\\subset ({A}{C}{D})$"
+		
+		HDG=f"${H}{E}//AD\\subset ({A}{C}{D}) \\Rightarrow {H}{E}//({A}{C}{D})$."
+	
+
+
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	chon=random.randint(1,7)
+	if chon==1:
+		kq4_T=f"*$(A{H}{F})//({G}BD)$"
+		kq4_F=f"$(A{H}{F})$ và $({G}BD)$ không song song" 
+		
+		HDG=(f"${A}{H} // ({G}BD), {H}{F}//({G}BD)$.\n\n"
+			f"Do đó: $(A{H}{F})//({G}BD)$.")
+	
+	if chon==2:
+		kq4_T=f"*$({D}{E}{G})//({F}{A}{C})$"
+		kq4_F=f"$({D}{E}{G})$ và $({F}{A}{C})$ không song song" 
+		
+		HDG=(f"${D}{E}//({F}{A}{C}), {H}{F}//({G}BD)$.\n\n"
+			f"Do đó: $({D}{E}{G})//({F}{A}{C})$.")
+
+	if chon==3:
+		kq4_T=f"*$({E}{B}{D})//({C}{H}{F})$"
+		kq4_F=f"$({E}{B}{D})$ và $({C}{H}{F})$ không song song" 
+		
+		HDG=(f"${E}{B}//({C}{H}{F}), {B}{D}//({C}{H}{F})$.\n\n"
+			f"Do đó: $({E}{B}{D})//({C}{H}{F})$.")
+
+	if chon==4:
+		kq4_T=f"*$({B}{E}{G})//({H}{A}{C})$"
+		kq4_F=f"$({B}{E}{G})$ và $({H}{A}{C})$ không song song" 
+		
+		HDG=(f"${E}{B}//({H}{A}{C}), {E}{G}//({H}{A}{C})$.\n\n"
+			f"Do đó: $({B}{E}{G})//({H}{A}{C})$.")
+
+	if chon==5:
+		kq4_T=f"*$({B}{E}{G})$ và $({H}{A}{D})$ không song song"
+		kq4_F=f"$({B}{E}{G})//({H}{A}{D})$" 
+		
+		HDG=(f"$({B}{E}{G})$ và $({H}{A}{D})$ không song song.")
+
+	if chon==6:
+		kq4_T=f"*$({E}{B}{D})$ và $({C}{G}{F})$ không song song"
+		kq4_F=f"$({E}{B}{D})//({C}{G}{F})$" 
+		
+		HDG=(f"$({E}{B}{D})$ và $({C}{G}{F})$ không song song.")
+
+	if chon==7:
+		kq4_T=f"*$({D}{E}{G})$ và $({F}{A}{B})$ không song song"
+		kq4_F=f"$({D}{E}{G})//({F}{A}{B})$" 
+		
+		HDG=(f"$({D}{E}{G})$ và $({F}{A}{B})$ không song song")
+	
+
+
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+	code_hinh_LG=(f"\\begin{{tikzpicture}}[scale=0.8] \n\
+	\\begin{{scriptsize}}\n\
+		\\coordinate ({A}) at (0,0)   node at ({A}) [left] {{${A}$}};\n\
+		\\coordinate ({B}) at (-1,-1) node at ({B}) [left] {{${B}$}};\n\
+		\\coordinate ({C}) at (3,-1)  node at ({C}) [right] {{${C}$}};\n\
+		\\coordinate ({D}) at (4,0)   node at ({D}) [right] {{${D}$}};\n\
+		\\coordinate ({E}) at (0,2)   node at ({E}) [left] {{${E}$}};\n\
+		\\coordinate ({F}) at (-1,1) node at ({F}) [left] {{${F}$}};\n\
+		\\coordinate ({G}) at (3,1)  node at ({G}) [right] {{${G}$}};\n\
+		\\coordinate ({H}) at (4,2)   node at ({H}) [right] {{${H}$}};\n\
+		\\coordinate (O1) at ($({E})!0.5!({G})$)   node at (O1) [above] {{$O'$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$)   node at (O) [below] {{$O$}};\n\
+		\\coordinate (G1) at ($({A})!2/3!(O1)$)   node at (G1) [below] {{$G_1$}};\n\
+		\\coordinate (G2) at ($({G})!2/3!(O)$)   node at (G2) [below] {{$G_2$}};\n\
+		\\draw [dashed] ({B})--({A})--({D}) ({E})--({A}) ({A})--({C}) ({E})--({C}) ({A})--(O1) ({G})--(O);\n\
+		\\draw ({E})--({F})--({G})--({H})--({E}) ({F})--({B}) ({G})--({C}) ({H})--({D});\n\
+		\\draw ({B})--({C})--({D}) ({E})--({G});		\n\
+	\\end{{scriptsize}}\n\
+\\end{{tikzpicture}}")
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {file_name_LG}\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {loigiai_latex} \n }}"
 	    f"\\end{{ex}}\n")
 
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")

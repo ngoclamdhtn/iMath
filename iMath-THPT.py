@@ -5882,32 +5882,48 @@ class Ui_MainWindow(object):
                 L11_C4_B4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C4_B4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_03]-M2. Cho lăng trụ tam giác. Xét sự song song của 2 mp."])
+                L11_C4_B4_1 = QTreeWidgetItem(L11_C4_B4, ["Trắc nghiệm"])
+                L11_C4_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B4_1, ["[D11_C4_B4_03]-M2. Cho lăng trụ tam giác. Xét sự song song của 2 mp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 ##item.setToolTip(0, 'Cho lăng trụ tam giác. Xét sự song song của 2 mp.')
 
-                item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_09]-M2. Cho lăng trụ tam giác. Xét sự song song của 2 mp."])
+                item = QTreeWidgetItem(L11_C4_B4_1, ["[D11_C4_B4_09]-M2. Cho lăng trụ tam giác. Xét sự song song của 2 mp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 ##item.setToolTip(0, 'Cho lăng trụ tam giác. Xét sự song song của 2 mp.')
 
-                item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_05]-M2. Tìm khẳng định đúng về hình lăng trụ."])
+                item = QTreeWidgetItem(L11_C4_B4_1, ["[D11_C4_B4_05]-M2. Tìm khẳng định đúng về hình lăng trụ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 ##item.setToolTip(0, 'Tìm khẳng định đúng về hình lăng trụ.')
 
-                item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_06]-M1. Tìm cặp điểm đối diện của hình hộp."])
+                item = QTreeWidgetItem(L11_C4_B4_1, ["[D11_C4_B4_06]-M1. Tìm cặp điểm đối diện của hình hộp."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 ##item.setToolTip(0, 'Tìm cặp điểm đối diện của hình hộp.')
 
-                item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_07]-M2. Cho hình hộp. Xét sự song song của một đường với các đường."])
+                item = QTreeWidgetItem(L11_C4_B4_1, ["[D11_C4_B4_07]-M2. Cho hình hộp. Xét sự song song của một đường với các đường."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 item.setToolTip(0, 'Cho hình hộp. Xét sự song song của một đường với các đường.')
 
-                item = QTreeWidgetItem(L11_C4_B4, ["[D11_C4_B4_08]-M2. Cho hình hộp. Xét sự song song của hai đường tùy ý."])
+                item = QTreeWidgetItem(L11_C4_B4_1, ["[D11_C4_B4_08]-M2. Cho hình hộp. Xét sự song song của hai đường tùy ý."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C4_B4_2 = QTreeWidgetItem(L11_C4_B4, ["Đúng-Sai"])
+                L11_C4_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B4_2, ["[D11_C4_B4_10]-TF-M3. Lăng trụ tam giác. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B4_2, ["[D11_C4_B4_11]-TF-M3. Cho hình hộp. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -13938,6 +13954,14 @@ class Ui_MainWindow(object):
                                             #[D11_C4_B4_09]. Cho hình lăng trụ tam giác. Xét sự song song của 2 mp-Thông hiểu.
                                             if dang_toan == "[D11_C4_B4_09]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_09()
+
+                                            #[D11_C4_B4_10]-TF-M3. Cho l.trụ tam giác. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song
+                                            if dang_toan == "[D11_C4_B4_10]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_10()
+
+                                            #[D11_C4_B4_11]-TF-M3.  Cho hình hộp. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song
+                                            if dang_toan == "[D11_C4_B4_11]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_11()
 
                                             #-------- BÀI 5: PHÉP CHIẾU SONG SONG--------->
 
