@@ -1714,7 +1714,7 @@ def y7y7u_L10_C5_B2_10():
 
 	)
 	noi_dung_loigiai=(f"Gọi ${vec(f"F")}={v_F1}+{v_F2}$. \n\n"
-		f"Dựng hình bình hành ${{{M}{A}D{B}}}$. Ta có $\\widehat{{{M}{A}{D}}}={goc_bu_degree}^\\circ$. \n\n"
+		f"Dựng hình bình hành ${{{M}{A}D{B}}}$. Ta có $\\widehat{{{M}{A}D}}={goc_bu_degree}^\\circ$. \n\n"
     f"Khi đó: $|{vec(f"F")}|=|{v_MA}+{v_MB}|=|{vec(f"{M}D")}|=\\sqrt{{{F1}^2+{F2}^2-2.{F1}.{F2}.\\cos {goc_bu_degree}^\\circ}}={latex(F)}$.\n\n"
     f"Kết quả làm tròn: {dap_an}"
 		)
