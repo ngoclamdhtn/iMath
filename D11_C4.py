@@ -5672,7 +5672,7 @@ def ghj_7_jkl_L11_C4_B5_04():
 	if chon==3:
 		noi_dung=(
 		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
-		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(AC{F}{E})$ theo phương ${{AB}}$ là điểm nào?")
+		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(AC{F}{D})$ theo phương ${{AB}}$ là điểm nào?")
 		
 		kq=D
 		kq_false=[E,A,B,C,F]

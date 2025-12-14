@@ -2771,8 +2771,8 @@ def y7y7u_L10_C5_B2_21():
 		f"$|{vec("u")}|=|{vec(f"{C}{A}")}+{vec(f"{A}{M}")}|=|{vec(f"{C}{M}")}|={a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/2)}$."
 		)
 
-	kq=a
-	kq_false=[2*a, a/2, a*sqrt(3), a*sqrt(3)/2,a/4]
+	kq=a*sqrt(3)/2
+	kq_false=[2*a, a/2, a*sqrt(3),a,a/4, a*sqrt(2)/3]
 	random.shuffle(kq_false)
 	kq2,kq3,kq4=kq_false[0:3]
 

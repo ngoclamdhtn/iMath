@@ -274,7 +274,7 @@ def mn8mn_L11_C2_B1_04():
         u1=u.subs(n,1)
         noi_dung_loigiai=(
             f"$u_n={latex((a*c-b+a*n)/(c+n))}={latex(a-b/(c+n))} \\Rightarrow u_{{n+1}}-u_n>0,\\forall n \\ge 1$ nên $(u_n)$ là dãy số tăng.\n\n"
-            f"${phan_so(u1)}\\le {latex(a-b/(c+n))}\\le {a}$ nên $(u_n)$ là dãy số bị chặn."
+            f"${phan_so(u1)}\\le {latex(a-b/(c+n))}\\< {a}$ nên $(u_n)$ là dãy số bị chặn."
             )
     
     if chon==2:
@@ -304,7 +304,7 @@ def mn8mn_L11_C2_B1_04():
         u1=u.subs(n,1)
         noi_dung_loigiai=(
             f"$u_n={latex((a*c+b+a*n)/(c+n))}={latex(a+b/(c+n))}\\Rightarrow u_{{n+1}}-u_n<0,\\forall n \\ge 1$ nên $(u_n)$ là dãy số giảm.\n\n"
-            f"${a}\\le {latex(a-b/(c+n))}\\le {phan_so(u1)}$ nên $(u_n)$ là dãy số bị chặn."
+            f"${a}<{latex(a-b/(c+n))}\\le {phan_so(u1)}$ nên $(u_n)$ là dãy số bị chặn."
             )
        
     

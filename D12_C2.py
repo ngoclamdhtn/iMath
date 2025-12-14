@@ -3146,13 +3146,41 @@ def mnj_34_jkl_L12_C2_B2_09():
 
 	i=random.randint(0,2)
 	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+	chon=random.randint(1,3)
+	if chon==1:
+		O,O1="I","I'"	
+	if chon==2:
+		O,O1="K","K'"
+	if chon==3:
+		O,O1="P","P'"
 
-	O=["O","I" ]
-	O1=["O'","I'" ]
-	i=random.randint(0,1)
-	O, O1, = O[i], O1[i]
+
 	ten_hop = f"{{ABCD.{A1}{B1}{C1}{D1}}}"
-	code_hinh=code_hinh_lapphuong_hetruc_gocO(A1,B1,C1,D1)
+	
+	code_hinh=(f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+			\\coordinate (A) at (0,0);\n\
+			\\coordinate (B) at (-2,-2);\n\
+			\\coordinate (D) at (5,0);\n\
+			\\coordinate (C) at ($(B)+(D)-(A)$);\n\
+			\\coordinate ({A1}) at ($(A)+(0,3.5)$);\n\
+			\\coordinate ({B1}) at ($({A1})+(B)-(A)$);\n\
+			\\coordinate ({D1}) at ($({A1})+(D)-(A)$);\n\
+			\\coordinate ({C1}) at ($({B1})+({D1})-({A1})$);\n\
+			\\coordinate ({O}) at (intersection of B--D and A--C);\n\
+			\\coordinate ({O1}) at (intersection of {B1}--{D1} and {A1}--{C1});\n\
+			\\draw({A1})--({B1})--({C1})--({D1})--({A1}) (B)--(C)--(D) ({B1})--(B) ({C1})--(C) (D)--({D1})\n\
+			({A1})--({C1})\n\
+			({B1})--({D1});\n\
+			\\draw[->] ({O})--({O1}) ;\n\
+			\\draw[->] (C)--(3.6,-2.4) ;\n\
+			\\draw[->] (B)--(-3.,-2.3) ;\n\
+			\\node [above] at (3.6,-2.4) {{$y$}}  ;\n\
+			\\node [above] at ({O1}) {{$z$}};\n\
+			\\node [below] at	(-3,-2.3) {{$x$}};\n\
+			\\draw[dashed,thin]({A1})--(A) (A)--(B) (A)--(D) (A)--(C) (B)--(D);\n\
+			\\pic[draw,thin,angle radius=3mm] {{right angle = {A1}--A--D}} pic[draw,thin,angle radius=3mm] {{right angle = {A1}--A--B}} pic[draw,thin,angle radius=3mm] {{right angle = A--{O}--B}};\n\
+			\\foreach \\i/\\g in {{{A1}/180,A/-90,B/-90,C/-90,D/-45,{B1}/120,{D1}/0,{C1}/0,{O}/45,{O1}/45}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$)node[scale=1]{{$\\i$}};}}\n\
+		\\end{{tikzpicture}}")
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
 
@@ -3162,10 +3190,6 @@ def mnj_34_jkl_L12_C2_B2_09():
 	l_D=l_A1
 	OA,OB=sqrt(l_B**2+l_D**2)/2, sqrt(l_B**2+l_D**2)/2
 
-	
-	I=random.choice(["I", "K"])
-	M=random.choice(["M", "P",])
-	N=random.choice(["N", "Q"])
 
 	x_A,y_A,z_A=0,-OA,0
 	x_B,y_B,z_B=OB,0,0
@@ -7197,9 +7221,9 @@ def mnj_34_jkl_L12_C2_B3_36():
 		f"$=3{vec2(M,"G")}^2+2{vec2(M,"G")}({vec2("G",A)} + {vec2("G",B)} + {vec2("G",C)}"
 		f"+({vec2("G",A)}^2 + {vec2("G",B)}^2 +{vec2("G",C)}^2)$\n\n"
 		f"$=3{M}G^2+G{A}^2+G{B}^2+G{C}^2$.\n\n")
-
+	
 	if chon==1:
-		dap_an=f"{N(x+y,2):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(x+y,1):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
 		f"${M}\\in (Oxy)$ nên ${M}(a;b;0)$. \n\n"
 		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxy)$.\n\n"
@@ -7207,7 +7231,7 @@ def mnj_34_jkl_L12_C2_B3_36():
 		f"Vậy $a+b+c={dap_an}$.")	
 
 	if chon==2:
-		dap_an=f"{N(y+z,2):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(y+z,1):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
 		f"${M}\\in (Oyz)$ nên $M(0;b;c)$. \n\n"
 		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oyz)$.\n\n"
@@ -7215,7 +7239,7 @@ def mnj_34_jkl_L12_C2_B3_36():
 		f"Vậy $a+b+c={dap_an}$.")
 
 	if chon==3:
-		dap_an=f"{N(x+z,2):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(x+z,1):.1f}".replace(".",",")
 		noi_dung_loigiai+=(
 		f"${M}\\in (Oxz)$ nên ${M}(a;0;c)$. \n\n"
 		f"$T_{{min}} \\Leftrightarrow {M}$ là hình chiếu của ${{G}}$ lên $(Oxz)$.\n\n"

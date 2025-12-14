@@ -1194,31 +1194,34 @@ def ytrzz_L12_C3_B2_02():
 
 #[D12_C3_B2_03]-TL-M2. Tính phương sai của mẫu số liệu ghép nhóm.
 def ytrzz_L12_C3_B2_03():
-	
-	#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
-	so_nhom = random.randint(6,7)
-	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
-	
-	#Tạo code latex chứa các khoảng giá trị và các tần số
-	gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
+	while True:
 
-	# Given data from the table
-	class_intervals, frequencies=[],[]
-	for i in range(1,so_nhom):
-		class_intervals.append((gia_tri[i-1],gia_tri[i]))
-		frequencies.append(tan_so[i-1])
-	# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
-	# frequencies=[3,12,15,24,2]
+		#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
+		so_nhom = random.randint(6,7)
+		ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
+		
+		#Tạo code latex chứa các khoảng giá trị và các tần số
+		gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
 
-	#@@@# Sử dụng numpy để tính
-	# Tính trung bình mỗi khoảng
-	interval_means = [(a + b) / 2 for a, b in class_intervals]
+		# Given data from the table
+		class_intervals, frequencies=[],[]
+		for i in range(1,so_nhom):
+			class_intervals.append((gia_tri[i-1],gia_tri[i]))
+			frequencies.append(tan_so[i-1])
+		# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
+		# frequencies=[3,12,15,24,2]
 
-	# Tính trung bình trọng số của mẫu
-	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+		#@@@# Sử dụng numpy để tính
+		# Tính trung bình mỗi khoảng
+		interval_means = [(a + b) / 2 for a, b in class_intervals]
 
-	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
+		# Tính trung bình trọng số của mẫu
+		weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+
+		# Tính phương sai
+		variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
+		if variance<99:
+			break
 
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)
@@ -1303,31 +1306,34 @@ def ytrzz_L12_C3_B2_03():
 
 #[D12_C3_B2_04]-TL-M2. Tính độ lệch chuẩn của mẫu số liệu ghép nhóm.
 def ytrzz_L12_C3_B2_04():
+	while True:
 	
-	#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
-	so_nhom = random.randint(6,7)
-	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
-	
-	#Tạo code latex chứa các khoảng giá trị và các tần số
-	gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
+		#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
+		so_nhom = random.randint(6,7)
+		ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
+		
+		#Tạo code latex chứa các khoảng giá trị và các tần số
+		gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
 
-	# Given data from the table
-	class_intervals, frequencies=[],[]
-	for i in range(1,so_nhom):
-		class_intervals.append((gia_tri[i-1],gia_tri[i]))
-		frequencies.append(tan_so[i-1])
-	# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
-	# frequencies=[3,12,15,24,2]
+		# Given data from the table
+		class_intervals, frequencies=[],[]
+		for i in range(1,so_nhom):
+			class_intervals.append((gia_tri[i-1],gia_tri[i]))
+			frequencies.append(tan_so[i-1])
+		# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
+		# frequencies=[3,12,15,24,2]
 
-	#@@@# Sử dụng numpy để tính
-	# Tính trung bình mỗi khoảng
-	interval_means = [(a + b) / 2 for a, b in class_intervals]
+		#@@@# Sử dụng numpy để tính
+		# Tính trung bình mỗi khoảng
+		interval_means = [(a + b) / 2 for a, b in class_intervals]
 
-	# Tính trung bình trọng số của mẫu
-	weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
+		# Tính trung bình trọng số của mẫu
+		weighted_mean = sum(mean * freq for mean, freq in zip(interval_means, frequencies)) / sum(frequencies)
 
-	# Tính phương sai
-	variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
+		# Tính phương sai
+		variance = sum(freq * (mean - weighted_mean) ** 2 for mean, freq in zip(interval_means, frequencies)) / (sum(frequencies))
+		if sqrt(variance)<99:
+			break
 	variance_round=f"{round_half_up(variance,2):.1f}".replace(".",",")
 	# Độ lệch chuẩn là căn bậc hai của phương sai
 	std_dev = np.sqrt(variance)

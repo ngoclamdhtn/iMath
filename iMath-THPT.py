@@ -11119,6 +11119,7 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B5_09]-SA-M3. Cho hàm số lượng vi khuẩn. Tìm số vi khuẩn lớn nhất
                                             if dang_toan == "[D12_C1_B5_09]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_09()
+                                            
 
                                             #[D12_C1_B5_10]-TF-M3. Cho hàm số số lượng vi khuẩn. Xét Đ-S: SL vi khuẩn, đạo hàm, tăng-giảm, max
                                             if dang_toan == "[D12_C1_B5_10]": 
