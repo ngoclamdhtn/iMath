@@ -5,6 +5,10 @@ import random
 from fractions import Fraction
 import my_module
 
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Tạo hàm chứa chuỗi latex vecto
 def vec(st):
 	return f"\\overrightarrow{{{st}}}"
@@ -180,9 +184,7 @@ def tao_3dinh_tamgiac():
                AB2 + BC2 != CA2 and AB2 + CA2 != BC2 and BC2 + CA2 != AB2:
                 return (x1, y1), (x2, y2), (x3, y3)
 
-def round_half_up(n, decimals=1):
-    multiplier = 10 ** decimals
-    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 
 #----------------------------------------------------->
 
@@ -1050,7 +1052,7 @@ def gghik_L10_CX_B0_14():
 
 	if ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) <0:
 
-	    m=round( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 ) 
+	    m=round_half_up( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 ) 
 	    m=str(m).replace(".",",")
 
 	    kq3_T=f"* $\\widehat{{A}}$ là góc tù" 
@@ -1059,7 +1061,7 @@ def gghik_L10_CX_B0_14():
 	    HDG=f"$\\cos{{A}}\\approx {m} < 0$ nên $\\widehat{{A}}$ là góc tù " 
 	if ((x3-x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)) >0:
 
-	    m=round( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 ) 
+	    m=round_half_up( ((x3+x1)*(x2-x1)+(y3-y1)*(y2-y1))/(sqrt((x3-x1)**2+(y3-y1)**2)* sqrt((x2-x1)**2+(y2-y1)**2)),2 ) 
 	    m=str(m).replace(".",",")
 
 	    kq3_T=f"* $\\widehat{{A}}$ là góc nhọn" 
@@ -1679,7 +1681,7 @@ def gghik_L10_CX_B0_21():
 
 	
 	a, b=x_A-k*x_AB, y_A-k*y_AB
-	dap_an=f"{round(a+b,1):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")
 
 	noi_dung_loigiai=(
 	f"${vec_AB}=({x_AB};{y_AB}), {vec2(P,A)}=({x_A}-a;{y_A}-b)$.\n\n"

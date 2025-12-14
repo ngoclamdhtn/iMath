@@ -1714,7 +1714,7 @@ def y7y7u_L10_C5_B2_10():
 
 	)
 	noi_dung_loigiai=(f"Gọi ${vec(f"F")}={v_F1}+{v_F2}$. \n\n"
-		f"Dựng hình bình hành ${{{M}{A}D{B}}}$. Ta có $\\widehat{{{M}{A}{B}}}={goc_bu_degree}^\\circ$. \n\n"
+		f"Dựng hình bình hành ${{{M}{A}D{B}}}$. Ta có $\\widehat{{{M}{A}{D}}}={goc_bu_degree}^\\circ$. \n\n"
     f"Khi đó: $|{vec(f"F")}|=|{v_MA}+{v_MB}|=|{vec(f"{M}D")}|=\\sqrt{{{F1}^2+{F2}^2-2.{F1}.{F2}.\\cos {goc_bu_degree}^\\circ}}={latex(F)}$.\n\n"
     f"Kết quả làm tròn: {dap_an}"
 		)
@@ -3886,7 +3886,7 @@ def y7y7u_L10_C5_B3_07():
 		f"Cho hình chữ nhật ${{{A}{B}{C}{D}}}$ có ${A}{B}={AB},{A}{D}={AD}$."
 		f" Tính độ dài vectơ ${vec_u}={vec_AB}+2{vec_AD}$ (kết quả làm tròn đến hàng phần mười)."
 		)
-		dap_an=f"{round_half_up(2*sqrt(AB**2+AD**2/4),1):.1f}".replace(".",",")
+		dap_an=f"{round_half_up(2*sqrt(AD**2+AB**2/4),1):.1f}".replace(".",",")
 
 		code_hinh_LG=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
 			\\coordinate ({A}) at (0,3);\n\

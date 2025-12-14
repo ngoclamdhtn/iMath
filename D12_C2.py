@@ -8487,7 +8487,7 @@ def mnj_34_jkl_L12_C2_B3_45():
 	x_A, y_A, z_A=0, 0, 0
 	x_B, y_B, z_B=0, b, 0
 	x_C, y_C, z_C=a, b, 0
-	x_D, y_D, z_D=a, 0, 0	
+	x_D, y_D, z_D=0, b, 0	
 	x_S, y_S, z_S=0, 0, c
 
 	chon=random.randint(1,4)
@@ -8621,7 +8621,7 @@ def mnj_34_jkl_L12_C2_B3_46():
 	x_A, y_A, z_A=0, 0, 0
 	x_B, y_B, z_B=0, b, 0
 	x_C, y_C, z_C=a, b, 0
-	x_D, y_D, z_D=a, 0, 0	
+	x_D, y_D, z_D=0, b, 0	
 	x_S, y_S, z_S=0, 0, c
 
 	chon=random.randint(1,4)

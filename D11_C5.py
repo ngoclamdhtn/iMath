@@ -1258,7 +1258,7 @@ def treqw_L11_C5_B2_08():
 #[D11_C5_B2_09]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Giá trị đại diện, số trung bình, Q1, Q3
 def treqw_L11_C5_B2_09():
 	#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
-	so_nhom = random.randint(6,7)
+	so_nhom = 6
 	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
 	
 	#Tạo code latex chứa các khoảng giá trị và các tần số
@@ -1494,7 +1494,7 @@ def treqw_L11_C5_B2_09():
 #[D11_C5_B2_10]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Mốt, số trung bình, Q1, Q3
 def treqw_L11_C5_B2_10():
 	#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
-	so_nhom = random.randint(6,7)
+	so_nhom = 6
 	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
 	
 	#Tạo code latex chứa các khoảng giá trị và các tần số
@@ -1632,8 +1632,8 @@ def treqw_L11_C5_B2_10():
 	st_M_o=f"{round_half_up(M_o,2):.2f}".replace(".",",")
 	st_M_o_false=f"{round_half_up(M_o+random.choice([0.5,0.7,0.8,1]),2):.2f}".replace(".",",")
 	
-	kq1_T=f"* Giá trị ${{{st_M_o}}}$ là một mốt của mẫu số liệu" 
-	kq1_F=f" Giá trị ${{{st_M_o_false}}}$ là một mốt của mẫu số liệu"
+	kq1_T=f"*Giá trị ${{{st_M_o}}}$ là một mốt của mẫu số liệu" 
+	kq1_F=f"Giá trị ${{{st_M_o_false}}}$ là một mốt của mẫu số liệu"
 	
 	HDG=f"Nhóm chứa mốt là nhóm thứ $k={k}, n_k={n_k},n_{{k-1}}={n_k1}, n_{{k+1}}={n_k2}, u_k={u_k1}, u_{{k+1}}={u_k2}$.\n\n"\
     					f"Áp dụng công thức tìm Mốt: $M_o=u_k+\\dfrac{{ (n_k - n_{{k-1}}) }}{{(n_k-n_{{k-1}})+(n_k-n_{{k+1}}) }}(u_{{k+1}}-u_k)={st_M_o}$."
@@ -1678,7 +1678,7 @@ def treqw_L11_C5_B2_10():
 	so_trung_binh=f"{round_half_up(weighted_mean,2):.2f}".replace(".",",")
 	so_trung_binh_false=f"{round_half_up(weighted_mean+random.choice([0.2,0.5,0.6,0.8,1]),2):.2f}".replace(".",",")
 
-	kq2_T=f"* Số trung bình của mẫu số liệu ghép nhóm là ${{{so_trung_binh}}}$"
+	kq2_T=f"*Số trung bình của mẫu số liệu ghép nhóm là ${{{so_trung_binh}}}$"
 	kq2_F=f"Số trung bình của mẫu số liệu ghép nhóm là ${{{so_trung_binh_false}}}$"
 	
 	HDG=(f"Các giá trị đại diện của mẫu số liệu là: {gia_tri_dai_dien}\n\n"
@@ -1783,7 +1783,7 @@ def treqw_L11_C5_B2_10():
 #[D11_C5_B2_11]-TF-M2. Cho bảng số liệu ghép nhóm. Xét Đ-S: Độ dài nhóm, Mốt, số trung bình, Q1, Q3
 def treqw_L11_C5_B2_11():
 	#Tạo số nhóm, tên nhóm, tên tần số, số bắt đầu, khoảng cách
-	so_nhom = random.randint(6,7)
+	so_nhom = 6
 	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
 	
 	#Tạo code latex chứa các khoảng giá trị và các tần số

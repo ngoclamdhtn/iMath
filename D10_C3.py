@@ -259,7 +259,7 @@ def npl_mk_L10_C3_B1_04():
     else:
         kq = f"D=\\left(-\\infty;{latex(my_module.hien_phan_so(-b/a))}\\right]"
         kq2 = f"D=\\left(-\\infty;{latex(my_module.hien_phan_so(-b/a))}\\right)"
-        kq3 = f"D=\\left({latex(my_module.hien_phan_so(-b/a))};+\\infty\\right]"
+        kq3 = f"D=\\left({latex(my_module.hien_phan_so(-b/a))};+\\infty\\right)"
         kq4= f"D=\\mathbb{{R}} \\backslash \\{{{latex(my_module.hien_phan_so(-b/a))}\\}}"     
     pa_A= f"*${kq}$"
     pa_B= f"${{{kq2}}}$"
@@ -3873,10 +3873,7 @@ def npl_mk_L10_C3_B2_35():
     a=random.choice([i for i in range(-5,5) if i!=0])
     b=random.choice([i for i in range(-5,5) if i!=0]) 
     c=random.choice([i for i in range(-5,5) if i!=0 and i!=a])
-    x0=random.choice([i for i in range(-5,5) if i!=0]) 
-    x1=random.choice([i for i in range(-5,5) if i!=0]) 
-    x2=random.choice([i for i in range(-5,5) if i!=0]) 
-    x4=random.choice([i for i in range(-5,5) if i!=0])
+    x0,x1,x2,x3=random.sample(range(-5,6),4)
 
     noi_dung=f" Cho hàm số bậc hai $y={latex(a*x**2+b*x+c)}$ có đồ thị là Parabol ${{(P)}}$, trong các điểm sau điểm nào thuộc đồ thị hàm số?"
 
@@ -3886,7 +3883,7 @@ def npl_mk_L10_C3_B2_35():
     pa_A= f"*$\\left( {x0};{phan_so(a*x0**2+b*x0+c)} \\right)$"
     pa_B= f"$\\left( {x1};{phan_so(a*x1**2+b*x1)} \\right)$"
     pa_C= f"$\\left( {x2};{phan_so(a*x2**2+b*x2)} \\right)$"
-    pa_D= f"$\\left( {x4};{phan_so(a*x4**2+b*x4)} \\right)$"
+    pa_D= f"$\\left( {x3};{phan_so(a*x3**2+b*x3)} \\right)$"
 
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]

@@ -3286,10 +3286,21 @@ def ngh_kjg_L11_C1_B2_13():
 
 #D11_C1_B2_01. Tính giá trị đặc biệt của một góc lượng giác.
 def ngh_kjg_L11_C1_B2_01():
-    list_x=[-random.randint(1,10)*pi/6, random.randint(1,10)*pi/6, -random.randint(1,10)*pi/3, random.randint(1,10)*pi/3, 13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
-    x=random.choice(list_x) 
+    chon=random.randint(1,2)
+    if chon==1:
+        list_x=[-random.randint(1,10)*pi/6, random.randint(1,5)*pi/6, -random.randint(1,5)*pi/3, random.randint(1,10)*pi/3, 13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
+        x=random.choice(list_x)
 
-    list_ham=[sin(x), cos(x), tan(x), cot(x)]
+        list_ham=[sin(x), cos(x)]
+
+    
+    if chon==2:
+        list_x=[pi/6,pi/3,2*pi/3,3*pi/4,5*pi/6,-13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
+        x=random.choice([-1,1])*random.choice(list_x) 
+
+        list_ham=[sin(x), cos(x), tan(x), cot(x)]
+    
+    
     ham =random.choice(list_ham)
 
     list_hamkhac = [t for t in list_ham if t != ham]
