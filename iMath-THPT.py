@@ -5523,6 +5523,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_23]-SA-M2. Tính tổng cấp số nhân lùi vô hạn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_19]-SA-M3. Tính tổng diện tích các hình vuông tăng vô hạn-1"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -13671,6 +13675,10 @@ class Ui_MainWindow(object):
                                             #[D11_C3_B1_22]-SA-M3. Tính tổng các cạnh từ các tam giác đều lùi vô hạn
                                             if dang_toan == "[D11_C3_B1_22]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_22()
+
+                                            #[D11_C3_B1_23]-SA-M3.  Tính tổng cấp số nhân lùi vô hạn có u1 tùy ý.
+                                            if dang_toan == "[D11_C3_B1_23]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_23()
 
                                             #Bài 2: GIỚI HẠN HÀM SỐ
                                             #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).

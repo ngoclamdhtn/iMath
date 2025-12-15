@@ -5138,8 +5138,8 @@ def y7y7u_L10_C5_B4_11():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D10_C5_B4_13]-SA-M4. Cho tam giác có 3 cạnh. Tính vec(AB).vec(AC)
-def y7y7u_L10_C5_B4_13():
+#[D10_C5_B4_12]-SA-M4. Cho tam giác có 3 cạnh. Tính vec(AB).vec(AC)
+def y7y7u_L10_C5_B4_12():
 	A,B,C=random.choice([["A","B","C"], ["B","C","D"], ["C","D","E"], ["A","C","D"]])
 	G=random.choice(["G","I","H"])
 	while True:
