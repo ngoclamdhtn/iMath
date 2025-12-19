@@ -5410,8 +5410,8 @@ def ghj_7_jkl_L11_C4_B4_10():
 			f"Do đó: $({A}{I}{C}) // ({D}{H}{E})$.")
 
 	if chon==5:
-		kq4_T=f"*$({A}{H}{B})$ và $({F}{I}{M})$ không song song"
-		kq4_F=f"$({A}{H}{B}) // ({F}{I}{M})$" 
+		kq4_T=f"*$({A}{H}{B})$ và $({F}{I}{C})$ không song song"
+		kq4_F=f"$({A}{H}{B}) // ({F}{I}{C})$" 
 		
 		HDG=(f"$({A}{H}{B})$ và $({F}{I}{M})$ không song song.")
 

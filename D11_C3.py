@@ -4281,7 +4281,7 @@ def gh11gh_L11_C3_B3_08():
     f"Tìm giá trị của tham số ${{m}}$ để hàm số {ham} liên tục tại $x={x_1}$ \n(kết quả làm tròn đến hàng phần trăm)."
     )
     m_0=(g.subs(x,x_1)-q)/(p*x_1)
-    dap_an=f"{round_half_up(m_0,2):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(m_0,2):.2f}".replace(".",",")
 
     noi_dung_loigiai=(
     f"Ta có: ${st_lim(x_1)}f(x)={phan_so(g.subs(x,x_1))}$.\n\n"
@@ -4913,7 +4913,7 @@ def gh11gh_L11_C3_B3_15():
     f"Hàm số gián đoạn khi ${latex(expand(f))}=0 \\Rightarrow x= {x_1}$ hoặc $x={x_2}$."
     )
 
-    pa_A= f"*$x={phan_so(kq)}$"
+    pa_A= f"*$x={kq}$"
     pa_B= f"$x={kq2}$"
     pa_C= f"$x={kq3}$"
     pa_D= f"$x={kq4}$"
@@ -4964,8 +4964,7 @@ def gh11gh_L11_C3_B3_16():
     kq=random.choice([        
         f"Hàm số gián đoạn tại $x={x_1}$",
         f"Hàm số gián đoạn tại $x={x_2}$",
-        f"Hàm số liên tục tại $x={x_2}$",
-        f"Hàm số liên tục tại $x={x_3}$"])
+        f"Hàm số liên tục tại $x={x_3}$",        ])
     kq_false= [f"Hàm số liên tục tại $x={x_1}$",
     f"Hàm số liên tục tại $x={x_2}$",
     f"Hàm số gián đoạn tại $x={x_4}$",
