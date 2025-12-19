@@ -11437,7 +11437,7 @@ def prt_34_L12_C1_B4_08():
 
 	#Trộn các phương án
 	list_PA =[kq1, kq2, kq3, kq4]
-	#random.shuffle(list_PA)	
+	#random.shuffle(list_PA)
 
 	loigiai=[]
 	for pa in list_PA:
@@ -13444,18 +13444,6 @@ def prt_34_L12_C1_B4_24():
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	# kq3_T=f"*Hàm số có bảng biến thiên là\n\n"\
-	# f"{code_BBT}"	
-	# kq3_F=f"Hàm số có bảng biến thiên là\n\n"\
-	# f"{code_BBT_false}"
-	# kq3=random.choice([kq3_T, kq3_F])
-	# HDG=f"$x={x_1}\\Rightarrow y={phan_so(y_1)}, x={x_2}\\Rightarrow y={phan_so(y_2)}$.\n\n"\
-	# f"Hàm số có bảng biến thiên là\n\n"\
-	# f"{code_BBT}"
-
-	# loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
-	# if kq3==kq3_F:
-	# 	loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 	kq4_T=f"*Hàm số có đồ thị là\\\\"\
 	f"{code_dothi}"

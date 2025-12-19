@@ -1964,12 +1964,28 @@ $l = \\dfrac{{u_1}}{{1 - q}} = \\dfrac{{{latex(u1)}}}{{1 -{phan_so(1/2)}}} = {da
 #[D11_C3_B1_23]-SA-M2. Tính tổng cấp số nhân lùi vô hạn có u1 tùy ý.
 def gh11gh_L11_C3_B1_23():
     n = symbols('n')
-    while True:
-        b = random.randint(2,9)
-        q=1/b
-        u1 = random.choice([random.randint(-5,-2), random.randint(1,5)])
-        if all([u1!=b, u1!=-b, u1/(1-q)>-5]):
-            break
+    chon=random.randint(1,2)
+    chon=2
+    if chon==1:
+        while True:
+            b = random.randint(2,9)
+            q=1/b
+            u1 = random.choice([random.randint(-5,-2), random.randint(1,5)])
+            if all([u1!=b, u1!=-b, u1/(1-q)>-5]):
+                break
+    
+    if chon==2:
+        while True:
+            a =  random.choice([i for i in range(-5, 6) if i!=0])
+            b=a+random.randint(1,3)
+            if b==0:
+                continue
+            q=a/b
+            u1 = random.choice([random.randint(-5,-2), random.randint(1,5)])
+            if all([u1!=1, u1!=-1, u1/(1-q)>-5]):
+                break
+    
+
     S=u1/(1-q)
     u2=u1*q
     u3=u1*q**2
@@ -1982,14 +1998,26 @@ def gh11gh_L11_C3_B1_23():
         dau_ngoac_mo = ""
         dau_ngoac_dong = ""
 
-    noi_dung = f"Tính tổng của cấp số nhân lùi vô hạn $S={phan_so(u1)}{dau}{phan_so(u2)}+...+{dau_ngoac_mo}{phan_so(u1)}{dau_ngoac_dong}\\left({phan_so(q)}\\right)^n+..$. (kết quả làm tròn đến hàng phần mười)."
+    if S.is_integer():
+        noi_dung = f"Tính tổng của cấp số nhân lùi vô hạn $S={phan_so(u1)}{dau}{phan_so(u2)}+...+{dau_ngoac_mo}{phan_so(u1)}{dau_ngoac_dong}\\left({phan_so(q)}\\right)^n+..$."
 
 
-    dap_an=f"{round_half_up(u1/(1-q),1):.1f}".replace(".",",")
+        dap_an=int(S)
 
-    noi_dung_loigiai=(
-    f"Ta có: $u_1={u1},q={phan_so(q)}\\Rightarrow S=\\dfrac{{{u1}}}{{1-{phan_so(q)}}}={phan_so(S)}={dap_an}$."
-    )    
+        noi_dung_loigiai=(
+        f"Ta có: $u_1={u1},q={phan_so(q)}\\Rightarrow S=\\dfrac{{{u1}}}{{1-{phan_so(q)}}}={dap_an}$."
+        ) 
+    else:
+        noi_dung = f"Tính tổng của cấp số nhân lùi vô hạn $S={phan_so(u1)}{dau}{phan_so(u2)}+...+{dau_ngoac_mo}{phan_so(u1)}{dau_ngoac_dong}\\left({phan_so(q)}\\right)^n+..$. (kết quả làm tròn đến hàng phần mười)."
+
+
+        dap_an=f"{round_half_up(u1/(1-q),1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"Ta có: $u_1={u1},q={phan_so(q)}\\Rightarrow S=\\dfrac{{{u1}}}{{1-{phan_so(q)}}}={phan_so(S)}={dap_an}$."
+        ) 
+
+   
         
     debai_word= f"{noi_dung}\n"
 

@@ -38,7 +38,126 @@ def codelatex_heva(pt1,pt2):
     kq= f"\\left\\{{ \\begin{{array}}{{l}}\n\
             {pt1} \\\\ \n\
             {pt2} \n\
-\\end{{array}} \\right."  
+\\end{{array}} \\right."
+    return  kq
+
+#Tính nghiệm và xét dấu delta
+def tinh_va_dau_delta(a,b,c):
+    d=b**2-4*a*c
+    if d<0:
+        dau="<0"
+        x_1=""
+        x_2=""
+    if d==0:
+        dau="=0"
+        x_1=-b/(2*a)
+        x_2=-b/(2*a)
+    if d>0:
+        dau=">0"
+        x_1=(-b-sp.sqrt(d))/(2*a)
+        x_2=(-b+sp.sqrt(d))/(2*a)
+        if x_1>x_2:
+            t=x_2
+            x_2=x_1
+            x_1=t
+    return dau, x_1, x_2
+
+def tao_chuoi_so_nguyen(a, b):
+    # Tạo danh sách các số nguyên từ a đến b
+    danh_sach_so = list(range(a, b + 1))
+    danh_sach_so = [x for x in danh_sach_so if x != 0 and x%2==0]
+    
+    # Chuyển đổi các số thành chuỗi
+    chuoi_so = [str(x) for x in danh_sach_so]
+    
+    # Nối chuỗi bằng dấu ,
+    chuoi_ket_qua = ",".join(chuoi_so)
+    
+    return chuoi_ket_qua
+
+def code_bbt_bac2(a,b,c):
+    x_0 = phan_so((-b/(2*a)))
+    y_0 = phan_so((-b**2+4*a*c)/(4*a))
+    if a>0:
+        code =f" \\begin{{tikzpicture}} \n\
+                \\tkzTabInit[nocadre=false, lgt=1, espcl=1.5] \n\
+                {{$x$ /1,$y$ /2}}\n\
+                {{$-\\infty$, ${x_0}$, $+\\infty$}} \n\
+                \\tkzTabVar{{+/$+\\infty$ , -/ ${y_0}$ /, +/$+\\infty$ /}} \n\
+                \\end{{tikzpicture}}\n"
+
+    else:
+        code =f"\\begin{{tikzpicture}} \n\
+                \\tkzTabInit[nocadre=false, lgt=1, espcl=1.5] \n\
+                {{$x$ /1,$y$ /2}}\n\
+                {{$-\\infty$,${x_0}$,$+\\infty$}}\n\
+                \\tkzTabVar{{-/$-\\infty$ , +/ ${y_0}$ /, -/$-\\infty$ /}}\n\
+                \\end{{tikzpicture}}\n"
+    return  code
+
+def code_dothi_bac_2(a,b,c):
+    x=sp.symbols("x")
+    f=a*x**2 + b*x + c
+    x_0=round(-b/(2*a),1)
+    y_0=round(f.subs(x,x_0),1)
+    x_min, x_max= x_0-3, x_0+3
+    if x_min>0: 
+        x_min=-1
+        x_max=2*(x_0+1)
+    if x_max<0: 
+        x_max=1
+        x_min=2*(1-x_0)
+    d=tinh_va_dau_delta(a,b,c)[0]
+    #Vô nghiệm, nghiệm kép
+    if d=="<0" or d=="=0":
+        if a>0:        
+            y_min, y_max= y_0 - 2, y_0 + 3
+            if y_min > 0: 
+                y_min=-2            
+        else:
+            y_min, y_max= y_0 - 3, y_0 + 0.3
+            if y_max < 0: 
+                y_max=2
+    #2 nghiệm
+            
+    else:
+        if a>0:
+            y_min= y_0 - 2           
+            y_max=2-y_min
+        else:
+            y_max= y_0+2          
+            y_min=-2-y_max
+
+    #Tạo số cho trục x
+    so_truc_x=tao_chuoi_so_nguyen(int(x_min), int(x_max))
+    so_truc_y=tao_chuoi_so_nguyen(int(y_min), int(y_max) )
+
+    code = f"\\begin{{tikzpicture}}[line join=round, line cap=round,>=stealth,thick,scale=0.5]\n\
+\\tikzset{{every node/.style={{scale=0.9}}}}\n\
+\\draw[gray!20]({x_min},{y_min-1}) grid ({x_max+0.5},{y_max+1});\n\
+\\draw[->] ({x_min},0)--({x_max+0.5},0) node[below right] {{$x$}};\n\
+\\draw[->] (0,{y_min-1})--(0,{y_max+1}) node[right] {{$y$}};\n\
+\\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
+ \\foreach \\x in {{-1,1,{so_truc_x}}}\n\
+\\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize$\\x$}};\n\
+\\foreach \\y in {{-1,1,{so_truc_y}}}\n\
+\\draw[thin] (1pt,\\y)--(-1pt,\\y) node [left] {{\\footnotesize$\\y$}};\n\
+\\begin{{scope}}\n\
+ \\clip ({x_min},{y_min-1}) rectangle ({x_max},{y_max+1});\n\
+\\draw[samples=200,domain={x_min}:{x_max},smooth,variable=\\x, color=blue] plot (\\x,{{{a}*(\\x)^2+{b}*(\\x)+{c}}});\n\
+\\end{{scope}}\n\
+\\end{{tikzpicture}}\n"
+    return  code
+
+# Xử lí trả về đáp án đúng để ghi câu Chọn đáp án
+def tra_ve_TF(list_PA):
+    list_TF=[]
+    for phan_tu in list_PA:
+        if phan_tu[0]=="*":
+            list_TF.append("đúng")
+        else:
+            list_TF.append("sai")
+    return list_TF
 
 ################ Bài 1: Hàm số và đồ thị #################
 #[D10_C3_B1_01]. Tính giá trị của hàm số có nhiều biểu thức tại một điểm
@@ -425,7 +544,7 @@ def npl_mk_L10_C3_B1_06():
     pa_D= f"${{{kq4}}}$"
     #Trộn các phương án
 
-    noi_dung = f"Cho hàm số $y=f(x)$ xác định trên đoạn ${{[{x_1};{x_3}]}}$ có đồ thị như hình vẽ bên.Tìm tập giá trị của hàm số đã cho."
+    noi_dung = f"Cho hàm số $y=f(x)$ xác định trên đoạn ${{[{x_1};{x_3}]}}$ có đồ thị như hình vẽ bên. Tìm tập giá trị của hàm số đã cho."
             
 
     #Trộn các phương án
@@ -1187,6 +1306,136 @@ def npl_mk_L10_C3_B1_16():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C3_B1_17]-SA-M2. Tìm tập xác định y=A/(ax^2+bx+c)
+def npl_mk_L10_C3_B1_17():
+    x=sp.symbols("x")
+    chon=random.randint(1,3)
+
+    if chon==1:
+        while True:
+            x_1,x_2=random.sample(range(-6,8),2)
+            a=random.choice([i for i in range(-3, 3) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            c=random.randint(-8,8)
+            #bx+c    
+            if all([x_1<x_2,-c/b!=x_1, -c/b!=x_2]):
+                break
+
+        f=latex(expand(a*(x-x_1)*(x-x_2)))
+        noi_dung=(
+        f"Tập xác định của hàm số $y=\\dfrac{{{latex(b*x+c)} }}{{{f}}}$ là"
+        )
+        
+
+        kq=f"$D=\\mathbb{{R}}\\backslash \\{{{x_1};{x_2}\\}}$"
+        kq_false=[
+        f"$D=\\mathbb{{R}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{x_1}\\}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{x_2}\\}}$",
+        f"$D=({x_1};{x_2})$",
+        f"$D={{[{x_1};{x_2}]}}$",
+        f"$D={{({x_1};{x_2}]}}$",
+        f"$D={{[{x_1};{x_2}]}}$",
+        f"$D={{[{x_1};+\\infty)}}$",
+        f"$D={{(-\\infty;{x_2})}}$",]
+        
+
+        noi_dung_loigiai=(
+        f"Hàm số xác định khi ${f}\\ne 0 \\Rightarrow x\\ne {x_1}, x\\ne {x_2}$.\n\n"
+        f"Tập xác định: {kq}."  )
+    
+    if chon==2:
+        while True:
+            x_1,x_2=random.sample(range(-6,8),2)
+            a=random.choice([i for i in range(-3, 3) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            c=random.randint(-8,8)
+            #bx+c    
+            if all([x_1<x_2,-c/b!=x_1, -c/b!=x_2]):
+                break
+
+        f=latex(expand(a*(x-x_1)**2))
+        noi_dung=(
+        f"Tập xác định của hàm số $y=\\dfrac{{{latex(b*x+c)} }}{{{f}}}$ là"
+        )
+        
+
+        kq=f"$D=\\mathbb{{R}}\\backslash \\{{{x_1}\\}}$"
+        kq_false=[
+        f"$D=\\mathbb{{R}}$",
+        f"$D=\\mathbb{{R}}\\backslash \\{{{x_2}\\}}$",
+        f"$D=({x_1};{x_2})$",
+        f"$D={{[{x_1};+\\infty)}}$",
+        f"$D={{(-\\infty;{x_1})}}$",]
+        
+
+        noi_dung_loigiai=(
+        f"Hàm số xác định khi ${f}\\ne 0 \\Rightarrow x\\ne {x_1}$.\n\n"
+        f"Tập xác định: {kq}."  )
+
+    if chon==3:
+        while True:
+            x_1,x_2=random.sample(range(-6,8),2)
+            a=random.choice([i for i in range(-3, 3) if i!=0])
+            b = random.choice([i for i in range(-5, 6) if i!=0])
+            c=random.randint(-8,8)
+            #bx+c    
+            if all([x_1<x_2,-c/b!=x_1, -c/b!=x_2]):
+                break
+
+        f=latex(expand(a*(x-x_1)**2+random.randint(1,3)))
+        noi_dung=(
+        f"Tập xác định của hàm số $y=\\dfrac{{{latex(b*x+c)} }}{{{f}}}$ là"
+        )
+        
+
+        kq=f"$D=\\mathbb{{R}}$"
+        kq_false=[
+        f"$D=\\mathbb{{R}}\\backslash \\{{{x_1}\\}}$",     
+        f"$D=\\mathbb{{R}}\\backslash \\{{{x_2}\\}}$",
+        f"$D=({x_1};{x_2})$",
+        f"$D={{[{x_1};+\\infty)}}$",
+        f"$D={{(-\\infty;{x_1})}}$",]        
+
+        noi_dung_loigiai=(
+        f"Hàm số xác định khi ${f}\\ne 0 \\Rightarrow x \\in \\mathbb{{R}}$.\n\n"
+        f"Tập xác định: {kq}."  )   
+    
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 ################ Bài 2: Hàm số bậc 2 #################
@@ -4289,3 +4538,209 @@ f" Với ${{x={x1}}}$ thì ${{y={y1}}}$ ")
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
+
+#[D10_C3_B2_42]-TF-M2. Cho hàm bậc 2. Xét Đ-S: Đơn điệu, đỉnh, trục đối xứng, điểm đi qua, BBT, Đồ thị
+def npl_mk_L10_C3_B2_42():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-3, 3) if i!=0])
+    b = random.choice([i for i in range(-4, 5) if i!=0])
+    c = random.choice([i for i in range(-4, 5) if i!=0])
+    f=a*x**2+b*x+c
+    x_0=-b/(2*a)
+    y_0=f.subs(x,x_0)
+
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$."
+    f" Xét tính đúng-sai của các khẳng định sau:")
+
+    if a>0:
+        chon=random.randint(1,2)
+        if chon==1:
+            kq1_T=f"*Hàm số đồng biến trên khoảng $({phan_so(x_0)};+\\infty)$" 
+            kq1_F=f"Hàm số nghịch biến trên khoảng $({phan_so(x_0)};+\\infty)$"
+        
+        if chon==2:
+            kq1_T=f"*Hàm số nghịch biến trên khoảng $(-\\infty;{phan_so(x_0)})$" 
+            kq1_F=f"Hàm số đồng biến trên khoảng $(-\\infty;{phan_so(x_0)})$"
+
+        HDG=(f"Hàm số đồng biến trên khoảng $({phan_so(x_0)};+\\infty)$.\n\n"
+            f"Hàm số nghịch biến trên khoảng $(-\\infty;{phan_so(x_0)})$.")
+    else:
+        chon=random.randint(1,2)
+        if chon==1:
+            kq1_T=f"*Hàm số nghịch biến trên khoảng $({phan_so(x_0)};+\\infty)$" 
+            kq1_F=f"Hàm số đồng biến trên khoảng $({phan_so(x_0)};+\\infty)$"
+            
+        if chon==2:
+            kq1_T=f"*Hàm số đồng biến trên khoảng $(-\\infty;{phan_so(x_0)})$" 
+            kq1_F=f"Hàm số nghịch biến trên khoảng $(-\\infty;{phan_so(x_0)})$"
+        HDG=(f"Hàm số đồng biến trên khoảng $(-\\infty;{phan_so(x_0)})$.\n\n"
+            f"Hàm số nghịch biến trên khoảng $({phan_so(x_0)};+\\infty)$.")             
+
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,4)
+    if chon==1:
+        kq2_T=f"*Tọa độ đỉnh của đồ thị hàm số đã cho là $I \\left({phan_so(x_0)};{phan_so(y_0)}\\right)$"
+        kq2_F=random.choice([
+        f"Tọa độ đỉnh của đồ thị hàm số đã cho là $I \\left({phan_so(x_0)};{phan_so(y_0+random.randint(1,2))}\\right)$",
+        f"Tọa độ đỉnh của đồ thị hàm số đã cho là $I \\left({phan_so(x_0+random.randint(1,2))};{phan_so(y_0)}\\right)$" ]) 
+
+        HDG=f"Tọa độ đỉnh của đồ thị hàm số đã cho là $I \\left({phan_so(x_0)};{phan_so(y_0)}\\right)$."
+    
+    if chon==2:
+        kq2_T=f"*Trục đối xứng của đồ thị hàm số là đường thẳng $x={phan_so(x_0)}$"
+        kq2_F=f"Trục đối xứng của đồ thị hàm số là đường thẳng $y={phan_so(x_0)}$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Trục đối xứng của đồ thị hàm số là đường thẳng $x={phan_so(x_0)}$."
+
+    if chon==3:
+        x_1=random.choice([i for i in range(-5,7) if i!=x_0])
+        y_1=f.subs(x,x_1)
+        kq2_T=f"*Đồ thị hàm số đi qua điểm $({phan_so(x_1)};{phan_so(y_1)})$"
+        kq2_F=f"Đồ thị hàm số không đi qua điểm $({phan_so(x_1)};{phan_so(y_1)})$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Vì ${phan_so(y_1)}=f({phan_so(x_1)})$ nên đồ thị hàm số đi qua điểm $({phan_so(x_1)};{phan_so(y_1)})$."
+
+    if chon==4:
+        x_1=random.choice([i for i in range(-5,7) if i!=x_0])
+        y_1=f.subs(x,x_1)+random.randint(1,2)
+        kq2_T=f"*Đồ thị hàm số không đi qua điểm $({phan_so(x_1)};{phan_so(y_1)})$"
+        kq2_F=f"Đồ thị hàm số đi qua điểm $({phan_so(x_1)};{phan_so(y_1)})$"
+        kq2=random.choice([kq2_T, kq2_F])
+        HDG=f"Vì ${phan_so(y_1)}\\ne f({phan_so(x_1)})$ nên đồ thị hàm số không đi qua điểm $({phan_so(x_1)};{phan_so(y_1)})$."
+
+   
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    code_bbt=code_bbt_bac2(a,b,c)
+    code = my_module.moi_truong_anh_latex(code_bbt)
+    file_name=my_module.pdftoimage_timename(code)
+    file_name_HDG=my_module.pdftoimage_timename(code)
+
+    code_bbt_false=code_bbt_bac2(-a,-b,-c)
+    code = my_module.moi_truong_anh_latex(code_bbt_false)
+    file_name_false=my_module.pdftoimage_timename(code)
+
+    kq3_T=f"*Bảng biến thiên của hàm số là \n\n{file_name}" 
+    kq3_F=f"Bảng biến thiên của hàm số là \n\n{file_name_false}"
+    
+    HDG=f"Bảng biến thiên của hàm số là \n\n{file_name_HDG}"
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+    code_dothi=code_dothi_bac_2(a,b,c)
+    code = my_module.moi_truong_anh_latex(code_dothi)
+    file_name=my_module.pdftoimage_timename(code)
+    file_name_HGD=my_module.pdftoimage_timename(code)
+
+    code_dothi_false=code_dothi_bac_2(-a,-b,-c)
+    code = my_module.moi_truong_anh_latex(code_dothi_false)
+    file_name_false=my_module.pdftoimage_timename(code)
+
+    kq4_T=f"*Đồ thị hàm số là\n\n{file_name}"
+    kq4_F=f"Đồ thị hàm số là\n\n{file_name_false}" 
+    
+    HDG=f"Đồ thị hàm số là\n\n{file_name_HGD}"
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    list_TF=tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+    f"\n\n a) {loigiai[0]}\n"\
+    f"b) {loigiai[1]}\n"\
+    f"c) {loigiai[2]}\n"\
+    f"d) {loigiai[3]}\n"\
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    kq3_T=f"*Hàm số có bảng biến thiên là\\\\"\
+    f"{code_bbt}"
+    kq3_F=f"Hàm số có bảng biến thiên là\\\\"\
+    f"{code_bbt_false}"
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=f"Hàm số có đồ thị là\n\n"\
+    f"{code_bbt}"
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"*Hàm số có đồ thị là\\\\"\
+    f"{code_dothi}"
+    kq4_F=f"Hàm số có đồ thị là\\\\"\
+    f"{code_dothi_false}"
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=f"Hàm số có đồ thị là\n\n"\
+    f"{code_dothi}"
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)    
+
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+    loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+    f"b) {loigiai[1]}\n\n"\
+    f"c) {loigiai[2]}\n\n"\
+    f"d) {loigiai[3]}\n\n"
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        st=list_PA[i]
+        if st[0]=="*":
+            st_new=f"\\True " + st[1:]
+            list_PA[i]=st_new
+        else:
+            list_PA[i]=st
+
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\choiceTFt\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+        f"\\end{{ex}}\n"
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an

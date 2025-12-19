@@ -4,6 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 
 #Tạo hàm chứa chuỗi latex vecto
 def vec(st):
@@ -41,15 +45,29 @@ def code_hinh_tu_dien_noname(s,a,b,c):
 
 def code_hinh_chop_deu(S,A,B,C,D):
 	code=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
-\\coordinate ({A}) at (0,0);\n\
-\\coordinate ({B}) at (2,-2);\n\
-\\coordinate ({D}) at (5,0);\n\
-\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
+\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+\\coordinate ({D}) at (2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
 \\coordinate (O) at ($({A})!0.5!({C})$);\n\
 \\coordinate ({S}) at ($(O)+(0,5)$);\n\
-\\draw({S})--({A}) ({S})--({B}) ({S})--({C}) ({A})--({B}) ({B})--({C});\n\
-\\draw[dashed,thin]({A})--({C}) ({A})--({D}) ({C})--({D}) ({S})--({D}) ({B})--({D});\n\
-\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+\\draw({S})--({A})  ({S})--({C}) ({S})--({D}) ({A})--({D}) ({C})--({D}) ;\n\
+\\draw[dashed,thin]({S})--({B}) ({A})--({C}) ({A})--({B}) ({B})--({C})   ({B})--({D});\n\
+\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+\\end{{tikzpicture}}\n"
+	return code
+
+def code_hinh_chop_hbh(S,A,B,C,D):
+	code=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})    ({B})--({D});\n\
+\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
 \\end{{tikzpicture}}\n"
 	return code
 
@@ -4127,7 +4145,7 @@ def ghj_7_jkl_L11_C4_B3_08():
 	M,N,G,H,P,Q=name_points[0:6]
 	O=random.choice(["O", "I"])
 
-	name_bottom=random.choice(["hình bình hành", "hình chữ nhật", "hình thoi", "hình vuông" ])	
+	name_bottom=random.choice(["hình bình hành", "hình chữ nhật", "hình thoi", "hình vuông" ])
 
 	code_hinh=code_hinh_chop_deu_noname(S,A,B,C,D)
 	code = my_module.moi_truong_anh_latex(code_hinh)
@@ -4428,6 +4446,339 @@ def ghj_7_jkl_L11_C4_B3_08():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C4_B3_09]-SA-M2. H.chóp-hbh. Mp qua M in BC song song với BD, SC. Tính tỉ số.
+def ghj_7_jkl_L11_C4_B3_09():
+	S="S"
+	vertex=random.choice([
+		["A","B","C","D"],["B","C","D","E"], 
+		["C","D","E","F"], ["A","B","E","F"]])
+	
+	A,B,C,D=vertex
+	name_points=["M","N","P","Q","G","H","J","K","L"]
+	
+	M,N,P,Q=random.sample(name_points,4)
+
+
+	name_bottom=random.choice(["hình bình hành", "hình chữ nhật", "hình thoi", "hình vuông" ])
+	name_mp=random.choice(["\\alpha", "\\gamma", "\\beta" ])
+
+	code_hinh=code_hinh_chop_hbh(S,A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	
+	chon=random.randint(1,4)
+
+	if chon==1:
+		k=random.randint(2,5)
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{B}{C}}}$ sao cho ${C}{M}={k}{M}{B}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{C}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{D}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{S}{N}}}{{{S}{D}}}$ (kết quả làm tròn đến hàng phần mười)."
+
+		)
+		T=1/(1+k)
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{C}$ với ${P}\\in {C}{D}, {Q}\\in {S}{B}$.\n\n"
+		f"$\\dfrac{{{S}{N}}}{{{S}{D}}}=\\dfrac{{{C}{P}}}{{{C}{D}}}=\\dfrac{{{C}{M}}}{{{C}{B}}}={phan_so(T)}={dap_an}$.\n\n"
+		)
+		t=k/(k+1)
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+		\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+		\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+		\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+		\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+		\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+		\\coordinate ({M}) at ($({C})!{t}!({B})$);  \\node at ({M}) [below right]{{${M}$}};\n\
+		\\coordinate ({P}) at ($({C})!{t}!({D})$);  \\node at ({P}) [below]{{${P}$}};\n\
+		\\coordinate ({N}) at ($({S})!{t}!({D})$);  \\node at ({N}) [left]{{${N}$}};\n\
+		\\coordinate ({Q}) at ($({S})!{t}!({B})$);  \\node at ({Q}) [right]{{${Q}$}};\n\
+		\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ({M})--({Q}) ({P})--({N});\n\
+		\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})  ({B})--({D}) ({M})--({P}) ({N})--({Q});\n\
+		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,{M}/0,{N}/0,{P}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+	
+	if chon==2:
+		k=random.choice([1/2,2/3,3/4,4/5,3/5,2/5])
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{B}{C}}}$ sao cho ${B}{M}={phan_so(k)}{B}{C}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{C}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{D}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{S}{N}}}{{{S}{D}}}$ (kết quả làm tròn đến hàng phần mười)."
+
+		)
+		T=1-k
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{C}$ với ${P}\\in {C}{D}, {Q}\\in {S}{B}$.\n\n"
+		f"${C}{M}={phan_so(1-k)}{B}{C}\\Rightarrow \\dfrac{{{C}{M}}}{{{B}{C}}}={phan_so(1-k)}$.\n\n"
+		f"$\\dfrac{{{S}{N}}}{{{S}{D}}}=\\dfrac{{{C}{P}}}{{{C}{D}}}=\\dfrac{{{C}{M}}}{{{C}{B}}}={phan_so(T)}={dap_an}$.\n\n"
+		)
+
+	if chon==3:
+		k=random.choice([1/2,2/3,3/4,4/5,3/5,2/5])
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{B}{C}}}$ sao cho ${B}{M}={phan_so(k)}{B}{C}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{C}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{D}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{D}{N}}}{{{S}{D}}}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		T=k
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{C}$ với ${P}\\in {C}{D}, {Q}\\in {S}{B}$.\n\n"
+		f"$\\dfrac{{{D}{N}}}{{{S}{D}}}=\\dfrac{{{D}{P}}}{{{C}{D}}}=\\dfrac{{{B}{M}}}{{{B}{C}}}={phan_so(T)}={dap_an}$.\n\n"
+		)
+
+	if chon==4:
+		k=random.choice([1/2,2/3,3/4,4/5,3/5,2/5])
+		
+		T=float(k/(1-k))
+		if T.is_integer():
+			noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{B}{C}}}$ sao cho ${B}{M}={phan_so(k)}{B}{C}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{C}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{D}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{D}{N}}}{{{S}{N}}}$."
+		)
+			dap_an=int(T)
+		else:
+			noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{B}{C}}}$ sao cho ${B}{M}={phan_so(k)}{B}{C}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{C}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{D}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{D}{N}}}{{{S}{N}}}$ (kết quả làm tròn đến hàng phần mười)."
+		)
+			dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{C}$ với ${P}\\in {C}{D}, {Q}\\in {S}{B}$.\n\n"
+		f"${B}{M}={phan_so(k)}{B}{C}\\Rightarrow {B}{C}={phan_so(1/k)}{B}{M}$.\n\n"
+		f"${C}{M}+{B}{M}={B}{C}\\Rightarrow {C}{M}+{B}{M}={phan_so(1/k)}{B}{M} \\Rightarrow {C}{M}={phan_so(1/k-1)}{B}{M} \\Rightarrow \\dfrac{{{B}{M}}}{{{C}{M}}}={phan_so(T)}$.\n\n"
+		f"$\\dfrac{{{D}{N}}}{{{S}{N}}}=\\dfrac{{{D}{P}}}{{{C}{P}}}=\\dfrac{{{B}{M}}}{{{M}{C}}}={phan_so(T)}$.\n\n"
+		)
+	if chon in [2,3,4]:
+		t=1-k
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+		\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+		\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+		\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+		\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+		\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+		\\coordinate ({M}) at ($({C})!{t}!({B})$);  \\node at ({M}) [below right]{{${M}$}};\n\
+		\\coordinate ({P}) at ($({C})!{t}!({D})$);  \\node at ({P}) [below]{{${P}$}};\n\
+		\\coordinate ({N}) at ($({S})!{t}!({D})$);  \\node at ({N}) [left]{{${N}$}};\n\
+		\\coordinate ({Q}) at ($({S})!{t}!({B})$);  \\node at ({Q}) [right]{{${Q}$}};\n\
+		\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ({M})--({Q}) ({P})--({N});\n\
+		\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})  ({B})--({D}) ({M})--({P}) ({N})--({Q});\n\
+		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,{M}/0,{N}/0,{P}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)	
+	
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name_LG}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C4_B3_10]-SA-M2. H.chóp-hbh. Mp qua M in AD song song với BD, SA. Tính tỉ số.
+def ghj_7_jkl_L11_C4_B3_10():
+	S="S"
+	vertex=random.choice([
+		["A","B","C","D"],["B","C","D","E"], 
+		["C","D","E","F"], ["A","B","E","F"],])
+	
+	A,B,C,D=vertex
+	A,B,C,D="A","B","C","D"
+
+	name_points=["M","N","P","Q","G","H","J","K","L"]
+	
+	M,N,P,Q=random.sample(name_points,4)
+	M,N,P,Q="M","N","P","Q"
+
+	name_bottom=random.choice(["hình bình hành", "hình chữ nhật", "hình thoi", "hình vuông" ])
+	name_mp=random.choice(["\\alpha", "\\gamma", "\\beta" ])
+
+	code_hinh=code_hinh_chop_hbh(S,A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	
+	chon=random.randint(1,4)
+
+	if chon==1:
+		k=random.randint(2,5)
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{M}={k}{M}{D}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{A}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{B}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{S}{N}}}{{{S}{B}}}$ (kết quả làm tròn đến hàng phần mười)."
+
+		)
+		T=1/(1+k)
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{A}$ với ${P}\\in {A}{B}, {Q}\\in {S}{D}$.\n\n"
+		f"$\\dfrac{{{S}{N}}}{{{S}{B}}}=\\dfrac{{{A}{P}}}{{{A}{B}}}=\\dfrac{{{A}{M}}}{{{A}{D}}}={phan_so(T)}={dap_an}$.\n\n"
+		)
+		t=k/(k+1)
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+		\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+		\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+		\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+		\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+		\\coordinate ({S}) at (-1,5); \\node at ({S}) [above]{{${S}$}};\n\
+		\\coordinate ({M}) at ($({A})!{t}!({D})$);  \\node at ({M}) [above]{{${M}$}};\n\
+		\\coordinate ({P}) at ($({A})!{t}!({B})$);  \\node at ({P}) [above]{{${P}$}};\n\
+		\\coordinate ({N}) at ($({S})!{t}!({B})$);  \\node at ({N}) [right]{{${N}$}};\n\
+		\\coordinate ({Q}) at ($({S})!{t}!({D})$);  \\node at ({Q}) [left]{{${Q}$}};\n\
+		\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+		\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})  ({B})--({D}) ({M})--({P}) ({N})--({Q}) ({M})--({Q}) ({P})--({N});\n\
+		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,{M}/0,{N}/0,{P}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+
+	if chon==2:
+		k=random.randint(2,5)
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{M}={k}{M}{D}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{A}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{B}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{S}{N}}}{{{N}{B}}}$."
+
+		)
+		T=k
+		dap_an=k
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{A}$ với ${P}\\in {A}{B}, {Q}\\in {S}{D}$.\n\n"
+		f"$\\dfrac{{{S}{N}}}{{{N}{B}}}=\\dfrac{{{A}{P}}}{{{P}{B}}}=\\dfrac{{{A}{M}}}{{{M}{D}}}={dap_an}$.\n\n"
+		)
+		t=k/(k+1)
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+		\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+		\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+		\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+		\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+		\\coordinate ({S}) at (-1,5); \\node at ({S}) [above]{{${S}$}};\n\
+		\\coordinate ({M}) at ($({A})!{t}!({D})$);  \\node at ({M}) [above]{{${M}$}};\n\
+		\\coordinate ({P}) at ($({A})!{t}!({B})$);  \\node at ({P}) [above]{{${P}$}};\n\
+		\\coordinate ({N}) at ($({S})!{t}!({B})$);  \\node at ({N}) [right]{{${N}$}};\n\
+		\\coordinate ({Q}) at ($({S})!{t}!({D})$);  \\node at ({Q}) [left]{{${Q}$}};\n\
+		\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+		\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})  ({B})--({D}) ({M})--({P}) ({N})--({Q}) ({M})--({Q}) ({P})--({N});\n\
+		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,{M}/0,{N}/0,{P}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+	
+	if chon==3:
+		k=random.choice([1/2,2/3,3/4,4/5,3/5,2/5])
+
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${D}{M}={phan_so(k)}{A}{D}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{A}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{B}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{S}{N}}}{{{S}{B}}}$ (kết quả làm tròn đến hàng phần mười)."
+
+		)
+		T=1-k
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{A}$ với ${P}\\in {A}{B}, {Q}\\in {S}{D}$.\n\n"
+		f"${A}{M}={phan_so(1-k)}{A}{D}\\Rightarrow \\dfrac{{{A}{M}}}{{{A}{D}}}={phan_so(1-k)}$.\n\n"
+		f"$\\dfrac{{{S}{N}}}{{{S}{B}}}=\\dfrac{{{A}{P}}}{{{A}{B}}}=\\dfrac{{{A}{M}}}{{{A}{B}}}={phan_so(T)}={dap_an}$.\n\n"
+		)
+
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+		\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+		\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+		\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+		\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+		\\coordinate ({S}) at (-1,5); \\node at ({S}) [above]{{${S}$}};\n\
+		\\coordinate ({M}) at ($({A})!{k}!({D})$);  \\node at ({M}) [above]{{${M}$}};\n\
+		\\coordinate ({P}) at ($({A})!{k}!({B})$);  \\node at ({P}) [above]{{${P}$}};\n\
+		\\coordinate ({N}) at ($({S})!{k}!({B})$);  \\node at ({N}) [right]{{${N}$}};\n\
+		\\coordinate ({Q}) at ($({S})!{k}!({D})$);  \\node at ({Q}) [left]{{${Q}$}};\n\
+		\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+		\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})  ({B})--({D}) ({M})--({P}) ({N})--({Q}) ({M})--({Q}) ({P})--({N});\n\
+		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,{M}/0,{N}/0,{P}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+
+	if chon==4:
+		k=random.choice([1/2,2/3,3/4,4/5,3/5,2/5])
+
+		noi_dung = (
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {name_bottom}."
+		f" Gọi ${{{M}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${D}{M}={phan_so(k)}{A}{D}$."
+		f" Mặt phẳng $({name_mp})$ qua ${{{M}}}$ và song song với các đường thẳng ${{{S}{A}}}$ và ${{{B}{D}}}$."
+		f" Mặt phẳng $({name_mp})$ cắt ${{{S}{B}}}$ tại điểm ${{{N}}}$. Tính tỉ số $T=\\dfrac{{{N}{B}}}{{{N}{S}}}$ (kết quả làm tròn đến hàng phần mười)."
+
+		)
+		T=k/(1-k)
+		dap_an=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+
+		noi_dung_loigiai=(
+		f"Dựng ${{{M}{P}}}//{B}{D}, {M}{Q}//{S}{A}$ với ${P}\\in {A}{B}, {Q}\\in {S}{D}$.\n\n"
+		f"${D}{M}={phan_so(k)}{A}{D}\\Rightarrow \\dfrac{{{M}{D}}}{{{M}{A}}}={phan_so(T)}$.\n\n"
+		f"$\\dfrac{{{N}{B}}}{{{N}{S}}}=\\dfrac{{{P}{B}}}{{{P}{A}}}=\\dfrac{{{M}{D}}}{{{M}{A}}}={phan_so(T)}={dap_an}$.\n\n"
+		)
+
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+		\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+		\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+		\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+		\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+		\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+		\\coordinate ({S}) at (-1,5); \\node at ({S}) [above]{{${S}$}};\n\
+		\\coordinate ({M}) at ($({A})!{1-k}!({D})$);  \\node at ({M}) [above]{{${M}$}};\n\
+		\\coordinate ({P}) at ($({A})!{1-k}!({B})$);  \\node at ({P}) [above]{{${P}$}};\n\
+		\\coordinate ({N}) at ($({S})!{1-k}!({B})$);  \\node at ({N}) [right]{{${N}$}};\n\
+		\\coordinate ({Q}) at ($({S})!{1-k}!({D})$);  \\node at ({Q}) [left]{{${Q}$}};\n\
+		\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+		\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})  ({B})--({D}) ({M})--({P}) ({N})--({Q}) ({M})--({Q}) ({P})--({N});\n\
+		\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,{M}/0,{N}/0,{P}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+
+	
+
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)	
+	
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n{file_name_LG}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh_LG}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #Bài 4 - Hai mặt phẳng song song
 #[D11_C4_B4_03]. Cho hình lăng trụ tam giác. Xét sự song song của 2 mp.

@@ -6,6 +6,10 @@ import random
 from fractions import Fraction
 import my_module
 from collections import Counter
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 def find_mode(my_list):
     # Đếm số lần xuất hiện của các phần tử trong danh sách
     count = Counter(my_list)
@@ -192,6 +196,100 @@ def tktk_L10_C6_B1_02():
 	    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+
+#[D10_C6_B1_03]-SA-M2. Viết số quy tròn của số nguyên có độ chính xác cho trước.
+def tktk_L10_C6_B1_03():
+	chon=random.randint(1,2)
+	if chon==1:
+		a=random.randint(1000,8000)
+		chon=random.randint(1,2)
+		if chon==1:
+			d=random.randint(1,9)
+			dap_an=round(a,-1)
+		if chon==2:
+			d=random.randint(10,50)
+			dap_an=round(a,-2)	
+		if chon==3:
+			d=random.randint(100,200)
+			dap_an=round(a,-3)	
+	if chon==2:
+		a=random.randint(100,800)
+		chon=random.randint(1,2)
+		if chon==1:
+			d=random.randint(1,9)
+			dap_an=round(a,-1)
+		if chon==2:
+			d=random.randint(10,50)
+			dap_an=round(a,-2)	
+
+	ten=random.choice(["a","b","c","m","e" ])
+	noi_dung_1=f"Cho số gần đúng ${{{a}}}$ với độ chính xác $d={{{d}}}$. Hãy viết số quy tròn của số $a$."
+	noi_dung_2=f"Hãy viết số quy tròn của số gần đúng ${ten}={a}\\pm {d}$."
+	noi_dung=random.choice([noi_dung_1,noi_dung_2])
+
+	noi_dung_loigiai=(
+	f"Số quy tròn của ${ten}={a}\\pm {d}$ là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C6_B1_04]-SA-M2. Viết số quy tròn của số thập phân có độ chính xác cho trước.
+def tktk_L10_C6_B1_04():	
+
+	chon=random.randint(1,2)
+
+	if chon==1:
+		a=random.randint(1000,8000)/1000
+		st_a=f"{round_half_up(a,3):.3f}".replace(".",",")
+		
+
+		d=random.randint(3,9)/100
+		d=f"{round_half_up(d,2):.2f}".replace(".",",")
+
+		dap_an=f"{round_half_up(a,1):.1f}".replace(".",",")	
+	
+	if chon==2:
+		a=random.randint(10000,80000)/100
+		st_a=f"{round_half_up(a,2):.2f}".replace(".",",")
+
+		d=random.randint(3,9)/10
+		d=f"{round_half_up(d,1):.1f}".replace(".",",")
+
+		dap_an=f"{round_half_up(a,0):.0f}".replace(".",",")
+
+	
+	ten=random.choice(["a","b","c","m","e" ])
+	noi_dung_1=f"Cho số gần đúng ${{{st_a}}}$ với độ chính xác $d={{{d}}}$. Hãy viết số quy tròn của số $a$."
+	noi_dung_2=f"Hãy viết số quy tròn của số gần đúng ${ten}={st_a}\\pm {d}$."
+	noi_dung=random.choice([noi_dung_1,noi_dung_2])
+
+	noi_dung_loigiai=(
+	f"Số quy tròn của ${ten}={st_a}\\pm {d}$ là ${{{dap_an}}}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #Chương 6 - Bài 3: Các số đặc trưng đo xu thế trung tâm của mẫu số liệu
 #[D10_C6_B3_01]. Cho dãy số liệu. Tính số trung bình.

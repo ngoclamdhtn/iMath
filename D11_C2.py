@@ -3566,6 +3566,109 @@ def mn8mn_L11_C2_B3_14():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C2_B3_15]-SA-M2. Tính quãng đường đi được của con lắc
+def mn8mn_L11_C2_B3_15():
+    u_1=random.randint(40,50)
+    q=random.randint(85,98)/100
+    st_q=f"{round_half_up(q,2):.2f}".replace(".",",")
+    n=random.randint(10,20)
+
+    noi_dung = (
+    f" Ban đầu, một quả lắc đồng hồ dao động theo một cung tròn dài ${{{u_1}}}$ cm. "
+    f" Sau mỗi lần đu liên tiếp, độ dài của cung tròn bằng ${{{st_q}}}$ độ dài cung tròn ở ngay lần trước đó."
+    f" Sau ${{{n}}}$ lần dao động, quả lắc sẽ đi được quãng đường tổng cộng là bao nhiêu? (Kết quả tính theo centimét và làm tròn đến chữ số hàng đơn vị)."
+    )
+    dap_an=f"{round_half_up(u_1*(q**n-1)/(q-1),0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi $u_n$ là độ dài cung tròn ở lần thứ ${{n}}$ khi con lắc dao động.\n\n"
+    f"Dãy số $(u_n)$ lập thành cấp số nhân có $u_1={u_1}$ và công bội $q={st_q}$.\n\n"
+    f"Sau ${{{n}}}$ lần dao động, quả lắc sẽ đi được quãng đường tổng cộng là:\n\n"
+    f"$S_{{{n}}}={u_1}.\\dfrac{{{st_q}^{{{n}}}-1}}{{{st_q}-1}}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B3_16]-SA-M2. Tính giá trị còn lại của ô tô sau n năm.
+def mn8mn_L11_C2_B3_16():
+    u_1=random.randint(600,950)
+    r=random.randint(4,7)
+    n=random.randint(5,15)
+    T=u_1*(1-r/100)**n
+
+    noi_dung = (
+    f"  Một gia đình mua một chiếc ô tô giá ${{{u_1}}}$ triệu đồng."
+    f" Trung bình sau mỗi năm sử dụng, giá trị còn lại của ô tô giảm đi ${{{r}}}\\%$ (so với năm trước đó)."
+    f" Sau ${{{n}}}$ năm, giá trị của ô tô ước tính còn bao nhiêu triệu đồng?(kết quả làm tròn đến hàng đơn vị)."
+    )
+    dap_an=f"{round_half_up(T,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi $u_n$ là giá trị của ô tô sau ${{n}}$ năm sử dụng.\n\n"     
+    f"Dãy số $u_n$ tạo thành một cấp số nhân với số hạng đầu là giá trị đầu của ô tô là $u_0={u_1}$ triệu đồng và công bội $q=1-{r}\\%$."
+    f"Khi đó: $u_n={u_1}(1-{r}\\%)^n$.\n\n"
+    f"Sau ${{{n}}}$ năm sử dụng giá trị của ô tô còn lại là:\n\n"
+    f"$T={u_1}(1-{r}\\%)^{{{n}}}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C2_B3_17]-SA-M2. Tính số người bị bệnh lây theo cấp số nhân.
+def mn8mn_L11_C2_B3_17():
+    while True:
+        u_1=random.randint(3,7)
+        q=random.randint(3,6)
+        n=random.randint(8,15)
+        T=u_1*(q**n-1)/(q-1)
+        if 10<T/10**6<90:
+            break
+
+    noi_dung = (
+    f"  Các bệnh truyền nhiễm có thể lây lan rất nhậnh."
+    f" Giả sử có ${{{u_1}}}$ người bị bệnh trong tuần đầu tiên của một đợt dịch, và mỗi người bị bệnh sễ lây bệnh cho ${{{q}}}$ người vào cuối tuần tiếp theo."
+    f" Tính đến hết tuần thứ ${{{n}}}$ của đợt dịch, có tổng cộng bao nhiêu người đã bị lây bởi căn bệnh này (đơn vị tính: triệu người, kết quả làm tròn đến hàng phần mười)?"
+    )
+    dap_an=f"{round_half_up(T/10**6,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi $u_n$ là số người bị bệnh ở cuối tuần thứ ${{n}}$."
+    f" Dãy $u_n$ là một cấp số nhân với $u_1={u_1}, q={q}$.\n\n"
+    f"Suy ra số người bị ảnh hưởng bởi dịch bệnh ở cuối tuần ${{{n}}}$ là:"
+    f"$T={u_1}.\\dfrac{{{q}^{{{n}}}-1}}{{{q}-1}}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 

@@ -3286,53 +3286,71 @@ def ngh_kjg_L11_C1_B2_13():
 
 #D11_C1_B2_01. Tính giá trị đặc biệt của một góc lượng giác.
 def ngh_kjg_L11_C1_B2_01():
-    chon=random.randint(1,2)
+    a= random.choice([i for i in range(-10, 10) if i!=0])
+    x=random.choice([a*pi/3,a*pi/6,a*pi/4, a*pi/2])
+
+    chon=random.randint(1,4)
+
     if chon==1:
-        list_x=[-random.randint(1,10)*pi/6, random.randint(1,5)*pi/6, -random.randint(1,5)*pi/3, random.randint(1,10)*pi/3, 13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
-        x=random.choice(list_x)
-
-        list_ham=[sin(x), cos(x)]
-
+        noi_dung=(f"Tính $\\sin {latex(x)}$.")
+        kq=sin(x)
+        noi_dung_loigiai=(f"$\\sin {latex(x)}={latex(kq)}$." )
     
     if chon==2:
-        list_x=[pi/6,pi/3,2*pi/3,3*pi/4,5*pi/6,-13*pi/6 , 25*pi/3, 37*pi/6 , 103*pi/3]
-        x=random.choice([-1,1])*random.choice(list_x) 
+        noi_dung=(f"Tính $\\cos {latex(x)}$.")
+        kq=cos(x)
+        noi_dung_loigiai=(f"$\\cos {latex(x)}={latex(kq)}$." )
 
-        list_ham=[sin(x), cos(x), tan(x), cot(x)]
-    
-    
-    ham =random.choice(list_ham)
+    if chon==3:
+        k= random.choice([i for i in range(-5, 5) if i!=0])
+        x=random.choice([pi/3+k*pi, pi/6+k*pi])
+        kq=tan(x)
+        if x>0:
+            noi_dung=(f"Tính $\\tan {latex(x)}$.")
+            noi_dung_loigiai=(f"$\\tan {latex(x)}={latex(kq)}$." )
 
-    list_hamkhac = [t for t in list_ham if t != ham]
-    list_hamkhac.append (random.randint(-5,5))
-    list_hamkhac.append (sqrt(2))  
-    if ham == list_ham[0]:
-        ten_ham = "sin"
-    if ham == list_ham[1]:
-        ten_ham = "cos"
-    if ham == list_ham[2]:
-        ten_ham = "tan"
-    if ham == list_ham[3]:
-        ten_ham = "cot"
-    #Tạo các phương án
-    pa_A= f"*${{{latex((ham))} }}$"
-    pa_B= f"${{{latex((list_hamkhac[0]))}}}$"
-    pa_C= f"${{{latex((list_hamkhac[1]))}}}$"
-    pa_D= f"${{{latex((list_hamkhac[2]))}}}$"
-     #Trộn các phương án
-    list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-    noi_dung= f"Tính $\\{ten_ham}{latex(x)}$."
-    noi_dung_loigiai=f""
+        else:
+            noi_dung=(f"Tính $\\tan \\left({latex(x)} \\right)$.")
+            noi_dung_loigiai=(f"$\\tan \\left({latex(x)} \\right)={latex(kq)}$." )
+
+    if chon==4:
+        k= random.choice([i for i in range(-5, 5) if i!=0])
+        x=random.choice([pi/3+k*pi, pi/6+k*pi])
+        kq=cot(x)
+        if x>0:
+            noi_dung=(f"Tính $\\cot {latex(x)}$.")
+            noi_dung_loigiai=(f"$\\cot {latex(x)}={latex(kq)}$." )
+
+        else:
+            noi_dung=(f"Tính $\\cot \\left({latex(x)} \\right)$.")
+            noi_dung_loigiai=(f"$\\cot \\left({latex(x)} \\right)={latex(kq)}$." )
+
+      
+
+    kq_false = set()
+    while len(kq_false) < 5:    
+        numbers = round(random.uniform(-1, 1),1)
+        if numbers!=kq:
+            kq_false.add(numbers)
+
+    kq_false=list(kq_false)  
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+   
+
+    pa_A= f"*${{{latex(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
-    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    random.shuffle(list_PA)
     dap_an=my_module.tra_ve_dap_an(list_PA)
-    
 
-    debai= f"{noi_dung}\n"      
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"     
-   
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
@@ -3340,17 +3358,17 @@ def ngh_kjg_L11_C1_B2_01():
     for i in range(4):
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-        f"\\choice\n"\
-        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
 
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\\\ \n"\
-    f"\\shortans[4]{{}}\n\n"\
-        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-        f"\\end{{ex}}\n"
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    
 
     
 

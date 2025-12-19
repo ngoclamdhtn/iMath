@@ -8467,7 +8467,6 @@ def mnj_34_jkl_L12_C2_B3_44():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-
 #[D12_C2_B3_45]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm tọa độ trung điểm
 def mnj_34_jkl_L12_C2_B3_45():
 	ten=random.choice([
@@ -8485,7 +8484,7 @@ def mnj_34_jkl_L12_C2_B3_45():
 		if all([a!=b, b!=c, a!=c]):
 			break
 	x_A, y_A, z_A=0, 0, 0
-	x_B, y_B, z_B=0, b, 0
+	x_B, y_B, z_B=a, 0, 0
 	x_C, y_C, z_C=a, b, 0
 	x_D, y_D, z_D=0, b, 0	
 	x_S, y_S, z_S=0, 0, c
@@ -8495,7 +8494,7 @@ def mnj_34_jkl_L12_C2_B3_45():
 	noi_dung=(
 		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, ${S}{A}\\bot ({A}{B}{C}{D})$, ${A}{B}={a},{A}{D}={b}$ và ${S}{A}={c}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
-		f" điểm ${{{D}}}$ thuộc tia ${{Ox}}$, điểm ${{{B}}}$ thuộc tia ${{Oy}}$"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{D}}}$ thuộc tia ${{Oy}}$"
 		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$.")
 		
 	if chon==1:
@@ -8619,7 +8618,7 @@ def mnj_34_jkl_L12_C2_B3_46():
 		if all([a!=b, b!=c, a!=c]):
 			break
 	x_A, y_A, z_A=0, 0, 0
-	x_B, y_B, z_B=0, b, 0
+	x_B, y_B, z_B=a, 0, 0
 	x_C, y_C, z_C=a, b, 0
 	x_D, y_D, z_D=0, b, 0	
 	x_S, y_S, z_S=0, 0, c
@@ -8630,7 +8629,7 @@ def mnj_34_jkl_L12_C2_B3_46():
 	noi_dung=(
 		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, ${S}{A}\\bot ({A}{B}{C}{D})$, ${A}{B}={a},{A}{D}={b}$ và ${S}{A}={c}$."
 		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
-		f" điểm ${{{D}}}$ thuộc tia ${{Ox}}$, điểm ${{{B}}}$ thuộc tia ${{Oy}}$"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{D}}}$ thuộc tia ${{Oy}}$"
 		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$.")
 		
 	if chon==1:
@@ -9248,7 +9247,7 @@ def mnj_34_jkl_L12_C2_B3_52():
 
 	if plane == "Oyz":
 	    noi_dung_loigiai = (
-	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(a;b;0)$.\n\n"
+	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(0;b;c)$.\n\n"
 	        f"${vec_AM}=(-{a1};b-{a2};c-{a3}), {vec_AB}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
 	        f"${{{A},{B},{M}}}$ thẳng hàng nên tồn tại tham số ${{k}}$ sao cho:\n\n"
 	        f"${vec_AM} = k{vec_AB}$\n\n"
@@ -9257,7 +9256,7 @@ def mnj_34_jkl_L12_C2_B3_52():
 
 	if plane == "Oxz":
 	    noi_dung_loigiai = (
-	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(a;b;0)$.\n\n"
+	        f"Vì ${{{M}}}$ thuộc $({plane})$ nên ${M}(a;0;b)$.\n\n"
 	        f"${vec_AM}=(a-{a1};{-a2};c-{a3}), {vec_AB}=({b1-a1};{b2-a2};{b3-a3})$.\n\n"
 	        f"${{{A},{B},{M}}}$ thẳng hàng nên tồn tại tham số ${{k}}$ sao cho:\n\n"
 	        f"${vec_AM} = k{vec_AB}$\n\n"
@@ -9282,4 +9281,184 @@ def mnj_34_jkl_L12_C2_B3_52():
 	)
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C2_B3_53]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm cos của góc giữa 2 vectơ
+def mnj_34_jkl_L12_C2_B3_53():
+	ten=random.choice([
+		["S","A","B","C","D"],
+		["S","C","D","E","F"],
+		["S","E","F","G","H"],
+		["S","M","N","P","Q"],])
+	S,A,B,C,D=ten
+
+	while True:
+		a=random.randint(1,7)
+		b=random.randint(1,7)
+		c=random.randint(1,7)
+		if all([a!=b, b!=c, a!=c]):
+			break
+	x_A, y_A, z_A=0, 0, 0
+	x_B, y_B, z_B=a, 0, 0
+	x_C, y_C, z_C=a, b, 0
+	x_D, y_D, z_D=0, b, 0	
+	x_S, y_S, z_S=0, 0, c
+
+	chon=random.randint(1,4)
+	chon=5
+
+	noi_dung=(
+		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, ${S}{A}\\bot ({A}{B}{C}{D})$, ${A}{B}={a},{A}{D}={b}$ và ${S}{A}={c}$."
+		f" Chọn hệ trục ${{Oxyz}}$ sao cho điểm ${{O}}$ trùng với điểm ${{{A}}}$,"
+		f" điểm ${{{B}}}$ thuộc tia ${{Ox}}$, điểm ${{{D}}}$ thuộc tia ${{Oy}}$"
+		f" và điểm ${{{S}}}$ thuộc tia ${{Oz}}$.")
+		
+	if chon==1:
+		vec_SC=vec2(S,C)
+		vec_AD=vec2(A,D)
+		a1,a2,a3 = x_C-x_S, y_C-y_S, z_C-z_S
+		b1,b2,b3 = x_D-x_A, y_D-y_A, z_D-z_A
+		tich_vh=a1*b1+a2*b2+a3*b3
+		len_a=sqrt(a1**2+a2**2+a3**2)
+		len_b=sqrt(b1**2+b2**2+b3**2)
+		while True:
+			len_b_f=sqrt(random.randint(1,5))
+			if len_b_f!=len_b:
+				break
+		cos_goc=tich_vh/(len_a*len_b)
+		kq=f"${{{latex(cos_goc)}}}$"
+		noi_dung+=(	f" Tính cosin của góc giữa hai vectơ ${vec_SC}$ và ${vec_AD}$.")
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {D}({x_D};{y_D};{z_D}), {C}({x_C};{y_C};{z_C}), {S}({x_S};{y_S};{z_S})$.\n\n"
+		f"${vec_SC}=({a1};{a2};{a3}), {vec_AD}=({b1};{b2};{b3})$.\n\n"
+		f"$\\cos({vec_SC},{vec_AD})=\\dfrac{{{tich_vh}}}{{{latex(len_a)}.{latex(len_b)}}}={latex(cos_goc)}$.")
+
+	if chon==2:
+		vec_SC=vec2(S,C)
+		vec_BC=vec2(B,C)
+		a1,a2,a3 = x_C-x_S, y_C-y_S, z_C-z_S
+		b1,b2,b3 = x_D-x_A, y_D-y_A, z_D-z_A
+		tich_vh=a1*b1+a2*b2+a3*b3
+		len_a=sqrt(a1**2+a2**2+a3**2)
+		len_b=sqrt(b1**2+b2**2+b3**2)
+		while True:
+			len_b_f=sqrt(random.randint(1,5))
+			if len_b_f!=len_b:
+				break
+		cos_goc=tich_vh/(len_a*len_b)
+		kq=f"${{{latex(cos_goc)}}}$"
+		noi_dung+=(	f" Tính cosin của góc giữa hai vectơ ${vec_SC}$ và ${vec_BC}$.")
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_B};{y_B};{z_B}), {C}({x_C};{y_C};{z_C}), {S}({x_S};{y_S};{z_S})$.\n\n"
+		f"${vec_SC}=({a1};{a2};{a3}), {vec_BC}=({b1};{b2};{b3})$.\n\n"
+		f"$\\cos({vec_SC},{vec_BC})=\\dfrac{{{tich_vh}}}{{{latex(len_a)}.{latex(len_b)}}}={latex(cos_goc)}$.")
+
+	if chon==3:
+		vec_SB=vec2(S,B)
+		vec_SC=vec2(S,C)
+		a1,a2,a3 = x_B-x_S, y_B-y_S, z_B-z_S
+		b1,b2,b3 = x_C-x_S, y_C-y_S, z_C-z_S
+		tich_vh=a1*b1+a2*b2+a3*b3
+		len_a=sqrt(a1**2+a2**2+a3**2)
+		len_b=sqrt(b1**2+b2**2+b3**2)
+		while True:
+			len_b_f=sqrt(random.randint(1,5))
+			if len_b_f!=len_b:
+				break
+		cos_goc=tich_vh/(len_a*len_b)
+		kq=f"${{{latex(cos_goc)}}}$"
+		noi_dung+=(	f" Tính cosin của góc giữa hai vectơ ${vec_SB}$ và ${vec_SC}$.")
+
+		noi_dung_loigiai=(
+		f"Ta có: ${A}(0;0;0), {B}({x_B};{y_B};{z_B}), {C}({x_C};{y_C};{z_C}), {S}({x_S};{y_S};{z_S})$.\n\n"
+		f"${vec_SB}=({a1};{a2};{a3}), {vec_SC}=({b1};{b2};{b3})$.\n\n"
+		f"$\\cos({vec_SB},{vec_SC})=\\dfrac{{{tich_vh}}}{{{latex(len_a)}.{latex(len_b)}}}={latex(cos_goc)}$.")
+	
+	if chon==4:
+		vec_SB=vec2(S,B)
+		vec_SD=vec2(S,D)
+		a1,a2,a3 = x_B-x_S, y_B-y_S, z_B-z_S
+		b1,b2,b3 = x_D-x_S, y_D-y_S, z_D-z_S
+		tich_vh=a1*b1+a2*b2+a3*b3
+		len_a=sqrt(a1**2+a2**2+a3**2)
+		len_b=sqrt(b1**2+b2**2+b3**2)
+		while True:
+			len_b_f=sqrt(random.randint(1,5))
+			if len_b_f!=len_b:
+				break
+		cos_goc=tich_vh/(len_a*len_b)
+		kq=f"${{{latex(cos_goc)}}}$"
+		noi_dung+=(	f" Tính cosin của góc giữa hai vectơ ${vec_SB}$ và ${vec_SD}$.")
+
+		noi_dung_loigiai=(
+		f"Ta có: ${B}({x_B};{y_B};{z_B}), {C}({x_C};{y_C};{z_C}), {D}({x_D};{y_D};{z_D}), {S}({x_S};{y_S};{z_S})$.\n\n"
+		f"${vec_SB}=({a1};{a2};{a3}), {vec_SD}=({b1};{b2};{b3})$.\n\n"
+		f"$\\cos({vec_SB},{vec_SD})=\\dfrac{{{tich_vh}}}{{{latex(len_a)}.{latex(len_b)}}}={latex(cos_goc)}$.")
+
+	if chon==5:
+		vec_SB=vec2(S,B)
+		vec_CD=vec2(C,D)
+		a1,a2,a3 = x_B-x_S, y_B-y_S, z_B-z_S
+		b1,b2,b3 = x_D-x_C, y_D-y_C, z_D-z_C
+		tich_vh=a1*b1+a2*b2+a3*b3
+		len_a=sqrt(a1**2+a2**2+a3**2)
+		len_b=sqrt(b1**2+b2**2+b3**2)
+		while True:
+			len_b_f=sqrt(random.randint(1,5))
+			if len_b_f!=len_b:
+				break
+		cos_goc=tich_vh/(len_a*len_b)
+		kq=f"${{{latex(cos_goc)}}}$"
+		noi_dung+=(	f" Tính cosin của góc giữa hai vectơ ${vec_SB}$ và ${vec_CD}$.")
+
+		noi_dung_loigiai=(
+		f"Ta có: ${B}({x_B};{y_B};{z_B}), {C}({x_C};{y_C};{z_C}), {D}({x_D};{y_D};{z_D}), {S}({x_S};{y_S};{z_S})$.\n\n"
+		f"${vec_SB}=({a1};{a2};{a3}), {vec_CD}=({b1};{b2};{b3})$.\n\n"
+		f"$\\cos({vec_SB},{vec_CD})=\\dfrac{{{tich_vh}}}{{{latex(len_a)}.{latex(len_b)}}}={latex(cos_goc)}$.")
+		
+
+	kq_false = set()
+	while len(kq_false) < 5:		
+	    numbers = round(random.uniform(-1, 1),1)
+	    if all([numbers!=cos_goc]):
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+
+
+
+
+	kq2,kq3,kq4=random.sample(kq_false,3)
+
+
+	pa_A= f"*{kq}"
+	pa_B= f"${{{latex(tich_vh/(len_a*len_b_f))}}}$"
+	pa_C= f"${{{phan_so(kq3)}}}$"
+	pa_D= f"${{{phan_so(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
