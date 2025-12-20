@@ -146,6 +146,42 @@ def codelatex_hinh_hop(a,b,c,d,e,f,g,h):
 \\end{{tikzpicture}}"
     return code
 
+def code_hinh_chop_hthang(S,A,B,C,D):
+	code = f"""
+	\\begin{{tikzpicture}}[line join=round, line cap=round, thick, scale=0.9]
+
+	%--- Đáy hình thang ABCD (AD là đáy lớn) ---
+	\\coordinate ({A}) at (0,0);
+	\\coordinate ({D}) at (6,0);
+	\\coordinate ({B}) at (1.5,2);
+	\\coordinate ({C}) at (4.5,2);
+
+	%--- Đỉnh S (không gian 3D giả lập) ---
+	\\coordinate ({S}) at (2,4);
+
+	%--- Ghi tên điểm ---
+	\\node[below left] at ({A}) {{${A}$}};
+	\\node[below right] at ({D}) {{${D}$}};
+	\\node[below right] at ({B}) {{${B}$}};
+	\\node[above right] at ({C}) {{${C}$}};
+	\\node[above] at ({S}) {{${S}$}};
+
+	\\draw ({A})--({D}) ({D})--({C});
+	\\draw ({S})--({A})  ({S})--({C}) ({S})--({D});
+
+	%--- Nét khuất ---
+	\\draw[dashed] ({S})--({B}) ({A})--({B}) ({C})--({B}) ;
+
+	%--- Đánh dấu điểm ---
+	\\foreach \\p in {{{A},{B},{C},{D},{S}}}
+	    \\fill (\\p) circle (1.5pt);
+
+	\\end{{tikzpicture}}
+	"""
+	return code
+
+
+
 #Bài 1 - Đường thẳng và mặt phẳng trong không gian
 #[D11_C4_B1_01]-M2. Cho tứ diện. Xét quan hệ giữa điểm và đường thẳng-mặt phẳng
 def ghj_7_jkl_L11_C4_B1_01():
@@ -5806,6 +5842,155 @@ def ghj_7_jkl_L11_C4_B4_11():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C4_B4_12]-SA-M2. H.chóp đáy hình thang. Tìm điều kiện để 2 mặt phẳng song song.
+def ghj_7_jkl_L11_C4_B4_12():
+	S="S"
+	A,B,C,D=random.choice([["A","B","C","D"], ["A","B","E","F"]])
+
+	A,B,C,D="A","B","C","D"
+	M,N="M","N"
+	chon=random.randint(1,2)
+	
+	
+	if chon==1:
+		k=random.choice([1/2, 1/3, 1/4, 2/3, 2/5, 2/7, 3/4, 3/5 ])	
+		x=1/k
+		if x.is_integer():
+			noi_dung = (
+			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình thang, ${A}{D}//{B}{C}, {A}{D}=x{B}{C}$."
+			f" Gọi ${{{M},{N}}}$ là hai điểm nằm trên ${{{A}{D},{S}{D}}}$ thỏa mãn $\\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{S}{N}}}{{{S}{D}}}={phan_so(k)}$."
+			f" Tìm ${{x}}$ để $({C}{M}{N})//({S}{A}{B})$."
+			)
+			dap_an=int(x)
+
+			noi_dung_loigiai=(
+			f"Vì $\\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{S}{N}}}{{{S}{D}}}={phan_so(k)}$ nên ${M}{N}//{S}{A}\\Rightarrow {M}{N}//(S{A}{B})$.\n\n"
+			f"Để $({C}{M}{N})//({S}{A}{B})$ thì ${C}{M}//{A}{B}\\Rightarrow \\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{B}{C}}}{{{A}{D}}}$.\n\n"
+			f"$\\Rightarrow {phan_so(k)}=\\dfrac{{1}}{{x}}\\Rightarrow x={phan_so(1/k)}$."
+			)
+		else:
+			noi_dung = (
+			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình thang, ${A}{D}//{B}{C}, {A}{D}=x{B}{C}$."
+			f" Gọi ${{{M},{N}}}$ là hai điểm nằm trên ${{{A}{D},{S}{D}}}$ thỏa mãn $\\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{S}{N}}}{{{S}{D}}}={phan_so(k)}$."
+			f" Tìm ${{x}}$ để $({C}{M}{N})//({S}{A}{B})$ (kết quả làm tròn đến hàng phần mười)."
+			)
+			dap_an=f"{round_half_up(1/k,1):.1f}".replace(".",",")
+
+			noi_dung_loigiai=(
+			f"Vì $\\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{S}{N}}}{{{S}{D}}}={phan_so(k)}$ nên ${M}{N}//{S}{A}\\Rightarrow {M}{N}//(S{A}{B})$.\n\n"
+			f"Để $({C}{M}{N})//({S}{A}{B})$ thì ${C}{M}//{A}{B}\\Rightarrow \\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{B}{C}}}{{{A}{D}}}$.\n\n"
+			f"$\\Rightarrow {phan_so(k)}=\\dfrac{{1}}{{x}}\\Rightarrow x={phan_so(1/k)}$."
+			)
+		code_hinh_LG = f"""
+					\\begin{{tikzpicture}}[line join=round, line cap=round, thick, scale=0.9]
+
+					%--- Đáy hình thang ABCD (AD là đáy lớn) ---
+					\\coordinate ({A}) at (0,0);
+					\\coordinate ({D}) at (6,0);
+					\\coordinate ({B}) at (1.5,2);
+					\\coordinate ({C}) at (4.5,2);
+
+					%--- Đỉnh S (không gian 3D giả lập) ---
+					\\coordinate ({S}) at (2,4);
+					\\coordinate ({M}) at ($({A})!{k}!({D})$); 
+					\\coordinate ({N}) at ($({S})!{k}!({D})$);   
+
+					%--- Ghi tên điểm ---
+					\\node[below left] at ({A}) {{${A}$}};
+					\\node[below right] at ({D}) {{${D}$}};
+					\\node[below right] at ({B}) {{${B}$}};
+					\\node[above right] at ({C}) {{${C}$}};
+					\\node[above] at ({S}) {{${S}$}};
+					\\node at ({M}) [below] {{${M}$}};
+					\\node at ({N}) [below] {{${N}$}};
+
+					\\draw ({A})--({D}) ({D})--({C}) ({C})--({N}) ({M})--({N});
+					\\draw ({S})--({A})  ({S})--({C}) ({S})--({D});
+
+					%--- Nét khuất ---
+					\\draw[dashed] ({S})--({B}) ({A})--({B}) ({C})--({B}) ({C})--({M}) ;
+
+					%--- Đánh dấu điểm ---
+					\\foreach \\p in {{{A},{B},{C},{D},{S}}}
+					    \\fill (\\p) circle (1.5pt);
+
+					\\end{{tikzpicture}}
+					"""
+	
+	if chon==2:
+		t=random.randint(2,5)
+		k=t/(t+1)
+		noi_dung = (
+		f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình thang đáy lớn ${A}{D}, {A}{D}=x{B}{C}$."
+		f" Gọi ${{{M},{N}}}$ là hai điểm nằm trên ${{{A}{D},{S}{D}}}$ thỏa mãn ${A}{M}={t}{M}{D},{S}{N}={t}{N}{D}$."
+		f" Tìm ${{x}}$ để $({C}{M}{N})//({S}{A}{B})$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(k,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Vì $\\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{S}{N}}}{{{S}{D}}}={phan_so(k)}$ nên ${M}{N}//{S}{A}\\Rightarrow {M}{N}//(S{A}{B})$.\n\n"
+		f"Để $({C}{M}{N})//({S}{A}{B})$ thì ${C}{M}//{A}{B}\\Rightarrow \\dfrac{{{A}{M}}}{{{A}{D}}}=\\dfrac{{{B}{C}}}{{{A}{D}}}$.\n\n"
+		f"$\\Rightarrow {phan_so(k)}=\\dfrac{{1}}{{x}}\\Rightarrow x={phan_so(1/k)}$."
+		)
+		code_hinh_LG = f"""
+					\\begin{{tikzpicture}}[line join=round, line cap=round, thick, scale=0.9]
+
+					%--- Đáy hình thang ABCD (AD là đáy lớn) ---
+					\\coordinate ({A}) at (0,0);
+					\\coordinate ({D}) at (6,0);
+					\\coordinate ({B}) at (1.5,2);
+					\\coordinate ({C}) at (4.5,2);
+
+					%--- Đỉnh S (không gian 3D giả lập) ---
+					\\coordinate ({S}) at (2,4);
+					\\coordinate ({M}) at ($({A})!{k}!({D})$); 
+					\\coordinate ({N}) at ($({S})!{k}!({D})$);   
+
+					%--- Ghi tên điểm ---
+					\\node[below left] at ({A}) {{${A}$}};
+					\\node[below right] at ({D}) {{${D}$}};
+					\\node[below right] at ({B}) {{${B}$}};
+					\\node[above right] at ({C}) {{${C}$}};
+					\\node[above] at ({S}) {{${S}$}};
+					\\node at ({M}) [below] {{${M}$}};
+					\\node at ({N}) [below] {{${N}$}};
+
+					\\draw ({A})--({D}) ({D})--({C}) ({C})--({N}) ({M})--({N});
+					\\draw ({S})--({A})  ({S})--({C}) ({S})--({D});
+
+					%--- Nét khuất ---
+					\\draw[dashed] ({S})--({B}) ({A})--({B}) ({C})--({B}) ({C})--({M}) ;
+
+					%--- Đánh dấu điểm ---
+					\\foreach \\p in {{{A},{B},{C},{D},{S}}}
+					    \\fill (\\p) circle (1.5pt);
+
+					\\end{{tikzpicture}}
+					"""
+	
+	
+	code_hinh=code_hinh_chop_hthang(S,A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+	debai_word= f"{noi_dung}\n{file_name}"
+
+	loigiai_word=(f"Lời giải:\n {file_name_LG}\n{noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
 
 #--------------BÀI 5: PHÉP CHIẾU SONG SONG------------------>
 #[D11_C4_B5_01]-M1. Tìm khẳng định đúng về phép chiếu song song.

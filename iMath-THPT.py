@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 14.12.2025")
+                self.label.setText(f"iMath\u00A92025 ver 20.12.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 14.12.2025")
+                self.label.setText(f"iMath\u00A92025 ver 20.12.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2693,6 +2693,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C5_B4_2, ["[D10_C5_B4_11]-TF-M2. Cho tam giác có 3 cạnh. Xét Đ-S: vec_AB.vec_AC, góc A, vec_AG.vec_BC, GA.GB+GB.GC+GC.GA."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C5_B4_2, ["[D10_C5_B4_15]-TF-M2. Cho tam giác đều. Xét Đ-S: Góc, tích vô hướng, đẳng thức vectơ, độ dài tổng hiệu."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5975,6 +5979,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C4_B4_2, ["[D11_C4_B4_11]-TF-M3. Cho hình hộp. Xét Đ-S: Tính chất, đường và mặt, hai mặt song song."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C4_B4_3 = QTreeWidgetItem(L11_C4_B4, ["Trả lời ngắn"])
+                L11_C4_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C4_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C4_B4_3, ["[D11_C4_B4_12]-SA-M2. H.chóp đáy hình thang. Tìm điều kiện để 2 mặt phẳng song song."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -14047,6 +14059,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C4_B4_11]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_11()
 
+                                            #[D11_C4_B4_12]-SA-M2. H.chóp đáy hình thang. Tìm điều kiện để 2 mặt phẳng song song.
+                                            if dang_toan == "[D11_C4_B4_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C4.ghj_7_jkl_L11_C4_B4_12()
+
                                             #-------- BÀI 5: PHÉP CHIẾU SONG SONG--------->
 
                                             #[D11_C4_B5_01]-M1. Tìm khẳng định đúng về phép chiếu song song.
@@ -16825,7 +16841,11 @@ class Ui_MainWindow(object):
 
                                             #[D10_C5_B4_14]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(GA).vec(GB)+vec(GB).vec(GC)+vec(GC).vec(GA)
                                             if dang_toan == "[D10_C5_B4_14]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_14()        
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C5.y7y7u_L10_C5_B4_14()
+
+                                            #[D10_C5_B4_15]-SA-M3. Cho tam giác đều. Xét Đ-S: Góc, tích vô hướng, đẳng thức vectơ, độ dài tổng hiệu 
+                                            if dang_toan == "[D10_C5_B4_15]": 
+                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C5.y7y7u_L10_C5_B4_15()    
                                                 
 
                                 #Bài 5 - Tọa độ vectơ

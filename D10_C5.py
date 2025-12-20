@@ -5285,23 +5285,25 @@ def y7y7u_L10_C5_B4_14():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D10_C5_B4_15]-SA-M3. Cho tam giác có 3 cạnh. Tính vec(GA).vec(GB)+vec(GB).vec(GC)+vec(GC).vec(GA)
+#[D10_C5_B4_15]-SA-M3. Cho tam giác đều. Xét Đ-S: Góc, tích vô hướng, đẳng thức vectơ, độ dài tổng hiệu
 def y7y7u_L10_C5_B4_15():
 	a=random.randint(1,8)
 	A,B,C=random.sample(["A","B","C","D","E"],3)
-	A,B,C="A","B","C"
-	M,G="M","G"
 
-	noi_dung = f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$. "
-	f"Gọi điểm ${{{M}}}$ là trung điểm của ${{{B}{C}}}$, gọi điểm ${{{G}}}$ là trọng tâm tam giác ${{{A}{B}{C}}}$."
-	f"Xét tính đúng-sai của các khẳng định sau. "		
+	M=random.choice(["M","N","P","Q"])
+	G=random.choice(["G", "H", "I","O" ])
+
+	noi_dung = (f"Cho tam giác ${{{A}{B}{C}}}$ đều có cạnh bằng ${{{a}}}$."
+	f" Gọi điểm ${{{M}}}$ là trung điểm của ${{{B}{C}}}$, gọi điểm ${{{G}}}$ là trọng tâm tam giác ${{{A}{B}{C}}}$."
+	f" Xét tính đúng-sai của các khẳng định sau. ")		
 	debai_word= f"{noi_dung}\n"
 	vec_AB, vec_AC, vec_BC, vec_BA, vec_CA, vec_CB=vec2(A,B), vec2(A,C), vec2(B,C), vec2(B,A), vec2(C,A), vec2(C,B)
-	vec_AM, vec_MA=vec2(A,M), vec2(M,A)
+	vec_AM, vec_MA, vec_BM, vec_MB, vec_CM, vec_MC=vec2(A,M), vec2(M,A), vec2(B,M), vec2(M,B), vec2(C,M), vec2(M,C)
+	vec_GA, vec_GB, vec_GC=vec2(G,A), vec2(G,B), vec2(G,C)
+	vec_AG, vec_BG, vec_CG=vec2(A,G), vec2(B,G), vec2(C,G)
+	vec_MG, vec_GM = vec2(M,G), vec2(G,M)
 
-
-	chon=random.randint(1,2)
-	chon=4
+	chon=random.randint(1,10)	
 	if chon==1:
 		kq1_T=f"*$({vec_AB},{vec_AC})=60^\\circ$" 
 		kq1_F=f"$({vec_AB},{vec_AC})={random.choice([30,45,90,120,135,150])}^\\circ$"	
@@ -5325,6 +5327,31 @@ def y7y7u_L10_C5_B4_15():
 		kq1_T=f"*$({vec_AB},{vec_MA})=150^\\circ$" 
 		kq1_F=f"$({vec_AB},{vec_MA})={random.choice([60,45,90,135,30])}^\\circ$"	
 		HDG=f"$({vec_AB},{vec_MA})=180^\\circ-\\widehat{{{B}{A}{M}}}=150^\\circ$."
+
+	if chon==6:
+		kq1_T=f"*$({vec_GA},{vec_GB})=120^\\circ$" 
+		kq1_F=f"$({vec_GA},{vec_GB})={random.choice([60,45,90,135,30])}^\\circ$"	
+		HDG=f"$({vec_GA},{vec_GB})=\\widehat{{{A}{G}{B}}}=120^\\circ$."
+
+	if chon==7:
+		kq1_T=f"*$({vec_GB},{vec_GC})=120^\\circ$" 
+		kq1_F=f"$({vec_GB},{vec_GC})={random.choice([60,45,90,135,30])}^\\circ$"	
+		HDG=f"$({vec_GB},{vec_GC})=\\widehat{{{B}{G}{C}}}=120^\\circ$."
+
+	if chon==8:
+		kq1_T=f"*$({vec_GB},{vec_CG})=60^\\circ$" 
+		kq1_F=f"$({vec_GB},{vec_CG})={random.choice([120,45,90,135,30])}^\\circ$"	
+		HDG=f"$({vec_GB},{vec_CG})=180^\\circ-\\widehat{{{B}{G}{C}}}=60^\\circ$."
+
+	if chon==9:
+		kq1_T=f"*$({vec_AM},{vec_BC})=90^\\circ$" 
+		kq1_F=f"$({vec_AM},{vec_BC})={random.choice([120,45,60,135,30])}^\\circ$"	
+		HDG=f"$({vec_AM},{vec_BC})=90^\\circ$."
+
+	if chon==10:
+		kq1_T=f"*$({vec_AG},{vec_BC})=90^\\circ$" 
+		kq1_F=f"$({vec_AG},{vec_BC})={random.choice([120,45,60,135,30])}^\\circ$"	
+		HDG=f"$({vec_AG},{vec_BC})=90^\\circ$."
 	
 	
 	kq1=random.choice([kq1_T, kq1_F])
@@ -5332,26 +5359,181 @@ def y7y7u_L10_C5_B4_15():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=f"* "
-	kq2_F=f" "
+	chon=random.randint(1,7)
+	
+	if chon==1:
+		tich_vh=a**2*cos(pi/3)
+		kq2_T=f"* ${vec_AB}.{vec_AC}={phan_so(tich_vh)}$"
+		kq2_F=f"${vec_AB}.{vec_AC}={phan_so(-tich_vh)}$"
+		
+		HDG=f"${vec_AB}.{vec_AC}={a}.{a}.\\cos 60^\\circ={phan_so(tich_vh)}$."
+	
+	if chon==2:
+		tich_vh=a**2*cos(pi-pi/3)
+		kq2_T=f"* ${vec_AB}.{vec_CA}={phan_so(tich_vh)}$"
+		kq2_F=f"${vec_AB}.{vec_CA}={phan_so(-tich_vh)}$"
+		
+		HDG=f"${vec_AB}.{vec_CA}={a}.{a}.\\cos 120^\\circ={phan_so(tich_vh)}$."
+
+	if chon==3:		
+		kq2_T=f"* ${vec_AM}.{vec_BC}=0$"
+		kq2_F=f"${vec_AM}.{vec_BC}={random.randint(1,5)}$"
+		
+		HDG=f"${vec_AM}.{vec_BC}=0$ vì ${vec_AM} \\bot {vec_BC}$."
+
+	if chon==4:
+		tich_vh=-(a/2)**2
+		kq2_T=f"* ${vec_BM}.{vec_MC}={phan_so(tich_vh)}$"
+		kq2_F=f"${vec_BM}.{vec_MC}={phan_so(-tich_vh)}$"
+		
+		HDG=f"${vec_BM}.{vec_MC}={phan_so(a/2)}.{phan_so(a/2)}.\\cos 180^\\circ={phan_so(tich_vh)}$."
+
+	
+	if chon==5:
+		tich_vh=a*(a/2)
+		kq2_T=f"* ${vec_BM}.{vec_BC}={phan_so(tich_vh)}$"
+		kq2_F=f"${vec_BM}.{vec_BC}={phan_so(-tich_vh)}$"
+		
+		HDG=f"${vec_BM}.{vec_BC}={phan_so(a/2)}.{a}.\\cos 0^\\circ={phan_so(tich_vh)}$."
+
+	if chon==6:
+		GB=a*sqrt(3)/3
+		tich_vh=GB**2*(-1/2)
+		kq2_T=f"* ${vec_GB}.{vec_GC}={phan_so(tich_vh)}$"
+		kq2_F=f"${vec_GB}.{vec_GC}={phan_so(-tich_vh)}$"
+		
+		HDG=(f"${G}{B}={G}{C}={phan_so(2/3)}.{a}.{latex(sqrt(3)/2)}={latex(GB)}$.\n\n"
+			f"${vec_GB}.{vec_GC}={latex(GB)}.{latex(GB)}.\\cos 120^\\circ={phan_so(tich_vh)}$.")
+
+	if chon==7:
+		GB=a*sqrt(3)/3
+		tich_vh=GB**2*(1/2)
+		kq2_T=f"* ${vec_GB}.{vec_CG}={phan_so(tich_vh)}$"
+		kq2_F=f"${vec_GB}.{vec_CG}={phan_so(-tich_vh)}$"
+		
+		HDG=(f"${G}{B}={G}{C}={phan_so(2/3)}.{a}.{latex(sqrt(3)/2)}={latex(GB)}$.\n\n"
+			f"${vec_GB}.{vec_CG}={latex(GB)}.{latex(GB)}.\\cos 60^\\circ={phan_so(tich_vh)}$.")
+
 	kq2=random.choice([kq2_T, kq2_F])
-	HDG=f""
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq3_T=f"* " 
-	kq3_F=f" "
+	chon=random.randint(1,8)
+
+	
+	if chon==1:
+		kq3_T=f"* ${vec_AB}+{vec_AC}=2{vec_AM}$" 
+		kq3_F=f"${vec_AB}+{vec_AC}={random.choice([random.randint(3,4),phan_so(1/2) ])}{vec_AM}$"	
+		HDG=f"${vec_AB}+{vec_AC}=2{vec_AM}$."
+	
+	if chon==2:
+		kq3_T=f"* ${vec_GA}+{vec_GB}=-{vec_GC}$" 
+		kq3_F=f"${vec_GA}+{vec_GB}={vec_GC}$"	
+		HDG=f"${vec_GA}+{vec_GB}+{vec_GC}={vec(0)}\\Rightarrow {vec_GA}+{vec_GB}=-{vec_GC}$."
+
+	if chon==3:
+		kq3_T=f"* ${vec_MA}+{vec_MB}+{vec_MC}=3{vec_MG}$" 
+		kq3_F=f"${vec_MA}+{vec_MB}+{vec_MC}={random.choice([vec(0), f"2{vec_MG}", f"4{vec_MG}" ])}$"	
+		HDG=f"${vec_MA}+{vec_MB}+{vec_MC}=3{vec_MG}$."
+
+	if chon==4:
+		kq3_T=f"* ${vec_BG}+{vec_AB}+{vec_GC}={vec_AC}$" 
+		kq3_F=f"${vec_BG}+{vec_AB}+{vec_GC}={vec_CA}$"	
+		HDG=f"${vec_BG}+{vec_AB}+{vec_GC}={vec_AB}+{vec_BG}+{vec_GC}={vec_AC}$."
+
+	if chon==5:
+		kq3_T=f"* ${vec_BG}+{vec_AB}-{vec_CG}={vec_AC}$" 
+		kq3_F=f"${vec_BG}+{vec_AB}-{vec_CG}={vec_CA}$"	
+		HDG=f"${vec_BG}+{vec_AB}-{vec_CG}={vec_AB}+{vec_BG}+{vec_GC}={vec_AC}$."
+
+	if chon==6:
+		kq3_T=f"* ${vec_AB}-{vec_CA}=2{vec_AM}$" 
+		kq3_F=f"${vec_AB}-{vec_CA}={vec_AM}$"	
+		HDG=f"${vec_AB}-{vec_CA}={vec_AB}+{vec_AC}=2{vec_AM}$."
+
+	if chon==7:
+		kq3_T=f"* ${vec_GB}+{vec_GC}=2{vec_GM}$" 
+		kq3_F=f"${vec_GB}+{vec_GC}={random.choice([3,4,phan_so(1/2)])}{vec_GM}$"	
+		HDG=f"${vec_GB}+{vec_GC}=2{vec_GM}$."
+
+	if chon==8:
+		kq3_T=f"* ${vec_GB}+{vec_GC}={phan_so(2/3)}{vec_AM}$" 
+		kq3_F=f"${vec_GB}+{vec_GC}={random.choice([3,phan_so(1/3),phan_so(1/2)])}{vec_AM}$"	
+		HDG=f"${vec_GB}+{vec_GC}=2{vec_GM}={phan_so(2/3)}{vec_AM}$."
+
 	kq3=random.choice([kq3_T, kq3_F])
-	HDG=f""
+
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"* "
-	kq4_F=f" " 
+	chon=random.randint(1,10)
+	
+	if chon==1:
+		kq4_T=f"* $|{vec_AB}+{vec_AC}|={latex(a*sqrt(3))}$"
+		kq4_F=f"$|{vec_AB}+{vec_AC}|={latex(a*sqrt(3)/2)}$" 
+		
+		HDG=f"$|{vec_AB}+{vec_AC}|=|2{vec_AM}|=2.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3))}$."
+	
+	if chon==2:
+		kq4_T=f"* $|{vec_GB}+{vec_GC}|={latex(a*sqrt(3)/3)}$"
+		kq4_F=f"$|{vec_GB}+{vec_GC}|={latex(a*sqrt(3)/2)}$" 
+		
+		HDG=f"$|{vec_GB}+{vec_GC}|=|2{vec_GM}|=2.{phan_so(1/3)}.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/3)}$."
+
+	if chon==3:
+		kq4_T=f"* $|{vec_GB}-{vec_GC}+{vec_BA}|={a}$"
+		kq4_F=f"$|{vec_GB}-{vec_GC}+{vec_BA}|={a+random.randint(1,2)}$" 
+		
+		HDG=f"$|{vec_GB}-{vec_GC}+{vec_BA}|=|{vec_CB}+{vec_BA}|=|{vec_CA}|={a}$."
+
+	if chon==4:
+		kq4_T=f"* $|{vec_GB}+{vec_MC}|={latex(a*sqrt(3)/6)}$"
+		kq4_F=f"$|{vec_GB}+{vec_MC}|={random.choice([latex(a*sqrt(3)/3), latex(a*sqrt(3)/4) ])}$" 
+		
+		HDG=f"$|{vec_GB}+{vec_MC}|=|{vec_GB}+{vec_BM}|=|{vec_GM}|={phan_so(1/3)}.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/6)}$."
+
+	if chon==5:
+		kq4_T=f"* $|{vec_GC}+{vec_MB}|={latex(a*sqrt(3)/6)}$"
+		kq4_F=f"$|{vec_GC}+{vec_MB}|={random.choice([latex(a*sqrt(3)/3), latex(a*sqrt(3)/4) ])}$" 
+		
+		HDG=f"$|{vec_GC}+{vec_MB}|=|{vec_GC}+{vec_CM}|=|{vec_GM}|={phan_so(1/3)}.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/6)}$."
+
+	if chon==6:
+		kq4_T=f"* $|{vec_AB}+{vec_MC}|={latex(a*sqrt(3)/2)}$"
+		kq4_F=f"$|{vec_AB}+{vec_MC}|={random.choice([latex(a*sqrt(3)/3), latex(a*sqrt(3)/4) ])}$" 
+		
+		HDG=f"$|{vec_AB}+{vec_MC}|=|{vec_AB}+{vec_BM}|=|{vec_AM}|={a}.{latex(sqrt(3)/2)}$."
+
+	if chon==7:
+		kq4_T=f"* $|{vec_AB}-{vec_GB}|={latex(a*sqrt(3)/3)}$"
+		kq4_F=f"$|{vec_AB}-{vec_GB}|={random.choice([latex(a*sqrt(3)/2), latex(a*sqrt(3)/4) ])}$" 
+		
+		HDG=f"$|{vec_AB}-{vec_GB}|=|{vec_AB}+{vec_BG}|=|{vec_AG}|={phan_so(2/3)}.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/3)}$."
+
+	if chon==8:
+		kq4_T=f"* $|{vec_GC}-{vec_BM}|={latex(a*sqrt(3)/6)}$"
+		kq4_F=f"$|{vec_GC}-{vec_BM}|={random.choice([latex(a*sqrt(3)/3), latex(a*sqrt(3)/4) ])}$" 
+		
+		HDG=f"$|{vec_GC}-{vec_BM}|=|{vec_GC}+{vec_CM}|=|{vec_GM}|={phan_so(1/3)}.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3)/6)}$."
+
+	if chon==9:
+		kq4_T=f"* $|{vec_AB}-{vec_CM}|={latex(a*sqrt(3)/2)}$"
+		kq4_F=f"$|{vec_AB}-{vec_CM}|={random.choice([latex(a*sqrt(3)/3), latex(a*sqrt(3)/4) ])}$" 
+		
+		HDG=f"$|{vec_AB}-{vec_CM}|=|{vec_AB}+{vec_BM}|=|{vec_AM}|={a}.{latex(sqrt(3)/2)}$."
+
+	if chon==10:
+		kq4_T=f"* $|{vec_AB}-{vec_CA}|={latex(a*sqrt(3))}$"
+		kq4_F=f"$|{vec_AB}-{vec_CA}|={latex(a*sqrt(3)/2)}$" 
+		
+		HDG=f"$|{vec_AB}-{vec_CA}|=|{vec_AB}+{vec_AC}|=|2{vec_AM}|=2.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3))}$."
+	
+
+
+
 	kq4=random.choice([kq4_T, kq4_F])
-	HDG=f""
 	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq4==kq4_F:
 		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"

@@ -9040,7 +9040,7 @@ def ckz_L12C4_B5_19():
     noi_dung_loigiai=(
     f"Xét phương trình:\n\n ${latex(expand(f))}={latex(expand(g))}\\Leftrightarrow {latex(expand(f-g))}=0 \\Leftrightarrow x={x_1},x={x_2}$.\n\n"
     f" Thể tích của khối tròn xoay:\n\n $V=\\pi{tphan(x_1,x_2)}|({latex(expand(f))})^2-({latex(g)})^2|{d_x}={phan_so(abs(integrate(f**2-g**2,(x,x_1,x_2))))}\\pi$.\n\n"
-    f" Suy ra $\\dfrac{{V}}{{{15}}}={dap_an}$."
+    f" Suy ra $\\dfrac{{V}}{{{t}}}={dap_an}$."
     )    
         
     debai_word= f"{noi_dung}"

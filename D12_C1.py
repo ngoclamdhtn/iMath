@@ -338,7 +338,7 @@ def prt_34_L12_C1_B1_01():
 			kq=f'$({int(x_0+random.randint(1,4))};+\\infty)$'
 			kq2=f'$(-\\infty;+\\infty)$'
 			kq3=f'$(-\\infty;{int(x_0+random.randint(1,4))})$'
-			kq4=f'$({int(x_0-random.randint(1,4))}; \\infty)$'				
+			kq4=f'$({int(x_0-random.randint(1,4))};+\\infty)$'				
 			noi_dung_loigiai=f"Hàm số đã cho đồng biến trên khoảng {kq}."
 
 		if a*d-b*c<0:
@@ -346,7 +346,7 @@ def prt_34_L12_C1_B1_01():
 			kq=f'$({int(x_0+random.randint(1,4))};+\\infty)$'
 			kq2=f'$(-\\infty;+\\infty)$'
 			kq3=f'$(-\\infty;{int(x_0+random.randint(1,4))})$'
-			kq4=f'$({int(x_0-random.randint(1,4))}; \\infty)$'				
+			kq4=f'$({int(x_0-random.randint(1,4))}; +\\infty)$'				
 			noi_dung_loigiai=f"Hàm số đã cho nghịch biến trên khoảng {kq}."
 		code_hinh=code_bbt_phanthucbac1(a,b,c,d)
 	if chon==3:
@@ -7867,13 +7867,15 @@ def prt_34_L12_C1_B2_23():
 
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)	
+
 	
 	chon=random.randint(1,2)
+	chon=2
 	if chon==1:
 		kq=f"{x_1:.1f}".replace(".",",")
 		noi_dung = (f"Từ một tấm bìa hình chữ nhật có chiều rộng ${{{r}}}$cm và chiều dài ${{{d}}}$ cm như hình a,"
 			f" người ta cắt ở bốn góc bốn hình vuông có cạnh ${{x}}$ với ${a} \\leq x \\leq {b}$ và gấp lại để tạo thành chiếc hộp có dạng hình hộp chữ nhật không nắp như hình b."
-		f" Tìm $x$ để thể tích chiếc hộp là lớn nhất (kết quả làm tròn đến hàng phần mười).")
+		f" Tìm ${{x}}$ để thể tích chiếc hộp là lớn nhất (kết quả làm tròn đến hàng phần mười).")
 
 		noi_dung_loigiai=(f"Thể tích chiếc hộp là $V(x)=x({r}-2 x)({d}-2 x)={latex(expand(f))}$ với ${a} \\leq x \\leq {b}$.\n\n"
 			f"Ta có: $V'={latex(expand(f_dh))}$.\n\n"
@@ -7883,10 +7885,12 @@ def prt_34_L12_C1_B2_23():
 			)
 	
 	if chon==2:
-		kq=f"{round_half_up(f.subs(x,x_1))}"
+		V=f.subs(x,x_1)
+
+		kq=f"{round_half_up(V,0):.0f}".replace(".",",")
 		noi_dung = (f"Từ một tấm bìa hình chữ nhật có chiều rộng ${{{r}}}$cm và chiều dài ${{{d}}}$ cm như hình a,"
 			f" người ta cắt ở bốn góc bốn hình vuông có cạnh ${{x}}$ với ${a} \\leq x \\leq {b}$ và gấp lại để tạo thành chiếc hộp có dạng hình hộp chữ nhật không nắp như hình b."
-		f" Tìm thể tích lớn nhất của chiếc hộp có thể tạo ra (kết quả làm tròn đến hàng đơn vị).")
+		f" Tính thể tích lớn nhất của chiếc hộp có thể tạo ra (kết quả làm tròn đến hàng đơn vị).")
 
 		noi_dung_loigiai=(f"Thể tích chiếc hộp là $V(x)=x({r}-2 x)({d}-2 x)={latex(expand(f))}$ với ${a} \\leq x \\leq {b}$.\n\n"
 			f"Ta có: $V'={latex(expand(f_dh))}$.\n\n"

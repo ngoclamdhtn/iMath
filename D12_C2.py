@@ -8472,7 +8472,6 @@ def mnj_34_jkl_L12_C2_B3_45():
 	ten=random.choice([
 		["S","A","B","C","D"],
 		["S","C","D","E","F"],
-		["S","E","F","G","H"],
 		["S","M","N","P","Q"],
 ])
 	S,A,B,C,D=ten
