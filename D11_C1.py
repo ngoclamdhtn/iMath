@@ -6664,7 +6664,7 @@ def ngh_kjg_L11_C1_B5_15():
         x_2=sol[0]
 
         dem=0
-        for i in range(int(-b*pi)-1,int(b*pi+1)):
+        for i in range(int(x_1)-1,int(x_2)+1):
             if x_1<=i and i<=x_2:
                 dem+=1
 
@@ -6686,7 +6686,7 @@ def ngh_kjg_L11_C1_B5_15():
         x_2=sol[0]
 
         dem=0
-        for i in range(int(-b*pi)-1,int(b*pi+1)):
+        for i in range(int(x_1)-1,int(x_2)+1):
             if x_1<i and i<x_2:
                 dem+=1
 

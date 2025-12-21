@@ -1000,7 +1000,7 @@ def ytrzz_L12_C3_B2_01():
 	dap_an=my_module.tra_ve_dap_an(list_PA) 
 	debai= f"{noi_dung}\n"\
 	f"{file_name}\n" \
-	f" Tính phương sai của mẫu số liệu ghép nhóm trên.\n"
+	f" Tính phương sai của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần trăm).\n"
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 
 	
@@ -1267,7 +1267,7 @@ def ytrzz_L12_C3_B2_03():
 	tong_giatri_x_tan_so = sum(tich)
 
 
-	dap_an=f"{round_half_up(variance,2):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(variance,1):.1f}".replace(".",",")
 
 
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)

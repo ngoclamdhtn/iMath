@@ -7105,78 +7105,101 @@ def prt_34_L12_C1_B2_16():
 	x = sp.symbols('x')
 	chon=random.randint(1,3)
 	#y=e^x.(ax^2+bx+c)
+	
 	if chon==1:
-		x_1=random.randint(-4,2)
-		x_2=x_1+random.randint(1,2)
-		b=-2-x_1-x_2
-		c=x_1*x_2-b
-		f=exp(x)*(x**2+b*x+c)
-		g=diff(f,x)
-		
-		# Tạo đoạn [m,n]
-		m= random.randint(x_1-1,x_1)
-		n= random.randint(x_2,x_2+1)
+		while True:
+			x_1=random.randint(-4,2)
+			x_2=x_1+random.randint(1,2)
+			b=-2-x_1-x_2
+			c=x_1*x_2-b
+			f=exp(x)*(x**2+b*x+c)
+			g=diff(f,x)
+			
+			# Tạo đoạn [m,n]
+			m= random.randint(x_1-1,x_1)
+			n= random.randint(x_2,x_2+1)
 
-		#Tính giá trị tại các điểm
-		y_m=f.subs(x,m)
-		y_1=f.subs(x,x_1)
-		y_2=f.subs(x,x_2)
-		y_n=f.subs(x,n)
+			#Tính giá trị tại các điểm
+			y_m=f.subs(x,m)
+			y_1=f.subs(x,x_1)
+			y_2=f.subs(x,x_2)
+			y_n=f.subs(x,n)
 
-		giatri_max=max(y_m,y_1,y_2,y_n)
-		giatri_min=min(y_m,y_1,y_2,y_n)
+			giatri_max=max(y_m,y_1,y_2,y_n)
+			giatri_min=min(y_m,y_1,y_2,y_n)
+			if all([-5<giatri_max<99, -5<giatri_min<99]):
+				break
 
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":
 			kq_latex=latex(giatri_max)	
-			kq=f"{round_half_up(giatri_max,1)}".replace(".",",")
-		else:
-			kq_latex=latex(giatri_min)		
-			kq=f"{round_half_up(giatri_min,1)}".replace(".",",")
+			giatri_max=float(max(y_m,y_1,y_2,y_n))
+			if giatri_max.is_integer():
+				kq=int(giatri_max)
+				noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$."
 
-		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."
+			else:
+				kq=f"{round_half_up(giatri_max,1):.1f}".replace(".",",")
+				noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."
+			
+		else:
+			kq_latex=latex(giatri_min)
+			giatri_min=float(min(y_m,y_1,y_2,y_n))			
+			if giatri_min.is_integer():
+				kq=int(giatri_min)
+				noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$."
+
+			else:
+				kq=f"{round_half_up(giatri_min,1):.1f}".replace(".",",")
+				noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười)."
 		
+
 		noi_dung_loigiai=f"$y'={latex(g)}$.\n\n"\
 		f"$y'=0\\Rightarrow e^x({latex(x**2+(b+2)*x+b+c)})=0 \\Rightarrow x={x_1},x={x_2}$.\n\n"\
 		f"$f({m})={latex(y_m)}, f({x_1})={latex(y_1)},f({x_2})={latex(y_2)}, f({n})={latex(y_n)}$.\n\n"\
 		f"Vậy {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ bằng ${kq_latex}={kq}$."
 
 	#y=e^(ax^2+bx+c)
+	
 	if chon==2:
-		a = random.choice([random.randint(-2, -1), random.randint(1, 2)])
-		b=random.choice([2,4,-2,-4])*a
-		c=random.randint(-3,3)
-		
-		f=exp(a*x**2+b*x+c)
-		g=diff(f,x)
-		x_0=int(-b/(2*a))
-		
-		# Tạo đoạn [m,n]
-		m= random.randint(int(x_0)-1,int(x_0))
-		n= int(x_0)+1
+		while True:
+			a = random.choice([random.randint(-2, -1), random.randint(1, 2)])
+			b=random.choice([2,4,-2,-4])*a
+			c=random.randint(-3,3)
+			
+			f=exp(a*x**2+b*x+c)
+			g=diff(f,x)
+			x_0=int(-b/(2*a))
+			
+			# Tạo đoạn [m,n]
+			m= random.randint(int(x_0)-1,int(x_0))
+			n= int(x_0)+1
 
-		y_m=f.subs(x,m)
-		y_0=f.subs(x,x_0)
-		y_n=f.subs(x,n)
+			y_m=f.subs(x,m)
+			y_0=f.subs(x,x_0)
+			y_n=f.subs(x,n)
 
-		giatri_max=max(y_m,y_0,y_n)
-		giatri_min=min(y_m,y_0,y_n)
+			giatri_max=max(y_m,y_0,y_n)
+			giatri_min=min(y_m,y_0,y_n)
+			if all([1<giatri_max<99, 1<giatri_min<99]):
+				break
 
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":		
-			kq=f"{round_half_up(giatri_max,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_max,1):.1f}".replace(".",",")
 			kq_latex=latex(giatri_max)
 		else:		
-			kq=f"{round_half_up(giatri_min,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_min,1):.1f}".replace(".",",")
 			kq_latex=latex(giatri_min).replace(".",",")
 
-		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$.\n"	
+		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười).\n"	
 		noi_dung_loigiai=f"$y'={latex(g)}$.\n\n"\
 		f"$y'=0 \\Rightarrow x={x_0}$.\n\n"\
 		f"$f({m})={latex(y_m)}, f({x_0})={latex(y_0)}, f({n})={latex(y_n)}$.\n\n"\
 		f"Vậy {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ bằng ${kq_latex}={kq}$."
 
 	#y=ln(ax^2+bx+c)
+	
 	if chon==3:
 		a = random.randint(1,4)
 		b=random.choice([random.randint(-4, -1), random.randint(1, 4)])
@@ -7202,12 +7225,13 @@ def prt_34_L12_C1_B2_16():
 		gia_tri=random.choice(["giá trị lớn nhất","giá trị nhỏ nhất"])
 		if gia_tri=="giá trị lớn nhất":		
 			kq_latex=latex(giatri_max)
-			kq=f"{round_half_up(giatri_max,1)}".replace(".",",")
+
+			kq=f"{round_half_up(giatri_max,1):.1f}".replace(".",",")
 		else:		
 			kq_latex=latex(giatri_min)
-			kq=f"{round_half_up(giatri_min,1)}".replace(".",",")
+			kq=f"{round_half_up(giatri_min,1):.1f}".replace(".",",")
 
-		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$.\n".replace("log","ln")	
+		noi_dung = f"Tìm {gia_tri} của hàm số $y={latex(f)}$ trên đoạn ${{[{m};{n}]}}$ (kết quả làm tròn đến hàng phần mười).".replace("log","ln")	
 		noi_dung_loigiai=f"$y'={latex(g)}$.\n\n"\
 		f"$y'=0 \\Rightarrow x={phan_so(x_0)}$.\n\n"\
 		f"$f({m})={latex(y_m)}, f({phan_so(x_0)})={latex(y_0)}, f({n})={latex(y_n)}$.\n\n"\
