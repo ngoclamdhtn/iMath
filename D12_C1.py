@@ -16130,10 +16130,10 @@ def prt_34_L12_C1_B5_25():
 f" Sau khi tham khảo thị trường, người quản lý thấy rằng nếu từ mức giá"
 f" {gia_hien_tai} đồng mà cứ tăng giá thêm 1000 đồng thì mỗi tháng sẽ bán ít hơn {sl_giam} chiếc."
 f" Biết vốn sản xuất một chiếc khăn không thay đổi là {von} đồng."
-f" Tìm số tiền cần tăng để lợi nhuận là cao nhất."
+f" Tìm số tiền cần tăng (đơn vị: ngàn đồng) để lợi nhuận là cao nhất."
 
 	)
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 	noi_dung_loigiai=(
 	f" Gọi số tiền cần tăng giá mỗi chiếc khăn là ${{x}}$ (nghìn đồng).\n\n"
@@ -16186,10 +16186,10 @@ def prt_34_L12_C1_B5_26():
 	f" mỗi ngày bán trung bình được {sl_ban_hien_tai} cốc. Sau khi khảo sát thị trường, người quản lý thấy rằng"
 f" nếu tăng giá mỗi cốc thêm 2000 đồng thì thì lượng tiêu thụ giảm {sl_giam} cốc/ngày."
 f" Biết chi phí cho mỗi cốc cà phê là {von} đồng."
-f" Hỏi quán nên tăng giá bao nhiêu để lợi nhuận mỗi ngày là lớn nhất?"
+f" Hỏi quán nên tăng giá bao nhiêu (đơn vị: ngàn đồng) để lợi nhuận mỗi ngày là lớn nhất?"
 
 	)
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 	noi_dung_loigiai=(
 	f" Gọi số tiền cần tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng).\n\n"
@@ -16242,10 +16242,10 @@ def prt_34_L12_C1_B5_27():
 	f" trung bình mỗi suất có {sl_ban_hien_tai} khán giả. Kết quả khảo sát thị trường cho thấy,"
 f" nếu tăng giá vé thêm 2000 đồng thì số khán giả giảm {sl_giam} người."
 f" Biết chi phí phục vụ cho mỗi khán giả cố định là {von} đồng."
-f" Hãy xác định số tiền cần tăng để lợi nhuận từ một suất chiếu đạt mức cao nhất."
+f" Hãy xác định số tiền cần tăng (đơn vị: ngàn đồng) để lợi nhuận từ một suất chiếu đạt mức cao nhất."
 
 	)
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 	noi_dung_loigiai=(
 	f" Gọi số tiền cần tăng giá mỗi vé là ${{x}}$ (nghìn đồng).\n\n"
@@ -16298,10 +16298,10 @@ def prt_34_L12_C1_B5_28():
 	f" trung bình có {sl_ban_hien_tai} khách/ngày. Ban quản lý dự định tăng giá vé, khảo sát cho thấy nếu giá vé tăng thêm"
 f" 3000 đồng thì số lượng khách giảm {sl_giam} người/ngày."
 f" Biết chi phí phục vụ cho mỗi khách là {von} đồng."
-f" Hãy xác định số tiền cần tăng để lợi nhuận trong ngày là cao nhất."
+f" Hãy xác định số tiền cần tăng (đơn vị: ngàn đồng)để lợi nhuận trong ngày là cao nhất."
 
 	)
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 	noi_dung_loigiai=(
 	f" Gọi số tiền cần tăng giá mỗi vé là ${{x}}$ (nghìn đồng).\n\n"
@@ -16408,7 +16408,7 @@ def prt_34_L12_C1_B5_30():
 		if all([int(x_0)==x_0, x_0>=2, x_0<=10]):
 			break
 
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 
 	noi_dung = (
@@ -16416,7 +16416,7 @@ def prt_34_L12_C1_B5_30():
 		f" mỗi ngày bán trung bình được {sl_ban_hien_tai} cốc. Sau khi khảo sát thị trường, người quản lý thấy rằng"
 		f" nếu tăng giá mỗi cốc thêm 2000 đồng thì thì lượng tiêu thụ giảm {sl_giam} cốc/ngày."
 		f" Biết chi phí cho mỗi cốc cà phê là {von} đồng."
-		f" Gọi số tiền cần tăng giá mỗi cốc cà phê là ${{x}}$ (nghìn đồng).\n\n"
+		f" Gọi số tiền cần tăng giá mỗi cốc cà phê là ${{x}}$ (đơn vị: nghìn đồng).\n\n"
 	f" Xét tính đúng-sai của các khẳng định sau:"
 	)	
 	
@@ -16539,7 +16539,7 @@ def prt_34_L12_C1_B5_31():
 			break
 
 
-	dap_an=f"{int(x_0)}000"
+	dap_an=f"{int(x_0)}"
 
 	noi_dung = (
 	f"Một xưởng sản xuất bán áo thun với giá {gia_hien_tai} một chiếc,"

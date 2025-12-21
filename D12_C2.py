@@ -9461,3 +9461,546 @@ def mnj_34_jkl_L12_C2_B3_53():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C2_B3_54]-SA-M3. Tìm vị trí mặt đất để tổng khoảng cách đến 2 khí cầu nhỏ nhất
+def mnj_34_jkl_L12_C2_B3_54():
+	while True:
+		a1=random.randint(10,30)/10
+		a2=random.randint(10,30)/10
+		a3=random.randint(4,9)/10
+
+		b1=-random.randint(10,30)/10
+		b2=-random.randint(10,30)/10
+		b3=random.randint(4,9)/10
+		if all([a1!=b1, a2!=b2, a3!=b3]):
+			break
+
+	s_a1=f"{round_half_up(a1,1):.1f}".replace(".",",")
+	s_a2=f"{round_half_up(a2,1):.1f}".replace(".",",")
+	s_a3=f"{round_half_up(a3,1):.1f}".replace(".",",")
+
+	s_b1=f"{round_half_up(abs(b1),1):.1f}".replace(".",",")
+	s_b2=f"{round_half_up(abs(b2),1):.1f}".replace(".",",")
+	s_b3=f"{round_half_up(abs(b3),1):.1f}".replace(".",",")
+	A,B,C="A","B","C"
+
+
+	noi_dung = (
+	f"Hai chiếc khinh khí cầu bay lên từ cùng một địa điểm."
+	f" Chiếc thứ nhất nằm cách điểm xuất phát ${{{s_a1}}}$ km về phía nam và ${{{s_a2}}}$ km về phía đông, đồng thời cách mặt đất ${{{s_a3}}}$ km."
+	f" Chiếc thứ hai nằm cách điểm xuất phát ${{{s_b1}}}$ km về phía bắc và ${{{s_b2}}}$ km về phía tây, đồng thời cách mặt đất ${{{s_b3}}}$ km."
+	f" Người ta cần tìm một vị trí trên mặt đất để vị trí đặt một trạm liên lạc trên mặt đất sao cho tổng khoảng cách từ vị trí đó tới hai khinh khí cầu nhỏ nhất."
+	f" Giả sử vị trí trạm liên lạc cách địa điểm hai khinh khí cầu bay lên là ${{a}}$ km theo hướng nam và ${{b}}$ km theo hướng tây."
+	f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	c1,c2,c3=a1,a2,-a3
+	x_BC,y_BC,z_BC=c1-b1, c2-b2, c3-b3
+	t=-b3/z_BC
+	a,b = t*x_BC+b1, t*y_BC+b2
+	dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")
+	noi_dung_loigiai=(
+	f"Chọn hệ trục toạ độ ${{Oxyz}}$ với gốc ${{O}}$ đặt tại điểm xuất phát của hai khinh khí cầu, mặt phẳng $(Oxy)$ trùng với mặt đất,"
+	f" trục ${{Ox}}$ hướng về phía nam, trục $Oy$ hướng về phía đông và trục $Oz$ hướng thẳng đứng lên trời, đơn vị đo lấy theo kilômét.\n\n"
+	f'Chiếc khinh khí cầu thứ nhất và thứ hai ở vị trí ${{A,B}}$.\n\n'
+	f'Ta có: $A\\left({phan_so(a1)};{phan_so(a2)};{phan_so(a3)}\\right), B\\left({phan_so(b1)};{phan_so(b2)};{phan_so(b3)}\\right)$.\n\n'
+	f'Gọi ${{C}}$ là điểm đối xứng với ${{A}}$ qua mặt phẳng $(Oxy)$. Suy ra $C\\left({phan_so(c1)};{phan_so(c2)};{phan_so(c3)}\\right)$.\n\n'
+	f"Gọi ${{I}}$ vị trí trạm liên lạc cần tìm thì $I=BC\\cap (Oxy)$.\n\n"
+	f"Gọi $I(a;b;0)$. Ta có:\n\n ${vec2(B,I)}=\\left(a+{phan_so(-b1)};b+{phan_so(-b2)};{phan_so(-b3)}\\right)$.\n\n"
+	f"${vec2(B,C)}=({phan_so(x_BC)};{phan_so(y_BC)};{phan_so(z_BC)})$.\n\n"
+	f"Ta có: $\\dfrac{{a+{phan_so(-b1)}}}{{{phan_so(x_BC)}}}=\\dfrac{{b+{phan_so(-b2)}}}{{{phan_so(y_BC)}}}=\\dfrac{{{phan_so(-b3)}}}{{{phan_so(z_BC)}}}$.\n\n"
+	f"Giải được: $a={phan_so(a)}; b={phan_so(b)}$. Suy ra $a+b={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C2_B3_55]-SA-M3. Tìm trọng tâm tam giác của chiếc hộp có S_tp nhỏ nhất.
+def mnj_34_jkl_L12_C2_B3_55():
+	h=random.randint(2,6)
+	V=random.randint(6,9)*10*h
+	a=2*h
+	b=int(V/h)
+	c=a*b
+	x_0=sqrt(c/a)
+	y_0=b/x_0
+	s_x, s_y=latex(nsimplify(x_0)), latex(nsimplify(y_0))
+
+	chon=random.randint(1,2)
+
+	if chon==1:
+		x_G,y_G,z_G=x_0/3, y_0/3, h/3
+
+		noi_dung = (
+		f"Người ta muốn chế tạo một chiếc hộp hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ bằng tôn có nắp, có thể tích ${{{V}}}$ cm$^3$ với yêu cầu dùng ít vật liệu nhất."
+		f" Biết chiều cao của hình hộp chữ nhật là ${{{h}}}$ cm."
+		f" Chọn hệ trục tọa độ ${{Oxyz}}$ sao cho điểm ${{A}}$ trùng với gốc tọa độ ${{O}}$, vectơ ${vec2("A","B")}$, ${vec2("A","D")}$, ${vec2("A","A'")}$"
+		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BD}}$. Tính $x+y+z$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(x_G+y_G+z_G,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi $x, y (x,y>0)$ là chiều dài và chiều rộng của hình chữ nhật ${{ABCD}}$.\n\n"
+		f"$V=x.y.{h}={V}\\Rightarrow xy={phan_so(b)} \\Rightarrow y=\\dfrac{{{phan_so(b)}}}{{x}}$.\n\n"
+		f"Diện tích toàn phần của chiếc hộp:\n\n"
+		f"$S={a}x+{a}y+2xy={a}x+{a}.\\dfrac{{{b}}}{{x}}+{2*b}={a}x+\\dfrac{{{c}}}{{x}}+{2*b}$.\n\n"
+		f"$S(x)$ nhỏ nhất khi $x={s_x} \\Rightarrow y={s_y}$.\n\n"
+		f"Giả sử $A'(0;0;{h}), B({s_x};0;0), D(0;{s_y};0)$.\n\n"
+		f"Tọa độ trọng tâm của tam giác ${{A'BD}}$ là $G\\left({latex(nsimplify(x_G))};{latex(nsimplify(y_G))};{latex(nsimplify(z_G))}\\right)$.\n\n"
+		f"$a+b+b={dap_an}$."
+		)	
+	
+	if chon==2:
+		x_G,y_G,z_G=2*x_0/3, y_0/3, h/3
+
+		noi_dung = (
+		f"Người ta muốn chế tạo một chiếc hộp hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ bằng tôn có nắp, có thể tích ${{{V}}}$ cm$^3$ với yêu cầu dùng ít vật liệu nhất."
+		f" Biết chiều cao của hình hộp chữ nhật là ${{{h}}}$ cm."
+		f" Chọn hệ trục tọa độ $Oxyz$ sao cho điểm ${{A}}$ trùng với gốc tọa độ $O$, vectơ ${vec2("A","B")}$, ${vec2("A","D")}$, ${vec2("A","A'")}$"
+		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BC}}$. Tính $x+y+z$ (kết quả làm tròn đến hàng phần mười)."
+		)
+		dap_an=f"{round_half_up(x_G+y_G+z_G,1):.1f}".replace(".",",")
+
+		noi_dung_loigiai=(
+		f"Gọi $x, y (x,y>0)$ là chiều dài và chiều rộng của hình chữ nhật ${{ABCD}}$.\n\n"
+		f"$V=x.y.{h}={V}\\Rightarrow xy={phan_so(b)} \\Rightarrow y=\\dfrac{{{phan_so(b)}}}{{x}}$.\n\n"
+		f"Diện tích toàn phần của chiếc hộp:\n\n"
+		f"$S={a}x+{a}y+2xy={a}x+{a}.\\dfrac{{{b}}}{{x}}+{2*b}={a}x+\\dfrac{{{c}}}{{x}}+{2*b}$.\n\n"
+		f"$S(x)$ nhỏ nhất khi $x={s_x} \\Rightarrow y={s_y}$.\n\n"
+		f"Giả sử $A'(0;0;{h}), B({s_x};0;0), C({s_x};{s_y};0)$.\n\n"
+		f"Tọa độ trọng tâm của tam giác ${{A'BC}}$ là $G\\left({latex(nsimplify(x_G))};{latex(nsimplify(y_G))};{latex(nsimplify(z_G))}\\right)$.\n\n"
+		f"$a+b+b={dap_an}$."
+		)
+
+
+	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C2_B3_56]-SA-M3. Tìm vị trí tháp viễn thông có tổng k.cách đến 3 tòa nhà nhỏ nhất.
+def mnj_34_jkl_L12_C2_B3_56():
+	a=2*random.randint(2,6)
+	b1,b2,b3=a,0,0
+	c1,c2,c3=int(a/2),a*sqrt(3)/2,0
+
+
+	noi_dung = (
+	f"Một công ty viễn thông đang lên kế hoạch xây dựng một tháp viễn thông tại một thành phố để cung cấp dịch vụ tốt hơn."
+	f" Công ty cần xác định vị trí của tháp sao cho có thể phủ sóng hiệu quả đến ba toà nhà quan trọng trong thành phố."
+	f" Giả sử các toà nhà này được đặt tại các vị trí có toạ độ như sau: toà nhà $A(0;0;0)$; toà nhà $B({b1};0;0)$; toà nhà $C({c1};{latex(c2)};0)$. Tháp viễn thông phải đặt ở vị trí sao cho tổng khoảng cách từ tháp đến ba toà nhà là nhỏ nhất. Tính tổng khoảng cách từ vị trí của tháp đến ba toà nhà (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(a*sqrt(3),1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Vì $AB=AC=BC={b1}$ nên tam giác ${{ABC}}$ đều.\n\n"
+	f"Vị trí của tháp viễn thông thỏa mã là trọng tâm ${{G}}$ của tam giác ${{ABC}}$.\n\n"
+	f"Tổng khoảng cách từ ${{G}}$ đến các điểm ${{A,B,C}}$ là:\n\n"
+	f"$GA+GB+GC=3GA=3.{phan_so(2/3)}.{a}.{latex(sqrt(3)/2)}={latex(a*sqrt(3))}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C2_B3_57]-SA-M3. Tìm vị trí chim bói cá chạm mặt nước
+def mnj_34_jkl_L12_C2_B3_57():
+	code_hinh=(f" \\begin{{tikzpicture}}[line join=round, line cap=round,scale=1,transform shape, >=stealth]\n\
+	\\definecolor{{columbiablue}}{{rgb}}{{0.61, 0.87, 1.0}}%màu nước\n\
+	\\definecolor{{arsenic}}{{rgb}}{{0.23, 0.27, 0.29}}%màu mỏ\n\
+	\\definecolor{{antiquewhite}}{{rgb}}{{0.98, 0.92, 0.84}}%màu trắng\n\
+	\\definecolor{{cadmiumorange}}{{rgb}}{{0.93, 0.53, 0.18}}%lông cam\n\
+	\\definecolor{{coolblack}}{{rgb}}{{0.0, 0.18, 0.39}}%cánh đậm\n\
+	\\definecolor{{brandeisblue}}{{rgb}}{{0.0, 0.44, 1.0}}%màu xanh đầu\n\
+	\\definecolor{{darkcoral}}{{rgb}}{{0.8, 0.36, 0.27}}%màu chân\n\
+	\n\
+	%---------màu vẽ cá\n\
+	\\definecolor{{amber}}{{rgb}}{{1.0, 0.49, 0.0}}\n\
+	% \\clip (-3,-3.5) rectangle (3.5,3);\n\
+	\n\
+	\\tikzset{{san/.pic={{ \n\
+			\\path\n\
+			(-1.3,-1.5) coordinate (O)\n\
+			($(O)+(-142:2)$) coordinate (y)\n\
+			($(O)+(0:4.7)$) coordinate (x)\n\
+			($(O)+(90:3)$) coordinate (z)\n\
+			($(x)+(y)-(O)$) coordinate (t)\n\
+			\n\
+			(-.8,-2.2)coordinate (A)\n\
+			(1.6,0.8) coordinate (C)\n\
+			($(A)!.13!(C)$) coordinate (B)\n\
+			;\n\
+			\\fill[columbiablue] (O)--(x)--(t)--(y)--cycle;\n\
+			\n\
+			\\foreach\\p/\\g/\\t in {{x/-90/y, y/-90/x, z/0/z}}\n\
+			{{\n\
+				\\node at (\\p) [shift=(\\g:2mm)] {{\\tiny $\\t$}};\n\
+			}}\n\
+			\n\
+			\\foreach\\p/\\g in {{A/180,B/0,C/-50,O/-90}}\n\
+			%\\node at (\\p) [shift=(\\g:2mm)] {{\\tiny $\\p$}};\n\
+			{{\n\
+				\\draw[fill=black](\\p) circle (.5pt) +(\\g:2mm)node{{\\tiny $\\p$}};\n\
+			}}\n\
+			\n\
+			\\draw[->] (O)--(x) ;\n\
+			\\draw[->] (O)--(y);\n\
+			\\draw[->] (O)--(z);\n\
+			\\draw[dashed] (A)--(B);\n\
+			\\draw (B)--(C);\n\
+			%---------nước\n\
+			\\draw (-1,-1.7)\n\
+			..controls +(-120:.5) and +(-160:.5) ..(0,-2)\n\
+			(-.9,-1.9)\n\
+			..controls +(-70:.2) and +(-160:.2) ..(-.2,-1.9)\n\
+			(-.95,-1.8)\n\
+			..controls +(70:.5) and +(30:.5) ..(0,-1.9)\n\
+			(.1,-1.6)\n\
+			..controls +(-20:.2) and +(30:.2) ..(.2,-1.9)\n\
+			(-.7,-1.75)\n\
+			..controls +(-170:.2) and +(-160:.3) ..(-.5,-1.9)\n\
+			;\n\
+	}}}}\n\
+	\n\
+	\\path\n\
+	(0,0)pic[scale=1]{{san}}\n\
+	;\n\
+	\n\
+	\\tikzset{{chim_boi_ca/.pic={{\n\
+			%==============cánh trái\n\
+			\\draw[fill=coolblack] %(-1,1.1)..controls +(90:.3) and +(170:.3) ..\n\
+			(-.55,1.4)\n\
+			..controls +(110:.7) and +(100:.3) ..(-.9,1.8)\n\
+			..controls +(135:.3) and +(120:.3) ..(-1.2,1.8)\n\
+			..controls +(145:.25) and +(110:.25) ..(-1.45,1.7)\n\
+			..controls +(165:.15) and +(85:.15) ..(-1.75,1.63)\n\
+			..controls +(-165:.1) and +(85:.1) ..(-1.9,1.5)\n\
+			..controls +(165:.15) and +(85:.1) ..(-2.1,1.3)\n\
+			..controls +(-165:.1) and +(95:.1) ..(-2.2,1.1)\n\
+			..controls +(-160:.1) and +(95:.1) ..(-2.35,1)--(-1,1.1)\n\
+			;\n\
+			%======--------------------\n\
+			%Tô lông đầu\n\
+			\\def\\L{{\n\
+				(2,.84)\n\
+				..controls +(170:.2) and +(25:.3) ..(1,.65)\n\
+				..controls +(-145:.5) and +(40:.6) ..(.3,.4)\n\
+				..controls +(-140:.3) and +(-60:.3) ..(0,.6)\n\
+				..controls +(120:.3) and +(-50:.7) ..(-1,1.1)\n\
+				..controls +(90:.3) and +(170:.3) ..(-.55,1.4)%1\n\
+				..controls +(-40:.2) and +(140:.1) ..(-.25,1.2)\n\
+				..controls +(-70:.2) and +(-160:.35) ..(.15,.85)\n\
+				..controls +(75:.7) and +(135:.8) ..(1.9,1.3)--(2.1,1)--cycle\n\
+				;\n\
+			}}\n\
+			%\\draw[red]\\L;\n\
+			\\fill[brandeisblue] \\L;\n\
+			%==============================\n\
+			\\draw[fill=antiquewhite] (2,1.05)\n\
+			..controls +(165:.2) and +(-35:.2)..(1.7,1.15)\n\
+			..controls +(145:.2) and +(65:.2)..(1.2,1.15)\n\
+			..controls +(-60:.1) and +(165:.1)..(1.4,1)\n\
+			..controls +(-15:.2) and +(-145:.3)..cycle\n\
+			;\n\
+			\\draw[fill=arsenic] (1.6,1.2)\n\
+			..controls +(155:.18) and +(55:.15)..(1.23,1.17)\n\
+			..controls +(-75:.2) and +(-95:.2)..cycle\n\
+			;\n\
+			\\fill (1.44,1.14) circle(1mm);\n\
+			\n\
+			\\fill[cadmiumorange] (2,1.05)\n\
+			..controls +(165:.2) and +(-35:.2)..(1.7,1.15)\n\
+			..controls +(145:.2) and +(95:.3)..cycle\n\
+			;\n\
+			\\fill[cadmiumorange] (2,.84)\n\
+			..controls +(150:.2) and +(-25:.1) ..(1.7,1)\n\
+			..controls +(155:.2) and +(-50:.3) ..(1.2,1.08)\n\
+			..controls +(130:.2) and +(50:.2) ..(.75,1)\n\
+			..controls +(-130:.2) and +(-10:.2) ..(.21,1)\n\
+			..controls +(-120:.1) and +(70:.1) ..(.15,.84)\n\
+			..controls +(-20:.3) and +(-150:.3) ..(.8,.85)\n\
+			..controls +(-10:.3) and +(150:.5) ..(1.7,.85)\n\
+			..controls +(-10:.1) and +(150:.1) ..cycle\n\
+			;\n\
+			%==================\n\
+			%viền đen đầu\n\
+			\\def\\X{{\n\
+				(0,.6)\n\
+				..controls +(120:.3) and +(-50:.7) ..(-1,1.1)\n\
+				\n\
+				(-.55,1.4)%1\n\
+				..controls +(-40:.2) and +(140:.1) ..(-.25,1.2)\n\
+				..controls +(-70:.2) and +(-160:.35) ..(.15,.85)\n\
+				..controls +(75:.7) and +(135:.8) ..(1.9,1.3)\n\
+				;\n\
+			}}\n\
+			\\draw[black]\\X;\n\
+			%====================\n\
+			%Tô mỏ\n\
+			\\def\\N{{\n\
+				(1.9,1.3)\n\
+				..controls +(-35:.4) and +(140:.3) ..(3.4,.78)\n\
+				..controls +(-175:.2) and +(-10:.3) ..(2,.84)\n\
+				..controls +(150:.2) and +(-25:.1) ..(1.7,1)\n\
+				..controls +(20:.2) and +(175:.1) ..(2,1.05)\n\
+				..controls +(-35:.2) and +(155:.1) ..cycle\n\
+				;\n\
+			}}\n\
+			%\\draw[red]\\N;\n\
+			\\fill[arsenic] \\N;\n\
+			%Mỏ\n\
+			\\def\\M{{\n\
+				(1.9,1.3)\n\
+				..controls +(-35:.4) and +(140:.3) ..(3.4,.78)\n\
+				..controls +(-175:.2) and +(-10:.3) ..(2,.84)\n\
+				..controls +(170:.2) and +(25:.3) ..(1,.65)\n\
+				;\n\
+			}}\n\
+			\\draw[black]\\M;\n\
+			%==============================\n\
+			\n\
+			%================Cánh phải\n\
+			\\draw[fill=coolblack]\n\
+			%(-2.6,.95)\n\
+			%..controls +(-160:.2) and +(145:.3) ..(-1.6,.5)\n\
+			%..controls +(-35:.2) and +(145:.3) ..(-1,-.5)\n\
+			%..controls +(-35:.2) and +(-145:.2) ..\n\
+			(-.6,-.3)%3\n\
+			..controls +(-130:.5) and +(-10:.2) ..(-1,-.95)\n\
+			..controls +(170:.1) and +(-10:.15) ..(-1.2,-1.02)\n\
+			..controls +(170:.1) and +(-40:.15) ..(-1.45,-.95)\n\
+			..controls +(160:.1) and +(-80:.15) ..(-1.6,-.8)\n\
+			..controls +(140:.1) and +(-70:.15) ..(-1.75,-.65)\n\
+			..controls +(140:.1) and +(-70:.15) ..(-1.9,-.5)\n\
+			..controls +(160:.1) and +(-70:.15) ..(-2.05,-.35)\n\
+			..controls +(150:.1) and +(-70:.15) ..(-2.25,-.2)\n\
+			..controls +(-160:.1) and +(-20:.15) ..(-2.5,-.18)\n\
+			..controls +(160:.1) and +(-30:.15) ..(-2.75,-.16)\n\
+			..controls +(160:.1) and +(-60:.15) ..(-2.95,-.05)\n\
+			..controls +(160:.1) and +(-80:.15) ..(-3.2,.05)\n\
+			..controls +(160:.1) and +(-90:.15) ..(-3.35,.15)\n\
+			..controls +(160:.1) and +(-95:.15) ..(-3.55,.25)\n\
+			..controls +(-160:.2) and +(-145:.2) ..(-3.7,.35)\n\
+			..controls +(-160:.2) and +(-160:.4) ..(-3.7,.53)\n\
+			..controls +(-160:.2) and +(-160:.3) ..(-3.85,.65)\n\
+			..controls +(160:.5) and +(-170:.3) ..(-2.6,.95)\n\
+			..controls +(0:.5) and +(120:.3) ..(-.6,-.3)%3\n\
+			;\n\
+			%===================\n\
+			%===================\n\
+			\\fill[brandeisblue]\n\
+			(-.8,-1.1)%lông đuôi xanh\n\
+			..controls +(-80:.2) and +(140:.2) ..(-.5,-1.5)\n\
+			..controls +(-40:.2) and +(140:.4) ..(-.3,-2.5)\n\
+			..controls +(135:.7) and +(-85:.6) ..cycle\n\
+			;\n\
+			\\draw (-.3,-2.5)\n\
+			..controls +(135:.7) and +(-85:.6) ..(-.8,-1.1)%lông đuôi xanh\n\
+			;\n\
+			%=============đuôi\n\
+			\\draw[fill=brandeisblue] (-.45,-2.3)\n\
+			..controls +(-95:.2) and +(95:.2) ..(-.4,-2.8)\n\
+			--(-.32,-2.8)--(-.25,-2.2)\n\
+			(-.25,-2.2)--(-.32,-2.78)--(-.27,-2.78)--(-.16,-2.2)\n\
+			;\n\
+			%================\n\
+			%Tô lông cam\n\
+			\\def\\C{{\n\
+				(2,.84)\n\
+				..controls +(170:.2) and +(25:.3) ..(1,.65)\n\
+				..controls +(-145:.5) and +(40:.6) ..(.3,.4)\n\
+				..controls +(-140:.3) and +(-60:.3) ..(0,.6)\n\
+				..controls +(120:.3) and +(-50:.7) ..(-1,1.1)%2\n\
+				..controls +(130:.2) and +(20:.3) ..(-2.6,.95)\n\
+				..controls +(-160:.2) and +(145:.3) ..(-1.6,.5)\n\
+				..controls +(-35:.2) and +(145:.3) ..(-1,-.5)\n\
+				..controls +(-35:.2) and +(-145:.2) ..(-.6,-.3)%3\n\
+				..controls +(-135:.2) and +(100:.2) ..(-.8,-1.1)%lông đuôi xanh\n\
+				..controls +(-80:.2) and +(140:.2) ..(-.5,-1.5)\n\
+				..controls +(-40:.2) and +(140:.4) ..(-.3,-2.5)%đuôi dưới\n\
+				..controls +(40:.4) and +(-150:.5) ..(.5,-1.1)%chân\n\
+				..controls +(-20:.2) and +(160:.2) ..(.8,-1.15)\n\
+				..controls +(150:.1) and +(-70:.1) ..(.65,-.9)\n\
+				..controls +(110:.2) and +(-95:.8) ..(1.26,.6)\n\
+				..controls +(75:.1) and +(-160:.2) ..cycle\n\
+				;\n\
+			}}\n\
+			\n\
+			\\fill[cadmiumorange] \\C;\n\
+			\\draw[black]\\C;\n\
+			\n\
+			\\draw[black] (-1,1.1)\n\
+			..controls +(130:.2) and +(20:.3) ..(-2.6,.95)\n\
+			\n\
+			(-.6,-.3)%3\n\
+			..controls +(-135:.2) and +(100:.2) ..(-.8,-1.1)\n\
+			;\n\
+			\n\
+			%======================chân\n\
+			\\draw[fill=darkcoral]\n\
+			(.5,-1.1)\n\
+			..controls +(-20:.1) and +(170:.1) ..(1.5,-1.1)%chân\n\
+			..controls +(-10:.1) and +(-10:.3) ..(1.2,-1.2)\n\
+			;\n\
+			%móng 2\n\
+			\\draw (1.47,-1.15)%chân\n\
+			..controls +(-10:.1) and +(120:.1) ..(1.63,-1.25)\n\
+			;\n\
+			%---------------------\n\
+			\\draw[fill=darkcoral]\n\
+			(.7,-1.15)\n\
+			..controls +(40:.1) and +(170:.1) ..(1.3,-1.08)%chân\n\
+			..controls +(-10:.1) and +(-10:.1) ..(1.2,-1.2)\n\
+			..controls +(170:.1) and +(30:.1) ..(1,-1.2)\n\
+			;\n\
+			%móng 2\n\
+			\\draw (1.27,-1.15)%chân\n\
+			..controls +(-10:.1) and +(120:.1) ..(1.43,-1.25)\n\
+			;\n\
+			%------------------------\n\
+			\\draw[fill=darkcoral]\n\
+			(.25,-1.1)\n\
+			..controls +(-20:.2) and +(-170:.1) ..(.5,-1.1)%chân\n\
+			..controls +(-20:.2) and +(160:.2) ..(.8,-1.15)\n\
+			..controls +(-20:.2) and +(160:.2) ..(1.1,-1.2)%móng 1\n\
+			..controls +(-20:.1) and +(-50:.1) ..(1.03,-1.25)\n\
+			..controls +(130:.05) and +(-10:.05) ..(.8,-1.26)\n\
+			..controls +(170:.05) and +(10:.05) ..(.5,-1.28)\n\
+			..controls +(-150:.1) and +(-160:.15) ..(.3,-1.25)\n\
+			..controls +(160:.1) and +(-80:.1) ..(.1,-1.15)\n\
+			;\n\
+			%móng 1\n\
+			\\draw (1.1,-1.25)%móng 1\n\
+			..controls +(-20:.1) and +(95:.1) ..(1.2,-1.35)\n\
+			;\n\
+	}}}}\n\
+	%===========Vẽ cá\n\
+	\\tikzset{{ca/.pic={{\n\
+			%vây\n\
+			\\def\\V{{\n\
+				(-.35,.74)\n\
+				..controls +(120:.12) and +(40:.22) ..(-.7,.72)--cycle\n\
+				(-.7,.32)\n\
+				..controls +(-170:.1) and +(10:.1) ..(-.95,.3)\n\
+				..controls +(60:.1) and +(-140:.1) ..(-.85,.45)--(-.65,.4)--cycle\n\
+				(-.3,.32)\n\
+				..controls +(-170:.1) and +(10:.1) ..(-.45,.1)\n\
+				..controls +(-40:.1) and +(-110:.1) ..(-.1,.37)--cycle\n\
+				;\n\
+			}}\n\
+			\\fill[amber] \\V;\n\
+			\\draw\\V;\n\
+			\n\
+			%-----------------\n\
+			\\def\\C{{\n\
+				(-1.25,.83)\n\
+				..controls +(-45:.2) and +(130:.2) ..(-1,.58)\n\
+				..controls +(35:.2) and +(130:.52) ..(.05,.52)\n\
+				..controls +(-90:.1) and +(-110:.1) ..(.05,.52)--(.04,.44)\n\
+				..controls +(-150:.5) and +(-40:.2) ..(-1,.53)\n\
+				..controls +(-140:.1) and +(40:.1) ..(-1.3,.42)\n\
+				..controls +(60:.2) and +(-55:.2) ..cycle\n\
+				;\n\
+			}}\n\
+			\n\
+			\\fill[amber] \\C;\n\
+			\\draw\\C;\n\
+			%-----------------\n\
+			\\def\\Cn{{\n\
+				(-1,.57)\n\
+				..controls +(35:.1) and +(130:.4) ..(.01,.52)\n\
+				..controls +(-140:.4) and +(-40:.2) ..cycle\n\
+				;\n\
+			}}\n\
+			%\\draw[ecru!70!black]\\Cn;\n\
+			\\fill[amber!70] \\Cn;\n\
+			\\draw (-.3,.7)\n\
+			..controls +(-120:.1) and +(120:.2) ..(-.3,.34);\n\
+			\n\
+			\\draw[fill=white] (-.22,.55) circle (.08);\n\
+			\\draw[fill=black] (-.22,.55) circle (.048);\n\
+			\n\
+	}}}}\n\
+	\n\
+	\\path (-1,-2.5)pic[xscale=-.35,yscale=.35]{{ca}}\n\
+	(1.6,1)pic[xscale=-.15,yscale=.15,rotate=-40]{{chim_boi_ca}}; \n\
+\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+	while True:
+		a1=random.randint(10,30)/10
+		a2=random.randint(10,30)/10
+		a3=random.randint(4,9)/10
+
+		b1=random.randint(10,30)/10
+		b2=random.randint(10,30)/10
+		b3=-random.randint(4,9)/10
+		if all([a1!=b1, a2!=b2, a3!=b3]):
+			break
+
+	s_a1=f"{round_half_up(a1,1):.1f}".replace(".",",")
+	s_a2=f"{round_half_up(a2,1):.1f}".replace(".",",")
+	s_a3=f"{round_half_up(a3,1):.1f}".replace(".",",")
+
+	s_b1=f"{round_half_up(abs(b1),1):.1f}".replace(".",",")
+	s_b2=f"{round_half_up(abs(b2),1):.1f}".replace(".",",")
+	s_b3=f"{round_half_up(abs(b3),1):.1f}".replace(".",",")
+	A,B,C="B","B","A"
+
+
+	noi_dung = (
+	f"Với hệ trục tọa độ ${{Oxyz}}$ sao cho ${{O}}$ nằm trên mặt nước, mặt phẳng $(Oxy)$ là mặt nước, trục ${{Oz}}$ hướng lên trên (đơn vị đo: mét), một con chim bói cá đang ở vị trí ${{C}}$ cách mặt nước ${{{s_a3}}}$ m, cách mặt phẳng $(Oxz), (Oyz)$ lần lượt là ${{{s_a2}}}$ m và ${{{s_a1}}}$ m phóng thẳng xuống vị trí con cá, biết con cá ở vị trí ${{A}}$ cách mặt nước ${{{s_b3}}}$m, cách mặt phẳng $(Oxz), (Oyz)$ lần lượt là ${{{s_b2}}}$ m và ${{{s_b1}}}$ m. Điểm ${{B(a;b;c)}}$ là điểm chim bói cá tiếp xúc với mặt nước."
+	f" Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	x_AB,y_AB,z_AB=b1-a1, b2-a2, b3-a3
+	t=a3/z_AB
+	a,b = a1+t*x_AB, b1+t*y_AB
+	dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")
+	noi_dung_loigiai=(
+	f'Ta có: $C\\left({phan_so(a1)};{phan_so(a2)};{phan_so(a3)}\\right), A\\left({phan_so(b1)};{phan_so(b2)};{phan_so(b3)}\\right)$.\n\n'
+	f"$B=AC\\cap (Oxy)$.\n\n"
+	f"Gọi $B(a;b;0)$. Ta có:\n\n ${vec2("C","B")}=\\left(a-{phan_so(a1)};b-{phan_so(a2)};{phan_so(-a3)}\\right)$.\n\n"
+	f"${vec2("C","A")}=({phan_so(x_AB)};{phan_so(y_AB)};{phan_so(z_AB)})$.\n\n"
+	f"Ta có: $\\dfrac{{a+{phan_so(a1)}}}{{{phan_so(x_AB)}}}=\\dfrac{{b+{phan_so(a2)}}}{{{phan_so(y_AB)}}}=\\dfrac{{{phan_so(a3)}}}{{{phan_so(z_AB)}}}$.\n\n"
+	f"Giải được: $a={phan_so(a)}; b={phan_so(b)}$. Suy ra $a+b={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+

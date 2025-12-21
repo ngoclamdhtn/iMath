@@ -8858,6 +8858,22 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_54]-SA-M3. Tìm vị trí mặt đất để tổng khoảng cách đến 2 khí cầu nhỏ nhất"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_55]-SA-M3. Chiếc hộp có S_tp nhỏ nhất. Tìm trọng tâm tam giác."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_56]-SA-M3.  Tìm vị trí tháp viễn thông có tổng k.cách đến 3 tòa nhà nhỏ nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_57]-SA-M3.  Tìm vị trí chim bói cá chạm mặt nước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -11657,6 +11673,22 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_53]-M2. H.chóp đáy chữ nhật gắn tọa độ. Tìm cos của góc giữa 2 vectơ
                                             if dang_toan == "[D12_C2_B3_53]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_53()
+
+                                        #[D12_C2_B3_54]-SA-M3. Tìm vị trí mặt đất để tổng khoảng cách đến 2 khí cầu nhỏ nhất
+                                            if dang_toan == "[D12_C2_B3_54]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_54()
+
+                                        #[D12_C2_B3_55]-SA-M3. Tìm trọng tâm tam giác của chiếc hộp có S_tp nhỏ nhất.
+                                            if dang_toan == "[D12_C2_B3_55]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_55()
+
+                                        #[D12_C2_B3_56]-SA-M3.  Tìm vị trí tháp viễn thông có tổng k.cách đến 3 tòa nhà nhỏ nhất.
+                                            if dang_toan == "[D12_C2_B3_56]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_56()
+
+                                        #[D12_C2_B3_57]-SA-M3.  Tìm vị trí chim bói cá chạm mặt nước
+                                            if dang_toan == "[D12_C2_B3_57]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_57()
 
 
 
@@ -19671,6 +19703,7 @@ class Ui_MainWindow(object):
                         item.setTextAlignment(Qt.AlignCenter)
                         self.tableWidget.setItem(i-1, 3, item)
                     self.tableWidget.removeRow(0)
+                self.thongke()
             except Exception as e:
                 show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
                 show_msg_box.exec_()

@@ -3340,7 +3340,7 @@ def yy3yy_L10_C4_B2_16():
     y=x+random.randint(10,20)
     
     
-    kq=f"{round(a*math.sin(math.radians(y))*math.sin(math.radians(x))/math.sin(math.radians(y-x)),1):.1f}".replace(".",",")
+    kq=f"{round(a*math.sin(math.radians(y))*math.sin(math.radians(x))/math.sin(math.radians(y-x)),0):.0f}".replace(".",",")
     
     code_hinh=fr"""
     \begin{{tikzpicture}}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
@@ -3376,7 +3376,7 @@ def yy3yy_L10_C4_B2_16():
     file_name=my_module.pdftoimage_timename(code)
 
 
-    noi_dung = f"Để đo chiều cao ${{CH}}$ của một tháp truyền hình, người ta chọn hai điểm quan sát ${{A}}$, ${{B}}$ trên mặt đất (hình vẽ).  Biết $\\widehat{{CAH}} ={x}^{{\\circ}}$, $\\widehat{{CBH}} ={y}^{{\\circ}}$ và $AB={a}m$, tính chiều cao của tháp. Làm tròn kết quả đến hàng phần mười."
+    noi_dung = f"Để đo chiều cao ${{CH}}$ của một tháp truyền hình, người ta chọn hai điểm quan sát ${{A}}$, ${{B}}$ trên mặt đất (hình vẽ).  Biết $\\widehat{{CAH}} ={x}^{{\\circ}}$, $\\widehat{{CBH}} ={y}^{{\\circ}}$ và $AB={a}m$, tính chiều cao của tháp (kết quả àm tròn kết quả đến hàng đơn vị)."
 
     noi_dung_loigiai=(f"    Ta có $\\widehat{{ACB}}=\\widehat{{CBH}} - \\widehat{{CAH}}=  {y}^{{\\circ}} -{x}^{{\\circ}}= {y-x}^{{\\circ}}$. \n\n"
         f"Áp dụng định lí sin ta có \n\n"
@@ -3390,7 +3390,7 @@ def yy3yy_L10_C4_B2_16():
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
     f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
-        f"\\shortans[4]{{${{{kq}}}$}}\n\n"\
+        f"\\shortans[4]{{{kq}}}\n\n"\
             f"\\loigiai{{  \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     dap_an=kq

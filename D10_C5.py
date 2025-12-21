@@ -1952,6 +1952,7 @@ def y7y7u_L10_C5_B2_12():
 	l_AC= random.randint(1,7)
 
 	chon=random.randint(1,2)
+	
 
 	if chon==1:
 		dang_thuc=random.choice([
@@ -1964,12 +1965,13 @@ def y7y7u_L10_C5_B2_12():
 		f" Điểm ${{{M}}}$ thỏa mãn {dang_thuc}."
 		f" Tính độ dài vectơ ${vec(f"{A}{M}")}$."
 		)
+		t=float(sqrt(l_AB**2+l_AC**2))
 
-		if int(sqrt(l_AB**2+l_AC**2))==sqrt(l_AB**2+l_AC**2):		
-			dap_an=f"{int(sqrt(l_AB**2+l_AC**2))}"
+		if t.is_integer():		
+			dap_an=int(t)
 		else:
 			
-			dap_an=f"{round_half_up(sqrt(l_AB**2+l_AC**2),1):.1f}".replace(".",",")	
+			dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")	
 
 		noi_dung_loigiai=(
 		f"Ta có: {dang_thuc} $\\Rightarrow {vec(f"{A}{C}")}-{vec(f"{A}{B}")}={vec(f"{A}{M}")}\\Rightarrow {vec(f"{A}{M}")}={vec(f"{B}{C}")}$.\n\n"
@@ -1979,7 +1981,8 @@ def y7y7u_L10_C5_B2_12():
 	
 	if chon==2:
 		vecto=random.choice([vec(f"{A}{I}"), vec(f"{B}{I}"), vec(f"{C}{I}") ])
-		dap_an=f"{round_half_up(sqrt(l_AB**2+l_AC**2)/2,1):1f}".replace(".",",")
+		t=float(sqrt(l_AB**2+l_AC**2)/2)
+		dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
 
 		dang_thuc=random.choice([
 		f"${vec(f"{I}{M}")}+{vec(f"{A}{C}")}={vec(f"{A}{I}")}+{vec(f"{B}{M}")}$",
