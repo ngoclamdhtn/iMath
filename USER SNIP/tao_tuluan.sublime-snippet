@@ -20,7 +20,7 @@ def D12_C1_B1_01():
 
 
 	latex_tuluan=f"\\\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\\\shortans[oly]{{{dap_an}}}\n\n"\
+	f"\\\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an

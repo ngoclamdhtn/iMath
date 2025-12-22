@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 20.12.2025")
+                self.label.setText(f"iMath\u00A92025 ver 21.12.2025")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 20.12.2025")
+                self.label.setText(f"iMath\u00A92025 ver 21.12.2025")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -8866,11 +8866,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_56]-SA-M3.  Tìm vị trí tháp viễn thông có tổng k.cách đến 3 tòa nhà nhỏ nhất."])
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_56]-SA-M3. Tìm vị trí tháp viễn thông có tổng k.cách đến 3 tòa nhà nhỏ nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_57]-SA-M3.  Tìm vị trí chim bói cá chạm mặt nước."])
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_57]-SA-M3. Tìm vị trí chim bói cá chạm mặt nước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_58]-SA-M3. Cabin di chuyển cùng hướng vécto u. Tính k.cách từ người đến cabin sau t giây."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8899,6 +8903,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_02]-M3. Tính khoảng tứ phân vị của mẫu số liệu ghép nhóm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_06]-M3. Giá trị ngoại lệ của mẫu số liệu ghép nhóm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11690,6 +11698,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C2_B3_57]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_57()
 
+                                        #[D12_C2_B3_58]-SA-M3. Cabin chuyển động đều cùng hướng vécto u. Tính khoảng cách từ người đến cabin sau t giây.
+                                            if dang_toan == "[D12_C2_B3_58]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_58()
+
 
 
                                     #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->
@@ -11713,6 +11725,10 @@ class Ui_MainWindow(object):
                                        #[D12_C3_B1_05]-TF-M3. Xét Đ-S: Khoảng biến thiên, Q1, Q3, giá trị ngoại lệ.
                                             if dang_toan == "[D12_C3_B1_05]": 
                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C3.ytrzz_L12_C3_B1_05()
+
+                                        #[D12_C3_B1_06]-M3. Tìm giá trị ngoại lệ của bảng số liệu ghép nhóm.
+                                            if dang_toan == "[D12_C3_B1_06]":                                        
+                                               debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C3.ytrzz_L12_C3_B1_06()
 
                                     #Bài 2: Phương sai, độ lệch chuẩn
                                        #[D12_C3_B2_01]-M2. Tìm phương sai của mẫu số liệu ghép nhóm.
@@ -19658,7 +19674,7 @@ class Ui_MainWindow(object):
                         # Lấy dữ liệu từ tableWidget
                         cell_value = self.tableWidget.item(row, col).text() if self.tableWidget.item(row, col) else ""
                         # Ghi dữ liệu vào cell tương ứng trong worksheet
-                        ws.cell(row=row + 1, column=col + 1, value=cell_value)
+                        ws.cell(row=row + 2, column=col + 1, value=cell_value)
 
                 wb.save(f"{fileName}")
             return

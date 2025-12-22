@@ -2229,7 +2229,7 @@ def gghik_L10_CX_B0_29():
 
 
 	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
-	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
@@ -2314,7 +2314,7 @@ def gghik_L10_CX_B0_30():
 
 
 	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
-	f"\\shortans[oly]{{{dap_an}}}\n\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an

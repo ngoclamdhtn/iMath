@@ -4855,7 +4855,7 @@ def yy3yy_L10_C4_B2_38():
             noi_dung = (
             f"Cho tam giác ${{ABC}}$ có ${{AB={c}, BC={a}, AC={b}}}$. Tính độ dài đường cao ${{CH}}$."
             )
-            dap_an=int(BH)
+            dap_an=int(CH)
 
             noi_dung_loigiai=(
             f"$p=\\dfrac{{{a}+{b}+{c}}}{{2}}={phan_so(p)}$\n\n"

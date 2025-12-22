@@ -9068,10 +9068,10 @@ def mnj_34_jkl_L12_C2_B3_51():
 	if chon==2:
 		x,y,z=(a1+b1+c1)/3,(a2+b2+c2)/3,(a3+b3+c3)/3
 
-		kq2_T=f"*Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$"
-		kq2_F=f"Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so((a1+b1+c1)/2)};{phan_so((a2+b2+c2)/2)};{phan_so(z)})$"
+		kq2_T=f"*Tọa độ trọng tâm của tam giác ${{{A}{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$"
+		kq2_F=f"Tọa độ trọng tâm của tam giác ${{{A}{B}{C}}}$ là $({phan_so((a1+b1+c1)/2)};{phan_so((a2+b2+c2)/2)};{phan_so(z)})$"
 		
-		HDG=f"Tọa độ trung điểm của cạnh ${{{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$."
+		HDG=f"ọa độ trọng tâm của tam giác ${{{A}{B}{C}}}$ là $({phan_so(x)};{phan_so(y)};{phan_so(z)})$."
 
 	
 	kq2=random.choice([kq2_T, kq2_F])
@@ -9274,7 +9274,7 @@ def mnj_34_jkl_L12_C2_B3_52():
 	latex_tuluan = (
 	    "\\begin{ex}\n"
 	    f"{noi_dung}\n\n"
-	    f"\\shortans[4]{{{dap_an}}}\n\n"
+	    f"\\shortans{{{dap_an}}}\n\n"
 	    f"\\loigiai{{\n {noi_dung_loigiai}\n }}\n"
 	    "\\end{ex}\n"
 	)
@@ -9563,7 +9563,7 @@ def mnj_34_jkl_L12_C2_B3_55():
 		noi_dung = (
 		f"Người ta muốn chế tạo một chiếc hộp hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ bằng tôn có nắp, có thể tích ${{{V}}}$ cm$^3$ với yêu cầu dùng ít vật liệu nhất."
 		f" Biết chiều cao của hình hộp chữ nhật là ${{{h}}}$ cm."
-		f" Chọn hệ trục tọa độ $Oxyz$ sao cho điểm ${{A}}$ trùng với gốc tọa độ $O$, vectơ ${vec2("A","B")}$, ${vec2("A","D")}$, ${vec2("A","A'")}$"
+		f" Chọn hệ trục tọa độ ${{Oxyz}}$ sao cho điểm ${{A}}$ trùng với gốc tọa độ $O$, vectơ ${vec2("A","B")}$, ${vec2("A","D")}$, ${vec2("A","A'")}$"
 		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BC}}$. Tính $x+y+z$ (kết quả làm tròn đến hàng phần mười)."
 		)
 		dap_an=f"{round_half_up(x_G+y_G+z_G,1):.1f}".replace(".",",")
@@ -10002,5 +10002,61 @@ def mnj_34_jkl_L12_C2_B3_57():
 	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C2_B3_58]-SA-M3. Cabin chuyển động đều cùng hướng vécto u. Tính khoảng cách từ người đến cabin sau t giây.
+def mnj_34_jkl_L12_C2_B3_58():
+	A,B,C="A","B","C"
+	a1= random.choice([i for i in range(-5, 6) if i!=0])
+	a2= random.choice([i for i in range(-5, 6) if i!=0])
+	a3=random.randint(2,6)
+
+	b1= random.choice([i for i in range(-5, 6) if i!=0])
+	b2= random.choice([i for i in range(-5, 6) if i!=0])
+	b3=random.randint(0,4)
+	while True:
+		u1,u2,u3= random.choice([[1,-2,2], [-1,2,2], [-1,-2,2], [3,0,4], [-3,0,4], [0,3,4],[0,-3,4],
+		[2,3,6], [2,-3,6], [1,-4,8], [4,4,7] ])
+
+		len_u=int(sqrt(u1**2+u2**2+u3**2))
+		v=random.randint(3,7)
+		t=random.randint(4,7)
+		s=v*t
+		if s>len_u:
+			break
+	k=s/len_u
+	c1, c2, c3=a1+k*u1, a2+k*u2, a3+k*u3
+	vec_u=vec("u")
+	vec_AC=vec2(A,"C")
+	noi_dung = (
+	f"Tại một vị trí cụ thể ở một ngọn núi người ta đặt cố định một hệ trục tọa độ ${{Oxyz}}$, mỗi đơn vị trên mỗi trục có độ dài bằng 1 mét."
+	f"Một người đứng cố định tại vị trí ${B}({b1};{b2};{b3})$, quan sát một chiếc cabin cáp treo và thấy"
+	f" cabin này xuất phát từ điểm ${A}({a1};{a2};{a3})$, chuyển động thẳng đều theo hướng của vectơ ${vec_u}=({u1};{u2};{u3})$"
+	f" với vận tốc ${{{v}}}$ mét/giây. Hỏi sau ${{{t}}}$ giây kể từ lúc xuất phát, khoảng cách giữa cabin và người quan sát bằng bao nhiêu mét? (làm tròn kết quả đến hàng đơn vị)."
+	)
+	BC=sqrt((b1-c1)**2+(b2-c2)**2+(b3-c3)**2)
+	dap_an=f"{round_half_up(BC,0):.0f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi $C(x;y;z)$ là vị trí của cabin sau ${{{t}}}$ giây.\n\n"
+	f"Cabin chuyển động thẳng đều nên: ${A}C={v}.{t}={s}$ m.\n\n"
+	f"${vec_u}=({u1};{u2};{u3})\\Rightarrow |{vec_u}|={len_u}$.\n\n"
+	f"${vec_AC}=\\dfrac{{{s}}}{{{len_u}}}{vec_u}={phan_so(k)}{vec_u}$.\n\n"
+	f"$\\Rightarrow C={A}+{phan_so(k)}{vec_u}=({a1};{a2};{a3})+{phan_so(k)}({u1};{u2};{u3})=({phan_so(c1)};{phan_so(c2)};{phan_so(c3)})$.\n\n"
+	f"${B}C=\\sqrt{{({b1}-{phan_so(c1)})^2+({b2}-{phan_so(c2)})^2+({b3}-{phan_so(c3)})^2}}={dap_an}$."
+	)
+	noi_dung_loigiai=noi_dung_loigiai.replace("--","+")
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
