@@ -17238,7 +17238,7 @@ def prt_34_L12_C1_B5_39():
 	noi_dung = (
 	f"Bác {ten} có một cái ao có diện tích ${{{s}}}$ $m^2$ để nuôi cá."
 	f" Vụ vừa qua bác nuôi với mật độ ${{{a}}}$ con/$m^2$ và thu được tất cả ${{{s_m}}}$ kg cá thành phẩm."
-	f" Theo kinh nghiệm nuôi cá thu được, bác thấy cứ thả giảm đi ${{{r}}}$ con$ "
+	f" Theo kinh nghiệm nuôi cá thu được, bác thấy cứ thả giảm đi ${{{r}}}$ con"
 	f" thì tương ứng sẽ có mỗi con cá thành phẩm thu được tăng thêm ${{{s_b}}}$ kg."
 	f" Hỏi vụ tới bác phải mua bao nhiêu con cá giống để đạt được tổng khối lượng cá thành phẩm cao nhất? (giả sử không có hao hụt trong quá trình nuôi)."
 	)
@@ -17250,7 +17250,6 @@ def prt_34_L12_C1_B5_39():
 	f"Số cá ban đầu: ${a}.{s}={n}$ con.\n\n"
 	f"Khối lượng trung bình mỗi con: $\\dfrac{{{s_m}}}{{{n}}}={s_m1}$ kg.\n\n"
 	f"Gọi ${{x}}$ là số lần giảm cá. Suy ra số cá giảm là: ${r}x$ con.\n\n"
-	f"Mật độ cá thả mới: ${a}-{r}x$.\n\n"
 	f"Số cá thả mới: $N(x)={s*a}-{r}x$.\n\n"
 	f"Mỗi con cá tăng thêm được: $m(x)=({s_m1}+{s_b}x)$ kg.\n\n"
 	f"Tổng khối lượng cá thu được:\n\n"
@@ -17272,3 +17271,163 @@ def prt_34_L12_C1_B5_39():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_40]-TF-M4. Xét Đ-S: Tìm số cá giảm để thu được sản lượng lớn nhất
+def prt_34_L12_C1_B5_40():
+	x=sp.symbols("x")
+	ten=random.choice(["Lam", "Minh", "Hùng", "An", "Vinh" ])
+	while True:
+		#Diện tích ao
+		s=random.randint(40,60)
+
+		#mật độ cá ban đầu
+		a=random.randint(15,20)
+
+		#Số cá ban đầu
+		n=a*s
+
+		#Khối lượng 1 con ban đầu
+		m_1=random.randint(10,15)/10
+		s_m1=f"{round_half_up(m_1,1):.1f}".replace(".0","").replace(".",",")
+
+		#Tổng khối lượng ban đầu
+		m=n*m_1
+		s_m=f"{round_half_up(m,1):.1f}".replace(".",",")
+
+		#Số cá giảm
+		r=random.randint(4,8)
+
+
+		#Khối lượng tăng thêm mỗi con
+		b=random.randint(1,5)/10
+		s_b=f"{round_half_up(b,1):.1f}".replace(".",",")
+
+		#Hàm khối lượng
+
+		a1, b1, c1=-r*b, s*a*b-r*m_1, s*a*m_1
+		x_0=-b1/(2*a1)
+		
+
+		x_1,x_2,x_3=int(x_0)-1,int(x_0), int(x_0)+1
+		f=a1*x**2+b1*x+c1
+		y_1, y_2, y_3=f.subs(x,x_1),f.subs(x,x_2),f.subs(x,x_3)
+		max_y=max(y_1,y_2,y_3)
+		if max_y==y_1:
+			x_thuc=x_1
+		if max_y==y_2:
+			x_thuc=x_2
+		if max_y==y_3:
+			x_thuc=x_3
+		if x_0>0:
+			break
+
+	s_x=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	s_a1=f"{round_half_up(a1,1):.1f}".replace(".",",")
+	s_b1=f"{round_half_up(b1,1):.1f}".replace(".",",")
+	s_c1=f"{round_half_up(c1,1):.1f}".replace(".",",")
+	s_2a1=f"{round_half_up(2*a1,1):.1f}".replace(".",",")
+	
+
+
+	noi_dung = (
+	f"Bác {ten} có một cái ao có diện tích ${{{s}}}$ $m^2$ để nuôi cá."
+	f" Vụ vừa qua bác nuôi với mật độ ${{{a}}}$ con/$m^2$ và thu được tất cả ${{{s_m}}}$ kg cá thành phẩm."
+	f" Theo kinh nghiệm nuôi cá thu được, bác thấy cứ thả giảm đi ${{{r}}}$ con"
+	f" thì tương ứng sẽ có mỗi con cá thành phẩm thu được tăng thêm ${{{s_b}}}$ kg."
+	f" Gọi ${{x}}$ là số lần giảm đi ${{{r}}}$ con."
+	f" Xét tính đúng-sai của các khẳng định sau:"
+	)	
+	debai_word= f"{noi_dung}\n"
+	
+	kq1_T=f"*Số cá của vụ vừa qua mà bác {ten} thả là ${{{n}}}$" 
+	kq1_F=f"Số cá của vụ vừa qua mà bác {ten} thả là ${{{n+random.randint(10,20)}}}$"
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Số cá của vụ vừa qua mà bác {ten} thả là ${a}.{s}={n}$."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Sau ${{x}}$ lần giảm đi ${{{r}}}$ con thì số cá thả mới là ${s*a}-{r}x$"
+	kq2_F=f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con thì số cá thả mới là ${{{r}x}}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"Với ${{x}}$ là số lần giảm đi ${{{r}}}$ con thì số cá thả mới là ${s*a}-{r}x$."
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch mỗi con cá tăng thêm được $({s_m1}+{s_b}x)$ kg" 
+	kq3_F=f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch mỗi con cá tăng thêm được ${{{s_b}x}}$ kg"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"Khối lượng trung bình mỗi con: $\\dfrac{{{s_m}}}{{{n}}}={s_m1}$ kg.\n\n"
+		f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch mỗi con cá tăng thêm được $({s_m1}+{s_b}x)$ kg.")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*Để vụ tới bác {ten} thu được sản lượng cá lớn nhất thì số lượng cá bác cần thả là ${{{s*a-r*x_thuc}}}$"
+	kq4_F=f"Để vụ tới bác {ten} thu được sản lượng cá lớn nhất thì số lượng cá bác cần thả là ${{{s*a-r*x_thuc+random.randint(3,5)}}}$" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(	
+	f"Số cá ban đầu: ${a}.{s}={n}$ con.\n\n"
+	f"Khối lượng trung bình mỗi con: $\\dfrac{{{s_m}}}{{{n}}}={s_m1}$ kg.\n\n"
+	f"Gọi ${{x}}$ là số lần giảm cá. Suy ra số cá giảm là: ${r}x$ con.\n\n"
+	f"Số cá thả mới: $N(x)={s*a}-{r}x$.\n\n"
+	f"Mỗi con cá tăng thêm được: $m(x)=({s_m1}+{s_b}x)$ kg.\n\n"
+	f"Tổng khối lượng cá thu được:\n\n"
+	f"$M(x)=N(x).m(x)=({s*a}-{r}x).({s_m1}+{s_b}x)={s_a1}x^2+{s_b1}x+{s_c1}$.\n\n"
+	f"Khối lượng cá đạt lớn nhất khi: $x=\\dfrac{{-{s_b1}}}{{{s_2a1}}}={s_x}$.\n\n"
+	f"Vì số cá nguyên nên $x={x_thuc}$.\n\n"
+	f"Số lượng cá cần thả: $N={s*a}-{r}.{x_thuc}={s*a-r*x_thuc}$."
+	)
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
