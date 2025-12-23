@@ -8454,6 +8454,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_39]-SA-M4. Tìm số cá giảm để thu được sản lượng lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 
 
 
@@ -8803,6 +8807,12 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_51]-TF-M3. Cho tam giác. Xét Đ-S: Độ dài, trung điểm, trọng tâm, h.b.h, chân đường cao."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_59]-TF-M3. Cho 2 chim bói cá. Xét Đ-S:So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
 
@@ -11328,6 +11338,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_38]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_38()
 
+                                            #[D12_C1_B5_39]-SA-M3. Tìm số cá giảm để thu được sản lượng lớn nhất
+                                            if dang_toan == "[D12_C1_B5_39]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_39()
+
 
                                             
                                                 
@@ -11701,6 +11715,10 @@ class Ui_MainWindow(object):
                                         #[D12_C2_B3_58]-SA-M3. Cabin chuyển động đều cùng hướng vécto u. Tính khoảng cách từ người đến cabin sau t giây.
                                             if dang_toan == "[D12_C2_B3_58]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_58()
+
+                                        #[D12_C2_B3_59]-SA-M3. Cho 2 chim bói cá. Xét Đ-S:So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim 
+                                            if dang_toan == "[D12_C2_B3_59]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_59()
 
 
 

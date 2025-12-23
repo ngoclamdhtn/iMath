@@ -10060,3 +10060,510 @@ def mnj_34_jkl_L12_C2_B3_58():
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C2_B3_59]-TF-M3. Cho 2 chim bói cá. Xét Đ-S:So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim 
+def mnj_34_jkl_L12_C2_B3_59():
+	A,B,C="A","B","C"
+	while True:
+
+		u1,u2,u3= random.choice([[1,-2,2],[3,0,4], [1,-4,8] ])
+		v1,v2,v3=random.choice([ [2,-3,6], [4,4,7] ])
+
+		len_u=int(sqrt(u1**2+u2**2+u3**2))
+		len_v=int(sqrt(v1**2+v2**2+v3**2))
+		t_u=random.randint(4,8)
+		t_v=random.randint(3,6)
+
+		#Vận tốc và quãng đi đi được của 2 chim
+		vA=random.randint(7,12)
+		vB=random.randint(7,12)
+		sA,sB=t_u*len_u, t_v*len_v
+		#Tọa độ cá
+		if sA/vA<5:
+			continue
+
+		c1 = random.choice([i for i in range(-5, 7) if i!=0])
+		c2 = random.choice([i for i in range(-5, 7) if i!=0])
+		c3=0
+		#Tọa độ chim
+
+		a1,a2,a3=c1+t_u*u1, c2+t_u*u2, c3+t_u*u3
+		b1,b2,b3=c1+t_v*v1, c2+t_v*v2, c3+t_v*v3
+		
+		t=random.randint(1,3)
+		if all([sA!=sB,sB/vB+t!=sA/vA]):
+			break
+
+	noi_dung = (
+	f"Trong không gian ${{Oxyz}}$ cho trước với mặt nước phẳng lặng trùng với mặt phẳng $(Oxy)$, đơn vị trên mỗi trục là mét;"
+	f" có hai con chim bói cá ở các vị trí $A({a1};{a2};{a3}), B({b1};{b2};{b3})$ trên các cành cây"
+	f" đang cùng ngắm mục tiêu là một chú cá đang bơi trên mặt hồ."
+	f" Khi cá nằm im ở vị trí $C({c1};{c2};0)$ thì hai con chim quyết định tấn công mục tiêu của mình."
+	f" Chim bói cá ở vị trí A xuất phát trước con còn lại ${{{t}}}$ giây và bay về phía con cá với vận tốc ${{{vA}}}$ m/s,"
+	f" chim bói cá còn lại cũng tấn công mục tiêu với vận tốc ${{{vB}}}$ m/s."
+	f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")	
+	if sA > sB:
+		kq1_T=f"*Khoảng cách của chim bói cá ở B đến mục tiêu ngắn hơn khoảng cách từ chim bói cá ở A đến mục tiêu" 
+		kq1_F=f"Khoảng cách của chim bói cá ở A đến mục tiêu ngắn hơn khoảng cách từ chim bói cá ở B đến mục tiêu"
+	else:
+		kq1_T=f"*Khoảng cách của chim bói cá ở A đến mục tiêu ngắn hơn khoảng cách từ chim bói cá ở B đến mục tiêu" 
+		kq1_F=f"Khoảng cách của chim bói cá ở B đến mục tiêu ngắn hơn khoảng cách từ chim bói cá ở A đến mục tiêu"
+
+	vec_AC, vec_BC = vec2(A,C), vec2(B,C)
+	x_AC,y_AC,z_AC = c1-a1, c2-a2, c3-a3
+	x_BC,y_BC,z_BC = c1-b1, c2-b2, c3-b3
+	kq1=random.choice([kq1_T, kq1_F])
+
+	HDG=(f"${vec_AC}=({x_AC}; {y_AC}; {z_AC})\\Rightarrow {A}{C}={sA}$.\n\n"
+		f"${vec_BC}=({x_BC}; {y_BC}; {z_BC})\\Rightarrow {B}{C}={sB}$.\n\n"
+		f"{kq1}."
+		)
+	HDG=HDG.replace("*","")
+	
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	tA=f"{round_half_up(sA/vA,2):.2f}".replace(".",",")
+	tB=f"{round_half_up(sB/vB,2):.2f}".replace(".",",")
+
+	if sB/vB+t<sA/vA:
+		kq2_T=f"*Chim bói cá ở vị trí ${{B}}$ sẽ đến mục tiêu trước con chim ở vị trí ${{A}}$"
+		kq2_F=f"Chim bói cá ở vị trí ${{A}}$ sẽ đến mục tiêu trước con chim ở vị trí ${{B}}$"
+		HDG=(f"Thời gian để chim từ A đến mục tiêu là $t_A=\\dfrac{{{sA}}}{{{vA}}}={tA}$.\n\n"
+			f"Thời gian để chim từ B đến mục tiêu là $t_B=\\dfrac{{{sB}}}{{{vB}}}={tB}$.\n\n"
+			f"Ta có: ${tB}+{t}<{tA}$ nên chim bói cá ở vị trí B sẽ đến mục tiêu trước con chim ở vị trí ${{A}}$.")
+	else:
+		kq2_T=f"*Chim bói cá ở vị trí ${{A}}$ sẽ đến mục tiêu trước con chim ở vị trí ${{B}}$"
+		kq2_F=f"Chim bói cá ở vị trí ${{B}}$ sẽ đến mục tiêu trước con chim ở vị trí ${{A}}$"
+		HDG=(f"Thời gian để chim từ A đến mục tiêu là $t_A=\\dfrac{{{sA}}}{{{vA}}}={tA}$.\n\n"
+			f"Thời gian để chim từ B đến mục tiêu là $t_B=\\dfrac{{{sB}}}{{{vB}}}={tB}$.\n\n"
+			f"Ta có: ${tB}+{t}>{tA}$ nên chim bói cá ở vị trí A sẽ đến mục tiêu trước con chim ở vị trí ${{B}}$.")
+		
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	t0=random.randint(2,5)
+	tA=sA/vA
+	k=t0/tA
+	d1,d2,d3=a1+k*x_AC, a2+k*y_AC, a3+k*z_AC
+	s_tA=f"{round_half_up(sA/vA,2):.2f}".replace(".",",")
+
+	kq3_T=(f"*Sau khi bay được {t0} giây, chim bói cá xuất phát từ A lại chuyển hướng bay đi đậu trên một cành cây khác."
+		f" Vị trí lúc chuyển hướng có tọa độ là $({phan_so(d1)};{phan_so(d2)};{phan_so(d3)})$")
+	kq3_F=(f"Sau khi bay được {t0} giây, chim bói cá xuất phát từ A lại chuyển hướng bay đi đậu trên một cành cây khác."
+		f" Vị trí lúc chuyển hướng có tọa độ là $({phan_so(d1+random.randint(1,2))};{phan_so(d2+random.randint(0,1))};{phan_so(d3)})$")
+	vec_AD=vec2(A,"D")
+	HDG=(f"Gọi ${{D}}$ là vị trí chuyển hướng.\n\n"
+		f"${vec_AD}=\\dfrac{{{t0} }}{{{s_tA}}}{vec_AC}={phan_so(k)}{vec_AC}$\n\n"
+		f"$\\Rightarrow D=A+{phan_so(k)}{vec_AC}=({a1};{a2};{a3})+{phan_so(k)}({x_AC};{y_AC};{z_AC})=({phan_so(d1)};{phan_so(d2)};{phan_so(d3)})$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	u1 = random.choice([i for i in range(-3, 6) if i!=0])
+	u2 = random.choice([i for i in range(1, 6) if i!=0])
+	u3=random.randint(1,4)
+
+	t1=random.randint(3,6)
+
+	e1, e2, e3 = d1+t1*u1, d2+t1*u2, d3+t1*u3
+	k_c=sqrt((e1-a1)**2+(e2-a2)**2+(e3-a3)**2)
+	s_kc=f"{round_half_up(k_c,2):.2f}".replace(".",",")
+	s_kc_f=f"{round_half_up(k_c+random.randint(1,2),2):.2f}".replace(".",",")
+
+	kq4_T=(f"*Từ khi chuyển hướng, chim bói cá bay với vectơ vận tốc ${vec("u")}= ({u1}; {u2}; {u3})$ (m/s) và sau ${{{t1}}}$ giây tiếp theo,"
+	f" nó đã đậu trên một cành cây khác. Khoảng cách từ vị trí mới so với vị trí nó đậu ban đầu bằng ${{{s_kc}}}$ m")
+	kq4_F=(f"Từ khi chuyển hướng, chim bói cá bay với vectơ vận tốc ${vec("u")}= ({u1}; {u2}; {u3})$ (m/s) và sau ${{{t1}}}$ giây tiếp theo,"
+	f" nó đã đậu trên một cành cây khác. Khoảng cách từ vị trí mới so với vị trí nó đậu ban đầu bằng ${{{s_kc_f}}}$ m")
+	
+	HDG=(f"Sau ${{{t1}}}$ giây bay theo vectơ vận tốc ${vec("u")}$ thì chim ở tọa độ là:\n\n "
+		f"$E({phan_so(d1)}+{t1}.{u1}; {phan_so(d2)}+{t1}.{u2}; {phan_so(d3)}+{t1}.{u3})=({phan_so(e1)};{phan_so(e2)};{phan_so(e3)})$.\n\n"
+		f"Khoảng cách $AE=\\sqrt{{({phan_so(e1)}-{a1})^2+({phan_so(e2)}-{a2})^2+({phan_so(e3)}-{a3})^2}}={s_kc}$."
+		)
+	HDG=HDG.replace("+-","-").replace("-+","-").replace("--","+")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	code_hinh=(f" \\begin{{tikzpicture}}[line join=round, line cap=round,scale=1,transform shape, >=stealth]\n\
+	\\definecolor{{columbiablue}}{{rgb}}{{0.61, 0.87, 1.0}}%màu nước\n\
+	\\definecolor{{arsenic}}{{rgb}}{{0.23, 0.27, 0.29}}%màu mỏ\n\
+	\\definecolor{{antiquewhite}}{{rgb}}{{0.98, 0.92, 0.84}}%màu trắng\n\
+	\\definecolor{{cadmiumorange}}{{rgb}}{{0.93, 0.53, 0.18}}%lông cam\n\
+	\\definecolor{{coolblack}}{{rgb}}{{0.0, 0.18, 0.39}}%cánh đậm\n\
+	\\definecolor{{brandeisblue}}{{rgb}}{{0.0, 0.44, 1.0}}%màu xanh đầu\n\
+	\\definecolor{{darkcoral}}{{rgb}}{{0.8, 0.36, 0.27}}%màu chân\n\
+	\n\
+	%---------màu vẽ cá\n\
+	\\definecolor{{amber}}{{rgb}}{{1.0, 0.49, 0.0}}\n\
+	% \\clip (-3,-3.5) rectangle (3.5,3);\n\
+	\n\
+	\\tikzset{{san/.pic={{ \n\
+			\\path\n\
+			(-1.3,-1.5) coordinate (O)\n\
+			($(O)+(-142:2)$) coordinate (y)\n\
+			($(O)+(0:4.7)$) coordinate (x)\n\
+			($(O)+(90:3)$) coordinate (z)\n\
+			($(x)+(y)-(O)$) coordinate (t)\n\
+			\n\
+			(-.8,-2.2)coordinate (A)\n\
+			(1.6,0.8) coordinate (C)\n\
+			($(A)!.13!(C)$) coordinate (B)\n\
+			;\n\
+			\\fill[columbiablue] (O)--(x)--(t)--(y)--cycle;\n\
+			\n\
+			\\foreach\\p/\\g/\\t in {{x/-90/y, y/-90/x, z/0/z}}\n\
+			{{\n\
+				\\node at (\\p) [shift=(\\g:2mm)] {{\\tiny $\\t$}};\n\
+			}}\n\
+			\n\
+			\\foreach\\p/\\g in {{A/180,B/0,C/-50,O/-90}}\n\
+			%\\node at (\\p) [shift=(\\g:2mm)] {{\\tiny $\\p$}};\n\
+			{{\n\
+				\\draw[fill=black](\\p) circle (.5pt) +(\\g:2mm);\n\
+			}}\n\
+			\n\
+			\\draw[->] (O)--(x) ;\n\
+			\\draw[->] (O)--(y);\n\
+			\\draw[->] (O)--(z);\n\
+			\\draw[dashed] (A)--(B);\n\
+			\\draw (B)--(C);\n\
+			%---------nước\n\
+			\\draw (-1,-1.7)\n\
+			..controls +(-120:.5) and +(-160:.5) ..(0,-2)\n\
+			(-.9,-1.9)\n\
+			..controls +(-70:.2) and +(-160:.2) ..(-.2,-1.9)\n\
+			(-.95,-1.8)\n\
+			..controls +(70:.5) and +(30:.5) ..(0,-1.9)\n\
+			(.1,-1.6)\n\
+			..controls +(-20:.2) and +(30:.2) ..(.2,-1.9)\n\
+			(-.7,-1.75)\n\
+			..controls +(-170:.2) and +(-160:.3) ..(-.5,-1.9)\n\
+			;\n\
+	}}}}\n\
+	\n\
+	\\path\n\
+	(0,0)pic[scale=1]{{san}}\n\
+	;\n\
+	\n\
+	\\tikzset{{chim_boi_ca/.pic={{\n\
+			%==============cánh trái\n\
+			\\draw[fill=coolblack] %(-1,1.1)..controls +(90:.3) and +(170:.3) ..\n\
+			(-.55,1.4)\n\
+			..controls +(110:.7) and +(100:.3) ..(-.9,1.8)\n\
+			..controls +(135:.3) and +(120:.3) ..(-1.2,1.8)\n\
+			..controls +(145:.25) and +(110:.25) ..(-1.45,1.7)\n\
+			..controls +(165:.15) and +(85:.15) ..(-1.75,1.63)\n\
+			..controls +(-165:.1) and +(85:.1) ..(-1.9,1.5)\n\
+			..controls +(165:.15) and +(85:.1) ..(-2.1,1.3)\n\
+			..controls +(-165:.1) and +(95:.1) ..(-2.2,1.1)\n\
+			..controls +(-160:.1) and +(95:.1) ..(-2.35,1)--(-1,1.1)\n\
+			;\n\
+			%======--------------------\n\
+			%Tô lông đầu\n\
+			\\def\\L{{\n\
+				(2,.84)\n\
+				..controls +(170:.2) and +(25:.3) ..(1,.65)\n\
+				..controls +(-145:.5) and +(40:.6) ..(.3,.4)\n\
+				..controls +(-140:.3) and +(-60:.3) ..(0,.6)\n\
+				..controls +(120:.3) and +(-50:.7) ..(-1,1.1)\n\
+				..controls +(90:.3) and +(170:.3) ..(-.55,1.4)%1\n\
+				..controls +(-40:.2) and +(140:.1) ..(-.25,1.2)\n\
+				..controls +(-70:.2) and +(-160:.35) ..(.15,.85)\n\
+				..controls +(75:.7) and +(135:.8) ..(1.9,1.3)--(2.1,1)--cycle\n\
+				;\n\
+			}}\n\
+			%\\draw[red]\\L;\n\
+			\\fill[brandeisblue] \\L;\n\
+			%==============================\n\
+			\\draw[fill=antiquewhite] (2,1.05)\n\
+			..controls +(165:.2) and +(-35:.2)..(1.7,1.15)\n\
+			..controls +(145:.2) and +(65:.2)..(1.2,1.15)\n\
+			..controls +(-60:.1) and +(165:.1)..(1.4,1)\n\
+			..controls +(-15:.2) and +(-145:.3)..cycle\n\
+			;\n\
+			\\draw[fill=arsenic] (1.6,1.2)\n\
+			..controls +(155:.18) and +(55:.15)..(1.23,1.17)\n\
+			..controls +(-75:.2) and +(-95:.2)..cycle\n\
+			;\n\
+			\\fill (1.44,1.14) circle(1mm);\n\
+			\n\
+			\\fill[cadmiumorange] (2,1.05)\n\
+			..controls +(165:.2) and +(-35:.2)..(1.7,1.15)\n\
+			..controls +(145:.2) and +(95:.3)..cycle\n\
+			;\n\
+			\\fill[cadmiumorange] (2,.84)\n\
+			..controls +(150:.2) and +(-25:.1) ..(1.7,1)\n\
+			..controls +(155:.2) and +(-50:.3) ..(1.2,1.08)\n\
+			..controls +(130:.2) and +(50:.2) ..(.75,1)\n\
+			..controls +(-130:.2) and +(-10:.2) ..(.21,1)\n\
+			..controls +(-120:.1) and +(70:.1) ..(.15,.84)\n\
+			..controls +(-20:.3) and +(-150:.3) ..(.8,.85)\n\
+			..controls +(-10:.3) and +(150:.5) ..(1.7,.85)\n\
+			..controls +(-10:.1) and +(150:.1) ..cycle\n\
+			;\n\
+			%==================\n\
+			%viền đen đầu\n\
+			\\def\\X{{\n\
+				(0,.6)\n\
+				..controls +(120:.3) and +(-50:.7) ..(-1,1.1)\n\
+				\n\
+				(-.55,1.4)%1\n\
+				..controls +(-40:.2) and +(140:.1) ..(-.25,1.2)\n\
+				..controls +(-70:.2) and +(-160:.35) ..(.15,.85)\n\
+				..controls +(75:.7) and +(135:.8) ..(1.9,1.3)\n\
+				;\n\
+			}}\n\
+			\\draw[black]\\X;\n\
+			%====================\n\
+			%Tô mỏ\n\
+			\\def\\N{{\n\
+				(1.9,1.3)\n\
+				..controls +(-35:.4) and +(140:.3) ..(3.4,.78)\n\
+				..controls +(-175:.2) and +(-10:.3) ..(2,.84)\n\
+				..controls +(150:.2) and +(-25:.1) ..(1.7,1)\n\
+				..controls +(20:.2) and +(175:.1) ..(2,1.05)\n\
+				..controls +(-35:.2) and +(155:.1) ..cycle\n\
+				;\n\
+			}}\n\
+			%\\draw[red]\\N;\n\
+			\\fill[arsenic] \\N;\n\
+			%Mỏ\n\
+			\\def\\M{{\n\
+				(1.9,1.3)\n\
+				..controls +(-35:.4) and +(140:.3) ..(3.4,.78)\n\
+				..controls +(-175:.2) and +(-10:.3) ..(2,.84)\n\
+				..controls +(170:.2) and +(25:.3) ..(1,.65)\n\
+				;\n\
+			}}\n\
+			\\draw[black]\\M;\n\
+			%==============================\n\
+			\n\
+			%================Cánh phải\n\
+			\\draw[fill=coolblack]\n\
+			%(-2.6,.95)\n\
+			%..controls +(-160:.2) and +(145:.3) ..(-1.6,.5)\n\
+			%..controls +(-35:.2) and +(145:.3) ..(-1,-.5)\n\
+			%..controls +(-35:.2) and +(-145:.2) ..\n\
+			(-.6,-.3)%3\n\
+			..controls +(-130:.5) and +(-10:.2) ..(-1,-.95)\n\
+			..controls +(170:.1) and +(-10:.15) ..(-1.2,-1.02)\n\
+			..controls +(170:.1) and +(-40:.15) ..(-1.45,-.95)\n\
+			..controls +(160:.1) and +(-80:.15) ..(-1.6,-.8)\n\
+			..controls +(140:.1) and +(-70:.15) ..(-1.75,-.65)\n\
+			..controls +(140:.1) and +(-70:.15) ..(-1.9,-.5)\n\
+			..controls +(160:.1) and +(-70:.15) ..(-2.05,-.35)\n\
+			..controls +(150:.1) and +(-70:.15) ..(-2.25,-.2)\n\
+			..controls +(-160:.1) and +(-20:.15) ..(-2.5,-.18)\n\
+			..controls +(160:.1) and +(-30:.15) ..(-2.75,-.16)\n\
+			..controls +(160:.1) and +(-60:.15) ..(-2.95,-.05)\n\
+			..controls +(160:.1) and +(-80:.15) ..(-3.2,.05)\n\
+			..controls +(160:.1) and +(-90:.15) ..(-3.35,.15)\n\
+			..controls +(160:.1) and +(-95:.15) ..(-3.55,.25)\n\
+			..controls +(-160:.2) and +(-145:.2) ..(-3.7,.35)\n\
+			..controls +(-160:.2) and +(-160:.4) ..(-3.7,.53)\n\
+			..controls +(-160:.2) and +(-160:.3) ..(-3.85,.65)\n\
+			..controls +(160:.5) and +(-170:.3) ..(-2.6,.95)\n\
+			..controls +(0:.5) and +(120:.3) ..(-.6,-.3)%3\n\
+			;\n\
+			%===================\n\
+			%===================\n\
+			\\fill[brandeisblue]\n\
+			(-.8,-1.1)%lông đuôi xanh\n\
+			..controls +(-80:.2) and +(140:.2) ..(-.5,-1.5)\n\
+			..controls +(-40:.2) and +(140:.4) ..(-.3,-2.5)\n\
+			..controls +(135:.7) and +(-85:.6) ..cycle\n\
+			;\n\
+			\\draw (-.3,-2.5)\n\
+			..controls +(135:.7) and +(-85:.6) ..(-.8,-1.1)%lông đuôi xanh\n\
+			;\n\
+			%=============đuôi\n\
+			\\draw[fill=brandeisblue] (-.45,-2.3)\n\
+			..controls +(-95:.2) and +(95:.2) ..(-.4,-2.8)\n\
+			--(-.32,-2.8)--(-.25,-2.2)\n\
+			(-.25,-2.2)--(-.32,-2.78)--(-.27,-2.78)--(-.16,-2.2)\n\
+			;\n\
+			%================\n\
+			%Tô lông cam\n\
+			\\def\\C{{\n\
+				(2,.84)\n\
+				..controls +(170:.2) and +(25:.3) ..(1,.65)\n\
+				..controls +(-145:.5) and +(40:.6) ..(.3,.4)\n\
+				..controls +(-140:.3) and +(-60:.3) ..(0,.6)\n\
+				..controls +(120:.3) and +(-50:.7) ..(-1,1.1)%2\n\
+				..controls +(130:.2) and +(20:.3) ..(-2.6,.95)\n\
+				..controls +(-160:.2) and +(145:.3) ..(-1.6,.5)\n\
+				..controls +(-35:.2) and +(145:.3) ..(-1,-.5)\n\
+				..controls +(-35:.2) and +(-145:.2) ..(-.6,-.3)%3\n\
+				..controls +(-135:.2) and +(100:.2) ..(-.8,-1.1)%lông đuôi xanh\n\
+				..controls +(-80:.2) and +(140:.2) ..(-.5,-1.5)\n\
+				..controls +(-40:.2) and +(140:.4) ..(-.3,-2.5)%đuôi dưới\n\
+				..controls +(40:.4) and +(-150:.5) ..(.5,-1.1)%chân\n\
+				..controls +(-20:.2) and +(160:.2) ..(.8,-1.15)\n\
+				..controls +(150:.1) and +(-70:.1) ..(.65,-.9)\n\
+				..controls +(110:.2) and +(-95:.8) ..(1.26,.6)\n\
+				..controls +(75:.1) and +(-160:.2) ..cycle\n\
+				;\n\
+			}}\n\
+			\n\
+			\\fill[cadmiumorange] \\C;\n\
+			\\draw[black]\\C;\n\
+			\n\
+			\\draw[black] (-1,1.1)\n\
+			..controls +(130:.2) and +(20:.3) ..(-2.6,.95)\n\
+			\n\
+			(-.6,-.3)%3\n\
+			..controls +(-135:.2) and +(100:.2) ..(-.8,-1.1)\n\
+			;\n\
+			\n\
+			%======================chân\n\
+			\\draw[fill=darkcoral]\n\
+			(.5,-1.1)\n\
+			..controls +(-20:.1) and +(170:.1) ..(1.5,-1.1)%chân\n\
+			..controls +(-10:.1) and +(-10:.3) ..(1.2,-1.2)\n\
+			;\n\
+			%móng 2\n\
+			\\draw (1.47,-1.15)%chân\n\
+			..controls +(-10:.1) and +(120:.1) ..(1.63,-1.25)\n\
+			;\n\
+			%---------------------\n\
+			\\draw[fill=darkcoral]\n\
+			(.7,-1.15)\n\
+			..controls +(40:.1) and +(170:.1) ..(1.3,-1.08)%chân\n\
+			..controls +(-10:.1) and +(-10:.1) ..(1.2,-1.2)\n\
+			..controls +(170:.1) and +(30:.1) ..(1,-1.2)\n\
+			;\n\
+			%móng 2\n\
+			\\draw (1.27,-1.15)%chân\n\
+			..controls +(-10:.1) and +(120:.1) ..(1.43,-1.25)\n\
+			;\n\
+			%------------------------\n\
+			\\draw[fill=darkcoral]\n\
+			(.25,-1.1)\n\
+			..controls +(-20:.2) and +(-170:.1) ..(.5,-1.1)%chân\n\
+			..controls +(-20:.2) and +(160:.2) ..(.8,-1.15)\n\
+			..controls +(-20:.2) and +(160:.2) ..(1.1,-1.2)%móng 1\n\
+			..controls +(-20:.1) and +(-50:.1) ..(1.03,-1.25)\n\
+			..controls +(130:.05) and +(-10:.05) ..(.8,-1.26)\n\
+			..controls +(170:.05) and +(10:.05) ..(.5,-1.28)\n\
+			..controls +(-150:.1) and +(-160:.15) ..(.3,-1.25)\n\
+			..controls +(160:.1) and +(-80:.1) ..(.1,-1.15)\n\
+			;\n\
+			%móng 1\n\
+			\\draw (1.1,-1.25)%móng 1\n\
+			..controls +(-20:.1) and +(95:.1) ..(1.2,-1.35)\n\
+			;\n\
+	}}}}\n\
+	%===========Vẽ cá\n\
+	\\tikzset{{ca/.pic={{\n\
+			%vây\n\
+			\\def\\V{{\n\
+				(-.35,.74)\n\
+				..controls +(120:.12) and +(40:.22) ..(-.7,.72)--cycle\n\
+				(-.7,.32)\n\
+				..controls +(-170:.1) and +(10:.1) ..(-.95,.3)\n\
+				..controls +(60:.1) and +(-140:.1) ..(-.85,.45)--(-.65,.4)--cycle\n\
+				(-.3,.32)\n\
+				..controls +(-170:.1) and +(10:.1) ..(-.45,.1)\n\
+				..controls +(-40:.1) and +(-110:.1) ..(-.1,.37)--cycle\n\
+				;\n\
+			}}\n\
+			\\fill[amber] \\V;\n\
+			\\draw\\V;\n\
+			\n\
+			%-----------------\n\
+			\\def\\C{{\n\
+				(-1.25,.83)\n\
+				..controls +(-45:.2) and +(130:.2) ..(-1,.58)\n\
+				..controls +(35:.2) and +(130:.52) ..(.05,.52)\n\
+				..controls +(-90:.1) and +(-110:.1) ..(.05,.52)--(.04,.44)\n\
+				..controls +(-150:.5) and +(-40:.2) ..(-1,.53)\n\
+				..controls +(-140:.1) and +(40:.1) ..(-1.3,.42)\n\
+				..controls +(60:.2) and +(-55:.2) ..cycle\n\
+				;\n\
+			}}\n\
+			\n\
+			\\fill[amber] \\C;\n\
+			\\draw\\C;\n\
+			%-----------------\n\
+			\\def\\Cn{{\n\
+				(-1,.57)\n\
+				..controls +(35:.1) and +(130:.4) ..(.01,.52)\n\
+				..controls +(-140:.4) and +(-40:.2) ..cycle\n\
+				;\n\
+			}}\n\
+			%\\draw[ecru!70!black]\\Cn;\n\
+			\\fill[amber!70] \\Cn;\n\
+			\\draw (-.3,.7)\n\
+			..controls +(-120:.1) and +(120:.2) ..(-.3,.34);\n\
+			\n\
+			\\draw[fill=white] (-.22,.55) circle (.08);\n\
+			\\draw[fill=black] (-.22,.55) circle (.048);\n\
+			\n\
+	}}}}\n\
+	\n\
+	\\path \n\
+	(-.8,-2.2) coordinate (Ca) pic[xscale=-.35,yscale=.35]{{ca}}\n\
+	(1.6,1)  pic[xscale=-.15,yscale=.15,rotate=-40]{{chim_boi_ca}};\n\
+	\\path \n\
+	(-2.7,1) coordinate (ChimII)\n\
+	pic[xscale=.13,yscale=.13,rotate=-40]{{chim_boi_ca}};\n\
+	\\draw	(ChimII) -- (Ca);\n\
+\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	debai= f"{noi_dung}\n{file_name}\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an

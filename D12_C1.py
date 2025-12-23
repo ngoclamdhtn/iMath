@@ -17179,3 +17179,96 @@ def prt_34_L12_C1_B5_38():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B5_39]-SA-M4. Tìm số cá giảm để thu được sản lượng lớn nhất
+def prt_34_L12_C1_B5_39():
+	x=sp.symbols("x")
+	ten=random.choice(["Lam", "Minh", "Hùng", "An", "Vinh" ])
+	while True:
+		#Diện tích ao
+		s=random.randint(40,60)
+
+		#mật độ cá ban đầu
+		a=random.randint(15,20)
+
+		#Số cá ban đầu
+		n=a*s
+
+		#Khối lượng 1 con ban đầu
+		m_1=random.randint(10,15)/10
+		s_m1=f"{round_half_up(m_1,1):.1f}".replace(".0","").replace(".",",")
+
+		#Tổng khối lượng ban đầu
+		m=n*m_1
+		s_m=f"{round_half_up(m,1):.1f}".replace(".",",")
+
+		#Số cá giảm
+		r=random.randint(4,8)
+
+
+		#Khối lượng tăng thêm mỗi con
+		b=random.randint(1,5)/10
+		s_b=f"{round_half_up(b,1):.1f}".replace(".",",")
+
+		#Hàm khối lượng
+
+		a1, b1, c1=-r*b, s*a*b-r*m_1, s*a*m_1
+		x_0=-b1/(2*a1)
+		
+
+		x_1,x_2,x_3=int(x_0)-1,int(x_0), int(x_0)+1
+		f=a1*x**2+b1*x+c1
+		y_1, y_2, y_3=f.subs(x,x_1),f.subs(x,x_2),f.subs(x,x_3)
+		max_y=max(y_1,y_2,y_3)
+		if max_y==y_1:
+			x_thuc=x_1
+		if max_y==y_2:
+			x_thuc=x_2
+		if max_y==y_3:
+			x_thuc=x_3
+		if x_0>0:
+			break
+
+	s_x=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+	s_a1=f"{round_half_up(a1,1):.1f}".replace(".",",")
+	s_b1=f"{round_half_up(b1,1):.1f}".replace(".",",")
+	s_c1=f"{round_half_up(c1,1):.1f}".replace(".",",")
+	s_2a1=f"{round_half_up(2*a1,1):.1f}".replace(".",",")
+
+	noi_dung = (
+	f"Bác {ten} có một cái ao có diện tích ${{{s}}}$ $m^2$ để nuôi cá."
+	f" Vụ vừa qua bác nuôi với mật độ ${{{a}}}$ con/$m^2$ và thu được tất cả ${{{s_m}}}$ kg cá thành phẩm."
+	f" Theo kinh nghiệm nuôi cá thu được, bác thấy cứ thả giảm đi ${{{r}}}$ con$ "
+	f" thì tương ứng sẽ có mỗi con cá thành phẩm thu được tăng thêm ${{{s_b}}}$ kg."
+	f" Hỏi vụ tới bác phải mua bao nhiêu con cá giống để đạt được tổng khối lượng cá thành phẩm cao nhất? (giả sử không có hao hụt trong quá trình nuôi)."
+	)
+	
+	dap_an=s*a-r*x_thuc
+	
+	#Khối lượng trung bình mỗi con
+	noi_dung_loigiai=(	
+	f"Số cá ban đầu: ${a}.{s}={n}$ con.\n\n"
+	f"Khối lượng trung bình mỗi con: $\\dfrac{{{s_m}}}{{{n}}}={s_m1}$ kg.\n\n"
+	f"Gọi ${{x}}$ là số lần giảm cá. Suy ra số cá giảm là: ${r}x$ con.\n\n"
+	f"Mật độ cá thả mới: ${a}-{r}x$.\n\n"
+	f"Số cá thả mới: $N(x)={s*a}-{r}x$.\n\n"
+	f"Mỗi con cá tăng thêm được: $m(x)=({s_m1}+{s_b}x)$ kg.\n\n"
+	f"Tổng khối lượng cá thu được:\n\n"
+	f"$M(x)=N(x).m(x)=({s*a}-{r}x).({s_m1}+{s_b}x)={s_a1}x^2+{s_b1}x+{s_c1}$.\n\n"
+	f"Khối lượng cá đạt lớn nhất khi: $x=\\dfrac{{-{s_b1}}}{{{s_2a1}}}={s_x}$.\n\n"
+	f"Vì số cá nguyên nên $x={x_thuc}$.\n\n"
+	f"Số lượng cá cần thả: $N={s*a}-{r}.{x_thuc}={dap_an}$."
+	)
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
