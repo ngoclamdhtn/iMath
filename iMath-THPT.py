@@ -8350,7 +8350,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_31]-TF-M4. Bán áo thun mô hình (p-qx)*(a+x) Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận"])
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_31]-TF-M4. Bán áo thun mô hình (p-qx)*(a+x). Xét Đ-S: tiền lãi, Sl giảm, SL tiêu thụ, max lợi nhuận"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_2, ["[D12_C1_B5_40]-TF-M4. Thả cá xuống ao. Xét Đ-S: Số cá thả vụ trước, số cả thả vụ mới, sản lượng lớn nhất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8808,7 +8812,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_59]-TF-M3. Cho 2 chim bói cá. Xét Đ-S:So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim."])
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_59]-TF-M3. Cho 2 chim bói cá. Xét Đ-S: So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_2, ["[D12_C2_B3_60]-TF-M3.Cabin chuyển động. Xét Đ-S: K.c đến vị trí xuất phát, độ dài vectơ, k.c giữa cabin và người qua sát."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11342,6 +11350,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_39]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_39()
 
+                                            #[D12_C1_B5_40]-TF-M4. Xét Đ-S: Tìm số cá giảm để thu được sản lượng lớn nhất
+                                            if dang_toan == "[D12_C1_B5_40]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_40()
+
 
                                             
                                                 
@@ -11716,9 +11728,13 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C2_B3_58]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_58()
 
-                                        #[D12_C2_B3_59]-SA-M3. Cho 2 chim bói cá. Xét Đ-S:So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim 
+                                        #[D12_C2_B3_59]-TF-M3. Cho 2 chim bói cá. Xét Đ-S:So sánh k.c đến mục tiêu, thời gian bay đến mục tiêu, tìm vị trí mới của chim 
                                             if dang_toan == "[D12_C2_B3_59]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_59()
+
+                                        #[D12_C2_B3_60]-TF-M3. Cabin chuyển động đều cùng hướng vécto u. Tính khoảng cách từ người đến cabin sau t giây.
+                                            if dang_toan == "[D12_C2_B3_60]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_60()
 
 
 

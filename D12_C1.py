@@ -10478,6 +10478,50 @@ def prt_34_L12_C1_B3_23():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C1_B3_24]-SA-M3. Tìm hàm số số lượng nấm men.
+def prt_34_L12_C1_B3_24():
+	while True:
+		k=random.choice([1/2,1/4,3/4,2/5,3/5])
+		s_k=f"{round_half_up(k,1):.1f}".replace(".",",")
+		#Số lượng tế bào ban đầu
+		n_0=random.randint(10,30)
+		#Tốc độ tăng ban đầu
+		v_0=random.randint(10,30)
+		b=k*n_0/v_0-1
+		a=n_0*(b+1)
+		if 0<b<99:
+			break
+
+	#k.n_0/v_0=-1
+	noi_dung = (
+	f"Giả sử số lượng của một quần thể nấm men tại môi trường nuôi cấy trong phòng thí nghiệm"
+	f" được mô hinh hoá bằng hàm số $N(t)=\\dfrac{{a}}{{b+e^{{-{s_k}t}}}}$, trong đó thời gian $t$ được tính bằng giờ."
+	f" Tại thời điểm ban đầu $t=0$, quần thể có ${n_0}$ tế bào và tăng với tốc độ ${{{v_0}}}$ tế bào/giờ."
+	f" Theo mô hình này, số lượng nấm men không vượt quá bao nhiêu (kết quả làm tròn đến hàng đơn vị)?"
+	)
+	dap_an=f"{round_half_up(a/b,0):.0f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"$N(0)={n_0} \\Rightarrow \\dfrac{{a}}{{b+1}}={n_0}\\Rightarrow a={n_0}(b+1)$.\n\n"
+	f"$N'(t)=\\dfrac{{{s_k}ae^{{-{s_k}t}}{{(b+e^{{-{s_k}t)^2}}$.\n\n"
+	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}a}}{{(b+1)^2}}={v_0}$"
+	f"$\\Rightarrow \\dfrac{{{s_k}{n_0}}}{{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
+	f"$\\Rightarrow a= {phan_so(a)}$.\n\n"
+	f"$\\mathop{{\\lim}}\\limits_{{x \\to  x_0}} {{\\dfrac{{{phan_so(a)}}}{{{phan_so(b)}+e^{{-{s_k}t}}}}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #BÀI 5 - ĐỒ THỊ HÀM SỐ
 
 #[D12_C1_B4_01]-M2. Cho đồ thị. Tìm hàm số bậc 3 tương ứng.
@@ -17272,7 +17316,7 @@ def prt_34_L12_C1_B5_39():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C1_B5_40]-TF-M4. Xét Đ-S: Tìm số cá giảm để thu được sản lượng lớn nhất
+#[D12_C1_B5_40]-TF-M4. Thả cá xuống ao. Xét Đ-S: Số cá thả vụ trước, số cả thả vụ mới, sản lượng lớn nhất
 def prt_34_L12_C1_B5_40():
 	x=sp.symbols("x")
 	ten=random.choice(["Lam", "Minh", "Hùng", "An", "Vinh" ])

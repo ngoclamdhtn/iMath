@@ -10006,7 +10006,8 @@ def mnj_34_jkl_L12_C2_B3_57():
 
 #[D12_C2_B3_58]-SA-M3. Cabin chuyển động đều cùng hướng vécto u. Tính khoảng cách từ người đến cabin sau t giây.
 def mnj_34_jkl_L12_C2_B3_58():
-	A,B,C="A","B","C"
+	A,B=random.sample(["A","B","M","N","P"],2)
+	C="C"
 	a1= random.choice([i for i in range(-5, 6) if i!=0])
 	a2= random.choice([i for i in range(-5, 6) if i!=0])
 	a3=random.randint(2,6)
@@ -10030,7 +10031,7 @@ def mnj_34_jkl_L12_C2_B3_58():
 	vec_AC=vec2(A,"C")
 	noi_dung = (
 	f"Tại một vị trí cụ thể ở một ngọn núi người ta đặt cố định một hệ trục tọa độ ${{Oxyz}}$, mỗi đơn vị trên mỗi trục có độ dài bằng 1 mét."
-	f"Một người đứng cố định tại vị trí ${B}({b1};{b2};{b3})$, quan sát một chiếc cabin cáp treo và thấy"
+	f" Một người đứng cố định tại vị trí ${B}({b1};{b2};{b3})$, quan sát một chiếc cabin cáp treo và thấy"
 	f" cabin này xuất phát từ điểm ${A}({a1};{a2};{a3})$, chuyển động thẳng đều theo hướng của vectơ ${vec_u}=({u1};{u2};{u3})$"
 	f" với vận tốc ${{{v}}}$ mét/giây. Hỏi sau ${{{t}}}$ giây kể từ lúc xuất phát, khoảng cách giữa cabin và người quan sát bằng bao nhiêu mét? (làm tròn kết quả đến hàng đơn vị)."
 	)
@@ -10563,6 +10564,132 @@ def mnj_34_jkl_L12_C2_B3_59():
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
 	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C2_B3_60]-TF-M3. Cabin chuyển động đều cùng hướng vécto u. Tính khoảng cách từ người đến cabin sau t giây.
+def mnj_34_jkl_L12_C2_B3_60():
+	A,B=random.sample(["A","B","M","N","P"],2)
+	C="C"
+	a1= random.choice([i for i in range(-5, 6) if i!=0])
+	a2= random.choice([i for i in range(-5, 6) if i!=0])
+	a3=random.randint(2,6)
+
+	b1= random.choice([i for i in range(-5, 6) if i!=0])
+	b2= random.choice([i for i in range(-5, 6) if i!=0])
+	b3=random.randint(0,4)
+	while True:
+		u1,u2,u3= random.choice([[1,-2,2], [-1,2,2], [-1,-2,2], [3,0,4], [-3,0,4], [0,3,4],[0,-3,4],
+		[2,3,6], [2,-3,6], [1,-4,8], [4,4,7] ])
+
+		len_u=int(sqrt(u1**2+u2**2+u3**2))
+		v=random.randint(3,7)
+		t=random.randint(4,7)
+		s=v*t
+		if s>len_u:
+			break
+	k=s/len_u
+	c1, c2, c3=a1+k*u1, a2+k*u2, a3+k*u3
+	vec_u=vec("u")
+	vec_AC=vec2(A,"C")
+	noi_dung = (
+	f"Tại một vị trí cụ thể ở một ngọn núi người ta đặt cố định một hệ trục tọa độ ${{Oxyz}}$, mỗi đơn vị trên mỗi trục có độ dài bằng 1 mét."
+	f" Một người đứng cố định tại vị trí ${B}({b1};{b2};{b3})$, quan sát một chiếc cabin cáp treo và thấy"
+	f" cabin này xuất phát từ điểm ${A}({a1};{a2};{a3})$, chuyển động thẳng đều theo hướng của vectơ ${vec_u}=({u1};{u2};{u3})$"
+	f" với vận tốc ${{{v}}}$ mét/giây."
+	f" Xét tính đúng-sai của các khẳng định sau (làm tròn kết quả đến hàng đơn vị)."
+	)
+	BC=sqrt((b1-c1)**2+(b2-c2)**2+(b3-c3)**2)
+	BC_f=sqrt((b1-c1)**2+(b2-c2)**2+(b3-c3)**2+random.randint(1,3))
+	d_BC=f"{round_half_up(BC,0):.0f}".replace(".",",")
+	d_BC_f=f"{round_half_up(BC,0):.0f}".replace(".",",")	
+	
+	kq1_T=f"* Sau ${{{t}}}$ giây, cabin cách vị trí xuất phát ${{{s}}}$ m" 
+	kq1_F=f"Sau ${{{t}}}$ giây, cabin cách vị trí xuất phát ${{{s+random.randint(1,4)}}}$ m "
+	kq1=random.choice([kq1_T, kq1_F])
+	HDG=f"Cabin chuyển động thẳng đều nên: ${A}C={v}.{t}={s}$ m."
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"*Độ dài vectơ ${vec_u}$ bằng ${{{len_u}}}$"
+	kq2_F=f"Độ dài vectơ ${vec_u}$ bằng ${{{len_u+random.randint(1,4)}}}$"
+	kq2=random.choice([kq2_T, kq2_F])
+	HDG=f"$|{vec_u}|=\\sqrt{{{u1**2}+{u2**2}+{u3**2}}}={len_u}$."
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"*Gọi ${{C}}$ là vị trí ca bin sau ${{{t}}}$ giây. Khi đó ${vec_AC}={phan_so(k)}{vec_u}$" 
+	kq3_F=f"Gọi ${{C}}$ là vị trí ca bin sau ${{{t}}}$ giây. Khi đó ${vec_AC}={phan_so(k+random.randint(1,2))}{vec_u}$"
+	kq3=random.choice([kq3_T, kq3_F])
+	HDG=(f"${A}C={v}.{t}={s}$, $|{vec_u}|={len_u}$.\n\n"
+		f"${vec_AC}=\\dfrac{{{s}}}{{{len_u}}}{vec_u}={phan_so(k)}{vec_u}$.")
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq4_T=f"*Khoảng cách giữa cabin và người quan sát sau ${{{t}}}$ giây bằng ${{{d_BC}}}$ m"
+	kq4_F=f"Khoảng cách giữa cabin và người quan sát sau ${{{t}}}$ giây bằng ${{{d_BC_f}}}$ m" 
+	kq4=random.choice([kq4_T, kq4_F])
+	HDG=(
+	f"Cabin chuyển động thẳng đều nên: ${A}C={v}.{t}={s}$ m.\n\n"
+	f"${vec_u}=({u1};{u2};{u3})\\Rightarrow |{vec_u}|={len_u}$.\n\n"
+	f"${vec_AC}=\\dfrac{{{s}}}{{{len_u}}}{vec_u}={phan_so(k)}{vec_u}$.\n\n"
+	f"$\\Rightarrow C={A}+{phan_so(k)}{vec_u}=({a1};{a2};{a3})+{phan_so(k)}({u1};{u2};{u3})=({phan_so(c1)};{phan_so(c2)};{phan_so(c3)})$.\n\n"
+	f"${B}C=\\sqrt{{({b1}-{phan_so(c1)})^2+({b2}-{phan_so(c2)})^2+({b3}-{phan_so(c3)})^2}}={d_BC}$."
+	)
+	HDG=HDG.replace("--","+")
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"\
+	f"\n\n a) {loigiai[0]}\n"\
+	f"b) {loigiai[1]}\n"\
+	f"c) {loigiai[2]}\n"\
+	f"d) {loigiai[3]}\n"\
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n" \
+
+	loigiai_latex=f"\n\n a) {loigiai[0]}\n\n"\
+	f"b) {loigiai[1]}\n\n"\
+	f"c) {loigiai[2]}\n\n"\
+	f"d) {loigiai[3]}\n\n"
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
+	    f"\\choiceTFt\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
+	    f"\\end{{ex}}\n"
 
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
