@@ -4,6 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+def st_lim(x_0):
+    return f"\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}}"
+
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
     return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
@@ -10489,7 +10493,7 @@ def prt_34_L12_C1_B3_24():
 		v_0=random.randint(10,30)
 		b=k*n_0/v_0-1
 		a=n_0*(b+1)
-		if 0<b<99:
+		if b>0:
 			break
 
 	#k.n_0/v_0=-1
@@ -10503,11 +10507,11 @@ def prt_34_L12_C1_B3_24():
 
 	noi_dung_loigiai=(
 	f"$N(0)={n_0} \\Rightarrow \\dfrac{{a}}{{b+1}}={n_0}\\Rightarrow a={n_0}(b+1)$.\n\n"
-	f"$N'(t)=\\dfrac{{{s_k}ae^{{-{s_k}t}}{{(b+e^{{-{s_k}t)^2}}$.\n\n"
-	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}a}}{{(b+1)^2}}={v_0}$"
-	f"$\\Rightarrow \\dfrac{{{s_k}{n_0}}}{{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
+	f"$N'(t)=\\dfrac{{ {s_k}ae^{{-{s_k}t}} }} {{ (b+e^{{-{s_k}}}t)^2 }}$.\n\n"
+	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}a}} {{(b+1)^2}}={v_0}$\n\n"
+	f"$\\Rightarrow \\dfrac{{{s_k}{n_0}}} {{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
 	f"$\\Rightarrow a= {phan_so(a)}$.\n\n"
-	f"$\\mathop{{\\lim}}\\limits_{{x \\to  x_0}} {{\\dfrac{{{phan_so(a)}}}{{{phan_so(b)}+e^{{-{s_k}t}}}}}}={dap_an}$."
+	f"${st_lim("+\\infty")} {{\\dfrac{{{phan_so(a)}}} {{ {phan_so(b)}+e^{{-{s_k}t}} }}={dap_an}$."
 	)	
 		
 	debai_word= f"{noi_dung}\n"
