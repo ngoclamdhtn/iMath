@@ -8052,7 +8052,7 @@ class Ui_MainWindow(object):
                 L12_C1_B3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C1_B3_1 = QTreeWidgetItem(L12_C1_B3, ["Trắc nghiệm-Trả lời ngắn"])
+                L12_C1_B3_1 = QTreeWidgetItem(L12_C1_B3, ["Trắc nghiệm"])
                 L12_C1_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8155,6 +8155,18 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C1_B3_3, ["[D12_C1_B3_18]-SA-M2. Cho y=(ax^2+bx+c)/(dx+e) có TCX là y=ax+b. Tính ma+nb."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_3, ["[D12_C1_B3_24]-SA-M3. Tìm số lượng nấm men tối đa khi thời gian tăng lên vô hạn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_3, ["[D12_C1_B3_25]-SA-M3. Tìm số lượng khách hàng tối đa khi thời gian tăng lên vô hạn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B3_3, ["[D12_C1_B3_26]-SA-M3. Tìm số lượng học sinh tối đa khi thời gian tăng lên vô hạn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11086,6 +11098,18 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B3_23]-M2.  Đọc tiệm cận xiên của đồ thị y=mx+n +a/(bx+c)
                                             if dang_toan == "[D12_C1_B3_23]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_23()
+
+                                            #[D12_C1_B3_24]-SA-M3. Tìm số lượng nấm men tối đa khi thời gian tăng lên vô hạn.
+                                            if dang_toan == "[D12_C1_B3_24]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B3_24()
+
+                                            #[D12_C1_B3_25]-SA-M3. Tìm số lượng khách hàng tối đa khi thời gian tăng lên vô hạn.
+                                            if dang_toan == "[D12_C1_B3_25]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B3_25()
+
+                                            #[D12_C1_B3_26]-SA-M3. Tìm số lượng học sinh tối đa khi thời gian tăng lên vô hạn.
+                                            if dang_toan == "[D12_C1_B3_26]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B3_26()
 
 
 

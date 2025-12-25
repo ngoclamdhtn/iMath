@@ -5225,7 +5225,10 @@ def prt_34_L12_C1_B1_41():
 #[D12_C1_B1_42]-M2. Cho f'(x). Tìm điểm cực đại hoặc cực tiểu
 def prt_34_L12_C1_B1_42():
 	x=sp.symbols("x")
-	x_1,x_2,x_3=random.sample(range(-8,8),3)
+	while True:
+		x_1,x_2,x_3=random.sample(range(-8,8),3)
+		if x_1<x_2<x_3:
+			break
 
 	chon=random.randint(1,8)
 	if chon==1:
@@ -10482,25 +10485,25 @@ def prt_34_L12_C1_B3_23():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D12_C1_B3_24]-SA-M3. Tìm hàm số số lượng nấm men.
+#[D12_C1_B3_24]-SA-M3. Tìm số lượng nấm men tối đa khi thời gian tăng lên vô hạn.
 def prt_34_L12_C1_B3_24():
 	while True:
 		k=random.choice([1/2,1/4,3/4,2/5,3/5])
-		s_k=f"{round_half_up(k,1):.1f}".replace(".",",")
+		s_k=f"{round_half_up(k,2):.2f}".replace(".",",")
 		#Số lượng tế bào ban đầu
 		n_0=random.randint(10,30)
 		#Tốc độ tăng ban đầu
 		v_0=random.randint(10,30)
 		b=k*n_0/v_0-1
 		a=n_0*(b+1)
-		if b>0:
+		if all([n_0>v_0,b>0]):
 			break
 
 	#k.n_0/v_0=-1
 	noi_dung = (
 	f"Giả sử số lượng của một quần thể nấm men tại môi trường nuôi cấy trong phòng thí nghiệm"
-	f" được mô hinh hoá bằng hàm số $N(t)=\\dfrac{{a}}{{b+e^{{-{s_k}t}}}}$, trong đó thời gian $t$ được tính bằng giờ."
-	f" Tại thời điểm ban đầu $t=0$, quần thể có ${n_0}$ tế bào và tăng với tốc độ ${{{v_0}}}$ tế bào/giờ."
+	f" được mô hinh hoá bằng hàm số $N(t)=\\dfrac{{a}}{{b+e^{{-{s_k}t}}}}$, trong đó thời gian ${{t}}$ được tính bằng giờ."
+	f" Tại thời điểm ban đầu $t=0$, quần thể có ${{{n_0}}}$ tế bào và tăng với tốc độ ${{{v_0}}}$ tế bào/giờ."
 	f" Theo mô hình này, số lượng nấm men không vượt quá bao nhiêu (kết quả làm tròn đến hàng đơn vị)?"
 	)
 	dap_an=f"{round_half_up(a/b,0):.0f}".replace(".",",")
@@ -10508,10 +10511,98 @@ def prt_34_L12_C1_B3_24():
 	noi_dung_loigiai=(
 	f"$N(0)={n_0} \\Rightarrow \\dfrac{{a}}{{b+1}}={n_0}\\Rightarrow a={n_0}(b+1)$.\n\n"
 	f"$N'(t)=\\dfrac{{ {s_k}ae^{{-{s_k}t}} }} {{ (b+e^{{-{s_k}}}t)^2 }}$.\n\n"
-	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}a}} {{(b+1)^2}}={v_0}$\n\n"
-	f"$\\Rightarrow \\dfrac{{{s_k}{n_0}}} {{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
+	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}.a}} {{(b+1)^2}}={v_0}$\n\n"
+	f"$\\Rightarrow \\dfrac{{{s_k}.{n_0}}} {{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
 	f"$\\Rightarrow a= {phan_so(a)}$.\n\n"
-	f"${st_lim("+\\infty")} {{\\dfrac{{{phan_so(a)}}} {{ {phan_so(b)}+e^{{-{s_k}t}} }}={dap_an}$."
+	f"$\\mathop{{\\lim}}\\limits_{{t \\to +\\infty}}\\dfrac{{{phan_so(a)}}} {{ {phan_so(b)}+e^{{-{s_k}t}} }}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B3_25]-SA-M3. Tìm số lượng khách hàng tối đa khi thời gian tăng lên vô hạn.
+def prt_34_L12_C1_B3_25():
+	while True:
+		k=random.choice([1/2,1/4,3/4,2/5,3/5])
+		s_k=f"{round_half_up(k,2):.2f}".replace(".",",")
+		#Số lượng tế bào ban đầu
+		n_0=random.randint(10,30)
+		#Tốc độ tăng ban đầu
+		v_0=random.randint(10,30)
+		b=k*n_0/v_0-1
+		a=n_0*(b+1)
+		if all([n_0>v_0,b>0]):
+			break
+
+	#k.n_0/v_0=-1
+	noi_dung = (
+	f"Giả sử số lượng khách hàng sử dụng một ứng dụng mới"
+	f" được mô hinh hoá bằng hàm số $N(t)=\\dfrac{{a}}{{b+e^{{-{s_k}t}}}}$, trong đó thời gian ${{t}}$ được tính bằng tháng."
+	f" Tại thời điểm ban đầu $t=0$, có ${{{n_0}}}$ người dùng và tăng với tốc độ ${{{v_0}}}$ người/tháng."
+	f" Theo mô hình này, số lượng người dùng tối đa là bao nhiêu (kết quả làm tròn đến hàng đơn vị)?"
+	)
+	dap_an=f"{round_half_up(a/b,0):.0f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"$N(0)={n_0} \\Rightarrow \\dfrac{{a}}{{b+1}}={n_0}\\Rightarrow a={n_0}(b+1)$.\n\n"
+	f"$N'(t)=\\dfrac{{ {s_k}ae^{{-{s_k}t}} }} {{ (b+e^{{-{s_k}}}t)^2 }}$.\n\n"
+	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}.a}} {{(b+1)^2}}={v_0}$\n\n"
+	f"$\\Rightarrow \\dfrac{{{s_k}.{n_0}}} {{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
+	f"$\\Rightarrow a= {phan_so(a)}$.\n\n"
+	f"$\\mathop{{\\lim}}\\limits_{{t \\to +\\infty}}\\dfrac{{{phan_so(a)}}} {{ {phan_so(b)}+e^{{-{s_k}t}} }}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B3_26]-SA-M3. Tìm số lượng học sinh tối đa khi thời gian tăng lên vô hạn.
+def prt_34_L12_C1_B3_26():
+	while True:
+		k=random.choice([1/2,1/4,3/4,2/5,3/5])
+		s_k=f"{round_half_up(k,2):.2f}".replace(".",",")
+		#Số lượng tế bào ban đầu
+		n_0=random.randint(8,20)
+		#Tốc độ tăng ban đầu
+		v_0=random.randint(5,15)
+		b=k*n_0/v_0-1
+		a=n_0*(b+1)
+		if all([n_0>v_0,b>0]):
+			break
+
+	#k.n_0/v_0=-1
+	noi_dung = (
+	f"Giả sử số lượng học sinh tham gia một khóa học online"
+	f" được mô hinh hoá bằng hàm số $N(t)=\\dfrac{{a}}{{b+e^{{-{s_k}t}}}}$, trong đó thời gian ${{t}}$ được tính bằng tuần."
+	f" Tại thời điểm ban đầu $t=0$, có ${{{n_0}}}$ học sinh đăng kí và tăng với tốc độ ${{{v_0}}}$ học sinh/tuần."
+	f" Theo mô hình này, số lượng học sinh tối đa là bao nhiêu (kết quả làm tròn đến hàng đơn vị)?"
+	)
+	dap_an=f"{round_half_up(a/b,0):.0f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"$N(0)={n_0} \\Rightarrow \\dfrac{{a}}{{b+1}}={n_0}\\Rightarrow a={n_0}(b+1)$.\n\n"
+	f"$N'(t)=\\dfrac{{ {s_k}ae^{{-{s_k}t}} }} {{ (b+e^{{-{s_k}}}t)^2 }}$.\n\n"
+	f"$N'(0)={v_0}\\Rightarrow \\dfrac{{{s_k}.a}} {{(b+1)^2}}={v_0}$\n\n"
+	f"$\\Rightarrow \\dfrac{{{s_k}.{n_0}}} {{b+1}}={v_0}\\Rightarrow b={phan_so(b)}$.\n\n"
+	f"$\\Rightarrow a= {phan_so(a)}$.\n\n"
+	f"$\\mathop{{\\lim}}\\limits_{{t \\to +\\infty}}\\dfrac{{{phan_so(a)}}} {{ {phan_so(b)}+e^{{-{s_k}t}} }}={dap_an}$."
 	)	
 		
 	debai_word= f"{noi_dung}\n"
