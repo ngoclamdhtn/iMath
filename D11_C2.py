@@ -2684,6 +2684,50 @@ def mn8mn_L11_C2_B2_34():
     f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C2_B2_35]-SA-M3. Toán thực tế: Tìm số viên gạch để xếp thành hình thang
+def mn8mn_L11_C2_B2_35():
+    while True:
+        u1=random.randint(20,30)
+        d=random.randint(-3,-1)
+        n=random.randint(10,15)
+        un=u1+(n-1)*d
+        S_n=int(n/2*(u1+un))
+        if un>1:
+            break
+    u1_m=f"{round_half_up(u1/10,1):.1f}".replace(".",",")
+    un_m=f"{round_half_up(un/10,1):.1f}".replace(".",",")
+
+    noi_dung = (
+    f"Một bức tường trang trí có dạng hình thang, rông ${{{u1_m}}}$ m ở đáy lớn và rông ${{{un_m}}}$ ở dáy bé."
+    f" Các viên gạch hình vuông có kích thước $10 cm \\times 10 cm$ phải được đặt sao cho"
+    f" mỗi hàng ở phía trên chứa ít hơn ${{{abs(d)}}}$ viên so với hàng ở ngay phía dưới nó."
+    f" Hỏi sẽ cần bao nhiêu viēn gạch hình vuông như vậy để ốp hết bức tường đó?"
+    )
+    dap_an=S_n
+
+    noi_dung_loigiai=(
+    f"Ta có: ${u1_m}m={u1*10}cm, {un_m}m={un*10}cm$.\n\n"
+    f"Số viên gạch ở hàng đầu tiên (ứng với đáy lớn) là: $u_1={u1*10}:10={u1}$.\n\n"
+    f"Số viên gạch ở hàng trên cùng (ứng với đáy nhỏ) là: $u_n={un*10}:10={un}$.\n\n"
+    f"Vì mỗi hàng ở phía trên chứa ít hơn ${{{abs(d)}}}$ viên so với hàng ở ngay phía dưới"
+    f" nên ta thu được cấp số cộng có công sai $d={d}$.\n\n"
+    f"$u_n={u1}+(n-1).({d})={un}\\Rightarrow n={n}$.\n\n"
+    f"Số viên gạch dùng để ốp tường là:\n\n"
+    f"$S_{{{n}}}=\\dfrac{{{n}(u_1+u_{{{n}}})}}{{2}}={S_n}$."
+    )    
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\shortans[4]{{{dap_an}}}\n\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 ############## CẤP SỐ NHÂN ##############

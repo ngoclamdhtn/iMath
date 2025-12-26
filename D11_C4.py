@@ -984,6 +984,55 @@ def ghj_7_jkl_L11_C4_B1_06():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C4_B1_07]-TL-M2. Cho hình chóp đáy là h.b.h.Tìm giao tuyến
+def ghj_7_jkl_L11_C4_B1_07():
+	S,A,B,C,D="S","A","B","C","D"
+	E,F=random.sample(["E","F","G","H"],2)
+	ten_day=random.choice(["hình vuông", "hình bình hành", "hình chữ nhật", "hình thoi" ])
+
+	noi_dung = (f"Cho hình chóp ${{{S}.{A}{B}{C}{D}$ có đáy là {ten_day}.")
+
+	chon=random.randint(1,2)
+	chon=1
+	if chon==1:
+		noi_dung+=(f" Tìm giao tuyến của hai mặt phẳng $({S}{A}{C})$ và $({S}{B}{D})$.")
+		noi_dung_loigiai=(
+		f"${S}\\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
+		f"Gọi $O={A}{C} \\cap {B}{D} \\Rightarrow O \\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
+		f"Vậy $({S}{A}{C}) \\cap ({S}{B}{D})={S}O$."
+		)
+
+	if chon==2:
+		noi_dung+=(f" Tìm giao tuyến của hai mặt phẳng $({S}{A}{C})$ và $({S}{B}{D})$.")
+		noi_dung_loigiai=(
+		f"${S}\\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
+		f"Gọi $O={A}{C} \\cap {B}{D} \\Rightarrow O \\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
+		f"Vậy $({S}{A}{C}) \\cap ({S}{B}{D})={S}O$."
+		)
+
+	code_hinh=code_hinh_chop_hbh(S,A,B,C,D)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+	
+	
+	
+	
+
+	
+	dap_an=""
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\	
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 #Bài 2 - Hai đường thẳng song song

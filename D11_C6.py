@@ -810,13 +810,14 @@ def uz9zu_L11_C6_B1_12():
             break
     
     noi_dung = (
-    f"Biết ${a}^{{{x}}}={m}, {a}^{{{y}}}={n}$. Tính $P=\\dfrac{{ {latex((a**k_1)**x)}.{latex((a**k_1)**y)} }} {{ {latex((a**k_3)**x)}.{latex((a**k_1)**y)} }}+{q}$"
+    f"Biết ${a}^{{{x}}}={m}, {a}^{{{y}}}={n}$."
+    f" Tính $P=\\dfrac{{ {latex((a**k_1)**x)}.{latex((a**k_2)**y)} }} {{ {latex((a**k_3)**x)}.{latex((a**k_4)**y)} }}+{q}$"
     f"(kết quả làm tròn đến hàng phần mười)."
     )
     dap_an=f"{round_half_up(m**(k_1-k_3)*n**(k_2-k_4)+q,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
-    f"$P=\\dfrac{{ {latex((a**k_1)**x)}.{latex((a**k_1)**y)} }} {{ {latex((a**k_3)**x)}.{latex((a**k_1)**y)} }}$"
+    f"$P=\\dfrac{{ {latex((a**k_1)**x)}.{latex((a**k_2)**y)} }} {{ {latex((a**k_3)**x)}.{latex((a**k_4)**y)} }}$"
     f"  $={latex((a**(k_1-k_3))**x)}.{latex((a**(k_2-k_4))**y)}+{q}={phan_so(m**(k_1-k_3))}.{phan_so(n**(k_2-k_4))}+{q}={dap_an}$."
     )    
         

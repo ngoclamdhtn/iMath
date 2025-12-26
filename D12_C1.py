@@ -12370,8 +12370,8 @@ def prt_34_L12_C1_B4_17():
 	#Vẽ đồ thị
 	code_hinh=my_module.code_dothi_bac_3(a,b,c,d)	
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	file_name=my_module.pdftoimage_timename(code)
-	#file_name=""
+	#file_name=my_module.pdftoimage_timename(code)
+	file_name=""
 	
 	kq=f"$y={latex(f)}$"
 
@@ -12381,7 +12381,7 @@ def prt_34_L12_C1_B4_17():
 
 	a,b,c,d=sp.symbols("a b c d")
 	chon=random.randint(1,3)
-	chon=1
+	
 	if chon==1:
 		noi_dung = f"Hàm số $y=ax^3+{latex(b1*x**2)}+cx+d$ có đồ thị như hình vẽ bên. Tính ${latex(m*a+n*c+d)}$.".replace("+-","-")
 		dap_an=m*a1+n*c1+d1
@@ -12422,7 +12422,7 @@ def prt_34_L12_C1_B4_17():
 			)
 	
 	
-		
+	noi_dung=noi_dung.replace("+0","")
 	debai_word= f"{noi_dung}\n{file_name}\n"
 
 	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"

@@ -5381,6 +5381,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C2_B2_3, ["[D11_C2_B2_35]-SA-M3. Toán thực tế: Tìm số viên gạch để xếp thành hình thang."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
                 
@@ -8180,7 +8184,7 @@ class Ui_MainWindow(object):
                 L12_C1_B4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L12_C1_B4_1 = QTreeWidgetItem(L12_C1_B4, ["Trắc nghiệm-Trả lời ngắn"])
+                L12_C1_B4_1 = QTreeWidgetItem(L12_C1_B4, ["Trắc nghiệm"])
                 L12_C1_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C1_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -13691,6 +13695,10 @@ class Ui_MainWindow(object):
                                             #[D11_C2_B2_34]-SA-M3.  Toán thực tế: Tổng số cây trồng trên khu đất hình chữ nhật
                                             if dang_toan == "[D11_C2_B2_34]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_34()
+
+                                            #[D11_C2_B2_35]-SA-M3.  Toán thực tế: Tìm số viên gạch để xếp thành hình thang
+                                            if dang_toan == "[D11_C2_B2_35]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C2.mn8mn_L11_C2_B2_35()
 
                                             
 

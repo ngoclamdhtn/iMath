@@ -229,8 +229,6 @@ def yy3yy_L10_C4_B1_03():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
 
 
-
-
 #[D10_C4_B1_04]-M2 Cho sin tìm tan
 def yy3yy_L10_C4_B1_04():
     triples = [(a, b, c) for a in range(1, 100) 
@@ -249,31 +247,31 @@ def yy3yy_L10_C4_B1_04():
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\cos \\alpha ={v}$ suy ra $\\tan \\alpha ={z}$"
                 
         kq=f" ${{{z}}}$"
-        ds=[f"${{{phan_so((a+1)/b)}}}$",
-        f"${{{phan_so((a+2)/b)}}}$",
-        f"${{{phan_so((a-1)/b)}}}$",
-    f"${{{phan_so((a-2)/c)}}}$",
-        f"${{{phan_so((a-3)/c)}}}$",
-    f"${{{phan_so((a+3)/c)}}}$"]
+        numbers = set()
+        while len(numbers) <5:  
+            t=random.uniform(2, 10)    
+            if t!=a/b:
+                numbers.add(round(t, 1))
 
     if chon ==2:
         noi_dung=f"Cho $\\sin \\alpha = {u}$ và $ 90^{{\\circ}} <\\alpha < 180^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}}< \\alpha < 180^{{\\circ}}$ nên $\\cos \\alpha ={phan_so(-b/c)}$ suy ra $\\tan \\alpha ={phan_so(-a/b)}$"
                 
         kq=f" ${{{phan_so(-a/b)}}}$"
-        ds=[f"${{{phan_so((-a+1)/b)}}}$",
-        f"${{{phan_so((-a+2)/b)}}}$",
-        f"${{{phan_so((-a-1)/b)}}}$",
-    f"${{{phan_so((-a-2)/c)}}}$",
-        f"${{{phan_so((-a-3)/c)}}}$",
-    f"${{{phan_so((-a+3)/c)}}}$"]
-    kq2, kq3, kq4 = random.sample(ds, 3)  
+        numbers = set()
+        while len(numbers) <5:  
+            t=random.uniform(2, 10)    
+            if t!=-a/b:
+                numbers.add(round(t, 1))    
+
+    kq_false = list(numbers)
+    kq2,kq3,kq4=kq_false[0:3]
 
 
     pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -316,35 +314,31 @@ def yy3yy_L10_C4_B1_05():
     v=phan_so(b/c)
     chon =random.randint(1,2)
     if chon ==1:
-        noi_dung=f"Cho $\\cos \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\sin \\alpha$ là: "
+        noi_dung=f"Cho $\\cos \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\sin \\alpha$ là:"
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ "
                 
         kq=f" ${{{v}}}$"
-        ds=[f"${{{phan_so((b+1)/c)}}}$",
-        f"${{{phan_so((b+2)/c)}}}$",
-        f"${{{phan_so((b-1)/c)}}}$",
-    f"${{{phan_so((b-2)/c)}}}$",
-        f"${{{phan_so((b-3)/c)}}}$",
-    f"${{{phan_so((b+3)/c)}}}$"]
+        
     if chon ==2:
         noi_dung=f"Cho $\\cos \\alpha = {phan_so(-a/c)}$ và $ 90^{{\\circ}}<\\alpha < 180^{{\\circ}}$, giá trị $\\sin \\alpha$ là: "
 
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}} < \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ "
                 
-        kq=f" ${{{v}}}$"
-        ds=[f"${{{phan_so((b+1)/c)}}}$",
-        f"${{{phan_so((b+2)/c)}}}$",
-        f"${{{phan_so((b-1)/c)}}}$",
-    f"${{{phan_so((b-2)/c)}}}$",
-        f"${{{phan_so((b-3)/c)}}}$",
-    f"${{{phan_so((b+3)/c)}}}$"]
-    kq2, kq3, kq4 = random.sample(ds, 3)  
+        kq=f"${{{v}}}$"
+    numbers = set()
+    while len(numbers) <5:  
+        t=random.uniform(2, 10)    
+        if t!=b/c:
+            numbers.add(round(t, 1))    
+
+    kq_false = list(numbers)
+    kq2,kq3,kq4=kq_false[0:3]
 
 
     pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -361,13 +355,13 @@ def yy3yy_L10_C4_B1_05():
     for i in range(4):
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
     f"\\choice\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
 
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
@@ -389,32 +383,35 @@ def yy3yy_L10_C4_B1_06():
         noi_dung=f"Cho $\\cos \\alpha = {u}$ và $ 0<\\alpha < 90^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 0< \\alpha < 90^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(b/a)}$ "
                 
-        kq=f" ${{{phan_so(b/a)}}}$"
-        ds=[f"${{{phan_so((b+1)/a)}}}$",
-        f"${{{phan_so((b+2)/a)}}}$",
-        f"${{{phan_so((b-1)/a)}}}$",
-    f"${{{phan_so((b-2)/a)}}}$",
-        f"${{{phan_so((b-3)/a)}}}$",
-    f"${{{phan_so((b+4)/a)}}}$"]
+        kq=f"${{{phan_so(b/a)}}}$"
+        numbers = set()
+        while len(numbers) <5:  
+            t=random.uniform(2, 10)    
+            if t!=b/a:
+                numbers.add(round(t, 1))    
+
+
     if chon ==2:
         noi_dung=f"Cho $\\cos \\alpha = {phan_so(-a/c)}$ và $ 90^{{\\circ}}<\\alpha < 180^{{\\circ}}$, giá trị $\\tan \\alpha$ là: "
 
         noi_dung_loigiai=f" Ta có $\\sin^{{2}} \\alpha + \\cos^{{2}} \\alpha=1$  và $ 90^{{\\circ}} < \\alpha < 180^{{\\circ}}$ nên $\\sin \\alpha ={v}$ suy ra $\\tan \\alpha = {phan_so(-b/a)}$ "
                 
-        kq=f" ${{{phan_so(-b/a)}}}$"
-        ds=[f"${{{phan_so((-b+1)/a)}}}$",
-        f"${{{phan_so((-b+2)/a)}}}$",
-        f"${{{phan_so((-b-1)/a)}}}$",
-    f"${{{phan_so((-b-2)/a)}}}$",
-        f"${{{phan_so((-b-3)/a)}}}$",
-    f"${{{phan_so((-b+3)/a)}}}$"]
-    kq2, kq3, kq4 = random.sample(ds, 3)  
+        kq=f"${{{phan_so(-b/a)}}}$"
+        numbers = set()
+        while len(numbers) <5:  
+            t=random.uniform(2, 10)    
+            if t!=-b/a:
+                numbers.add(round(t, 1))    
+
+    kq_false = list(numbers)
+    kq2,kq3,kq4=kq_false[0:3]
+
 
 
     pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)

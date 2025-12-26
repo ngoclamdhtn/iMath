@@ -1479,7 +1479,7 @@ def y7y7u_L10_C5_B2_09():
 	points=danh_sach.split(",")
 	random.shuffle(points)
 	A,B,C,D=points
-	code_hinh=my_module.code_latex_hinhbinhhanh(A,B,C,D)
+	code_hinh=my_module.code_latex_hinhbinhhanh(B,C,D,A)
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
 	
@@ -5366,35 +5366,35 @@ def y7y7u_L10_C5_B4_15():
 	
 	if chon==1:
 		tich_vh=a**2*cos(pi/3)
-		kq2_T=f"* ${vec_AB}.{vec_AC}={phan_so(tich_vh)}$"
+		kq2_T=f"*${vec_AB}.{vec_AC}={phan_so(tich_vh)}$"
 		kq2_F=f"${vec_AB}.{vec_AC}={phan_so(-tich_vh)}$"
 		
 		HDG=f"${vec_AB}.{vec_AC}={a}.{a}.\\cos 60^\\circ={phan_so(tich_vh)}$."
 	
 	if chon==2:
 		tich_vh=a**2*cos(pi-pi/3)
-		kq2_T=f"* ${vec_AB}.{vec_CA}={phan_so(tich_vh)}$"
+		kq2_T=f"*${vec_AB}.{vec_CA}={phan_so(tich_vh)}$"
 		kq2_F=f"${vec_AB}.{vec_CA}={phan_so(-tich_vh)}$"
 		
 		HDG=f"${vec_AB}.{vec_CA}={a}.{a}.\\cos 120^\\circ={phan_so(tich_vh)}$."
 
 	if chon==3:		
-		kq2_T=f"* ${vec_AM}.{vec_BC}=0$"
+		kq2_T=f"*${vec_AM}.{vec_BC}=0$"
 		kq2_F=f"${vec_AM}.{vec_BC}={random.randint(1,5)}$"
 		
 		HDG=f"${vec_AM}.{vec_BC}=0$ vì ${vec_AM} \\bot {vec_BC}$."
 
 	if chon==4:
-		tich_vh=-(a/2)**2
-		kq2_T=f"* ${vec_BM}.{vec_MC}={phan_so(tich_vh)}$"
+		tich_vh=(a/2)**2
+		kq2_T=f"*${vec_BM}.{vec_MC}={phan_so(tich_vh)}$"
 		kq2_F=f"${vec_BM}.{vec_MC}={phan_so(-tich_vh)}$"
 		
-		HDG=f"${vec_BM}.{vec_MC}={phan_so(a/2)}.{phan_so(a/2)}.\\cos 180^\\circ={phan_so(tich_vh)}$."
+		HDG=f"${vec_BM}.{vec_MC}={phan_so(a/2)}.{phan_so(a/2)}.\\cos 0^\\circ={phan_so(tich_vh)}$."
 
 	
 	if chon==5:
 		tich_vh=a*(a/2)
-		kq2_T=f"* ${vec_BM}.{vec_BC}={phan_so(tich_vh)}$"
+		kq2_T=f"*${vec_BM}.{vec_BC}={phan_so(tich_vh)}$"
 		kq2_F=f"${vec_BM}.{vec_BC}={phan_so(-tich_vh)}$"
 		
 		HDG=f"${vec_BM}.{vec_BC}={phan_so(a/2)}.{a}.\\cos 0^\\circ={phan_so(tich_vh)}$."
@@ -5402,7 +5402,7 @@ def y7y7u_L10_C5_B4_15():
 	if chon==6:
 		GB=a*sqrt(3)/3
 		tich_vh=GB**2*(-1/2)
-		kq2_T=f"* ${vec_GB}.{vec_GC}={phan_so(tich_vh)}$"
+		kq2_T=f"*${vec_GB}.{vec_GC}={phan_so(tich_vh)}$"
 		kq2_F=f"${vec_GB}.{vec_GC}={phan_so(-tich_vh)}$"
 		
 		HDG=(f"${G}{B}={G}{C}={phan_so(2/3)}.{a}.{latex(sqrt(3)/2)}={latex(GB)}$.\n\n"
@@ -5411,7 +5411,7 @@ def y7y7u_L10_C5_B4_15():
 	if chon==7:
 		GB=a*sqrt(3)/3
 		tich_vh=GB**2*(1/2)
-		kq2_T=f"* ${vec_GB}.{vec_CG}={phan_so(tich_vh)}$"
+		kq2_T=f"*${vec_GB}.{vec_CG}={phan_so(tich_vh)}$"
 		kq2_F=f"${vec_GB}.{vec_CG}={phan_so(-tich_vh)}$"
 		
 		HDG=(f"${G}{B}={G}{C}={phan_so(2/3)}.{a}.{latex(sqrt(3)/2)}={latex(GB)}$.\n\n"

@@ -2338,14 +2338,14 @@ def gghik_L10_CX_B0_31():
 		if x_G.is_integer():
 			noi_dung = (
 			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{C}")}|$ là nhỏ nhất."
 			f" Tính $a+b$.")
 			dap_an=int(x_G)			
 
 		else:
 			noi_dung = (
 			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."	
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{C}")}|$ là nhỏ nhất."	
 			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."			)
 			dap_an=f"{round_half_up(x_G,1):.1f}".replace(".",",")
 
@@ -2360,14 +2360,14 @@ def gghik_L10_CX_B0_31():
 		if y_G.is_integer():
 			noi_dung = (
 			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{C}")}|$ là nhỏ nhất."
 			f" Tính $a+b$.")
 			dap_an=int(y_G)			
 
 		else:
 			noi_dung = (
 			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho tam giác ${{{A}{B}{C}}}$ với ${A}({a1};{a2}),{B}({b1};{b2}), {C}({c1};{c2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."	
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}+{vec(f"{M}{C}")}|$ là nhỏ nhất."	
 			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."			)
 			dap_an=f"{round_half_up(y_G,1):.1f}".replace(".",",")
 
@@ -2997,7 +2997,7 @@ def gghik_L10_CX_B0_40():
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 
-	x_I, y_I=(a1+b1)/2,(a2+b2)/2
+	x_I, y_I=(b1+c1)/2,(b2+c2)/2
 
 	kq2_T=f"*Tọa độ trung điểm của đoạn thẳng ${{{B}{C}}}$ là điểm $I({phan_so(x_I)};{phan_so(y_I)})$"
 	kq2_F=f"Tọa độ trung điểm của đoạn thẳng ${{{B}{C}}}$ là điểm $I({phan_so(x_I+random.randint(1,2))};{phan_so(y_I)})$"
@@ -3008,7 +3008,7 @@ def gghik_L10_CX_B0_40():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	x_BA, y_BA = b1-a1, b2-a2
+	x_BA, y_BA = a1-b1, a2-b2
 	x_D, y_D=x_BA+c1, y_BA+c2
 
 	kq3_T=f"*Tứ giác ${{{A}{B}{C}{D}}}$ là hình bình hành khi có tọa độ điểm ${{{D}}}$ là $({x_D};{y_D})$" 
