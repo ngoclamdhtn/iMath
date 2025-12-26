@@ -9951,7 +9951,8 @@ def mnj_34_jkl_L12_C2_B3_57():
 \\end{{tikzpicture}}" 
 )
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	file_name=my_module.pdftoimage_timename(code)
+	#file_name=my_module.pdftoimage_timename(code)
+	file_name=""
 	while True:
 		a1=random.randint(10,30)/10
 		a2=random.randint(10,30)/10
@@ -9978,16 +9979,19 @@ def mnj_34_jkl_L12_C2_B3_57():
 	f" Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
 	)
 
-	x_AB,y_AB,z_AB=b1-a1, b2-a2, b3-a3
-	t=a3/z_AB
-	a,b = a1+t*x_AB, b1+t*y_AB
+	x_CA,y_CA,z_CA=b1-a1, b2-a2, -b3-a3
+	s_xCA=f"{round_half_up(x_CA,1):.1f}".replace(".",",")
+	s_yCA=f"{round_half_up(y_CA,1):.1f}".replace(".",",")
+	s_zCA=f"{round_half_up(z_CA,1):.1f}".replace(".",",")
+	t=-a3/z_CA
+	a,b = a1+t*x_CA, a2+t*y_CA
+
 	dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")
 	noi_dung_loigiai=(
-	f'Ta có: $C\\left({phan_so(a1)};{phan_so(a2)};{phan_so(a3)}\\right), A\\left({phan_so(b1)};{phan_so(b2)};{phan_so(b3)}\\right)$.\n\n'
-	f"$B=AC\\cap (Oxy)$.\n\n"
-	f"Gọi $B(a;b;0)$. Ta có:\n\n ${vec2("C","B")}=\\left(a-{phan_so(a1)};b-{phan_so(a2)};{phan_so(-a3)}\\right)$.\n\n"
-	f"${vec2("C","A")}=({phan_so(x_AB)};{phan_so(y_AB)};{phan_so(z_AB)})$.\n\n"
-	f"Ta có: $\\dfrac{{a+{phan_so(a1)}}}{{{phan_so(x_AB)}}}=\\dfrac{{b+{phan_so(a2)}}}{{{phan_so(y_AB)}}}=\\dfrac{{{phan_so(a3)}}}{{{phan_so(z_AB)}}}$.\n\n"
+	f'Ta có: $C\\left({s_a1};{s_a2};{s_a3}\\right), A\\left({s_b1};{s_b2};-{s_b3}\\right)$.\n\n'	
+	f"Gọi $B(a;b;0)$. Ta có:\n\n ${vec2("C","B")}=\\left(a-{s_a1};b-{s_a2};-{s_a3}\\right)$.\n\n"
+	f"${vec2("C","A")}=({s_xCA};{s_yCA};{s_zCA})$.\n\n"
+	f"Ta có: $\\dfrac{{a-{s_a1}}}{{{s_xCA}}}=\\dfrac{{b-{s_a2}}}{{{s_yCA}}}=\\dfrac{{-{s_a3}}}{{{s_zCA}}}$.\n\n"
 	f"Giải được: $a={phan_so(a)}; b={phan_so(b)}$. Suy ra $a+b={dap_an}$."
 	)	
 		
