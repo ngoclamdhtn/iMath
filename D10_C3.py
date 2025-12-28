@@ -1377,7 +1377,7 @@ def npl_mk_L10_C3_B1_17():
     if chon==3:
         while True:
             x_1,x_2=random.sample(range(-6,8),2)
-            a=random.choice([i for i in range(-3, 3) if i!=0])
+            a=random.choice([i for i in range(1, 3) if i!=0])
             b = random.choice([i for i in range(-5, 6) if i!=0])
             c=random.randint(-8,8)
             #bx+c    

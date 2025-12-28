@@ -63,10 +63,10 @@ def code_hinh_chop_hbh(S,A,B,C,D):
 \\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
 \\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
 \\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
-\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+ %\\coordinate (O) at ($({A})!0.5!({C})$);\n\
 \\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
 \\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
-\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({C}) ({A})--({B})    ({B})--({D});\n\
+\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({B})  ;\n\
 \\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
 \\end{{tikzpicture}}\n"
 	return code
@@ -987,49 +987,205 @@ def ghj_7_jkl_L11_C4_B1_06():
 #[D11_C4_B1_07]-TL-M2. Cho hình chóp đáy là h.b.h.Tìm giao tuyến
 def ghj_7_jkl_L11_C4_B1_07():
 	S,A,B,C,D="S","A","B","C","D"
-	E,F=random.sample(["E","F","G","H"],2)
+	E,F,M,N=random.sample(["E","F","G","H","M","N"],4)
+	
 	ten_day=random.choice(["hình vuông", "hình bình hành", "hình chữ nhật", "hình thoi" ])
 
-	noi_dung = (f"Cho hình chóp ${{{S}.{A}{B}{C}{D}$ có đáy là {ten_day}.")
+	noi_dung = (f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là {ten_day}.")
 
-	chon=random.randint(1,2)
-	chon=1
+	chon=random.randint(1,6)
+	
 	if chon==1:
 		noi_dung+=(f" Tìm giao tuyến của hai mặt phẳng $({S}{A}{C})$ và $({S}{B}{D})$.")
 		noi_dung_loigiai=(
 		f"${S}\\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
 		f"Gọi $O={A}{C} \\cap {B}{D} \\Rightarrow O \\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
 		f"Vậy $({S}{A}{C}) \\cap ({S}{B}{D})={S}O$."
+
 		)
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+			\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+			\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+			\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+			\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+			\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+			\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({B})--({D}) ({A})--({B})  ({A})--({C}) ({B})--({D});\n\
+			% Giao điểm O của AC và BD\n\
+			\\path [name path=AC] ({A})--({C});\n\
+			\\path [name path=BD] ({B})--({D});\n\
+			\\path [name intersections={{of=AC and BD, by=O}}];\n\
+			\\node at (O) [above right] {{$O$}};\n\
+			\\draw[fill=white] (O) circle (1.5pt);\n\
+			\\draw[dashed,thin]({S})--(O);\n\
+			\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n" 
 
 	if chon==2:
-		noi_dung+=(f" Tìm giao tuyến của hai mặt phẳng $({S}{A}{C})$ và $({S}{B}{D})$.")
+		a,b=random.randint(1,2),random.randint(1,2)
+		noi_dung+=(
+			f"Gọi ${{{M},{M}}}$ là các điểm lần lượt thuộc cạnh ${{{C}{D}}}$ và ${{{S}{B}}}$"
+			f"sao cho ${C}{M}={a}{M}{D}, {S}{N}={b}{N}{B}$."
+			f" Tìm giao tuyến của hai mặt phẳng $({B}{N}{D})$ và $({S}{A}{M})$.")
+		noi_dung=noi_dung.replace("=1","=")
 		noi_dung_loigiai=(
-		f"${S}\\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
-		f"Gọi $O={A}{C} \\cap {B}{D} \\Rightarrow O \\in ({S}{A}{C}) \\cap ({S}{B}{D})$.\n\n"
-		f"Vậy $({S}{A}{C}) \\cap ({S}{B}{D})={S}O$."
-		)
+		f"${S}={S}{A}\\cap {B}{N}\\Rightarrow {S}\\in ({B}{N}{D})\\cap ({S}{A}{M})$.\n\n"
+		f"Gọi $O={A}{M} \\cap {B}{D} \\Rightarrow O \\in ({B}{N}{D}) \\cap ({S}{A}{M})$.\n\n"
+		f"Vậy $ ({B}{N}{D}) \\cap ({S}{A}{M})={S}O$.")
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+			\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+			\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+			\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+			\\coordinate ({M}) at ($({C})!{a/(a+1)}!({D})$);  \\node at ({M}) [below]{{${M}$}};\n\
+			\\coordinate ({N}) at ($({S})!{b/(b+1)}!({B})$);  \\node at ({N}) [above]{{${N}$}};\n\
+			\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+			\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+			\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({B})--({D}) ({A})--({B})  ({A})--({M}) ({D})--({N}) ({S})--({M});\n\
+			% Giao điểm O của AM và BD\n\
+			\\path [name path=AM] ({A})--({M});\n\
+			\\path [name path=BD] ({B})--({D});\n\
+			\\path [name intersections={{of=AM and BD, by=O}}];\n\
+			\\node at (O) [above right] {{$O$}};\n\
+			\\draw[dashed,thin]({S})--(O);\n\
+			\\draw[fill=white] (O) circle (1.5pt);\n\
+			\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n" 
+
+	if chon==3:
+		a,b=random.randint(1,2),random.randint(1,2)
+		noi_dung+=(
+			f"Gọi ${{{M},{N}}}$ là các điểm lần lượt thuộc cạnh ${{{C}{D}}}$ và ${{{S}{B}}}$."
+			f" Tìm giao tuyến của hai mặt phẳng $({A}{N}{C})$ và $({S}{B}{M})$.")
+		noi_dung_loigiai=(
+		f"${N}={A}{N}\\cap {B}{N}\\Rightarrow {N}\\in ({A}{N}{C})\\cap ({S}{B}{M})$.\n\n"
+		f"Gọi $O={A}{C} \\cap {B}{M} \\Rightarrow O \\in ({A}{N}{C}) \\cap ({S}{B}{M})$.\n\n"
+		f"Vậy $ ({A}{N}{C})\\cap ({S}{B}{M})={N}O$.")
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+			\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+			\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+			\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+			\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+			\\coordinate ({M}) at ($({C})!{0.6}!({D})$);  \\node at ({M}) [below]{{${M}$}};\n\
+			\\coordinate ({N}) at ($({S})!{0.6}!({B})$);  \\node at ({N}) [above]{{${N}$}};\n\
+			\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ({N})--({C}) ({S})--({M});\n\
+			\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({B}) ({A})--({C})  ({A})--({N}) ({B})--({M});\n\
+			% Giao điểm O của AC và BM\n\
+			\\path [name path=AC] ({A})--({C});\n\
+			\\path [name path=BM] ({B})--({M});\n\
+			\\path [name intersections={{of=AC and BM, by=O}}];\n\
+			\\node at (O) [above right] {{$O$}};\n\
+			\\draw[dashed,thin]({N})--(O);\n\
+			\\draw[fill=white] (O) circle (1.5pt);\n\
+			\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n" 
+	
+	if chon==4:
+		noi_dung+=(
+			f" Gọi ${{{M}}}$ là điểm  thuộc cạnh ${{{B}{C}}}$."
+			f" Tìm giao tuyến của hai mặt phẳng $({S}{A}{M})$ và $({S}{B}{D})$.")
+		noi_dung_loigiai=(
+		f"$ {S}\\in ({S}{A}{M})\\cap ({S}{B}{D})$.\n\n"
+		f"Gọi $O={A}{M} \\cap {B}{D} \\Rightarrow O \\in ({S}{A}{M}) \\cap ({S}{B}{D})$.\n\n"
+		f"Vậy $({S}{A}{M})\\cap ({S}{B}{D})={S}O$.")
+
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+			\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+			\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+			\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+			\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+			\\coordinate ({M}) at ($({B})!{0.3}!({C})$);  \\node at ({M}) [below]{{${M}$}};\n\
+			\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ({S})--({M});\n\
+			\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({B})  ({A})--({M}) ({B})--({D});\n\
+			% Giao điểm O của AM và BD\n\
+			\\path [name path=AM] ({A})--({M});\n\
+			\\path [name path=BD] ({B})--({D});\n\
+			\\path [name intersections={{of=AM and BD, by=O}}];\n\
+			\\node at (O) [below] {{$O$}};\n\
+			\\draw[dashed,thin]({S})--(O);\n\
+			\\draw[fill=white] (O) circle (1.5pt);\n\
+			\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n" 
+
+
+	if chon==5:
+		t=random.randint(3,4)
+		noi_dung+=(
+			f" Gọi ${{{M}}}$ là điểm  thuộc cạnh ${{{S}{B}}}$ sao cho ${S}{M}={phan_so(1/t)}{S}{B}$."
+			f" Gọi ${{{N}}}$ là trung điểm của cạnh ${{{S}{A}}}$."
+			f" Tìm giao tuyến của hai mặt phẳng $({C}{M}{N})$ và $({A}{B}{D})$.")
+		noi_dung_loigiai=(
+		f"$ {C}\\in ({C}{M}{N})\\cap ({A}{B}{D})$.\n\n"
+		f"Gọi $O={M}{N} \\cap {A}{B} \\Rightarrow O \\in ({C}{M}{N}) \\cap ({A}{B}{D})$.\n\n"
+		f"Vậy $({C}{M}{N})\\cap ({A}{B}{D})={C}O$.")
+
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+			\\coordinate ({A}) at (0,0); \\node at ({A}) [left]{{${A}$}};\n\
+			\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+			\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+			\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+			\\coordinate ({M}) at ($({S})!{1/t}!({B})$);  \\node at ({M}) [above]{{${M}$}};\n\
+			\\coordinate ({N}) at ($({S})!{1/2}!({A})$);  \\node at ({N}) [left]{{${N}$}};\n\
+			\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ({C})--({M});\n\
+			\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({B})  ({M})--({N}) ({C})--({N});\n\
+			\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+
+	
+	if chon==6:
+		t=random.randint(2,4)
+		noi_dung+=(
+			f" Gọi ${{{M}}}$ là điểm  thuộc cạnh ${{{S}{B}}}$ sao cho ${S}{M}={phan_so(1/4)}{S}{B}$."
+			f" Gọi ${{{N}}}$ là trung điểm của cạnh ${{{A}{D}}}$."
+			f" Tìm giao tuyến của hai mặt phẳng $({C}{M}{N})$ và $({S}{A}{B})$.")
+		noi_dung_loigiai=(
+		f"$ {M}\\in ({C}{M}{N})\\cap ({S}{A}{B})$.\n\n"
+		f"Gọi $O={C}{N} \\cap {A}{B} \\Rightarrow O \\in ({C}{M}{N}) \\cap ({S}{A}{B})$.\n\n"
+		f"Vậy $({C}{M}{N})\\cap ({S}{A}{B})={C}O$.")
+
+		code_hinh_LG=f" \\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+			\\coordinate ({A}) at (0,0); \\node at ({A}) [above right]{{${A}$}};\n\
+			\\coordinate ({D}) at (-2,-2); \\node at ({D}) [left]{{${D}$}};\n\
+			\\coordinate ({B}) at (5,0); \\node at ({B}) [right]{{${B}$}};\n\
+			\\coordinate ({C}) at ($({B})+({D})-({A})$); \\node at ({C}) [below]{{${C}$}};\n\
+			\\coordinate ({S}) at (0,5);\\node at ({S}) [above]{{${S}$}};\n\
+			\\coordinate ({M}) at ($({S})!{1/t}!({A})$);  \\node at ({M}) [above]{{${M}$}};\n\
+			\\coordinate ({N}) at ($({A})!{1/2}!({D})$);  \\node at ({N}) [left]{{${N}$}};\n\
+			\\draw ({S})--({B}) ({S})--({C}) ({B})--({C}) ({S})--({D})  ({C})--({D}) ;\n\
+			\\draw[dashed,thin]({S})--({A}) ({A})--({D})  ({A})--({B})   ({B})--({D}) ({C})--({M}) ({M})--({N}) ({C})--({N});\n\
+			% Giao điểm O của AB và BD\n\
+			\\path [name path={A}{B}] ($({A})!-5!({B})$) -- ($({A})!5!({B})$);\n\
+			\\path [name path={C}{N}] ($({C})!-5!({N})$) -- ($({C})!5!({N})$);\n\
+			\\path [name intersections={{of={A}{B} and {C}{N}, by=O}}];\n\
+			\\node at (O) [below] {{$O$}};\n\
+			\\draw[thin]({N})--(O) ({M})--(O) ({A})--(O);\n\
+			\\draw[fill=white] (O) circle (1.5pt);\n\
+			\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0}}{{\\draw[fill=white](\\i) circle (1.5pt);}}\n\
+		\\end{{tikzpicture}}\n"
+		
 
 	code_hinh=code_hinh_chop_hbh(S,A,B,C,D)
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name=my_module.pdftoimage_timename(code)
 	
 	
-	
-	
-
-	
 	dap_an=""
 		
-	debai_word= f"{noi_dung}\n"
+	debai_word= f"{noi_dung}\n{file_name}\n"
 
-	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+	code = my_module.moi_truong_anh_latex(code_hinh_LG)
+	file_name_LG=my_module.pdftoimage_timename(code)
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n{file_name_LG}\n"
 		f"Đáp án: {dap_an}\n")
 
 
 	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
-	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\	
-	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{ \n \\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n{noi_dung_loigiai} \n }}"
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 

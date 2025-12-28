@@ -1269,6 +1269,158 @@ def bch_12_L10_C2_B1_10():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C2_B1_11]-TF-M2. Cho 2 loại trái cây. Xét Đ-S: Số tiền mua mỗi loại, BPT 2 ẩn, nghiệm của BPT, số kg có thể mua
+def bch_12_L10_C2_B1_11():
+    x,y=sp.symbols("x y")
+    ten=random.choice(["An", "Minh", "Nga", "Nam", "Phương" ])
+    cam, xoai=random.sample(["cam", "xoài", "ổi", "mận", "táo"],2)
+    while True:
+        so_tien=random.randint(10,20)*10000
+        gia_cam=random.randint(25,35)*1000
+        gia_xoai=random.randint(15,25)*1000
+        if gia_cam!=gia_xoai:
+            break
+    ucln=gcd(gia_cam, gia_xoai)
+    ucln=gcd(ucln,so_tien)
+    a1, b1, c1 =gia_cam/ucln, gia_xoai/ucln, so_tien/ucln
+    tien_cam=f"{{{gia_cam}x}}"
+    tien_xoai=f"{{{gia_xoai}y}}"
+
+    noi_dung = (
+    f"Bạn {ten} thích ăn hai loại trái cây là {cam} và {xoai}, mỗi tuần mẹ cho {ten} {so_tien} đồng để mua trái cây."
+    f" Biết rằng giá {cam} là {gia_cam} đồng/1 kg, giá {xoai} là {gia_xoai} đồng/1 kg."
+    f" Gọi $x, y (x>0, y>0)$ lần lượt là số ki-lô-gam {cam} và {xoai} mà {ten} có thể mua về sử dụng trong một tuần.\n\n"
+    f" Xét tính đúng-sai của các khẳng định sau:")    
+    
+    kq1_T=f"*Trong tuần, số tiền mua {cam} là ${tien_cam}$ và số tiền mua {xoai} là ${tien_xoai}$" 
+    kq1_F=f"Trong tuần, số tiền mua {cam} là ${{{gia_xoai}x}}$ và số tiền mua {xoai} là ${{{gia_cam}y}}$"
+    
+    HDG=f"Số tiền mua {cam} là ${tien_cam}$ và số tiền mua {xoai} là ${tien_xoai}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"*${latex(a1*x+b1*y)}\\le {c1} \\, (1)$"
+    kq2_F=random.choice([f"${latex(a1*x+b1*y)}\\ge {c1} \\, (1)$", f"${latex(a1*x+b1*y)}>{c1} \\, (1)$" ])
+    
+    HDG=f"Điều kiện: ${tien_cam}+{tien_xoai} \\le {so_tien} \\Leftrightarrow {latex(a1*x+b1*y)}\\le {c1}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)    
+    if chon==1:
+        while True:
+            x_0=random.randint(1,10)
+            y_0=random.randint(1,10)
+            if a1*x_0+b1*y_0<=c1:
+                break
+
+        kq3_T=f"* Cặp số ({x_0};{y_0}) là một nghiệm của bất phương trình $(1)$" 
+        kq3_F=f"Cặp số ({x_0};{y_0}) không là nghiệm của bất phương trình $(1)$"
+        
+        HDG=f"${a1}.{x_0}+{b1}.{y_0}\\le {c1}$ nên cặp số ({x_0};{y_0}) là một nghiệm của $(1)$."
+    
+    if chon==2:
+        while True:
+            x_0=random.randint(1,15)
+            y_0=random.randint(1,15)
+            if a1*x_0+b1*y_0>c1:
+                break
+
+        kq3_T=f"* Cặp số ({x_0};{y_0}) không là  nghiệm của bất phương trình $(1)$" 
+        kq3_F=f"Cặp số ({x_0};{y_0}) là một nghiệm của bất phương trình $(1)$"
+        
+        HDG=f"${a1}.{x_0}+{b1}.{y_0}>{c1}$ nên cặp số ({x_0};{y_0}) không là nghiệm của $(1)$."
+    
+    
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        while True:
+            x_1=random.randint(1,10)
+            y_1=random.randint(1,10)
+            if all([a1*x_1+b1*y_1<=c1, x_1!=x_0, y_1!=y_0]):
+                break
+
+        kq4_T=f"* Bạn {ten} có thể mua {x_1} kg {cam} và {y_1} kg xoài"
+        kq4_F=f"Bạn {ten} không thể mua {x_1} kg {cam} và {y_1} kg xoài" 
+        
+        HDG=f"${a1}.{x_1}+{b1}.{y_1}\\le {c1}$ nên bạn {ten} có thể mua {x_1} kg {cam} và {y_1} kg xoài."
+    
+    if chon==2:
+        while True:
+            x_1=random.randint(1,10)
+            y_1=random.randint(1,10)
+            if all([a1*x_1+b1*y_1>c1, x_1!=x_0, y_1!=y_0]):
+                break
+
+        kq4_T=f"* Bạn {ten} không có thể mua {x_1} kg {cam} và {y_1} kg xoài"
+        kq4_F=f"Bạn {ten} có thể mua {x_1} kg {cam} và {y_1} kg xoài" 
+        
+        HDG=f"${a1}.{x_1}+{b1}.{y_1}> {c1}$ nên bạn {ten} có thể mua {x_1} kg {cam} và {y_1} kg xoài."
+    
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
 
 #---------------------------->
 #Bài 2 - HỆ BẤT PHƯƠNG TRÌNH

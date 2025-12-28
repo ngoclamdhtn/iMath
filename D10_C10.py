@@ -3350,6 +3350,85 @@ def gghik_L10_CX_B0_42():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+#[D10_CX_B0_43]-SA-M4. Cho 3 điểm. Tìm M thuộc Ox: |mMA+nMB|+|pMB+qMC| min.
+def gghik_L10_CX_B0_43():
+	# Chọn tên điểm
+	A,B,C=random.sample(["A","B","C","D","E","F"],3)
+	M=random.choice(["M","N","P","Q","G" ])
+	I,J="I","J"
+	
+	while True:
+			a1, a2 = random.sample([i for i in range(-5,6) if i!=0], 2)
+			b1, b2 = random.sample([i for i in range(-5,6) if i!=0], 2)
+			c1, c2 = random.sample(range(-4,4), 2)
+			m,n=random.sample([i for i in range(-3,4) if i!=0], 2)
+			if m+n==0:
+				continue
+			p,q=random.sample([i for i in range(-3,4) if i!=0], 2)
+			if p+q==0:
+				continue
+			x_I, y_I=(m*a1+n*b1)/(m+n), (m*a2+n*b2)/(m+n)
+			x_J, y_J=(p*a1+q*c1)/(p+q), (p*a2+q*c2)/(p+q)
+			k1, k2=m+n, p+q
+			if b1==c1:
+				continue
+			if a1==b1:
+				continue
+
+			if all([a2 != b2, a1 != c1, y_I*y_J<0]):
+				break
+	
+	vec_MA, vec_MB, vec_MC=vec2(M,A), vec2(M,B), vec2(M,C)
+	vec_IA, vec_IB, vec_IC=vec2(I,A), vec2(I,B), vec2(I,C)
+	vec_JA, vec_JB, vec_JC=vec2(J,A), vec2(J,B), vec2(J,C)
+	vec_MI, vec_MJ = vec2(M,I), vec2(M,J)
+	bcnn = lcm(abs(k1), abs(k2))
+	h1, h2=int(bcnn/abs(k1)), int(bcnn/abs(k2))
+	h1=f"{h1}".replace("1","")
+	h2=f"{h2}".replace("1","")
+
+	T=f"{h1}|{m}{vec_MA}+{n}{vec_MB}|+{h2}|{p}{vec_MA}+{q}{vec_MC}|"
+	T=T.replace("+-","-").replace("-1","-").replace("+1","+").replace("|1","|").replace("|-1","|-").replace("1|","|")
+
+	noi_dung = (
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho các điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$."
+	f" Điểm ${{{M}}}$ di chuyển trên ${{Ox}}$."
+	f" Đặt $T={T}$."
+	f" Khi ${{{M}}}$ di chuyển tìm giá trị nhỏ nhất của ${{T}}$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	
+	
+	T1=f"{m}{vec_IA}+{n}{vec_IB}"
+	T2=f"{p}{vec_JA}+{q}{vec_JC}"
+	T1=T1.replace("+-","-").replace("1","")
+	T2=T2.replace("+-","-").replace("1","")
+	min_T=bcnn*sqrt((x_I-x_J)**2+(y_I-y_J)**2)
+	s_min=f"{round_half_up(min_T,1):.1f}".replace(".",",")
+	dap_an=s_min
+
+	
+	noi_dung_loigiai=(
+	f"Gọi ${{I}}$ là điểm thỏa mãn ${T1}={vec("0")} \\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
+	f"Gọi ${{J}}$ là điểm thỏa mãn ${T2}={vec("0")} \\Rightarrow I({phan_so(x_J)};{phan_so(y_J)})$.\n\n"
+	f"$T={h1}|{k1}{vec_MI}|+{h2}|{k2}{vec_MJ}|={bcnn}({M}{I}+{M}{J})$.\n\n"
+	f"Vì ${{I,J}}$ khác phía so với ${{Ox}}$ nên ${M}{I}+{M}{J} \\ge IJ$.\n\n"
+	f"Khi đó $T_{{min}}={bcnn}IJ={s_min}$."
+	)	
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-")
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 
