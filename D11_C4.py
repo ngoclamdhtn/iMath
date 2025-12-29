@@ -1806,7 +1806,7 @@ def ghj_7_jkl_L11_C4_B2_06():
 		)
 
 		kq=random.choice([
-			f"${{{G}{K}}}$ // ${{{A}{C}}}$",
+			f"${{{G}{K}}}$ // ${{{B}{C}}}$",
 			f"${{{G}{K}}}$ // ${{{M}{N}}}$",
 			f"${{{M}{N}}}$ // ${{{A}{C}}}$"])
 
@@ -1833,11 +1833,11 @@ def ghj_7_jkl_L11_C4_B2_06():
 			noi_dung_loigiai=(
 				f"$\\dfrac{{{S}{G}}}{{{S}{M}}}=\\dfrac{{{S}{K}}}{{{S}{N}}}=\\dfrac{{2}}{{3}} \\Rightarrow {G}{K}$ // ${{{M}{N}}}$.")
 
-		if kq==f"${{{G}{K}}}$ // ${{{A}{C}}}$":
+		if kq==f"${{{G}{K}}}$ // ${{{B}{C}}}$":
 			noi_dung_loigiai=(
 				f"$\\dfrac{{{S}{G}}}{{{S}{M}}}=\\dfrac{{{S}{K}}}{{{S}{N}}}=\\dfrac{{2}}{{3}} \\Rightarrow {G}{K}$ // ${{{M}{N}}}$.\n\n"
-				f"${{{M}{N}}}$ là đường trung bình của tam giác ${{{A}{B}{C}}}$ nên ${{{M}{N}}}$ // ${{{A}{C}}}$.\n\n"
-				f" Suy ra ${{{G}{K}}}$ // ${{{A}{C}}}$.")
+				f"${{{M}{N}}}$ là đường trung bình của tam giác ${{{A}{B}{C}}}$ nên ${{{M}{N}}}$ // ${{{B}{C}}}$.\n\n"
+				f" Suy ra ${{{G}{K}}}$ // ${{{B}{C}}}$.")
 	
 	if chon==2:
 		noi_dung=(
@@ -6429,7 +6429,7 @@ def ghj_7_jkl_L11_C4_B5_04():
 	if chon==5:
 		noi_dung=(
 		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
-		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(AB{F}{D})$ theo phương ${{BC}}$ là điểm nào?")
+		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(AB{E}{D})$ theo phương ${{BC}}$ là điểm nào?")
 		
 		kq=E
 		kq_false=[F,A,B,C,D]
@@ -6437,7 +6437,7 @@ def ghj_7_jkl_L11_C4_B5_04():
 	if chon==6:
 		noi_dung=(
 		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
-		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(AB{F}{D})$ theo phương ${{AC}}$ là điểm nào?")
+		f" Hình chiếu song song của điểm ${{{F}}}$ lên mặt phẳng $(AB{E}{D})$ theo phương ${{AC}}$ là điểm nào?")
 		
 		kq=D
 		kq_false=[F,A,B,C,E]

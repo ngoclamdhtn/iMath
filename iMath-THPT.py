@@ -5598,6 +5598,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C3_B1_2, ["[D11_C3_B1_24]-SA-M3. Tính tổng diện tích các hình tròn lùi vô hạn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 #Bài 2 - Giới hạn hàm số
                 L11_C3_B2 = QTreeWidgetItem(L11_C3, ["Bài 2 - Giới hạn hàm số"])
                 L11_C3_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7100,30 +7104,32 @@ class Ui_MainWindow(object):
                 L11_C8_B1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C8_B1_1 = QTreeWidgetItem(L11_C8_B1, ["8.1.1 - Đúng-Sai"])
+                L11_C8_B1_1 = QTreeWidgetItem(L11_C8_B1, ["Trắc Nghiệm"])
                 L11_C8_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B1_1, ["[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Xét Đ-S: góc giữa 2 đường thẳng."])
+
+                item = QTreeWidgetItem(L11_C8_B1_1, ["[D11_C8_B1_01]-M1. Cho hình lập phương. Tính góc giữa 2 đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C8_B1_2 = QTreeWidgetItem(L11_C8_B1, ["8.1.2 - Trắc Nghiệm"])
+                item = QTreeWidgetItem(L11_C8_B1_1, ["[D11_C8_B1_02]-M2. S.ABCD: cạnh v.g đáy h.c.n. Tính góc giữa 2 đường thẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B1_1, ["[D11_C8_B1_03]-M2. S.ABCD: cạnh v.g đáy h.vuông. Tìm 2 đường vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C8_B1_2 = QTreeWidgetItem(L11_C8_B1, ["Đúng-Sai"])
                 L11_C8_B1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-
-                item = QTreeWidgetItem(L11_C8_B1_2, ["[D11_C8_B1_01]-M1. Cho hình lập phương. Tính góc giữa 2 đường thẳng."])
+                item = QTreeWidgetItem(L11_C8_B1_2, ["[D11_C8_B1_04]-TF-M2. Cho hình lập phương. Xét Đ-S: góc giữa 2 đường thẳng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B1_2, ["[D11_C8_B1_02]-M2. S.ABCD: cạnh v.g đáy h.c.n. Tính góc giữa 2 đường thẳng."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C8_B1_2, ["[D11_C8_B1_03]-M2. S.ABCD: cạnh v.g đáy h.vuông. Tìm 2 đường vuông góc."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                
 
                 #Bài 2
 
@@ -13893,6 +13899,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C3_B1_23]": 
                                                     debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_23()
 
+                                            #[D11_C3_B1_24]-SA-M3. Tính tổng diện tích các hình tròn lùi vô hạn
+                                            if dang_toan == "[D11_C3_B1_24]": 
+                                                    debai_word,loigiai_word,latex_tuluan,dap_an=D11_C3.gh11gh_L11_C3_B1_24()
+
                                             #Bài 2: GIỚI HẠN HÀM SỐ
                                             #[D11_C3_B2_09]. Cho limf(x) và limg(x). Tính lim f(x)g(x) hoặc lim f(x)/g(x).
                                             if dang_toan == "[D11_C3_B2_09]": 
@@ -15157,9 +15167,9 @@ class Ui_MainWindow(object):
 
                                 #Toán 11 - Chương 8 - Quan hệ vuông góc
                                 #Bài 1 - Hai đường thẳng vuông góc
-                                #[D11_C8_B1_01]-M1. Cho véctơ pháp tuyến tìm véctơ chỉ phương và ngược lại
+                                #[D11_C8_B1_01]-M1. Cho hình lập phương. Tính góc giữa 2 đường thẳng.
                                             if dang_toan == "[D11_C8_B1_01]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_01()                                    
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B1_01()                                    
                                                 
 
                                 #[D11_C8_B2_02]-M2. S.ABCD: cạnh bên vuông góc đáy h.chữ nhật. Tìm đường vg mặt.

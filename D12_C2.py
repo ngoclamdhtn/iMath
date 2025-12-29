@@ -8567,8 +8567,6 @@ def mnj_34_jkl_L12_C2_B3_45():
 	random.shuffle(kq_false)
 	kq2,kq3,kq4=kq_false[0:3]
 
-
-
 	pa_A= f"*{kq}"
 	pa_B= f"{kq2}"
 	pa_C= f"{kq3}"
@@ -9302,8 +9300,8 @@ def mnj_34_jkl_L12_C2_B3_53():
 	x_D, y_D, z_D=0, b, 0	
 	x_S, y_S, z_S=0, 0, c
 
-	chon=random.randint(1,4)
-	chon=5
+	chon=random.randint(1,5)
+	
 
 	noi_dung=(
 		f"Cho hình chóp ${{{S}.{A}{B}{C}{D}}}$ có đáy là hình chữ nhật, ${S}{A}\\bot ({A}{B}{C}{D})$, ${A}{B}={a},{A}{D}={b}$ và ${S}{A}={c}$."
@@ -9418,8 +9416,8 @@ def mnj_34_jkl_L12_C2_B3_53():
 		
 
 	kq_false = set()
-	while len(kq_false) < 5:		
-	    numbers = round(random.uniform(-1, 1),1)
+	while len(kq_false) < 3:		
+	    numbers = round(random.uniform(-1, 1.5),1)
 	    if all([numbers!=cos_goc]):
 	        kq_false.add(numbers)
 	kq_false=list(kq_false)

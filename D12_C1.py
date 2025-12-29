@@ -13379,7 +13379,7 @@ def prt_34_L12_C1_B4_23():
 		f"Do đó: ${latex(f)}={dap_an}$.")
 
 		#Vẽ đồ thị
-		code_hinh=code_dothi_phanthuc_bac2(1,-x_0,a,1,-x_0)	
+		code_hinh=code_dothi_phanthuc_bac2(1,0,a,1,-x_0)	
 
 
 	
@@ -16735,8 +16735,8 @@ def prt_34_L12_C1_B5_31():
 	kq3_T=f"* Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng bán ra mỗi ngày là ${sl_ban_hien_tai}-{phan_so(sl_giam/5)}x$ chiếc áo" 
 	kq3_F=f"Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng bán ra mỗi ngày là ${sl_ban_hien_tai}-{phan_so(sl_giam/5+random.randint(1,5))}x$ chiếc áo"
 	
-	HDG=(f" Tăng ${{x}}$ (nghìn đồng) thì cửa hàng bị giảm đi ${{{phan_so(sl_giam/2)}x}}$ chiếc áo.\n\n"
-	f" Do đó tổng số chiếc áo bán ra mỗi ngày là: ${sl_ban_hien_tai}-{phan_so(sl_giam/2)}x$ chiếc áo.\n\n")
+	HDG=(f" Tăng ${{x}}$ (nghìn đồng) thì cửa hàng bị giảm đi ${{{phan_so(sl_giam/5)}x}}$ chiếc áo.\n\n"
+	f" Do đó tổng số chiếc áo bán ra mỗi ngày là: ${sl_ban_hien_tai}-{phan_so(sl_giam/5)}x$ chiếc áo.\n\n")
 	kq3=random.choice([kq3_T, kq3_F])
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:

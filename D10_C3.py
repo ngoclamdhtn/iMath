@@ -936,15 +936,18 @@ def npl_mk_L10_C3_B1_12():
         f" Biết giá {keo} ban đầu là {a} đồng. Gọi ${{y}}$ là số tiền chi trả khi mua ${{x}}$ {keo}."
         f" Khẳng định nào sau đây đúng?"
         )
-    b=int(a*r/100)
-    m=a-b
+    while True:
+        b=int(a*r/100)
+        m=a-b
+        if all([m!=a]):
+            break
         
 
     kq=random.choice([f"$y={m}x+{a-m}$"])
     kq_false=[
     f"$y={m}x+{a}$",
     f"$y={a}x+{b}$",
-    f"$y={a}x+{a-m}$",
+    f"$y={a}x+{b+random.randint(1,5)}$",
     ]
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]

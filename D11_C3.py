@@ -2031,6 +2031,74 @@ def gh11gh_L11_C3_B1_23():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C3_B1_24]-SA-M3. Tính tổng diện tích các hình tròn lùi vô hạn
+def gh11gh_L11_C3_B1_24():
+    R=random.randint(4,12)
+    code_hinh=(f" \\begin{{tikzpicture}}\n\
+            \\begin{{scope}}\n\
+                \\fill[blue!30] (0,0) circle(1.5);\n\
+                \\draw (0,0) circle(1.5);\n\
+                \\node at (0,-1.9) {{a)}};\n\
+            \\end{{scope}}\n\
+            \\begin{{scope}}[xshift=4cm]\n\
+                \\fill[blue!30] (0,0) circle(1.5);\n\
+                \\foreach \\x in {{-0.75, 0.75}} {{\n\
+                    \\fill[yellow!30] (\\x,0) circle(0.75);\n\
+                    \\draw (\\x,0) circle(0.75);\n\
+                }}\n\
+                \\draw (0,0) circle(1.5);\n\
+                \\node at (0,-1.9) {{b)}};\n\
+            \\end{{scope}}\n\
+            \\begin{{scope}}[xshift=8cm]\n\
+                \\fill[blue!30] (0,0) circle(1.5);\n\
+                \\foreach \\x in {{-0.75, 0.75}} {{\n\
+                    \\fill[yellow!30] (\\x,0) circle(0.75);\n\
+                    \\draw (\\x,0) circle(0.75);\n\
+                }}\n\
+                \\foreach \\x in {{-1.125, -0.375, 0.375, 1.125}} {{\n\
+                    \\fill[green!30] (\\x,0) circle(0.375);\n\
+                    \\draw (\\x,0) circle(0.375);\n\
+                }}\n\
+                \\draw (0,0) circle(1.5);\n\
+                \\node at (0,-1.9) {{c)}};\n\
+            \\end{{scope}}\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"  Từ tờ giấy, cắt một hình tròn bán kính $R={R}$ cm. Tiếp theo, cắt hai hình tròn bán kính $\\dfrac{{R}}{{2}}$ chồng lên hình tròn đầu tiên. Tiếp tục cắt bốn hình tròn bán kính $\\dfrac{{R}}{{4}}$ và chồng lên các hình trước, tiếp tục quá trình này mãi mãi. Tính tổng diện tích của các hình tròn  (kết quả làm tròn đến hàng đơn vị)."
+    )
+    dap_an=f"{round_half_up(2*pi*R**2,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi $u_1$ là diện tích của hình tròn đầu tiên, ta có $u_1 = \\pi R^2$.\n\n"
+    f"Gọi $u_2$ là tổng diện tích của 2 hình tròn cắt lần thứ hai:\n\n "
+    f"$u_2 = 2 \\pi \\left( \\dfrac{{R}}{{2}}\\right)^2 = \\pi R^2 \\cdot {phan_so(1/2)}$.\n\n"
+    f"Gọi $u_3$ là tổng diện tích của 4 hình tròn cắt lần thứ ba:\n\n"
+    f"$u_3 = 4 \\pi \\left( \\dfrac{{R}}{{4}} \\right)^2 = \\pi R^2 \\cdot \\dfrac{{1}}{{4}}$.\n\n"
+    f"$u_n$ là tổng diện tích của $2^{{n-1}}$ hình tròn cắt lần thứ $n$:\n\n"
+    f"$u_n = 2^{{n-1}} \\pi \\left( \\dfrac{{R}}{{2^{{n-1}}}} \\right)^2 = \\pi R^2 \\cdot \\dfrac{{1}}{{2^{{n-1}}}}$.\n\n"
+    f"Vậy tổng diện tích của các hình tròn là:\n\n" 
+    f"$S = \\pi R^2 + \\pi R^2 \\cdot \\dfrac{{1}}{{2}} + \\pi R^2 \\cdot \\dfrac{{1}}{{4}} + \\cdots = \\dfrac{{\\pi R^2}}{{1 - \\dfrac{{1}}{{2}}}} = 2 \\pi R^2 = 2 \\pi \\cdot 10^2 \\approx {dap_an}$." 
+
+
+    )    
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
     
  
 ########################### BÀI 2 - GIỚI HẠN HÀM SỐ ###########################
