@@ -2863,7 +2863,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_17]-SA-M2. Tính số trung bình của bảng số liệu theo chủ đề"])
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_17]-SA-M2. Tính số trung bình của Bảng số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_18]-SA-M2. Tính số Q1 của Bảng số liệu theo chủ đề"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -17321,6 +17325,10 @@ class Ui_MainWindow(object):
                                             #[D10_C6_B3_17]-SA-M2.  Tính số trung bình của bảng số liệu theo chủ đề
                                             if dang_toan == "[D10_C6_B3_17]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_17()
+
+                                            #[D10_C6_B3_18]-SA-M2.  Tính tứ phân vị Q1 của bảng số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_18()
 
 
 

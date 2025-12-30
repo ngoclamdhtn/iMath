@@ -1490,7 +1490,7 @@ def tktk_L10_C6_B3_14():
 	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học"])
 
 	if chude == "giáo dục":
-		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		bocanh = "điểm kiểm tra của một nhóm học sinh"
 		donvi = "điểm"
 		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
 	elif chude == "khoa học":
@@ -1541,7 +1541,7 @@ def tktk_L10_C6_B3_14():
 	if dap_an.is_integer():
 		s_Q1 = int(dap_an)
 		noi_dung = (
-			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau: "
 			f"${{{s_data}}}$.\n\n"
 			f"Hãy xác định tứ phân vị thứ nhất $Q_1$ của dãy số liệu trên (đơn vị: {donvi})."
 		)
@@ -1560,7 +1560,7 @@ def tktk_L10_C6_B3_14():
 		if Q1<99:
 			s_Q1 = f"{round_half_up(float(dap_an),1):.1f}".rstrip("0").rstrip(".").replace(".", ",")
 			noi_dung = (
-				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau: "
 				f"${{{s_data}}}$.\n\n"
 				f"Hãy xác định tứ phân vị thứ nhất $Q_1$ của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
 			)
@@ -1578,7 +1578,7 @@ def tktk_L10_C6_B3_14():
 		else:
 			s_Q1 = f"{round_half_up(float(dap_an),0):.0f}".rstrip("0").rstrip(".").replace(".", ",")
 			noi_dung = (
-				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau: "
 				f"${{{s_data}}}$.\n\n"
 				f"Hãy xác định tứ phân vị thứ nhất $Q_1$ của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
 			)
@@ -1685,7 +1685,7 @@ def tktk_L10_C6_B3_15():
 	if dap_an.is_integer():
 		dap_an=int(dap_an)
 		noi_dung = (
-			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau:\n\n"
 			f"${{{s_data}}}$.\n\n"
 			f"Hãy xác định tứ phân vị thứ ba $Q_3$ của dãy số liệu trên."
 		)
@@ -1704,7 +1704,7 @@ def tktk_L10_C6_B3_15():
 			dap_an=f"{round_half_up(Q3,1):.1f}".replace(".0","").replace(".",",")
 
 			noi_dung = (
-				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau:\n\n"
 				f"${{{s_data}}}$.\n\n"
 				f"Hãy xác định tứ phân vị thứ ba $Q_3$ của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
 			)
@@ -1722,7 +1722,7 @@ def tktk_L10_C6_B3_15():
 			dap_an=f"{round_half_up(Q3,0):.0f}".replace(".0","").replace(".",",")
 
 			noi_dung = (
-				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau:\n\n"
 				f"${{{s_data}}}$.\n\n"
 				f"Hãy xác định tứ phân vị thứ ba $Q_3$ của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
 			)
@@ -1817,7 +1817,7 @@ def tktk_L10_C6_B3_16():
 		dap_an = int(dap_an)
 
 		noi_dung = (
-			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau: "
 			f"${{{s_data}}}$.\n\n"
 			f"Hãy xác định trung vị của dãy số liệu trên."
 		)
@@ -1833,7 +1833,7 @@ def tktk_L10_C6_B3_16():
 			dap_an = f"{round_half_up(median,1):.1f}".replace(".",",")
 
 			noi_dung = (
-				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau: "
 				f"${{{s_data}}}$.\n\n"
 				f"Hãy xác định trung vị của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
 			)
@@ -1848,7 +1848,7 @@ def tktk_L10_C6_B3_16():
 			dap_an = f"{round_half_up(median,0):.0f}".replace(".0","")
 
 			noi_dung = (
-				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} (đơn vị: {donvi}) như sau: "
 				f"${{{s_data}}}$.\n\n"
 				f"Hãy xác định trung vị của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
 			)
@@ -1973,14 +1973,31 @@ def tktk_L10_C6_B3_17():
 	row_vals = " & ".join(f"${v}$" for v in vals)
 	row_freqs = " & ".join(f"${n_i}$" for n_i in freqs)
 
+	if chude == "giáo dục":
+	    ten_dong = "Điểm số"
+	elif chude == "khoa học":
+	    ten_dong = "Thời gian"
+	elif chude == "y tế":
+	    ten_dong = "Huyết áp"
+	elif chude == "vận tải":
+	    ten_dong = "Thời gian"
+	elif chude == "công nghệ":
+	    ten_dong = "Tốc độ"
+	elif chude == "sinh học":
+	    ten_dong = "Chiều cao"
+	elif chude == "xây dựng":
+	    ten_dong = "Cường độ"
+	else:  # nông nghiệp
+	    ten_dong = "Năng suất"
+
 	code_hinh = f"""
     \\centering
     \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
     \\begin{{tabular}}{{{col_spec}}}
         \\hline
-        Giá trị & {row_vals} \\\\
+        {ten_dong} & {row_vals} \\\\
         \\hline
-        Tần số & {row_freqs} \\\\
+        Số lượng & {row_freqs} \\\\
         \\hline
     \\end{{tabular}}
     """
@@ -1991,7 +2008,7 @@ def tktk_L10_C6_B3_17():
 	# --- Nội dung ---
 	noi_dung = (
 		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
-		f"về {bocanh} như sau:\n{file_name}\n"
+		f" về {bocanh} (đơn vị: {donvi}) như sau:\n{file_name}\n"
 		f"Hãy tính số trung bình của bảng số liệu trên{ghi_chu_lam_tron}."
 	)
 
@@ -2011,8 +2028,363 @@ def tktk_L10_C6_B3_17():
 		f"Đáp án: {dap_an}\n"
 	)
 
-	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f" về {bocanh} (đơn vị: {donvi}) như sau:\n"
 		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+		f"Hãy tính số trung bình của bảng số liệu trên{ghi_chu_lam_tron}.")
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"		
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_18]-SA-M2. Tính tứ phân vị Q1 của bảng số liệu theo chủ đề
+def tktk_L10_C6_B3_18():
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chủ đề ---
+	chude = random.choice([
+		"giáo dục", "khoa học", "y tế", "vận tải",
+		"công nghệ", "sinh học", "xây dựng", "nông nghiệp"
+	])
+
+	# --- Số cột ---
+	m = random.randint(5, 7)
+
+	# --- Sinh giá trị & tần số (fix lỗi cận randint) ---
+	def gen_vals_freqs(val_min, val_max, step_choices, freq_min=2, freq_max=15):
+		nonlocal m
+
+		min_step = min(step_choices)
+		hi = val_max - (m - 1) * min_step
+
+		# Không đủ rộng -> giảm m để không lỗi randint
+		if hi <= val_min:
+			m = max(2, (val_max - val_min) // min_step + 1)
+			hi = val_max - (m - 1) * min_step
+
+		# Đảm bảo cận phải > cận trái
+		hi = max(hi, val_min + 1)
+
+		start = random.randint(val_min, hi)
+
+		vals = [start]
+		for _ in range(m - 1):
+			vals.append(vals[-1] + random.choice(step_choices))
+
+		freqs = [random.randint(freq_min, freq_max) for _ in range(m)]
+		return vals, freqs
+
+	# --- Bối cảnh theo chủ đề + tham số sinh ---
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra của một nhóm học sinh"
+		donvi = "điểm"
+		ten_dong = "Điểm số"
+		vals, freqs = gen_vals_freqs(4, 10, [1], freq_min=2, freq_max=12)
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng trong thí nghiệm"
+		donvi = "ms"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(180, 320, [5, 10, 15], freq_min=2, freq_max=10)
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu của bệnh nhân"
+		donvi = "mmHg"
+		ten_dong = "Huyết áp"
+		vals, freqs = gen_vals_freqs(95, 170, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển của một tuyến xe"
+		donvi = "phút"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(25, 100, [3, 5], freq_min=2, freq_max=12)
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu"
+		donvi = "Mbps"
+		ten_dong = "Tốc độ"
+		vals, freqs = gen_vals_freqs(20, 180, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non trong thí nghiệm"
+		donvi = "cm"
+		ten_dong = "Chiều cao"
+		vals, freqs = gen_vals_freqs(10, 55, [2, 3, 4], freq_min=2, freq_max=12)
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông"
+		donvi = "MPa"
+		ten_dong = "Cường độ"
+		vals, freqs = gen_vals_freqs(18, 45, [2, 3], freq_min=2, freq_max=10)
+	else:
+		bocanh = "năng suất lúa trên các thửa ruộng"
+		donvi = "tạ/ha"
+		ten_dong = "Năng suất"
+		vals, freqs = gen_vals_freqs(35, 80, [2, 3, 5], freq_min=2, freq_max=12)
+
+	# --- Tính Q1 cho bảng tần số theo CT THPT ---
+	# Tổng tần số
+	N = sum(freqs)
+
+	# Vị trí của Q1: ceil(N/4)
+	pos = int(sp.ceiling(N / 4))
+
+	# Tìm Q1 là giá trị nhỏ nhất sao cho tần số tích lũy >= pos
+	cum = 0
+	Q1 = None
+	for v, n_i in zip(vals, freqs):
+		cum += n_i
+		if cum >= pos:
+			Q1 = float(v)
+			break
+
+	# Nếu vì lý do nào đó chưa gán (rất hiếm), lấy giá trị cuối
+	if Q1 is None:
+		Q1 = float(vals[-1])
+
+	dap_an = Q1
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 ký tự) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+		s_Q1 = str(dap_an)
+		ghi_chu_lam_tron = ""
+	else:
+		if dap_an < 99:
+			dap_an = f"{round_half_up(dap_an, 1):.1f}".replace(".", ",")
+			s_Q1 = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng phần mười)"
+		else:
+			dap_an = f"{round_half_up(dap_an, 0):.0f}".replace(".0","").replace(".",",")
+			s_Q1 = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng đơn vị)"
+
+	# --- Tạo bảng LaTeX (nhãn dòng 1 theo đối tượng nghiên cứu, KHÔNG dùng 'Giá trị') ---
+	col_spec = "|c|" + "c|" * m
+	row_vals = " & ".join(f"${v}$" for v in vals)
+	row_freqs = " & ".join(f"${n_i}$" for n_i in freqs)
+
+	code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{{col_spec}}}
+        \\hline
+        {ten_dong} & {row_vals} \\\\
+        \\hline
+        Tần số & {row_freqs} \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+	
+	# --- Nội dung ---
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f" về {bocanh} (đơn vị:{donvi}) như sau \n{file_name}\n"
+		f"Hãy tính tứ phân vị thứ nhất $Q_1$ của bảng số liệu trên{ghi_chu_lam_tron}."
+	)
+
+	noi_dung_loigiai = (
+		f"Tổng tần số là $N={N}$.\n\n"
+		f"Vị trí của $Q_1$ là $\\left\\lceil\\dfrac{{N}}{{4}}\\right\\rceil=\\left\\lceil\\dfrac{{{N}}}{{4}}\\right\\rceil={pos}$.\n\n"
+		f"Lập tần số tích lũy và tìm giá trị nhỏ nhất sao cho tần số tích lũy $\\ge {pos}$.\n\n"
+		f"Suy ra $Q_1={s_Q1}$ ({donvi})."
+	)
+
+	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu) =====
+	debai_word = f"{noi_dung}\n" 
+
+	loigiai_word = ( 
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f" về {bocanh} (đơn vị: {donvi}) như sau:\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+		f"Hãy tính tứ phân vị $Q_1$ của bảng số liệu trên{ghi_chu_lam_tron}.")
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_19]-SA-M2. Tính tứ phân vị Q3 của bảng số liệu theo chủ đề
+def tktk_L10_C6_B3_19():
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chủ đề ---
+	chude = random.choice([
+		"giáo dục", "khoa học", "y tế", "vận tải",
+		"công nghệ", "sinh học", "xây dựng", "nông nghiệp"
+	])
+
+	# --- Số cột ---
+	m = random.randint(6, 8)
+
+	# --- Sinh giá trị & tần số (fix lỗi cận randint) ---
+	def gen_vals_freqs(val_min, val_max, step_choices, freq_min=2, freq_max=15):
+		nonlocal m
+
+		min_step = min(step_choices)
+		hi = val_max - (m - 1) * min_step
+
+		# Không đủ rộng -> giảm m để không lỗi randint
+		if hi <= val_min:
+			m = max(2, (val_max - val_min) // min_step + 1)
+			hi = val_max - (m - 1) * min_step
+
+		# Đảm bảo cận phải > cận trái
+		hi = max(hi, val_min + 1)
+
+		start = random.randint(val_min, hi)
+
+		vals = [start]
+		for _ in range(m - 1):
+			vals.append(vals[-1] + random.choice(step_choices))
+
+		freqs = [random.randint(freq_min, freq_max) for _ in range(m)]
+		return vals, freqs
+
+	# --- Bối cảnh theo chủ đề + tham số sinh + tên dòng 1 (KHÔNG dùng 'Giá trị') ---
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra của một nhóm học sinh"
+		donvi = "điểm"
+		ten_dong = "Điểm số"
+		vals, freqs = gen_vals_freqs(4, 10, [1], freq_min=2, freq_max=12)
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng trong thí nghiệm"
+		donvi = "ms"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(180, 320, [5, 10, 15], freq_min=2, freq_max=10)
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu của bệnh nhân"
+		donvi = "mmHg"
+		ten_dong = "Huyết áp"
+		vals, freqs = gen_vals_freqs(95, 170, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển của một tuyến xe"
+		donvi = "phút"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(25, 100, [3, 5], freq_min=2, freq_max=12)
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu"
+		donvi = "Mbps"
+		ten_dong = "Tốc độ"
+		vals, freqs = gen_vals_freqs(20, 180, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non trong thí nghiệm"
+		donvi = "cm"
+		ten_dong = "Chiều cao"
+		vals, freqs = gen_vals_freqs(10, 55, [2, 3, 4], freq_min=2, freq_max=12)
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông"
+		donvi = "MPa"
+		ten_dong = "Cường độ"
+		vals, freqs = gen_vals_freqs(18, 45, [2, 3], freq_min=2, freq_max=10)
+	else:
+		bocanh = "năng suất lúa trên các thửa ruộng"
+		donvi = "tạ/ha"
+		ten_dong = "Năng suất"
+		vals, freqs = gen_vals_freqs(35, 80, [2, 3, 5], freq_min=2, freq_max=12)
+
+	# --- Tính Q3 cho bảng tần số theo CT THPT ---
+	N = sum(freqs)
+
+	# Vị trí của Q3: ceil(3N/4)
+	pos = int(sp.ceiling(3 * N / 4))
+
+	# Tìm Q3 là giá trị nhỏ nhất sao cho tần số tích lũy >= pos
+	cum = 0
+	Q3 = None
+	for v, n_i in zip(vals, freqs):
+		cum += n_i
+		if cum >= pos:
+			Q3 = float(v)
+			break
+
+	if Q3 is None:
+		Q3 = float(vals[-1])
+
+	dap_an = Q3
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 ký tự) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+		s_Q3 = str(dap_an)
+		ghi_chu_lam_tron = ""
+	else:
+		if dap_an < 99:
+			dap_an = f"{round_half_up(dap_an, 1):.1f}".replace(".", ",")
+			s_Q3 = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng phần mười)"
+		else:
+			dap_an = f"{round_half_up(dap_an, 0):.0f}".replace(".0","").replace(".",",")
+			s_Q3 = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng đơn vị)"
+
+	# --- Tạo bảng LaTeX ---
+	col_spec = "|c|" + "c|" * m
+	row_vals = " & ".join(f"${v}$" for v in vals)
+	row_freqs = " & ".join(f"${n_i}$" for n_i in freqs)
+
+	code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{|c|{'c|'*m}}}
+        \\hline
+        {ten_dong} & {row_vals} \\\\
+        \\hline
+        Tần số & {row_freqs} \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	#file_name = my_module.pdftoimage_timename(code)
+	file_name=""
+
+	# --- Nội dung (có đơn vị trong đề) ---
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu "
+		f"về {bocanh} (đơn vị: {donvi}) như sau.\n{file_name}\n"
+		f"Hãy tính tứ phân vị thứ ba $Q_3$ của bảng số liệu trên{ghi_chu_lam_tron}."
+	)
+
+	noi_dung_loigiai = (
+		f"Tổng tần số là $N={N}$.\n\n"
+		f"Vị trí của $Q_3$ là $\\left\\lceil\\dfrac{{3N}}{{4}}\\right\\rceil"
+		f"=\\left\\lceil\\dfrac{{3\\cdot {N}}}{{4}}\\right\\rceil={pos}$.\n\n"
+		f"Lập tần số tích lũy và tìm giá trị nhỏ nhất sao cho tần số tích lũy $\\ge {pos}$.\n\n"
+		f"Suy ra $Q_3={s_Q3}$ ({donvi})."
+	)
+
+	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu) =====
+	debai_word = f"{noi_dung}\n{file_name}\n" 
+
+	loigiai_word = ( 
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f" về {bocanh} (đơn vị: {donvi}) như sau:\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+		f"Hãy tính tứ phân vị $Q_1$ của bảng số liệu trên{ghi_chu_lam_tron}.")
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
 		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n")

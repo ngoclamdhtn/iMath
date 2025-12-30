@@ -10540,8 +10540,8 @@ f" chất điểm còn lại di chuyển với vận tốc $v_2(t)={latex(v2)}$.
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     s2=integrate(v2,(t,0,t2))
-    kq4_T=f"* Khoảng cách hai chất điểm khi đã dừng hẳn là ${phan_so(s1+s2)}$ m"
-    kq4_F=f"Khoảng cách hai chất điểm khi đã dừng hẳn là ${phan_so(abs(s1-s2))}$ m" 
+    kq4_T=f"* Khoảng cách hai chất điểm khi đã dừng hẳn là ${{{phan_so(s1+s2)}}}$ m"
+    kq4_F=f"Khoảng cách hai chất điểm khi đã dừng hẳn là ${{{phan_so(abs(s1-s2))}}}$ m" 
     
     HDG=(f" Thời gian để chất điểm thứ hai dừng lại là: ${latex(v2)}=0\\Rightarrow t={t2}$.\n\n"
         f"Quãng đường chất điểm thứ hai di chuyển sau khi va chạm là:\n\n ${tphan(0,t2)}({latex(v2)})dt={phan_so(s2)}$ m.\n\n"
