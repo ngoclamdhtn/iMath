@@ -2843,9 +2843,31 @@ class Ui_MainWindow(object):
                 L10_C6_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_13]-SA-M2. Tính số trung bình của dãy số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_14]-SA-M2. Tính Q1 của dãy số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_15]-SA-M2. Tính Q3 của dãy số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_16]-SA-M2. Tính trung vị của dãy số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_08]-SA-M2. Cho dãy số liệu. Tính khoảng tứ phân vị"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_17]-SA-M2. Tính số trung bình của bảng số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 #Bài 4
                 L10_C6_B4 = QTreeWidgetItem(L10_C6, ["Bài 4 - Các số đặc trưng đo xu thế mức độ phân tán"])
@@ -2893,6 +2915,14 @@ class Ui_MainWindow(object):
                 L10_C6_B4_3 = QTreeWidgetItem(L10_C6_B4, ["Trả lời ngắn"])
                 L10_C6_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_3, ["[D10_C6_B4_10]-SA-M2. Tính phương sai của dãy số liệu theo chủ đề."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B4_3, ["[D10_C6_B4_11]-SA-M2. Tính độ lệch chuẩn của dãy số liệu theo chủ đề."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C6_B4_3, ["[D10_C6_B4_05]-SA-M2. Cho dãy số liệu. Tính phương sai."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8504,6 +8534,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_41]-SA-M4. Tìm số nhân viên không tăng ca cần có để lợi nhuận của nhà hàng đạt giá trị lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_42]-SA-M4. Tìm giá cho thuê để Homestay tối ưu lợi nhuận -> hàm bậc 3."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 
 
 
@@ -11407,6 +11445,14 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B5_40]-TF-M4. Xét Đ-S: Tìm số cá giảm để thu được sản lượng lớn nhất
                                             if dang_toan == "[D12_C1_B5_40]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B5_40()
+
+                                            #[D12_C1_B5_41]-SA-M3. Tìm số nhân viên còn lại không tăng ca cần có để lợi nhuận của nhà hàng đạt giá trị lớn nhất
+                                            if dang_toan == "[D12_C1_B5_41]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_41()
+
+                                            #[D12_C1_B5_42]-SA-M3. Tìm giá cho thuê để Homestay tối ưu lợi nhuận -> hàm bậc 3
+                                            if dang_toan == "[D12_C1_B5_42]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_42()
 
 
                                             
@@ -17256,6 +17302,26 @@ class Ui_MainWindow(object):
                                             if dang_toan =="[D10_C6_B3_12]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B3_12()
 
+                                            #[D10_C6_B3_13]-SA-M2. Tính số trung bình của dãy số liệu 7-10 giá trị) theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_13()
+
+                                            #[D10_C6_B3_14]-SA-M2. Tính Q1 của dãy số liệu 7-10 giá trị) theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_14()
+
+                                            #[D10_C6_B3_15]-SA-M2. Tính Q3 của dãy số liệu 7-10 giá trị) theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_15()
+
+                                            #[D10_C6_B3_16]-SA-M2. Tính trung vị của dãy số liệu 7-10 giá trị) theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_16()
+
+                                            #[D10_C6_B3_17]-SA-M2.  Tính số trung bình của bảng số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_17()
+
 
 
                                         #Bài 4
@@ -17294,6 +17360,14 @@ class Ui_MainWindow(object):
                                             #[D10_C6_B4_09]-M2. Cho bảng thống kế điểm. Tìm phương sai
                                             if dang_toan =="[D10_C6_B4_09]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C6.tktk_L10_C6_B4_09()
+
+                                            #[D10_C6_B4_10]-SA-M3. Tính phương sai của dãy số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B4_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B4_10()
+
+                                            #[D10_C6_B4_11]-SA-M3. Tính độ lệch chuẩn của dãy số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B4_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B4_11()
 
 
 

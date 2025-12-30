@@ -1295,11 +1295,6 @@ def tktk_L10_C6_B3_11():
 
 
 
-
-
-
-
-
 #[D10_C6_B3_12]-M2. CHo bảng thống kế điểm. Tìm TBC
 def tktk_L10_C6_B3_12():
     A=random.choice(["Hoa", "Mai", "Hiền", "Huệ", "Hà", "Hương", "Cúc", "Thu", "Xuân", "Lan", "Trúc"])
@@ -1376,6 +1371,658 @@ def tktk_L10_C6_B3_12():
         f"\\end{{ex}}\n"
         
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C6_B3_13]-SA-M2. Tính số trung bình của dãy số liệu 7-10 giá trị) theo chủ đề
+def tktk_L10_C6_B3_13():
+
+	x = sp.symbols("x")  # giữ cấu trúc, không dùng trong bài này
+
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh", "Phương", "Chi"])
+
+	# --- Sinh dữ liệu theo chủ đề ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học"])
+
+	# Mỗi chủ đề chọn bối cảnh, đơn vị, cách sinh số liệu
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		n = random.randint(7, 10)
+		data = [random.randint(5, 10) for _ in range(n)]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng trong thí nghiệm (ms) đo qua các lần thử"
+		donvi = "ms"
+		n = random.randint(7, 10)
+		data = [random.randint(180, 320) for _ in range(n)]
+	elif chude == "y tế":
+		bocanh = "nhịp tim lúc nghỉ (bpm) của các bệnh nhân trong một ca đo"
+		donvi = "bpm"
+		n = random.randint(7, 10)
+		data = [random.randint(55, 95) for _ in range(n)]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe qua các ngày"
+		donvi = "phút"
+		n = random.randint(7, 10)
+		data = [random.randint(25, 70) for _ in range(n)]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải xuống (Mbps) đo tại cùng một điểm theo các thời điểm"
+		donvi = "Mbps"
+		n = random.randint(7, 10)
+		data = [random.randint(20, 120) for _ in range(n)]
+	else:  # "sinh học"
+		bocanh = "chiều cao cây non (cm) trong một thí nghiệm nuôi trồng"
+		donvi = "cm"
+		n = random.randint(7, 10)
+		data = [random.randint(12, 45) for _ in range(n)]
+
+	# (Tuỳ chọn) đảm bảo dữ liệu không quá "đều"
+	random.shuffle(data)
+
+	# --- Tính trung bình ---
+	tong = sum(data)
+	mean = tong / len(data)
+
+	# Đáp án: làm tròn 2 chữ số thập phân (nếu là số nguyên thì vẫn hiển thị dạng số)
+	dap_an = round_half_up(mean, 1)
+
+	# Chuỗi dữ liệu hiển thị
+	s_data = ", ".join([str(v) for v in data])
+	s_mean = f"{round_half_up(float(dap_an), 1):.1f}".rstrip("0").rstrip(".").replace(".", ",")
+
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:"
+		f" ${{{s_data}}} $.\n\n"
+		f"Hãy tính số trung bình của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = (
+		f"Dãy số liệu có $n={len(data)}$ giá trị.\n\n"
+		f"Tổng các giá trị là:\n\n"
+		f"$S={'+'.join([str(v) for v in data])}={tong}$.\n\n"
+		f"Số trung bình của dãy là:\n\n"
+		f"$\\overline{{x}}=\\dfrac{{S}}{{n}}=\\dfrac{{{tong}}}{{{len(data)}}}={s_mean}$ ({donvi})."
+	)
+	if mean>100:
+		# Đáp án: làm tròn 2 chữ số thập phân (nếu là số nguyên thì vẫn hiển thị dạng số)
+		dap_an = mean
+
+		# Chuỗi dữ liệu hiển thị
+		s_data = ", ".join([str(v) for v in data])
+		s_mean = f"{round_half_up(float(dap_an), 0):.0f}".replace(".", ",")
+
+		noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:"
+		f" ${s_data}$.\n\n"
+		f"Hãy tính số trung bình của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị).")
+
+		noi_dung_loigiai = (
+		f"Dãy số liệu có $n={len(data)}$ giá trị.\n\n"
+		f"Tổng các giá trị là:\n\n"
+		f"$S={'+'.join([str(v) for v in data])}={tong}$.\n\n"
+		f"Số trung bình của dãy là:\n\n"
+		f"$\\overline{{x}}=\\dfrac{{S}}{{n}}=\\dfrac{{{tong}}}{{{len(data)}}}={s_mean}$ ({donvi}).")
+
+	dap_an=f"{dap_an}".replace(".",",")
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_14]-SA-M2. Tính tứ phân vị Q1 của dãy số liệu (7-10 giá trị) theo chủ đề
+def tktk_L10_C6_B3_14():
+	import random
+	import sympy as sp
+
+	x = sp.symbols("x")  # giữ cấu trúc, không dùng trực tiếp
+
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh"])
+
+	# --- Chọn chủ đề và sinh dữ liệu ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học"])
+
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng (ms) trong một thí nghiệm"
+		donvi = "ms"
+		data = [random.randint(180, 320) for _ in range(random.randint(7, 10))]
+	elif chude == "y tế":
+		bocanh = "nồng độ đường huyết (mg/dL) của bệnh nhân"
+		donvi = "mg/dL"
+		data = [random.randint(70, 160) for _ in range(random.randint(7, 10))]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe"
+		donvi = "phút"
+		data = [random.randint(25, 90) for _ in range(random.randint(7, 10))]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu (Mbps) tại một điểm đo"
+		donvi = "Mbps"
+		data = [random.randint(20, 150) for _ in range(random.randint(7, 10))]
+	else:  # sinh học
+		bocanh = "chiều cao cây non (cm) trong thí nghiệm sinh học"
+		donvi = "cm"
+		data = [random.randint(10, 50) for _ in range(random.randint(7, 10))]
+
+	# --- Sắp xếp số liệu ---
+	data_sorted = sorted(data)
+	n = len(data_sorted)
+
+	# --- Tính Q1 theo chương trình THPT ---
+	# Q1 là trung vị của nửa dưới (không tính trung vị chung nếu n lẻ)
+	if n % 2 == 0:
+		lower_half = data_sorted[:n // 2]
+	else:
+		lower_half = data_sorted[:n // 2]
+
+	m = len(lower_half)
+	if m % 2 == 0:
+		Q1 = (lower_half[m//2 - 1] + lower_half[m//2]) / 2
+	else:
+		Q1 = lower_half[m//2]
+
+	dap_an = float(Q1)
+
+	# --- Chuỗi hiển thị ---
+	s_data = ", ".join(str(v) for v in data)
+	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	
+
+	if dap_an.is_integer():
+		s_Q1 = int(dap_an)
+		noi_dung = (
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+			f"${{{s_data}}}$.\n\n"
+			f"Hãy xác định tứ phân vị thứ nhất $Q_1$ của dãy số liệu trên (đơn vị: {donvi})."
+		)
+
+		noi_dung_loigiai = (
+			f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+			f"${{{s_data_sorted}}}$.\n\n"
+			f"Dãy có $n={n}$ giá trị.\n\n"
+			f"Nửa dưới của dãy là: "
+			f"${{{', '.join(str(v) for v in lower_half)}}}$.\n\n"
+			f"Tứ phân vị thứ nhất $Q_1$ là trung vị của nửa dưới này, do đó:\n\n"
+			f"$Q_1={s_Q1}$ ({donvi})."
+		)
+		dap_an=int(dap_an)
+	else:
+		if Q1<99:
+			s_Q1 = f"{round_half_up(float(dap_an),1):.1f}".rstrip("0").rstrip(".").replace(".", ",")
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy xác định tứ phân vị thứ nhất $Q_1$ của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị.\n\n"
+				f"Nửa dưới của dãy là: "
+				f"${{{', '.join(str(v) for v in lower_half)}}}$.\n\n"
+				f"Tứ phân vị thứ nhất $Q_1$ là trung vị của nửa dưới này, do đó:\n\n"
+				f"$Q_1={s_Q1}$ ({donvi})."
+			)
+			dap_an=f"{round_half_up(dap_an,1):.1f}".replace(".",",")
+		else:
+			s_Q1 = f"{round_half_up(float(dap_an),0):.0f}".rstrip("0").rstrip(".").replace(".", ",")
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy xác định tứ phân vị thứ nhất $Q_1$ của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị.\n\n"
+				f"Nửa dưới của dãy là: "
+				f"${{{', '.join(str(v) for v in lower_half)}}}$.\n\n"
+				f"Tứ phân vị thứ nhất $Q_1$ là trung vị của nửa dưới này, do đó:\n\n"
+				f"$Q_1={s_Q1}$ ({donvi})."
+			)
+			dap_an=f"{round_half_up(dap_an,0):.0f}".replace(".",",")
+
+
+
+	
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_15]-SA-M2. Tính tứ phân vị Q3 của dãy số liệu theo chủ đề
+def tktk_L10_C6_B3_15():
+	import random
+	import sympy as sp
+
+	x = sp.symbols("x")  # giữ cấu trúc, không dùng trực tiếp
+
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh"])
+
+	# --- Chọn chủ đề và sinh dữ liệu ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học", "xây dựng", "nông nghiệp"])
+
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng (ms) trong một thí nghiệm"
+		donvi = "ms"
+		data = [random.randint(180, 320) for _ in range(random.randint(7, 10))]
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu (mmHg) của bệnh nhân"
+		donvi = "mmHg"
+		data = [random.randint(95, 170) for _ in range(random.randint(7, 10))]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe"
+		donvi = "phút"
+		data = [random.randint(25, 100) for _ in range(random.randint(7, 10))]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu (Mbps) tại một điểm đo"
+		donvi = "Mbps"
+		data = [random.randint(20, 180) for _ in range(random.randint(7, 10))]
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non (cm) trong thí nghiệm sinh học"
+		donvi = "cm"
+		data = [random.randint(10, 55) for _ in range(random.randint(7, 10))]
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông (MPa)"
+		donvi = "MPa"
+		data = [random.randint(18, 45) for _ in range(random.randint(7, 10))]
+	else:  # nông nghiệp
+		bocanh = "năng suất lúa (tạ/ha) đo trên các thửa ruộng"
+		donvi = "tạ/ha"
+		data = [random.randint(35, 80) for _ in range(random.randint(7, 10))]
+
+	# --- Sắp xếp số liệu ---
+	data_sorted = sorted(data)
+	n = len(data_sorted)
+
+	# --- Tính Q3 theo chương trình THPT ---
+	# Q3 là trung vị của nửa trên (không tính trung vị chung nếu n lẻ)
+	if n % 2 == 0:
+		upper_half = data_sorted[n // 2:]
+	else:
+		upper_half = data_sorted[n // 2 + 1:]
+
+	m = len(upper_half)
+	if m % 2 == 0:
+		Q3 = (upper_half[m//2 - 1] + upper_half[m//2]) / 2
+	else:
+		Q3 = upper_half[m//2]
+
+	dap_an = float(Q3)
+
+	# --- Chuỗi hiển thị ---
+	s_data = ", ".join(str(v) for v in data)
+	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_upper = ", ".join(str(v) for v in upper_half)
+	
+
+	if dap_an.is_integer():
+		dap_an=int(dap_an)
+		noi_dung = (
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+			f"${{{s_data}}}$.\n\n"
+			f"Hãy xác định tứ phân vị thứ ba $Q_3$ của dãy số liệu trên."
+		)
+
+		noi_dung_loigiai = (
+			f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+			f"${{{s_data_sorted}}}$.\n\n"
+			f"Dãy có $n={n}$ giá trị.\n\n"
+			f"Nửa trên của dãy là:"
+			f"${{{s_upper}}}$.\n\n"
+			f"Tứ phân vị thứ ba $Q_3$ là trung vị của nửa trên này, do đó:\n\n"
+			f"$Q_3={dap_an}$ ({donvi})."
+		)
+	else:
+		if Q3<100:
+			dap_an=f"{round_half_up(Q3,1):.1f}".replace(".0","").replace(".",",")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy xác định tứ phân vị thứ ba $Q_3$ của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị.\n\n"
+				f"Nửa trên của dãy là:"
+				f"${{{s_upper}}}$.\n\n"
+				f"Tứ phân vị thứ ba $Q_3$ là trung vị của nửa trên này, do đó:\n\n"
+				f"$Q_3={dap_an}$ ({donvi})."
+			)
+		else:
+			dap_an=f"{round_half_up(Q3,0):.0f}".replace(".0","").replace(".",",")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy xác định tứ phân vị thứ ba $Q_3$ của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị.\n\n"
+				f"Nửa trên của dãy là: "
+				f"${{{s_upper}}}$.\n\n"
+				f"Tứ phân vị thứ ba $Q_3$ là trung vị của nửa trên này, do đó:\n\n"
+				f"$Q_3={dap_an}$ ({donvi})."
+			)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_16]-SA-M2. Tính trung vị của dãy số liệu theo chủ đề
+def tktk_L10_C6_B3_16():
+	import random
+	import sympy as sp
+
+	x = sp.symbols("x")  # giữ cấu trúc, không dùng trực tiếp
+
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh"])
+
+	# --- Chọn chủ đề và sinh dữ liệu ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học", "xây dựng", "nông nghiệp"])
+
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng (ms) trong một thí nghiệm"
+		donvi = "ms"
+		data = [random.randint(180, 320) for _ in range(random.randint(7, 10))]
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu (mmHg) của bệnh nhân"
+		donvi = "mmHg"
+		data = [random.randint(95, 170) for _ in range(random.randint(7, 10))]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe"
+		donvi = "phút"
+		data = [random.randint(25, 100) for _ in range(random.randint(7, 10))]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu (Mbps) tại một điểm đo"
+		donvi = "Mbps"
+		data = [random.randint(20, 180) for _ in range(random.randint(7, 10))]
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non (cm) trong thí nghiệm sinh học"
+		donvi = "cm"
+		data = [random.randint(10, 55) for _ in range(random.randint(7, 10))]
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông (MPa)"
+		donvi = "MPa"
+		data = [random.randint(18, 45) for _ in range(random.randint(7, 10))]
+	else:  # nông nghiệp
+		bocanh = "năng suất lúa (tạ/ha) đo trên các thửa ruộng"
+		donvi = "tạ/ha"
+		data = [random.randint(35, 80) for _ in range(random.randint(7, 10))]
+
+	# --- Sắp xếp số liệu ---
+	data_sorted = sorted(data)
+	n = len(data_sorted)
+
+	# --- Tính trung vị ---
+	if n % 2 == 1:
+		median = data_sorted[n // 2]
+	else:
+		median = (data_sorted[n//2 - 1] + data_sorted[n//2]) / 2
+
+	dap_an = median
+
+	# --- Chuỗi hiển thị ---
+	s_data = ", ".join(str(v) for v in data)
+	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+
+		noi_dung = (
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+			f"${{{s_data}}}$.\n\n"
+			f"Hãy xác định trung vị của dãy số liệu trên."
+		)
+
+		noi_dung_loigiai = (
+			f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+			f"${{{s_data_sorted}}}$.\n\n"
+			f"Dãy có $n={n}$ giá trị nên trung vị là giá trị đứng giữa dãy:\n\n"
+			f"$Me={dap_an}$ ({donvi})."
+		)
+	else:
+		if median < 99:
+			dap_an = f"{round_half_up(median,1):.1f}".replace(".",",")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy xác định trung vị của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ (chẵn) nên trung vị là trung bình cộng của hai giá trị đứng giữa:\n\n"
+				f"$Me={dap_an}$ ({donvi})."
+			)
+		else:
+			dap_an = f"{round_half_up(median,0):.0f}".replace(".0","")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy xác định trung vị của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu theo thứ tự không giảm:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ (chẵn) nên trung vị là trung bình cộng của hai giá trị đứng giữa:\n\n"
+				f"$Me={dap_an}$ ({donvi})."
+			)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_17]-SA-M2. Tính số trung bình của bảng số liệu theo chủ đề
+def tktk_L10_C6_B3_17():
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chủ đề ---
+	chude = random.choice([
+		"giáo dục", "khoa học", "y tế", "vận tải",
+		"công nghệ", "sinh học", "xây dựng", "nông nghiệp"
+	])
+
+	# --- Số cột ---
+	m = random.randint(6, 8)
+
+	# --- Sinh giá trị & tần số (đã fix cận randint) ---
+	def gen_vals_freqs(val_min, val_max, step_choices, freq_min=2, freq_max=15):
+		nonlocal m
+
+		min_step = min(step_choices)
+		hi = val_max - (m - 1) * min_step
+
+		# Nếu hi <= val_min -> không đủ rộng, giảm m cho phù hợp để không lỗi randint
+		if hi <= val_min:
+			m = max(2, (val_max - val_min) // min_step + 1)
+			hi = val_max - (m - 1) * min_step
+
+		# Đảm bảo cận phải > cận trái
+		hi = max(hi, val_min + 1)
+
+		start = random.randint(val_min, hi)
+
+		vals = [start]
+		for _ in range(m - 1):
+			vals.append(vals[-1] + random.choice(step_choices))
+
+		freqs = [random.randint(freq_min, freq_max) for _ in range(m)]
+		return vals, freqs
+
+	# --- Bối cảnh theo chủ đề + tham số sinh ---
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra của một nhóm học sinh"
+		donvi = "điểm"
+		vals, freqs = gen_vals_freqs(4, 10, [1], freq_min=2, freq_max=12)
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng trong thí nghiệm"
+		donvi = "ms"
+		vals, freqs = gen_vals_freqs(180, 320, [5, 10, 15], freq_min=2, freq_max=10)
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu của bệnh nhân"
+		donvi = "mmHg"
+		vals, freqs = gen_vals_freqs(95, 170, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển của một tuyến xe"
+		donvi = "phút"
+		vals, freqs = gen_vals_freqs(25, 100, [3, 5], freq_min=2, freq_max=12)
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu"
+		donvi = "Mbps"
+		vals, freqs = gen_vals_freqs(20, 180, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non trong thí nghiệm"
+		donvi = "cm"
+		vals, freqs = gen_vals_freqs(10, 55, [2, 3, 4], freq_min=2, freq_max=12)
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông"
+		donvi = "MPa"
+		vals, freqs = gen_vals_freqs(18, 45, [2, 3], freq_min=2, freq_max=10)
+	else:
+		bocanh = "năng suất lúa trên các thửa ruộng"
+		donvi = "tạ/ha"
+		vals, freqs = gen_vals_freqs(35, 80, [2, 3, 5], freq_min=2, freq_max=12)
+
+	# --- Tính số trung bình (bảng tần số) ---
+	N = sum(freqs)
+	S = sum(v * n_i for v, n_i in zip(vals, freqs))
+	mean = S / N
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 ký tự) ---
+	if float(mean).is_integer():
+		dap_an = int(mean)
+		s_mean = str(dap_an)
+		ghi_chu_lam_tron = ""
+	else:
+		if mean < 99:
+			dap_an = f"{round_half_up(mean, 1):.1f}".replace(".", ",")
+			s_mean = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng phần mười)"
+		else:
+			dap_an = f"{round_half_up(mean, 0):.0f}".replace(".0", "").replace(".", ",")
+			s_mean = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng đơn vị)"
+
+	# --- Tạo bảng LaTeX ---
+	col_spec = "|c|" + "c|" * m
+	row_vals = " & ".join(f"${v}$" for v in vals)
+	row_freqs = " & ".join(f"${n_i}$" for n_i in freqs)
+
+	code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{{col_spec}}}
+        \\hline
+        Giá trị & {row_vals} \\\\
+        \\hline
+        Tần số & {row_freqs} \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+
+	# --- Nội dung ---
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f"về {bocanh} như sau:\n{file_name}\n"
+		f"Hãy tính số trung bình của bảng số liệu trên{ghi_chu_lam_tron}."
+	)
+
+	noi_dung_loigiai = (
+		f"Gọi các giá trị là $x_i$ và tần số tương ứng là $n_i$.\n\n"
+		f"Tổng tần số: $N=\\sum n_i={N}$.\n\n"
+		f"Tổng có trọng số: $\\sum x_in_i={S}$.\n\n"
+		f"Số trung bình của bảng là:\n\n"
+		f"$\\overline{{x}}=\\dfrac{{\\sum x_in_i}}{{\\sum n_i}}=\\dfrac{{{S}}}{{{N}}}={s_mean}$ ({donvi})."
+	)
+
+	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu) =====
+	debai_word = f"{noi_dung}\n" 
+
+	loigiai_word = ( 
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
 
 
 
@@ -2194,3 +2841,260 @@ def tktk_L10_C6_B4_09():
         f"\\end{{ex}}\n"
         
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C6_B4_10]-SA-M2. Tính phương sai của dãy số liệu theo chủ đề
+def tktk_L10_C6_B4_10():
+	import random
+	import sympy as sp
+
+	x = sp.symbols("x")  # giữ cấu trúc, không dùng trực tiếp
+
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh"])
+
+	# --- Chọn chủ đề và sinh dữ liệu ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học", "xây dựng", "nông nghiệp"])
+
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng (ms) trong một thí nghiệm"
+		donvi = "ms"
+		data = [random.randint(180, 320) for _ in range(random.randint(7, 10))]
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu (mmHg) của bệnh nhân"
+		donvi = "mmHg"
+		data = [random.randint(95, 170) for _ in range(random.randint(7, 10))]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe"
+		donvi = "phút"
+		data = [random.randint(25, 100) for _ in range(random.randint(7, 10))]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu (Mbps) tại một điểm đo"
+		donvi = "Mbps"
+		data = [random.randint(20, 180) for _ in range(random.randint(7, 10))]
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non (cm) trong thí nghiệm sinh học"
+		donvi = "cm"
+		data = [random.randint(10, 55) for _ in range(random.randint(7, 10))]
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông (MPa)"
+		donvi = "MPa"
+		data = [random.randint(18, 45) for _ in range(random.randint(7, 10))]
+	else:  # nông nghiệp
+		bocanh = "năng suất lúa (tạ/ha) đo trên các thửa ruộng"
+		donvi = "tạ/ha"
+		data = [random.randint(35, 80) for _ in range(random.randint(7, 10))]
+
+	# --- Sắp xếp số liệu ---
+	data_sorted = sorted(data)
+	n = len(data_sorted)
+
+	# --- Tính trung bình ---
+	mean = sum(data_sorted) / n
+
+	# --- Tính phương sai (theo CT THPT): S^2 = (1/n) * Σ(xi - x̄)^2 ---
+	var = sum((xi - mean)**2 for xi in data_sorted) / n
+	dap_an = var
+
+	# --- Chuỗi hiển thị ---
+	s_data = ", ".join(str(v) for v in data)
+	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_mean = round_half_up(mean, 2)
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự, theo code đã ghi nhớ) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+
+		noi_dung = (
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+			f"${{{s_data}}}$.\n\n"
+			f"Hãy tính phương sai của dãy số liệu trên."
+		)
+
+		noi_dung_loigiai = (
+			f"Sắp xếp dãy số liệu:\n\n"
+			f"${{{s_data_sorted}}}$.\n\n"
+			f"Dãy có $n={n}$ giá trị, số trung bình là $\\overline{{x}}={s_mean}$.\n\n"
+			f"Phương sai là:\n\n"
+			f"$S^2=\\dfrac{{1}}{{{n}}}\\sum (x_i-\\overline{{x}})^2={dap_an}$."
+		)
+	else:
+		if var < 99:
+			dap_an = f"{round_half_up(var,1):.1f}".replace(".",",")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy tính phương sai của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị, số trung bình là $\\overline{{x}}={s_mean}$.\n\n"
+				f"Phương sai là:\n\n"
+				f"$S^2=\\dfrac{{1}}{{{n}}}\\sum (x_i-\\overline{{x}})^2={dap_an}$."
+			)
+		else:
+			dap_an = f"{round_half_up(var,0):.0f}".replace(".0","")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy tính phương sai của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị, số trung bình là $\\overline{{x}}={s_mean}$.\n\n"
+				f"Phương sai là:\n\n"
+				f"$S^2=\\dfrac{{1}}{{{n}}}\\sum (x_i-\\overline{{x}})^2={dap_an}$."
+			)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B4_11]-SA-M2. Tính độ lệch chuẩn của dãy số liệu theo chủ đề
+def tktk_L10_C6_B4_11():
+
+	x = sp.symbols("x")  # giữ cấu trúc, không dùng trực tiếp
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chọn chủ đề và sinh dữ liệu ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học", "xây dựng", "nông nghiệp"])
+
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng (ms) trong một thí nghiệm"
+		donvi = "ms"
+		data = [random.randint(180, 320) for _ in range(random.randint(7, 10))]
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu (mmHg) của bệnh nhân"
+		donvi = "mmHg"
+		data = [random.randint(95, 170) for _ in range(random.randint(7, 10))]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe"
+		donvi = "phút"
+		data = [random.randint(25, 100) for _ in range(random.randint(7, 10))]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu (Mbps) tại một điểm đo"
+		donvi = "Mbps"
+		data = [random.randint(20, 180) for _ in range(random.randint(7, 10))]
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non (cm) trong thí nghiệm sinh học"
+		donvi = "cm"
+		data = [random.randint(10, 55) for _ in range(random.randint(7, 10))]
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông (MPa)"
+		donvi = "MPa"
+		data = [random.randint(18, 45) for _ in range(random.randint(7, 10))]
+	else:  # nông nghiệp
+		bocanh = "năng suất lúa (tạ/ha) đo trên các thửa ruộng"
+		donvi = "tạ/ha"
+		data = [random.randint(35, 80) for _ in range(random.randint(7, 10))]
+
+	# --- Sắp xếp số liệu ---
+	data_sorted = sorted(data)
+	n = len(data_sorted)
+
+	# --- Tính trung bình ---
+	mean = sum(data_sorted) / n
+
+	# --- Tính phương sai (theo CT THPT): S^2 = (1/n) * Σ(xi - x̄)^2 ---
+	var = sum((xi - mean)**2 for xi in data_sorted) / n
+
+	# --- Độ lệch chuẩn ---
+	std = float(sp.sqrt(var))
+	dap_an = std
+
+	# --- Chuỗi hiển thị ---
+	s_data = ", ".join(str(v) for v in data)
+	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự, theo code đã ghi nhớ) ---
+	# Nếu là số nguyên
+	if float(dap_an).is_integer():
+		dap_an = int(round(dap_an))
+
+		noi_dung = (
+			f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+			f"${{{s_data}}}$.\n\n"
+			f"Hãy tính độ lệch chuẩn của dãy số liệu trên."
+		)
+
+		noi_dung_loigiai = (
+			f"Sắp xếp dãy số liệu:\n\n"
+			f"${{{s_data_sorted}}}$.\n\n"
+			f"Dãy có $n={n}$ giá trị.\n\n"
+			f"Gọi $\\overline{{x}}$ là số trung bình, phương sai là $S^2=\\dfrac{{1}}{{n}}\\sum (x_i-\\overline{{x}})^2$.\n\n"
+			f"Độ lệch chuẩn là $S=\\sqrt{{S^2}}={dap_an}$."
+		)
+	else:
+		if std < 99:
+			dap_an = f"{round_half_up(std,1):.1f}".replace(".",",")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy tính độ lệch chuẩn của dãy số liệu trên (kết quả làm tròn đến hàng phần mười)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị.\n\n"
+				f"Tính phương sai: $S^2=\\dfrac{{1}}{{n}}\\sum (x_i-\\overline{{x}})^2$. "
+				f"Suy ra độ lệch chuẩn: $S=\\sqrt{{S^2}}={dap_an}$."
+			)
+		else:
+			dap_an = f"{round_half_up(std,0):.0f}".replace(".0","").replace(".",",")
+
+			noi_dung = (
+				f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau:\n\n"
+				f"${{{s_data}}}$.\n\n"
+				f"Hãy tính độ lệch chuẩn của dãy số liệu trên (kết quả làm tròn đến hàng đơn vị)."
+			)
+
+			noi_dung_loigiai = (
+				f"Sắp xếp dãy số liệu:\n\n"
+				f"${{{s_data_sorted}}}$.\n\n"
+				f"Dãy có $n={n}$ giá trị.\n\n"
+				f"Tính phương sai: $S^2=\\dfrac{{1}}{{n}}\\sum (x_i-\\overline{{x}})^2$.\n\n"
+				f"Suy ra độ lệch chuẩn: $S=\\sqrt{{S^2}}={dap_an}$."
+			)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+

@@ -17570,3 +17570,278 @@ def prt_34_L12_C1_B5_40():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B5_41]-SA-M4. Tìm số nhân viên còn lại không tăng ca cần có để lợi nhuận của nhà hàng đạt giá trị lớn nhất
+def prt_34_L12_C1_B5_41():
+
+	x = sp.symbols("x") 
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh"])
+
+	while True:
+		# Tổng nhân viên
+		nv = random.randint(80,120)
+
+		# Lương cơ bản (USD/người/tháng)
+		L = random.randint(300,500)
+
+		# Mỗi nhân viên tăng ca làm lương tăng thêm p% cho tất cả người tăng ca
+		p = random.choice([2, 3, 4])  # %
+
+		# Doanh thu cơ bản (USD/tháng)
+		R0 = random.randint(35,50)*1000
+
+		# Tip nộp lại cho chủ (USD/người tăng ca/tháng)
+		T = random.choice([600, 700, 800, 900, 1000])
+
+		# Chi phí cố định (USD/tháng)
+		F = random.choice([6000, 7000, 8000, 9000, 10000])
+
+		# Lợi nhuận: P(x)= (R0+T*x) - [L*(nv-x) + L*(1+p*x/100)*x] - F
+		# = (R0 - L*nv - F) + (T)*x - (L*p/100)*x^2
+		a1 = -L * p / 100         # hệ số x^2 (âm)
+		b1 = T                   # hệ số x
+		c1 = R0 - L * nv - F     # hằng số
+
+		# Đỉnh parabol
+		x0 = -b1 / (2 * a1)
+
+		# Điều kiện hợp lý: có cực đại dương và nằm trong khoảng [0, nv]
+		if x0 > 0 and x0 < nv:
+			break
+
+	# Chọn nghiệm nguyên lân cận đỉnh (giữ đúng "cấu trúc 3 điểm")
+	x1, x2, x3 = int(x0) - 1, int(x0), int(x0) + 1
+	f = a1 * x**2 + b1 * x + c1
+
+	# Chặn biên hợp lệ 0..nv
+	cands = []
+	for xi in [x1, x2, x3]:
+		if 0 <= xi <= nv:
+			cands.append((xi, sp.N(f.subs(x, xi))))
+
+	# Nếu hiếm khi rơi ra ngoài do int(x0)-1 <0, bổ sung biên
+	if len(cands) == 0:
+		cands = [(0, sp.N(f.subs(x, 0))), (nv, sp.N(f.subs(x, nv)))]
+
+	x_thuc = max(cands, key=lambda t: t[1])[0]
+
+	# Kết quả hỏi: số nhân viên KHÔNG tăng ca cần có = nv - x_thuc
+	dap_an = nv - x_thuc
+
+	# Các chuỗi hiển thị
+	s_nv = f"{nv}"
+	s_L = f"{L}"
+	s_p = f"{p}"
+	s_R0 = f"{R0:,}".replace(",", ".")
+	s_T = f"{T:,}".replace(",", ".")
+	s_F = f"{F:,}".replace(",", ".")
+	s_x0 = f"{round_half_up(float(x0), 1):.1f}".replace(".", ",")
+	s_a1 = f"{round_half_up(float(a1), 2):.2f}".replace(".", ",")
+	s_b1 = f"{round_half_up(float(b1), 2):.2f}".replace(".", ",")
+	s_c1 = f"{round_half_up(float(c1), 2):.2f}".replace(".", ",")
+	s_2a1 = f"{round_half_up(float(2*a1), 2):.2f}".replace(".", ",")
+	s_x_thuc = f"{x_thuc}"
+	s_dap = f"{dap_an}"
+
+	noi_dung = (
+		f"Một nhà hàng có tổng cộng ${{{s_nv}}}$ nhân viên và chi trả mức lương cố định cho mỗi nhân viên thường xuyên tăng ca là "
+		f"${{{s_L}}}$ USD/tháng. Vì nhà hàng liên tục đón những đoàn khách với số lượng lớn nhưng không thể thuê thêm nhân viên nên "
+		f"chủ nhà hàng muốn khuyến khích nhân viên của mình tăng ca. Ông chủ quyết định cứ một nhân viên quyết định tăng ca thì mức lương "
+		f"của tất cả nhân viên tăng ca trong nhà hàng đều được tăng thêm ${{{s_p}}}\\%$. Tương tự nếu có ${{x}}$ nhân viên tăng ca thì "
+		f"lương cho mỗi người trong số đó sẽ tăng ${{{s_p}x}}\\%$."
+		f" Bên cạnh tiền lương cho nhân viên thì tiền điện nước và duy trì cơ sở vật chất là cố định ${{{s_F}}}$ USD/tháng. "
+		f"Doanh thu trung bình từ khách hàng là ${{{s_R0}}}$ USD/tháng và mỗi nhân viên tăng ca trung bình sẽ được khách hàng tip "
+		f"${{{s_T}}}$ USD/tháng (tiền tip phải nộp lại cho chủ cửa hàng và tính vào doanh thu).\n\n"
+		f"Xác định số nhân viên còn lại không tăng ca cần có để lợi nhuận của nhà hàng đạt giá trị lớn nhất."
+	)
+
+	noi_dung_loigiai = (
+		f"Gọi ${{x}}$ là số nhân viên tăng ca, khi đó số nhân viên không tăng ca là ${{{s_nv}-x}}$.\n\n"
+		f"Doanh thu (gồm cả tip nộp lại):\n\n"
+		f"$R(x)={s_R0}+{T}x$.\n\n"
+		f"Chi phí lương:\n\n"
+		f"- Nhóm không tăng ca: $({s_nv}-x){L}$.\n\n"
+		f"- Nhóm tăng ca: mỗi người nhận $\\;{L}\\left(1+\\dfrac{{{s_p}x}}{{100}}\\right)$ nên tổng là "
+		f"$x\\cdot {L}\\left(1+\\dfrac{{{s_p}x}}{{100}}\\right)$.\n\n"
+		f"Vậy tổng chi phí:\n\n"
+		f"$C(x)=({s_nv}-x){L}+x\\cdot {L}\\left(1+\\dfrac{{{s_p}x}}{{100}}\\right)+{F}$.\n\n"
+		f"Lợi nhuận:\n\n"
+		f"$P(x)=R(x)-C(x)$\n\n"
+		f"$\\Rightarrow P(x)=\\left({s_R0}-{L}\\cdot {s_nv}-{F}\\right)+{T}x-\\dfrac{{{L}\\cdot {s_p}}}{{100}}x^2$.\n\n"
+		f"Suy ra $P(x)={s_a1}x^2+{s_b1}x+{s_c1}$.\n\n"
+		f"Lợi nhuận lớn nhất khi:\n\n"
+		f"$x_0=\\dfrac{{-{s_b1}}}{{{s_2a1}}}={s_x0}$.\n\n"
+		f"Vì $x$ nguyên nên xét các giá trị lân cận $[x_0]-1,[x_0],[x_0]+1$, "
+		f"ta chọn được $x={s_x_thuc}$ cho lợi nhuận lớn nhất.\n\n"
+		f"Vậy số nhân viên không tăng ca cần có là: ${{{s_nv}-{s_x_thuc}}}={s_dap}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C1_B5_42]-SA-M4. Tìm giá cho thuê để Homestay tối ưu lợi nhuận -> hàm bậc 3
+def prt_34_L12_C1_B5_42():
+	import random
+	import sympy as sp
+
+	x = sp.symbols("x")  # x: số "bước" điều chỉnh giá (mỗi bước = d triệu đồng/người/ngày); x nguyên, có thể âm
+
+	ten = random.choice(["Lam", "Minh", "Hùng", "An", "Vinh"])
+
+	while True:
+		# Giá gốc (triệu đồng/người/ngày)
+		p0 = random.choice([1.0, 1.25, 1.5, 0.8, 0.9, 0.75, 0.5, 0.45, 0.85])
+
+		# Số khách gốc (lượt/tháng)
+		k0 = random.randint(30,70)
+
+		# Số ngày lưu trú TB gốc
+		t0 = random.randint(3,6)
+
+		# Mỗi bước tăng/giảm giá (triệu đồng/người/ngày)
+		d = random.choice([0.1, 0.15,0.18, 0.2,0.21,0.22, 0.25, 0.3])
+
+		# Mỗi bước TĂNG giá: khách giảm a người, số ngày lưu trú giảm b ngày
+		a = random.randint(4,8)
+		b = random.choice([1, 1, 2])  # thiên về 1 để đề "đẹp"
+
+		# Chi phí vận hành (triệu đồng/người/ngày)
+		c = random.choice([0.7,0.75, 0.8, 0.85, 0.9, 1.0, 1.1])  # bám sát đề gốc ~1.0
+
+		# Giá trần (triệu đồng/người/ngày)
+		pmax = random.randint(20,25)/10
+
+		# Miền hợp lệ: p(x)>0, p(x)<=pmax, k(x)>=1, t(x)>=1
+		# p(x)=p0+d x
+		x_min = int(sp.ceiling(-p0 / d))
+		x_max = int(sp.floor((pmax - p0) / d))
+
+		# k(x)=k0-a x >=1  => x <= (k0-1)/a
+		x_max = min(x_max, int(sp.floor((k0 - 1) / a)))
+
+		# t(x)=t0-b x >=1  => x <= (t0-1)/b
+		x_max = min(x_max, int(sp.floor((t0 - 1) / b)))
+
+		# Đảm bảo còn miền và có ít nhất vài giá trị để tối ưu
+		if x_min <= x_max and (x_max - x_min) >= 4:
+			break
+
+	# --- Mô hình đúng đề: ---
+	# Giá: p(x)=p0 + d x
+	# Khách: k(x)=k0 - a x
+	# Ngày: t(x)=t0 - b x
+	# Lợi nhuận (triệu đồng/tháng): P(x) = (p(x) - c) * k(x) * t(x)   (bậc 3)
+	p_expr = (p0 + d*x) - c
+	k_expr = (k0 - a*x)
+	t_expr = (t0 - b*x)
+	P = sp.expand(p_expr * k_expr * t_expr)   # bậc 3
+
+	# Hệ số bậc 3: A3 x^3 + A2 x^2 + A1 x + A0
+	A3 = sp.expand(P).coeff(x, 3)
+	A2 = sp.expand(P).coeff(x, 2)
+	A1 = sp.expand(P).coeff(x, 1)
+	A0 = sp.expand(P).coeff(x, 0)
+
+	# Đạo hàm: P'(x) là bậc 2
+	dP = sp.diff(P, x)
+	# Nghiệm (có thể phức) của P'(x)=0
+	crit = sp.nroots(dP)
+
+	# Lọc nghiệm thực nằm trong [x_min, x_max]
+	crit_real = []
+	for r0 in crit:
+		if abs(sp.im(r0)) < 1e-8:
+			val = float(sp.re(r0))
+			if x_min <= val <= x_max:
+				crit_real.append(val)
+
+	# Tập ứng viên nguyên: biên + lân cận của các điểm tới hạn
+	cand_int = set([x_min, x_max])
+	for val in crit_real:
+		for t in [int(val)-2, int(val)-1, int(val), int(val)+1, int(val)+2]:
+			if x_min <= t <= x_max:
+				cand_int.add(t)
+
+	# Tính P(x) cho các ứng viên và chọn max
+	best_x = None
+	best_val = None
+	for xi in sorted(cand_int):
+		vi = float(sp.N(P.subs(x, xi)))
+		if (best_val is None) or (vi > best_val):
+			best_val = vi
+			best_x = xi
+
+	# Giá tối ưu
+	p_opt = p0 + d * best_x  # triệu đồng/người/ngày
+	dap_an = round_half_up(float(p_opt), 2)
+
+
+	# ----------------- Chuỗi hiển thị -----------------
+	def fmt_trieu(val, nd=2):
+		s = f"{round_half_up(float(val), nd):.{nd}f}"
+		s = s.rstrip("0").rstrip(".")
+		return s.replace(".", ",")
+
+	s_p0   = fmt_trieu(p0, 2)
+	s_d    = fmt_trieu(d, 2)
+	s_pmax = fmt_trieu(pmax, 2)
+	s_c    = fmt_trieu(c, 2)
+	s_popt = fmt_trieu(dap_an, 2)
+
+	# (tuỳ chọn) hiển thị hệ số bậc 3 cho lời giải
+	s_A3 = fmt_trieu(A3, 4)
+	s_A2 = fmt_trieu(A2, 4)
+	s_A1 = fmt_trieu(A1, 4)
+	s_A0 = fmt_trieu(A0, 4)
+	dap_an=f"{dap_an}".replace(".",",")
+
+	noi_dung = (
+		f"Một Homestay đang áp dụng mức giá cho thuê là ${{{s_p0}}}$ triệu đồng/người/ngày. "
+		f"Tại mức giá này, trung bình mỗi tháng Homestay đón ${{{k0}}}$ lượt khách và mỗi khách lưu trú ${{{t0}}}$ ngày. "
+		f"Chủ Homestay dự tính điều chỉnh giá và thấy rằng cứ tăng giá thêm ${{{s_d}}}$ triệu đồng/người/ngày thì số khách sẽ giảm ${{{a}}}$ người "
+		f"và thời gian lưu trú trung bình giảm ${{{b}}}$ ngày. Ngược lại, nếu giảm giá thì các chỉ số sẽ tăng tương ứng. "
+		f"Biết chi phí vận hành cho mỗi khách một ngày là ${{{s_c}}}$ triệu đồng và mức giá trần không được vượt quá "
+		f"${{{s_pmax}}}$ triệu đồng/người/ngày.\n\n"
+		f"Hỏi Homestay nên áp dụng mức giá nào để đạt lợi nhuận cao nhất?"
+	)
+
+	noi_dung_loigiai = (
+		f"Gọi $x$ là số bước điều chỉnh giá (mỗi bước ${{{s_d}}}$ triệu đồng/người/ngày). Khi đó:\n\n"
+		f"Giá tiền cho thuê: $p(x)={s_p0}+{s_d}x$ (triệu đồng/người/ngày),\n\n"
+		f"Số lượt khách/tháng: $k(x)={k0}-{a}x$,\n\n"
+		f"Thời gian lưu trú: $t(x)={t0}-{b}x$ (ngày).\n\n"
+		f"$0<p(x)\\le {s_pmax},\\;k(x)\\ge 1,\\;t(x)\\ge 1$.\n\n"
+		f"Lợi nhuận theo tháng (đơn vị: triệu đồng) là:\n\n"
+		f"$P(x)=(p(x)-{s_c})\\,k(x)\\,t(x)$.\n\n"
+		f"$P(x)={s_A3}x^3+{s_A2}x^2+{s_A1}x+{s_A0}$.\n\n"
+		f"Vẽ bảng biến thiên suy ra"		
+		f"$P(x)$ đạt lớn nhất tại $x={best_x}$.\n\n"
+		f"Vậy giá tối ưu là $p=p_0+d\\,x={s_p0}+{s_d}\\cdot {best_x}={s_popt}$ (triệu đồng/người/ngày)."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an} (triệu đồng/người/ngày)\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
