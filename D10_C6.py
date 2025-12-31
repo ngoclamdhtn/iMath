@@ -2231,7 +2231,7 @@ def tktk_L10_C6_B3_19():
 	])
 
 	# --- Số cột ---
-	m = random.randint(6, 8)
+	m = random.randint(5, 7)
 
 	# --- Sinh giá trị & tần số (fix lỗi cận randint) ---
 	def gen_vals_freqs(val_min, val_max, step_choices, freq_min=2, freq_max=15):
@@ -2352,8 +2352,8 @@ def tktk_L10_C6_B3_19():
     """
 
 	code = my_module.moi_truong_anh_latex(code_hinh)
-	#file_name = my_module.pdftoimage_timename(code)
-	file_name=""
+	file_name = my_module.pdftoimage_timename(code)
+
 
 	# --- Nội dung (có đơn vị trong đề) ---
 	noi_dung = (
@@ -2383,6 +2383,371 @@ def tktk_L10_C6_B3_19():
 		f" về {bocanh} (đơn vị: {donvi}) như sau:\n"
 		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
 		f"Hãy tính tứ phân vị $Q_1$ của bảng số liệu trên{ghi_chu_lam_tron}.")
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_20]-SA-M2. Tính trung vị của bảng số liệu theo chủ đề (2 dòng: giá trị - tần số, 6-8 cột)
+def tktk_L10_C6_B3_20():
+	import random
+	import sympy as sp
+
+	x = sp.symbols("x")  # giữ cấu trúc
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chủ đề ---
+	chude = random.choice([
+		"giáo dục", "khoa học", "y tế", "vận tải",
+		"công nghệ", "sinh học", "xây dựng", "nông nghiệp"
+	])
+
+	# --- Số cột ---
+	m = random.randint(5, 7)
+
+	# --- Sinh giá trị & tần số (fix lỗi cận randint) ---
+	def gen_vals_freqs(val_min, val_max, step_choices, freq_min=2, freq_max=15):
+		nonlocal m
+
+		min_step = min(step_choices)
+		hi = val_max - (m - 1) * min_step
+
+		# Không đủ rộng -> giảm m để không lỗi randint
+		if hi <= val_min:
+			m = max(2, (val_max - val_min) // min_step + 1)
+			hi = val_max - (m - 1) * min_step
+
+		# Đảm bảo cận phải > cận trái
+		hi = max(hi, val_min + 1)
+
+		start = random.randint(val_min, hi)
+
+		vals = [start]
+		for _ in range(m - 1):
+			vals.append(vals[-1] + random.choice(step_choices))
+
+		freqs = [random.randint(freq_min, freq_max) for _ in range(m)]
+		return vals, freqs
+
+	# --- Bối cảnh theo chủ đề + tham số sinh + tên dòng 1 (KHÔNG dùng 'Giá trị') ---
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra của một nhóm học sinh"
+		donvi = "điểm"
+		ten_dong = "Điểm số"
+		vals, freqs = gen_vals_freqs(4, 10, [1], freq_min=2, freq_max=12)
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng trong thí nghiệm"
+		donvi = "ms"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(180, 320, [5, 10, 15], freq_min=2, freq_max=10)
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu của bệnh nhân"
+		donvi = "mmHg"
+		ten_dong = "Huyết áp"
+		vals, freqs = gen_vals_freqs(95, 170, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển của một tuyến xe"
+		donvi = "phút"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(25, 100, [3, 5], freq_min=2, freq_max=12)
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu"
+		donvi = "Mbps"
+		ten_dong = "Tốc độ"
+		vals, freqs = gen_vals_freqs(20, 180, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non trong thí nghiệm"
+		donvi = "cm"
+		ten_dong = "Chiều cao"
+		vals, freqs = gen_vals_freqs(10, 55, [2, 3, 4], freq_min=2, freq_max=12)
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông"
+		donvi = "MPa"
+		ten_dong = "Cường độ"
+		vals, freqs = gen_vals_freqs(18, 45, [2, 3], freq_min=2, freq_max=10)
+	else:
+		bocanh = "năng suất lúa trên các thửa ruộng"
+		donvi = "tạ/ha"
+		ten_dong = "Năng suất"
+		vals, freqs = gen_vals_freqs(35, 80, [2, 3, 5], freq_min=2, freq_max=12)
+
+	# --- Trung vị của bảng tần số theo CT THPT ---
+	N = sum(freqs)
+
+	# Nếu N lẻ: vị trí (N+1)/2
+	# Nếu N chẵn: trung vị là trung bình của hai vị trí N/2 và N/2+1
+	pos1 = (N + 1) / 2
+	pos2 = pos1
+	if N % 2 == 0:
+		pos1 = N / 2
+		pos2 = N / 2 + 1
+
+	def value_at_position(pos):
+		# pos là số nguyên (vị trí trong dãy đã khai triển)
+		cum = 0
+		for v, n_i in zip(vals, freqs):
+			cum += n_i
+			if cum >= pos:
+				return float(v)
+		return float(vals[-1])
+
+	if N % 2 == 1:
+		Me = value_at_position(int(pos1))
+	else:
+		v1 = value_at_position(int(pos1))
+		v2 = value_at_position(int(pos2))
+		Me = (v1 + v2) / 2
+
+	dap_an = Me
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 ký tự, theo chuẩn bạn đã chốt) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+		s_Me = str(dap_an)
+		ghi_chu_lam_tron = ""
+	else:
+		if dap_an < 99:
+			dap_an = f"{round_half_up(dap_an, 1):.1f}".replace(".", ",")
+			s_Me = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng phần mười)"
+		else:
+			dap_an = f"{round_half_up(dap_an, 0):.0f}".replace(".0","").replace(".",",")
+			s_Me = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng đơn vị)"
+
+	# --- Tạo bảng LaTeX ---
+	col_spec = "|c|" + "c|" * m
+	row_vals = " & ".join(f"${v}$" for v in vals)
+	row_freqs = " & ".join(f"${n_i}$" for n_i in freqs)
+
+	code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{{col_spec}}}
+        \\hline
+        {ten_dong} & {row_vals} \\\\
+        \\hline
+        Tần số & {row_freqs} \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+	#file_name=""
+
+	# --- Nội dung (có đơn vị trong đề) ---
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu "
+		f"về {bocanh} (đơn vị: {donvi}) như sau.\n{file_name}\n"
+		f"Hãy tính trung vị của bảng số liệu trên{ghi_chu_lam_tron}."
+	)
+
+	noi_dung_loigiai = (
+		f"Tổng tần số là $N={N}$.\n\n"
+		f"Nếu $N$ lẻ thì trung vị là giá trị ở vị trí $\\dfrac{{N+1}}{{2}}$; "
+		f"nếu $N$ chẵn thì trung vị là trung bình cộng của hai giá trị ở vị trí "
+		f"$\\dfrac{{N}}{{2}}$ và $\\dfrac{{N}}{{2}}+1$.\n\n"
+		f"Với $N={N}$, suy ra trung vị $Me={s_Me}$ ({donvi})."
+	)
+
+	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu + latex_tuluan chuẩn mới) =====
+	debai_word = f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f" về {bocanh} (đơn vị: {donvi}) như sau:\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+		f"Hãy tính trung vị của bảng số liệu trên{ghi_chu_lam_tron}.")
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_21]-SA-M2. Tính khoảng tứ phân vị của bảng số liệu theo chủ đề
+def tktk_L10_C6_B3_21():
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chủ đề ---
+	chude = random.choice([
+		"giáo dục", "khoa học", "y tế", "vận tải",
+		"công nghệ", "sinh học", "xây dựng", "nông nghiệp"
+	])
+
+	# --- Số cột ---
+	m = random.randint(5, 7)
+
+	# --- Sinh giá trị & tần số (fix lỗi cận randint) ---
+	def gen_vals_freqs(val_min, val_max, step_choices, freq_min=2, freq_max=15):
+		nonlocal m
+
+		min_step = min(step_choices)
+		hi = val_max - (m - 1) * min_step
+
+		# Không đủ rộng -> giảm m để không lỗi randint
+		if hi <= val_min:
+			m = max(2, (val_max - val_min) // min_step + 1)
+			hi = val_max - (m - 1) * min_step
+
+		# Đảm bảo cận phải > cận trái
+		hi = max(hi, val_min + 1)
+
+		start = random.randint(val_min, hi)
+
+		vals = [start]
+		for _ in range(m - 1):
+			vals.append(vals[-1] + random.choice(step_choices))
+
+		freqs = [random.randint(freq_min, freq_max) for _ in range(m)]
+		return vals, freqs
+
+	# --- Bối cảnh theo chủ đề + tham số sinh + tên dòng 1 (KHÔNG dùng 'Giá trị') ---
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra của một nhóm học sinh"
+		donvi = "điểm"
+		ten_dong = "Điểm số"
+		vals, freqs = gen_vals_freqs(4, 10, [1], freq_min=2, freq_max=12)
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng trong thí nghiệm"
+		donvi = "ms"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(180, 320, [5, 10, 15], freq_min=2, freq_max=10)
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu của bệnh nhân"
+		donvi = "mmHg"
+		ten_dong = "Huyết áp"
+		vals, freqs = gen_vals_freqs(95, 170, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển của một tuyến xe"
+		donvi = "phút"
+		ten_dong = "Thời gian"
+		vals, freqs = gen_vals_freqs(25, 100, [3, 5], freq_min=2, freq_max=12)
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu"
+		donvi = "Mbps"
+		ten_dong = "Tốc độ"
+		vals, freqs = gen_vals_freqs(20, 180, [5, 10], freq_min=2, freq_max=10)
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non trong thí nghiệm"
+		donvi = "cm"
+		ten_dong = "Chiều cao"
+		vals, freqs = gen_vals_freqs(10, 55, [2, 3, 4], freq_min=2, freq_max=12)
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông"
+		donvi = "MPa"
+		ten_dong = "Cường độ"
+		vals, freqs = gen_vals_freqs(18, 45, [2, 3], freq_min=2, freq_max=10)
+	else:
+		bocanh = "năng suất lúa trên các thửa ruộng"
+		donvi = "tạ/ha"
+		ten_dong = "Năng suất"
+		vals, freqs = gen_vals_freqs(35, 80, [2, 3, 5], freq_min=2, freq_max=12)
+
+	# --- Tính Q1, Q3 cho bảng tần số theo CT THPT (vị trí ceil) ---
+	N = sum(freqs)
+
+	pos_Q1 = int(sp.ceiling(N / 4))
+	pos_Q3 = int(sp.ceiling(3 * N / 4))
+
+	def value_at_or_after(pos):
+		cum = 0
+		for v, n_i in zip(vals, freqs):
+			cum += n_i
+			if cum >= pos:
+				return float(v)
+		return float(vals[-1])
+
+	Q1 = value_at_or_after(pos_Q1)
+	Q3 = value_at_or_after(pos_Q3)
+
+	IQR = Q3 - Q1
+	dap_an = IQR
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 ký tự, theo chuẩn bạn đã chốt) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+		s_iqr = str(dap_an)
+		ghi_chu_lam_tron = ""
+	else:
+		if dap_an < 99:
+			dap_an = f"{round_half_up(dap_an, 1):.1f}".replace(".", ",")
+			s_iqr = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng phần mười)"
+		else:
+			dap_an = f"{round_half_up(dap_an, 0):.0f}".replace(".0","").replace(".",",")
+			s_iqr = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng đơn vị)"
+
+	# --- Tạo bảng LaTeX ---
+	col_spec = "|c|" + "c|" * m
+	row_vals = " & ".join(f"${v}$" for v in vals)
+	row_freqs = " & ".join(f"${n_i}$" for n_i in freqs)
+
+	code_hinh = f"""
+    \\centering
+    \\setlength{{\\tabcolsep}}{{12pt}} % Tăng khoảng cách giữa các cột
+    \\begin{{tabular}}{{{col_spec}}}
+        \\hline
+        {ten_dong} & {row_vals} \\\\
+        \\hline
+        Tần số & {row_freqs} \\\\
+        \\hline
+    \\end{{tabular}}
+    """
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+
+
+	# --- Nội dung (có đơn vị trong đề) ---
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu "
+		f"về {bocanh} (đơn vị: {donvi}) như sau:\n{file_name}\n"
+		f"Hãy tính khoảng tứ phân vị của bảng số liệu trên{ghi_chu_lam_tron}."
+	)
+
+	noi_dung_loigiai = (
+		f"Tổng tần số là $N={N}$.\n\n"
+		f"Vị trí của $Q_1$ là $\\left\\lceil\\dfrac{{N}}{{4}}\\right\\rceil"
+		f"=\\left\\lceil\\dfrac{{{N}}}{{4}}\\right\\rceil={pos_Q1}$.\n\n"
+		f"Vị trí của $Q_3$ là $\\left\\lceil\\dfrac{{3N}}{{4}}\\right\\rceil"
+		f"=\\left\\lceil\\dfrac{{3\\cdot {N}}}{{4}}\\right\\rceil={pos_Q3}$.\n\n"
+		f"Dựa vào tần số tích lũy suy ra $Q_1={Q1}$ và $Q_3={Q3}$.\n\n"
+		f"Vậy $\\Delta_Q=Q_3-Q_1={Q3}-{Q1}={s_iqr}$ ({donvi})."
+	)
+
+	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu + latex_tuluan chuẩn mới) =====
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được bảng số liệu"
+		f" về {bocanh} (đơn vị: {donvi}) như sau:\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+		f"Hãy tính khoảng tứ phân vị của bảng số liệu trên{ghi_chu_lam_tron}.")
 
 	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
 		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"

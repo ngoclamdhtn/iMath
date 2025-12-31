@@ -2867,7 +2867,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_18]-SA-M2. Tính số Q1 của Bảng số liệu theo chủ đề"])
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_18]-SA-M2. Tính Q1 của Bảng số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_19]-SA-M2. Tính Q3 của Bảng số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_20]-SA-M2. Tính trung vị của Bảng số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_21]-SA-M2. Tính khoảng tứ phân vị của Bảng số liệu theo chủ đề"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -17329,6 +17341,18 @@ class Ui_MainWindow(object):
                                             #[D10_C6_B3_18]-SA-M2.  Tính tứ phân vị Q1 của bảng số liệu theo chủ đề
                                             if dang_toan == "[D10_C6_B3_18]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_18()
+
+                                            #[D10_C6_B3_19]-SA-M2.  Tính tứ phân vị Q3 của bảng số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_19()
+
+                                            #[D10_C6_B3_20]-SA-M2.  Tính trung vị của bảng số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_20()
+
+                                            #[D10_C6_B3_21]-SA-M2.  Tính khoảng tứ phân vị của bảng số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_21]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_21()
 
 
 

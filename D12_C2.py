@@ -8242,7 +8242,7 @@ def mnj_34_jkl_L12_C2_B3_43():
 		)
 		kq=f"$G\\left({phan_so(x_G)};{latex(y_G)};{phan_so(z_G)}\\right)$"
 		kq_false=[
-			f"$G\\left({phan_so(x_B)};{latex(y_G)};{phan_so(z_G)}\\right)$",
+			f"$G\\left({phan_so(x_G)};{latex(y_G)};{phan_so(z_G+random.randint(1,2))}\\right)$",
 			f"$G\\left(0;0;{latex(y_G)}\\right)$",
 			f"$G\\left(0;0;{phan_so(z_G)}\\right)$",
 			f"$G\\left({phan_so(x_B)};{latex(y_G)};0\\right)$",]
