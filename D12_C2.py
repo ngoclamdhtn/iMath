@@ -9469,6 +9469,11 @@ def mnj_34_jkl_L12_C2_B3_54():
 		b1=-random.randint(10,30)/10
 		b2=-random.randint(10,30)/10
 		b3=random.randint(4,9)/10
+
+		c1,c2,c3=a1,a2,-a3
+		x_BC,y_BC,z_BC=c1-b1, c2-b2, c3-b3
+		t=-b3/z_BC
+		a,b = t*x_BC+b1, t*y_BC+b2
 		if all([a1!=b1, a2!=b2, a3!=b3]):
 			break
 
@@ -9487,13 +9492,10 @@ def mnj_34_jkl_L12_C2_B3_54():
 	f" Chiếc thứ nhất nằm cách điểm xuất phát ${{{s_a1}}}$ km về phía nam và ${{{s_a2}}}$ km về phía đông, đồng thời cách mặt đất ${{{s_a3}}}$ km."
 	f" Chiếc thứ hai nằm cách điểm xuất phát ${{{s_b1}}}$ km về phía bắc và ${{{s_b2}}}$ km về phía tây, đồng thời cách mặt đất ${{{s_b3}}}$ km."
 	f" Người ta cần tìm một vị trí trên mặt đất để vị trí đặt một trạm liên lạc trên mặt đất sao cho tổng khoảng cách từ vị trí đó tới hai khinh khí cầu nhỏ nhất."
-	f" Giả sử vị trí trạm liên lạc cách địa điểm hai khinh khí cầu bay lên là ${{a}}$ km theo hướng nam và ${{b}}$ km theo hướng tây."
+	f" Giả sử tọa độ vị trí trạm liên lạc là $I(a;b;0)$."
 	f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
 	)
-	c1,c2,c3=a1,a2,-a3
-	x_BC,y_BC,z_BC=c1-b1, c2-b2, c3-b3
-	t=-b3/z_BC
-	a,b = t*x_BC+b1, t*y_BC+b2
+	
 	dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")
 	noi_dung_loigiai=(
 	f"Chọn hệ trục toạ độ ${{Oxyz}}$ với gốc ${{O}}$ đặt tại điểm xuất phát của hai khinh khí cầu, mặt phẳng $(Oxy)$ trùng với mặt đất,"

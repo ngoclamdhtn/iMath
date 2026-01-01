@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92025 ver 21.12.2025")
+                self.label.setText(f"iMath\u00A92026 ver 01.01.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92025 ver 21.12.2025")
+                self.label.setText(f"iMath\u00A92026 ver 01.01.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -2856,6 +2856,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_16]-SA-M2. Tính trung vị của dãy số liệu theo chủ đề"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C6_B3_3, ["[D10_C6_B3_22]-SA-M2. Tính khoảng tứ phân vị của dãy số liệu theo chủ đề"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -17353,6 +17357,10 @@ class Ui_MainWindow(object):
                                             #[D10_C6_B3_21]-SA-M2.  Tính khoảng tứ phân vị của bảng số liệu theo chủ đề
                                             if dang_toan == "[D10_C6_B3_21]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_21()
+
+                                            #[D10_C6_B3_22]-SA-M2.  Tính khoảng tứ phân vị của dãy số liệu theo chủ đề
+                                            if dang_toan == "[D10_C6_B3_22]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C6.tktk_L10_C6_B3_22()
 
 
 

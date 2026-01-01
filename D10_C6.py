@@ -1534,8 +1534,8 @@ def tktk_L10_C6_B3_14():
 	dap_an = float(Q1)
 
 	# --- Chuỗi hiển thị ---
-	s_data = ", ".join(str(v) for v in data)
-	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_data = ";\\, ".join(str(v) for v in data)
+	s_data_sorted = "; \\, ".join(str(v) for v in data_sorted)
 	
 
 	if dap_an.is_integer():
@@ -1677,9 +1677,9 @@ def tktk_L10_C6_B3_15():
 	dap_an = float(Q3)
 
 	# --- Chuỗi hiển thị ---
-	s_data = ", ".join(str(v) for v in data)
+	s_data = "; \\, ".join(str(v) for v in data)
 	s_data_sorted = ", ".join(str(v) for v in data_sorted)
-	s_upper = ", ".join(str(v) for v in upper_half)
+	s_upper = "; \\, ".join(str(v) for v in upper_half)
 	
 
 	if dap_an.is_integer():
@@ -1809,8 +1809,8 @@ def tktk_L10_C6_B3_16():
 	dap_an = median
 
 	# --- Chuỗi hiển thị ---
-	s_data = ", ".join(str(v) for v in data)
-	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_data = "; \\, ".join(str(v) for v in data)
+	s_data_sorted = "; \\, ".join(str(v) for v in data_sorted)
 
 	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự) ---
 	if float(dap_an).is_integer():
@@ -2371,7 +2371,7 @@ def tktk_L10_C6_B3_19():
 	)
 
 	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu) =====
-	debai_word = f"{noi_dung}\n{file_name}\n" 
+	debai_word = f"{noi_dung}\n" 
 
 	loigiai_word = ( 
 		f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -2559,7 +2559,7 @@ def tktk_L10_C6_B3_20():
 	)
 
 	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI (theo yêu cầu + latex_tuluan chuẩn mới) =====
-	debai_word = f"{noi_dung}\n{file_name}\n"
+	debai_word = f"{noi_dung}\n"
 
 	loigiai_word = (
 		f"Lời giải:\n {noi_dung_loigiai} \n"
@@ -2755,6 +2755,133 @@ def tktk_L10_C6_B3_21():
 		f"\\end{{ex}}\n")
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C6_B3_22]-SA-M2. Tính khoảng tứ phân vị của dãy số liệu theo chủ đề
+def tktk_L10_C6_B3_22():
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --- Chọn chủ đề và sinh dữ liệu (7-10 giá trị) ---
+	chude = random.choice(["giáo dục", "khoa học", "y tế", "vận tải", "công nghệ", "sinh học", "xây dựng", "nông nghiệp"])
+
+	if chude == "giáo dục":
+		bocanh = "điểm kiểm tra (thang 10) của một nhóm học sinh"
+		donvi = "điểm"
+		data = [random.randint(4, 10) for _ in range(random.randint(7, 10))]
+	elif chude == "khoa học":
+		bocanh = "thời gian phản ứng (ms) trong một thí nghiệm"
+		donvi = "ms"
+		data = [random.randint(180, 320) for _ in range(random.randint(7, 10))]
+	elif chude == "y tế":
+		bocanh = "huyết áp tâm thu (mmHg) của bệnh nhân"
+		donvi = "mmHg"
+		data = [random.randint(95, 170) for _ in range(random.randint(7, 10))]
+	elif chude == "vận tải":
+		bocanh = "thời gian di chuyển (phút) của một tuyến xe"
+		donvi = "phút"
+		data = [random.randint(25, 100) for _ in range(random.randint(7, 10))]
+	elif chude == "công nghệ":
+		bocanh = "tốc độ tải dữ liệu (Mbps) tại một điểm đo"
+		donvi = "Mbps"
+		data = [random.randint(20, 180) for _ in range(random.randint(7, 10))]
+	elif chude == "sinh học":
+		bocanh = "chiều cao cây non (cm) trong thí nghiệm sinh học"
+		donvi = "cm"
+		data = [random.randint(10, 55) for _ in range(random.randint(7, 10))]
+	elif chude == "xây dựng":
+		bocanh = "cường độ chịu nén của mẫu bê tông (MPa)"
+		donvi = "MPa"
+		data = [random.randint(18, 45) for _ in range(random.randint(7, 10))]
+	else:  # nông nghiệp
+		bocanh = "năng suất lúa (tạ/ha) đo trên các thửa ruộng"
+		donvi = "tạ/ha"
+		data = [random.randint(35, 80) for _ in range(random.randint(7, 10))]
+
+	# --- Sắp xếp số liệu ---
+	data_sorted = sorted(data)
+	n = len(data_sorted)
+
+	# --- Tính Q1, Q3 theo chương trình THPT ---
+	# Q1: trung vị nửa dưới (bỏ trung vị chung nếu n lẻ)
+	lower_half = data_sorted[:n//2]
+	m1 = len(lower_half)
+	if m1 % 2 == 0:
+		Q1 = (lower_half[m1//2 - 1] + lower_half[m1//2]) / 2
+	else:
+		Q1 = lower_half[m1//2]
+
+	# Q3: trung vị nửa trên (bỏ trung vị chung nếu n lẻ)
+	if n % 2 == 0:
+		upper_half = data_sorted[n//2:]
+	else:
+		upper_half = data_sorted[n//2 + 1:]
+	m3 = len(upper_half)
+	if m3 % 2 == 0:
+		Q3 = (upper_half[m3//2 - 1] + upper_half[m3//2]) / 2
+	else:
+		Q3 = upper_half[m3//2]
+
+	IQR = Q3 - Q1
+	dap_an = IQR
+
+	# --- Chuỗi hiển thị ---
+	s_data = ", ".join(str(v) for v in data)
+	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_lower = ", ".join(str(v) for v in lower_half)
+	s_upper = ", ".join(str(v) for v in upper_half)
+
+	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự) ---
+	if float(dap_an).is_integer():
+		dap_an = int(dap_an)
+		s_iqr = str(dap_an)
+		ghi_chu_lam_tron = ""
+	else:
+		if dap_an < 99:
+			dap_an = f"{round_half_up(dap_an,1):.1f}".replace(".", ",")
+			s_iqr = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng phần mười)"
+		else:
+			dap_an = f"{round_half_up(dap_an,0):.0f}".replace(".0","").replace(".",",")
+			s_iqr = dap_an
+			ghi_chu_lam_tron = " (kết quả làm tròn đến hàng đơn vị)"
+
+	# --- Nội dung ---
+	noi_dung = (
+		f"Trong lĩnh vực {chude}, bạn {ten} thu thập được dãy số liệu về {bocanh} như sau: "
+		f"${{{s_data}}}$.\n\n"
+		f"Hãy tính khoảng tứ phân vị $I=Q_3-Q_1$ của dãy số liệu trên{ghi_chu_lam_tron}."
+	)
+
+	noi_dung_loigiai = (
+		f"Sắp xếp dãy theo thứ tự không giảm:\n\n"
+		f"${{{s_data_sorted}}}$.\n\n"
+		f"Dãy có $n={n}$ giá trị.\n\n"
+		f"Nửa dưới: $({s_lower})$ nên $Q_1={Q1}$.\n\n"
+		f"Nửa trên: $({s_upper})$ nên $Q_3={Q3}$.\n\n"
+		f"Vậy khoảng tứ phân vị:\n\n"
+		f"$I=Q_3-Q_1={Q3}-{Q1}={s_iqr}$ ({donvi})."
+	)
+
+	# ===== GIỮ ĐÚNG CẤU TRÚC ĐOẠN CUỐI + KHÔNG DÙNG HÌNH =====
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
 
 
 
@@ -3636,8 +3763,8 @@ def tktk_L10_C6_B4_10():
 	dap_an = var
 
 	# --- Chuỗi hiển thị ---
-	s_data = ", ".join(str(v) for v in data)
-	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_data = "; \\,  ".join(str(v) for v in data)
+	s_data_sorted = "; \\,  ".join(str(v) for v in data_sorted)
 	s_mean = round_half_up(mean, 2)
 
 	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự, theo code đã ghi nhớ) ---
@@ -3766,8 +3893,8 @@ def tktk_L10_C6_B4_11():
 	dap_an = std
 
 	# --- Chuỗi hiển thị ---
-	s_data = ", ".join(str(v) for v in data)
-	s_data_sorted = ", ".join(str(v) for v in data_sorted)
+	s_data = "; \\,  ".join(str(v) for v in data)
+	s_data_sorted = "; \\,  ".join(str(v) for v in data_sorted)
 
 	# --- Chuẩn hiển thị đáp án (≤ 4 kí tự, theo code đã ghi nhớ) ---
 	# Nếu là số nguyên

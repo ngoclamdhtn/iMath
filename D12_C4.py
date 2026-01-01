@@ -10517,10 +10517,10 @@ f" chất điểm còn lại di chuyển với vận tốc $v_2(t)={latex(v2)}$.
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"* Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_2(t)={latex(integrate(v2,t))}+C$" 
-    kq2_F=f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_1(t)={latex(integrate(v2,t)+random.randint(1,2)*t)}+C$"
+    kq2_T=f"* Quãng đường chất điểm thứ hai di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_2(t)={latex(integrate(v2,t))}+C$" 
+    kq2_F=f"Quãng đường chất điểm thứ hai di chuyển sau khi va chạm được biểu diễn bởi hàm số $s_1(t)={latex(integrate(v2,t)+random.randint(1,2)*t)}+C$"
     
-    HDG=(f"Quãng đường chất điểm thứ nhất di chuyển sau khi va chạm được biểu diễn bởi hàm số:\n\n"
+    HDG=(f"Quãng đường chất điểm thứ hai di chuyển sau khi va chạm được biểu diễn bởi hàm số:\n\n"
     f" $s_2(t)=\\int ({latex(v2)})dt={latex(integrate(v2,t))}+C$.")
     kq2=random.choice([kq2_T, kq2_F])
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
