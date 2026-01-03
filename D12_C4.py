@@ -115,6 +115,9 @@ def thay_dau_cong_tru(st):
 def tphan(x_1,x_2):
     return f"\\int \\limits_{{{x_1}}}^{{{x_2}}}"
 
+def gach(x_1,x_2):
+    return f"\\bigg|_{{{x_1}}}^{{{x_2}}}"
+
 def st_lim(x_0):
     return f"\\mathop{{\\lim}}\\limits_{{x \\to  {x_0}}}"
 
@@ -7648,6 +7651,539 @@ def ckz_L12C4_B4_44():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C4_B4_45]-M2. Tính tích phân (ax^2+b)/x
+def ckz_L12C4_B4_45():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 5) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    while True:
+        m,n=random.sample(range(1,6),2)
+        if m<n:
+            break
+
+    c=a/2*(n**2-m**2)
+    T=b+c
+
+    noi_dung=(
+    f"Biết ${tphan(m,n)}\\left(\\dfrac{{{latex(a*x**2+b)}}}{{x}}\\right)dx=p+q\\ln {phan_so(n/m)}$. Tính $p+q$."
+    )    
+
+    kq=T
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(T-random.randint(1,2), T+random.randint(1,2)),1)
+        if numbers!=T:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${tphan(m,n)}\\left(\\dfrac{{{latex(a*x**2+b)}}}{{x}}\\right)dx$ "
+    f"$={tphan(m,n)}\\left({a}x+\\dfrac{{{b}}}{{x}}\\right)dx$ "
+    f"$=\\left({latex(a*x**2/2)}+{b}\\ln x\\right){gach(m,n)}$\n\n"
+    f"$={phan_so(c)}+{b}(\\ln {n}-\\ln{m})={phan_so(c)}+{b}\\ln{phan_so(n/m)}$.\n\n"
+    f"Vậy $p+q={phan_so(c)}+{b}={phan_so(T)}$."
+    )
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_46]-SA-M2. Tính tích phân (ax^2+bx+c)/x
+def ckz_L12C4_B4_46():
+
+    x = sp.symbols("x")
+
+    # --- Sinh m,n là số tự nhiên dương, đảm bảo n>m ---
+    while True:
+        m = random.randint(1, 6)
+        n = random.randint(m + 1, 10)
+
+        # --- Sinh a,b,c là số nguyên ---
+        # Chọn a chẵn để p nguyên (vì a/2*(n^2-m^2))
+        a = random.choice([i for i in range(-8, 9) if i != 0 and i % 2 == 0])
+        b = random.choice([i for i in range(-9, 10) if i != 0])
+        c = random.choice([i for i in range(-9, 10) if i != 0])
+
+        # --- Tính p, q theo phân tích ---
+        # (ax^2+bx+c)/x = a x + b + c/x
+        # ∫ = a/2 (n^2-m^2) + b(n-m) + c ln(n/m)
+        p = sp.Rational(a, 2) * (n**2 - m**2) + b * (n - m)  # đảm bảo nguyên do a chẵn
+        q = c
+        if all([-1<p+q<500]):
+            break
+
+    pq = float(p + q)
+    dap_an = int(pq) if pq.is_integer() else pq  # thường là số nguyên
+
+    # --- Chuỗi hiển thị p,q (đẹp) ---
+    s_p = str(int(p)) if float(p).is_integer() else str(p)
+    s_q = str(q)
+
+    noi_dung = (
+        f"Biết rằng $\\displaystyle \\int_{{{m}}}^{{{n}}} \\dfrac{{{latex(a*x**2+b*x+c)}}}{{x}}\\,dx"
+        f"=p+q\\ln {phan_so(n/m)}$. Tính $p+q$."
+
+    )
+
+    noi_dung_loigiai = (
+        f"Ta có:\n\n"
+        f"$\\displaystyle \\dfrac{{{latex(a*x**2+b*x+c)}}}{{x}}={latex(a*x+b)}+\\frac{{{c}}}{{x}}$.\n\n"
+        f"Suy ra\n\n"
+        f"$\\displaystyle \\int_{{{m}}}^{{{n}}} \\dfrac{{{latex(a*x**2+b*x+c)}}}{{x}}\\,dx"
+        f"=\\int_{{{m}}}^{{{n}}}({latex(a*x+b)})\\,dx+{c}\\int_{{{m}}}^{{{n}}}\\frac{{1}}{{x}}\\,dx$.\n\n"
+        f"$\\displaystyle =\\left[\\frac{{{a}}}{{2}}x^2+{b}x\\right]_{{{m}}}^{{{n}}}+{c}\\ln {phan_so(n/m)}$.\n\n"
+        f"Do đó $p=\\frac{{{a}}}{{2}}({n}^2-{m}^2)+{b}({n}-{m})={s_p}$ và $q={s_q}$.\n\n"
+        f"Suy ra $p+q={s_p}+{s_q}={dap_an}$."
+    )
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C4_B4_47]-M2. Tính tích phân (ax^2+bx+c)/x
+def ckz_L12C4_B4_47():
+
+    x = sp.symbols("x")
+
+    # --- Sinh m,n là số tự nhiên dương, đảm bảo n>m ---
+    while True:
+        m = random.randint(1, 6)
+        n = random.randint(m + 1, 10)
+
+        # --- Sinh a,b,c là số nguyên ---
+        # Chọn a chẵn để p nguyên (vì a/2*(n^2-m^2))
+        a = random.choice([i for i in range(-8, 9) if i != 0 and i % 2 == 0])
+        b = random.choice([i for i in range(-9, 10) if i != 0])
+        c = random.choice([i for i in range(-9, 10) if i != 0])
+
+        # --- Tính p, q theo phân tích ---
+        # (ax^2+bx+c)/x = a x + b + c/x
+        # ∫ = a/2 (n^2-m^2) + b(n-m) + c ln(n/m)
+        p = sp.Rational(a, 2) * (n**2 - m**2) + b * (n - m)  # đảm bảo nguyên do a chẵn
+        q = c
+        if all([-1<p+q<500]):
+            break
+
+    pq = float(p + q)
+    dap_an = int(pq) if pq.is_integer() else pq  # thường là số nguyên
+
+    # --- Chuỗi hiển thị p,q (đẹp) ---
+    s_p = str(int(p)) if float(p).is_integer() else str(p)
+    s_q = str(q)
+
+    noi_dung = (
+        f"Biết rằng $\\displaystyle \\int_{{{m}}}^{{{n}}} \\dfrac{{{latex(a*x**2+b*x+c)}}}{{x}}\\,dx"
+        f"=p+q\\ln {phan_so(n/m)}$. Tính $p+q$."
+
+    )
+
+    noi_dung_loigiai = (
+        f"Ta có:\n\n"
+        f"$\\displaystyle \\dfrac{{{latex(a*x**2+b*x+c)}}}{{x}}={latex(a*x+b)}+\\frac{{{c}}}{{x}}$.\n\n"
+        f"Suy ra\n\n"
+        f"$\\displaystyle \\int_{{{m}}}^{{{n}}} \\dfrac{{{latex(a*x**2+b*x+c)}}}{{x}}\\,dx"
+        f"=\\int_{{{m}}}^{{{n}}}({latex(a*x+b)})\\,dx+{c}\\int_{{{m}}}^{{{n}}}\\frac{{1}}{{x}}\\,dx$.\n\n"
+        f"$\\displaystyle =\\left[\\frac{{{a}}}{{2}}x^2+{b}x\\right]_{{{m}}}^{{{n}}}+{c}\\ln {phan_so(n/m)}$.\n\n"
+        f"Do đó $p=\\frac{{{a}}}{{2}}({n}^2-{m}^2)+{b}({n}-{m})={s_p}$ và $q={s_q}$.\n\n"
+        f"Suy ra $p+q={s_p}+{s_q}={dap_an}$."
+    )
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    
+
+    kq=p*q
+
+    kq_false = set()
+    while len(kq_false) < 5:    
+        numbers = random.randint(p*q-random.randint(10,15),p*q+random.randint(10,15))
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_48]-M2. Tính tích phân (ax+b)/x
+def ckz_L12C4_B4_48():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 5) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(1,5)
+    while True:
+        m,n=random.sample(range(1,7),2)
+        if m<n:
+            break
+
+    d=a/c*(n-m)
+    T=d+b/c
+    fx=f"\\dfrac{{{latex(a*x+b)}}}{{{latex(c*x)}}}"
+    noi_dung=(
+    f"Biết ${tphan(m,n)} {fx}dx=p+q\\ln {phan_so(n/m)}$. Tính $p+q$."
+    )    
+
+    kq=T
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(T-random.randint(1,2), T+random.randint(1,2)),1)
+        if numbers!=T:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${tphan(m,n)} {fx} dx$ "
+    f"$={tphan(m,n)}\\left({phan_so(a/c)}+{phan_so(b/c)}\\cdot \\dfrac{{1}}{{x}}\\right)dx$ "
+    f"$=\\left({phan_so(a/c)}x+{phan_so(b/c)}\\ln x\\right){gach(m,n)}$\n\n"
+    f"$={phan_so(d)}+{phan_so(b/c)}(\\ln {n}-\\ln{m})={phan_so(d)}+{phan_so(b/c)}\\ln{phan_so(n/m)}$.\n\n"
+    f"Vậy $p+q={phan_so(d)}+{phan_so(b/c)}={phan_so(T)}$."
+    )
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_49]-M2. Tính tích phân (ax+b)/x^2
+def ckz_L12C4_B4_49():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 5) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(1,5)
+    while True:
+        m,n=random.sample(range(1,7),2)
+        if m<n:
+            break
+
+    d=-b*(1/n-1/m)
+    T=a+d
+    fx=f"\\dfrac{{{latex(a*x+b)}}}{{x^2}}"
+    noi_dung=(
+    f"Biết ${tphan(m,n)} {fx}dx=p+q\\ln {phan_so(n/m)}$. Tính $p+q$."
+    )    
+
+    kq=T
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(T-random.randint(1,2), T+random.randint(1,2)),1)
+        if numbers!=T:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${tphan(m,n)} {fx} dx$ "
+    f"$={tphan(m,n)}\\left({latex(a/x+b/x**2)}\\right)dx$ "
+    f"$=\\left({a}\\ln x+{latex(-b/x)}\\right){gach(m,n)}$\n\n"
+    f"$={a}(\\ln {n}-\\ln{m})+{phan_so(d)}={phan_so(d)}+{a}\\ln{phan_so(n/m)}$.\n\n"
+    f"Vậy $p+q={phan_so(d)}+{a}={phan_so(T)}$."
+    )
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_50]-M2. Tính tích phân [f(x)+asinx]
+def ckz_L12C4_B4_50():
+    x = sp.Symbol('x')
+
+    # Chọn ngẫu nhiên a,b từ tập đã cho
+    tap_goc = [0, sp.pi/2, sp.pi/3, sp.pi/4, 2*sp.pi/3, 3*sp.pi/4, 5*sp.pi/6]
+    a, b = random.sample(tap_goc, 2)
+    # Đảm bảo a < b
+    a, b = (a, b) if sp.N(a) < sp.N(b) else (b, a)
+    if a==sp.pi/4:
+        b==random.choice([0, 3*sp.pi/4])
+
+    # Tạo ngẫu nhiên số nguyên m, n
+    while True:
+        m =  random.choice([i for i in range(-5, 8) if i!=0])
+        n = random.choice([i for i in range(-5, 8) if i!=0])
+        if m!=n:
+            break
+
+    # Tính I = ∫_a^b [f(x) + m sin x] dx = m + m∫_a^b sin x dx
+    I = sp.simplify(n + m * sp.integrate(sp.sin(x), (x, a, b)))  # = m*(1 + cos(a) - cos(b))
+
+    noi_dung = (
+        f"Cho $\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}{{f(x)\\,dx}}={n}$. "
+        f"Tính $I=\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}{{\\left[f(x)+{m}\\sin x\\right]dx}}$."
+    )
+    noi_dung=thay_dau_cong_tru(noi_dung)
+
+    noi_dung_loigiai = (
+
+        f"$I=\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}} f(x)\\,dx + "
+        f"{m}\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}\\sin x\\,dx$\n\n"
+        f"$= {n} + {m}\\left[-\\cos x\\right]_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}"
+        f"= {n} + {m}\\left(\\cos {sp.latex(a)}-\\cos {sp.latex(b)}\\right)$\n\n"
+        f"$= {sp.latex(I)}.$"
+    )
+
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    # Đáp án đúng và nhiễu
+    kq  = sp.latex(I)
+
+    kq2 = sp.latex(sp.simplify(n - m * sp.integrate(sp.sin(x), (x, a, b))))          
+    kq3 = sp.latex(sp.simplify(m + n * sp.integrate(sp.sin(x), (x, a, b))))          
+    kq4 = sp.latex(sp.simplify(m - n * sp.integrate(sp.sin(x), (x, a, b))))  
+
+
+    pa_A = f"*${{{kq}}}$"
+    pa_B = f"${{{kq2}}}$"
+    pa_C = f"${{{kq3}}}$"
+    pa_D = f"${{{kq4}}}$"
+
+    # Trộn các phương án
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    debai = f"{noi_dung}"
+
+    phuongan = f"A. {list_PA[0]}.\t   B. {list_PA[1]}.\t    C. {list_PA[2]}.\t     D. {list_PA[3]}.\n"
+
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề latex
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex = (
+        f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ {list_PA[2]} }}\n    {{ {list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai, debai_latex, loigiai_word, phuongan, latex_tuluan, loigiai_traloingan, dap_an
+
+#[D12_C4_B4_51]-M2. Tính tích phân [f(x)+mcosx]
+def ckz_L12C4_B4_51():
+    import random
+    import sympy as sp
+
+    x = sp.Symbol('x')
+
+    # Chọn ngẫu nhiên a,b từ tập đã cho
+    tap_goc = [0, sp.pi/2, sp.pi/3, sp.pi/4, 2*sp.pi/3, 3*sp.pi/4, 5*sp.pi/6]
+    a, b = random.sample(tap_goc, 2)
+
+    # Đảm bảo a < b
+    a, b = (a, b) if sp.N(a) < sp.N(b) else (b, a)
+
+    # Tạo ngẫu nhiên số nguyên m, n khác nhau trong [-8,8]
+    m = random.randint(-8, 8)
+    n = random.randint(-8, 8)
+    while n == m:
+        n = random.randint(-8, 8)
+
+    # I = ∫[f(x)+n cos x]dx = ∫f(x)dx + n∫cos x dx = m + n(sin b - sin a)
+    I = sp.simplify(m + n * sp.integrate(sp.cos(x), (x, a, b)))  # = m + n*(sin(b)-sin(a))
+
+    noi_dung = (
+        f"Cho $\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}{{f(x)\\,dx}}={m}$. "
+        f"Tính $I=\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}{{\\left[f(x)+{n}\\cos x\\right]dx}}$."
+    )
+
+    noi_dung_loigiai = (
+
+        f"$I=\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}} f(x)\\,dx + "
+        f"{n}\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}\\cos x\\,dx$\n\n"
+        f"$= {m} + {n}\\left[\\sin x\\right]_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}"
+        f"= {m} + {n}\\left(\\sin({sp.latex(b)})-\\sin({sp.latex(a)})\\right)$\n\n"
+        f"$= {sp.latex(I)}.$"
+    )
+
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    # Đáp án đúng và các phương án nhiễu
+    int_cos = sp.simplify(sp.integrate(sp.cos(x), (x, a, b)))  # sin(b)-sin(a)
+
+    kq  = sp.latex(I)
+    kq2 = sp.latex(sp.simplify(m - n * int_cos))               # sai dấu phần cos
+    kq3 = sp.latex(sp.simplify(n + m * int_cos))               # tráo vai m,n
+    kq4 = sp.latex(sp.simplify(m + m * int_cos))               # dùng m thay cho n
+
+    pa_A = f"*${{{kq}}}$"
+    pa_B = f"${{{kq2}}}$"
+    pa_C = f"${{{kq3}}}$"
+    pa_D = f"${{{kq4}}}$"
+
+    # Trộn các phương án
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    debai = f"{noi_dung}"
+
+    phuongan = f"A. {list_PA[0]}.\t   B. {list_PA[1]}.\t    C. {list_PA[2]}.\t     D. {list_PA[3]}.\n"
+
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề latex
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex = (
+        f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ {list_PA[2]} }}\n    {{ {list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung} \n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai, debai_latex, loigiai_word, phuongan, latex_tuluan, loigiai_traloingan, dap_an
 
 
     
@@ -10946,3 +11482,295 @@ def ckz_L12C4_B5_37():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B5_38]-TF-M3. Ô tô hãm phanh với v(t). Xét Đ-S: s(t), thời gian dừng hẳn, xét xem oto tai nạn hay không
+def ckz_L12C4_B5_38():
+
+    # ================== Khởi tạo hệ số ngẫu nhiên ==================
+    a = random.choice([2, 3, 4, 5])              # hệ số hãm phanh (m/s^2)
+    t_stop = random.randint(3, 8)                # thời gian dừng (s) để v0 chia hết cho a
+    v0 = a * t_stop                              # vận tốc ban đầu (m/s)
+    D = random.randint(40, 80)                   # khoảng cách tới chướng ngại vật (m)
+
+    # Các đại lượng cần thiết
+    s_stop = v0**2 / (2*a)                       # quãng đường phanh đến khi dừng (m)
+
+    # ================== Nội dung đề ==================
+    noi_dung = (
+        f"Một chiếc ô tô đang chạy với vận tốc ${{v_0}}={v0}\\,\\mathrm{{m/s}}$ thì nhìn thấy chướng ngại vật "
+        f"trên đường cách đó ${D}\\,\\mathrm{{m}}$, người lái xe hãm phanh khẩn cấp. "
+        f"Sau khi hãm phanh, ô tô chuyển động chậm dần đều với vận tốc "
+        f"$v(t)=-{a}t+{v0}\\,(\\mathrm{{m/s}})$, trong đó ${{t}}$ (giây). "
+        f"Gọi $s(t)$ là quãng đường xe ô tô đi được trong thời gian ${{t}}$ kể từ lúc đạp phanh. "
+        f"Các mệnh đề sau đúng hay sai?\n"
+    )
+
+    # ================== a) ==================
+    kq1_T = f"*Quãng đường $s(t)$ là một nguyên hàm của $v(t)=-{a}t+{v0}$"
+    kq1_F = f"Quãng đường $s(t)$ là đạo hàm của $v(t)=-{a}t+{v0}$"
+
+    HDG = (
+        f"Vì $s(t)$ là quãng đường đi được kể từ lúc đạp phanh nên $s'(t)=v(t)$.\n\n"
+        f"Do đó $s(t)$ là một nguyên hàm của $v(t)$ trên khoảng thời gian xe còn chuyển động."
+    )
+    kq1 = random.choice([kq1_T, kq1_F])
+    loigiai_1 = f"Khẳng định đã cho là khẳng định đúng.\n\n{HDG}"
+    if kq1 == kq1_F:
+        loigiai_1 = f"Khẳng định đã cho là khẳng định sai.\n\n{HDG}\n\nKhẳng định đúng phải là: $s'(t)=v(t)$, không phải $s(t)=v'(t)$."
+
+    # ================== b) ==================
+    # s(t) = ∫ v(t) dt, với s(0)=0 => C=0
+    kq2_T = f"*$s(t)=-\\dfrac{{{a}t^2}}{{2}}+{v0}t$"
+    # tạo một phương án sai: sai hệ số hoặc sai hằng số
+    sai_heso = random.choice([
+        f"s(t)=-\\dfrac{{{a}t^2}}{{2}}+{v0}t+{random.randint(1,6)}",
+        f"s(t)=-\\dfrac{{{a+1}t^2}}{{2}}+{v0}t",
+        f"s(t)=-\\dfrac{{{a}t^2}}{{2}}+{v0+1}t"
+    ])
+    kq2_F = f"${sai_heso}$"
+
+    HDG = (
+        f"Vì $s'(t)=v(t)=-{a}t+{v0}$ nên\n\n "
+        f"$s(t)=\\int(-{a}t+{v0})\\,dt=-\\dfrac{{{a}t^2}}{{2}}+{v0}t+C$.\n\n "
+        f"Do $s(0)=0$ (tại thời điểm đạp phanh, quãng đường tính từ lúc đó bằng 0) nên $C=0$.\n\n "
+        f"Suy ra $s(t)=-\\dfrac{{{a}t^2}}{{2}}+{v0}t$."
+    )
+    kq2 = random.choice([kq2_T, kq2_F])
+    loigiai_2 = f"Khẳng định đã cho là khẳng định đúng.\n\n{HDG}"
+    if kq2 == kq2_F:
+        loigiai_2 = f"Khẳng định đã cho là khẳng định sai.\n\n{HDG}\n\nCông thức đúng là $s(t)=-\\dfrac{{{a}t^2}}{{2}}+{v0}t$."
+
+    # ================== c) ==================
+    # thời gian dừng: v(t)=0 => t = v0/a = t_stop (nguyên)
+    kq3_T = f"*Thời gian kể từ lúc đạp phanh đến khi dừng hẳn là $t={t_stop}$ giây"
+    # tạo giá trị sai khác t_stop
+    t_sai = t_stop + random.choice([-2, -1, 1, 2])
+    if t_sai <= 0:
+        t_sai = t_stop + 1
+    kq3_F = f"Thời gian kể từ lúc đạp phanh đến khi dừng hẳn là $t={t_sai}$ giây"
+
+    HDG = (
+        f"Khi dừng hẳn thì $v(t)=0$. Giải $-{a}t+{v0}=0$ được "
+        f"$t=\\dfrac{{{v0}}}{{{a}}}={t_stop}$ (giây)."
+    )
+    kq3 = random.choice([kq3_T, kq3_F])
+    loigiai_3 = f"Khẳng định đã cho là khẳng định đúng.\n\n{HDG}"
+    if kq3 == kq3_F:
+        loigiai_3 = f"Khẳng định đã cho là khẳng định sai.\n\n{HDG}\n\nVậy thời gian đúng là {t_stop} giây."
+
+    # ================== d) ==================
+    # so sánh quãng đường phanh đến khi dừng với khoảng cách D
+    if s_stop > D:
+        kq4_T = f"*Trong trường hợp trên, xe ô tô gặp tai nạn do va chạm với chướng ngại vật"
+        kq4_F = f"Trong trường hợp trên, xe ô tô không gặp tai nạn (dừng lại trước khi chạm chướng ngại vật)"
+        ketluan = "xe sẽ va chạm chướng ngại vật"
+    else:
+        kq4_T = f"*Trong trường hợp trên, xe ô tô không gặp tai nạn (dừng lại trước khi chạm chướng ngại vật)"
+        kq4_F = f"Trong trường hợp trên, xe ô tô gặp tai nạn do va chạm với chướng ngại vật"
+        ketluan = "xe dừng lại trước chướng ngại vật"
+
+    HDG = (
+        f"Quãng đường phanh đến khi dừng:\n\n $s_\\text{{dừng}}=s({t_stop})="
+        f"-\\dfrac{{{a}\\cdot {t_stop}^2}}{{2}}+{v0}\\cdot {t_stop}"
+        f"=\\dfrac{{{v0}^2}}{{2\\cdot {a}}}={s_stop:.1f}\\,\\mathrm{{m}}$.\n\n "
+        f"So sánh với $D={D}\\,\\mathrm{{m}}$: "
+        f"${s_stop:.1f} {'>' if s_stop > D else '\\le'} {D}$ nên {ketluan}."
+    )
+
+    kq4 = random.choice([kq4_T, kq4_F])
+    loigiai_4 = f"Khẳng định đã cho là khẳng định đúng.\n\n{HDG}"
+    if kq4 == kq4_F:
+        loigiai_4 = f"Khẳng định đã cho là khẳng định sai.\n\n{HDG}"
+
+    # ================== Gom phương án & đáp án TF ==================
+    list_PA = [kq1, kq2, kq3, kq4]
+    # random.shuffle(list_PA)
+    list_TF = my_module.tra_ve_TF(list_PA)
+
+    debai = f"{noi_dung}\n" \
+            f"a) {list_PA[0]}.\n" \
+            f"b) {list_PA[1]}.\n" \
+            f"c) {list_PA[2]}.\n" \
+            f"d) {list_PA[3]}.\n"
+
+    loigiai = []
+    for pa in list_PA:
+        if pa == kq1:
+            loigiai.append(loigiai_1)
+        if pa == kq2:
+            loigiai.append(loigiai_2)
+        if pa == kq3:
+            loigiai.append(loigiai_3)
+        if pa == kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai = (
+        f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+        f"\n\na) {loigiai[0]}\n"
+        f"b) {loigiai[1]}\n"
+        f"c) {loigiai[2]}\n"
+        f"d) {loigiai[3]}\n"
+    )
+
+    loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\n"
+
+    loigiai_latex = (
+        f"\n\na) {loigiai[0]}\n\n"
+        f"b) {loigiai[1]}\n\n"
+        f"c) {loigiai[2]}\n\n"
+        f"d) {loigiai[3]}\n\n"
+    )
+
+    # ================== Tạo đề LaTeX ==================
+    for i in range(len(list_PA)):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex = (
+        f"\\begin{{ex}}\n{noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n"
+        f"{{ {list_PA[1]} }}\n"
+        f"{{ {list_PA[2]} }}\n"
+        f"{{ {list_PA[3]} }}\n"
+        f"\\loigiai{{\n{loigiai_latex}\n}}\n"
+        f"\\end{{ex}}\n"
+    )
+
+    dap_an = f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng", "Đ").replace("sai", "S")
+
+    return debai, debai_latex, loigiai_word, dap_an
+
+
+
+#[D12_C4_B5_39]-TF-M3. Ô tô nhập làn cao tốc. Xét Đ-S: quãng đường đi được từ khi giảm tốc, s(t), tốc độ của ô tô sau t giây
+def ckz_L12C4_B5_39():
+    while True:
+        v0_kmh=random.choice([54,72,90])
+        v0_ms=int(v0_kmh/3.6)
+        b=v0_ms
+        t0=random.randint(2,5)
+        s0=v0_ms*t0
+        s_lane=s0+random.randint(100,200)
+        t1=random.randint(3,5)
+        t2=random.randint(7,20)
+
+        s1=s_lane-s0
+        a=2*(s1-b*t1)/t1**2
+        v2=a*t2+b
+        v2_kmh=v2*3.6
+        if all([a<0,v2>0, v2_kmh<v0_kmh]):
+            break
+
+    noi_dung = (
+    f"Một người điều khiển ô tô đang ở trên đường và muốn chuyển hướng ở ngã tư tiếp theo."
+    f" Khi ở vị trí cách ngã tư {s_lane} m, tốc độ của ô tô là ${v0_kmh}\\,\\mathrm{{km/h}}$."
+    f" Đúng ${{{t0}}}$ giây sau đó, ô tô bắt đầu giảm tốc với tốc độ $v(t)=at+b\\,(\\mathrm{{m/s}})$ với $(a,b\\in\\mathbb{{R}}, a<0)$,"
+    f" trong đó ${{t}}$ là thời gian tính bằng giây kể từ khi bắt đầu giảm tốc."
+    f" Biết rằng ô tô chuyển hướng sau {t1} giây kể từ khi bắt đầu giảm tốc và duy trì sự giảm tốc trong {t2} giây kể từ khi bắt đầu giảm tốc."
+    f" Xét tính đúng-sai của các khẳng định sau:")    
+    
+    
+    kq1_T=f"*Quãng đường ô tô đi được từ khi bắt đầu giảm tốc đến khi gặp ngã tư là {s1} m" 
+    kq1_F=f"Quãng đường ô tô đi được từ khi bắt đầu giảm tốc đến khi gặp ngã tư là {s1+random.randint(1,4)} m"
+    
+    HDG=(f"${v0_kmh}\\,\\mathrm{{km/h}}={v0_ms}\\,\\mathrm{{m/s}}$.\n\n"
+        f"Quãng đường ô tô đi được trong ${{{t0}}}$ giây đầu tiên là:\n\n"
+        f"$s_0={v0_ms}.{t0}={s0}\\, m$.\n\n"
+        f"Quãng đường ô tô đi được từ khi bắt đầu giảm tốc đến khi gặp ngã tư là:\n\n"
+        f"$s_1={s_lane}-{s0}={s1}$.")
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Giá trị của ${{b}}$ là ${{{b}}}$"
+    kq2_F=f"Giá trị của ${{b}}$ là ${{{b+random.randint(1,5)}}}$"
+    
+    HDG=f"Ta có: $v(0)={b}\\,\\mathrm{{m/s}} \\Rightarrow b={b}$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=(f"* Quãng đường s(t) (đơn vị: mét) mà ô tô đi được trong thời gian ${{t}}$ giây kể từ khi giảm tốc được tính theo công thức" 
+        f" $s(t)={tphan(0,"t")}v(t)\\mathrm{{dt}}$")
+    kq3_F=(f"Quãng đường s(t) (đơn vị: mét) mà ô tô đi được trong thời gian ${{t}}$ giây kể từ khi giảm tốc được tính theo công thức" 
+        f" $s(t)=v'(t)$")
+    
+    HDG=f"$s(t)={tphan(0,"t")}v(t)\\mathrm{{dt}}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    v2_ms=f"{round_half_up(v2,1):.1f}".replace(".",",")
+    v2_kmh=f"{round_half_up(v2*3.6,1):.1f}".replace(".",",")
+    v_max=a*t2+b+random.randint(1,3)
+    v_max_kmh=f"{round_half_up(v_max*3.6,1):.1f}".replace(".",",")
+
+    v_max_kmh_f=f"{round_half_up(v2*3.6-random.randint(1,3),1):.1f}".replace(".",",")
+
+
+    kq4_T=f"* Sau {t2} giây kể từ khi giảm tốc, tốc độ của ô tô không vượt quá ${v_max_kmh}\\,\\mathrm{{km/h}}$"
+    kq4_F=f"Sau {t2} giây kể từ khi giảm tốc, tốc độ của ô tô không vượt quá ${v_max_kmh_f}\\,\\mathrm{{km/h}}$"
+
+    
+    HDG=(f"Ta có: $v(t)=at+{b}$.\n\n"
+        f"Xe chuyển hướng sau {t1} giây kể từ khi giảm tốc, nên ta có:\n\n"
+        f"${tphan(0,t1)}(at+{b})dt={s1}\\Rightarrow a.\\dfrac{{{t1}^2}}{{2}}+{b}.{t1}={s1}\\Rightarrow a={phan_so(a)}$.\n\n"
+        f"$v(t)={phan_so(a)}t+{b}$.\n\n"
+        f"$v({t2})={v2_ms}\\,\\mathrm{{m/s}}={v2_kmh} \\,\\mathrm{{km/h}}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+

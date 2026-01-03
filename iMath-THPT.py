@@ -9408,11 +9408,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_10]-M2. Tính tích phân của m/(ax+b)"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_10]-M2. Tính tích phân m/(ax+b)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_48]-M2. Tính tích phân (ax+b)/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_11]-M2. Tính tích phân của (mx+n)/(ax+b)"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_45]-M2. Tính tích phân (ax^2+b)/x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_47]-M2. Tính tích phân (ax^2+bx+c)/x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_49]-M2. Tính tích phân (ax+b)/x^2"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_11]-M2. Tính tích phân (mx+n)/(ax+b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -9442,6 +9458,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_13]-M2. Tính tích phân của asin(bx)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_50]-M2. Tính tích phân [f(x)+asinx]"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_51]-M2. Tính tích phân [f(x)+acosx]"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9484,6 +9508,10 @@ class Ui_MainWindow(object):
                 L12_C4_B4_5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_18]-SA-M2. Cho tích phân f(x) trên đoạn [a;b]. Tính f(a) hoặc f(b)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_46]-SA-M2. Tính tích phân (ax^2+bx+c)/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9682,6 +9710,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_35]-TF-M3. Bài toán về ôtô. Xét Đ-S: vận tốc, gia tốc, tìm v(t_0), tìm t để đi được quãng đường s"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_38]-TF-M3. Ô tô hãm phanh với v(t). Xét Đ-S: s(t), thời gian dừng hẳn, xét xem oto tai nạn hay không"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_39]-TF-M3. Ô tô nhập làn cao tốc. Xét Đ-S: quãng đường đi được từ khi giảm tốc, s(t), tốc độ của ô tô sau t giây"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -12368,7 +12404,35 @@ class Ui_MainWindow(object):
 
                                             #[D12_C4_B4_44]-TF-M2. Xét Đ-S: công thức tích phân, tính tích phân, tích phân của f('x'), cho vận tốc tìm quãng đường
                                             if dang_toan == "[D12_C4_B4_44]": 
-                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_44()  
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_44()
+
+                                            #[D12_C4_B4_45]-M2. Tính tích phân (ax^2+b)/x               
+                                            if dang_toan == "[D12_C4_B4_45]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_45()
+
+                                            #[D12_C4_B4_46]-SA-M2.  Tính tích phân (ax^2+bx+c)/x
+                                            if dang_toan == "[D12_C4_B4_46]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_46()
+
+                                            #[D12_C4_B4_47]-M2. Tính tích phân (ax^2+bx+c)/x             
+                                            if dang_toan == "[D12_C4_B4_47]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_47()
+
+                                            #[D12_C4_B4_48]-M2. Tính tích phân (ax+b)/x             
+                                            if dang_toan == "[D12_C4_B4_48]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_48()
+
+                                            #[D12_C4_B4_49]-M2. Tính tích phân (ax+b)/x^2             
+                                            if dang_toan == "[D12_C4_B4_49]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_49()
+
+                                            #[D12_C4_B4_50]-M2. Tính tích phân [f(x)+asinx]             
+                                            if dang_toan == "[D12_C4_B4_50]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_50()
+
+                                            #[D12_C4_B4_51]-M2. Tính tích phân [f(x)+acosx]             
+                                            if dang_toan == "[D12_C4_B4_51]":
+                                                    debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_51()
                                                 
 
                                         #Bài 5. Ứng dụng tích phân
@@ -12535,6 +12599,14 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_37]-TF-M3. Cho đường gấp khúc. Xét Đ-S: tích phân các đoạn, diện tích
                                             if dang_toan == "[D12_C4_B5_37]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_37()
+
+                                            #[D12_C4_B5_38]-TF-M3. Ô tô hãm phanh với v(t). Xét Đ-S: s(t), thời gian dừng hẳn, xét xem oto tai nạn hay không
+                                            if dang_toan == "[D12_C4_B5_38]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_38()
+
+                                            #[D12_C4_B5_39]-TF-M3. Ô tô nhập làn cao tốc. Xét Đ-S: quãng đường đi được từ khi giảm tốc, s(t), tốc độ của ô tô sau t giây
+                                            if dang_toan == "[D12_C4_B5_39]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_39()
                                                 
 
                                             ##################################################################
