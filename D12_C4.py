@@ -8196,7 +8196,7 @@ def ckz_L12C4_B4_52():
         if a!=b:
             break
 
-    chon=random.randint(1,2)
+    chon=random.randint(1,5)
     if chon==1:
         # Tính I = ∫_0^{pi/3} (a + b sin x) dx
         I = sp.simplify(sp.integrate(a + b*sp.sin(x), (x, 0, sp.pi/3)))
@@ -8221,8 +8221,6 @@ def ckz_L12C4_B4_52():
             f"Suy ra $p=\\frac{{{a}}}{{3}},\\ q=\\frac{{{b}}}{{2}}$ nên\n\n"
             f"$p+q=\\frac{{{a}}}{{3}}+\\frac{{{b}}}{{2}}={phan_so(kq)}.$"
         )
-
-    chon=2
     
     if chon==2:
         # Tính I = ∫_0^{pi/4} (a + b sin x) dx
@@ -8244,7 +8242,68 @@ def ckz_L12C4_B4_52():
             f"Suy ra $m={phan_so(a/4)},n={phan_so(-b/2)},p={-b}$ nên\n\n"
             f"$m+n+p={phan_so(kq)}.$"
         )
+
+ 
+
+    if chon==3:
+        # Tính I = ∫_{pi/3}^{pi/2} (a + b sin x) dx
+        x_1,x_2=latex(pi/3), latex(pi/2)
+        m,n=a/6, b/2
+        kq  = m+n
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\sin x)\\,dx=m\\pi+n$. "
+            f"Tính $m+n$."
+        )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\sin x)\\,dx"
+            f"=\\left[{a}x-{b}\\cos x\\right]{gach(x_1,x_2)}$\n\n"     
+            f"$=\\dfrac{{{a}\\pi}}{{2}}-\\left(\\dfrac{{{a}\\pi}}{{3}}-{phan_so(b/2)}\\right)$\n\n"
+            f"$={phan_so(a/6)}\\pi+{phan_so(b/2)}$.\n\n"
+            f"Suy ra $m={phan_so(a/6)},n={phan_so(b/2)}$ nên\n\n"
+            f"$m+n={phan_so(kq)}.$")    
+
     
+
+    if chon==4:
+        # Tính I = ∫_{pi/6}^{pi/3} (a + b sin x) dx
+        x_1,x_2=latex(pi/6), latex(pi/3)
+        m,n,p=a/6, b/2, -b/2
+        kq  = m+n+p
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\sin x)\\,dx=m\\pi+n{latex(sqrt(3))}+p$. "
+            f"Tính $m+n+p$."
+        )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\sin x)\\,dx"
+            f"=\\left[{a}x-{b}\\cos x\\right]{gach(x_1,x_2)}$\n\n"     
+            f"$=\\dfrac{{{a}\\pi}}{{3}}-{phan_so(b/2)}-\\left(\\dfrac{{{a}\\pi}}{{6}}-{phan_so(b/2)}{latex(sqrt(3))}\\right)$\n\n"
+            f"$={phan_so(a/6)}\\pi+{phan_so(b/2)}{latex(sqrt(3))}-{phan_so(b/2)}$.\n\n"
+            f"Suy ra $m={phan_so(a/6)},n={phan_so(b/2)}, p={phan_so(-b/2)}$ nên\n\n"
+            f"$m+n+p={phan_so(kq)}.$")
+
+
+    if chon==5:
+        # Tính I = ∫_{pi/6}^{pi/4} (a + b sin x) dx
+        x_1,x_2=latex(pi/6), latex(pi/4)
+        m,n,p=a/12, -b/2, b/2
+        kq  = m+n-p
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\sin x)\\,dx=m\\pi+n{latex(sqrt(2))}+p{latex(sqrt(3))}$. "
+            f"Tính $m+n-p$."
+        )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\sin x)\\,dx"
+            f"=\\left[{a}x-{b}\\cos x\\right]{gach(x_1,x_2)}$\n\n"     
+            f"$=\\dfrac{{{a}\\pi}}{{4}}-{phan_so(b/2)}{latex(sqrt(2))}-\\left(\\dfrac{{{a}\\pi}}{{6}}-{phan_so(b/2)}{latex(sqrt(3))}\\right)$\n\n"
+            f"$={phan_so(a/12)}\\pi+{phan_so(-b/2)}{latex(sqrt(2))}+{phan_so(b/2)}{latex(sqrt(3))}$.\n\n"
+            f"Suy ra $m={phan_so(a/12)},n={phan_so(-b/2)}, p={phan_so(b/2)}$ nên\n\n"
+            f"$m+n+p={phan_so(kq)}.$") 
 
     
     noi_dung=thay_dau_cong_tru(noi_dung)
@@ -8293,6 +8352,395 @@ def ckz_L12C4_B4_52():
                     f"\\end{{ex}}\n")
 
     return debai, debai_latex, loigiai_word, phuongan, latex_tuluan, loigiai_traloingan, dap_an
+
+#[D12_C4_B4_53]-M2. Tính tích phân (a+bcosx)
+def ckz_L12C4_B4_53():
+
+    x = sp.Symbol('x')
+
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i not in [0,1,-1]])
+        if a!=b:
+            break
+    can_2=latex(sqrt(2))
+    can_3=latex(sqrt(3))
+
+    chon=random.randint(1,5)
+    
+    if chon==1:
+        # Tính I = ∫_0^{pi/3} (a + bcos x) dx
+        m,n=a/3, b/2
+        x_1,x_2=0,latex(pi/3)
+
+        kq  = m+n
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx=m\\pi+n{can_3}$."
+            f" Tính $m+n$." )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx"
+            f"=\\left[{a}x+{b}\\sin x\\right]{gach(x_1,x_2)}$\n\n"
+            f"$= {a}\\cdot {latex(pi/3)}+{b}\\cos {latex(pi/3)}"
+            f"= {phan_so(a/3)}\\pi +{phan_so(b/2)}{can_3}.$\n\n"
+            f"Suy ra $m={phan_so(a/3)},\\ n={phan_so(b/2)}$ nên\n\n"
+            f"$m+n={phan_so(a/3)}+{phan_so(b/2)}={phan_so(kq)}.$"
+        )
+    
+    if chon==2:
+        # Tính I = ∫_0^{pi/4} (a + bcosx) dx
+        m,n=a/4, b/2
+        x_1,x_2=0,latex(pi/4)
+
+        kq  = m+n
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx=m\\pi+n{can_2}$."
+            f" Tính $m+n$." )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx"
+            f"=\\left[{a}x+{b}\\sin x\\right]{gach(x_1,x_2)}$\n\n"
+            f"$= {a}\\cdot {latex(pi/4)}+{b}\\cos {latex(pi/4)}"
+            f"= {phan_so(a/4)}\\pi +{phan_so(b/2)}{can_2}.$\n\n"
+            f"Suy ra $m={phan_so(a/4)},\\ n={phan_so(b/2)}$ nên\n\n"
+            f"$m+n={phan_so(a/4)}+{phan_so(b/2)}={phan_so(kq)}.$"
+        )
+
+ 
+
+    if chon==3:
+        # Tính I = ∫_{pi/3}^{pi/2} (a + bcosx) dx
+        m,n,p=a/6, -b/2, b
+        x_1,x_2=latex(pi/3),latex(pi/2)
+
+        kq  = m+n+p
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx=m\\pi+n{can_3}+p$."
+            f" Tính $m+n+p$." )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx"
+            f"=\\left[{a}x+{b}\\sin x\\right]{gach(x_1,x_2)}$\n\n"
+            f"$= {a}\\cdot {latex(pi/2)}+{b}-({a}\\cdot {latex(pi/3)}+{b}\\cdot {latex(sqrt(3)/2)})"
+            f"= {phan_so(a/6)}\\pi+{phan_so(-b/2)}{can_3}+{b}.$\n\n"
+            f"Suy ra $m={phan_so(a/6)},\\ n={phan_so(-b/2)},p={b}$ nên\n\n"
+            f"$m+n+p={phan_so(m)}+{phan_so(n)}+{phan_so(p)}={phan_so(kq)}.$"
+        )
+
+    
+    if chon==4:
+        # Tính I = ∫_{pi/6}^{pi/3} (a + bcosx) dx
+        m,n,p=a/6, b/2, -b/2
+        x_1,x_2=latex(pi/6),latex(pi/3)
+
+        kq  = m+n-p
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx=m\\pi+n{can_3}+p$."
+            f" Tính $m+n-p$." )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx"
+            f"=\\left[{a}x+{b}\\sin x\\right]{gach(x_1,x_2)}$\n\n"
+            f"$= {a}\\cdot {latex(pi/3)}+{b}\\cdot{latex(sqrt(3)/2)} -({a}\\cdot {latex(pi/6)}+{phan_so(b/2)})"
+            f"= {phan_so(a/6)}\\pi+{phan_so(b/2)}{can_3}+{phan_so(-b/2)}.$\n\n"
+            f"Suy ra $m={phan_so(a/6)},\\ n={phan_so(b/2)},p={phan_so(-b/2)}$ nên\n\n"
+            f"$m+n-p={phan_so(m)}+{phan_so(n)}-{phan_so(p)}={phan_so(kq)}.$"
+        )
+
+
+    if chon==5:
+        # Tính I = ∫_{pi/6}^{pi/4} (a + bcosx) dx
+        m,n,p=a/6, b/2, -b/2
+        x_1,x_2=latex(pi/6),latex(pi/4)
+
+        kq  = m+n-p
+        noi_dung = (
+            f"Biết ${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx=m\\pi+n{can_3}+p$."
+            f" Tính $m+n-p$." )
+
+        noi_dung_loigiai = (
+
+            f"${tphan(x_1,x_2)}({a}+{b}\\cos x)\\,dx"
+            f"=\\left[{a}x+{b}\\sin x\\right]{gach(x_1,x_2)}$\n\n"
+            f"$= {a}\\cdot {latex(pi/4)}+{b}\\cdot{latex(sqrt(2)/2)} -({a}\\cdot {latex(pi/6)}+{phan_so(b/2)})"
+            f"= {phan_so(a/12)}\\pi+{phan_so(b/2)}{can_2}+{phan_so(-b/2)}.$\n\n"
+            f"Suy ra $m={phan_so(a/12)},\\ n={phan_so(b/2)},p={phan_so(-b/2)}$ nên\n\n"
+            f"$m+n-p={phan_so(m)}+{phan_so(n)}-{phan_so(p)}={phan_so(kq)}.$"
+        )
+    
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(-5, 5),1)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    pa_A = f"*${{{phan_so(kq)}}}$"
+    pa_B = f"${{{phan_so(kq2)}}}$"
+    pa_C = f"${{{phan_so(kq3)}}}$"
+    pa_D = f"${{{phan_so(kq4)}}}$"
+
+    # Trộn các phương án
+    list_PA = [pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an = my_module.tra_ve_dap_an(list_PA)
+
+    debai = f"{noi_dung}"
+    phuongan = f"A. {list_PA[0]}.\t   B. {list_PA[1]}.\t    C. {list_PA[2]}.\t     D. {list_PA[3]}.\n"
+
+    loigiai_word = f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    # Tạo đề latex
+    for i in range(4):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex = (f"\\begin{{ex}}\n {noi_dung} \n"
+                   f"\\choice\n"
+                   f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ {list_PA[2]} }}\n    {{ {list_PA[3]} }}\n"
+                   f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+                   f"\\end{{ex}}\n")
+
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung} \n"
+                    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+                    f"\\end{{ex}}\n")
+
+    return debai, debai_latex, loigiai_word, phuongan, latex_tuluan, loigiai_traloingan, dap_an
+
+#[D12_C4_B4_54]-M2. Tính tích phân [f(x)+ax+b]
+def ckz_L12C4_B4_54():
+    x = sp.Symbol('x')
+
+    while True:
+        m = random.choice([i for i in range(-5, 6) if i not in [0,1,-1]])
+        a = random.choice([i for i in range(-8, 8) if i!=0 ])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        if a!=b:
+            break
+    while True:
+        x_1,x_2=random.sample(range(-5,6),2)
+        if x_1<x_2:
+            break
+    f_value= random.choice([i for i in range(-10, 15) if i!=0])
+    f=random.choice(["f","g","h" ])
+
+    t = integrate(a*x+b, (x, x_1, x_2))
+    kq=m*f_value+t
+
+    noi_dung=(
+    f"Biết ${tphan(x_1,x_2)} {f}(x)dx={f_value}$."
+    f" Tính tích phân ${tphan(x_1,x_2)}{{[{m}{f}(x)+{latex(a*x+b)}]}}dx$."
+    )  
+
+
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = random.randint(-50,50)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)}{{[{m}{f}(x)+{latex(a*x+b)}]}}dx={m}{tphan(x_1,x_2)} {f}(x)dx +{tphan(x_1,x_2)}({latex(a*x+b)})dx$\n\n"
+    f"$={m}.{f_value}+{phan_so(t)}={phan_so(kq)}$."
+    )
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    pa_A = f"*${{{phan_so(kq)}}}$"
+    pa_B = f"${{{phan_so(kq2)}}}$"
+    pa_C = f"${{{phan_so(kq3)}}}$"
+    pa_D = f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_55]-M2. Tính tích phân f(x) biết tích phân [f(x)+ax+b].
+def ckz_L12C4_B4_55():
+    x = sp.Symbol('x')
+
+    while True:
+        m = random.choice([i for i in range(-5, 6) if i not in [0,1,-1]])
+        a = random.choice([i for i in range(-8, 8) if i!=0 ])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        if a!=b:
+            break
+    while True:
+        x_1,x_2=random.sample(range(-5,6),2)
+        if x_1<x_2:
+            break
+    f_value= random.choice([i for i in range(-10, 15) if i!=0])
+    f=random.choice(["f","g","h" ])
+
+    t = integrate(a*x+b, (x, x_1, x_2))
+    tong=m*f_value+t
+
+    noi_dung=(
+    f"Biết ${tphan(x_1,x_2)}{{[{m}{f}(x)+{latex(a*x+b)}]}}dx={phan_so(tong)}$."
+    f" Tính tích phân ${tphan(x_1,x_2)} {f}(x)dx$."
+    ) 
+    kq=f_value 
+
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = random.randint(-20,20)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)}{{[{m}{f}(x)+{latex(a*x+b)}]}}dx={m}{tphan(x_1,x_2)} {f}(x)dx +{tphan(x_1,x_2)}({latex(a*x+b)})dx$\n\n"
+    f"$\\Rightarrow {m}.{tphan(x_1,x_2)} {f}(x)dx+{phan_so(t)}={phan_so(tong)}$\n\n"
+    f"$\\Rightarrow {tphan(x_1,x_2)} {f}(x)dx={f_value}$."
+    )
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    pa_A = f"*${{{phan_so(kq)}}}$"
+    pa_B = f"${{{phan_so(kq2)}}}$"
+    pa_C = f"${{{phan_so(kq3)}}}$"
+    pa_D = f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_56]-SA-M2. Cho tích phân [ax^2+bx+cm]=T. Tính tích phân [px^2+qx+rm]
+def ckz_L12C4_B4_56():
+    x=sp.symbols("x")
+    sm=sp.symbols("m")
+    while True:
+        x_1,x_2=random.sample(range(-5,6),2)
+        if x_1<x_2:
+            break
+
+    while True:
+        m = random.choice([i for i in range(-8, 8) if i not in [0,1,-1]])
+        a = random.choice([i for i in range(-6, 6) if i!=0 ])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.choice([i for i in range(-3, 4) if i!=0])
+
+        p = random.choice([i for i in range(-6, 6) if i!=0 ])
+        q = random.choice([i for i in range(-5, 6) if i!=0])
+        r = random.choice([i for i in range(-4, 4) if i!=0])
+        f=a*x**2+b*x+c*m
+        tphan_f= integrate(f, (x, x_1, x_2))
+
+        g=p*x**2+q*x+r*m
+        tphan_g= float(integrate(g, (x, x_1, x_2)))
+        if all([a!=p, b!=q, -1<tphan_g<99]):
+            break
+
+    t1=integrate(a*x**2+b*x, (x, x_1, x_2))
+
+    if tphan_g.is_integer():
+        noi_dung = (
+        f"Biết ${tphan(x_1,x_2)} ({latex(a*x**2+b*x)}+{c}m)dx={phan_so(tphan_f)}$."
+        f" Tính ${tphan(x_1,x_2)} ({latex(p*x**2+q*x)}+{r}m)dx$."
+        )
+        dap_an=int(tphan_g)
+
+        noi_dung_loigiai=(
+        f"${tphan(x_1,x_2)} ({latex(a*x**2+b*x)}+{c}m)dx={phan_so(tphan_f)}$\n\n"
+        f"$\\Rightarrow {tphan(x_1,x_2)} ({latex(a*x**2+b*x)}) dx +{latex(c*sm)}({x_2}-{x_1})={phan_so(tphan_f)}$\n\n"
+        f"$\\Rightarrow {phan_so(t1)}+{latex(c*(x_2-x_1)*sm)}={phan_so(tphan_f)}$.\n\n"
+        f"$\\Rightarrow m={m}$.\n\n"
+        f"${tphan(x_1,x_2)} ({latex(p*x**2+q*x)}+{r}m)dx={tphan(x_1,x_2)} ({latex(p*x**2+q*x+r*m)})dx={dap_an}$."
+        )
+    else:
+
+
+        noi_dung = (
+        f"Biết ${tphan(x_1,x_2)} ({latex(a*x**2+b*x)}+{c}m)dx={phan_so(tphan_f)}$."
+        f" Tính ${tphan(x_1,x_2)} ({latex(p*x**2+q*x)}+{r}m)dx$ (kết quả làm tròn đến hàng phần mười). "
+        )
+        dap_an=f"{round_half_up(tphan_g,1):.1f}".replace(".",",")
+
+        noi_dung_loigiai=(
+        f"${tphan(x_1,x_2)} ({latex(a*x**2+b*x)}+{c}m)dx={phan_so(tphan_f)}$\n\n"
+        f"$\\Rightarrow {tphan(x_1,x_2)} ({latex(a*x**2+b*x)}) dx +{latex(c*sm)}({x_2}-{x_1})={phan_so(tphan_f)}$\n\n"
+        f"$\\Rightarrow {phan_so(t1)}+{latex(c*(x_2-x_1)*sm)}={phan_so(tphan_f)}$.\n\n"
+        f"$\\Rightarrow m={m}$.\n\n"
+        f"${tphan(x_1,x_2)} ({latex(p*x**2+q*x)}+{r}m)dx={tphan(x_1,x_2)} ({latex(p*x**2+q*x+r*m)})dx={phan_so(tphan_g)}={dap_an}$."
+        )
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 

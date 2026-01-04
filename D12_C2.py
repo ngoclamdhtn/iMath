@@ -9542,7 +9542,7 @@ def mnj_34_jkl_L12_C2_B3_55():
 		f"Người ta muốn chế tạo một chiếc hộp hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ bằng tôn có nắp, có thể tích ${{{V}}}$ cm$^3$ với yêu cầu dùng ít vật liệu nhất."
 		f" Biết chiều cao của hình hộp chữ nhật là ${{{h}}}$ cm."
 		f" Chọn hệ trục tọa độ ${{Oxyz}}$ sao cho điểm ${{A}}$ trùng với gốc tọa độ ${{O}}$, vectơ ${vec2("A","B")}$, ${vec2("A","D")}$, ${vec2("A","A'")}$"
-		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BD}}$. Tính $x+y+z$ (kết quả làm tròn đến hàng phần mười)."
+		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BD}}$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
 		)
 		dap_an=f"{round_half_up(x_G+y_G+z_G,1):.1f}".replace(".",",")
 
@@ -9564,7 +9564,7 @@ def mnj_34_jkl_L12_C2_B3_55():
 		f"Người ta muốn chế tạo một chiếc hộp hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ bằng tôn có nắp, có thể tích ${{{V}}}$ cm$^3$ với yêu cầu dùng ít vật liệu nhất."
 		f" Biết chiều cao của hình hộp chữ nhật là ${{{h}}}$ cm."
 		f" Chọn hệ trục tọa độ ${{Oxyz}}$ sao cho điểm ${{A}}$ trùng với gốc tọa độ $O$, vectơ ${vec2("A","B")}$, ${vec2("A","D")}$, ${vec2("A","A'")}$"
-		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BC}}$. Tính $x+y+z$ (kết quả làm tròn đến hàng phần mười)."
+		 f" lần lượt cùng hướng với ${vec("i")}$, ${vec("j")}$, ${vec("k")}$. Gọi $G(a;b;c)$ là trọng tâm của tam giác ${{A'BC}}$. Tính $a+b+c$ (kết quả làm tròn đến hàng phần mười)."
 		)
 		dap_an=f"{round_half_up(x_G+y_G+z_G,1):.1f}".replace(".",",")
 
