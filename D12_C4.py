@@ -8741,6 +8741,206 @@ def ckz_L12C4_B4_56():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C4_B4_57]-SA-M2. Tính tích phân a^x.
+def ckz_L12C4_B4_57():
+
+    a=random.randint(2,7)
+    while True:
+        x_1,x_2=random.sample(range(1,7),2)
+        if x_1<x_2:
+            break
+
+
+    noi_dung=(
+    f"Tính tích phân ${tphan(x_1,x_2)} {a}^xdx$."
+    )
+    
+
+    kq=f"$\\dfrac{{{a**x_2-a**x_1}}}{{\\ln {a}}}$"
+    kq_false=[
+    f"$\\dfrac{{{a**x_2}}}{{\\ln {a}}}$", 
+    f"$\\dfrac{{{a**x_1}}}{{\\ln {a}}}$",
+    f"${a**x_2-a**x_1}\\ln {a}$",
+    f"$\\dfrac{{{x_2-x_1}}}{{\\ln {a}}}$", ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)} {a}^xdx= \\dfrac{{{a}^x}}{{\\ln {a}}}{gach(x_1,x_2)}"
+    f"=\\dfrac{{{a**x_2}}}{{\\ln {a}}}-\\dfrac{{{a**x_1}}}{{\\ln {a}}}"
+    f"=\\dfrac{{{a**x_2-a**x_1}}}{{\\ln {a}}}$"
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_58]-SA-M2. Tính tích phân (ma^x+n)
+def ckz_L12C4_B4_58():
+    x=sp.symbols("x")
+
+    a=random.randint(2,7)
+    while True:
+        x_1,x_2=random.sample(range(1,7),2)
+        ds_uoc = divisors(a**x_2-a**x_1)
+        if all([x_1<x_2, len(ds_uoc)>3]):
+            break
+    m=random.choice([i for i in ds_uoc if i!=1 ])
+    n = random.choice([i for i in range(-6, 8) if i!=0])
+
+    noi_dung=(
+    f"Tính tích phân ${tphan(x_1,x_2)} ({latex(a**x/m)}+{n})dx$."
+    )
+    ln_a=f"\\ln {a}"
+
+    kq=f"$\\dfrac{{{phan_so((a**x_2-a**x_1)/m)}}}{{\\ln {a}}}+{n*(x_2-x_1)}$"
+    kq_false=[
+    f"$\\dfrac{{{phan_so((a**x_2-a**x_1)/m)}}}{{\\ln {a}}}+{n*(x_2+x_1)}$",
+    f"$\\dfrac{{{phan_so(a**x_2-a**x_1)}}}{{\\ln {a}}}+{n*(x_2+x_1)}$",
+    f"${phan_so((a**x_2-a**x_1)/m)}{ln_a}+{n*(x_2-x_1)}$",
+    f"${phan_so((a**x_2-a**x_1)/m)}{ln_a}+{n*(x_2+x_1)}$",
+    f"${{{phan_so((a**x_2-a**x_1)/m+n*(x_2-x_1))}}}$",]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)} ({latex(a**x/m)}+{n})dx= (\\dfrac{{{a}^x}}{{{m}\\ln {a}}}+{n}x){gach(x_1,x_2)}$\n\n"
+    f"$=\\dfrac{{{phan_so((a**x_2-a**x_1)/m)}}}{{\\ln {a}}}+{n*(x_2-x_1)}$."
+    )
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+
+    pa_A= thay_dau_cong_tru(f"*{kq}")
+    pa_B= thay_dau_cong_tru(f"{kq2}")
+    pa_C= thay_dau_cong_tru(f"{kq3}")
+    pa_D= thay_dau_cong_tru(f"{kq4}")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B4_59]-SA-M2. Tính tích phân (me^x+n)
+def ckz_L12C4_B4_59():
+    x=sp.symbols("x")
+
+    a=random.randint(2,7)
+    while True:
+        x_1,x_2=random.sample(range(1,7),2)
+        ds_uoc = divisors(a**x_2-a**x_1)
+        if all([x_1<x_2, len(ds_uoc)>3]):
+            break
+    m=random.choice([i for i in range(-6,6) if i not in [0,1,-1] ])
+    n = random.choice([i for i in range(-6, 8) if i!=0])
+
+    noi_dung=(
+    f"Tính tích phân ${tphan(x_1,x_2)} ({m}e^x+{n})dx$."
+    )
+
+    kq=f"${m}e^{x_2}+{-m}e^{x_1}+{n*(x_2-x_1)}$"
+    kq_false=[
+    f"${m}e^{x_2}+{n*(x_2-x_1)}$",
+    f"${{{n*(x_2-x_1)}}}$",
+    f"$e^{x_2}-e^{x_1}+{n*(x_2-x_1)}$",
+    f"${m}e^{x_2}+{-m}e^{x_1}$",
+    f"${m}e^{x_2}+{m}e^{x_1}+{n*(x_2-x_1)}$"]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f"${tphan(x_1,x_2)} ({m}e^x+{n})dx=({m}e^x+{n}x){gach(x_1,x_2)}$"
+    f"$={m}e^{x_2}+{-m}e^{x_1}+{n*(x_2-x_1)}$."
+    )
+    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=noi_dung_loigiai.replace("e^1","e")
+
+    pa_A= thay_dau_cong_tru(f"*{kq}")
+    pa_B= thay_dau_cong_tru(f"{kq2}")
+    pa_C= thay_dau_cong_tru(f"{kq3}")
+    pa_D= thay_dau_cong_tru(f"{kq4}")
+    pa_A=pa_A.replace("e^1","e")
+    pa_B=pa_B.replace("e^1","e")
+    pa_C=pa_C.replace("e^1","e")
+    pa_D=pa_D.replace("e^1","e")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 
 

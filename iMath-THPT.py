@@ -9348,7 +9348,7 @@ class Ui_MainWindow(object):
                 L12_C4_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_30]-M1. Nhận dạng công thức tính tích phân"])
+                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_30]-M1. Nhận dạng công thức Tính t.phân"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9356,7 +9356,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_01]-M1. Cho F(a) và F(b). Tính tích phân từ a đến b."])
+                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_01]-M1. Cho F(a) và F(b). Tính t.phân từ a đến b."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9364,15 +9364,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_04]-M2. Cho tích phân f. Tính tích phân (m.f+n)."])
+                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_04]-M2. Cho tích phân f. Tính t.phân (m.f+n)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_02]-M1. Cho 2 tích phân của f và g. Tính tích phân (m.f+n.g)."])
+                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_02]-M1. Cho 2 tích phân của f và g. Tính t.phân (m.f+n.g)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_06]-M1. Cho f(a) và f(b). Tính tích phân f'(x)."])
+                item = QTreeWidgetItem(L12_C4_B4_1, ["[D12_C4_B4_06]-M1. Cho f(a) và f(b). Tính t.phân f'(x)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9396,15 +9396,15 @@ class Ui_MainWindow(object):
                 L12_C4_B4_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_12]-M1. Tính tích phân của đa thức"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_12]-M1. Tính t.phân của đa thức"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_54]-M2. Tính tích phân [f(x)+ax+b]"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_54]-M2. Tính t.phân [f(x)+ax+b]"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_55]-M2. Tính tích phân f(x) biết tích phân [f(x)+ax+b]"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_55]-M2. Tính t.phân f(x) biết tích phân [f(x)+ax+b]"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9412,31 +9412,31 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_24]-M1. Tính tích phân a/x"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_24]-M1. Tính t.phân a/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_10]-M2. Tính tích phân m/(ax+b)"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_10]-M2. Tính t.phân m/(ax+b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_48]-M2. Tính tích phân (ax+b)/x"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_48]-M2. Tính t.phân (ax+b)/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_45]-M2. Tính tích phân (ax^2+b)/x"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_45]-M2. Tính t.phân (ax^2+b)/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_47]-M2. Tính tích phân (ax^2+bx+c)/x"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_47]-M2. Tính t.phân (ax^2+bx+c)/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_49]-M2. Tính tích phân (ax+b)/x^2"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_49]-M2. Tính t.phân (ax+b)/x^2"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_11]-M2. Tính tích phân (mx+n)/(ax+b)"])
+                item = QTreeWidgetItem(L12_C4_B4_2, ["[D12_C4_B4_11]-M2. Tính t.phân (mx+n)/(ax+b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -9445,45 +9445,63 @@ class Ui_MainWindow(object):
                 L12_C4_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_25]-M1. Tính tích phân a.e^x"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_57]-M1. Tính t.phân a^x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_26]-M1. Tính tích phân a.sinx"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_25]-M1. Tính t.phân a.e^x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_27]-M1. Tính tích phân a.cosx"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_58]-M2. Tính t.phân (ma^x+n)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_28]-M1. Tính tích phân a/cos^2x"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_59]-M2. Tính t.phân (me^x+n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_25]-M1. Tính t.phân a.e^x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_29]-M1. Tính tích phân a/sin^2x"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_26]-M1. Tính t.phân a.sinx"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_13]-M2. Tính tích phân của asin(bx)"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_27]-M1. Tính t.phân a.cosx"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_50]-M2. Tính tích phân [f(x)+asinx]"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_28]-M1. Tính t.phân a/cos^2x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_51]-M2. Tính tích phân [f(x)+acosx]"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_29]-M1. Tính t.phân a/sin^2x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_52]-M3. Tính tích phân [a+bsinx]"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_13]-M2. Tính t.phân của asin(bx)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_53]-M3. Tính tích phân [a+bcosx]"])
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_50]-M2. Tính t.phân [f(x)+asinx]"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_53]-M3. Tính t.phân [a+bcosx]"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_51]-M2. Cho t.phân f(x). Tính t.phân [f(x)+acosx]"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B4_3, ["[D12_C4_B4_52]-M3. Cho t.phân f(x). Tính t.phân [a+bsinx]"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
 
 
 
@@ -9491,7 +9509,7 @@ class Ui_MainWindow(object):
                 L12_C4_B4_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B4_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_44]-TF-M2.  Xét Đ-S: công thức tích phân, tính tích phân, tích phân của f'(x), cho vận tốc tìm quãng đường"])
+                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_44]-TF-M2.  Xét Đ-S: công thức tích phân, Tính t.phân, tích phân của f'(x), cho vận tốc tìm quãng đường"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9499,7 +9517,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_32]-TF-M2. Cho hàm bậc 2. Xét Đ-S: tách tích phân, biểu diễn F(x), tính tích phân, tính tính phân với cận cụ thể."])
+                item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_32]-TF-M2. Cho hàm bậc 2. Xét Đ-S: tách tích phân, biểu diễn F(x), Tính t.phân, tính tính phân với cận cụ thể."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9527,27 +9545,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_56]-SA-M2. Cho tích phân [ax^2+bx+cm]=T. Tính tích phân [px^2+qx+rm]"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_56]-SA-M2. Cho tích phân [ax^2+bx+cm]=T. Tính t.phân [px^2+qx+rm]"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_46]-SA-M2. Tính tích phân (ax^2+bx+c)/x"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_46]-SA-M2. Tính t.phân (ax^2+bx+c)/x"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_14]-SA-M2. Tính tích phân của HS kép: ax+b và mx^2+nx+p"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_14]-SA-M2. Tính t.phân của HS kép: ax+b và mx^2+nx+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_15]-SA-M2. Tính tích phân của HS kép: ax+b/x^2 và mx^2+nx+p"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_15]-SA-M2. Tính t.phân của HS kép: ax+b/x^2 và mx^2+nx+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_16]-SA-M3. Tính tích phân của HS kép (chứa tham số): ax+b và mx^2+nx+p"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_16]-SA-M3. Tính t.phân của HS kép (chứa tham số): ax+b và mx^2+nx+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_17]-SA-M3. Tính tích phân của hàm số kép (chứa tham số a,b): x^2+ax+b và g(x^3)"])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_17]-SA-M3. Tính t.phân của hàm số kép (chứa tham số a,b): x^2+ax+b và g(x^3)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
@@ -9555,11 +9573,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_20]-SA-M3. Tính tích phân e^x+g(x)."])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_20]-SA-M3. Tính t.phân e^x+g(x)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_43]-SA-M2. Tính tích phân e^(ax+b)."])
+                item = QTreeWidgetItem(L12_C4_B4_5, ["[D12_C4_B4_43]-SA-M2. Tính t.phân e^(ax+b)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -12236,12 +12254,12 @@ class Ui_MainWindow(object):
                                                 
 
                                         #Bài 4. Tích phân
-                                        #[D12_C4_B4_01]-M1. Cho F(a) và F(b). Tính tích phân từ a đến b.
+                                        #[D12_C4_B4_01]-M1. Cho F(a) và F(b). Tính t.phân từ a đến b.
                                             if dang_toan == "[D12_C4_B4_01]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_01()                                     
                                                 
 
-                                        #[D12_C4_B4_02]-M1. Cho 2 tích phân theo f và g. Tính tích phân (m.f+n.g).
+                                        #[D12_C4_B4_02]-M1. Cho 2 tích phân theo f và g. Tính t.phân (m.f+n.g).
                                             if dang_toan == "[D12_C4_B4_02]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_02()                                     
                                                 
@@ -12251,7 +12269,7 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_03()                                     
                                                 
 
-                                        #[D12_C4_B4_04]-M1. Cho theo f. Tính tích phân (m.f+n).
+                                        #[D12_C4_B4_04]-M1. Cho theo f. Tính t.phân (m.f+n).
                                             if dang_toan == "[D12_C4_B4_04]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_04()                                     
                                                 
@@ -12261,12 +12279,12 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_05()                                     
                                                 
 
-                                        #[D12_C4_B4_06]-M1. Cho f(a) và f(b). Tính tích phân f'(x).
+                                        #[D12_C4_B4_06]-M1. Cho f(a) và f(b). Tính t.phân f'(x).
                                             if dang_toan == "[D12_C4_B4_06]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_06()                                     
                                                 
 
-                                        #[D12_C4_B4_07]-M1. Cho f(a) và f(b). Tính tích phân f'(x).
+                                        #[D12_C4_B4_07]-M1. Cho f(a) và f(b). Tính t.phân f'(x).
                                             if dang_toan == "[D12_C4_B4_07]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_07()                                     
                                                 
@@ -12283,38 +12301,38 @@ class Ui_MainWindow(object):
 
                                         #Tích phân đa thức, phân thức
 
-                                        #[D12_C4_B4_10]-M2. Tính tích phân của m/(ax+b).
+                                        #[D12_C4_B4_10]-M2. Tính t.phân của m/(ax+b).
                                             if dang_toan == "[D12_C4_B4_10]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_10()                                     
                                                 
 
-                                            #[D12_C4_B4_11]-M2. Tính tích phân của (mx+n)/(ax+b).
+                                            #[D12_C4_B4_11]-M2. Tính t.phân của (mx+n)/(ax+b).
                                             if dang_toan == "[D12_C4_B4_11]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_11()                                     
                                                 
 
-                                            #[D12_C4_B4_12]-M2. Tính tích phân của đa thức.
+                                            #[D12_C4_B4_12]-M2. Tính t.phân của đa thức.
                                             if dang_toan == "[D12_C4_B4_12]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_12()                                     
                                                 
 
-                                            #[D12_C4_B4_13]-M2. Tính tích phân của asinbx.
+                                            #[D12_C4_B4_13]-M2. Tính t.phân của asinbx.
                                             if dang_toan == "[D12_C4_B4_13]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_13()
 
-                                            #[D12_C4_B4_14]-TL-M3. Tính tích phân của hàm số kép:ax+b và mx^2+nx+p
+                                            #[D12_C4_B4_14]-TL-M3. Tính t.phân của hàm số kép:ax+b và mx^2+nx+p
                                             if dang_toan == "[D12_C4_B4_14]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_14()
 
-                                            #[D12_C4_B4_15]-TL-M3. Tính tích phân của hàm số kép:ax+b/x^2 và mx^2+nx+p
+                                            #[D12_C4_B4_15]-TL-M3. Tính t.phân của hàm số kép:ax+b/x^2 và mx^2+nx+p
                                             if dang_toan == "[D12_C4_B4_15]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_15()
 
-                                            #[D12_C4_B4_16]-TL-M3. Tính tích phân của hàm số kép (chứa tham số m) :ax+b và mx^2+nx+p 
+                                            #[D12_C4_B4_16]-TL-M3. Tính t.phân của hàm số kép (chứa tham số m) :ax+b và mx^2+nx+p 
                                             if dang_toan == "[D12_C4_B4_16]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_16()
 
-                                            #[D12_C4_B4_17]-TL-M3. Tính tích phân của hàm số kép (chứa tham số a,b): x^2+ax+b và g(x^3)
+                                            #[D12_C4_B4_17]-TL-M3. Tính t.phân của hàm số kép (chứa tham số a,b): x^2+ax+b và g(x^3)
                                             if dang_toan == "[D12_C4_B4_17]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_17()
 
@@ -12326,7 +12344,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C4_B4_19]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_19()
 
-                                            #[D12_C4_B4_20]-TL-M3. Tính tích phân e^mx+g(x)
+                                            #[D12_C4_B4_20]-TL-M3. Tính t.phân e^mx+g(x)
                                             if dang_toan == "[D12_C4_B4_20]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_20()
 
@@ -12342,31 +12360,31 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C4_B4_23]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_23()
 
-                                            #[D12_C4_B4_24]-M2. Tính tích phân a/x
+                                            #[D12_C4_B4_24]-M2. Tính t.phân a/x
                                             if dang_toan == "[D12_C4_B4_24]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_24()
 
-                                            #[D12_C4_B4_25]-M2. Tính tích phân me^x
+                                            #[D12_C4_B4_25]-M2. Tính t.phân me^x
                                             if dang_toan == "[D12_C4_B4_25]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_25()
 
-                                            #[D12_C4_B4_26]-M2. Tính tích phân msinx
+                                            #[D12_C4_B4_26]-M2. Tính t.phân msinx
                                             if dang_toan == "[D12_C4_B4_26]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_26()
 
-                                            #[D12_C4_B4_27]-M2. Tính tích phân mcosx
+                                            #[D12_C4_B4_27]-M2. Tính t.phân mcosx
                                             if dang_toan == "[D12_C4_B4_27]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_27()
 
-                                            #[D12_C4_B4_28]-M2. Tính tích phân m/cos^2x
+                                            #[D12_C4_B4_28]-M2. Tính t.phân m/cos^2x
                                             if dang_toan == "[D12_C4_B4_28]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_28()
 
-                                            #[D12_C4_B4_29]-M2. Tính tích phân m/sin^2x
+                                            #[D12_C4_B4_29]-M2. Tính t.phân m/sin^2x
                                             if dang_toan == "[D12_C4_B4_29]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_29()
 
-                                            #[D12_C4_B4_30]-M1. Nhận dạng công thức tính tích phân
+                                            #[D12_C4_B4_30]-M1. Nhận dạng công thức Tính t.phân
                                             if dang_toan == "[D12_C4_B4_30]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_30()
 
@@ -12374,7 +12392,7 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C4_B4_31]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_31()
 
-                                            #[D12_C4_B4_32]-M1. Cho hàm bậc 2. Xét Đ-S:tách tích phân, biểu diễn F(x), tính tích phân, tính tính phân với cận cụ thể.
+                                            #[D12_C4_B4_32]-M1. Cho hàm bậc 2. Xét Đ-S:tách tích phân, biểu diễn F(x), Tính t.phân, tính tính phân với cận cụ thể.
                                             if dang_toan == "[D12_C4_B4_32]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_32()
 
@@ -12422,58 +12440,69 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C4_B4_43]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_43()
 
-                                            #[D12_C4_B4_44]-TF-M2. Xét Đ-S: công thức tích phân, tính tích phân, tích phân của f('x'), cho vận tốc tìm quãng đường
+                                            #[D12_C4_B4_44]-TF-M2. Xét Đ-S: công thức tích phân, Tính t.phân, tích phân của f('x'), cho vận tốc tìm quãng đường
                                             if dang_toan == "[D12_C4_B4_44]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B4_44()
 
-                                            #[D12_C4_B4_45]-M2. Tính tích phân (ax^2+b)/x               
+                                            #[D12_C4_B4_45]-M2. Tính t.phân (ax^2+b)/x               
                                             if dang_toan == "[D12_C4_B4_45]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_45()
 
-                                            #[D12_C4_B4_46]-SA-M2.  Tính tích phân (ax^2+bx+c)/x
+                                            #[D12_C4_B4_46]-SA-M2.  Tính t.phân (ax^2+bx+c)/x
                                             if dang_toan == "[D12_C4_B4_46]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_46()
 
-                                            #[D12_C4_B4_47]-M2. Tính tích phân (ax^2+bx+c)/x             
+                                            #[D12_C4_B4_47]-M2. Tính t.phân (ax^2+bx+c)/x             
                                             if dang_toan == "[D12_C4_B4_47]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_47()
 
-                                            #[D12_C4_B4_48]-M2. Tính tích phân (ax+b)/x             
+                                            #[D12_C4_B4_48]-M2. Tính t.phân (ax+b)/x             
                                             if dang_toan == "[D12_C4_B4_48]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_48()
 
-                                            #[D12_C4_B4_49]-M2. Tính tích phân (ax+b)/x^2             
+                                            #[D12_C4_B4_49]-M2. Tính t.phân (ax+b)/x^2             
                                             if dang_toan == "[D12_C4_B4_49]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_49()
 
-                                            #[D12_C4_B4_50]-M2. Tính tích phân [f(x)+asinx]             
+                                            #[D12_C4_B4_50]-M2. Tính t.phân [f(x)+asinx]             
                                             if dang_toan == "[D12_C4_B4_50]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_50()
 
-                                            #[D12_C4_B4_51]-M2. Tính tích phân [f(x)+acosx]             
+                                            #[D12_C4_B4_51]-M2. Tính t.phân [f(x)+acosx]             
                                             if dang_toan == "[D12_C4_B4_51]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_51()
 
-                                            #[D12_C4_B4_52]-M2. Tính tích phân [a+bsinx]             
+                                            #[D12_C4_B4_52]-M2. Tính t.phân [a+bsinx]             
                                             if dang_toan == "[D12_C4_B4_52]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_52()
 
-                                            #[D12_C4_B4_53]-M2. Tính tích phân [a+bcosx]             
+                                            #[D12_C4_B4_53]-M2. Tính t.phân [a+bcosx]             
                                             if dang_toan == "[D12_C4_B4_53]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_53()
 
-                                            #[D12_C4_B4_54]-M2. Tính tích phân [f(x)+ax+b]            
+                                            #[D12_C4_B4_54]-M2. Tính t.phân [f(x)+ax+b]            
                                             if dang_toan == "[D12_C4_B4_54]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_54()
 
-                                            #[D12_C4_B4_55]-M2. Tính tích phân f(x) biết tích phân [f(x)+ax+b]            
+                                            #[D12_C4_B4_55]-M2. Tính t.phân f(x) biết tích phân [f(x)+ax+b]            
                                             if dang_toan == "[D12_C4_B4_55]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_55()
 
-                                            #[D12_C4_B4_56]-SA-M2. Cho tích phân [ax^2+bx+cm]=T. Tính tích phân [px^2+qx+rm] 
+                                            #[D12_C4_B4_56]-SA-M2. Cho tích phân [ax^2+bx+cm]=T. Tính t.phân [px^2+qx+rm] 
                                             if dang_toan == "[D12_C4_B4_56]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B4_56()
-                                                
+
+                                            #[D12_C4_B4_57]-M2. Tính t.phân a^x.          
+                                            if dang_toan == "[D12_C4_B4_57]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_57()
+                                            
+                                            #[D12_C4_B4_58]-M2. Tính t.phân (ma^x+n)         
+                                            if dang_toan == "[D12_C4_B4_58]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_58()
+
+                                            #[D12_C4_B4_59]-M2. Tính t.phân (me^x+n)         
+                                            if dang_toan == "[D12_C4_B4_59]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_59()
 
                                         #Bài 5. Ứng dụng tích phân
                                             #[D12_C4_B5_03]. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị.
