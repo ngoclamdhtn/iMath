@@ -9016,15 +9016,19 @@ class Ui_MainWindow(object):
                 L12_C3_B1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C3_B1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_01]-M1. Tính khoảng biến thiên của mẫu số liệu ghép nhóm."])
+                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_01]-M1. Tính khoảng biến thiên của bảng ghép nhóm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_02]-M3. Tính khoảng tứ phân vị của mẫu số liệu ghép nhóm."])
+                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_02]-M3. Tính khoảng tứ phân vị của bảng ghép nhóm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_06]-M3. Giá trị ngoại lệ của mẫu số liệu ghép nhóm."])
+                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_06]-M3. Tìm điều kiện của giá trị ngoại lệ của bảng ghép nhóm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C3_B1_1, ["[D12_C3_B1_07]-M3. Tìm giá trị ngoại lệ của bảng ghép nhóm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9638,6 +9642,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_40]-M2. Cho đồ thị gấp khúc. Tính tích phân"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B5_11, ["[D12_C4_B5_23]-M2. Tìm công thức tính diện tích từ hình vẽ có 2 parabol"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -9724,6 +9732,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B5_13, ["[D12_C4_B5_13]-M3. Xe tăng tốc với gia tốc. Tính quãng đường đi được trong khoảng thời gian"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_13, ["[D12_C4_B5_41]-M2. Cho a(t) và v_0. Tìm vận tốc tại thời điểm t_0"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11954,9 +11966,13 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C3_B1_05]": 
                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C3.ytrzz_L12_C3_B1_05()
 
-                                        #[D12_C3_B1_06]-M3. Tìm giá trị ngoại lệ của bảng số liệu ghép nhóm.
+                                        #[D12_C3_B1_06]-M3. Tìm điều kiện ngoại lệ của bảng số liệu ghép nhóm.
                                             if dang_toan == "[D12_C3_B1_06]":                                        
                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C3.ytrzz_L12_C3_B1_06()
+
+                                        #[D12_C3_B1_07]-M3. Tìm giá trị ngoại lệ của bảng số liệu ghép nhóm.
+                                            if dang_toan == "[D12_C3_B1_07]":                                        
+                                               debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C3.ytrzz_L12_C3_B1_07()
 
                                     #Bài 2: Phương sai, độ lệch chuẩn
                                        #[D12_C3_B2_01]-M2. Tìm phương sai của mẫu số liệu ghép nhóm.
@@ -12676,6 +12692,14 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_39]-TF-M3. Ô tô nhập làn cao tốc. Xét Đ-S: quãng đường đi được từ khi giảm tốc, s(t), tốc độ của ô tô sau t giây
                                             if dang_toan == "[D12_C4_B5_39]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_39()
+
+                                            #[D12_C4_B5_40]-M2. Cho đồ thị gấp khúc. Tính tích phân
+                                            if dang_toan == "[D12_C4_B5_40]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_40()
+
+                                            #[D12_C4_B5_41]-M2. Cho a(t) và v_0. Tìm vận tốc tại thời điểm t_0
+                                            if dang_toan == "[D12_C4_B5_41]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_41()
                                                 
 
                                             ##################################################################

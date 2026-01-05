@@ -115,6 +115,9 @@ def thay_dau_cong_tru(st):
 def tphan(x_1,x_2):
     return f"\\int \\limits_{{{x_1}}}^{{{x_2}}}"
 
+def ngham():
+    return f"\\int \\limits "
+
 def gach(x_1,x_2):
     return f"\\bigg|_{{{x_1}}}^{{{x_2}}}"
 
@@ -8944,6 +8947,8 @@ def ckz_L12C4_B4_59():
 
 
 
+
+
     
 
 ################ Bài 5: ỨNG DỤNG CỦA TÍCH PHÂN #################
@@ -12531,4 +12536,197 @@ def ckz_L12C4_B5_39():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B5_40]-M2. Cho đồ thị gấp khúc. Tính tích phân
+def ckz_L12C4_B5_40():
+    while True:
+        x_A,x_B,x_C=random.sample(range(-5,5),3)
+        if all([x_A<x_B<x_C,x_C>0]):
+            break
+    y_A= random.randint(1,5)
+    y_B=0
+    y_C= random.randint(1,5)
+    max_y=max(y_A,y_C)
+
+    code_hinh=(f"\\begin{{tikzpicture}}[>=stealth,scale=1]\n\
+    %Grid\n\
+    \\draw[step=1cm,gray!35,very thin] ({x_A-1},-1) grid ({x_C+1},{max_y+1});\n\
+    % Axes\n\
+    \\draw[->] ({x_A-1},0) -- ({x_C+1},0) node[right] {{$x$}};\n\
+    \\draw[->] (0,-1) -- (0,{max_y+1}) node[above] {{$y$}};\n\
+    \\node[below left] at (0,0) {{$O$}};\n\
+    \\node[above] at (1,0) {{$1$}};\n\
+    % Points\n\
+    \\coordinate (A) at ({x_A},{y_A});\n\
+    \\coordinate (B) at ({x_B},{y_B});\n\
+    \\coordinate (C) at ({x_C},{y_C});\n\
+    % Segments\n\
+    \\draw[thick] (A)--(B) (B)--(C);\n\
+    % Mark points\n\
+    \\foreach \\P/\\pos in {{A/above left,B/below,C/above right}}{{\n\
+        \\fill (\\P) circle (1.6pt);\n\
+        \\node[\\pos] at (\\P) {{$\\P$}};\n\
+    }}\n\
+\\end{{tikzpicture}}" )
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung=(
+    f"Đường gấp khúc ${{ABC}}$ trong hình vẽ là đồ thị hàm số $y=f(x)$ trên đoạn ${{[{x_A};{x_C}]}}$."
+    f" Tính tích phân ${tphan(x_A,x_C)} f(x)dx$.")    
+
+    s1=1/2*y_A*abs(x_A-x_B)
+    s2=1/2*y_C*abs(x_C-x_B)
+    s=s1+s2
+    kq=s
+    kq_false = set()
+    while len(kq_false) < 5:
+    
+        numbers = random.randint(10,20)/random.randint(1,3)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    code_hinh_LG=(f"\\begin{{tikzpicture}}[>=stealth,scale=1]\n\
+    %Grid\n\
+    \\draw[step=1cm,gray!35,very thin] ({x_A-1},-1) grid ({x_C+1},{max_y+1});\n\
+    % Axes\n\
+    \\draw[->] ({x_A-1},0) -- ({x_C+1},0) node[right] {{$x$}};\n\
+    \\draw[->] (0,-1) -- (0,{max_y+1}) node[above] {{$y$}};\n\
+    \\node[below left] at (0,0) {{$O$}};\n\
+    \\node[below] at (1,0) {{$1$}};\n\
+    % Points\n\
+    \\coordinate (A) at ({x_A},{y_A});\n\
+    \\coordinate (B) at ({x_B},{y_B});\n\
+    \\coordinate (C) at ({x_C},{y_C});\n\
+    \\coordinate (K) at ({x_A},0);\n\
+    \\coordinate (H) at ({x_C},0);\n\
+    % Segments\n\
+    \\draw[thick] (A)--(B) (B)--(C) (A)--(K) (C)--(H);\n\
+    % Mark points\n\
+    \\foreach \\P/\\pos in {{A/above left,B/below,C/above right,K/below left,H/below right}}{{\n\
+        \\fill (\\P) circle (1.6pt);\n\
+        \\node[\\pos] at (\\P) {{$\\P$}};\n\
+    }}\n\
+\\end{{tikzpicture}}" )
+    code = my_module.moi_truong_anh_latex(code_hinh_LG)
+    file_name_LG=my_module.pdftoimage_timename(code)
+
+    noi_dung_loigiai=(
+    f"Tích phân cần tính là tổng diện tích của hai tam giác ${{AKB}}$ và ${{BCH}}$.\n\n"
+    f"$S_{{AKB}}={phan_so(1/2)}.AK.BK={phan_so(1/2)}.{y_A}.{abs(x_A-x_B)}={phan_so(s1)}$.\n\n"
+    f"$S_{{BCL}}={phan_so(1/2)}.CH.BH={phan_so(1/2)}.{y_C}.{abs(x_C-x_B)}={phan_so(s2)}$.\n\n"
+    f"${tphan(x_A,x_C)} f(x)dx={phan_so(s)}$."
+    )
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n{file_name_LG}\n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{\\begin{{center}}\n{code_hinh_LG}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C4_B5_41]-M2. Cho a(t) và v_0. Tìm vận tốc tại thời điểm t_0
+def ckz_L12C4_B5_41():
+    t=sp.symbols("t")
+    chon=random.randint(1,2)
+    if chon==1:
+        a=random.randint(1,6)
+        b=random.randint(1,7)
+        f=a*t+b
+    
+    if chon==2:
+        a=random.randint(1,6)
+        b=random.randint(1,7)
+        c=random.randint(0,7)
+        f=a*t**2+b*t+c
+    v_0=random.randint(1,5)
+    t_1=random.randint(1,7)
+
+    f_ng=integrate(f,t)
+    f_cal=f_ng+v_0
+    v_1=f_cal.subs(t,t_1)
+
+
+    noi_dung=(
+    f"Một vật chuyển động với gia tốc $a(t)={latex(f)}$ $(m/s^2)$. Vận tốc ban đầu của vật là ${{{v_0}}}$ $m/s$."
+    f"  Hỏi vận tốc của vật là bao nhiêu sau khi chuyển động với gia tốc đó được ${{{t_1}}}$ giây."
+    )    
+
+    kq=v_1
+    kq_false = set()
+    while len(kq_false) < 4:    
+        numbers = random.randint(2,20)/random.randint(1,3)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"Vận tốc của chuyển động là:\n\n"
+    f"$v(t)={ngham()}a(t)dt={ngham()} {latex(f)}dt={latex(f_ng)}+C$.\n\n"
+    f"Vận tốc ban đầu của vật là ${v_0}\\, m/s$ nên $v(0)={v_0}\\Rightarrow C={v_0}$.\n\n"
+    f"Vận tốc của chuyển động sau ${{{t_1}}}$ giây là: $v({t_1})={phan_so(v_1)}\\, m/s$."
+    )
+
+    pa_A= f"*${phan_so(kq)}\\, m/s$"
+    pa_B= f"${phan_so(kq2)}\\, m/s$"
+    pa_C= f"${phan_so(kq3)}\\, m/s$"
+    pa_D= f"${phan_so(kq4)}\\, m/s$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    
 

@@ -666,87 +666,99 @@ def ytrzz_L12_C3_B1_04():
 #[D12_C3_B1_05]-TF-M3. Xét Đ-S: Khoảng biến thiên, Q1, Q3, giá trị ngoại lệ.
 def ytrzz_L12_C3_B1_05():
 
-	so_nhom = random.randint(6,7)
-	ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
-	
-	#Tạo code latex chứa các khoảng giá trị và các tần số
-	gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
+	while True:
+		so_nhom = random.randint(6,7)
+		ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
+		
+		#Tạo code latex chứa các khoảng giá trị và các tần số
+		gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
 
-	# Given data from the table
-	class_intervals, frequencies=[],[]
-	for i in range(1,so_nhom):
-		class_intervals.append((gia_tri[i-1],gia_tri[i]))
-		frequencies.append(tan_so[i-1])
-	# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
-	# frequencies=[3,12,15,24,2]
+		# Given data from the table
+		class_intervals, frequencies=[],[]
+		for i in range(1,so_nhom):
+			class_intervals.append((gia_tri[i-1],gia_tri[i]))
+			frequencies.append(tan_so[i-1])
+		# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
+		# frequencies=[3,12,15,24,2]
+		gia_tri_cuoi=gia_tri[so_nhom-1]
 
-	# Calculating total number of students
-	N = sum(frequencies)
+		# Calculating total number of students
+		N = sum(frequencies)
 
-	# Setting the desired positions for Q1 and Q3
-	Q1_position = N / 4
-	Q2_position = N / 2
-	Q3_position = 3 * N / 4
+		# Setting the desired positions for Q1 and Q3
+		Q1_position = N / 4
+		Q2_position = N / 2
+		Q3_position = 3 * N / 4
 
-	# Initializing cumulative frequency
-	cumulative_frequency = 0
-	Q1_class =Q2_class= Q3_class = None
+		# Initializing cumulative frequency
+		cumulative_frequency = 0
+		Q1_class =Q2_class= Q3_class = None
 
-	for i, (interval, freq) in enumerate(zip(class_intervals, frequencies)):
-	    cumulative_frequency += freq
-	    # Determine Q1 class
-	    if not Q1_class and cumulative_frequency >= Q1_position:
-	        Q1_class = (interval, freq, cumulative_frequency - freq)
+		for i, (interval, freq) in enumerate(zip(class_intervals, frequencies)):
+		    cumulative_frequency += freq
+		    # Determine Q1 class
+		    if not Q1_class and cumulative_frequency >= Q1_position:
+		        Q1_class = (interval, freq, cumulative_frequency - freq)
 
-	    # Determine Q2 class
-	    if not Q2_class and cumulative_frequency >= Q2_position:
-	        Q2_class = (interval, freq, cumulative_frequency - freq)
+		    # Determine Q2 class
+		    if not Q2_class and cumulative_frequency >= Q2_position:
+		        Q2_class = (interval, freq, cumulative_frequency - freq)
 
-	    # Determine Q3 class
-	    if not Q3_class and cumulative_frequency >= Q3_position:
-	        Q3_class = (interval, freq, cumulative_frequency - freq)
+		    # Determine Q3 class
+		    if not Q3_class and cumulative_frequency >= Q3_position:
+		        Q3_class = (interval, freq, cumulative_frequency - freq)
 
-	# Calculating Q1
-	L_Q1 = Q1_class[0][0]
-	R_Q1 = Q1_class[0][1]
-	F_Q1 = Q1_class[2]
-	f_Q1 = Q1_class[1]
-	h_Q1 = Q1_class[0][1] - Q1_class[0][0]
-	Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
-	Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
-	Q1_false=Q1+random.randint(1,2)
-	Q1_false_round=f"{round_half_up(Q1_false,2):.2f}".replace(".",",")
-	
+		# Calculating Q1
+		L_Q1 = Q1_class[0][0]
+		R_Q1 = Q1_class[0][1]
+		F_Q1 = Q1_class[2]
+		f_Q1 = Q1_class[1]
+		h_Q1 = Q1_class[0][1] - Q1_class[0][0]
+		Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
+		Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
 
-	# Calculating Q2
-	L_Q2 = Q2_class[0][0]
-	R_Q2 = Q2_class[0][1]
-	F_Q2 = Q2_class[2]
-	f_Q2 = Q2_class[1]
-	h_Q2 = Q2_class[0][1] - Q2_class[0][0]
-	Q2 = calculate_quantile(L_Q2, F_Q2, f_Q2, h_Q2, Q2_position)
+		
 
-	# Calculating Q3
-	L_Q3 = Q3_class[0][0]
-	R_Q3 = Q3_class[0][1]
-	F_Q3 = Q3_class[2]
-	f_Q3 = Q3_class[1]
-	h_Q3 = Q3_class[0][1] - Q3_class[0][0]
-	Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
-	Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
-	Q3_false=Q1+random.randint(1,2)
-	Q3_false_round=f"{round_half_up(Q3_false,2):.2f}".replace(".",",")
+		# Calculating Q2
+		L_Q2 = Q2_class[0][0]
+		R_Q2 = Q2_class[0][1]
+		F_Q2 = Q2_class[2]
+		f_Q2 = Q2_class[1]
+		h_Q2 = Q2_class[0][1] - Q2_class[0][0]
+		Q2 = calculate_quantile(L_Q2, F_Q2, f_Q2, h_Q2, Q2_position)
 
-	Delta_Q=Q3-Q1
-	Delta_Q_round=f"{round_half_up(Delta_Q,1):.2f}".replace(".",",")
+		# Calculating Q3
+		L_Q3 = Q3_class[0][0]
+		R_Q3 = Q3_class[0][1]
+		F_Q3 = Q3_class[2]
+		f_Q3 = Q3_class[1]
+		h_Q3 = Q3_class[0][1] - Q3_class[0][0]
+		Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
+		Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
 
+		Delta_Q=Q3-Q1
+		
+		a,b=Q1-1.5*Delta_Q, Q3+1.5*Delta_Q
+
+		x=round(random.uniform(Q3+1.5*Delta_Q, Q3+1.7*Delta_Q),2)
+		if x>gia_tri_cuoi:
+			continue
+		if a>1:
+			break
+
+	Q1_false_round=f"{round_half_up(Q1+random.randint(1,2),2):.2f}".replace(".",",")
+	Q2_false_round=f"{round_half_up(Q2+random.randint(1,2),2):.2f}".replace(".",",")
+	Q3_false_round=f"{round_half_up(Q2+random.randint(1,2),2):.2f}".replace(".",",")
+
+	Delta_Q_round=f"{round_half_up(Delta_Q,2):.2f}".replace(".",",")
 	Delta_Q_false=Delta_Q+random.randint(1,2)
 	Delta_Q_false_round=f"{round_half_up(Delta_Q_false,2):.2f}".replace(".",",")
 
 	#Code latex
 	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
 	code=my_module.moi_truong_anh_latex(code_hinh)	
-	file_name=my_module.pdftoimage_timename(code)	
+	file_name=my_module.pdftoimage_timename(code)
+
 
 	noi_dung=( f"Cho bảng số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như hình dưới đây."
 		f" Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm):")	
@@ -803,7 +815,7 @@ def ytrzz_L12_C3_B1_05():
 	a_round=f"{round_half_up(a,2):.2f}".replace(".",",")
 	b_round=f"{round_half_up(b,2):.2f}".replace(".",",")
 	
-	chon=random.randint(1,2)
+	chon=random.randint(1,2)	
 	
 	if chon==1:
 		x=random.choice([Q1-random.randint(1,14)/10*Delta_Q, Q3+Delta_Q, Q3+random.randint(1,14)/10*Delta_Q])
@@ -822,7 +834,10 @@ def ytrzz_L12_C3_B1_05():
 			)
 	
 	if chon==2:
-		x=random.choice([Q3+random.randint(16,20)/10*Delta_Q])
+		while True:
+			x=round(random.uniform(Q3+1.5*Delta_Q, Q3+1.7*Delta_Q),1)
+			if x<gia_tri_cuoi:
+				break	
 		x_round=f"{round_half_up(x,2):.2f}".replace(".",",")		
 
 		kq4_T=f"* ${{{x_round}}}$ là giá trị ngoại lệ của mẫu số liệu"
@@ -893,7 +908,7 @@ def ytrzz_L12_C3_B1_05():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D12_C3_B1_06]-M3. Tìm giá trị ngoại lệ của bảng số liệu ghép nhóm.
+#[D12_C3_B1_06]-M3. Tìm điều kiện của giá trị ngoại lệ của bảng số liệu ghép nhóm.
 def ytrzz_L12_C3_B1_06():
 	while True:
 		so_nhom = 6
@@ -1009,6 +1024,154 @@ def ytrzz_L12_C3_B1_06():
 	pa_B= f"{kq2}"
 	pa_C= f"{kq3}"
 	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D12_C3_B1_07]-M3. Tìm giá trị ngoại lệ của bảng số liệu ghép nhóm.
+def ytrzz_L12_C3_B1_07():
+	while True:
+		so_nhom = 6
+		ten_nhom,ten_tan_so,u1,d,tan_so_min,tan_so_max = tao_ten_mau_ghep_nhom()[0:7]
+		
+		#Tạo code latex chứa các khoảng giá trị và các tần số
+		gia_tri,list_khoang_gia_tri,list_tan_so,tan_so=tao_mau_ghep_nhom(so_nhom,u1,d,tan_so_min,tan_so_max)[0:5]
+
+		# Given data from the table
+		class_intervals, frequencies=[],[]
+		for i in range(1,so_nhom):
+			class_intervals.append((gia_tri[i-1],gia_tri[i]))
+			frequencies.append(tan_so[i-1])
+		# class_intervals=[(9.5,12.5), (12.5,15.5), (15.5,18.5), (18.5,21.5), (21.5,24.5)]
+		# frequencies=[3,12,15,24,2]
+		gia_tri_cuoi=gia_tri[so_nhom-1]
+
+		# Calculating total number of students
+		N = sum(frequencies)
+
+		# Setting the desired positions for Q1 and Q3
+		Q1_position = N / 4
+		Q2_position = N / 2
+		Q3_position = 3 * N / 4
+
+		# Initializing cumulative frequency
+		cumulative_frequency = 0
+		Q1_class =Q2_class= Q3_class = None
+
+		for i, (interval, freq) in enumerate(zip(class_intervals, frequencies)):
+		    cumulative_frequency += freq
+		    # Determine Q1 class
+		    if not Q1_class and cumulative_frequency >= Q1_position:
+		        Q1_class = (interval, freq, cumulative_frequency - freq)
+
+		    # Determine Q2 class
+		    if not Q2_class and cumulative_frequency >= Q2_position:
+		        Q2_class = (interval, freq, cumulative_frequency - freq)
+
+		    # Determine Q3 class
+		    if not Q3_class and cumulative_frequency >= Q3_position:
+		        Q3_class = (interval, freq, cumulative_frequency - freq)
+
+		# Calculating Q1
+		L_Q1 = Q1_class[0][0]
+		R_Q1 = Q1_class[0][1]
+		F_Q1 = Q1_class[2]
+		f_Q1 = Q1_class[1]
+		h_Q1 = Q1_class[0][1] - Q1_class[0][0]
+		Q1 = calculate_quantile(L_Q1, F_Q1, f_Q1, h_Q1, Q1_position)
+		Q1_round=f"{round_half_up(Q1,2):.2f}".replace(".",",")
+
+		
+
+		# Calculating Q2
+		L_Q2 = Q2_class[0][0]
+		R_Q2 = Q2_class[0][1]
+		F_Q2 = Q2_class[2]
+		f_Q2 = Q2_class[1]
+		h_Q2 = Q2_class[0][1] - Q2_class[0][0]
+		Q2 = calculate_quantile(L_Q2, F_Q2, f_Q2, h_Q2, Q2_position)
+
+		# Calculating Q3
+		L_Q3 = Q3_class[0][0]
+		R_Q3 = Q3_class[0][1]
+		F_Q3 = Q3_class[2]
+		f_Q3 = Q3_class[1]
+		h_Q3 = Q3_class[0][1] - Q3_class[0][0]
+		Q3 = calculate_quantile(L_Q3, F_Q3, f_Q3, h_Q3, Q3_position)
+		Q3_round=f"{round_half_up(Q3,2):.2f}".replace(".",",")
+
+		Delta_Q=Q3-Q1
+		Delta_Q_round=f"{round_half_up(Delta_Q,2):.2f}".replace(".",",")
+		a,b=Q1-1.5*Delta_Q, Q3+1.5*Delta_Q
+
+		x=round(random.uniform(Q3+1.5*Delta_Q, Q3+1.7*Delta_Q),2)
+		if x>gia_tri_cuoi:
+			continue
+		if a>1:
+			break
+
+
+	a_round=f"{round_half_up(a,2):.2f}".replace(".",",")
+	b_round=f"{round_half_up(b,2):.2f}".replace(".",",")
+	
+	x_round=f"{round_half_up(x,2):.2f}".replace(".",",")
+
+	#Code latex
+	code_hinh=codelatex_bang_ghep_nhom(ten_nhom,list_khoang_gia_tri,ten_tan_so,list_tan_so)
+	code=my_module.moi_truong_anh_latex(code_hinh)	
+	file_name=my_module.pdftoimage_timename(code)	
+	
+
+	kq=x_round
+
+	a1,b1=abs(Q1-Delta_Q), Q3+1.2*Delta_Q
+
+	kq_false = set()
+	while len(kq_false) < 3:	
+	    numbers = round(random.uniform(a1, b1),2)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung=(f"Cho bảng số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như hình dưới đây."
+		f"Giá trị nào sau đây là một giá trị ngoại lệ của bảng số liệu đã cho?"  )
+	noi_dung_loigiai=(
+	f"Tứ phân vị thứ nhất và thứ ba là: $Q_1={Q1_round}, Q_3={Q1_round}$.\n\n"
+	f"Khoảng tứ phân vị là: $\\Delta_Q=Q_3-Q_1={Delta_Q_round}$.\n\n"
+	f"${{{x_round}}}$ là giá trị ngoại lệ vì ${x_round}>Q_3+1,5\\Delta_Q={b_round}$."
+	)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
