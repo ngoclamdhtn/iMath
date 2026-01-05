@@ -9803,6 +9803,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_42]-SA-M3. Toán thực tế: Chi phí trồng cỏ và lát gạch khu đất giới hạn bởi đường tròn và 2 parabol"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_43]-SA-M3. Toán thực tế: Tính diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -12700,6 +12708,14 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_41]-M2. Cho a(t) và v_0. Tìm vận tốc tại thời điểm t_0
                                             if dang_toan == "[D12_C4_B5_41]": 
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B5_41()
+
+                                            #[D12_C4_B5_42]-SA-M3. Tính chi phí trồng cỏ và lát gạch cho quảng trường giới hạn bởi đường tròn và 2 parabol
+                                            if dang_toan == "[D12_C4_B5_42]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_42()
+
+                                            #[D12_C4_B5_43]-SA-M3. Tính diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau
+                                            if dang_toan == "[D12_C4_B5_43]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_43()
                                                 
 
                                             ##################################################################

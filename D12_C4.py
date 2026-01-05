@@ -12730,7 +12730,7 @@ def ckz_L12C4_B5_41():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
     
 
-#[D12_C4_B5_42]-M2.Tính chi phí trồng cỏ và lát gạch cho quảng trường giới hạn bởi đường tròn và 2 parabol
+#[D12_C4_B5_42]-SA-M3. Tính chi phí trồng cỏ và lát gạch cho quảng trường giới hạn bởi đường tròn và 2 parabol
 def ckz_L12C4_B5_42():
     while True:
         R=random.randint(1,10)
@@ -12739,7 +12739,7 @@ def ckz_L12C4_B5_42():
         if l>=R: continue
         h_p=R-l
 
-        S_p=2/3*d*h_p
+        S_p=2*2/3*d*h_p
         S_r=pi*R**2-S_p
         c_p=random.randint(40,60)
         c_r=random.randint(90,110)
@@ -12777,7 +12777,7 @@ def ckz_L12C4_B5_42():
 \\end{{tikzpicture}}" 
 )
     code = my_module.moi_truong_anh_latex(code_hinh)
-    #file_name=my_module.pdftoimage_timename(code)
+    file_name=my_module.pdftoimage_timename(code)
 
     noi_dung = (
     f"Một khu đất có dạng hình tròn đường kính ${{AB}}$ bằng ${{{d}}}$ m. Người ta trang trí khu vực này bằng hai đường Parabol đối xứng nhau qua ${{AB}}$, nằm trong hình tròn, đi qua các điểm ${{A, B}}$"
@@ -12795,7 +12795,7 @@ def ckz_L12C4_B5_42():
     f"Cách 2: Tìm parabol dạng $y=ax^2(a<0)$ đi qua qua $A({-R};0),B({R};0)$ và có đỉnh $I(0;{h_p})$ để suy ra diện tích phần tạo bởi 2 parabol."
     )    
         
-    debai_word= f"{noi_dung}\n"
+    debai_word= f"{noi_dung}\n{file_name}"
 
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
         f"Đáp án: {dap_an}\n")
@@ -12806,4 +12806,63 @@ def ckz_L12C4_B5_42():
     f"\\shortans[4]{{{dap_an}}}\n\n"
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
     f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_43]-SA-M3. Tính diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau
+def ckz_L12C4_B5_43():
+    h1=random.randint(3,6)
+    h2=h1+random.randint(1,3)
+    d1=random.randint(3,6)
+    d2=d1+random.randint(1,3)
+    l=(d2-d1)/2
+    s_l=f"{round_half_up(l,1):.1f}".replace(".0","").replace(".",",")
+    s_1, s_2=2/3*d1*h1, 2/3*d2*h2
+    s=float(s_2-s_1)
+    if s.is_integer():
+        lamtron=""
+        
+        dap_an=int(s)
+    else:
+        lamtron=f" ,kết quả làm tròn đến hàng phần mười"
+        dap_an=f"{round_half_up(s,1):.1f}".replace(".",",")
+    code_hinh=(f" \\begin{{tikzpicture}}[line width=1.0pt, scale=0.5]\n\
+    \\fill [pattern=north east lines, domain=0:6, variable=\\x](0, 0)-- plot ({{\\x}}, {{6*(\\x)-(\\x)^2}})-- (6,0) --cycle;\n\
+    \\fill [white, domain=1:5, variable=\\x](1,0)--plot ({{\\x}}, {{-10+12*(\\x)-2*(\\x)^2}})--(5,0)-- cycle;\n\
+    \\draw[smooth,domain=0:6] plot(\\x,{{6*\\x-(\\x)^2}});\n\
+    \\draw[smooth,domain=1:5] plot(\\x,{{-10+12*(\\x)-2*(\\x)^2}});\n\
+    \\draw[-] (0,0)--(1,0) (5,0)--(6,0);\n\
+    \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+        f"Một cổng chào trang trí có hình dạng vòm, được giới hạn bởi hai đường parabol có cùng trục đối xứng thẳng đứng."
+        f" Parabol phía ngoài: Có bề lõm hướng xuống, khoảng cách giữa hai chân cổng là {d2} m và đỉnh cách mặt đất {h2} m."
+        f" Parabol phía trong: Có bề lõm hướng xuống, đỉnh cách mặt đất {h1} m."
+        f" Hai chân của vòm trong nằm trên mặt đất và mỗi chân cách chân tương ứng của vòm ngoài {s_l} m (tham khảo hình vẽ)."    
+        f" Biết rằng phần diện tích giới hạn giữa hai đường parabol được ốp kim loại. Hãy tính diện tích phần ốp kim loại (đơn vị: mét vuông{lamtron})."
+
+        )    
+
+
+    noi_dung_loigiai=(
+    f"Diện tích phần hình phẳng giới hạn bởi parabol ngoài là: $S_2={phan_so(2/3)}.{d2}.{h2}={phan_so(s_2)}$.\n\n"
+    f"Bề rộng của parabol trong là: ${d2}-2.{s_l}={d1}$.\n\n"
+    f"Diện tích phần hình phẳng giới hạn bởi parabol trong là: $S_1={phan_so(2/3)}.{d1}.{h1}={phan_so(s_1)}$.\n\n"
+    f"Diện tích phần ốp kim loại trang trí là: $S=S_2-S_1={phan_so(s_2)}-{phan_so(s_1)}={dap_an}$.\n\n"
+    f"Cách 2: Lập phương trình các đường parabol lần lượt đi qua 3 điểm rồi sử dụng tích phân để tính diện tích"
+    )    
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an

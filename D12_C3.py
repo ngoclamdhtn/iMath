@@ -1161,7 +1161,7 @@ def ytrzz_L12_C3_B1_07():
 	kq2,kq3,kq4=kq_false[0:3]
 
 	noi_dung=(f"Cho bảng số liệu ghép nhóm về {ten_nhom.lower()} và {ten_tan_so.lower()} như hình dưới đây."
-		f"Giá trị nào sau đây là một giá trị ngoại lệ của bảng số liệu đã cho?"  )
+		f" Giá trị nào sau đây là một giá trị ngoại lệ của bảng số liệu đã cho?"  )
 	noi_dung_loigiai=(
 	f"Tứ phân vị thứ nhất và thứ ba là: $Q_1={Q1_round}, Q_3={Q1_round}$.\n\n"
 	f"Khoảng tứ phân vị là: $\\Delta_Q=Q_3-Q_1={Delta_Q_round}$.\n\n"
