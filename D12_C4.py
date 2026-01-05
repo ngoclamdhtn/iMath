@@ -12730,3 +12730,80 @@ def ckz_L12C4_B5_41():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
     
 
+#[D12_C4_B5_42]-M2.Tính chi phí trồng cỏ và lát gạch cho quảng trường giới hạn bởi đường tròn và 2 parabol
+def ckz_L12C4_B5_42():
+    while True:
+        R=random.randint(1,10)
+        d=2*R        
+        l=random.randint(1,6)
+        if l>=R: continue
+        h_p=R-l
+
+        S_p=2/3*d*h_p
+        S_r=pi*R**2-S_p
+        c_p=random.randint(40,60)
+        c_r=random.randint(90,110)
+        T=S_p*c_p+S_r*c_r
+        if T<9996:
+            break
+    
+
+    code_hinh=(f" \\begin{{tikzpicture}}[scale=0.5, line cap=round, line join=round, >=stealth]\n\
+    % Parameters\n\
+    \\def\\r{{{R}}}     % radius\n\
+    \\def\\h{{{h_p}}}     % vertex height above AB (since vertex is 1m from top of circle => 6-1=5) \n\
+    % Coordinates\n\
+    \\coordinate (O) at (0,0);\n\
+    \\coordinate (A) at (-\\r,0);\n\
+    \\coordinate (B) at (\\r,0);\n\
+    \\coordinate (V) at (0,\\h);\n\
+    \\coordinate (T) at (0,\\r); % top point of circle  \n\
+    % Circle and diameter AB\n\
+    \\draw[thick] (O) circle (\\r);\n\
+    \\draw[thick] (A)--(B); \n\
+    % Labels\n\
+    \\fill (A) circle (2pt) node[left] {{$A$}};\n\
+    \\fill (B) circle (2pt) node[right] {{$B$}};\n\
+    \\node[below] at (0,0) {{${d}$\\,m}};    \n\
+    % Parabolas:\n\
+    % Upper parabola: y = h - (h/r^2) x^2, passes through A(-r,0), B(r,0), vertex at (0,h)\n\
+    % Lower parabola: symmetric through AB => y = -h + (h/r^2) x^2\n\
+    \\draw[very thick, smooth, domain=-\\r:\\r, samples=200]\n\
+    plot (\\x, {{\\h - (\\h/(\\r*\\r))*\\x*\\x}});\n\
+    \\draw[very thick, smooth, domain=-\\r:\\r, samples=200]\n\
+    plot (\\x, {{-(\\h) + (\\h/(\\r*\\r))*\\x*\\x}});       \n\
+    % Vertex mark and distance to circle boundary ({l}m)\n\
+     \\draw[<->] (V)--(T) node[midway, right] {{${l}$\\,m}};  \n\
+\\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    #file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Một khu đất có dạng hình tròn đường kính ${{AB}}$ bằng ${{{d}}}$ m. Người ta trang trí khu vực này bằng hai đường Parabol đối xứng nhau qua ${{AB}}$, nằm trong hình tròn, đi qua các điểm ${{A, B}}$"
+    f" và có đỉnh cách mép hình tròn ${{{l}}}$ m. Phần giới hạn bởi 2 parabol được trồng hoa với tiền công là {c_p} nghìn đồng cho 1 mét vuông, phần còn lại được lát gạch với tiền công là {c_r} nghìn đồng cho 1 mét vuông. "
+    f" Tính tổng tiền công cần chi để trồng hoa và lát gạch cho quảng trường (đơn vị: nghìn đồng) kết quả làm tròn đến hàng đơn vị."
+
+    )
+    
+    dap_an=f"{round_half_up(T,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Diện tích phần giới hạn bởi 2 parabol là: $S_p=2.{phan_so(2/3)}.{d}.{h_p}={phan_so(S_p)}$.\n\n"
+    f"Diện tích phần còn lại là: $S_r={R**2}\\pi-{phan_so(S_p)}$.\n\n"
+    f"Tổng chi phí là: $T={phan_so(S_p)}.{c_p}+({R**2}\\pi-{phan_so(S_p)}).{c_r}={dap_an}$.\n\n"
+    f"Cách 2: Tìm parabol dạng $y=ax^2(a<0)$ đi qua qua $A({-R};0),B({R};0)$ và có đỉnh $I(0;{h_p})$ để suy ra diện tích phần tạo bởi 2 parabol."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\shortans[4]{{{dap_an}}}\n\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+    return debai_word,loigiai_word,latex_tuluan,dap_an
