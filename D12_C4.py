@@ -12866,3 +12866,179 @@ def ckz_L12C4_B5_43():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_44]-SA-M3. Tính diện tích trồng cổ phần parabol nằm trong hình chữ nhật
+def ckz_L12C4_B5_44():
+    s=random.randint(200,300)
+    t=random.randint(200,350)
+    tien=2/3*s*t/1000
+
+    noi_dung = (
+    f"Một khu đất hình chữ nhật với diện tích {s} $m^2$. Người ta muốn trồng cỏ trên sân bóng theo hình một parabol sao cho đỉnh của parabol trùng với trung điểm một cạnh của sân bóng như hình vẽ bên. Biết chi phí trồng cỏ là {t} nghìn đồng cho mỗi mét vuông. Hỏi chi phí trồng cỏ cần có cho sân bóng trên là bao nhiêu triệu đồng (kết quả làm tròn đến hàng đơn vị)?"
+    )
+    dap_an=f"{round_half_up(tien,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi chiều dài của hình chữ nhật là $m$, chiều rộng là $n(m>n>0)$.\n\n"
+f"Ta có diện tích hình chữ nhật là $s=m.n={s}$.\n\n"
+f"Chọn hệ trục tọa độ ${{Oxy}}$ sao cho đỉnh của parabol là $I(0 ; n)$.\n\n"
+f"Parabol đi qua hai điểm $A\\left(-\\dfrac{{m}}{{2}} ; 0\\right)$ và $B\\left(\\dfrac{{m}}{{2}} ; 0\\right)$.\n\n"
+f"Do đó parabol có dạng $y=-\\frac{{4 n}}{{m^2}} x^2+n$.\n\n"
+f"Phần diện tích trồng cỏ là:\n\n"
+f" $S=2 \\int_0^{{\\frac{{m}}{{2}}}}\\left(-\\dfrac{{4 n}}{{m^2}} x^2+n\\right) d x=\\dfrac{{2 m n}}{{3}}$.\n\n"
+f"Số tiền trồng cỏ cần là:\n\n $\\dfrac{{2 m n}}{{3}} \\cdot {t}000=\\dfrac{{2 \\cdot {s}}}{{3}} \\cdot {t}000={dap_an}$ triệu đồng."
+    )   
+    code_hinh=(f" \\begin{{tikzpicture}}[x=0.9cm,y=0.9cm, line cap=round, line join=round]\n\
+    % ====== Tham số hình chữ nhật ======\n\
+    \\def\\L{{6}}   % chiều dài hình chữ nhật\n\
+    \\def\\H{{3.2}}  % chiều cao hình chữ nhật  \n\
+    % ====== Các điểm của hình chữ nhật ABCD ======\n\
+    % (Theo hình vẽ: đáy nằm ngang)\n\
+    \\coordinate (A) at (0,0);\n\
+    \\coordinate (B) at (\\L,0);\n\
+    \\coordinate (C) at (\\L,\\H);\n\
+    \\coordinate (D) at (0,\\H);    \n\
+    % I là trung điểm của CD\n\
+    \\coordinate (I) at ({{\\L/2}},\\H);    \n\
+    % ====== Vẽ hình chữ nhật ======\n\
+    \\draw[thick] (A)--(B)--(C)--(D)--cycle;    \n\
+    % ====== Parabol (dạng vòm) ======\n\
+    % Chọn parabol đi qua A và B (hai chân trên mặt đất) và có đỉnh tại I.\n\
+    % Công thức: y = (4H/L^2) * x*(L-x)\n\
+    \\path[name path=para]\n\
+    plot[domain=0:\\L, samples=200]\n\
+    (\\x, {{ (4*\\H/(\\L*\\L))*(\\x)*(\\L-\\x) }}); \n\
+    % ====== Tô gạch chéo miền trong parabol (phần dưới parabol, trong hình chữ nhật) ======\n\
+    % Ta clip theo hình chữ nhật rồi tô phần dưới parabol tới đáy.\n\
+    \\begin{{scope}}\n\
+        \\clip (A)--(B)--(C)--(D)--cycle;\n\
+        \\fill[pattern=north east lines, pattern color=blue!60]\n\
+        (0,0)\n\
+        -- plot[domain=0:\\L, samples=200]\n\
+        (\\x, {{ (4*\\H/(\\L*\\L))*(\\x)*(\\L-\\x) }})\n\
+        -- (\\L,0) -- cycle;\n\
+    \\end{{scope}}  \n\
+    % ====== Vẽ lại parabol (nét xanh) ======\n\
+    \\draw[thick, blue!60] \n\
+    plot[domain=0:\\L, samples=200]\n\
+    (\\x, {{ (4*\\H/(\\L*\\L))*(\\x)*(\\L-\\x) }}); \n\
+\\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code) 
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_45]-SA-M3. Tính tiền trồng cỏ và lát gạch tạo bởi 2 parabol trong hình chữ nhật
+def ckz_L12C4_B5_45():
+    while True:
+        r=random.randint(15,30)
+        d=random.randint(40,60)
+        h=random.randint(4,10)
+        if r%3==0:
+            break
+    gia_co=random.randint(120,130)*1000
+    gia_gach=random.randint(90,110)*1000
+
+
+    noi_dung = (
+    f"Một công viên hình chữ nhật có chiều rộng {r} m và chiều dài {d} m."
+    f" Người ta chia công viên ra làm hai phần (gạch chéo và không gạch chéo)."
+    f" Phần gạch chéo gồm hai phần có diện tích bằng nhau, mỗi phần được giới hạn bởi đường một parabol và một cạnh của hình chữ nhật (như hình vẽ)."
+    f" Khoảng cách từ đỉnh ${{I}}$ của parabol bên trái đến cạnh ${{AD}}$ bằng {h} m."
+    f" Phần gạch chéo được trồng cỏ nhân tạo với giá {gia_co} đồng/$m^2$ và phần còn lại được lát gạch với giá {gia_gach} đồng/$m^2$."
+    f" Tính số tiền (triệu đồng) trồng cỏ và lát gạch cho công viên.")
+    S_co=2*2/3*r*h
+    S_gach=d*r-S_co
+    tien=(S_co*gia_co+S_gach*gia_gach)/1000000
+
+    dap_an=f"{round_half_up(tien,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Diện tích phần trồng cỏ là: $S_1=2.{phan_so(2/3)}.{r}.{h}={phan_so(S_co)}$.\n\n"
+    f"Diện tích phần lát gạch là: $S_2=S_{{hcn}}-S_1={d}.{r}-{phan_so(S_co)}={phan_so(S_gach)}$.\n\n"
+    f"Tổng tiền cần chi là: "
+    f"${phan_so(S_co)}.{gia_co}+{phan_so(S_gach)}.{gia_gach}={dap_an}$ (triệu đồng).\n\n"
+    f"Cách 2: Chọn hệ trục tọa độ sao cho gốc tọa độ ${{O}}$ là trung điểm của ${{AD}}$,"
+    f" Điểm ${{I}}$ thuộc tia ${{Ox}}$, điểm ${{D}}$ thuộc tia ${{Oy}}$.\n\n"
+    f" Parabol ADI qua $A(0;{phan_so(-r/2)}), D(0;{phan_so(r/2)}), I({h};0)$.\n\n"
+    f" Suy ra phương trình parabol và tính diện tích trồng cỏ bằng tích phân.")    
+
+    code_hinh=(f"\\begin{{tikzpicture}}[line cap=round,line join=round,>=stealth,scale=1]\n\
+    % ====== Kích thước hình chữ nhật ======\n\
+    \\def\\W{{12}}   % chiều dài (ngang)\n\
+    \\def\\H{{6}}    % chiều cao (dọc)  \n\
+    % p là độ lấn vào trong của parabol (đỉnh cách cạnh dọc một đoạn p)\n\
+    % Điều kiện để 2 parabol không cắt nhau: 2p < W\n\
+    \\def\\p{{4}}    % chọn p < W/2 \n\
+    % ====== Các đỉnh hình chữ nhật ABCD ======\n\
+    \\coordinate (A) at (0,0);\n\
+    \\coordinate (B) at (\\W,0);\n\
+    \\coordinate (C) at (\\W,\\H);\n\
+    \\coordinate (D) at (0,\\H);    \n\
+    % ====== ĐỈNH I CỦA PARABOL TRÁI ======\n\
+    % Parabol trái có đỉnh tại (p, H/2)\n\
+    \\coordinate (I) at (\\p,\\H/2);    \n\
+    % ====== 2 parabol (để dùng cho clip/tô) ======\n\
+    \\path[name path=leftpara]\n\
+    plot[domain=0:\\H, samples=200]\n\
+    ({{ \\p*(1 - ((\\x-\\H/2)/(\\H/2))^2 ) }}, \\x);    \n\
+    \\path[name path=rightpara]\n\
+    plot[domain=\\H:0, samples=200]\n\
+    ({{ \\W - \\p*(1 - ((\\x-\\H/2)/(\\H/2))^2 ) }}, \\x);  \n\
+    % ====== GẠCH CHÉO PHẦN NGƯỢC LẠI: ngoài 2 parabol nhưng vẫn trong hình chữ nhật ======\n\
+    \\fill[pattern=north east lines, pattern color=blue!60, even odd rule]\n\
+    (A)--(B)--(C)--(D)--cycle\n\
+    plot[domain=0:\\H, samples=200]\n\
+    ({{ \\p*(1 - ((\\x-\\H/2)/(\\H/2))^2 ) }}, \\x)\n\
+    --\n\
+    plot[domain=\\H:0, samples=200]\n\
+    ({{ \\W - \\p*(1 - ((\\x-\\H/2)/(\\H/2))^2 ) }}, \\x)\n\
+    -- cycle;   \n\
+    % Vẽ hình chữ nhật\n\
+    \\draw[thick] (A)--(B)--(C)--(D)--cycle;    \n\
+    % Trục đối xứng (trục dọc của hình chữ nhật)\n\
+    \\draw[dashed] (\\W/2,-0.8) -- (\\W/2,\\H+0.8); \n\
+    % Gắn nhãn\n\
+    \\node[below left]  at (A) {{$A$}};\n\
+    \\node[below right] at (B) {{$B$}};\n\
+    \\node[above right] at (C) {{$C$}};\n\
+    \\node[above left]  at (D) {{$D$}}; \n\
+    % ====== Vẽ điểm I và nhãn I ======\n\
+    \\fill[blue] (I) circle (2pt);\n\
+    \\node[right] at (I) {{$I$}};   \n\
+    % Vẽ lại 2 parabol\n\
+    \\draw[thick,blue]\n\
+    plot[domain=0:\\H, samples=200]\n\
+    ({{ \\p*(1 - ((\\x-\\H/2)/(\\H/2))^2 ) }}, \\x);    \n\
+    \\draw[thick,blue]\n\
+    plot[domain=0:\\H, samples=200]\n\
+    ({{ \\W - \\p*(1 - ((\\x-\\H/2)/(\\H/2))^2 ) }}, \\x);  \n\
+\\end{{tikzpicture}}")
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

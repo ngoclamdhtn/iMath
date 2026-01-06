@@ -16725,8 +16725,8 @@ def prt_34_L12_C1_B5_31():
 	kq2_T=f"* Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng tiêu thụ giảm đi ${{{phan_so(sl_giam/5)}x}}$ chiếc áo"
 	kq2_F=f"Nếu tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng) thì số lượng tiêu thụ giảm đi ${{{phan_so(sl_giam/5+random.randint(1,5))}x}}$ chiếc áo"
 	
-	HDG=(f"Vì cứ tăng giá thêm 2 (nghìn đồng) thì cửa hàng bán ra giảm {sl_giam} chiếc áo nên tăng ${{x}}$ (nghìn đồng)"
-		f" thì cửa hàng bị giảm đi bằng $\\dfrac{{{sl_giam}x}}{{2}}={{{phan_so(sl_giam/5)}x}}$ chiếc áo.\n\n")
+	HDG=(f"Vì cứ tăng giá thêm 5 (nghìn đồng) thì cửa hàng bán ra giảm {sl_giam} chiếc áo nên tăng ${{x}}$ (nghìn đồng)"
+		f" thì cửa hàng bị giảm đi bằng $\\dfrac{{{sl_giam}x}}{{5}}={{{phan_so(sl_giam/5)}x}}$ chiếc áo.\n\n")
 	kq2=random.choice([kq2_T, kq2_F])
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
@@ -16748,8 +16748,8 @@ def prt_34_L12_C1_B5_31():
 	
 	HDG=(
 	f" Gọi số tiền cần tăng giá mỗi chiếc áo là ${{x}}$ (nghìn đồng).\n\n"
-	f" Vì cứ tăng giá thêm 5(nghìn đồng) thì số lượng tiêu thụ {sl_giam} chiếc nên tăng ${{x}}$ (nghìn đồng)"
-	f" thì số số lượng tiêu thụ giảm đi là ${{{phan_so(sl_giam/5)}x}}$.\n\n"
+	f" Vì cứ tăng giá thêm 5 (nghìn đồng) thì số lượng tiêu thụ {sl_giam} chiếc nên tăng ${{x}}$ (nghìn đồng)"
+	f" thì số lượng tiêu thụ giảm đi là ${{{phan_so(sl_giam/5)}x}}$.\n\n"
 	f" Do đó tổng số áo bán ra là: ${sl_ban_hien_tai}-{phan_so(sl_giam/5)}x$.\n\n"
 	f" Lúc đầu bán với giá {a} (nghìn đồng), mỗi chiếc có lãi {lai} (nghìn đồng).\n\n"
 	f" Sau khi tăng giá, mỗi chiếc thu được số lãi là: ${lai}+x$ (nghìn đồng).\n\n"

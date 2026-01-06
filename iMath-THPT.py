@@ -9795,11 +9795,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_22]-SA-M2. Toán thực tế: Tính diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol."])
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_22]-SA-M2. Toán thực tế: Diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_36]-SA-M3. Toán thực tế: Tính diện tích cánh hoa trong hình vuông"])
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_36]-SA-M3. Toán thực tế: Diện tích cánh hoa trong hình vuông"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9807,7 +9807,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_43]-SA-M3. Toán thực tế: Tính diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau"])
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_43]-SA-M3. Toán thực tế: Diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_44]-SA-M3. Toán thực tế: Diện tích trồng cỏ phần parabol nằm trong hình chữ nhật"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_45]-SA-M3. Toán thực tế: Tiền trồng cỏ và lát gạch tạo bởi 2 parabol trong hình chữ nhật"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -12716,6 +12724,14 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_43]-SA-M3. Tính diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau
                                             if dang_toan == "[D12_C4_B5_43]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_43()
+
+                                            #[D12_C4_B5_44]-SA-M3. Tính diện tích trồng cổ phần parabol nằm trong hình chữ nhật
+                                            if dang_toan == "[D12_C4_B5_44]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_44()
+
+                                            #[D12_C4_B5_45]-SA-M3. Tính tiền trồng cỏ và lát gạch tạo bởi 2 parabol trong hình chữ nhật
+                                            if dang_toan == "[D12_C4_B5_45]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_45()
                                                 
 
                                             ##################################################################
