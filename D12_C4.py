@@ -13042,3 +13042,145 @@ def ckz_L12C4_B5_45():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_46]-SA-M3. Quãng trường hình tròn chứa 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P)
+def ckz_L12C4_B5_46():
+    while True:
+        r=random.randint(6,10)
+        d=2*r
+        l=random.randint(1,4)
+        y_I=-(r-l)
+        if y_I !=l:
+            break
+    gia_hoa=random.randint(150,250)
+    gia_gach=random.randint(400,600)
+
+
+    noi_dung = (
+    f"Khu vực trung tâm một quảng trường có dạng hình tròn đường kính ${{AB}}$ bằng ${{{d}}}$ m."
+    f" Người ta trang trí khu vực này bằng hai đường Parabol đối xứng nhau qua ${{AB}}$, nằm trong hình tròn, "
+    f" đi qua các điểm ${{A}}$, ${{B}}$ và có đỉnh ${{I}}$ cách mép hình tròn ${{{l}}}$ m. "
+    f" Phần giới hạn bởi hai parabol được trồng hoa với chi phí {gia_hoa} nghìn đồng cho 1 mét vuông, "
+    f" phần còn lại được lát gạch hoa với chi phí {gia_gach} nghìn đồng cho 1 mét vuông. "
+    f" Gán hệ trục tọa độ như hình vẽ bên (đơn vị trên các trục là mét).\n\n"
+    f" Xét tính đúng-sai của các khẳng định sau:")    
+    
+    kq1_T=f"*Với hệ trục như trên ta có $I(0;{y_I}), A({r};0), B({-r},0)$" 
+    kq1_F=random.choice([
+        f"Với hệ trục như trên ta có $I(0;{-y_I}), A({r};0), B({-r},0)$",
+        f"Với hệ trục như trên ta có $I({y_I};0), A({r};0), B({-r},0)$",
+        f"Với hệ trục như trên ta có $I(0;{y_I}), A({d};0), B({-d},0)$",
+        f"Với hệ trục như trên ta có $I(0;{l}), A({r};0), B({-r},0)$",
+        f"Với hệ trục như trên ta có $I(0;{l}), A({d};0), B({-d},0)$",])
+    
+    HDG=f"Với hệ trục như trên ta có $I(0;{y_I}), A({r};0), B({-r},0)$"
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    a=-y_I/r**2
+
+    kq2_T=f"*Parabol có đỉnh ${{I}}$ và  bề lõm hướng lên có phương trình là $y={phan_so(a)}x^2+{y_I}$"
+    kq2_F=random.choice([
+        f"Parabol có đỉnh ${{I}}$ và  bề lõm hướng lên có phương trình là $y={phan_so(a)}x^2+{-y_I}$",
+        f"Parabol có đỉnh ${{I}}$ và  bề lõm hướng lên có phương trình là $y={phan_so(-a)}x^2+{y_I}$",
+        f"Parabol có đỉnh ${{I}}$ và  bề lõm hướng lên có phương trình là $y={phan_so(a+random.randint(1,2))}x^2+{y_I}$" ])
+    
+    HDG=(f"Phương trình của parabol có đỉnh $I(0;{y_I})$ và bề lõm hướng lên có dạng $y=ax^2+{y_I}$ với $a>0$.\n\n"
+        f"Parabol qua $A({r};0)$ nên: $a.{r**2}+{y_I}=0\\Rightarrow a={phan_so(a)}$.\n\n"
+        f"Phương trình của parabol là: $y={phan_so(a)}x^2+{y_I}$.")
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    HDG=thay_dau_cong_tru(HDG)
+    kq2=thay_dau_cong_tru(kq2)
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    x=sp.symbols("x")
+
+    s_1=abs(2*integrate(a*x**2+y_I,(x,-r,r)))
+    s_1_f=random.choice([abs(integrate(a*x**2+y_I,(x,-r,r))),abs(s_1+random.randint(1,2))])
+    s_2=pi*r**2-s_1
+
+    kq3_T=f"*Diện tích phần trồng hoa giới hạn bởi hai parabol là ${phan_so(s_1)}$" 
+    kq3_F=f"Diện tích phần trồng hoa giới hạn bởi hai parabol là ${phan_so(s_1_f)}$"
+    
+    HDG=(f"Diện tích phần trồng hoa giới hạn bởi hai parabol là:\n\n"
+        f"$S_1=2{tphan(-r,r)}|{phan_so(a)}x^2+{y_I}|dx={phan_so(s_1)}$."
+        )
+    kq3=random.choice([kq3_T, kq3_F])
+    HDG=thay_dau_cong_tru(HDG)
+    kq3=thay_dau_cong_tru(kq3)
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    tien=(s_1*gia_hoa+s_2*gia_gach)/1000
+    s_tien=f"{round_half_up(tien,0):.0f}".replace(".",",")
+    s_tien_f=f"{round_half_up(tien+random.randint(3,8),0):.0f}".replace(".",",")
+
+    kq4_T=f"*Tổng chi phí để trồng hoa và lát gạch cho khu vực này là {s_tien} triệu (kết quả làm tròn đến hàng đơn vị của triệu)"
+    kq4_F=f"Tổng chi phí để trồng hoa và lát gạch cho khu vực này là {s_tien_f} triệu (kết quả làm tròn đến hàng đơn vị của triệu)" 
+    
+    HDG=(f"Diện tích phần trồng hoa giới hạn bởi hai parabol là:\n\n"
+        f"$S_1=2{tphan(-r,r)}|{phan_so(a)}x^2+{y_I}|dx={phan_so(s_1)}$.\n\n"
+        f"Diện tích phần còn lại để lát gạch là:\n\n"
+        f"$S_2=\\pi.{r}^2-{phan_so(s_1)}={r**2}\\pi-{phan_so(s_1)}$.\n\n"
+        f"Vậy tổng chi phí để làm khu vực trung tâm quảng trường là:\n\n"
+        f"${phan_so(s_1)}.{gia_hoa}000+({r**2}\\pi-{phan_so(s_1)}).{gia_gach}000\\equiv {s_tien}$ (triệu đồng)."
+        )
+    kq4=random.choice([kq4_T, kq4_F])
+    HDG=thay_dau_cong_tru(HDG)
+    kq4=thay_dau_cong_tru(kq4)
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
