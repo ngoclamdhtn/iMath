@@ -2245,16 +2245,12 @@ def gghik_L10_CX_B0_30():
 	x_I,y_I=float((a1+b1)/2), float((a2+b2)/2)
 
 	chon=random.randint(1,2)
+	chon=2
 	
 	if chon==1:
 		if x_I.is_integer():
-			noi_dung = (
-			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
-			f" Tính $a+b$."
-			)
 			dap_an=int(x_I)
-			
+			lam_tron=""		
 
 			noi_dung_loigiai=(
 			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
@@ -2263,44 +2259,36 @@ def gghik_L10_CX_B0_30():
 			f"Suy ra ${M}({phan_so(x_I)};0)\\Rightarrow a+b={dap_an}$."
 			)
 		else:
-			noi_dung = (
+
+			dap_an=f"{round_half_up(x_I,1):.1f}".replace(".",",")
+			lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+		noi_dung = (
 			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
 			f" Điểm ${M}(a;b)$ thuộc trục ${{Ox}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
-			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+			f" Tính $a+b${lam_tron}."
 			)
-			dap_an=f"{round_half_up(x_I,1):.1f}".replace(".",",")
 
-			noi_dung_loigiai=(
-			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
-			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
-			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Ox}}$.\n\n"
-			f"Suy ra ${M}({phan_so(x_I)};0)\\Rightarrow a+b={dap_an}$.")
+		noi_dung_loigiai=(
+		f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
+		f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
+		f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Ox}}$.\n\n"
+		f"Suy ra ${M}({phan_so(x_I)};0)\\Rightarrow a+b={dap_an}$.")
 	
 	if chon==2:
 		if y_I.is_integer():
-			noi_dung = (
-			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
-			f" Tính $a+b$."
-			)
+			lam_tron=""			
 			dap_an=int(y_I)
-			
-
-			noi_dung_loigiai=(
-			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
-			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
-			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Oy}}$.\n\n"
-			f"Suy ra ${M}(0;{phan_so(y_I)})\\Rightarrow a+b={dap_an}$."
-			)
 		else:
-			noi_dung = (
-			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
-			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
-			f" Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
-			)
+			lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
 			dap_an=f"{round_half_up(y_I,1):.1f}".replace(".",",")
 
-			noi_dung_loigiai=(
+		noi_dung = (
+			f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ${A}({a1};{a2}),{B}({b1};{b2})$."
+			f" Điểm ${M}(a;b)$ thuộc trục ${{Oy}}$ sao cho $|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|$ là nhỏ nhất."
+			f" Tính $a+b${lam_tron}."
+			)
+
+		noi_dung_loigiai=(
 			f"Gọi ${{I}}$ là trung điểm của ${{{A}{B}}}\\Rightarrow I({phan_so(x_I)};{phan_so(y_I)})$.\n\n"
 			f"$|{vec(f"{M}{A}")}+{vec(f"{M}{B}")}|=|2{vec(f"{M}I")}|=2{M}I$.\n\n"
 			f"${{{M}I}}$ nhỏ nhất khi {M} là hình chiếu của ${{I}}$ trên trục ${{Oy}}$.\n\n"

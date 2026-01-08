@@ -13043,7 +13043,7 @@ def ckz_L12C4_B5_45():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D12_C4_B5_46]-SA-M3. Quãng trường hình tròn chứa 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P)
+#[D12_C4_B5_46]-TF-M3. Quãng trường hình tròn chứa 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P), phương trình (P), diện tích, chi phí
 def ckz_L12C4_B5_46():
     while True:
         r=random.randint(6,10)
@@ -13054,7 +13054,6 @@ def ckz_L12C4_B5_46():
             break
     gia_hoa=random.randint(150,250)
     gia_gach=random.randint(400,600)
-
 
     noi_dung = (
     f"Khu vực trung tâm một quảng trường có dạng hình tròn đường kính ${{AB}}$ bằng ${{{d}}}$ m."
@@ -13103,8 +13102,8 @@ def ckz_L12C4_B5_46():
     s_1_f=random.choice([abs(integrate(a*x**2+y_I,(x,-r,r))),abs(s_1+random.randint(1,2))])
     s_2=pi*r**2-s_1
 
-    kq3_T=f"*Diện tích phần trồng hoa giới hạn bởi hai parabol là ${phan_so(s_1)}$" 
-    kq3_F=f"Diện tích phần trồng hoa giới hạn bởi hai parabol là ${phan_so(s_1_f)}$"
+    kq3_T=f"*Diện tích phần trồng hoa giới hạn bởi hai parabol là ${{{phan_so(s_1)}}}$" 
+    kq3_F=f"Diện tích phần trồng hoa giới hạn bởi hai parabol là ${{{phan_so(s_1_f)}}}$"
     
     HDG=(f"Diện tích phần trồng hoa giới hạn bởi hai parabol là:\n\n"
         f"$S_1=2{tphan(-r,r)}|{phan_so(a)}x^2+{y_I}|dx={phan_so(s_1)}$."
@@ -13136,12 +13135,32 @@ def ckz_L12C4_B5_46():
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
+    code_hinh=(f" \\begin{{tikzpicture}}[scale=.9, font=\\footnotesize, line join=round, line cap=round,>=stealth,x=0.5cm,y=0.5cm,declare function = {{f(\\x) =0.16*(\\x)^2-4;}},declare function = {{g(\\x) =-0.16*(\\x)^2+4;}}]\n\
+            \\def \\xmin{{-6.1}};\n\
+            \\def \\xmax{{6.2}};\n\
+            \\def \\ymin{{-5.9}};\n\
+            \\def \\ymax{{6.5}};\n\
+            \\path (0,0) coordinate (O) (0,-4) coordinate (I);\n\
+            \\draw[->] (\\xmin, 0.) -- (\\xmax,0.) node[anchor=north] {{$x$}};\n\
+            \\draw[->] (0.,\\ymin) -- (0.,\\ymax) node[anchor=west] {{$y$}};\n\
+            \\draw (0,0) circle (5);\n\
+            \\draw[<->,dashed] (.2,-4)--(.2,-5);\n\
+            \\draw (1,-4.5) node{{${l}\\,\\mathrm{{m}}$}};\n\
+            \\clip(\\xmin+0.1,\\ymin+0.1) rectangle (\\xmax-0.1,\\ymax-0.1);\n\
+            \\draw[smooth,samples=100,domain=-5:5] plot(\\x,{{f(\\x)}}) plot(\\x,{{g(\\x)}});\n\
+            \\draw (I) node[above left]{{$I$}} (-5,0)node[below left]{{$B$}} (5,0)node[above right]{{$A$}} (0,0) node[below left]{{$O$}};\n\
+            \\foreach \\i in {{(0,0),(I),(-5,0),(5,0)}} \\fill \\i circle (1pt);\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
     #Trộn các phương án
     list_PA =[kq1, kq2, kq3, kq4]
     #random.shuffle(list_PA)
     list_TF=my_module.tra_ve_TF(list_PA)
 
-    debai= f"{noi_dung}\n\n"\
+    debai= f"{noi_dung}\n{file_name}\n"\
     f"a) {list_PA[0]}.\n"\
     f"b) {list_PA[1]}.\n"\
     f"c) {list_PA[2]}.\n"\
@@ -13176,6 +13195,7 @@ def ckz_L12C4_B5_46():
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
     debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
         f"\\choiceTFt\n"
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
         f"\\loigiai{{ \n {loigiai_latex} \n }}"

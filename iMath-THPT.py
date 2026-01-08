@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
        
                 MainWindow.setObjectName("MainWindow")
                 #MainWindow.resize(1920, 1440) 
-                MainWindow.setWindowTitle("iMath-THPT\u00A92025")
+                MainWindow.setWindowTitle("iMath-THPT\u00A92026")
 
                 MainWindow.showMaximized()     
 
@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 01.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 08.01.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 01.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 08.01.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -9775,6 +9775,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_46]-TF-M3. Quãng trường hình tròn + 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P), phương trình (P), diện tích, chi phí"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C4_B5_3 = QTreeWidgetItem(L12_C4_B5, ["Trả lời ngắn"])
                 L12_C4_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -12732,6 +12736,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_45]-SA-M3. Tính tiền trồng cỏ và lát gạch tạo bởi 2 parabol trong hình chữ nhật
                                             if dang_toan == "[D12_C4_B5_45]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_45()
+                                            
+                                            #[D12_C4_B5_46]-TF-M3. Quãng trường hình tròn chứa 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P), phương trình (P), diện tích, chi phí 
+                                            if dang_toan == "[D12_C4_B5_46]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_46()
                                                 
 
                                             ##################################################################
@@ -21382,7 +21390,7 @@ class Ui_MainWindow(object):
             so_cau=socau_TN+socau_DS+socau_TLN
             for i in range(1, so_cau+1):
                 ws.cell(row=i+1, column=1, value=i)            
-            wb.save(f"{goc_foler_path}\\TNMaker_2025_SmartTest.xlsx")
+            wb.save(f"{goc_foler_path}\\TNMaker_SmartTest.xlsx")
             return
 
         #Tạo đáp án tnmaker cho word

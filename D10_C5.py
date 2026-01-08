@@ -4379,7 +4379,7 @@ def y7y7u_L10_C5_B4_05():
 	m=random.randint(1,7)
 	a=sp.symbols("a")
 
-	noi_dung = (f"Cho hình vuông ${{{ten_tudien}}}$ có cạnh bằng ${{{latex(m*a)}}}$. Gọi ${{{M}}}$ là trung điểm của cạnh ${{{B}{C}}}$."
+	noi_dung = (f"Cho hình vuông ${{{A}{B}{C}{D}}}$ có cạnh bằng ${{{latex(m*a)}}}$. Gọi ${{{M}}}$ là trung điểm của cạnh ${{{B}{C}}}$."
 	f" Gọi ${{{G}}}$ là trọng tâm tam giác ${{{B}{C}{D}}}$. Xét tính đúng-sai của các khẳng định sau.")
 
 	kq1_T=f"*${vec(f"{A}{B}")}+{vec(f"{C}{D}")}+{vec(f"{B}{C}")}+{vec(f"{D}{A}")}={vec(f"0")}$" 

@@ -1412,7 +1412,7 @@ def ghj_7_jkl_L11_C4_B2_03():
 	chon=random.randint(1,2)
 	if chon==1:
 		noi_dung=(
-		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
+		f"Trong không gian cho đường thẳng ${{{a}}}$ nằm trong mặt phẳng ${{{P}}}$,"
 		f" điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$,"
 		f" đường thẳng ${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung."		
 		f" Tìm khẳng định đúng trong các khẳng định sau."
@@ -1445,7 +1445,7 @@ def ghj_7_jkl_L11_C4_B2_03():
 	
 	if chon==2:
 		noi_dung=(
-		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
+		f"Trong không gian cho đường thẳng ${{{a}}}$ nằm trong mặt phẳng ${{{P}}}$,"
 		f" điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$,"
 		f" đường thẳng ${{{b}}}$ và mặt phẳng ${{{P}}}$ không có điểm chung."
 		f" Tìm khẳng định sai trong các khẳng định sau."
@@ -1522,7 +1522,7 @@ def ghj_7_jkl_L11_C4_B2_04():
 	chon=random.randint(1,2)
 	if chon==1:
 		noi_dung=(
-			f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$, ${{{a}}}$ qua hai điểm ${{{A},{B}}}$ phân biệt."
+			f"Trong không gian cho đường thẳng ${{{a}}}$ nằm trong mặt phẳng ${{{P}}}$, ${{{a}}}$ qua hai điểm ${{{A},{B}}}$ phân biệt."
 			f" Đường thẳng ${{{b}}}$ cắt mặt phẳng ${{{P}}}$ tại điểm ${{{M}}}$"
 			f" và ${{{M}}}$ không thuộc ${{{a}}}$. Gọi ${{{N}}}$ là điểm bất kì thuộc ${{{b}}}$ và không trùng với điểm ${{{M}}}$."
 			f" Tìm khẳng định đúng trong các khẳng định sau."
@@ -1534,8 +1534,8 @@ def ghj_7_jkl_L11_C4_B2_04():
 			f"${{{M},{A},{B}}}$ đồng phẳng",
 			f"${{{N},{A},{B}}}$ đồng phẳng",
 			f"${{{A}{B}}}$ và ${{{M}{N}}}$ chéo nhau",
-			f"${{{N}{A}}}$ không chứa trong mặt phẳng ${{{P}}}$",
-			f"${{{N}{B}}}$ không chứa trong mặt phẳng ${{{P}}}$",
+			f"${{{N}{A}}}$ không nằm trong mặt phẳng ${{{P}}}$",
+			f"${{{N}{B}}}$ không nằm trong mặt phẳng ${{{P}}}$",
 			f"${{{A},{B},{M},{N}}}$ không đồng phẳng",
 			f"${{{N}{A}}}$ và ${{{M}{B}}}$ chéo nhau",
 			f"${{{N}}}$ không thuộc mặt phẳng ${{{P}}}$",
@@ -1559,7 +1559,7 @@ def ghj_7_jkl_L11_C4_B2_04():
 	
 	if chon==2:
 		noi_dung=(
-			f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$, ${{{a}}}$ qua hai điểm ${{{A},{B}}}$ phân biệt."
+			f"Trong không gian cho đường thẳng ${{{a}}}$ nằm trong mặt phẳng ${{{P}}}$, ${{{a}}}$ qua hai điểm ${{{A},{B}}}$ phân biệt."
 			f" Đường thẳng ${{{b}}}$ cắt mặt phẳng ${{{P}}}$ tại điểm ${{{M}}}$"
 			f" và ${{{M}}}$ không thuộc ${{{a}}}$. Gọi ${{{N}}}$ là điểm bất kì thuộc ${{{b}}}$ và không trùng với điểm ${{{M}}}$."
 			f" Tìm khẳng định sai trong các khẳng định sau."
@@ -1581,8 +1581,8 @@ def ghj_7_jkl_L11_C4_B2_04():
 			f"${{{M},{A},{B}}}$ đồng phẳng",
 			f"${{{N},{A},{B}}}$ đồng phẳng",
 			f"${{{A}{B}}}$ và ${{{M}{N}}}$ chéo nhau",
-			f"${{{N}{A}}}$ không chứa trong mặt phẳng ${{{P}}}$",
-			f"${{{N}{B}}}$ không chứa trong mặt phẳng ${{{P}}}$",
+			f"${{{N}{A}}}$ không nằm trong mặt phẳng ${{{P}}}$",
+			f"${{{N}{B}}}$ không nằm trong mặt phẳng ${{{P}}}$",
 			f"${{{A},{B},{M},{N}}}$ không đồng phẳng",
 			f"${{{N}{A}}}$ và ${{{M}{B}}}$ chéo nhau",
 			f"${{{N}}}$ không thuộc mặt phẳng ${{{P}}}$",
@@ -3542,7 +3542,7 @@ def ghj_7_jkl_L11_C4_B3_03():
 	chon=random.randint(1,2)
 	if chon==1:
 		noi_dung=(
-		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
+		f"Trong không gian cho đường thẳng ${{{a}}}$ nằm trong mặt phẳng ${{{P}}}$,"
 		f" đường thẳng ${{{b}}}$ song song với mặt phẳng ${{{P}}}$"
 		f" và điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$."
 		f" Tìm khẳng định đúng trong các khẳng định sau."
@@ -3576,7 +3576,7 @@ def ghj_7_jkl_L11_C4_B3_03():
 	
 	if chon==2:
 		noi_dung=(
-		f"Trong không gian cho đường thẳng ${{{a}}}$ chứa trong mặt phẳng ${{{P}}}$,"
+		f"Trong không gian cho đường thẳng ${{{a}}}$ nằm trong mặt phẳng ${{{P}}}$,"
 		f" đường thẳng ${{{b}}}$ song song với mặt phẳng ${{{P}}}$"
 		f" và điểm ${{{M}}}$ thuộc mặt phẳng ${{{P}}}$."
 		f" Tìm khẳng định sai trong các khẳng định sau."
@@ -3940,7 +3940,7 @@ def ghj_7_jkl_L11_C4_B3_05():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C4_B3_06]-M2. Cho hình chóp tam giác. Xé quan hệ: thuộc, song song, chứa trong
+#[D11_C4_B3_06]-M2. Cho hình chóp tam giác. Xé quan hệ: thuộc, song song, nằm trong
 def ghj_7_jkl_L11_C4_B3_06():	
 	vertex=random.choice([
 		["A","B","C","D"],["S","A","B","C"],["B","C","D","E"], 
@@ -4142,7 +4142,7 @@ def ghj_7_jkl_L11_C4_B3_06():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C4_B3_07]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, chứa trong, song song, giao điểm
+#[D11_C4_B3_07]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, nằm trong, song song, giao điểm
 def ghj_7_jkl_L11_C4_B3_07():
 	S="S"
 	vertex=random.choice([
@@ -4371,7 +4371,7 @@ def ghj_7_jkl_L11_C4_B3_07():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
-#[D11_C4_B3_08]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, chứa trong, song song, giao tuyến
+#[D11_C4_B3_08]-TF-M2. Cho h.chóp-hbh. Xét Đ-S:quan hệ thuộc, nằm trong, song song, giao tuyến
 def ghj_7_jkl_L11_C4_B3_08():
 	S="S"
 	vertex=random.choice([
@@ -5509,13 +5509,13 @@ def ghj_7_jkl_L11_C4_B4_10():
 	
 	if chon==2:
 		kq2_T=f"*$A{H}\\subset (A{D}{I})$"
-		kq2_F=f"Đường thẳng ${{A{H}}}$ không chứa trong mặt phẳng $(A{D}{I})$"
+		kq2_F=f"Đường thẳng ${{A{H}}}$ không nằm trong mặt phẳng $(A{D}{I})$"
 		
 		HDG=f"$A{H}\\subset (A{D}{I})$ vì $A{I}{H}{D}$ là hình bình hành."
 
 	if chon==3:
 		kq2_T=f"*${D}{I}\\subset (A{D}{H})$"
-		kq2_F=f"Đường thẳng ${{{D}{I}}}$ không chứa trong mặt phẳng $(A{D}{H})$"
+		kq2_F=f"Đường thẳng ${{{D}{I}}}$ không nằm trong mặt phẳng $(A{D}{H})$"
 		
 		HDG=f"${D}{I}\\subset (A{D}{H})$ vì $A{I}{H}{D}$ là hình bình hành."
 
@@ -5527,29 +5527,29 @@ def ghj_7_jkl_L11_C4_B4_10():
 
 	if chon==5:
 		kq2_T=f"*Đường thẳng ${{{C}{K}}}$ cắt mặt phẳng $({D}{E}{F})$"
-		kq2_F=f"Đường thẳng ${{{C}{K}}}$ chứa trong mặt phẳng $({D}{E}{F})$"
+		kq2_F=f"Đường thẳng ${{{C}{K}}}$ nằm trong mặt phẳng $({D}{E}{F})$"
 		
 		HDG=f"Đường thẳng ${{{C}{K}}}$ cắt mặt phẳng $({D}{E}{F})$ tại trung điểm thuộc ${{A{D}}}$."
 
 	if chon==6:
-		kq2_T=f"*Đường thẳng ${{{K}{C}}}$ chứa trong mặt phẳng $(A{D}{F})$"
+		kq2_T=f"*Đường thẳng ${{{K}{C}}}$ nằm trong mặt phẳng $(A{D}{F})$"
 		kq2_F=f"Đường thẳng ${{{K}{C}}}$ cắt mặt phẳng $(A{D}{F})$"
 		
-		HDG=f"Đường thẳng ${{{K}{C}}}$ chứa trong mặt phẳng $(A{D}{F})$."
+		HDG=f"Đường thẳng ${{{K}{C}}}$ nằm trong mặt phẳng $(A{D}{F})$."
 
 	if chon==7:
 		kq2_T=f"*Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(ABC)$"
 		kq2_F=random.choice([
 		f"Đường thẳng ${{{F}{K}}}$ và mặt phẳng $(ABC)$ không có điểm chung",
-		f"Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(ABC)$." ])
+		f"Đường thẳng ${{{F}{K}}}$ nằm trong mặt phẳng $(ABC)$." ])
 		
 		HDG=f"Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(ABC)$ tại điểm thuộc ${{AC}}$."
 
 	if chon==8:
-		kq2_T=f"*Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$"
+		kq2_T=f"*Đường thẳng ${{{F}{K}}}$ nằm trong mặt phẳng $(AC{D})$"
 		kq2_F=f"Đường thẳng ${{{F}{K}}}$ cắt mặt phẳng $(AC{D})$"
 		
-		HDG=f"Đường thẳng ${{{F}{K}}}$ chứa trong mặt phẳng $(AC{D})$."	
+		HDG=f"Đường thẳng ${{{F}{K}}}$ nằm trong mặt phẳng $(AC{D})$."	
 	kq2=random.choice([kq2_T, kq2_F])
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq2==kq2_F:
@@ -5561,7 +5561,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq3_F=f"Đường thẳng ${{{I}{K}}}$ cắt mặt phẳng $(BC{F})$"
 		
 		HDG=(f"Gọi ${{M,N}}$ là trung điểm của ${{BC,C{F}}}$.\n\n"
-			f"${{{I}{K}}}$ không chứa trong $(BC{F})$.\n\n"
+			f"${{{I}{K}}}$ không nằm trong $(BC{F})$.\n\n"
 			f"Vậy ${I}{K}//(BC{F})$.")
 	
 	if chon==2:
@@ -5569,14 +5569,14 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq3_F=f"Đường thẳng ${{{I}{K}}}$ cắt mặt phẳng $(C{E}{F})$"
 		
 		HDG=(f"Gọi ${{M,N}}$ là trung điểm của ${{BC,C{F}}}$.\n\n"
-			f"${{{I}{K}}}$ không chứa trong $(C{E}{F})$.\n\n"
+			f"${{{I}{K}}}$ không nằm trong $(C{E}{F})$.\n\n"
 			f"Vậy ${I}{K}//(C{E}{F})$.")
 
 	if chon==3:
 		kq3_T=f"*Đường thẳng ${{{I}{H}}}$ song song với mặt phẳng $(C{E}{F})$" 
 		kq3_F=f"Đường thẳng ${{{I}{H}}}$ cắt mặt phẳng $(C{E}{F})$"
 		
-		HDG=(f"${{{I}{H}}}$ không chứa trong $(C{E}{F})$.\n\n"
+		HDG=(f"${{{I}{H}}}$ không nằm trong $(C{E}{F})$.\n\n"
 			f"${I}{H} // C{F} \\subset (C{E}{F})$.\n\n"
 			f"Vậy ${I}{K}//(C{E}{F})$.")
 
@@ -5585,7 +5585,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq3_F=random.choice([f"Đường thẳng ${{{I}{H}}}$ cắt mặt phẳng $({D}{E}{B})$",
 		f"Đường thẳng ${{{I}{H}}}$ nằm trong mặt phẳng $({D}{E}{B})$" ])
 		
-		HDG=(f"${{{I}{H}}}$ không chứa trong $({D}{E}{B})$.\n\n"
+		HDG=(f"${{{I}{H}}}$ không nằm trong $({D}{E}{B})$.\n\n"
 			f"${I}{H} // B{E} \\subset ({D}{E}{B})$.\n\n"
 			f"Vậy ${I}{H}//({D}{E}{B})$.")
 
@@ -5594,7 +5594,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq3_F=random.choice([f"Đường thẳng ${{{I}{H}}}$ cắt mặt phẳng $(A{D}{F})$",
 		f"Đường thẳng ${{{I}{H}}}$ nằm trong mặt phẳng $(A{D}{F})$" ])
 		
-		HDG=(f"${{{I}{H}}}$ không chứa trong $(A{D}{F})$.\n\n"
+		HDG=(f"${{{I}{H}}}$ không nằm trong $(A{D}{F})$.\n\n"
 			f"${I}{H} // A{D} \\subset (A{D}{F})$.\n\n"
 			f"Vậy ${I}{H}//(A{D}{F})$.")
 
@@ -5603,7 +5603,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq3_F=random.choice([f"Đường thẳng ${{{D}{H}}}$ cắt mặt phẳng $({F}{A}{I})$",
 		f"Đường thẳng ${{{D}{H}}}$ nằm trong mặt phẳng $({F}{A}{I})$" ])
 		
-		HDG=(f"${{{D}{H}}}$ không chứa trong $({F}{A}{I})$.\n\n"
+		HDG=(f"${{{D}{H}}}$ không nằm trong $({F}{A}{I})$.\n\n"
 			f"${D}{H} // A{I} \\subset ({F}{A}{I})$.\n\n"
 			f"Vậy ${D}{H}//({F}{A}{I})$.")
 
@@ -5612,7 +5612,7 @@ def ghj_7_jkl_L11_C4_B4_10():
 		kq3_F=random.choice([f"Đường thẳng ${{{A}{I}}}$ cắt mặt phẳng $({B}{D}{H})$",
 		f"Đường thẳng ${{{A}{I}}}$ nằm trong mặt phẳng $({B}{D}{H})$" ])
 		
-		HDG=(f"${{{A}{I}}}$ không chứa trong $({B}{D}{H})$.\n\n"
+		HDG=(f"${{{A}{I}}}$ không nằm trong $({B}{D}{H})$.\n\n"
 			f"${A}{I} // {D}{H} \\subset ({B}{D}{H})$.\n\n"
 			f"Vậy ${A}{I}//({B}{D}{H})$.")
 
@@ -5815,63 +5815,63 @@ def ghj_7_jkl_L11_C4_B4_11():
 	
 	if chon==1:
 		kq2_T=f"*${E}G_1\\subset (AC{G}{E})$"
-		kq2_F=f"${E}G_1$ không chứa trong $(AC{G}{E})$"
+		kq2_F=f"${E}G_1$ không nằm trong $(AC{G}{E})$"
 		
 		HDG=(f"Gọi ${{O'}}$ là tâm của hình bình hành ${{{E}{F}{G}{H}}}$.\n\n"
 			f"${E}G_1\\in AO'\\subset (AC{G}{E})$.")
 	
 	if chon==2:
 		kq2_T=f"*${C}G_2\\subset (AC{G}{E})$"
-		kq2_F=f"${C}G_2$ không chứa trong $(AC{G}{E})$"
+		kq2_F=f"${C}G_2$ không nằm trong $(AC{G}{E})$"
 		
 		HDG=(f"Gọi ${{O}}$ là tâm của hình bình hành ${{{A}{B}{C}{D}}}$.\n\n"
 			f"${C}G_2\\in {G}O\\subset (AC{G}{E})$.")
 
 	if chon==3:
-		kq2_T=f"*${E}G_1$ không chứa trong $(AD{H}{E})$"
+		kq2_T=f"*${E}G_1$ không nằm trong $(AD{H}{E})$"
 		kq2_F=f"${E}G_1\\subset (AD{H}{E})$"
 		
 		HDG=(f"Gọi ${{O'}}$ là tâm của hình bình hành ${{{E}{F}{G}{H}}}$.\n\n"
 			f"${E}G_1\\in AO'\\subset (AC{G}{E})$.\n\n"
-			f"Do đó  ${E}G_1$ không chứa trong $(AD{H}{E})$.")
+			f"Do đó  ${E}G_1$ không nằm trong $(AD{H}{E})$.")
 
 	if chon==4:
-		kq2_T=f"*${C}G_2$ không chứa trong $(CD{H}{G})$"
+		kq2_T=f"*${C}G_2$ không nằm trong $(CD{H}{G})$"
 		kq2_F=f"${C}G_2\\subset (CD{H}{G})$"
 		
 		HDG=(f"Gọi ${{O}}$ là tâm của hình bình hành ${{{A}{B}{C}{D}}}$.\n\n"
 			f"${C}G_2\\in {G}O\\subset (AC{G}{E})$.\n\n"
-			f"Do đó ${C}G_2$ không chứa trong $(CD{H}{G})$.")
+			f"Do đó ${C}G_2$ không nằm trong $(CD{H}{G})$.")
 
 	if chon==5:
-		kq2_T=f"*${{{A}{H}}}$ không chứa trong $(AB{F}{E})$"
+		kq2_T=f"*${{{A}{H}}}$ không nằm trong $(AB{F}{E})$"
 		kq2_F=f"${A}{H}\\subset (AB{F}{E})$"
 		
-		HDG=(f"${{{A}{H}}}$ không chứa trong $(AB{F}{E})$.")
+		HDG=(f"${{{A}{H}}}$ không nằm trong $(AB{F}{E})$.")
 
 	if chon==6:
 		kq2_T=f"*${B}{G}\\subset (A{H}{G})$"
-		kq2_F=f"${{{B}{G}}}$ không chứa trong $(A{H}{G})$"
+		kq2_F=f"${{{B}{G}}}$ không nằm trong $(A{H}{G})$"
 		
 		HDG=(f"${B}{G}\\subset (A{H}B{G})$.")
 
 	if chon==7:
 		kq2_T=f"*${D}{G}\\subset (A{G}{F})$"
-		kq2_F=f"${{{D}{G}}}$ không chứa trong $(A{G}{F})$"
+		kq2_F=f"${{{D}{G}}}$ không nằm trong $(A{G}{F})$"
 		
 		HDG=(f"${D}{G}\\subset (A{G}{F})$.")
 
 	if chon==8:
 		kq2_T=f"*${B}{E}\\subset (C{E}{H})$"
-		kq2_F=f"${{{B}{E}}}$ không chứa trong $(C{E}{H})$"
+		kq2_F=f"${{{B}{E}}}$ không nằm trong $(C{E}{H})$"
 		
 		HDG=(f"${B}{E}\\subset (C{E}{H})$.")
 
 	if chon==9:
-		kq2_T=f"*${{{B}{E}}}$ không chứa trong $({F}{A}{D})$"
+		kq2_T=f"*${{{B}{E}}}$ không nằm trong $({F}{A}{D})$"
 		kq2_F=f"${B}{E}\\subset ({F}{A}{D})$"
 		
-		HDG=(f"${{{B}{E}}}$ không chứa trong $({F}{A}{D})$.")
+		HDG=(f"${{{B}{E}}}$ không nằm trong $({F}{A}{D})$.")
 
 
 	kq2=random.choice([kq2_T, kq2_F])
@@ -6421,7 +6421,7 @@ def ghj_7_jkl_L11_C4_B5_04():
 	if chon==4:
 		noi_dung=(
 		f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$."
-		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(AC{F}{E})$ theo phương ${{BC}}$ là điểm nào?")
+		f" Hình chiếu song song của điểm ${{{E}}}$ lên mặt phẳng $(AC{F}{D})$ theo phương ${{BC}}$ là điểm nào?")
 		
 		kq=F
 		kq_false=[E,A,B,C,D]

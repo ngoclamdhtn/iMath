@@ -313,20 +313,21 @@ def uz9zu_L11_C6_B1_04():
     co_so=random.choice(["a","b","x","y"])
 
     t=(n+1/p)*(1/m)
-    t2=m+n+p
-    t3=m*n/p
-    t4=n*p/m  
+    kq=t
+    kq_false = set()
+    while len(kq_false) < 4:    
+        numbers = round(random.uniform(2, 5),1)
+        if numbers!=t:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
 
-    kq =f"$P={{{co_so}^{{{latex(my_module.hien_phan_so(t))}}}}}$"
-    kq2=f"$P={{{co_so}^{{{latex(my_module.hien_phan_so(t2))}}}}}$"
-    kq3=f"$P={{{co_so}^{{{latex(my_module.hien_phan_so(t3))}}}}}$"
-    kq4=f"$P={{{co_so}^{{{latex(my_module.hien_phan_so(t4))}}}}}$"    
 
     #Tạo các phương án
-    pa_A= f"*{kq}"
-    pa_B= f"{kq2}"
-    pa_C= f"{kq3}"
-    pa_D= f"{kq4}"
+    pa_A= f"*$P={{{co_so}}}^{{{phan_so(kq)}}}$"
+    pa_B= f"$P={{{co_so}}}^{{{phan_so(kq2)}}}$"
+    pa_C= f"$P={{{co_so}}}^{{{phan_so(kq3)}}}$"
+    pa_D= f"$P={{{co_so}}}^{{{phan_so(kq4)}}}$"
 
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -338,7 +339,8 @@ def uz9zu_L11_C6_B1_04():
 
     debai= f"{noi_dung}\n"
 
-    noi_dung_loigiai=f"$P=\\sqrt[{m}] {{{a_mu_n}.\\sqrt[{p}] {{{co_so}}}}}= {co_so}^{{\\left({n}+{latex(my_module.hien_phan_so(1/p))}\\right).{latex(my_module.hien_phan_so(1/m))}}}$. Vậy {kq}."    
+    noi_dung_loigiai=(f"$P=\\sqrt[{m}] {{{a_mu_n}.\\sqrt[{p}] {{{co_so}}}}}= {co_so}^{{\\left({n}+{latex(my_module.hien_phan_so(1/p))}\\right).{latex(my_module.hien_phan_so(1/m))}}}$."
+        f" Vậy $P={{{co_so}}}^{{{phan_so(kq)}}}$." )
     noi_dung_loigiai=noi_dung_loigiai.replace("frac","tfrac")
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
  
@@ -853,22 +855,21 @@ def uz9zu_L11_C6_B1_13():
     if chon==1:
         noi_dung = (
         f"Tính giá trị biểu thức $P={latex((a+b*sqrt(c))**m)}.{latex((a-b*sqrt(c))**n)}$ (kết quả làm tròn đến hàng phần mười)."
-        )
+        )          
     
     if chon==2:
         noi_dung = (
         f"Tính giá trị biểu thức $P={latex((a-b*sqrt(c))**n)}.{latex((a+b*sqrt(c))**m)}$ (kết quả làm tròn đến hàng phần mười)."
         )
-
-    P=a-b*sqrt(c)   
-
+    P=a+b*sqrt(c)
     
     dap_an=f"{round_half_up(P,1):.1f}".replace(".",",")
-
+    
     noi_dung_loigiai=(
-    f"$P={latex((a+b*sqrt(c))**n)}.({latex((a+b*sqrt(c)))}).{latex((a-b*sqrt(c))**n)}$\n\n"
-    f" $=[({latex((a+b*sqrt(c)))}).({latex((a-b*sqrt(c)))})]^{{{n}}}.({latex(a-b*sqrt(c))})=1^{{{n}}}.({latex((a-b*sqrt(c)))})={latex((a-b*sqrt(c)))}={dap_an}$."
-    )    
+        f"$P={latex((a+b*sqrt(c))**n)}.({latex((a+b*sqrt(c)))}).{latex((a-b*sqrt(c))**n)}$\n\n"
+        f" $=[({latex((a+b*sqrt(c)))}).({latex((a-b*sqrt(c)))})]^{{{n}}}.({latex(a+b*sqrt(c))})=1^{{{n}}}.({latex((a+b*sqrt(c)))})={latex((a+b*sqrt(c)))}={dap_an}$."
+        ) 
+     
         
     debai_word= f"{noi_dung}"
 

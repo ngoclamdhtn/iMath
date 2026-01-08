@@ -2266,7 +2266,7 @@ def yy3yy_L10_C4_B2_06():
     kq4=random.choice([kq4_T, kq4_F])
 
     l_c=f"{sqrt(l_a**2+l_b**2-2*l_a*l_b*cos(goc_C)):.2f}".replace(".",",")
-    HDG=f"$\\cos {B}=\\dfrac{{{l_a}^2+{l_c}^2-{l_a}^2}}{{2.{l_a}.{l_c}}}={cosB:.3f}\\Rightarrow \\widehat{{{B}}}={goc_B}^\\circ$."
+    HDG=f"$\\cos {B}=\\dfrac{{{l_a}^2+{l_c}^2-{l_b}^2}}{{2.{l_a}.{l_c}}}={cosB:.3f}\\Rightarrow \\widehat{{{B}}}={goc_B}^\\circ$."
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -2393,14 +2393,14 @@ def yy3yy_L10_C4_B2_07():
     kq4=random.choice([kq4_T, kq4_F])
 
     l_c=f"{sqrt(l_a**2+l_b**2-2*l_a*l_b*cos(goc_C)):.2f}".replace(".",",")
-    HDG=f"$\\cos {B}=\\dfrac{{{l_a}^2+{l_c}^2-{l_a}^2}}{{2.{l_a}.{l_c}}}={round(cosB,3)}\\Rightarrow \\widehat{{{B}}}={goc_B}^\\circ$."
+    HDG=f"$\\cos {B}=\\dfrac{{{l_a}^2+{l_c}^2-{l_b}^2}}{{2.{l_a}.{l_c}}}={round(cosB,3)}\\Rightarrow \\widehat{{{B}}}={goc_B}^\\circ$."
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
     #Trộn các phương án
     list_PA =[kq1, kq2, kq3, kq4]
-    random.shuffle(list_PA)
+    #random.shuffle(list_PA)
     list_TF=my_module.tra_ve_TF(list_PA)
 
     debai= f"{noi_dung}\n\n"\

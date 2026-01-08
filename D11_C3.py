@@ -1980,13 +1980,16 @@ def gh11gh_L11_C3_B1_23():
             b=a+random.randint(1,3)
             if b==0:
                 continue
+
             q=a/b
+            if q>=1:
+                continue
             u1 = random.choice([random.randint(-5,-2), random.randint(1,5)])
             if all([u1!=1, u1!=-1, u1/(1-q)>-5]):
                 break
     
 
-    S=u1/(1-q)
+    S=float(u1/(1-q))
     u2=u1*q
     u3=u1*q**2
     dau ="+"

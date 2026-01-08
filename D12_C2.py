@@ -9960,7 +9960,7 @@ def mnj_34_jkl_L12_C2_B3_57():
 
 		b1=random.randint(10,30)/10
 		b2=random.randint(10,30)/10
-		b3=-random.randint(4,9)/10
+		b3=random.randint(4,9)/10
 		if all([a1!=b1, a2!=b2, a3!=b3]):
 			break
 

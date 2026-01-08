@@ -8,6 +8,11 @@ import my_module
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
     return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
+#Trả về dạng phân số 
+def phan_so(t):
+    m=latex(Rational(t).limit_denominator(100000000000))
+    return m
  
 # Hàm kiểm tra số hữu tỉ
 def is_rational(number):
@@ -3065,7 +3070,7 @@ def ngh_kjg_L11_C1_B2_12():
             cos_value=a/b
         else:
             cos_value=-a/b
-        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$ (kết quả làm tròn đến hàng phần mười)."
+        noi_dung=f"Cho góc lượng giác $\\alpha$ thỏa mãn $\\cos \\alpha={phan_so(cos_value)}, \\alpha \\in {cung}$. Tính ${gia_tri_LG}$."
 
         if cung in [cung_I, cung_II]:       
             sin_value=sqrt(b**2-a**2)/b            

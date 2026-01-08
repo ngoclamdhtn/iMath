@@ -1659,7 +1659,7 @@ def treqw_L11_C5_B2_10():
 	for a, b in zip(tan_so,gia_tri_dai_dien):		
 		tich.append(a*b)
 		tich_dai_dien_square_x_tan_so.append(b**2*a)
-		st_b=f"{b}".replace(".",",")
+		st_b=f"{float(b)}".replace(".",",")
 
 		st_dai_dien_x_tan_so+=f"{a}.{st_b}+"
 		st_dai_dien_square_x_tan_so+=f"{a}.{st_b}^2+"
