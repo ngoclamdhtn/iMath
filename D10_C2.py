@@ -564,18 +564,12 @@ def bch_12_L10_C2_B1_05():
     chon=random.randint(1,2)
     
     if chon==1:
-        noi_dung=random.choice([
-        f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào",
-        f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào"
-        ])
+        noi_dung= f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào"
         cap_nghiem=mien_nghiem_BPT_2an(a,b,c,">")[0]
         kq2,kq3,kq4=mien_nghiem_BPT_2an(a,b,c,"<")[0:3]
     
-    if chon==2:
-        noi_dung=random.choice([
-        f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice(["<","\\le"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào trong các điểm sau?",
-        f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice([">","\\ge"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào trong các điểm sau?"
-        ])
+    if chon==2: 
+        noi_dung= f"Miền nghiệm của bất phương trình ${latex(f+d*x+e*y+h)}{random.choice(["<","\\le"])} {latex(d*x+e*y+h)}$ là nửa mặt phẳng chứa điểm nào trong các điểm sau?"
         cap_nghiem=mien_nghiem_BPT_2an(a,b,c,"<")[0]
         kq2,kq3,kq4=mien_nghiem_BPT_2an(a,b,c,">")[0:3]
 
@@ -607,7 +601,7 @@ def bch_12_L10_C2_B1_05():
     for i in range(4):
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\\ \n"\
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
     f"\\choice\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\

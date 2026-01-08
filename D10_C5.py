@@ -4840,6 +4840,7 @@ def y7y7u_L10_C5_B4_08():
 
 	cos=random.choice([1,-1,1/2,-1/2, 1/4,3/4,-1/4,-3/4])
 	tich_vh=a*b*cos
+	s_tich_vh=f"{tich_vh}".replace(".0","").replace(".",",")
 
 	m=random.choice([i for i in range(-5, 5) if i!=0])
 	n=random.choice([i for i in range(-5, 5) if i!=0])
@@ -4851,7 +4852,9 @@ def y7y7u_L10_C5_B4_08():
 
 	vec_a=f"{vec(f"{ten_a}")}"
 	vec_b=f"{vec(f"{ten_b}")}"
-	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)	
+	modun=sqrt((m*a)**2+2*m*n*tich_vh+(n*b)**2)
+	modun_sqr=f"{float((m*a)**2+2*m*n*tich_vh+(n*b)**2)}".replace(".0","")
+
 
 	kq=f"{round_half_up(tich_vh/(a*b),1)}".replace(".",",")
 	noi_dung=(f"Cho hai vectơ ${vec_a}$ và ${vec_b}$ thỏa mãn $|{vec_a}|={a},|{vec_b}|={b}$ và $|{m}{vec_a}+{n}{vec_b}|={latex(nsimplify(modun))}$."
@@ -4863,9 +4866,9 @@ def y7y7u_L10_C5_B4_08():
 	noi_dung_loigiai=(
 		f"$|{m}{vec_a}+{n}{vec_b}|^2=({m}{vec_a}+{n}{vec_b})^2={m**2}{vec_a}^2+{2*m*n}{vec_a}{vec_b}+{n**2}{vec_b}$\n\n"
 		f"$={m**2}.{a}^2+{2*m*n}.{vec_a}{vec_b}+{n**2}.{b}^2={(m*a)**2+(n*b)**2}+{2*m*n}.{vec_a}{vec_b}$.\n\n"
-		f"Ta có: $|{m}{vec_a}+{n}{vec_b}|^2={modun**2}\\Rightarrow {(m*a)**2+(n*b)**2}+{2*m*n}.{vec_a}{vec_b}={modun**2}$.\n\n"
-		f"$\\Rightarrow {vec_a}.{vec_b}={tich_vh}$.\n\n"
-		f"$\\cos({vec_a},{vec_b})=\\dfrac{{{vec_a}.{vec_b}}}{{|{vec_a}|.|{vec_b}|}}=\\dfrac{{{tich_vh}}}{{{a}.{b}}}={phan_so(tich_vh/(a*b))}$.\n\n"
+		f"Ta có: $|{m}{vec_a}+{n}{vec_b}|^2={modun_sqr}\\Rightarrow {(m*a)**2+(n*b)**2}+{2*m*n}.{vec_a}{vec_b}={modun_sqr}$.\n\n"
+		f"$\\Rightarrow {vec_a}.{vec_b}={s_tich_vh}$.\n\n"
+		f"$\\cos({vec_a},{vec_b})=\\dfrac{{{vec_a}.{vec_b}}}{{|{vec_a}|.|{vec_b}|}}=\\dfrac{{{s_tich_vh}}}{{{a}.{b}}}={phan_so(tich_vh/(a*b))}$.\n\n"
 		f"Đáp án: {kq}"
 		)
 	

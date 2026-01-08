@@ -7676,9 +7676,9 @@ def ngh_kjg_L11_C1_B6_01():
     c = round(random.uniform(12.0, 14.0), 1)  # đường trung bình
 
     noi_dung = (
-        f"Số giờ có ánh sáng mặt trời tại một địa phương được cho bởi hàm số:\n\n" \
+        f"Số giờ có ánh sáng mặt trời tại một địa phương ở ngày thứ ${{x}}$ được cho bởi hàm số:\n\n" \
         f" $y={phan_so(a)}\\sin \\left[{latex(pi/180)}(x+{b})\\right]+{phan_so(c)}$, với $1 \\le x \\le 365$.\n\n" \
-        f" Hỏi ngày nào trong năm thì số giờ ánh sáng của địa phương đó là lớn nhất?"
+        f" Hỏi ngày đầu tiên trong năm mà số giờ ánh sáng của địa phương đó đạt lớn nhất là ngày thứ bao nhiêu?"
     )
 
     results = []
