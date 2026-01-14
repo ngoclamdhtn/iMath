@@ -4567,7 +4567,7 @@ def uz9zu_L11_C6_B3_27():
     
     if chon==2:
         for i in range(int(x_1)-2,int(x_2)+2):
-            if x_1<=i and i<=x_2:
+            if x_1<i and i<x_2:
                 dem+=1
         noi_dung = (
         f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
@@ -4575,9 +4575,9 @@ def uz9zu_L11_C6_B3_27():
 
         noi_dung_loigiai=(        
         f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
-        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} \\le 0$\n\n"
-        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} \\le 0$\n\n"
-        f"$\\Leftrightarrow {latex(x_1)} \\le m \\le {latex(x_2)}$.\n\n"
+        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} < 0$\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} < 0$\n\n"
+        f"$\\Leftrightarrow {latex(x_1)} < m < {latex(x_2)}$.\n\n"
         f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
 
     if chon==3:
@@ -4603,7 +4603,7 @@ def uz9zu_L11_C6_B3_27():
         t_2=t_1+random.randint(1,5)
         p=t_1/t_2
         for i in range(int(x_1)-2,int(x_2)+2):
-            if x_1<=i and i<=x_2:
+            if x_1<i and i<x_2:
                 dem+=1
         noi_dung = (
         f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
@@ -4613,8 +4613,8 @@ def uz9zu_L11_C6_B3_27():
         noi_dung_loigiai=(        
         f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
         f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} \\le 0$\n\n"
-        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} \\le 0$\n\n"
-        f"$\\Leftrightarrow {latex(x_1)} \\le m \\le {latex(x_2)}$.\n\n"
+        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} <e 0$\n\n"
+        f"$\\Leftrightarrow {latex(x_1)} < m < {latex(x_2)}$.\n\n"
         f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
     noi_dung=thay_dau_cong_tru(noi_dung)
     noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)  
@@ -4634,6 +4634,344 @@ def uz9zu_L11_C6_B3_27():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+
+
+#[D11_C6_B3_28]-SA-M3. Tìm m để hàm số a/căn(logarit) có tập xác định là R.
+def uz9zu_L11_C6_B3_28():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x")
+
+    # ---- Sinh hệ số ngẫu nhiên ----
+    # dạng x^2 - 2mx + C
+    # C sinh để tam thức luôn dương theo bài gốc (C >= 10)
+    C = random.randint(12, 50)
+
+    # cơ số log: 2, 3, 5
+    k = random.randint(2,9)
+
+    # ---- Điều kiện xác định ----
+    # log_k( x^2 -2mx + C ) > 0  ⇔ x^2 -2mx + C > 1
+    # đặt T(x) = x^2 -2mx + (C-1) >0  ∀x
+    # T dương ∀x ⇔ Δ < 0
+    # Δ = (-2m)^2 - 4*(C-1) < 0  ⇔ 4m^2 < 4(C-1) ⇔ m^2 < C-1
+    # Suy ra m ∈(-√(C-1), √(C-1))
+
+    A = C - 1
+    bound = sp.sqrt(A)
+    low = -bound
+    high = bound
+
+    # Các giá trị nguyên thỏa
+    L = int(sp.ceiling(low))
+    R = int(sp.floor(high))   # L..R
+
+    # Số giá trị nguyên
+    count = max(0, R - L + 1)
+
+    # Chuỗi biểu diễn
+    sL = str(L)
+    sR = str(R)
+
+    noi_dung = (
+        f"Tìm số giá trị nguyên của tham số ${{m}}$ để hàm số "
+        f"$y=\\dfrac{{{latex(random.randint(1,5)*x+random.randint(-6,8))}}}{{\\sqrt{{\\log_{{{k}}}(x^2-2mx+{C})}}}}$ "
+        f"có tập xác định là $\\mathbb{{R}}$."
+    )
+
+    noi_dung_loigiai = (
+        f"Hàm xác định khi:\n\n"
+        f"$\\log_{{{k}}}(x^2-2mx+{C})>0 \\Leftrightarrow x^2-2mx+{C}>1$ .\n\n"
+        f"Yêu cầu bài toán dẫn tới:\n\n"
+        f"$x^2-2mx+{C-1}>0,\\forall x$.\n\n"
+        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow m^2-{C-1}<0$.\n\n"
+        f"$\\Leftrightarrow -\\sqrt{{{C-1}}}<m<\\sqrt{{{C-1}}}$.\n\n"
+        f"Suy ra $m$ là số nguyên thuộc đoạn:${sL}\\le m\\le {sR}$\n\n"
+        f"Vậy có ${{{count}}}$ giá trị nguyên của ${{m}}$ thoả yêu cầu."
+    )
+
+    dap_an = count
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D11_C6_B3_29]-SA-M3. Tính dân số tăng theo mô hình S = A.e^{rt}
+def uz9zu_L11_C6_B3_29():
+
+    x = sp.symbols("x")  # giữ cấu trúc
+
+    ten = random.choice([
+        "X", "Y", "Z", "A", "B",
+    ])
+
+    # --- Sinh dữ liệu ngẫu nhiên ---
+    # Năm gốc (năm 0) và năm cần tính
+    nam0 = random.randint(2015, 2025)
+    k = random.randint(5, 15)        # số năm sau
+    nam_t = nam0 + k
+
+    # Dân số năm gốc (triệu người)
+    A = random.randint(40, 120)      # 50–120 triệu
+
+    # Tỉ lệ tăng dân số r (%/năm)
+    r_percent = random.choice([0.65, 0.72, 0.8, 0.93, 1.05, 1.2, 1.35])  # %
+    r = r_percent / 100
+
+    # Chuỗi hiển thị r với dấu phẩy
+    if abs(r_percent - int(r_percent)) < 1e-9:
+        s_r = str(int(r_percent)).replace(".", ",")
+    else:
+        s_r = f"{r_percent:.2f}".rstrip("0").rstrip(".").replace(".", ",")
+
+    # --- Tính dân số sau k năm theo mô hình S = A.e^{rt} ---
+    S_t = float(A * sp.E**(r * k))
+
+    # Làm tròn đến hàng đơn vị (triệu người)
+    S_t_rounded = round_half_up(S_t, 0)
+    dap_an = str(int(S_t_rounded))
+
+    # Có thể hiển thị thêm một số gần đúng 1 chữ số thập phân trong lời giải
+    S_t_1 = f"{round_half_up(S_t,1):.1f}".replace(".", ",")
+
+    # --- Nội dung đề ---
+    noi_dung = (
+        f"Ta coi năm lấy làm mốc để tính dân số của một vùng (hoặc một quốc gia) là năm 0. "
+        f"Khi đó, dân số của vùng (hoặc quốc gia) đó ở năm thứ ${{t}}$ là hàm số theo biến ${{t}}$ được cho bởi công thức "
+        f"$S=A\\cdot e^{{rt}}$. Trong đó ${{A}}$ là dân số của vùng (hoặc quốc gia) đó ở năm 0 và ${{r}}$ là tỉ lệ tăng dân số hằng năm.\n\n"
+        f"Biết rằng dân số khu vực {ten} năm {nam0} ước tính là {A} triệu người và tỉ lệ tăng dân số ${s_r}\\%$/năm. "
+        f"Giả sử tỉ lệ tăng dân số hằng năm là như nhau tính từ năm {nam0}, dân số khu vực X năm {nam_t} là bao nhiêu triệu người"
+        f"(làm tròn kết quả đến hàng đơn vị)."
+    )
+
+    # --- Lời giải ---
+    noi_dung_loigiai = (
+        f"$S = A\\cdot e^{{rt}}$.\n\n"
+        f"$A = {A}$ (triệu người),  $r = {s_r}\\% = {s_r}\\cdot 10^{{-2}}$.\n\n"
+        f"Khoảng thời gian từ năm {nam0} đến năm {nam_t} là: $t = {nam_t}-{nam0} = {k}$ (năm).\n\n"
+        f"Dân số năm {nam_t} được ước tính bởi:\n\n"
+        f"$S({k}) = {A}\\cdot e^{{{s_r}\\cdot 10^{{-2}}\\cdot {k}}} \\approx {S_t_1}$ (triệu người).\n\n"
+        f"Làm tròn đến hàng đơn vị, ta được dân số khu vực {ten} năm {nam_t} xấp xỉ {dap_an} triệu người.\n\n"
+        f"Vậy đáp án cần tìm là {dap_an} (triệu người)."
+    )
+
+    # --- Kết quả trả về ---
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C6_B3_30]-SA-M3. Tìm số đơn vị kiến thức học được theo hàm f(t)=c(1-e^{-kt})
+def uz9zu_L11_C6_B3_30():
+    x = sp.symbols("x")  # giữ cấu trúc
+
+    ten = random.choice([
+        "Lam", "Minh", "Hùng", "An", "Vinh",
+        "Tuấn", "Nam", "Hải", "Quân", "Phúc"
+    ])
+
+    # --- Sinh dữ liệu ngẫu nhiên ---
+    # tổng số kiến thức c
+    c = random.randint(15, 40)   # đơn vị kiến thức
+
+    # tốc độ tiếp thu k (kiến thức/ngày) dạng nhỏ
+    k_options = [0.1, 0.12, 0.15, 0.18, 0.2, 0.22, 0.25, 0.3]
+    k = random.choice(k_options)
+
+    # thời gian t (ngày)
+    t = random.randint(2, 10)
+
+    # --- Tính số đơn vị kiến thức đã học ---
+    f_t = float(c * (1 - sp.E**(-k * t)))
+
+    # làm tròn 1 chữ số thập phân
+    f_t_rounded1 = f"{round_half_up(f_t,1):.1f}".replace(".", ",")
+    # làm tròn đơn vị để làm đáp án ngắn
+    f_t_rounded0 = round_half_up(f_t,0)
+    dap_an = int(f_t_rounded0)
+
+    # k hiển thị đẹp
+    if abs(k - int(k)) < 1e-9:
+        s_k = str(int(k))
+    else:
+        s_k = str(k).replace(".", ",")
+
+    noi_dung = (
+        f"Các nhà tâm lí học sử dụng mô hình hàm số mũ để mô phỏng quá trình học tập của một học sinh là "
+        f"$f(t)=c(1-e^{{-kt}})$, "
+        f"trong đó ${{c}}$ là tổng số đơn vị kiến thức học sinh phải học, ${{k}}$ (kiến thức/ngày) là tốc độ tiếp thu của học sinh, "
+        f"${{t}}$ (ngày) là thời gian học và $f(t)$ là số đơn vị kiến thức học sinh đã học được. "
+        f"Giả sử bạn {ten} phải tiếp thu {c} đơn vị kiến thức mới. Biết rằng tốc độ tiếp thu của bạn {ten} là $k={s_k}$. "
+        f"Hỏi bạn {ten} sẽ nhớ được (khoảng) bao nhiêu đơn vị kiến thức mới sau {t} ngày?"
+    )
+
+    noi_dung_loigiai = (
+        f"$f(t)=c(1-e^{{-kt}})$.\n\n"
+        f"Thay $c={c}$, $k={s_k}$ và $t={t}$ ta thu được:\n\n"
+        f"$f({t})={c}(1-e^{{-{s_k}\\cdot {t}}})\\approx {f_t_rounded1}$ (đơn vị).\n\n"
+        f"Làm tròn đến hàng đơn vị, ta được $f({t})\\approx {dap_an}$.\n\n"
+        f"Vậy bạn {ten} sẽ nhớ được khoảng {dap_an} đơn vị kiến thức mới sau {t} ngày."
+    )
+    
+
+    kq=dap_an
+
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = random.randint(1,c)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+  
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B3_31]-SA-M3. Tìm số khả năng nhớ trung bình theo hàm f(t)=A-B.ln(t+t_0)
+def uz9zu_L11_C6_B3_31():
+    x = sp.symbols("x")  # giữ cấu trúc
+
+    while True:
+        # A: giá trị tối đa (phần trăm ghi nhớ ban đầu)
+        A = random.randint(65,85)
+        # B: hệ số suy giảm
+        B = random.choice([10, 12, 14, 15, 18, 20, 22, 25])
+        # thời gian t (tháng)
+        t = random.randint(3, 12)
+        t_0=random.randint(1,6)
+
+        # --- Tính M(t) ---
+        M_t = float(A - B * sp.log(t + t_0))
+        if M_t>20:
+            break
+    M_t_rounded1 = round_half_up(M_t, 1)
+    M_t_rounded0 = round_half_up(M_t, 0)
+
+    # Đáp án làm tròn đơn vị %
+    
+
+    # Chuỗi hiển thị đẹp
+    s_A = str(A)
+    s_B = str(B)
+    s_t = str(t)
+    s_M1 = f"{M_t_rounded1:.1f}".replace(".", ",")
+
+
+    noi_dung = (
+        f"Trong một nghiên cứu, một nhóm học sinh được cho xem cùng một danh sách các đối tượng và được kiểm tra lại xem "
+        f"họ còn nhớ bao nhiêu phần trăm danh sách đó sau mỗi tháng. Giả sử sau ${{t}}$ tháng, khả năng nhớ trung bình của nhóm học sinh đó "
+        f"được tính theo công thức\n\n"
+        f"$M(t)={s_A}-{s_B}\\ln(t+{t_0})$ (đơn vị: $\\%$).\n\n"
+        f"Hãy tính khả năng nhớ trung bình của nhóm học sinh đó sau {s_t} tháng (kết quả làm tròn đến hàng phần mười)."
+    )
+
+    noi_dung_loigiai = (
+        f"Theo công thức ta có:\n\n"
+        f"$M(t)={s_A}-{s_B}\\ln(t+{t_0})$.\n\n"
+        f"Với $t={s_t}$ ta được:\n\n"
+        f"$M({s_t})={s_A}-{s_B}\\ln({s_t}+{t_0}) \\approx {s_M1}$ ($\\%$).\n\n"
+    )
+    
+
+    kq=M_t_rounded1
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(10, 80),1)
+        if numbers!=M_t_rounded1:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+
+    pa_A= f"*${{{round_half_up(kq,1):.1f}}}$".replace(".",",")
+    pa_B= f"${{{round_half_up(kq2,1):.1f}}}$".replace(".",",")
+    pa_C= f"${{{round_half_up(kq3,1):.1f}}}$".replace(".",",")
+    pa_D= f"${{{round_half_up(kq4,1):.1f}}}$".replace(".",",")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 

@@ -10698,3 +10698,137 @@ def mnj_34_jkl_L12_C2_B3_60():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+
+
+#[D12_C2_B3_61]-SA-M3. Khoảng cách ngắn nhất giữa hai khinh khí cầu bay thẳng (trong không gian Oxyz)
+def mnj_34_jkl_L12_C2_B3_61():
+	import random
+	import sympy as sp
+
+	x, t = sp.symbols("x t")  # giữ cấu trúc, t dùng trong lời giải
+
+	ten = random.choice([
+		"Lam", "Minh", "Hùng", "An", "Vinh",
+		"Tuấn", "Nam", "Hải", "Quân", "Phúc"
+	])
+
+	# --------- Sinh dữ liệu ngẫu nhiên ---------
+	# Toạ độ hai khinh khí cầu (km)
+	x1 = random.randint(0, 4)
+	y1 = random.randint(0, 4)
+	z1 = random.randint(3, 10) / 10  # 0.3 -> 1.0 km
+
+	x2 = random.randint(-4, 1)
+	y2 = random.randint(-4, 0)
+	z2 = random.randint(3, 12) / 10  # 0.3 -> 1.2 km
+
+	# Vận tốc (km/h)
+	v1 = random.choice([40, 50, 60, 70, 80])  # khinh khí cầu 1 (hướng Bắc => -Ox)
+	v2 = random.choice([30, 40, 50, 60])      # khinh khí cầu 2 (hướng Đông => +Oy)
+
+	# --------- Dạng tham số quỹ đạo ---------
+	# Hệ trục: Ox hướng Nam, Oy hướng Đông, Oz hướng lên
+	# Bắc là ngược Ox => vectơ vận tốc khinh khí cầu 1: (-v1, 0, 0)
+	# Đông là cùng Oy => vectơ vận tốc khinh khí cầu 2: (0, v2, 0)
+
+	# Vị trí theo thời gian t (t tính bằng giờ, t>=0):
+	# A(t) = (x1 - v1 t,  y1,          z1)
+	# B(t) = (x2,         y2 + v2 t,   z2)
+
+	# --------- Tính khoảng cách theo t ---------
+	dx0 = x1 - x2
+	dy0 = y1 - y2
+	dz0 = z1 - z2
+
+	# D^2(t) = (dx0 - v1 t)^2 + (dy0 - v2 t)^2 + dz0^2 = a t^2 + b t + c
+	a = v1**2 + v2**2
+	b = -2 * (dx0 * v1 + dy0 * v2)
+	c = dx0**2 + dy0**2 + dz0**2
+
+	# Thời điểm khoảng cách nhỏ nhất: t0 = -b / (2a)
+	t0 = -b / (2 * a)
+
+	# Chỉ xét t >= 0 (bắt đầu quan sát tại t = 0)
+	if t0 < 0:
+		t_min = 0
+	else:
+		t_min = t0
+		s_t_min=f"{round_half_up(t_min,2):.2f}".replace(".",",")
+
+	# Giá trị khoảng cách nhỏ nhất
+	D2_min = a * t_min**2 + b * t_min + c
+	D_min = D2_min**0.5
+
+	# Làm tròn đến hàng phần trăm, hiển thị bằng dấu phẩy
+	D_min_rounded = round_half_up(D_min, 2)
+	dap_an = f"{D_min_rounded:.2f}".replace(".", ",")
+
+	# --------- Chuỗi hiển thị toạ độ, vận tốc ---------
+	def fmt_coord(val):
+		s = f"{val:.1f}"
+		s = s.replace(".0", "")  # nếu là số nguyên
+		return s.replace(".", ",")
+
+	s_x1 = fmt_coord(x1)
+	s_y1 = fmt_coord(y1)
+	s_z1 = fmt_coord(z1)
+
+	s_x2 = fmt_coord(x2)
+	s_y2 = fmt_coord(y2)
+	s_z2 = fmt_coord(z2)
+
+	s_xAB = fmt_coord(x2-x1)
+	s_yAB = fmt_coord(y2-y1)
+	s_zAB = fmt_coord(z2-z1)
+
+	# --------- Nội dung đề bài ---------
+	noi_dung = (
+		f"Trong không gian, xem mặt đất là phẳng, gắn hệ trục tọa độ ${{Oxyz}}$, trong đó mặt phẳng $Oxy$ trùng với mặt đất, "
+		f"trục ${{Ox}}$ hướng về phía nam, trục ${{Oy}}$ hướng về phía đông và trục ${{Oz}}$ hướng thẳng đứng lên trời (đơn vị đo trên mỗi trục là km). "
+		f"Người ta quan sát thấy có hai chiếc khinh khí cầu đang bay trên bầu trời. "
+		f"Tại thời điểm bắt đầu quan sát, chiếc thứ nhất đang ở vị trí điểm $A({s_x1};{s_y1};{s_z1})$ và bay thẳng về phía Bắc "
+		f"với tốc độ không đổi là ${v1}\\text{{km/h}}$, còn chiếc thứ hai đang ở vị trí điểm "
+		f"$B({s_x2};{s_y2};{s_z2})$ và bay thẳng về phía Đông với tốc độ không đổi là ${v2}\\text{{km/h}}$. "
+		f"Biết rằng trong suốt quá trình bay thì hai chiếc khinh khí cầu luôn giữ nguyên độ cao so với mặt đất. "
+		f"Khoảng cách ngắn nhất giữa hai chiếc khinh khí cầu bằng bao nhiêu km? (làm tròn kết quả đến hàng phần trăm)."
+	)
+
+	# --------- Lời giải chi tiết ---------
+	s_a = a
+	s_b = b
+	s_c = f"{round_half_up(c,2):.2f}".replace(".",",")
+
+	noi_dung_loigiai = (
+		f"Gọi ${{t}}$ (giờ) là thời gian tính từ lúc bắt đầu quan sát ($t \\ge 0$).\n\n"
+		f"Vì chiếc khinh khí cầu thứ nhất bay thẳng về phía Bắc (ngược chiều trục ${{Ox}}$) với vận tốc ${v1}\\,\\text{{km/h}}$ nên "
+		f"vị trí của nó tại thời điểm ${{t}}$ là:\n\n"
+		f"$A(t)({x1}-{v1}t;{y1};{fmt_coord(z1)})$.\n\n"
+		f"Chiếc thứ hai bay thẳng về phía Đông (cùng chiều trục ${{Oy}}$) với vận tốc ${v2}\\,\\text{{km/h}}$ nên "
+		f"vị trí của nó tại thời điểm ${{t}}$ là:\n\n"
+		f"$B(t)({x2};{y2}+{v2}t;{fmt_coord(z2)})$.\n\n"
+		f"$\\overrightarrow{{A(t)B(t)}} = ({s_xAB}+{v1}t;\\; {s_yAB}+{v2}t;\\; {s_zAB})$.\n\n"		
+		f"$d^2(t) = {s_a}t^2+{s_b}t+{s_c}$.\n\n"
+		f"$d^2(t)$ đạt giá trị nhỏ nhất khi\n\n"
+		f"$t_0 = -\\dfrac{{b}}{{2a}} = -\\dfrac{{{s_b}}}{{2\\cdot {s_a}}} = {s_t_min}$ (giờ).\n\n"
+		f"Thay $t={s_t_min}$ vào $d^2(t)$ ta được khoảng cách nhỏ nhất giữa hai khinh khí cầu:\n\n"
+		f"$d_\\text{{min}} \\approx {dap_an}\\,\\text{{km}}$.\n\n"
+	)
+	noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+	# --------- Kết quả trả về ---------
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an

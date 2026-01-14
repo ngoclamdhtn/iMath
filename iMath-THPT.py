@@ -6449,6 +6449,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_30]-M2. Tìm số đơn vị kiến thức học được bởi f(t)=c(1-e^{-kt})."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_31]-M2. Tìm khả năng nhớ trung bình theo hàm f(t)=A-B.ln(t+t_0)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L11_C6_B3_1 = QTreeWidgetItem(L11_C6_B3, ["Đúng-Sai"])
                 L11_C6_B3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -6493,7 +6501,15 @@ class Ui_MainWindow(object):
                 L11_C6_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B3_3, ["[D11_C6_B3_29]-SA-M2. Tính dân số tăng theo mô hình S = A.e^(rt)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B3_3, ["[D11_C6_B3_27]-SA-M3. Tìm m để hàm số logarit xác định với mọi x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_3, ["[D11_C6_B3_28]-SA-M3. Tìm m để hàm số a/căn(logarit) có tập xác định là R.."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8970,6 +8986,10 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_49]-SA-M3. Tìm trực tâm của tam giác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_30]-SA-M3. Cho tọa độ 2 vị trí. Tìm tọa độ của máy bay sau một khoảng thời gian"])
@@ -8996,9 +9016,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_61]-SA-M3.  Khoảng cách min giữa hai khinh khí cầu bay theo vận tốc không đổi."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
 
 
 
@@ -11962,6 +11984,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C2_B3_60]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_60()
 
+                                        #[D12_C2_B3_61]-SA-M3.  Khoảng cách ngắn nhất giữa hai khinh khí cầu bay thẳng (trong không gian Oxyz)
+                                            if dang_toan == "[D12_C2_B3_61]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_61()
+
 
 
                                     #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->
@@ -14851,9 +14877,25 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C6_B3_26]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B3_26()
 
-                                            #[D11_C6_B3_27]-SA-M2. Xét Đ-S: Tìm m để hàm số logarit với mọi x.
+                                            #[D11_C6_B3_27]-SA-M3. Xét Đ-S: Tìm m để hàm số logarit với mọi x.
                                             if dang_toan == "[D11_C6_B3_27]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B3_27()                                    
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B3_27()
+
+                                            #[D11_C6_B3_28]-SA-M3. Tìm m để hàm số a/căn(logarit) có tập xác định là R.
+                                            if dang_toan == "[D11_C6_B3_28]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B3_28()
+
+                                            #[D11_C6_B3_29]-SA-M3. Tính dân số tăng theo mô hình S = A.e^{rt}
+                                            if dang_toan == "[D11_C6_B3_29]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B3_29()
+
+                                            #[D11_C6_B3_30]-M2. Tìm số đơn vị kiến thức học được theo hàm f(t)=c(1-e^{-kt})
+                                            if dang_toan == "[D11_C6_B3_30]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_30()
+
+                                            #[D11_C6_B3_31]-M2. Tìm số khả năng nhớ trung bình theo hàm f(t)=A-B.ln(t+t_0)
+                                            if dang_toan == "[D11_C6_B3_31]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_31()                          
 
 
                                         #Chương 7 - ĐẠO HÀM

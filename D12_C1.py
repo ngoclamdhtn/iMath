@@ -17644,7 +17644,7 @@ def prt_34_L12_C1_B5_41():
 	s_dap = f"{dap_an}"
 
 	noi_dung = (
-		f"Một nhà hàng có tổng cộng ${{{s_nv}}}$ nhân viên và chi trả mức lương cố định cho mỗi nhân viên thường xuyên tăng ca là "
+		f"Một nhà hàng có tổng cộng ${{{s_nv}}}$ nhân viên và chi trả mức lương cố định cho mỗi nhân viên là "
 		f"${{{s_L}}}$ USD/tháng. Vì nhà hàng liên tục đón những đoàn khách với số lượng lớn nhưng không thể thuê thêm nhân viên nên "
 		f"chủ nhà hàng muốn khuyến khích nhân viên của mình tăng ca. Ông chủ quyết định cứ một nhân viên quyết định tăng ca thì mức lương "
 		f"của tất cả nhân viên tăng ca trong nhà hàng đều được tăng thêm ${{{s_p}}}\\%$. Tương tự nếu có ${{x}}$ nhân viên tăng ca thì "
