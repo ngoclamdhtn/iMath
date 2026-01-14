@@ -4973,6 +4973,93 @@ def uz9zu_L11_C6_B3_31():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C6_B3_32]-M2. Khối lượng còn lại theo mô hình phân rã m(t)=m0*(1/2)^{t/T}
+def uz9zu_L11_C6_B3_32():
+
+    x = sp.symbols("x")  # giữ cấu trúc
+
+
+    # --- Sinh dữ liệu ngẫu nhiên ---
+    # Chu kì bán rã T (ngày)
+    T = random.choice([24, 30, 60, 90, 120, 138, 160, 180])
+
+    # Khối lượng ban đầu (gam)
+    m0 = random.randint(50, 200)
+
+    # Thời gian t (ngày)
+    t = random.randint(30, 200)
+
+    # --- Tính khối lượng còn lại ---
+    # m(t) = m0 * (1/2)^(t/T)
+    m_t = float(m0 * (0.5)**(t / T))
+
+    # Làm tròn đến hàng phần mười
+    m_t_round = round_half_up(m_t, 1)
+    dap_an = f"{m_t_round:.1f}".replace(".", ",")
+
+    # Chuỗi hiển thị
+    s_T = str(T)
+    s_m0 = str(m0)
+    s_t = str(t)
+    s_m_1 = f"{m_t_round:.1f}".replace(".", ",")
+    kq=m_t_round
+
+    noi_dung = (
+        f"Trong Vật lí, sự phân rã của các chất phóng xạ được cho bởi công thức: "
+        f"$m(t)=m_0\\left(\\dfrac{{1}}{{2}}\\right)^{{\\frac{{t}}{{T}}}}$;\n\n"
+        f"trong đó $m_0$ là khối lượng chất phóng xạ ban đầu (tại thời điểm $t=0$), "
+        f"$m(t)$ là khối lượng chất phóng xạ tại thời điểm ${{t}}$ và ${{T}}$ là chu kì bán rã.\n\n"
+        f"Một chất phóng xạ X có chu kì bán rã là {s_T} ngày. Giả sử lúc đầu có {s_m0} gam X. "
+        f"Tính khối lượng X còn lại sau {s_t} ngày theo đơn vị gam (làm tròn kết quả đến hàng phần mười)."
+    )
+    noi_dung_loigiai = (
+        f"Với $m_0={s_m0}$ (gam), $T={s_T}$ (ngày) và $t={s_t}$ (ngày), ta được:\n\n"
+        f"$m({s_t})={s_m0}\\left(\\dfrac{{1}}{{2}}\\right)^{{\\frac{{{s_t}}}{{{s_T}}}}}"
+        f"\\approx {s_m_1}$ (gam).\n\n"
+    )
+
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(10, m0/2),1)
+        if numbers!=m_t_round:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    pa_A= f"*${{{round_half_up(kq,1):.1f}}}$".replace(".",",").replace(",0","")
+    pa_B= f"${{{round_half_up(kq2,1):.1f}}}$".replace(".",",").replace(",0","")
+    pa_C= f"${{{round_half_up(kq3,1):.1f}}}$".replace(".",",").replace(",0","")
+    pa_D= f"${{{round_half_up(kq4,1):.1f}}}$".replace(".",",").replace(",0","")
+
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 
 
 #BÀI 4 PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT
