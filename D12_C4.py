@@ -7812,7 +7812,7 @@ def ckz_L12C4_B4_47():
             break
 
     pq = float(p + q)
-    dap_an = int(pq) if pq.is_integer() else pq  # thường là số nguyên
+    dap_an = int(p+q) if pq.is_integer() else pq  # thường là số nguyên
 
     # --- Chuỗi hiển thị p,q (đẹp) ---
     s_p = str(int(p)) if float(p).is_integer() else str(p)
@@ -7837,7 +7837,7 @@ def ckz_L12C4_B4_47():
     noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
     
 
-    kq=p*q
+    kq=p+q
 
     kq_false = set()
     while len(kq_false) < 5:    

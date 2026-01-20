@@ -1742,10 +1742,10 @@ def uz9zu_L11_C6_B2_16():
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    kq2_T=f"*${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$"
+    kq2_T=f"* ${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$"
     kq2_F=random.choice([f"${latex(log(a**m*b))}={latex(log(a)+m*log(b))}$",
                         f"${latex(log(a**m*b))}={phan_so(1/m)}{latex(log(a)+log(b))}$",
-                        f"${latex(log(a**m*b))}={latex(m*(log(a))+log(b))}$"])
+                        f"${latex(log(a**m*b))}={latex(m*(log(a))+m*log(b))}$"])
     kq2=random.choice([kq2_T, kq2_F])
     HDG=f"${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$."
     
@@ -7349,7 +7349,7 @@ def uz9zu_L11_C6_B5_16():
     f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D11_C6_B5_17]-TL-M3. Tìm số nghiệm nguyên của log_a f(x) + log_a g(x)>b
+#[D11_C6_B5_17]-SA-M3. Tìm số nghiệm nguyên của log_a f(x) + log_a g(x)>b
 def uz9zu_L11_C6_B5_17():
     x=sp.symbols("x")
 
@@ -7394,7 +7394,7 @@ def uz9zu_L11_C6_B5_17():
     
     debai_word= f"{noi_dung}"
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
-    dap_an=noi_dung_loigiai
+    dap_an=dem
 
 
     latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
@@ -7402,7 +7402,7 @@ def uz9zu_L11_C6_B5_17():
     f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D11_C6_B5_18]-TL-M3. Tìm số nghiệm nguyên của log_a f(x) - log_a g(x)>b
+#[D11_C6_B5_18]-SA-M3. Tìm số nghiệm nguyên của log_a f(x) - log_a g(x)>b
 def uz9zu_L11_C6_B5_18():
     x=sp.symbols("x")  
 
@@ -7443,7 +7443,7 @@ def uz9zu_L11_C6_B5_18():
     
     debai_word= f"{noi_dung}"
     loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
-    dap_an=noi_dung_loigiai
+    dap_an=dem
 
 
     latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"

@@ -6456,7 +6456,370 @@ def mcn__L10_C8_B2_53():
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
+#[D10_C8_B2_54]-TF-M3. Phòng có m hàng ghế, mỗi hàng có n ghế. Xét Đ-S: Số cách xếp người vào các hàng
+def mcn__L10_C8_B2_54():
+	while True:
+		s=random.randint(30,40)
+		#Số hàng:
+		h=random.randint(4,8)
+		# Số ghế:
+		m=random.randint(4,6)
+		if h*m>=s:
+			break
 
+	noi_dung = (
+	f"Một phòng họp {h} hàng ghế, mỗi hàng có {m} ghế."
+	f" Có {s} người tham dự cuộc họp."
+	" Xét tính đúng-sai của các khẳng định sau:")	
+
+	kq1_T=f"* Có $A^{m}_{{{s}}}$ cách sắp xếp {m} người ngồi vào hàng ghế đầu tiên" 
+	kq1_F=f"Có $C^{m}_{{{s}}}$ cách sắp xếp {m} người ngồi vào hàng ghế đầu tiên"
+
+	HDG=(f"Mỗi cách chọn {m} người trong {s} người để ngồi vào hàng ghế đầu tiên là một chỉnh hợp chập {m} của {s}."
+	f" Vậy có $A^{m}_{{{s}}}$ cách xếp 6 người ngồi vào hàng ghế đầu tiên. ")
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	s2=s-m
+
+	kq2_T=f"* Sau khi sắp xếp xong hàng ghế đầu tiên, có $A^{m}_{{{s2}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ hai"
+	kq2_F=random.choice([
+	f"Sau khi sắp xếp xong hàng ghế đầu tiên, có $C^{m}_{{{s2}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ hai",
+	f"Sau khi sắp xếp xong hàng ghế đầu tiên, có $P_{m}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ hai", ])
+
+	HDG=f" Sau khi sắp xếp xong hàng ghế đầu tiên, có $A^{m}_{{{s2}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ hai."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	s3=s-2*m
+
+	kq3_T=f"* Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $A^{m}_{{{s3}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ hai" 
+	kq3_F=random.choice([
+	f"Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $C^{m}_{{{s3}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba",
+	f"Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $P_{m}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba",
+	f"Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $A^{m}_{{{s2}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba", ])
+
+	HDG=f"Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $A^{m}_{{{s3}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba."
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	s4=s-3*m
+	n=h*m-3*m
+
+	kq4_T=f"* Sau khi sắp xếp xong ba hàng ghế đầu tiên, có $A^{{{s4}}}_{{{n}}}$ cách sắp xếp những người còn lại vào các ghế còn lại"
+	kq4_F=random.choice([
+		f"Sau khi sắp xếp xong ba hàng ghế đầu tiên, có $C^{{{s4}}}_{{{n}}}$ cách sắp xếp những người còn lại vào các ghế còn lại",
+		f"Sau khi sắp xếp xong ba hàng ghế đầu tiên, có $P_{{{n}}}$ cách sắp xếp những người còn lại vào các ghế còn lại",
+		f"Sau khi sắp xếp xong ba hàng ghế đầu tiên, có $A^{{{m}}}_{{{n}}}$ cách sắp xếp những người còn lại vào các ghế còn lại",  ])
+	
+	HDG=(f"Số ghế còn lại sau khi xếp ba hàng đầu tiên là {n}.\n\n"
+		f"Số người còn lại sau khi xếp ba hàng đầu tiên là {s4}.\n\n"
+		f"Có $A^{{{s4}}}_{{{n}}}$ cách sắp xếp những người còn lại vào các ghế còn lại.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C8_B2_55]-TF-M3. Lớp có m nam, n nữ. Xét Đ-S: cách xếp vào 1 hàng, lập ban cán sự, chọn k người sửa bài tập
+def mcn__L10_C8_B2_55():
+	ten_lop=f"10A{random.randint(1,9)}"
+	while True:
+		m=random.randint(18,28)
+		n=random.randint(14,22)
+		if all([m>n]):
+			break
+	s=m+n
+	noi_dung = (
+	f"Lớp {ten_lop} có {m} học sinh nam và {n} học sinh nữ."
+	f" Xét tính đúng-sai của các khẳng định sau:")
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* Số cách xếp các bạn nam thành một hàng dọc là ${{{m}!}}$" 
+		kq1_F=random.choice([
+			f"Số cách xếp các bạn nam thành một hàng dọc là $C^{{{m}}}_{{{s}}}$",
+			f"Số cách xếp các bạn nam thành một hàng dọc là $A^{{{m}}}_{{{s}}}$",
+		 ])
+		
+		HDG=f"Số cách xếp các bạn nam thành một hàng dọc là ${{{m}!}}$."
+	
+	if chon==2:
+		kq1_T=f"* Số cách xếp các bạn nữ thành một hàng ngang là ${{{n}!}}$" 
+		kq1_F=random.choice([
+			f"Số cách xếp các bạn nữ thành một hàng ngang là $C^{{{n}}}_{{{s}}}$",
+			f"Số cách xếp các bạn nữ thành một hàng ngang là $A^{{{n}}}_{{{s}}}$",
+		 ])
+		
+		HDG=f"Số cách xếp các bạn nữ thành một hàng ngang là ${{{m}!}}$."		
+	
+	
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	k=random.randint(3,6)
+	chon=random.randint(1,2)
+	if chon==1:
+		kq2_T=f"* Số cách xếp {k} bạn nam ngồi vào một bàn dài là $A^{k}_{{{m}}}$"
+		kq2_F=f" Số cách xếp {k} bạn nam ngồi vào một bàn dài là $C^{k}_{{{m}}}$"
+		
+		HDG=f"Số cách xếp {k} bạn nam ngồi vào một bàn dài là $A^{k}_{{{m}}}$."
+	
+	if chon==2:
+		kq2_T=f"* Số cách xếp {k} bạn nữ ngồi vào một bàn dài là $A^{k}_{{{n}}}$"
+		kq2_F=f" Số cách xếp {k} bạn nữ ngồi vào một bàn dài là $C^{k}_{{{n}}}$"
+		
+		HDG=f"Số cách xếp {k} bạn nữ ngồi vào một bàn dài là $A^{k}_{{{n}}}$."	
+
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Số cách lập một ban cán sự gồm 1 lớp trưởng, 1 lớp phó và 1 bí thư chi đoàn là $A^3_{{{s}}}$" 
+	kq3_F=f"Số cách lập một ban cán sự gồm 1 lớp trưởng, 1 lớp phó và 1 bí thư chi đoàn là $C^3_{{{s}}}$"
+	
+	HDG=f"Số cách lập 1 ban cán sự gồm 1 lớp trưởng, 1 lớp phó và 1 bí thư chi đoàn là $A^3_{{{s}}}$."
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	k=random.randint(3,6)
+
+	kq4_T=f"* Số cách chọn {k} bạn lên làm {k} bài tập khác nhau theo đúng thứ tự các bài tập là $A^{k}_{{{s}}}$"
+	kq4_F=f"Số cách chọn {k} bạn lên làm {k} bài tập khác nhau theo đúng thứ tự các bài tập là $C^{k}_{{{s}}}$" 
+	
+	HDG=f"Số cách chọn {k} bạn lên làm {k} bài tập khác nhau theo đúng thứ tự các bài tập là $A^{k}_{{{s}}}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C8_B2_56]-TF-M3. Cửa hàng bán 3 loại. Xét Đ-S: cách xếp k sản phẩm, lập combo bán chạy, xếp theo nhóm
+def mcn__L10_C8_B2_56():
+	ten_lop=f"10A{random.randint(1,9)}"
+	while True:
+		m=random.randint(14,20)
+		n=random.randint(14,22)
+		p=random.randint(6,10)
+		if all([m!=n]):
+			break
+	s=m+n+p
+	k=random.randint(4,6)
+	noi_dung = (
+	f"Một cửa hàng tạp hóa bán có {m} chai nước giải khát khác nhau, {n} bịch bánh kẹo khác nhau và {p} hộp mỳ ăn liền khác nhau."
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+	
+	kq1_T=f"* Số cách bày {k} sản phẩm bất kỳ lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{s}}}$" 
+	kq1_F=random.choice([
+	f"Số cách bày {k} sản phẩm bất kỳ lên kệ trưng bày theo thứ tự từ trái sang phải là $C^{k}_{{{s}}}$",
+	f"Số cách bày {k} sản phẩm bất kỳ lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{m}}}$",
+	f"Số cách bày {k} sản phẩm bất kỳ lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{n}}}$", ])
+	
+	HDG=f"Số cách bày {k} sản phẩm bất kỳ lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{s}}}$."
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq2_T=f"* Số cách bày {k} sản phẩm nước giải khát lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{m}}}$"
+		kq2_F=f"Số cách bày {k} sản phẩm nước giải khát lên kệ trưng bày theo thứ tự từ trái sang phải là $C^{k}_{{{m}}}$"
+		
+		HDG=f"Số cách bày {k} sản phẩm nước giải khát lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{m}}}$."
+	
+	if chon==2:
+		kq2_T=f"* Số cách bày {k} sản phẩm bánh kẹo lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{n}}}$"
+		kq2_F=f"Số cách bày {k} sản phẩm bánh kẹo lên kệ trưng bày theo thứ tự từ trái sang phải là $C^{k}_{{{n}}}$"
+		
+		HDG=f"Số cách bày {k} sản phẩm bánh kẹo lên kệ trưng bày theo thứ tự từ trái sang phải là $A^{k}_{{{n}}}$."
+	
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	k_1=random.randint(1,3)
+	k_2=random.randint(1,3)
+	k_3=random.randint(1,3)
+
+	kq3_T=f"* Số cách tạo 1 combo gồm {k_1} chai nước giải khát, {k_2} bịch bánh kẹo và {k_3} mỳ ăn liền là $C^{k_1}_{{{m}}}.C^{k_2}_{{{n}}}.C^{k_3}_{{{p}}}$" 
+	kq3_F=f"Số cách tạo 1 combo gồm {k_1} chai nước giải khát, {k_2} bịch bánh kẹo và {k_3} mỳ ăn liền là $A^{k_1}_{{{m}}}.A^{k_2}_{{{n}}}.A^{k_3}_{{{p}}}$"
+	
+	HDG=f"Số cách xếp là: $C^{k_1}_{{{m}}}.C^{k_2}_{{{n}}}.C^{k_3}_{{{p}}}$."
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	k_1=random.randint(3,6)
+	k_2=random.randint(3,7)
+
+	kq4_T=f"* Số cách xếp {k_1} chai nước giải khát và {k_2} bịch bánh kẹo lên kệ trưng bày theo 2 nhóm sản phẩm và theo thứ tự từ trái qua phải là $2.A^{k_1}_{{{m}}}.A^{k_2}_{{{n}}}$"
+	kq4_F=f"Số cách xếp {k_1} chai nước giải khát và {k_2} bịch bánh kẹo lên kệ trưng bày theo 2 nhóm sản phẩm và theo thứ tự từ trái qua phải là $A^{k_1}_{{{m}}}.A^{k_2}_{{{n}}}$" 
+	
+	HDG=f"Số cách xếp là: $2.A^{k_1}_{{{m}}}.A^{k_2}_{{{n}}}$."
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 
 
 

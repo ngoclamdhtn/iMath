@@ -17246,14 +17246,14 @@ def prt_34_L12_C1_B5_38():
 
 	noi_dung_loigiai=(
 		f"Gọi ${{A,B,M}}$ lần lượt là đỉnh của cọc thấp, cọc cao và chốt.\n\n"
-		f"$AM=\\sqrt{{x^2+{a**2}}},BM=\\sqrt{{{L}-x)^2+{b**2}}}$.\n\n"
+		f"$AM=\\sqrt{{x^2+{a**2}}},BM=\\sqrt{{({L}-x)^2+{b**2}}}$.\n\n"
 		f"Tổng chiều dài hai dây là:\n\n"
 		f"$f(x)=\\sqrt{{x^2+{a**2}}}+\\sqrt{{({L}-x)^2+{b**2}}}, 0<x<{L}$.\n\n"
 		f"$f'(x)=\\dfrac{{x}}{{\\sqrt{{x^2+{a**2}}}}}- \\dfrac{{{L}-x}}{{\\sqrt{{({L}-x)^2+{b**2}}}}}$.\n\n"
 		f"$f'(x)=0\\Leftrightarrow \\dfrac{{x}}{{\\sqrt{{x^2+{a**2}}}}}=\\dfrac{{{L}-x}}{{\\sqrt{{({L}-x)^2+{b**2}}}}}$\n\n"
 		f"$\\Leftrightarrow \\dfrac{{x^2}}{{x^2+{a**2}}}=\\dfrac{{({L}-x)^2}}{{({L}-x)^2+{b**2}}}$\n\n"
 		f"$\\Leftrightarrow \\dfrac{{x^2}}{{({L}-x)^2}}=\\dfrac{{{a**2}}}{{{b**2}}}$\n\n"
-		f"$\\Rightarrow \\dfrac{{x }}{{{L}-x}}={phan_so(a/b)}\\Rightarrow x={phan_so(x)}={dap_an}$."
+		f"$\\Rightarrow \\dfrac{{x }}{{{L}-x}}={phan_so(a/b)}\\Rightarrow x={dap_an}$."
 
 	)
 

@@ -4,6 +4,10 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+def round_half_up(n, decimals=1):
+    multiplier = 10 ** decimals
+    return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
+
 #Trả về dạng phân số 
 def phan_so(t):
     m=latex(Rational(t).limit_denominator(100000000000))
@@ -56,6 +60,10 @@ def tinh_va_dau_delta(a,b,c):
             x_2=x_1
             x_1=t
     return dau, x_1, x_2
+
+def thay_dau_congtru(st):
+    ketqua=st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("+ +","+").replace("+ -","-").replace("- -","+").replace("- +","-")
+    return ketqua
 
 #Giải bất phương trình bậc hai
 def solve_bpt_bac2(a,b,c,dau_bpt,bien_x):
@@ -1351,11 +1359,6 @@ def aaa_pry_L10_C7_B1_15():
 
 
 
-def thay_cong_tru(st):
-    return st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+").replace("1x","x").replace("1y","y").replace("-1x","-x").replace("-1y","-y").replace("+0"," ")
-
-
-
 #[D10_C7_B1_16]-TF-M3. Cho bxd của Parabol có 2 nghiệm. Tìm khẳng định đúng về Parabol.
 def aaa_pry_L10_C7_B1_16():
     x=sp.symbols("x")
@@ -1489,6 +1492,301 @@ def aaa_pry_L10_C7_B1_16():
     return debai,debai_latex,loigiai_word,dap_an
 
 
+#[D10_C7_B1_17]-M2. Cho f(x) 2 nghiệm. Tìm bảng xét dấu.
+def aaa_pry_L10_C7_B1_17():
+    x=sp.symbols("x")
+    while True:
+        x_1, x_2=random.sample(range(-7,7),2)
+        if x_1<x_2:
+            break
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    f=expand(a*(x-x_1)*(x-x_2))
+    tap_ketqua= [f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,-,0,+,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,+,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,+,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,0,+,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$, $+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,+,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,+,}}\n\
+            \\end{{tikzpicture}}"
+
+            ]
+
+    noi_dung=(
+    f"Bảng xét dấu nào sau đây là của biểu thức $f(x)={latex(f)}$?"
+    )
+    
+    if a>0:
+        kq=f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,-,0,+,}}\n\
+            \\end{{tikzpicture}}"
+    else:
+        kq=f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,+,0,-,}}\n\
+            \\end{{tikzpicture}}"
+
+    kq_false=[x for x in tap_ketqua if x!= kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$f(x)={latex(f)}=0$ có 2 nghiệm $x={x_1},x={x_2}$.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    
+    code = my_module.moi_truong_anh_latex(kq)
+    file_name_kq=my_module.pdftoimage_timename(code)
+
+    code = my_module.moi_truong_anh_latex(kq2)
+    file_name_kq2=my_module.pdftoimage_timename(code)
+
+    code = my_module.moi_truong_anh_latex(kq3)
+    file_name_kq3=my_module.pdftoimage_timename(code)
+
+    code = my_module.moi_truong_anh_latex(kq4)
+    file_name_kq4=my_module.pdftoimage_timename(code)
+
+    pa_A= f"* {file_name_kq}"
+    pa_B= f"{file_name_kq2}"
+    pa_C= f"{file_name_kq3}"
+    pa_D= f"{file_name_kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+    phuongan= f"A. \n{ list_PA[0]}.\n   B. \n{ list_PA[1]}.\n    C. \n{ list_PA[2]}.\n     D. \n{ list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B1_18]-M2. Cho f(x) 1 nghiệm. Tìm bảng xét dấu.
+def aaa_pry_L10_C7_B1_18():
+    x=sp.symbols("x")
+    while True:
+        x_1, x_2=random.sample(range(-7,7),2)
+        if x_1<x_2:
+            break
+    a= random.choice([i for i in range(-5, 6) if i!=0])
+    f=expand(a*(x-x_1)**2)
+    tap_ketqua= [
+
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$, $+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,+,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,+,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,+,}}\n\
+            \\end{{tikzpicture}}",
+
+    f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,}}\n\
+            \\end{{tikzpicture}}",
+
+            ]
+
+    noi_dung=(
+    f"Bảng xét dấu nào sau đây là của biểu thức $f(x)={latex(f)}$?"
+    )
+    
+    if a>0:
+        kq=f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,+,}}\n\
+            \\end{{tikzpicture}}"
+    else:
+        kq=f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_1}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,}}\n\
+            \\end{{tikzpicture}}"
+
+    kq_false=[x for x in tap_ketqua if x!= kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$f(x)={latex(f)}=0$ có nghiệm kép $x={x_1}$.")
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    
+    code = my_module.moi_truong_anh_latex(kq)
+    file_name_kq=my_module.pdftoimage_timename(code)
+
+    code = my_module.moi_truong_anh_latex(kq2)
+    file_name_kq2=my_module.pdftoimage_timename(code)
+
+    code = my_module.moi_truong_anh_latex(kq3)
+    file_name_kq3=my_module.pdftoimage_timename(code)
+
+    code = my_module.moi_truong_anh_latex(kq4)
+    file_name_kq4=my_module.pdftoimage_timename(code)
+
+    pa_A= f"* {file_name_kq}"
+    pa_B= f"{file_name_kq2}"
+    pa_C= f"{file_name_kq3}"
+    pa_D= f"{file_name_kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+    phuongan= f"A. \n{ list_PA[0]}.\n   B. \n{ list_PA[1]}.\n    C. \n{ list_PA[2]}.\n     D. \n{ list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 
@@ -2332,27 +2630,366 @@ def aaa_pry_L10_C7_B2_10():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan, dap_an
 
+#[D10_C7_B2_11]-M2. Cho BXD 2 nghiệm. Tìm tập nghiệm của BPT.
+def aaa_pry_L10_C7_B2_11():
+    while True:
+        x_1,x_2=random.sample(range(-8,9),2)
+        if x_1<x_2:
+            break
+    tap_ketqua=[
+        f"$\\emptyset$",
+        f"$\\mathbb{{R}}$",
+        f"${{[{x_1};{x_2}]}}$",
+        f"$({x_1};{x_2})$",
+        f"$({x_1};{x_2}]$",
+        f"$[{x_1};{x_2})$",
+        f"$(-\\infty;{x_1})$",
+        f"$(-\\infty;{x_1}]$",
+        f"$({x_2};+\\infty)$",
+        f"$[{x_2};+\\infty)$",  
+        f"$(-\\infty;{x_1}) \\cup ({x_2};+\\infty)$",
+        f"$(-\\infty;{x_1}) \\cup [{x_2};+\\infty)$",
+        f"$(-\\infty;{x_1}] \\cup ({x_2};+\\infty)$",
+        f"$(-\\infty;{x_1}] \\cup [{x_2};+\\infty)$",]
+
+    chon_bang=random.randint(1,2)
+
+    if chon_bang==1:
+        code_hinh = (f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,+,0,-,}}\n\
+            \\end{{tikzpicture}}")
+        
+        chon=random.randint(1,4)  
+        
+        if chon==1:
+            bpt=f"$f(x)\\ge 0$"  
+            kq=f"${{[{x_1};{x_2}]}}$"
+        
+        if chon==2:
+            bpt=f"$f(x) > 0$"        
+            kq=f"$({x_1};{x_2})$"
+
+        if chon==3:
+            bpt=f"$f(x) < 0$"      
+            kq=f"$(-\\infty;{x_1}) \\cup ({x_2};+\\infty)$"
+
+        if chon==4:
+            bpt=f"$f(x) \\le 0$"        
+            kq=f"$(-\\infty;{x_1}] \\cup [{x_2};+\\infty)$"
+
+    if chon_bang==2:
+        code_hinh = (f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$,${x_1}$,${x_2}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,-,0,+,}}\n\
+            \\end{{tikzpicture}}")
+        
+        chon=random.randint(1,4)  
+        
+        if chon==1:
+            bpt=f"$f(x)\\le 0$"  
+            kq=f"${{[{x_1};{x_2}]}}$"
+        
+        if chon==2:
+            bpt=f"$f(x) < 0$"        
+            kq=f"$({x_1};{x_2})$"
+
+        if chon==3:
+            bpt=f"$f(x) > 0$"      
+            kq=f"$(-\\infty;{x_1}) \\cup ({x_2};+\\infty)$"
+
+        if chon==4:
+            bpt=f"$f(x) \\ge 0$"        
+            kq=f"$(-\\infty;{x_1}] \\cup [{x_2};+\\infty)$" 
+
+    kq_false=[x for x in tap_ketqua if x != kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name = my_module.pdftoimage_timename(code)
+
+    noi_dung=(
+        f"Cho tam thức $f(x)=ax^2+bx+c$ có bảng xét dấu như hình vẽ."
+        f" Tập nghiệm của bất phương trình {bpt} là" )
+
+    noi_dung_loigiai=(
+    f"{bpt} $\\Leftrightarrow x\\in $ {kq}."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B2_12]-M2. Cho BXD 1 nghiệm. Tìm tập nghiệm của BPT.
+def aaa_pry_L10_C7_B2_12():
+    x_0=random.choice([phan_so(random.randint(1,10)/random.randint(1,10)),
+    phan_so(-random.randint(1,10)/random.randint(1,10)) ])
+    tap_ketqua=[
+        f"$\\mathbb{{R}}$",
+        f"$\\emptyset$",
+        f"$(-\\infty;{x_0})$",
+        f"$(-\\infty;{x_0}]$",
+        f"$({x_0};+\\infty)$",
+        f"$[{x_0};+\\infty)$",  
+        f"$(-\\infty;{x_0}) \\cup ({x_0};+\\infty)$",        
+        f"$(-\\infty;{x_0}] \\cup [{x_0};+\\infty)$",]
+
+    chon_bang=random.randint(1,2)
+
+    if chon_bang==1:
+        code_hinh = (f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$, ${x_0}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,+,0,+,}}\n\
+            \\end{{tikzpicture}}")
+        
+        chon=random.randint(1,4) 
+        
+        if chon==1:
+            bpt=f"$f(x)\\ge 0$"  
+            kq=f"$\\mathbb{{R}}$"
+        
+        if chon==2:
+            bpt=f"$f(x) > 0$"        
+            kq=f"$(-\\infty;{x_0}) \\cup ({x_0};+\\infty)$"
+
+        if chon==3:
+            bpt=f"$f(x) < 0$"      
+            kq=f"$\\emptyset$"
+
+        if chon==4:
+            bpt=f"$f(x) \\le 0$"        
+            kq=f"$\\left\\{{{x_0}\\right\\}}$"
+
+    if chon_bang==2:
+        code_hinh = (f"\\begin{{tikzpicture}}\n\
+                \\tkzTabInit[nocadre=false, lgt=1.5, espcl=1.3] \n\
+                {{$x$ /1,$f(x)$ /1}}\n\
+                {{$-\\infty$,${x_0}$,$+\\infty$}}\n\
+                \\tkzTabLine{{,-,0,-,}}\n\
+            \\end{{tikzpicture}}")
+        
+        chon=random.randint(1,4)  
+        
+        if chon==1:
+            bpt=f"$f(x)\\le 0$"  
+            kq=f"$\\mathbb{{R}}$"
+        
+        if chon==2:
+            bpt=f"$f(x) < 0$"        
+            kq=f"$(-\\infty;{x_0}) \\cup ({x_0};+\\infty)$"
+
+        if chon==3:
+            bpt=f"$f(x) > 0$"      
+            kq=f"$\\emptyset$"
+
+        if chon==4:
+            bpt=f"$f(x) \\ge 0$"        
+            kq=f"$\\left\\{{{x_0}\\right\\}}$"
+
+    kq_false=[x for x in tap_ketqua if x != kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name = my_module.pdftoimage_timename(code)
 
 
+    noi_dung=(
+        f"Cho tam thức $f(x)=ax^2+bx+c$ có bảng xét dấu như hình vẽ."
+        f" Tập nghiệm của bất phương trình {bpt} là" )
 
+    noi_dung_loigiai=(
+    f"{bpt} $\\Leftrightarrow x\\in $ {kq}."
+    )
 
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
 
+    debai= f"{noi_dung}\n{file_name}\n"
 
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
 
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
 
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C7_B2_13]-M2. Cho parabol 2 nghiệm. Tìm tập nghiệm của BPT.
+def aaa_pry_L10_C7_B2_13():
+    x=sp.symbols("x")
+    while True:
+        x_1,x_2=random.sample(range(-4,5),2)
+        if x_1<x_2:
+            break
+    tap_ketqua=[
+        f"$\\emptyset$",
+        f"$\\mathbb{{R}}$",
+        f"${{[{x_1};{x_2}]}}$",
+        f"$({x_1};{x_2})$",
+        f"$({x_1};{x_2}]$",
+        f"$[{x_1};{x_2})$",
+        f"$(-\\infty;{x_1})$",
+        f"$(-\\infty;{x_1}]$",
+        f"$({x_2};+\\infty)$",
+        f"$[{x_2};+\\infty)$",  
+        f"$(-\\infty;{x_1}) \\cup ({x_2};+\\infty)$",
+        f"$(-\\infty;{x_1}) \\cup [{x_2};+\\infty)$",
+        f"$(-\\infty;{x_1}] \\cup ({x_2};+\\infty)$",
+        f"$(-\\infty;{x_1}] \\cup [{x_2};+\\infty)$",]
 
+    chon_bang=random.randint(1,2)
 
+    if chon_bang==1:
+        f=-0.5*(x-x_1)*(x-x_2)
+        a,b,c=-0.5,0.5*(x_1+x_2), -0.5*x_1*x_2
+               
+        chon=random.randint(1,4)  
+        
+        if chon==1:
+            bpt=f"$f(x)\\ge 0$"  
+            kq=f"${{[{x_1};{x_2}]}}$"
+        
+        if chon==2:
+            bpt=f"$f(x) > 0$"        
+            kq=f"$({x_1};{x_2})$"
 
+        if chon==3:
+            bpt=f"$f(x) < 0$"      
+            kq=f"$(-\\infty;{x_1}) \\cup ({x_2};+\\infty)$"
 
+        if chon==4:
+            bpt=f"$f(x) \\le 0$"        
+            kq=f"$(-\\infty;{x_1}] \\cup [{x_2};+\\infty)$"
 
+    if chon_bang==2:
+        f=0.5*(x-x_1)*(x-x_2)
+        a,b,c=0.5,-0.5*(x_1+x_2), 0.5*x_1*x_2 
+        
 
+        chon=random.randint(1,4)  
+        
+        if chon==1:
+            bpt=f"$f(x)\\le 0$"  
+            kq=f"${{[{x_1};{x_2}]}}$"
+        
+        if chon==2:
+            bpt=f"$f(x) < 0$"        
+            kq=f"$({x_1};{x_2})$"
 
+        if chon==3:
+            bpt=f"$f(x) > 0$"      
+            kq=f"$(-\\infty;{x_1}) \\cup ({x_2};+\\infty)$"
 
+        if chon==4:
+            bpt=f"$f(x) \\ge 0$"        
+            kq=f"$(-\\infty;{x_1}] \\cup [{x_2};+\\infty)$" 
 
+    kq_false=[x for x in tap_ketqua if x != kq]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
 
+    code_hinh=my_module.codelatex_dothi_bac_2_no_header(a,b,c)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name = my_module.pdftoimage_timename(code)
+    
 
+    noi_dung=(
+        f"Cho hàm số $f(x)=ax^2+bx+c$ có đồ thị như hình vẽ."
+        f" Tập nghiệm của bất phương trình {bpt} là" )
+
+    noi_dung_loigiai=(
+    f"{bpt} $\\Leftrightarrow x\\in $ {kq}."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n{file_name}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 
@@ -2621,3 +3258,1173 @@ def aaa_pry_L10_C7_B3_02():
 	    f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C7_B3_03]-SA-M4. Tìm x để tổng khoảng cách 2 sợi dây đến 2 cột bằng a
+def aaa_pry_L10_C7_B3_03():
+    a=random.randint(2,6)
+    b=a+random.randint(1,4)
+    L=random.randint(3,10)
+    x=sp.symbols("x")
+    f=sqrt(x**2+a**2)+sqrt((L-x)**2+b**2)
+    
+    x_0=a*L/(a+b)
+    f_x=latex(nsimplify(f.subs(x,x_0)))
+
+    t=float(x_0)
+    if t.is_integer():
+        noi_dung = (
+        f"Có hai chiếc cọc có chiều cao lần lượt là {a} m và {b} m, đặt cách nhau {L} m."
+        f" Chúng được buộc bởi hai sợi dây từ một cái chốt trên mặt đất nằm giữa hai chân cột tới đỉnh của mỗi cột."
+        f" Gọi ${{x}}$ (m) là khoảng cách từ chốt đến chân cọc ngắn. Tìm ${{x}}$ để tổng độ dài hai dây bằng ${{{f_x}}}$."
+        )
+        dap_an=int(t)
+    else:
+        noi_dung = (
+        f"Có hai chiếc cọc có chiều cao lần lượt là {a} m và {b} m, đặt cách nhau {L} m."
+        f" Chúng được buộc bởi hai sợi dây từ một cái chốt trên mặt đất nằm giữa hai chân cột tới đỉnh của mỗi cột."
+        f" Gọi ${{x}}$ (m) là khoảng cách từ chốt đến chân cọc ngắn. Tìm ${{x}}$ để tổng độ dài hai dây bằng ${{{f_x}}}$ (kết quả làm tròn đến hàng phần mười)."
+        )
+        dap_an=f"{round(t,1):.1f}".replace(".",",")
+
+
+    noi_dung_loigiai=(
+        f"Gọi ${{A,B,M}}$ lần lượt là đỉnh của cọc thấp, cọc cao và chốt.\n\n"
+        f"$AM=\\sqrt{{x^2+{a**2}}},BM=\\sqrt{{({L}-x)^2+{b**2}}}$.\n\n"
+        f"Tổng chiều dài hai dây là:\n\n"
+        f"$\\sqrt{{x^2+{a**2}}}+\\sqrt{{({L}-x)^2+{b**2}}}, 0<x<{L}$.\n\n"            
+        f"$\\sqrt{{x^2+{a**2}}}+\\sqrt{{({L}-x)^2+{b**2}}}={f_x}\\Rightarrow \\dfrac{{x }}{{{L}-x}}={phan_so(a/b)}\\Rightarrow x={dap_an}$."
+
+    )
+
+    code_hinh=(f" \\begin{{tikzpicture}}[scale=0.16, every node/.style={{font=\\small}}]\n\
+    % Coordinates: A = base of short pole at x=0, B = base of tall pole at x=30.\n\
+    \\coordinate (A) at (0,0);\n\
+    \\coordinate (B) at (30,0);\n\
+    \\def\\drawx{{10}} % stake position for visualization\n\
+    \\coordinate (C) at (\\drawx,0);\n\
+    \n\
+    \n\
+    % Tops of poles\n\
+    \\coordinate (T1) at ($(A)+(0,12)$); % short pole top\n\
+    \\coordinate (T2) at ($(B)+(0,28)$); % tall pole top\n\
+    \n\
+    \n\
+    % Ground line\n\
+    \\draw[thick, brown] (-2,0) -- (32,0);\n\
+    \n\
+    \n\
+    % Poles\n\
+    \\draw[line width=1.5pt, blue] (A) -- (T1);\n\
+    \\draw[line width=1.5pt, green!70!black] (B) -- (T2);\n\
+    \n\
+    \n\
+    % Wires from stake to tops\n\
+    \\draw[line width=1.2pt, red] (C) -- (T1);\n\
+    \\draw[line width=1.2pt, orange] (C) -- (T2);\n\
+    \n\
+    \n\
+    % Points\n\
+    \\fill[black] (A) circle (0.14) node[below=3pt] {{}};\n\
+    \\fill[black] (B) circle (0.14) node[below=3pt] {{cọc cao}};\n\
+    \\fill[black] (C) circle (0.14) node[below=6pt] {{chốt}};\n\
+    \\fill[black] (T1) circle (0.12) node[left=2pt] {{}};\n\
+    \\fill[black] (T2) circle (0.12) node[right=2pt] {{}};\n\
+    \n\
+    \n\
+    % Height labels\n\
+    \\node[left, blue] at ($(A)!0.5!(T1)$) {{{a} m}};\n\
+    \\node[right, green!70!black] at ($(B)!0.5!(T2)$) {{{b} m}};\n\
+    \n\
+    \n\
+    % Ground distances (x and 30-x)\n\
+    \\draw[<->] ($(A)+(0,-1.6)$) -- ($(C)+(0,-1.6)$) node[midway, below] {{$x$ m}};\n\
+\n\
+\n\
+\\end{{tikzpicture}}")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+
+        
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\\shortans[oly]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C7_B3_04]-SA-M3. Tìm x để quãng đường AC = t*quãng đường BC.
+def aaa_pry_L10_C7_B3_04():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x", real=True)
+
+    ten = random.choice([
+        "An", "Bình", "Châu", "Dương", "Hà",
+        "Lan", "Minh", "Nam", "Quân", "Trang"
+    ])
+
+    # ----------------- SINH DỮ LIỆU NGẪU NHIÊN -----------------
+    while True:
+
+
+        NC = random.randint(8, 15)   # khoảng cách NC (m)
+        k = random.randint(2, 5)     # đoạn AB (m)
+
+        # t là tỉ số AC = t*BC
+        # sinh t dạng phân số đơn giản p/q
+        p = random.randint(1, 5)
+        q = random.randint(p+1, 8)   # đảm bảo t<1
+        t = p/q
+
+        # AC^2 và BC^2 theo mô hình toạ độ
+        AC2 = x**2 - NC*x + NC**2
+        BC2 = (x + k)**2 - NC*(x + k) + NC**2
+
+        # AC = t BC  -> AC^2 = t^2 BC^2
+        eq = sp.Eq(AC2, t**2 * BC2)
+
+        # giải nghiệm x dương
+        sols = sp.solve(eq, x)
+        sols_real_pos = []
+        for s in sols:
+            if s.is_real:
+                val = float(s)
+                if val > 0:
+                    sols_real_pos.append(val)
+
+        if sols_real_pos:
+            x_val = min(sols_real_pos)
+        else:
+            # fallback an toàn
+            x_val = 0
+        if x_val>=1:
+            break
+
+    # làm tròn 2 chữ số
+    x_rounded = round_half_up(x_val, 1)
+    dap_an = f"{x_rounded:.1f}".replace(".", ",")
+
+    # ----------------- NỘI DUNG -----------------
+
+    s_t = f"{p}/{q}".replace("/", "\\over ")
+    s_k = str(k)
+    s_NC = str(NC)
+
+    noi_dung = (
+        f"Khoảng cách từ nhà {ten} ở vị trí ${{N}}$ đến cột điện ${{C}}$ là {NC} m. "
+        f"Từ nhà, {ten} đi ${{x}}$ mét theo phương tạo với ${{NC}}$ một góc $60^\\circ$ đến vị trí ${{A}}$, "
+        f"sau đó đi tiếp {s_k} m theo cùng phương đó đến vị trí ${{B}}$ (như hình bên). "
+        f"Tìm ${{x}}$ để $AC = {phan_so(t)}BC$ (kết quả làm tròn đến hàng phần mười mét)."
+    )
+
+    # ----------------- LỜI GIẢI -----------------
+
+    noi_dung_loigiai = (
+        f"$AC =\\sqrt{{x^2 - {s_NC}x + {s_NC}^2}} ,\\quad "
+        f"BC = \\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}.$\n\n"
+        f"Theo giả thiết $AC = {phan_so(t)}BC$ nên $AC^2 = {phan_so(t**2)} BC^2$.\n\n"
+        f"Giải phương trình ta được $x \\approx {dap_an}$ (m)."    )
+
+    # ----------------- KẾT QUẢ TRẢ VỀ -----------------
+    code_hinh=(f" \\begin{{tikzpicture}}[smooth,scale=1.2]\n\
+            \\path\n\
+            (0,0) coordinate (N)\n\
+            (3,0) coordinate (C)\n\
+            ($(N)!1.2!60:(C)$) coordinate (B)\n\
+            ($(B)!0.3!(N)$) coordinate (A);\n\
+            \\draw (N)--(C)--(B)--cycle (C)--(A)\n\
+            pic[draw, angle radius=4mm]{{angle=C--N--B}};\n\
+            \\path \n\
+            (N)--(A) node[left,midway,scale=.8]{{$x$ }}\n\
+            (A)--(B) node[above,midway,sloped,scale=.8]{{${s_k}$ }}\n\
+            (N)--(C) node[above,midway,sloped,scale=.8]{{${NC}$ }};\n\
+            \\foreach \\x/\\g in {{A/-160,N/-90,C/-90,B/90}} \\draw[fill=black] (\\x) circle (.05) +(\\g:.3) node{{$\\x$}};\n\
+    \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word = f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C7_B3_05]-SA-M3. Tìm x để quãng đường BC = t*quãng đường AN.
+def aaa_pry_L10_C7_B3_05():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x", real=True)
+
+    ten = random.choice([
+        "An", "Bình", "Châu", "Dương", "Hà",
+        "Lan", "Minh", "Nam", "Quân", "Trang"
+    ])
+
+    # --- SINH DỮ LIỆU ---
+    while True:
+        NC = random.randint(8, 15)  # NC (m)
+        k = random.randint(2, 5)    # AB (m)
+
+        # sinh t dạng p/q
+        p = random.randint(1, 8)
+        q = random.randint(1, 8)
+        t = sp.Rational(p, q)
+
+        # AN = x
+        AN = x
+
+        # BC^2 theo mô hình toạ độ
+        BC2 = (x + k)**2 - NC*(x + k) + NC**2
+
+        # BC = t * AN => BC^2 = t^2 * x^2
+        eq = sp.Eq(BC2, (t**2) * x**2)
+
+        sols = sp.solve(eq, x)
+        sols_real_pos = []
+
+        for s in sols:
+            if s.is_real:
+                val = float(s)
+                if val > 0:
+                    sols_real_pos.append(val)
+
+        if sols_real_pos:
+            x_val = min(sols_real_pos)
+        else:
+            x_val = 0  # fallback an toàn
+
+        if x_val>1:
+            break
+
+    x_rounded = round_half_up(x_val, 1)
+    dap_an = f"{x_rounded:.1f}".replace(".", ",")
+
+    # --- format hiển thị ---
+    s_t = phan_so(p/q)
+    s_k = str(k)
+    s_NC = str(NC)
+
+    noi_dung = (
+        f"Khoảng cách từ nhà {ten} ở vị trí ${{N}}$ đến cột điện ${{C}}$ là {NC} m. "
+        f"Từ nhà, {ten} đi ${{x}}$ mét theo phương tạo với ${{NC}}$ một góc $60^\\circ$ đến vị trí ${{A}}$, "
+        f"sau đó đi tiếp {s_k} m theo cùng phương đó đến vị trí ${{B}}$ (như hình bên). "
+        f"Tìm $x$ để $BC = {s_t}AN$ (kết quả làm tròn đến hàng phần mười mét)."
+    )
+
+    noi_dung_loigiai = (
+        f"$AN = x$.\n\n"
+        f"$BC =\\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2 }}.$\n\n"
+        f"Theo giả thiết $BC = {s_t}AN$ nên:\n\n"
+        f"$BC^2 = {phan_so(p**2/q**2)} x^2 \\Rightarrow (x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2={phan_so(p**2/q**2)} x^2$.\n\n"
+        f"Giải phương trình theo $x$ ta được $x \\approx {dap_an}$ (m)."
+
+    )
+
+    code_hinh=(f" \\begin{{tikzpicture}}[smooth,scale=1.2]\n\
+            \\path\n\
+            (0,0) coordinate (N)\n\
+            (3,0) coordinate (C)\n\
+            ($(N)!1.2!60:(C)$) coordinate (B)\n\
+            ($(B)!0.3!(N)$) coordinate (A);\n\
+            \\draw (N)--(C)--(B)--cycle (C)--(A)\n\
+            pic[draw, angle radius=4mm]{{angle=C--N--B}};\n\
+            \\path \n\
+            (N)--(A) node[left,midway,scale=.8]{{$x$ }}\n\
+            (A)--(B) node[above,midway,sloped,scale=.8]{{${s_k}$ }}\n\
+            (N)--(C) node[above,midway,sloped,scale=.8]{{${NC}$ }};\n\
+            \\foreach \\x/\\g in {{A/-160,N/-90,C/-90,B/90}} \\draw[fill=black] (\\x) circle (.05) +(\\g:.3) node{{$\\x$}};\n\
+    \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word = f"{noi_dung}\n{file_name}\n"
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C7_B3_06]-M2. Tính tổng các nghiệm của phương trình căn (ax^2+bx+c)=d
+def aaa_pry_L10_C7_B3_06():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-4, 4) if i!=0])
+        b = random.choice([i for i in range(-6, 7) if i!=0])
+        c=random.randint(-5,5)
+        d=random.randint(1,6)
+        c1=c-d**2
+        delta=b**2-4*a*c1
+        if delta>0:
+            break
+    f=a*x**2+b*x+c
+
+    chon=random.randint(1,2)
+    if chon==1:
+        noi_dung=(
+        f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f))}={d}$ là"
+        )
+    
+    if chon==2:
+        noi_dung=(
+        f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f))}-{d}=0$ là"
+        )
+
+    noi_dung=noi_dung.replace("--","+")
+    
+
+
+    
+
+    kq=-b/a
+    kq_false = set()
+    while len(kq_false) < 4:    
+        numbers = round(random.uniform(-b/a-5, -b/a+5),1)
+        if numbers!=kq:
+            kq_false.add(numbers)
+
+    kq_false=list(kq_false)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    if a>0:
+
+        noi_dung_loigiai=(
+        f"${latex(sqrt(f))}={d}\\Rightarrow {latex(a*x**2+b*x+c)}={d**2} \\Rightarrow {latex(a*x**2+b*x+c-d**2)}=0$.\n\n"
+        f"Phương trình có 2 nghiệm $x_1,x_2$ thì $x_1+x_2=-\\dfrac{{{b}}}{{2.{a}}}={phan_so(-b/a)}$."
+        )
+    else:
+        noi_dung_loigiai=(
+        f"${latex(sqrt(f))}={d}\\Rightarrow {latex(a*x**2+b*x+c)}={d**2} \\Rightarrow {latex(a*x**2+b*x+c-d**2)}=0$.\n\n"
+        f"Phương trình có 2 nghiệm $x_1,x_2$ thì: $x_1+x_2=-\\dfrac{{{b}}}{{2.({a})}}={phan_so(-b/a)}$."
+        )
+
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B3_07]-M2. Tập nghiệm PT căn(ax^2+b)=căn(cx+d)
+def aaa_pry_L10_C7_B3_07():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-5, 5) if i!=0])
+        b = random.choice([i for i in range(-6, 7) if i!=0])
+        c = random.choice([i for i in range(-6, 7) if i!=0])
+        d = random.choice([i for i in range(-6, 7) if i!=0])
+        a1,b1,c1=a,-c,b-d
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1=(-b1-sqrt(delta))/(2*a1)
+        x_2=(-b1+sqrt(delta))/(2*a1)
+        f,g = a*x**2+b, c*x+d
+        g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
+
+        if all([delta>0,g_1>=0,g_2>=0]):
+            break
+        
+    chon=random.randint(1,2)
+    if chon==1:
+        noi_dung=(
+        f"Tập nghiệm của phương trình ${latex(sqrt(f))}={latex(sqrt(g))}$ là"
+        )
+    
+    if chon==2:
+        noi_dung=(
+        f"Tập nghiệm của phương trình ${latex(sqrt(f))}-{latex(sqrt(g))}=0$ là"
+        )
+    
+    
+
+    kq=f"$S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$"
+    kq_false=[
+    f"$S=\\left({latex(x_1)};{latex(x_2)} \\right)$",
+    f"$S=\\left({latex(x_1)};{latex(x_2)} \\right]$",
+    f"$S=\\left[{latex(x_1)};{latex(x_2)} \\right]$",
+    f"$S=\\left\\{{{latex(x_1)} \\right\\}}$",
+    f"$S=\\left\\{{{latex(x_2)} \\right\\}}$",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f))}={latex(sqrt(g))} \\Rightarrow {latex(f)}={latex(g)} \\Rightarrow {latex(f-g)}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B3_08]-M2. Tập nghiệm PT căn(ax+b)=x+d
+def aaa_pry_L10_C7_B3_08():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])            
+        d = random.choice([i for i in range(-8, 8) if i!=0])       
+        a1,b1,c1=1,2*d-a,d**2-b**2        
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1=(-b1-sqrt(delta))/(2*a1)
+        x_2=(-b1+sqrt(delta))/(2*a1)
+        f,g = a*x+b, x+d
+        g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
+
+        if all([delta>0,g_1>=0,g_2>=0]):
+            break  
+     
+    chon=random.randint(1,4)
+    if chon==1:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}={latex(g)}$ là")
+
+    if chon==2:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-{d}=x$ là")
+
+    if chon==3:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-x={d}$ là")
+
+    if chon==4:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-x-{d}=0$ là")
+        
+    noi_dung=noi_dung.replace("--","+") 
+
+    kq=f"$S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$"
+    kq_false=[
+    f"$S=\\left({latex(x_1)};{latex(x_2)} \\right)$",
+    f"$S=\\left({latex(x_1)};{latex(x_2)} \\right]$",
+    f"$S=\\left[{latex(x_1)};{latex(x_2)} \\right]$",
+    f"$S=\\left\\{{{latex(x_1)} \\right\\}}$",
+    f"$S=\\left\\{{{latex(x_2)} \\right\\}}$",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f))}={latex(g)} \\Rightarrow {latex(f)}={latex(g**2)} \\Rightarrow {latex(expand(f-g**2))}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$."
+    )
+
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B3_09]-M2. Tính tổng các nghiệm PT căn(ax+b)=x+d
+def aaa_pry_L10_C7_B3_09():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])            
+        d = random.choice([i for i in range(-8, 8) if i!=0])       
+        a1,b1,c1=1,2*d-a,d**2-b**2        
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1=(-b1-sqrt(delta))/(2*a1)
+        x_2=(-b1+sqrt(delta))/(2*a1)
+        f,g = a*x+b, x+d
+        g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
+
+        if all([delta>0,g_1>=0,g_2>=0]):
+            break
+    chon=random.randint(1,4)
+    if chon==1:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}={latex(g)}$ là")
+
+    if chon==2:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-{d}=x$ là")
+
+    if chon==3:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-x={d}$ là")
+
+    if chon==4:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-x-{d}=0$ là")
+
+    noi_dung=noi_dung.replace("--","+")  
+     
+    
+
+    kq=-b1/a1
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(kq-random.randint(1,5), kq+random.randint(1,5)),1)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f))}={latex(g)} \\Rightarrow {latex(f)}={latex(g**2)} \\Rightarrow {latex(expand(f-g**2))}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$."
+    )
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B3_10]-TF-M2. PT căn(ax+b)=x+d. Xét Đ-S: Điều kiện, bình phương, nghiệm, tổng-tích các nghiệm
+def aaa_pry_L10_C7_B3_10():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])            
+        d = random.choice([i for i in range(-8, 8) if i!=0])       
+        a1,b1,c1=1,2*d-a,d**2-b**2        
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1=(-b1-sqrt(delta))/(2*a1)
+        x_2=(-b1+sqrt(delta))/(2*a1)
+        f,g = a*x+b, x+d
+        g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
+
+        if all([delta>0,g_1>=0,g_2>=0]):
+            break  
+     
+
+    noi_dung=(f"Cho phương trình ${latex(sqrt(f))}={latex(g)}$ (1).")
+    
+    noi_dung+=f" Xét tính đúng-sai của các khẳng định sau"
+        
+    noi_dung=noi_dung.replace("--","+")
+
+    noi_dung+=  f"Xét tính đúng-sai của các khẳng định sau:"  
+    
+    kq1_T=f"* Nếu $x_0$ là một nghiệm của phương trình (1) thì $x_0+{d}\\ge 0$" 
+    kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì $x_0+{d}\\le 0$"
+    
+    HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì $x_0+{d}\\ge 0$."
+    HDG=thay_cong_tru(HDG)
+    kq1=random.choice([kq1_T, kq1_F])
+    kq1=thay_cong_tru(kq1)
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Bình phương hai vế và rút gọn ta được phương trình ${latex(expand(f-g**2))}=0$"
+    kq2_F=f"Bình phương hai vế và rút gọn ta được phương trình ${latex(expand(f-g**2+random.randint(1,5)))}=0$"
+    
+    HDG=f"Bình phương hai vế và rút gọn ta được phương trình ${latex(expand(f-g**2))}=0$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Phương trình (1) có các nghiệm là $x={latex(x_1)},x={latex(x_2)}$" 
+    kq3_F=random.choice([
+        f"Phương trình (1) có nghiệm duy nhất là $x={latex(x_1)}$",
+        f"Phương trình (1) có nghiệm duy nhất là $x={latex(x_2)}$",
+        f"Phương trình (1) vô nghiệm",  ])
+    
+    HDG=(f"${latex(sqrt(f))}={latex(g)} \\Rightarrow {latex(f)}={latex(g**2)} \\Rightarrow {latex(expand(f-g**2))}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq4_T=f"* Tổng các nghiệm của phương trình bằng ${{{phan_so(-b1/a1)}}}$"
+        kq4_F=f"Tổng các nghiệm của phương trình bằng ${{{phan_so(-b1/a1+random.randint(1,4))}}}$" 
+        
+        HDG=f"$x_1+x_2={latex(x_1)}+{latex(x_2)}={phan_so(-b1/a1)}$."
+    
+    if chon==2:
+        kq4_T=f"* Tích các nghiệm của phương trình bằng ${{{phan_so(c1/a1)}}}$"
+        kq4_F=f"Tích các nghiệm của phương trình bằng ${{{phan_so(c1/a)}}}$" 
+        
+        HDG=f"$x_1.x_2=({latex(x_1)}).({latex(x_2)})={phan_so(c1/a1)}$."
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C7_B3_11]-TF-M2. PT căn(ax+b)=cx+d. Xét Đ-S: Điều kiện, bình phương, nghiệm, tổng-tích các nghiệm
+def aaa_pry_L10_C7_B3_11():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])
+        c = random.choice([i for i in range(-4, 5) if i!=0])         
+        d = random.choice([i for i in range(-8, 8) if i!=0])       
+        a1,b1,c1=c, 2*c*d-a, d**2-b      
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1=(-b1-sqrt(delta))/(2*a1)
+        x_2=(-b1+sqrt(delta))/(2*a1)
+        f,g = a*x+b, c*x+d
+        g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
+
+        if all([delta>0,g_1>=0,g_2>=0]):
+            break  
+     
+
+    noi_dung=(f"Cho phương trình ${latex(sqrt(f))}={latex(g)}$ (1).")
+    
+    noi_dung+=f" Xét tính đúng-sai của các khẳng định sau"
+        
+    noi_dung=noi_dung.replace("--","+")
+
+    noi_dung+=  f"Xét tính đúng-sai của các khẳng định sau:"  
+    
+    kq1_T=f"* Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$" 
+    kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\le 0$"
+    
+    HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$."
+    HDG=thay_cong_tru(HDG)
+    kq1=random.choice([kq1_T, kq1_F])
+    kq1=thay_cong_tru(kq1)
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Bình phương hai vế và rút gọn ta được phương trình ${latex(expand(f-g**2))}=0$"
+    kq2_F=f"Bình phương hai vế và rút gọn ta được phương trình ${latex(expand(f-g**2+random.randint(1,5)))}=0$"
+    
+    HDG=f"Bình phương hai vế và rút gọn ta được phương trình ${latex(expand(f-g**2))}=0$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Phương trình (1) có các nghiệm là $x={latex(x_1)},x={latex(x_2)}$" 
+    kq3_F=random.choice([
+        f"Phương trình (1) có nghiệm duy nhất là $x={latex(x_1)}$",
+        f"Phương trình (1) có nghiệm duy nhất là $x={latex(x_2)}$",
+        f"Phương trình (1) vô nghiệm",  ])
+    
+    HDG=(f"${latex(sqrt(f))}={latex(g)} \\Rightarrow {latex(f)}={latex(g**2)} \\Rightarrow {latex(expand(f-g**2))}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    if chon==1:
+        kq4_T=f"* Tổng các nghiệm của phương trình bằng ${{{phan_so(-b1/a1)}}}$"
+        kq4_F=f"Tổng các nghiệm của phương trình bằng ${{{phan_so(-b1/a1+random.randint(1,4))}}}$" 
+        
+        HDG=f"$x_1+x_2={latex(x_1)}+{latex(x_2)}={phan_so(-b1/a1)}$."
+    
+    if chon==2:
+        kq4_T=f"* Tích các nghiệm của phương trình bằng ${{{phan_so(c1/a1)}}}$"
+        kq4_F=f"Tích các nghiệm của phương trình bằng ${{{phan_so(c1/a)}}}$" 
+        
+        HDG=f"$x_1.x_2=({latex(x_1)}).({latex(x_2)})={phan_so(c1/a1)}$."
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C7_B3_12]-M2. Tính tổng các nghiệm PT căn(ax+b)=cx+d
+def aaa_pry_L10_C7_B3_12():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-8, 8) if i!=0])
+        b = random.choice([i for i in range(-8, 8) if i!=0])
+        c = random.choice([i for i in range(-4, 5) if i!=0])         
+        d = random.choice([i for i in range(-8, 8) if i!=0])       
+        a1,b1,c1=c, 2*c*d-a, d**2-b      
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1=(-b1-sqrt(delta))/(2*a1)
+        x_2=(-b1+sqrt(delta))/(2*a1)
+        f,g = a*x+b, c*x+d
+        g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
+
+        if all([delta>0,g_1>=0,g_2>=0]):
+            break
+    chon=random.randint(1,4)
+    if chon==1:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}={latex(g)}$ là")
+
+    if chon==2:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-{d}={c}x$ là")
+
+    if chon==3:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-{c}x={d}$ là")
+
+    if chon==4:
+        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-{c}x-{d}=0$ là")
+
+    noi_dung=noi_dung.replace("--","+").replace("1x","x").replace("-1x","-x") 
+    
+
+    kq=-b1/a1
+    kq_false = set()
+    while len(kq_false) < 4:
+    
+        numbers = round(random.uniform(kq-random.randint(1,5), kq+random.randint(1,5)),1)
+        if numbers!=kq:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f))}={latex(g)} \\Rightarrow {latex(f)}={latex(g**2)} \\Rightarrow {latex(expand(f-g**2))}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("1x","x").replace("-1x","-x")
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C7_B3_13]-TF-M3. Bài toán đúng-sai về quãng đường đi hình tam giác.
+def aaa_pry_L10_C7_B3_13():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x", real=True)
+
+    ten = random.choice([
+        "An", "Bình", "Châu", "Dương", "Hà",
+        "Lan", "Minh", "Nam", "Quân", "Trang"
+    ])
+
+    # ----------------- SINH DỮ LIỆU NGẪU NHIÊN -----------------
+    while True:
+
+
+        NC = random.randint(8, 15)   # khoảng cách NC (m)
+        k = random.randint(2, 5)     # đoạn AB (m)
+
+        # t là tỉ số AC = t*BC
+        # sinh t dạng phân số đơn giản p/q
+        p = random.randint(1, 5)
+        q = random.randint(p+1, 8)   # đảm bảo t<1
+        t = p/q
+
+        # AC^2 và BC^2 theo mô hình toạ độ
+        AC2 = x**2 - NC*x + NC**2
+        BC2 = (x + k)**2 - NC*(x + k) + NC**2
+
+        # AC = t BC  -> AC^2 = t^2 BC^2
+        eq = sp.Eq(AC2, t**2 * BC2)
+
+        # giải nghiệm x dương
+        sols = sp.solve(eq, x)
+        sols_real_pos = []
+        for s in sols:
+            if s.is_real:
+                val = float(s)
+                if val > 0:
+                    sols_real_pos.append(val)
+
+        if sols_real_pos:
+            x_val = min(sols_real_pos)
+        else:
+            # fallback an toàn
+            x_val = 0
+        if x_val>=1:
+            break
+
+    # làm tròn 2 chữ số
+    x_rounded = round_half_up(x_val, 1)
+    s_x = f"{x_rounded:.1f}".replace(".", ",")
+    s_x_f = f"{round_half_up(x_val+random.randint(1,2), 1):.1f}".replace(".", ",")
+
+    # ----------------- NỘI DUNG -----------------
+
+    s_t = f"{p}/{q}".replace("/", "\\over ")
+    s_k = str(k)
+    s_NC = str(NC)
+
+    noi_dung = (
+        f"Khoảng cách từ nhà {ten} ở vị trí ${{N}}$ đến cột điện ${{C}}$ là {NC} m. "
+        f"Từ nhà, {ten} đi ${{x}}$ mét theo phương tạo với ${{NC}}$ một góc $60^\\circ$ đến vị trí ${{A}}$, "
+        f"sau đó đi tiếp {s_k} m theo cùng phương đó đến vị trí ${{B}}$ (như hình bên). "
+        f" Biết rằng $AC = {phan_so(t)}BC$."
+        f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần mười mét):"
+    )
+
+    # ----------------- LỜI GIẢI -----------------
+
+    
+    kq1_T=f"* $AC =\\sqrt{{x^2 - {s_NC}x + {s_NC}^2}}$" 
+    kq1_F=f"$AC =\\sqrt{{x^2 +{s_NC}x + {s_NC}^2}}$"
+    
+    HDG=f"Áp dụng định lí cosin ta có: $AC =\\sqrt{{x^2 - {s_NC}x + {s_NC}^2}}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $BC = \\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}$"
+    kq2_F=f"$BC = \\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}$"
+    
+    HDG=f"Áp dụng định lí cosin ta có: $BC = \\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}$"
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* $\\sqrt{{x^2 - {s_NC}x + {s_NC}^2}}={phan_so(t)}\\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}$" 
+    kq3_F=f"$\\sqrt{{x^2 +{s_NC}x + {s_NC}^2}}={phan_so(t)}\\sqrt{{(x+{s_k})^2 + {s_NC}(x+{s_k}) + {s_NC}^2}}$"
+    
+    HDG=f"$\\sqrt{{x^2 - {s_NC}x + {s_NC}^2}}={phan_so(t)}\\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Để $AC = {phan_so(t)}BC$ thì $x \\approx {s_x}$"
+    kq4_F=f"Để $AC = {phan_so(t)}BC$ thì $x \\approx {s_x_f}$" 
+    
+    HDG=(
+        f"$AC =\\sqrt{{x^2 - {s_NC}x + {s_NC}^2}} ,\\quad "
+        f"BC = \\sqrt{{(x+{s_k})^2 - {s_NC}(x+{s_k}) + {s_NC}^2}}.$\n\n"
+        f"Theo giả thiết $AC = {phan_so(t)}BC$ nên $AC^2 = {phan_so(t**2)} BC^2$.\n\n"
+        f"Giải phương trình ta được $x \\approx {s_x}$ (m).")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+
+    code_hinh=(f" \\begin{{tikzpicture}}[smooth,scale=1.2]\n\
+            \\path\n\
+            (0,0) coordinate (N)\n\
+            (3,0) coordinate (C)\n\
+            ($(N)!1.2!60:(C)$) coordinate (B)\n\
+            ($(B)!0.3!(N)$) coordinate (A);\n\
+            \\draw (N)--(C)--(B)--cycle (C)--(A)\n\
+            pic[draw, angle radius=4mm]{{angle=C--N--B}};\n\
+            \\path \n\
+            (N)--(A) node[left,midway,scale=.8]{{$x$ }}\n\
+            (A)--(B) node[above,midway,sloped,scale=.8]{{${s_k}$ }}\n\
+            (N)--(C) node[above,midway,sloped,scale=.8]{{${NC}$ }};\n\
+            \\foreach \\x/\\g in {{A/-160,N/-90,C/-90,B/90}} \\draw[fill=black] (\\x) circle (.05) +(\\g:.3) node{{$\\x$}};\n\
+    \\end{{tikzpicture}}")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai= f"{noi_dung}\n{file_name}\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an

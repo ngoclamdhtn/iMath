@@ -645,7 +645,7 @@ def get_image_dimensions(file_path):
         print(f"Error: {e}")
         return None
 
-
+#print(get_image_dimensions("D:\\Github-iMath\\iMath\\HINH VE\\2026-01-20_08-48-37.png"))
 #Tìm kiếm tên ảnh và chèn ảnh từ thư mục HINHVE
 def find_and_insert_image(doc):
     folder_hinh = get_folder_hinh()
@@ -658,53 +658,75 @@ def find_and_insert_image(doc):
             for i in range(len(doc.paragraphs)):
                 if file_name in doc.paragraphs[i].text:
                     image_path = os.path.join(folder_hinh,f"{file_name}.PNG")
-                    chieu_rong= get_image_dimensions(image_path)[1] 
+                    chieu_rong, chieu_cao= get_image_dimensions(image_path)\
                     #print(chieu_rong)
                      # Thêm đoạn văn trống trước đoạn văn chứa ảnh
                     empty_paragraph = doc.paragraphs[i].insert_paragraph_before()               
-                    run = doc.paragraphs[i].add_run()                           
+                    run = doc.paragraphs[i].add_run()
+
+                    if chieu_rong not in ["1.74", "1.71","2.56", "2.9","3.56", "5.18","5.33", "6.71","7.25","7.22",
+                    "8.62", "13.44","13.07", "9.68","9.32", "15.83","14.19", "19.32", "10.12", "10.75", "10.78", "18.29",
+                    "11.74", "9.93"]:
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(2.0))
+
+                    #chỉnh bảng xét dấu 1 nghiệm
+                    if chieu_rong=="18.29":
+                        run.add_picture(image_path, width=Inches(3.85),height=Inches(1))
+
+                    #chỉnh bảng xét dấu vô nghiệm
+                    if chieu_rong=="11.74":
+                        run.add_picture(image_path, width=Inches(3),height=Inches(0.97))
+
+                    #chỉnh bảng xét dấu 2 nghiệm
+                    if chieu_rong=="9.93":
+                        run.add_picture(image_path, width=Inches(3),height=Inches(1.12))
+
+                    #Chỉnh đồ thị bậc 2/bậc 1
+                    if chieu_rong=="10.78":
+                        run.add_picture(image_path, width=Inches(3),height=Inches(3.19))                                            
                     
                     #Chỉnh kích thước bảng mẫu số liệu ghép nhóm
                     if chieu_rong=="1.74":
                         run.add_picture(image_path, width=Inches(6.5),height=Inches(0.6))
 
-                    elif chieu_rong=="1.71":
+                    if chieu_rong=="1.71":
                         run.add_picture(image_path, width=Inches(6.5),height=Inches(0.6))
 
                     #Chỉnh kích thước bảng biến thiên bậc 2
-                    elif chieu_rong =="5.18":
+                    if chieu_rong =="5.18":
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(1.5))
 
                     #Chỉnh kích thước xét dấu đạo hàm
-                    elif chieu_rong =="3.56":
+                    if chieu_rong =="3.56":
                         run.add_picture(image_path, width=Inches(4.3),height=Inches(1))
-                    elif chieu_rong =="2.9":
+
+                    if chieu_rong =="2.9":
                         run.add_picture(image_path, width=Inches(5),height=Inches(1))
 
                     #Chỉnh kích thước bảng xét dấu bậc 2 vô nghiệm
-                    elif chieu_rong =="2.56":
+                    if chieu_rong =="2.56":
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(0.65))
 
                     #Chỉnh kích thước bảng biến thiên hàm bậc 3 có 2 nghiệm
-                    elif chieu_rong=="5.33":
+                    if chieu_rong=="5.33":
                         run.add_picture(image_path, width=Inches(3.8),height=Inches(2))
 
                     #Chỉnh kích thước bảng biến thiên hàm phân thức bậc nhất
-                    elif chieu_rong=="5.53":
+                    if chieu_rong=="5.53":
                         run.add_picture(image_path, width=Inches(2.7),height=Inches(1.4))
 
-                    elif chieu_rong =="7.22":
+                    if chieu_rong =="7.22":
                         run.add_picture(image_path, width=Inches(3),height=Inches(3.48))
 
-                    elif chieu_rong =="7.25":
+                    if chieu_rong =="7.25":
                         run.add_picture(image_path, width=Inches(3),height=Inches(2.34))
 
                     #Chỉnh kích thước bảng biến thiên tìm đường tiệm cận
-                    elif chieu_rong =="6.71":
+                    if chieu_rong =="6.71":
                         run.add_picture(image_path, width=Inches(4.45),height=Inches(1.56))
 
                     #Chỉnh kích thước hình chóp hình thang
-                    elif chieu_rong =="9.32":
+                    if chieu_rong =="9.32":
                         run.add_picture(image_path, width=Inches(2.8),height=Inches(2.0))
 
                     #Chỉnh kích thước hình lăng trụ xiên tam giác 
@@ -712,29 +734,38 @@ def find_and_insert_image(doc):
                         run.add_picture(image_path, width=Inches(2.0),height=Inches(2.0))
 
                     #Chỉnh đồ thị bậc 2
-                    elif chieu_rong =="13.07":
+                    if chieu_rong =="13.07":
                         run.add_picture(image_path, width=Inches(2.5),height=Inches(2.0))
 
                     #Chỉnh vòng tròn lượng giác
-                    elif chieu_rong =="13.44":
+                    if chieu_rong =="13.44":
                         run.add_picture(image_path, width=Inches(3),height=Inches(3))
 
                     #Chỉnh kích thước bảng xét dấu đạo hàm
-                    elif chieu_rong =="14.19" and chieu_cao=="3.56":
+                    if chieu_rong =="14.19" and chieu_cao=="3.56":
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(0.8))
 
                     #Chỉnh kích thước bảng biến thiên tiệm cận
-                    elif chieu_rong =="15.83" and chieu_cao=="5.85":
+                    if chieu_rong =="15.83" and chieu_cao=="5.85":
                         run.add_picture(image_path, width=Inches(5.5),height=Inches(2.3))
 
-                    elif chieu_rong =="19.32":
+                    if chieu_rong =="19.32":
                         run.add_picture(image_path, width=Inches(3.45),height=Inches(0.65))                    
 
                     #Chỉnh đồ thị bậc 4
-                    elif chieu_rong =="10.12":
-                        run.add_picture(image_path, width=Inches(3.0),height=Inches(3.0)) 
-                    else:
-                        run.add_picture(image_path, width=Inches(3.0),height=Inches(2.0))
+                    if chieu_rong =="10.12":
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(3.0))
+
+                    #Chỉnh bảng xét dấu
+                    if chieu_rong =="10.75":
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(1))
+
+                    if chieu_rong =="8.62":
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(1))
+
+                    
+                    
+                        
                     # Căn giữa đoạn văn chứa hình ảnh
                     doc.paragraphs[i].alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
                     doc.paragraphs[i+1].text =""              
@@ -835,11 +866,9 @@ def codelatex_dothi_bac_2(a,b,c):
     y_0=round(f.subs(x,x_0),1)
     x_min, x_max= x_0-3, x_0+3
     if x_min>0: 
-        x_min=-1
-        x_max=2*(x_0+1)
+        x_min=-1.5        
     if x_max<0: 
-        x_max=1
-        x_min=2*(1-x_0)
+        x_max=1.5        
     d=tinh_va_dau_delta(a,b,c)[0]
     #Vô nghiệm, nghiệm kép
     if d=="<0" or d=="=0":
@@ -890,6 +919,7 @@ def codelatex_dothi_bac_2(a,b,c):
 def codelatex_dothi_bac_2_no_header(a,b,c):
     x=sp.symbols("x")
     f=a*x**2 + b*x + c
+    delta=b**2-4*a*c
     x_0=round(-b/(2*a),1)
     y_0=round(f.subs(x,x_0),1)
     x_min, x_max= x_0-3, x_0+3
@@ -913,6 +943,14 @@ def codelatex_dothi_bac_2_no_header(a,b,c):
     #2 nghiệm
             
     else:
+        x_1=min((-b-sqrt(delta))/(2*a),(-b+sqrt(delta))/(2*a))
+        x_2=max((-b-sqrt(delta))/(2*a),(-b+sqrt(delta))/(2*a))
+        x_min, x_max= round(x_1-2,2), round(x_2+2,2)
+        if x_min>0:
+            x_min=-1
+        if x_max<0:
+            x_max=1
+
         if a>0:
             y_min= y_0 - 2           
             y_max=2-y_min
@@ -932,7 +970,7 @@ def codelatex_dothi_bac_2_no_header(a,b,c):
 \\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
  \\foreach \\x in {{-1,1,{so_truc_x}}}\n\
 \\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize$\\x$}};\n\
-\\foreach \\y in {{-1,1,{so_truc_y}}}\n\
+\\foreach \\y in {{1}}\n\
 \\draw[thin] (1pt,\\y)--(-1pt,\\y) node [left] {{\\footnotesize$\\y$}};\n\
 \\begin{{scope}}\n\
  \\clip ({x_min},{y_min-1}) rectangle ({x_max},{y_max+1});\n\
