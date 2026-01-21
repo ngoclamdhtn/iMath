@@ -645,7 +645,7 @@ def get_image_dimensions(file_path):
         print(f"Error: {e}")
         return None
 
-#print(get_image_dimensions("D:\\Github-iMath\\iMath\\HINH VE\\2026-01-20_08-48-37.png"))
+#print(get_image_dimensions("E:\\Github-iMath\\iMath\\HINH VE\\2026-01-21_14-40-22.png"))
 #Tìm kiếm tên ảnh và chèn ảnh từ thư mục HINHVE
 def find_and_insert_image(doc):
     folder_hinh = get_folder_hinh()
@@ -664,10 +664,25 @@ def find_and_insert_image(doc):
                     empty_paragraph = doc.paragraphs[i].insert_paragraph_before()               
                     run = doc.paragraphs[i].add_run()
 
-                    if chieu_rong not in ["1.74", "1.71","2.56", "2.9","3.56", "5.18","5.33", "6.71","7.25","7.22",
+                    list_rong=["1.74", "1.71","2.56", "2.9","3.56", "5.18","5.33", "6.71","7.25","7.22",
                     "8.62", "13.44","13.07", "9.68","9.32", "15.83","14.19", "19.32", "10.12", "10.75", "10.78", "18.29",
-                    "11.74", "9.93"]:
+                    "11.74", "9.93"]
+
+                    list_cao=["1.74", "1.71", "2.56"]
+
+
+                    if chieu_rong not in list_rong and chieu_cao not in list_cao:
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(2.0))
+
+                    #Chỉnh kích thước bảng mẫu số liệu ghép nhóm
+                    if chieu_cao=="1.74":
+                        run.add_picture(image_path, width=Inches(6.5),height=Inches(0.6))
+
+                    if chieu_cao=="1.71":
+                        run.add_picture(image_path, width=Inches(6.5),height=Inches(0.97))
+
+                    if chieu_cao=="2.56":
+                        run.add_picture(image_path, width=Inches(3),height=Inches(0.6))
 
                     #chỉnh bảng xét dấu 1 nghiệm
                     if chieu_rong=="18.29":
@@ -685,13 +700,7 @@ def find_and_insert_image(doc):
                     if chieu_rong=="10.78":
                         run.add_picture(image_path, width=Inches(3),height=Inches(3.19))                                            
                     
-                    #Chỉnh kích thước bảng mẫu số liệu ghép nhóm
-                    if chieu_rong=="1.74":
-                        run.add_picture(image_path, width=Inches(6.5),height=Inches(0.6))
-
-                    if chieu_rong=="1.71":
-                        run.add_picture(image_path, width=Inches(6.5),height=Inches(0.6))
-
+                    
                     #Chỉnh kích thước bảng biến thiên bậc 2
                     if chieu_rong =="5.18":
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(1.5))

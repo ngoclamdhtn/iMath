@@ -1381,7 +1381,7 @@ def aaa_pry_L10_C7_B1_16():
         file_name=my_module.pdftoimage_timename(code)
 
         noi_dung = f"Cho hàm số bậc hai $y=f(x)=ax^{{2}}+bx+{c}$ có đồ thị là Parabol $(P)$. Biết biểu thức ${{f(x)}}$ có bảng xét dấu như hình vẽ. Xét tính đúng-sai của các khẳng định sau. "   
-        noi_dung=thay_cong_tru(noi_dung)  
+        noi_dung=thay_dau_congtru(noi_dung)  
         
         kq1_T=f"* ${{(P)}}$ có bề lõm quay lên" 
         kq1_F=f" ${{(P)}}$ có bề lõm quay xuống"
@@ -1402,7 +1402,7 @@ def aaa_pry_L10_C7_B1_16():
         file_name=my_module.pdftoimage_timename(code)
 
         noi_dung = f"Cho hàm số bậc hai $y=f(x)=ax^{{2}}+bx+{c}$. Biết biểu thức ${{f(x)}}$ có bảng xét dầu như hình vẽ. Xét tính đúng-sai của các khẳng định sau. "   
-        noi_dung=thay_cong_tru(noi_dung)  
+        noi_dung=thay_dau_congtru(noi_dung)  
         debai_word= f"{noi_dung}\n"\
                     f"{file_name}"
         
@@ -1428,7 +1428,7 @@ def aaa_pry_L10_C7_B1_16():
     kq3_F=f"$a={a+random.randint(1,5)}$ "
     kq3=random.choice([kq3_T, kq3_F])
     HDG=f"  Ta có $f(x)=a(x-{x_1})(x-{x_2})$ suy ra ${c}= a. {x_1}. {x_2}$ vậy $a={a}$" 
-    HDG=thay_cong_tru(HDG)
+    HDG=thay_dau_congtru(HDG)
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -3938,9 +3938,9 @@ def aaa_pry_L10_C7_B3_10():
     kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì $x_0+{d}\\le 0$"
     
     HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì $x_0+{d}\\ge 0$."
-    HDG=thay_cong_tru(HDG)
+    HDG=thay_dau_congtru(HDG)
     kq1=random.choice([kq1_T, kq1_F])
-    kq1=thay_cong_tru(kq1)
+    kq1=thay_dau_congtru(kq1)
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -4068,9 +4068,9 @@ def aaa_pry_L10_C7_B3_11():
     kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\le 0$"
     
     HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$."
-    HDG=thay_cong_tru(HDG)
+    HDG=thay_dau_congtru(HDG)
     kq1=random.choice([kq1_T, kq1_F])
-    kq1=thay_cong_tru(kq1)
+    kq1=thay_dau_congtru(kq1)
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
