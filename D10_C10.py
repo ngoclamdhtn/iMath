@@ -85,12 +85,19 @@ def show_ptts(a,b):
 		if b==-1:
 			t=f"t"
 	return t
+
 #Trả về dấu và giá trị số
 def show_dau_value(a):
     dau=f"+{a}"
     if a<0:
         dau=f"{a}"
     return dau
+
+def dau_ngoac(a):
+	kq=a
+	if a<0:
+		kq=f"({a})"
+	return kq
 
 #Trả về véctơ pháp tuyến từ véctơ chỉ phương
 def tim_vtpt_tu_vtcp(a,b):
@@ -1251,10 +1258,10 @@ def gghik_L10_CX_B0_16():
 	kq3=pa_kotrung[2]
 	kq4=pa_kotrung[3]	
 
-	pa_A= f"*${latex(kq)}$"
-	pa_B= f"${latex(kq2)}$"
-	pa_C= f"${latex(kq3)}$"
-	pa_D= f"${latex(kq4)}$"
+	pa_A= f"*${{{latex(kq)}}}$"
+	pa_B= f"${{{latex(kq2)}}}$"
+	pa_C= f"${{{latex(kq3)}}}$"
+	pa_D= f"${{{latex(kq4)}}}$"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)
@@ -3418,7 +3425,713 @@ def gghik_L10_CX_B0_43():
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
+#[D10_CX_B0_44]-M2. Cho 3 điểm. Tìm tích vô hướng 2 vectơ
+def gghik_L10_CX_B0_44():
+	while True:
+		a1,a2=random.sample(range(-8,8),2)
+		b1,b2=random.sample(range(-8,8),2)
+		c1,c2=random.sample(range(-8,8),2)
+		if all([a1!=b1,b1!=c1,a2!=b2, a2!=c2]):
+			break
+	A,B,C=random.sample(["A","B","C","D","E","F","M","N"],3)
+	vec_AB,vec_AC=vec2(A,B), vec2(A,C)
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho các điểm ${A}({a1};{a2}), {B}({b1};{b2}), {C}({c1};{c2})$."
+	f" Tích vô hướng ${vec_AB}.{vec_AC}$ bằng"
+	)
+	x_AB,y_AB=b1-a1, b2-a2
+	x_AC,y_AC=c1-a1, c2-a2
 
+	kq=x_AB*x_AC+y_AB*y_AC
+	kq_false = set()
+	while len(kq_false) < 4:
+	
+	    numbers = random.randint(-20,30)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+
+	noi_dung_loigiai=(
+		f"${vec_AB}=({x_AB};{y_AB}), {vec_AC}=({x_AC};{y_AC})$.\n\n"
+	f"${vec_AB}.{vec_AC}={x_AB}.{dau_ngoac(x_AC)}+{dau_ngoac(y_AB)}.{dau_ngoac(y_AC)}={kq}$."
+	)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_45]-M2. Tìm M thuộc Ox để MA=a.
+def gghik_L10_CX_B0_45():
+	A,M=random.sample(["A","B","C","D","E","F","M","N"],2)
+	while True:
+		m = random.choice([i for i in range(-7, 7) if i!=0])
+		a1,a2=random.sample(range(-7,7),2)
+		d=sqrt((m-a1)**2+a2**2)
+		c=d**2-a2**2
+		if d**2!=a2**2:
+			break
+
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho điểm ${A}({a1};{a2})$."
+	f" Biết rằng điểm ${{{M}}}$ thuộc trục ${{Ox}}$ thỏa mãn ${A}{M}={latex(d)}$."
+	f" Tính tổng hoành độ của các điểm ${{{M}}}$."
+	)
+	
+	m1, m2=a1-sqrt(c), a1+sqrt(c)
+	kq=2*a1
+	kq_false = set()
+	while len(kq_false) < 4:
+	
+	    numbers = random.randint(2*a1-7,2*a1+7)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"${A}{M}={latex(d)}\\Rightarrow (m-{a1})^2+{a2**2}={d**2}\\Rightarrow m_1={latex(m1)},m_2={latex(m2)}$.\n\n"
+	f"$m_1+m_2={2*a1}$."
+	)
+	noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_46]-SA-M2. Tìm x để hai vectơ cùng phương
+def gghik_L10_CX_B0_46():
+	x=sp.symbols("x")
+	u,v=random.sample(["a","b","c","u","v","w"],2)
+	while True:
+		a = random.choice([i for i in range(-5, 6) if i!=0])
+		b =  random.randint(-6,7)
+		c = random.choice([i for i in range(-5, 6) if i!=0])
+		m = random.choice([i for i in range(-5, 6) if i!=0])
+		n =  random.randint(-6,7)
+		p = random.choice([i for i in range(-5, 6) if i!=0])
+
+		u1,u2=a*x+b, c
+		v1,v2=m*x+n, p
+		eq = Eq(u1*v2-u2*v1,0)
+		solution = solve(eq, x)
+		x_0=float(solution[0])
+		if all([a*p!=c*m,x_0>-5]):
+			break
+	
+	vec_u, vec_v=vec(u), vec(v)
+	if x_0.is_integer():
+		dap_an=int(x_0)
+		lam_tron=""
+	else:
+		dap_an=f"{round_half_up(x_0,1):.1f}".replace(".",",")
+		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho hai vectơ ${vec_u}=({latex(u1)};{u2})$ và ${vec_v}=({latex(v1)};{v2})$."
+	f" Tìm giá trị ${{x}}$ để hai vectơ ${vec_u}$ và ${vec_v}$ cùng phương{lam_tron}."
+	)
+
+	noi_dung_loigiai=(
+	f"${vec_u}$ và ${vec_v}$ cùng phương khi:\n\n"
+	f" $({latex(u1)}).{dau_ngoac(v2)}+({latex(v1)}).{dau_ngoac(u2)}=0$"
+	f" $\\Rightarrow x={phan_so(x_0)}$.")	
+
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B0_47]-M2. Tìm cặp vectơ cùng phương
+def gghik_L10_CX_B0_47():
+	a,b,c,d,u=random.sample(["a","b","c","d","u","v","w"],5)
+	u1 = random.choice([i for i in range(-5, 6) if i!=0])
+	u2 = random.randint(-5,5)
+	t = random.choice([i for i in range(-4, 4) if i!=0])
+	a1 = t*u1
+	a2 = t*u2
+	while True:		
+		b1 = random.choice([i for i in range(-5, 6) if i!=0])
+		b2 = random.randint(-7,7)
+
+		c1 = random.choice([i for i in range(-5, 6) if i!=0])
+		c2 = random.choice([i for i in range(-5, 6) if i!=0])
+
+		d1 = random.randint(-7,7)
+		d2 = random.choice([i for i in range(-5, 6) if i!=0])
+		if b1==c1 or c1==d1 or b1==d1:
+			continue
+		if all([u1*b2+u2*b1!=0, u1*c2+u2*c1!=0, u1*d2+u2*d1!=0]):
+			break
+
+	vec_a,vec_b,vec_c,vec_d,vec_u=vec(a),vec(b),vec(c),vec(d),vec(u)
+
+
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, vectơ ${vec_u}=({latex(u1)};{u2})$ cùng phương"
+	f" với vectơ nào trong các vectơ sau?"
+	)
+	
+
+	kq=f"${vec_a}=({a1};{a2})$"
+	kq_false=[
+	f"${vec_b}=({b1};{b2})$",
+	f"${vec_c}=({c1};{c2})$",
+	f"${vec_d}=({d1};{d2})$",]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"${vec_a}={t}{vec_u}$ nên ${vec_u}$ và ${vec_a}$ cùng phương."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_48]-M2. Tìm cặp vectơ cùng hướng
+def gghik_L10_CX_B0_48():
+	a,b,c,d,e,u=random.sample(["a","b","c","d","u","v","w"],6)
+	u1 = random.choice([i for i in range(-5, 6) if i!=0])
+	u2 = random.randint(-5,5)
+	t = random.choice([random.randint(2,5),1/2,1/3,2/3,3/4 ])
+	a1 = t*u1
+	a2 = t*u2
+
+	while True:			
+
+		c1 = random.choice([i for i in range(-5, 6) if i!=0])
+		c2 = random.choice([i for i in range(-5, 6) if i!=0])
+
+		d1 = random.randint(-7,7)
+		d2 = random.choice([i for i in range(-5, 6) if i!=0])
+		if c1==d1:
+			continue
+		if all([u1*c2+u2*c1!=0, u1*d2+u2*d1!=0]):
+			break
+
+	vec_a,vec_b,vec_c,vec_d,vec_e,vec_u=vec(a),vec(b),vec(c),vec(d),vec(e),vec(u)
+
+
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, vectơ ${vec_u}=({latex(u1)};{u2})$ cùng hướng"
+	f" với vectơ nào trong các vectơ sau?"
+	)
+	
+
+	kq=f"${vec_a}=({phan_so(a1)};{phan_so(a2)})$"
+	kq_false=[
+	f"${vec_b}=({phan_so(-t*u1)};{phan_so(t*2)})$",
+	f"${vec_e}=({phan_so(-t*u1)};{phan_so(-t*2)})$",
+	f"${vec_c}=({c1};{c2})$",
+	f"${vec_d}=({d1};{d2})$",]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"${vec_a}={phan_so(t)}{vec_u}$ nên ${vec_u}$ và ${vec_a}$ cùng hướng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_49]-M1. Tìm x để hai vectơ cùng phương
+def gghik_L10_CX_B0_49():
+	x=sp.symbols("x")
+	u,v=random.sample(["a","b","c","u","v","w"],2)
+	while True:
+		u1 = random.choice([i for i in range(-5, 6) if i!=0])
+		u2 =  random.randint(-6,7)
+		v1 = random.choice([i for i in range(-5, 6) if i!=0])		
+
+		if all([u1!=v1]):
+			break
+	x_0=v1*u2/u1
+	vec_u, vec_v=vec(u), vec(v)
+
+
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho hai vectơ ${vec_u}=({u1};{u2})$ và ${vec_v}=({v1};x)$."
+	f" Giá trị ${{x}}$ để hai vectơ ${vec_u}$ và ${vec_v}$ cùng phương là"
+	)
+
+	noi_dung_loigiai=(
+	f"${vec_u}$ và ${vec_v}$ cùng phương khi:\n\n"
+	f" ${u1}.x+({v1}).{dau_ngoac(u2)}=0$"
+	f" $\\Rightarrow x={phan_so(x_0)}$.")	
+
+	kq=x_0
+	kq_false = set()
+	while len(kq_false) < 4:
+	
+	    numbers = round(random.uniform(-5, 5),1)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*${{{phan_so(kq)}}}$"
+	pa_B= f"${{{phan_so(kq2)}}}$"
+	pa_C= f"${{{phan_so(kq3)}}}$"
+	pa_D= f"${{{phan_so(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D10_CX_B0_50]-M1. Tìm M thuộc Ox để A,B,M thẳng hàng
+def gghik_L10_CX_B0_50():
+	m=sp.symbols("m")
+	while True:
+		a1 = random.choice([i for i in range(-5, 6) if i!=0])
+		a2 = random.choice([i for i in range(-5, 6) if i!=0])
+		b1 = random.choice([i for i in range(-5, 6) if i!=0])
+		b2 = random.choice([i for i in range(-5, 6) if i!=0])
+		if all([a1!=b1,a2!=b2]):
+			break
+	
+	A,B,M=random.sample(["A","B","C","D","E","F","M","N"],3)
+	vec_AB, vec_AM=vec2(A,B), vec2(A,M)
+
+	x_AB, y_AB=b1-a1, b2-a2
+
+	eq=Eq((m-a1)*y_AB,-a2*x_AB)
+	solution=solve(eq,m)
+	m_0=solution[0]
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho hai điểm ${A}({a1};{a2})$ và ${B}({b1};{b2})$."
+	f" Điểm ${{{M}}}$ thuộc trục ${{Ox}}$ sao cho ${{{A},{B},{M}}}$ thẳng hàng có tọa độ là"
+	)
+	
+	kq=m_0
+	kq_false = set()
+	while len(kq_false) < 4:
+	
+	    numbers = round(random.uniform(-5, 5),1)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+		f"Gọi ${M}(m;0) \\in Ox$.\n\n"
+	f"${vec_AM}=({latex(m-a1)};{-a2}), {vec_AB}=({x_AB};{y_AB})$.\n\n"
+	f"${{{A},{B},{M}}}$ thẳng hàng nên:\n\n"
+	f" $({latex(m-a1)}).{dau_ngoac(y_AB)}={dau_ngoac(-a2)}.{dau_ngoac(x_AB)}$"
+	f" $\\Rightarrow m={phan_so(m_0)}$. Vậy ${M}\\left({{{phan_so(kq)};0}}\\right)$"
+	)
+
+	pa_A= f"*${M}\\left({{{phan_so(kq)};0}}\\right)$"
+	pa_B= f"${M}\\left({{{phan_so(kq2)};0}}\\right)$"
+	pa_C= random.choice([
+		f"${M}\\left({{{phan_so(kq3)};0}}\\right)$", 
+		f"${M}\\left({{0;{phan_so(kq3)}}}\\right)$"])
+	pa_D= random.choice([
+		f"${M}\\left({{{phan_so(kq4)};0}}\\right)$", 
+		f"${M}\\left({{0;{phan_so(kq4)}}}\\right)$"])
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_51]-M1. Tìm M thuộc Oy để A,B,M thẳng hàng
+def gghik_L10_CX_B0_51():
+	m=sp.symbols("m")
+	while True:
+		a1 = random.choice([i for i in range(-5, 6) if i!=0])
+		a2 = random.choice([i for i in range(-5, 6) if i!=0])
+		b1 = random.choice([i for i in range(-5, 6) if i!=0])
+		b2 = random.choice([i for i in range(-5, 6) if i!=0])
+		if all([a1!=b1,a2!=b2]):
+			break
+	
+	A,B,M=random.sample(["A","B","C","D","E","F","M","N"],3)
+	vec_AB, vec_AM=vec2(A,B), vec2(A,M)
+
+	x_AB, y_AB=b1-a1, b2-a2
+
+	eq=Eq((m-a2)*x_AB,-a1*y_AB)
+	solution=solve(eq,m)
+	m_0=solution[0]
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho hai điểm ${A}({a1};{a2})$ và ${B}({b1};{b2})$."
+	f" Điểm ${{{M}}}$ thuộc trục ${{Oy}}$ sao cho ${{{A},{B},{M}}}$ thẳng hàng có tọa độ là"
+	)
+	
+	kq=m_0
+	kq_false = set()
+	while len(kq_false) < 4:
+	
+	    numbers = round(random.uniform(-5, 5),1)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+		f"Gọi ${M}(0;m) \\in Oy$.\n\n"
+	f"${vec_AM}=({-a1};{latex(m-a2)}), {vec_AB}=({x_AB};{y_AB})$.\n\n"
+	f"${{{A},{B},{M}}}$ thẳng hàng nên:\n\n"
+	f" $({latex(m-a2)}).{dau_ngoac(x_AB)}={dau_ngoac(-a1)}.{dau_ngoac(y_AB)}$"
+	f" $\\Rightarrow m={phan_so(m_0)}$. Vậy ${M}\\left({{0;{phan_so(kq)}}}\\right)$"
+	)
+
+	pa_A= f"*${M}\\left({{0;{phan_so(kq)}}}\\right)$"
+	pa_B= f"${M}\\left({{0;{phan_so(kq2)}}}\\right)$"
+	pa_C= random.choice([
+		f"${M}\\left({{{phan_so(kq3)};0}}\\right)$", 
+		f"${M}\\left({{0;{phan_so(kq3)}}}\\right)$"])
+	pa_D= random.choice([
+		f"${M}\\left({{{phan_so(kq4)};0}}\\right)$", 
+		f"${M}\\left({{0;{phan_so(kq4)}}}\\right)$"])
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_52]-M1. Cho 3 điểm. Tích góc giữa 2 vectơ
+def gghik_L10_CX_B0_52():
+	m=sp.symbols("m")
+	while True:
+		a1 = random.choice([i for i in range(-5, 6) if i!=0])
+		a2 = random.choice([i for i in range(-5, 6) if i!=0])
+		b1 = random.choice([i for i in range(-4, 5) if i!=0])
+		b2 = random.choice([i for i in range(-4, 5) if i!=0])
+		c1 = random.choice([i for i in range(-4, 6) if i!=0])
+		c2 = random.choice([i for i in range(-4, 6) if i!=0])
+
+		if all([abs(a1-b1)<5,abs(a1-c1)<4,b1!=c1, a1!=c1]):
+			break
+	
+	A,B,C=random.sample(["A","B","C","D","E","F","M","N"],3)
+	vec_AB, vec_AC=vec2(A,B), vec2(A,C)
+	x_AB, y_AB = b1-a1, b2-a2
+	x_AC,y_AC = c1-a1, c2-a2
+	tich_vh = x_AB*x_AC+y_AB*y_AC
+	AB, AC = sqrt(x_AB**2+y_AB**2), sqrt(x_AC**2+y_AC**2)
+	cos_value=tich_vh/(AB*AC)
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho ba điểm ${A}({a1};{a2}), {B}({b1};{b2})$ và ${C}({c1};{c2})$."
+	f" Tính cosin của góc giữa hai vectơ ${vec_AB}$ và ${vec_AC}$."
+	)
+	
+
+	kq=cos_value
+	kq_false=[
+	(tich_vh-random.randint(1,3))/(AB*AC),
+	(tich_vh+random.randint(1,3))/(AB*AC),
+	(tich_vh-random.randint(4,6))/(AB*AC),
+	(tich_vh+random.randint(4,6))/(AB*AC),
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"Ta có: ${vec_AB}=({x_AB};{y_AB}), {vec_AC}=({x_AC};{y_AC})$.\n\n"
+	f"$\\cos ({vec_AB},{vec_AC})=\\dfrac{{{vec_AB}.{vec_AC}}}{{|{vec_AB}|.|{vec_AC}|}}$"
+	f" $=\\dfrac{{{tich_vh}}}{{{latex(AB)}.{latex(AC)}}}={latex(cos_value)}$."
+	)
+
+	pa_A= f"*${{{latex(kq)}}}$"
+	pa_B= f"${{{latex(kq2)}}}$"
+	pa_C= f"${{{latex(kq3)}}}$"
+	pa_D= f"${{{latex(kq4)}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_53]-M1. Tìm h,k để vec(c)=hvec(a)+kvec(b)
+def gghik_L10_CX_B0_53():
+
+	while True:
+		a1 = random.choice([i for i in range(-5, 6) if i!=0])
+		a2 = random.choice([i for i in range(-5, 6) if i!=0])
+		b1 = random.choice([i for i in range(-4, 5) if i!=0])
+		b2 = random.choice([i for i in range(-4, 5) if i!=0])
+		while True:
+			h= random.choice([i for i in range(-5, 6) if i!=0])
+			k= random.choice([i for i in range(-5, 6) if i!=0])
+			if h!=k:
+				break
+		c1,c2=h*a1+k*b1, h*a2+k*b2
+		if all([a1!=b1, a2!=b2, c1!=0]):
+			break
+	a,b,c=random.sample(["a","b","c","u","v","w"],3)	
+	vec_a, vec_b, vec_c=vec(a),vec(b),vec(c)
+	noi_dung=(
+	f"Trong mặt phẳng tọa độ $(Oxy)$, cho ba vectơ ${vec_a}=({a1};{a2}),{vec_b}=({b1};{b2})$ và ${vec_c}=({c1};{c2})$."
+	f" Biết ${vec_c}=h{vec_a}+k{vec_b}$. Tính $h+k$."
+	)
+
+	kq=h+k
+	kq_false = set()
+	while len(kq_false) < 4:	
+	    numbers = random.randint(-10,10)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+	
+
+	noi_dung_loigiai=(
+	f"${vec_c}=h{vec_a}+k{vec_b}$"
+	f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
+	{c1}={a1}h+{b1}k \\\\ \n\
+	{c2}={a2}h+{b2}k\n\
+	\\end{{array}} \\right. \\Rightarrow h={h}, k={k}$.\n\n"
+	f"Do đó: $h+k={kq}$."
+	)
+	noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+	
+
+	
 
 
 

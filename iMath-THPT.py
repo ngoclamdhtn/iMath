@@ -4046,7 +4046,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_25]-M1. Cho vecto(u) biểu diễn theo 2 vecto(i) và vecto(j). Tìm toạ độ vecto(u)"])
+                item=QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_25]-M1. Cho vec(u)= k.vec(i)+m.vec(j). Tìm vec(u)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                          
 
@@ -4062,7 +4062,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_05]-M1. Cho 1 vectơ. Tính độ dài."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_05]-M1. Cho vectơ. Tính độ dài."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -4070,11 +4070,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_15]-M2. Cho 2 vectơ. Tìm tọa độ m.vec_a + nvec_b."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_15]-M2. Tìm m.vec_a + nvec_b."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_11]-M2. Cho hai véctơ. Tìm m để 2 vectơ cùng phương."])
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_47]-M2. Tìm cặp vectơ cùng phương."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_48]-M2. Tìm cặp vectơ cùng hướng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_49]-M1. Tìm x để 2 vectơ cùng phương."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_11]-M2. Tìm m để 2 vectơ cùng phương."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_1, ["[D10_CX_B0_53]-M2. Tìm h,k để vec(c)=hvec(a)+kvec(b)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                 
@@ -4089,11 +4105,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_18]-M2. Tìm điểm đối xứng của điểm qua trục tọa độ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_06]-M1. Cho 2 điểm. Tính độ dài đoạn thẳng."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_07]-M1. Cho hai điểm. Tìm tọa độ trung điểm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4109,13 +4121,17 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_10]-M2. Cho ba điểm A,B,G. Tìm tọa độ C để ABC nhận G làm trọng tâm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_13]-M3. Tìm A thuộc Ox cách B một khoảng cho trước."])
+                item=QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_28]-M2. Tìm toạ độ D để ABCD là hình bình hành"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_28]-M2. Tìm toạ độ D để ABCD là hình bình hành"])
+                item=QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_50]-M2. Tìm M thuộc Ox để A,B,M thẳng hàng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_51]-M2. Tìm M thuộc Oy để A,B,M thẳng hàng"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -4123,19 +4139,39 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L10_C10_B0_1_3 = QTreeWidgetItem(L10_C10_B0_1, ["3. Biểu thức tọa độ tích vô hướng"])
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_13]-M3. Tìm A thuộc Ox cách B một khoảng cho trước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C10_B0_1_3 = QTreeWidgetItem(L10_C10_B0_1, ["3. Tích vô hướng - Góc"])
                 L10_C10_B0_1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_04]-M1. Cho 2 vectơ. Cho hai véctơ tính tích vô hướng."])
+                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_04]-M1. Cho 2 vectơ. Tính tích vô hướng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_27]-M3. Tính góc giữa hai vecto"])
+                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_44]-M2. Cho 3 điểm. Tính tích vô hướng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_12]-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc."])
+                item=QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_27]-M2. Tính góc giữa hai vectơ"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_52]-M2. Tích góc giữa 2 vectơ từ 3 điểm"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_2, ["[D10_CX_B0_06]-M1. Cho 2 điểm. Tính độ dài đoạn thẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_12]-M2. Tìm m để 2 vectơ vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_1_3, ["[D10_CX_B0_45]-M2. Tìm M thuộc Ox để MA=a."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -4168,9 +4204,14 @@ class Ui_MainWindow(object):
                 L10_C10_B0_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C10_B0_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_46]-SA-M2. Tìm x để 2 vectơ cùng phương"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_29]-SA-M2. Tìm m để 3 điểm thẳng hàng"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
                 item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_19]-SA-M3. Tìm vectơ x để m.vec(a)+nvec(x)=p.vec(b)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -4184,7 +4225,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho MA=MB."])
+                item = QTreeWidgetItem(L10_C10_B0_3, ["[D10_CX_B0_23]-SA-M3. Cho A,B. Tìm điểm M thuộc Ox(Oy) sao cho M cách đều A,B."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -17594,6 +17635,46 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B0_43]-SA-M3. Cho 3 điểm. Tìm M thuộc Ox: |mMA+nMB|+|pMB+qMC| min. 
                                             if dang_toan == "[D10_CX_B0_43]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_43()
+
+                                            #[D10_CX_B0_44]-M2. Cho 3 điểm. Tìm tích vô hướng 2 vectơ 
+                                            if dang_toan == "[D10_CX_B0_44]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_44()
+
+                                            #[D10_CX_B0_45]-M2. Tìm M thuộc Ox để MA=a.
+                                            if dang_toan == "[D10_CX_B0_45]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_45()
+
+                                            #[D10_CX_B0_46]-SA-M3. Tìm x để hai vectơ cùng phương
+                                            if dang_toan == "[D10_CX_B0_46]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_46()
+
+                                            #[D10_CX_B0_47]-M2.  Tìm cặp vectơ cùng phương
+                                            if dang_toan == "[D10_CX_B0_47]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_47()
+
+                                            #[D10_CX_B0_48]-M2. Tìm cặp vectơ cùng hướng
+                                            if dang_toan == "[D10_CX_B0_48]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_48()
+
+                                            #[D10_CX_B0_49]-M2. Tìm x để hai vectơ cùng phương
+                                            if dang_toan == "[D10_CX_B0_49]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_49()
+
+                                            #[D10_CX_B0_50]-M2. Tìm M thuộc Ox để A,B,M thẳng hàng
+                                            if dang_toan == "[D10_CX_B0_50]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_50()
+
+                                            #[D10_CX_B0_51]-M2. Tìm M thuộc Oy để A,B,M thẳng hàng
+                                            if dang_toan == "[D10_CX_B0_51]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_51()
+
+                                            #[D10_CX_B0_52]-M2. Cho 3 điểm. Tích góc giữa 2 vectơ
+                                            if dang_toan == "[D10_CX_B0_52]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_52()
+
+                                            #[D10_CX_B0_53]-M2. Tìm h,k để vec(c)=hvec(a)+kvec(b)
+                                            if dang_toan == "[D10_CX_B0_53]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C10.gghik_L10_CX_B0_53()
 
 
                                                 
