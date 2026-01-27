@@ -2151,7 +2151,7 @@ def uvxy9_L11_C8_B2_16():
 
 	chon=random.randint(1,2)
 	if chon==1:
-		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$. Gọi ${{{M1},{N1}}}$ lần lượt là trung điểm của các cạnh ${A1}{B1}$ và ${A1}{C1}$."\
+		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$. Gọi ${{{M1},{N1}}}$ lần lượt là trung điểm của các cạnh ${{{A1}{B1}}}$ và ${{{A1}{C1}}}$."\
 		f"Tìm hình chiếu của điểm ${{{C1}}}$ trên mặt phẳng $(S{A1}{B1})$?"
 		kq=f"Điểm ${{{M1}}}$"
 		kq2=f"Điểm ${{{A1}}}$"
@@ -2161,7 +2161,7 @@ def uvxy9_L11_C8_B2_16():
 	f" Do đó hình chiếu của điểm ${{{C1}}}$ trên mặt phẳng $(S{A1}{B1})$ là điểm ${{{M1}}}$."
 
 	if chon==2:
-		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$. Gọi ${{{M1},{N1}}}$ lần lượt là trung điểm của các cạnh ${A1}{B1}$ và ${A1}{C1}$."\
+		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$. Gọi ${{{M1},{N1}}}$ lần lượt là trung điểm của các cạnh ${{{A1}{B1}}}$ và ${{{A1}{C1}}}$."\
 		f"Tìm hình chiếu của điểm ${{{B1}}}$ trên mặt phẳng $(S{A1}{C1})$?"
 		kq=f"Điểm ${{{N1}}}$"
 		kq2=f"Điểm ${{{A1}}}$"

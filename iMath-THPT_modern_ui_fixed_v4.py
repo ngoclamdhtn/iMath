@@ -25,6 +25,292 @@ import qrcode
 from cryptography.fernet import Fernet
 from datetime import datetime
 
+
+# =========================
+# Modern UI / Theme Manager
+# =========================
+from PyQt5.QtCore import QSettings, QEasingCurve, QPropertyAnimation
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect, QGraphicsOpacityEffect, QToolButton
+
+class ThemeManager:
+    """
+    Material-ish / Fluent-ish QSS theme for iMath-THPT (PyQt5).
+    - Left sidebar + topbar shell
+    - Card-like content surface
+    - Light/Dark mode with persistence (QSettings)
+    - Subtle animations (fade-in)
+    """
+    ORG = "iMath-THPT"
+    APP = "iMath-THPT"
+
+    # Keep QSS reasonably conservative to avoid breaking existing absolute-geometry widgets.
+    QSS_LIGHT = r"""
+    /* ---- Base ---- */
+    * { font-family: "Segoe UI"; }
+    QWidget { background: #F5F6F8; color: #1F2328; }
+    QToolTip { background: #1F2328; color: white; border: 0; padding: 6px 8px; border-radius: 8px; }
+
+    /* ---- Shell ---- */
+    QFrame#SidebarFrame { background: #FFFFFF; border-right: 1px solid #E6E8EC; }
+    QFrame#TopBar { background: rgba(255,255,255,0.92); border-bottom: 1px solid #E6E8EC; }
+    QFrame#ContentCard { background: #FFFFFF; border: 1px solid #E6E8EC; border-radius: 14px; }
+
+    QLabel#AppTitle { font-size: 13pt; font-weight: 600; }
+    QLabel#AppSubtitle { color: #667085; }
+
+    /* ---- Nav buttons ---- */
+    QToolButton#NavButton {
+        background: transparent;
+        border: 0;
+        padding: 10px 12px;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 10.5pt;
+    }
+    QToolButton#NavButton:hover { background: #F1F4FF; }
+    QToolButton#NavButton[active="true"] { background: #E8EEFF; }
+
+    QToolButton#ThemeToggle {
+        background: #F2F4F7;
+        border: 1px solid #E6E8EC;
+        border-radius: 10px;
+        padding: 6px 10px;
+    }
+    QToolButton#ThemeToggle:hover { background: #E9EDF3; }
+
+    /* ---- Inputs ---- */
+    QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QTextBrowser {
+        background: #FFFFFF;
+        border: 1px solid #E6E8EC;
+        border-radius: 10px;
+        padding: 6px 8px;
+        selection-background-color: #C7D2FE;
+    }
+    QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus {
+        border: 1px solid #7C8CF8;
+    }
+    QComboBox {
+        padding-right: 28px;  /* chừa chỗ cho mũi tên */
+        border: 1px solid #cfd3d7;
+        border-radius: 8px;
+        background: white;
+    }
+
+    QComboBox::drop-down {
+        subcontrol-origin: padding;
+        subcontrol-position: top right;
+        width: 28px;
+        border-left: none;
+    }
+
+    QComboBox::down-arrow {
+        image: none; /* tắt arrow mặc định */
+        width: 0px;
+        height: 0px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid #444;   /* màu tam giác */
+        margin-right: 8px;
+    }
+
+    /* ---- Buttons ---- */
+    QToolButton#SidebarToggle {
+        background: transparent;
+        border: 1px solid #E6E8EC;
+        border-radius: 10px;
+        padding: 6px 10px;
+        font-size: 12pt;
+    }
+    QToolButton#SidebarToggle:hover { background: #F2F4F7; }
+
+    QToolButton#NavButton {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        padding: 10px 12px;
+        text-align: left;
+        font-size: 10.5pt;
+        color: #101828;
+    }
+    QToolButton#NavButton:hover { background: #F2F4F7; }
+    QToolButton#NavButton:checked {
+        background: rgba(99, 102, 241, 0.12);
+        border-color: rgba(99, 102, 241, 0.25);
+        color: #111827;
+        font-weight: 600;
+    }
+
+    QPushButton {
+        background: #3B82F6;
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        padding: 7px 12px;
+        font-size: 10pt;
+    }
+    QPushButton:hover { background: #2563EB; }
+    QPushButton:pressed { background: #1D4ED8; }
+    QPushButton:disabled { background: #BFC7D5; color: #F7F8FA; }
+
+    /* ---- Tabs ---- */
+    QTabWidget::pane { border: 0; background: transparent; }
+    QTabBar::tab {
+        background: transparent;
+        color: #4B5563;
+        padding: 8px 14px;
+        border-radius: 10px;
+        margin: 4px 4px;
+        min-width: 110px;
+    }
+    QTabBar::tab:selected { background: #EEF2FF; color: #111827; }
+    QTabBar::tab:hover { background: #F2F4F7; }
+
+    /* ---- Tables ---- */
+    QHeaderView::section {
+        background: #F2F4F7;
+        color: #344054;
+        border: 0;
+        padding: 8px;
+        font-weight: 600;
+    }
+    QTableWidget { background: #FFFFFF; border: 1px solid #E6E8EC; border-radius: 10px; gridline-color: #E6E8EC; }
+    QTableWidget::item { padding: 6px; }
+    QScrollBar:vertical, QScrollBar:horizontal { background: transparent; }
+    """
+
+    QSS_DARK = r"""
+    /* ---- Base ---- */
+    * { font-family: "Segoe UI"; }
+    QWidget { background: #0F1115; color: #E6E8EC; }
+    QToolTip { background: #E6E8EC; color: #0F1115; border: 0; padding: 6px 8px; border-radius: 8px; }
+
+    /* ---- Shell ---- */
+    QFrame#SidebarFrame { background: #141821; border-right: 1px solid #232A36; }
+    QFrame#TopBar { background: rgba(20,24,33,0.92); border-bottom: 1px solid #232A36; }
+    QFrame#ContentCard { background: #141821; border: 1px solid #232A36; border-radius: 14px; }
+
+    QLabel#AppTitle { font-size: 13pt; font-weight: 600; }
+    QLabel#AppSubtitle { color: #9AA4B2; }
+
+    /* ---- Nav buttons ---- */
+    QToolButton#NavButton {
+        background: transparent;
+        border: 0;
+        padding: 10px 12px;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 10.5pt;
+    }
+    QToolButton#NavButton:hover { background: #1B2230; }
+    QToolButton#NavButton[active="true"] { background: #222C3F; }
+
+    QToolButton#ThemeToggle {
+        background: #1B2230;
+        border: 1px solid #232A36;
+        border-radius: 10px;
+        padding: 6px 10px;
+    }
+    QToolButton#ThemeToggle:hover { background: #212A3A; }
+
+    /* ---- Inputs ---- */
+    QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QTextBrowser {
+        background: #0F1115;
+        border: 1px solid #232A36;
+        border-radius: 10px;
+        padding: 6px 8px;
+        selection-background-color: #334155;
+    }
+    QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus {
+        border: 1px solid #7C8CF8;
+    }
+    QComboBox::drop-down { border: 0; width: 26px; }
+    QComboBox::down-arrow { image: none; border: 0; width: 0; height: 0; }
+
+    /* ---- Buttons ---- */
+    QToolButton#SidebarToggle {
+        background: transparent;
+        border: 1px solid #30363D;
+        border-radius: 10px;
+        padding: 6px 10px;
+        font-size: 12pt;
+    }
+    QToolButton#SidebarToggle:hover { background: #151B23; }
+
+    QToolButton#NavButton {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        padding: 10px 12px;
+        text-align: left;
+        font-size: 10.5pt;
+        color: #E6EDF3;
+    }
+    QToolButton#NavButton:hover { background: #151B23; }
+    QToolButton#NavButton:checked {
+        background: rgba(99, 102, 241, 0.18);
+        border-color: rgba(99, 102, 241, 0.35);
+        color: #FFFFFF;
+        font-weight: 600;
+    }
+
+    QPushButton {
+        background: #2563EB;
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        padding: 7px 12px;
+        font-size: 10pt;
+    }
+    QPushButton:hover { background: #1D4ED8; }
+    QPushButton:pressed { background: #1E40AF; }
+    QPushButton:disabled { background: #2B3444; color: #9AA4B2; }
+
+    /* ---- Tabs ---- */
+    QTabWidget::pane { border: 0; background: transparent; }
+    QTabBar::tab {
+        background: transparent;
+        color: #9AA4B2;
+        padding: 8px 14px;
+        border-radius: 10px;
+        margin: 4px 4px;
+        min-width: 110px;
+    }
+    QTabBar::tab:selected { background: #1B2230; color: #E6E8EC; }
+    QTabBar::tab:hover { background: #171C27; }
+
+    /* ---- Tables ---- */
+    QHeaderView::section {
+        background: #1B2230;
+        color: #E6E8EC;
+        border: 0;
+        padding: 8px;
+        font-weight: 600;
+    }
+    QTableWidget { background: #141821; border: 1px solid #232A36; border-radius: 10px; gridline-color: #232A36; }
+    QTableWidget::item { padding: 6px; }
+    QScrollBar:vertical, QScrollBar:horizontal { background: transparent; }
+
+    """
+
+    @staticmethod
+    def _settings() -> QSettings:
+        return QSettings(ThemeManager.ORG, ThemeManager.APP)
+
+    @staticmethod
+    def load_is_dark(default: bool = False) -> bool:
+        s = ThemeManager._settings()
+        v = s.value("ui/is_dark", default)
+        return bool(int(v)) if isinstance(v, (str, bytes)) else bool(v)
+
+    @staticmethod
+    def save_is_dark(is_dark: bool) -> None:
+        s = ThemeManager._settings()
+        s.setValue("ui/is_dark", 1 if is_dark else 0)
+
+    @staticmethod
+    def apply(app: QtWidgets.QApplication, is_dark: bool) -> None:
+        app.setStyleSheet(ThemeManager.QSS_DARK if is_dark else ThemeManager.QSS_LIGHT)
+
 class ShowMessageBox(QMessageBox):
     def __init__(self,icon, title, text):
         super().__init__()
@@ -74,8 +360,133 @@ class MainWindow(QMainWindow):
 
         # Thiết lập kích thước cho MainWindow
         self.adjust_window_size()
-        self.setWindowTitle("Segoe UI")
+        self.setWindowTitle("iMath\u00A92026 - Phần mềm tạo đề môn Toán")
         QtCore.QTimer.singleShot(0, self._adjust_matran_tab)
+
+
+        # Theme state (persisted)
+        self._is_dark = ThemeManager.load_is_dark(default=False)
+        ThemeManager.apply(QtWidgets.QApplication.instance(), self._is_dark)
+        self._sync_theme_toggle_label()
+
+        # Wire modern shell controls
+        try:
+            self.ui.btn_theme_toggle.clicked.connect(self.toggle_theme)
+        except Exception:
+            pass
+        try:
+            self.ui.btn_sidebar_toggle.clicked.connect(self.toggle_sidebar)
+        except Exception:
+            pass
+        try:
+            self.ui.tab_main.currentChanged.connect(self.on_tab_changed)
+        except Exception:
+            pass
+        # Initialize title based on current tab
+        try:
+            self.on_tab_changed(self.ui.tab_main.currentIndex())
+        except Exception:
+            pass
+
+
+    def _sync_theme_toggle_label(self):
+        """Update theme toggle text based on current theme."""
+        try:
+            if hasattr(self, "ui") and hasattr(self.ui, "btn_theme_toggle"):
+                # Show the *other* mode as the action
+                self.ui.btn_theme_toggle.setText("☀" if self._is_dark else "🌙")
+        except Exception:
+            pass
+
+    def set_theme(self, is_dark: bool):
+        self._is_dark = bool(is_dark)
+        ThemeManager.save_is_dark(self._is_dark)
+        ThemeManager.apply(QtWidgets.QApplication.instance(), self._is_dark)
+        self._sync_theme_toggle_label()
+
+        # Wire modern shell controls
+        try:
+            self.ui.btn_theme_toggle.clicked.connect(self.toggle_theme)
+        except Exception:
+            pass
+        try:
+            self.ui.btn_sidebar_toggle.clicked.connect(self.toggle_sidebar)
+        except Exception:
+            pass
+        try:
+            self.ui.tab_main.currentChanged.connect(self.on_tab_changed)
+        except Exception:
+            pass
+        # Initialize title based on current tab
+        try:
+            self.on_tab_changed(self.ui.tab_main.currentIndex())
+        except Exception:
+            pass
+
+
+    
+    def toggle_sidebar(self):
+        """Collapse/expand the left sidebar with a light width animation."""
+        try:
+            sb = self.ui.sidebar
+            expanded_w = 230
+            collapsed_w = 72
+            # Determine current state
+            cur_w = sb.width()
+            target = collapsed_w if cur_w > (collapsed_w + 10) else expanded_w
+
+            anim = QtCore.QPropertyAnimation(sb, b"minimumWidth")
+            anim.setDuration(180)
+            anim.setEasingCurve(QtCore.QEasingCurve.OutCubic)
+            anim.setStartValue(cur_w)
+            anim.setEndValue(target)
+
+            anim2 = QtCore.QPropertyAnimation(sb, b"maximumWidth")
+            anim2.setDuration(180)
+            anim2.setEasingCurve(QtCore.QEasingCurve.OutCubic)
+            anim2.setStartValue(cur_w)
+            anim2.setEndValue(target)
+
+            # Keep refs
+            self._sidebar_anim = anim
+            self._sidebar_anim2 = anim2
+
+            # Update nav labels (icon-only when collapsed)
+            def _apply_labels(w):
+                try:
+                    collapsed = w <= (collapsed_w + 2)
+                    for b in getattr(self.ui, "_nav_buttons", []):
+                        b.setText(b._icon_text if collapsed else b._full_text)
+                        b.setToolTip(b._full_text)
+                    # Brand label
+                    self.ui.lbl_brand.setText("iMath" if collapsed else "iMath-THPT")
+                    self.ui.lbl_sub.setVisible(not collapsed)
+                except Exception:
+                    pass
+
+            # apply immediately for better feel
+            _apply_labels(target)
+
+            anim.start()
+            anim2.start()
+        except Exception:
+            pass
+
+    def on_tab_changed(self, idx: int):
+        """Sync topbar title and sidebar checked state."""
+        try:
+            # Set checked button
+            btns = getattr(self.ui, "_nav_buttons", [])
+            if 0 <= idx < len(btns):
+                btns[idx].setChecked(True)
+                # Title: remove leading icon token if present
+                t = getattr(btns[idx], "_full_text", btns[idx].text())
+                self.ui.lbl_page_title.setText(t.split("  ", 1)[-1].strip() if "  " in t else t.strip())
+        except Exception:
+            pass
+
+    def toggle_theme(self):
+        self.set_theme(not getattr(self, "_is_dark", False))
 
     def adjust_window_size(self):
         # Lấy kích thước màn hình khả dụng (trừ taskbar)
@@ -90,6 +501,8 @@ class MainWindow(QMainWindow):
     def _adjust_matran_tab(self):
         """Canh lại vùng bảng + cột nút bên phải trong tab Thiết lập ma trận
         để không bị che khuất khi Windows Scale 125% / 150% / 200%.
+        Đồng thời đặt bảng (tableWidget) sát cây thư mục (treeWidget) và đảm bảo
+        bảng thống kê (table_thongke) luôn hiển thị đủ các cột.
         """
         ui = getattr(self, "ui", None)
         if ui is None or not hasattr(ui, "tab_taode"):
@@ -100,22 +513,43 @@ class MainWindow(QMainWindow):
         if w <= 0:
             return
 
-        base_left = 720
         margin = 20
         gap = 10
         panel_w = 110  # cột nút bên phải (nút 100px + đệm)
 
-        # Tính chiều rộng bảng sao cho chừa chỗ cho cột nút
-        table_w = max(320, w - base_left - panel_w - gap - margin)
-        panel_x = base_left + table_w + gap
+        # --- Tính vị trí bắt đầu của bảng dựa trên treeWidget (để sát nhau) ---
+        fallback_left = 720
+        base_left = fallback_left
+        try:
+            if hasattr(ui, "treeWidget") and ui.treeWidget is not None:
+                tg = ui.treeWidget.geometry()
+                base_left = tg.x() + tg.width() + gap
+        except Exception:
+            base_left = fallback_left
+
+        # --- Tính chiều rộng vùng bảng (chừa chỗ cột nút) ---
+        avail_w = max(320, w - base_left - panel_w - gap - margin)
+
+        # --- Đảm bảo table_thongke đủ rộng để thấy đủ 12 cột (không cần scrollbar) ---
+        required_thongke_w = 0
+        try:
+            if hasattr(ui, "table_thongke") and ui.table_thongke is not None:
+                required_thongke_w = sum(ui.table_thongke.columnWidth(i) for i in range(ui.table_thongke.columnCount())) + 6
+        except Exception:
+            required_thongke_w = 12 * 54 + 6
+
+        content_w = max(avail_w, required_thongke_w)
+
+        panel_x = base_left + content_w + gap
 
         # Bảng dạng toán (trên)
         if hasattr(ui, "tableWidget") and ui.tableWidget is not None:
-            ui.tableWidget.setGeometry(QtCore.QRect(base_left, 50, table_w, 375))
+            ui.tableWidget.setGeometry(QtCore.QRect(base_left, 50, content_w, 375))
 
         # Bảng thống kê (dưới)
         if hasattr(ui, "table_thongke") and ui.table_thongke is not None:
-            ui.table_thongke.setGeometry(QtCore.QRect(base_left, 420, table_w, 230))
+            ui.table_thongke.setMinimumWidth(required_thongke_w)
+            ui.table_thongke.setGeometry(QtCore.QRect(base_left, 420, content_w, 230))
 
         # Canh các nút bên phải
         btn_w, btn_h = 100, 30
@@ -140,6 +574,7 @@ class MainWindow(QMainWindow):
         if hasattr(ui, "btn_luu_matran"):
             ui.btn_luu_matran.setGeometry(QtCore.QRect(panel_x, 390, btn_w, btn_h))
 
+
     def resizeEvent(self, event):
         super().resizeEvent(event)
         # Gọi canh lại layout cho tab ma trận mỗi khi resize / thay đổi DPI
@@ -156,18 +591,100 @@ class Ui_MainWindow(object):
 
                 self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
                 self.centralwidget.setObjectName("centralwidget")
-                self.tab_main = QtWidgets.QTabWidget(parent=self.centralwidget)
-                # Layout để tự co giãn theo kích thước/DPI
-                self._central_layout = QtWidgets.QVBoxLayout(self.centralwidget)
-                self._central_layout.setContentsMargins(0, 0, 0, 0)
-                self._central_layout.setSpacing(0)
-                self._central_layout.addWidget(self.tab_main)
-                self.tab_main.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-                #self.tab_main.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
-                self.tab_main.setAccessibleName("")
-                self.tab_main.setObjectName("tab_main")
+                # ---- Modern shell: Sidebar (left) + Topbar + Card content ----
+                self._shell_layout = QtWidgets.QHBoxLayout(self.centralwidget)
+                self._shell_layout.setContentsMargins(0, 0, 0, 0)
+                self._shell_layout.setSpacing(0)
 
-                MainWindow.setCentralWidget(self.centralwidget)      
+                # Sidebar
+                self.sidebar = QtWidgets.QFrame(self.centralwidget)
+                self.sidebar.setObjectName("SidebarFrame")
+                self.sidebar.setFixedWidth(200)
+                self._sidebar_layout = QtWidgets.QVBoxLayout(self.sidebar)
+                self._sidebar_layout.setContentsMargins(14, 14, 14, 14)
+                self._sidebar_layout.setSpacing(8)
+
+                self.lbl_brand = QtWidgets.QLabel("iMath-THPT")
+                self.lbl_brand.setObjectName("AppTitle")
+                self.lbl_brand.setAlignment(QtCore.Qt.AlignCenter)
+                self._sidebar_layout.addWidget(self.lbl_brand)
+                self.lbl_sub = QtWidgets.QLabel("Workspace")
+                self.lbl_sub.setObjectName("AppSubtitle")
+                self.lbl_sub.setAlignment(QtCore.Qt.AlignCenter)
+                self._sidebar_layout.addWidget(self.lbl_sub)
+                self._sidebar_layout.addSpacing(10)
+
+                # Right container
+                self.right_container = QtWidgets.QWidget(self.centralwidget)
+                self._right_layout = QtWidgets.QVBoxLayout(self.right_container)
+                self._right_layout.setContentsMargins(12, 12, 12, 12)
+                self._right_layout.setSpacing(10)
+
+                # Topbar
+                self.topbar = QtWidgets.QFrame(self.right_container)
+                self.topbar.setObjectName("TopBar")
+                self.topbar.setFixedHeight(52)
+                self._topbar_layout = QtWidgets.QHBoxLayout(self.topbar)
+                self._topbar_layout.setContentsMargins(14, 8, 14, 8)
+                self._topbar_layout.setSpacing(10)
+
+                self.lbl_page_title = QtWidgets.QLabel("Dashboard")
+
+                # Sidebar collapse/expand toggle (hamburger)
+                self.btn_sidebar_toggle = QToolButton(self.topbar)
+                self.btn_sidebar_toggle.setObjectName("SidebarToggle")
+                self.btn_sidebar_toggle.setText("☰")
+                self.btn_sidebar_toggle.setToolTip("Thu gọn / Mở rộng sidebar")
+                self.btn_sidebar_toggle.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                self._topbar_layout.addWidget(self.btn_sidebar_toggle)
+
+                self.lbl_page_title.setObjectName("AppTitle")
+                self._topbar_layout.addWidget(self.lbl_page_title)
+                self._topbar_layout.addStretch(1)
+
+                # self.btn_theme_toggle = QToolButton(self.topbar)
+                # self.btn_theme_toggle.setObjectName("ThemeToggle")
+                # self.btn_theme_toggle.setText("🌙 / ☀")
+                # self.btn_theme_toggle.setToolTip("Dark/Light mode")
+                # self._topbar_layout.addWidget(self.btn_theme_toggle)
+
+                # Content surface (card)
+                self.content_frame = QtWidgets.QFrame(self.right_container)
+                self.content_frame.setObjectName("ContentCard")
+                self._content_layout = QtWidgets.QVBoxLayout(self.content_frame)
+                self._content_layout.setContentsMargins(12, 12, 12, 12)
+                self._content_layout.setSpacing(8)
+
+                # Main tabs live inside the card
+                self.tab_main = QtWidgets.QTabWidget(parent=self.content_frame)
+                self.tab_main.setObjectName("tab_main")
+                self.tab_main.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+                self._content_layout.addWidget(self.tab_main)
+
+                # Hide the built-in tab bar (we navigate via the left sidebar)
+                try:
+                    self.tab_main.tabBar().hide()
+                except Exception:
+                    pass
+
+                # Drop shadow for the card
+                try:
+                    shadow = QGraphicsDropShadowEffect(self.content_frame)
+                    shadow.setBlurRadius(24)
+                    shadow.setOffset(0, 8)
+                    shadow.setColor(QtGui.QColor(0, 0, 0, 60))
+                    self.content_frame.setGraphicsEffect(shadow)
+                except Exception:
+                    pass
+
+                # Compose shell
+                self._right_layout.addWidget(self.topbar)
+                self._right_layout.addWidget(self.content_frame, 1)
+                self._shell_layout.addWidget(self.sidebar)
+                self._shell_layout.addWidget(self.right_container, 1)
+
+                MainWindow.setCentralWidget(self.centralwidget)
+
                 self.tab_main.setCurrentIndex(1)
                 QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -187,32 +704,8 @@ class Ui_MainWindow(object):
 
                 # Style cho mainwindows
 
-                self.tab_main.setStyleSheet("""
-                        QTabBar::tab {
-                            background: #E5E5E5;    /* Màu nền mặc định của tab */
-                            color: #555555;         /* Màu chữ */
-                            padding: 5px 15px;      /* Khoảng cách giữa nội dung và viền */
-                            border-top-left-radius: 5px;
-                            border-top-right-radius: 5px;
-                            margin: 1px;            /* Khoảng cách giữa các tab */
-                            font-family: "Segoe UI" !important;
-                            font-size: 10pt;
-                            min-width: 120px;        /* Độ rộng tối thiểu của tab */
-                        }
-                        QTabBar::tab:selected {
-                            background: Indigo;      /* Màu nền khi tab được chọn */
-                            color: white;           /* Màu chữ khi tab được chọn */
-                        }
-                        QTabBar::tab:hover {
-                            background: skyblue;    /* Màu nền khi hover vào tab */                
-                            border: 1px solid blue;
-                            
-                        }
-                        QTabWidget::pane {
-                            border-top: 2px solid #C0C0C0; /* Viền dưới của tab */
-                            background: white;
-                        }            
-                    """)
+                                # (Modern UI) Tab styling is handled globally by ThemeManager QSS
+
                 
 
 
@@ -221,7 +714,7 @@ class Ui_MainWindow(object):
                 #self.tab_thongtin_dethi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
-                self.tab_main.addTab(self.tab_dothi, "Đồ thị")
+                self.tab_main.addTab(self.tab_dothi, "Vẽ đồ thị")
                 self.tab_dothi.setObjectName("tab_dothi")
                 #self.tab_dothi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_dothi.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
@@ -231,7 +724,7 @@ class Ui_MainWindow(object):
                 #self.tab_bbt.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))  
                 self.tab_bbt.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
-                self.tab_main.addTab(self.tab_vehinh, "Vẽ hình")
+                self.tab_main.addTab(self.tab_vehinh, "Hình không gian")
                 self.tab_vehinh.setObjectName("tab_vehinh")                
                 self.tab_vehinh.setGeometry(QtCore.QRect(0, 0, 1920, 1080)) 
 
@@ -256,7 +749,83 @@ class Ui_MainWindow(object):
                 self.tab_huongdan.setObjectName("tab_huongdan")                
                 self.tab_huongdan.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
-          
+                # ---- Sidebar navigation (sync with tabs) ----
+                self._nav_buttons = []
+                def _make_nav(text, idx):
+                    btn = QToolButton(self.sidebar)
+                    btn.setObjectName("NavButton")
+                    btn.setText(text)
+                    btn.setToolButtonStyle(Qt.ToolButtonTextOnly)
+                    btn.setCheckable(True)
+                    btn.setAutoExclusive(True)
+                    btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                    btn.setToolTip(text)
+                    # Store full text + a short icon-only label (first token before double spaces)
+                    try:
+                        parts = text.split("  ", 1)
+                        btn._full_text = text
+                        btn._icon_text = parts[0] if parts else text[:1]
+                    except Exception:
+                        btn._full_text = text
+                        btn._icon_text = text[:1]
+                    btn.clicked.connect(lambda _=False, i=idx: self.tab_main.setCurrentIndex(i))
+                    self._sidebar_layout.addWidget(btn)
+                    self._nav_buttons.append(btn)
+
+                _make_nav("🧩  Thiết lập ma trận", 0)
+                _make_nav("📝  Tạo đề", 1)
+                _make_nav("📈  Vẽ đồ thị", 2)
+                _make_nav("📊  Bảng biến thiên", 3)
+                _make_nav("✏️  Hình không gian", 4)
+                _make_nav("🧮  Bảng số liệu", 5)
+                _make_nav("🔐  Bản quyền", 6)
+                _make_nav("📚  Hướng dẫn", 7)
+
+                self._sidebar_layout.addStretch(1)
+
+                def _set_active_nav(i: int):
+                    for k, b in enumerate(self._nav_buttons):
+                        b.setProperty("active", "true" if k == i else "false")
+                        b.style().unpolish(b)
+                        b.style().polish(b)
+                    try:
+                        self.lbl_page_title.setText(self.tab_main.tabText(i))
+                    except Exception:
+                        pass
+
+                self.tab_main.currentChanged.connect(_set_active_nav)
+                _set_active_nav(self.tab_main.currentIndex())
+
+                # Theme toggle -> delegate to MainWindow (if it implements toggle_theme)
+                try:
+                    self.btn_theme_toggle.clicked.connect(MainWindow.toggle_theme)
+                except Exception:
+                    pass
+
+                # Optional: subtle fade-in for the content card (implemented safely)
+                # NOTE: applying graphics effects to complex containers can sometimes interfere with input.
+                # We apply it to the outer card frame and remove it immediately after the animation finishes.
+                try:
+                    eff = QGraphicsOpacityEffect(self.content_frame)
+                    self.content_frame.setGraphicsEffect(eff)
+                    anim = QPropertyAnimation(eff, b"opacity", self.content_frame)
+                    anim.setDuration(180)
+                    anim.setStartValue(0.0)
+                    anim.setEndValue(1.0)
+                    anim.setEasingCurve(QEasingCurve.OutCubic)
+                    def _cleanup():
+                        try:
+                            self.content_frame.setGraphicsEffect(None)
+                        except Exception:
+                            pass
+                    anim.finished.connect(_cleanup)
+                    QtCore.QTimer.singleShot(0, anim.start)
+                    self._content_fade_anim = anim
+                except Exception:
+                    pass
+
+
+
 
         #Thiết lập font cho MainWindow
                 font_8 = QtGui.QFont()
@@ -293,7 +862,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 21.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 26.01.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -396,13 +965,15 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
                 self.label.setGeometry(QtCore.QRect(10, textbox_top, 200, 20))
                 self.label.setFont(font)        
-                self.label.setText("Tên nhóm giá trị")
+                self.label.setText("Tên giá trị")
 
                 self.tab_bang_so_lieu_tennhom= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tennhom.setGeometry(QtCore.QRect(texbox_left, textbox_top, 100, 20))
+                self.tab_bang_so_lieu_tennhom.setGeometry(QtCore.QRect(texbox_left, textbox_top, 120, 35))
                 self.tab_bang_so_lieu_tennhom.setObjectName("tab_bang_so_lieu_tennhom")
                 self.tab_bang_so_lieu_tennhom.setFont(font_12)
-                self.tab_bang_so_lieu_tennhom.setText("Cân nặng")
+                self.tab_bang_so_lieu_tennhom.setText("")
+                self.tab_bang_so_lieu_tennhom.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                self.tab_bang_so_lieu_tennhom.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
                 self.label.setGeometry(QtCore.QRect(290, textbox_top, 100, 20))
@@ -410,82 +981,94 @@ class Ui_MainWindow(object):
                 self.label.setText("Số nhóm")
 
                 self.tab_bang_so_lieu_sonhom= QtWidgets.QSpinBox(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_sonhom.setGeometry(QtCore.QRect(360, textbox_top, 40, 20))
+                self.tab_bang_so_lieu_sonhom.setGeometry(QtCore.QRect(360, textbox_top, 60, 30))
                 self.tab_bang_so_lieu_sonhom.setFont(font_12)
                 self.tab_bang_so_lieu_sonhom.setObjectName("tab_bang_so_lieu_sonhom")
                 self.tab_bang_so_lieu_sonhom.setValue(5)
 
                 #Hàng 2
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+d, 200, 20))
+                self.label.setGeometry(QtCore.QRect(10, textbox_top+d+10, 200, 20))
                 self.label.setFont(font)        
                 self.label.setText("Tên tần số")
 
                 self.tab_bang_so_lieu_tentanso= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tentanso.setGeometry(QtCore.QRect(texbox_left, textbox_top+d, 100, 20))
+                self.tab_bang_so_lieu_tentanso.setGeometry(QtCore.QRect(texbox_left, textbox_top+d+10, 120, 35))
                 self.tab_bang_so_lieu_tentanso.setObjectName("tab_bang_so_lieu_tentanso")
                 self.tab_bang_so_lieu_tentanso.setFont(font_12)
-                self.tab_bang_so_lieu_tentanso.setText("Số người")
+                self.tab_bang_so_lieu_tentanso.setText("")
+                self.tab_bang_so_lieu_tentanso.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                self.tab_bang_so_lieu_tentanso.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 #Hàng 3
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+2*d, 200, 20))
+                self.label.setGeometry(QtCore.QRect(10, textbox_top+2*d+20, 200, 35))
                 self.label.setFont(font)        
                 self.label.setText("Giá trị bắt đầu")
 
                 self.tab_bang_so_lieu_giatribatdau= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_giatribatdau.setGeometry(QtCore.QRect(texbox_left, textbox_top+2*d, 50, 20))
+                self.tab_bang_so_lieu_giatribatdau.setGeometry(QtCore.QRect(texbox_left, textbox_top+2*d+20, 50, 35))
                 self.tab_bang_so_lieu_giatribatdau.setFont(font_12)
                 self.tab_bang_so_lieu_giatribatdau.setObjectName("tab_bang_so_lieu_giatribatdau")
-                self.tab_bang_so_lieu_giatribatdau.setText("45")
+                self.tab_bang_so_lieu_giatribatdau.setText("")
+                self.tab_bang_so_lieu_giatribatdau.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                self.tab_bang_so_lieu_giatribatdau.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 #Hàng 4
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+3*d, 300, 20))
+                self.label.setGeometry(QtCore.QRect(10, textbox_top+4*d, 300, 35))
                 self.label.setFont(font)        
                 self.label.setText("Khoảng cách 2 giá trị")
 
                 self.tab_bang_so_lieu_khoangcach= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_khoangcach.setGeometry(QtCore.QRect(texbox_left, textbox_top+3*d, 50, 20))
+                self.tab_bang_so_lieu_khoangcach.setGeometry(QtCore.QRect(texbox_left, textbox_top+4*d, 50, 35))
                 self.tab_bang_so_lieu_khoangcach.setFont(font_12)
                 self.tab_bang_so_lieu_khoangcach.setObjectName("tab_bang_so_lieu_khoangcach")
-                self.tab_bang_so_lieu_khoangcach.setText("5")
+                self.tab_bang_so_lieu_khoangcach.setText("")
+                self.tab_bang_so_lieu_khoangcach.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                self.tab_bang_so_lieu_khoangcach.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 #Hàng 5
-                self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+4*d, 300, 20))
-                self.label.setFont(font)        
-                self.label.setText("Tần số (cách nhau bằng dấu \",\")")
+                # self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
+                # self.label.setGeometry(QtCore.QRect(10, textbox_top+5*d+15, 300, 20))
+                # self.label.setFont(font)        
+                # self.label.setText("Tần số (cách nhau bằng dấu \",\")")
 
-                self.tab_bang_so_lieu_tanso= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tanso.setGeometry(QtCore.QRect(texbox_left+80, textbox_top+4*d, 200, 20))
-                self.tab_bang_so_lieu_tanso.setObjectName("tab_bang_so_lieu_tanso")
-                self.tab_bang_so_lieu_tanso.setFont(font_12)
-                self.tab_bang_so_lieu_tanso.setText("15,12,5,7,16")
+                # self.tab_bang_so_lieu_tanso= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
+                # self.tab_bang_so_lieu_tanso.setGeometry(QtCore.QRect(texbox_left+80, textbox_top+5*d+15, 200, 35))
+                # self.tab_bang_so_lieu_tanso.setObjectName("tab_bang_so_lieu_tanso")
+                # self.tab_bang_so_lieu_tanso.setFont(font_12)
+                # self.tab_bang_so_lieu_tanso.setText("")
+                # self.tab_bang_so_lieu_tanso.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                # self.tab_bang_so_lieu_tanso.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 #Hàng 6
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+5*d, 300, 20))
+                self.label.setGeometry(QtCore.QRect(10, textbox_top+5*d+15, 300, 35))
                 self.label.setFont(font)        
-                self.label.setText("Tần số ngẫu nhiên min")
+                self.label.setText("Tần số min")
 
                 self.tab_bang_so_lieu_tansomin= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tansomin.setGeometry(QtCore.QRect(texbox_left+20, textbox_top+5*d, 50, 20))
+                self.tab_bang_so_lieu_tansomin.setGeometry(QtCore.QRect(texbox_left, textbox_top+5*d+15, 50, 35))
                 self.tab_bang_so_lieu_tansomin.setObjectName("tab_bang_so_lieu_tansomin")
                 self.tab_bang_so_lieu_tansomin.setFont(font_12)
-                self.tab_bang_so_lieu_tansomin.setText("10")
+                self.tab_bang_so_lieu_tansomin.setText("")
+                self.tab_bang_so_lieu_tansomin.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                self.tab_bang_so_lieu_tansomin.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 #Hàng 7
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+6*d, 300, 20))
+                self.label.setGeometry(QtCore.QRect(10, textbox_top+6*d+25, 300, 35))
                 self.label.setFont(font)        
-                self.label.setText("Tần số ngẫun nhiên max")
+                self.label.setText("Tần số max")
 
                 self.tab_bang_so_lieu_tansomax= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tansomax.setGeometry(QtCore.QRect(texbox_left+20, textbox_top+6*d, 50, 20))
+                self.tab_bang_so_lieu_tansomax.setGeometry(QtCore.QRect(texbox_left, textbox_top+6*d+25, 50, 35))
                 self.tab_bang_so_lieu_tansomax.setFont(font_12)
                 self.tab_bang_so_lieu_tansomax.setObjectName("tab_bang_so_lieu_tansomax")
-                self.tab_bang_so_lieu_tansomax.setText("20")
+                self.tab_bang_so_lieu_tansomax.setText("")
+                self.tab_bang_so_lieu_tansomax.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+                self.tab_bang_so_lieu_tansomax.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
                 frame = QtWidgets.QFrame(parent=self.tab_bang_so_lieu)
                 # Thiết lập màu nền của QFrame
@@ -499,21 +1082,21 @@ class Ui_MainWindow(object):
                 self.label_tab_bang_so_lieu_getbang.setObjectName("label_tab_bang_so_lieu_getbang")
 
                 self.btn_tao_bang_so_lieu = QtWidgets.QPushButton(parent=self.tab_bang_so_lieu)
-                self.btn_tao_bang_so_lieu.setGeometry(QtCore.QRect(10, textbox_top+8*d, 150, 30))
+                self.btn_tao_bang_so_lieu.setGeometry(QtCore.QRect(10, textbox_top+10*d, 150, 30))
                 self.btn_tao_bang_so_lieu.setFont(font)
                 self.btn_tao_bang_so_lieu.setObjectName("btn_tao_bang_so_lieu")
                 self.btn_tao_bang_so_lieu.setText("Tạo bảng ghép nhóm")
                 self.btn_tao_bang_so_lieu.clicked.connect(self.tao_bang_so_lieu)
 
                 self.btn_tao_bang_so_lieu_runcode = QtWidgets.QPushButton(parent=self.tab_bang_so_lieu)
-                self.btn_tao_bang_so_lieu_runcode.setGeometry(QtCore.QRect(texbox_left+50, textbox_top+8*d, 150, 30))
+                self.btn_tao_bang_so_lieu_runcode.setGeometry(QtCore.QRect(texbox_left+50, textbox_top+10*d, 150, 30))
                 self.btn_tao_bang_so_lieu_runcode.setFont(font)
                 self.btn_tao_bang_so_lieu_runcode.setObjectName("btn_tao_bang_so_lieu_runcode")
                 self.btn_tao_bang_so_lieu_runcode.setText("Biên dịch code")
                 self.btn_tao_bang_so_lieu_runcode.clicked.connect(self.tao_bang_so_lieu_runcode)
 
                 self.btn_copy_bang_so_lieu = QtWidgets.QPushButton(parent=self.tab_bang_so_lieu)
-                self.btn_copy_bang_so_lieu.setGeometry(QtCore.QRect(10, textbox_top+9*d+5, 150, 30))
+                self.btn_copy_bang_so_lieu.setGeometry(QtCore.QRect(10, textbox_top+11*d+5, 150, 30))
                 self.btn_copy_bang_so_lieu.setFont(font)
                 self.btn_copy_bang_so_lieu.setObjectName("btn_copy_bang_so_lieu")
                 self.btn_copy_bang_so_lieu.setText("Copy bảng số liệu")
@@ -540,18 +1123,18 @@ class Ui_MainWindow(object):
 
                 #Table dạng toán
                 self.tableWidget =  QtWidgets.QTableWidget(parent=self.tab_taode)
-                self.tableWidget.setGeometry(QtCore.QRect(le_trai, le_top, 550, 375))
+                self.tableWidget.setGeometry(QtCore.QRect(420, le_top, 600, 275))
                 self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)                
                 self.tableWidget.setRowCount(0)
                 self.tableWidget.setColumnCount(4)
-                self.tableWidget.setColumnWidth(0, 360)
+                self.tableWidget.setColumnWidth(0, 420)
                 self.tableWidget.setColumnWidth(1, 50)
                 self.tableWidget.setColumnWidth(2, 50)
                 self.tableWidget.setColumnWidth(3, 50)
                 self.tableWidget.itemChanged.connect(self.thongke)
 
                 # Set column headers
-                headers = ["Dạng toán", "Loại \n câu", "Mức \n độ", "Số \n câu lấy"]
+                headers = ["Dạng toán", "Loại \n câu", "Mức \n độ", "Số \n câu"]
                 for i, header in enumerate(headers):                    
                     self.tableWidget.setHorizontalHeaderItem(i, QTableWidgetItem(header))                  
                 
@@ -581,16 +1164,16 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Chuyển tự luận
                 self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
+                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+550, le_top+70, 70, 30))
                 self.btn_chuyen_tuluan.setFont(font_10)
                 self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
                 self.btn_chuyen_tuluan.setText("TN => TL")
                 self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
-                self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
+                #self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 100, 30))
+                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+550, le_top+110, 60, 30))
                 self.btn_xoa_dong.setFont(font_10)
                 self.btn_xoa_dong.setObjectName("btn_xoa_dong")
                 self.btn_xoa_dong.setText("Xóa dòng")
@@ -599,7 +1182,7 @@ class Ui_MainWindow(object):
 
                 #Nút xóa ma trận
                 self.btn_xoa_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 100, 30))
+                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+550, le_top+150, 80, 30))
                 self.btn_xoa_matran.setFont(font_10)
                 self.btn_xoa_matran.setObjectName("btn_xoa_matran")
                 self.btn_xoa_matran.setText("Xóa ma trận")
@@ -608,7 +1191,7 @@ class Ui_MainWindow(object):
 
                 #Nút mở ma trận
                 self.btn_load_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_load_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+300, 100, 30))
+                self.btn_load_matran.setGeometry(QtCore.QRect(le_trai+550, le_top+300, 80, 30))
                 self.btn_load_matran.setFont(font_10)
                 self.btn_load_matran.setObjectName("btn_load_matran")
                 self.btn_load_matran.setText("Mở ma trận")
@@ -617,14 +1200,12 @@ class Ui_MainWindow(object):
 
                 #Nút lưu ma trận
                 self.btn_luu_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_luu_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+340, 100, 30))
+                self.btn_luu_matran.setGeometry(QtCore.QRect(le_trai+550, le_top+340, 80, 30))
                 self.btn_luu_matran.setFont(font_10)
                 self.btn_luu_matran.setObjectName("btn_luu_matran")
                 self.btn_luu_matran.setText("Lưu ma trận")
                 self.btn_luu_matran.clicked.connect(self.luu_matran)
-                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")
-
-                
+                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")            
 
                 
 
@@ -632,13 +1213,13 @@ class Ui_MainWindow(object):
                 
                 #Table thống kê
                 self.table_thongke =  QtWidgets.QTableWidget(parent=self.tab_taode)
-                self.table_thongke.setGeometry(QtCore.QRect(le_trai, le_top, 640, 230))
+                self.table_thongke.setGeometry(QtCore.QRect(420, le_top, 600, 230))
                 self.table_thongke.setRowCount(6)
                 self.table_thongke.setColumnCount(12)
                 self.table_thongke.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
                 self.table_thongke.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
                 for i in range(12):
-                    self.table_thongke.setColumnWidth(i, 54)
+                    self.table_thongke.setColumnWidth(i, 50)
                 
                 self.table_thongke.horizontalHeader().hide()
                 self.table_thongke.verticalHeader().hide()                
@@ -716,6 +1297,15 @@ class Ui_MainWindow(object):
                 self.table_thongke.setItem(5, 0, item)
                 self.table_thongke.setSpan(5, 0, 1, 12)
 
+                #Nút chuyển tab Tạo đề
+                self.btn_show_tab_taode = QtWidgets.QPushButton(parent=self.tab_taode)        
+                self.btn_show_tab_taode.setGeometry(QtCore.QRect(820, 610, 90, 30))
+                self.btn_show_tab_taode.setFont(font_12)
+                self.btn_show_tab_taode.setObjectName("btn_show_tab_taode")
+                self.btn_show_tab_taode.setText("📝 Tạo đề")
+                self.btn_show_tab_taode.clicked.connect(self.btn_show_tab_taode_click)
+                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")
+
 
                 top_btn = 100
                 le_trai=20
@@ -736,19 +1326,19 @@ class Ui_MainWindow(object):
                 self.label.setText(f"Tên Sở GD: ")
 
                 self.ten_sogd= QtWidgets.QTextEdit(parent=self.tab_thongtin_dethi)
-                self.ten_sogd.setGeometry(QtCore.QRect(le_trai+200, le_top, 300, 30))
+                self.ten_sogd.setGeometry(QtCore.QRect(le_trai+200, le_top-10, 300, 40))
                 self.ten_sogd.setObjectName("ten_sogd")
                 self.ten_sogd.setFont(font_10)                
                 self.ten_sogd.setText(license.read_reg_thongtin("So_gd"))
                 
                 #Tên trường THPT
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)               
-                self.label.setGeometry(QtCore.QRect(le_trai, le_top+40, 250, 30))
+                self.label.setGeometry(QtCore.QRect(le_trai, le_top+40, 250, 35))
                 self.label.setFont(font_10)      
                 self.label.setText(f"Tên trường THPT: ")
 
                 self.ten_truong= QtWidgets.QTextEdit(parent=self.tab_thongtin_dethi)
-                self.ten_truong.setGeometry(QtCore.QRect(le_trai+200, le_top+40, 300, 30))
+                self.ten_truong.setGeometry(QtCore.QRect(le_trai+200, le_top+35, 300, 40))
                 self.ten_truong.setObjectName("ten_truong")
                 self.ten_truong.setFont(font_10)
                 self.ten_truong.setText(license.read_reg_thongtin("Truong_THPT"))               
@@ -756,13 +1346,13 @@ class Ui_MainWindow(object):
 
                 #Tên đề thi
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)               
-                self.label.setGeometry(QtCore.QRect(le_trai+600, le_top, 250, 30))
+                self.label.setGeometry(QtCore.QRect(le_trai+600, le_top, 250, 35))
                 self.label.setFont(font_10)        
                 self.label.setText(f"Tên kỳ thi")
 
 
                 self.ten_kythi= QtWidgets.QTextEdit(parent=self.tab_thongtin_dethi)
-                self.ten_kythi.setGeometry(QtCore.QRect(le_trai+700, le_top, 300, 30))
+                self.ten_kythi.setGeometry(QtCore.QRect(le_trai+700, le_top-10, 300, 40))
                 self.ten_kythi.setObjectName("ten_kythi")
                 self.ten_kythi.setFont(font_10)
                 self.ten_kythi.setText("ĐỀ ÔN TẬP")
@@ -775,7 +1365,7 @@ class Ui_MainWindow(object):
                 self.label.setText(f"Môn thi")
 
                 self.ten_monthi= QtWidgets.QTextEdit(parent=self.tab_thongtin_dethi)
-                self.ten_monthi.setGeometry(QtCore.QRect(le_trai+700, le_top+40, 300, 30))
+                self.ten_monthi.setGeometry(QtCore.QRect(le_trai+700, le_top+35, 300, 40))
                 self.ten_monthi.setObjectName("ten_monthi")
                 self.ten_monthi.setFont(font_10)
                 self.ten_monthi.setText(license.read_reg_thongtin("ten_monthi"))
@@ -788,7 +1378,7 @@ class Ui_MainWindow(object):
                 self.label.setText(f"Thời gian")
 
                 self.ten_thoigian= QtWidgets.QTextEdit(parent=self.tab_thongtin_dethi)
-                self.ten_thoigian.setGeometry(QtCore.QRect(le_trai+200, le_top+80, 60, 30))
+                self.ten_thoigian.setGeometry(QtCore.QRect(le_trai+200, le_top+80, 60, 40))
                 self.ten_thoigian.setObjectName("ten_thoigian")
                 self.ten_thoigian.setFont(font_10)
 
@@ -813,7 +1403,7 @@ class Ui_MainWindow(object):
                        
                 #Spin số đề
                 self.spin_soluong_de = QtWidgets.QSpinBox(parent=self.tab_thongtin_dethi)
-                self.spin_soluong_de.setGeometry(QtCore.QRect(le_trai+125, le_top-75, 45, 20))
+                self.spin_soluong_de.setGeometry(QtCore.QRect(le_trai+125, le_top-80, 45, 35))
                 self.spin_soluong_de.setFont(font_10)
                 self.spin_soluong_de.setObjectName("spin_soluong_de")
                 self.spin_soluong_de.setValue(1)
@@ -842,17 +1432,17 @@ class Ui_MainWindow(object):
 
                 #Nút tạo đề word
                 self.combo_taode = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
-                self.combo_taode.setGeometry(QtCore.QRect(le_trai+20, le_top-50, 160, 30))
+                self.combo_taode.setGeometry(QtCore.QRect(le_trai+20, le_top-40, 180, 30))
                 self.combo_taode.setFont(font_10)
                 self.combo_taode.setObjectName("combo_taode")
                 self.combo_taode.addItem("Tạo đề Word - Equation")
                 self.combo_taode.addItem("Tạo đề Word - MathType")
                 self.combo_taode.addItem("Tạo đề Latex - PDF")
-                self.combo_taode.addItem("Tạo code Latex")
+                self.combo_taode.addItem("Tạo Code Latex")
 
                 #Nút tạo đề word
                 self.combo_made = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
-                self.combo_made.setGeometry(QtCore.QRect(le_trai+200, le_top-50, 120, 30))
+                self.combo_made.setGeometry(QtCore.QRect(le_trai+250, le_top-75, 120, 30))
                 self.combo_made.setFont(font_10)
                 self.combo_made.setObjectName("combo_made")
                 self.combo_made.addItem("Mã đề 3 số")
@@ -861,7 +1451,7 @@ class Ui_MainWindow(object):
 
                 #Nút tạo mã đề ngẫu nhiên
                 self.checkbox_made_random = QtWidgets.QCheckBox(parent=self.tab_thongtin_dethi)        
-                self.checkbox_made_random.setGeometry(QtCore.QRect(le_trai+200, le_top-20, 180, 30))
+                self.checkbox_made_random.setGeometry(QtCore.QRect(le_trai+250, le_top-40, 180, 30))
                 self.checkbox_made_random.setFont(font_10)
                 self.checkbox_made_random.setObjectName("checkbox_made_made_random")
                 self.checkbox_made_random.setText("Mã đề ngẫu nhiên")
@@ -870,7 +1460,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút nhập mã đề
                 self.btn_nhapmade = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)
-                self.btn_nhapmade.setGeometry(QtCore.QRect(le_trai+420, le_top-20, 120, 30))
+                self.btn_nhapmade.setGeometry(QtCore.QRect(le_trai+400, le_top-40, 120, 30))
                 self.btn_nhapmade.setFont(font_10)
                 self.btn_nhapmade.setObjectName("btn_nhapmade")
                 self.btn_nhapmade.setText("Tự nhập mã đề")
@@ -880,7 +1470,7 @@ class Ui_MainWindow(object):
 
                 #Nút tự trộn dạng toán
                 self.checkbox_shuffle_dangtoan = QtWidgets.QCheckBox(parent=self.tab_thongtin_dethi)        
-                self.checkbox_shuffle_dangtoan.setGeometry(QtCore.QRect(le_trai+420, le_top-50, 170, 30))
+                self.checkbox_shuffle_dangtoan.setGeometry(QtCore.QRect(le_trai+250, le_top-75, 170, 30))
                 self.checkbox_shuffle_dangtoan.setFont(font_10)
                 self.checkbox_shuffle_dangtoan.setObjectName("checkbox_shuffle_dangtoan")
                 self.checkbox_shuffle_dangtoan.setText("Trộn câu hỏi")
@@ -904,7 +1494,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 21.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 26.01.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -1264,31 +1854,31 @@ class Ui_MainWindow(object):
                 self.label_dangcauhoi.setFont(font_tieude)
                 self.label_dangcauhoi.setStyleSheet("color: #697DBA;")
                 self.label_dangcauhoi.setObjectName("label_socau")
-                self.label_dangcauhoi.setText("1. Chọn dạng toán")
+                self.label_dangcauhoi.setText("🗂️ Chọn dạng toán")
 
         # Checkbox chọn ngẫu nhiên từ thư mục con
-                self.checkbox_tree_random = QtWidgets.QLabel(parent=self.tab_taode)        
-                self.checkbox_tree_random.setGeometry(QtCore.QRect(25, 25, 205, 30))
-                self.checkbox_tree_random.setFont(font_10)
-                self.checkbox_tree_random.setObjectName("checkbox_tree_random")
-                self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
+                # self.checkbox_tree_random = QtWidgets.QLabel(parent=self.tab_taode)        
+                # self.checkbox_tree_random.setGeometry(QtCore.QRect(25, 25, 205, 30))
+                # self.checkbox_tree_random.setFont(font_10)
+                # self.checkbox_tree_random.setObjectName("checkbox_tree_random")
+                # self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
         
-                self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
-                self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 25, 30, 60))
-                self.soluong_dangtoan.setFont(font)
-                self.soluong_dangtoan.setObjectName("soluong_dangtoan")
+                # self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
+                # self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 25, 30, 60))
+                # self.soluong_dangtoan.setFont(font)
+                # self.soluong_dangtoan.setObjectName("soluong_dangtoan")
 
         #label thông tin dạng toán
                 self.label_dangcauhoi = QtWidgets.QLabel(parent=self.tab_taode)
-                self.label_dangcauhoi.setGeometry(QtCore.QRect(720, 5, 200, 30))
+                self.label_dangcauhoi.setGeometry(QtCore.QRect(590, 5, 200, 30))
                 self.label_dangcauhoi.setFont(font_tieude)
                 self.label_dangcauhoi.setStyleSheet("color: #697DBA;")
                 self.label_dangcauhoi.setObjectName("label_socau")
-                self.label_dangcauhoi.setText("2. Thông tin dạng toán")
+                self.label_dangcauhoi.setText("🧮 Thông tin dạng toán")
 
         # Cây thư mục
                 self.treeWidget = QtWidgets.QTreeWidget(parent=self.tab_taode)
-                self.treeWidget.setGeometry(QtCore.QRect(0, 50, 720, 600))
+                self.treeWidget.setGeometry(QtCore.QRect(0, 50, 575, 630))
                 self.treeWidget.setObjectName("treeWidget")
                 
                
@@ -6790,17 +7380,29 @@ class Ui_MainWindow(object):
                 L11_C6_B4_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B4_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_09]-TF-M2. Tạo câu Đ-S: Phương trình a^x=b"])
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_09]-TF-M2. Tạo câu Đ-S: Các PT dạng a^x=b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: Phương trình log_a (x)=b"])
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_23]-TF-M2. m^(ax^2+bx+c)=n. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_24]-TF-M2. am^2x+bm^x+c=0. Xét Đ-S: Biến đổi PT, nghiệm, tích các nghiệm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: Các PT dạng log_a (x)=b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 L11_C6_B4_3 = QTreeWidgetItem(L11_C6_B4, ["Trả lời ngắn"])
                 L11_C6_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_14]-SA-M2. Giải phương trình a^nx-a^m=0"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6984,6 +7586,34 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B6, ["[D11_C6_B6_06]-M2. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B6_2 = QTreeWidgetItem(L11_C6_B6, ["Đúng-Sai"])
+                L11_C6_B6_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B6_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_2, ["[D11_C6_B6_07]-TF-M2. Tiền gửi kỳ hạn 1 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_2, ["[D11_C6_B6_08]-TF-M2. Tiền gửi kỳ hạn 3 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B6_3 = QTreeWidgetItem(L11_C6_B6, ["Trả lời ngắn"])
+                L11_C6_B6_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B6_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_09]-SA-M2. Tiền gửi kỳ hạn 3 tháng. Sau n tháng rút ra rồi gửi thêm tiền. Tính tiền thu được sau n năm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_10]-SA-M2. Tìm năm để dân số đạt gấp n lần ban đầu."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_11]-SA-M2. Số vi khuẩn N(x)=Ce^{kx}. Tìm số vi khuẩn sau t giờ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                  
@@ -9485,11 +10115,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_55]-TF-M2. Cho đa thức. Xét Đ-S: một ng.hàm, họ ng.hàm, ng.hàm thỏa mãn F(a)=b."])
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét Đ-S: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét Đ-S: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_55]-TF-M2. f(x)=đa thức. Xét Đ-S: một ng.hàm, họ ng.hàm, ng.hàm thỏa mãn F(a)=b."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_57]-TF-M2.  f(x)=ax+b/x^2+c. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_56]-TF-M2. f(x)=asinx+bcosx. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10999,7 +11637,7 @@ class Ui_MainWindow(object):
                             else:
                                     current_directory = os.path.dirname(os.path.abspath(__file__))
                                     doc_folder_path = os.path.join(current_directory, 'DOC')
-                                    name_thu_muc=f"De_{datetime.now().strftime("%d-%m__%H-%M-%S")}"
+                                    name_thu_muc = f"De_{datetime.now().strftime('%d-%m__%H-%M-%S')}"
                                     new_folder_path = os.path.join(doc_folder_path, name_thu_muc)
                                     if not os.path.exists(new_folder_path):
                                             os.makedirs(new_folder_path)
@@ -12498,6 +13136,14 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B1_55]-TF-M2. Cho đa thức. Xét đúng-sai: một nguyên hàm, họ nguyên hàm, nguyên hàm thỏa mãn F(a)=b
                                             if dang_toan == "[D12_C4_B1_55]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_55()
+
+                                            #[D12_C4_B1_56]-TF-M2. f(x)=asinx+bcosx. Xét đúng-sai: F'(x), F(x), F(x1)=b, F(x2)-F(x1)
+                                            if dang_toan == "[D12_C4_B1_56]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_56()
+
+                                            #[D12_C4_B1_57]-TF-M2. f(x)=ax+b/x^2+c. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1)
+                                            if dang_toan == "[D12_C4_B1_57]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_57()
                                                 
 
                                         #Bài 2. Nguyên hàm đổi biến
@@ -15586,7 +16232,19 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B4_22]-TL-M3. Giải phương trình log_m(ax+b) - log_m(cx+d) = e
                                             if dang_toan == "[D11_C6_B4_22]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_22()                             
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_22() 
+
+                                            #[D11_C6_B4_23]-TF-M2. m^(ax^2+bx+c)=n. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm.
+                                            if dang_toan == "[D11_C6_B4_23]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B4_23()
+
+                                            #[D11_C6_B4_24]-TF-M2. am^2x+bm^x+c=0. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm.
+                                            if dang_toan == "[D11_C6_B4_24]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B4_24()
+
+                                            #[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N.
+                                            if dang_toan == "[D11_C6_B4_25]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_25()                       
                                                 
 
                                 #BÀI 5 - BẤT PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT
@@ -15700,12 +16358,34 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B6_05]-M2. Cho số dân và tỉ lệ tăng trưởng. Tính số dân sau n năm.
                                             if dang_toan == "[D11_C6_B6_05]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_05()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_05()                                 
                                                 
 
                                             #[D11_C6_B6_06]-M2. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm.
                                             if dang_toan == "[D11_C6_B6_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_06()
+
+                                            #[D11_C6_B6_07]-TF-M2: Tiền gửi kỳ hạn 1 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi 
+                                            if dang_toan == "[D11_C6_B6_07]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B6_07()
+
+                                            #[D11_C6_B6_08]-TF-M2: Tiền gửi kỳ hạn 3 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi 
+                                            if dang_toan == "[D11_C6_B6_08]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B6_08()
+
+                                            #[D11_C6_B6_09]-SA-M3: Tiền gửi kỳ hạn 3 tháng. Sau n tháng rút ra rồi gửi thêm tiền. Tính tiền thu được sau n năm. 
+                                            if dang_toan == "[D11_C6_B6_09]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_09()
+
+                                            #[D11_C6_B6_10]-SA-M3: Tìm năm để dân số đạt gấp n lần ban đầu
+                                            if dang_toan == "[D11_C6_B6_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_10()
+
+                                            #[D11_C6_B6_11]-SA-M3: Số vi khuẩn N(x)=Ce^{kx}. Tìm số vi khuẩn sau t giờ
+                                            if dang_toan == "[D11_C6_B6_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_11()
+
+                                                                        
                                                 
 
                                 #Toán 11 - Chương 8 - Quan hệ vuông góc
@@ -21610,34 +22290,34 @@ class Ui_MainWindow(object):
         #     return
 
         def handleItemChanged(self, item, column):
-                if  self.soluong_dangtoan.toPlainText()!="":
+                # if  self.soluong_dangtoan.toPlainText()!="":
                            
-                    n=int(self.soluong_dangtoan.toPlainText())
-                    if n>0:
-                        if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:                            
-                        # Kiểm tra xem mục mẹ có được chọn hay không
-                                if item.checkState(0) == Qt.Checked:
-                                    # Lấy tất cả các mục con từ tất cả các cấp
-                                    all_children = []
-                                    self.collectAllChildren(item, all_children)
+                #     n=int(self.soluong_dangtoan.toPlainText())
+                #     if n>0:
+                #         if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:                            
+                #         # Kiểm tra xem mục mẹ có được chọn hay không
+                #                 if item.checkState(0) == Qt.Checked:
+                #                     # Lấy tất cả các mục con từ tất cả các cấp
+                #                     all_children = []
+                #                     self.collectAllChildren(item, all_children)
 
-                                    # Chọn ngẫu nhiên 5 mục từ tất cả các mục con
-                                    selected_children = random.sample(all_children, min(n, len(all_children)))                             
+                #                     # Chọn ngẫu nhiên 5 mục từ tất cả các mục con
+                #                     selected_children = random.sample(all_children, min(n, len(all_children)))                             
                                     
 
-                                    # Đánh dấu 5 mục con ngẫu nhiên là được chọn
-                                    for child in all_children:
-                                        if child in selected_children:
-                                            child.setCheckState(0, Qt.Checked)
-                                        else:
-                                            child.setCheckState(0, Qt.Unchecked)
-                                    self.uncheckAllChildren(item)
-                                else:
-                                    # Nếu mục mẹ không được chọn, bỏ chọn tất cả các mục con
-                                    self.uncheckAllChildren(item)
-                else:
-                    if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:        
-                        self.updateChildren(item)
+                #                     # Đánh dấu 5 mục con ngẫu nhiên là được chọn
+                #                     for child in all_children:
+                #                         if child in selected_children:
+                #                             child.setCheckState(0, Qt.Checked)
+                #                         else:
+                #                             child.setCheckState(0, Qt.Unchecked)
+                #                     self.uncheckAllChildren(item)
+                #                 else:
+                #                     # Nếu mục mẹ không được chọn, bỏ chọn tất cả các mục con
+                #                     self.uncheckAllChildren(item)
+                # else:
+                if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:        
+                    self.updateChildren(item)
 
                 return
 
@@ -22141,6 +22821,9 @@ class Ui_MainWindow(object):
             help_folder_path = os.path.join(current_directory, 'HELP')
             file_path = os.path.join(help_folder_path, "show-tool-Word-to-PPT.pdf")
             subprocess.Popen(['explorer', file_path])
+
+        def btn_show_tab_taode_click(self):
+            self.tab_main.setCurrentWidget(self.tab_thongtin_dethi)
             
 if __name__ == "__main__":
     # High-DPI scaling: đặt TRƯỚC khi tạo QApplication
@@ -22152,49 +22835,18 @@ if __name__ == "__main__":
             QtWidgets.QApplication.setHighDpiScaleFactorRoundingPolicy(QtCore.Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
     except Exception:
         pass
-        
+
     app = QtWidgets.QApplication(sys.argv)
-    # Thiết lập font toàn cục cho ứng dụng
-    font = QFont("Segoe UI", 10)  # Font Segoe UI, cỡ chữ 10
-    app.setFont(font)
 
-    #Thiết lập Style cho button
-    # Áp dụng StyleSheet cho tất cả QPushButton
-    
-    app.setStyleSheet("""
-    QPushButton {
-        background-color: #0078D7; /* Màu nền xanh dương */
-        color: white; /* Màu chữ trắng */
-        border: none; /* Không viền */
-        border-radius: 4px; /* Bo góc */
-        font-size: 9pt; /* Cỡ chữ */
-        font-weight: normal; /* Không đậm */
-        font-family: "Segoe UI"; /* Font chữ Segoe UI */
-        padding: 4px 10px; /* Khoảng cách trong nút */
-        
-    }
+    # Typography sạch (toàn cục)
+    app.setFont(QFont("Segoe UI", 10))
 
-    QPushButton:hover {
-        background-color: #005A9E; /* Màu nền đậm hơn khi hover */
-    }
+    # Apply persisted theme (Light/Dark)
+    is_dark = ThemeManager.load_is_dark(default=False)
+    ThemeManager.apply(app, is_dark)
 
-    QPushButton:pressed {
-        background-color: #003E73; /* Màu nền đậm nhất khi nhấn */
-        border: 2px solid #002F58; /* Viền thêm khi nhấn */
-    }
-
-    QPushButton:disabled {
-        background-color: #A6A6A6; /* Màu nền xám khi nút bị vô hiệu */
-        color: #F0F0F0; /* Màu chữ xám nhạt */
-        border: none;
-    }
-    """)
-
-    
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    # Launch modern shell window
+    win = MainWindow()
+    win._is_dark = is_dark  # keep a copy
+    win.show()
     sys.exit(app.exec())
-
-

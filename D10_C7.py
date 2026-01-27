@@ -3761,16 +3761,16 @@ def aaa_pry_L10_C7_B3_08():
      
     chon=random.randint(1,4)
     if chon==1:
-        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}={latex(g)}$ là")
+        noi_dung=(f"Tập nghiệm của phương trình ${latex(sqrt(f))}={latex(g)}$ là")
 
     if chon==2:
-        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-{d}=x$ là")
+        noi_dung=(f"Tập nghiệm của phương trình ${latex(sqrt(f))}-{d}=x$ là")
 
     if chon==3:
-        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-x={d}$ là")
+        noi_dung=(f"Tập nghiệm của phương trình ${latex(sqrt(f))}-x={d}$ là")
 
     if chon==4:
-        noi_dung=(f"Tổng các nghiệm của phương trình ${latex(sqrt(f))}-x-{d}=0$ là")
+        noi_dung=(f"Tập nghiệm của phương trình ${latex(sqrt(f))}-x-{d}=0$ là")
         
     noi_dung=noi_dung.replace("--","+") 
 

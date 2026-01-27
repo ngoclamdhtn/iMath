@@ -6,7 +6,7 @@ from fractions import Fraction
 import my_module
 import datetime
 
-def thay_dau_cong_tru(st):
+def thay_dau_congtru(st):
     st=st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+")
     return st
 # Hàm làm tròn half-up
@@ -1467,12 +1467,12 @@ def uz9zu_L11_C6_B2_10():
     s_m, s_n, s_p=sp.symbols("m n p")
 
     noi_dung = (
-    f"Biết $\\log_{a}{latex(a**m*b**n*c**p)}=m+n\\log_{a} {{{b}}} +p\\log_{a}{{{c}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
+    f"Biết $\\log_{a} {{{latex(a**m*b**n*c**p)}}}=m+n\\log_{a} {{{b}}} +p\\log_{a}{{{c}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
     )
     dap_an=t_1*m+t_2*n+t_3*p
 
     noi_dung_loigiai=(
-    f"$\\log_{a}{latex(a**m*b**n*c**p)}=\\log_{a}({a}^{m}.{b}^{n}.{c}^{p})={m}+{n}\\log_{a}{{{b}}}+{p}\\log_{a}{{{c}}}$.\n\n"
+    f"$\\log_{a} {{{latex(a**m*b**n*c**p)}}}=\\log_{a}({a}^{m}.{b}^{n}.{c}^{p})={m}+{n}\\log_{a}{{{b}}}+{p}\\log_{a}{{{c}}}$.\n\n"
     f"$\\Rightarrow {latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$."
     )    
         
@@ -1503,15 +1503,15 @@ def uz9zu_L11_C6_B2_11():
     s_m, s_n, s_p=sp.symbols("m n p")
 
     noi_dung = (
-    f"Biết $\\log_{a}{phan_so(a**m*b**n*c**p)}=m+n\\log_{a} {{{b}}}+p\\log_{a} {{{c}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
+    f"Biết $\\log_{a} {{{phan_so(a**m*b**n*c**p)}}}=m+n\\log_{a} {{{b}}}+p\\log_{a} {{{c}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
     )
     dap_an=t_1*m+t_2*n+t_3*p
 
     noi_dung_loigiai=(
-    f"$\\log_{a}{phan_so(a**m*b**n*c**p)}=\\log_{a}({a}^{{{m}}}.{b}^{{{n}}}.{c}^{{{p}}})={m}+{n}\\log_{a} {{{b}}}+{p}\\log_{a} {{{c}}}$.\n\n"
+    f"$\\log_{a} {{{phan_so(a**m*b**n*c**p)}}}=\\log_{a}({a}^{{{m}}}.{b}^{{{n}}}.{c}^{{{p}}})={m}+{n}\\log_{a} {{{b}}}+{p}\\log_{a} {{{c}}}$.\n\n"
     f"$\\Rightarrow {latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)   
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)   
         
     debai_word= f"{noi_dung}"
 
@@ -1544,12 +1544,12 @@ def uz9zu_L11_C6_B2_12():
     s_m, s_n, s_p=sp.symbols("m n p")
 
     noi_dung = (
-    f"Biết $\\log_{a} {(a**q*b)}=\\dfrac{{m+n\\log {d}+p\\log {e} }}{{1-\\log {d}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
+    f"Biết $\\log_{a} {{{(a**q*b)}}}=\\dfrac{{m+n\\log {d}+p\\log {e} }}{{1-\\log {d}}}$. Tính ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}$."
     )
     dap_an=t_1*q+t_2*(m-q)+t_3*n
 
     noi_dung_loigiai=(
-    f"$\\log_{a} {a**q*b}=\\log_{a} ({a}^{q}.{b})={q}+\\log_{a} {b}$.\n\n"
+    f"$\\log_{a} {{{a**q*b}}}=\\log_{a} ({a}^{q}.{b})={q}+\\log_{a} {b}$.\n\n"
     f"$\\log_{a} {b}=\\dfrac{{\\log {b}}}{{\\log {a}}}$"
     f" $=\\dfrac{{\\log ({d}^{m}.{e}^{n}) }}{{\\log ({10}:{d})}}$"
     f" $=\\dfrac{{{m}\\log {d} + {n}\\log {e}}}{{1-\\log {d}}}$.\n\n"
@@ -1557,7 +1557,7 @@ def uz9zu_L11_C6_B2_12():
     f" $=\\dfrac{{{q}+{m-q}\\log {d} +{n}\\log {e}}}{{1-\\log {d}}}$.\n\n"
     f"$\\Rightarrow {latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)   
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)   
         
     debai_word= f"{noi_dung}"
 
@@ -1607,7 +1607,7 @@ def uz9zu_L11_C6_B2_13():
 #[D11_C6_B2_14]-SA-M3. Tính tổng log_a (n/n+1) +...log_a (m/m+1)
 def uz9zu_L11_C6_B2_14():
     chon=random.randint(1,2)
-    chon=3
+    
     if chon==1:
         while True:
             n=random.randint(5,20)
@@ -4535,12 +4535,11 @@ def uz9zu_L11_C6_B3_27():
             continue    
         if all([delta>0, sqrt(delta).is_integer]):
             break
-    x_1=(-b1-sqrt(delta))/(2*a)
-    x_2=(-b1+sqrt(delta))/(2*a)
+    x_1=(-b1-sqrt(delta))/(2*a1)
+    x_2=(-b1+sqrt(delta))/(2*a1)
     if x_1>x_2:
-        t=x_2
-        x_2=x_1
-        x_1=t
+        x_1=(-b1+sqrt(delta))/(2*a1)
+        x_2=(-b1-qrt(delta))/(2*a1)        
 
     
     p=random.randint(2,9)
@@ -4616,8 +4615,8 @@ def uz9zu_L11_C6_B3_27():
         f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} <e 0$\n\n"
         f"$\\Leftrightarrow {latex(x_1)} < m < {latex(x_2)}$.\n\n"
         f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)  
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)  
     
 
     dap_an=dem    
@@ -5916,6 +5915,282 @@ def uz9zu_L11_C6_B4_22():
     f"\\end{{ex}}\n")
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C6_B4_23]-TF-M2. m^(ax^2+bx+c)=n. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm.
+def uz9zu_L11_C6_B4_23():
+    x=sp.symbols("x")
+    while True:
+        m=random.choice([2,3,4,5,7])
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(-6,6)
+        t=random.randint(2,5)
+        n=m**t
+        c1=c-t
+        d=b**2-4*a*c1
+        if d>0:
+            break
+    x_1, x_2=(-b-sqrt(d))/2*a, (-b+sqrt(d))/2*a
+    noi_dung = (
+    f"Cho phương trình ${latex(m**(a*x**2+b*x+c))}={n}$.\n\n"
+    f"Xét tính đúng-sai của các khẳng định sau:")    
+    
+    kq1_T=f"* Biến đổi phương trình ta được phương trình ${latex(a*x**2+b*x+c-t)}=0$" 
+    kq1_F=f"Biến đổi phương trình ta được phương trình ${latex(a*x**2+b*x+c+t)}=0$"
+    
+    HDG=f"${latex(m**(a*x**2+b*x+c))}={n} \\Rightarrow {latex(m**(a*x**2+b*x+c))} ={m}^{t} \\Rightarrow {latex(a*x**2+b*x+c-t)}=0$"
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=random.choice([
+    f"* $x={latex(x_1)}$ là một nghiệm của phương trình đã cho",
+    f"* $x={latex(x_2)}$ là một nghiệm của phương trình đã cho" ])
+    kq2_F=random.choice([
+        f"$x={phan_so((-b-d)/2*a)}$ là một nghiệm của phương trình đã cho",
+        f"$x={phan_so((-b+d)/2*a)}$ là một nghiệm của phương trình đã cho"])
+    
+    HDG=(f"${latex(m**(a*x**2+b*x+c))}={n} \\Rightarrow {latex(a*x**2+b*x+c-t)}=0 \\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    tong=-b/a
+
+    kq3_T=f"* Tổng các nghiệm của phương trình đã cho là ${phan_so(tong)}$" 
+    kq3_F=f"Tổng các nghiệm của phương trình đã cho là ${phan_so(tong+random.randint(1,3))}$"
+    
+    HDG=f"$x_1+x_2={latex(x_1)}+{latex(x_2)}={phan_so(tong)}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    tich=c1/a
+    kq4_T=f"* Tích các nghiệm của phương trình đã cho là ${phan_so(tich)}$"
+    kq4_F=f"Tích các nghiệm của phương trình đã cho là ${phan_so(tich+random.randint(1,3))}$" 
+    
+    HDG=f"$x_1+x_2=({latex(x_1)}).({latex(x_2)})={phan_so(tich)}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B4_24]-TF-M2. am^2x+bm^x+c=0. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm.
+def uz9zu_L11_C6_B4_24():
+    x,t=sp.symbols("x t")
+    while True:
+        m=random.choice([2,3,4,5,7])
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.choice([i for i in range(-5, 6) if i!=0])       
+        d=b**2-4*a*c
+        if d<=0:
+            continue
+        t_1,t_2=(-b-sqrt(d))/(2*a), (-b+sqrt(d))/(2*a)
+        if all([t_1>0,t_2>0]):
+            break
+
+    f=f"{a}.{m**2}^{{x}}+{b}.{m}^x+{c}".replace("1.","")
+    noi_dung = (
+    f"Cho phương trình ${f}=0$ (1).\n\n"
+    f"Xét tính đúng-sai của các khẳng định sau:")
+    noi_dung=thay_dau_congtru(noi_dung)
+    
+    kq1_T=f"* Đặt $t={m}^x$ thì điều kiện của ${{t}}$ là $t>0$" 
+    kq1_F=f"Đặt $t={m}^x$ thì điều kiện của ${{t}}$ là $t>{random.randint(1,3)}$"
+    
+    HDG=f"Đặt $t={m}^x$ thì điều kiện của ${{t}}$ là $t>0$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* Đặt $t={m}^x$ ta có phương trình ${latex(a*t**2+b*t+c)}=0$"
+    kq2_F=f"Đặt $t={m}^x$ ta có phương trình ${latex(a*t**2+b*t+c+random.randint(1,2))}=0$"
+    
+    HDG=f"Đặt $t={m}^x$ ta có phương trình ${latex(a*t**2+b*t+c)}=0$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=random.choice([
+    f"* $x=\\log_{{{m}}} \\left({latex(t_1)}\\right)$ là một nghiệm của phương trình (1)",
+    f"* $x=\\log_{{{m}}} \\left({latex(t_2)}\\right)$ là một nghiệm của phương trình (1)" ]) 
+    kq3_F=random.choice([
+        f"$x={latex(t_1)}$ là một nghiệm của phương trình (1)",
+        f"$x={latex(t_2)}$ là một nghiệm của phương trình (1)",
+     ])
+    
+    HDG=(f"${latex(a*t**2+b*t+c)}=0\\Rightarrow t={latex(t_1)}, t={latex(t_2)}$.\n\n"
+        f"Với $t={latex(t_1)} \\Rightarrow x= \\log_{{{m}}} \\left({latex(t_1)} \\right)$.\n\n"
+        f"Với $t={latex(t_2)} \\Rightarrow x= \\log_{{{m}}} \\left({latex(t_2)} \\right)$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    tich=c/a
+    kq4_T=f"* Tích các nghiệm của phương trình (1) bằng ${phan_so(c/a)}$"
+    kq4_F=f"Tích các nghiệm của phương trình (1) bằng ${phan_so(c/a+random.randint(1,3))}$" 
+    
+    HDG=f"$x_1.x_2=({latex(t_1)}).({latex(t_2)})={phan_so(c/a)}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N.
+def uz9zu_L11_C6_B4_25():
+    x=sp.symbols("x")
+    while True:
+        m=random.choice([2,3,4,5,7])
+        a = random.choice([i for i in range(1, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(-6,6)
+        t=random.randint(2,5)
+        n=m**t
+        c1=c-t
+        d=b**2-4*a*c1
+        if d<=0:
+            continue
+        x_1, x_2=(-b-sqrt(d))/2*a, (-b+sqrt(d))/2*a
+        if all([x_1<0,x_2>0]):
+            break
+    noi_dung = (
+    f"Một phòng thí nghiệm nuôi cấy vi khuẩn trong môi trường đặc biệt."
+    f" Sau ${{x}}$ ngày số lượng vi khuẩn (tính theo triệu con) được mô hình hóa bởi công thức:"
+    f" $N(x)={latex(m**(a*x**2+b*x+c))}$."
+    f" Biết rằng khi số lượng vi khuẩn đạt {n} triệu con thì cần tiến hành xử lý môi trường."
+    f" Hỏi sau ít nhất bao nhiêu ngày kể từ khi bắt đầu nuôi cấy thì phải tiến hành xử lý môi trường?"
+    )
+    dem=0
+    for i in range(0, 100):
+        if i<x_2:
+            dem+=1
+    dap_an=dem
+    x_2_round=f"{round_half_up(x_2,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"${latex(m**(a*x**2+b*x+c))}={n} \\Rightarrow {latex(m**(a*x**2+b*x+c))} ={m}^{t} \\Rightarrow {latex(a*x**2+b*x+c-t)}=0$\n\n"
+    f"$\\Rightarrow x={latex(x_1)}<0$ (loại), $x={latex(x_2)} \\approx {x_2_round}$.\n\n"
+    f" Vậy sau ít nhất {dap_an} ngày thì phải tiến hành xử lý môi trường."
+
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
 
 
 
@@ -6895,8 +7170,8 @@ def uz9zu_L11_C6_B5_12():
         f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} \\le 0$\n\n"
         f"$\\Leftrightarrow {latex(x_1)} \\le m \\le {latex(x_2)}$.\n\n"
         f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)  
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)  
     
 
     dap_an=dem    
@@ -7928,14 +8203,336 @@ def uz9zu_L11_C6_B6_06():
 
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C6_B6_07]-M3-SA. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm.
+#[D11_C6_B6_07]-TF-M2: Tiền gửi kỳ hạn 1 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi 
 def uz9zu_L11_C6_B6_07():
-    ngay_hien_tai = datetime.datetime.now()
-    nam_start=random.randint(2020,ngay_hien_tai.year)
-    n=3
-    nam_end=nam_start+n-1
+    ten=random.choice(["Ông An", "Cô Bình", "Chú Khoa", "Bác Hùng", "Anh Minh", "Chị Lan", "Cụ Phúc", "Cô Hạnh", "Thầy Lam", "Cô Mai"])
+    ten_thuong=ten[0].lower() + ten[1:]
+    a=random.randint(50,150)
+    r_thang=random.randint(4,7)/10
+    s_r_thang=f"{round_half_up(r_thang,2):.2f}".replace(".",",")
+
+    r_quy=r_thang*3
+    s_r_quy=f"{round_half_up(r_quy,2):.2f}".replace(".",",")
+
+    noi_dung = (
+    f"{ten} lần đầu gởi vào ngân hàng {a} triệu đồng với kỳ hạn 1 tháng, lãi suất ${s_r_thang}\\%$ một tháng theo hình thức lãi kép."
+    f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")
+
+    n=random.randint(3,12)
+    s1=float(a*(1+r_thang/100)**n)
+    s1_round=f"{round_half_up(s1,2):.2f}".replace(".",",")
+
+    s1_f=float(a*(1+r_quy/100)**n)
+    s1_f_round=f"{round_half_up(s1_f,2):.2f}".replace(".",",")
+
+    kq1_T=f"* Sau {n} tháng {ten_thuong} có tổng số tiền là {s1_round} triệu đồng" 
+    kq1_F=f"Sau {n} tháng {ten_thuong} có tổng số tiền là {s1_f_round} triệu đồng"
+    
+    HDG=(f" Sau {n} tháng {ten_thuong} có tổng số tiền là:\n\n"
+        f"$S={a}(1+{s_r_thang}\\%)^{{{n}}}={s1_round}$ triệu đồng.")
+    HDG=HDG.replace("0\\%","\\%")
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    b=a+random.randint(40,100)
+    n=float(log(b/a)/log(1+r_thang/100))
+    s_n=f"{round_half_up(n,2):.2f}".replace(".",",")
+    dem=0
+    for i in range(0,100):
+        if i<n:
+            dem+=1
+    kq2_T=f"* Sau ít nhất {dem} tháng , {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu"
+    kq2_F=random.choice([
+    f"Sau ít nhất {dem-random.randint(1,2)} tháng, {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu",
+    f"Sau ít nhất {dem+random.randint(1,2)} tháng, {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu" ])
+    
+    HDG=(f"${a}(1+{s_r_thang}\\%)^n={b}\\Rightarrow n=\\log_{{1+{s_r_thang}\\%}}(\\dfrac{{{b}}}{{{a}}})={s_n}$.\n\n"
+        f"Vậy sau ít nhất {dem} tháng thì {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu.")
+    HDG=HDG.replace("0\\%","\\%")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq3_T=f"* Sau n tháng, tổng số tiền cả vốn lẫn lãi là ${a}(1+{s_r_thang}\\%)^n$" 
+    kq3_F=f"Sau n tháng, tổng số tiền cả vốn lẫn lãi là ${a}(1+{s_r_quy}\\%)^n$"
+    
+    HDG=(f"Sau n tháng, tổng số tiền cả vốn lẫn lãi là ${a}(1+{s_r_thang}\\%)^n$.")
+    HDG=HDG.replace("0\\%","\\%")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    l=random.randint(5,30)
+
+    n=float(log((a+l)/a)/log(1+r_thang/100))
+    s_n=f"{round_half_up(n,2):.2f}".replace(".",",")
+    dem=0
+    for i in range(0,100):
+        if i<n:
+            dem+=1
+
+    kq4_T=f"* Để thu được nhiều hơn {l} triệu tiền lãi thì {ten_thuong} cần gửi ngân hàng ít nhất {dem} tháng"
+    kq4_F=random.choice([
+        f"Để thu được nhiều hơn {l} triệu tiền lãi thì {ten_thuong} cần gửi ngân hàng ít nhất {dem-random.randint(1,2)} tháng", 
+        f"Để thu được nhiều hơn {l} triệu tiền lãi thì {ten_thuong} cần gửi ngân hàng ít nhất {dem+random.randint(1,2)} tháng",]) 
+    
+    HDG=(f"${a}(1+{s_r_thang}\\%)^n-{a}={l}\\Rightarrow n=\\log_{{1+{s_r_thang}\\%}}(\\dfrac{{{a+l}}}{{{a}}})={s_n}$.\n\n"
+        f"Vậy sau ít nhất {dem} tháng thì {ten_thuong} nhận được số tiền lãi nhiều hơn {l} triệu.")
+    HDG=HDG.replace("0\\%","\\%")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq3, kq1, kq2, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B6_08]-TF-M2: Tiền gửi kỳ hạn 3 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi 
+def uz9zu_L11_C6_B6_08():
+    ten=random.choice(["Ông An", "Cô Bình", "Chú Khoa", "Bác Hùng", "Anh Minh", "Chị Lan", "Cụ Phúc", "Cô Hạnh", "Thầy Lam", "Cô Mai"])
+    ten_thuong=ten[0].lower() + ten[1:]
+    a=random.randint(50,150)
+    r_thang=random.randint(4,7)/10
+    s_r_thang=f"{round_half_up(r_thang,2):.2f}".replace(".",",")
+
+    r_quy=r_thang*3
+    s_r_quy=f"{round_half_up(r_quy,2):.2f}".replace(".",",")
+
+    noi_dung = (
+    f"{ten} lần đầu gởi vào ngân hàng {a} triệu đồng với kỳ hạn 3 tháng, lãi suất ${s_r_quy}\\%$ một quý theo hình thức lãi kép."
+    f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")
+    noi_dung=noi_dung.replace("0\\%","\\%")
+
+    n=random.randint(3,10)
+    s1=float(a*(1+r_quy/100)**n)
+    s1_round=f"{round_half_up(s1,2):.2f}".replace(".",",")
+
+    s1_f=float(a*(1+r_quy/100)**(n-1))
+    s1_f_round=f"{round_half_up(s1_f,2):.2f}".replace(".",",")
+
+    kq1_T=f"* Sau {n} quý {ten_thuong} có tổng số tiền là {s1_round} triệu đồng" 
+    kq1_F=f"Sau {n} quý {ten_thuong} có tổng số tiền là {s1_f_round} triệu đồng"
+    
+    HDG=(f" Sau {n} quý {ten_thuong} có tổng số tiền là:\n\n"
+        f"$S={a}(1+{s_r_quy}\\%)^{{{n}}}={s1_round}$ triệu đồng.")
+
+    HDG=HDG.replace("0\\%","\\%")
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    b=a+random.randint(40,100)
+    n=log(b/a)/log(1+r_quy/100)
+    s_n=f"{round_half_up(n,2):.2f}".replace(".",",")
+    dem=0
+    for i in range(0,100):
+        if i<n:
+            dem+=1
+    kq2_T=f"* Sau ít nhất {dem} quý , {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu"
+    kq2_F=random.choice([
+    f"Sau ít nhất {dem-random.randint(1,2)} quý, {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu",
+    f"Sau ít nhất {dem+random.randint(1,2)} quý, {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu" ])
+    
+    HDG=(f"${a}(1+{s_r_quy}\\%)^n={b}\\Rightarrow n=\\log_{{1+{s_r_quy}\\%}}(\\dfrac{{{b}}}{{{a}}})={s_n}$.\n\n"
+        f"Vậy sau ít nhất {dem} quý thì {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu.")
+    HDG=HDG.replace("0\\%","\\%")
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    n_quy=random.randint(2,5)
+    n_thang=n_quy*3
+    b=random.randint(50,100)
+
+    s1=float(a*(1+r_quy/100)**n_quy)
+    s1_round=f"{round_half_up(s1,2):.2f}".replace(".",",")
+
+    a1=float(s1+b)
+    s_a1=f"{round_half_up(a1,2):.2f}".replace(".",",")
+    s2=float(a1*(1+r_quy/100)**4)
+    s2_round=f"{round_half_up(s2,2):.2f}".replace(".",",")
+    s2_f_round=f"{round_half_up(s2+random.randint(1,3),2):.2f}".replace(".",",")
+
+
+    kq3_T=(f"* Sau đúng {n_thang} tháng, {ten_thuong} rút hết cả vốn lẫn lãi rồi dùng số tiền đó cộng thêm {b} triệu đồng gửi tiếp ngân hàng với kỳ hạn và lãi suất như trước đó." 
+        f" Tổng số tiền {ten_thuong} nhận được 1 năm sau đó là ${{{s2_round}}}$ triệu đồng")
+    kq3_F=(f"* Sau đúng {n_thang} tháng, {ten_thuong} rút hết cả vốn lẫn lãi rồi dùng số tiền đó cộng thêm {b} triệu đồng gửi tiếp ngân hàng với kỳ hạn và lãi suất như trước đó." 
+        f" Tổng số tiền {ten_thuong} nhận được 1 năm sau đó là ${{{s2_f_round}}}$ triệu đồng")
+    
+    HDG=(f"Số tiền có được sau {n_thang} tháng là $S_1={a}(1+{s_r_quy}\\%)^{n_quy}={s1_round}$ triệu.\n\n"
+        f"Tổng tiền cả vốn lẫn lãi sau 1 năm là:\n\n"
+        f"$S_2={s_a1}(1+{s_r_quy}\\%)^4={s2_round}$ triệu."
+        )
+    HDG=HDG.replace("0\\%","\\%")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    n_quy=random.randint(6,10)
+    n_thang=n_quy*3
+    b=random.randint(200,300)
+    a=float(b/(1+r_quy/100)**n_quy)
+    s_a=f"{round_half_up(a,2):.2f}".replace(".",",")
+    s_a_f=f"{round_half_up(a+random.randint(2,5),2):.2f}".replace(".",",")
+
+    kq4_T=f"* Để nhận được số tiền {b} triệu sau {n_thang} với lãi suất như trên thì ban đầu {ten_thuong} cần gửi ít nhất {s_a} triệu"
+    kq4_F=f"Để nhận được số tiền {b} triệu sau {n_thang} với lãi suất như trên thì ban đầu {ten_thuong} cần gửi ít nhất {s_a_f} triệu"
+    
+    HDG=(f"Gọi ${{a}}$ là số tiền ban đầu cần gửi.\n\n"
+        f"$a(1+{s_r_quy})^{{{n_quy}}}={b}\\Rightarrow a= \\dfrac{{{b}}}{{(1+{s_r_quy})^{{{n_quy}}}}}={s_a}$ triệu đồng.")
+    HDG=HDG.replace("0\\%","\\%")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+    debai=debai.replace("0\\%","\\%")
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+    noi_dung_loigiai=noi_dung_loigiai.replace("0\\%","\\%")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C6_B6_09]-SA-M3: Tiền gửi kỳ hạn 3 tháng. Sau n tháng rút ra rồi gửi thêm tiền. Tính tiền thu được sau n năm. 
+def uz9zu_L11_C6_B6_09():
+    ten=random.choice(["Ông An", "Cô Bình", "Chú Khoa", "Bác Hùng", "Anh Minh", "Chị Lan", "Cụ Phúc", "Cô Hạnh", "Thầy Lam", "Cô Mai"])
+    ten_thuong=ten[0].lower() + ten[1:]
+
+    while True:
+        a=random.randint(50,150)
+        r_thang=random.randint(4,7)/10
+        s_r_thang=f"{round_half_up(r_thang,2):.2f}".replace(".",",")
+
+        r_quy=r_thang*3
+        s_r_quy=f"{round_half_up(r_quy,2):.2f}".replace(".",",")       
+
+        n_quy=random.randint(2,5)
+        n_thang=n_quy*3
+        b=random.randint(50,100)
+
+        s1=float(a*(1+r_quy/100)**n_quy)
+        s1_round=f"{round_half_up(s1,2):.2f}".replace(".",",")
+
+        a1=float(s1+b)
+        s_a1=f"{round_half_up(a1,2):.2f}".replace(".",",")
+
+        n_nam=random.randint(1,3)
+        s2=float(a1*(1+r_quy/100)**(n_nam*4))
+        s2_round=f"{round_half_up(s2,0):.0f}".replace(".",",")
+        if s2<900:
+            break
+
+    noi_dung = (
+    f"{ten} lần đầu gởi vào ngân hàng {a} triệu đồng với kỳ hạn 3 tháng, lãi suất ${s_r_quy}\\%$ một quý theo hình thức lãi kép."
+    f" Sau đúng {n_thang} tháng, {ten_thuong} rút hết cả vốn lẫn lãi rồi dùng số tiền đó cộng thêm {b} triệu đồng gửi tiếp ngân hàng với kỳ hạn và lãi suất như trước đó."
+    f" Tổng số tiền {ten_thuong} nhận được {n_nam} năm sau đó là bao nhiêu triệu đồng (kết quả làm tròn đến hàng đơn vị)")
+    noi_dung=noi_dung.replace("0\\%","\\%")
 
     
+    noi_dung_loigiai=(f"Số tiền có được sau {n_thang} tháng là $S_1={a}(1+{s_r_quy}\\%)^{n_quy}={s1_round}$ triệu.\n\n"
+        f"Tổng tiền cả vốn lẫn lãi sau {n_nam} năm là:\n\n"
+        f"$S_2={s_a1}(1+{s_r_quy}\\%)^{{{n_nam*4}}}={s2_round}$ triệu."
+        )
+    noi_dung_loigiai=noi_dung_loigiai.replace("0\\%","\\%")
+
+    dap_an=s2_round 
         
     debai_word= f"{noi_dung}\n"
 
@@ -7948,6 +8545,127 @@ def uz9zu_L11_C6_B6_07():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B6_10]-SA-M3: Tìm năm để dân số đạt gấp n lần ban đầu
+def uz9zu_L11_C6_B6_10():
+    import random
+    import sympy as sp
+
+    t = sp.symbols("t", real=True)
+
+    # --- Sinh dữ liệu ngẫu nhiên ---
+    nam_goc = random.randint(2010,2025)
+    r_percent = random.choice([0.8, 1.0, 1.13, 1.2, 1.35, 1.5])
+    r = r_percent / 100
+    n=random.randint(2,4)
+
+    # --- Giải phương trình tăng gấp đôi ---
+    # nA = A e^(r t)  => n = e^(r t)
+    # => ln n = r t
+    t_val = float(sp.log(n) / r)
+
+    t_round = round_half_up(t_val, 1)
+    nam_dat = nam_goc + int(round_half_up(t_val, 0))
+
+    dap_an = str(nam_dat)
+
+    s_r = str(r_percent).replace(".", ",")
+    s_t = f"{t_round:.1f}".replace(".", ",")
+
+    noi_dung = (
+        f"Dân số ở một địa phương được ước tính theo công thức "
+        f"$S=A\\cdot e^{{r t}}$, trong đó ${{A}}$ là dân số của năm {nam_goc}, "
+        f"$S$ là dân số sau ${{t}}$ năm, $r$ là tỉ lệ tăng dân số hằng năm. "
+        f"Hỏi đến năm nào thì dân số ở địa phương đó sẽ đạt gấp {n} lần dân số năm {nam_goc}? "
+        f"Biết $r={s_r}\\%$/năm."
+    )
+
+    noi_dung_loigiai = (
+        f"Theo giả thiết ta có:\n\n"
+        f"${n}A=A e^{{r t}} \\Rightarrow {n}=e^{{r t}}$.\n\n"
+        f"$\\ln {n} = r t \\Rightarrow t=\\dfrac{{\\ln {n}}}{{r}}=\\dfrac{{\\ln {n}}}{{{s_r}\\%}}\\approx {s_t}$(năm).\n\n"
+        f"Vậy dân số sẽ đạt gấp đôi vào khoảng năm {dap_an}."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C6_B6_11]-SA-M3: Số vi khuẩn N(x)=Ce^{kx}. Tìm số vi khuẩn sau t giờ
+def uz9zu_L11_C6_B6_11():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x", real=True)
+    while True:
+
+        # --- Sinh dữ liệu ngẫu nhiên ---
+        C = random.randint(50, 200)  # số vi khuẩn ban đầu
+
+        # chọn k đẹp trước rồi suy ra N(1) để tránh log xấu
+        k = random.choice([0.5, 0.6, 0.7, 0.8, 0.9,1.1, 1.25, 1.3, 1.4, 1.45])
+        N1 = round_half_up(C * sp.E**k, 0)  # số sau 1 giờ (làm tròn nguyên)
+
+        t_can_tinh = random.randint(3, 6)
+
+        # --- Tính lại k từ dữ kiện N(1)=C e^k ---
+        k_thuc = float(sp.log(N1 / C))
+        s_k = f"{round_half_up(k_thuc ,2):.2f}".replace(".",",")
+
+        N_t = float(C * sp.E**(k_thuc * t_can_tinh))
+        if N_t<9000:
+            break  
+
+
+    dap_an = f"{round_half_up(N_t,0):.0f}".replace(".",",")
+    
+
+    noi_dung = (
+        f"Trong một phòng thí nghiệm, người ta nuôi một loại vi khuẩn. "
+        f"Lúc đầu có {C} vi khuẩn. Sau một giờ, số vi khuẩn là {int(N1)} con. "
+        f"Giả sử số vi khuẩn tăng lên theo công thức tăng trưởng mũ, "
+        f"số vi khuẩn sau $x$ giờ là $N(x)=Ce^{{kx}}$. "
+        f"Tính số lượng vi khuẩn có được sau {t_can_tinh} giờ "
+        f"(kết quả làm tròn đến hàng đơn vị)."
+    )
+
+    noi_dung_loigiai = (
+        f"$N(1)={C}e^k={int(N1)} \\Rightarrow e^k=\\dfrac{{{int(N1)}}}{{{C}}}$.\n\n"
+        f"Suy ra:\n\n"
+        f"$k=\\ln\\left(\\dfrac{{{int(N1)}}}{{{C}}}\\right)\\approx {s_k}.$\n\n"
+        f"$N({t_can_tinh})={C}e^{{k\\cdot {t_can_tinh}}} \\approx {dap_an}.$\n\n"
+        f"Vậy sau {t_can_tinh} giờ có khoảng {dap_an} vi khuẩn."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
 
 #Phương trình logarit
 

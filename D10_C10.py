@@ -2784,180 +2784,207 @@ def gghik_L10_CX_B0_37():
 
 #[D10_CX_B0_38]-SA-M3. Tìm tọa độ trực tâm tam giác.
 def gghik_L10_CX_B0_38():
-    # Sinh 3 điểm khác nhau A, B, C
-    while True:
-        (a1,a2), (b1,b2), (c1,c2) = random.sample(
-            [(x,y) for x in range(-8,9) for y in range(-8,9)], 3)
-        # Kiểm tra không thẳng hàng
-        # ===== Tính trực tâm H(a; b) =====
-        # Vector AB và AC
-        AB = (b1 - a1, b2 - a2)
-        AC = (c1 - a1, c2 - a2)
+	# Sinh 3 điểm khác nhau A, B, C
+	while True:
+		a1 = random.randint(-5, 5)
+		a2 = random.randint(-5, 5)
 
-        # Hệ số đường cao từ A: vuông góc BC
-        # BC = (c1 - b1, c2 - b2)
-        BC = (c1 - b1, c2 - b2)
+		b1 = random.randint(-4, 5)
+		b2 = random.randint(-4, 5)
 
-        # Phương trình đường cao từ A: (x - a1, y - a2) ⋅ BC = 0
-        # Tương tự đường cao từ B: (x - b1, y - b2) ⋅ AC = 0
+		c1 = random.randint(-6, 6)
+		c2 = random.randint(-6, 6)
 
-        # Giải hệ 2 phương trình để tìm trực tâm
-        # (x - a1)*BCx + (y - a2)*BCy = 0
-        # (x - b1)*ACx + (y - b2)*ACy = 0
+		x_AB, y_AB=b1-a1, b2-a2
 
-        import sympy as sp
-        x, y = sp.symbols('x y')
+		x_BC, y_BC=c1-b1, c2-b2
+		if x_AB*y_BC==y_AB*x_BC:
+			continue
 
-        eq1 = (x - a1)*BC[0] + (y - a2)*BC[1]
-        eq2 = (x - b1)*AC[0] + (y - b2)*AC[1]
+		# tránh trùng điểm
+		if (a1,a2)==(b1,b2) or (a1,a2)==(c1,c2) or (b1,b2)==(c1,c2):
+			continue
+		AB = (b1 - a1, b2 - a2)
+		AC = (c1 - a1, c2 - a2)
 
-        sol = sp.solve((eq1, eq2), (x, y))
-        Hx = float(sol[x])
-        Hy = float(sol[y])
+		# Hệ số đường cao từ A: vuông góc BC
+		# BC = (c1 - b1, c2 - b2)
+		BC = (c1 - b1, c2 - b2)
 
-        # Đáp án
-        tong = Hx + Hy
-        if all([(b1-a1)*(c2-a2) != (b2-a2)*(c1-a1), tong>-5]):
-            break
+		# Phương trình đường cao từ A: (x - a1, y - a2) ⋅ BC = 0
+		# Tương tự đường cao từ B: (x - b1, y - b2) ⋅ AC = 0
 
-    
+		# Giải hệ 2 phương trình để tìm trực tâm
+		# (x - a1)*BCx + (y - a2)*BCy = 0
+		# (x - b1)*ACx + (y - b2)*ACy = 0
 
-    if float(tong).is_integer():
-        dap_an = str(int(tong))
-        noi_dung = (
-        f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
-        f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
-        f"Trực tâm của tam giác là $H(a;b)$. "
-        f"Tính $a+b$."
-    )
-    else:
-        dap_an = f"{round_half_up(tong,1):.1f}".replace(".",",")
-        noi_dung = (
-        f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
-        f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
-        f"Trực tâm của tam giác là $H(a;b)$. "
-        f"Tính $a+b$."
-    )
+		import sympy as sp
+		x, y = sp.symbols('x y')
 
-    # ===== Lời giải chi tiết =====
-    noi_dung_loigiai = (
-        f"Ta có tam giác ${{ABC}}$ với $A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$.\n\n"
-        f"${vec("AH")}\\bot {vec("BC")}$ nên:\n\n"
-        f"$(a-{a1})({BC[0]}) + (b-{a2})({BC[1]}) = 0$.\n\n"
-        f"${vec("BH")}\\bot {vec("AC")}$ nên:\n\n"
-        f"$(a-{b1})({AC[0]}) + (b-{b2})({AC[1]}) = 0$.\n\n"
-        f"Giải hệ trên ta được:\n\n"
-        f"$H({phan_so(Hx)};{phan_so(Hy)})$.\n\n"
-        f"Suy ra $a+b = {dap_an}$."
-    )
+		eq1 = (x - a1)*BC[0] + (y - a2)*BC[1]
+		eq2 = (x - b1)*AC[0] + (y - b2)*AC[1]
 
-    # Fix dấu giống code bạn
-    noi_dung = noi_dung.replace("+-", "-").replace("-+", "-").replace("--", "+")
-    noi_dung_loigiai = noi_dung_loigiai.replace("+-", "-").replace("-+", "-").replace("--", "+")
+		sol = sp.solve((eq1, eq2), (x, y))
+		Hx = float(sol[x])
+		Hy = float(sol[y])
 
-    # Xuất Word
-    debai_word = f"{noi_dung}\n"
-    loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
+		# Đáp án
+		tong = Hx + Hy
+		if all([(b1-a1)*(c2-a2) != (b2-a2)*(c1-a1), tong>-5]):
+		    break
 
-    # Xuất LaTeX
-    latex_tuluan = (
-        "\\begin{ex}\n"
-        f"{noi_dung}\n\n"
-        f"\\shortans[4]{{{dap_an}}}\n\n"
-        f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
-        "\\end{ex}\n"
-    )
-    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+	if float(tong).is_integer():
+	    dap_an = str(int(tong))
+	    lam_tron=""
+
+	else:
+	    dap_an = f"{round_half_up(tong,1):.1f}".replace(".",",")
+	    lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+
+	noi_dung = (
+	    f"Trong một khu đô thị mới, hệ trục tọa độ ${{Oxy}}$ (đơn vị: mét) được dùng để xác định vị trí các công trình trên bản vẽ mặt bằng."
+	    f" Ba tòa nhà cao tầng được xây dựng tại các vị trí: $A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$."
+	    f" Các kỹ sư quyết định đặt một cột thu phát tín hiệu tại điểm"
+	    f" ${{H(a;b)}}$ là giao điểm của ba đường cao của tam giác tạo bởi ba tòa nhà ${{A,B,C}}$."
+	    f" Tính $a+b${lam_tron}."
+	)
+
+	# ===== Lời giải chi tiết =====
+	noi_dung_loigiai = (
+	    f"Ta có tam giác ${{ABC}}$ với $A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$.\n\n"
+	    f"${vec("AH")}\\bot {vec("BC")}$ nên:\n\n"
+	    f"$(a-{a1}){dau_ngoac(BC[0])} + (b-{a2}){dau_ngoac(BC[1])} = 0$.\n\n"
+	    f"${vec("BH")}\\bot {vec("AC")}$ nên:\n\n"
+	    f"$(a-{b1}){dau_ngoac(AC[0])} + (b-{b2})({dau_ngoac(AC[1])} = 0$.\n\n"
+	    f"Giải hệ trên ta được: "
+	    f"$H({phan_so(Hx)};{phan_so(Hy)})$. "
+	    f"Suy ra $a+b = {dap_an}$."
+	)
+
+	# Fix dấu giống code bạn
+	noi_dung = noi_dung.replace("+-", "-").replace("-+", "-").replace("--", "+")
+	noi_dung_loigiai = noi_dung_loigiai.replace("+-", "-").replace("-+", "-").replace("--", "+")
+
+	# Xuất Word
+	debai_word = f"{noi_dung}\n"
+	loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
+
+	# Xuất LaTeX
+	latex_tuluan = (
+	    "\\begin{ex}\n"
+	    f"{noi_dung}\n\n"
+	    f"\\shortans[4]{{{dap_an}}}\n\n"
+	    f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
+	    "\\end{ex}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 #[D10_CX_B0_39]-SA-M3. Tìm tọa độ tâm đường tròn ngoại tiếp tam giác.
 def gghik_L10_CX_B0_39():	
-    # Sinh 3 điểm khác nhau tạo thành tam giác
-    x, y = sp.symbols('x y')
-    while True:
-        (a1,a2), (b1,b2), (c1,c2) = random.sample(
-            [(x,y) for x in range(-7,7) for y in range(-7,7)], 3
-        )
+
+	x, y = sp.symbols('x y')
+	while True:
+		a1 = random.randint(-5, 5)
+		a2 = random.randint(-5, 5)
+
+		b1 = random.randint(-4, 5)
+		b2 = random.randint(-4, 5)
+
+		c1 = random.randint(-6, 6)
+		c2 = random.randint(-6, 6)
+
+		x_AB, y_AB=b1-a1, b2-a2
+
+		x_BC, y_BC=c1-b1, c2-b2
+		if x_AB*y_BC==y_AB*x_BC:
+			continue
+
+		# tránh trùng điểm
+		if (a1,a2)==(b1,b2) or (a1,a2)==(c1,c2) or (b1,b2)==(c1,c2):
+			continue
+
         # Phương trình đường trung trực AB
         # Vector AB = (b1-a1, b2-a2)
         # Trung điểm AB
-        mxAB = (a1 + b1) / 2
-        myAB = (a2 + b2) / 2
-        AB = (b1 - a1, b2 - a2)
+		mxAB = (a1 + b1) / 2
+		myAB = (a2 + b2) / 2
+		AB = (b1 - a1, b2 - a2)
 
-        # Điều kiện vuông góc: (x - mxAB, y - myAB) ⋅ AB = 0
-        eq1 = (x - mxAB)*AB[0] + (y - myAB)*AB[1]
+		# Điều kiện vuông góc: (x - mxAB, y - myAB) ⋅ AB = 0
+		eq1 = (x - mxAB)*AB[0] + (y - myAB)*AB[1]
 
-        # Phương trình đường trung trực AC
-        mxAC = (a1 + c1) / 2
-        myAC = (a2 + c2) / 2
-        AC = (c1 - a1, c2 - a2)
+		# Phương trình đường trung trực AC
+		mxAC = (a1 + c1) / 2
+		myAC = (a2 + c2) / 2
+		AC = (c1 - a1, c2 - a2)
 
-        eq2 = (x - mxAC)*AC[0] + (y - myAC)*AC[1]
+		eq2 = (x - mxAC)*AC[0] + (y - myAC)*AC[1]
 
-        # Giải giao điểm = tâm ngoại tiếp
-        sol = sp.solve((eq1, eq2), (x, y))
+		# Giải giao điểm = tâm ngoại tiếp
+		sol = sp.solve((eq1, eq2), (x, y))
 
-        Ox = float(sol[x])
-        Oy = float(sol[y])
+		Ox = float(sol[x])
+		Oy = float(sol[y])
 
-        # Tính a + b
-        tong = Ox + Oy
-        # Kiểm tra không thẳng hàng
-        if all([(b1-a1)*(c2-a2) != (b2-a2)*(c1-a1), tong>-5]):
-            break
-
-
-    if float(tong).is_integer():
-        dap_an = str(int(tong))
-        noi_dung = (
-            f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
-            f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
-            f"Tâm đường tròn ngoại tiếp tam giác ${{ABC}}$ là điểm $O(a;b)$. "
-            f"Tính $a+b$."
-        )
-    else:
-        dap_an = f"{round_half_up(tong,1):.1f}".replace(".",",")
-        noi_dung = (
-            f"Trong mặt phẳng toạ độ ${{Oxy}}$, cho tam giác ${{ABC}}$ với "
-            f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$. "
-            f"Tâm đường tròn ngoại tiếp tam giác ${{ABC}}$ là điểm $O(a;b)$. "
-            f"Tính $a+b$ (làm tròn đến hàng phần mười)."
-        )
+		# Tính a + b
+		tong = Ox + Oy
+		# Kiểm tra không thẳng hàng
+		if all([(b1-a1)*(c2-a2) != (b2-a2)*(c1-a1), tong>-5]):
+			break
 
 
+	if float(tong).is_integer():
+	    dap_an = str(int(tong))
+	    lam_tron=""
+	    
+	else:
+	    dap_an = f"{round_half_up(tong,1):.1f}".replace(".",",").replace(",0","")
+	    lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+
+
+	noi_dung = (
+	        f"Trong bản thiết kế một công viên, hệ trục tọa độ ${{Oxy}}$ (đơn vị: mét) được sử dụng để xác định vị trí các hạng mục."
+	        f" Ba cột đèn trang trí được đặt tại các vị trí: $A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$."
+	        f" Ban quản lý muốn xây dựng một hồ nước hình tròn đi qua cả ba vị trí cột đèn để tạo điểm nhấn cảnh quan."
+	        f" Tâm hồ nước chính là tâm đường tròn đi qua ba điểm ${{ABC}}$"
+	        f" Gọi $O(a;b)$ là vị trí tâm hồ nước."
+	        f" Tính $a+b${lam_tron}."
+	    )
     # ===== Lời giải =====
-    noi_dung_loigiai = (
-        f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$.\n\n"
-        f"Tâm đường tròn ngoại tiếp là giao của hai đường trung trực.\n\n"
-        f"${{AB}}$ có trung điểm $M({phan_so(mxAB)};{phan_so(myAB)})$.\n\n"
-        f"${vec("MO")}\\bot {vec("AB")}=({AB[0]};{AB[1]})$:\n\n"
-        f"$(a-{phan_so(mxAB)})({AB[0]}) + (b-{phan_so(myAB)})({AB[1]}) = 0$.\n\n"
-        f"${{AC}}$ có trung điểm $N({phan_so(mxAC)};{phan_so(myAC)})$.\n\n"
-        f"${vec("NO")}\\bot {vec("AC")}=({AC[0]};{AC[1]})$:\n\n"
-        f"$(a-{phan_so(mxAC)})({AC[0]}) + (b-{phan_so(myAC)})({AC[1]}) = 0$.\n\n"
-        f"Giải hệ hai phương trình trên, ta được:\n\n"
-        f"$O({phan_so(Ox)};{phan_so(Oy)})$.\n\n"
-        f"Suy ra $a+b = {dap_an}$."
-    )
+	noi_dung_loigiai = (
+	    f"$A({a1};{a2})$, $B({b1};{b2})$, $C({c1};{c2})$.\n\n"
+	    f"Tâm đường tròn ngoại tiếp là giao của hai đường trung trực.\n\n"
+	    f"${{AB}}$ có trung điểm $M({phan_so(mxAB)};{phan_so(myAB)})$.\n\n"
+	    f"${vec("MO")}\\bot {vec("AB")}=({AB[0]};{AB[1]})$:\n\n"
+	    f"$(a-{phan_so(mxAB)})({AB[0]}) + (b-{phan_so(myAB)})({AB[1]}) = 0$.\n\n"
+	    f"${{AC}}$ có trung điểm $N({phan_so(mxAC)};{phan_so(myAC)})$.\n\n"
+	    f"${vec("NO")}\\bot {vec("AC")}=({AC[0]};{AC[1]})$:\n\n"
+	    f"$(a-{phan_so(mxAC)})({AC[0]}) + (b-{phan_so(myAC)})({AC[1]}) = 0$.\n\n"
+	    f"Giải hệ hai phương trình trên, ta được:\n\n"
+	    f"$O({phan_so(Ox)};{phan_so(Oy)})$.\n\n"
+	    f"Suy ra $a+b = {dap_an}$."
+	)
 
     # Xử lý dấu ±
-    noi_dung = noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
-    noi_dung_loigiai = noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
+	noi_dung = noi_dung.replace("+-","-").replace("-+","-").replace("--","+")
+	noi_dung_loigiai = noi_dung_loigiai.replace("+-","-").replace("-+","-").replace("--","+")
 
-    # Xuất Word
-    debai_word = f"{noi_dung}\n"
-    loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
+	# Xuất Word
+	debai_word = f"{noi_dung}\n"
+	loigiai_word = f"Lời giải:\n{noi_dung_loigiai}\nĐáp án: {dap_an}\n"
 
-    # Xuất LaTeX
-    latex_tuluan = (
-        "\\begin{ex}\n"
-        f"{noi_dung}\n\n"
-        f"\\shortans[4]{{{dap_an}}}\n\n"
-        f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
-        "\\end{ex}\n"
-    )
+	# Xuất LaTeX
+	latex_tuluan = (
+	    "\\begin{ex}\n"
+	    f"{noi_dung}\n\n"
+	    f"\\shortans[4]{{{dap_an}}}\n\n"
+	    f"\\loigiai{{\n{noi_dung_loigiai}\n}}\n"
+	    "\\end{ex}\n"
+	)
 
-    return debai_word, loigiai_word, latex_tuluan, dap_an
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 #[D10_CX_B0_40]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng.
 def gghik_L10_CX_B0_40():
@@ -3991,6 +4018,12 @@ def gghik_L10_CX_B0_52():
 		b2 = random.choice([i for i in range(-4, 5) if i!=0])
 		c1 = random.choice([i for i in range(-4, 6) if i!=0])
 		c2 = random.choice([i for i in range(-4, 6) if i!=0])
+		x_AB, y_AB = b1-a1, b2-a2
+		x_AC,y_AC = c1-a1, c2-a2
+		if x_AB==0:
+			continue
+		if x_AC==0:
+			continue
 
 		if all([abs(a1-b1)<5,abs(a1-c1)<4,b1!=c1, a1!=c1]):
 			break
@@ -4055,7 +4088,7 @@ def gghik_L10_CX_B0_52():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_CX_B0_53]-M1. Tìm h,k để vec(c)=hvec(a)+kvec(b)
+#[D10_CX_B0_53]-M2. Tìm h,k để vec(c)=hvec(a)+kvec(b)
 def gghik_L10_CX_B0_53():
 
 	while True:
@@ -4129,13 +4162,571 @@ def gghik_L10_CX_B0_53():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_54]-M2. Tính vận tốc của tàu thăm dò dưới biển (v_tàu+v_hải lưu)
+def gghik_L10_CX_B0_54():
+	v,b=random.sample(["a","b","u","v","w"],2)
+	while True:
+		v1= random.choice([i for i in range(-12, 12) if i!=0])
+		v2= random.choice([i for i in range(-12, -1) if i!=0])
+
+		b1= random.choice([i for i in range(-10, 10) if i!=0])
+		b2= random.choice([i for i in range(-10, 10) if i!=0])
+		if all([v1+b1!=0, v2-b2!=0]):
+			break
+
+	vec_v, vec_b=vec(v), vec(b)
+
+	noi_dung=(
+	f"Một thiết bị thăm dò đáy biển đang lặn với vận tốc ${vec_v}=({v1};{v2})$. "
+	f"Cho biết vận tốc của dòng hải lưu vùng biển là ${vec_b}=({b1};{b2})$."
+	f" Toạ độ của vectơ tổng hai vận tốc ${vec_v}$ và ${vec_b}$ là"
+	)
+	t1,t2=v1+b1, v2+b2
 	
 
+	kq=f"$({t1};{t2})$"
+
+	kq_false=[
+	f"$({v1-b1};{v2-b2})$",
+	f"$({t1};0)$",
+	f"$(0;{t2})$",
+	f"$({-t1};{-t2})$",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f" ${vec_v}+{vec_b}=({t1};{t2})$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+	
+#[D10_CX_B0_55]-M1. Tìm góc tạo bởi con tàu và 2 hòn đảo
+def gghik_L10_CX_B0_55():
+	m=sp.symbols("m")
+	while True:
+		a1 = random.choice([i for i in range(-5, 6) if i!=0])
+		a2 = random.choice([i for i in range(-5, 6) if i!=0])
+		b1 = random.choice([i for i in range(-4, 5) if i!=0])
+		b2 = random.choice([i for i in range(-4, 5) if i!=0])
+		c1 = random.choice([i for i in range(-4, 6) if i!=0])
+		c2 = random.choice([i for i in range(-4, 6) if i!=0])
+		x_AB, y_AB = b1-a1, b2-a2
+		x_AC,y_AC = c1-a1, c2-a2
+		if x_AB==0:
+			continue
+		if x_AC==0:
+			continue
+
+		if all([abs(a1-b1)<5,abs(a1-c1)<4,b1!=c1, a1!=c1]):
+			break
+	
+	A,B,C=random.sample(["A","B","C","D","E","F","M","N"],3)
+	vec_AB, vec_AC=vec2(A,B), vec2(A,C)
+	
+	tich_vh = x_AB*x_AC+y_AB*y_AC
+	AB, AC = sqrt(x_AB**2+y_AB**2), sqrt(x_AC**2+y_AC**2)
+	cos_value=tich_vh/(AB*AC)
+	goc=acos(cos_value)*180/pi
+	noi_dung=(
+	f"Một trò chơi trên máy tính đang mô phỏng một vùng biển có hai hòn đảo nhỏ có toạ độ ${B}({b1};{b2})$ và ${C}({c1};{c2})$."
+	f" Một con tàu trong đang neo đậu tại điểm ${A}({a1};{a2})$."
+	f" Số đo của góc $\\widehat{{{B}{A}{C}}}$ là"
+	)
+
+	kq=goc
+	kq_false = set()
+	while len(kq_false) < 4:	
+	    numbers = round(random.uniform(20, 130),1)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	kq=f"{round_half_up(kq,1):.1f}".replace(".0","").replace(".",",")
+	kq2=f"{round_half_up(kq2,1):.1f}".replace(".0","").replace(".",",")
+	kq3=f"{round_half_up(kq3,1):.1f}".replace(".0","").replace(".",",")
+	kq4=f"{round_half_up(kq4,1):.1f}".replace(".0","").replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Ta có: ${vec_AB}=({x_AB};{y_AB}), {vec_AC}=({x_AC};{y_AC})$.\n\n"
+	f"$\\cos ({vec_AB},{vec_AC})=\\dfrac{{{vec_AB}.{vec_AC}}}{{|{vec_AB}|.|{vec_AC}|}}$"
+	f" $=\\dfrac{{{tich_vh}}}{{{latex(AB)}.{latex(AC)}}}={latex(cos_value)}$.\n\n"
+	f"$\\Rightarrow \\widehat{{{B}{A}{C}}}={kq}^\\circ$."
+	)
+
+	pa_A= f"*${kq}^\\circ$"
+	pa_B= f"${kq2}^\\circ$"
+	pa_C= f"${kq3}^\\circ$"
+	pa_D= f"${kq4}^\\circ$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_56]-M2. Tìm vị trí hồ nước gần người nhất
+def gghik_L10_CX_B0_56():
+
+	letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+	A,B,C,M=random.sample(letters,4)
+	while True:
+		a1 = random.choice([i for i in range(-6, 6) if i!=0])
+		a2 = random.choice([i for i in range(-6, 6) if i!=0])
+		b1 = random.choice([i for i in range(-6, 7) if i!=0])
+		b2 = random.choice([i for i in range(-6, 7) if i!=0])
+		c1 = random.choice([i for i in range(-6, 6) if i!=0])
+		c2 = random.choice([i for i in range(-6, 6) if i!=0])
+
+		x1=random.randint(-6,6)
+		x2=random.randint(-7,7)
+		if x1 in [a1,b1,c1]:
+			continue
+		AM=sqrt((x1-a1)**2+(x2-a2)**2)
+		BM=sqrt((x1-b1)**2+(x2-b2)**2)
+		CM=sqrt((x1-c1)**2+(x2-c2)**2)
+
+		if all([a1!=b1, a1!=c1, b2!=c2, AM!=BM, BM!=CM, AM!=CM]):
+			break
+
+	min_kc=min(AM,BM,CM)
+	if min_kc==AM:
+		kq=A
+		kq_false=[B,C]
+
+	if min_kc==BM:
+		kq=B
+		kq_false=[A,C]
+
+	if min_kc==CM:
+		kq=C
+		kq_false=[A,B]
+
+	noi_dung=(
+	f"Một trò chơi trên điện thoại mô phỏng trên sa mạc có ba hồ nước lần lượt có tọa độ là"
+	f" ${A}({a1};{a2}),{B}({b1};{b2})$ và ${C}({c1};{c2})$."
+	f" Một người đang đứng ở vị trí ${M}({x1};{x2})$. Hỏi người đó gần với vị trí hồ nước nào hơn?"
+	)
+	
+	random.shuffle(kq_false)
+	kq2,kq3=kq_false[0:2]
+
+	noi_dung_loigiai=(
+	f"${A}{M}={latex(AM)}, {B}{M}={latex(BM)}, {C}{M}={latex(CM)}$.\n\n"
+	f"Khoảng cách ngắn nhất là: ${{{latex(min_kc)}}}$.\n\n"
+	f"Người đó đứng gần hồ ${{{kq}}}$ nhất."
+	)
+
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${A}{M}={B}{M}={C}{M}$"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B0_57]-M2. Tìm k để hai vectơ có độ dài bằng nhau
+def gghik_L10_CX_B0_57():
+	k=sp.symbols("k")
+	while True:
+
+		# --- Sinh dữ liệu ngẫu nhiên ---
+		a = random.choice([i for i in range(-5, 6) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])	
+		d = random.choice([i for i in range(-5, 6) if i!=0])
+		if all([b!=d, a**2+b**2-d**2>2]):
+			break
+	k_0=sqrt(a**2+b**2-d**2)
+
+	letters = [chr(i) for i in range(ord('a'), ord('n') + 1)]
+	u,v=random.sample(letters,2)
+	vec_u, vec_v=vec(u), vec(v)
+
+	noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai vectơ "
+		f"$\\overrightarrow{{{u}}}={a}\\overrightarrow{{i}}+{b}\\overrightarrow{{j}}$ "
+		f"và $\\overrightarrow{{{v}}}=k\\overrightarrow{{i}}+{d}\\overrightarrow{{j}}$. "
+		f"Các giá trị ${{k}}$ để vectơ ${vec_u}$ và vectơ ${vec_v}$ có độ dài bằng nhau là"
+	)
+	noi_dung =noi_dung.replace(f"1{vec("i")}",vec("i")).replace(f"1{vec("j")}",vec("j")).replace("+-","-")
+
+	noi_dung_loigiai = (
+		f"Ta có:\n\n"
+		f"$|{vec_u}|=\\sqrt{{{a**2}+{b**2}}},"
+		f"|{vec_v}|=\\sqrt{{k^2+{d**2}}}$.\n\n"
+		f"Theo giả thiết: "
+		f"$\\sqrt{{{a**2}+{b**2}}} = \\sqrt{{k^2+{d**2}}}$"
+		f" $\\Rightarrow k=\\pm {latex(k_0)}$."
+	)
+	noi_dung_loigiai =noi_dung_loigiai.replace(f"1{vec("i")}",vec("i")).replace(f"1{vec("j")}",vec("j")).replace("+-","-")
+
+	kq=k_0
+	
+	kq_false = set()
+	while len(kq_false) < 4:
+	
+	    numbers = random.randint(1,20)
+	    if sqrt(numbers)!=kq:
+	        kq_false.add(sqrt(numbers))
+	kq_false=list(kq_false)
+
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	pa_A= f"*$k=\\pm {latex(kq)} $"
+	pa_B= f"$k=\\pm {latex(kq2)} $"
+	pa_C= random.choice([
+	f"$k={{{latex(kq3)}}}$",
+	f"$k=\\pm {latex(kq3)} $" ])
+
+	pa_D= random.choice([
+	f"$k={{{latex(kq4)}}}$",
+	f"$k=\\pm {latex(kq4)} $",
+	f"$k={{{latex(kq)}}}$", ])
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D10_CX_B0_58]-SA-M2. Tìm điểm C trên trục tung để tam giác ABC vuông tại A
+def gghik_L10_CX_B0_58():
+	x = sp.symbols("x")  # giữ cấu trúc
+	letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+	random.shuffle(letters)
+	A,B,C=letters[0:3]
+
+
+	# --- Sinh ngẫu nhiên A, B sao cho bài có nghiệm đẹp ---
+	# Điều kiện: C thuộc trục tung => C(0; t)
+	# Vuông tại A => AB . AC = 0
+	while True:
+		xa = random.randint(-5, 5)
+		ya = random.randint(-5, 5)
+		if xa == 0:
+			continue  # tránh A nằm trên trục tung để bài đẹp hơn
+
+		xb = random.randint(-5, 7)
+		yb = random.randint(-5, 7)
+
+		# tránh trùng điểm và tránh yb=ya (khi đó điều kiện dễ suy biến)
+		if xb == xa and yb == ya:
+			continue
+		if yb == ya:
+			continue
+
+		# t = ya + xa(xb-xa)/(yb-ya)
+		t = float(sp.Rational(ya) + sp.Rational(xa * (xb - xa), (yb - ya)))
+
+		# ưu tiên nghiệm nguyên để đáp án gọn
+		if t.is_integer():
+			t = int(t)
+			break
+
+	# --- Đáp án ---
+	dap_an = t
+
+	# --- Nội dung đề ---
+	noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({xa};{ya})$ và ${B}({xb};{yb})$. "
+		f"Điểm ${{{C}}}$ nằm trên trục tung sao cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$."
+		f" Tìm tung độ của điểm ${{{C}}}$."
+	)
+
+	# --- Lời giải ---
+	noi_dung_loigiai = (
+		f"Giả sử ${C}(0;t)$.\n\n"
+		f"$\\overrightarrow{{{A}{B}}}=({xb-xa};{yb-ya}), "
+		f"\\overrightarrow{{{A}{C}}}=(-{xa};t-{ya}).$\n\n"
+		f"Ta có: $\\overrightarrow{{{A}{B}}}\\cdot\\overrightarrow{{{A}{C}}}=0$ "
+		f"$\\Rightarrow {xb-xa}({dau_ngoac(-xa)})+{dau_ngoac(yb-ya)}(t-{ya})=0$"
+		f"$\\Rightarrow t={t}$.\n\n"
+		f"Vậy ${C}(0;{t})$."
+	)
+	noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+	# --- Kết quả trả về ---
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D10_CX_B0_59]-SA-M2. Tìm điểm C trên trục Ox để tam giác ABC vuông tại A
+def gghik_L10_CX_B0_59():
+	x = sp.symbols("x")  
+	letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+	random.shuffle(letters)
+	A,B,C=letters[0:3]
+
+
+	# --- Sinh ngẫu nhiên A, B sao cho bài có nghiệm đẹp ---
+	# Điều kiện: C thuộc trục hoành => C(t;0)
+	# Vuông tại A => AB . AC = 0
+	while True:
+		xa = random.randint(-5, 5)
+		ya = random.randint(-5, 5)
+		if ya == 0:
+			continue  # tránh A nằm trên trục hoành để bài đẹp hơn
+
+		xb = random.randint(-5, 7)
+		yb = random.randint(-5, 7)
+
+		# tránh trùng điểm và tránh xb=xa (dễ suy biến)
+		if xb == xa and yb == ya:
+			continue
+		if xb == xa:
+			continue
+
+		# t = xa + ya(yb-ya)/(xb-xa)
+		t =float(sp.Rational(xa) + sp.Rational(ya * (yb - ya), (xb - xa)))
+
+		# ưu tiên nghiệm nguyên để đáp án gọn
+		if t.is_integer():
+			t = int(t)
+			break
+
+	# --- Đáp án ---
+	dap_an = t
+
+	# --- Nội dung đề ---
+	noi_dung = (
+		f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho hai điểm ${A}({xa};{ya})$ và ${B}({xb};{yb})$. "
+		f"Điểm ${{{C}}}$ nằm trên trục hoành sao cho tam giác ${{{A}{B}{C}}}$ vuông tại ${{{A}}}$."
+		f" Tìm hoành độ của điểm ${{{C}}}$."
+	)
+
+	# --- Lời giải ---
+	noi_dung_loigiai = (
+		f"Giả sử ${C}(t;0)$.\n\n"
+		f"$\\overrightarrow{{{A}{B}}}=({xb-xa};{yb-ya}),"
+		f"\\overrightarrow{{{A}{C}}}=(t-{xa};-{ya}).$\n\n"
+		f"$\\overrightarrow{{{A}{B}}}\\cdot\\overrightarrow{{{A}{C}}}=0$"
+		f"$\\Rightarrow {xb-xa}(t-{xa})+{dau_ngoac(yb-ya)}{dau_ngoac(-ya)}=0$"
+		f"$\\Rightarrow t={t}$.\n\n"
+		f"Vậy $C({t};0)$."
+	)
+	noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+	# --- Kết quả trả về ---
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
 
+#[D10_CX_B0_60]-SA-M3. Tìm chân đường cao của tam giác
+def gghik_L10_CX_B0_60():
+	x,y=sp.symbols("x y")
 
+	# --- Sinh dữ liệu ngẫu nhiên ---
+	while True:
+		xa = random.randint(-5, 5)
+		ya = random.randint(-5, 5)
+
+		xb = random.randint(-4, 5)
+		yb = random.randint(-4, 5)
+
+		xc = random.randint(-6, 6)
+		yc = random.randint(-6, 6)
+
+		x_AB, y_AB=xb-xa, yb-ya
+
+		x_BC, y_BC=xc-xb, yc-yb
+		if x_AB*y_BC==y_AB*x_BC:
+			continue
+
+		# tránh trùng điểm
+		if (xa,ya)==(xb,yb) or (xa,ya)==(xc,yc) or (xb,yb)==(xc,yc):
+			continue
+
+		# tránh B,C thẳng đứng (để khỏi chia 0 khi tính)
+		if xb == xc:
+			continue
+
+		eq1 = Eq(x_BC*(x-xa)+y_BC*(y-ya), 0)
+		eq2 = Eq((x-xb)*y_BC, (y-yb)*x_BC)
+
+		sol = solve((eq1, eq2), (x, y))
+
+		xh = sol[x]
+		yh = sol[y]
+		tong=float(xh+yh)
+		# ưu tiên nghiệm nguyên hoặc hữu tỉ gọn
+		if tong>-5:
+			break
+	if tong.is_integer():
+		dap_an = int(tong)
+		lam_tron=""
+	else:
+		dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",").replace(",0","")
+		lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+
+	letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+	random.shuffle(letters)
+	A,B,C=letters[0:3]
+
+	# --- Nội dung đề ---
+	noi_dung = (
+		f"Trong một khu công nghiệp với hệ tọa độ ${{Oxy}}$ (đơn vị: mét) được dùng để định vị các hạng mục xây dựng."
+		f" Điểm ${A}({xa};{ya})$ là vị trí của trạm bơm nước."
+		f" Hai điểm ${B}({xb};{yb})$ và ${C}({xc};{yc})$ xác định tuyến ống chính đang được lắp đặt."
+		f" Để đảm bảo tiết kiệm vật tư và áp lực nước ổn định, kỹ sư thiết kế quyết định thi công một đoạn ống mới từ trạm bơm ${{{A}}}$"
+		f" ra tuyến ống chính sao cho đoạn ống này vuông góc với tuyến ống chính ${{{B}{C}}}$ (để chiều dài là ngắn nhất)."
+		f" Gọi ${{H(a;b)}}$ là điểm nối giữa đoạn ống mới và tuyến ống chính."
+		f" Tính $a+b${lam_tron}."
+	)
+	
+	vec_BC, vec_AH, vec_BH=vec2(B,C), vec2(A,"H"), vec2(B,"H")
+
+
+	# --- Lời giải ---
+	noi_dung_loigiai = (
+		f"Gọi $H(x;y)$.\n\n"
+		f"${vec_AH}=(x-{xa};y-{ya}), {vec_BC}=({x_BC};{y_BC})$.\n\n"
+		f"${vec_BH}=(x-{xb};y-{yb})$.\n\n"
+		f"${vec_AH}.{vec_BC}=0 \\Rightarrow {x_BC}(x-{xa})+{dau_ngoac(y_BC)}(y-{ya})=0$.\n\n"
+		f"${vec_BH}, {vec_BC}$ cùng phương $\\Rightarrow (x-{xb}){dau_ngoac(y_BC)}-(y-{yb}){dau_ngoac(x_BC)}=0$.\n\n"
+		f"Giải hệ ta được: $H({phan_so(xh)};{phan_so(yh)})$.\n\n"
+		f"Vậy $a+b={dap_an}$."
+	)
+	noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
 

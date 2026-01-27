@@ -108,7 +108,7 @@ def thay_the_tich_phan(st):
     str_thaythe=str_thaythe.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+")
     return str_thaythe
 
-def thay_dau_cong_tru(st):
+def thay_dau_congtru(st):
     st=st.replace("-+","-").replace("--","+").replace("+-","-").replace("++","+")
     return st
 
@@ -3832,7 +3832,345 @@ def ckz_L12C4_B1_54():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D12_C4_B1_55]-TF-M2. Cho đa thức. Xét đúng-sai: một nguyên hàm, họ nguyên hàm, nguyên hàm thỏa mãn F(a)=b
+def ckz_L12C4_B1_55():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*x**2+b*x+c
+    F=integrate(f,x)
 
+
+    noi_dung = (
+    f"Cho hàm số $f(x)={latex(f)}$. "
+    f"Xét tính đúng-sai của các khẳng định sau:")
+    g= random.randint(-3,3)*x+random.randint(1,2)*x**2
+    C=random.choice([i for i in range(-5, 6) if i!=0])
+    
+    kq1_T=f"* $g(x)={latex(F+C)}$ là một nguyên hàm của $f(x)$"
+    kq1_F=f"$g(x)={latex(F+g)}$ là một nguyên hàm của $f(x)$"
+    
+    HDG=thay_dau_congtru(f"Nguyên hàm của $f(x)$ phải có dạng ${latex(F)}+C$.")
+
+    kq1=thay_dau_congtru(random.choice([kq1_T, kq1_F]))
+
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $\\int f(x)dx={latex(F)}+C$"
+    kq2_F=f"$\\int f(x)dx={latex(diff(f,x))}+C$"
+    
+    HDG=f"$\\int f(x)dx={latex(F)}+C$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+    x_0=random.randint(-4,4)
+    a=random.randint(-6,6)
+    s_c=sp.symbols("c")
+    eq1=Eq(F.subs(x,x_0)+s_c,a)
+    solution=solve(eq1,s_c)
+    c_0=solution[0]
+
+    kq3_T=f"* $F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $F({x_0})={a}$ thì $F(x)={latex(F+c_0)}$" 
+    kq3_F=f"$F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $F({x_0})={a}$ thì $F(x)={latex(F+c_0+random.randint(1,4))}$"
+    
+    HDG=(f"$F(x)={latex(F)}+C$.\n\n"
+        f"$F({x_0})={a} \\Rightarrow C={phan_so(c_0)}$.\n\n"
+        f"Vậy $F(x)={latex(F+c_0)}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    F_1=F+c_0
+    x_1 = random.choice([i for i in range(-5, 6) if i!= x_0])
+    y_1=F_1.subs(x,x_1)
+    kq4_T=f"* $F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $F({x_0})={a}$ thì $F({x_1})={phan_so(y_1)}$"
+    kq4_F=f"$F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $F({x_0})={a}$ thì $F({x_1})={phan_so(y_1+random.randint(1,3))}$" 
+    
+    HDG=f"$F(x)={latex(F+c_0)}$ nên $F({x_1})={phan_so(y_1)}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_56]-TF-M2. f(x)=asinx+bcosx. Xét đúng-sai: F'(x), F(x), F(x1)=b, F(x2)-F(x1)
+def ckz_L12C4_B1_56():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    f=a*sin(x)+b*cos(x)
+    ham=thay_sin_cos(latex(f))
+
+    noi_dung = (
+    f"Giả sử $F(x)$ là một nguyên hàm của hàm số $f(x)={ham}$.\n\n"
+    f" Xét tính đúng-sai của các khẳng định sau:")    
+    
+    kq1_T=f"* $F'(x)={ham}$" 
+    kq1_F=thay_sin_cos(f"$F'(x)={latex(a*cos(x)-b*sin(x))}$")
+    
+    HDG=f"$F'(x)={ham}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $F(x)={latex(integrate(f,x))}+C$"
+    kq2_F=f"$F(x)={latex(diff(f,x))}+C$"
+    
+    HDG=thay_sin_cos(f"$F(x)={latex(integrate(f,x))}+C$.")
+    kq2=thay_sin_cos(random.choice([kq2_T, kq2_F]))
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    list_goc=[0,pi/2,pi/3,pi/4, pi/6, pi/2, 2*pi/3,3*pi/4,5*pi/6]
+
+    x_1=random.choice(list_goc)
+    y_1=b*sin(x_1)
+    c_0=a*cos(x_1)
+
+    kq3_T=f"* Biết $F({latex(x_1)})={latex(y_1)}$. Khi đó $C={latex(c_0)}$" 
+    kq3_F=random.choice([
+    f"Biết $F({latex(x_1)})={latex(y_1)}$. Khi đó $C={latex(c_0+random.randint(1,3))}$",
+    f"Biết $F({latex(x_1)})={latex(y_1)}$. Khi đó $C={latex(c_0-random.randint(1,3))}$", ])
+    
+    HDG=f"$F({latex(x_1)})={latex(y_1)}\\Rightarrow {b}\\sin {latex(x_1)}+{-a}\\cos {latex(x_1)}+C={latex(y_1)}\\Rightarrow C={latex(c_0)}$."
+    HDG=thay_dau_congtru(HDG)
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x_2=random.choice([t for t in list_goc if t!=x_1])
+    ketqua=integrate(f,(x,x_1,x_2))
+
+    kq4_T=f"* $F({latex(x_2)})-F({latex(x_1)})={latex(ketqua)}$"
+    kq4_F=f"$F({latex(x_2)})-F({latex(x_1)})={latex(ketqua+random.randint(1,3))}$" 
+    
+    F=integrate(f,x)+c_0
+    f_2=F.subs(x,x_2)
+
+    HDG=(f"$F({latex(x_2)})={latex(f_2)}$.\n\n"
+        f"$F({latex(x_2)})-F({latex(x_1)})={latex(ketqua)}$.")
+
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B1_57]-TF-M2. f(x)=ax+b/x^2+c. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1)
+def ckz_L12C4_B1_57():
+    x=sp.symbols("x")
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-6, 7) if i!=0])
+    f=a*x+b/x**2+c
+    F=integrate(f,x)
+
+    noi_dung = (
+    f"Giả sử $F(x)$ là một nguyên hàm của hàm số $f(x)={latex(f)}$.\n\n"
+    f"Xét tính đúng-sai của các khẳng định sau:")    
+    
+    kq1_T=f"* $F'(x)={latex(f)}$" 
+    kq1_F=f" $F'(x)={latex(diff(f,x))}$"
+    
+    HDG=f"$F'(x)={latex(f)}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq2_T=f"* $F(x)={latex(F)}+C$"
+    kq2_F=random.choice([
+        f"$F(x)={latex(F+random.randint(1,2)*x)}+C$",
+        f"$F(x)={latex(diff(f,x))}$" ])
+    
+    HDG=f"$F(x)={latex(F)}+C$."
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    list_x=[i for i in range(-5, 6) if i!=0]
+
+    x_1 = random.choice(list_x)
+    y_1=random.randint(-5,5)
+    F_1=F.subs(x,x_1)
+    c_0=y_1-F_1
+
+    kq3_T=f"* Biết $F({x_1})={y_1}$. Khi đó $C={phan_so(c_0)}$" 
+    kq3_F=f"Biết $F({x_1})={y_1}$. Khi đó $C={phan_so(c_0+random.randint(1,2))}$"
+    
+    HDG=f"$F({x_1})={y_1} \\Rightarrow {phan_so(F_1)}+C={y_1}\\Rightarrow C={phan_so(c_0)}$."
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x_2=random.choice([t for t in list_x if t!=x_1])
+    F=integrate(f,x)+c_0
+    f_2=F.subs(x,x_2)
+
+    kq4_T=f"* $F({x_2})-F({x_1})={phan_so(f_2-y_1)}$"
+    kq4_F=f"$F({x_2})-F({x_1})={phan_so(f_2-y_1+random.randint(1,3))}$" 
+    
+    HDG=(f"$F({x_2})={phan_so(f_2)}$.\n\n"
+        f"$F({x_2})-F({x_1})={phan_so(f_2-y_1)}$")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
 
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN
@@ -5448,7 +5786,7 @@ def ckz_L12C4_B4_18():
         ) 
     
     
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
         
     debai_word= f"{noi_dung}"
 
@@ -5486,7 +5824,7 @@ def ckz_L12C4_B4_19():
     \\end{{array}} \\right. \\Rightarrow a={a},b={b},c={c}$.\n\n"
     f"${latex(m*st_a+n*st_b+p*st_c)}={show_tich(m,a)}+{show_tich(n,b)}+{show_tich(p,c)}={dap_an}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)  
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)  
         
     debai_word= f"{noi_dung}"
 
@@ -5532,7 +5870,7 @@ def ckz_L12C4_B4_20():
     f"Biết tích phân ${tphan(x_1,x_2)}(e^{{{latex(m*x)}}}+{latex(g)}){d_x}=\\dfrac{{1}}{{a}}(e^{{{m*x_2}}}-e^b)+c$."
     f" Tính $\\dfrac{{a+b+c}}{{{t}}}$ (kết quả làm tròn đến hàng phần mười)."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung=thay_dau_congtru(noi_dung)
     dap_an=f"{round_half_up((m+m*x_1+g_tphan)/t,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
@@ -5541,7 +5879,7 @@ def ckz_L12C4_B4_20():
     f"Do đó: $a={m}, b={m*x_1}, c={phan_so(g_tphan)}$.\n\n"
     f"$\\dfrac{{a+b+c}}{{{t}}}={dap_an}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
         
     debai_word= f"{noi_dung}"
 
@@ -5592,8 +5930,8 @@ def ckz_L12C4_B4_21():
     f"Suy ra: $C({C_1})={C_0}+{round_f_tphan}={dap_an}$."
     )
 
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
         
     debai_word= f"{noi_dung}"
 
@@ -5652,8 +5990,8 @@ def ckz_L12C4_B4_22():
     f" $\\Leftrightarrow m.\\left({phan_so(f_tphan)}\\right)+{phan_so(g_tphan)}={T}$\n\n"
     f" $\\Rightarrow m=\\dfrac{{{T}-{phan_so(g_tphan)}}}{{{phan_so(f_tphan)}}}={dap_an}$."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)    
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)    
         
     debai_word= f"{noi_dung}"
 
@@ -6326,7 +6664,7 @@ def ckz_L12C4_B4_32():
     kq4_F=f"Với $a={a},b={b}$ thì $I={phan_so(F.subs(x,a)-F.subs(x,b))}$" 
     
     HDG=f"Với $a={a},b={b}$ thì $I=({latex(integrate(f,x))})\\bigg|_{{{a}}}^{{{b}}}={phan_so(F.subs(x,b))}-{phan_so(F.subs(x,a))}={phan_so(F.subs(x,b)-F.subs(x,a))}$."
-    HDG=thay_dau_cong_tru(HDG)
+    HDG=thay_dau_congtru(HDG)
     kq4=random.choice([kq4_T, kq4_F])
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
@@ -6417,7 +6755,7 @@ def ckz_L12C4_B4_33():
     f" Xét tính đúng-sai của các khẳng định sau. "  )
     noi_dung=noi_dung.replace("[1f","[f").replace("-1f","-f").replace("+1g","+g").replace("-1g","-g").replace("[-1g","[-g").replace("[1h","[h").replace("[-1h","[-h")
 
-    noi_dung=thay_dau_cong_tru(noi_dung)     
+    noi_dung=thay_dau_congtru(noi_dung)     
     debai_word= f"{noi_dung}\n"
     
     kq1_T=f"* ${tphan(a,c)}{f}{d_x}={f_tp}$" 
@@ -6453,7 +6791,7 @@ def ckz_L12C4_B4_33():
     
     HDG=(f"${tphan(a,c)}{f}{d_x}+{tphan(c,b)}{f}{d_x}={tphan(a,b)}{f}{d_x}$\n\n"
     f"$\\Rightarrow {tphan(c,b)}{f}{d_x}={tphan(a,b)}{f}{d_x}-{tphan(a,c)}{f}{d_x}={f_tp_ab}-{f_tp}={f_tp_ab-f_tp}$.")
-    HDG=thay_dau_cong_tru(HDG)
+    HDG=thay_dau_congtru(HDG)
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
@@ -6472,10 +6810,10 @@ def ckz_L12C4_B4_33():
         f"$={tphan(a,c)}({latex(e*x+f1)}{d_x})+{m}{tphan(a,c)}{f}{d_x}+{n}{tphan(a,c)}{g}{d_x}$"
         f"$={phan_so(integrate(e*x+f1,(x,a,c)))}+{m*f_tp}+{n*g_tp}={phan_so(kq)}$."
     )
-    HDG=thay_dau_cong_tru(HDG)
+    HDG=thay_dau_congtru(HDG)
     kq4=random.choice([kq4_T, kq4_F])
     kq4.replace("[1f","[f").replace("[-1f","[-f").replace("+1g","+g").replace("-1g","-g")
-    kq4=thay_dau_cong_tru(kq4) 
+    kq4=thay_dau_congtru(kq4) 
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -6826,10 +7164,10 @@ def ckz_L12C4_B4_36():
     kq2_T=f"* $\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$"
     kq2_F=f"$\\int f'(x){d_x}={phan_so(c/a)}\\log |{latex(a*x+b)}|+C$"
     
-    HDG=(thay_dau_cong_tru(f"$\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$." ))
+    HDG=(thay_dau_congtru(f"$\\int f'(x){d_x}={phan_so(c/a)}\\ln |{latex(a*x+b)}|+C$." ))
 
     kq2=random.choice([kq2_T, kq2_F])
-    kq2=thay_dau_cong_tru(kq2)
+    kq2=thay_dau_congtru(kq2)
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -6871,7 +7209,7 @@ def ckz_L12C4_B4_36():
     HDG=(f"$f({x_3})={latex(f_3)}$.\n\n"
         f"$f({x_4})={latex(f_4)}$.\n\n"
         f"$f({x_3})+f({x_4})={kq}$.")
-    HDG=thay_dau_cong_tru(thay_log_2_ln(HDG))
+    HDG=thay_dau_congtru(thay_log_2_ln(HDG))
 
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
@@ -7689,7 +8027,7 @@ def ckz_L12C4_B4_45():
     f"$={phan_so(c)}+{b}(\\ln {n}-\\ln{m})={phan_so(c)}+{b}\\ln{phan_so(n/m)}$.\n\n"
     f"Vậy $p+q={phan_so(c)}+{b}={phan_so(T)}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     pa_A= f"*${{{phan_so(kq)}}}$"
     pa_B= f"${{{phan_so(kq2)}}}$"
@@ -7769,7 +8107,7 @@ def ckz_L12C4_B4_46():
         f"Do đó $p=\\frac{{{a}}}{{2}}({n}^2-{m}^2)+{b}({n}-{m})={s_p}$ và $q={s_q}$.\n\n"
         f"Suy ra $p+q={s_p}+{s_q}={dap_an}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     debai_word = f"{noi_dung}\n"
 
@@ -7834,7 +8172,7 @@ def ckz_L12C4_B4_47():
         f"Do đó $p=\\frac{{{a}}}{{2}}({n}^2-{m}^2)+{b}({n}-{m})={s_p}$ và $q={s_q}$.\n\n"
         f"Suy ra $p+q={s_p}+{s_q}={dap_an}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
     
 
     kq=p+q
@@ -7918,7 +8256,7 @@ def ckz_L12C4_B4_48():
     f"$={phan_so(d)}+{phan_so(b/c)}(\\ln {n}-\\ln{m})={phan_so(d)}+{phan_so(b/c)}\\ln{phan_so(n/m)}$.\n\n"
     f"Vậy $p+q={phan_so(d)}+{phan_so(b/c)}={phan_so(T)}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     pa_A= f"*${{{phan_so(kq)}}}$"
     pa_B= f"${{{phan_so(kq2)}}}$"
@@ -7987,7 +8325,7 @@ def ckz_L12C4_B4_49():
     f"$={a}(\\ln {n}-\\ln{m})+{phan_so(d)}={phan_so(d)}+{a}\\ln{phan_so(n/m)}$.\n\n"
     f"Vậy $p+q={phan_so(d)}+{a}={phan_so(T)}$."
     )
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     pa_A= f"*${{{phan_so(kq)}}}$"
     pa_B= f"${{{phan_so(kq2)}}}$"
@@ -8046,7 +8384,7 @@ def ckz_L12C4_B4_50():
         f"Cho $\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}{{f(x)\\,dx}}={n}$. "
         f"Tính $I=\\int\\limits_{{{sp.latex(a)}}}^{{{sp.latex(b)}}}{{\\left[f(x)+{m}\\sin x\\right]dx}}$."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
+    noi_dung=thay_dau_congtru(noi_dung)
 
     noi_dung_loigiai = (
 
@@ -8057,7 +8395,7 @@ def ckz_L12C4_B4_50():
         f"$= {sp.latex(I)}.$"
     )
 
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     # Đáp án đúng và nhiễu
     kq  = sp.latex(I)
@@ -8141,8 +8479,8 @@ def ckz_L12C4_B4_51():
         f"$= {sp.latex(I)}.$"
     )
 
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
     # Đáp án đúng và các phương án nhiễu
     int_cos = sp.simplify(sp.integrate(sp.cos(x), (x, a, b)))  # sin(b)-sin(a)
 
@@ -8309,8 +8647,8 @@ def ckz_L12C4_B4_52():
             f"$m+n+p={phan_so(kq)}.$") 
 
     
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     
     kq_false = set()
@@ -8475,8 +8813,8 @@ def ckz_L12C4_B4_53():
             f"$m+n-p={phan_so(m)}+{phan_so(n)}-{phan_so(p)}={phan_so(kq)}.$"
         )
     
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     
     kq_false = set()
@@ -8562,8 +8900,8 @@ def ckz_L12C4_B4_54():
     f"${tphan(x_1,x_2)}{{[{m}{f}(x)+{latex(a*x+b)}]}}dx={m}{tphan(x_1,x_2)} {f}(x)dx +{tphan(x_1,x_2)}({latex(a*x+b)})dx$\n\n"
     f"$={m}.{f_value}+{phan_so(t)}={phan_so(kq)}$."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     pa_A = f"*${{{phan_so(kq)}}}$"
     pa_B = f"${{{phan_so(kq2)}}}$"
@@ -8637,8 +8975,8 @@ def ckz_L12C4_B4_55():
     f"$\\Rightarrow {m}.{tphan(x_1,x_2)} {f}(x)dx+{phan_so(t)}={phan_so(tong)}$\n\n"
     f"$\\Rightarrow {tphan(x_1,x_2)} {f}(x)dx={f_value}$."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
     pa_A = f"*${{{phan_so(kq)}}}$"
     pa_B = f"${{{phan_so(kq2)}}}$"
@@ -8729,8 +9067,8 @@ def ckz_L12C4_B4_56():
         f"$\\Rightarrow m={m}$.\n\n"
         f"${tphan(x_1,x_2)} ({latex(p*x**2+q*x)}+{r}m)dx={tphan(x_1,x_2)} ({latex(p*x**2+q*x+r*m)})dx={phan_so(tphan_g)}={dap_an}$."
         )
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)    
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)    
         
     debai_word= f"{noi_dung}\n"
 
@@ -8839,13 +9177,13 @@ def ckz_L12C4_B4_58():
     f"${tphan(x_1,x_2)} ({latex(a**x/m)}+{n})dx= (\\dfrac{{{a}^x}}{{{m}\\ln {a}}}+{n}x){gach(x_1,x_2)}$\n\n"
     f"$=\\dfrac{{{phan_so((a**x_2-a**x_1)/m)}}}{{\\ln {a}}}+{n*(x_2-x_1)}$."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
-    pa_A= thay_dau_cong_tru(f"*{kq}")
-    pa_B= thay_dau_cong_tru(f"{kq2}")
-    pa_C= thay_dau_cong_tru(f"{kq3}")
-    pa_D= thay_dau_cong_tru(f"{kq4}")
+    pa_A= thay_dau_congtru(f"*{kq}")
+    pa_B= thay_dau_congtru(f"{kq2}")
+    pa_C= thay_dau_congtru(f"{kq3}")
+    pa_D= thay_dau_congtru(f"{kq4}")
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -8905,14 +9243,14 @@ def ckz_L12C4_B4_59():
     f"${tphan(x_1,x_2)} ({m}e^x+{n})dx=({m}e^x+{n}x){gach(x_1,x_2)}$"
     f"$={m}e^{x_2}+{-m}e^{x_1}+{n*(x_2-x_1)}$."
     )
-    noi_dung=thay_dau_cong_tru(noi_dung)
-    noi_dung_loigiai=thay_dau_cong_tru(noi_dung_loigiai)
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
     noi_dung_loigiai=noi_dung_loigiai.replace("e^1","e")
 
-    pa_A= thay_dau_cong_tru(f"*{kq}")
-    pa_B= thay_dau_cong_tru(f"{kq2}")
-    pa_C= thay_dau_cong_tru(f"{kq3}")
-    pa_D= thay_dau_cong_tru(f"{kq4}")
+    pa_A= thay_dau_congtru(f"*{kq}")
+    pa_B= thay_dau_congtru(f"{kq2}")
+    pa_C= thay_dau_congtru(f"{kq3}")
+    pa_D= thay_dau_congtru(f"{kq4}")
     pa_A=pa_A.replace("e^1","e")
     pa_B=pa_B.replace("e^1","e")
     pa_C=pa_C.replace("e^1","e")
@@ -13091,8 +13429,8 @@ def ckz_L12C4_B5_46():
         f"Phương trình của parabol là: $y={phan_so(a)}x^2+{y_I}$.")
     
     kq2=random.choice([kq2_T, kq2_F])
-    HDG=thay_dau_cong_tru(HDG)
-    kq2=thay_dau_cong_tru(kq2)
+    HDG=thay_dau_congtru(HDG)
+    kq2=thay_dau_congtru(kq2)
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -13109,8 +13447,8 @@ def ckz_L12C4_B5_46():
         f"$S_1=2{tphan(-r,r)}|{phan_so(a)}x^2+{y_I}|dx={phan_so(s_1)}$."
         )
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=thay_dau_cong_tru(HDG)
-    kq3=thay_dau_cong_tru(kq3)
+    HDG=thay_dau_congtru(HDG)
+    kq3=thay_dau_congtru(kq3)
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
@@ -13129,8 +13467,8 @@ def ckz_L12C4_B5_46():
         f"${phan_so(s_1)}.{gia_hoa}000+({r**2}\\pi-{phan_so(s_1)}).{gia_gach}000\\equiv {s_tien}$ (triệu đồng)."
         )
     kq4=random.choice([kq4_T, kq4_F])
-    HDG=thay_dau_cong_tru(HDG)
-    kq4=thay_dau_cong_tru(kq4)
+    HDG=thay_dau_congtru(HDG)
+    kq4=thay_dau_congtru(kq4)
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq4==kq4_F:
         loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
