@@ -570,9 +570,12 @@ class MainWindow(QMainWindow):
         if hasattr(ui, "btn_xoa_matran"):
             ui.btn_xoa_matran.setGeometry(QtCore.QRect(panel_x, 200, btn_w, btn_h))
         if hasattr(ui, "btn_load_matran"):
-            ui.btn_load_matran.setGeometry(QtCore.QRect(panel_x, 350, btn_w, btn_h))
+            ui.btn_load_matran.setGeometry(QtCore.QRect(panel_x, 240, btn_w, btn_h))
         if hasattr(ui, "btn_luu_matran"):
-            ui.btn_luu_matran.setGeometry(QtCore.QRect(panel_x, 390, btn_w, btn_h))
+            ui.btn_luu_matran.setGeometry(QtCore.QRect(panel_x, 280, btn_w, btn_h))
+        if hasattr(ui, "btn_show_tab_taode"):
+            ui.btn_show_tab_taode.setGeometry(QtCore.QRect(panel_x, 420, btn_w, btn_h))
+
 
 
     def resizeEvent(self, event):
@@ -1123,11 +1126,11 @@ class Ui_MainWindow(object):
 
                 #Table dạng toán
                 self.tableWidget =  QtWidgets.QTableWidget(parent=self.tab_taode)
-                self.tableWidget.setGeometry(QtCore.QRect(420, le_top, 600, 275))
+                self.tableWidget.setGeometry(QtCore.QRect(420, le_top, 500, 275))
                 self.tableWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)                
                 self.tableWidget.setRowCount(0)
                 self.tableWidget.setColumnCount(4)
-                self.tableWidget.setColumnWidth(0, 420)
+                self.tableWidget.setColumnWidth(0, 320)
                 self.tableWidget.setColumnWidth(1, 50)
                 self.tableWidget.setColumnWidth(2, 50)
                 self.tableWidget.setColumnWidth(3, 50)
@@ -1205,7 +1208,16 @@ class Ui_MainWindow(object):
                 self.btn_luu_matran.setObjectName("btn_luu_matran")
                 self.btn_luu_matran.setText("Lưu ma trận")
                 self.btn_luu_matran.clicked.connect(self.luu_matran)
-                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")            
+                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;") 
+
+                #Nút chuyển tab Tạo đề
+                self.btn_show_tab_taode = QtWidgets.QPushButton(parent=self.tab_taode)        
+                self.btn_show_tab_taode.setGeometry(QtCore.QRect(le_trai+550, le_top+380, 90, 30))
+                self.btn_show_tab_taode.setFont(font_12)
+                self.btn_show_tab_taode.setObjectName("btn_show_tab_taode")
+                self.btn_show_tab_taode.setText("📝 Tạo đề")
+                self.btn_show_tab_taode.clicked.connect(self.btn_show_tab_taode_click)
+                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")           
 
                 
 
@@ -1213,7 +1225,7 @@ class Ui_MainWindow(object):
                 
                 #Table thống kê
                 self.table_thongke =  QtWidgets.QTableWidget(parent=self.tab_taode)
-                self.table_thongke.setGeometry(QtCore.QRect(420, le_top, 600, 230))
+                self.table_thongke.setGeometry(QtCore.QRect(400, le_top, 500, 230))
                 self.table_thongke.setRowCount(6)
                 self.table_thongke.setColumnCount(12)
                 self.table_thongke.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -1297,16 +1309,7 @@ class Ui_MainWindow(object):
                 self.table_thongke.setItem(5, 0, item)
                 self.table_thongke.setSpan(5, 0, 1, 12)
 
-                #Nút chuyển tab Tạo đề
-                self.btn_show_tab_taode = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_show_tab_taode.setGeometry(QtCore.QRect(820, 610, 90, 30))
-                self.btn_show_tab_taode.setFont(font_12)
-                self.btn_show_tab_taode.setObjectName("btn_show_tab_taode")
-                self.btn_show_tab_taode.setText("📝 Tạo đề")
-                self.btn_show_tab_taode.clicked.connect(self.btn_show_tab_taode_click)
-                #self.btn_luu_matran.setStyleSheet("color: white;background-color: #4385F6;")
-
-
+                
                 top_btn = 100
                 le_trai=20
                 le_top=50         
@@ -1409,13 +1412,13 @@ class Ui_MainWindow(object):
                 self.spin_soluong_de.setValue(1)
 
                 #Tạo nút Tiêu đề chung
-                self.btn_title_chung = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_title_chung.setGeometry(QtCore.QRect(le_trai+380, le_top-70, 110, 20))
-                self.btn_title_chung.setFont(font_10)
-                self.btn_title_chung.setObjectName("btn_title_chung")
-                self.btn_title_chung.setText("Thông tin đề thi")
-                self.btn_title_chung.clicked.connect(self.thietlap_tieude)
-                self.btn_title_chung.setStyleSheet("color: white;background-color: #4D82B8;")
+                # self.btn_title_chung = QtWidgets.QPushButton(parent=self.tab_taode)
+                # self.btn_title_chung.setGeometry(QtCore.QRect(le_trai+380, le_top-70, 110, 20))
+                # self.btn_title_chung.setFont(font_10)
+                # self.btn_title_chung.setObjectName("btn_title_chung")
+                # self.btn_title_chung.setText("Thông tin đề thi")
+                # self.btn_title_chung.clicked.connect(self.thietlap_tieude)
+                # self.btn_title_chung.setStyleSheet("color: white;background-color: #4D82B8;")
                 # Lấy kích thước gợi ý dựa trên nội dung của nút
                 # size =  self.btn_title_chung.sizeHint()                
                 # self.btn_title_chung.setFixedSize(size)              
@@ -1878,7 +1881,7 @@ class Ui_MainWindow(object):
 
         # Cây thư mục
                 self.treeWidget = QtWidgets.QTreeWidget(parent=self.tab_taode)
-                self.treeWidget.setGeometry(QtCore.QRect(0, 50, 575, 630))
+                self.treeWidget.setGeometry(QtCore.QRect(0, 50, 500, 540))
                 self.treeWidget.setObjectName("treeWidget")
                 
                
@@ -22827,14 +22830,14 @@ class Ui_MainWindow(object):
             
 if __name__ == "__main__":
     # High-DPI scaling: đặt TRƯỚC khi tạo QApplication
-    try:
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-        # Qt>=5.14: tránh làm tròn scale gây lệch layout
-        if hasattr(QtWidgets.QApplication, "setHighDpiScaleFactorRoundingPolicy") and hasattr(QtCore.Qt, "HighDpiScaleFactorRoundingPolicy"):
-            QtWidgets.QApplication.setHighDpiScaleFactorRoundingPolicy(QtCore.Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
-    except Exception:
-        pass
+    # try:
+    #     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+    #     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
+    #     # Qt>=5.14: tránh làm tròn scale gây lệch layout
+    #     if hasattr(QtWidgets.QApplication, "setHighDpiScaleFactorRoundingPolicy") and hasattr(QtCore.Qt, "HighDpiScaleFactorRoundingPolicy"):
+    #         QtWidgets.QApplication.setHighDpiScaleFactorRoundingPolicy(QtCore.Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
+    # except Exception:
+    #     pass
 
     app = QtWidgets.QApplication(sys.argv)
 
