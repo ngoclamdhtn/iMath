@@ -6133,6 +6133,7 @@ y = {show_ptts(y_0,b)}\
 \\end{{array}} \\right."
 
 	chon=random.choice(["thuộc", "không thuộc"])
+	chon="thuộc"
 	if chon=="thuộc":
 		kq=random.choice([f"({x_0};{y_0})", f"({x_0+a*t1};{y_0+b*t1})", f"({x_0+a*t2};{y_0+b*t2})", f"({x_0+a*t3};{y_0+b*t3})"])
 		kq2=f"({x_0};{y_0+1})"
@@ -6194,50 +6195,39 @@ def gghik_L10_CX_B1_18():
 
 	ten_d=random.choice(["d","d_1","\\Delta"])	
 	vecto_u="\\overrightarrow{{u}}"
-	vecto_n="\\overrightarrow{{n}}"
-	while True:	
-		a= random.choice([random.randint(-5, -1), random.randint(1, 6)])
-		b= random.choice([random.randint(-5, -1), random.randint(1, 6)])
-		x_0=random.randint(-4,4)
-		y_0=random.randint(-5,5)
-		if all([a!=b, a!=x_0, b!=y_0, x_0!=y_0]):
+	vecto_n="\\overrightarrow{{n}}"	
+	
+	
+	while True:
+		a=random.choice([i for i in range(-8, 8) if i!=0])
+		b=random.randint(-10,10)
+		c=random.choice([i for i in range(-8, 8) if i!=0])
+		x_0=random.randint(-10,10)
+		y_0=random.randint(-10,10)
+		if all([a*x_0+b*y_0+c==0]):
 			break
 
-	t1=random.randint(1,3)
-	t2=random.randint(-3,-1)
-	t3=random.randint(4,6)
-	t4=random.randint(-6,-4)	
-	
-	#Tìm UCLN của véctơ pháp tuyến:
-	
-	ucln=gcd(abs(a),abs(b))
-	a,b=int(a/ucln),int(b/ucln)
-	b1=show_dau_value(-a)
+	kq=(x_0,y_0)
+	kq_false = set()
+	while len(kq_false) < 4:
+		x_1=random.randint(-10,8)
+		y_1=random.randint(-10,10)
+		numbers = (x_1,y_1)
+		if a*x_1+b*y_1+c!=0:
+			kq_false.add(numbers)
+	kq_false=list(kq_false)
+	kq2,kq3,kq4=random.sample(kq_false,3)
+	f=a*x+b*y+c
 
 
-	f=latex(b*(x-x_0)-a*(y-y_0))
-
-	chon=random.choice(["thuộc", "không thuộc"])
-	if chon=="thuộc":
-		kq=random.choice([f"({x_0};{y_0})", f"({x_0+a*t1};{y_0+b*t1})", f"({x_0+a*t2};{y_0+b*t2})", f"({x_0+a*t3};{y_0+b*t3})"])
-		kq2=f"({x_0};{y_0+1})"
-		kq3=random.choice([f"({a};{b})", f"({-x_0+a*t3};{y_0-b*t3})"])
-		kq4=random.choice([f"({x_0+a*t1};{x_0+b*t1})",f"({x_0+a*t2};{-y_0-b*t2})"])
-	else:
-		kq=random.choice([f"({a};{b})", f"({-x_0+a*t3};{y_0-b*t3})", f"({x_0+a*t2};{-y_0-b*t2})" ])
-		kq2=random.choice([f"({x_0};{y_0})", f"({x_0+a*t1};{y_0+b*t1})"])
-		kq3=random.choice([f"({x_0+a*t2};{y_0+b*t2})", f"({x_0+a*t3};{y_0+b*t3})"])
-		kq4=f"({x_0+a*t4};{y_0+b*t4})"
-
-
-	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ có phương trình ${f}=0$."\
-			 f" Điểm nào sau đây {chon} đường thẳng ${{{ten_d}}}$?"
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ có phương trình ${latex(f)}=0$."\
+			 f" Điểm nào sau đây thuộc đường thẳng ${{{ten_d}}}$?"
 	
     #Tạo các phương án
-	pa_A= f"*${{{kq}}}$"
-	pa_B= f"${{{kq2}}}$"
-	pa_C= f"${{{kq3}}}$"
-	pa_D= f"${{{kq4}}}$"
+	pa_A= f"*${{{kq}}}$".replace(",",";")
+	pa_B= f"${{{kq2}}}$".replace(",",";")
+	pa_C= f"${{{kq3}}}$".replace(",",";")
+	pa_D= f"${{{kq4}}}$".replace(",",";")
 
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -6247,7 +6237,7 @@ def gghik_L10_CX_B1_18():
 	debai= f"{noi_dung}\n"
 	phuongan= f"A. { list_PA[0]}.   B. { list_PA[1]}.    C. { list_PA[2]}.     D. { list_PA[3]}.\n"
 	
-	noi_dung_loigiai=f"Thay tọa độ các điểm từ các phương án vào phương trình tổng quát ta được điểm ${{{kq}}}$ {chon} ${{{ten_d}}}$."
+	noi_dung_loigiai=f"Thay tọa độ các điểm từ các phương án vào phương trình tổng quát ta được điểm ${{{kq}}}$ thuộc ${{{ten_d}}}$."
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 

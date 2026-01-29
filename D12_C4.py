@@ -3589,7 +3589,7 @@ def ckz_L12C4_B1_53():
             f" Gia tốc chuyển động của vật được xác định bởi $a(t)=\\int v(t)dt$")
     
     if chon==2:
-        kq2_T=(f"Một vật chuyển động với vận tốc $s(t)$ với ${{t}}$ là thời gian tính bằng giây."
+        kq2_T=(f"* Một vật chuyển động với vận tốc $v(t)$ với ${{t}}$ là thời gian tính bằng giây."
             f" Quãng chuyển động của vật được xác định bởi $s(t)=\\int v(t)dt$")
         kq2_F=(f"Một vật chuyển động với vận tốc $v(t)$ với ${{t}}$ là thời gian tính bằng giây."
             f" Gia tốc chuyển động của vật được xác định bởi $a(t)=\\int v(t)dt$") 
@@ -7554,15 +7554,23 @@ def ckz_L12C4_B4_40():
     F=a*sin(m*x)+b*cos(n*x)
     f=diff(F,x)
     chon=random.randint(1,2)    
-    if chon==1:
-        list_can=[pi/6, pi/3, 2*pi/3, 5*pi/6]
-        random.shuffle(list_can)
-        x_1, x_2=list_can[0:2]
-        result = sp.simplify(integrate(f,(x,x_1,x_2)))
 
-        # Tìm các hệ số a, b, c
-        a = result.as_coefficients_dict().get(sp.sqrt(3), 0)
-        b =  result-a*sp.sqrt(3)       
+    if chon==1:
+        while True:
+            x_1=random.choice([pi/6, pi/3])
+            if x_1==pi/6:
+                x_2=random.choice([pi/3, 2*pi/3])
+
+            if x_1==pi/3:
+                x_2=random.choice([pi/6, 5*pi/6])
+
+            result = sp.simplify(integrate(f,(x,x_1,x_2)))
+
+            # Tìm các hệ số a, b, c
+            a = result.as_coefficients_dict().get(sp.sqrt(3), 0)
+            b =  result-a*sp.sqrt(3)
+            if any([a!=0,b!=0]):
+                break      
         
         dap_an=f"{round_half_up(a+b,1):.1f}".replace(".",",")    
         noi_dung = (
@@ -13542,3 +13550,392 @@ def ckz_L12C4_B5_46():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C4_B5_47]-SA-M2. v(t)=at+b. Tính quãng đường đi được từ t1 đến t2.
+def ckz_L12C4_B5_47():   
+    d_t=f"\\mathrm{{\\,d}}t"
+    m_s=f"\\mathrm{{\\,m}}/\\mathrm{{\\,s}}"
+    m=f"\\mathrm{{\\,(m)}}"
+    t=sp.symbols("t")
+    chon=random.randint(1,2)
+    if chon==1:
+        while True:    
+            a = random.randint(1,10)
+            b = random.randint(1,20)
+            t_1=random.randint(0,8)
+            t_2=t_1+random.randint(1,10)
+
+            f=a*t+b
+            v_t=float(integrate(f, (t,{t_1},{t_2})))
+            if v_t<999:
+                break
+    if chon==2:
+        while True:    
+            a = random.randint(-5,-1)
+            b = random.randint(1,20)
+            t_1=random.randint(0,8)
+            t_2=t_1+random.randint(1,10)
+            f=a*t+b
+            if f.subs(t,t_1)<0 or f.subs(t,t_2)<0:
+                continue
+            v_t=float(integrate(f, (t,{t_1},{t_2})))
+            if v_t<999:
+                break
+    if v_t.is_integer():
+        dap_an=int(v_t)
+        lam_tron=f""
+    else:
+        dap_an=f"{round_half_up(v_t,1):.1f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+
+
+    noi_dung=f"Một vật chuyển động với vận tốc $v(t)={latex(f)} ({m_s})$, với thời gian ${{t}}$ tính bằng giây."\
+    f" Tính quãng đường vật đi được (đơn vị: mét) trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}${lam_tron}."
+    noi_dung_loigiai=f"Quãng đường đi được là: $  \\int\\limits_{{{t_1}}}^{{{t_2}}} {{\\left({latex(f)}\\right){d_t}}}={dap_an}$."  
+
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_48]-SA-M2. v(t)=at^2+bt+c. Tính quãng đường đi được từ t1 đến t2.
+def ckz_L12C4_B5_48():   
+    d_t=f"\\mathrm{{\\,d}}t"
+    m_s=f"\\mathrm{{\\,m}}/\\mathrm{{\\,s}}"
+    m=f"\\mathrm{{\\,(m)}}"
+    t=sp.symbols("t")
+    
+
+    while True: 
+        x_1=random.randint(-4,-1)
+        x_2=random.randint(5,9)
+        a=random.randint(-3,-1)
+        b, c=-a*(x_1+x_2), a*x_1*x_2
+        t_1=random.randint(0,8)
+        t_2=t_1+random.randint(1,10)
+
+        f=a*t**2+b*t+c
+        if t_1>x_2 or t_2>x_2:
+            continue                
+        v_t=float(integrate(f, (t,{t_1},{t_2})))
+        if v_t<999:
+            break
+
+    if v_t.is_integer():
+        dap_an=int(v_t)
+        lam_tron=f""
+    else:
+        dap_an=f"{round_half_up(v_t,0):.0f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng đơn vị)"
+
+
+    noi_dung=(f"Một vật chuyển động với vận tốc $v(t)={latex(f)} ({m_s})$, với thời gian ${{t}}$ tính bằng giây."
+    f" Tính quãng đường vật đi được (đơn vị: mét) trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}${lam_tron}.")
+
+    noi_dung_loigiai=f"Quãng đường đi được là: $  \\int\\limits_{{{t_1}}}^{{{t_2}}} {{\\left({latex(f)}\\right){d_t}}}={dap_an}$."  
+
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_49]-SA-M2. a(t)=c. Tính quãng đường đi được từ t1 đến t2.
+def ckz_L12C4_B5_49():   
+    d_t=f"\\mathrm{{\\,d}}t"
+    m_s=f"\\mathrm{{\\,m}}/\\mathrm{{\\,s}}"
+    m_s2=f"\\mathrm{{\\,m}}/\\mathrm{{\\,s}}^2"
+    m=f"\\mathrm{{\\,(m)}}"
+    t=sp.symbols("t")
+    chon=random.randint(1,2)
+    if chon==1:
+        while True:    
+            a = random.randint(1,10)
+            b = random.randint(1,20)
+            t_1=random.randint(0,8)
+            t_2=t_1+random.randint(1,10)
+
+            f=a*t+b
+            v_t=float(integrate(f, (t,{t_1},{t_2})))
+            tang="tăng tốc"
+            if v_t<999:
+                break
+    if chon==2:
+        while True:    
+            a = random.randint(-5,-1)
+            b = random.randint(1,20)
+            t_1=random.randint(0,8)
+            t_2=t_1+random.randint(1,10)
+            f=a*t+b
+            if f.subs(t,t_1)<0 or f.subs(t,t_2)<0:
+                continue
+            v_t=float(integrate(f, (t,{t_1},{t_2})))
+
+            tang="giảm tốc"
+            if v_t<999:
+                break
+    if v_t.is_integer():
+        dap_an=int(v_t)
+        lam_tron=f""
+    else:
+        dap_an=f"{round_half_up(v_t,1):.1f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+
+
+    noi_dung=(f"Một vật đang chuyển động đều với vận tốc ${b} {m_s}$ thì {tang} với gia tốc $a(t)={a} ({m_s2})$, thời gian ${{t}}$ tính bằng giây."
+    f" Tính quãng đường vật đi được (đơn vị: mét) trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}${lam_tron} kể từ khi bắt đầu {tang}.")
+
+    noi_dung_loigiai=(
+        f"$v(t)=\\int {a} {d_t}={latex(a*t)}+C$.\n\n"
+        f"$v(0)={b}\\Rightarrow C={b}$.\n\n"
+        f"Quãng đường đi được là: $  \\int\\limits_{{{t_1}}}^{{{t_2}}} {{\\left({latex(f)}\\right){d_t}}}={dap_an}$.")
+
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C4_B5_50]-SA-M2. a(t)=mt+b. Tính quãng đường đi được từ t1 đến t2.
+def ckz_L12C4_B5_50():   
+    d_t=f"\\mathrm{{\\,d}}t"
+    m_s=f"\\mathrm{{\\,m}}/\\mathrm{{\\,s}}"
+    m_s2=f"\\mathrm{{\\,m}}/\\mathrm{{\\,s}}^2"
+    m=f"\\mathrm{{\\,(m)}}"
+    t=sp.symbols("t")
+    
+
+    while True: 
+        x_1=random.randint(-4,-1)
+        x_2=random.randint(5,9)
+        a=random.randint(-3,-1)
+        b, c=-a*(x_1+x_2), a*x_1*x_2
+        t_1=random.randint(0,8)
+        t_2=t_1+random.randint(1,10)
+
+        f=a*t**2+b*t+c
+        if t_1>x_2 or t_2>x_2:
+            continue                
+        v_t=float(integrate(f, (t,{t_1},{t_2})))
+        if v_t<999:
+            break
+
+    if v_t.is_integer():
+        dap_an=int(v_t)
+        lam_tron=f""
+    else:
+        dap_an=f"{round_half_up(v_t,0):.0f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng đơn vị)"
+
+
+    noi_dung=(f"Một vật chuyển động đều với vận tốc ${c} ({m_s})$"
+        f" thì thay đổi chuyển động với gia tốc $a(t)={latex(2*a*t+b)} ({m_s2})$, thời gian ${{t}}$ tính bằng giây."
+    f" Tính quãng đường vật đi được (đơn vị: mét) trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}${lam_tron}.")
+
+    noi_dung_loigiai=(
+        f"$v(t)=\\int ({latex(2*a*t+b)}) {d_t}={latex(a*t**2+b*t)}+C$.\n\n"
+        f"$v(0)={c}\\Rightarrow C={c}$.\n\n"
+        f"Quãng đường đi được là: $  \\int\\limits_{{{t_1}}}^{{{t_2}}} {{\\left({latex(f)}\\right){d_t}}}={dap_an}$.") 
+
+    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+def _fmt_rat(r):
+        if isinstance(r, sp.Rational):
+            if r.q == 1:
+                return f"{r.p}"
+            return f"\\dfrac{{{r.p}}}{{{r.q}}}"
+        return str(r)
+
+#[D12_C4_B5_51]-SA-M3. Hai chất điểm đuổi bắt (A có v(t) bậc 2, B chậm hơn và chuyển động nhanh dần đều)
+def ckz_L12C4_B5_51():
+    # --- Sinh dữ liệu ngẫu nhiên, ưu tiên đáp án đẹp ---
+    while True:
+        # B xuất phát chậm hơn d giây, và sau khi B xuất phát tau giây thì đuổi kịp A
+        d = random.randint(3, 8)
+        tau = random.randint(8, 14)
+        T = d + tau  # thời điểm (tính từ lúc A xuất phát) mà B đuổi kịp A
+
+        # v_A(t) = p*t^2 + q*t (m/s), với p,q hữu tỉ "đẹp"
+        # Chọn p = 1/(60*kp), q = kq/18 để giống phong cách đề gốc
+        kp = random.choice([2, 3, 4, 5, 6, 8, 9])
+        kq = random.choice([5, 7, 9, 11, 13, 15])
+
+        p = sp.Rational(1, 60 * kp)
+        q = sp.Rational(kq, 18)
+
+        # Quãng đường A đi được đến thời điểm T:
+        # s_A(T) = ∫0^T (p t^2 + q t) dt = p/3*T^3 + q/2*T^2
+        sA = sp.simplify(p * T**3 / 3 + q * T**2 / 2)
+
+        # B xuất phát từ nghỉ, nhanh dần đều gia tốc a: s_B(tau) = 1/2 * a * tau^2
+        # Đuổi kịp: sA = 1/2 a tau^2  => a = 2*sA/tau^2
+        a = sp.simplify(2 * sA / (tau**2))
+
+        # Vận tốc B tại thời điểm đuổi kịp: vB = a*tau (vì xuất phát từ nghỉ)
+        vB = sp.simplify(a * tau)
+
+        # ưu tiên đáp án nguyên, không quá 4 kí tự (để hợp \shortans[4])
+        if vB.is_rational:
+            if vB.q == 1 and 1 <= vB <= 9999:
+                dap_an = str(int(vB))
+                break
+            # nếu không nguyên, thử làm tròn 1 chữ số thập phân vẫn ngắn
+            vB_float = float(vB)
+            vB1 = round_half_up(vB_float, 1)
+            s_vB1 = f"{vB1:.1f}".replace(".", ",")
+            # độ dài <= 4 kí tự (ví dụ 8,5 / 12,3 / 0,7)
+            if len(s_vB1) <= 4 and vB1 > 0:
+                dap_an = s_vB1
+                break
+
+    # --- Chuỗi hiển thị p,q ---
+
+    s_p = _fmt_rat(p)
+    s_q = _fmt_rat(q)
+    s_a = _fmt_rat(a)  # để lời giải đẹp
+    s_tau = str(tau)
+    s_d = str(d)
+    s_T = str(T)
+
+    noi_dung = (
+        f"Một chất điểm ${{A}}$ xuất phát từ ${{O}}$, chuyển động thẳng với vận tốc biến thiên theo thời gian bởi quy luật "
+        f"$v_A(t)={s_p}t^2+{s_q}t\\, (\\mathrm{{m/s}})$, trong đó $t$ (giây) là khoảng thời gian tính từ lúc ${{A}}$ bắt đầu chuyển động. "
+        f"Từ trạng thái nghỉ, một chất điểm ${{B}}$ cũng xuất phát từ ${{O}}$, chuyển động thẳng cùng hướng với ${{A}}$ nhưng chậm hơn {s_d} giây so với ${{A}}$ "
+        f"và có gia tốc không đổi bằng $a\\,(\\mathrm{{m/s^2}})$ (với $a$ là hằng số). "
+        f"Sau khi ${{B}}$ xuất phát được {s_tau} giây thì đuổi kịp ${{A}}$. "
+        f"Vận tốc của ${{B}}$ tại thời điểm đuổi kịp $A$ bằng bao nhiêu (m/s) (kết quả làm tròn đến hàng phần mười)?"
+    )
+
+    noi_dung_loigiai = (
+        f"Gọi $t$ (giây) là thời gian tính từ lúc A xuất phát. Khi B đuổi kịp A thì "
+        f"$t={s_T}$ (vì $B$ xuất phát chậm hơn {s_d} giây và chạy {s_tau} giây).\n\n"
+        f"Quãng đường A đi được đến thời điểm $t={s_T}$ là:\n\n"
+        f"$s_A=\\int_0^{{{s_T}}}\\left({s_p}t^2+{s_q}t\\right)dt"  
+        f"={latex(sA)}.$\n\n"
+        f"Chất điểm B xuất phát từ nghỉ và nhanh dần đều với gia tốc $a$ nên sau {s_tau} giây, quãng đường B đi được là:\n\n"
+        f"$s_B=\\dfrac{{1}}{{2}}a\\,{s_tau}^2.$\n\n"
+        f"Vì $B$ đuổi kịp A nên $s_A=s_B$:\n\n"
+        f"${latex(sA)}=\\dfrac{{1}}{{2}}a\\,{s_tau}^2"
+        f"\\Rightarrow a=\\dfrac{{2s_A}}{{{s_tau}^2}}={s_a}.$\n\n"
+        f"Vận tốc của B tại thời điểm đuổi kịp (sau {s_tau} giây kể từ lúc B xuất phát) là:\n\n"
+        f"$v_B=a\\,{s_tau}={dap_an}\\,\\mathrm{{(m/s)}}.$"
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D12_C4_B5_52]-SA-M3. Tìm vận tốc khi khí cầu tiếp đất.
+def ckz_L12C4_B5_52():
+    t = sp.symbols("t", real=True)
+
+    # --- Sinh dữ liệu ngẫu nhiên ---
+    while True:
+        a = random.randint(6, 15)
+        b = random.randint(1, 4)
+
+        # chọn thời điểm chạm đất đẹp
+        T = random.randint(4, 10)
+
+        # độ cao ban đầu h = ∫0^T v(t) dt
+        h = float(integrate(a*t - b*t**2, (t, 0, T)))
+        v_T = a*T - b*T**2
+
+        # ưu tiên h nguyên dương
+        if all([h.is_integer(),h > 0, v_T>0]):
+            h = int(h)
+            break
+
+    # vận tốc tại thời điểm tiếp đất
+    
+    dap_an = str(v_T)
+
+    noi_dung = (
+        f"Tại một nơi không có gió, một chiếc khí cầu đang đứng yên ở độ cao {h} mét "
+        f"so với mặt đất đã được phi công cài đặt cho nó một chế độ chuyển động đi xuống. "
+        f"Biết rằng khí cầu chuyển động theo phương thẳng đứng với vận tốc "
+        f"$v(t)={a}t-{b}t^2$ (m/phút), trong đó $t$ (phút) là thời gian tính từ lúc bắt đầu chuyển động."
+        f" Tính vận tốc $v$ của khí cầu khi bắt đầu tiếp đất."
+    )
+
+    noi_dung_loigiai = (
+        f"Gọi ${{T}}$ là thời điểm khí cầu chạm đất.\n\n"
+        f"Vì khí cầu đi từ độ cao {h} m xuống mặt đất nên:\n\n"
+        f"$\\int_0^T ({a}t-{b}t^2)dt={h}.$\n\n"
+        f"Ta có:\n\n"
+        f"$\\int ({a}t-{b}t^2)dt=\\dfrac{{{a}}}{{2}}t^2-\\dfrac{{{b}}}{{3}}t^3.$\n\n"
+        f"Suy ra:\n\n"
+        f"$\\left(\\dfrac{{{a}}}{{2}}t^2-\\dfrac{{{b}}}{{3}}t^3\\right)\\Bigg|_0^T={h}"
+        f"\\Rightarrow T={T}.$\n\n"
+        f"Khi đó vận tốc tại thời điểm tiếp đất là:\n\n"
+        f"$v(T)={a}\\cdot {T}-{b}\\cdot {T}^2={v_T}\\, (\\text{{m/phút}}).$\n\n"
+        f"Vậy vận tốc của khí cầu khi bắt đầu tiếp đất là {v_T} m/phút."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+

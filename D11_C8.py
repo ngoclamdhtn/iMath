@@ -2769,10 +2769,10 @@ def uvxy9_L11_C8_B2_21():
 	
 	if chon==1:
 		kq4_T=(f"* Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{B}}}$."
-			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc}^\\circ$")
+			f" Góc giữa hai đường thẳng ${{{A}{C}}}$ và ${{{M}{C}}}$ bằng ${goc}^\\circ$")
 
 		kq4_F=(f"Gọi ${{{M}}}$ là hình chiếu vuông góc của ${{{A}}}$ trên ${{S{B}}}$."
-			f" Góc giữa hai đường thẳng ${A}{C}$ và ${M}{C}$ bằng ${goc_false}^\\circ$") 
+			f" Góc giữa hai đường thẳng ${{{A}{C}}}$ và ${{{M}{C}}}$ bằng ${goc_false}^\\circ$") 
 		
 		HDG=(f"${A}{M}\\bot S{B}, {A}{M}\\bot {B}{C}$ (do ${B}{C} \\bot (S{A}{B})$) suy ra ${A}{M}\\bot {M}{C}$.\n\n"
 			f"${A}{C}={latex(AC*a)}$.\n\n"
@@ -2819,10 +2819,10 @@ def uvxy9_L11_C8_B2_21():
 
 	if chon==4:
 		kq4_T=(f"* Gọi ${{{I},{K}}}$ lần lượt là trung điểm các cạnh ${{{B}{C},{C}{D}}}$."
-			f" Góc giữa hai đường thẳng ${{{I}{K}}}$ và $S{D}$ bằng ${goc}^\\circ$")
+			f" Góc giữa hai đường thẳng ${{{I}{K}}}$ và ${{S{D}}}$ bằng ${goc}^\\circ$")
 
 		kq4_F=(f"Gọi ${{{I},{K}}}$ lần lượt là trung điểm các cạnh ${{{B}{C},{C}{D}}}$."
-			f" Góc giữa hai đường thẳng ${{{I}{K}}}$ và $S{D}$ bằng ${goc_false}^\\circ$") 
+			f" Góc giữa hai đường thẳng ${{{I}{K}}}$ và ${{S{D}}}$ bằng ${goc_false}^\\circ$") 
 		
 		HDG=(f"Gọi ${{{M},{N}}}$ lần lượt là trung điểm các cạnh ${{{A}{B},{A}{D}}}$."
 			f"Gọi ${{{P}}}$ là trung điểm của cạnh ${{S{A}}}$. Gọi ${{{H}}}$ là trung điểm của cạnh ${{{M}{N}}}$.\n\n"

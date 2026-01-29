@@ -182,12 +182,13 @@ class Ui_MainWindow(object):
                 self.tab_ban_quyen = QWidget()
                 self.tab_huongdan = QWidget()
 
-                self.tab_main.addTab(self.tab_taode, "Thiết lập ma trận")
+                self.tab_main.addTab(self.tab_taode, "🧩 Thiết lập ma trận")
                 self.tab_taode.setObjectName("tab_taode")
 
                 # Style cho mainwindows
 
-                self.tab_main.setStyleSheet("""
+                self.tab_main.setStyleSheet(
+                    """
                         QTabBar::tab {
                             background: #E5E5E5;    /* Màu nền mặc định của tab */
                             color: #555555;         /* Màu chữ */
@@ -211,31 +212,51 @@ class Ui_MainWindow(object):
                         QTabWidget::pane {
                             border-top: 2px solid #C0C0C0; /* Viền dưới của tab */
                             background: white;
-                        }            
+                        }
+                        QToolButton#NavButton {
+                            background: transparent;
+                            border: 0;
+                            padding: 10px 12px;
+                            border-radius: 10px;
+                            text-align: left;
+                            font-size: 10.5pt;
+                        }
+                        QToolButton#NavButton:hover { background: #F1F4FF; }
+                        QToolButton#NavButton[active="true"] { background: #E8EEFF; }
+
+                        QToolButton#ThemeToggle {
+                            background: #F2F4F7;
+                            border: 1px solid #E6E8EC;
+                            border-radius: 10px;
+                            padding: 6px 10px;
+                        }
+                        QToolButton#ThemeToggle:hover { background: #E9EDF3; }                     
+                        
+           
                     """)
                 
 
 
-                self.tab_main.addTab(self.tab_thongtin_dethi, "Tạo đề")
+                self.tab_main.addTab(self.tab_thongtin_dethi, "📝 Tạo đề")
                 self.tab_thongtin_dethi.setObjectName("tab_thongtin_dethi")
                 #self.tab_thongtin_dethi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
-                self.tab_main.addTab(self.tab_dothi, "Đồ thị")
+                self.tab_main.addTab(self.tab_dothi, "📈 Đồ thị")
                 self.tab_dothi.setObjectName("tab_dothi")
                 #self.tab_dothi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_dothi.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
-                self.tab_main.addTab(self.tab_bbt, "Bảng biến thiên")
+                self.tab_main.addTab(self.tab_bbt, "📊 Bảng biến thiên")
                 self.tab_bbt.setObjectName("tab_bbt")
                 #self.tab_bbt.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))  
                 self.tab_bbt.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
 
-                self.tab_main.addTab(self.tab_vehinh, "Vẽ hình")
+                self.tab_main.addTab(self.tab_vehinh, "✏️ Hình không gian")
                 self.tab_vehinh.setObjectName("tab_vehinh")                
                 self.tab_vehinh.setGeometry(QtCore.QRect(0, 0, 1920, 1080)) 
 
-                self.tab_main.addTab(self.tab_bang_so_lieu, "Bảng số liệu")
+                self.tab_main.addTab(self.tab_bang_so_lieu, "🧮 Bảng số liệu")
                 self.tab_bang_so_lieu.setObjectName("tab_bang_so_lieu")
                 #self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height())) 
                 self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1080)) 
@@ -246,13 +267,13 @@ class Ui_MainWindow(object):
                 # self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1440))        
            
 
-                self.tab_main.addTab(self.tab_ban_quyen, "Bản quyền")
+                self.tab_main.addTab(self.tab_ban_quyen, "🔐 Bản quyền")
                 self.tab_ban_quyen.setObjectName("tab_ban_quyen")
                 #self.tab_ban_quyen.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
 
-                self.tab_main.addTab(self.tab_huongdan, "Hướng dẫn")
+                self.tab_main.addTab(self.tab_huongdan, "📚 Hướng dẫn")
                 self.tab_huongdan.setObjectName("tab_huongdan")                
                 self.tab_huongdan.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
@@ -972,7 +993,7 @@ class Ui_MainWindow(object):
                 self.btn_taode.setGeometry(QtCore.QRect(le_trai, le_top+300, 100, 30))
                 self.btn_taode.setFont(font_12)
                 self.btn_taode.setObjectName("btn_taode")
-                self.btn_taode.setText("Tạo đề")
+                self.btn_taode.setText("📝 Tạo đề")
                 self.btn_taode.clicked.connect(self.tao_de)
                 self.btn_taode.setStyleSheet(style_taode_button)
 
@@ -3045,7 +3066,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B1_1, ["[D10_C7_B1_03]-M2. Cho f(x) bậc 2 có 2 nghiệm. Tìm khẳng định đúng về dấu."])
+                item = QTreeWidgetItem(L10_C7_B1_1, ["[D10_C7_B1_03]-M2. Cho f(x) có 2 nghiệm. Tìm khẳng định đúng về dấu."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -6794,6 +6815,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_23]-TF-M2. m^(ax^2+bx+c)=n. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_24]-TF-M2. am^2x+bm^x+c=0. Xét Đ-S: Biến đổi PT, nghiệm, tích các nghiệm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B4_1, ["[D11_C6_B4_10]-TF-M2. Tạo câu Đ-S: Phương trình log_a (x)=b"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -6801,6 +6830,10 @@ class Ui_MainWindow(object):
                 L11_C6_B4_3 = QTreeWidgetItem(L11_C6_B4, ["Trả lời ngắn"])
                 L11_C6_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_14]-SA-M2. Giải phương trình a^nx-a^m=0"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -6984,6 +7017,34 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B6, ["[D11_C6_B6_06]-M2. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B6_2 = QTreeWidgetItem(L11_C6_B6, ["Đúng-Sai"])
+                L11_C6_B6_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B6_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_2, ["[D11_C6_B6_07]-TF-M2. Tiền gửi kỳ hạn 1 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_2, ["[D11_C6_B6_08]-TF-M2. Tiền gửi kỳ hạn 3 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi "])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C6_B6_3 = QTreeWidgetItem(L11_C6_B6, ["Trả lời ngắn"])
+                L11_C6_B6_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C6_B6_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_09]-SA-M2. Tiền gửi kỳ hạn 3 tháng. Sau n tháng rút ra rồi gửi thêm tiền. Tính tiền thu được sau n năm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_10]-SA-M2. Tìm năm để dân số đạt gấp n lần ban đầu."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_11]-SA-M2. Số vi khuẩn N(x)=Ce^(kx). Tìm số vi khuẩn sau t giờ."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                  
@@ -9489,6 +9550,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_56]-TF-M2. f(x)=asinx+bcosx. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_57]-TF-M2. f(x)=ax+b/x^2+c. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B1_2, ["[D12_C4_B1_26]-TF-M2. Xét Đ-S: nguyên hàm của ax,ax^2+bx+c, a+b/x^2, (ax+b)(cx+d)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -10028,47 +10097,80 @@ class Ui_MainWindow(object):
                 L12_C4_B5_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C4_B5_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_17]-SA-M2. Tính diện tích hình phẳng giới hạn bởi y=(ax+b)/(cx+d) và các trục tọa độ"])
+
+                L12_C4_B5_3_1 = QTreeWidgetItem(L12_C4_B5_3, ["Diện tích - Thể tích"])
+                L12_C4_B5_3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B5_3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_17]-SA-M2. Tính diện tích hình phẳng giới hạn bởi y=(ax+b)/(cx+d) và các trục tọa độ"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_18]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đường thẳng và parabol"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_18]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đường thẳng và parabol"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_21]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_21]-SA-M2. Tính diện tích hình phẳng giới hạn bởi đồ thị bậc 3 và parabol"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi 3 đường: đường thẳng, parabol, trục Ox"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_20]-SA-M3. Tính diện tích hình phẳng giới hạn bởi 3 đường: đường thẳng, parabol, trục Ox"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_22]-SA-M2. Toán thực tế: Diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol."])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_22]-SA-M2. Toán thực tế: Diện tích phần còn lại của hình vuông sau khi khoét đi 4 parabol."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_36]-SA-M3. Toán thực tế: Diện tích cánh hoa trong hình vuông"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_36]-SA-M3. Toán thực tế: Diện tích cánh hoa trong hình vuông"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_42]-SA-M3. Toán thực tế: Chi phí trồng cỏ và lát gạch khu đất giới hạn bởi đường tròn và 2 parabol"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_42]-SA-M3. Toán thực tế: Chi phí trồng cỏ và lát gạch khu đất giới hạn bởi đường tròn và 2 parabol"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_43]-SA-M3. Toán thực tế: Diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_43]-SA-M3. Toán thực tế: Diện tích chiếc cổng giới hạn dạng 2 parbol lồng nhau"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_44]-SA-M3. Toán thực tế: Diện tích trồng cỏ phần parabol nằm trong hình chữ nhật"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_44]-SA-M3. Toán thực tế: Diện tích trồng cỏ phần parabol nằm trong hình chữ nhật"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_45]-SA-M3. Toán thực tế: Tiền trồng cỏ và lát gạch tạo bởi 2 parabol trong hình chữ nhật"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_45]-SA-M3. Toán thực tế: Tiền trồng cỏ và lát gạch tạo bởi 2 parabol trong hình chữ nhật"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C4_B5_3, ["[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox"])
+                item = QTreeWidgetItem(L12_C4_B5_3_1, ["[D12_C4_B5_19]-SA-M2. Tính V khối tròn xoay khi quay hình giới hạn bởi đường thẳng và parabol quanh Ox"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L12_C4_B5_3_2 = QTreeWidgetItem(L12_C4_B5_3, ["Bài toán chuyển động"])
+                L12_C4_B5_3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L12_C4_B5_3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_2, ["[D12_C4_B5_47]-SA-M2. v(t)=at+b. Tính quãng đường đi được từ t1 đến t2."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_2, ["[D12_C4_B5_48]-SA-M2. v(t)=at^2+bt+c. Tính quãng đường đi được từ t1 đến t2."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_2, ["[D12_C4_B5_49]-SA-M2. a(t)=c. Tính quãng đường đi được từ t1 đến t2."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_2, ["[D12_C4_B5_50]-SA-M2. a(t)=mt+n. Tính quãng đường đi được từ t1 đến t2."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_2, ["[D12_C4_B5_51]-SA-M2. Tìm vận tốc thời điểm B đuổi bắt kịp A."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_3_2, ["[D12_C4_B5_52]-SA-M2. Tìm vận tốc khi khí cầu tiếp đất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -12498,6 +12600,14 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B1_55]-TF-M2. Cho đa thức. Xét đúng-sai: một nguyên hàm, họ nguyên hàm, nguyên hàm thỏa mãn F(a)=b
                                             if dang_toan == "[D12_C4_B1_55]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_55()
+
+                                            #[D12_C4_B1_56]-TF-M2. f(x)=asinx+bcosx. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1).
+                                            if dang_toan == "[D12_C4_B1_56]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_56()
+
+                                            #[D12_C4_B1_57]-TF-M2. f(x)=ax+b/x^2+c. Xét Đ-S: F'(x), F(x), F(x1)=b, F(x2)-F(x1).
+                                            if dang_toan == "[D12_C4_B1_57]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B1_57()
                                                 
 
                                         #Bài 2. Nguyên hàm đổi biến
@@ -12993,6 +13103,30 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_46]-TF-M3. Quãng trường hình tròn chứa 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P), phương trình (P), diện tích, chi phí 
                                             if dang_toan == "[D12_C4_B5_46]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_46()
+
+                                            #[D12_C4_B5_47]-SA-M3. v(t)=at+b. Tính quãng đường đi được từ t1 đến t2.
+                                            if dang_toan == "[D12_C4_B5_47]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_47()
+
+                                            #[D12_C4_B5_48]-SA-M3.  v(t)=at^2+bt+c. Tính quãng đường đi được từ t1 đến t2.
+                                            if dang_toan == "[D12_C4_B5_48]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_48()
+
+                                            #[D12_C4_B5_49]-SA-M3.  a(t)=t. Tính quãng đường đi được từ t1 đến t2.
+                                            if dang_toan == "[D12_C4_B5_49]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_49()
+
+                                            #[D12_C4_B5_50]-SA-M3.  a(t)=mt+n. Tính quãng đường đi được từ t1 đến t2.
+                                            if dang_toan == "[D12_C4_B5_50]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_50()
+
+                                            #[D12_C4_B5_51]-SA-M3.  Hai chất điểm đuổi bắt (A có v(t) bậc 2, B chậm hơn và chuyển động nhanh dần đều)
+                                            if dang_toan == "[D12_C4_B5_51]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_51()
+
+                                            #[D12_C4_B5_52]-SA-M3. Tìm vận tốc khi khí cầu tiếp đất.
+                                            if dang_toan == "[D12_C4_B5_52]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_52()
                                                 
 
                                             ##################################################################
@@ -15586,7 +15720,19 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B4_22]-TL-M3. Giải phương trình log_m(ax+b) - log_m(cx+d) = e
                                             if dang_toan == "[D11_C6_B4_22]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_22()                             
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_22()
+
+                                            #[D11_C6_B4_23]-TF-M2. m^(ax^2+bx+c)=n. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm.
+                                            if dang_toan == "[D11_C6_B4_23]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B4_23()
+
+                                            #[D11_C6_B4_24]-TF-M2. am^2x+bm^x+c=0. Xét Đ-S: Biến đổi PT, nghiệm, tổng tích các nghiệm.
+                                            if dang_toan == "[D11_C6_B4_24]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B4_24()
+
+                                            #[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N.
+                                            if dang_toan == "[D11_C6_B4_25]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_25()                              
                                                 
 
                                 #BÀI 5 - BẤT PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT
@@ -15705,7 +15851,27 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B6_06]-M2. Cho mức tiền lương và tỉ lệ tăng lương. Tính mức lương nhận được sau n năm.
                                             if dang_toan == "[D11_C6_B6_06]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_06()                                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B6_06()
+
+                                            #[D11_C6_B6_07]-TF-M2: Tiền gửi kỳ hạn 1 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi 
+                                            if dang_toan == "[D11_C6_B6_07]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B6_07()
+
+                                            #[D11_C6_B6_08]-TF-M2: Tiền gửi kỳ hạn 3 tháng. Xét Đ-S: Tổng tiền sau n tháng, số tháng để thu được tổng tiền, thu được lãi 
+                                            if dang_toan == "[D11_C6_B6_08]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B6_08()
+
+                                            #[D11_C6_B6_09]-SA-M3: Tiền gửi kỳ hạn 3 tháng. Sau n tháng rút ra rồi gửi thêm tiền. Tính tiền thu được sau n năm. 
+                                            if dang_toan == "[D11_C6_B6_09]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_09()
+
+                                            #[D11_C6_B6_10]-SA-M3: Tìm năm để dân số đạt gấp n lần ban đầu
+                                            if dang_toan == "[D11_C6_B6_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_10()
+
+                                            #[D11_C6_B6_11]-SA-M3: Số vi khuẩn N(x)=Ce^{kx}. Tìm số vi khuẩn sau t giờ
+                                            if dang_toan == "[D11_C6_B6_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_11()                                   
                                                 
 
                                 #Toán 11 - Chương 8 - Quan hệ vuông góc

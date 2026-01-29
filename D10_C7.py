@@ -4,6 +4,13 @@ from sympy import *
 import random
 from fractions import Fraction
 import my_module
+
+def dau_ngoac(a):
+    kq=a
+    if a<0:
+        kq=f"({a})"
+    return kq
+
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
     return int(n * multiplier + 0.5 * (1 if n > 0 else -1)) / multiplier
@@ -440,6 +447,7 @@ def aaa_pry_L10_C7_B1_03():
 		f2=f"$f(x)\\ge 0,\\forall x \\in \\left(-\\infty;{x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"
 		f3= f"$f(x)< 0,\\forall x \\in \\left({x_1};{x_2}\\right)$"
 		f4= f"$f(x)\\le 0,\\forall x \\in \\left[{x_1};{x_2}\\right]$"
+
 		kq= random.choice([f1,f2,f3,f4])
 		kq2= f"$f(x)> 0,\\forall x \\in \\left({x_1};{x_2}\\right)$"
 		kq3= f"$f(x)<0,\\forall x \\in \\left(-\\infty;{x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$"
@@ -449,6 +457,7 @@ def aaa_pry_L10_C7_B1_03():
 		f2=f"$f(x)\\le 0,\\forall x \\in \\left(-\\infty;{x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"
 		f3= f"$f(x)> 0,\\forall x \\in \\left({x_1};{x_2}\\right)$"
 		f4= f"$f(x)\\ge 0,\\forall x \\in \\left[{x_1};{x_2}\\right]$"
+
 		kq= random.choice([f1,f2,f3,f4])
 		kq2= f"$f(x)< 0,\\forall x \\in \\left({x_1};{x_2}\\right)$"
 		kq3= f"$f(x)>0,\\forall x \\in \\left(-\\infty;{x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$"
@@ -814,125 +823,129 @@ def aaa_pry_L10_C7_B1_08():
 
 #[D10_C7_B1_09]-M1. Cho BXD bậc hai luôn âm hoặc luôn dương. Tìm khẳng định đúng về dấu.
 def aaa_pry_L10_C7_B1_09():
-	a = random.choice([random.randint(-4, -1), random.randint(1, 4)])
-	c = random.choice([random.randint(-4, -1), random.randint(1, 4)])
-	if a*c<0:
-		c=-c
-	b=int(sqrt(4*a*c))-random.randint(1,5)
-	x=sp.symbols("x")
-	f=a*x**2+b*x+c
-	if a>0:
-		kq= f"$f(x)>0,\\forall x \\in \\mathbb{{R}}$"
-		kq2= f"$f(x)= 0,\\forall x \\in \\mathbb{{R}}$"
-		kq3= f"$f(x)<0,\\forall x \\in \\mathbb{{R}}$"
-		kq4= f"$f(x)\\le 0,\\forall x \\in \\mathbb{{R}}$"
-	else:
-		kq= f"$f(x)<0,\\forall x \\in \\mathbb{{R}}$"
-		kq2= f"$f(x)>0,\\forall x \\in \\mathbb{{R}}$"
-		kq3= f"$f(x)\\ge 0,\\forall x \\in \\mathbb{{R}}$"
-		kq4= f"$f(x)= 0,\\forall x \\in \\mathbb{{R}}$"
+    while True:
+        a =  random.choice([i for i in range(-5, 6) if i!=0])
+        b =  random.choice([i for i in range(-5, 6) if i!=0])
+        c =  random.choice([i for i in range(-5, 6) if i!=0])
+        delta=b**2-4*a*c
+        if delta<0:
+            break
 
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
-	 #Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+    x=sp.symbols("x")
+    f=a*x**2+b*x+c
+    if a>0:
+    	kq= f"$f(x)>0,\\forall x \\in \\mathbb{{R}}$"
+    	kq2= f"$f(x)= 0,\\forall x \\in \\mathbb{{R}}$"
+    	kq3= f"$f(x)<0,\\forall x \\in \\mathbb{{R}}$"
+    	kq4= f"$f(x)\\le 0,\\forall x \\in \\mathbb{{R}}$"
+    else:
+    	kq= f"$f(x)<0,\\forall x \\in \\mathbb{{R}}$"
+    	kq2= f"$f(x)>0,\\forall x \\in \\mathbb{{R}}$"
+    	kq3= f"$f(x)\\ge 0,\\forall x \\in \\mathbb{{R}}$"
+    	kq4= f"$f(x)= 0,\\forall x \\in \\mathbb{{R}}$"
 
-	code_bxd = my_module.codelatex_bxd_bac2(a,b,c)
-	code = my_module.moi_truong_anh_latex(code_bxd)
-	file_name = my_module.pdftoimage_timename(code)
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+     #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
+
+    code_bxd = my_module.codelatex_bxd_bac2(a,b,c)
+    code = my_module.moi_truong_anh_latex(code_bxd)
+    file_name = my_module.pdftoimage_timename(code)
 
 
-	noi_dung=f"Cho hàm số $f(x)=ax^2+bx+c$ có bảng xét dấu như hình dưới đây. Tìm khẳng định đúng."
+    noi_dung=f"Cho hàm số $f(x)=ax^2+bx+c$ có bảng xét dấu như hình dưới đây. Tìm khẳng định đúng."
 
-	debai= f"{noi_dung}\n\n" \
-			 f"{file_name}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
-	dap_an=my_module.tra_ve_dap_an(list_PA)
-	noi_dung_loigiai=f""
-	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+    debai= f"{noi_dung}\n\n" \
+    		 f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+    noi_dung_loigiai=f""
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	#Tạo đề latex
-	for i in range(4):
-		list_PA[i]=list_PA[i].replace("*","\\True ")    
+    #Tạo đề latex
+    for i in range(4):
+    	list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-		f"\\begin{{center}}\n{code_bxd}\n\\end{{center}}\n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+    	f"\\begin{{center}}\n{code_bxd}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D10_C7_B1_10]-M1. Cho BXD bậc hai có nghiệm kép. Tìm khẳng định đúng về dấu.
 def aaa_pry_L10_C7_B1_10():
-	a = random.choice([random.randint(-3, -1), random.randint(1, 3)])
-	b = random.choice([random.randint(-4, -1), random.randint(1, 4)])
-	c= latex(my_module.hien_phan_so(b**2/(4*a)))
-	dau_c="+"
-	if a<0:
-		dau_c=""
-	x_0=latex(my_module.hien_phan_so(-b/(2*a)))
-	x=sp.symbols("x")	
-	if a>0:
-		kq= random.choice([f"$f(x)\\ge 0,\\forall x \\in \\mathbb{{R}}$", f"$f(x)> 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"])
-		kq2= f"$f(x)> 0,\\forall x \\in \\mathbb{{R}}$"
-		kq3= f"$f(x)<0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
-		kq4= f"$f(x)\\le 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
-	else:
-		kq= random.choice([f"$f(x)\\le 0,\\forall x \\in \\mathbb{{R}}$",f"$f(x)< 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"])
-		kq2= f"$f(x)>0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
-		kq3= f"$f(x)< 0,\\forall x \\in \\mathbb{{R}}$"
-		kq4= f"$f(x)\\ge 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
+    while True:
+        a =  random.choice([i for i in range(-5, 6) if i!=0])
+        b =  random.choice([i for i in range(-5, 6) if i!=0])
+        c =  random.choice([i for i in range(-5, 6) if i!=0])
+        delta=b**2-4*a*c
+        if delta==0:
+            break
+    x_0=latex(my_module.hien_phan_so(-b/(2*a)))
+    x=sp.symbols("x")
+    if a>0:
+    	kq= random.choice([f"$f(x)\\ge 0,\\forall x \\in \\mathbb{{R}}$", f"$f(x)> 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"])
+    	kq2= f"$f(x)> 0,\\forall x \\in \\mathbb{{R}}$"
+    	kq3= f"$f(x)<0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
+    	kq4= f"$f(x)\\le 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
+    else:
+    	kq= random.choice([f"$f(x)\\le 0,\\forall x \\in \\mathbb{{R}}$",f"$f(x)< 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"])
+    	kq2= f"$f(x)>0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
+    	kq3= f"$f(x)< 0,\\forall x \\in \\mathbb{{R}}$"
+    	kq4= f"$f(x)\\ge 0,\\forall x \\in \\mathbb{{R}}\\backslash\\left\\{{{x_0}\\right\\}}$"
 
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)  
-	c= b**2/(4*a)
-
-	code_bxd = my_module.codelatex_bxd_bac2(a,b,c)
-	code = my_module.moi_truong_anh_latex(code_bxd)
-	file_name = my_module.pdftoimage_timename(code)
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)  
 
 
-	noi_dung=f"Cho hàm số $f(x)=ax^2+bx+c$ có bảng xét dấu như hình dưới đây. Tìm khẳng định đúng."
+    code_bxd = my_module.codelatex_bxd_bac2(a,b,c)
+    code = my_module.moi_truong_anh_latex(code_bxd)
+    file_name = my_module.pdftoimage_timename(code)
 
-	debai= f"{noi_dung}\n\n" \
-			 f"{file_name}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
-	dap_an=my_module.tra_ve_dap_an(list_PA)
-	noi_dung_loigiai=f""
-	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	#Tạo đề latex
-	for i in range(4):
-		list_PA[i]=list_PA[i].replace("*","\\True ")    
+    noi_dung=f"Cho hàm số $f(x)=ax^2+bx+c$ có bảng xét dấu như hình dưới đây. Tìm khẳng định đúng."
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-		f"\\begin{{center}}\n{code_bxd}\n\\end{{center}}\n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
+    debai= f"{noi_dung}\n\n" \
+    		 f"{file_name}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+    noi_dung_loigiai=f""
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    #Tạo đề latex
+    for i in range(4):
+    	list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+    	f"\\begin{{center}}\n{code_bxd}\n\\end{{center}}\n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
 
@@ -968,6 +981,7 @@ def aaa_pry_L10_C7_B1_11():
 		f2=f"$f(x)\\ge 0,\\forall x \\in \\left(-\\infty;{x_1}\\right] \\cup \\left[{x_2};+\\infty\\right)$"
 		f3= f"$f(x)< 0,\\forall x \\in \\left({x_1};{x_2}\\right)$"
 		f4= f"$f(x)\\le 0,\\forall x \\in \\left[{x_1};{x_2}\\right]$"
+
 		kq= random.choice([f1,f2,f3,f4])
 		kq2= f"$f(x)> 0,\\forall x \\in \\left({x_1};{x_2}\\right)$"
 		kq3= f"$f(x)<0,\\forall x \\in \\left(-\\infty;{x_1}\\right) \\cup \\left({x_2};+\\infty\\right)$"
@@ -1365,10 +1379,11 @@ def aaa_pry_L10_C7_B1_16():
     x_I= random.choice([i for i in range(-5,10) if i!=0])
     x_1=random.choice([i for i in range(-10,5) if i < x_I])
     x_2= 2*x_I-x_1
-    a=random.choice([i for i in range(-5,5) if i!=0])
-    c= phan_so(a*x_1*x_2)
-    chon =random.randint(1,2)
+    
+    chon =random.randint(1,2)    
     if chon ==1:
+        a=random.randint(1,5)
+        c= phan_so(a*x_1*x_2)
 
         code_hinh =f"\\begin{{tikzpicture}}\n\
                 \\tkzTabInit[nocadre=false, lgt=1, espcl=1.3] \n\
@@ -1390,6 +1405,8 @@ def aaa_pry_L10_C7_B1_16():
 
 
     if chon ==2:
+        a=random.randint(-5,-1)
+        c= phan_so(a*x_1*x_2)
 
         code_hinh =f"\\begin{{tikzpicture}}\n\
                 \\tkzTabInit[nocadre=false, lgt=1, espcl=1.3] \n\
@@ -1401,7 +1418,7 @@ def aaa_pry_L10_C7_B1_16():
         code = my_module.moi_truong_anh_latex(code_hinh)
         file_name=my_module.pdftoimage_timename(code)
 
-        noi_dung = f"Cho hàm số bậc hai $y=f(x)=ax^{{2}}+bx+{c}$. Biết biểu thức ${{f(x)}}$ có bảng xét dầu như hình vẽ. Xét tính đúng-sai của các khẳng định sau. "   
+        noi_dung = f"Cho hàm số bậc hai $y=f(x)=ax^{{2}}+bx+{c}$. Biết biểu thức ${{f(x)}}$ có bảng xét dấu như hình vẽ. Xét tính đúng-sai của các khẳng định sau. "   
         noi_dung=thay_dau_congtru(noi_dung)  
         debai_word= f"{noi_dung}\n"\
                     f"{file_name}"
@@ -1427,7 +1444,7 @@ def aaa_pry_L10_C7_B1_16():
     kq3_T=f"* $a={a}$" 
     kq3_F=f"$a={a+random.randint(1,5)}$ "
     kq3=random.choice([kq3_T, kq3_F])
-    HDG=f"  Ta có $f(x)=a(x-{x_1})(x-{x_2})$ suy ra ${c}= a. {x_1}. {x_2}$ vậy $a={a}$" 
+    HDG=f"  Ta có $f(x)=a(x-{x_1})(x-{x_2})$ suy ra ${c}= a. {dau_ngoac(x_1)}. {dau_ngoac(x_2)}$ vậy $a={a}$" 
     HDG=thay_dau_congtru(HDG)
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
@@ -3598,11 +3615,8 @@ def aaa_pry_L10_C7_B3_06():
         f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f))}-{d}=0$ là"
         )
 
-    noi_dung=noi_dung.replace("--","+")
-    
+    noi_dung=noi_dung.replace("--","+") 
 
-
-    
 
     kq=-b/a
     kq_false = set()
@@ -3747,7 +3761,7 @@ def aaa_pry_L10_C7_B3_08():
         a = random.choice([i for i in range(-8, 8) if i!=0])
         b = random.choice([i for i in range(-8, 8) if i!=0])            
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=1,2*d-a,d**2-b**2        
+        a1,b1,c1=1,2*d-a,d**2-b        
         delta=b1**2-4*a1*c1
         if delta<=0:
             continue
@@ -3829,8 +3843,8 @@ def aaa_pry_L10_C7_B3_09():
         a = random.choice([i for i in range(-8, 8) if i!=0])
         b = random.choice([i for i in range(-8, 8) if i!=0])            
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=1,2*d-a,d**2-b**2        
-        delta=b1**2-4*a1*c1
+        a1,b1,c1=1, 2*d-a, d**2-b        
+        delta = b1**2-4*a1*c1
         if delta<=0:
             continue
         x_1=(-b1-sqrt(delta))/(2*a1)
@@ -3872,7 +3886,8 @@ def aaa_pry_L10_C7_B3_09():
     noi_dung_loigiai=(
     f"${latex(sqrt(f))}={latex(g)} \\Rightarrow {latex(f)}={latex(g**2)} \\Rightarrow {latex(expand(f-g**2))}=0$\n\n"
     f"$\\Rightarrow x={latex(x_1)}, x={latex(x_2)}$.\n\n"
-    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$."
+    f"Thay vào PT đã cho ta được tập nghiệm: $S=\\left\\{{{latex(x_1)};{latex(x_2)} \\right\\}}$.\n\n"
+    f"Tổng các nghiệm bằng ${{{phan_so(kq)}}}$."
     )
 
     pa_A= f"*${{{phan_so(kq)}}}$"
@@ -3913,7 +3928,7 @@ def aaa_pry_L10_C7_B3_10():
         a = random.choice([i for i in range(-8, 8) if i!=0])
         b = random.choice([i for i in range(-8, 8) if i!=0])            
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=1,2*d-a,d**2-b**2        
+        a1,b1,c1=1,2*d-a,d**2-b        
         delta=b1**2-4*a1*c1
         if delta<=0:
             continue
