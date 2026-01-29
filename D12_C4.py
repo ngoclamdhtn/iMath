@@ -3778,7 +3778,7 @@ def ckz_L12C4_B1_54():
         f"$\\int {d_x}=x+C$",
         f"$\\int k{d_x}=kx+C, k \\in \\mathbb{{R}}$",
         f"$\\int x^{{\\alpha}}{d_x}=\\dfrac{{x^{{\\alpha+1}}}}{{\\alpha+1}}$ với $\\alpha \\ne -1$",
-        f"$\\int \\dfrac{{1}}{{x}}=\\ln |x|+C$ với $x\\ne 0$",
+        f"$\\int \\dfrac{{1}}{{x}}{d_x}=\\ln |x|+C$ với $x\\ne 0$",
         f"$\\int f'(x){d_x}=f(x)+C$",
         f"$\\int kf(x){d_x}=k\\int f(x){d_x},(k\\in  \\mathbb{{R}}, k\\ne 0)$",
         f"$\\int {{[f(x)+g(x)]}}{d_x}=\\int f(x){d_x}+\\int g(x){d_x}$",
@@ -3788,7 +3788,7 @@ def ckz_L12C4_B1_54():
     kq_false=[
     f"$\\int 0{d_x}=x+C$",
     f"$\\int x^{{\\alpha}}{d_x}=\\dfrac{{x^{{\\alpha+1}}}}{{\\alpha+1}}$",
-    f"$\\int \\dfrac{{1}}{{x}}=\\ln x+C$",
+    f"$\\int \\dfrac{{1}}{{x}}{d_x}=\\ln x+C$",
     f"Nếu $F(x)$ và $G(x)$ đều là nguyên hàm của hàm số $f(x)$ thì $F(x)=G(x)$",
     f"$\\int f(x){d_x}=f'(x)+C$",
     f"$\\int {{[f(x).g(x)]}}{d_x}= \\int f(x){d_x}. \\int g(x) {d_x}$",
@@ -5969,12 +5969,14 @@ def ckz_L12C4_B4_22():
         x_1=random.randint(-5,2)
         x_2=x_1+random.randint(1,5)
 
-        f_tphan=integrate(f, (x,x_1,x_2))        
-        if f_tphan != 0:
+        f_tphan=integrate(f, (x,x_1,x_2))
+        g_tphan=integrate(g, (x,x_1,x_2))
+        T=random.randint(-10,10)  
+        m0=(T-g_tphan)/f_tphan      
+        if all([-5<m0 <50]):
             break
 
-    g_tphan=integrate(g, (x,x_1,x_2))
-    T=random.randint(-10,10)
+    
 
         
 
@@ -5982,7 +5984,7 @@ def ckz_L12C4_B4_22():
     f"Biết tích phân ${tphan(x_1,x_2)}\\left[m({latex(f)})+{latex(g)}) \\right]{d_x}={T}$."
     f" Giá trị của ${{m}}$ bằng (kết quả làm tròn đến hàng phần mười)"
     )
-    dap_an=f"{round_half_up((T-g_tphan)/f_tphan,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(m0,1):.1f}".replace(".",",")
 
     noi_dung_loigiai=(
     f"${tphan(x_1,x_2)}\\left[m({latex(f)})+{latex(g)}) \\right]{d_x}={T}$\n\n"
@@ -6340,7 +6342,12 @@ def ckz_L12C4_B4_27():
 def ckz_L12C4_B4_28():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    list_goc=[0,pi/6, pi/4, pi/3, 2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 5*pi/4, 5*pi/3, 7*pi/3]
+    chon=random.randint(1,2)
+    if chon==1:
+        list_goc=[0,pi/6, pi/4, pi/3]
+    
+    if chon==2:    
+        list_goc=[2*pi/3, 3*pi/4, 5*pi/6, pi, 2*pi, 5*pi/4,]
     while True:
         x_1= random.choice(list_goc)
         x_2=random.choice([i for i in list_goc  if i != x_1])
@@ -6409,7 +6416,7 @@ def ckz_L12C4_B4_28():
 def ckz_L12C4_B4_29():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    list_goc=[pi/6, pi/4, pi/3, 2*pi/3, 3*pi/4, 5*pi/6, pi/2, 3*pi/2, 5*pi/4, 5*pi/3, 7*pi/3]
+    list_goc=[pi/6, pi/4, pi/3, pi/2,  2*pi/3, 3*pi/4, 5*pi/6]
     while True:
         x_1= random.choice(list_goc)
         x_2=random.choice([i for i in list_goc  if i != x_1])
@@ -7831,7 +7838,7 @@ def ckz_L12C4_B4_44():
     ten=["f(x)", "g(x)", "h(x)"]
 
     f,g=random.sample(ten,2)
-    a=random.randint(-8,3)
+    a= random.choice([i for i in range(-8, 8) if i!=0])
     b=a+random.randint(2,5)
     c=b+random.randint(1,4)
     k= random.choice([i for i in range(-5, 6) if i!=0])
@@ -7840,8 +7847,8 @@ def ckz_L12C4_B4_44():
     debai_word= f"{noi_dung}\n"
     
     kq1_T=random.choice([
-        f"* ${tphan(a,b)}[{f}+{g}]{d_x}={tphan(a,b)}{f}{d_x}+{tphan(a,b)}{g}{d_x}$",
-        f"* ${tphan(a,b)}[{f}-{g}]{d_x}={tphan(a,b)}{f}{d_x}-{tphan(a,b)}{g}{d_x}$" ,
+        f"* ${tphan(a,b)}{{[{f}+{g}]}}{d_x}={tphan(a,b)}{f}{d_x}+{tphan(a,b)}{g}{d_x}$",
+        f"* ${tphan(a,b)}{{[{f}-{g}]}}{d_x}={tphan(a,b)}{f}{d_x}-{tphan(a,b)}{g}{d_x}$" ,
         f"* ${tphan(a,b)}{k}{f}{d_x}={k}{tphan(a,b)}{f}{d_x}$" ,
         f"* ${tphan(a,b)}f'(x){d_x}=f({b})-f({a})$" ,
         f"* ${tphan(a,b)}g'(x){d_x}=g({b})-g({a})$" ,
@@ -7849,7 +7856,7 @@ def ckz_L12C4_B4_44():
         f"* ${tphan(a,c)}{f}{d_x}={tphan(a,b)}{f}{d_x}+{tphan(b,c)}{f}{d_x}$" ,
         ])
     kq1_F=random.choice([
-        f"${tphan(a,b)}[{f}.{g}]{d_x}={tphan(a,b)}{f}{d_x}.{tphan(a,b)}{g}{d_x}$",
+        f"${tphan(a,b)}{{[{f}.{g}]}}{d_x}={tphan(a,b)}{f}{d_x}.{tphan(a,b)}{g}{d_x}$",
         f"${tphan(a,b)}f'(x){d_x}=f({a})+f({b})$" ,
         f"${tphan(a,b)}f'(x){d_x}=f({a})-f({b})$" ,
         f"${tphan(a,c)}{f}{d_x}={tphan(a,b)}{f}{d_x}-{tphan(b,c)}{f}{d_x}$" ,
@@ -7942,9 +7949,9 @@ def ckz_L12C4_B4_44():
     kq= integrate(f, (t,{t_1},{t_2})) 
 
     kq4_T=(f"* Một vật chuyển động với tốc độ $v(t)={latex(f)} ({m_s})$, với thời gian ${{t}}$ tính bằng giây."
-    f" Quãng đường vật đi được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ bằng ${phan_so(kq)}$")
+    f" Quãng đường vật đi được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ bằng ${{{phan_so(kq)}}}$")
     kq4_F=(f"Một vật chuyển động với tốc độ $v(t)={latex(f)} ({m_s})$, với thời gian ${{t}}$ tính bằng giây."
-    f" Quãng đường vật đi được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ bằng ${phan_so(kq+random.randint(1,2))}$")
+    f" Quãng đường vật đi được trong khoảng thời gian từ $t={t_1}$ đến $t={t_2}$ bằng ${{{phan_so(kq+random.randint(1,2))}}}$")
     kq4=random.choice([kq4_T, kq4_F])
     HDG=f"Quãng đường đi được là: $  \\int\\limits_{{{t_1}}}^{{{t_2}}} {{\\left({latex(f)}\\right){d_t}}}={phan_so(kq)}$."  
     loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -8466,9 +8473,7 @@ def ckz_L12C4_B4_51():
 
     # Tạo ngẫu nhiên số nguyên m, n khác nhau trong [-8,8]
     m = random.randint(-8, 8)
-    n = random.randint(-8, 8)
-    while n == m:
-        n = random.randint(-8, 8)
+    n= random.choice([i for i in range(-8, 8) if i!=0 and i!=m])
 
     # I = ∫[f(x)+n cos x]dx = ∫f(x)dx + n∫cos x dx = m + n(sin b - sin a)
     I = sp.simplify(m + n * sp.integrate(sp.cos(x), (x, a, b)))  # = m + n*(sin(b)-sin(a))
@@ -8716,6 +8721,7 @@ def ckz_L12C4_B4_53():
     can_3=latex(sqrt(3))
 
     chon=random.randint(1,5)
+    chon=3
     
     if chon==1:
         # Tính I = ∫_0^{pi/3} (a + bcos x) dx
@@ -12522,10 +12528,10 @@ def ckz_L12C4_B5_37():
         loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 
-    kq3_T=f"* Tích phân ${tphan(x_2,x_4)} f(x)dx$ bằng ${{{phan_so(2*solve2)}}}$" 
-    kq3_F=f" Tích phân ${tphan(x_2,x_4)} f(x)dx$ bằng ${{{phan_so(2*solve2+random.randint(1,2))}}}$"
+    kq3_T=f"* Tích phân ${tphan(x_2,x_4)} f(x)dx$ bằng ${{0}}$" 
+    kq3_F=f" Tích phân ${tphan(x_2,x_4)} f(x)dx$ bằng ${{{random.randint(1,5)}}}$"
     
-    HDG=f"${tphan(x_2,x_4)} f(x)dx = 2.{tphan(x_2,x_3)}f(x)d(x)={phan_so(2*solve2)}$."
+    HDG=f"${tphan(x_2,x_4)} f(x)dx = {tphan(x_2,x_3)}f(x)d(x)+{tphan(x_3,x_4)}f(x)d(x)=0$."
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:

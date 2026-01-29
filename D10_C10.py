@@ -1717,14 +1717,28 @@ def gghik_L10_CX_B0_22():
 	ten=["A","B","C","D","E","M","N","P"]
 	random.shuffle(ten)
 	A,B,C,P=ten[0:4]
-	
-	bo_toa_do=tao_3dinh_tamgiac()
-	a1,a2=bo_toa_do[0]
-	b1,b2=bo_toa_do[1]
-	c1,c2=bo_toa_do[2]
+	while True:
+		bo_toa_do=tao_3dinh_tamgiac()
+		a1,a2=bo_toa_do[0]
+		b1,b2=bo_toa_do[1]
+		c1,c2=bo_toa_do[2]
 
-	t=random.randint(2,4)
-	k=-t/(t+1)
+		t=random.randint(2,4)
+		k=-t/(t+1)
+		x_AB,y_AB=b1-a1,b2-a2
+		x_BA,y_BA=-x_AB,-y_AB
+		x_AC,y_AC=c1-a1,c2-a2
+		x_BC,y_BC=c1-b1,c2-b2
+		x_A,y_A=a1,a2
+		x_B,y_B=b1,b2
+		m=random.randint(2,3)
+		n = random.choice([i for i in range(-3, 3) if i!=0])
+		q = random.choice([i for i in range(-2, 2) if i!=0])
+		a=x_A+q/m*x_AC-n/m*x_AB
+		b=y_A+q/m*y_AC-n/m*y_AB
+		tong=a+b
+		if tong>-5:
+			break
 
 	chon=random.randint(1,3)
 	if chon==1:
@@ -1736,30 +1750,27 @@ def gghik_L10_CX_B0_22():
 	if chon==3:
 		noi_dung =(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho ba điểm ${C}({c1};{c2}), {B}({b1};{b2}), {A}({a1};{a2})$.")
 		
-	x_AB,y_AB=b1-a1,b2-a2
-	x_BA,y_BA=-x_AB,-y_AB
-	x_AC,y_AC=c1-a1,c2-a2
-	x_BC,y_BC=c1-b1,c2-b2
-	x_A,y_A=a1,a2
-	x_B,y_B=b1,b2
+
 
 	vec_AB=f"{vec(f"{A}{B}")}"
 	vec_BA=f"{vec(f"{B}{A}")}"
 	vec_AC=f"{vec(f"{A}{C}")}"
 	vec_BC=f"{vec(f"{B}{C}")}"
 
-	m=random.randint(2,3)
-	n = random.choice([i for i in range(-3, 3) if i!=0])
-	q = random.choice([i for i in range(-2, 2) if i!=0])
+	
 	vec_AP, vec_AB, vec_AC=sp.symbols("vecAP vecAB vecAC")
+	if tong.is_integer():
+		noi_dung+=f" Điểm ${{{P}}}(a;b)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Tính $a+b$."
+		dap_an=int(tong)
+	else:
+		noi_dung+=f" Điểm ${{{P}}}(a;b)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+		dap_an=f"{round(tong,1):.1f}".replace(".",",")
 
-	noi_dung+=f" Điểm ${{{P}}}(a;b)$ thỏa mãn ${latex(m*vec_AP)}+{latex(n*vec_AB)}={latex(q*vec_AC)}$. Tính $a+b$ (kết quả làm tròn đến hàng phần mười)."
+
+		
 	noi_dung=noi_dung.replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C)).replace("-+","-").replace("--","+").replace("+-","-")
 
-	a=x_A+q/m*x_AC-n/m*x_AB
-	b=y_A+q/m*y_AC-n/m*y_AB	
-	dap_an=f"{round(a+b,1):.1f}".replace(".",",")
-
+	
 	noi_dung_loigiai=(
 		f"${vec_AB}=({x_AB};{y_AB}),{vec_AC}=({x_AC};{y_AC})$.\n\n"
 		f"${vec_AP}=(a-{x_A};b-{y_A})$.\n\n"
@@ -1773,7 +1784,7 @@ def gghik_L10_CX_B0_22():
 		a={phan_so(a)} \\\\ \n\
 		b={phan_so(b)} \n\
 		\\end{{array}} \\right.$\n\n"
-		f"Suy ra: $a+b={phan_so(a+b)}={dap_an}$."
+		f"Suy ra: $a+b={dap_an}$."
 	
 	)
 	noi_dung_loigiai=noi_dung_loigiai.replace("-+","-").replace("--","+").replace("+-","-").replace("vecAP",vec2(A,P)).replace("vecAB",vec2(A,B)).replace("vecAC",vec2(A,C))
@@ -9272,30 +9283,40 @@ def gghik_L10_CX_B1_48():
 
 #[D10_CX_B1_49]-SA-M3. Toán thực tế. Xd vị trí phát tín hiệu âm thanh
 def gghik_L10_CX_B1_49():  
-	A, B, C = tao_3dinh_tamgiac()
-	# Lấy giá trị tọa độ các điểm
-	x1, y1 = A
-	x2, y2 = B
-	x3, y3 = C
-	x_A, y_A = A
-	x_B, y_B = B
-	x_C, y_C = C
-	x_M,y_M=(x_C+x_A)/2,(y_C+y_A)/2
-	x_AC,y_AC=x_C-x_A,y_C-y_A
-	x_N,y_N=(x_B+x_A)/2,(y_B+y_A)/2
-	x_AB,y_AB=x_B-x_A,y_B-y_A
-	x,y=sp.symbols("x y")
-	# Khai báo các phương trình
-	eq1 = Eq(x_AB*(x-x_N)+y_AB*(y-y_N), 0)
-	eq2 = Eq(x_AC*(x-x_M)+y_AC*(y-y_M), 0)
+	while True:
+		A, B, C = tao_3dinh_tamgiac()
+		# Lấy giá trị tọa độ các điểm
+		x1, y1 = A
+		x2, y2 = B
+		x3, y3 = C
+		x_A, y_A = A
+		x_B, y_B = B
+		x_C, y_C = C
+		x_M,y_M=(x_C+x_A)/2,(y_C+y_A)/2
+		x_AC,y_AC=x_C-x_A,y_C-y_A
+		x_N,y_N=(x_B+x_A)/2,(y_B+y_A)/2
+		x_AB,y_AB=x_B-x_A,y_B-y_A
+		x,y=sp.symbols("x y")
+		# Khai báo các phương trình
+		eq1 = Eq(x_AB*(x-x_N)+y_AB*(y-y_N), 0)
+		eq2 = Eq(x_AC*(x-x_M)+y_AC*(y-y_M), 0)
 
-	# Giải hệ phương trình
-	solution = solve((eq1, eq2), (x, y))
-	x_I = solution[x]
-	y_I = solution[y]
-	t=x_I+y_I
-	dap_an="{:.1f}".format(t).replace(".", ",")
-	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, một tín hiệu âm thanh phát đi từ một vị trí có toạ độ ${{(a;b)}}$ và được ba thiết bị ghi tín hiệu đặt tại ba vị trí $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$ nhận được cùng một thời điểm. Tính ${{a+b}}$. (Kết quả làm tròn đến hàng phần mười)"
+		# Giải hệ phương trình
+		solution = solve((eq1, eq2), (x, y))
+		x_I = solution[x]
+		y_I = solution[y]
+		t=float(x_I+y_I)
+		if t>-5:
+			break
+			
+	if t.is_integer():
+		noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, một tín hiệu âm thanh phát đi từ một vị trí có toạ độ ${{(a;b)}}$ và được ba thiết bị ghi tín hiệu đặt tại ba vị trí $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$ nhận được cùng một thời điểm. Tính ${{a+b}}$."
+		dap_an=int(t)
+	else:
+		noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, một tín hiệu âm thanh phát đi từ một vị trí có toạ độ ${{(a;b)}}$ và được ba thiết bị ghi tín hiệu đặt tại ba vị trí $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$ nhận được cùng một thời điểm. Tính ${{a+b}}$ (kết quả làm tròn đến hàng phần mười)."
+
+		dap_an=f"{round_half_up(t,1):.1f}".replace(".",",")
+	
 	noi_dung_loigiai=(f"Gọi ${{I}}$ là điểm thoả mãn yêu cầu bài toán thì ${{IA=IB=IC}}$ nên ${{I}}$ là giao của các đường trung trực \n\n"
 		f"Phương trình đường trung trực của đoạn thẳng ${{AB}}$ là ${{{latex(nsimplify(expand(x_AB*(x-x_N)+y_AB*(y-y_N))))}=0}}$ (1) \n\n"
 	    f"Phương trình đường trung trực của đoạn thẳng ${{AC}}$ là ${{{latex(nsimplify(expand(x_AC*(x-x_M)+y_AC*(y-y_M))))}=0}}$ (2)\n\n"

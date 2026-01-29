@@ -2222,286 +2222,266 @@ def aaa_pry_L10_C7_B2_04():
 
 #[D10_C7_B2_05]-M3. Tìm m để ax^2 +bx+c>0 (<0)  với mọi x.
 def aaa_pry_L10_C7_B2_05(): 
-	x=sp.symbols("x")
-	m=sp.symbols("m")
+    x=sp.symbols("x")
+    m=sp.symbols("m")
+    a=random.randint(1,4)
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(-5,-1)
+    d = random.choice([i for i in range(-6, 7) if i!=0])
 
-	a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	a1=xu_li_heso_1(a)
-	b=random.randint(-5, 5)	
-	c= random.randint(-5, 5)
-	a_m = random.choice([random.randint(-5, -1), random.randint(1, 6)])
+    f=f"{latex(a*x**2+b*x)}+{latex(c*m+d)}"
+    f_am=f"{latex(-a*x**2-b*x)}+{latex(-c*m-d)}"
 
-	#Tạo dấu bất phương trình 
-	if a>0:
-		dau=">0"
-	else:
-		dau="<0"
+    m_0=(4*a*d-b**2)/(-4*a*c)
 
-	f=f"{a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau}"
+    kq=f"$m<{phan_so(m_0)}$"
+    kq_false=[
+    f"$m\\ge {phan_so(m_0)}$",
+    f"$m > {phan_so(m_0)}$",
+    f"$\\forall m\\in \\mathbb{{R}}$",    
+    f"$m\\le {phan_so(m_0)}$",
+    f"$m\\ne {phan_so(m_0)}$",
+    ]
+    noi_dung=random.choice([
+        f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f}>0$ nghiệm đúng với mọi $x\\in \\mathbb{{R}}$.",
+        f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f_am}<0$ nghiệm đúng với mọi $x\\in \\mathbb{{R}}$." ])
+    
+    noi_dung=thay_dau_congtru(noi_dung)
 
-	delta= (m+b)**2-4*a*(a_m*m+c)
-
-	delta= expand((m+b)**2-4*a*(a_m*m+c))
-
-	a1_m, b1_m, c1_m =delta.coeff(m**2), delta.coeff(m), b**2-4*a*c
-	kq=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<0","m")
-	kq2=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<=0","m")
-	kq3=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">0","m")
-	kq4=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">=0","m")
+    noi_dung_loigiai=(
+            f"${f}>0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta <0$\n\n"
+            f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})<0 \\Rightarrow$ {kq}." )
+    kq2,kq3,kq4=random.sample(kq_false,3)
 			
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
 
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)
-	dap_an=my_module.tra_ve_dap_an(list_PA)   
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
 
-	noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f}$ nghiệm đúng với mọi $x\\in \\mathbb{{R}}$."
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
 
-	debai= f"{noi_dung}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+   
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	tich_4a=show_tich(4,a)
+    #Tạo đề latex
 
-	noi_dung_loigiai=f"Ta có: $\\Delta ={latex((m+b)**2)}-{tich_4a}.({latex(a_m*m+c)})={latex(delta)}$.\n\n"\
-			f"${f}$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta <0$\n\n"\
-			f"$\\Rightarrow {latex(delta)} <0 \\Rightarrow$ {kq}."    
-	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	#Tạo đề latex
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
 
-	for i in range(4):
-	    list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
-
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D10_C7_B2_06]-M3. Tìm m để ax^2 +bx+c>=0 (<=0)  với mọi x.
 def aaa_pry_L10_C7_B2_06(): 
-	x=sp.symbols("x")
-	m=sp.symbols("m")
+    x=sp.symbols("x")
+    m=sp.symbols("m")
+    a=random.randint(1,4)
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(-5,-1)
+    d = random.choice([i for i in range(-6, 7) if i!=0])
+    f=f"{latex(a*x**2+b*x)}+{latex(c*m+d)}"
+    f_am=f"{latex(-a*x**2-b*x)}+{latex(-c*m-d)}"
 
-	a =  random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	a1=xu_li_heso_1(a)
-	b=random.randint(-5, 5)	
-	c= random.randint(-5, 5)
-	a_m = random.choice([random.randint(-5, -1), random.randint(1, 6)])
+    m_0=(4*a*d-b**2)/(-4*a*c)
 
-	#Tạo dấu bất phương trình 
-	if a>0:
-		dau="\\ge 0"
-	else:
-		dau="\\le 0"
+    kq=f"$m\\le {phan_so(m_0)}$"
+    kq_false=[
+    f"$m\\ge {phan_so(m_0)}$",
+    f"$\\forall m\\in \\mathbb{{R}}$",
+    f"$m > {phan_so(m_0)}$",
+    f"$m < {phan_so(m_0)}$",
+    f"$m \\ge {phan_so(m_0)}$",
+    f"$m \\ne {phan_so(m_0)}$",
+    ]
+    
+    kq2,kq3,kq4=random.sample(kq_false,3)
+            
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
 
-	f=f"{a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau}"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)   
 
-	delta= (m+b)**2-4*a*(a_m*m+c)
+    noi_dung=random.choice([
+        f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f}\\ge 0$ nghiệm đúng với mọi $x\\in \\mathbb{{R}}$.",
+        f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f_am}\\le 0$ nghiệm đúng với mọi $x\\in \\mathbb{{R}}$." ])
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=(
+            f"${f} \\ge 0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta \\le 0$\n\n"
+            f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})\\le 0 \\Rightarrow$ {kq}." )
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
-	delta= expand((m+b)**2-4*a*(a_m*m+c))
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"     
 
-	a1_m, b1_m, c1_m =delta.coeff(m**2), delta.coeff(m), b**2-4*a*c
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
-	kq=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<=0","m")
-	kq2=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">=0","m")
-	kq3=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">0","m")
-	kq4=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<0","m")
-			
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
+    #Tạo đề latex
 
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)
-	dap_an=my_module.tra_ve_dap_an(list_PA)   
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f}$ với mọi $x\\in \\mathbb{{R}}$."
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
 
-	debai= f"{noi_dung}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-	tich_4a=show_tich(4,a)
-
-	noi_dung_loigiai=f"Ta có: $\\Delta ={latex((m+b)**2)}-{tich_4a}.({latex(a_m*m+c)})={latex(delta)}$.\n\n"\
-				f"${f}$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta \\le 0$\n\n"\
-				f"$\\Rightarrow {latex(delta)} \\le 0 \\Rightarrow$ {kq}."    
-	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
-
-	#Tạo đề latex
-
-	for i in range(4):
-	    list_PA[i]=list_PA[i].replace("*","\\True ")    
-
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
-
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
-
-#[D10_C7_B2_07]-M3. Tìm m để ax^2 +bx+c>=0 (<=0) vô nghiệm.
+#[D10_C7_B2_07]-M3. Tìm m để ax^2 +bx+c>0 (<0) vô nghiệm.
 def aaa_pry_L10_C7_B2_07(): 
-	x=sp.symbols("x")
-	m=sp.symbols("m")
+    x=sp.symbols("x")
+    m=sp.symbols("m")
+    a=random.randint(1,4)
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(-5,-1)
+    d = random.choice([i for i in range(-6, 7) if i!=0])
 
-	a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	a1=xu_li_heso_1(a)
-	b=random.randint(-5, 5)	
-	c= random.randint(-5, 5)
-	a_m = random.choice([random.randint(-5, -1), random.randint(1, 6)])
+    f=f"{latex(a*x**2+b*x)}+{latex(c*m+d)}"
+    f_am=f"{latex(-a*x**2-b*x)}+{latex(-c*m-d)}"
 
-	delta= (m+b)**2-4*a*(a_m*m+c)
-	delta= expand((m+b)**2-4*a*(a_m*m+c))
-	a1_m, b1_m, c1_m =delta.coeff(m**2), delta.coeff(m), b**2-4*a*c
+    m_0=(4*a*d-b**2)/(-4*a*c)
 
-	#Tạo dấu bất phương trình 
-	if a>0:
-		dau="\\le 0"
-		dau_nguoc=">"
-		f=f"{a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau}"
-			
-	else:
-		dau="\\ge 0"
-		dau_nguoc="<"
-		f=f"{a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau}"
-		tich_4a=show_tich(4,a)
+    kq=f"$m<{phan_so(m_0)}$"
+    kq_false=[
+    f"$m\\ge {phan_so(m_0)}$",
+    f"$m > {phan_so(m_0)}$",
+    f"$\\forall m\\in \\mathbb{{R}}$",    
+    f"$m\\le {phan_so(m_0)}$",
+    f"$m\\ne {phan_so(m_0)}$",
+    ]
+    noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f_am}<0$ vô nghiệm."
 
-	kq=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<0","m")
-	kq2=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<=0","m")
-	kq3=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">0","m")
-	kq4=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">=0","m")
-	
-			
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
+    noi_dung=thay_dau_congtru(noi_dung)
 
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)
-	dap_an=my_module.tra_ve_dap_an(list_PA)
+    noi_dung_loigiai=(
+            f"Bài toán trở thành:\n\n"
+            f"${f}>0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta <0$\n\n"
+            f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})<0 \\Rightarrow$ {kq}." )
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+    kq2,kq3,kq4=random.sample(kq_false,3)
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
 
-	noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f}$ vô nghiệm."
-	tich_4a=show_tich(4,a)
-	noi_dung_loigiai=f"${f}$ vô nghiệm $\\Leftrightarrow {a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau_nguoc}0, \\forall x \\in \\mathbb{{R}}$.\n\n"\
-			f"Ta có: $\\Delta ={latex((m+b)**2)}-{tich_4a}.({latex(a_m*m+c)})={latex(delta)}$.\n\n"\
-			f"${a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau_nguoc}0, \\forall x \\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta <0$\n\n"\
-			f"$\\Leftrightarrow {latex(delta)} <0 \\Leftrightarrow$ {kq}."
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
 
-	debai= f"{noi_dung}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
 
-	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
     #Tạo đề latex
 
-	for i in range(4):
-	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_C7_B2_08]-M3. Tìm m để ax^2 +bx+c>0 (<0) vô nghiệm.
+#[D10_C7_B2_08]-M3. Tìm m để ax^2 +bx+c>=0 (<=0) vô nghiệm.
 def aaa_pry_L10_C7_B2_08(): 
-	x=sp.symbols("x")
-	m=sp.symbols("m")
+    x=sp.symbols("x")
+    m=sp.symbols("m")
+    a=random.randint(1,4)
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c=random.randint(-5,-1)
+    d = random.choice([i for i in range(-6, 7) if i!=0])
+    f=f"{latex(a*x**2+b*x)}+{latex(c*m+d)}"
+    f_am=f"{latex(-a*x**2-b*x)}+{latex(-c*m-d)}"
 
-	a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	a1=xu_li_heso_1(a)
-	b=random.randint(-5, 5)	
-	c= random.randint(-5, 5)
-	a_m = random.choice([random.randint(-5, -1), random.randint(1, 6)])
+    m_0=(4*a*d-b**2)/(-4*a*c)
 
-	delta= (m+b)**2-4*a*(a_m*m+c)
-	delta= expand((m+b)**2-4*a*(a_m*m+c))
-	a1_m, b1_m, c1_m =delta.coeff(m**2), delta.coeff(m), b**2-4*a*c
+    kq=f"$m\\le {phan_so(m_0)}$"
+    kq_false=[
+    f"$m\\ge {phan_so(m_0)}$",
+    f"$\\forall m\\in \\mathbb{{R}}$",
+    f"$m > {phan_so(m_0)}$",
+    f"$m < {phan_so(m_0)}$",
+    f"$m \\ge {phan_so(m_0)}$",
+    f"$m \\ne {phan_so(m_0)}$",
+    ]
+    
+    kq2,kq3,kq4=random.sample(kq_false,3)
+            
+    #Tạo các phương án
+    pa_A= f"*{kq}"
+    pa_B= f"{kq2}"
+    pa_C= f"{kq3}"
+    pa_D= f"{kq4}"
 
-	#Tạo dấu bất phương trình 
-	if a>0:
-		dau="<0"
-		dau_nguoc="\\ge "
-		f=f"{a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau}"
-			
-	else:
-		dau=">0"
-		dau_nguoc="\\le "
-		f=f"{a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau}"
-		tich_4a=show_tich(4,a)
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)   
 
-	kq=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<=0","m")
-	kq2=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,"<0","m")
-	kq3=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">0","m")
-	kq4=my_module.solve_bpt_bac2(a1_m,b1_m,c1_m,">=0","m")
-	
-			
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
+    noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f_am}\\le 0$ vô nghiệm." 
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=(
+        f"Bài toán trở thành:\n\n"
+            f"${f} \\ge 0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta \\le 0$\n\n"
+            f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})\\le 0 \\Rightarrow$ {kq}." )
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)
-	dap_an=my_module.tra_ve_dap_an(list_PA)
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
 
-	noi_dung=f"Tìm tất cả các giá trị của m để bất phương trình ${f}$ vô nghiệm."
-	tich_4a=show_tich(4,a)
-	noi_dung_loigiai=f"${f}$ vô nghiệm $\\Leftrightarrow {a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau_nguoc}0, \\forall x \\in \\mathbb{{R}}$.\n\n"\
-			f"Ta có: $\\Delta ={latex((m+b)**2)}-{tich_4a}.({latex(a_m*m+c)})={latex(delta)}$.\n\n"\
-			f"${a1}x^2 + ({latex(m+b)})x + ({latex(a_m*m+c)}) {dau_nguoc}0, \\forall x \\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta \\le 0$\n\n"\
-			f"$\\Leftrightarrow {latex(delta)} \\le 0 \\Leftrightarrow$ {kq}."
-
-	debai= f"{noi_dung}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
-	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+    loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
     #Tạo đề latex
 
-	for i in range(4):
-	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n"
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n"
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n"
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n"
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D10_C7_B2_09]-M2. Tìm tập xác định hàm số y=căn(ax^2+bx+c)
 def aaa_pry_L10_C7_B2_09(): 

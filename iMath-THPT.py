@@ -314,7 +314,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 21.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 30.01.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -925,7 +925,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 21.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 30.01.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -3172,11 +3172,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_07]-M3. Tìm m để ax^2 + bx + c >=0 (<=0) vô nghiệm."])
+                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_07]-M3. Tìm m để ax^2 + bx + c >0 (<0) vô nghiệm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_08]-M3. Tìm m để ax^2 + bx + c >0 (<0) vô nghiệm."])
+                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_08]-M3. Tìm m để ax^2 + bx + c >=0 (<=0) vô nghiệm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
