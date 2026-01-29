@@ -15,7 +15,9 @@ import os, shutil,re, sys, subprocess, glob
 from PyPDF2 import PdfMerger
 from docx import Document
 from docx.shared import Pt
+from docx.shared import Inches
 from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from datetime import datetime
 import requests, webbrowser
 from bs4 import BeautifulSoup
@@ -24,6 +26,7 @@ import hashlib, winreg, psutil, subprocess, base64, glob
 import qrcode
 from cryptography.fernet import Fernet
 from datetime import datetime
+from PIL import Image
 
 class ShowMessageBox(QMessageBox):
     def __init__(self,icon, title, text):
@@ -870,6 +873,18 @@ class Ui_MainWindow(object):
                 self.combo_taode.addItem("Tạo đề Word - MathType")
                 self.combo_taode.addItem("Tạo đề Latex - PDF")
                 self.combo_taode.addItem("Tạo code Latex")
+
+                #Nút Phiếu tô
+                self.combo_phieuto = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
+                self.combo_phieuto.setGeometry(QtCore.QRect(le_trai+20, le_top-20, 160, 30))
+                self.combo_phieuto.setFont(font_10)
+                self.combo_phieuto.setObjectName("combo_taode")
+                self.combo_phieuto.addItem("Chèn phiếu tô")
+                self.combo_phieuto.addItem("Phiếu TN Maker - 3 số")
+                self.combo_phieuto.addItem("Phiếu TN Maker - 4 số")
+                self.combo_phieuto.addItem("Phiếu QM - 3 số")
+                self.combo_phieuto.addItem("Phiếu QM - 4 số")
+                self.combo_phieuto.addItem("Phiếu UNT - 3 số")
 
                 #Nút tạo đề word
                 self.combo_made = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
@@ -19802,7 +19817,24 @@ class Ui_MainWindow(object):
                                     a_shuffled, b_shuffled, TL_shuffled = zip(*combined)
                                     list_tuluan = list(a_shuffled)
                                     list_tuluan_HDG = list(b_shuffled)
-                                    list_dapan_TL=list(TL_shuffled)                          
+                                    list_dapan_TL=list(TL_shuffled)
+
+                            #Tạo biến phieu_to
+                            if self.combo_phieuto.currentText() == "Chèn phiếu tô":
+                                phieu_to=""
+                            if self.combo_phieuto.currentText() == "Phiếu TN Maker - 3 số":
+                                phieu_to="Phieu TN-3.PNG"
+                            if self.combo_phieuto.currentText() == "Phiếu TN Maker - 4 số":
+                                phieu_to="Phieu TN-4.JPG"
+                            if self.combo_phieuto.currentText() == "Phiếu QM - 3 số":
+                                phieu_to="Phieu QM-3.JPG"
+                            if self.combo_phieuto.currentText() == "Phiếu QM - 4 số":
+                                phieu_to="Phieu QM-4.JPG"
+                            if self.combo_phieuto.currentText() == "Phiếu UNT - 3 số":
+                                phieu_to="Phieu UNT-3.JPG"
+
+
+                            # Xuất đề                         
  
                                                                           
                             if self.combo_taode.currentText() == "Tạo đề Word - Equation":
@@ -19886,7 +19918,7 @@ class Ui_MainWindow(object):
                                 list_noi_dung=list_noi_dung.replace(f"\n",f"\n\n")
                                 list_noi_dung_HDG=list_noi_dung_HDG.replace(f"\n",f"\n\n")
 
-                                self.export_msword(name_thu_muc, name_de, list_noi_dung, list_noi_dung_HDG)                                    
+                                self.export_msword(name_thu_muc, name_de, list_noi_dung, list_noi_dung_HDG, phieu_to)                                    
                                 
 
                             if self.combo_taode.currentText() == "Tạo đề Word - MathType":
@@ -19969,7 +20001,7 @@ class Ui_MainWindow(object):
                                 list_tonghop_HDG+=f"{list_noi_dung_HDG}"
                                 self.text_taode.append(list_noi_dung)
                                 self.text_taode_HDG.append(list_noi_dung_HDG)                                    
-                                self.export_msword_latex(name_thu_muc, name_de)
+                                self.export_msword_latex(name_thu_muc, name_de, phieu_to)
 
                             if self.combo_taode.currentText() == "Tạo đề Latex - PDF":
                                 if len(list_tracnghiem)>0:
@@ -20185,9 +20217,9 @@ class Ui_MainWindow(object):
                                 ws.cell(row=r, column=c, value=val)
 
                         # Lưu file
-                        wb.save(f"{name_thu_muc}\\Dap_an_excel_QM_Chamthi.xlsx")    
+                        wb.save(f"{name_thu_muc}\\Dap_an_excel_QM_Chamthi.xlsx")
 
-
+                        
 
                         #Mở thư mục chứa file
                         if self.combo_taode.currentText() == "Tạo đề Latex - PDF":                           
@@ -20227,11 +20259,8 @@ class Ui_MainWindow(object):
                             subprocess.Popen(['explorer', name_thu_muc])
 
                         if self.combo_taode.currentText() in ["Tạo đề Word - Equation", "Tạo đề Word - MathType"]:                                
-                            self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)                   
-                           
-                            # current_directory = os.path.dirname(os.path.abspath(__file__))
-                            # doc_folder_path = os.path.join(current_directory, 'DOC')
-                            # new_folder_path = os.path.join(doc_folder_path, name_thu_muc)
+                            self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)                
+     
                             name_thu_muc=name_thu_muc.replace("/","\\")
                             subprocess.Popen(['explorer', name_thu_muc])
 
@@ -20239,6 +20268,9 @@ class Ui_MainWindow(object):
                             self.text_taode.clear()
                             self.text_taode.append(list_tonghop)
                             pyperclip.copy(list_tonghop)
+
+                        
+
 
                         try:
                             # Tạo đối tượng QRCode
@@ -20305,8 +20337,9 @@ class Ui_MainWindow(object):
                 show_msg_box.exec_()
                 return
 
+
         #Xuất file word đề đã được tạo
-        def export_msword(self, name_thu_muc, name_de, list_noi_dung, list_noi_dung_HDG):
+        def export_msword(self, name_thu_muc, name_de, list_noi_dung, list_noi_dung_HDG, phieu_to):
                 try:                                 
                                         
                     new_folder_path =  name_thu_muc 
@@ -20338,7 +20371,35 @@ class Ui_MainWindow(object):
                     folder_hinh = my_module.get_folder_hinh()
                     file_path = os.path.join(new_folder_path, f'De_{name_de}.docx')             
                     doc = Document(file_path)
-                    my_module.find_and_insert_image(doc)               
+                    my_module.find_and_insert_image(doc)
+
+                    #Chèn phiếu tô   
+                    if phieu_to != "":                 
+                        current_directory = os.path.dirname(os.path.abspath(__file__))
+                        phieu_folder_path = os.path.join(current_directory, 'PHIEU TO')
+                        phieuto_path=os.path.join(phieu_folder_path,phieu_to)
+                        
+                        empty_paragraph = doc.paragraphs[1].insert_paragraph_before()               
+                        run = doc.paragraphs[1].add_run()
+
+                        if phieu_to=="Phieu TN-3.PNG":
+                            run.add_picture(phieuto_path, width=Inches(6.5),height=Inches(4.57))
+
+                        if phieu_to=="Phieu TN-4.JPG":
+                            run.add_picture(phieuto_path, width=Inches(6.19),height=Inches(9))
+
+                        if phieu_to=="Phieu QM-3.JPG":
+                            run.add_picture(phieuto_path, width=Inches(6.49),height=Inches(3.49))
+
+                        if phieu_to=="Phieu QM-4.JPG":
+                            run.add_picture(phieuto_path, width=Inches(6.36),height=Inches(9))
+
+                        if phieu_to=="Phieu UNT-3.JPG":
+                            run.add_picture(phieuto_path, width=Inches(6.49),height=Inches(4.59))
+
+                        doc.paragraphs[1].alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+                        doc.paragraphs[2].text ="" 
+
                     doc.save(file_path)
                     
                     file_path = os.path.join(new_folder_path, f'De_{name_de}_loigiai.docx')             
@@ -20346,6 +20407,9 @@ class Ui_MainWindow(object):
                     
                     my_module.find_and_insert_image(doc)               
                     doc.save(file_path)
+
+
+              
 
                     name_matran=f"{new_folder_path}\\Matran.xlsx"
                     self.save_matran(name_matran)
@@ -20360,7 +20424,7 @@ class Ui_MainWindow(object):
                 return
 
         #Xuất file word đề đã được tạo
-        def export_msword_latex(self, name_thu_muc, name_de):
+        def export_msword_latex(self, name_thu_muc, name_de, phieu_to):
             try:
                 #Tạo thư mục với tên là name,
                 current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -20406,6 +20470,33 @@ class Ui_MainWindow(object):
                 doc = Document(file_path)
                 my_module.find_and_insert_image(doc)
 
+                #Chèn phiếu tô   
+                if phieu_to != "":                 
+                    current_directory = os.path.dirname(os.path.abspath(__file__))
+                    phieu_folder_path = os.path.join(current_directory, 'PHIEU TO')
+                    phieuto_path=os.path.join(phieu_folder_path,phieu_to)
+                    
+                    empty_paragraph = doc.paragraphs[1].insert_paragraph_before()               
+                    run = doc.paragraphs[1].add_run()
+
+                    if phieu_to=="Phieu TN-3.PNG":
+                        run.add_picture(phieuto_path, width=Inches(6.5),height=Inches(4.57))
+
+                    if phieu_to=="Phieu TN-4.JPG":
+                        run.add_picture(phieuto_path, width=Inches(6.19),height=Inches(9))
+
+                    if phieu_to=="Phieu QM-3.JPG":
+                        run.add_picture(phieuto_path, width=Inches(6.49),height=Inches(3.49))
+
+                    if phieu_to=="Phieu QM-4.JPG":
+                        run.add_picture(phieuto_path, width=Inches(6.36),height=Inches(9))
+
+                    if phieu_to=="Phieu UNT-3.JPG":
+                        run.add_picture(phieuto_path, width=Inches(6.49),height=Inches(4.59))
+
+                    doc.paragraphs[1].alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+                    doc.paragraphs[2].text ="" 
+
                 
                 doc.save(file_path)
                 #Xuất file lời giải
@@ -20430,7 +20521,7 @@ class Ui_MainWindow(object):
                 noidung = self.text_taode_HDG.toPlainText()        
                 paragraphs = noidung.split('\n')
                 for paragraph in paragraphs:
-                    doc.add_paragraph(paragraph)                          
+                    doc.add_paragraph(paragraph)                        
 
                 file_path = os.path.join(new_folder_path , f"De_{name_de}_loigiai.docx")
                 doc.save(file_path)

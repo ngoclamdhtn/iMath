@@ -770,9 +770,7 @@ def find_and_insert_image(doc):
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(1))
 
                     if chieu_rong =="8.62":
-                        run.add_picture(image_path, width=Inches(3.0),height=Inches(1))
-
-                    
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(1))                   
                     
                         
                     # Căn giữa đoạn văn chứa hình ảnh

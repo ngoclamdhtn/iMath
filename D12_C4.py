@@ -13911,8 +13911,8 @@ def ckz_L12C4_B5_52():
         f"Tại một nơi không có gió, một chiếc khí cầu đang đứng yên ở độ cao {h} mét "
         f"so với mặt đất đã được phi công cài đặt cho nó một chế độ chuyển động đi xuống. "
         f"Biết rằng khí cầu chuyển động theo phương thẳng đứng với vận tốc "
-        f"$v(t)={a}t-{b}t^2$ (m/phút), trong đó $t$ (phút) là thời gian tính từ lúc bắt đầu chuyển động."
-        f" Tính vận tốc $v$ của khí cầu khi bắt đầu tiếp đất."
+        f"$v(t)={a}t-{b}t^2$ (m/phút), trong đó ${{t}}$ (phút) là thời gian tính từ lúc bắt đầu chuyển động."
+        f" Tính vận tốc của khí cầu khi bắt đầu tiếp đất."
     )
 
     noi_dung_loigiai = (
@@ -13925,8 +13925,8 @@ def ckz_L12C4_B5_52():
         f"$\\left(\\dfrac{{{a}}}{{2}}t^2-\\dfrac{{{b}}}{{3}}t^3\\right)\\Bigg|_0^T={h}"
         f"\\Rightarrow T={T}.$\n\n"
         f"Khi đó vận tốc tại thời điểm tiếp đất là:\n\n"
-        f"$v(T)={a}\\cdot {T}-{b}\\cdot {T}^2={v_T}\\, (\\text{{m/phút}}).$\n\n"
-        f"Vậy vận tốc của khí cầu khi bắt đầu tiếp đất là {v_T} m/phút."
+        f"$v(T)={a}\\cdot {T}-{b}\\cdot {T}^2={v_T}$ (m/phút)."
+
     )
 
     debai_word = f"{noi_dung}\n"
