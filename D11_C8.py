@@ -6539,6 +6539,50 @@ def uvxy9_L11_C8_B4_21():
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
+#[D11_C8_B4_22]-SA-M4. H.chóp S.ABCD, đáy h.vuông, có AB, SA. Tính d(A,(SBC)) hoặc d(A,(SCD)) 
+def uvxy9_L11_C8_B4_22():
+	a=random.randint(1,7)
+	h=random.choice([sqrt(random.randint(2,9))])
+	can_3=latex(sqrt(3))
+	OD=a*sqrt(3)/2
+	HD=2*a*sqrt(3)/3
+	SD=sqrt(h**2+HD**2)
+	OK=h*OD/SD
+	dap_an=f"{round_half_up(OK,2):.2f}".replace(".",",")
+
+	noi_dung = (
+		f"Cho hình chóp ${{S.ABCD}}$ có đáy ${{ABCD}}$ là hình thoi với $\\widehat{{ABC}}=60^\\circ$ và $AB={a}$. "
+		f"Biết rằng hình chiếu vuông góc của ${{S}}$ trên mặt phẳng $(ABCD)$ là trọng tâm ${{H}}$ của tam giác ${{ABC}}$ và $SH={latex(h)}$. "
+		f"Khoảng cách giữa hai đường thẳng ${{AC}}$ và ${{SD}}$ bằng bao nhiêu "
+		f"(không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm)?"
+	)
+
+	noi_dung_loigiai = (
+		f"$AC\\bot BD, AC\\bot SH \\Rightarrow AC \\bot (SBD)$.\n\n"
+		f"Kẻ $OK\\bot SD \\Rightarrow OK \\bot AC \\Rightarrow d(AC,SD)=OK$.\n\n"
+		f"$SH={h},OD=OB=\\dfrac{{{a}{can_3}}}{{2}}={latex(OD)}$.\n\n"
+		f"$HD=OD+OH={latex(OD)}+{phan_so(1/3)}{latex(OD)}={latex(HD)}$.\n\n"
+		f"$SD=\\sqrt{{SH^2+HD^2}}=\\sqrt{{{h**2}+{latex(HD**2)}}}={latex(SD)}$.\n\n"
+		f"$\\sin \\widehat{{SDH}}=\\dfrac{{OK}}{{OD}}=\\dfrac{{SH}}{{HD}}$\n\n"
+		f" $\\Rightarrow OK= \\dfrac{{SH.OD}}{{SD}}$ "
+		f" $=\\dfrac{{{latex(h)}.{latex(OD)}}}{{{latex(SD)}}}={latex(OK)}={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 #BÀI 5 - GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG
 
