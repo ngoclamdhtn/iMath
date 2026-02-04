@@ -3610,6 +3610,128 @@ z = {show_ptts(z_1,c)}\
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
+#[D12_C5_B1_38]-SA-M3. Sân vận động hình chóp cụt. Tính K.c từ điểm G đến (OBED)
+def htd_25_xyz_L12_C5_B1_38():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x")  # giữ cấu trúc
+
+    ten = random.choice([
+        "Lam", "Minh", "Hùng", "An", "Vinh",
+        "Tuấn", "Nam", "Hải", "Quân", "Phúc"
+    ])
+
+    # ----------------- SINH DỮ LIỆU -----------------
+    # Mặt sân OAGD là hình chữ nhật nằm trên (Oxy): O(0,0,0), A(L,0,0), D(0,W,0), G(L,W,0)
+    L = random.choice([80, 90, 100, 110, 120])
+    W = random.choice([50, 60, 70, 75])
+
+    # Chọn B(ux,uy,uz) với uz>0; để "hình chóp cụt" (thực chất mô hình hai đáy song song),
+    # ta lấy các điểm tương ứng trên đáy trên bằng cách tịnh tiến theo vectơ OB:
+    # B = O + u, C = A + u, F = G + u, E = D + u.
+    ux = random.randint(5, 25)
+    uy = random.randint(5, 25)
+    uz = random.choice([6, 8, 10, 12, 14])
+
+    # đảm bảo B nằm "phía trong" theo hình dung (không bắt buộc nhưng hợp lý)
+    if ux >= L:
+        ux = max(5, L // 4)
+    if uy >= W:
+        uy = max(5, W // 4)
+
+    # ----------------- TOẠ ĐỘ CÁC ĐIỂM -----------------
+    O = sp.Matrix([0, 0, 0])
+    A = sp.Matrix([L, 0, 0])
+    D = sp.Matrix([0, W, 0])
+    G = sp.Matrix([L, W, 0])
+
+    u = sp.Matrix([ux, uy, uz])   # vectơ tịnh tiến OB
+    B = O + u
+    E = D + u  # điểm tương ứng với D
+
+    # ----------------- MẶT PHẲNG (OBED) -----------------
+    # Mặt phẳng (OBED) đi qua O và được sinh bởi hai vectơ OB=u và OD=D-O
+    OD = D - O
+    n = u.cross(OD)  # pháp tuyến
+
+    # khoảng cách từ G đến mặt phẳng qua O có pháp tuyến n: d = |n·G|/||n||
+    num = sp.Abs(n.dot(G))
+    den = sp.sqrt(n.dot(n))
+    d_exact = sp.simplify(num / den)
+
+    # làm tròn đến hàng phần chục (0.1)
+    d_val = float(d_exact.evalf())
+    d_round = round_half_up(d_val, 1)
+    dap_an = f"{d_round:.1f}".replace(".", ",")
+
+    # ----------------- NỘI DUNG -----------------
+    noi_dung = (
+        f"Một sân vận động được xây dựng theo mô hình là hình chóp cụt ${{OAGD.BCFE}}$ có hai đáy song song với nhau. "
+        f"Mặt sân ${{OAGD}}$ là hình chữ nhật và được gắn hệ trục ${{Oxyz}}$ sao cho điểm ${{A}}$ thuộc tia ${{Ox}}$, ${{D}}$ thuộc tia ${{Oy}}$ "
+        f"(đơn vị trên mỗi trục tọa độ là mét). "
+        f"Mặt sân ${{OAGD}}$ có chiều dài $OA={L}$ m, chiều rộng $OD={W}$ m và tọa độ điểm $B({ux};{uy};{uz})$. "
+        f"Tính khoảng cách từ điểm ${{G}}$ đến mặt phẳng $(OBED)$ (làm tròn kết quả đến hàng phần chục)."
+    )
+
+    # ----------------- LỜI GIẢI -----------------
+    noi_dung_loigiai = (
+        f"Ta có $O(0,0,0)$, $A({L},0,0)$, $D(0,{W},0)$ nên $G({L},{W},0)$.\n\n"
+        f"$\\overrightarrow{{OB}}=({ux},{uy},{uz}),\\quad \\overrightarrow{{OD}}=(0,{W},0)$.\n\n"
+        f"Véc-tơ pháp tuyến của $(OBED)$ là:\n\n"
+        f"$\\vec n=[\\overrightarrow{{OB}}, \\overrightarrow{{OD}}]"
+        f"=(-{W*uz},\\,0,\\,{W*ux}).$\n\n"
+        f"Khoảng cách từ $G({L},{W},0)$ đến mặt phẳng qua gốc tọa độ có pháp tuyến $\\vec n$ là:\n\n"
+        f"$d=\\dfrac{{|\\vec n\\cdot \\overrightarrow{{OG}}|}}{{|\\vec n|}}"
+        f"=\\dfrac{{|(-{W*uz})\\cdot {L}+0\\cdot {W}+({W*ux})\\cdot 0|}}{{\\sqrt{{({W*uz})^2+({W*ux})^2}}}}"
+        f"\\approx {dap_an}.$\n\n"
+        f"Vậy khoảng cách từ ${{G}}$ đến mặt phẳng $(OBED)$ xấp xỉ bằng {dap_an} m."
+    )
+    code_hinh=(f" \\begin{{tikzpicture}}[>=stealth]\n\
+            \\def\\a{{2.5}}\n\
+            \\path  (0:0) coordinate (O)\n\
+            (20:\\a) coordinate (A)\n\
+            (150:\\a) coordinate (D)\n\
+            (75:.7*\\a) coordinate (G)\n\
+            ($(O)+(75:1.5*\\a)$) coordinate (S)\n\
+            ($(S)!.7!(O)$) coordinate (B)\n\
+            ($(S)!.7!(A)$) coordinate (C)\n\
+            ($(S)!.7!(G)$) coordinate (F)\n\
+            ($(S)!.7!(D)$) coordinate (E)\n\
+            ($(O)!1.3!(A)$) coordinate (A')\n\
+            ($(O)!1.3!(D)$) coordinate (D')\n\
+            ($(O)+(90:\\a)$) coordinate (I);\n\
+            \\draw[dashed]  (A)--(G)--(D) (F)--(G);\n\
+            \\draw  (A)--(O)--(D) (B)--(C)--(F)--(E)--cycle\n\
+             (E)--(D) (B)--(O) (C)--(A);\n\
+             \\draw[->](A)--(A')node[below]{{$x$}};\n\
+             \\draw[->](D)--(D')node[left]{{$y$}};\n\
+             \\draw[->](O)--(I)node[left]{{$z$}};\n\
+            \\foreach \\x/\\g in {{A/-90,B/-25,C/0,D/-90,E/180,F/90,G/25,O/-90}}\n\
+            \\fill[black]   (\\x) circle (1pt)\n\
+            ($(\\g:3mm)+(\\x)$) node {{$\\x$}}; \n\
+        \\end{{tikzpicture}}")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    # ----------------- KẾT QUẢ TRẢ VỀ -----------------
+    debai_word = f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
 #[D12_C5_B3_01]. Viết phương trình mặt cầu có tâm và bán kính
 def htd_25_xyz_L12_C5_B3_01():

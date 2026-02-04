@@ -188,10 +188,8 @@ class Ui_MainWindow(object):
                 self.tab_main.addTab(self.tab_taode, "🧩 Thiết lập ma trận")
                 self.tab_taode.setObjectName("tab_taode")
 
-                # Style cho mainwindows
-
-                self.tab_main.setStyleSheet(
-                    """
+                
+                STYLE_MODERN_1="""
                         QTabBar::tab {
                             background: #E5E5E5;    /* Màu nền mặc định của tab */
                             color: #555555;         /* Màu chữ */
@@ -233,14 +231,26 @@ class Ui_MainWindow(object):
                             border-radius: 10px;
                             padding: 6px 10px;
                         }
-                        QToolButton#ThemeToggle:hover { background: #E9EDF3; }                     
+                        QToolButton#ThemeToggle:hover { background: #E9EDF3; } 
+
+                        QTextEdit {
+                            border: 1px solid #4F46E5;   /* màu viền */
+                            border-radius: 03px;         /* bo góc */
+                            padding: 3px;
+                        } 
+                        QTextEdit:focus {
+                            border: 2px solid #7C3AED;   /* tím nổi khi click vào */
+                        }                   
                         
            
-                    """)
+                    """
+
+
+                self.tab_main.setStyleSheet(STYLE_MODERN_1)
                 
 
 
-                self.tab_main.addTab(self.tab_thongtin_dethi, "📝 Tạo đề")
+                self.tab_main.addTab(self.tab_thongtin_dethi, "✨ Tạo đề")
                 self.tab_thongtin_dethi.setObjectName("tab_thongtin_dethi")
                 #self.tab_thongtin_dethi.setGeometry(QtCore.QRect(0, 0, screen_rect.width(), screen_rect.height()))
                 self.tab_taode.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
@@ -423,7 +433,7 @@ class Ui_MainWindow(object):
                 self.label.setText("Tên nhóm giá trị")
 
                 self.tab_bang_so_lieu_tennhom= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tennhom.setGeometry(QtCore.QRect(texbox_left, textbox_top, 100, 20))
+                self.tab_bang_so_lieu_tennhom.setGeometry(QtCore.QRect(texbox_left, textbox_top-10, 110, 30))
                 self.tab_bang_so_lieu_tennhom.setObjectName("tab_bang_so_lieu_tennhom")
                 self.tab_bang_so_lieu_tennhom.setFont(font_12)
                 self.tab_bang_so_lieu_tennhom.setText("Cân nặng")
@@ -446,7 +456,7 @@ class Ui_MainWindow(object):
                 self.label.setText("Tên tần số")
 
                 self.tab_bang_so_lieu_tentanso= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tentanso.setGeometry(QtCore.QRect(texbox_left, textbox_top+d, 100, 20))
+                self.tab_bang_so_lieu_tentanso.setGeometry(QtCore.QRect(texbox_left, textbox_top+d-5, 110, 30))
                 self.tab_bang_so_lieu_tentanso.setObjectName("tab_bang_so_lieu_tentanso")
                 self.tab_bang_so_lieu_tentanso.setFont(font_12)
                 self.tab_bang_so_lieu_tentanso.setText("Số người")
@@ -458,7 +468,7 @@ class Ui_MainWindow(object):
                 self.label.setText("Giá trị bắt đầu")
 
                 self.tab_bang_so_lieu_giatribatdau= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_giatribatdau.setGeometry(QtCore.QRect(texbox_left, textbox_top+2*d, 50, 20))
+                self.tab_bang_so_lieu_giatribatdau.setGeometry(QtCore.QRect(texbox_left, textbox_top+2*d, 50, 30))
                 self.tab_bang_so_lieu_giatribatdau.setFont(font_12)
                 self.tab_bang_so_lieu_giatribatdau.setObjectName("tab_bang_so_lieu_giatribatdau")
                 self.tab_bang_so_lieu_giatribatdau.setText("45")
@@ -470,7 +480,7 @@ class Ui_MainWindow(object):
                 self.label.setText("Khoảng cách 2 giá trị")
 
                 self.tab_bang_so_lieu_khoangcach= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_khoangcach.setGeometry(QtCore.QRect(texbox_left, textbox_top+3*d, 50, 20))
+                self.tab_bang_so_lieu_khoangcach.setGeometry(QtCore.QRect(texbox_left, textbox_top+3*d, 50, 30))
                 self.tab_bang_so_lieu_khoangcach.setFont(font_12)
                 self.tab_bang_so_lieu_khoangcach.setObjectName("tab_bang_so_lieu_khoangcach")
                 self.tab_bang_so_lieu_khoangcach.setText("5")
@@ -482,7 +492,7 @@ class Ui_MainWindow(object):
                 self.label.setText("Tần số (cách nhau bằng dấu \",\")")
 
                 self.tab_bang_so_lieu_tanso= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tanso.setGeometry(QtCore.QRect(texbox_left+80, textbox_top+4*d, 200, 20))
+                self.tab_bang_so_lieu_tanso.setGeometry(QtCore.QRect(texbox_left+80, textbox_top+4*d, 200, 30))
                 self.tab_bang_so_lieu_tanso.setObjectName("tab_bang_so_lieu_tanso")
                 self.tab_bang_so_lieu_tanso.setFont(font_12)
                 self.tab_bang_so_lieu_tanso.setText("15,12,5,7,16")
@@ -494,19 +504,19 @@ class Ui_MainWindow(object):
                 self.label.setText("Tần số ngẫu nhiên min")
 
                 self.tab_bang_so_lieu_tansomin= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tansomin.setGeometry(QtCore.QRect(texbox_left+20, textbox_top+5*d, 50, 20))
+                self.tab_bang_so_lieu_tansomin.setGeometry(QtCore.QRect(texbox_left+20, textbox_top+5*d, 50, 30))
                 self.tab_bang_so_lieu_tansomin.setObjectName("tab_bang_so_lieu_tansomin")
                 self.tab_bang_so_lieu_tansomin.setFont(font_12)
                 self.tab_bang_so_lieu_tansomin.setText("10")
 
                 #Hàng 7
                 self.label= QtWidgets.QLabel(parent=self.tab_bang_so_lieu)
-                self.label.setGeometry(QtCore.QRect(10, textbox_top+6*d, 300, 20))
+                self.label.setGeometry(QtCore.QRect(10, textbox_top+6*d+5, 300, 20))
                 self.label.setFont(font)        
                 self.label.setText("Tần số ngẫun nhiên max")
 
                 self.tab_bang_so_lieu_tansomax= QtWidgets.QTextEdit(parent=self.tab_bang_so_lieu)
-                self.tab_bang_so_lieu_tansomax.setGeometry(QtCore.QRect(texbox_left+20, textbox_top+6*d, 50, 20))
+                self.tab_bang_so_lieu_tansomax.setGeometry(QtCore.QRect(texbox_left+20, textbox_top+6*d+5, 50, 30))
                 self.tab_bang_so_lieu_tansomax.setFont(font_12)
                 self.tab_bang_so_lieu_tansomax.setObjectName("tab_bang_so_lieu_tansomax")
                 self.tab_bang_so_lieu_tansomax.setText("20")
@@ -577,7 +587,10 @@ class Ui_MainWindow(object):
                 # Set column headers
                 headers = ["Dạng toán", "Loại \n câu", "Mức \n độ", "Số \n câu lấy"]
                 for i, header in enumerate(headers):                    
-                    self.tableWidget.setHorizontalHeaderItem(i, QTableWidgetItem(header))                  
+                    self.tableWidget.setHorizontalHeaderItem(i, QTableWidgetItem(header))   
+
+                self.tableWidget.horizontalHeader().setStyleSheet(
+                "QHeaderView::section { background-color: #F0F9FF; color: black; }")               
                 
 
                 current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -610,7 +623,7 @@ class Ui_MainWindow(object):
                 self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
                 self.btn_chuyen_tuluan.setText("TN => TL")
                 self.btn_chuyen_tuluan.clicked.connect(self.chuyen_tuluan)
-                self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
+                #self.btn_chuyen_tuluan.setStyleSheet("color: white;background-color: #4D82B8;")
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
@@ -876,7 +889,7 @@ class Ui_MainWindow(object):
 
                 #Nút Phiếu tô
                 self.combo_phieuto = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
-                self.combo_phieuto.setGeometry(QtCore.QRect(le_trai+20, le_top-20, 160, 30))
+                self.combo_phieuto.setGeometry(QtCore.QRect(le_trai+20, le_top-15, 160, 30))
                 self.combo_phieuto.setFont(font_10)
                 self.combo_phieuto.setObjectName("combo_taode")
                 self.combo_phieuto.addItem("Chèn phiếu tô")
@@ -886,27 +899,29 @@ class Ui_MainWindow(object):
                 self.combo_phieuto.addItem("Phiếu QM - 4 số")
                 self.combo_phieuto.addItem("Phiếu UNT - 3 số")
 
+                #Nút tạo mã đề ngẫu nhiên
+                self.checkbox_made_random = QtWidgets.QCheckBox(parent=self.tab_thongtin_dethi)        
+                self.checkbox_made_random.setGeometry(QtCore.QRect(le_trai+240, le_top-50, 180, 30))
+                self.checkbox_made_random.setFont(font_10)
+                self.checkbox_made_random.setObjectName("checkbox_made_made_random")
+                self.checkbox_made_random.setText("Mã đề ngẫu nhiên")
+
                 #Nút tạo đề word
                 self.combo_made = QtWidgets.QComboBox(parent=self.tab_thongtin_dethi)
-                self.combo_made.setGeometry(QtCore.QRect(le_trai+200, le_top-50, 120, 30))
+                self.combo_made.setGeometry(QtCore.QRect(le_trai+240, le_top-20, 120, 30))
                 self.combo_made.setFont(font_10)
                 self.combo_made.setObjectName("combo_made")
                 self.combo_made.addItem("Mã đề 3 số")
                 self.combo_made.addItem("Mã đề 4 số")
                 
 
-                #Nút tạo mã đề ngẫu nhiên
-                self.checkbox_made_random = QtWidgets.QCheckBox(parent=self.tab_thongtin_dethi)        
-                self.checkbox_made_random.setGeometry(QtCore.QRect(le_trai+200, le_top-20, 180, 30))
-                self.checkbox_made_random.setFont(font_10)
-                self.checkbox_made_random.setObjectName("checkbox_made_made_random")
-                self.checkbox_made_random.setText("Mã đề ngẫu nhiên")
+                
 
                 
 
                 #Tạo nút nhập mã đề
                 self.btn_nhapmade = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)
-                self.btn_nhapmade.setGeometry(QtCore.QRect(le_trai+420, le_top-20, 120, 30))
+                self.btn_nhapmade.setGeometry(QtCore.QRect(le_trai+420, le_top-15, 120, 30))
                 self.btn_nhapmade.setFont(font_10)
                 self.btn_nhapmade.setObjectName("btn_nhapmade")
                 self.btn_nhapmade.setText("Tự nhập mã đề")
@@ -1008,7 +1023,7 @@ class Ui_MainWindow(object):
                 self.btn_taode.setGeometry(QtCore.QRect(le_trai, le_top+300, 100, 30))
                 self.btn_taode.setFont(font_12)
                 self.btn_taode.setObjectName("btn_taode")
-                self.btn_taode.setText("📝 Tạo đề")
+                self.btn_taode.setText("✨Tạo đề")
                 self.btn_taode.clicked.connect(self.tao_de)
                 self.btn_taode.setStyleSheet(style_taode_button)
 
@@ -1310,8 +1325,8 @@ class Ui_MainWindow(object):
                 self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
         
                 self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
-                self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 25, 30, 60))
-                self.soluong_dangtoan.setFont(font)
+                self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 15, 50, 30))
+                self.soluong_dangtoan.setFont(font_10)
                 self.soluong_dangtoan.setObjectName("soluong_dangtoan")
 
         #label thông tin dạng toán
@@ -1341,7 +1356,7 @@ class Ui_MainWindow(object):
                 width: 16px;
                 height: 16px;
                 border-radius: 4px; /* Bo góc nhẹ */
-                border: 0px solid #ddd; /* Viền xám nhạt */
+                border: 1px solid #ddd; /* Viền xám nhạt */
                 background-color: #ffffff; /* Màu nền trắng */
             }
 
@@ -1364,8 +1379,11 @@ class Ui_MainWindow(object):
             }
 
             QTreeWidget {
-                font-size: 9.5pt; /* Cỡ chữ */
+                font-size: 10pt; /* Cỡ chữ */
                 color: #333333; /* Màu chữ */
+                background-color: #F0F9FF;   /* xanh nhạt */
+                border: 1px solid #D0E7FF;
+                border-radius: 10px;
             }
         """) 
                  
@@ -1844,7 +1862,6 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
 
-
                 # item = QTreeWidgetItem(L10_C2_B2_1, ["[D10_C2_B2_03]-M3. Cho Hệ 3 BPT. Tìm cặp số là nghiệm của hệ."])
                 # item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 # item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -1944,6 +1961,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_20]-SA-M3. Tìm lợi nhuận lớn nhất khi làm 2 đồ vật bán chợ Tết."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C2_B2_3, ["[D10_C2_B2_30]-SA-M3. Tìm số tiền bán nước chanh và khoai chiên lớn nhất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7772,6 +7793,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_22]-SA-M3. H.chóp S.ABCD, đáy h.thoi, góc A=60. Tính d(AC,SD)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
                 # L11_C8_B4_4 = QTreeWidgetItem(L11_C8_B4, ["8.4.4 Khoảng cách giữa đường thẳng và mặt phẳng"])
@@ -8857,6 +8882,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_43]-SA-M3. Lợi nhuận P(x)=F(x)-xG(x)=ax^2+bx+c.Tìm số sản phẩm min để lợi nhuận vượt mức cho trước."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_38]-SA-M4. Tìm tổng độ dài ngắn nhất nối 2 chiếc cọc qua 1 chốt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8872,6 +8901,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_42]-SA-M4. Tìm giá cho thuê để Homestay tối ưu lợi nhuận -> hàm bậc 3."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 
 
@@ -10377,6 +10408,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_31]-SA-M3. Tìm điểm đối xứng của điểm lên mặt phẳng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_38]-SA-M3. Sân vận động hình chóp cụt. Tính K.c từ điểm G đến (OBED)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11942,6 +11977,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_42]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_42()
 
+                                            #[D12_C1_B5_43]-SA-M3. Lợi nhuận P(x)=F(x)-xG(x)=ax^2+bx+c.Tìm số sản phẩm tối thiểu để lợi nhuận vượt mức cho trước
+                                            if dang_toan == "[D12_C1_B5_43]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_43()
+
 
                                             
                                                 
@@ -13310,7 +13349,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B1_37]-M2. Viết phương trình mặt phẳng qua điểm và vuông góc với d(PTTS)
                                             if dang_toan == "[D12_C5_B1_37]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_37()                      
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_37()
+
+                                            #[D12_C5_B1_38]-SA-M3. Sân vận động hình chóp cụt. Tính K.c từ điểm G đến (OBED)
+                                            if dang_toan == "[D12_C5_B1_38]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_38()                    
                                                 
 
 
@@ -16202,7 +16245,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C8_B4_21]-M2. H.chóp S.ABCD, đáy h.chữ nhật, có AB,AD SA. Tính d(M,(SBC)) hoặc d(M,(SCD)) 
                                             if dang_toan == "[D11_C8_B4_21]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_21()     
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_21()
+
+                                            #[D11_C8_B4_22]-M2. H.chóp S.ABCD, đáy h.thoi, góc A=60. Tính d(AC,SD)
+                                            if dang_toan == "[D11_C8_B4_22]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_22()     
                                                 
 
                                         #BÀI 5-GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG.
@@ -16948,6 +16995,10 @@ class Ui_MainWindow(object):
                                             #[D10_C2_B2_29]-M2. Tính diện tích miền nghiệm của hệ ax+by+c>=0, x>=0, y>=0.
                                             if dang_toan == "[D10_C2_B2_29]":           
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C2.bch_12_L10_C2_B2_29()
+
+                                            #[D10_C2_B2_30]-SA-M3. Tìm số tiền bán nước chanh và khoai chiên lớn nhất
+                                            if dang_toan == "[D10_C2_B2_30]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C2.bch_12_L10_C2_B2_30()
 
 
 
@@ -21645,6 +21696,7 @@ class Ui_MainWindow(object):
                 ans_folder_path=os.path.join(new_folder_path, 'ans')
                 dapan_folder_path=os.path.join(goc_foler_path, f"DAP AN")
                 ans_dapan_folder_path=os.path.join(dapan_folder_path, f"ans")
+                tonghop_foler_path=os.path.join(goc_foler_path, f"DE TONG HOP")
 
                 if not os.path.exists(new_folder_path):
                         os.makedirs(new_folder_path)  
@@ -21654,6 +21706,8 @@ class Ui_MainWindow(object):
                         os.makedirs(dapan_folder_path)
                 if not os.path.exists(ans_dapan_folder_path):
                         os.makedirs(ans_dapan_folder_path)
+                if not os.path.exists(tonghop_foler_path):
+                        os.makedirs(tonghop_foler_path)
 
                 #Copy file ex_test.sty
                 source_file_path = f"{latex_folder_path}\\ex_test.sty"
@@ -21661,6 +21715,7 @@ class Ui_MainWindow(object):
                         destination_file_path = os.path.join(new_folder_path, os.path.basename(source_file_path))                                
                         shutil.copy2(source_file_path, destination_file_path)
                         shutil.copy2(source_file_path, ans_dapan_folder_path)
+                        shutil.copy2(source_file_path, tonghop_foler_path)
 
                 # Tạo file đề bài
                 file_path = os.path.join(new_folder_path, f'De_{name_de}.tex')               
@@ -21671,6 +21726,9 @@ class Ui_MainWindow(object):
                 
                 latex_command = f"pdflatex -jobname=De_{name_de} De_{name_de}.tex"
                 subprocess.run(latex_command, shell=True)
+
+                #Copy file De.tex vào thư mục tổng hợp
+                shutil.copy2(file_path, tonghop_foler_path)
   
                 file_path_pdf=os.path.join(new_folder_path, f'De_{name_de}.pdf')
                 subprocess.Popen(["start", "", file_path_pdf], shell=True)

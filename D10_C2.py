@@ -4973,3 +4973,89 @@ def bch_12_L10_C2_B2_29():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D10_C2_B2_30]-SA-M2. Tìm số tiền bán nước chanh và khoai chiên lớn nhất
+def bch_12_L10_C2_B2_30():
+    import random
+    import sympy as sp
+
+    x, y = sp.symbols("x y")
+
+    # ----------------- SINH DỮ LIỆU NGẪU NHIÊN -----------------
+    # Thực đơn 1: a1 nước + b1 khoai, giá p1 (nghìn)
+    a1 = random.randint(1, 3)
+    b1 = random.randint(1, 2)
+    p1 = random.choice([20, 25, 30, 35])
+
+    # Thực đơn 2: a2 nước + b2 khoai, giá p2 (nghìn)
+    a2 = random.randint(2, 4)
+    b2 = random.randint(1, 3)
+    p2 = random.choice([45, 50, 55])
+
+    # Tài nguyên tối đa
+    max_nuoc = random.randint(120, 200)
+    max_khoai = random.randint(80, 130)
+
+    # ----------------- MÔ HÌNH -----------------
+    # x: số thực đơn 1, y: số thực đơn 2
+    # ràng buộc:
+    # a1 x + a2 y ≤ max_nuoc
+    # b1 x + b2 y ≤ max_khoai
+    # hàm mục tiêu: F = p1 x + p2 y
+
+    F = p1*x + p2*y
+
+    max_val = 0
+
+    # duyệt miền nguyên hợp lý
+    for i in range(0, max_nuoc+1):
+        for j in range(0, max_nuoc+1):
+            if a1*i + a2*j <= max_nuoc and b1*i + b2*j <= max_khoai:
+                val = p1*i + p2*j
+                if val > max_val:
+                    max_val = val
+
+    dap_an = str(max_val)
+
+    # ----------------- NỘI DUNG -----------------
+    noi_dung = (
+        f"Để gây quỹ từ thiện, câu lạc bộ thiện nguyện của một trường THPT tổ chức "
+        f"hoạt động bán hàng với hai mặt hàng là nước chanh và khoai chiên.\n\n"
+        f"Thực đơn 1 có giá {p1} nghìn đồng, bao gồm {a1} cốc nước chanh và {b1} túi khoai chiên.\n\n"
+        f"Thực đơn 2 có giá {p2} nghìn đồng, bao gồm {a2} cốc nước chanh và {b2} túi khoai chiên.\n\n"
+        f"Biết rằng câu lạc bộ chỉ làm được không quá {max_nuoc} cốc nước chanh "
+        f"và {max_khoai} túi khoai chiên.\n\n"
+        f"Số tiền lớn nhất mà câu lạc bộ có thể nhận được sau khi bán hết hàng "
+        f"bằng bao nhiêu nghìn đồng?"
+    )
+
+    noi_dung_loigiai = (
+        f"Gọi ${{x,y}}$ lần lượt là số thực đơn 1 và thực đơn 2 bán được.\n\n"
+        f"Ta có hệ ràng buộc:\n\n"
+        f"$\\begin{{cases}}\n"
+        f"{latex(a1*x+a2*y)} \\le {max_nuoc}\\\\\n"
+        f"{latex(b1*x+b2*y)} \\le {max_khoai}\\\\\n"
+        f"x,y\\ge 0\n"
+        f"\\end{{cases}}$\n\n"
+        f"Hàm doanh thu là:\n\n"
+        f"$F={p1}x+{p2}y$ (nghìn đồng).\n\n"
+        f"Xét các nghiệm nguyên thỏa điều kiện, giá trị lớn nhất đạt được là:\n\n"
+        f"$F_{{\\max}}={dap_an}$ (nghìn đồng)."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+

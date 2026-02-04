@@ -17844,4 +17844,93 @@ def prt_34_L12_C1_B5_42():
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D12_C1_B5_43]-SA-M3. Lợi nhuận P(x)=F(x)-xG(x)=ax^2+bx+c.Tìm số sản phẩm tối thiểu để lợi nhuận vượt mức cho trước
+def prt_34_L12_C1_B5_43():
+	x = sp.symbols("x", real=True)
+
+	# ----------------- SINH DỮ LIỆU NGẪU NHIÊN -----------------
+	while True:
+		# Miền xác định 1 ≤ x ≤ Nmax
+		Nmax = random.randint(35,50)*100
+
+		# Doanh thu F(x) = -a x^2 + b x  (nghìn đồng)
+		a = random.randint(1,8)/100
+		b = random.randint(25,35)*10
+
+		# Chi phí bình quân G(x) = C/x + d  (nghìn đồng)
+		C = random.randint(20,35)*1000
+		d = random.randint(18,25)*10
+
+		# Ngưỡng lợi nhuận (triệu đồng)
+		M_trieu = random.randint(80,150)
+		M_nghin = M_trieu * 1000  # đổi sang nghìn đồng
+
+		# ----------------- HÀM LỢI NHUẬN -----------------
+		F = -a*x**2 + b*x
+		G = C/x + d
+		Chi_phi = x * G
+		P = sp.simplify(F - Chi_phi)  # lợi nhuận (nghìn đồng)
+
+		# ----------------- GIẢI BẤT PHƯƠNG TRÌNH P(x) > M -----------------
+		ineq = sp.solve_univariate_inequality(P > M_nghin, x)
+
+		# tìm nghiệm nguyên nhỏ nhất trong miền xác định
+		x_min = None
+		for val in range(1, Nmax + 1):
+			if P.subs(x, val) > M_nghin:
+				x_min = val
+				break
+
+		# nếu không tồn tại thì đặt 0 (trường hợp hiếm)
+		if x_min is None:
+			x_min = 0
+		if x_min>100:
+			break
+
+	s_a=f"{round_half_up(a,2):.2f}".replace(".",",")
+	s_P=f"{latex(expand(P))}".replace(".",",")
+
+	dap_an = str(x_min)
+
+	# ----------------- NỘI DUNG -----------------
+	noi_dung = (
+		f"Nếu một doanh nghiệp sản xuất ${{x}}$ sản phẩm trong một tháng "
+		f"($x \\in \\mathbb{{N}}^*,\\; 1\\le x\\le {Nmax}$) thì doanh thu nhận được khi bán hết "
+		f"số sản phẩm đó là $F(x)=-{s_a}x^2+{b}x$ (nghìn đồng), "
+		f"trong khi chi phí sản xuất bình quân cho mỗi sản phẩm là "
+		f"$G(x)=\\dfrac{{{C}}}{{x}}+{d}$ (nghìn đồng). "
+		f"Giả sử số sản phẩm sản xuất ra luôn được bán hết. "
+		f"Trong một tháng, doanh nghiệp đó cần sản xuất ít nhất bao nhiêu sản phẩm "
+		f"để lợi nhuận thu được lớn hơn {M_trieu} triệu đồng?"
+	)
+
+	noi_dung_loigiai = (
+		f"Chi phí toàn phần là:\n\n"
+		f"$xG(x)=x\\left(\\dfrac{{{C}}}{{x}}+{d}\\right)={C}+{d}x$.\n\n"
+		f"Lợi nhuận là:\n\n"
+		f"$P(x)=F(x)-xG(x)"
+		f"=-{s_a}x^2+{b}x-({C}+{d}x)$.\n\n"
+		f"$P(x)={s_P}$ (nghìn đồng).\n\n"
+		f"$P(x)>{M_trieu}$ triệu  $={M_nghin}$ (nghìn đồng).\n\n"
+		f"Giải bất phương trình và xét ${{x}}$ nguyên dương trong đoạn ${{[1,{Nmax}]}}$ "
+		f"ta tìm được giá trị nhỏ nhất thỏa mãn là $x={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
 

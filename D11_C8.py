@@ -6539,7 +6539,7 @@ def uvxy9_L11_C8_B4_21():
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
-#[D11_C8_B4_22]-SA-M4. H.chóp S.ABCD, đáy h.vuông, có AB, SA. Tính d(A,(SBC)) hoặc d(A,(SCD)) 
+#[D11_C8_B4_22]-SA-M4. H.chóp S.ABCD, đáy h.thoi, góc A=60. Tính d(AC,SD)
 def uvxy9_L11_C8_B4_22():
 	a=random.randint(1,7)
 	h=random.choice([sqrt(random.randint(2,9))])
@@ -6567,16 +6567,34 @@ def uvxy9_L11_C8_B4_22():
 		f" $\\Rightarrow OK= \\dfrac{{SH.OD}}{{SD}}$ "
 		f" $=\\dfrac{{{latex(h)}.{latex(OD)}}}{{{latex(SD)}}}={latex(OK)}={dap_an}$."
 	)
+	
+	code_hinh=(f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick]\n\
+	\\coordinate (A) at (0,0);\n\
+	\\coordinate (B) at (2,-2);\n\
+	\\coordinate (D) at (5,0);\n\
+	\\coordinate (C) at ($(B)+(D)-(A)$);\n\
+	\\coordinate (O) at ($(A)!0.5!(C)$);\n\
+	\\coordinate (H) at ($(B)!0.67!(O)$);	\n\
+	\\coordinate (S) at ($(H)+(0,6)$);\n\
+	\\coordinate (K) at ($(S)!0.6!(D)$);\n\
+	\\draw (S)--(A) (S)--(B) (S)--(C) (A)--(B) (B)--(C);\n\
+	\\draw[dashed,thin](A)--(C) (A)--(D) (C)--(D) (S)--(D) (S)--(H) (B)--(D) (O)--(K);\n\
+	\\foreach \\i/\\g in {{S/90,A/180,B/-90,C/-90,D/0,O/-90, H/-90, K/180}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+    \\end{{tikzpicture}}")
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
 
 	debai_word = f"{noi_dung}\n"
 
 	loigiai_word = (
-		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Lời giải:\n{file_name}\n {noi_dung_loigiai} \n"
 		f"Đáp án: {dap_an}\n"
 	)
 
 	latex_tuluan = (
 		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
 		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
 		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 		f"\\end{{ex}}\n"
