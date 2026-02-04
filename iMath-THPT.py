@@ -20055,6 +20055,7 @@ class Ui_MainWindow(object):
                                 self.export_msword_latex(name_thu_muc, name_de, phieu_to)
 
                             if self.combo_taode.currentText() == "Tạo đề Latex - PDF":
+
                                 if len(list_tracnghiem)>0:
                                     ghep_tracnghiem='\n'.join(list_tracnghiem)
                                     list_noi_dung+=(f"{{\\bf PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.}}\n"
@@ -20275,14 +20276,28 @@ class Ui_MainWindow(object):
                         #Mở thư mục chứa file
                         if self.combo_taode.currentText() == "Tạo đề Latex - PDF":                           
                             
-                            # current_directory = os.path.dirname(os.path.abspath(__file__))
-                            # doc_folder_path = os.path.join(current_directory, 'LATEX')
-                            # new_folder_path = os.path.join(doc_folder_path, name_thu_muc)                               
+                            current_directory = os.path.dirname(os.path.abspath(__file__))
+                            phieuto_folder_path = os.path.join(current_directory, 'PHIEU TO')
+                            
+                            if phieu_to=="Phieu TN-3.PNG":
+                                phieuto_path=os.path.join(phieuto_folder_path,'Phieu TN-3.PDF')
+
+                            if phieu_to=="Phieu TN-4.JPG":
+                                phieuto_path=os.path.join(phieuto_folder_path,'Phieu TN-4.PDF')
+
+                            if phieu_to=="Phieu QM-3.JPG":
+                                phieuto_path=os.path.join(phieuto_folder_path,'Phieu QM-3.PDF')
+
+                            if phieu_to=="Phieu QM-4.JPG":
+                                phieuto_path=os.path.join(phieuto_folder_path,'Phieu QM-4.PDF')
+
+                            if phieu_to=="Phieu UNT-3.JPG":
+                                phieuto_path=os.path.join(phieuto_folder_path,'Phieu UNT-3.PDF')
+                                                        
                             self.tao_bang_dap_an_latex(name_thu_muc,code_bang_dap_an)
 
-                            self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)                        
+                            self.tao_tnmaker_word(name_thu_muc, list_ma_de, list_dapan_word)
 
-                            #self.tao_tnmaker_latex(name_thu_muc, list_ma_de,len(list_tracnghiem),len(list_dungsai),len(list_traloingan))
                             name_thu_muc=name_thu_muc.replace("/","\\")
                             #Ghép các file đề
                             # Thư mục chứa các file PDF
@@ -20294,12 +20309,17 @@ class Ui_MainWindow(object):
                             # Tạo đối tượng merger
                             merger = PdfMerger()
 
-                            # Lấy tất cả file pdf bắt đầu bằng 'de' và sắp xếp
+                            # Lấy tất cả file pdf bắt đầu bằng 'de' và sắp xếp                                
+                    
                             pdf_files = sorted(glob.glob(os.path.join(folder_path, "de*.pdf")))
 
                             # Thêm từng file PDF vào merger (bỏ qua file đầu ra nếu đã tồn tại)
                             for pdf in pdf_files:
                                 if os.path.basename(pdf) != output_file:
+                                    #Chèn phiếu tô
+                                    merger.append(phieuto_path)
+
+                                    #Chèn file
                                     merger.append(pdf)                                    
 
                             # Ghi file PDF tổng hợp
@@ -21689,14 +21709,16 @@ class Ui_MainWindow(object):
                 # new_folder_path=os.path.join(latex_folder_path, name_thu_muc)
                 # goc_foler_path=os.path.join(latex_folder_path, name_thu_muc)
                 new_folder_path=name_thu_muc
-                goc_foler_path=name_thu_muc                
+                goc_foler_path=name_thu_muc               
 
-                #Tạo thư mục chứa các mã đề, thư mục DAP AN
-                new_folder_path=os.path.join(new_folder_path, f"De_{name_de}")
-                ans_folder_path=os.path.join(new_folder_path, 'ans')
+                tonghop_foler_path=os.path.join(goc_foler_path, f"DE THI")
+                new_folder_path=os.path.join(tonghop_foler_path, f"De_{name_de}")
+                ans_folder_path=os.path.join(tonghop_foler_path, 'ans')
                 dapan_folder_path=os.path.join(goc_foler_path, f"DAP AN")
                 ans_dapan_folder_path=os.path.join(dapan_folder_path, f"ans")
-                tonghop_foler_path=os.path.join(goc_foler_path, f"DE TONG HOP")
+
+                if not os.path.exists(tonghop_foler_path):
+                        os.makedirs(tonghop_foler_path)               
 
                 if not os.path.exists(new_folder_path):
                         os.makedirs(new_folder_path)  
@@ -21706,8 +21728,7 @@ class Ui_MainWindow(object):
                         os.makedirs(dapan_folder_path)
                 if not os.path.exists(ans_dapan_folder_path):
                         os.makedirs(ans_dapan_folder_path)
-                if not os.path.exists(tonghop_foler_path):
-                        os.makedirs(tonghop_foler_path)
+                
 
                 #Copy file ex_test.sty
                 source_file_path = f"{latex_folder_path}\\ex_test.sty"
@@ -21733,7 +21754,7 @@ class Ui_MainWindow(object):
                 file_path_pdf=os.path.join(new_folder_path, f'De_{name_de}.pdf')
                 subprocess.Popen(["start", "", file_path_pdf], shell=True)
                 
-                #Copy file đề PDF ra thư mục gốc                
+                #Copy file đề PDF ra thư mục gốc              
                 if os.path.exists(f"{file_path_pdf}"):                         
                     shutil.copy2(f"{file_path_pdf}", goc_foler_path)
 
