@@ -13,7 +13,7 @@ import pyperclip
 #Test trắc nghiệm
 # test, test_latex="",""
 # for i in range(1):
-# 	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_53()
+# 	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_09()
 # 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
 # 	test_latex=test_latex + f"{debai_latex}\n"
 # 	#print(test)
@@ -36,7 +36,7 @@ import pyperclip
 #Test tự luận
 test, test_latex="",""
 for i in range(1):
-	debai_word,loigiai_word,latex_tuluan,dap_an =D12_C5.htd_25_xyz_L12_C5_B1_37()
+	debai_word,loigiai_word,latex_tuluan,dap_an =D10_C3.npl_mk_L10_C3_B2_16()
 	#print(debai)\\log {d}
 	#print(loigiai_word)
 	test=test + f"{debai_word}\n{loigiai_word}\n"

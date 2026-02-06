@@ -38,34 +38,488 @@ class ShowMessageBox(QMessageBox):
         folder_path= f"{folder_path}/icon.png"  
         self.setWindowIcon(QIcon(folder_path))
 
-class Form_tieude(QWidget):
-    def __init__(self, parent):
-        super().__init__()
-        self.parent = parent
-        self.initUI()
 
-    def initUI(self):
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setFamily("Segoe UI")
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-        self.setWindowTitle('Thiết lập tiêu đề chung')
+class MatranNgauNhienDialog(QDialog):
+    """Cửa sổ MA TRẬN NGẪU NHIÊN.
 
-        self.textEdit =QtWidgets.QTextEdit()
-        layout.addWidget(self.textEdit)        
+    - Bên trái: cây thư mục (clone từ treeWidget của chương trình).
+    - Bên phải: bảng tiêu chí gồm: Loại câu, Mức độ, Số câu hiện có, Số câu lấy.
+    - Số câu hiện có: tự đếm số dạng toán (node lá) thỏa loại + mức độ trong nhánh đang chọn.
+    - OK: trả về tiêu chí; phần chọn ngẫu nhiên & đưa vào ma trận xử lý ở MainWindow.
+    """
+    COL_CHUDE = 0
+    COL_LOAI = 1
+    COL_MUCDO = 2
+    COL_SOCO = 3
+    COL_SOCALAY = 4
+    _MAP_M = {"1": "NB", "2": "TH", "3": "VDT", "4": "VDC"}
+    _MAP_M_INV = {"NB": "1", "TH": "2", "VDT": "3", "VDC": "4"}
 
-        self.btn_ok = QtWidgets.QPushButton()
-        #self.btn_ok.setGeometry(QtCore.QRect(520, 370, 150, 30))
-        self.btn_ok.setFont(font)
-        self.btn_ok.setObjectName("btn_ok")
-        self.btn_ok.setText("Apply")
-        self.btn_ok.clicked.connect(self.closeEvent)
-        layout.addWidget(self.btn_ok)
+    def __init__(self, parent, source_tree: QTreeWidget):
+        super().__init__(parent)
+        self.setWindowTitle("TẠO MA TRẬN NGẪU NHIÊN")
+        self.setModal(True)
+        self.resize(1100, 650)
 
-    def closeEvent(self, event):
-        self.parent.update_label(self.textEdit.toPlainText())
-        self.close()
+        self._source_tree = source_tree
+
+        root = QtWidgets.QHBoxLayout(self)
+        root.setContentsMargins(10, 10, 10, 10)
+
+        splitter = QtWidgets.QSplitter(Qt.Horizontal, self)
+        root.addWidget(splitter)
+
+        # Trái: cây thư mục (clone)
+        self.tree = QTreeWidget(self)
+        self.tree.setHeaderHidden(True)
+        self.tree.setColumnCount(1)
+        self.tree.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.tree.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        splitter.addWidget(self.tree)
+
+        # Phải: bảng tiêu chí + nút
+        right = QtWidgets.QWidget(self)
+        right_lay = QtWidgets.QVBoxLayout(right)
+        right_lay.setContentsMargins(0, 0, 0, 0)
+
+        self.table = QTableWidget(right)
+        self.table.setColumnCount(5)
+        self.table.setHorizontalHeaderLabels(["Chủ\n đề","Loại\n câu", "Mức\n độ", "Số câu\n có", "Số câu\n lấy"])
+        self.table.setRowCount(0)
+        self.table.horizontalHeader().setStretchLastSection(True)
+        self.table.setColumnWidth(self.COL_CHUDE, 400)
+        self.table.setColumnWidth(self.COL_LOAI, 70)
+        self.table.setColumnWidth(self.COL_MUCDO, 70)
+        self.table.setColumnWidth(self.COL_SOCO, 70)
+        self.table.setColumnWidth(self.COL_SOCALAY, 70)
+        right_lay.addWidget(self.table)
+        self.table.horizontalHeader().setStyleSheet(
+        "QHeaderView::section { background-color: #FFFFD5; color: black; }")
+
+        btn_row = QtWidgets.QHBoxLayout()
+        self.btn_add = QPushButton("Thêm Dòng", right)
+        self.btn_del = QPushButton("Xóa Dòng", right)
+        self.btn_add.clicked.connect(self._add_row)
+        self.btn_del.clicked.connect(self._del_row)
+        btn_row.addWidget(self.btn_add)
+        btn_row.addWidget(self.btn_del)
+        btn_row.addStretch(1)
+        right_lay.addLayout(btn_row)
+
+        self.btn_box = QtWidgets.QDialogButtonBox(
+            QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel,
+            parent=right,
+        )
+        self.btn_box.accepted.connect(self.accept)
+        self.btn_box.rejected.connect(self.reject)
+        right_lay.addWidget(self.btn_box)
+
+        splitter.addWidget(right)
+        splitter.setStretchFactor(0, 1)
+        splitter.setStretchFactor(1, 2)
+
+        # Tạo sẵn dòng mặc định + 1 dòng tổng
+        self._init_default_rows()
+
+        self._clone_tree()
+
+        # Thu gọn toàn bộ cây, chỉ mở cấp "Lớp"
+        self.tree.collapseAll()
+        root_item = self.tree.invisibleRootItem()
+        for i in range(root_item.childCount()):
+            root_item.child(i).setExpanded(True)
+
+        # Khi chọn item trên cây: thêm 1 dòng mới vào bảng (các dòng cũ giữ nguyên)
+        self._tree_ready = False
+        self.tree.currentItemChanged.connect(self._on_tree_current_item_changed)
+
+        # Chọn mặc định item đầu tiên (nếu chưa có) để dòng 1 có 'Chủ đề' ngay từ đầu
+        if self.tree.currentItem() is None and self.tree.topLevelItemCount() > 0:
+            self.tree.setCurrentItem(self.tree.topLevelItem(0))
+
+        # Gán chủ đề cho dòng mặc định (nếu còn trống), sau đó mới bật chế độ "thêm dòng"
+        self._on_tree_current_item_changed(self.tree.currentItem(), None)
+        self._tree_ready = True
+
+    # ---------- UI row helpers ----------
+    def _current_topic_text(self) -> str:
+        it = self.tree.currentItem()
+        return (it.text(0).strip() if it is not None else "")
+
+    # ---------- UI row helpers ----------
+    def _init_row_widgets(self, row: int):
+        """Khởi tạo widget cho 1 dòng tiêu chí (không đụng tới các dòng khác)."""
+        # Cột "Chủ đề": cố định theo dòng (không tự overwrite khi chọn item khác)
+        topic_text = self._current_topic_text()
+        src_item = self.selected_source_item()
+
+        it_topic = QTableWidgetItem(topic_text)
+        it_topic.setFlags(it_topic.flags() & ~Qt.ItemIsEditable)
+        # lưu item nguồn (từ treeWidget gốc) để đếm số câu theo đúng chủ đề của dòng
+        it_topic.setData(Qt.UserRole, src_item)
+        self.table.setItem(row, self.COL_CHUDE, it_topic)
+
+        cb_loai = QtWidgets.QComboBox(self.table)
+        cb_loai.addItems(["TN", "Đ-S", "SA"])
+
+        cb_mucdo = QtWidgets.QComboBox(self.table)
+        cb_mucdo.addItems(["NB", "TH", "VDT", "VDC"])
+
+        it_so_co = QTableWidgetItem("0")
+        it_so_co.setTextAlignment(Qt.AlignCenter)
+        it_so_co.setFlags(it_so_co.flags() & ~Qt.ItemIsEditable)
+
+        sp_n = QtWidgets.QSpinBox(self.table)
+        sp_n.setRange(0, 999)
+        sp_n.setValue(0)
+        sp_n.setAlignment(Qt.AlignCenter)
+
+        self.table.setCellWidget(row, self.COL_LOAI, cb_loai)
+        self.table.setCellWidget(row, self.COL_MUCDO, cb_mucdo)
+        self.table.setItem(row, self.COL_SOCO, it_so_co)
+        self.table.setCellWidget(row, self.COL_SOCALAY, sp_n)
+        
+
+        cb_loai.currentIndexChanged.connect(self._on_row_criteria_changed)
+        cb_mucdo.currentIndexChanged.connect(self._on_row_criteria_changed)
+        sp_n.valueChanged.connect(self._refresh_summary_row)
+
+    def _row_of_widget(self, w) -> int:
+        """Tìm row hiện tại của 1 widget đang nằm trong QTableWidget."""
+        if w is None:
+            return -1
+        for r in range(self.table.rowCount()):
+            if self._is_summary_row(r):
+                continue
+            if self.table.cellWidget(r, self.COL_LOAI) is w:
+                return r
+            if self.table.cellWidget(r, self.COL_MUCDO) is w:
+                return r
+            if self.table.cellWidget(r, self.COL_SOCALAY) is w:
+                return r
+        return -1
+
+    def _on_row_criteria_changed(self, *_):
+        r = self._row_of_widget(self.sender())
+        if r >= 0:
+            self._refresh_row_count(r)
+
+    def _set_row_topic(self, row: int, topic_text: str, src_item):
+        """Gán chủ đề cho một dòng (không thay đổi các dòng khác)."""
+        if row < 0 or row >= self.table.rowCount() or self._is_summary_row(row):
+            return
+        it_topic = self.table.item(row, self.COL_CHUDE)
+        if it_topic is None:
+            it_topic = QTableWidgetItem("")
+            it_topic.setFlags(it_topic.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, self.COL_CHUDE, it_topic)
+        it_topic.setText(topic_text or "")
+        it_topic.setData(Qt.UserRole, src_item)
+
+# ---------- Summary row helpers ----------
+    def _is_summary_row(self, row: int) -> bool:
+        """Dòng tổng là dòng cuối cùng, cột 0 = 'TỔNG SỐ'."""
+        if row < 0 or row >= self.table.rowCount():
+            return False
+        it = self.table.item(row, self.COL_CHUDE)
+        return (it is not None) and (it.text().strip().upper() == "TỔNG SỐ")
+
+    def _ensure_summary_row(self):
+        """Đảm bảo luôn có 1 dòng 'TỔNG SỐ' ở cuối bảng."""
+        # Nếu đã có ở cuối thì thôi
+        if self.table.rowCount() > 0 and self._is_summary_row(self.table.rowCount() - 1):
+            return
+
+        r = self.table.rowCount()
+        self.table.insertRow(r)
+
+        # Cột 0: TỔNG SỐ
+        it0 = QTableWidgetItem("TỔNG SỐ")
+        it0.setTextAlignment(Qt.AlignCenter)
+        it0.setFlags(it0.flags() & ~Qt.ItemIsEditable)
+        self.table.setItem(r, self.COL_CHUDE, it0)
+
+        # Cột 1: trống
+        it1 = QTableWidgetItem("")
+        it1.setFlags(it1.flags() & ~Qt.ItemIsEditable)
+        self.table.setItem(r, self.COL_LOAI, it1)
+        # Cột 2: trống
+        it_md = QTableWidgetItem("")
+        it_md.setFlags(it_md.flags() & ~Qt.ItemIsEditable)
+        self.table.setItem(r, self.COL_MUCDO, it_md)
+
+
+        # Cột 2: tổng số câu hiện có
+        it2 = QTableWidgetItem("0")
+        it2.setTextAlignment(Qt.AlignCenter)
+        it2.setFlags(it2.flags() & ~Qt.ItemIsEditable)
+        self.table.setItem(r, self.COL_SOCO, it2)
+
+        # Cột 3: tổng số câu lấy
+        it3 = QTableWidgetItem("0")
+        it3.setTextAlignment(Qt.AlignCenter)
+        it3.setFlags(it3.flags() & ~Qt.ItemIsEditable)
+        self.table.setItem(r, self.COL_SOCALAY, it3)
+
+        # Xóa mọi cellWidget (nếu có)
+        for c in range(self.table.columnCount()):
+            w = self.table.cellWidget(r, c)
+            if w is not None:
+                self.table.removeCellWidget(r, c)
+
+    def _refresh_summary_row(self):
+        """Cập nhật tổng ở dòng 'TỔNG SỐ'."""
+        if self.table.rowCount() == 0:
+            return
+        self._ensure_summary_row()
+        sum_row = self.table.rowCount() - 1
+
+        total_available = 0
+        total_take = 0
+
+        # cộng tất cả dòng trừ dòng tổng cuối
+        for r in range(self.table.rowCount() - 1):
+            # Cột 2: số câu hiện có (item)
+            it = self.table.item(r, self.COL_SOCO)
+            if it is not None:
+                try:
+                    total_available += int(it.text())
+                except Exception:
+                    pass
+            # Cột 3: số câu lấy (spinbox)
+            sp = self.table.cellWidget(r, self.COL_SOCALAY)
+            if sp is not None:
+                try:
+                    total_take += int(sp.value())
+                except Exception:
+                    pass
+
+        it2 = self.table.item(sum_row, self.COL_SOCO)
+        if it2 is not None:
+            it2.setText(str(total_available))
+        it3 = self.table.item(sum_row, self.COL_SOCALAY)
+        if it3 is not None:
+            it3.setText(str(total_take))
+
+    def _init_default_rows(self):
+        """Mặc định chỉ tạo 1 dòng thường và 1 dòng 'TỔNG SỐ' ở cuối."""
+        # self.table.setRowCount(0)
+
+        # # 1 dòng thường
+        # self.table.insertRow(0)
+        # self._init_row_widgets(0)
+
+        # # set loại câu mặc định
+        # cw = self.table.cellWidget(0, self.COL_LOAI)
+        # if cw is not None:
+        #     cw.setCurrentText("TN")
+
+        # đảm bảo có dòng tổng ở cuối
+        self._ensure_summary_row()
+        self._refresh_summary_row()
+
+
+    def _add_row(self):
+        # luôn chèn trước dòng 'TỔNG SỐ' (nếu có)
+        self._ensure_summary_row()
+        r = self.table.rowCount() - 1  # vị trí trước dòng tổng
+        if r < 0:
+            r = 0
+        self.table.insertRow(r)
+        self._init_row_widgets(r)
+        self._refresh_row_count(r)
+        self._refresh_summary_row()
+
+    def _del_row(self):
+        r = self.table.currentRow()
+        # không xóa dòng tổng
+        if r < 0 or self._is_summary_row(r):
+            return
+        # chỉ xóa nếu còn ít nhất 1 dòng thường
+        if self.table.rowCount() <= 2:
+            # 1 dòng thường + 1 dòng tổng
+            return
+        self.table.removeRow(r)
+        self._refresh_all_counts()
+        self._refresh_summary_row()
+
+    # ---------- Tree clone ----------
+    def _clone_tree(self):
+        """Clone cấu trúc cây từ source_tree, gắn reference item gốc vào UserRole."""
+        self.tree.clear()
+        src_root = self._source_tree.invisibleRootItem()
+
+        def clone_children(src_parent, dst_parent):
+            for i in range(src_parent.childCount()):
+                src_child = src_parent.child(i)
+                dst_child = QTreeWidgetItem(dst_parent, [src_child.text(0)])
+                dst_child.setData(0, Qt.UserRole, src_child)
+                clone_children(src_child, dst_child)
+
+        clone_children(src_root, self.tree.invisibleRootItem())
+
+    def selected_source_item(self):
+        item = self.tree.currentItem()
+        if item is None:
+            return None
+        return item.data(0, Qt.UserRole)
+
+    
+
+    def _on_tree_current_item_changed(self, current, previous):
+        """Chọn item ở cây -> thêm dòng mới vào bảng (các dòng cũ giữ nguyên)."""
+        if current is None:
+            return
+
+        topic_text = current.text(0).strip()
+        src_item = current.data(0, Qt.UserRole)
+
+        # Lần gán ban đầu cho dòng mặc định (khi _tree_ready=False): chỉ set nếu đang trống
+        if not getattr(self, "_tree_ready", True):
+            # tìm dòng thường đầu tiên
+            r0 = -1
+            for r in range(self.table.rowCount()):
+                if not self._is_summary_row(r):
+                    r0 = r
+                    break
+            if r0 >= 0:
+                it = self.table.item(r0, self.COL_CHUDE)
+                if it is None or it.text().strip() == "":
+                    self._set_row_topic(r0, topic_text, src_item)
+                    self._refresh_row_count(r0)
+                    self._refresh_summary_row()
+            return
+
+        # Sau khi sẵn sàng: mỗi lần chọn item -> thêm dòng mới trước 'TỔNG SỐ'
+        self._ensure_summary_row()
+        r_ins = self.table.rowCount() - 1
+        if r_ins < 0:
+            r_ins = 0
+        self.table.insertRow(r_ins)
+        self._init_row_widgets(r_ins)
+        self._set_row_topic(r_ins, topic_text, src_item)
+        self._refresh_row_count(r_ins)
+        self._refresh_summary_row()
+
+# ---------- Counting logic ----------
+    def _collect_leaf_texts(self, src_item):
+        """Thu thập text(0) của tất cả node lá dạng '[...]' trong nhánh src_item."""
+        out = []
+        if src_item is None:
+            return out
+
+        def walk(node):
+            if node is None:
+                return
+            if node.childCount() == 0:
+                t = node.text(0) or ""
+                if t.startswith("["):
+                    out.append(t)
+                return
+            for i in range(node.childCount()):
+                walk(node.child(i))
+
+        walk(src_item)
+        return out
+
+    def _parse_loai_mucdo_from_name(self, name: str):
+        """Parse loai/mucdo từ tên chỉ mục.
+        Hỗ trợ các dạng:
+          - [XXX]-M1..M4  -> TN
+          - [XXX]-TF-M1..M4 -> Đ-S
+          - [XXX]-SA-M1..M4 -> SA
+        """
+        try:
+            if not name or not name.startswith("["):
+                return ("", "")
+
+            # Loại
+            if re.search(r"\]-TF-M[1-4]\b", name):
+                loai = "Đ-S"
+            elif re.search(r"\]-SA-M[1-4]\b", name):
+                loai = "SA"
+            else:
+                # mặc định TN nếu có pattern ]-M#
+                loai = "TN" if re.search(r"\]-M[1-4]\b", name) else ""
+
+            m = re.search(r"-M([1-4])\b", name)
+            mucdo = self._MAP_M.get(m.group(1), "") if m else ""
+            return (loai, mucdo)
+        except Exception:
+            return ("", "")
+
+    def _count_available(self, src_item, loai: str, mucdo: str) -> int:
+        leaves = self._collect_leaf_texts(src_item)
+        c = 0
+        for t in leaves:
+            loai2, muc2 = self._parse_loai_mucdo_from_name(t)
+            if loai2 == loai and muc2 == mucdo:
+                c += 1
+        return c
+
+    def _refresh_row_count(self, row: int):
+        if self._is_summary_row(row):
+            return
+
+        it_topic = self.table.item(row, self.COL_CHUDE)
+        if it_topic is None:
+            it_topic = QTableWidgetItem("")
+            it_topic.setFlags(it_topic.flags() & ~Qt.ItemIsEditable)
+            it_topic.setData(Qt.UserRole, None)
+            self.table.setItem(row, self.COL_CHUDE, it_topic)
+
+        # Mỗi dòng tự giữ 'chủ đề' riêng: lấy src_item đã lưu trong UserRole
+        src_item = it_topic.data(Qt.UserRole)
+        if src_item is None:
+            # fallback: nếu chưa gán, dùng item đang chọn (nhưng KHÔNG overwrite text)
+            src_item = self.selected_source_item()
+            it_topic.setData(Qt.UserRole, src_item)
+
+        if src_item is None or row < 0 or row >= self.table.rowCount():
+            it = self.table.item(row, self.COL_SOCO)
+            if it is not None:
+                it.setText("0")
+            return
+
+        cb_loai = self.table.cellWidget(row, self.COL_LOAI)
+        cb_mucdo = self.table.cellWidget(row, self.COL_MUCDO)
+        if cb_loai is None or cb_mucdo is None:
+            return
+
+        loai = cb_loai.currentText().strip()
+        mucdo = cb_mucdo.currentText().strip()
+        so_co = self._count_available(src_item, loai, mucdo)
+
+        it = self.table.item(row, self.COL_SOCO)
+        if it is None:
+            it = QTableWidgetItem("0")
+            it.setTextAlignment(Qt.AlignCenter)
+            it.setFlags(it.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, self.COL_SOCO, it)
+        it.setText(str(so_co))
+        self._refresh_summary_row()
+
+    def _refresh_all_counts(self):
+        self._ensure_summary_row()
+        for r in range(self.table.rowCount()):
+            self._refresh_row_count(r)
+        self._refresh_summary_row()
+
+    # ---------- Criteria output ----------
+    def criteria_rows(self):
+        rows = []
+        self._ensure_summary_row()
+        for r in range(self.table.rowCount() - 1):
+            cb_loai = self.table.cellWidget(r, self.COL_LOAI)
+            cb_mucdo = self.table.cellWidget(r, self.COL_MUCDO)
+            sp_n = self.table.cellWidget(r, self.COL_SOCALAY)
+            if cb_loai is None or cb_mucdo is None or sp_n is None:
+                continue
+            n = int(sp_n.value())
+            if n <= 0:
+                continue
+            rows.append((cb_loai.currentText().strip(), cb_mucdo.currentText().strip(), n))
+        return rows
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -138,6 +592,8 @@ class MainWindow(QMainWindow):
             ui.btn_xoa_dong.setGeometry(QtCore.QRect(panel_x, 160, btn_w, btn_h))
         if hasattr(ui, "btn_xoa_matran"):
             ui.btn_xoa_matran.setGeometry(QtCore.QRect(panel_x, 200, btn_w, btn_h))
+        if hasattr(ui, "btn_ra_de_tu_matran"):
+            ui.btn_ra_de_tu_matran.setGeometry(QtCore.QRect(panel_x, 240, btn_w, btn_h))
         if hasattr(ui, "btn_load_matran"):
             ui.btn_load_matran.setGeometry(QtCore.QRect(panel_x, 350, btn_w, btn_h))
         if hasattr(ui, "btn_luu_matran"):
@@ -598,7 +1054,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Move Up
                 self.btn_move_row_up = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_move_row_up.setGeometry(QtCore.QRect(le_trai+575, le_top, 30, 30))
+                self.btn_move_row_up.setGeometry(QtCore.QRect(le_trai+555, le_top, 30, 30))
                 self.btn_move_row_up.setFont(font_10)
                 self.btn_move_row_up.setObjectName("btn_move_up")
                 self.btn_move_row_up.setText("")
@@ -608,7 +1064,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Move Down
                 self.btn_move_row_down = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_move_row_down.setGeometry(QtCore.QRect(le_trai+575, le_top+35, 30, 30))
+                self.btn_move_row_down.setGeometry(QtCore.QRect(le_trai+590, le_top, 30, 30))
                 self.btn_move_row_down.setFont(font_10)
                 self.btn_move_row_down.setObjectName("btn_move_down")
                 self.btn_move_row_down.setText("")
@@ -618,7 +1074,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Chuyển tự luận
                 self.btn_chuyen_tuluan = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+70, 100, 30))
+                self.btn_chuyen_tuluan.setGeometry(QtCore.QRect(le_trai+555, le_top+40, 100, 30))
                 self.btn_chuyen_tuluan.setFont(font_10)
                 self.btn_chuyen_tuluan.setObjectName("btn_chuyen_tuluan")
                 self.btn_chuyen_tuluan.setText("TN => TL")
@@ -627,7 +1083,7 @@ class Ui_MainWindow(object):
 
                 #Tạo nút Xóa dòng
                 self.btn_xoa_dong = QtWidgets.QPushButton(parent=self.tab_taode)
-                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 100, 30))
+                self.btn_xoa_dong.setGeometry(QtCore.QRect(le_trai+555, le_top+75, 100, 30))
                 self.btn_xoa_dong.setFont(font_10)
                 self.btn_xoa_dong.setObjectName("btn_xoa_dong")
                 self.btn_xoa_dong.setText("Xóa dòng")
@@ -636,12 +1092,30 @@ class Ui_MainWindow(object):
 
                 #Nút xóa ma trận
                 self.btn_xoa_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
-                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+150, 100, 30))
+                self.btn_xoa_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+110, 100, 30))
                 self.btn_xoa_matran.setFont(font_10)
                 self.btn_xoa_matran.setObjectName("btn_xoa_matran")
                 self.btn_xoa_matran.setText("Xóa ma trận")
                 self.btn_xoa_matran.clicked.connect(self.clear_dangtoan)
                 #self.btn_xoa_matran.setStyleSheet("color: white;background-color: #4385F6;")
+
+                #Nút Ra đề từ ma trận
+                self.btn_ra_de_tu_matran = QtWidgets.QPushButton(parent=self.tab_taode)
+                self.btn_ra_de_tu_matran.setGeometry(QtCore.QRect(le_trai+555, le_top+190, 100, 30))
+                self.btn_ra_de_tu_matran.setFont(font_10)
+                self.btn_ra_de_tu_matran.setObjectName("btn_ra_de_tu_matran")
+                self.btn_ra_de_tu_matran.setText("🧩 Sinh ma trận ")
+                self.btn_ra_de_tu_matran.clicked.connect(self.open_matran_ngau_nhien)
+                #self.btn_ra_de_tu_matran.setStyleSheet("color: white;background-color: #4385F6;")
+
+                #Nút Ra đề từ ma trận
+                self.btn_matran_totnghiep = QtWidgets.QPushButton(parent=self.tab_taode)
+                self.btn_matran_totnghiep.setGeometry(QtCore.QRect(le_trai+555, le_top+225, 100, 30))
+                self.btn_matran_totnghiep.setFont(font_10)
+                self.btn_matran_totnghiep.setObjectName("btn_ra_de_tu_matran")
+                self.btn_matran_totnghiep.setText("Ma trận THPT")
+                #self.btn_matran_totnghiep.clicked.connect(self.open_matran_ngau_nhien)
+                #self.btn_ra_de_tu_matran.setStyleSheet("color: white;background-color: #4385F6;")
 
                 #Nút mở ma trận
                 self.btn_load_matran = QtWidgets.QPushButton(parent=self.tab_taode)        
@@ -1318,16 +1792,16 @@ class Ui_MainWindow(object):
                 self.label_dangcauhoi.setText("1. Chọn dạng toán")
 
         # Checkbox chọn ngẫu nhiên từ thư mục con
-                self.checkbox_tree_random = QtWidgets.QLabel(parent=self.tab_taode)        
-                self.checkbox_tree_random.setGeometry(QtCore.QRect(25, 25, 205, 30))
-                self.checkbox_tree_random.setFont(font_10)
-                self.checkbox_tree_random.setObjectName("checkbox_tree_random")
-                self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
+                # self.checkbox_tree_random = QtWidgets.QLabel(parent=self.tab_taode)        
+                # self.checkbox_tree_random.setGeometry(QtCore.QRect(25, 25, 205, 30))
+                # self.checkbox_tree_random.setFont(font_10)
+                # self.checkbox_tree_random.setObjectName("checkbox_tree_random")
+                # self.checkbox_tree_random.setText("Số dạng chọn ngẫu nhiên")
         
-                self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
-                self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 15, 50, 30))
-                self.soluong_dangtoan.setFont(font_10)
-                self.soluong_dangtoan.setObjectName("soluong_dangtoan")
+                # self.soluong_dangtoan = QtWidgets.QTextEdit(parent=self.tab_taode)
+                # self.soluong_dangtoan.setGeometry(QtCore.QRect(200, 15, 50, 30))
+                # self.soluong_dangtoan.setFont(font_10)
+                # self.soluong_dangtoan.setObjectName("soluong_dangtoan")
 
         #label thông tin dạng toán
                 self.label_dangcauhoi = QtWidgets.QLabel(parent=self.tab_taode)
@@ -11151,7 +11625,7 @@ class Ui_MainWindow(object):
                             else:
                                     current_directory = os.path.dirname(os.path.abspath(__file__))
                                     doc_folder_path = os.path.join(current_directory, 'DOC')
-                                    name_thu_muc=f"De_{datetime.now().strftime("%d-%m__%H-%M-%S")}"
+                                    name_thu_muc=f"De_{datetime.now().strftime('%d-%m__%H-%M-%S')}"
                                     new_folder_path = os.path.join(doc_folder_path, name_thu_muc)
                                     if not os.path.exists(new_folder_path):
                                             os.makedirs(new_folder_path)
@@ -20778,6 +21252,455 @@ class Ui_MainWindow(object):
 
 
 
+
+
+
+
+        def open_matran_ngau_nhien(self):
+
+
+
+                """Mở cửa sổ MA TRẬN NGẪU NHIÊN và tự chọn ngẫu nhiên dạng toán theo tiêu chí."""
+
+
+
+                try:
+
+
+
+                        dlg = MatranNgauNhienDialog(self.tab_taode, self.treeWidget)
+
+
+
+
+                        if dlg.exec_() != QDialog.Accepted:
+
+
+
+                                return
+
+
+
+
+                        src_item = dlg.selected_source_item()
+
+
+
+                        if src_item is None:
+
+
+
+                                ShowMessageBox(QMessageBox.Information, "Thông báo", "Bạn chưa chọn Lớp/Chương/Bài ở cây thư mục.").exec_()
+
+
+
+                                return
+
+
+
+
+                        criteria = dlg.criteria_rows()
+
+
+
+                        if not criteria:
+
+
+
+                                ShowMessageBox(QMessageBox.Information, "Thông báo", "Bạn chưa nhập tiêu chí (Số câu lấy > 0).").exec_()
+
+
+
+                                return
+
+
+
+
+                        # Thu thập tất cả dạng toán (lá) trong nhánh đã chọn
+
+
+
+                        leaves = []
+
+
+
+                        self._collect_leaf_items(src_item, leaves)
+
+
+
+
+                        used_names = set()
+
+
+
+                        total_added = 0
+
+
+
+                        warn_over = False
+
+
+
+                        for loai, mucdo, n in criteria:
+
+
+
+                                candidates = []
+
+
+
+                                for it in leaves:
+
+
+
+                                        name = it.text(0)
+
+
+
+                                        if not name or not name.startswith("["):
+
+
+
+                                                continue
+
+
+
+                                        if name in used_names:
+
+
+
+                                                continue
+
+
+
+                                        loai2, mucdo2 = self._parse_loai_mucdo_regex(name)
+
+
+
+                                        if loai2 == loai and mucdo2 == mucdo:
+
+
+
+                                                candidates.append(name)
+
+
+
+
+                                if not candidates:
+
+
+
+                                        continue
+
+
+
+                                if n > len(candidates):
+
+
+
+                                        warn_over = True
+
+
+
+                                pick = random.sample(candidates, min(n, len(candidates)))
+
+
+
+                                for name in pick:
+
+
+
+                                        used_names.add(name)
+
+
+
+                                        self._add_dangtoan_to_matran(name)
+
+
+
+                                        total_added += 1
+
+
+
+
+                        if total_added == 0:
+
+
+
+                                ShowMessageBox(QMessageBox.Information, "Thông báo", "Không tìm thấy dạng toán phù hợp trong nhánh đã chọn.").exec_()
+
+
+
+                        else:
+
+
+
+                                if warn_over:
+
+
+
+                                        ShowMessageBox(QMessageBox.Information, "Thông báo", "Một số tiêu chí yêu cầu nhiều hơn số câu hiện có, chương trình đã lấy tối đa số câu hiện có.").exec_()
+
+
+
+                                # tô màu & thống kê
+
+
+
+                                for row in range(self.tableWidget.rowCount()):
+
+
+
+                                        item = self.tableWidget.item(row, 0)
+
+
+
+                                        if item is not None:
+
+
+
+                                                item.setBackground(QtGui.QColor(251, 243, 221))
+
+
+
+                                self.thongke()
+
+
+
+                except Exception as e:
+
+
+
+                        ShowMessageBox(QMessageBox.Information, "Thông báo lỗi", f"Lỗi {str(e)}!").exec_()
+
+
+
+                return
+
+
+
+
+
+        def _collect_leaf_items(self, parent_item, out_list):
+
+
+
+                """Thu thập tất cả node lá (dạng toán) trong nhánh parent_item."""
+
+
+
+                if parent_item is None:
+
+
+
+                        return
+
+
+
+                for i in range(parent_item.childCount()):
+
+
+
+                        child = parent_item.child(i)
+
+
+
+                        if child.childCount() == 0 and (child.text(0) or "").startswith("["):
+
+
+
+                                out_list.append(child)
+
+
+
+                        else:
+
+
+
+                                self._collect_leaf_items(child, out_list)
+
+
+
+                return
+
+
+
+
+
+        def _parse_loai_mucdo_regex(self, name: str):
+
+
+
+                """Parse (loai_cau, muc_do) từ tên chỉ mục, bền vững cho TN/TF/SA.
+
+
+
+                Ví dụ:
+
+
+
+                  [D10_C1_B1_01]-M3...
+
+
+
+                  [D10_C1_B1_02]-TF-M2...
+
+
+
+                  [D10_C1_B3_12]-SA-M3...
+
+
+
+                """
+
+
+
+                try:
+
+
+
+                        if not name or not name.startswith("["):
+
+
+
+                                return ("", "")
+
+
+
+                        if re.search(r"\]-TF-M[1-4]\b", name):
+
+
+
+                                loai = "Đ-S"
+
+
+
+                        elif re.search(r"\]-SA-M[1-4]\b", name):
+
+
+
+                                loai = "SA"
+
+
+
+                        else:
+
+
+
+                                loai = "TN" if re.search(r"\]-M[1-4]\b", name) else ""
+
+
+
+
+                        m = re.search(r"-M([1-4])\b", name)
+
+
+
+                        if not m:
+
+
+
+                                return (loai, "")
+
+
+
+                        lvl = m.group(1)
+
+
+
+                        mucdo = "NB" if lvl == "1" else ("TH" if lvl == "2" else ("VDT" if lvl == "3" else ("VDC" if lvl == "4" else "")))
+
+
+
+                        return (loai, mucdo)
+
+
+
+                except Exception:
+
+
+
+                        return ("", "")
+
+
+
+
+
+        def _add_dangtoan_to_matran(self, name: str):
+
+
+
+                """Thêm 1 dạng toán vào tableWidget ma trận."""
+
+
+
+                row_count = self.tableWidget.rowCount()
+
+
+
+                self.tableWidget.setRowCount(row_count + 1)
+
+
+
+                self.tableWidget.setItem(row_count, 0, QTableWidgetItem(f"{name}"))
+
+
+
+
+                # Số câu mặc định = 1
+
+
+
+                item_n = QTableWidgetItem("1")
+
+
+
+                item_n.setTextAlignment(Qt.AlignCenter)
+
+
+
+                self.tableWidget.setItem(row_count, 3, item_n)
+
+
+
+
+                loai, mucdo = self._parse_loai_mucdo_regex(name)
+
+
+
+                if loai:
+
+
+
+                        it = QTableWidgetItem(loai)
+
+
+
+                        it.setTextAlignment(Qt.AlignCenter)
+
+
+
+                        self.tableWidget.setItem(row_count, 1, it)
+
+
+
+                if mucdo:
+
+
+
+                        it = QTableWidgetItem(mucdo)
+
+
+
+                        it.setTextAlignment(Qt.AlignCenter)
+
+
+
+                        self.tableWidget.setItem(row_count, 2, it)
+
+
+
+                return
         def btn_tron_dangtoan_click(self):
                 # Tách các dòng văn bản thành một danh sách
                 lines = self.text_dangtoan.toPlainText().split('\n')

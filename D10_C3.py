@@ -1944,11 +1944,13 @@ def npl_mk_L10_C3_B2_08():
 
         f=a*x**2 + b*x + c
         
+        while True:
+            x_0 = random.choice([i for i in range(-4,5) if i!=0 ])
+            x_1 = random.choice([i for i in range(-4,5) if i!=0 ])
+            if x_0!=x_1:
+                break
 
-        x_0 = random.choice([i for i in range(-4,5) if i!=0 ])       
-        y_0 = f.subs(x, x_0)
-
-        x_1=x_0 + random.randint(1,3)   
+        y_0 = f.subs(x, x_0) 
         y_1 = f.subs(x, x_1)             
 
         he_so_hien = random.choice(["a","b","c"])
@@ -2013,17 +2015,13 @@ def npl_mk_L10_C3_B2_08():
 #[D10_C3_B2_09]. Tìm hàm số bậc 2 có đồ thị đi qua điểm và trục đối xứng.
 def npl_mk_L10_C3_B2_09():
         x = sp.symbols('x')
-        a = random.randint(-4,4)
-        if a==0:
-            a = random.randint(1,3)              
-        b = random.randint(-5,5)
-        if b==0:
-            b = random.randint(-5,-1)   
+        a = random.choice([i for i in range(-5, 6) if i!=0])              
+        b = random.choice([i for i in range(-5, 6) if i!=0])   
         c = random.randint(-5,5)
 
         f=a*x**2 + b*x + c
 
-        x_0 = random.randint(-3,4)        
+        x_0  = random.choice([i for i in range(-5, 6) if i!=0])       
         y_0 = f.subs(x, x_0)
 
         x_1 = latex(my_module.hien_phan_so(-b/(2*a)))
@@ -2240,7 +2238,7 @@ def npl_mk_L10_C3_B2_11():
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -2337,7 +2335,7 @@ def npl_mk_L10_C3_B2_12():
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -2498,7 +2496,7 @@ def npl_mk_L10_C3_B2_13():
     debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
         f"\\begin{{center}}\n{code_latex}\n\\end{{center}}\n"\
         f"Xét tính đúng sai của các khẳng định sau:"\
-        f"\\choiceTF\n"\
+        f"\\choiceTFt\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n {loigiai_latex} \n }}"\
         f"\\end{{ex}}\n"
@@ -2520,8 +2518,12 @@ def npl_mk_L10_C3_B2_14():
     points.sort()
     A,B=points
 
-    x_1=random.randint(-5,6)
-    x_2=random.choice([x for x in range(-5, 6) if x != x_1])
+    while True:
+        x_1 = random.choice([i for i in range(-5, 6) if i!=0])
+        x_2 = random.choice([i for i in range(-5, 6) if i!=0])
+        if x_1 != x_2:
+            break
+
     y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
 
     m = random.choice([i for i in range(1, 3) if i!=0])
@@ -2637,8 +2639,11 @@ def npl_mk_L10_C3_B2_15():
     points.sort()
     A,B=points
 
-    x_1=random.randint(-5,6)
-    x_2=random.choice([x for x in range(-5, 6) if x != x_1])
+    while True:
+        x_1 = random.choice([i for i in range(-5, 6) if i!=0])
+        x_2 = random.choice([i for i in range(-5, 6) if i!=0])
+        if x_1 != x_2:
+            break
     y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
 
     m = random.choice([i for i in range(1, 3) if i!=0])
@@ -2756,8 +2761,11 @@ def npl_mk_L10_C3_B2_16():
     points.sort()
     A,B=points
 
-    x_1=random.randint(-5,6)
-    x_2=random.choice([x for x in range(-5, 6) if x != x_1])
+    while True:
+            x_1 = random.choice([i for i in range(-5, 6) if i!=0])
+            x_2 = random.choice([i for i in range(-5, 6) if i!=0])
+            if x_1 != x_2:
+                break
     y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
 
     m = random.choice([i for i in range(1, 3) if i!=0])
@@ -2875,9 +2883,9 @@ def npl_mk_L10_C3_B2_17():
     points.sort()
     A,B,C=points
 
-    x_1=random.randint(-4,4)
+    x_1=random.randint(-5,5)
     x_2=random.choice([x for x in range(-5, 4) if x != x_1])
-    x_3=random.choice([x for x in range(-5, 5) if x != x_1 and x != x_2])
+    x_3=random.choice([x for x in range(-5, 6) if x != x_1 and x != x_2])
     y_1,y_2,y_3=f.subs(x,x_1), f.subs(x,x_2), f.subs(x,x_3)
 
     m = random.choice([i for i in range(1, 3) if i!=0])
