@@ -22869,34 +22869,34 @@ class Ui_MainWindow(object):
         #     return
 
         def handleItemChanged(self, item, column):
-                if  self.soluong_dangtoan.toPlainText()!="":
+                # if  self.soluong_dangtoan.toPlainText()!="":
                            
-                    n=int(self.soluong_dangtoan.toPlainText())
-                    if n>0:
-                        if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:                            
-                        # Kiểm tra xem mục mẹ có được chọn hay không
-                                if item.checkState(0) == Qt.Checked:
-                                    # Lấy tất cả các mục con từ tất cả các cấp
-                                    all_children = []
-                                    self.collectAllChildren(item, all_children)
+                #     n=int(self.soluong_dangtoan.toPlainText())
+                #     if n>0:
+                #         if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:                            
+                #         # Kiểm tra xem mục mẹ có được chọn hay không
+                #                 if item.checkState(0) == Qt.Checked:
+                #                     # Lấy tất cả các mục con từ tất cả các cấp
+                #                     all_children = []
+                #                     self.collectAllChildren(item, all_children)
 
-                                    # Chọn ngẫu nhiên 5 mục từ tất cả các mục con
-                                    selected_children = random.sample(all_children, min(n, len(all_children)))                             
+                #                     # Chọn ngẫu nhiên 5 mục từ tất cả các mục con
+                #                     selected_children = random.sample(all_children, min(n, len(all_children)))                             
                                     
 
-                                    # Đánh dấu 5 mục con ngẫu nhiên là được chọn
-                                    for child in all_children:
-                                        if child in selected_children:
-                                            child.setCheckState(0, Qt.Checked)
-                                        else:
-                                            child.setCheckState(0, Qt.Unchecked)
-                                    self.uncheckAllChildren(item)
-                                else:
-                                    # Nếu mục mẹ không được chọn, bỏ chọn tất cả các mục con
-                                    self.uncheckAllChildren(item)
-                else:
-                    if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:        
-                        self.updateChildren(item)
+                #                     # Đánh dấu 5 mục con ngẫu nhiên là được chọn
+                #                     for child in all_children:
+                #                         if child in selected_children:
+                #                             child.setCheckState(0, Qt.Checked)
+                #                         else:
+                #                             child.setCheckState(0, Qt.Unchecked)
+                #                     self.uncheckAllChildren(item)
+                #                 else:
+                #                     # Nếu mục mẹ không được chọn, bỏ chọn tất cả các mục con
+                #                     self.uncheckAllChildren(item)
+                # else:
+                if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:        
+                    self.updateChildren(item)
 
                 return
 
