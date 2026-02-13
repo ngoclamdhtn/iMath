@@ -507,20 +507,34 @@ class MatranNgauNhienDialog(QDialog):
 
     # ---------- Criteria output ----------
     def criteria_rows(self):
+        """
+        Trả về list tiêu chí theo từng dòng:
+          (src_item, topic_text, loai, mucdo, n)
+        """
         rows = []
         self._ensure_summary_row()
-        for r in range(self.table.rowCount() - 1):
-            cb_loai = self.table.cellWidget(r, self.COL_LOAI)
+
+        for r in range(self.table.rowCount() - 1):  # bỏ dòng 'TỔNG SỐ'
+            it_topic = self.table.item(r, self.COL_CHUDE)
+            cb_loai  = self.table.cellWidget(r, self.COL_LOAI)
             cb_mucdo = self.table.cellWidget(r, self.COL_MUCDO)
-            sp_n = self.table.cellWidget(r, self.COL_SOCALAY)
-            if cb_loai is None or cb_mucdo is None or sp_n is None:
+            sp_n     = self.table.cellWidget(r, self.COL_SOCALAY)
+
+            if it_topic is None or cb_loai is None or cb_mucdo is None or sp_n is None:
                 continue
+
             n = int(sp_n.value())
             if n <= 0:
                 continue
-            rows.append((cb_loai.currentText().strip(), cb_mucdo.currentText().strip(), n))
-        return rows
 
+            src_item = it_topic.data(Qt.UserRole)  # item gốc tương ứng với dòng
+            topic_text = (it_topic.text() or "").strip()
+
+            rows.append((src_item, topic_text,
+                         cb_loai.currentText().strip(),
+                         cb_mucdo.currentText().strip(),
+                         n))
+        return rows
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -21327,233 +21341,79 @@ class Ui_MainWindow(object):
                 self.tableWidget.setRowCount(0)
                 self.thongke()
                 return               
-
-
-
-
-
-
-
         def open_matran_ngau_nhien(self):
-
-
-
                 """Mở cửa sổ MA TRẬN NGẪU NHIÊN và tự chọn ngẫu nhiên dạng toán theo tiêu chí."""
-
-
-
                 try:
-
-
-
                         dlg = MatranNgauNhienDialog(self.tab_taode, self.treeWidget)
-
-
-
-
                         if dlg.exec_() != QDialog.Accepted:
-
-
-
                                 return
-
-
-
-
-                        src_item = dlg.selected_source_item()
-
-
-
-                        if src_item is None:
-
-
-
-                                ShowMessageBox(QMessageBox.Information, "Thông báo", "Bạn chưa chọn Lớp/Chương/Bài ở cây thư mục.").exec_()
-
-
-
-                                return
-
-
-
 
                         criteria = dlg.criteria_rows()
-
-
-
                         if not criteria:
-
-
-
                                 ShowMessageBox(QMessageBox.Information, "Thông báo", "Bạn chưa nhập tiêu chí (Số câu lấy > 0).").exec_()
-
-
-
                                 return
 
-
-
-
-                        # Thu thập tất cả dạng toán (lá) trong nhánh đã chọn
-
-
-
-                        leaves = []
-
-
-
-                        self._collect_leaf_items(src_item, leaves)
-
-
-
-
                         used_names = set()
-
-
-
                         total_added = 0
-
-
-
                         warn_over = False
 
+                        # Cache danh sách "lá" theo từng nhánh nguồn (src_item) để tránh collect lặp
+                        leaves_cache = {}  # key: id(src_item) -> list[QTreeWidgetItem]
 
-
-                        for loai, mucdo, n in criteria:
-
-
-
-                                candidates = []
-
-
-
-                                for it in leaves:
-
-
-
-                                        name = it.text(0)
-
-
-
-                                        if not name or not name.startswith("["):
-
-
-
-                                                continue
-
-
-
-                                        if name in used_names:
-
-
-
-                                                continue
-
-
-
-                                        loai2, mucdo2 = self._parse_loai_mucdo_regex(name)
-
-
-
-                                        if loai2 == loai and mucdo2 == mucdo:
-
-
-
-                                                candidates.append(name)
-
-
-
-
-                                if not candidates:
-
-
-
+                        for (src_item_row, topic_text, loai, mucdo, n) in criteria:
+                                if src_item_row is None:
+                                        # Dòng này chưa có chủ đề hợp lệ
                                         continue
 
+                                key = id(src_item_row)
+                                if key not in leaves_cache:
+                                        leaves = []
+                                        self._collect_leaf_items(src_item_row, leaves)
+                                        leaves_cache[key] = leaves
+                                else:
+                                        leaves = leaves_cache[key]
 
+                                candidates = []
+                                for it in leaves:
+                                        name = it.text(0)
+                                        if not name or not name.startswith("["):
+                                                continue
+                                        if name in used_names:
+                                                continue
+
+                                        loai2, mucdo2 = self._parse_loai_mucdo_regex(name)
+                                        if loai2 == loai and mucdo2 == mucdo:
+                                                candidates.append(name)
+
+                                if not candidates:
+                                        continue
 
                                 if n > len(candidates):
-
-
-
                                         warn_over = True
 
-
-
                                 pick = random.sample(candidates, min(n, len(candidates)))
-
-
-
                                 for name in pick:
-
-
-
                                         used_names.add(name)
-
-
-
                                         self._add_dangtoan_to_matran(name)
-
-
-
                                         total_added += 1
 
-
-
-
                         if total_added == 0:
-
-
-
-                                ShowMessageBox(QMessageBox.Information, "Thông báo", "Không tìm thấy dạng toán phù hợp trong nhánh đã chọn.").exec_()
-
-
-
+                                ShowMessageBox(QMessageBox.Information, "Thông báo", "Không tìm thấy dạng toán phù hợp theo các dòng tiêu chí.").exec_()
                         else:
-
-
-
                                 if warn_over:
-
-
-
-                                        ShowMessageBox(QMessageBox.Information, "Thông báo", "Một số tiêu chí yêu cầu nhiều hơn số câu hiện có, chương trình đã lấy tối đa số câu hiện có.").exec_()
-
-
+                                        ShowMessageBox(QMessageBox.Information, "Thông báo", "Một số dòng yêu cầu nhiều hơn số câu hiện có, chương trình đã lấy tối đa số câu hiện có.").exec_()
 
                                 # tô màu & thống kê
-
-
-
                                 for row in range(self.tableWidget.rowCount()):
-
-
-
                                         item = self.tableWidget.item(row, 0)
-
-
-
                                         if item is not None:
-
-
-
                                                 item.setBackground(QtGui.QColor(251, 243, 221))
-
-
-
                                 self.thongke()
 
-
-
                 except Exception as e:
-
-
-
                         ShowMessageBox(QMessageBox.Information, "Thông báo lỗi", f"Lỗi {str(e)}!").exec_()
-
-
-
                 return
+
 
 
 
