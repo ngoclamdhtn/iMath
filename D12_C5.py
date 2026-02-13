@@ -3730,7 +3730,307 @@ def htd_25_xyz_L12_C5_B1_38():
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D12_C5_B1_39]-SA-M3. Góc giữa tấm kính và mặt đất
+def htd_25_xyz_L12_C5_B1_39():
 
+    x = sp.symbols("x")  # giữ cấu trúc
+
+    # ----------------- SINH DỮ LIỆU -----------------
+    while True:
+        # A, B có cùng z để giống mô hình tấm kính
+        Ax = random.randint(-4, 4)
+        Ay = random.randint(-5, 5)
+        Az = random.randint(3, 6)
+
+        Bx = random.randint(1, 4)
+        By = random.randint(-5, 3)
+        Bz = Az  # cùng độ cao
+
+        Cx = random.randint(-4, 4)
+        Cy = random.randint(-4, 4)
+        Cz = random.randint(1, 6)
+
+        A = Matrix([Ax, Ay, Az])
+        B = Matrix([Bx, By, Bz])
+        C = Matrix([Cx, Cy, Cz])
+
+        k = sp.Matrix([0, 0, 1])      
+
+        # Pháp tuyến mặt phẳng (ABC)
+        n = (B - A).cross(C - A)
+
+        cos_theta = sp.Abs(n.dot(k)) / (sp.sqrt(n.dot(n)))
+        if cos_theta==1:
+            continue
+
+        if all([Ax != By, Ax != Cx, Bx != Cx, n.norm() != 0]):
+            break
+
+    # ----------------- TÍNH GÓC -----------------
+    # Pháp tuyến (Oxy) là k = (0,0,1)
+    
+
+    # Góc giữa hai mặt phẳng là góc giữa hai vectơ pháp tuyến
+    cos_theta = sp.Abs(n.dot(k)) / (sp.sqrt(n.dot(n)))
+    theta = sp.acos(cos_theta)
+    s_cos=f"{round_half_up(cos_theta,2):.2f}".replace(".",",")
+
+    theta_deg = float(theta * 180 / sp.pi)
+    theta_round = round_half_up(theta_deg, 0)
+    dap_an = str(int(theta_round))
+
+    # ----------------- NỘI DUNG -----------------
+    noi_dung = (
+        f"Một căn phòng được đặt trong không gian ${{Oxyz}}$ sao cho $(Oxy)$ là nền nhà.\n\n"
+        f"Một tấm kính đi qua ba điểm "
+        f"$A({Ax};{Ay};{Az}),\\; B({Bx};{By};{Bz}),\\; C({Cx};{Cy};{Cz}).$\n\n"
+        f"Tính góc giữa tấm kính và nền nhà (làm tròn đến hàng đơn vị)."
+    )
+
+    # ----------------- LỜI GIẢI -----------------
+    noi_dung_loigiai = (
+        f"Vectơ pháp tuyến của mặt phẳng $(ABC)$ là:\n\n"
+        f"$\\vec n=[\\overrightarrow{{AB}},\\overrightarrow{{AC}}]"
+        f"=({n[0]};{n[1]};{n[2]}).$\n\n"
+        f"Pháp tuyến của mặt phẳng $(Oxy)$ là $\\vec k=(0;0;1)$.\n\n"
+        f"$\\cos(\\vec n, \\vec k)=\\dfrac{{|\\vec n\\cdot\\vec k|}}{{|\\vec n|.|\\vec k|}}={s_cos}$"
+        f"$\\Rightarrow (\\vec n, \\vec k) \\approx {dap_an}^\\circ.$\n\n"
+
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D12_C5_B1_40]-SA-M3. Mặt phẳng qua 4 đỉnh hình thang vuông: tìm độ hạ tại C
+def htd_25_xyz_L12_C5_B1_40():
+    import random
+    import sympy as sp
+
+    x = sp.symbols("x")  # giữ cấu trúc
+    ten = random.choice([
+        "An", "Bình", "Châu", "Dương", "Hà",
+        "Lan", "Minh", "Nam", "Quân", "Trang"
+    ])
+
+    # ----------------- SINH DỮ LIỆU -----------------
+    # Quy ước hình thang vuông tại A và B: AD ⟂ AB, BC ⟂ AB => AD // BC
+    # Đặt hệ tọa độ phẳng (m): A(0,0), B(AB,0), D(0,AD), C(AB,BC)
+    AB = random.randint(7, 12)          # m
+    AD = random.randint(4, 8)           # m
+    BC = random.randint(4, 9)           # m, khác AD để là hình thang
+    if BC == AD:
+        BC += 1
+
+    # Độ hạ tại B, D (cm) - chọn dạng 1 chữ số thập phân để phù hợp bài gốc
+    hB = random.choice([4.5, 5.0, 5.5, 6.0, 6.5, 7.2, 7.8])      # cm
+    hD = random.choice([2.4, 3.0, 3.6, 4.2, 4.8, 5.4])           # cm
+
+    # Đổi sang mét để tính mặt phẳng (tránh số rất nhỏ): 1 cm = 0.01 m
+    zA = 0
+    zB = -sp.Rational(int(round(hB*10)), 1000)  # m
+    zD = -sp.Rational(int(round(hD*10)), 1000)  # m
+
+    # Tọa độ 3D:
+    # A(0,0,0), B(AB,0,zB), D(0,AD,zD), C(AB,BC,zC) cần tìm sao cho đồng phẳng
+    A = sp.Matrix([0, 0, zA])
+    B = sp.Matrix([AB, 0, zB])
+    D = sp.Matrix([0, AD, zD])
+
+    # ----------------- TÌM zC từ điều kiện đồng phẳng -----------------
+    zC = sp.symbols("zC", real=True)
+    C = sp.Matrix([AB, BC, zC])
+
+    # Điều kiện 4 điểm đồng phẳng: tích hỗn tạp (B-A, D-A, C-A) = 0
+    eq = sp.Eq((B - A).dot((D - A).cross(C - A)), 0)
+    zC_sol = sp.solve(eq, zC)[0]
+    zC_sol = sp.simplify(zC_sol)
+
+    # độ hạ tại C so với A (cm): hC = -zC*100
+    hC_cm = sp.simplify(-zC_sol * 100)
+
+    # làm tròn đến hàng phần chục (0.1 cm)
+    hC_val = float(hC_cm.evalf())
+    
+    dap_an = f"{round_half_up(hC_val,1):.1f}".replace(".",",")
+
+
+    s_hB = f"{round_half_up(hB,1):.1f}".replace(".",",").replace(",0","")
+    s_hD = f"{round_half_up(hD,1):.1f}".replace(".",",").replace(",0","")
+
+    noi_dung = (
+        f"Một phần sân nhà bác {ten} có dạng hình thang ${{ABCD}}$ vuông tại ${{A}}$ và ${{B}}$ "
+        f"với độ dài $AB={AB}$ m, $AD={AD}$ m và $BC={BC}$ m. "
+        f"Theo thiết kế ban đầu thì mặt sân bằng phẳng và ${{A,B,C,D}}$ có độ cao như nhau. "
+        f"Sau đó bác {ten} thay đổi thiết kế để nước có thể thoát về phía góc sân ở vị trí ${{C}}$ "
+        f"bằng cách giữ nguyên độ cao ở ${{A}}$, giảm độ cao của sân ở vị trí ${{B}}$ và ${{D}}$ xuống thấp hơn "
+        f"độ cao ở ${{A}}$ lần lượt là {s_hB} cm và {s_hD} cm. "
+        f"Để mặt sân sau khi lát gạch vẫn là bề mặt phẳng thì bác {ten} cần phải giảm độ cao ở ${{C}}$ "
+        f"xuống bao nhiêu cm so với độ cao ở ${{A}}$? (kết quả làm tròn đến hàng phần chục)."
+    )
+
+    noi_dung_loigiai = (
+        f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho tia ${{AD}}$ trùng tia ${{Ax}}$"
+        f" tia ${{AB}}$ trùng tia ${{Ay}}$ và $Az \\bot (ABCD)$.\n\n"
+        f"Khi đó $A(0 ; 0 ; 0)$, $D({AD}; 0 ; 0)$, $B(0; {AB} ; 0)$, $C({AD}; {AB} ; 0)$.\n\n"
+        f"Sau khi thay đổi độ cao ta có:\n\n"
+        f"$z_A=0,\\; z_B=-{s_hB}\\cdot 10^{{-2}},\\; z_D=-{s_hD}\\cdot 10^{{-2}}$ (m).\n\n"
+        f"Ta có: $A(0,0,0),\\; B({AB},0,-{s_hB}\\cdot 10^{{-2}}),\\; D(0,{AD},-{s_hD}\\cdot 10^{{-2}}),\\; C({AB},{BC},z_C)$\n\n"
+        f"Lập phương trình mặt phẳng $(ABD)$ và từ điều kiện $C\\in (ABD)$ suy ra\n\n"
+        f"$h_C=-z_C\\cdot 100\\approx {dap_an}$ (cm) (làm tròn đến hàng phần mười)."
+     
+    )
+    code_hinh=(f" \\begin{{tikzpicture}}[scale=0.5, font=\\footnotesize,line join=round, line cap=round, >=stealth]\n\
+            \\path\n\
+            (0,0) coordinate (A) \n\
+            (9,0) coordinate(B)\n\
+            (9,-6) coordinate(C)\n\
+            (0,-5) coordinate(D)\n\
+            ;\n\
+            \\draw[thick] (A)--(B)--(C)--(D)--cycle;\n\
+            \\node [above] at ($(A)!0.5!(B)$) {{${AB}$ m}};\n\
+            \\node [right] at ($(B)!0.5!(C)$) {{${BC}$ m}};\n\
+            \\node [left] at ($(A)!0.5!(D)$) {{${AD}$ m}};\n\
+            \\foreach \\i/\\g in {{A/90,B/90,C/-90,D/-90}}{{\\draw[fill=black](\\i) circle (0pt) ($(\\i)+(\\g:4mm)$) node[scale=1]{{$\\i$}};}}\n\
+        \\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word = f"{noi_dung}\n{file_name}\n"
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C5_B1_41]-SA-M3. Camera nhìn vuông góc mặt phẳng: đường kính vùng quan sát (hình tròn)
+def htd_25_xyz_L12_C5_B1_41():
+
+    x,y,z = sp.symbols("x y z")  # giữ cấu trúc
+    # ----------------- SINH DỮ LIỆU -----------------
+    # Góc quan sát ngang (độ)
+    while True:
+        alpha = random.choice([90, 96, 104, 110, 116, 120, 126])
+
+        # Điểm đặt camera A(ax,ay,az)
+        ax = random.randint(-2, 4)
+        ay = random.randint(-2, 4)
+        az = random.randint(2, 8)
+
+        # Mặt phẳng P: A1 x + B1 y + C1 z + D1 = 0
+        A1 = random.choice([i for i in range(-3, 4) if i!=0])
+        B1 = random.choice([i for i in range(-3, 4) if i!=0])
+        C1 = random.choice([i for i in range(-4, 4) if i!=0])
+        D1 = random.randint(-10, 10)
+
+        # đảm bảo camera không nằm trên mặt phẳng
+        valA = A1*ax + B1*ay + C1*az + D1
+        if valA != 0:
+            break
+
+    # ----------------- TÍNH TOÁN -----------------
+    # Camera "chiếu thẳng" về mặt phẳng => trục nhìn vuông góc mặt phẳng
+    # Khoảng cách từ A đến (P): d = |A1 ax + B1 ay + C1 az + D1| / sqrt(A1^2+B1^2+C1^2)
+    d = sp.Abs(A1*ax + B1*ay + C1*az + D1) / sp.sqrt(A1**2 + B1**2 + C1**2)
+
+    # Bán kính vùng nhìn trên mặt phẳng: r = d * tan(alpha/2)
+    r = d * sp.tan(sp.pi*alpha/360)
+
+    # Đường kính: 2r
+    Diam = sp.simplify(2*r)
+
+    diam_val = float(Diam.evalf())
+
+    dap_an = f"{round_half_up(diam_val,1):.1f}".replace(".",",").replace(",0","")
+
+    # ----------------- NỘI DUNG -----------------
+    noi_dung = (
+        f"Biết góc quan sát ngang của một camera là ${alpha}^\\circ$. "
+        f"Trong không gian ${{Oxyz}}$, camera được đặt tại điểm $A({ax};{ay};{az})$ "
+        f"và chiếu thẳng về phía mặt phẳng $(P): {latex(A1*x+B1*y+C1*z+D1)}=0$.\n\n"
+        f"Hỏi vùng quan sát được trên mặt phẳng $(P)$ của camera là hình tròn có đường kính bằng bao nhiêu "
+        f"(làm tròn kết quả đến chữ số hàng phần mười)?"
+    )
+
+    # ----------------- LỜI GIẢI -----------------
+    noi_dung_loigiai = (
+        f"Khoảng cách từ điểm $A$ đến mặt phẳng $(P)$ là:\n\n"
+        f"$d=\\dfrac{{|{A1}\\cdot {ax}+({B1})\\cdot {ay}+({C1})\\cdot {az}+({D1})|}}"
+        f"{{\\sqrt{{{A1**2}+{B1**2}+{C1**2}}}}}={latex(d)}$\n\n"
+        f"Gọi $\\alpha={alpha}^\\circ$ là góc quan sát ngang, khi đó nửa góc là $\\dfrac{{\\alpha}}{{2}}$.\n\n"
+        f"Bán kính vùng quan sát trên $(P)$ là:\n\n"
+        f"$r=d\\tan\\left(\\dfrac{{\\alpha}}{{2}}\\right)=d\\tan\\left(\\dfrac{{{alpha}}}{{2}}^\\circ\\right).$\n\n"
+        f"Vậy đường kính hình tròn vùng quan sát là:\n\n"
+        f"$2r=2d\\tan\\left(\\dfrac{{{alpha}}}{{2}}^\\circ\\right)\\approx {dap_an}.$\n\n"
+    )
+    code_hinh=(f'\\begin{{tikzpicture}}[>=stealth,font=\\footnotesize,scale=0.7]\n\
+             \\def\\d{{10}}\n\
+             \\def\\r{{4}}\n\
+             \\def\\a{{3}}\n\
+             \\def\\b{{1}}\n\
+             \\def\\h{{3}}\n\
+             \\path (-170:2/3*\\d) coordinate (B)\n\
+             ++(0:\\d) coordinate (C)\n\
+             ++(40:\\r) coordinate (D)\n\
+             ($(B)+(D)-(C)$) coordinate (A);\n\
+             \\draw (A)--(B)--(C)--(D)--cycle;\n\
+             \\pgfmathsetmacro\\g{{asin(\\b/\\h)}}\n\
+             \\pgfmathsetmacro\\xo{{\\a *cos(\\g)}}\n\
+             \\pgfmathsetmacro\\yo{{\\b *sin(\\g)}}\n\
+             \\draw[dashed]\n\
+             (\\xo,\\yo) arc (\\g:180-\\g:{{\\a}} and\n\
+             {{\\b}})\n\
+             (180:\\a)node[left]{{$B$}} --(0:\\a)\n\
+             node[right]{{$C$}} (90:\\h)\n\
+             node[above]{{$A$}} --(0:0)\n\
+             node[below]{{$O$}} ;\n\
+             \\draw (90:\\h)--(-\\xo,\\yo) arc\n\
+             (180-\\g:360+\\g:{{\\a}} and\n\
+             {{\\b}})--cycle;\n\
+             \\draw pic[draw,angle radius=12mm]{{angle=C--B--A}};\n\
+             \node[below left] at (-5.3,-0.5) {{$P$}};\n\
+             \\end{{tikzpicture}}')
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word = f"{noi_dung}\n{file_name}"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+
+
+#---------------------------------------------------------------------#
 
 #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
 #[D12_C5_B3_01]. Viết phương trình mặt cầu có tâm và bán kính
@@ -9412,3 +9712,190 @@ z = {z_0}+{z_0+c}t\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B2_43]-SA-M3. Tìm điểm đặt trên đường thẳng để gần máy phát tín hiệu nhất
+def htd_25_xyz_L12_C5_B2_43():
+    x = sp.symbols("x")  # giữ cấu trúc, không dùng trực tiếp
+    t = sp.symbols("t", real=True)
+
+    # ----------------- SINH DỮ LIỆU -----------------
+    # Đường thẳng d: x = x0 + p t, y = y0 + q t, z = z0 + r t
+    # Chọn hệ số nhỏ để bài đẹp
+    while True:
+        x0 = random.choice([i for i in range(-5, 6) if i!=0])
+        y0 = random.choice([i for i in range(-5, 6) if i!=0])
+        z0 = random.choice([i for i in range(-5, 6) if i!=0])
+
+        p = random.choice([-3, -2, -1, 1, 2, 3])
+        q = random.choice([-3, -2, -1, 1, 2, 3])
+        r = random.choice([-3, -2, -1, 1, 2, 3])
+
+        # Vị trí A(t)
+        A = sp.Matrix([x0 + p*t, y0 + q*t, z0 + r*t])
+        f=expand((x0 + p*t)**2+(y0 + q*t)**2+(z0 + r*t)**2)
+
+        # Khoảng cách bình phương đến O
+        D2 = sp.expand(A.dot(A))
+
+        # ----------------- TÌM t0 ĐỂ D2 NHỎ NHẤT -----------------
+        # D2 là bậc 2 theo t => đạt min tại t0 = -b/(2a)
+        D2_poly = sp.Poly(D2, t)
+        a2 = D2_poly.all_coeffs()[0]
+        b2 = D2_poly.all_coeffs()[1]
+
+        t0 = sp.simplify(-b2 / (2*a2))
+
+        # Tâm mặt cầu tại thời điểm gần nhất chính là vị trí I = A(t0)
+        I = sp.simplify(A.subs(t, t0))
+        aI, bI, cI = sp.simplify(I[0]), sp.simplify(I[1]), sp.simplify(I[2])
+
+        # P = a+b+c
+        P_val = float(aI + bI + cI)
+        if P_val >-5:
+            break
+
+    if P_val.is_integer():
+        dap_an=int(P_val)
+        lam_tron=""
+    else:
+        dap_an = f"{round_half_up(P_val,1):.1f}".replace(".",",")
+        lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+
+    # ----------------- CHUỖI HIỂN THỊ -----------------
+    s_x = f"{x0}+{latex(p*t)}"
+    s_y = f"{y0}+{latex(q*t)}"
+    s_z = f"{z0}+{latex(r*t)}"
+
+    noi_dung = (
+        f"Một máy phát tín hiệu ${{P}}$ được đặt cố định ở một địa điểm và ta có thể nhận được tín hiệu của máy phát này "
+        f"trong phạm vi của một mặt cầu với bán kính ${{R}}$ của nó. "
+        f"Một người cầm máy dò tín hiệu ${{A}}$ chuyển động trên đường thẳng $d$. "
+        f"Nếu chọn điểm đặt máy phát tín hiệu ${{P}}$ là gốc tọa độ ${{O}}$ của hệ trục tọa độ ${{Oxyz}}$ thì máy dò ${{A}}$ di chuyển "
+        f"theo đường thẳng có phương trình "
+        f"$\\begin{{cases}}\n"
+        f"x={s_x}\\\\\n"
+        f"y={s_y}\\\\\n"
+        f"z={s_z}\n"
+        f"\\end{{cases}}$ "
+        f"trong đó ${{t}}$ (h) là thời gian chuyển động. "
+        f"Mặt cầu giới hạn phạm vi nhận tín hiệu của máy dò ${{A}}$ tại thời điểm nó gần máy phát tín hiệu ${{P}}$ nhất "
+        f"có tâm $I(a;b;c)$. Tính $P=a+b+c${lam_tron}."
+    )
+    noi_dung=thay_dau_congtru(noi_dung)
+
+    noi_dung_loigiai = (
+        f"Vị trí của máy dò tại thời điểm $t$ là: "
+        f"$A({s_x};{s_y};{s_z}).$\n\n"
+        f"$OA^2=({latex(x0 + p*t)})^2+({latex(y0 + q*t)})^2+({latex(z0 + r*t)})^2={latex(f)}$.\n\n"
+        f"${{OA}}$ đạt giá trị nhỏ nhất khi:\n\n"
+        f"$t_0=-\\dfrac{{b}}{{2a}}={phan_so(t0)}.$\n\n"
+        f"Khi đó tâm mặt cầu tại thời điểm gần nhất là:\n\n"
+        f"$I\\left({phan_so(aI)};{phan_so(bI)};{phan_so(cI)}\\right).$\n\n"
+        f"$a+b+c={dap_an}.$"
+    )
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+    code_hinh=(f"\\begin{{tikzpicture}}[scale=0.7]\n\
+        % Vẽ đường thẳng d (đường nét đứt)\n\
+        \\draw[blue,dashed,thick] (-3,-3) -- (-3,3) node[above] {{$d$}};        \n\
+        % Vẽ trạm phát sóng P\n\
+        \\draw[thick] (2,2.5) -- (2.3,2) -- (1.7,2) -- cycle; % Thân trạm\n\
+        \\draw[thick] (2,2.5) circle (0.3); % Vòng tròn tín hiệu\n\
+        \\node[above] at (2,2.5) {{$P$}};       \n\
+        % Vẽ đường truyền sóng\n\
+        \\draw[orange,thick] (-3,2) -- (2,2.5) node[midway,above] {{2 km}};\n\
+        \\draw[orange,dashed,thick] (-3,-2) -- (2,2.5);     \n\
+        % Vẽ sóng phát từ P\n\
+        \\foreach \\x in {{0.4,0.7,1.0,1.3}} {{\\draw[blue,thick,opacity=0.5] (2,2.5) circle (\\x);}}\n\
+\\end{{tikzpicture}}" 
+)
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    debai_word = f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D12_C5_B2_44]-SA-M3. Giao điểm hai đường thẳng tham số; tính a+b+c
+def htd_25_xyz_L12_C5_B2_44():
+
+    x_0 = random.choice([i for i in range(-5, 6) if i!=0])
+    y_0 = random.choice([i for i in range(-5, 6) if i!=0])
+    z_0 = random.choice([i for i in range(-5, 6) if i!=0])
+
+    while True:
+
+        a1 = random.choice([i for i in range(-3, 4) if i!=0])
+        a2 = random.choice([i for i in range(-3, 4) if i!=0])
+        a3 = random.choice([i for i in range(-3, 4) if i!=0])
+
+        b1 = random.choice([i for i in range(-3, 4) if i!=0])
+        b2 = random.choice([i for i in range(-3, 4) if i!=0])
+        b3 = random.choice([i for i in range(-3, 4) if i!=0])
+
+        t=random.choice([i for i in range(-2, 2) if i!=0])
+        s=random.choice([i for i in range(-2, 2) if i!=0])
+        x_1, y_1, z_1 = x_0+a1*t, y_0+a2*t, z_0+a3*t
+        x_2, y_2, z_2 = x_0+b1*s, y_0+b2*s, z_0+b3*s
+        if all([a1/b1 != a2/b2, x_1!=x_2]):
+            break
+
+    pt1=(f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    x={x_1}{a1:+d}t \\\\ \n\
+    y={y_1}{a2:+d}t \\\\ \n\
+    z={z_1}{a3:+d}t\n\
+    \\end{{array}} \\right.")
+
+    pt2=(f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    x={x_2}{b1:+d}s \\\\ \n\
+    y={y_2}{b2:+d}s \\\\ \n\
+    z={z_2}{b3:+d}s\n\
+    \\end{{array}} \\right.")
+
+    
+    dap_an = x_0+y_0+z_0
+
+    # ----------------- NỘI DUNG -----------------
+    noi_dung = (
+        f"Trong một phần mềm mô phỏng gia công 3D, người ta gắn khối vật liệu với hệ trục tọa độ ${{Oxyz}}$ (đơn vị mm)."
+        f" Trục chuyển động của mũi khoan robot được mô tả bởi đường thẳng $d_1: {pt1}$, với ${{t}}$ là tham số."
+        f" Trên bề mặt khối vật liệu có một đường rãnh dẫn hướng mà mũi khoan phải đi qua, được mô tả bởi đường thẳng $d_2:{pt2}$, với ${{s}}$ là tham số."
+        f" Để khoan đúng kỹ thuật, mũi khoan phải đi qua đúng điểm mà trục mũi khoan cắt đường rãnh dẫn hướng."
+        f" Gọi điểm giao đó là là $M(a;b;c)$. Tính $S=a+b+c$."
+
+    )
+
+    # ----------------- LỜI GIẢI -----------------
+    noi_dung_loigiai = (
+        f"Xét hệ gồm 2 phương trình giải ra được:\n\n $t={t},s={s}$ và $d_1\\cap d_2=M({x_0};{y_0};{z_0})$.\n\n"
+        f"$\\Rightarrow a+b+c={dap_an}$.")
+
+    noi_dung=noi_dung.replace("1t", "t").replace("1s", "s")
+    noi_dung_loigiai=noi_dung_loigiai.replace("1t", "t").replace("1s", "s")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+

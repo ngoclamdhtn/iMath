@@ -428,21 +428,21 @@ def ckz_L12C4_B1_05():
 def ckz_L12C4_B1_06():
     d_x=f"\\mathrm{{\\,d}}x"
     x=sp.symbols("x")
-    k=random.randint(1,4)
+    k=random.randint(1,3)
     a = [random.randint(-4,5) for i in range(k)]    
-    b = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+    b = random.choice([random.randint(-8, -1), random.randint(1, 8)])
     f = sum(a[i]* x**i for i in range(k)) + b/x
 
     kq= integrate(f, x) 
     kq2=diff(f, x)
     kq3=integrate(sum(a[i]* x**i for i in range(k)), x) -b/x**2
-    kq4=integrate(sum(a[i]* x**i for i in range(k)), x) +log(x)
+    kq4=integrate(sum(a[i]* x**i for i in range(k)), x)
 
    
     kq= f"$ {latex(kq)}+C$"
     kq2=f"$ {latex(kq2)}+C$"
     kq3=f"$ {latex(kq3)}+C$"
-    kq4=f"$ {latex(kq4)}+C$"
+    kq4=f"$ {latex(kq4)}+e^x+C$"
 
     kq=my_module.thay_the_ngoac_sincos(kq)
     kq2=my_module.thay_the_ngoac_sincos(kq2)
@@ -3709,7 +3709,7 @@ f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi đư�
         )
 
     kq4_F=(f"Một chiếc ôtô đang chuyển động với vận tốc ${{{v_0}}}$ m/s thì hãm phanh và chuyển động chậm dần với vận tốc "
-f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s}}}$ m") 
+f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s+random.randint(1,3)}}}$ m") 
     
     HDG=(f"$s=\\int v(t)dt=\\int ({latex(v)})dt={latex(integrate(v,t))}+C$.\n\n"
         f"$s(0)=0\\Rightarrow C=0$.\n\n"
@@ -6143,9 +6143,13 @@ def ckz_L12C4_B4_24():
 def ckz_L12C4_B4_25():
     d_x=f"\\mathrm{{\\,d}}x"
     x,st_a,st_b=sp.symbols("x a b")
+    while True:
+        x_1 = random.choice([i for i in range(-5, 6) if i!=0])
+        x_2 = random.choice([i for i in range(-5, 6) if i!=0])
+        if x_1<x_2:
+            break
 
-    x_1=random.randint(-5,2)
-    x_2=x_1+random.randint(1,5)
+
     a = random.choice([i for i in range(-5, 7) if i not in [0,1,-1]])
     
     noi_dung=(
@@ -12407,7 +12411,7 @@ def ckz_L12C4_B5_36():
 
     if S.is_integer:
         noi_dung = (
-        f"Một viên gạch hoa hình vuông có cạnh bằng ${b}$ cm. Người ta thiết kế sử dụng 4 đường parabol cùng chung đỉnh tại tâm của viên gạch và đi qua hai đỉnh kề nhau của viên gạch để tạo thành bông hoa như hình vẽ. Diện tích của bông hoa (phần tô đậm trong hình vẽ) là."
+        f"Một viên gạch hoa hình vuông có cạnh bằng ${{{b}}}$ cm. Người ta thiết kế sử dụng 4 đường parabol cùng chung đỉnh tại tâm của viên gạch và đi qua hai đỉnh kề nhau của viên gạch để tạo thành bông hoa như hình vẽ. Diện tích của bông hoa (phần tô đậm trong hình vẽ) là."
         )
         dap_an=S
         noi_dung_loigiai=(
@@ -12421,7 +12425,7 @@ def ckz_L12C4_B5_36():
         )  
     else:
         noi_dung = (
-        f"Một viên gạch hoa hình vuông có cạnh bằng ${b}$ cm. Người ta thiết kế sử dụng 4 đường parabol cùng chung đỉnh tại tâm của viên gạch và đi qua hai đỉnh kề nhau của viên gạch để tạo thành bông hoa như hình vẽ. Diện tích của bông hoa (phần tô đậm trong hình vẽ) là (kết quả làm tròn đến hàng phần mười)."
+        f"Một viên gạch hoa hình vuông có cạnh bằng ${{{b}}}$ cm. Người ta thiết kế sử dụng 4 đường parabol cùng chung đỉnh tại tâm của viên gạch và đi qua hai đỉnh kề nhau của viên gạch để tạo thành bông hoa như hình vẽ. Diện tích của bông hoa (phần tô đậm trong hình vẽ) là (kết quả làm tròn đến hàng phần mười)."
         )
         dap_an=f"{round_half_up(S,1):.1f}".replace(".",",")
         noi_dung_loigiai=(

@@ -783,7 +783,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 30.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 14.02.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -1114,7 +1114,7 @@ class Ui_MainWindow(object):
                 self.btn_matran_totnghiep.setFont(font_10)
                 self.btn_matran_totnghiep.setObjectName("btn_ra_de_tu_matran")
                 self.btn_matran_totnghiep.setText("Ma trận THPT")
-                #self.btn_matran_totnghiep.clicked.connect(self.open_matran_ngau_nhien)
+                self.btn_matran_totnghiep.clicked.connect(self.load_matran_THPT)
                 #self.btn_ra_de_tu_matran.setStyleSheet("color: white;background-color: #4385F6;")
 
                 #Nút mở ma trận
@@ -1429,7 +1429,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 30.01.2026")
+                self.label.setText(f"iMath\u00A92026 ver 14.02.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -3994,6 +3994,10 @@ class Ui_MainWindow(object):
                 L10_C8_B2_2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B2_2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C8_B2_2_1, ["[D10_C8_B2_57]-M1. Tìm công thức số chỉnh hợp chập k của n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C8_B2_2_1, ["[D10_C8_B2_02]-M1. Chọn k vật từ n đồ vật khác nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -4050,6 +4054,10 @@ class Ui_MainWindow(object):
                 L10_C8_B2_3_1 = QTreeWidgetItem(L10_C8_B2_3, ["Trắc Nghiệm"])
                 L10_C8_B2_3_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C8_B2_3_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_58]-M1. Tìm công thức số tổ hợp chập k của n."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L10_C8_B2_3_1, ["[D10_C8_B2_09]-M2. Chọn k đối tượng tự n đối tượng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7406,6 +7414,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_20]-M1. Giải BPT e^x>b,(>=,<,<=)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B5_1, ["[D11_C6_B5_06]-M2. Giải BPT a^x <(<=) b, (0<a<1)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -9760,11 +9772,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_52]-SA-M2. Tìm M thuộc mặt phẳng tọa độ để A,B,M thẳng hàng.."])
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_52]-SA-M2. Tìm M thuộc mặt phẳng tọa độ để A,B,M thẳng hàng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_14]-SA-M2. Cho hai véctơ. Tìm m để 2 vectơ vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_62]-SA-M2. Tìm tọa độ viên đạn chuyển động thẳng đều sau n giây"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9786,11 +9802,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_49]-SA-M3. Tìm trực tâm của tam giác"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                             
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_30]-SA-M3. Cho tọa độ 2 vị trí. Tìm tọa độ của máy bay sau một khoảng thời gian"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -9817,6 +9829,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_61]-SA-M3.  Khoảng cách min giữa hai khinh khí cầu bay theo vận tốc không đổi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C2_B3_3, ["[D12_C2_B3_36]-SA-M4. Cho tam giác. Tìm M thuộc mp tọa độ để MA^2+MB^2+MC^2 đạt min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10889,6 +10905,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_39]-SA-M2. Góc giữa tấm kính và mặt đất"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_40]-SA-M3. Nền nhà qua 4 đỉnh hình thang vuông. Tìm độ hạ tại C"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_41]-SA-M3. Camera nhìn vuông góc mặt phẳng: đường kính vùng quan sát (hình tròn)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
 
@@ -11108,6 +11136,16 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_42]-SA-M3. Bài toán thực tế: Tìm điểm thỏa mãn AB+BC+AC min"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_44]-SA-M2. Tìm giao điểm giữa mũi khoan và đường rảnh (giao 2 đường)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_43]-SA-M3. Tìm điểm đặt trên đường thẳng để gần máy phát tín hiệu nhất"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 #--------------Bài 3 - PHƯƠNG TRÌNH MẶT CẦU ------------------->
 
@@ -12841,6 +12879,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C2_B3_61]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_61()
 
+                                        #[D12_C2_B3_62]-SA-M3.  Tìm tọa độ viên đạn chuyển động thẳng đều sau n giây
+                                            if dang_toan == "[D12_C2_B3_62]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C2.mnj_34_jkl_L12_C2_B3_62()
+
 
 
                                     #------------Toán 12 - Chương 3 - Mẫu số liệu ghép nhóm ----------------------------->
@@ -13827,7 +13869,19 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B1_38]-SA-M3. Sân vận động hình chóp cụt. Tính K.c từ điểm G đến (OBED)
                                             if dang_toan == "[D12_C5_B1_38]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_38()                    
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_38()
+
+                                            #[D12_C5_B1_39]-SA-M2. Góc giữa tấm kính và mặt đất
+                                            if dang_toan == "[D12_C5_B1_39]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_39()
+
+                                            #[D12_C5_B1_40]-SA-M2. Mặt phẳng qua 4 đỉnh hình thang vuông: tìm độ hạ tại C
+                                            if dang_toan == "[D12_C5_B1_40]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_40()
+
+                                            #[D12_C5_B1_41]-SA-M3. Camera nhìn vuông góc mặt phẳng. Tính đường kính vùng quan sát (hình tròn)
+                                            if dang_toan == "[D12_C5_B1_41]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_41()                   
                                                 
 
 
@@ -14020,6 +14074,14 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B2_42]-SA-M2.  Bài toán thực tế: Tìm điểm thỏa mãn AB+BC+AC min
                                             if dang_toan == "[D12_C5_B2_42]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_42()
+
+                                            #[D12_C5_B2_43]-SA-M3. Tìm điểm đặt trên đường thẳng để gần máy phát tín hiệu nhất
+                                            if dang_toan == "[D12_C5_B2_43]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_43()
+
+                                            #[D12_C5_B2_44]-SA-M2. Giao điểm hai đường thẳng tham số; tính a+b+c
+                                            if dang_toan == "[D12_C5_B2_44]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_44()
                                                 
 
                                         #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
@@ -16352,6 +16414,10 @@ class Ui_MainWindow(object):
                                             #[D11_C6_B5_19]-SA-M3. Tìm số nghiệm nguyên của log_m (ax^2+bx+c)>n
                                             if dang_toan == "[D11_C6_B5_19]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B5_19()
+
+                                            #[D11_C6_B5_20]. Bất phương trình e^x>b
+                                            if dang_toan == "[D11_C6_B5_20]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_20()
                               
 
 
@@ -19265,6 +19331,14 @@ class Ui_MainWindow(object):
                                             if dang_toan =="[D10_C8_B2_56]":
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C8.mcn__L10_C8_B2_56()
 
+                                            #[D10_C8_B2_57]-M1. Tìm công thức số chỉnh hợp chập k của n
+                                            if dang_toan == "[D10_C8_B2_57]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_57()
+
+                                            #[D10_C8_B2_58]-M1. Tìm công thức số tổ hợp chập k của n
+                                            if dang_toan == "[D10_C8_B2_58]":
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C8.mcn__L10_C8_B2_58()
+
 
 
 
@@ -20752,6 +20826,8 @@ class Ui_MainWindow(object):
                             
                             current_directory = os.path.dirname(os.path.abspath(__file__))
                             phieuto_folder_path = os.path.join(current_directory, 'PHIEU TO')
+
+
                             
                             if phieu_to=="Phieu TN-3.PNG":
                                 phieuto_path=os.path.join(phieuto_folder_path,'Phieu TN-3.PDF')
@@ -20787,18 +20863,20 @@ class Ui_MainWindow(object):
                     
                             pdf_files = sorted(glob.glob(os.path.join(folder_path, "de*.pdf")))
 
-                            # Thêm từng file PDF vào merger (bỏ qua file đầu ra nếu đã tồn tại)
-                            for pdf in pdf_files:
-                                if os.path.basename(pdf) != output_file:
-                                    #Chèn phiếu tô
-                                    merger.append(phieuto_path)
+                            if phieu_to!="":
 
-                                    #Chèn file
-                                    merger.append(pdf)                                    
+                                # Thêm từng file PDF vào merger (bỏ qua file đầu ra nếu đã tồn tại)
+                                for pdf in pdf_files:
+                                    if os.path.basename(pdf) != output_file:
+                                        #Chèn phiếu tô
+                                        merger.append(phieuto_path)
 
-                            # Ghi file PDF tổng hợp
-                            merger.write(output_file)
-                            merger.close()
+                                        #Chèn file
+                                        merger.append(pdf)                                    
+
+                                # Ghi file PDF tổng hợp
+                                merger.write(output_file)
+                                merger.close()
 
 
                             subprocess.Popen(['explorer', name_thu_muc])
@@ -21822,9 +21900,72 @@ class Ui_MainWindow(object):
             except Exception as e:
                 show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
                 show_msg_box.exec_()
+            return
 
 
-            return 
+        def load_matran_THPT(self):
+            try:
+                current_directory = os.path.dirname(os.path.abspath(__file__))
+                default_dir = os.path.join(current_directory, 'MA TRAN THPT')
+
+                if not os.path.isdir(default_dir):
+                    default_dir = root_dir  # fallback nếu chưa có thư mục
+
+                # 2) Mở file dialog trỏ sẵn vào default_dir
+                options = QtWidgets.QFileDialog.Options()
+                options |= QtWidgets.QFileDialog.DontUseNativeDialog
+
+                fileName, _ = QtWidgets.QFileDialog.getOpenFileName(
+                    self.tab_taode,
+                    "Chọn file chứa dạng toán",
+                    default_dir,  # <-- trỏ đến thư mục MA TRAN THPT
+                    "Excel Files (*.xlsx);;All Files (*)",
+                    options=options
+                )
+
+                if not fileName:
+                    return
+
+                wb = load_workbook(fileName)
+                sheet = wb['Sheet']
+
+                # Đếm số dòng có dữ liệu ở cột A
+                rows_count = 0
+                for row in sheet.iter_rows(min_row=1, max_row=sheet.max_row, min_col=1, max_col=1):
+                    if row[0].value is not None:
+                        rows_count += 1
+
+                self.tableWidget.setRowCount(rows_count)
+
+                for i in range(1, rows_count + 1):
+                    dang_toan = sheet.cell(row=i, column=1).value
+                    item = QTableWidgetItem(str(dang_toan) if dang_toan is not None else "")
+                    self.tableWidget.setItem(i - 1, 0, item)
+
+                    loai_cau = sheet.cell(row=i, column=2).value
+                    item = QTableWidgetItem(str(loai_cau) if loai_cau is not None else "")
+                    item.setTextAlignment(Qt.AlignCenter)
+                    self.tableWidget.setItem(i - 1, 1, item)
+
+                    muc_do = sheet.cell(row=i, column=3).value
+                    item = QTableWidgetItem(str(muc_do) if muc_do is not None else "")
+                    item.setTextAlignment(Qt.AlignCenter)
+                    self.tableWidget.setItem(i - 1, 2, item)
+
+                    so_cau = sheet.cell(row=i, column=4).value
+                    item = QTableWidgetItem("" if so_cau is None else str(so_cau))
+                    item.setTextAlignment(Qt.AlignCenter)
+                    self.tableWidget.setItem(i - 1, 3, item)
+
+                # Nếu bạn cố ý bỏ dòng đầu tiên (header) thì giữ, còn không thì bỏ dòng này
+                self.tableWidget.removeRow(0)
+
+                self.thongke()
+
+            except Exception as e:
+                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Thông báo lỗi', f'Lỗi {str(e)}!')
+                show_msg_box.exec_()
+
         #vedothi
         def btn_vedothi_click(self):
                 try:

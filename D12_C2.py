@@ -10832,3 +10832,63 @@ def mnj_34_jkl_L12_C2_B3_61():
 	)
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C2_B3_62]-SA-M2. Tìm tọa độ viên đạn chuyển động thẳng đều sau n giây
+def mnj_34_jkl_L12_C2_B3_62():
+	x = sp.symbols("x")  # giữ cấu trúc
+
+	# ----------------- SINH DỮ LIỆU -----------------
+	while True:
+		# Điểm xuất phát A(ax,ay,az)
+		ax = random.randint(-10, 10)
+		ay = random.randint(-10, 10)
+		az = random.randint(1, 8)
+
+		# Vectơ vận tốc v(vx,vy,vz) (đơn vị/giây), chọn khác 0
+		vx = random.choice([i for i in range(-5, 6) if i!=0])
+		vy = random.choice([i for i in range(-5, 6) if i!=0])
+		vz = random.randint(1,6)
+		if all([ax!=vx,ay!=vy]):
+			break
+
+
+	# Thời gian bay t (giây)
+	t = random.randint(2, 7)
+
+	# Tọa độ điểm trúng mục tiêu M:
+	# M = A + t*v = (ax+tvx, ay+tvy, az+tvz)
+	Mx = ax + t * vx
+	My = ay + t * vy
+	Mz = az + t * vz
+
+
+	dap_an = Mx+My+Mz
+	A,M=random.sample(["A","B","C","D","E","F","M","N"],2)
+
+	# ----------------- NỘI DUNG -----------------
+	noi_dung = (
+		f"Trong không gian ${{Oxyz}}$, một viên đạn được bắn ra từ điểm ${A}({ax};{ay};{az})$ "
+		f"và trong {t} giây, đầu đạn đi với vận tốc không đổi, vectơ vận tốc (trên giây) là "
+		f"$\\vec{{v}}=({vx};{vy};{vz})$. "
+		f"Biết viên đạn trúng mục tiêu tại điểm ${M}(a;b;c)$. Tính $a+b+c$."
+	)
+
+	# ----------------- LỜI GIẢI -----------------
+	noi_dung_loigiai = (
+		f"${M}=({ax};{ay};{az})+{t}({vx};{vy};{vz})=({Mx}; {My}; {Mz})$.\n\n"
+		f"Vậy $a+b+c={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an

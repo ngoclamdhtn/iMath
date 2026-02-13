@@ -6821,6 +6821,115 @@ def mcn__L10_C8_B2_56():
 
 	return debai,debai_latex,loigiai_word,dap_an
 
+#[D10_C8_B2_57]-M1. Tìm công thức số chỉnh hợp chập k của n
+def mcn__L10_C8_B2_57():
+	k=random.randint(2,9)
+	noi_dung=(
+	f"Với ${{n}}$ là số nguyên dương bất kỳ thỏa mãn $n \\ge {k}$, công thức nào dưới đây đúng?"
+	)
+	
+
+	kq=f"$A^{k}_n=\\dfrac{{n!}}{{(n-{k})!}}$"
+	kq_false=[
+	f"$A^{k}_n=\\dfrac{{{k}!}}{{(n-{k})!}}$",
+	f"$A^{k}_n=\\dfrac{{n!}}{{{k}!}}$",
+	f"$A^{k}_n=\\dfrac{{(n-{k})!}}{{{k}!}}$",
+	f"$A^{k}_n=\\dfrac{{(n-{k})!}}{{n!}}$",
+	f"$A^{k}_n=\\dfrac{{n!}}{{{k}!(n-{k})!}}$",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"$A^{k}_n=\\dfrac{{n!}}{{(n-{k})!}}$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_C8_B2_58]-M1. Tìm công thức số tổ hợp chập k của n
+def mcn__L10_C8_B2_58():
+	k=random.randint(2,9)
+	noi_dung=(
+	f"Với ${{n}}$ là số nguyên dương bất kỳ thỏa mãn $n \\ge {k}$, công thức nào dưới đây đúng?"
+	)
+	
+
+	kq=f"$C^{k}_n=\\dfrac{{n!}}{{{k}!(n-{k})!}}$"
+	kq_false=[
+	f"$C^{k}_n=\\dfrac{{{k}!}}{{(n-{k})!}}$",
+	f"$C^{k}_n=\\dfrac{{n!}}{{(n-{k})!}}$",
+	f"$C^{k}_n=\\dfrac{{n!}}{{{k}!}}$",
+	f"$C^{k}_n=\\dfrac{{(n-{k})!}}{{{k}!}}$",
+	f"$C^{k}_n=\\dfrac{{(n-{k})!}}{{n!}}$",
+	
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"$C^{k}_n=\\dfrac{{n!}}{{{k}!(n-{k})!}}$."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 
 #Bài 3 - Nhị thức Niu-tơn

@@ -11140,7 +11140,7 @@ def prt_34_L12_C1_B4_06():
 		code= my_module.moi_truong_anh_latex(code_BBT_false)
 		file_name_false=my_module.pdftoimage_timename(code)
 
-	kq3_T=f"*Hàm số có bảng biến thiên là\n\n"\
+	kq3_T=f"* Hàm số có bảng biến thiên là\n\n"\
 	f"{file_name}"	
 	kq3_F=f"Hàm số có bảng biến thiên là\n\n"\
 	f"{file_name_false}"
@@ -11216,7 +11216,7 @@ def prt_34_L12_C1_B4_06():
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"*Hàm số có đồ thị là\\\\"\
+	kq4_T=f"* Hàm số có đồ thị là\\\\"\
 	f"{code_dothi}"
 	kq4_F=f"Hàm số có đồ thị là\\\\"\
 	f"{code_dothi_false}"

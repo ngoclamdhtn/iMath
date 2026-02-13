@@ -7821,13 +7821,100 @@ def uz9zu_L11_C6_B5_19():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C6_B5_20]-M1. Bất phương trình e^x>b
+def uz9zu_L11_C6_B5_20():
+    b=random.randint(2,10)
+    chon=random.randint(1,4)
+    if chon==1:
+        noi_dung=(f"Tập nghiệm của bất phương trình $e^x>{b}$ là")
+
+        kq=f"(\\ln {b}; +\\infty)"
+
+        noi_dung_loigiai=(
+        f"$e^x>{b} \\Rightarrow x> \\ln {b}$.\n\n")
+    
+    if chon==2:
+        noi_dung=(f"Tập nghiệm của bất phương trình $e^x\\ge {b}$ là")
+
+        kq=f"[\\ln {b}; +\\infty)"
+
+        noi_dung_loigiai=(
+        f"$e^x\\ge {b} \\Rightarrow x\\ge \\ln {b}$.\n\n")
+
+    if chon==3:
+        noi_dung=(f"Tập nghiệm của bất phương trình $e^x\\le {b}$ là")
+
+        kq=f"(-\\infty;\\ln {b}]"
+
+        noi_dung_loigiai=(
+        f"$e^x\\le {b} \\Rightarrow x\\le \\ln {b}$.\n\n")
+
+    if chon==4:
+        noi_dung=(f"Tập nghiệm của bất phương trình $e^x<{b}$ là")
+
+        kq=f"(-\\infty;\\ln {b})"
+
+        noi_dung_loigiai=(
+        f"$e^x<{b} \\Rightarrow x< \\ln {b}$.\n\n")
+
+    noi_dung_loigiai+=f"Tập nghiệm là ${kq}$." 
+    
+    
+
+    
+    list_kq=[
+    f"(\\ln {b}; +\\infty)",
+    f"[\\ln {b}; +\\infty)",
+    f"(-\\infty;\\ln {b})",
+    f"(-\\infty;\\ln {b}]",
+    f"(\\log {b}; +\\infty)",
+    f"[\\log {b}; +\\infty)",
+    f"(0;\\ln {b})",
+    f"(0;\\ln {b}]",  
+    f"(1;\\ln {b})",
+    f"(1;\\log {b})",
+    ]
+    kq_false=[x for x in list_kq if x!=kq]  
+    kq2,kq3,kq4=random.sample(kq_false,3)   
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
     
 
 
 
 
-
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #BÀI 6 - BÀI TOÁN LÃI SUẤT, TĂNG TRƯỞNG.
 #[D11_C6_B6_01]. Cho số tiền và lãi suất theo năm. Tính tổng tiền thu được.
