@@ -6979,4 +6979,61 @@ def newy25_L12_C6_B2_38():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_39]-M3. x.s t.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính
+def newy25_L12_C6_B2_39():
+
+    # Tỉ lệ mắc bệnh (dạng % nhỏ)
+    ti_le_benh = random.choice([0.05, 0.1, 0.2, 0.3])  # %
+    s_ti_le_benh=str(ti_le_benh).replace(".",",")
+    do_nhay = random.randint(90,98)      # % đúng khi bị bệnh
+    duong_gia = random.randint(1,6)         # % dương tính giả
+
+    # Đổi sang xác suất
+    PB = ti_le_benh / 100
+    P_khongB = 1 - PB
+    P_D_B = do_nhay / 100
+    P_D_khongB = duong_gia / 100
+
+    # Xác suất dương tính (toàn phần)
+    PD = P_D_B * PB + P_D_khongB * P_khongB
+
+    # Đổi sang %
+    PD_percent = PD * 100
+
+    dap_an = f"{round_half_up(PD_percent,0):.0f}".replace(".",",")
+
+    noi_dung = (
+    f"Ở một đất nước, có khoảng ${s_ti_le_benh}\\%$ dân số mắc một bệnh truyền nhiễm T. "
+    f"Khi thực hiện xét nghiệm bệnh T thì kết quả dương tính chính xác "
+    f"${do_nhay}\\%$ với người bị bệnh và ${duong_gia}\\%$ với người không bị bệnh. "
+    f"Chọn ngẫu nhiên một người và xét nghiệm.\n"
+    f"Xác suất để người đó dương tính là bao nhiêu $\\%$ (làm tròn đến hàng đơn vị)."
+    )
+
+    noi_dung_loigiai = (
+    f"Gọi $B$ là biến cố “người mắc bệnh”, $D$ là biến cố “dương tính”.\n\n"
+    f"$P(B)={s_ti_le_benh}\\%={PB}$;"
+    f"$P(\\overline{{B}})={P_khongB}$\n\n"
+    f"$P(D|B)={P_D_B},\\quad P(D|\\overline{{B}})={P_D_khongB}$\n\n"
+    f"Theo công thức xác suất toàn phần:\n\n"
+    f"$P(D)=P(D|B)P(B)+P(D|\\overline{{B}})P(\\overline{{B}})$\n"
+    f"$={P_D_B}\\cdot{PB}+{P_D_khongB}\\cdot{P_khongB}"
+    f"\\approx {dap_an}\\%$"
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("0.","0,")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
     

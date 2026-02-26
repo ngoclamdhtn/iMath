@@ -6602,6 +6602,42 @@ def uvxy9_L11_C8_B4_22():
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D11_C8_B4_23]-SA-M3. H.chóp S.ABCD, đáy h.v có SA,AB. Tính d(C,(SBD))
+def uvxy9_L11_C8_B4_23():
+	SA=random.randint(1,7)
+	AB=random.randint(1,6)
+	AO=AB*sqrt(2)/2
+	d=SA*AO/sqrt(SA**2+AO**2)
+	dap_an=f"{round_half_up(d,2):.2f}".replace(".",",")
+	if dap_an.endswith("0"):
+ 		dap_an = dap_an[:-1]
+
+
+	noi_dung = (
+	f"Cho hình chóp $S.ABCD$ có đáy là hình vuông và ${{SA}}$ vuông góc đáy, $SA={SA}, AB={AB}$."
+	f" Tính khoảng cách từ điểm ${{C}}$ đến mặt phẳng $(SBD)$ (kết quả làm tròn đến hàng phần trăm)."
+	)
+	
+
+	noi_dung_loigiai=(
+	f"Gọi $O=AC\\cap BD \\Rightarrow AO=\\dfrac{{AC}}{{2}}={latex(AO)}$.\n\n"
+	f"Vì ${{AC}}$ cắt mặt phẳng $(SBD)$ tại trung điểm ${{O}}$ nên $d(C,(SBD))=d(A,(SBD))$."
+	f"Kẻ $AH \\bot SO $. Vì $BD \\bot (SAC) \\Rightarrow BD \\bot AH \\Rightarrow AH \\bot (SBD)$.\n\n"
+	f"Do đó: $d(A,(SBD)=AH=\\dfrac{{SA.AO}}{{\\sqrt{{SA^2+AO^2}}}}=\\dfrac{{{SA}.{latex(AO)}}}{{\\sqrt{{{SA**2}+{AO**2}}}}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #BÀI 5 - GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG
 
 #[D11_C8_B5_01]-M1. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.

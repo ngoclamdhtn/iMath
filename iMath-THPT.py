@@ -4554,6 +4554,10 @@ class Ui_MainWindow(object):
                 L10_C9_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C9_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_64]-SA-M2. XS chọn được 2 bút khác màu."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item=QTreeWidgetItem(L10_C9_B2_3, ["[D10_C9_B2_44]-SA-M3. cho a sách X, b sách Y, c sách Z, chon m quyển, xs để số sách còn lại đủ 3 môn"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7610,7 +7614,11 @@ class Ui_MainWindow(object):
                 L11_C7_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_1 = QTreeWidgetItem(L11_C7_B2, ["Đạo hàm chứa đa thức, 1/x, căn(x)"])
+                L11_C7_B2_TN = QTreeWidgetItem(L11_C7_B2, ["Trắc nghiệm"])
+                L11_C7_B2_TN.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C7_B2_TN.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C7_B2_1 = QTreeWidgetItem(L11_C7_B2_TN, ["Đạo hàm chứa đa thức, 1/x, căn(x)"])
                 L11_C7_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7642,7 +7650,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_2 = QTreeWidgetItem(L11_C7_B2, ["Đạo hàm hàm số lượng giác"])
+                L11_C7_B2_2 = QTreeWidgetItem(L11_C7_B2_TN, ["Đạo hàm hàm số lượng giác"])
                 L11_C7_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7682,7 +7690,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_3 = QTreeWidgetItem(L11_C7_B2, ["Đạo hàm hàm số mũ, lôgarit"])
+                L11_C7_B2_3 = QTreeWidgetItem(L11_C7_B2_TN, ["Đạo hàm hàm số mũ, lôgarit"])
                 L11_C7_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7718,7 +7726,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_4 = QTreeWidgetItem(L11_C7_B2, ["Đạo hàm của tích, thương"])
+                L11_C7_B2_4 = QTreeWidgetItem(L11_C7_B2_TN, ["Đạo hàm của tích, thương"])
                 L11_C7_B2_4.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_4.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7758,7 +7766,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_5 = QTreeWidgetItem(L11_C7_B2, ["Đạo hàm của hàm hợp"])
+                L11_C7_B2_5 = QTreeWidgetItem(L11_C7_B2_TN, ["Đạo hàm của hàm hợp"])
                 L11_C7_B2_5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7790,7 +7798,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_6 = QTreeWidgetItem(L11_C7_B2, ["Đạo hàm cấp hai"])
+                L11_C7_B2_6 = QTreeWidgetItem(L11_C7_B2_TN, ["Đạo hàm cấp hai"])
                 L11_C7_B2_6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_6.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7815,7 +7823,7 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 
-                L11_C7_B2_7 = QTreeWidgetItem(L11_C7_B2, ["Bài toán vận tốc, gia tốc"])
+                L11_C7_B2_7 = QTreeWidgetItem(L11_C7_B2_TN, ["Bài toán vận tốc, gia tốc"])
                 L11_C7_B2_7.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_7.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7827,7 +7835,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C7_B2_8 = QTreeWidgetItem(L11_C7_B2, ["Phương trình, Bất phương trình chứa f'(x)"])
+                L11_C7_B2_8 = QTreeWidgetItem(L11_C7_B2_TN, ["Phương trình, Bất phương trình chứa f'(x)"])
                 L11_C7_B2_8.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C7_B2_8.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7880,6 +7888,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C7_B2_TLN, ["[D11_C7_B2_57]-SA-M3. Cho f(x)=sin(ax+b)+mx. Tìm số nghiệm thuộc khoảng đoạn của f'(x)=0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B2_TLN, ["[D11_C7_B2_60]-SA-M3. Hàm dân số P(t)=C.e^(kt)+M với C,M chưa biết. Tính dân số sau n năm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8277,6 +8289,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_23]-SA-M3. H.chóp S.ABCD, đáy h.vuông có SA,AB. Tính d(C,(SBD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_21]-SA-M3. H.chóp S.ABCD, đáy h.chữ nhật, có AB,AD SA. Tính d(A,(SBC)) hoặc d(A,(SCD))"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8583,6 +8599,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C9_B1_SA, ["[D11_C9_B1_25]-SA-M3. Tính xác suất mở được ô trúng thưởng ở lần thứ k."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
 
@@ -8642,6 +8662,30 @@ class Ui_MainWindow(object):
                 L11_C9_B2_SA.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_10]-SA-M2. Cho A,B độc lập có P(A) và P(AUB). Tính P(B)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_11]-SA-M2. Xác suất chọn 2 bi cùng màu từ 4 loại bi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_12]-SA-M3. Xác suất chọn 2 bi cùng màu từ hai hộp chứa 3 loại bi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_13]-SA-M3. Xác suất thắng bóng bàn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_14]-SA-M3. Xác suất người được chọn là nữ nhỏ hơn x tuổi."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_15]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút cùng màu."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_16]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút khác màu."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8914,7 +8958,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B2_2, ["[D12_C1_B2_25]-TF-M2. Cho đồ thị f'(x). Xét đúng-sai:đơn điệu, so sánh, cực trị, GTLN-GTNN."])
+                item = QTreeWidgetItem(L12_C1_B2_2, ["[D12_C1_B2_26]-TF-M3. f(x)=acosx+b. Xét Đ-S: f(m),f'(x), f'(x)=0, max-min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B2_2, ["[D12_C1_B2_27]-TF-M3. f(x)=asinx+b. Xét Đ-S: f(m),f'(x), f'(x)=0, max-min."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C1_B2_2, ["[D12_C1_B2_25]-TF-M2. Cho đồ thị f'(x). Xét Đ-S:đơn điệu, so sánh, cực trị, GTLN-GTNN."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -10931,6 +10983,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B1_13, ["[D12_C5_B1_42]-SA-M3. Tính góc nhị diện [A,Ox,B]"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
 
@@ -11159,6 +11215,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B2_SA, ["[D12_C5_B2_45]-SA-M3. Tính vận tốc đào hầm Y để 2 hầm X,Y gặp nhau tại E."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
 
                 #--------------Bài 3 - PHƯƠNG TRÌNH MẶT CẦU ------------------->
@@ -11298,7 +11358,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_01]-M2. x.s A|B: Lấy lần lượt 2 bi. Tính xác suất để viêb thứ 2 màu x biết viên thứ 1 màu y."])
+                item = QTreeWidgetItem(L12_C6_B1_1, ["[D12_C6_B1_01]-M2. x.s A|B: Lấy lần lượt 2 bi. Tính xác suất để viên thứ 2 màu x biết viên thứ 1 màu y."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11545,6 +11605,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_23]-SA-M3.  x.s t.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_39]-SA-M3.  x.s t.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -12121,6 +12185,14 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B2_25]-TF-M2. Cho đồ thị f'(x). Xét đúng-sai:đơn điệu, so sánh, cực trị, GTLN-GTNN.    
                                             if dang_toan == "[D12_C1_B2_25]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B2_25()
+
+                                            #[D12_C1_B2_26]-TF-M2. f(x)=acosx+b. Xét Đ-S: f(m),f'(x), f'(x)=0, max-min    
+                                            if dang_toan == "[D12_C1_B2_26]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B2_26()
+
+                                            #[D12_C1_B2_27]-TF-M2. f(x)=asinx+b. Xét Đ-S: f(m),f'(x), f'(x)=0, max-min    
+                                            if dang_toan == "[D12_C1_B2_27]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C1.prt_34_L12_C1_B2_27()
                                                 
 
                                     #Bài 3. ĐƯỜNG t.cận
@@ -13895,7 +13967,11 @@ class Ui_MainWindow(object):
 
                                             #[D12_C5_B1_41]-SA-M3. Camera nhìn vuông góc mặt phẳng. Tính đường kính vùng quan sát (hình tròn)
                                             if dang_toan == "[D12_C5_B1_41]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_41()                   
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_41()
+
+                                            #[D12_C5_B1_42]-SA-M3. Tính góc nhị diện [A,Ox,B]
+                                            if dang_toan == "[D12_C5_B1_42]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B1_42()                  
                                                 
 
 
@@ -14096,6 +14172,10 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B2_44]-SA-M2. Giao điểm hai đường thẳng tham số; tính a+b+c
                                             if dang_toan == "[D12_C5_B2_44]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_44()
+
+                                            #[D12_C5_B2_45]-SA-M2. Tính vận tốc đào hầm Y để 2 hầm X,Y gặp nhau tại E.
+                                            if dang_toan == "[D12_C5_B2_45]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_45()
                                                 
 
                                         #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
@@ -14454,6 +14534,10 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B2_38]-M3. Cho x.s nhận ra tiền giả của 2 người. Xét Đ-S.
                                             if dang_toan == "[D12_C6_B2_38]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_38()
+
+                                            #[D12_C6_B2_39]-M3. x.s t.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính 
+                                            if dang_toan == "[D12_C6_B2_39]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_39()
 
                                             #-------------------------LỚP 11---------------------->
 
@@ -16156,6 +16240,10 @@ class Ui_MainWindow(object):
                                             #[D11_C7_B2_59]-M2. Đạo hàm k/cosax
                                             if dang_toan == "[D11_C7_B2_59]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_59()
+
+                                            #[D11_C7_B2_60]-SA-M3. Hàm dân số P(t)=C.e^(kt)+M với C,M chưa biết. Tính dân số sau n năm 
+                                            if dang_toan == "[D11_C7_B2_60]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B2_60()
                                             
                                             #BÀI 3-PHƯƠNG TRÌNH TIẾP TUYẾN
                                             #[D11_C7_B3_01]-M2. Cho hàm số đa thức. Viết phương trình tiếp tuyến tại điểm (x_0;y_0)
@@ -16803,7 +16891,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C8_B4_22]-M2. H.chóp S.ABCD, đáy h.thoi, góc A=60. Tính d(AC,SD)
                                             if dang_toan == "[D11_C8_B4_22]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_22()     
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_22()
+
+                                            #[D11_C8_B4_23]-M2. H.chóp S.ABCD, đáy h.v có SA,AB. Tính d(C,(SBD))
+                                            if dang_toan == "[D11_C8_B4_23]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_23()     
                                                 
 
                                         #BÀI 5-GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG.
@@ -17017,7 +17109,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C9_B1_24]-SA-M3. Cho xác suất tránh được tai nạn khi dùng 2 hệ thống xử lí. Tính x.s tránh được tai nạn ít nhất một lần
                                             if dang_toan == "[D11_C9_B1_24]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B1_24()                                   
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B1_24()
+
+                                            #[D11_C9_B1_25]-SA-M3. Tính xác suất mở được ô trúng thưởng ở lần thứ k.
+                                            if dang_toan == "[D11_C9_B1_25]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B1_25()                                
                                                 
 
                                         #BÀI 2: BIẾN CỐ HỢP
@@ -17070,6 +17166,30 @@ class Ui_MainWindow(object):
                                             #[D11_C9_B2_10]-SA-M2. Cho A,B độc lập có P(A) và P(AUB). Tính P(B) 
                                             if dang_toan == "[D11_C9_B2_10]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_10()
+
+                                            #[D11_C9_B2_11]-SA-M2. Xác suất chọn 2 bi cùng màu 
+                                            if dang_toan == "[D11_C9_B2_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_11()
+
+                                            #[D11_C9_B2_12]-SA-M2. Xác suất chọn 2 bi cùng màu từ hai hộp
+                                            if dang_toan == "[D11_C9_B2_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_12()
+
+                                            #[D11_C9_B2_13]-SA-M2. Xác suất thắng bóng bàn
+                                            if dang_toan == "[D11_C9_B2_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_13()
+
+                                            #[D11_C9_B2_14]-SA-M2. Xác suất người được chọn là nữ nhỏ hơn x tuổi.
+                                            if dang_toan == "[D11_C9_B2_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_14()
+
+                                            #[D11_C9_B2_15]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút cùng màu.
+                                            if dang_toan == "[D11_C9_B2_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_15()
+
+                                            #[D11_C9_B2_16]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút khác màu.
+                                            if dang_toan == "[D11_C9_B2_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_16()
 
                                                 
 
@@ -19724,6 +19844,10 @@ class Ui_MainWindow(object):
                                             #[D10_C9_B2_63]-SA-M4. XS để tổng k thẻ được chọn có 2 thẻ có tổng bằng a
                                             if dang_toan =="[D10_C9_B2_63]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_63()
+
+                                            #[D10_C9_B2_64]-SA-M4. XS chọn được 2 bút khác màu.
+                                            if dang_toan =="[D10_C9_B2_64]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C9.mjulk_L10_C9_B2_64()
 
 
 

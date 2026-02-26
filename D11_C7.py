@@ -4250,6 +4250,70 @@ def ui5io_L11_C7_B2_59():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C7_B2_60]-SA-M3. Hàm dân số P(t)=C.e^(kt)+M với C,M chưa biết. Tính dân số sau n năm
+def ui5io_L11_C7_B2_60():
+
+    # Tạo tham số ngẫu nhiên
+    a = random.choice([0.03, 0.04, 0.05, 0.06])   # hệ số tăng trưởng
+    M = random.choice([150, 180, 200, 220, 250])  # nghiệm riêng
+    P0 = random.randint(250, 400)                # dân số ban đầu (nghìn)
+    t0 = random.randint(8,15)          # số năm
+
+    b = a*M   # vì từ hệ số so sánh ta có M = b/a
+    
+    C = P0 - M
+    
+    # Dân số sau t0 năm
+    P_t = C * math.exp(a*t0) + M
+    
+    muc_tang = P_t - P0
+    
+    
+
+    s_at0=f"{round_half_up(a*t0,2):.2f}".replace(".",",")
+    s_a=f"{round_half_up(a,2):.2f}".replace(".",",")
+    s_b=f"{round_half_up(b,1):.1f}".replace(".",",").replace(",0","")
+    
+    s_P_t=f"{round_half_up(P_t,2):.2f}".replace(".",",")
+    s_muc_tang=f"{round_half_up(muc_tang,2):.2f}".replace(".",",")
+    dap_an = f"{round_half_up(muc_tang,0):.0f}".replace(".",",")
+    
+    noi_dung = (
+    f"Dân số của một đô thị "
+    f"được cho bởi hàm số $P(t)=C.e^{{{s_a}t}}+M$, trong đó ${{C, M}}$ là các hằng số (đơn vị: nghìn người), thời gian ${{t}}$ tính bằng năm. "
+    f"Tốc độ biến thiên dân số tại thời điểm $t$ thỏa mãn hệ thức "
+    f"$P'(t)={s_a}\\cdot P(t)-{s_b}$ với $t \\ge 0$. "
+    f"Biết rằng dân số tại thời điểm ban đầu $(t=0)$ là {P0} nghìn người. "
+    f"Sau {t0} năm $(t={t0})$, dân số của đô thị này tăng thêm khoảng bao nhiêu nghìn người "
+    f"(kết quả làm tròn đến hàng đơn vị)?"
+    )
+
+    noi_dung_loigiai=(
+    f"Ta có $P'(t)={s_a}Ce^{{{s_a}t}}$.\n\n"
+    f"Xét phương trình:\n"
+    f"${s_a}Ce^{{{s_a}t}}={s_a}(Ce^{{{s_a}t}}+M)-{s_b}$.\n\n"
+    f"$\\Rightarrow {s_a}M-{s_b}=0 \\Rightarrow M=\\dfrac{{{s_b}}}{{{s_a}}}={M}$.\n\n"
+    f"Từ $P(0)={P0}$ suy ra $C+{M}={P0} \\Rightarrow C={C}$.\n\n"
+    f"Vậy $P(t)={C}e^{{{s_a}t}}+{M}$.\n\n"
+    f"$P({t0})={C}e^{{{s_at0}}}+{M}\\approx {s_P_t}$ (nghìn).\n\n"
+    f"Mức tăng dân số sau {t0} năm là:\n\n"
+    f"$P({t0})-P(0)\\approx {s_P_t}-{P0}={s_muc_tang}$ (nghìn).\n\n"
+    f"Làm tròn đến hàng đơn vị: {dap_an} (nghìn người)."
+    )   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 ################################################################################
 #BÀI 3 - PHƯƠNG TRÌNH TIẾP TUYẾN 

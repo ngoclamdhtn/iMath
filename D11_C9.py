@@ -5,6 +5,11 @@ import random
 from fractions import Fraction
 import my_module
 
+#Trả về dạng phân số 
+def phan_so(t):
+    m=latex(Rational(t).limit_denominator(100000000000))
+    return m
+
 # Hàm làm tròn half-up
 def round_half_up(n, decimals=1):
     multiplier = 10 ** decimals
@@ -2130,6 +2135,52 @@ def ut9kq_L11_C9_B1_24():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B1_25]-SA-M3. Tính xác suất mở được ô trúng thưởng ở lần thứ k.
+def ut9kq_L11_C9_B1_25():
+	# Tạo tham số ngẫu nhiên
+	n = random.randint(6,13)        # số ô
+	k = random.randint(2,n-1)       # lần mở trúng
+	
+	# Xác suất trúng ở lần thứ k (không hoàn lại)
+	xac_suat = 1/n
+	dap_an = f"{round_half_up(xac_suat,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Một trò chơi gồm {n} ô lựa chọn, bề ngoài của chúng giống hệt nhau "
+	f"và chỉ có đúng một ô may mắn. Người chơi thử ngẫu nhiên từng ô (mỗi ô chỉ mở một lần). "
+	f"Tính xác suất để người đó mở được ô may mắn ở lần thứ {k} (kết quả làm tròn đến hàng phần trăm)."
+	)
+	chuoi = ""
+	for i in range(1, k):
+	    chuoi += f"\\dfrac{{{n-i}}}{{{n-i+1}}}."
+
+	noi_dung_loigiai=(
+	f"Để trúng ở lần thứ {k} thì người chơi phải:\n\n"
+	f"- Không trúng trong {k-1} lần đầu.\n\n"
+	f"- Trúng ở lần thứ {k}.\n\n"
+	f"Xác suất không trúng ở {k-1} lần đầu là:\n\n"
+	f"${chuoi}$\n\n"
+	f"Xác suất trúng ở lần thứ {k} là $\\dfrac{{1}}{{{n-k+1}}}$.\n\n"
+	f"Theo quy tắc nhân xác suất ta được: "
+	f"$P = \\dfrac{{1}}{{{n}}}={dap_an}$."
+
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#<----------------------------------------------->#
 #BÀI 2- BIẾN CỐ HỢP - QUY TẮC CỘNG XÁC SUẤT
 #[D11_C9_B2_01]-M2. Hộp chứa các viên bi có 2 màu. Phát biểu biến cố hợp.
 def ut9kq_L11_C9_B2_01():   
@@ -3112,3 +3163,354 @@ def ut9kq_L11_C9_B2_10():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B2_11]-SA-M2. Xác suất chọn 2 bi cùng màu
+def ut9kq_L11_C9_B2_11():
+
+	# Sinh số bi theo từng màu (cho phép có màu chỉ 1 viên)
+	do = random.randint(3,8)
+	xanh = random.randint(2,6)
+	vang = random.randint(1,8)
+	trang = random.randint(4,8)
+
+	tong = do + xanh + vang + trang
+	
+	mau_so = sp.binomial(tong, 2)
+
+	# Danh sách màu (tên, số lượng)
+	ds_mau = [
+		("đỏ", do),
+		("xanh", xanh),
+		("vàng", vang),
+		("trắng", trang),
+	]
+
+	# Tính số trường hợp thuận lợi + đồng thời tạo chuỗi lời giải gọn
+	thuan_loi = 0
+	cac_hang_tu = []     # chứa latex dạng \binom{a}{2}
+	mo_ta = []           # mô tả: "2 bi đỏ",...
+
+	for ten, sl in ds_mau:
+		if sl >= 2:
+			thuan_loi += sp.binomial(sl, 2)
+			cac_hang_tu.append(f"C^2_{{{sl}}}")
+			mo_ta.append(f"2 bi {ten}")
+
+	# Rút gọn xác suất
+	xac_suat = sp.simplify(thuan_loi/mau_so)
+	dap_an = f"{round_half_up(xac_suat,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Một hộp đựng {tong} viên bi gồm {do} viên bi đỏ, "
+	f"{xanh} viên bi xanh, {vang} viên bi vàng và {trang} viên bi trắng. "
+	f"Lấy ngẫu nhiên từ hộp đó 2 viên bi. "
+	f"Tính xác suất của biến cố “lấy được 2 viên bi cùng màu” (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	# Nếu ngẫu nhiên rơi vào trường hợp hiếm (tất cả đều <2) thì thuan_loi=0,
+	# tuy nhiên với miền sinh ở đây luôn có "đỏ >= 2" nên không xảy ra.
+	if len(cac_hang_tu) == 0:
+		chuoi_thuan_loi = "0"
+		dien_giai = "Vì mỗi màu đều có ít hơn 2 viên nên không thể lấy được 2 viên cùng màu."
+	else:
+		chuoi_thuan_loi = " + ".join(cac_hang_tu)
+		dien_giai = (
+			"Chỉ những màu có ít nhất 2 viên mới có thể tạo được cặp cùng màu, nên ta xét: "
+			+ ", ".join(mo_ta) + "."
+		)
+
+	noi_dung_loigiai = (
+	f"Tổng số cách chọn 2 viên bi là:\n"
+	f"$C^2_{{{tong}}} = {mau_so}$.\n\n"
+	f"{dien_giai}\n\n"
+	f"Số cách chọn 2 viên cùng màu là:\n"
+	f"${chuoi_thuan_loi} = {thuan_loi}$.\n\n"
+	f"Vậy xác suất cần tìm là:\n"
+	f"$P = \\dfrac{{{thuan_loi}}}{{{mau_so}}} = {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C9_B2_12]-SA-M2. Xác suất chọn 2 bi cùng màu từ hai hộp
+def ut9kq_L11_C9_B2_12():
+
+	# Sinh số bi ngẫu nhiên (mỗi màu ≥1)
+	A_trang = random.randint(2,6)
+	A_do    = random.randint(2,6)
+	A_xanh  = random.randint(2,6)
+
+	B_trang = random.randint(2,7)
+	B_do    = random.randint(2,7)
+	B_xanh  = random.randint(2,7)
+
+	tong_A = A_trang + A_do + A_xanh
+	tong_B = B_trang + B_do + B_xanh
+
+	# Xác suất cùng màu
+	P_trang = sp.Rational(A_trang, tong_A) * sp.Rational(B_trang, tong_B)
+	P_do    = sp.Rational(A_do, tong_A)    * sp.Rational(B_do, tong_B)
+	P_xanh  = sp.Rational(A_xanh, tong_A)  * sp.Rational(B_xanh, tong_B)
+
+	P = sp.simplify(P_trang + P_do + P_xanh)
+
+	dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Hộp ${{A}}$ có {A_trang} viên bi trắng, {A_do} viên bi đỏ và {A_xanh} viên bi xanh. "
+	f"Hộp ${{B}}$ có {B_trang} viên bi trắng, {B_do} viên bi đỏ và {B_xanh} viên bi xanh. "
+	f"Lấy ngẫu nhiên mỗi hộp một viên bi. "
+	f"Tính xác suất để hai viên bi được lấy ra có cùng màu (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	noi_dung_loigiai = (
+	f"Tổng số bi ở hộp $A$ là {tong_A}, ở hộp $B$ là {tong_B}.\n\n"
+	f"Xác suất hai viên cùng trắng: "
+	f"$\\dfrac{{{A_trang}}}{{{tong_A}}} \\cdot \\dfrac{{{B_trang}}}{{{tong_B}}} = {sp.latex(P_trang)}$.\n\n"
+	f"Xác suất hai viên cùng đỏ: "
+	f"$\\dfrac{{{A_do}}}{{{tong_A}}} \\cdot \\dfrac{{{B_do}}}{{{tong_B}}} = {sp.latex(P_do)}$.\n\n"
+	f"Xác suất hai viên cùng xanh: "
+	f"$\\dfrac{{{A_xanh}}}{{{tong_A}}} \\cdot \\dfrac{{{B_xanh}}}{{{tong_B}}} = {sp.latex(P_xanh)}$.\n\n"
+	f"Vì các trường hợp loại trừ nhau nên:\n"
+	f"$P = {sp.latex(P_trang)} + {sp.latex(P_do)} + {sp.latex(P_xanh)} = {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C9_B2_13]-SA-M3. Xác suất thắng bóng bàn
+def ut9kq_L11_C9_B2_13():
+
+	# Xác suất thắng mỗi séc (dạng hữu tỉ đẹp)
+	p = random.randint(40,70)/100
+	q = 1 - p
+	s_p=f"{round_half_up(p,2):.2f}".replace(".",",")
+	s_q=f"{round_half_up(q,2):.2f}".replace(".",",")
+
+	# Xác suất thắng chung cuộc (thắng trước 3 séc)
+	P_30 = p**3
+	P_31 = sp.binomial(3,2) * p**3 * q
+	P_32 = sp.binomial(4,2) * p**3 * q**2
+
+	s_P30=f"{round_half_up(P_30,3):.3f}".replace(".",",")
+	s_P31=f"{round_half_up(P_31,3):.3f}".replace(".",",")
+	s_P32=f"{round_half_up(P_32,3):.3f}".replace(".",",")
+
+	P = sp.simplify(P_30 + P_31 + P_32)
+
+	dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+	An, Binh= random.sample(["An", "Bình", "Chí", "Dũng", "Nam", "Hùng", "Mạnh"],2)
+
+	noi_dung = (
+	f"{An} và {Binh} thi đấu với nhau một trận bóng bàn, "
+	f"người thắng trước 3 séc sẽ giành chiến thắng chung cuộc. "
+	f"Xác suất {An} giành chiến thắng mỗi séc là ${{{s_p}}}$. "
+	f"Tính xác suất {An} thắng chung cuộc biết mỗi trận đấu bóng bàn có tối đa 5 séc (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	noi_dung_loigiai = (
+	f"Gọi $p={s_p}$, khi đó $q=1-p={s_q}$.\n\n"
+	f"{An} thắng chung cuộc khi xảy ra một trong các trường hợp:\n\n"
+	f"- Thắng 3–0: $P_{{3-0}}=p^3={s_P30}$.\n\n"
+	f"- Thắng 3–1: $P_{{3-1}}=C^2_3.p^3.q={s_P31}$.\n\n"
+	f"- Thắng 3–2: $P_{{3-2}}=C^2_4.p^3.q^2={s_P32}$.\n\n"
+	f"Vậy xác suất {An} thắng chung cuộc là:\n"
+	f"$P={s_P30}+{s_P31}+{s_P32}={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C9_B2_14]-SA-M3. Xác suất người được chọn là nữ nhỏ hơn x tuổi.
+def ut9kq_L11_C9_B2_14():
+
+	# Sinh số lượng ngẫu nhiên (mỗi nhóm ≥1)
+	nam_lon = random.randint(5,8)      # nam ≥21
+	nam_nho = random.randint(4,8)      # nam <21
+	nu_lon  = random.randint(3,8)      # nữ ≥21
+	nu_nho  = random.randint(3,8)      # nữ <21
+
+	tong = nam_lon + nam_nho + nu_lon + nu_nho
+
+	# Biến cố
+	A = nu_lon + nu_nho           # phụ nữ
+	B = nam_nho + nu_nho          # tuổi <21
+	A_giao_B = nu_nho
+
+	# Xác suất
+	P = sp.simplify(
+		sp.Rational(A, tong)
+		+ sp.Rational(B, tong)
+		- sp.Rational(A_giao_B, tong)
+	)
+
+	dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+	tuoi=random.randint(21,31)
+
+	noi_dung = (
+	f"Trong một buổi tiệc có:\n\n"
+	f"• {nam_lon} người đàn ông có số tuổi không nhỏ hơn {tuoi};\n\n"
+	f"• {nam_nho} người đàn ông có số tuổi nhỏ hơn {tuoi};\n\n"
+	f"• {nu_lon} người phụ nữ có số tuổi không nhỏ hơn {tuoi};\n\n"
+	f"• {nu_nho} người phụ nữ có số tuổi nhỏ hơn {tuoi}.\n\n"
+	f"Chọn ngẫu nhiên một người trong buổi tiệc để trao quà. "
+	f"Tính xác suất để người đó là phụ nữ hoặc có số tuổi nhỏ hơn 21 (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	noi_dung_loigiai = (
+	f"Tổng số người là {tong}.\n\n"
+	f"Gọi ${{A}}$ là biến cố “chọn được phụ nữ”, khi đó "
+	f"$P(A)=\\dfrac{{{A}}}{{{tong}}}$.\n\n"
+	f"Gọi ${{B}}$ là biến cố “chọn được người có tuổi nhỏ hơn {tuoi}”, khi đó "
+	f"$P(B)=\\dfrac{{{B}}}{{{tong}}}$.\n\n"
+	f"Ta có $A\\cap B$ gồm {A_giao_B} người nên "
+	f"$P(A\\cap B)=\\dfrac{{{A_giao_B}}}{{{tong}}}$.\n\n"
+	f"Vậy:\n"
+	f"$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$\n"
+	f"$=\\dfrac{{{A}}}{{{tong}}}+\\dfrac{{{B}}}{{{tong}}}-\\dfrac{{{A_giao_B}}}{{{tong}}}"
+	f"={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C9_B2_15]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút cùng màu.
+def ut9kq_L11_C9_B2_15():
+
+	# Sinh số lượng ngẫu nhiên (mỗi màu ≥2 để luôn có khả năng cùng màu)
+	xanh = random.randint(4,10)
+	den  = random.randint(3,10)
+
+	tong = xanh + den
+
+	# Tổng số cách chọn 2 bút
+	mau_so = sp.binomial(tong,2)
+
+	# Số cách cùng màu
+	thuan_loi = sp.binomial(xanh,2) + sp.binomial(den,2)
+
+	P = sp.simplify(thuan_loi/mau_so)
+
+	dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Trong một hộp kín có {xanh} chiếc bút bi xanh và {den} chiếc bút bi đen. "
+	f"Bạn Sơn lấy ngẫu nhiên một chiếc bút bi từ trong hộp, không trả lại. "
+	f"Sau đó bạn Tùng lấy ngẫu nhiên một bút trong những chiếc bút còn lại.  "
+	f"Tính xác suất để hai bút được lấy ra là cùng màu (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	noi_dung_loigiai = (
+	f"Tổng số bút là {tong}.\n\n"
+	f"Số cách chọn 2 bút bất kỳ là:\n"
+	f"$C^2_{{{tong}}}={mau_so}$.\n\n"
+	f"Số cách chọn 2 bút cùng màu là:\n"
+	f"$C^2_{{{xanh}}}+C^2_{{{den}}}"
+	f"={sp.binomial(xanh,2)}+{sp.binomial(den,2)}"
+	f"={thuan_loi}$.\n\n"
+	f"Vậy xác suất cần tìm là:\n"
+	f"$P=\\dfrac{{{thuan_loi}}}{{{mau_so}}}={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C9_B2_16]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút khác màu.
+def ut9kq_L11_C9_B2_16():
+
+	# Sinh số bút (mỗi màu ≥2)
+	xanh = random.randint(4,9)
+	den  = random.randint(3,7)
+
+	tong = xanh + den
+
+	# Xác suất theo cách có điều kiện
+	P1 = sp.Rational(xanh, tong) * sp.Rational(den, tong-1)
+	P2 = sp.Rational(den, tong) * sp.Rational(xanh, tong-1)
+
+	P = sp.simplify(P1 + P2)
+
+	dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Trong một hộp kín có {xanh} chiếc bút bi xanh và {den} chiếc bút bi đen.\n"
+	f"Bạn Sơn lấy ngẫu nhiên một chiếc bút bi từ trong hộp, không trả lại.\n"
+	f"Sau đó bạn Tùng lấy ngẫu nhiên một chiếc bút từ những chiếc bút còn lại.\n"
+	f"Tính xác suất để hai bút được lấy ra là khác màu (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	noi_dung_loigiai = (
+	f"Tổng số bút là {tong}.\n\n"
+	f"Hai bút khác màu khi xảy ra một trong hai trường hợp:\n\n"
+	f"- Sơn lấy bút xanh, Tùng lấy bút đen:\n"
+	f"$\\dfrac{{{xanh}}}{{{tong}}}\\cdot\\dfrac{{{den}}}{{{tong-1}}}={sp.latex(P1)}$.\n\n"
+	f"- Sơn lấy bút đen, Tùng lấy bút xanh:\n"
+	f"$\\dfrac{{{den}}}{{{tong}}}\\cdot\\dfrac{{{xanh}}}{{{tong-1}}}={sp.latex(P2)}$.\n\n"
+	f"Xác suất cần tính là:\n"
+	f"$P={sp.latex(P1)}+{sp.latex(P2)}={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an

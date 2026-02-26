@@ -8803,4 +8803,54 @@ def mjulk_L10_C9_B2_63():
 	f"\\end{{ex}}\n"
 	dap_an= kq
 
-	return debai_word, loigiai_word, latex_tuluan, dap_an	
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D10_C9_B2_64]-SA-M2. XS chọn được 2 bút khác màu.
+def mjulk_L10_C9_B2_64():
+
+	# Sinh số lượng ngẫu nhiên (mỗi màu ≥2)
+	xanh = random.randint(4,10)
+	den  = random.randint(3,10)
+
+	tong = xanh + den
+
+	# Tổng số cách chọn 2 bút
+	mau_so = sp.binomial(tong,2)
+
+	# Số cách chọn 2 bút khác màu
+	thuan_loi = xanh * den
+
+	P = sp.simplify(sp.Rational(thuan_loi, mau_so))
+
+	dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Trong một hộp kín có {xanh} chiếc bút bi xanh và {den} chiếc bút bi đen. "
+	f"Lấy ngẫu nhiên 2 chiếc bút từ hộp. "
+	f"Tính xác suất để hai bút được lấy ra là khác màu (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	noi_dung_loigiai = (
+	f"Tổng số bút là {tong}.\n\n"
+	f"Số cách chọn 2 bút bất kỳ là:\n"
+	f"$C^2_{{{tong}}}={mau_so}$.\n\n"
+	f"Để hai bút khác màu, ta chọn 1 bút xanh và 1 bút đen.\n"
+	f"Số cách chọn là:\n"
+	f"${xanh}\\cdot {den}={thuan_loi}$.\n\n"
+	f"Vậy xác suất cần tìm là:\n"
+	f"$P=\\dfrac{{{thuan_loi}}}{{{mau_so}}}={dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an

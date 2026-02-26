@@ -4027,7 +4027,68 @@ def htd_25_xyz_L12_C5_B1_41():
     return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
+#[D12_C5_B1_42]-SA-M3. Tính góc nhị diện [A,Ox,B]
+def htd_25_xyz_L12_C5_B1_42():
 
+    # Sinh tọa độ ngẫu nhiên (tránh y=z=0)
+    while True:
+        xA = random.choice([i for i in range(-5, 6) if i!=0])
+        yA = random.choice([i for i in range(-5, 6) if i!=0])
+        zA = random.choice([i for i in range(-6, 6) if i!=0])
+
+        xB = random.choice([i for i in range(-5, 6) if i!=0])
+        yB = random.choice([i for i in range(-5, 6) if i!=0])
+        zB = random.choice([i for i in range(-5, 6) if i!=0])
+
+        # Vectơ trong mặt phẳng Oyz
+        u = sp.Matrix([yA, zA])
+        v = sp.Matrix([yB, zB])
+        if all([xA!=xB, yA!=yB, zA!=zB]):
+            break
+
+    # Tính cos góc
+    tich_vo_huong = u.dot(v)
+    do_dai = sp.sqrt(u.dot(u)) * sp.sqrt(v.dot(v))
+
+    cos_theta = sp.simplify(tich_vo_huong / do_dai)
+
+    # Góc theo độ
+    theta = sp.acos(cos_theta)
+    theta_deg = sp.N(theta * 180 / sp.pi, 2)
+
+    dap_an = f"{round_half_up(theta_deg,0):.0f}".replace(".",",")
+
+    noi_dung = (
+    f"Trong không gian với hệ tọa độ ${{Oxyz}}$, cho hai điểm "
+    f"$A({xA};{yA};{zA}), B({xB};{yB};{zB})$. "
+    f"Tính số đo góc nhị diện ${{[A,Ox,B]}}$ (đơn vị độ, làm tròn đến hàng đơn vị)."
+    )
+
+    noi_dung_loigiai = (
+    f"Góc nhị diện ${{[A,Ox,B]}}$ bằng góc giữa hai hình chiếu của "
+    f"$\\vec{{OA}}$ và $\\vec{{OB}}$ lên mặt phẳng $(Oyz)$.\n\n"
+    f"$\\vec{{u}}=(0;{yA},{zA}),\\quad "
+    f"\\vec{{v}}=(0;{yB},{zB})$.\n\n"
+    f"$\\vec{{u}}\\cdot\\vec{{v}}={tich_vo_huong}$.\n\n"
+    f"$|\\vec{{u}}|=\\sqrt{{{u.dot(u)}}},"
+    f"\\quad |\\vec{{v}}|=\\sqrt{{{v.dot(v)}}}$.\n\n"
+    f"$\\cos (\\vec{{u}}, \\vec{{v}})={sp.latex(cos_theta)}$.\n\n"
+    f"$\\Rightarrow (\\vec{{u}}, \\vec{{v}}) \\approx {dap_an}^\\circ$."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
 #---------------------------------------------------------------------#
@@ -9896,6 +9957,123 @@ def htd_25_xyz_L12_C5_B2_44():
         f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
         f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
         f"\\end{{ex}}\n")
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C5_B2_45]-SA-M3. Tính vận tốc đào hầm Y để 2 hầm X,Y gặp nhau tại E.
+def htd_25_xyz_L12_C5_B2_45():
+
+    # Sinh vectơ chỉ phương đẹp
+    while True:
+        u1=random.randint(1,5)
+        u2=random.randint(1,5)
+        u3=random.randint(-5,-1)
+
+        v1=random.randint(1,5)
+        v2=random.randint(1,5)
+        v3=random.randint(-5,-1)
+        u = sp.Matrix([u1, u2, u3])
+        v = sp.Matrix([v1, v2, v3])
+        if u!=v:
+            break
+
+
+    while True:
+
+        # Sinh điểm A, M
+        a1=random.randint(-8,0)
+        a2=random.randint(-7,0)
+        a3=random.randint(-7,0)        
+        if all([a1!=a2,a2!=a3,a3!=a1]):
+            break
+    A = sp.Matrix([a1, a2, a3])
+    
+    # Tham số giao điểm
+    t0 = random.randint(2,5)
+    s0 = random.randint(2,5)
+
+    # Tạo điểm B, N sao cho chắc chắn cắt nhau tại E
+    B = A + u    
+    E = A + t0*u   # giao điểm
+    N = E + v
+    M = E + s0*v
+    m1,m2,m3=M[0],M[1],M[2]
+
+
+    # Quy đổi đơn vị (mỗi đơn vị = 100m)
+    he_so = 100
+
+    # Độ dài AE và ME
+    AE = (t0 * u.norm()) * he_so
+    ME = (s0 * v.norm()) * he_so
+    s_AE=f"{round_half_up(AE,1):.1f}".replace(".",",")
+    s_ME=f"{round_half_up(ME,1):.1f}".replace(".",",")
+
+    # Vận tốc đường X
+    vX = random.randint(2,10)
+
+    # Thời gian
+    T = AE / vX
+    s_T=f"{round_half_up(T,1):.1f}".replace(".",",")
+
+    # Vận tốc cần tìm của Y
+    vY = float(ME / T)
+
+    dap_an =f"{round_half_up(vY,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   dap_an = dap_an[:-2]
+
+    noi_dung = (
+    f"Từ điểm $A({A[0]};{A[1]};{A[2]})$ một đường hầm thẳng ${{X}}$ được đào đi qua "
+    f"$B({B[0]};{B[1]};{B[2]})$ với tốc độ đào là {vX} m/ngày. "
+    f"Tương tự, một đường hầm thẳng ${{Y}}$ được đào từ điểm "
+    f"$M({M[0]};{M[1]};{M[2]})$ và đi qua điểm "
+    f"$N({N[0]};{N[1]};{N[2]})$. "
+    f"Mục tiêu là hai đường hầm gặp nhau tại điểm ${{E}}$. "
+    f"Biết mỗi đơn vị trong hệ trục tương ứng với 100 mét. "
+    f"Hỏi tốc độ đào đường hầm ${{Y}}$ bao nhiêu mét mỗi ngày "
+    f"để cả hai cùng đến ${{E}}$ trong cùng một ngày "
+    f"(làm tròn đến hàng phần mười)."
+    )
+
+    X=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    x={a1}+{u1}t \\\\ \n\
+    y={a2}+{u2}t \\\\ \n\
+    z={a3}+{u3}t\n\
+    \\end{{array}} \\right."
+    X=X.replace("1t","t")
+
+    Y=f"\\left\\{{ \\begin{{array}}{{l}} \n\
+    x={m1}+{v1}t \\\\ \n\
+    y={m2}+{v2}t \\\\ \n\
+    z={m3}+{v3}t\n\
+    \\end{{array}} \\right."
+    Y=Y.replace("1t","t")
+
+    noi_dung_loigiai = (
+    f"$\\overrightarrow{{AB}}={tuple(u)},\\ \\overrightarrow{{MN}}={tuple(v)}$.\n\n"
+    f"Phương trình tham số của đường thẳng ${{AB}}$ và ${{MN}}$:\n\n"
+    f"$X:{X}$, $Y:{Y}$\n\n"
+    f"Giao điểm xảy ra khi $t={t0},\\ s={s0}$.\n\n"
+    f"$AE={t0}\\cdot|\\overrightarrow{{AB}}|\\cdot100={s_AE}$ (m);\n"
+    f"$ME={s0}\\cdot|\\overrightarrow{{MN}}|\\cdot100={s_ME}$ (m).\n\n"
+    f"Thời gian đào của ${{X}}$: "
+    f"$T=\\dfrac{{AE}}{{{vX}}}={s_T}$ (ngày).\n\n"
+    f"Vận tốc cần của $Y$:\n"
+    f"$v=\\dfrac{{ME}}{{T}}\\approx {dap_an}$ (m/ngày)."
+    )
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
 

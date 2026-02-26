@@ -3701,15 +3701,16 @@ def ckz_L12C4_B1_53():
     s_false=s+random.randint(1,2)
     if int(s_false)!=s_false:
         s_false=f"{round_half_up(s_false,1):.1f}".replace(".",",")
+    s_true=s
     if int(s)!=s:
-        s=f"{round_half_up(s,1):.1f}".replace(".",",")  
+        s_true=f"{round_half_up(s,1):.1f}".replace(".",",")  
 
     kq4_T=(f"* Một chiếc ôtô đang chuyển động với vận tốc ${{{v_0}}}$ m/s thì hãm phanh và chuyển động chậm dần với vận tốc "
-f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s}}}$ m"
+f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s_true}}}$ m"
         )
 
     kq4_F=(f"Một chiếc ôtô đang chuyển động với vận tốc ${{{v_0}}}$ m/s thì hãm phanh và chuyển động chậm dần với vận tốc "
-f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s+random.randint(1,3)}}}$ m") 
+f"$v(t)={latex(v)}$ (m/s). Kể từ khi hãm phanh, quãng đường đi được của ôtô sau ${{{t_0}}}$ giây là ${{{s_false}}}$ m") 
     
     HDG=(f"$s=\\int v(t)dt=\\int ({latex(v)})dt={latex(integrate(v,t))}+C$.\n\n"
         f"$s(0)=0\\Rightarrow C=0$.\n\n"

@@ -8373,6 +8373,466 @@ def prt_34_L12_C1_B2_25():
 		f"\\end{{ex}}\n"
 
 	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B2_26]-TF-M3. f(x)=acosx+b. Xét Đ-S: f(m),f'(x), f'(x)=0, max-min
+def prt_34_L12_C1_B2_26():
+	x, k=sp.symbols("x k")
+
+	while True:
+
+		b=random.choice([1, -1,sqrt(2), -sqrt(2), sqrt(3), -sqrt(3)])
+
+		ham=f"-2\\cos x +{latex(b)}x".replace("+-","-").replace("1x","x")
+		f=-2*cos(x)+b*x
+		m, n = random.choice([
+	    (-pi, pi),
+	    (-pi,0),
+	    (-2*pi, -pi),
+	    (0, pi),    
+	    (0, 2*pi/3),
+	    (0, 3*pi/4),
+	    (0, pi/2),
+	    (pi/2,pi)    
+	    ])
+
+	    #Tính giá trị 2 đầu mút
+		f_m= f.subs(x,m)
+		f_n= f.subs(x,n)
+
+		if f_m!=f_n:
+			break
+
+	value_map = {
+	    1/2:  pi/6,
+	    -1/2: -pi/6,
+	    sqrt(2)/2:  pi/4,
+	    -sqrt(2)/2: -pi/4,
+	    sqrt(3)/2:  pi/3,
+	    -sqrt(3)/2: -pi/3  
+	}
+
+	val = -b/2
+
+	if val in value_map:
+	    x_0 = value_map[val]
+
+	dem=0
+	list_sol, list_f=[], []
+
+	list_f.append(f_m)
+	list_f.append(f_n)
+
+	tam=f"$f({latex(m)})={latex(f_m)}$\n\n"	
+	for k in range(-5,5):
+		if m<=x_0+k*2*pi <=n:
+			dem+=1
+			t=x_0+k*2*pi
+			f_t=f.subs(x,t)
+			list_sol.append(t)
+			list_f.append(f_t)
+			tam+=f"$f({latex(t)})={latex(f_t)}$\n\n"
+
+	for k in range(-5,5):
+		if m<=pi-x_0+k*2*pi <=n:
+			dem+=1
+			t=pi-x_0+k*2*pi
+			f_t=f.subs(x,t)
+			list_sol.append(t)
+			list_f.append(f_t)
+			tam+=f"$f({latex(t)})={latex(f_t)}$\n\n"
+
+	tam+=f"$f({latex(n)})={latex(f_n)}$\n\n"
+
+
+	k=sp.symbols("k")
+
+	eq=Eq(x_0+2*k*pi,m)
+	solution=solve(eq,k)
+	k1=solution[0]
+	k1=f"{round_half_up(k1,1):.1f}".replace(".",",")
+
+	eq=Eq(x_0+2*k*pi,n)
+	k2=solve(eq,k)[0]
+	k2=f"{round_half_up(k2,1):.1f}".replace(".",",")
+
+
+
+	eq=Eq(pi-x_0+2*k*pi, m)
+	solution=solve(eq,k)
+	k3=solution[0]
+	k3=f"{round_half_up(k3,1):.1f}".replace(".",",")
+
+	eq=Eq(pi-x_0+2*k*pi, n)
+	solution=solve(eq,k)
+	k4=solution[0]
+	k4=f"{round_half_up(k4,1):.1f}".replace(".",",")
+
+
+	noi_dung = (
+	f"Cho hàm số $f(x)={ham}$. "
+	f"Xét tính đúng-sai của các khẳng định sau:")
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* $f({latex(m)})={latex(f_m)}$" 
+		kq1_F=f"$f({latex(m)})={latex(f_m+random.randint(1,2))}$"
+		
+		HDG=f"$f({latex(m)})={latex(f_m)}$."
+
+	if chon==2:
+		kq1_T=f"* $f({latex(n)})={latex(f_n)}$" 
+		kq1_F=f"$f({latex(n)})={latex(f_n+random.randint(1,2))}$"
+		
+		HDG=f"$f({latex(n)})={latex(f_n)}$."
+
+
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* $f'(x)=2 \\sin x +{latex(b)}$"
+	kq2_F=random.choice([
+		f"$f'(x)=-2 \\sin x +{latex(b)}$",
+		f"$f'(x)=2 \\sin x +{latex(-b)}$",
+		f"$f'(x)=-2 \\sin x +{latex(-b)}$",
+
+	 ])
+
+	HDG=f"$f'(x)=2 \\sin x +{latex(b)}$.".replace("+-","-")
+	kq2=random.choice([kq2_T, kq2_F])
+	kq2=kq2.replace("+-","-")
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Số nghiệm của phương trình $f'(x)=0$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{dem}}}$" 
+	kq3_F=f"Số nghiệm của phương trình $f'(x)=0$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{dem+random.randint(1,2)}}}$"
+
+	HDG=(f"$f'(x)=0 \\Rightarrow 2 \\sin x +{latex(b)}=0 \\Rightarrow x={latex(x_0)}+k2\\pi$ hoặc $x={latex(pi-x_0)}+k2\\pi,k \\in \\mathbb{{Z}}$.\n\n"
+		f"${latex(m)} \\le {latex(x_0)}+k2\\pi \\le {latex(n)} \\Rightarrow {k1}\\le k \\le {k2}$.\n\n"
+		f"${latex(m)} \\le {latex(pi-x_0)}+k2\\pi \\le {latex(n)} \\Rightarrow {k3}\\le k \\le {k4}$.\n\n"
+		)
+	if dem==0:
+		HDG+=(
+		f"Không có giá trị ${{k}}$ thỏa mãn nên phương trình $f'(x)=0$ không có nghiệm trên đoạn ${{[{latex(m)};{latex(n)}]}}$."
+		)
+	else:
+		HDG+=f"Có {dem} giá trị ${{k}}$ thỏa mãn nên phương trình $f'(x)=0$ có {dem} nghiệm trên đoạn ${{[{latex(m)};{latex(n)}]}}$."
+
+	HDG=HDG.replace("+-","-")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	max_f=max(list_f)
+	min_f=min(list_f)
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq4_T=f"* Giá trị lớn nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(max_f)}}}$"
+		kq4_F=f"Giá trị lớn nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(min_f)}}}$" 
+
+		HDG=(f"{tam}"
+			f"Giá trị lớn nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(max_f)}}}$.")
+	
+	if chon==2:
+		kq4_T=f"* Giá trị nhỏ nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(min_f)}}}$"
+		kq4_F=f"Giá trị nhỏ nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(max_f)}}}$" 
+
+		HDG=(f"{tam}"
+			f"Giá trị nhỏ nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(min_f)}}}$.")
+	
+
+
+	
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C1_B2_27]-TF-M3. f(x)=asinx+b. Xét Đ-S: f(m),f'(x), f'(x)=0, max-min
+def prt_34_L12_C1_B2_27():
+	x, k=sp.symbols("x k")
+
+	while True:
+
+		b=random.choice([1, -1,sqrt(2), -sqrt(2), sqrt(3), -sqrt(3)])
+
+		ham=f"2\\sin x +{latex(b)}x".replace("+-","-").replace("1x","x")
+		f=2*sin(x)+b*x
+		m, n = random.choice([
+	    (-pi, pi),
+	    (-pi,0),
+	    (-2*pi, -pi),
+	    (0, pi),    
+	    (0, 2*pi/3),
+	    (0, 3*pi/4),
+	    (0, pi/2),
+	    (pi/2,pi)    
+	    ])
+
+	    #Tính giá trị 2 đầu mút
+		f_m= f.subs(x,m)
+		f_n= f.subs(x,n)
+
+		if f_m!=f_n:
+			break
+
+	value_map = {
+	    1/2:  pi/3,
+	    -1/2: 2*pi/3,
+	    sqrt(2)/2:  pi/4,
+	    -sqrt(2)/2: 3*pi/4,
+	    sqrt(3)/2:  pi/6,
+	    -sqrt(3)/2: 5*pi/6  
+	}
+
+	val = -b/2
+
+	if val in value_map:
+	    x_0 = value_map[val]
+
+	dem=0
+	list_sol, list_f=[], []
+
+	list_f.append(f_m)
+	list_f.append(f_n)
+
+	tam=f"$f({latex(m)})={latex(f_m)}$\n\n"	
+	for k in range(-5,5):
+		if m<=x_0+k*2*pi <=n:
+			dem+=1
+			t=x_0+k*2*pi
+			f_t=f.subs(x,t)
+			list_sol.append(t)
+			list_f.append(f_t)
+			tam+=f"$f({latex(t)})={latex(f_t)}$\n\n"
+
+	for k in range(-5,5):
+		if m<=-x_0+k*2*pi <=n:
+			dem+=1
+			t=-x_0+k*2*pi
+			f_t=f.subs(x,t)
+			list_sol.append(t)
+			list_f.append(f_t)
+			tam+=f"$f({latex(t)})={latex(f_t)}$\n\n"
+
+	tam+=f"$f({latex(n)})={latex(f_n)}$\n\n"
+
+
+	k=sp.symbols("k")
+
+	eq=Eq(x_0+2*k*pi,m)
+	solution=solve(eq,k)
+	k1=solution[0]
+	k1=f"{round_half_up(k1,1):.1f}".replace(".",",")
+
+	eq=Eq(x_0+2*k*pi,n)
+	k2=solve(eq,k)[0]
+	k2=f"{round_half_up(k2,1):.1f}".replace(".",",")
+
+
+
+	eq=Eq(-x_0+2*k*pi, m)
+	solution=solve(eq,k)
+	k3=solution[0]
+	k3=f"{round_half_up(k3,1):.1f}".replace(".",",")
+
+	eq=Eq(-x_0+2*k*pi, n)
+	solution=solve(eq,k)
+	k4=solution[0]
+	k4=f"{round_half_up(k4,1):.1f}".replace(".",",")
+
+
+	noi_dung = (
+	f"Cho hàm số $f(x)={ham}$. "
+	f"Xét tính đúng-sai của các khẳng định sau:")
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* $f({latex(m)})={latex(f_m)}$" 
+		kq1_F=f"$f({latex(m)})={latex(f_m+random.randint(1,2))}$"
+		
+		HDG=f"$f({latex(m)})={latex(f_m)}$."
+
+	if chon==2:
+		kq1_T=f"* $f({latex(n)})={latex(f_n)}$" 
+		kq1_F=f"$f({latex(n)})={latex(f_n+random.randint(1,2))}$"
+		
+		HDG=f"$f({latex(n)})={latex(f_n)}$."
+
+
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* $f'(x)=2 \\cos x +{latex(b)}$"
+	kq2_F=random.choice([
+		f"$f'(x)=-2 \\cos x +{latex(b)}$",
+		f"$f'(x)=2 \\cos x +{latex(-b)}$",
+		f"$f'(x)=-2 \\cos x +{latex(-b)}$",
+
+	 ])
+
+	HDG=f"$f'(x)=2 \\cos x +{latex(b)}$.".replace("+-","-")
+	kq2=random.choice([kq2_T, kq2_F])
+	kq2=kq2.replace("+-","-")
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq3_T=f"* Số nghiệm của phương trình $f'(x)=0$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{dem}}}$" 
+	kq3_F=f"Số nghiệm của phương trình $f'(x)=0$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{dem+random.randint(1,2)}}}$"
+
+	HDG=(f"$f'(x)=0 \\Rightarrow 2 \\cos x +{latex(b)}=0 \\Rightarrow x={latex(x_0)}+k2\\pi$ hoặc $x={latex(-x_0)}+k2\\pi,k \\in \\mathbb{{Z}}$.\n\n"
+		f"${latex(m)} \\le {latex(x_0)}+k2\\pi \\le {latex(n)} \\Rightarrow {k1}\\le k \\le {k2}$.\n\n"
+		f"${latex(m)} \\le {latex(-x_0)}+k2\\pi \\le {latex(n)} \\Rightarrow {k3}\\le k \\le {k4}$.\n\n"
+		)
+	if dem==0:
+		HDG+=(
+		f"Không có giá trị ${{k}}$ thỏa mãn nên phương trình $f'(x)=0$ không có nghiệm trên đoạn ${{[{latex(m)};{latex(n)}]}}$."
+		)
+	else:
+		HDG+=f"Có {dem} giá trị ${{k}}$ thỏa mãn nên phương trình $f'(x)=0$ có {dem} nghiệm trên đoạn ${{[{latex(m)};{latex(n)}]}}$."
+
+	HDG=HDG.replace("+-","-")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+
+	max_f=max(list_f)
+	min_f=min(list_f)
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq4_T=f"* Giá trị lớn nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(max_f)}}}$"
+		kq4_F=f"Giá trị lớn nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(min_f)}}}$" 
+
+		HDG=(f"{tam}"
+			f"Giá trị lớn nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(max_f)}}}$.")
+	
+	if chon==2:
+		kq4_T=f"* Giá trị nhỏ nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(min_f)}}}$"
+		kq4_F=f"Giá trị nhỏ nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(max_f)}}}$" 
+
+		HDG=(f"{tam}"
+			f"Giá trị nhỏ nhất của $f(x)$ trên đoạn ${{[{latex(m)};{latex(n)}]}}$ là ${{{latex(min_f)}}}$.")
+	
+
+
+	
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+
 	
 
 #BÀI 3 - ĐƯỜNG TIỆM CẬN
