@@ -645,7 +645,7 @@ def get_image_dimensions(file_path):
         print(f"Error: {e}")
         return None
 
-#print(get_image_dimensions("E:\\Github-iMath\\iMath\\HINH VE\\2026-01-21_14-40-22.png"))
+#print(get_image_dimensions("D:\\Github-iMath\\iMath\\HINH VE\\2026-02-26_20-11-43.png"))
 #Tìm kiếm tên ảnh và chèn ảnh từ thư mục HINHVE
 def find_and_insert_image(doc):
     folder_hinh = get_folder_hinh()
@@ -666,9 +666,9 @@ def find_and_insert_image(doc):
 
                     list_rong=["1.74", "1.71","2.56", "2.9","3.56", "5.18","5.33", "6.71","7.25","7.22",
                     "8.62", "13.44","13.07", "9.68","9.32", "15.83","14.19", "19.32", "10.12", "10.75", "10.78", "18.29",
-                    "11.74", "9.93"]
+                    "11.74", "9.93", "9.85", "10.97"]
 
-                    list_cao=["1.74", "1.71", "2.56"]
+                    list_cao=["1.74", "1.71", "2.56", "3.19"]
 
 
                     if chieu_rong not in list_rong and chieu_cao not in list_cao:
@@ -770,7 +770,15 @@ def find_and_insert_image(doc):
                         run.add_picture(image_path, width=Inches(3.0),height=Inches(1))
 
                     if chieu_rong =="8.62":
-                        run.add_picture(image_path, width=Inches(3.0),height=Inches(1))                   
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(1))   
+
+                    #Chỉnh bảng khúc xạ
+                    if chieu_rong =="9.85" and chieu_cao=="3.17":
+                        run.add_picture(image_path, width=Inches(3.0),height=Inches(0.93))  
+
+                    #Chỉnh bảng chữa bệnh M, N
+                    if chieu_cao=="3.19":
+                        run.add_picture(image_path, width=Inches(3.2),height=Inches(0.93))              
                     
                         
                     # Căn giữa đoạn văn chứa hình ảnh
@@ -1565,6 +1573,7 @@ def start_latex_file():
 \documentclass[border=2pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{diagbox}
 \usepackage{tkz-euclide}
 \usepackage{tikz,tkz-tab,tkz-linknodes}
 %\usetikzlibrary{snakes}
@@ -1583,6 +1592,7 @@ def moi_truong_anh_latex(code):
     \usepackage{tkz-tab,tikz,tkz-euclide,fontawesome}
     \usepackage[dethi]{ex_test}   
     \usetikzlibrary{arrows,calc,intersections,angles,quotes,patterns,positioning}
+    \usepackage{diagbox}
     \begin{document} """   
 
     code_footer=r"""\end{document} """
@@ -1598,6 +1608,7 @@ def moi_truong_latex(code):
 \usepackage{tkz-euclide}
 \usepackage{setspace}
 \usepackage{lastpage}
+\usepackage{diagbox}
 
 \usepackage{tikz,tkz-tab}
 %\usepackage[solcolor]{ex_test}
@@ -1678,6 +1689,7 @@ def moi_truong_latex_loigiai(code):
 \usepackage{tkz-euclide}
 \usepackage{setspace}
 \usepackage{lastpage}
+\usepackage{diagbox}
 
 \usepackage{tikz,tkz-tab}
 %\usepackage[solcolor]{ex_test}

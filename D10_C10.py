@@ -8469,33 +8469,34 @@ def gghik_L10_CX_B1_37():
 
 
 
-
-
 #[D10_CX_B1_38]-M3. Toán thực tế. Xd vị trí phát tín hiệu âm thanh
 def gghik_L10_CX_B1_38():  
-	A, B, C = tao_3dinh_tamgiac()
+	while True:
+		A, B, C = tao_3dinh_tamgiac()
 
-	# Lấy giá trị tọa độ các điểm
-	x1, y1 = A
-	x2, y2 = B
-	x3, y3 = C
-	x_A, y_A = A
-	x_B, y_B = B
-	x_C, y_C = C
-	x_M,y_M=(x_C+x_A)/2,(y_C+y_A)/2
-	x_AC,y_AC=x_C-x_A,y_C-y_A
-	x_N,y_N=(x_B+x_A)/2,(y_B+y_A)/2
-	x_AB,y_AB=x_B-x_A,y_B-y_A
-	x,y=sp.symbols("x y")
-	# Khai báo các phương trình
-	eq1 = Eq(x_AB*(x-x_N)+y_AB*(y-y_N), 0)
-	eq2 = Eq(x_AC*(x-x_M)+y_AC*(y-y_M), 0)
+		# Lấy giá trị tọa độ các điểm
+		x1, y1 = A
+		x2, y2 = B
+		x3, y3 = C
+		x_A, y_A = A
+		x_B, y_B = B
+		x_C, y_C = C
+		x_M,y_M=(x_C+x_A)/2,(y_C+y_A)/2
+		x_AC,y_AC=x_C-x_A,y_C-y_A
+		x_N,y_N=(x_B+x_A)/2,(y_B+y_A)/2
+		x_AB,y_AB=x_B-x_A,y_B-y_A
+		x,y=sp.symbols("x y")
+		# Khai báo các phương trình
+		eq1 = Eq(x_AB*(x-x_N)+y_AB*(y-y_N), 0)
+		eq2 = Eq(x_AC*(x-x_M)+y_AC*(y-y_M), 0)
 
-	# Giải hệ phương trình
-	solution = solve((eq1, eq2), (x, y))
-	x_I = solution[x]
-	y_I = solution[y]
-	t=x_I+y_I
+		# Giải hệ phương trình
+		solution = solve((eq1, eq2), (x, y))
+		x_I = solution[x]
+		y_I = solution[y]
+		t=x_I+y_I
+		if t>-5:
+			break
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, một tín hiệu âm thanh phát đi từ một vị trí và được ba thiết bị ghi tín hiệu đặt tại ba vị trí $A({x1},{y1})$, $B({x2},{y2})$, $C({x3},{y3})$ nhận được cùng một thời điểm. Hãy xác định toạ độ của vị trí phát tín hiệu âm thanh."
 	noi_dung_loigiai=(f"Gọi ${{I}}$ là điểm thoả mãn yêu cầu bài toán thì ${{IA=IB=IC}}$ nên ${{I}}$ là giao của các đường trung trực \n\n"

@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 14.02.2026")
+                self.label.setText(f"iMath\u00A92026 ver 26.02.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -1443,7 +1443,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 14.02.2026")
+                self.label.setText(f"iMath\u00A92026 ver 26.02.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -11440,9 +11440,18 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_31]-SA-M2. x.s A|B: Cho bảng về tật khúc xạ. Tính x.s bạn đó là nam biết bạn bị tật khúc xạ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_32]-SA-M2. x.s A|B: Cho bảng về chữa bệnh. Tính x.s bệnh nhân uống thuốc M biết bệnh nhân khỏi bệnh."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_13]-SA-M2. x.s giao: x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
 
                 item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_28]-SA-M3. x.s giá gạo và giá thịt heo: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -11466,23 +11475,23 @@ class Ui_MainWindow(object):
                 L12_C6_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C6_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_14]-M2. x.s t.phần: Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)"])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_14]-M2. X.S T.phần: Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_16]-M3. x.s t.phần:  Cho P(A), P(A|B), P(A|B_ngang). Tính P(B)."])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_16]-M3. X.S T.phần:  Cho P(A), P(A|B), P(A|B_ngang). Tính P(B)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_15]-M2. x.s t.phần:  Cho P(B), tỉ lệ A xảy ra nếu B, A xảy ra nếu B không xảy ra. Tính P(A)."])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_15]-M2. X.S T.phần:  Cho P(B), tỉ lệ A xảy ra nếu B, A xảy ra nếu B không xảy ra. Tính P(A)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_17]-M2.  x.s t.phần: Cho tỉ lệ tiêm vắc xin, tỉ lệ mắc bệnh nếu tiêm, tỉ lệ mắc bệnh nếu chưa tiêm. Tính  x.s mắc bệnh"])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_17]-M2.  X.S T.phần: Cho tỉ lệ tiêm vắc xin, tỉ lệ mắc bệnh nếu tiêm, tỉ lệ mắc bệnh nếu chưa tiêm. Tính  x.s mắc bệnh"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_18]-M3.  x.s t.phần: Cho tỉ lệ hút thuốc, tỉ lệ mắc bệnh nếu hút, tỉ lệ mắc bệnh nếu không hút. Tính x.s mắc bệnh"])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_18]-M3.  X.S T.phần: Cho tỉ lệ hút thuốc, tỉ lệ mắc bệnh nếu hút, tỉ lệ mắc bệnh nếu không hút. Tính x.s mắc bệnh"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11490,11 +11499,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_20]-M3.  x.s t.phần:  Lấy 1 bi từ hộp I bỏ qua hộp II. Tính x.s hai bi lấy từ hộp hai có màu nào đó."])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_20]-M3.  X.S T.phần:  Lấy 1 bi từ hộp I bỏ qua hộp II. Tính x.s hai bi lấy từ hộp hai có màu nào đó."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_22]-M3.  x.s t.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
+                item = QTreeWidgetItem(L12_C6_B2_1, ["[D12_C6_B2_22]-M3.  X.S T.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11572,31 +11581,31 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. x.s t.phần: tổng hợp"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_02]-SA-M2. X.S T.phần: tổng hợp"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_03]-SA-M2. x.s t.phần: Tính X.S đậu đại học khi chọn khối."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_03]-SA-M2. X.S T.phần: Tính X.S đậu đại học khi chọn khối."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_04]-SA-M2. x.s t.phần: Tính X.S hái bông hoa có thưởng."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_04]-SA-M2. X.S T.phần: Tính X.S hái bông hoa có thưởng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_05]-SA-M2. x.s t.phần: Tính X.S lấy viên bi có màu nào đó."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_05]-SA-M2. X.S T.phần: Tính X.S lấy viên bi có màu nào đó."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_06]-SA-M2. x.s t.phần: Tính xác suất chọn ly thủy tinh."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_06]-SA-M2. X.S T.phần: Tính xác suất chọn ly thủy tinh."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2. x.s t.phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_07]-SA-M2. X.S T.phần: Tính xác suất chọn sách thuộc về 1 thể loại"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_13]-SA-M2.  x.s t.phần: Tính x.s sinh viên làm việc đúng chuyên ngành"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_13]-SA-M2.  X.S T.phần: Tính x.s sinh viên làm việc đúng chuyên ngành"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11604,31 +11613,35 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_23]-SA-M3.  x.s t.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_23]-SA-M3.  X.S T.phần:  Cho x.s mắc ung thư, x.s chẩn đoán đúng, x.s chẩn đoán sai. Tính x.s chẩn đoán không ung thư"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_39]-SA-M3.  x.s t.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_39]-SA-M3.  X.S T.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_08]-SA-M2. X.S Bayes: Tính xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_08]-SA-M2. X.S Bayes: Xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_09]-SA-M2. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_09]-SA-M2. X.S Bayes: Xác suất ý kiến khách hàng không hài lòng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_10]-SA-M2. X.S Bayes: X.S Bayes: Tính xác suất sản xuất xe bị lỗi."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_10]-SA-M2. X.S Bayes: X.S Bayes: Xác suất sản xuất xe bị lỗi."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_11]-SA-M3. X.S Bayes: X.S Bayes: Tính xác suất người thực sự mắc bệnh."])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_11]-SA-M3. X.S Bayes: X.S Bayes: Xác suất người thực sự mắc bệnh."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_12]-SA-M3. X.S Bayes: Tính xác suất ý kiến khách hàng không hài lòng"])
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_12]-SA-M3. X.S Bayes: Xác suất ý kiến khách hàng không hài lòng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_40]-SA-M3. X.S Bayes: Xác suất để mục tiêu bị phát hiện là thật khi rada cảnh báo."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -14378,6 +14391,14 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C6_B1_30]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_30()
 
+                                            #[D12_C6_B1_31]-SA-M2.  Cho bảng về tật khúc xạ. Tính x.s bạn đó là nam biết bạn bị tật khúc xạ.
+                                            if dang_toan == "[D12_C6_B1_31]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_31()
+
+                                            #[D12_C6_B1_32]-SA-M2.  Cho bảng về chữa bệnh. Tính x.s bệnh nhân uống thuốc M biết bệnh nhân khỏi bệnh.
+                                            if dang_toan == "[D12_C6_B1_32]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_32()
+
                                             #----------------------Toán 12 - Chương 6 - Bài 2-------------------->
                                             #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
                                             if dang_toan == "[D12_C6_B2_01]":                                        
@@ -14535,9 +14556,13 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C6_B2_38]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_38()
 
-                                            #[D12_C6_B2_39]-M3. x.s t.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính 
+                                            #[D12_C6_B2_39]-M3. X.S T.phần:  Cho x.s mắc truyền nhiễm, x.s dương tính với người bị và không bị. Tính x.s bị dương tính 
                                             if dang_toan == "[D12_C6_B2_39]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_39()
+
+                                            #[D12_C6_B2_40]-M3.  x.s Bayes:  Xác suất để mục tiêu bị phát hiện là thật khi rada cảnh báo. 
+                                            if dang_toan == "[D12_C6_B2_40]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_40()
 
                                             #-------------------------LỚP 11---------------------->
 

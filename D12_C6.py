@@ -2924,6 +2924,171 @@ P(B)+{phan_so(p_b_dk_a_ngang)}P(A)={phan_so(p_ab)}+{phan_so(p_b_dk_a_ngang)} \
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C6_B1_31]-SA-M2.  Cho bảng về tật khúc xạ. Tính x.s bạn đó là nam biết bạn bị tật khúc xạ.
+def newy25_L12_C6_B1_31():
+    tong=random.randint(100,200)
+
+    # Sinh dữ liệu bảng (đảm bảo tổng = 100)
+    while True:
+        nu_khucxa = random.randint(8,25)
+        nam_khucxa = random.randint(8,25)
+        nu_khong = random.randint(20,50)
+        nam_khong = tong - (nu_khucxa + nam_khucxa + nu_khong)
+        
+        if nam_khong > 5:
+            break
+
+    tong_khucxa = nu_khucxa + nam_khucxa    
+
+    code_hinh=(f"\\begin{{tabular}}{{|c|c|c|}}\n"
+    f"\\hline\n"
+    f"\\diagbox{{Thị lực}}{{Giới tính}} & Nữ & Nam \\\\\n"
+    f"\\hline\n"
+    f"Có tật khúc xạ & {nu_khucxa} & {nam_khucxa} \\\\\n"
+    f"\\hline\n"
+    f"Không có tật khúc xạ & {nu_khong} & {nam_khong} \\\\\n"
+    f"\\hline\n"
+    f"\\end{{tabular}}\n")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    chon=random.randint(1,2)
+
+    if chon==1:
+        # Xác suất cần tìm P(Nam | Có tật)
+        P = sp.simplify(sp.Rational(nam_khucxa, tong_khucxa))
+        dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+        if dap_an.endswith("0"):   
+            dap_an = dap_an[:-1]
+
+        noi_dung = (
+        f"Khảo sát thị lực của {tong} học sinh, ta thu được bảng số liệu sau. "    
+        f"Chọn ngẫu nhiên một bạn trong {tong} học sinh trên. "
+        f"Biết rằng bạn đó có tật khúc xạ, "
+        f"tính xác suất bạn đó là học sinh nam (kết quả làm tròn đến hàng phần trăm)."
+        )
+
+        noi_dung_loigiai = (
+        f"Gọi ${{A}}$ là biến cố “học sinh nam”, "
+        f"${{B}}$ là biến cố “có tật khúc xạ”.\n\n"
+        f"Số học sinh có tật khúc xạ là {tong_khucxa} "
+        f"trong đó có {nam_khucxa} học sinh nam.\n\n"
+        f"$P(A|B)=\\dfrac{{{nam_khucxa}}}{{{tong_khucxa}}}={dap_an}$."
+        )
+    
+    if chon==2:
+        # Xác suất cần tìm P(Nam | Có tật)
+        P = sp.simplify(sp.Rational(nu_khucxa, tong_khucxa))
+        dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+        if dap_an.endswith("0"):   
+            dap_an = dap_an[:-1]
+
+        noi_dung = (
+        f"Khảo sát thị lực của {tong} học sinh, ta thu được bảng số liệu sau. "    
+        f"Chọn ngẫu nhiên một bạn trong {tong} học sinh trên. "
+        f"Biết rằng bạn đó có tật khúc xạ, "
+        f"tính xác suất bạn đó là học sinh nữ(kết quả làm tròn đến hàng phần trăm)."
+        )
+
+        noi_dung_loigiai = (
+        f"Gọi ${{A}}$ là biến cố “học sinh nữ”, "
+        f"${{B}}$ là biến cố “có tật khúc xạ”.\n\n"
+        f"Số học sinh có tật khúc xạ là {tong_khucxa} "
+        f"trong đó có {nu_khucxa} học sinh nữ.\n\n"
+        f"$P(A|B)=\\dfrac{{{nu_khucxa}}}{{{tong_khucxa}}}={dap_an}$."
+        )
+    
+
+    
+
+    debai_word = f"{noi_dung}\n{file_name}"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C6_B1_32]-SA-M2.  Cho bảng về chữa bệnh. Tính x.s bệnh nhân uống thuốc M biết bệnh nhân khỏi bệnh.
+def newy25_L12_C6_B1_32():
+    tong=random.randint(100,200)
+
+    # Tổng số bệnh nhân
+    tong = random.choice([2000,3000,4000,5000])
+
+    # Số bệnh nhân dùng thuốc M
+    so_M = random.randint(int(0.5*tong), int(0.7*tong))
+    so_N = tong - so_M
+
+    # Số khỏi bệnh ở nhóm M
+    khoi_M = random.randint(int(0.4*so_M), int(0.8*so_M))
+
+    # Số khỏi bệnh ở nhóm N
+    khoi_N = random.randint(int(0.2*so_N), int(0.7*so_N))
+
+    # Không khỏi
+    khong_M = so_M - khoi_M
+    khong_N = so_N - khoi_N
+
+    # Xác suất cần tìm P(M | Khỏi)
+    tong_khoi = khoi_M + khoi_N
+    P=khoi_M/tong_khoi
+
+    dap_an=f"{round_half_up(P,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+
+    X, M, N = random.sample(["X", "Y", "M", "N", "A", "B"],3)
+
+    code_hinh=(f"\\begin{{tabular}}{{|c|c|c|}}\n"
+    f"\\hline\n"
+    f"\\diagbox{{Kết quả}}{{Uống thuốc}} & {M} & {N} \\\\\n"
+    f"\\hline\n"
+    f"Khỏi bệnh & {khoi_M} & {khoi_N} \\\\\n"
+    f"\\hline\n"
+    f"Không khỏi bệnh & {khong_M} & {khong_N} \\\\\n"
+    f"\\hline\n"
+    f"\\end{{tabular}}")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    
+    noi_dung = (
+    f"Một công ty dược phẩm muốn so sánh tác dụng điều trị bệnh ${{{X}}}$ của hai loại thuốc ${{{M}}}$ và ${{{N}}}$. "
+    f"Công ty tiến hành thử nghiệm với {tong} bệnh nhân mắc bệnh ${{{X}}}$, "
+    f"trong đó {so_M} bệnh nhân dùng thuốc $\\mathrm{{{M}}}$, "
+    f"{so_N} bệnh nhân còn lại dùng thuốc $\\mathrm{{{N}}}$. "
+    f"Kết quả thu được như bảng sau. "    
+    f"Chọn ngẫu nhiên một bệnh nhân trong số {tong} bệnh nhân thử nghiệm sau khi uống thuốc. "
+    f"Tính xác suất để bệnh nhân đó uống thuốc {M}, biết rằng bệnh nhân đó khỏi bệnh (kết quả làm tròn đến hàng phần trăm)."
+    )
+
+    noi_dung_loigiai=(
+    f"Tổng số bệnh nhân khỏi bệnh là: {khoi_M}+{khoi_N}={tong_khoi}.\n\n"
+    f"Xác suất cần tìm là:\n"
+    f"$P=\\dfrac{{{khoi_M}}}{{{tong_khoi}}}={dap_an}.$"
+    )   
+
+    debai_word= f"{noi_dung}\n{file_name}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 #------------------------Bài 2: Công thức xác suất toàn phần-------------------------------------------------------->
 #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
@@ -7020,6 +7185,71 @@ def newy25_L12_C6_B2_39():
     f"$P(D)=P(D|B)P(B)+P(D|\\overline{{B}})P(\\overline{{B}})$\n"
     f"$={P_D_B}\\cdot{PB}+{P_D_khongB}\\cdot{P_khongB}"
     f"\\approx {dap_an}\\%$"
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("0.","0,")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C6_B2_40]-M3. x.s Bayes:  Xác suất để mục tiêu bị phát hiện là thật khi rada cảnh báo.
+def newy25_L12_C6_B2_40():
+
+    # Tỉ lệ mục tiêu giả (cao)
+    ti_le_gia = random.randint(90,99)     # %
+    ti_le_that = 100 - ti_le_gia                   # %
+
+    # Độ nhạy và dương tính giả
+    do_nhay = random.randint(85,95)       # P(A|T) %
+    bao_gia = random.randint(2,8)        # P(A|G) %
+
+    # Đổi sang xác suất
+    P_T = ti_le_that / 100
+    P_G = ti_le_gia / 100
+    P_A_T = do_nhay / 100
+    P_A_G = bao_gia / 100
+
+    # Xác suất radar báo động
+    P_A = P_A_T * P_T + P_A_G * P_G
+
+    # Bayes
+    P_T_A = (P_A_T * P_T) / P_A
+
+    dap_an = f"{round_half_up(P_T_A,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+
+    noi_dung = (
+    f"Khi phát hiện một vật thể bay, xác suất một hệ thống radar phát cảnh báo "
+    f"là ${do_nhay}\\%$ nếu vật thể đó là mục tiêu thật và là ${bao_gia}\\%$ "
+    f"nếu đó là mục tiêu giả. Có ${ti_le_gia}\\%$ các vật thể bay là mục tiêu giả. "
+    f"Biết rằng hệ thống radar đang phát cảnh báo khi phát hiện một vật thể bay. "
+    f"Tính xác suất vật thể đó là mục tiêu thật (kết quả làm tròn đến hàng phần trăm)."
+    )
+
+    noi_dung_loigiai = (
+    f"Gọi ${{T}}$ là biến cố “mục tiêu thật”, ${{G}}$ là “mục tiêu giả”, "
+    f"${{A}}$ là “radar phát cảnh báo”.\n\n"
+    f"$P(T)={P_T},\\quad P(G)={P_G}$.\n"
+    f"$P(A|T)={P_A_T},\\quad P(A|G)={P_A_G}$.\n\n"
+    f"Xác suất radar phát cảnh báo:\n\n"
+    f"$P(A)=P(A|T)P(T)+P(A|G)P(G)$\n"
+    f"$={P_A_T}\\cdot{P_T}+{P_A_G}\\cdot{P_G}"
+    f"={round(P_A,5)}$.\n\n"
+    f"Theo định lý Bayes:\n"
+    f"$P(T|A)=\\dfrac{{P(A|T)P(T)}}{{P(A)}}"
+    f"=\\dfrac{{{P_A_T}\\cdot{P_T}}}{{{round(P_A,5)}}}"
+    f"\\approx {dap_an}$."
     )
     noi_dung_loigiai=noi_dung_loigiai.replace("0.","0,")
 

@@ -17850,7 +17850,7 @@ def prt_34_L12_C1_B5_39():
 	f"Khối lượng trung bình mỗi con: $\\dfrac{{{s_m}}}{{{n}}}={s_m1}$ kg.\n\n"
 	f"Gọi ${{x}}$ là số lần giảm cá. Suy ra số cá giảm là: ${r}x$ con.\n\n"
 	f"Số cá thả mới: $N(x)={s*a}-{r}x$.\n\n"
-	f"Mỗi con cá tăng thêm được: $m(x)=({s_m1}+{s_b}x)$ kg.\n\n"
+	f"Khối lượng mỗi con cá khi thu hoạch là: $m(x)=({s_m1}+{s_b}x)$ kg.\n\n"
 	f"Tổng khối lượng cá thu được:\n\n"
 	f"$M(x)=N(x).m(x)=({s*a}-{r}x).({s_m1}+{s_b}x)={s_a1}x^2+{s_b1}x+{s_c1}$.\n\n"
 	f"Khối lượng cá đạt lớn nhất khi: $x=\\dfrac{{-{s_b1}}}{{{s_2a1}}}={s_x}$.\n\n"
@@ -17954,11 +17954,11 @@ def prt_34_L12_C1_B5_40():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq3_T=f"*Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch mỗi con cá tăng thêm được $({s_m1}+{s_b}x)$ kg" 
-	kq3_F=f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch mỗi con cá tăng thêm được ${{{s_b}x}}$ kg"
+	kq3_T=f"*Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch khối lượng mỗi con cá là $({s_m1}+{s_b}x)$ kg" 
+	kq3_F=f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch khối lượng mỗi con cá là  ${{{s_b}x}}$ kg"
 	kq3=random.choice([kq3_T, kq3_F])
 	HDG=(f"Khối lượng trung bình mỗi con: $\\dfrac{{{s_m}}}{{{n}}}={s_m1}$ kg.\n\n"
-		f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch mỗi con cá tăng thêm được $({s_m1}+{s_b}x)$ kg.")
+		f"Sau ${{x}}$ lần giảm đi ${{{r}}}$ con và thả cá xuống ao thì đến khi thu hoạch khối lượng mỗi con cá là $({s_m1}+{s_b}x)$ kg.")
 	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
