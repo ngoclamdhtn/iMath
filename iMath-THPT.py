@@ -7057,6 +7057,10 @@ class Ui_MainWindow(object):
                 L11_C6_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_19]-M2. Tìm tính chất đúng về logarit"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7094,6 +7098,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_17]-TF-M3. Xét Đ-S: Các phép toán logarit."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_18]-TF-M3. Xét Đ-S: các phép toán logarit, biểu diễn logarit."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7143,25 +7151,17 @@ class Ui_MainWindow(object):
                 L11_C6_B3_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B3_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B3_2, ["[D11_C6_B3_33]-M2. Hàm số nào là hàm số mũ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2, ["[D11_C6_B3_34]-M2. Hàm số nào là hàm số logarit."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L11_C6_B3_2_1 = QTreeWidgetItem(L11_C6_B3_2, ["1. Tập xác định của hàm số"])
                 L11_C6_B3_2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B3_2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_01]-M1. TXĐ hàm số y=(ax+b)^n với n là số nguyên âm"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_02]-M1. TXĐ hàm số y=(ax+b)^n với n không nguyên"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_03]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n là số nguyên âm"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_04]-M2. TXĐ hàm số y=(ax^2+bx+c)^n với n không nguyên"])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L11_C6_B3_2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 item = QTreeWidgetItem(L11_C6_B3_2_1, ["[D11_C6_B3_05]-M1. TXĐ hàm số y=log(ax+b)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7230,6 +7230,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_31]-M2. Tìm khả năng nhớ trung bình theo hàm f(t)=A-B.ln(t+t_0)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B3_2_3, ["[D11_C6_B3_32]-M2.  Khối lượng còn lại theo mô hình phân rã m(t)=m0*(1/2)^{t/T}."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -15816,11 +15820,19 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B2_16]-TF-M3. Xét Đ-S: log_a^n b, log(a.b), log(a+b) 
                                             if dang_toan == "[D11_C6_B2_16]": 
-                                               debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B2_16()
+                                               debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B2_16()                                            
 
                                             #[D11_C6_B2_17]-TF-M3. Xét Đ-S: các phép toán lograit 
                                             if dang_toan == "[D11_C6_B2_17]": 
-                                               debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B2_17()                           
+                                               debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B2_17()
+
+                                            #[D11_C6_B2_18]-TF-M3. Xét Đ-S: các phép toán logarit, biểu diễn logarit
+                                            if dang_toan == "[D11_C6_B2_18]": 
+                                               debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B2_18()
+
+                                            #[D11_C6_B2_19]-M2. Tìm tính chất đúng về logarit
+                                            if dang_toan == "[D11_C6_B2_19]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_19()                     
                                                 
 
                                 
@@ -15975,7 +15987,19 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B3_31]-M2. Tìm số khả năng nhớ trung bình theo hàm f(t)=A-B.ln(t+t_0)
                                             if dang_toan == "[D11_C6_B3_31]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_31()                          
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_31()
+
+                                            #[D11_C6_B3_32]-M2.  Khối lượng còn lại theo mô hình phân rã m(t)=m0*(1/2)^{t/T}
+                                            if dang_toan == "[D11_C6_B3_32]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_32()
+
+                                            #[D11_C6_B3_33]-M2.  Hàm số nào hàm số mũ
+                                            if dang_toan == "[D11_C6_B3_33]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_33()
+
+                                            #[D11_C6_B3_34]-M2.  Hàm số nào hàm số logarit
+                                            if dang_toan == "[D11_C6_B3_34]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B3_34()                          
 
 
                                         #Chương 7 - ĐẠO HÀM

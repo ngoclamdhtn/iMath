@@ -2104,6 +2104,80 @@ def uz9zu_L11_C6_B2_18():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D11_C6_B2_19]-M2. Tìm tính chất đúng về logarit
+def uz9zu_L11_C6_B2_19():
+    a,b=random.sample(["a","b","c"],2)
+    x,y=random.choice([("x","y"),("y","z"),("x","z"),("u","v") ])
+    noi_dung=(
+    f"Cho ${a}>0,{a}\\ne 1$, ${{{x},{y}}}$ là các số thực dương, $k \\in \\mathbb{{R}}$."
+    f" Khẳng định nào sau đây đúng?"
+    )
+    
+
+    kq=random.choice([
+        
+f"\\log_{a}({x}.{y})=\\log_{a}{x}+\\log_{a}{y}",
+f"\\log_{a}\\left(\\frac{{x}}{{y}}\\right)=\\log_{a}{x}-\\log_{a}{y}",
+f"\\log_{a}({x}^k)=k\\log_{a}{x}",
+f"\\log_{a}1=0",
+f"\\log_{a}{a}=1",
+f"{a}^{{\\log_{a}{x}}}={x}",
+f"\\log_{a}({a}^{x})={x}",
+f"\\log_{a}{x}=\\dfrac{{\\ln {x}}}{{\\ln {a}}}",
+f"\\log_{a}{x}=\\dfrac{{\\log_{b}{x}}}{{\\log_{b}{a}}}, ({b}>0,{b}\\ne 1)",
+f"\\log_{a}{x}=\\dfrac{{1}}{{\\log_{x}{a}}}"
+        ])
+
+    kq_false=[
+f"\\log_{a}({x}+{y})=\\log_{a}{x}+\\log_{a}{y}",
+f"\\log_{a}({x}-{y})=\\log_{a}{x}-\\log_{a}{y}",
+f"\\log_{a}({x}.{y})=\\log_{a}{x}.\\log_{a}{y}",
+f"\\log_{a}\\left(\\dfrac{{x}}{{y}}\\right)=\\frac{{\\log_{a}{x}}}{{\\log_{a}{y}}}",
+f"\\log_{a}({x}^k)=\\log_{a}{x}^k",
+f"\\log_{a}({x}^k)=k+\\log_{a}{x}",
+f"\\log_{a}{x}=\\dfrac{{\\ln {a}}}{{\\ln {x}}}",
+f"\\log_{a}{x}=\\log_{x}{a}",
+f"{a}^{{\\log_{x}{a}}}={x}",
+f"\\log_{a}1=1"
+]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 
 ################ Bài 3: HÀM SỐ MŨ- HÀM SỐ LOGARIT #################
@@ -5037,6 +5111,140 @@ def uz9zu_L11_C6_B3_32():
     dap_an=my_module.tra_ve_dap_an(list_PA)
 
     debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B3_33]-M2. Hàm số nào hàm số mũ
+def uz9zu_L11_C6_B3_33():
+    x=sp.symbols("x")
+    noi_dung=(
+    f"Trong các hàm số sau, hàm số nào làm hàm số mũ?"
+    )
+    
+    a=random.randint(1,9)
+    b=a+random.randint(1,5)
+    kq=random.choice([
+        f"{random.randint(2,10)}^x",
+        f"({sqrt(random.randint(2,25))})^x",
+        f"{random.randint(2,7)}^{{{random.randint(2,5)}x}}",
+        f"{random.randint(2,7)}^{{{random.randint(-5,-1)}x}}",
+        f"\\left({phan_so(a/b)} \\right)^x",
+        f"\\left({phan_so(b/a)} \\right)^x",
+        f"e^{{{random.randint(2,5)}x}}",
+        f"e^x",
+        f"e^{{{random.randint(-5,-2)}x}}",
+
+        ])
+    kq_false=[
+    f"x^{random.randint(2,7)}",
+    f"\\sqrt[{random.randint(3,5)}]{{x}}",
+    f"x^e",
+    f"x^{{{random.randint(2,5)}e}}",
+    f"{latex(random.randint(1,3)*x**random.randint(2,4)+random.randint(-5,-1))}",
+    f"{latex(random.randint(1,3)*x**random.randint(2,4)+random.randint(1,5))}",
+    f"\\log_{random.randint(2,4)} x",
+    f"\\ln x^{random.randint(2,5)}"
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+        f"$y={kq}$ là hàm số mũ."
+    )
+
+    pa_A= f"*$y={kq}$"
+    pa_B= f"$y={kq2}$"
+    pa_C= f"$y={kq3}$"
+    pa_D= f"$y={kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B3_34]-M2. Hàm số nào hàm số logarit
+def uz9zu_L11_C6_B3_34():
+    x=sp.symbols("x")
+    noi_dung=(
+    f"Trong các hàm số sau, hàm số nào làm hàm số logarit?"
+    )
+    
+    a=random.randint(1,9)
+    b=a+random.randint(1,5)
+    kq=random.choice([
+        f"\\log_{random.randint(2,9)} x",
+        f"\\ln x",
+        f"\\log x",        
+
+        ])
+    kq_false=[
+    f"x^{random.randint(2,7)}",
+    f"\\sqrt[{random.randint(3,5)}]{{x}}",
+    f"x^{{{random.randint(2,5)}e}}",
+    f"{latex(random.randint(1,3)*x**random.randint(2,4)+random.randint(-5,-1))}",
+    f"{latex(random.randint(1,3)*x**random.randint(2,4)+random.randint(1,5))}",
+        f"\\left({phan_so(a/b)} \\right)^x",
+        f"\\left({phan_so(b/a)} \\right)^x",
+        f"e^{{{random.randint(2,5)}x}}",
+        f"e^x",
+        f"e^{{{random.randint(-5,-2)}x}}",
+    ]
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+        f"$y={kq}$ là hàm số logarit."
+    )
+
+    pa_A= f"*$y={kq}$"
+    pa_B= f"$y={kq2}$"
+    pa_C= f"$y={kq3}$"
+    pa_D= f"$y={kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
 
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     
