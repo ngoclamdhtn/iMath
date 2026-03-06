@@ -11577,6 +11577,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_41]-TF-M3. Có 2 thí nghiệm. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(AB),P(B), P(B_ngang), x.s Bayes"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_2, ["[D12_C6_B2_42]-TF-M3. Học sinh chọn môn học. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(AB),P(B), P(B_ngang), x.s Bayes"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C6_B2_3 = QTreeWidgetItem(L12_C6_B2, ["Trả lời ngắn"])
                 L12_C6_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C6_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -14567,6 +14575,14 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B2_40]-M3.  x.s Bayes:  Xác suất để mục tiêu bị phát hiện là thật khi rada cảnh báo. 
                                             if dang_toan == "[D12_C6_B2_40]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_40()
+
+                                            #[D12_C6_B2_41]-TF-M3. Có 2 thì nghiệm. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(B_ngang), P(A|B)
+                                            if dang_toan == "[D12_C6_B2_41]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_41()
+
+                                            #[D12_C6_B2_42]-TF-M3. Học sinh chọn môn. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(B_ngang), P(A|B)
+                                            if dang_toan == "[D12_C6_B2_42]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_42()
 
                                             #-------------------------LỚP 11---------------------->
 
@@ -21014,7 +21030,6 @@ class Ui_MainWindow(object):
                             current_directory = os.path.dirname(os.path.abspath(__file__))
                             phieuto_folder_path = os.path.join(current_directory, 'PHIEU TO')
 
-
                             
                             if phieu_to=="Phieu TN-3.PNG":
                                 phieuto_path=os.path.join(phieuto_folder_path,'Phieu TN-3.PDF')
@@ -21050,20 +21065,20 @@ class Ui_MainWindow(object):
                     
                             pdf_files = sorted(glob.glob(os.path.join(folder_path, "de*.pdf")))
 
-                            if phieu_to!="":
+                            
 
-                                # Thêm từng file PDF vào merger (bỏ qua file đầu ra nếu đã tồn tại)
-                                for pdf in pdf_files:
-                                    if os.path.basename(pdf) != output_file:
-                                        #Chèn phiếu tô
+                            # Thêm từng file PDF vào merger (bỏ qua file đầu ra nếu đã tồn tại)
+                            for pdf in pdf_files:
+                                if os.path.basename(pdf) != output_file:
+                                    #Chèn phiếu tô
+                                    if phieu_to!="":
                                         merger.append(phieuto_path)
+                                    #Chèn file
+                                    merger.append(pdf)                                    
 
-                                        #Chèn file
-                                        merger.append(pdf)                                    
-
-                                # Ghi file PDF tổng hợp
-                                merger.write(output_file)
-                                merger.close()
+                            # Ghi file PDF tổng hợp
+                            merger.write(output_file)
+                            merger.close()
 
 
                             subprocess.Popen(['explorer', name_thu_muc])
@@ -22810,7 +22825,7 @@ class Ui_MainWindow(object):
 
                 tonghop_foler_path=os.path.join(goc_foler_path, f"DE THI")
                 new_folder_path=os.path.join(tonghop_foler_path, f"De_{name_de}")
-                ans_folder_path=os.path.join(tonghop_foler_path, 'ans')
+                ans_folder_path=os.path.join(new_folder_path, 'ans')
                 dapan_folder_path=os.path.join(goc_foler_path, f"DAP AN")
                 ans_dapan_folder_path=os.path.join(dapan_folder_path, f"ans")
 
@@ -22818,7 +22833,7 @@ class Ui_MainWindow(object):
                         os.makedirs(tonghop_foler_path)               
 
                 if not os.path.exists(new_folder_path):
-                        os.makedirs(new_folder_path)  
+                        os.makedirs(new_folder_path) 
                 if not os.path.exists(ans_folder_path):
                         os.makedirs(ans_folder_path)
                 if not os.path.exists(dapan_folder_path):

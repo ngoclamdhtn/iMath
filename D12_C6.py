@@ -7266,4 +7266,353 @@ def newy25_L12_C6_B2_40():
     f"\\end{{ex}}\n"
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D12_C6_B2_41]-M3_TF. Có 2 thì nghiệm. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(B_ngang), P(A|B)
+def newy25_L12_C6_B2_41():
+    An=random.choice(["Lan","Đào","Minh","Phương","Quân","Hùng", "Yến", "Vương"])
+
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_a_ngang_false=f"{round_half_up(p_a_ngang+random.randint(1,3)/10,2)}".replace(".",",")
+
+    #P(B|A)
+    while True:
+        b_dk_a=random.randint(55,60)
+        if b_dk_a!=a:
+            break
+
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+    st_b_ngang_dk_a_false=f"{round_half_up(p_b_ngang_dk_a+random.randint(1,3)/10,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    b_ngang_dk_a_ngang=random.randint(10,45)
+    p_b_ngang_dk_a_ngang=b_ngang_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B|A_ngang)    
+    p_b_dk_a_ngang=1-p_b_ngang_dk_a_ngang
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B_ngang)
+    p_b=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
+    st_b=f"{round_half_up(p_b,2)}".replace(".",",")
+    st_b_false=f"{round_half_up(p_b+random.randint(1,2)/10,2)}".replace(".",",")
+
+
+    #P(B_ngang)
+    p_b_ngang=p_a*p_b_ngang_dk_a+p_a_ngang*p_b_ngang_dk_a_ngang
+    st_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+    st_b_ngang_false=f"{round_half_up(p_b_ngang+random.randint(1,2)/10,2)}".replace(".",",")
+
+
+    #P(A|B)
+    p_ab=p_a*p_b_dk_a
+    p_b=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
+    p_a_dk_b=p_ab/p_b
+    st_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+    st_a_dk_b_false=f"{round_half_up(p_a_dk_b+random.randint(1,2)/10,2)}".replace(".",",")
+
+    #P(AB)
+    st_ab=f"{round_half_up(p_ab,2)}".replace(".",",")
+    st_ab_false=f"{round_half_up(p_ab+random.randint(1,2)/10,2)}".replace(".",",")
+
+
+    noi_dung = (
+    f"Bạn {An} phải thực hiện hai thí nghiệm liên tiếp. Thí nghiệm thứ nhất có xác suất thành công là {st_a}."
+    f" Nếu thí nghiệm thứ nhất thành công thì xác suất thành công của thí nghiệm thứ hai là {st_b_dk_a}." 
+    f" Nếu thí nghiệm thứ nhất không thành công thì xác suất thành công của thí nghiệm thứ hai là {st_b_dk_a_ngang}."
+    f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")    
+    
+    kq1_T=f"* Xác suất để thí nghiệm thứ nhất không thành công là {st_a_ngang}" 
+    kq1_F=f"Xác suất để thí nghiệm thứ nhất không thành công là {st_a_ngang_false}"
+    
+    HDG=f"Xác suất để thí nghiệm thứ nhất không thành công là $1-{st_a}={st_a_ngang}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        kq2_T=f"* Biết rằng thí nghiệm thứ nhất thành công. Xác suất để thí nghiệm thứ hai không thành công là {st_b_ngang_dk_a}"
+        kq2_F=f"Biết rằng thí nghiệm thứ nhất thành công. Xác suất để thí nghiệm thứ hai khôn thành công là {st_b_ngang_dk_a_false}"
+        
+        HDG=(f'Gọi A:"Thí nghiệm thứ nhất thành công", B:"Thí nghiệm thứ hai thành công".\n\n'
+            f"Xác suất cần tính là: $P(\\overline{{B}}|A)=1-{st_b_dk_a}={st_b_ngang_dk_a}$.")
+    
+    if chon==2:
+        kq2_T=f"* Xác suất để thí nghiệm thứ nhất và thí nghiệm thứ hai đều thành công là {st_ab}"
+        kq2_F=f"Xác suất để thí nghiệm thứ nhất và thí nghiệm thứ hai đều thành công là {st_ab_false}"
+        
+        HDG=(f'Gọi A:"Thí nghiệm thứ nhất thành công", B:"Thí nghiệm thứ hai thành công".\n\n'
+            f"$P(AB)={st_a}.{st_b_dk_a}={st_ab}$.")  
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+
+    if chon==1:
+        kq3_T=f"* Xác suất để thí nghiệm thứ hai thành công là {st_b}" 
+        kq3_F=f"Xác suất để thí nghiệm thứ hai thành công là {st_b_false}"
+        
+        HDG=f"$P(B)={st_a}.{st_b_dk_a}+{st_a_ngang}.{st_b_dk_a_ngang}={st_b}$."
+    
+    if chon==2:
+        kq3_T=f"* Xác suất để thí nghiệm thứ hai không thành công là {st_b_ngang}" 
+        kq3_F=f"Xác suất để thí nghiệm thứ hai không thành công là {st_b_ngang_false}"
+        
+        HDG=f"$P(\\overline{{B}})={st_a}.{st_b_ngang_dk_a}+{st_a_ngang}.{st_b_ngang_dk_a_ngang}={st_b_ngang}$."
+    
+
+
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Biết rằng thí nghiệm thứ hai thành công, xác suất để thí nghiệm thứ nhất thành công là {st_a_dk_b}"
+    kq4_F=f"Biết rằng thí nghiệm thứ hai thành công, xác suất để thí nghiệm thứ nhất thành công là {st_a_dk_b_false}" 
+    
+    HDG=f"$P(A|B)=\\dfrac{{P(AB)}}{{P(B)}}=\\dfrac{{{st_a}.{st_b_dk_a}}}{{{st_a}.{st_b_dk_a}+{st_a_ngang}.{st_b_dk_a_ngang}}}={st_a_dk_b}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
+#[D12_C6_B2_42]-M3-TF. Học sinh chọn môn. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(B), P(B_ngang), P(AB), P(A|B)
+def newy25_L12_C6_B2_42():
+ 
+    #P(A)
+    a=random.randint(55,70)
+    p_a=a/100
+    p_a_ngang=1-p_a
+    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_a_ngang_false=f"{round_half_up(p_a_ngang+random.randint(1,3)/10,2)}".replace(".",",")
+
+    #P(B|A)
+    while True:
+        b_dk_a=random.randint(55,60)
+        if b_dk_a!=a:
+            break
+
+    p_b_dk_a=b_dk_a/100
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+
+    #P(B_ngang|A)
+    p_b_ngang_dk_a=1-p_b_dk_a
+    st_b_ngang_dk_a=f"{round_half_up(p_b_ngang_dk_a,2)}".replace(".",",")
+    st_b_ngang_dk_a_false=f"{round_half_up(p_b_ngang_dk_a+random.randint(1,3)/10,2)}".replace(".",",")
+
+    #P(B_ngang|A_ngang)
+    b_ngang_dk_a_ngang=random.randint(10,45)
+    p_b_ngang_dk_a_ngang=b_ngang_dk_a_ngang/100
+    st_b_ngang_dk_a_ngang=f"{round_half_up(p_b_ngang_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B|A_ngang)    
+    p_b_dk_a_ngang=1-p_b_ngang_dk_a_ngang
+    st_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+
+    #P(B_ngang)
+    p_b=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
+    st_b=f"{round_half_up(p_b,2)}".replace(".",",")
+    st_b_false=f"{round_half_up(p_b+random.randint(1,2)/10,2)}".replace(".",",")
+
+
+    #P(B_ngang)
+    p_b_ngang=p_a*p_b_ngang_dk_a+p_a_ngang*p_b_ngang_dk_a_ngang
+    st_b_ngang=f"{round_half_up(p_b_ngang,2)}".replace(".",",")
+    st_b_ngang_false=f"{round_half_up(p_b_ngang+random.randint(1,2)/10,2)}".replace(".",",")
+
+
+    #P(A|B)
+    p_ab=p_a*p_b_dk_a
+    p_b=p_a*p_b_dk_a+p_a_ngang*p_b_dk_a_ngang
+    p_a_dk_b=p_ab/p_b
+    st_a_dk_b=f"{round_half_up(p_a_dk_b,2)}".replace(".",",")
+    st_a_dk_b_false=f"{round_half_up(p_a_dk_b+random.randint(1,2)/10,2)}".replace(".",",")
+
+    #P(AB)
+    st_ab=f"{round_half_up(p_ab,2)}".replace(".",",")
+    st_ab_false=f"{round_half_up(p_ab+random.randint(1,2)/10,2)}".replace(".",",")
+
+    tieng_Anh, tieng_Phap=random.sample(["tiếng Anh","tiếng Pháp", "tiếng Nhật", "tiếng Hàn Quốc"],2)
+
+    noi_dung = (
+    f"Trong một lớp học có ${a}\\%$ là học sinh nam. Mỗi học sinh trong lớp đều lựa chọn học ngoại ngữ là {tieng_Anh} hoặc {tieng_Phap}."
+    f" Xác suất học {tieng_Anh} của mỗi bạn học sinh nam là {st_b_dk_a}." 
+    f" Xác suất học {tieng_Anh} của mỗi bạn học sinh nữ là {st_b_dk_a_ngang}."
+    f" Chọn ngẫu nhiên một bạn học sinh của lớp. "
+    f" Xét tính đúng-sai của các khẳng định sau (kết quả làm tròn đến hàng phần trăm):")    
+    
+    kq1_T=f"* Xác suất chọn được học sinh nữ là {st_a_ngang}" 
+    kq1_F=f"Xác suất chọn được học sinh nữ là {st_a_ngang_false}"
+    
+    HDG=f"Xác suất chọn được học sinh nữ là: $1-{st_a}={st_a_ngang}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        kq2_T=f"* Biết rằng chọn được học sinh nam. Xác suất để học sinh đó học {tieng_Phap} là {st_b_ngang_dk_a}"
+        kq2_F=f"Biết rằng chọn được học sinh nam. Xác suất để học sinh đó học {tieng_Phap} là {st_b_ngang_dk_a_false}"
+        
+        HDG=(f'Gọi A:"Học sinh được chọn là nam", B:"Học sinh được chọn học {tieng_Anh}".\n\n'
+            f"$P(\\overline{{B}}|A)=1-{st_b_dk_a}={st_b_ngang_dk_a}$.")
+    
+    if chon==2:
+        kq2_T=f"* Xác suất bạn được chọn là học sinh nam và bạn đó học {tieng_Anh} là {st_ab}"
+        kq2_F=f"Xác suất bạn được chọn là học sinh nam và bạn đó học {tieng_Anh} là {st_ab_false}"
+        
+        HDG=(f'Gọi A:"Học sinh được chọn là nam", B:"Học sinh được chọn học {tieng_Anh}".\n\n'
+            f"$P(AB)={st_a}.{st_b_dk_a}={st_ab}$.")  
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    chon=random.randint(1,2)
+    
+    if chon==1:
+        kq3_T=f"* Xác suất để học sinh được chọn học {tieng_Anh} là {st_b}" 
+        kq3_F=f"Xác suất để học sinh được chọn học {tieng_Anh} là {st_b_false}"
+        
+        HDG=f"$P(B)={st_a}.{st_b_dk_a}+{st_a_ngang}.{st_b_dk_a_ngang}={st_b}$."
+    
+    if chon==2:
+        kq3_T=f"* Xác suất để học sinh được chọn học {tieng_Phap} là {st_b_ngang}" 
+        kq3_F=f"Xác suất để học sinh được chọn học {tieng_Phap} {st_b_ngang_false}"
+        
+        HDG=f"$P(\\overline{{B}})={st_a}.{st_b_ngang_dk_a}+{st_a_ngang}.{st_b_ngang_dk_a_ngang}={st_b_ngang}$."
+    
+
+
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    kq4_T=f"* Biết rằng học sinh được chọn học {tieng_Anh}, xác suất để học sinh đó là nam là {st_a_dk_b}"
+    kq4_F=f"Biết rằng học sinh được chọn học {tieng_Anh}, xác suất để học sinh đó là nam là {st_a_dk_b_false}" 
+    
+    HDG=f"$P(A|B)=\\dfrac{{P(AB)}}{{P(B)}}=\\dfrac{{{st_a}.{st_b_dk_a}}}{{{st_a}.{st_b_dk_a}+{st_a_ngang}.{st_b_dk_a_ngang}}}={st_a_dk_b}$."
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
     
