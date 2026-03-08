@@ -5375,7 +5375,7 @@ def ui5io_L11_C7_B4_05():
     if k==2:
         a = random.randint(1, 10)
         c = random.randint(1, 10)    
-        b=  random.randint(-8, -1) 
+        b=  random.randint(1, 8) 
         f=a*t**2+b*t+c     
         ham_so =f"{latex(f)}"   
 

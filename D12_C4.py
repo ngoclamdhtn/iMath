@@ -1133,13 +1133,13 @@ def ckz_L12C4_B1_18():
 
         F = a*x+b/x
        
-        x_0= random.choice([i for i in range(-5, 5) if i!=0])
-        
+        x_0= random.choice([i for i in range(-6, 6) if i!=0])
+        x_1= random.choice([i for i in range(-6, 6) if i!=0])        
         b= random.randint(-8, 8)
-        x_1=random.randint(-5, 5)
-
-        while x_1==x_0 or x_1==0:
-            x_1=random.randint(-5, 5)       
+        if x_0*x_1<=0:
+            continue
+        if x_0==x_1:
+            continue
        
 
         f=diff(F,x)
@@ -1149,6 +1149,8 @@ def ckz_L12C4_B1_18():
             break
 
     dap_an=f"{round_half_up(G.subs(x,x_1),1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
 
     noi_dung = (
     f"Biết $F(x)$ là một nguyên hàm của hàm số $ f(x)={latex(f)}$ thỏa mãn $F({x_0}) ={b}$. Tính $F({x_1})$ (kết quả làm tròn đến hàng phần mười)."
@@ -1188,13 +1190,13 @@ def ckz_L12C4_B1_19():
 
         F = a*x**2+b/x
        
-        x_0= random.choice([i for i in range(-5, 5) if i!=0])
-        
+        x_0= random.choice([i for i in range(-6, 6) if i!=0])
+        x_1= random.choice([i for i in range(-6, 6) if i!=0])        
         b= random.randint(-8, 8)
-        x_1=random.randint(-5, 5)
-
-        while x_1==x_0 or x_1==0:
-            x_1=random.randint(-5, 5)       
+        if x_0*x_1<=0:
+            continue
+        if x_0==x_1:
+            continue      
        
 
         f=diff(F,x)
@@ -1244,13 +1246,13 @@ def ckz_L12C4_B1_20():
         c = random.choice([i for i in range(-4, 4) if i!=0])        
 
         F = a*x**2+b*x+c/x   
-        x_0= random.choice([i for i in range(-3, 3) if i!=0])   
-        
-        x_1=random.randint(-5, 5)
-        while x_1==x_0 or x_1==0:
-            x_1=random.randint(-4, 4)       
-       
+        x_0= random.choice([i for i in range(-6, 6) if i!=0])
+        x_1= random.choice([i for i in range(-6, 6) if i!=0])        
         b= random.randint(-6, 6)
+        if x_0*x_1<=0:
+            continue
+        if x_0==x_1:
+            continue 
         f=diff(F,x)
         C=b-F.subs(x,x_0)
         G=F+C
@@ -4110,7 +4112,12 @@ def ckz_L12C4_B1_57():
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    x_2=random.choice([t for t in list_x if t!=x_1])
+    while True:
+
+        x_2=random.choice([t for t in list_x if t!=x_1])
+        if x_2*x_1>0:
+            break
+
     F=integrate(f,x)+c_0
     f_2=F.subs(x,x_2)
 
@@ -4172,6 +4179,8 @@ def ckz_L12C4_B1_57():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+
 
 #------------------------------------------------------------->
 #BÀI 2- NGUYÊN HÀM ĐỔI BIẾN

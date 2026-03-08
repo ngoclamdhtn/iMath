@@ -3464,7 +3464,7 @@ def newy25_L12_C6_B2_06():
     lop=random.choice(lop)
     
     so_trung=random.randint(8,15)
-    tong=so_trung+random.randint(4,10)
+    tong=so_trung+random.randint(5,10)
 
     p_b=so_trung/tong
     p_b_ngang=1-p_b
@@ -3472,12 +3472,14 @@ def newy25_L12_C6_B2_06():
     p_a_dk_b_ngang=(so_trung)/(tong-1)
     kq=p_b*p_a_dk_b+p_b_ngang*p_a_dk_b_ngang
     dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
 
     ten=[ "An", "Bảo", "Cường", "Dũng", "Hưng", "Khánh", "Minh", "Phúc", "Quân", "Tuấn", "Anh", "Chi", "Diệu", "Hạnh", "Lan", "Linh", "Mai", "Ngọc", "Thảo", "Vy"]
     A,B = random.sample(ten,2)
     
     noi_dung = (
-    f"Trên kệ có ${{{tong}}}$ chiếc ly, trong đó có ${{{so_trung}}}$ chiếc  còn lại là ly nhựa. Bạn {B} lấy ngẫu nhiên một chiếc ly trước, sau đó đến lượt bạn {A} lấy một chiếc ly."
+    f"Trên kệ có ${{{tong}}}$ chiếc ly, trong đó có ${{{so_trung}}}$ chiếc ly thủy tinh còn lại là ly nhựa. Bạn {B} lấy ngẫu nhiên một chiếc ly trước, sau đó đến lượt bạn {A} lấy một chiếc ly."
     f" Tính xác suất để bạn {A} lấy được chiếc ly thủy tinh (kết quả làm tròn đến hàng phần trăm)."
     )   
     

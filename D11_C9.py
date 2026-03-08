@@ -2180,6 +2180,58 @@ def ut9kq_L11_C9_B1_25():
 
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C9_B1_26]-SA-M2. Tính xác suất làm được toàn bộ các câu trắc nghiệm
+def ut9kq_L11_C9_B1_26():
+
+	a = random.randint(75,90)/100
+	b = random.randint(70,85)/100
+	c = random.randint(50,60)/100
+
+	while True:
+		tong=random.choice([30,35,40,45,50])
+		so_nb=random.randint(5,10)
+		so_th=random.randint(5,10)
+		so_vd=tong-so_nb-so_th
+		if so_nb+so_th+so_vd==tong:
+			break
+	An=random.choice(["An", "Minh", "Nam", "Hùng", "Nga", "Thảo"])
+	noi_dung = (
+	f"Một đề trắc nghiệm có {tong} câu hỏi gồm {so_nb} câu mức độ nhận biết, {so_th} câu mức độ thông hiểu và {so_vd} câu mức độ vận dụng. "
+	f"Xác suất để bạn {An} làm hết các câu mức độ nhận biết là {a}; "
+	f"làm hết câu mức độ thông hiểu là {b}; "
+	f"và làm hết câu mức độ vận dụng cao là {c}. "
+	f"Tính xác suất để bạn {An} làm trọn vẹn {tong} câu (kết quả làm tròn đến hàng phần trăm)."
+	)
+	noi_dung=noi_dung.replace("0.","0,")
+
+	dap_an = f"{round_half_up(a*b*c,2):.2f}".replace(".",",")
+	if dap_an.endswith("0"):   
+		dap_an = dap_an[:-1]
+
+	noi_dung_loigiai = (
+	f"Gọi ${{A,B,C}}$ lần lượt là các biến cố An làm hết các câu mức độ nhận biết, thông hiểu và vận dụng.\n\n"
+	f"Ta có $P(A)={a}, P(B)={b}, P(C)={c}$.\n\n"
+	f"Vì các biến cố độc lập nên\n"
+	f"$P(A\\cap B\\cap C)=P(A)P(B)P(C)={a}\\cdot {b}\\cdot {c}={dap_an}.$"
+	)
+	noi_dung_loigiai=noi_dung_loigiai.replace("0.","0,")
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+	f"Lời giải:\n {noi_dung_loigiai} \n"
+	f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+	f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
 #<----------------------------------------------->#
 #BÀI 2- BIẾN CỐ HỢP - QUY TẮC CỘNG XÁC SUẤT
 #[D11_C9_B2_01]-M2. Hộp chứa các viên bi có 2 màu. Phát biểu biến cố hợp.
@@ -3514,3 +3566,766 @@ def ut9kq_L11_C9_B2_16():
 	f"\\end{{ex}}\n"
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C9_B2_17]-SA-M3. Xác suất để tổng các số chọn ra là một số lẻ
+def ut9kq_L11_C9_B2_17():
+
+	n=random.randint(9,15)
+	k=random.choice([4,5,6])
+
+	A=list(range(1,n+1))
+	odd=len([x for x in A if x%2==1])
+	even=n-odd
+
+	tong=math.comb(n,k)
+	thuan=0
+
+	for i in range(1,k+1,2):
+		if i<=odd and k-i<=even:
+			thuan+=math.comb(odd,i)*math.comb(even,k-i)
+
+	A=random.choice(["A","B","C","M","N"])
+
+	noi_dung = (
+	f"Cho tập ${A}=\\{{1;2;3;\\dots;{n}\\}}$. Chọn ngẫu nhiên {k} số thuộc tập ${{{A}}}$. "
+	f"Tính xác suất để tổng các số chọn ra là một số lẻ (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	dap_an=f"{round_half_up(thuan/tong,2):.2f}".replace(".",",")
+	if dap_an.endswith("0"):   
+		dap_an = dap_an[:-1]
+
+	noi_dung_loigiai=(
+	f"Trong tập {A} có {odd} số lẻ và {even} số chẵn.\n\n"	
+	f"Tổng số cách chọn {k} số từ {n} số là: "
+	f"$\\mathrm{{C}}_{{{n}}}^{{{k}}}={tong}.$\n\n"
+	f"Tổng ${k}$ số là số lẻ khi số lượng số lẻ được chọn là số lẻ.\n\n"
+	f"Số cách chọn để tổng các số chọn ra là lẻ:\n"
+	)
+	tam=""
+	for i in range(1,k+1,2):
+		if i<=odd and k-i<=even:
+			tam+=f"\\mathrm{{C}}_{odd}^{{{i}}}\\mathrm{{C}}_{even}^{{{k-i}}}+"
+	tam = tam[:-1]
+
+	noi_dung_loigiai+=(
+	f"${tam}={thuan}$.\n\n"
+	f"\n\nXác suất cần tìm là: "
+	f"$P=\\dfrac{{{thuan}}}{{{tong}}}={dap_an}.$"
+	)
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B2_18]-SA-M3. Xác suất để tổng các số chọn ra là một số chẵn
+def ut9kq_L11_C9_B2_18():
+
+	n=random.randint(9,15)
+	k=random.choice([4,5,6])
+
+	A=list(range(1,n+1))
+	odd=len([x for x in A if x%2==1])
+	even=n-odd
+
+	tong=math.comb(n,k)
+	thuan=0
+
+	for i in range(1,k+1,2):
+		if i<=odd and k-i<=even:
+			thuan+=math.comb(odd,i)*math.comb(even,k-i)
+
+	A=random.choice(["A","B","C","M","N"])
+
+	noi_dung = (
+	f"Cho tập ${A}=\\{{1;2;3;\\dots;{n}\\}}$. Chọn ngẫu nhiên {k} số thuộc tập ${{{A}}}$. "
+	f"Tính xác suất để tổng các số chọn ra là một số chẵn (kết quả làm tròn đến hàng phần trăm)."
+	)
+
+	dap_an=f"{round_half_up(1-thuan/tong,2):.2f}".replace(".",",")
+	if dap_an.endswith("0"):   
+		dap_an = dap_an[:-1]
+
+	noi_dung_loigiai=(
+	f"Trong tập {A} có {odd} số lẻ và {even} số chẵn.\n\n"	
+	f"Tổng số cách chọn {k} số từ {n} số là: "
+	f"$\\mathrm{{C}}_{{{n}}}^{{{k}}}={tong}.$\n\n"
+	f"Tổng ${k}$ số là số lẻ khi số lượng số lẻ được chọn là số lẻ.\n\n"
+	f"Số cách chọn để tổng các số chọn ra là lẻ:\n"
+	)
+	tam=""
+	for i in range(1,k+1,2):
+		if i<=odd and k-i<=even:
+			tam+=f"\\mathrm{{C}}_{odd}^{{{i}}}\\mathrm{{C}}_{even}^{{{k-i}}}+"
+	tam = tam[:-1]
+
+	noi_dung_loigiai+=(
+	f"${tam}={thuan}$.\n\n"
+	f"\n\nXác suất để tổng các số là lẻ: "
+	f"$P=\\dfrac{{{thuan}}}{{{tong}}}={phan_so(thuan/tong)}.$\n\n"
+	f"Xác suất để tổng các số là chẵn: $1-{phan_so(thuan/tong)}={phan_so(1-thuan/tong)}={dap_an}$."
+	)
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B2_19]-SA-M4. Xác suất để 2 bạn chọn được quà như nhau
+def ut9kq_L11_C9_B2_19():
+
+	n=random.randint(12,16)
+
+	T=random.choice([6,7,8])
+	L=random.choice([7,8,9])
+	H=2*n-T-L
+
+	while H<=0 or (T+L-H)%2!=0:
+		T=random.choice([6,7,8])
+		L=random.choice([7,8,9])
+		H=2*n-T-L
+
+	x=(T+L-H)//2
+	y=(T+H-L)//2
+	z=(L+H-T)//2
+
+	kq=(x*(x-1)+y*(y-1)+z*(z-1))/(n*(n-1))
+	dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+	ten_1, ten_2= random.sample(["Thảo", "Lam", "Minh", "Phương", "Hiền", "Hoa" ],2)
+
+	noi_dung = (
+	f"Người ta sử dụng {T} cuốn sách Toán, {L} cuốn sách Vật lí, "
+	f"{H} cuốn sách Hóa học (các cuốn sách cùng loại giống nhau) "
+	f"để làm phần thưởng cho {n} học sinh, mỗi học sinh được 2 cuốn "
+	f"sách khác loại. Trong số {n} học sinh trên có hai bạn {ten_1} và {ten_2}. "
+	f"Tính xác suất để hai bạn {ten_1} và {ten_2} có phần thưởng giống nhau."
+	)
+
+	noi_dung_loigiai=(
+	f"Gọi số phần thưởng loại Toán–Lý, Toán–Hóa, Lý–Hóa lần lượt là ${{x,y,z}}$.\n\n"
+	f"Ta có hệ:\n"
+	f"$\n"
+	f"\\begin{{cases}}\n"
+	f"x+y={T}\\\\\n"
+	f"x+z={L}\\\\\n"
+	f"y+z={H}\n"
+	f"\\end{{cases}}\n"
+	f"$\n\n"
+	f"Suy ra: "
+	f"$x={x},\\quad y={y},\\quad z={z}.$\n\n"
+	f"Xác suất để {ten_1} và {ten_2} nhận cùng loại phần thưởng là:\n\n"
+	f"$P=\\dfrac{{C^2_{x}+C^2_{y}+C^2_{z}}}{{C^2_{{{n}}}}}={dap_an}$."
+
+	)
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B2_20]-SA-M3. Xác suất để người được chọn mua đúng 1 loại cây
+def ut9kq_L11_C9_B2_20():
+
+	n=random.randint(60,100)
+	a=random.randint(n//3,n//2)
+	b=random.randint(n//3,n//2)
+	c=random.randint(5,min(a,b)//2)
+
+	kq=(a+b-2*c)/n
+	dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")
+
+	noi_dung = (
+	f"Một nhóm có {n} người được phỏng vấn họ đã mua cây mai hay cây quất "
+	f"vào dịp Tết, trong đó có {a} người mua cây mai, {b} người mua "
+	f"cây quất và {c} người mua cả cây mai và cây quất. Chọn ngẫu nhiên một "
+	f"người. Tính xác suất để người đó mua đúng một loại cây."
+	)
+
+	noi_dung_loigiai=(
+	f"Số người mua đúng một loại cây là:\n"
+	f"${a}-{c}+{b}-{c}={a+b-2*c}$\n\n"
+	f"Xác suất cần tìm là: "
+	f"$P=\\dfrac{{{a+b-2*c}}}{{{n}}}={dap_an}.$"
+	)
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C9_B2_21]-TF-M3. Lớp học có các bạn thích chơi 2 môn. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉA), P(chỉB)
+def ut9kq_L11_C9_B2_21():
+	n_tuong=random.randint(15,20)
+	n_vua=random.randint(15,20)
+	n_giao=random.randint(5,10)
+	n_khong=random.randint(5,10)
+	tong=n_tuong+n_vua-n_giao+n_khong
+	co_tuong, co_vua=random.choice([
+		("cờ tướng", "cờ vua"),
+		("bóng đá", "bóng chuyền"), 
+		("bóng bàn", "cầu lông"),
+		("bơi lội", "chạy bộ"),
+		("xem phim", "nghe nhạc"),
+		 ("đọc sách", "chơi game"),
+		])
+
+	noi_dung = (
+	f"Lớp 11A{random.randint(1,5)} có {tong} học sinh."
+	f" Trong đó có {n_tuong} bạn thích {co_tuong}, có {n_vua} bạn thích {co_vua}, có {n_giao} bạn thích cả hai."
+	f" Đồng thời có các bạn không thích {co_tuong} và {co_vua}."
+	f" Chọn ngẫu nhiên một học sinh của lớp."
+	f' Gọi ${{A}}$ là biến cố "Học sinh được chọn thích {co_tuong}",'
+	f' ${{B}}$ là biến cố "Học sinh được chọn thích {co_vua}".'
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+
+	n_A=n_tuong
+	n_B=n_vua
+	p_A=n_A/tong
+	p_B=n_B/tong
+
+	while True:
+		p_A_false=random.randint(10,90)/100
+		if p_A_false!=p_A:
+			break
+	while True:
+		p_B_false=random.randint(10,90)/100
+		if p_B_false!=p_B:
+			break
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* $P(A)={phan_so(p_A)}$" 
+		kq1_F=f"$P(A)={phan_so(p_A_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"$n(A)={n_A}$.\n\n"
+			f"$P(A)=\\dfrac{{n(A)}}{{n(\\Omega)}}={phan_so(p_A)}$.")
+
+	if chon==2:
+		kq1_T=f"* $P(B)={phan_so(p_B)}$"
+		kq1_F=f"$P(B)={phan_so(p_B_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"$n(B)={n_B}$.\n\n"
+			f"$P(B)=\\dfrac{{n(B)}}{{n(\\Omega)}}={phan_so(p_B)}$.")
+	
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	n_only_A=n_tuong-n_giao
+	p_only_A=n_only_A/tong
+	while True:
+		p_only_A_false=random.randint(10,90)/100
+		if p_only_A_false!=p_only_A:
+			break
+
+	n_only_B=n_vua-n_giao
+	p_only_B=n_only_B/tong
+	while True:
+		p_only_B_false=random.randint(10,90)/100
+		if p_only_B_false!=p_only_B:
+			break
+
+	chon=random.randint(1,2)
+
+	if chon==1:
+		kq2_T=f"* Xác suất chọn được bạn chỉ thích {co_tuong} là ${phan_so(p_only_A)}$"
+		kq2_F=f"Xác suất chọn được bạn chỉ thích {co_tuong} là ${phan_so(p_only_A_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"Số bạn chỉ thích chơi {co_tuong}: $n(C)={n_tuong}-{n_giao}={n_only_A}$.\n\n"
+			f"$P(C)=\\dfrac{{n(C)}}{{n(\\Omega)}}={phan_so(p_only_A)}$.")
+	
+	if chon==2:
+		kq2_T=f"* Xác suất chọn được bạn chỉ thích {co_vua} là ${phan_so(p_only_B)}$"
+		kq2_F=f"Xác suất chọn được bạn chỉ thích {co_vua} là ${phan_so(p_only_B_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"Số bạn chỉ thích {co_vua}: $n(C)={n_vua}-{n_giao}={n_only_B}$.\n\n"
+			f"$P(C)=\\dfrac{{n(C)}}{{n(\\Omega)}}={phan_so(p_only_B)}$.")
+	
+
+
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	n_AuB=n_tuong+n_vua-n_giao
+	p_AuB =n_AuB/tong
+	while True:
+		p_AuB_false=random.randint(10,90)/100
+		if p_AuB_false!=p_AuB:
+			break
+
+
+	kq3_T=f"* $P(A\\cup B)={phan_so(p_AuB)}$" 
+	kq3_F=f"$P(A\\cup B)={phan_so(p_AuB_false)}$"
+	
+	HDG=(f"$n(A\\cup B)={n_tuong}+{n_vua}-{n_giao}={n_AuB}$.\n\n"
+		f"$P(A\\cup B)=\\dfrac{{n(A\\cup B)}}{{n(\\Omega)}}={phan_so(p_AuB)}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p_khong=n_khong/tong
+	while True:
+		p_khong_false=random.randint(10,90)/100
+		if p_khong_false!=p_khong:
+			break
+
+	kq4_T=f"* Xác suất chọn được bạn không thích cả {co_tuong} và {co_vua} là ${phan_so(p_khong)}$"
+	kq4_F=f"Xác suất chọn được bạn không thích cả {co_tuong} và {co_vua} là ${phan_so(p_khong_false)}$" 
+	
+	HDG=(f"Số các bạn không thích cả hai môn là: $n(D)={tong}-{n_AuB}={n_khong}$.\n\n"
+		f"Xác suất cần tính là: $P(D)=\\dfrac{{n(D)}}{{n(\\Omega)}}={phan_so(p_khong)}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B2_22]-TF-M3. Phương tiện di chuyển. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉA), P(chỉB)
+def ut9kq_L11_C9_B2_22():
+	n_tuong=random.randint(15,20)
+	n_vua=random.randint(15,20)
+	n_giao=random.randint(5,10)
+	n_khong=random.randint(5,10)
+	tong=n_tuong+n_vua-n_giao+n_khong
+	co_tuong, co_vua=random.choice([
+		("đi xe máy", "đi xe buýt"),
+		("đi xe máy", "đi ô tô"), 
+		("đi xe buýt", "đi ô tô"), 
+		])
+
+	noi_dung = (
+	f"Một nhóm nghiên cứu tiến hành khảo sát {tong} người về phương tiện họ thường sử dụng để đi làm."
+	f" Trong đó có {n_tuong} người thường {co_tuong}, có {n_vua} người thường {co_vua}, có {n_giao} người sử dụng cả hai phương tiện."
+	f" Đồng thời có những người không sử dụng hai phương tiện này."
+	f" Chọn ngẫu nhiên một người đã khảo sát."
+	f' Gọi ${{A}}$ là biến cố "Người được chọn thường {co_tuong}",'
+	f' ${{B}}$ là biến cố "Người được chọn thường {co_vua}".'
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+
+	n_A=n_tuong
+	n_B=n_vua
+	p_A=n_A/tong
+	p_B=n_B/tong
+
+	while True:
+		p_A_false=random.randint(10,90)/100
+		if p_A_false!=p_A:
+			break
+	while True:
+		p_B_false=random.randint(10,90)/100
+		if p_B_false!=p_B:
+			break
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* $P(A)={phan_so(p_A)}$" 
+		kq1_F=f"$P(A)={phan_so(p_A_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"$n(A)={n_A}$.\n\n"
+			f"$P(A)=\\dfrac{{n(A)}}{{n(\\Omega)}}={phan_so(p_A)}$.")
+
+	if chon==2:
+		kq1_T=f"* $P(B)={phan_so(p_B)}$"
+		kq1_F=f"$P(B)={phan_so(p_B_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"$n(B)={n_B}$.\n\n"
+			f"$P(B)=\\dfrac{{n(B)}}{{n(\\Omega)}}={phan_so(p_B)}$.")
+	
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	n_only_A=n_tuong-n_giao
+	p_only_A=n_only_A/tong
+	while True:
+		p_only_A_false=random.randint(10,90)/100
+		if p_only_A_false!=p_only_A:
+			break
+
+	n_only_B=n_vua-n_giao
+	p_only_B=n_only_B/tong
+	while True:
+		p_only_B_false=random.randint(10,90)/100
+		if p_only_B_false!=p_only_B:
+			break
+
+	chon=random.randint(1,2)
+
+	if chon==1:
+		kq2_T=f"* Xác suất chọn được người chỉ {co_tuong} là ${phan_so(p_only_A)}$"
+		kq2_F=f"Xác suất chọn được người chỉ {co_tuong} là ${phan_so(p_only_A_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"Số người chỉ {co_tuong}: $n(C)={n_tuong}-{n_giao}={n_only_A}$.\n\n"
+			f"$P(C)=\\dfrac{{n(C)}}{{n(\\Omega)}}={phan_so(p_only_A)}$.")
+	
+	if chon==2:
+		kq2_T=f"* Xác suất chọn được người chỉ {co_vua} là ${phan_so(p_only_B)}$"
+		kq2_F=f"Xác suất chọn được người chỉ {co_vua} là ${phan_so(p_only_B_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"Số người chỉ {co_vua}: $n(C)={n_vua}-{n_giao}={n_only_B}$.\n\n"
+			f"$P(C)=\\dfrac{{n(C)}}{{n(\\Omega)}}={phan_so(p_only_B)}$.")
+	
+
+
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	n_AuB=n_tuong+n_vua-n_giao
+	p_AuB =n_AuB/tong
+	while True:
+		p_AuB_false=random.randint(10,90)/100
+		if p_AuB_false!=p_AuB:
+			break
+
+
+	kq3_T=f"* $P(A\\cup B)={phan_so(p_AuB)}$" 
+	kq3_F=f"$P(A\\cup B)={phan_so(p_AuB_false)}$"
+	
+	HDG=(f"$n(A\\cup B)={n_tuong}+{n_vua}-{n_giao}={n_AuB}$.\n\n"
+		f"$P(A\\cup B)=\\dfrac{{n(A\\cup B)}}{{n(\\Omega)}}={phan_so(p_AuB)}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p_khong=n_khong/tong
+	while True:
+		p_khong_false=random.randint(10,90)/100
+		if p_khong_false!=p_khong:
+			break
+
+	kq4_T=f"* Xác suất chọn được người không đi cả hai phương tiện đã cho là ${phan_so(p_khong)}$"
+	kq4_F=f"Xác suất chọn được người đi cả hai phương tiện đã cho là ${phan_so(p_khong_false)}$" 
+	
+	HDG=(f"Số người không đi cả hai phương tiện đã cho là: $n(D)={tong}-{n_AuB}={n_khong}$.\n\n"
+		f"Xác suất cần tính là: $P(D)=\\dfrac{{n(D)}}{{n(\\Omega)}}={phan_so(p_khong)}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
+
+#[D11_C9_B2_23]-TF-M3. Chủ đề du lịch. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉA), P(chỉB)
+def ut9kq_L11_C9_B2_23():
+	n_tuong=random.randint(15,20)
+	n_vua=random.randint(15,20)
+	n_giao=random.randint(5,10)
+	n_khong=random.randint(5,10)
+	tong=n_tuong+n_vua-n_giao+n_khong
+	co_tuong, co_vua=random.choice([
+		("đi du lịch biển", "đi du lịch núi"),
+		("đi du lịch miền Nam", "đi du lịch miền Bắc"),
+		("đi du lịch trong nước", "đi du lịch ngước ngoài"),
+
+		])
+
+	noi_dung = (
+	f"Một công ty du lịch khảo sát {tong} khách hàng về địa điểm họ đã đi trong năm vừa qua."
+	f" Kết quả khảo sát có {n_tuong} người đã {co_tuong}, có {n_vua} người đã {co_vua}, có {n_giao} người đã đi cả hai nơi."
+	f" Đồng thời có những người chưa {co_tuong} và chưa {co_vua}."
+	f" Chọn ngẫu nhiên một người đã khảo sát."
+	f' Gọi ${{A}}$ là biến cố "Người được chọn đã {co_tuong}",'
+	f' ${{B}}$ là biến cố "Người được chọn đã {co_vua}".'
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+
+	n_A=n_tuong
+	n_B=n_vua
+	p_A=n_A/tong
+	p_B=n_B/tong
+
+	while True:
+		p_A_false=random.randint(10,90)/100
+		if p_A_false!=p_A:
+			break
+	while True:
+		p_B_false=random.randint(10,90)/100
+		if p_B_false!=p_B:
+			break
+
+	chon=random.randint(1,2)
+	if chon==1:
+		kq1_T=f"* $P(A)={phan_so(p_A)}$" 
+		kq1_F=f"$P(A)={phan_so(p_A_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"$n(A)={n_A}$.\n\n"
+			f"$P(A)=\\dfrac{{n(A)}}{{n(\\Omega)}}={phan_so(p_A)}$.")
+
+	if chon==2:
+		kq1_T=f"* $P(B)={phan_so(p_B)}$"
+		kq1_F=f"$P(B)={phan_so(p_B_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"$n(B)={n_B}$.\n\n"
+			f"$P(B)=\\dfrac{{n(B)}}{{n(\\Omega)}}={phan_so(p_B)}$.")
+	
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	n_only_A=n_tuong-n_giao
+	p_only_A=n_only_A/tong
+	while True:
+		p_only_A_false=random.randint(10,90)/100
+		if p_only_A_false!=p_only_A:
+			break
+
+	n_only_B=n_vua-n_giao
+	p_only_B=n_only_B/tong
+	while True:
+		p_only_B_false=random.randint(10,90)/100
+		if p_only_B_false!=p_only_B:
+			break
+
+	chon=random.randint(1,2)
+
+	if chon==1:
+		kq2_T=f"* Xác suất chọn được người chỉ {co_tuong} là ${phan_so(p_only_A)}$"
+		kq2_F=f"Xác suất chọn được người chỉ {co_tuong} là ${phan_so(p_only_A_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"Số người chỉ {co_tuong}: $n(C)={n_tuong}-{n_giao}={n_only_A}$.\n\n"
+			f"$P(C)=\\dfrac{{n(C)}}{{n(\\Omega)}}={phan_so(p_only_A)}$.")
+	
+	if chon==2:
+		kq2_T=f"* Xác suất chọn được người chỉ {co_vua} là ${phan_so(p_only_B)}$"
+		kq2_F=f"Xác suất chọn được người chỉ {co_vua} là ${phan_so(p_only_B_false)}$"
+		
+		HDG=(f"$n(\\Omega)={tong}$.\n\n "
+			f"Số người chỉ {co_vua}: $n(C)={n_vua}-{n_giao}={n_only_B}$.\n\n"
+			f"$P(C)=\\dfrac{{n(C)}}{{n(\\Omega)}}={phan_so(p_only_B)}$.")
+	
+
+
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	n_AuB=n_tuong+n_vua-n_giao
+	p_AuB =n_AuB/tong
+	while True:
+		p_AuB_false=random.randint(10,90)/100
+		if p_AuB_false!=p_AuB:
+			break
+
+
+	kq3_T=f"* $P(A\\cup B)={phan_so(p_AuB)}$" 
+	kq3_F=f"$P(A\\cup B)={phan_so(p_AuB_false)}$"
+	
+	HDG=(f"$n(A\\cup B)={n_tuong}+{n_vua}-{n_giao}={n_AuB}$.\n\n"
+		f"$P(A\\cup B)=\\dfrac{{n(A\\cup B)}}{{n(\\Omega)}}={phan_so(p_AuB)}$.")
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	p_khong=n_khong/tong
+	while True:
+		p_khong_false=random.randint(10,90)/100
+		if p_khong_false!=p_khong:
+			break
+
+	kq4_T=f"* Xác suất chọn được người chưa đi cả hai loại hình du lịch là ${phan_so(p_khong)}$"
+	kq4_F=f"Xác suất chọn được người chưa đi cả hai loại hình du lịch là ${phan_so(p_khong_false)}$" 
+	
+	HDG=(f"Số người chưa đi cả hai loại hình du lịch là: $n(D)={tong}-{n_AuB}={n_khong}$.\n\n"
+		f"Xác suất cần tính là: $P(D)=\\dfrac{{n(D)}}{{n(\\Omega)}}={phan_so(p_khong)}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an

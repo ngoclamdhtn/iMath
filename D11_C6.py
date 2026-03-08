@@ -1724,11 +1724,9 @@ def uz9zu_L11_C6_B2_15():
 
 #[D11_C6_B2_16]-TF-M3. Xét Đ-S: log_a^n b, log(a.b), log(a+b)
 def uz9zu_L11_C6_B2_16():
-    chon=random.randint(1,2)
-    if chon==1:
-        a,b=sp.symbols("a b")    
-    if chon==2:
-        a,b=sp.symbols("x y")    
+    a,b=random.choice([("a","b"),("x","y"),("m","n"), ("c","d") ])
+    a=sp.symbols(a)
+    b=sp.symbols(b)
           
     noi_dung=f"Cho ${{{a},{b}}}$ là các số thực dương tùy ý và ${a}>{b}$. Xét tính đúng sai của các khẳng định sau:"
     m, n=random.randint(2,15), random.randint(3,9)   
@@ -1745,7 +1743,7 @@ def uz9zu_L11_C6_B2_16():
     kq2_T=f"* ${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$"
     kq2_F=random.choice([f"${latex(log(a**m*b))}={latex(log(a)+m*log(b))}$",
                         f"${latex(log(a**m*b))}={phan_so(1/m)}{latex(log(a)+log(b))}$",
-                        f"${latex(log(a**m*b))}={latex(m*(log(a))+m*log(b))}$"])
+                     ])
     kq2=random.choice([kq2_T, kq2_F])
     HDG=f"${latex(log(a**m*b))}={latex(m*log(a)+log(b))}$."
     
@@ -8900,8 +8898,7 @@ def uz9zu_L11_C6_B6_10():
 
 #[D11_C6_B6_11]-SA-M3: Số vi khuẩn N(x)=Ce^{kx}. Tìm số vi khuẩn sau t giờ
 def uz9zu_L11_C6_B6_11():
-    import random
-    import sympy as sp
+
 
     x = sp.symbols("x", real=True)
     while True:
@@ -8959,6 +8956,95 @@ def uz9zu_L11_C6_B6_11():
     )
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C6_B6_12]-SA-M2: Tính cường độ động đất của khu vực Y biết biên độ động đất của khu vực X.
+def uz9zu_L11_C6_B6_12():
+    X,Y=random.choice([("X","Y"), ("Y","Z"), ("X","Z"), ])
+    M_x=random.randint(30,85)/10
+    s_Mx=f"{round_half_up(M_x,1):.1f}".replace(".",",")
+    k=random.randint(2,6)
+
+    noi_dung = (
+    f"Cường độ một trận động đất ${{M}}$ (Richte) được tính bởi $M=\\log A- \\log A_0$,"
+    f" với ${{A}}$ là biên độ rung chấn tối đa và $A_0$ là một biên độ chuẩn (hằng số)."
+    f" Một trận động đất ở khu vực {X} có cường độ {s_Mx} (Richte)."
+    f" Trận động đất khác ở khu vực {Y} có biên độ rung chấn mạnh gấp {k} lần biên độ rung chấn trận động đất ở khu vực {X}."
+    f" Cường độ động đất của khu vực {Y} là bao nhiêu Richte? (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(log(k)/log(10)+M_x,1):.1f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+
+    noi_dung_loigiai=(
+    f"Gọi $A_{X},M_{X}$ là biên độ rung chấn và cường độ của trận động đất ở khu vực {X}.\n\n"
+    f"Gọi $A_{Y}, M_{Y}$ là biên độ rung chấn và cường độ của trận động đất ở khu vực {Y}.\n\n"
+
+    f"$M_{X}=\\log A_{X}-\\log A_0={s_Mx}$.\n\n"
+    f"$M_{X}=\\log A_{Y}-\\log A_0=\\log {k}A_{X}-\\log A_0=\\log {k}+ \\log A_{X}-\\log A_0=\\log {k}+{s_Mx}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C6_B6_13]-SA-M2: Cho 2 cường độ động đất. Tìm tỉ số biên độ rung chấn.
+def uz9zu_L11_C6_B6_13():
+    X,Y=random.choice([("X","Y"), ("Y","Z"), ("X","Z"), ])
+    while True:
+        M_x=random.randint(30,85)/10
+        M_y=random.randint(30,85)/10
+        if all([M_x>M_y, M_x-M_y>1.3]):
+            break
+    s_Mx=f"{round_half_up(M_x,1):.1f}".replace(".",",")
+    s_My=f"{round_half_up(M_y,1):.1f}".replace(".",",")
+    k=M_x-M_y
+    s_hieu=f"{round_half_up(k,1):.1f}".replace(".",",")
+
+
+    noi_dung = (
+    f"Cường độ một trận động đất ${{M}}$ (Richte) được tính bởi $M=\\log A- \\log A_0$,"
+    f" với ${{A}}$ là biên độ rung chấn tối đa và $A_0$ là một biên độ chuẩn (hằng số)."
+    f" Một trận động đất ở khu vực {X} có cường độ {s_Mx} (Richte)."
+    f" Một trận động đất ở khu vực {Y} có cường độ {s_My} (Richte)."
+    f" Hỏi trận động đất ở khu vực {X} có biên độ rung chấn mạnh gấp bao nhiêu lần biên độ rung chấn trận động đất ở khu vực {Y}"
+    f" (kết quả làm tròn đến hàng đơn vị)?"
+    )
+    dap_an=f"{round_half_up(10**k,0):.0f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Gọi $A_{X},M_{X}$ là biên độ rung chấn và cường độ của trận động đất ở khu vực {X}.\n\n"
+    f"Gọi $A_{Y}, M_{Y}$ là biên độ rung chấn và cường độ của trận động đất ở khu vực {Y}.\n\n"
+
+    f"$M_{X}=\\log A_{X}-\\log A_0={s_Mx}$.\n\n"
+    f"$M_{Y}=\\log A_{Y}-\\log A_0={s_My}$.\n\n"
+    f"$M_{X}-M_{Y}=\\log A_{X}-\\log A_{Y}={s_Mx}-{s_My}={s_hieu}$.\n\n"
+    f"$\\Rightarrow \\log \\dfrac{{A_{X}}}{{A_{Y}}}={s_hieu}$.\n\n"
+    f"$\\Rightarrow \\dfrac{{A_{X}}}{{A_{Y}}}=10^{{{s_hieu}}}={dap_an}$"
+    f"$\\Rightarrow A_{X}={dap_an}.A_{Y}$."
+
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 

@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 26.02.2026")
+                self.label.setText(f"iMath\u00A92026 ver 08.03.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -1443,7 +1443,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 26.02.2026")
+                self.label.setText(f"iMath\u00A92026 ver 08.03.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -7529,7 +7529,7 @@ class Ui_MainWindow(object):
 
                 #BÀI 6 - BÀI TOÁN LÃI SUẤT- TĂNG TRƯỞNG 
 
-                L11_C6_B6 = QTreeWidgetItem(L11_C6, ["Bài 6 - Bài toán lãi suất, tăng trưởng"])
+                L11_C6_B6 = QTreeWidgetItem(L11_C6, ["Bài 6 - Toán lãi suất, thực tế"])
                 L11_C6_B6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B6.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7589,6 +7589,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_11]-SA-M2. Số vi khuẩn N(x)=Ce^(kx). Tìm số vi khuẩn sau t giờ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_12]-SA-M2. Tính cường độ động đất của khu vực Y biết biên độ động đất của khu vực X."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B6_3, ["[D11_C6_B6_13]-SA-M2. Cho 2 cường độ động đất. Tìm tỉ số biên độ rung chấn."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
                  
@@ -8599,6 +8607,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C9_B1_SA, ["[D11_C9_B1_26]-SA-M2. Tính xác suất làm được toàn bộ các câu trắc nghiệm."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C9_B1_SA, ["[D11_C9_B1_21]-SA-M3. Cho x.s lây bệnh truyền nhiễm mỗi lần. Tính x.s bị bệnh."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8606,6 +8618,8 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C9_B1_SA, ["[D11_C9_B1_25]-SA-M3. Tính xác suất mở được ô trúng thưởng ở lần thứ k."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
 
 
@@ -8661,6 +8675,24 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L11_C9_B2_TF = QTreeWidgetItem(L11_C9_B2, ["Đúng-Sai"])
+                L11_C9_B2_TF.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C9_B2_TF.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_TF, ["[D11_C9_B2_21]-TF-M3. Chủ đề thích thể thao. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉ A), P(chỉ B)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_TF, ["[D11_C9_B2_22]-TF-M3. Phương tiện di chuyển. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉ A), P(chỉ B)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_TF, ["[D11_C9_B2_23]-TF-M3. Chủ đề du lịch. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉ A), P(chỉ B)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+
                 L11_C9_B2_SA = QTreeWidgetItem(L11_C9_B2, ["Trả lời ngắn"])
                 L11_C9_B2_SA.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C9_B2_SA.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8690,6 +8722,22 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_16]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút khác màu."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_17]-SA-M3. Xác suất để tổng các số chọn ra là một số lẻ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_18]-SA-M3. Xác suất để tổng các số chọn ra là một số chẵn."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_20]-SA-M3. Xác suất để người được chọn mua đúng 1 loại cây."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C9_B2_SA, ["[D11_C9_B2_19]-SA-M4. Xác suất để 2 bạn cùng chọn được quà gồm 2 loại sách như nhau."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16636,7 +16684,15 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B6_11]-SA-M3: Số vi khuẩn N(x)=Ce^{kx}. Tìm số vi khuẩn sau t giờ
                                             if dang_toan == "[D11_C6_B6_11]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_11()                                   
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_11()
+
+                                            #[D11_C6_B6_12]-SA-M3: Tính cường độ động đất của khu vực Y biết biên độ động đất của khu vực X.
+                                            if dang_toan == "[D11_C6_B6_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_12()
+
+                                            #[D11_C6_B6_13]-SA-M3: Cho 2 cường độ động đất. Tìm tỉ số biên độ rung chấn.
+                                            if dang_toan == "[D11_C6_B6_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B6_13()                               
                                                 
 
                                 #Toán 11 - Chương 8 - Quan hệ vuông góc
@@ -17178,7 +17234,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C9_B1_25]-SA-M3. Tính xác suất mở được ô trúng thưởng ở lần thứ k.
                                             if dang_toan == "[D11_C9_B1_25]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B1_25()                                
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B1_25()  
+
+                                            #[D11_C9_B1_26]-SA-M2. Tính xác suất làm được toàn bộ các câu trắc nghiệm
+                                            if dang_toan == "[D11_C9_B1_26]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B1_26()                              
                                                 
 
                                         #BÀI 2: BIẾN CỐ HỢP
@@ -17255,6 +17315,34 @@ class Ui_MainWindow(object):
                                             #[D11_C9_B2_16]-SA-M3. Mỗi người lần lượt lấy một bút. Tính x.s 2 bút khác màu.
                                             if dang_toan == "[D11_C9_B2_16]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_16()
+
+                                            #[D11_C9_B2_17]-SA-M3. Xác suất để tổng các số chọn ra là một số lẻ
+                                            if dang_toan == "[D11_C9_B2_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_17()
+
+                                            #[D11_C9_B2_18]-SA-M3. Xác suất để tổng các số chọn ra là một số chẵn
+                                            if dang_toan == "[D11_C9_B2_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_18()
+
+                                            #[D11_C9_B2_19]-SA-M3. Xác suất để 2 bạn chọn được quà như nhau
+                                            if dang_toan == "[D11_C9_B2_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_19()
+
+                                            #[D11_C9_B2_20]-SA-M3. Xác suất để người được chọn mua đúng 1 loại cây
+                                            if dang_toan == "[D11_C9_B2_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C9.ut9kq_L11_C9_B2_20()
+
+                                            #[D11_C9_B2_21]-TF-M3. Lớp học có các bạn thích chơi 2 môn. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉA), P(chỉB)
+                                            if dang_toan == "[D11_C9_B2_21]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C9.ut9kq_L11_C9_B2_21()
+
+                                            #[D11_C9_B2_22]-TF-M3. Phương tiện di chuyển. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉA), P(chỉB)
+                                            if dang_toan == "[D11_C9_B2_22]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C9.ut9kq_L11_C9_B2_22()
+
+                                            #[D11_C9_B2_23]-TF-M3.  Chủ đề du lịch. Xét Đ-S:P(A), P(B) P(AUB), P(không), P(chỉA), P(chỉB)
+                                            if dang_toan == "[D11_C9_B2_23]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C9.ut9kq_L11_C9_B2_23()
 
                                                 
 

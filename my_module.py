@@ -918,7 +918,7 @@ def codelatex_dothi_bac_2(a,b,c):
 \\draw[gray!20]({x_min},{y_min-1}) grid ({x_max+0.5},{y_max+1});\n\
 \\draw[->] ({x_min},0)--({x_max+0.5},0) node[below right] {{$x$}};\n\
 \\draw[->] (0,{y_min-1})--(0,{y_max+1}) node[right] {{$y$}};\n\
-\\draw (0,0) node [below left] {{\\footnotesize $O$}};\n\
+\\draw (0,0) node [above right] {{\\footnotesize $O$}};\n\
  \\foreach \\x in {{-1,1,{so_truc_x}}}\n\
 \\draw[thin] (\\x,1pt)--(\\x,-1pt) node [below] {{\\footnotesize$\\x$}};\n\
 \\foreach \\y in {{-1,1,{so_truc_y}}}\n\

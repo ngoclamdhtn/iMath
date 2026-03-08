@@ -4424,7 +4424,7 @@ def gghik_L10_CX_B0_57():
 			break
 	k_0=sqrt(a**2+b**2-d**2)
 
-	letters = [chr(i) for i in range(ord('a'), ord('n') + 1)]
+	letters = ["a","b","c","d","m","n","u","v","w"]
 	u,v=random.sample(letters,2)
 	vec_u, vec_v=vec(u), vec(v)
 
