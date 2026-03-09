@@ -3688,21 +3688,24 @@ def ut9kq_L11_C9_B2_18():
 
 #[D11_C9_B2_19]-SA-M4. Xác suất để 2 bạn chọn được quà như nhau
 def ut9kq_L11_C9_B2_19():
+	while True:
 
-	n=random.randint(12,16)
+		n=random.randint(12,16)
 
-	T=random.choice([6,7,8])
-	L=random.choice([7,8,9])
-	H=2*n-T-L
-
-	while H<=0 or (T+L-H)%2!=0:
 		T=random.choice([6,7,8])
 		L=random.choice([7,8,9])
 		H=2*n-T-L
 
-	x=(T+L-H)//2
-	y=(T+H-L)//2
-	z=(L+H-T)//2
+		while H<=0 or (T+L-H)%2!=0:
+			T=random.choice([6,7,8])
+			L=random.choice([7,8,9])
+			H=2*n-T-L
+
+		x=(T+L-H)//2
+		y=(T+H-L)//2
+		z=(L+H-T)//2
+		if all([x>0,y>0,z>0]):
+			break
 
 	kq=(x*(x-1)+y*(y-1)+z*(z-1))/(n*(n-1))
 	dap_an=f"{round_half_up(kq,2):.2f}".replace(".",",")

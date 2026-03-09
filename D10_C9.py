@@ -8633,8 +8633,8 @@ def mjulk_L10_C9_B2_60():
 	t1=(nA/kgm)
 	kq="{:.2f}".format(t1).replace(".", ",")
 	dap_an= kq
-	noi_dung=(f"Người ta dùng ${{{2*t}}}$ cuốn sách bao gồm ${{{x+y}}}$ cuốn Toán, ${{{x+z}}}$ cuốn Hoá, ${{{z+y}}}$ cuốn Lí( các cuốn sách cùng loại thì giống nhau) để làm phần thưởng cho ${{{phan_so(t)}}}$ học sinh. (Làm tròn kết quả đến hàng phần trăm) "
-	f"(trong đó có hai học sinh {A} và {B}) mỗi học sinh nhận được hai cuốn sách khác thể loại (không tính thứ tự các cuốn sách ). Tính xác suất để hai học sinh {A} và {B } nhận thưởng giống nhau.")
+	noi_dung=(f"Người ta dùng ${{{2*t}}}$ cuốn sách bao gồm ${{{x+y}}}$ cuốn Toán, ${{{x+z}}}$ cuốn Hoá, ${{{z+y}}}$ cuốn Lí( các cuốn sách cùng loại thì giống nhau) để làm phần thưởng cho ${{{phan_so(t)}}}$ học sinh, "
+	f"(trong đó có hai học sinh {A} và {B}). Mỗi học sinh nhận được hai cuốn sách khác thể loại (không tính thứ tự các cuốn sách ). Tính xác suất để hai học sinh {A} và {B } nhận thưởng giống nhau (kết quả làm tròn đến hàng phần trăm).")
 	noi_dung_loigiai=(f"$n(\\Omega)= C_{{{t}}}^{{{x}}}.C_{{{y+z}}}^{{{y}}} .C_{{{z}}}^{{{z}}} $ \n\n "
 	f"Gọi ${{x,y,z}}$ là số học sinh nhận được bộ Toán và Hoá, Toán và Lí, Hoá + Lí \n\n"
 	f" Ta có $x+y={x+y}; x+z={x+z} ; z+y={z+y} $ suy ra $x={x}; y={y}; z={z}$ \n\n"

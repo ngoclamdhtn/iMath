@@ -3656,55 +3656,79 @@ class Ui_MainWindow(object):
                 L10_C7_B2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C7_B2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_11]-M2. Cho BXD 2 nghiệm. Tìm tập nghiệm của BPT."])
+                L10_C7_B2_1 = QTreeWidgetItem(L10_C7_B2, ["Trắc nghiệm"])
+                L10_C7_B2_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C7_B2_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_11]-M2. Cho BXD 2 nghiệm. Tìm tập nghiệm của BPT."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_12]-M2. Cho BXD 1 nghiệm. Tìm tập nghiệm của BPT."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_12]-M2. Cho BXD 1 nghiệm. Tìm tập nghiệm của BPT."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_13]-M2. Cho parabol 2 nghiệm. Tìm tập nghiệm của BPT."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_13]-M2. Cho parabol 2 nghiệm. Tìm tập nghiệm của BPT."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_01]-M2. Giải BPT bậc 2, tam thức vô nghiệm."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_01]-M2. Giải BPT bậc 2, tam thức vô nghiệm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_02]-M2. Giải BPT bậc 2, tam thức nghiệm kép."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_02]-M2. Giải BPT bậc 2, tam thức nghiệm kép."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_03]-M2. Giải BPT bậc 2, tam thức 2 nghiệm."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_03]-M2. Giải BPT bậc 2, tam thức 2 nghiệm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_04]-M2. Giải BPT có 2 vế là bậc 2."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_04]-M2. Giải BPT có 2 vế là bậc 2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_09]-M2. Tìm tập xác định của y=căn(ax^2+bx+c)."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_09]-M2. Tìm tập xác định của y=căn(ax^2+bx+c)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_05]-M3. Tìm m để ax^2 + bx + c >0 (<0) với mọi x."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_05]-M3. Tìm m để ax^2 + bx + c >0 (<0) với mọi x."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_06]-M3. Tìm m để ax^2 + bx + c >=0 (<=0) với mọi x."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_06]-M3. Tìm m để ax^2 + bx + c >=0 (<=0) với mọi x."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_07]-M3. Tìm m để ax^2 + bx + c >0 (<0) vô nghiệm."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_07]-M3. Tìm m để ax^2 + bx + c >0 (<0) vô nghiệm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_08]-M3. Tìm m để ax^2 + bx + c >=0 (<=0) vô nghiệm."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_08]-M3. Tìm m để ax^2 + bx + c >=0 (<=0) vô nghiệm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L10_C7_B2, ["[D10_C7_B2_10]-M3. Toán thực tế: tìm giá bán để lợi nhuận thoả điều kiện."])
+                item = QTreeWidgetItem(L10_C7_B2_1, ["[D10_C7_B2_10]-M3. Toán thực tế: tìm giá bán để lợi nhuận thoả điều kiện."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L10_C7_B2_3 = QTreeWidgetItem(L10_C7_B2, ["Trả lời ngắn"])
+                L10_C7_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C7_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_3, ["[D10_C7_B2_14]-SA-M2. Tìm m để ax^2+bx+c>0 (<0) đúng với mọi x (Δ bậc 1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_3, ["[D10_C7_B2_15]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) đúng với mọi x (Δ bậc 1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_3, ["[D10_C7_B2_16]-SA-M2. Tìm m để ax^2+bx+c>0 (<0) đúng với mọi x (Δ bậc 2)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_3, ["[D10_C7_B2_17]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) đúng với mọi x (Δ bậc 2)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -19168,7 +19192,23 @@ class Ui_MainWindow(object):
 
                                         #[D10_C7_B2_13]-M3. Cho parabol 2 nghiệm. Tìm tập nghiệm của BPT.
                                             if dang_toan == "[D10_C7_B2_13]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B2_13()                                    
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B2_13()
+
+                                        #[D10_C7_B2_14]-SA-M2. Tìm m để ax^2+bx+c>0 (<0) nghiệm đúng với mọi x (Delta bậc 1)
+                                            if dang_toan == "[D10_C7_B2_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_14()
+
+                                        #[D10_C7_B2_15]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) nghiệm đúng với mọi x (Delta bậc 1)
+                                            if dang_toan == "[D10_C7_B2_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_15()
+
+                                        #[D10_C7_B2_16]-SA-M2. Tìm m để ax^2+bx+c>0 (<0) nghiệm đúng với mọi x (Delta bậc 2)
+                                            if dang_toan == "[D10_C7_B2_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_16()
+
+                                        #[D10_C7_B2_17]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) nghiệm đúng với mọi x (Delta bậc 2)
+                                            if dang_toan == "[D10_C7_B2_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_17()                           
                                                 
 
                                         #Bài 3: Phương trình quy về bậc 2

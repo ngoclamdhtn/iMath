@@ -427,7 +427,7 @@ def mn8mn_L11_C2_B2_01():
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
     noi_dung= f" Cho cấp số cộng $(u_n)$ có số hạng đầu $u_1={u1}$ và công sai $d={d}$." \
-        f"Tìm số hạng thứ {k} của cấp số cộng đã cho."
+        f" Tìm số hạng thứ {k} của cấp số cộng đã cho."
     if d>0:
         noi_dung_loigiai=f"$u_{{{k}}}={u1}+{k-1}.{d}= {latex(u1+(k-1)*d)}$."
     else:

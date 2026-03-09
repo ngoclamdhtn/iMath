@@ -4604,9 +4604,11 @@ def uz9zu_L11_C6_B3_27():
         a1, b1, c1=a**2, 2*a*b, b**2-4*c
         delta=b1**2-4*a1*c1        
         if delta<=0:
-            continue    
-        if all([delta>0, sqrt(delta).is_integer]):
+            continue
+        can_denta=float(sqrt(delta))   
+        if all([delta>0, can_denta.is_integer()]):
             break
+            
     x_1=(-b1-sqrt(delta))/(2*a1)
     x_2=(-b1+sqrt(delta))/(2*a1)
     if x_1>x_2:
@@ -4614,79 +4616,25 @@ def uz9zu_L11_C6_B3_27():
         x_2=(-b1-qrt(delta))/(2*a1)        
 
     
-    p=random.randint(2,9)
-
     dem=0    
-    chon=random.randint(1,4)
 
     ham=random.choice(["\\ln", "\\log", f"\\log_{random.randint(2,9)}" ])  
         
-    if chon==1:
-        for i in range(int(x_1)-2,int(x_2)+2):
-            if x_1<i and i<x_2:
-                dem+=1
-        noi_dung = (
-        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
-        f" xác định với mọi $x\\in \\mathbb{{R}}$.")
 
-        noi_dung_loigiai=(        
-        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
-        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}<0$\n\n"
-        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}<0$\n\n"
-        f"$\\Leftrightarrow {latex(x_1)}<m<{latex(x_2)}$.\n\n"
-        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
-    
-    if chon==2:
-        for i in range(int(x_1)-2,int(x_2)+2):
-            if x_1<i and i<x_2:
-                dem+=1
-        noi_dung = (
-        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
-        f" xác định với mọi $x\\in \\mathbb{{R}}$.")
+    for i in range(int(x_1)-2,int(x_2)+2):
+        if x_1<i and i<x_2:
+            dem+=1
+    noi_dung = (
+    f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
+    f" xác định với mọi $x\\in \\mathbb{{R}}$.")
 
-        noi_dung_loigiai=(        
-        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
-        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} < 0$\n\n"
-        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} < 0$\n\n"
-        f"$\\Leftrightarrow {latex(x_1)} < m < {latex(x_2)}$.\n\n"
-        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+    noi_dung_loigiai=(        
+    f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+    f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}<0$\n\n"
+    f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}<0$\n\n"
+    f"$\\Leftrightarrow {latex(x_1)}<m<{latex(x_2)}$.\n\n"
+    f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
 
-    if chon==3:
-        t_1=random.randint(1,10)
-        t_2=t_1+random.randint(1,5)
-        p=t_1/t_2
-        for i in range(int(x_1)-2,int(x_2)+2):
-            if x_1<i and i<x_2:
-                dem+=1
-        noi_dung = (
-        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
-        f" xác định với mọi $x\\in \\mathbb{{R}}$.")
-
-        noi_dung_loigiai=(        
-        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
-        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}<0$\n\n"
-        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}<0$\n\n"
-        f"$\\Leftrightarrow {latex(x_1)}<m<{latex(x_2)}$.\n\n"
-        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
-
-    if chon==4:
-        t_1=random.randint(1,10)
-        t_2=t_1+random.randint(1,5)
-        p=t_1/t_2
-        for i in range(int(x_1)-2,int(x_2)+2):
-            if x_1<i and i<x_2:
-                dem+=1
-        noi_dung = (
-        f"Số các giá trị nguyên của ${{m}}$ để hàm số $y={ham}\\left[{latex(x**2)}-({latex(a*m+b)})x+{c}\\right]$"
-        f" xác định với mọi $x\\in \\mathbb{{R}}$.")     
-        
-
-        noi_dung_loigiai=(        
-        f" Ta có: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
-        f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)} \\le 0$\n\n"
-        f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)} <e 0$\n\n"
-        f"$\\Leftrightarrow {latex(x_1)} < m < {latex(x_2)}$.\n\n"
-        f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
     noi_dung=thay_dau_congtru(noi_dung)
     noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)  
     
@@ -4738,12 +4686,15 @@ def uz9zu_L11_C6_B3_28():
     L = int(sp.ceiling(low))
     R = int(sp.floor(high))   # L..R
 
-    # Số giá trị nguyên
-    count = max(0, R - L + 1)
 
     # Chuỗi biểu diễn
     sL = str(L)
     sR = str(R)
+
+    dem=0
+    for i in range(-int(sqrt(C-1))-2, int(sqrt(C-1))+2):
+        if -sqrt(C-1)<i<sqrt(C+1):
+            dem+=1
 
     noi_dung = (
         f"Tìm số giá trị nguyên của tham số ${{m}}$ để hàm số "
@@ -4758,11 +4709,10 @@ def uz9zu_L11_C6_B3_28():
         f"$x^2-2mx+{C-1}>0,\\forall x$.\n\n"
         f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow m^2-{C-1}<0$.\n\n"
         f"$\\Leftrightarrow -\\sqrt{{{C-1}}}<m<\\sqrt{{{C-1}}}$.\n\n"
-        f"Suy ra $m$ là số nguyên thuộc đoạn:${sL}\\le m\\le {sR}$\n\n"
-        f"Vậy có ${{{count}}}$ giá trị nguyên của ${{m}}$ thoả yêu cầu."
+        f"Vậy có ${{{dem}}}$ giá trị nguyên của ${{m}}$ thoả yêu cầu."
     )
 
-    dap_an = count
+    dap_an = dem
 
     debai_word = f"{noi_dung}\n"
 
