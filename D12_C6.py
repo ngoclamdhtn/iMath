@@ -2688,9 +2688,9 @@ def newy25_L12_C6_B1_27():
 
 
     kq_false = []
-    while len(kq_false) < 10:
-        num = random.random()
-        if all([num not in kq_false, num!=kq, num!=0]):
+    while len(kq_false) < 5:
+        num = random.randint(10,90)/100
+        if all([num not in kq_false, num!=kq]):
             kq_false.append(round(num,2))    
     
     kq2,kq3,kq4=random.sample(kq_false,3)
