@@ -2377,7 +2377,7 @@ def aaa_pry_L10_C7_B2_07():
     f"$m\\le {phan_so(m_0)}$",
     f"$m\\ne {phan_so(m_0)}$",
     ]
-    noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f_am}<0$ vô nghiệm."
+    noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f}\\le 0$ vô nghiệm."
 
     noi_dung=thay_dau_congtru(noi_dung)
 
@@ -2454,7 +2454,7 @@ def aaa_pry_L10_C7_B2_08():
     random.shuffle(list_PA)
     dap_an=my_module.tra_ve_dap_an(list_PA)   
 
-    noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f_am}\\le 0$ vô nghiệm." 
+    noi_dung=f"Tìm tất cả các giá trị của tham số ${{m}}$ để bất phương trình ${f} <0$ vô nghiệm." 
     noi_dung=thay_dau_congtru(noi_dung)
     noi_dung_loigiai=(
         f"Bài toán trở thành:\n\n"
@@ -3024,6 +3024,8 @@ def aaa_pry_L10_C7_B2_14():
             f"${f}>0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta <0$\n\n"
             f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})<0 \\Rightarrow m<{phan_so(m_0)}$.\n\n"
             f"Số giá trị nguyên của ${{m}}$ thuộc khoảng $({t_1};{t_2})$ là {dem}." )
+
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
         
     debai_word= f"{noi_dung}\n"
 
@@ -3073,6 +3075,8 @@ def aaa_pry_L10_C7_B2_15():
             f"${f}\\ge 0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta \\le 0$\n\n"
             f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})\\le 0 \\Rightarrow m\\le {phan_so(m_0)}$.\n\n"
             f"Số giá trị nguyên của ${{m}}$ thuộc khoảng $({t_1};{t_2})$ là {dem}." )
+
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
         
     debai_word= f"{noi_dung}\n"
 
@@ -3216,6 +3220,120 @@ def aaa_pry_L10_C7_B2_17():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D10_C7_B2_18]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm
+def aaa_pry_L10_C7_B2_18():
+    while True:
+        x=sp.symbols("x")
+        m=sp.symbols("m")
+        a=random.randint(1,4)
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c=random.randint(-5,-1)
+        d = random.choice([i for i in range(-6, 7) if i!=0])
+
+        f=f"{latex(a*x**2+b*x)}+{latex(c*m+d)}"
+        f_am=f"{latex(-a*x**2-b*x)}+{latex(-c*m-d)}"
+
+        m_0=(4*a*d-b**2)/(-4*a*c)
+
+        t_1=random.randint(-100,-50)
+        t_2=random.randint(50,100)
+        if t_1<m_0<t_2:
+            break
+    dem=0
+    for i in range(t_1+1,t_2):
+        if i<m_0:
+            dem+=1
+    dap_an=dem
+
+
+    noi_dung=random.choice([
+        f"Tìm số giá trị nguyên của tham số ${{m}}$ thuộc khoảng $({t_1};{t_2})$ để bất phương trình ${f}\\le 0$ vô nghiệm.",
+        f"Tìm số giá trị nguyên của tham số ${{m}}$ thuộc khoảng $({t_1};{t_2})$ để bất phương trình ${f_am}\\ge 0$ vô nghiệm." ])
+    
+    noi_dung=thay_dau_congtru(noi_dung)
+
+    noi_dung_loigiai=(
+            f"Bài toán trở thành: ${f}>0$ với mọi $x\\in \\mathbb{{R}}$ khi và chỉ khi $\\Delta <0$\n\n"
+            f"$\\Rightarrow {b**2}-4.{dau_ngoac(a)}.({latex(c*m+d)})<0 \\Rightarrow m<{phan_so(m_0)}$.\n\n"
+            f"Số giá trị nguyên của ${{m}}$ thuộc khoảng $({t_1};{t_2})$ là {dem}." )
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C7_B2_19]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm (Delta bậc 2)
+def aaa_pry_L10_C7_B2_19():
+    x,m=sp.symbols("x m")
+    while True:
+        a= random.choice([i for i in range(-4, 5) if i!=0])
+        b= random.choice([i for i in range(-8, 8) if i!=0])
+        c= random.choice([i for i in range(-7, 7) if i!=0])
+        d = random.choice([i for i in range(-5, 6) if i!=0])
+        e = random.choice([i for i in range(-5, 6) if i!=0])
+        if b+d==0:
+            continue
+        a1, b1, c1=a**2, 2*a*b, b**2-4*c
+        delta=b1**2-4*a1*c1        
+        if delta<=0:
+            continue
+        can_denta=float(sqrt(delta))   
+        if all([delta>0, can_denta.is_integer()]):
+            break
+            
+    x_1=(-b1-sqrt(delta))/(2*a1)
+    x_2=(-b1+sqrt(delta))/(2*a1)
+    if x_1>x_2:
+        x_1=(-b1+sqrt(delta))/(2*a1)
+        x_2=(-b1-qrt(delta))/(2*a1)        
+
+    
+    dem=0           
+
+    for i in range(int(x_1)-2,int(x_2)+2):
+        if x_1<i and i<x_2:
+            dem+=1
+
+    bpt=random.choice([
+
+    f"{latex(x**2)}-({latex(a*m+b)})x+{c} \\le 0",
+    f"{latex(-x**2)}+({latex(a*m+b)})x-{c}\\ge 0" ])
+    noi_dung = (
+    f"Tìm số các giá trị nguyên của ${{m}}$ để bất phương trình ${bpt}$"
+    f" vô nghiệm.")
+
+    noi_dung_loigiai=(        
+    f"Bài toán trở thành: ${latex(x**2)}-({latex(a*m+b)})x+{c}>0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+    f"$\\Leftrightarrow \\Delta<0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}<0$\n\n"
+    f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}<0$\n\n"
+    f"$\\Leftrightarrow {latex(x_1)}<m<{latex(x_2)}$.\n\n"
+    f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+
+    noi_dung=thay_dau_congtru(noi_dung)
+    noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)  
+    
+
+    dap_an=dem    
+        
+    debai_word= f"{noi_dung}"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #Bài 3: Phương trình quy về bậc hai
 #[D10_C7_B3_01]-M2. Giải PT căn(ax^2 + bx^2 + c)=căn(dx^2 + ex + f)

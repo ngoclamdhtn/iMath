@@ -3732,6 +3732,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C7_B2_3, ["[D10_C7_B2_18]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm (Δ bậc 1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_3, ["[D10_C7_B2_19]-SA-M3. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm (Δ bậc 2)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 
 
                 L10_C7_B3 = QTreeWidgetItem(L10_C7, ["Bài 3 - Phương trình quy về bậc 2"])
@@ -19208,7 +19216,15 @@ class Ui_MainWindow(object):
 
                                         #[D10_C7_B2_17]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) nghiệm đúng với mọi x (Delta bậc 2)
                                             if dang_toan == "[D10_C7_B2_17]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_17()                           
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_17()
+
+                                        #[D10_C7_B2_18]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm (Delta bậc 1)
+                                            if dang_toan == "[D10_C7_B2_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_18()
+
+                                        #[D10_C7_B2_19]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm (Delta bậc 2)
+                                            if dang_toan == "[D10_C7_B2_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_19()                           
                                                 
 
                                         #Bài 3: Phương trình quy về bậc 2
