@@ -3712,6 +3712,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                L10_C7_B2_2 = QTreeWidgetItem(L10_C7_B2, ["Đúng-Sai"])
+                L10_C7_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L10_C7_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B2_2, ["[D10_C7_B2_20]-TF-M2. Xét Đ-S: Tìm m để là bậc 2, tập nghiệm, tìm m để BPT nghiệm đúng với mọi x."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L10_C7_B2_3 = QTreeWidgetItem(L10_C7_B2, ["Trả lời ngắn"])
                 L10_C7_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C7_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -19224,7 +19232,11 @@ class Ui_MainWindow(object):
 
                                         #[D10_C7_B2_19]-SA-M2. Tìm m để ax^2+bx+c>=0 (<=0) vô nghiệm (Delta bậc 2)
                                             if dang_toan == "[D10_C7_B2_19]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_19()                           
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B2_19() 
+
+                                        #[D10_C7_B2_20]-TF-M2. Xét Đ-S:Tìm m để là bậc 2, tập nghiệm, tìm m để BPT nghiệm đúng với mọi x" 
+                                            if dang_toan == "[D10_C7_B2_20]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C7.aaa_pry_L10_C7_B2_20()                        
                                                 
 
                                         #Bài 3: Phương trình quy về bậc 2

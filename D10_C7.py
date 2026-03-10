@@ -3335,6 +3335,286 @@ def aaa_pry_L10_C7_B2_19():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D10_C7_B2_20]-TF-M2. Xét Đ-S:Tìm m để là bậc 2, tập nghiệm, tìm m để BPT nghiệm đúng với mọi x"
+def aaa_pry_L10_C7_B2_20():
+    x, m=sp.symbols("x m")
+
+    noi_dung = (
+    f"Xét tính đúng-sai của các khẳng định sau:")    
+    
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    b = random.choice([i for i in range(-5, 6) if i!=0])
+    c = random.choice([i for i in range(-5, 6) if i!=0])
+    d = random.choice([i for i in range(-5, 6) if i!=0])
+    e = random.randint(-6,6)
+    f=f"({a}m+{b})x^2+{c}x+{d}m+{e}".replace("+-","-").replace("1m","m").replace("1x","x")
+    kq1_T=f"* $f(x)={f}$ là tam thức bậc hai khi và chỉ khi $m\\ne {phan_so(-b/a)}$" 
+    kq1_F=f"$f(x)={f}$ là tam thức bậc hai khi và chỉ khi {random.choice([
+        f"$m\\ge {phan_so(-b/a)}$", f"$m\\le {phan_so(-b/a)}$",
+        f"$m > {phan_so(-b/a)}$", f"$m< {phan_so(-b/a)}$" ])}"
+    
+    HDG=f" $f(x)$ là tam thức bậc hai khi ${latex(a*m+b)}\\ne 0 \\Rightarrow m \\ne {phan_so(-b/a)}$."
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    
+    x_0= random.choice([i for i in range(-5, 6) if i!=0])     
+    
+    list_tap_nghiem=[
+    f"S=\\emptyset",
+    f"S=\\{{{x_0}\\}}",
+    f"S=\\mathbb{{R}}",
+    f"S=({x_0};+\\infty)",     
+    f"S=(-\\infty;{x_0})",
+    f"S=[{x_0};+\\infty)",
+    f"S=(-\\infty;{x_0}]", ]
+    
+    a = random.choice([i for i in range(-5, 6) if i!=0])
+    f=latex(expand(a*(x-x_0)**2))
+    chon=random.randint(1,4)
+
+    if a>0:    
+        if chon==1:
+            bpt=f"{f} >0"
+            tap_nghiem=f"S=\\mathbb{{R}} \\backslash \\{{{x_0}\\}}"
+
+            HDG=(f"${bpt} \\Leftrightarrow x\\ne {x_0}$.\n\n")
+        
+        if chon==2:
+            bpt=f"{f}\\ge 0"
+            tap_nghiem=f"S=\\mathbb{{R}}" 
+
+            HDG=(f"${bpt} \\Leftrightarrow \\forall x\\in \\mathbb{{R}}$.\n\n")
+
+        if chon==3:
+            bpt=f"{f}\\le 0"
+            tap_nghiem=f"S=\\{{{x_0}\\}}" 
+
+            HDG=(f"${bpt} \\Leftrightarrow x={x_0}$.\n\n")
+
+        if chon==4:
+            bpt=f"{f} < 0"
+            tap_nghiem=f"S=\\emptyset"
+
+            HDG=(f"${bpt}$ vô nghiệm.\n\n")
+
+    if a<0:
+        if chon==1:
+            bpt=f"{f} <0"
+            tap_nghiem=f"S=\\mathbb{{R}} \\backslash \\{{{x_0}\\}}"
+
+            HDG=(f"${bpt} \\Leftrightarrow x\\ne {x_0}$.\n\n")
+        
+        if chon==2:
+            bpt=f"{f}\\le 0"
+            tap_nghiem=f"S=\\mathbb{{R}}" 
+
+            HDG=(f"${bpt} \\Leftrightarrow \\forall x\\in \\mathbb{{R}}$.\n\n")
+
+        if chon==3:
+            bpt=f"{f}\\ge 0"
+            tap_nghiem=f"S=\\{{{x_0}\\}}" 
+
+            HDG=(f"${bpt} \\Leftrightarrow x={x_0}$.\n\n")
+
+        if chon==4:
+            bpt=f"{f} > 0"
+            tap_nghiem=f"S=\\emptyset"
+
+            HDG=(f"${bpt}$ vô nghiệm.\n\n")
+
+    tap_nghiem_f=random.choice([i for i in  list_tap_nghiem if i!=tap_nghiem])
+
+    kq2_T=f"* Bất phương trình ${bpt}$ có tập nghiệm là ${tap_nghiem}$"
+    kq2_F=f"Bất phương trình ${bpt}$ có tập nghiệm là ${tap_nghiem_f}$"
+    HDG+=f"Tập nghiệm: ${tap_nghiem}$."
+
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x_1, x_2 = sorted(random.sample(range(-6,7), 2))  
+    
+    list_tap_nghiem=[
+    f"S=\\emptyset",
+    f"S=\\{{{x_1},{x_2}\\}}",
+    f"S=\\mathbb{{R}}",
+    f"S=({x_1};{x_2})",
+    f"S=[{x_1};{x_2}]",    
+    f"S=(-\\infty;{x_1}) \\cup ({x_2};+\\infty)",
+    f"S=(-\\infty;{x_1}] \\cup [{x_2};+\\infty)", ]
+    
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+
+    f=latex(expand(a*(x-x_1)*(x-x_2)))
+    chon=random.randint(1,4)
+    if a>0:    
+        if chon==1:
+            bpt=f"{f} >0"
+            tap_nghiem=f"S=(-\\infty;{x_1}) \\cup ({x_2};+\\infty)"
+
+            HDG=(f"${bpt} \\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$.\n\n")
+        
+        if chon==2:
+            bpt=f"{f}\\ge 0"
+            tap_nghiem=f"S=(-\\infty;{x_1}] \\cup [{x_2};+\\infty)"
+
+            HDG=(f"${bpt} \\Leftrightarrow x\\le {x_1}$ hoặc $x\\ge {x_2}$.\n\n")
+
+        if chon==3:
+            bpt=f"{f}\\le 0"
+            tap_nghiem=f"S=[{x_1};{x_2}]"
+
+            HDG=(f"${bpt} \\Leftrightarrow {x_1} \\le x \\le {x_2}$.\n\n")
+
+        if chon==4:
+            bpt=f"{f} < 0"
+            tap_nghiem=f"S=({x_1};{x_2})"
+
+            HDG=(f"${bpt} \\Leftrightarrow {x_1} < x < {x_2}$.\n\n")
+
+    else:    
+        if chon==1:
+            bpt=f"{f} <0"
+            tap_nghiem=f"S=(-\\infty;{x_1}) \\cup ({x_2};+\\infty)"
+
+            HDG=(f"${bpt} \\Leftrightarrow x<{x_1}$ hoặc $x>{x_2}$.\n\n")
+        
+        if chon==2:
+            bpt=f"{f}\\le 0"
+            tap_nghiem=f"S=(-\\infty;{x_1}] \\cup [{x_2};+\\infty)"
+
+            HDG=(f"${bpt} \\Leftrightarrow x\\le {x_1}$ hoặc $x\\ge {x_2}$.\n\n")
+
+        if chon==3:
+            bpt=f"{f}\\ge 0"
+            tap_nghiem=f"S=[{x_1};{x_2}]"
+
+            HDG=(f"${bpt} \\Leftrightarrow {x_1} \\le x \\le {x_2}$.\n\n")
+
+        if chon==4:
+            bpt=f"{f} > 0"
+            tap_nghiem=f"S=({x_1};{x_2})"
+
+            HDG=(f"${bpt} \\Leftrightarrow {x_1} < x < {x_2}$.\n\n")
+
+    tap_nghiem_f=random.choice([i for i in  list_tap_nghiem if i!=tap_nghiem])
+
+    kq3_T=f"* Bất phương trình ${bpt}$ có tập nghiệm là ${tap_nghiem}$"
+    kq3_F=f"Bất phương trình ${bpt}$ có tập nghiệm là ${tap_nghiem_f}$"
+    HDG+=f"Tập nghiệm: ${tap_nghiem}$."
+
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    x,m=sp.symbols("x m")
+    while True:
+        a= random.choice([i for i in range(-4, 5) if i!=0])
+        b= random.choice([i for i in range(-8, 8) if i!=0])
+        c= random.choice([i for i in range(-7, 7) if i!=0])
+        d = random.choice([i for i in range(-5, 6) if i!=0])
+        e = random.choice([i for i in range(-5, 6) if i!=0])
+        if b+d==0:
+            continue
+        a1, b1, c1=a**2, 2*a*b, b**2-4*c
+        delta=b1**2-4*a1*c1        
+        if delta<=0:
+            continue
+        can_denta=float(sqrt(delta))   
+        if all([delta>0, can_denta.is_integer()]):
+            break
+            
+    x_1=(-b1-sqrt(delta))/(2*a1)
+    x_2=(-b1+sqrt(delta))/(2*a1)
+    if x_1>x_2:
+        x_1=(-b1+sqrt(delta))/(2*a1)
+        x_2=(-b1-qrt(delta))/(2*a1)        
+
+    
+    dem=0           
+
+    for i in range(int(x_1)-2,int(x_2)+2):
+        if x_1<=i and i<=x_2:
+            dem+=1
+
+    bpt=random.choice([
+    f"{latex(x**2)}-({latex(a*m+b)})x+{c}\\ge 0",
+    f"{latex(-x**2)}+({latex(a*m+b)})x-{c}\\le 0" ])
+
+
+    kq4_T=(
+    f"* Số các giá trị nguyên của ${{m}}$ để bất phương trình ${bpt}$"
+    f" nghiệm đúng với mọi $x\\in \\mathbb{{R}}$ là {dem}")
+
+    kq4_F=(
+    f"Số các giá trị nguyên của ${{m}}$ để bất phương trình ${bpt}$"
+    f" nghiệm đúng với mọi $x\\in \\mathbb{{R}}$ là {dem+random.randint(1,3)}")
+    
+    HDG=(        
+    f"${latex(x**2)}-({latex(a*m+b)})x+{c}\\le 0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+    f"$\\Leftrightarrow \\Delta \\le 0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}\\le 0$\n\n"
+    f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}\\le 0$\n\n"
+    f"$\\Leftrightarrow {latex(x_1)}\\le m \\le {latex(x_2)}$.\n\n"
+    f" Số các giá trị nguyên của ${{m}}$ là: {dem}.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
+
 #Bài 3: Phương trình quy về bậc hai
 #[D10_C7_B3_01]-M2. Giải PT căn(ax^2 + bx^2 + c)=căn(dx^2 + ex + f)
 def aaa_pry_L10_C7_B3_01():
