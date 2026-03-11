@@ -7617,4 +7617,109 @@ def newy25_L12_C6_B2_42():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
-    
+
+
+#[D12_C6_B2_43]-SA-M3. Xác suất lấy linh kiện tốt từ hai nhà máy.
+def newy25_L12_C6_B2_43():
+
+    n1=random.randint(60,120)
+    n2=random.randint(80,140)
+    while True:
+        p1=float(random.randint(1,7)/100)
+        p2=float(random.randint(1,7)/100)
+        if p1!=p2:
+            break
+
+    tong=n1+n2
+
+    P_tot=(n1/tong)*(1-p1)+(n2/tong)*(1-p2)
+    dap_an=f"{round_half_up(P_tot,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+    p1_ngang=f"{round_half_up(1-p1,2):.2f}"
+    p2_ngang=f"{round_half_up(1-p2,2):.2f}"
+
+    noi_dung = (
+    f"Một loại linh kiện do hai nhà máy I và II cùng sản xuất. Tỉ lệ phế phẩm của các nhà máy I và II lần lượt là ${p1*100:.0f}\\%$ và ${p2*100:.0f}\\%$. "
+    f"Trong một lô linh kiện có {n1} sản phẩm của nhà máy I và {n2} sản phẩm của nhà máy II được trộn lẫn với nhau. "
+    f"Một khách hàng lấy ngẫu nhiên một linh kiện từ lô hàng đó. "
+    f"Tính xác suất để linh kiện lấy ra là linh kiện tốt (kết quả làm tròn đến hàng phần trăm)."
+    )
+
+    noi_dung_loigiai=(
+    f"Gọi I, II lần lượt là biến cố linh kiện được sản xuất từ nhà máy I và II.\n\n"
+    f"Ta có: $P(I)=\\dfrac{{{n1}}}{{{tong}}}$, $P(II)=\\dfrac{{{n2}}}{{{tong}}}$.\n\n"
+    f"Tỉ lệ linh kiện tốt của nhà máy I là: $P(T|I)=1-{p1}= {p1_ngang}$.\n\n"
+    f"Tỉ lệ linh kiện tốt của nhà máy II là: $P(T|II)=1-{p2}= {p2_ngang}$.\n\n"
+    f"Theo công thức xác suất toàn phần:\n\n"
+    f"$P(T)=P(I)P(T|I)+P(II)P(T|II)$\n\n"
+    f"$P(T)=\\dfrac{{{n1}}}{{{tong}}}\\cdot{p1_ngang}+\\dfrac{{{n2}}}{{{tong}}}\\cdot{p2_ngang}={dap_an}.$"
+    )   
+    noi_dung_loigiai=noi_dung_loigiai.replace("0.","0,")
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D12_C6_B2_44]-SA-M3. Xác suất Bayes: X.s lấy linh kiện từ nhà máy I biết đó là phế phẩm.
+def newy25_L12_C6_B2_44():
+
+    n1=random.randint(60,120)
+    n2=random.randint(80,140)
+
+    while True:
+        p1=random.choice([0.02,0.03,0.04,0.05,0.06])
+        p2=random.choice([0.01,0.02,0.03,0.04,0.06])
+        if p1!=p2:
+            break
+
+    tong=n1+n2
+
+    PF=(n1/tong)*p1+(n2/tong)*p2
+    P=p1*(n1/tong)/PF
+
+    dap_an=f"{round_half_up(P,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+
+    noi_dung = (
+    f"Một loại linh kiện do hai nhà máy I và II cùng sản xuất. "
+    f"Tỉ lệ phế phẩm của các nhà máy I, II lần lượt là {p1*100:.0f}\\% và {p2*100:.0f}\\%. "
+    f"Trong một lô linh kiện có {n1} sản phẩm của nhà máy I và {n2} sản phẩm của nhà máy II được trộn lẫn với nhau. "
+    f"Một khách hàng lấy ngẫu nhiên một linh kiện từ lô hàng đó. "
+    f"Biết linh kiện lấy ra là phế phẩm. Tính xác suất để linh kiện đó được sản xuất bởi nhà máy I "
+    f"(kết quả làm tròn đến hàng phần trăm)."
+    )
+
+    noi_dung_loigiai=(
+    f"Gọi I, II lần lượt là biến cố linh kiện được sản xuất bởi nhà máy I và II; F là biến cố linh kiện là phế phẩm.\n\n"
+    f"$P(I)=\\dfrac{{{n1}}}{{{tong}}}$, $P(II)=\\dfrac{{{n2}}}{{{tong}}}$.\n\n"
+    f"$P(F|I)={p1}$, $P(F|II)={p2}$.\n\n"
+    f"Theo công thức xác suất toàn phần:\n\n"
+    f"$P(F)=P(I)P(F|I)+P(II)P(F|II)$\n\n"
+    f"$P(F)=\\dfrac{{{n1}}}{{{tong}}}\\cdot{p1}+\\dfrac{{{n2}}}{{{tong}}}\\cdot{p2}={round(PF,4)}$\n\n"
+    f"Theo định lý Bayes:\n\n"
+    f"$P(I|F)=\\dfrac{{P(I)P(F|I)}}{{P(F)}}"
+    f"=\\dfrac{{\\dfrac{{{n1}}}{{{tong}}}\\cdot{p1}}}{{{round(PF,4)}}}={dap_an}.$"
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("0.","0,")   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

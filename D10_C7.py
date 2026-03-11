@@ -5046,3 +5046,188 @@ def aaa_pry_L10_C7_B3_13():
     dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
     return debai,debai_latex,loigiai_word,dap_an
+
+#[D10_C7_B3_14]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= căn(dx+e)
+def aaa_pry_L10_C7_B3_14():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(-6,7)
+
+        d = random.choice([i for i in range(-7, 7) if i!=0])
+        e = random.choice([i for i in range(-7, 7) if i!=0])
+
+        f1=a*x**2+b*x+c
+        f2=d*x+e
+
+        a1, b1, c1 = a, b-d, c-e
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+
+        x1, x2=sorted([(-b1-sqrt(delta))/(2*a1), (-b1+sqrt(delta))/(2*a1)])
+        y1, y2= f2.subs(x,x1), f2.subs(x,x2)
+        if all([y1>=0, y2>=0]):
+            break
+    
+    
+    
+    tong=x1+x2
+    dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+    if dap_an.endswith("0"):
+        lamtron="" 
+        dap_an = dap_an[:-2]
+    else:
+        lamtron=" (kết quả làm tròn đến hàng phần mười)"
+
+
+    noi_dung = (
+    f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f1))}={latex(sqrt(f2))}${lamtron}."
+    )
+
+
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f1))}={latex(sqrt(f2))} \\Rightarrow {latex(f1)}={latex(f2)}$\n\n"
+    f"$\\Rightarrow {latex(f1-f2)}=0\\Rightarrow x_1={latex(x1)}, x_2={latex(x2)}$ (thỏa mãn).\n\n"
+    f"$x_1+x_2={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C7_B3_15]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= căn(dx^2+ex+f)
+def aaa_pry_L10_C7_B3_15():
+    x=sp.symbols("x")
+
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(-6,7)
+
+        d = random.choice([i for i in range(-5, 5) if i!=0])
+        e = random.choice([i for i in range(-7, 7) if i!=0])
+        f = random.choice([i for i in range(-7, 7) if i!=0])
+
+        f1=a*x**2+b*x+c
+        f2=d*x**2+d*x+e
+        if a==d:
+            continue
+
+        a1, b1, c1 = a-d, b-d, c-e
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+
+        x1, x2=sorted([(-b1-sqrt(delta))/(2*a1), (-b1+sqrt(delta))/(2*a1)])
+        y1, y2= f2.subs(x,x1), f2.subs(x,x2)
+        if all([y1>=0, y2>=0]):
+            break
+    
+    
+    tong=x1+x2
+    dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+    if dap_an.endswith("0"):
+        lamtron="" 
+        dap_an = dap_an[:-2]
+    else:
+        lamtron=" (kết quả làm tròn đến hàng phần mười)"
+
+
+    noi_dung = (
+    f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f1))}={latex(sqrt(f2))}${lamtron}."
+    )
+
+
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f1))}={latex(sqrt(f2))} \\Rightarrow {latex(f1)}={latex(f2)}$\n\n"
+    f"$\\Rightarrow {latex(f1-f2)}=0\\Rightarrow x_1={latex(x1)}, x_2={latex(x2)}$ (thỏa mãn).\n\n"
+    f"$x_1+x_2={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_C7_B3_16]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= dx+e
+def aaa_pry_L10_C7_B3_16():
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(-6,7)
+
+        d = random.choice([i for i in range(-7, 7) if i!=0])
+        e = random.choice([i for i in range(-7, 7) if i!=0])
+
+        f1=a*x**2+b*x+c
+        f2=d*x+e
+
+        a1, b1, c1 = a-d**2, b-2*d*e, c-e**2
+        if a1==0:
+            continue
+
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
+
+        x1, x2=sorted([(-b1-sqrt(delta))/(2*a1), (-b1+sqrt(delta))/(2*a1)])
+        y1, y2= f2.subs(x,x1), f2.subs(x,x2)
+        if all([y1>=0, y2>=0]):
+            break
+    
+    
+    
+    tong=x1+x2
+    dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+    if dap_an.endswith("0"):
+        lamtron="" 
+        dap_an = dap_an[:-2]
+    else:
+        lamtron=" (kết quả làm tròn đến hàng phần mười)"
+
+
+    noi_dung = (
+    f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f1))}={latex(f2)}${lamtron}."
+    )
+
+
+
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f1))}={latex(f2)} \\Rightarrow {latex(f1)}={latex(expand(f2**2))}$\n\n"
+    f"$\\Rightarrow {latex(expand(f1-f2**2))}=0\\Rightarrow x_1={latex(x1)}, x_2={latex(x2)}$ (thỏa mãn).\n\n"
+    f"$x_1+x_2={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+

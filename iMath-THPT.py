@@ -756,7 +756,7 @@ class Ui_MainWindow(object):
                 self.tab_bang_so_lieu.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
 
-                self.tab_main.addTab(self.tab_huongdan, "📚 Hướng dẫn")
+                self.tab_main.addTab(self.tab_huongdan, "📚 Trợ giúp")
                 self.tab_huongdan.setObjectName("tab_huongdan")                
                 self.tab_huongdan.setGeometry(QtCore.QRect(0, 0, 1920, 1440))
 
@@ -3806,6 +3806,18 @@ class Ui_MainWindow(object):
                 L10_C7_B3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L10_C7_B3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L10_C7_B3_3, ["[D10_C7_B3_14]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= căn(dx+e)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B3_3, ["[D10_C7_B3_15]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= căn(dx^2+ex+f)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C7_B3_3, ["[D10_C7_B3_16]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= dx+e."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L10_C7_B3_3, ["[D10_C7_B3_04]-SA-M3. Tìm x để quãng đường AC = t*quãng đường BC."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -5229,19 +5241,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_45]-SA-M3. Tìm M thuộc a sao cho MA=MB"])
+                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_45]-SA-M3. Tìm M∈d sao cho MA=MB"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_46]-SA-M3. Cho A không thuộc a, Tìm M thuộc a sao cho AM nhỏ nhất"])
+                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_61]-SA-M3. Tìm M∈d sao cho AM=r được M1, M2. Tìm trung điểm của M1M2."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_47]-SA-M4. Tìm M thuộc a sao cho | vecto(MB)+vecto(MC)| nhỏ nhất"])
+                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_46]-SA-M3. Tìm M∈d sao cho AM nhỏ nhất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_48]-SA-M4. Tìm M thuộc a sao cho | vecto(MB)+vecto(MC)+vecto(MA)| nhỏ nhất"])
+                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_47]-SA-M4. Tìm M∈d sao cho | vecto(MB)+vecto(MC)| nhỏ nhất"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_48]-SA-M4. Tìm M∈d sao cho | vecto(MB)+vecto(MC)+vecto(MA)| nhỏ nhất"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -5252,11 +5268,6 @@ class Ui_MainWindow(object):
                 item=QTreeWidgetItem(L10_C10_B1_SA, ["[D10_CX_B1_50]-SA-M3. Tìm toạ độ điểm đối xứng của điểm qua đường thẳng"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                L10_C10_B1_TL = QTreeWidgetItem(L10_C10_B1, ["Tự luận"])
-                L10_C10_B1_TL.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L10_C10_B1_TL.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
 
 
                 #Bài 3
@@ -11721,6 +11732,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_43]-SA-M3.  X.S T.phần:  Xác suất lấy linh kiện tốt từ hai nhà máy."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_08]-SA-M2. X.S Bayes: Xác suất sản phẩm kiểm tra từ nhà máy bị lỗi do phân xưởng X sẩn xuất."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -11742,6 +11757,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_40]-SA-M3. X.S Bayes: Xác suất để mục tiêu bị phát hiện là thật khi rada cảnh báo."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C6_B2_3, ["[D12_C6_B2_44]-SA-M3.  X.S Bayes: X.s lấy linh kiện từ nhà máy I biết đó là phế phẩm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -14671,6 +14690,14 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B2_42]-TF-M3. Học sinh chọn môn. Xét Đ-S: P(A_ngang), P(B_ngang|A), P(B_ngang), P(A|B)
                                             if dang_toan == "[D12_C6_B2_42]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B2_42()
+
+                                            #[D12_C6_B2_43]-SA-M3. X.s toàn phần: Xác suất lấy linh kiện tốt từ hai nhà máy. 
+                                            if dang_toan == "[D12_C6_B2_43]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_43()
+
+                                            #[D12_C6_B2_44]-SA-M3. Xác suất Bayes: X.s lấy linh kiện từ nhà máy I biết đó là phế phẩm.
+                                            if dang_toan == "[D12_C6_B2_44]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B2_44()
 
                                             #-------------------------LỚP 11---------------------->
 
@@ -19294,6 +19321,18 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D10_C7_B3_13]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D10_C7.aaa_pry_L10_C7_B3_13()
 
+                                        #[D10_C7_B3_14]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= căn(dx+e)
+                                            if dang_toan == "[D10_C7_B3_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B3_14()
+
+                                        #[D10_C7_B3_15]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= căn(dx^2+ex+f)
+                                            if dang_toan == "[D10_C7_B3_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B3_15()
+
+                                        #[D10_C7_B3_16]-SA-M2. Tổng các nghiệm của căn(ax^2+bx+c)= dx+e)
+                                            if dang_toan == "[D10_C7_B3_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C7.aaa_pry_L10_C7_B3_16()
+
                                                 
                                 #Toán 11 - Chương 8 - Đại số tổ hợp
                                 #Bài 1: Quy tắc cộng và Quy tắc nhân
@@ -20349,6 +20388,10 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B1_60]-SA-M2. Tìm m để khoảng cách từ A đến d bằng k
                                             if dang_toan =="[D10_CX_B1_60]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B1_60()
+
+                                            #[D10_CX_B1_61]-SA-M2. Tìm M∈d sao cho AM=r được M1, M2. Tìm trung điểm của M1M2.
+                                            if dang_toan =="[D10_CX_B1_61]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B1_61()
 
 
 
@@ -23732,7 +23775,7 @@ class Ui_MainWindow(object):
                 self.tableWidget.setItem(row2, column, item1)
 
         def hd_taode_video(self):
-            QDesktopServices.openUrl(QUrl('https://youtu.be/GKglF9yjmeg'))
+            QDesktopServices.openUrl(QUrl('https://youtu.be/WrCfyd4SBpo'))
 
         def hd_taode_pdf(self):            
             current_directory = os.path.dirname(os.path.abspath(__file__))

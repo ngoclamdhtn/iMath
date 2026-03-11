@@ -9964,10 +9964,7 @@ def gghik_L10_CX_B1_60():
 
 	x_A=random.randint(-5,5)
 	y_A=random.randint(-5,5)
-	ten_diem=random.choice(["A","B","C","E","M","N","I" ])
-
-
-	
+	ten_diem=random.choice(["A","B","C","E","M","N","I" ])	
 	
 	e=k*sqrt(a**2+b**2)
 	m1=(e-a*x_A-b*y_A-c)/t_m
@@ -10002,6 +9999,91 @@ def gghik_L10_CX_B1_60():
 	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
 	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D10_CX_B1_61]-SA-M3. Tìm M∈d sao cho AM=r được M1, M2. Tìm trung điểm của M1M2.
+def gghik_L10_CX_B1_61():
+	while True:
+
+		x0=random.choice([i for i in range(-5, 5) if i!=0])
+		y0=random.randint(-5,5)
+
+		a=random.choice([i for i in range(-5, 5) if i!=0])
+		b=random.randint(-3,3)
+
+		if x0==a and y0==b:
+			continue
+
+		u= random.choice([i for i in range(-4, 4) if i!=0])
+		v= random.choice([i for i in range(-4, 4) if i!=0])
+
+		r=random.randint(1,7)
+
+		t=sp.symbols('t')
+
+		x=a+u*t
+		y=b+v*t
+
+		expr=(x-x0)**2+(y-y0)**2-r**2
+		poly=sp.expand(expr)
+
+		a1=sp.expand(poly).coeff(t,2)
+		b1=sp.expand(poly).coeff(t,1)
+		c1=sp.expand(poly).coeff(t,0)
+		d=b1**2-4*a1*c1
+		if d<=0:
+			continue
+		can_denta=float(sqrt(d))
+		if can_denta.is_integer():
+			break
+	t1,t2= sorted([(-b1+sqrt(d))/(2*a1), (-b1-sqrt(d))/(2*a1)])
+
+	t_sum=-b1/a1
+
+	xI=a+u*t_sum/2
+	yI=b+v*t_sum/2
+
+	xI=float(sp.N(xI))
+	yI=float(sp.N(yI))
+
+	dap_an=f"{round_half_up(xI+yI,1):.1f}".replace(".",",")
+	if dap_an.endswith("0"):
+		lam_tron="" 
+		dap_an = dap_an[:-2]
+	else:
+		lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+	A=random.choice(["A","B","D","E","G" ])
+
+	noi_dung=(
+	f"Trong mặt phẳng ${{Oxy}}$, cho điểm ${A}({x0};{y0})$ và đường thẳng"
+	f" $d:\\begin{{cases}} x={a}+{u}t\\\\ y={b}+{v}t \\end{{cases}} (t\\in\\mathbb{{R}})$."
+	f" Gọi $M_1,M_2$ là các điểm thuộc ${{d}}$ thỏa mãn cách điểm ${{{A}}}$ một khoảng bằng ${{{r}}}$."
+	f" Gọi $I(a;b)$ là tọa độ trung điểm của đoạn $M_1M_2$. Tính $a+b${lam_tron}."
+	)
+	noi_dung=noi_dung.replace("+-","-").replace("1t","t")
+
+	noi_dung_loigiai=(
+	f"Gọi $M({a}+{u}t;{b}+{v}t)\\in d$. Khi đó\n\n"
+	f"$M{A}^2=({a}+{u}t-{x0})^2+({b}+{v}t-{y0})^2$\n\n"
+	f"$M{A}^2={r**2}\\Rightarrow {latex(expand(expr))}={r**2}$\n\n"
+	f"$\\Rightarrow {latex(expand(expr-r**2))}=0 \\Rightarrow t={latex(t1)},t={latex(t2)}$.\n\n"
+	f"$\\Rightarrow  t_1+t_2={phan_so(t_sum)}$.\n\n"
+	f"Tọa độ trung điểm $I$ của $M_1M_2$ là\n\n"
+	f"$I\\left({a}+\\dfrac{{{u}(t_1+t_2)}}{{2}},\\; {b}+\\frac{{{v}(t_1+t_2)}}{{2}}\\right)=({phan_so(xI)};{phan_so(yI)}).$\n\n"
+	f"Suy ra $a+b={phan_so(xI)}+{phan_so(yI)}={dap_an}$."
+	)	
+	noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("1t","t").replace("--","+")
+
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+	    f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
