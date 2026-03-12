@@ -818,19 +818,19 @@ class Ui_MainWindow(object):
                 self.label.setFont(font)        
                 self.label.setText("Zalo: 0974.940.049")
 
-                self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
-                self.label.setGeometry(QtCore.QRect(350, 200, 700, 40))
-                self.label.setFont(font)        
-                self.label.setText("Mã đăng kí:")
+                # self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
+                # self.label.setGeometry(QtCore.QRect(350, 200, 700, 40))
+                # self.label.setFont(font)        
+                # self.label.setText("Mã đăng kí:")
 
-                text_ma_may=license.encrypt_serial_number()
-                self.tab_ban_quyen_ma_may= QtWidgets.QTextEdit(parent=self.tab_ban_quyen)
-                self.tab_ban_quyen_ma_may.setGeometry(QtCore.QRect(500, 200, 600, 40))
-                self.tab_ban_quyen_ma_may.setObjectName("tab_ban_quyen_ma_may")
-                self.tab_ban_quyen_ma_may.setFont(font_12)
-                self.tab_ban_quyen_ma_may.setText(text_ma_may)
-                if license.kiemtra_banquyen_new():
-                        self.tab_ban_quyen_ma_may.setText("")
+                # text_ma_may=license.encrypt_serial_number()
+                # self.tab_ban_quyen_ma_may= QtWidgets.QTextEdit(parent=self.tab_ban_quyen)
+                # self.tab_ban_quyen_ma_may.setGeometry(QtCore.QRect(500, 200, 600, 40))
+                # self.tab_ban_quyen_ma_may.setObjectName("tab_ban_quyen_ma_may")
+                # self.tab_ban_quyen_ma_may.setFont(font_12)
+                # self.tab_ban_quyen_ma_may.setText(text_ma_may)
+                # if license.kiemtra_banquyen_new():
+                #         self.tab_ban_quyen_ma_may.setText("")
 
                 
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)
@@ -868,12 +868,12 @@ class Ui_MainWindow(object):
                 self.tab_ban_quyen_copy_ma_may.setText("Lấy mã máy")
                 self.tab_ban_quyen_copy_ma_may.clicked.connect(self.copy_ma_may)
 
-                self.tab_ban_quyen_copy_old_key = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
-                self.tab_ban_quyen_copy_old_key.setGeometry(QtCore.QRect(1080, 370, 150, 30))
-                self.tab_ban_quyen_copy_old_key.setFont(font)
-                self.tab_ban_quyen_copy_old_key.setObjectName("tab_ban_quyen_copy_old_ley")
-                self.tab_ban_quyen_copy_old_key.setText("Get old key")
-                self.tab_ban_quyen_copy_old_key.clicked.connect(self.copy_old_key)
+                # self.tab_ban_quyen_copy_old_key = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
+                # self.tab_ban_quyen_copy_old_key.setGeometry(QtCore.QRect(1080, 370, 150, 30))
+                # self.tab_ban_quyen_copy_old_key.setFont(font)
+                # self.tab_ban_quyen_copy_old_key.setObjectName("tab_ban_quyen_copy_old_ley")
+                # self.tab_ban_quyen_copy_old_key.setText("Get old key")
+                # self.tab_ban_quyen_copy_old_key.clicked.connect(self.copy_old_key)
 
                 #Button check update
                 self.btn_check_update = QtWidgets.QPushButton(parent=self.tab_ban_quyen)
@@ -4872,7 +4872,11 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_14]-TF-M2. Cho 3 điểm. Xét Đ-S: Tọa độ vectơ, trọng tâm, góc, trực tâm."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_61]-TF-M2. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, trọng tâm, tìm điểm để có h.b.h, hình chiếu lên trục."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)              
 
                 item = QTreeWidgetItem(L10_C10_B0_2, ["[D10_CX_B0_40]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, tìm điểm để có h.b.h, tích vô hướng."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -18922,6 +18926,10 @@ class Ui_MainWindow(object):
                                             #[D10_CX_B0_60]-SA-M2. Tìm chân đường cao của tam giác.
                                             if dang_toan == "[D10_CX_B0_60]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C10.gghik_L10_CX_B0_60()
+
+                                            #[D10_CX_B0_61]-TF-M3. Cho 3 điểm. Xét Đ-S: Độ dài, trung điểm, trọng tâm, tìm điểm để có h.b.h, hình chiếu lên trục.
+                                            if dang_toan == "[D10_CX_B0_61]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D10_C10.gghik_L10_CX_B0_61()
 
 
                                                 
