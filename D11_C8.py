@@ -7620,12 +7620,12 @@ def uvxy9_L11_C8_B5_09():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C8_B5_10]-M3. Ltr đứng tam giác. Tìm góc giữa 2 đường thẳng
+#[D11_C8_B5_10]-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng
 def uvxy9_L11_C8_B5_10():
 	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
-	D,E,F=["D","E","F"]
+	#D,E,F=["D","E","F"]
 	M,N =random.sample(["M", "N", "P", "Q"], 2)
-	M,N="M","N"
+	#M,N="M","N"
 
 	a=random.randint(1,5)
 	h=sqrt(random.randint(1,7))
@@ -7641,11 +7641,13 @@ def uvxy9_L11_C8_B5_10():
 	goc=acos(cos_val)*180/pi
 
 	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
 	if dap_an.endswith(",0"):   
 		dap_an = dap_an[:-2]
+		lam_tron=""
 	noi_dung = (
 	f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
-	f"Gọi ${{{M}}}$ là trung điểm của cạnh ${{BC}}$. Tính góc giữa hai đường thẳng ${D}{M}$ và ${{AB}}$."
+	f"Gọi ${{{M}}}$ là trung điểm của cạnh ${{BC}}$. Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{AB}}${lam_tron}."
 	)
 	
 	noi_dung_loigiai=(

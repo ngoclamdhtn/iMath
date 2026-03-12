@@ -4976,10 +4976,10 @@ def gghik_L10_CX_B1_01():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_CX_B1_02]-M2. Đọc véctơ pháp tuyến(véctơ chỉ phương) từ phương trình tổng quát
+#[D10_CX_B1_02]-M2. Đọc véctơ chỉ phương từ phương trình tổng quát
 def gghik_L10_CX_B1_02():   
 	#Tạo bậc ngẫu nhiên
-	ten_vt=random.choice(["véctơ pháp tuyến","véctơ chỉ phương"])
+	ten_vt="véctơ chỉ phương"
 	
 	a=random.randint(-10,10)
 	b=random.randint(-10,10)
@@ -5030,7 +5030,7 @@ def gghik_L10_CX_B1_02():
 
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{d}}:{latex(f)}=0$."\
-			 f"Véctơ nào sau đây là một {ten_vt} của đường thẳng ${{d}}$?"
+			 f" Véctơ nào sau đây là một {ten_vt} của đường thẳng ${{d}}$?"
 	
     #Tạo các phương án
 	pa_A= f"*${{{kq}}}$"
@@ -5068,10 +5068,10 @@ def gghik_L10_CX_B1_02():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_CX_B1_03]-M2. Đọc véctơ pháp tuyến(véctơ chỉ phương) từ phương trình tham số
+#[D10_CX_B1_03]-M2. Đọc véctơ pháp tuyến từ phương trình tham số
 def gghik_L10_CX_B1_03():   
 	#Tạo bậc ngẫu nhiên
-	ten_vt=random.choice(["véctơ pháp tuyến","véctơ chỉ phương"])
+	ten_vt="véctơ pháp tuyến"
 	
 	a=random.randint(-10,10)
 	b=random.randint(-10,10)
@@ -5131,7 +5131,7 @@ y = {show_ptts(y_0,b)}\
 
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{d}}:{f}$."\
-			 f"Véctơ nào sau đây là một {ten_vt} của đường thẳng ${{d}}$?"
+			 f" Véctơ nào sau đây là một {ten_vt} của đường thẳng ${{d}}$?"
 	
     #Tạo các phương án
 	pa_A= f"*${{{kq}}}$"
@@ -5148,8 +5148,8 @@ y = {show_ptts(y_0,b)}\
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 
 
-	noi_dung_loigiai=f"Đường thẳng ${{d}}:{f}$ có một véctơ chỉ phương là $\\overrightarrow{{n}}=({a};{b})$ hoặc $\\overrightarrow{{n}}=({-a};{-b})$,\n"\
-					f"có một véctơ pháp tuyến là $\\overrightarrow{{u}}=({b};{-a})$ hoặc $\\overrightarrow{{u}}=({-b};{a})$.\n"
+	noi_dung_loigiai=f"Đường thẳng ${{d}}:{f}$ có một véctơ chỉ phương là $\\overrightarrow{{u}}=({a};{b})$ hoặc $\\overrightarrow{{u}}=({-a};{-b})$,\n"\
+					f"có một véctơ pháp tuyến là $\\overrightarrow{{n}}=({b};{-a})$ hoặc $\\overrightarrow{{n}}=({-b};{a})$.\n"
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
 
@@ -10237,7 +10237,318 @@ def gghik_L10_CX_B1_61():
 
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D10_CX_B1_62]-M1. Đọc véctơ chỉ phương từ phương trình tham số
+def gghik_L10_CX_B1_62():   
+	#Tạo bậc ngẫu nhiên
+	ten_vt="véctơ chỉ phương"
+	
+	a=random.randint(-10,10)
+	b=random.randint(-10,10)
+	if a==b: b=a+random.randint(1,3)
+	x_0=random.randint(-10,10)
+	y_0=random.randint(-10,10)
+	if a==x_0 and b==y_0:
+		x_0=a+random.randint(1,5)
+		y_0=b+random.randint(1,5)
+	if a==b==0:
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	if a==b or a==-b: a=a+random.randint(1,3)
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	t=sp.symbols("t")
 
+	f=f"\\left\\{{ \\begin{{array}}{{l}}\
+x = {show_ptts(x_0,a)}\\\\ \
+y = {show_ptts(y_0,b)}\
+\\end{{array}} \\right.,t \\in \\mathbb{{R}}"
+
+	k = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	if ten_vt=="véctơ chỉ phương":
+		vecto="\\overrightarrow{{u}}"		
+		if a!=0 and b!=0:
+			kq=random.choice([f"{vecto}=({a};{b})", f"{vecto}=({-a};{-b})"])	
+			kq2=f"{vecto}=({-b};{-a})"
+			kq3=random.choice([f"{vecto}=({x_0};{y_0})", f"{vecto}=({-a};{b})"])
+			kq4=f"{vecto}=({b};{a})"
+		if a==0 and b!=0:
+			kq=random.choice([f"{vecto}=(0;{k})", f"{vecto}=(0;{b})"])
+			kq2=f"{vecto}=({k};0)"
+			kq3=f"{vecto}=({b};{k})"
+			kq4=f"{vecto}=({-b};{-k})"
+		if a!=0 and b==0:	
+			kq=random.choice([f"{vecto}=({k};0)", f"{vecto}=({a};0)"])
+			kq2=f"{vecto}=(0;{k})"
+			kq3=f"{vecto}=({a};{k})"
+			kq4=f"{vecto}=({-a};{-k})"	
+	else:
+		vecto="\\overrightarrow{{n}}"
+		if a!=0 and b!=0:
+			kq=random.choice([f"{vecto}=({b};{-a})", f"{vecto}=({-b};{a})"])	
+			kq2=random.choice([f"{vecto}=({x_0};{y_0})",f"{vecto}=({a};{b})"])
+			kq3=f"{vecto}=({-a};{b})"
+			kq4=f"{vecto}=({b};{a})"
+		if a==0 and b!=0:
+			kq=random.choice([f"{vecto}=({k};0)", f"{vecto}=({b};0)"])
+			kq2=random.choice([f"{vecto}=(0;{k})", f"{vecto}=(0;{b})"])
+			kq3=f"{vecto}=({b};{k})"
+			kq4=f"{vecto}=({-b};{-k})"
+		if a!=0 and b==0:	
+			kq=random.choice([f"{vecto}=(0;{k})",f"{vecto}=(0;{a})"])
+			kq2=random.choice([f"{vecto}=({k};0)", f"{vecto}=({a};0)"])
+			kq3=f"{vecto}=({a};{k})"
+			kq4=f"{vecto}=({-a};{-k})"	
+
+
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{d}}:{f}$."\
+			 f" Véctơ nào sau đây là một {ten_vt} của đường thẳng ${{d}}$?"
+	
+    #Tạo các phương án
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   	
+
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+	noi_dung_loigiai=f"$d:{f}$ có một véctơ chỉ phương là $\\overrightarrow{{u}}=({a};{b})$ hoặc $\\overrightarrow{{u}}=({-a};{-b})$."
+					
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B1_63]-M2. Đọc véctơ pháp tuyến từ phương trình tổng quát
+def gghik_L10_CX_B1_63():   
+	#Tạo bậc ngẫu nhiên
+	ten_vt="véctơ pháp tuyến"
+	
+	a=random.randint(-10,10)
+	b=random.randint(-10,10)
+	if a==b: b=b+random.randint(1,5)
+	if a==-b: b=b+random.randint(1,5)
+	c=random.randint(-10,10)
+	if a==b==0:
+		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	if a==b or a==-b: a=a+random.randint(1,3)
+	x=sp.symbols("x")
+	y=sp.symbols("y")
+	f=a*x+b*y+c
+	k = random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	if ten_vt=="véctơ pháp tuyến":
+		vecto="\\overrightarrow{{n}}"		
+		if a!=0 and b!=0:
+			kq=random.choice([f"{vecto}=({a};{b})", f"{vecto}=({-a};{-b})"])	
+			kq2=f"{vecto}=({-b};{-a})"
+			kq3=f"{vecto}=({-a};{b})"
+			kq4=f"{vecto}=({b};{a})"
+		if a==0 and b!=0:
+			kq=random.choice([f"{vecto}=(0;{k})", f"{vecto}=(0;{b})"])
+			kq2=f"{vecto}=({k};0)"
+			kq3=f"{vecto}=({b};{k})"
+			kq4=f"{vecto}=({-b};{-k})"
+		if a!=0 and b==0:	
+			kq=random.choice([f"{vecto}=({k};0)", f"{vecto}=({a};0)"])
+			kq2=f"{vecto}=(0;{k})"
+			kq3=f"{vecto}=({a};{k})"
+			kq4=f"{vecto}=({-a};{-k})"	
+	else:
+		vecto="\\overrightarrow{{u}}"
+		if a!=0 and b!=0:
+			kq=random.choice([f"{vecto}=({b};{-a})", f"{vecto}=({-b};{a})"])	
+			kq2=f"{vecto}=({a};{b})"
+			kq3=f"{vecto}=({-a};{b})"
+			kq4=f"{vecto}=({b};{a})"
+		if a==0 and b!=0:
+			kq=random.choice([f"{vecto}=({k};0)", f"{vecto}=({b};0)"])
+			kq2=random.choice([f"{vecto}=(0;{k})", f"{vecto}=(0;{b})"])
+			kq3=f"{vecto}=({b};{k})"
+			kq4=f"{vecto}=({-b};{-k})"
+		if a!=0 and b==0:	
+			kq=random.choice([f"{vecto}=(0;{k})",f"{vecto}=(0;{a})"])
+			kq2=random.choice([f"{vecto}=({k};0)", f"{vecto}=({a};0)"])
+			kq3=f"{vecto}=({a};{k})"
+			kq4=f"{vecto}=({-a};{-k})"	
+
+
+	noi_dung=(f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{d}}:{latex(f)}=0$."
+			 f" Véctơ nào sau đây là một {ten_vt} của đường thẳng ${{d}}$?")
+	
+    #Tạo các phương án
+	pa_A= f"*${{{kq}}}$"
+	pa_B= f"${{{kq2}}}$"
+	pa_C= f"${{{kq3}}}$"
+	pa_D= f"${{{kq4}}}$"
+
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)   	
+
+	debai= f"{noi_dung}\n"
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+
+
+	noi_dung_loigiai=f"$d:{latex(f)}=0$ có một véctơ pháp tuyến là $\\overrightarrow{{n}}=({a};{b})$ hoặc $\\overrightarrow{{n}}=({-a};{-b})$."
+					
+	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+
+	for i in range(4):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\choice\n"\
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+	    f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+	    f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D10_CX_B1_64]-TF-M2. Cho A,B,d. Xét Đ-S: A thuộc d, VTPT của d, d(B,d), đường thẳng song song d
+def gghik_L10_CX_B1_64():
+	while True:
+		m = random.choice([i for i in range(-5, 6) if i!=0])
+		n = random.choice([i for i in range(-5, 6) if i!=0])
+		p = random.randint(-5,5)
+
+		a1 = random.choice([i for i in range(-7, 7) if i!=0])
+		a2 = random.choice([i for i in range(-7, 7) if i!=0])
+		b1 = random.choice([i for i in range(-7, 7) if i!=0])
+		b2 = random.choice([i for i in range(-7, 7) if i!=0])
+
+		if all([a1!=b1, m*b1+n*b2+p!=0]):
+			break
+	x,y =sp.symbols("x y")
+
+	f=m*x+n*y+p
+	A,B = "A", "B"
+
+
+	noi_dung = (
+	f"Trong mặt phẳng ${{Oxy}}$, cho ${A}({a1};{a2}), {B}({b1};{b2})$ và đường thẳng $\\Delta:{latex(f)}=0$."
+	f" Xét tính đúng-sai của các khẳng định sau:")	
+	if m*a1+n*a2+p==0:
+
+		kq1_T=f"* Điểm ${{{A}}}$ thuộc đường thẳng $\\Delta$" 
+		kq1_F=f"Điểm ${{{A}}}$ không thuộc đường thẳng $\\Delta$"
+		
+		HDG=f"Tọa độ điểm ${{{A}}}$ thỏa mãn phương trình $\\Delta$ nên ${A} \\in \\Delta$."
+	else:
+		kq1_T=f"* Điểm ${{{A}}}$ không thuộc đường thẳng $\\Delta$" 
+		kq1_F=f"Điểm ${{{A}}}$ thuộc đường thẳng $\\Delta$"
+		
+		HDG=f"Tọa độ điểm ${{{A}}}$ không thỏa mãn phương trình $\\Delta$ nên ${A} \\not \\in \\Delta$."
+
+	kq1=random.choice([kq1_T, kq1_F])
+	loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq1==kq1_F:
+		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kq2_T=f"* Véctơ $\\overrightarrow{{n}}=({m};{n})$ là một véctơ pháp tuyến của $\\Delta$"
+	kq2_F=f"Véctơ $\\overrightarrow{{n}}=({n};{-m})$ là một véctơ pháp tuyến của $\\Delta$"
+	
+	HDG=f"Véctơ $\\overrightarrow{{n}}=({m};{n})$ là một véctơ pháp tuyến của $\\Delta$."
+	kq2=random.choice([kq2_T, kq2_F])
+	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq2==kq2_F:
+		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	kc_B_d=abs(m*b1+n*b2+p)/sqrt(m**2+n**2)
+	kc_B_d_f=abs(m*b1+n*b2+p+random.randint(1,2))/sqrt(m**2+n**2)
+
+	kq3_T=f"* Khoảng cách từ điểm ${{{B}}}$ đến $\\Delta$ bằng ${latex(kc_B_d)}$" 
+	kq3_F=f"Khoảng cách từ điểm ${{{B}}}$ đến $\\Delta$ bằng ${latex(kc_B_d_f)}$"
+	
+	HDG=f"$d({B},\\Delta)=\\dfrac{{|{m*b1+n*b2+p}|}}{{\\sqrt{{{m**2}+{n**2}}}}}={latex(kc_B_d)}$."
+	kq3=random.choice([kq3_T, kq3_F])
+	loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq3==kq3_F:
+		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+	f_b=f"{latex(m*x+n*y-(m*b1+n*b2))}=0"
+	f_b_f=f"{latex(m*x+n*y-(m*b1+n*b2+random.randint(1,2)))}=0"
+	kq4_T=f"* Đường thẳng qua ${{{B}}}$ và song song với $\\Delta$ có phương trình là ${f_b}$"
+	kq4_F=f"Đường thẳng qua ${{{B}}}$ và song song với $\\Delta$ có phương trình là ${f_b_f}$" 
+	
+	HDG=(f"Đường thẳng qua ${{{B}}}$ và song song với $\\Delta$ có phương trình là: ${f_b}$.")
+	kq4=random.choice([kq4_T, kq4_F])
+	loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+	if kq4==kq4_F:
+		loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+	#Trộn các phương án
+	list_PA =[kq1, kq2, kq3, kq4]
+	#random.shuffle(list_PA)
+	list_TF=my_module.tra_ve_TF(list_PA)
+
+	debai= f"{noi_dung}\n\n"\
+	f"a) {list_PA[0]}.\n"\
+	f"b) {list_PA[1]}.\n"\
+	f"c) {list_PA[2]}.\n"\
+	f"d) {list_PA[3]}.\n"
+	loigiai=[]
+	for pa in list_PA:
+	    if pa==kq1:
+	        loigiai.append(loigiai_1)
+	    if pa==kq2:
+	        loigiai.append(loigiai_2)
+	    if pa==kq3:
+	        loigiai.append(loigiai_3)
+	    if pa==kq4:
+	        loigiai.append(loigiai_4)
+
+
+	noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+	f"\n\n a) {loigiai[0]}\n"
+	f"b) {loigiai[1]}\n"
+	f"c) {loigiai[2]}\n"
+	f"d) {loigiai[3]}\n")
+
+	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+	f"b) {loigiai[1]}\n\n"
+	f"c) {loigiai[2]}\n\n"
+	f"d) {loigiai[3]}\n\n")
+
+	#Tạo đề latex
+	for i in range(len(list_PA)):
+	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+	    f"\\choiceTFt\n"
+	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+	    f"\\loigiai{{ \n {loigiai_latex} \n }}"
+	    f"\\end{{ex}}\n")
+
+	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+	return debai,debai_latex,loigiai_word,dap_an
 
 
 #Bài 3 - Phương trình đường tròn
