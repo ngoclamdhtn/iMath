@@ -7622,6 +7622,7 @@ def uvxy9_L11_C8_B5_09():
 
 #[D11_C8_B5_10]-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng
 def uvxy9_L11_C8_B5_10():
+	A,B,C="A","B","C"
 	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
 	#D,E,F=["D","E","F"]
 	M,N =random.sample(["M", "N", "P", "Q"], 2)
@@ -7631,35 +7632,94 @@ def uvxy9_L11_C8_B5_10():
 	h=sqrt(random.randint(1,7))
 	ten_h=random.choice([f"A{D}", f"B{E}", f"C{F}"])
 
-	MN=a/2
-	AN=a/2
-	AM=a*sqrt(3)/2
-	DN=sqrt(h**2+AN**2)
-	DM=sqrt(h**2+AM**2)
-	cos_val=abs((DM**2+MN**2-DN**2)/(2*DM*MN))
-	s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
-	goc=acos(cos_val)*180/pi
+	chon=random.randint(1,2)
+	chon=2
+	if chon==1:
+		MN=a/2
+		AN=a/2
+		AM=a*sqrt(3)/2
+		DN=sqrt(h**2+AN**2)
+		DM=sqrt(h**2+AM**2)
+		cos_val=abs((DM**2+MN**2-DN**2)/(2*DM*MN))
+		s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+		goc=acos(cos_val)*180/pi
 
-	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
-	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
-	if dap_an.endswith(",0"):   
-		dap_an = dap_an[:-2]
-		lam_tron=""
-	noi_dung = (
-	f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
-	f"Gọi ${{{M}}}$ là trung điểm của cạnh ${{BC}}$. Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{AB}}${lam_tron}."
-	)
+		dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+		if dap_an.endswith(",0"):   
+			dap_an = dap_an[:-2]
+			lam_tron=""
+		noi_dung = (
+		f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{BC}}$. Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{AB}}${lam_tron}."
+		)
+		
+		noi_dung_loigiai=(
+		f"Gọi ${{{N}}}$ là trung điểm của ${{AC}}$.\n\n"
+		f" Góc $({D}{M},AB)=({D}{M}, {M}{N})$.\n\n"
+		f"${M}{N}={phan_so(MN)}, A{M}={latex(AM)}$.\n\n"
+		f"${D}{N}=\\sqrt{{A{D}^2+A{N}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AN**2)}}}={latex(nsimplify(DN))}$.\n\n"
+		f"${D}{M}=\\sqrt{{A{D}^2+A{M}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AM**2)}}}={latex(nsimplify(DM))}$.\n\n"
+		f"$\\cos({D}{M}, {M}{N})=\\dfrac{{{D}{M}^2+{M}{N}^2-{D}{N}^2}}{{2.{D}{M}.{M}{N}}}={s_cos_val}$.\n\n"
+		f"$\\Rightarrow ({D}{M}, {M}{N})={dap_an}^\\circ$."
+
+		)	
 	
-	noi_dung_loigiai=(
-	f"Gọi ${{N}}$ là trung điểm của ${{AC}}$.\n\n"
-	f" Góc $({D}{M},AB)=({D}{M}, {M}{N})$.\n\n"
-	f"${M}{N}={phan_so(MN)}, A{M}={latex(AM)}$.\n\n"
-	f"${D}{N}=\\sqrt{{A{D}^2+A{N}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AN**2)}}}={latex(nsimplify(DN))}$.\n\n"
-	f"${D}{M}=\\sqrt{{A{D}^2+A{M}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AM**2)}}}={latex(nsimplify(DM))}$.\n\n"
-	f"$\\cos({D}{M}, {M}{N})=\\dfrac{{{D}{M}^2+{M}{N}^2-{D}{N}^2}}{{2.{D}{M}.{M}{N}}}={s_cos_val}$.\n\n"
-	f"$\\Rightarrow ({D}{M}, {M}{N})={dap_an}^\\circ$."
+	if chon==2:
+		BM=a/2
+		BD=sqrt(a**2+h**2)
+		cos_val=BM/BD
+		s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+		goc=acos(cos_val)*180/pi
 
-	)	
+		dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+		if dap_an.endswith(",0"):   
+			dap_an = dap_an[:-2]
+			lam_tron=""
+		noi_dung = (
+		f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+		f" Tính góc giữa hai đường thẳng ${{{D}{B}}}$ và ${{{E}{F}}}${lam_tron}.")
+		
+		noi_dung_loigiai=(
+		f"Gọi ${{{M}}}$ là trung điểm của ${{BC}}$.\n\n"
+		f"${B}{M}={phan_so(BM)}$.\n\n"
+		f"${B}{D}=\\sqrt{{AB^2+A{D}^2}}={latex(nsimplify(BD))}$.\n\n"
+
+		f"$\\cos({D}{B}, {E}{F})=\\cos({D}{B}, {B}{C})=\\cos \\widehat{{{D}{B}{M}}}=\\dfrac{{B{M}}}{{{B}{D}}}"
+		f"=\\dfrac{{{phan_so(BM)}}}{{{latex(nsimplify(BD))}}}={s_cos_val}$.\n\n"
+		f"$\\Rightarrow ({D}{B}, {E}{F})={dap_an}^\\circ$.")
+
+	if chon==3:
+		AM=a/2
+		BD=sqrt(a**2+h**2)
+		cos_val=BM/BD
+		s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+		goc=acos(cos_val)*180/pi
+
+		dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+		if dap_an.endswith(",0"):   
+			dap_an = dap_an[:-2]
+			lam_tron=""
+		noi_dung = (
+		f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+		f" Gọi ${{{M}}}$ là trung điểm của ${{AB}}$."
+		f" Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{{E}{F}}}${lam_tron}.")
+		
+		noi_dung_loigiai=(
+		f"Gọi ${{{N}}}$ là trung điểm của ${{AC}}$.\n\n"
+		f"Gọi ${{I}}$ là trung điểm của ${{{M}{N}}}$.\n\n"
+
+		f"${B}{M}={phan_so(BM)}$.\n\n"
+		f"${B}{D}=\\sqrt{{AB^2+A{D}^2}}={latex(nsimplify(BD))}$.\n\n"
+
+		f"$\\cos({D}{B}, {E}{F})=\\cos({D}{B}, {B}{C})=\\cos \\widehat{{{D}{B}{M}}}=\\dfrac{{B{M}}}{{{B}{D}}}"
+		f"=\\dfrac{{{phan_so(BM)}}}{{{latex(nsimplify(BD))}}}={s_cos_val}$.\n\n"
+		f"$\\Rightarrow ({D}{B}, {E}{F})={dap_an}^\\circ$.")	
+	
+
+	
 		
 	debai_word= f"{noi_dung}\n"
 
