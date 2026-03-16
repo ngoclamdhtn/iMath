@@ -3559,23 +3559,23 @@ def npl_mk_L10_C3_B2_26():
 
 #[D10_C3_B2_27]-SA-M3. Tính chiều cao của cổng Parabol
 def npl_mk_L10_C3_B2_27():
+    x=symbols("x")
     A=random.choice(["Nam", "Lam","Nghĩa", "Hà", "Khôi", "Quân", "Xuân", "Tâm", "Hoàng"])
+    
     x1=random.randint(5,20)
     a= random.randint(-5, -1)
     b=-x1*a 
-    x2=random.choice([0.5, 1, 1.5, 1.2, 1.3, 1.4, 1.6])
-    x=symbols("x")
+    x2=random.choice([0.5, 1, 1.5, 1.2, 1.3, 1.4, 1.6])      
 
     c=a*x2**2+b*x2 
     x0=-b/(2*a) 
-    y0=a*x0**2+b*x0 
+    y0=a*x0**2+b*x0
 
     x2=str(x2).replace(".",",")
     c=str(round(c,2)).replace(".",",").replace(",0","")
-    y0=str(round(y0,1)).replace(".",",").replace(",0","")
-    kq=y0
+    kq=f"{round_half_up(y0,0):.0f}".replace(".",",")
 
-    noi_dung = f" Bạn {A} muốn đo chiều cao của một cái cổng hình Parabol. Biết khoảng cách giữa hai chân cổng là ${{{x1}}}$ mét, chiều cao của cổng tính từ điểm trên mặt đất cách chân cổng ${{{x2}}}$m là ${{{c}}}$m. Em hãy giúp {A} tính xem chiều cao của cổng là bao nhiêu. (Chỉ được làm tròn kết quả cuối cùng đến hàng phần mười)."
+    noi_dung = f" Bạn {A} muốn đo chiều cao của một cái cổng hình Parabol. Biết khoảng cách giữa hai chân cổng là ${{{x1}}}$ mét, chiều cao của cổng tính từ điểm trên mặt đất cách chân cổng ${{{x2}}}$m là ${{{c}}}$m. Em hãy giúp {A} tính xem chiều cao của cổng là bao nhiêu. (Chỉ được làm tròn kết quả cuối cùng đến hàng đơn vị)."
 
     noi_dung_loigiai=(f" Chọn hệ trục toạ độ ${{Oxy}}$ sao cho một chân của cổng trùng gốc toạ độ, chân còn lại trên tia ${{Ox}}$. Khi đó cổng là một phần của Parabol có dạng ${{y=ax^{{2}}+bx }}$ \n\n"
     f" Parabol đi qua các điểm có toạ độ $({x2}; {c})$ và $({x1}; 0)$ \n\n nên ta tìm được phương trình là $y={latex(a*x**2+b*x)}$.\n\n"
@@ -3604,8 +3604,8 @@ def npl_mk_L10_C3_B2_28():
     x=symbols("x")
     b=A*(a/2)**2+c
     
-    y0=f"{round(2*sqrt(-c/A),1):.1f}".replace(".",",").replace(",0","")
-    kq=y0
+    y0=2*sqrt(-c/A)
+    kq=f"{round_half_up(y0,0):.0f}".replace(".",",")
     code_hinh=r"""
 
 \begin{tikzpicture}[scale=0.5,thick,>=stealth,font=\footnotesize,cyan]
@@ -3638,8 +3638,6 @@ def npl_mk_L10_C3_B2_28():
     f"\\end{{ex}}\n"
     dap_an= kq
     return debai_word, loigiai_word, latex_tuluan, dap_an    
-
-
 
 
 
