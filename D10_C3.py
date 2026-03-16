@@ -2749,10 +2749,11 @@ def npl_mk_L10_C3_B2_15():
 
 #[D10_C3_B2_16]-SA-M2. Tìm hệ số của hàm bậc hai có tọa độ đỉnh
 def npl_mk_L10_C3_B2_16():
+
     x=sp.symbols("x")
-    a = random.choice([i for i in range(-5, 6) if i!=0])
-    b = random.choice([i for i in range(-7, 7) if i!=0])
-    c = random.choice([i for i in range(-7, 7) if i!=0])
+    a = random.choice([i for i in range(-4, 4) if i!=0])
+    b = random.randint(1,3)*2*a
+    c = random.choice([i for i in range(-5, 5) if i!=0])
     f=a*x**2+b*x+c
 
     points = [chr(i) for i in range(ord('A'), ord('N') + 1)]
@@ -2761,21 +2762,15 @@ def npl_mk_L10_C3_B2_16():
     points.sort()
     A,B=points
 
-    while True:
-            x_1 = random.choice([i for i in range(-5, 6) if i!=0])
-            x_2 = random.choice([i for i in range(-5, 6) if i!=0])
-            if x_1 != x_2:
-                break
-    y_1,y_2=f.subs(x,x_1),f.subs(x,x_2)
-
     m = random.choice([i for i in range(1, 3) if i!=0])
     n = random.choice([i for i in range(-3, 3) if i!=0])
     ta,tb,tc=sp.symbols("a b c")
 
-    x_0=-b/(2*a)
+    x_0=int(-b/(2*a))
     y_0=f.subs(x,x_0)
 
-    chon=random.randint(1,3)    
+    chon=random.randint(1,3)
+    chon=2    
     
     if chon==1:
         
@@ -2788,12 +2783,12 @@ def npl_mk_L10_C3_B2_16():
         noi_dung_loigiai=(
         f"Theo đề bài nên ta có:\n\n"
         f"$\\left\\{{ \\begin{{array}}{{l}} \n\
-        {latex(ta*x_1**2+tb*x_1+c)}={y_1} \\\\ \n\
+        {latex(ta*x_0**2+tb*x_0+c)}={y_0} \\\\ \n\
         {latex(-tb/(2*ta))}={phan_so(x_0)}\n\
         \\end{{array}} \\right.$"
 
         f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
-        {latex(ta*x_1**2+tb*x_1)}={y_1-c} \\\\ \n\
+        {latex(ta*x_0**2+tb*x_0)}={y_0-c} \\\\ \n\
         {latex(-2*ta*x_0-tb)}=0\n\
         \\end{{array}} \\right.$"
 
@@ -2812,14 +2807,14 @@ def npl_mk_L10_C3_B2_16():
         dap_an=m*b+n*c
 
         noi_dung_loigiai=(
-        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"Theo đề bài nên ta có:\n\n"
         f"$\\left\\{{ \\begin{{array}}{{l}} \n\
-        {latex(a*x_1**2+tb*x_1+tc)}={y_1} \\\\ \n\
+        {latex(a*x_0**2+tb*x_0+tc)}={y_0} \\\\ \n\
         {latex(-tb/(2*a))}={phan_so(x_0)}\n\
         \\end{{array}} \\right.$"
 
         f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
-        {latex(tb*x_1+tc)}={y_1-a*x_1**2} \\\\ \n\
+        {latex(tb*x_0+tc)}={y_0-a*x_0**2} \\\\ \n\
         b={b}\n\
         \\end{{array}} \\right.$"
 
@@ -2838,14 +2833,14 @@ def npl_mk_L10_C3_B2_16():
         dap_an=m*a+n*c
 
         noi_dung_loigiai=(
-        f"Đồ thị hàm số đi qua ${A}({x_1};{y_1})$ và ${B}({x_2};{y_2})$ nên ta có:\n\n"
+        f"Theo đề bài nên ta có:\n\n"
         f"$\\left\\{{ \\begin{{array}}{{l}} \n\
-        {latex(ta*x_1**2+b*x_1+tc)}={y_1} \\\\ \n\
+        {latex(ta*x_0**2+b*x_0+tc)}={y_0} \\\\ \n\
         {latex(-b/(2*ta))}={phan_so(x_0)}\n\
         \\end{{array}} \\right.$"
 
         f"$\\Rightarrow \\left\\{{ \\begin{{array}}{{l}} \n\
-        {latex(ta*x_1**2+tc)}={y_1-b*x_1} \\\\ \n\
+        {latex(ta*x_0**2+tc)}={y_0-b*x_0} \\\\ \n\
         a={a}\n\
         \\end{{array}} \\right.$"
 

@@ -3218,7 +3218,7 @@ def uvxy9_L11_C8_B2_26():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
-#[D11_C8_B2_27]-TF-M2.Tìm khẳng định đúng về quan hệ vuông góc và song song.
+#[D11_C8_B2_27]-M2.Tìm khẳng định đúng về quan hệ vuông góc và song song.
 def uvxy9_L11_C8_B2_27():
 	noi_dung=(
 	f"Tìm khẳng định đúng trong các khẳng định sau"
@@ -3280,7 +3280,7 @@ def uvxy9_L11_C8_B2_27():
 
 #[D11_C8_B2_28]-M2. Cho hai đường thẳng a, b và mặt phẳng (P). Tìm quan hệ vuông góc, song song	
 def uvxy9_L11_C8_B2_28():
-	a,b = random.sample(["a","b","c","d"],2)
+	a,b = sorted(random.sample(["a","b","c","d"],2))
 	P=random.choice(["P", "Q", "\\alpha", "\\beta", "\\gamma"])
 	noi_dung=(
 	f"Cho hai đường thẳng phân biệt ${{{a}, {b}}}$ và mặt phẳng ${P}$ trong đó ${a} \\bot ({P})$."
@@ -3291,18 +3291,79 @@ def uvxy9_L11_C8_B2_28():
 	kq=random.choice([
 		f"Nếu ${b} \\bot ({P})$ thì ${a} // {b}$",
 		f"Nếu ${b} // ({P})$ thì ${a} \\bot {b}$",
-		f"Nếu ${b} // {a}$ thì ${b} \\bot {b}$",
+		f"Nếu ${b} // {a}$ thì ${b} \\bot ({P})$",
 		f"Nếu ${b} \\subset ({P})$ thì ${b} \\bot {a}$",
 		])
 	kq_false=[
 	f"Nếu ${a} \\bot {b}$ thì ${b} // ({P})$",
 	f"Nếu ${b} \\subset ({P})$ thì ${b} // {a}$",
+	f"Nếu ${b} \\bot {a}$ thì ${b} \\subset ({P})$",
+	f"Nếu ${{{a}}}$ và ${{{b}}}$ chéo nhau thì ${a} \\bot {b}$"
 	]
 	random.shuffle(kq_false)
 	kq2,kq3,kq4=kq_false[0:3]
 
 	noi_dung_loigiai=(
-	f" "
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B2_29]-M1. Cho a⊥(P), b⊂(P). Tìm khẳng định đúng
+def uvxy9_L11_C8_B2_29():
+	a,b = sorted(random.sample(["a","b","c","d"],2))
+	P=random.choice(["P", "Q", "\\alpha", "\\beta", "\\gamma"])
+	noi_dung=(
+	f"Cho đường thẳng ${{{a}}}$ vuông góc với mặt phẳng $({P})$,"
+	f" đường thẳng ${{{b}}}$ nằm trong mặt phẳng $({P})$."
+	f" Tìm khẳng định đúng?"
+	)
+	
+
+	kq=random.choice([
+		f"${a}\\bot {b}$"])
+	kq_false=[
+	f"${a}//{b}$",
+	f"${a} \\subset ({P})$",
+	f"${{{a}}}$ cắt ${{{b}}}$",
+	f"${{{a},{b}}}$ chéo nhau",
+	f"${a}\\equiv {b}$",
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
 	)
 
 	pa_A= f"*{kq}"
@@ -3317,6 +3378,63 @@ def uvxy9_L11_C8_B2_28():
 	debai= f"{noi_dung}"
 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B2_30]-M1. Cho a⊥(P), b⊥(P). Tìm khẳng định đúng
+def uvxy9_L11_C8_B2_30():
+	a,b = sorted(random.sample(["a","b","c","d"],2))
+	P=random.choice(["P", "Q", "\\alpha", "\\beta", "\\gamma"])
+	noi_dung=(
+	f"Cho hai đường thẳng phân biệt ${{{a}}}$ và ${{{b}}}$ , cùng vuông góc với mặt phẳng $({P})$."
+	f" Tìm khẳng định đúng?")
+
+	kq=random.choice([
+		f"${a}//{b}$",
+		])
+	kq_false=[
+	f"${a}\\bot {b}$",	
+	f"${a} \\subset ({P})$",
+	f"${b} \\subset ({P})$",
+	f"${{{a}}}$ cắt ${{{b}}}$",
+	f"${{{a},{b}}}$ chéo nhau",	
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t   C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	
 	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
 	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"

@@ -8126,9 +8126,21 @@ class Ui_MainWindow(object):
                 L11_C8_B2_0.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B2_0.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C8_B2_0, ["[D11_C8_B2_29]-M1. Cho a⊥(P), b⊂(P). Tìm khẳng định đúng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B2_0, ["[D11_C8_B2_30]-M1. Cho a⊥(P), b⊥(P). Tìm khẳng định đúng."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C8_B2_0, ["[D11_C8_B2_27]-M2. Tìm khẳng định đúng về quan hệ vuông góc và song song."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)         
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked) 
+
+                item = QTreeWidgetItem(L11_C8_B2_0, ["[D11_C8_B2_28]-M2. Cho hai đường thẳng a, b và (P). Tìm quan hệ vuông góc, song song."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)        
 
                 L11_C8_B2_2 = QTreeWidgetItem(L11_C8_B2_TN, ["1. Xác định đường thẳng vuông góc với mặt phẳng"])
                 L11_C8_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -16981,9 +16993,21 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C8_B2_26]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B2_26()
 
-                                            #[D11_C8_B2_27]-M2.   Lý thuyết: Tìm khẳng định đúng về quan hệ vuông góc và song song.
+                                            #[D11_C8_B2_27]-M2. Tìm khẳng định đúng về quan hệ vuông góc và song song.
                                             if dang_toan == "[D11_C8_B2_27]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_27()                              
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_27() 
+
+                                            #[D11_C8_B2_28]-M2. Tìm khẳng định đúng về quan hệ vuông góc và song song.
+                                            if dang_toan == "[D11_C8_B2_28]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_28()
+
+                                            #[D11_C8_B2_29]-M2. Cho a⊥(P), b⊂(P). Tìm khẳng định đúng.
+                                            if dang_toan == "[D11_C8_B2_29]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_29()
+
+                                            #[D11_C8_B2_30]-M2. Cho a⊥(P), b⊥(P). Tìm khẳng định đúng
+                                            if dang_toan == "[D11_C8_B2_30]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_30()                             
                                 
                                             
 

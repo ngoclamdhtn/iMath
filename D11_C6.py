@@ -2104,7 +2104,7 @@ def uz9zu_L11_C6_B2_18():
 
 #[D11_C6_B2_19]-M2. Tìm tính chất đúng về logarit
 def uz9zu_L11_C6_B2_19():
-    a,b=random.sample(["a","b","c"],2)
+    a,b=sorted(random.sample(["a","b","c"],2))
     x,y=random.choice([("x","y"),("y","z"),("x","z"),("u","v") ])
     noi_dung=(
     f"Cho ${a}>0,{a}\\ne 1$, ${{{x},{y}}}$ là các số thực dương, $k \\in \\mathbb{{R}}$."
@@ -2115,7 +2115,7 @@ def uz9zu_L11_C6_B2_19():
     kq=random.choice([
         
 f"\\log_{a}({x}.{y})=\\log_{a} {{{x}}}+\\log_{a} {{{y}}}",
-f"\\log_{a}\\left(\\frac{{x}}{{y}}\\right)=\\log_{a} {{{x}}}-\\log_{a} {{{y}}}",
+f"\\log_{a}\\left(\\frac{{{x}}}{{{y}}}\\right)=\\log_{a} {{{x}}}-\\log_{a} {{{y}}}",
 f"\\log_{a}({x}^k)=k\\log_{a} {{{x}}}",
 f"\\log_{a} {{1}}=0",
 f"\\log_{a} {{{a}}}=1",
