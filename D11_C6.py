@@ -1756,16 +1756,16 @@ def uz9zu_L11_C6_B2_16():
 
     chon=random.randint(1,2)
     if chon==1:
-        kq3_T=f"* $\\log_{a}{b}^{m}+\\log_{{{a}^{n}}}{b}^{p}={phan_so(m+p/n)}\\log_{a}{b}$" 
-        kq3_F=f"$\\log_{a}{b}^{m}+\\log_{{{a}^{n}}}{b}^{p}={phan_so(m-p/n)}\\log_{a}{b}$"
+        kq3_T=f"* $\\log_{a} {{{b}^{m}}}+\\log_{{{a}^{n}}} {{{b}^{p}}}={phan_so(m+p/n)}\\log_{a} {{{b}}}$" 
+        kq3_F=f"$\\log_{a}{{{b}^{m}}}+\\log_{{{a}^{n}}} {{{b}^{p}}}={phan_so(m-p/n)}\\log_{a} {{{b}}}$"
 
-        HDG=f"$\\log_{a}{b}^{m}+\\log_{{{a}^{n}}}{b}^{p}={m}\\log_{a}{b}+\\dfrac{{{p}}}{{{n}}}\\log_{a}{b}={phan_so(m+p/n)}\\log_{a}{b}$."
+        HDG=f"$\\log_{a}{{{b}^{m}}}+\\log_{{{a}^{n}}} {{{b}^{p}}}={m}\\log_{a}{{{b}}}+\\dfrac{{{p}}}{{{n}}}\\log_{a} {{{b}}}={phan_so(m+p/n)}\\log_{a}{{{b}}}$."
 
     if chon==2:
-        kq3_T=f"* $\\log_{a}{b}^{m}-\\log_{{{a}^{n}}}{b}^{p}={phan_so(m-p/n)}\\log_{a}{b}$" 
-        kq3_F=f"$\\log_{a}{b}^{m}-\\log_{{{a}^{n}}}{b}^{p}={phan_so(m+p/n)}\\log_{a}{b}$"
+        kq3_T=f"* $\\log_{a}{{{b}^{m}}}-\\log_{{{a}^{n}}} {{{b}^{p}}}={phan_so(m-p/n)}\\log_{a} {{{b}}}$" 
+        kq3_F=f"$\\log_{a}{{{b}^{m}}}-\\log_{{{a}^{n}}} {{{b}^{p}}}={phan_so(m+p/n)}\\log_{a} {{{b}}}$"
 
-        HDG=f"$\\log_{a}{b}^{m}-\\log_{{{a}^{n}}}{b}^{p}={m}\\log_{a}{b}-\\dfrac{{{p}}}{{{n}}}\\log_{a}{b}={phan_so(m-p/n)}\\log_{a}{b}$."       
+        HDG=f"$\\log_{a}{{{b}^{m}}}-\\log_{{{a}^{n}}} {{{b}^{p}}}={m}\\log_{a} {{{b}}}-\\dfrac{{{p}}}{{{n}}}\\log_{a} {{{b}}}={phan_so(m-p/n)}\\log_{a} {{{b}}}$."       
 
     
     kq3=random.choice([kq3_T, kq3_F])
@@ -1778,28 +1778,28 @@ def uz9zu_L11_C6_B2_16():
     chon=random.randint(1,2)
 
     if chon==1:
-        kq4_T=f"* Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$"
+        kq4_T=f"* Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/2)}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$"
         kq4_F=random.choice([
-            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={random.randint(2,5)}(1+\\log_{k}{a}+\\log_{k}{b})$",
-            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})=({k}+\\log_{k}{a}+\\log_{k}{b})$",
-            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/random.randint(3,6))}(1+\\log_{k}{a}+\\log_{k}{b})$",
+            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={random.randint(2,5)}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$",
+            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})=({k}+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$",
+            f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/random.randint(3,6))}(1+\\log_{k}{{{a}}}+\\log_{k}{{{b}}})$",
             ])
         
         HDG=(f"${a}^2+{b}^2={k-2}{a}{b} \\Rightarrow  {latex((a+b)**2)}={latex(k*a*b)}$\n\n"
-            f"$\\Rightarrow \\log_{k} {latex((a+b)**2)}= \\log_{k}{latex(k*a*b)}\\Rightarrow $"
-            f" $\\log_{k}({a}+{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$.")
+            f"$\\Rightarrow \\log_{k} {{{latex((a+b)**2)}}}= \\log_{k} {{{latex(k*a*b)}}}\\Rightarrow $"
+            f" $\\log_{k} {{({a}+{b})}}={phan_so(1/2)}(1+\\log_{k}{{{a}}}+\\log_{k}{{{b}}})$.")
     
     if chon==2:
         kq4_T=f"* Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$"
         kq4_F=random.choice([
-            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={random.randint(2,5)}(1+\\log_{k}{a}+\\log_{k}{b})$",
-            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})=({k}+\\log_{k}{a}+\\log_{k}{b})$",
-            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={phan_so(1/random.randint(3,6))}(1+\\log_{k}{a}+\\log_{k}{b})$",
+            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={random.randint(2,5)}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$",
+            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})=({k}+\\log_{k} {{{a}+\\log_{k} {{{b}}})$",
+            f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={phan_so(1/random.randint(3,6))}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$",
             ])
         
         HDG=(f"${a}^2+{b}^2={k+2}{a}{b} \\Rightarrow  {latex((a-b)**2)}={latex(k*a*b)}$\n\n"
-            f"$\\Rightarrow \\log_{k} {latex((a-b)**2)}= \\log_{k}{latex(k*a*b)}\\Rightarrow $"
-            f" $\\log_{k}({a}-{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$.")
+            f"$\\Rightarrow \\log_{k} {{{latex((a-b)**2)}}}= \\log_{k} {{{latex(k*a*b)}}}\\Rightarrow $"
+            f" $\\log_{k}({a}-{b})={phan_so(1/2)}(1+\\log_{k}{{{a}}}+\\log_{k}{{{b}}})$.")
     
 
     
@@ -1868,16 +1868,16 @@ def uz9zu_L11_C6_B2_17():
     ham=random.choice(["\\ln", "\\log", f"\\log_{k}" ])
     chon=random.randint(1,2)    
     if chon==1:
-        kq1_T=f"* ${ham} {a}+{ham} {m}={ham} ({m}{a})$" 
-        kq1_F=f"${ham} {a}+{ham} {m}={ham} ({a}+{m})$"
+        kq1_T=f"* ${ham} {{{a}}}+{ham} {{{m}}}={ham} ({m}{a})$" 
+        kq1_F=f"${ham} {{{a}}}+{ham} {{{m}}}={ham} ({a}+{m})$"
         
-        HDG=f"${ham} {a}+{ham} {m}={ham} ({m}{a})$."
+        HDG=f"${ham} {{{a}}}+{ham} {{{m}}}={ham} ({m}{a})$."
     
     if chon==2:
-        kq1_T=f"* ${ham} {a}-{ham} {m}={ham} \\dfrac{{{a}}}{{{m}}}$" 
-        kq1_F=f"${ham} {a}-{ham} {m}={ham} ({a}-{m})$"
+        kq1_T=f"* ${ham} {{{a}}}-{ham} {{{m}}}={ham} \\dfrac{{{a}}}{{{m}}}$" 
+        kq1_F=f"${ham} {{{a}}}-{ham} {{{m}}}={ham} ({a}-{m})$"
         
-        HDG=f"${ham} {a}-{ham} {m}={ham} \\dfrac{{{a}}}{{{m}}}$."
+        HDG=f"${ham} {{{a}}}-{ham} {{{m}}}={ham} \\dfrac{{{a}}}{{{m}}}$."
     
     
     kq1=random.choice([kq1_T, kq1_F])
@@ -1895,9 +1895,9 @@ def uz9zu_L11_C6_B2_17():
         HDG=f"$\\log_{k}({k**m}{a})={m}+\\log_{k} {a}$."
     
     if chon==2:
-        kq2_T=f"* $\\log_{k} \\dfrac{{{k**m}}}{{{a}}}={m}-\\log_{k} {a}$"
-        kq2_F=f"$\\log_{k} \\dfrac{{{k**m}}}{{{a}}}=\\dfrac{{{k**m}}}{{\\log_{k} {a}}}$"        
-        HDG=f"$\\log_{k} \\dfrac{{{k**m}}}{{{a}}}={m}-\\log_{k} {a}$." 
+        kq2_T=f"* $\\log_{k} \\dfrac{{{k**m}}}{{{a}}}={m}-\\log_{k} {{{a}}}$"
+        kq2_F=f"$\\log_{k} \\dfrac{{{k**m}}}{{{a}}}=\\dfrac{{{k**m}}}{{\\log_{k} {{{a}}} }}$"        
+        HDG=f"$\\log_{k} \\dfrac{{{k**m}}}{{{a}}}={m}-\\log_{k} {{{a}}}$." 
     kq2=random.choice([kq2_T, kq2_F])
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq2==kq2_F:
@@ -1909,11 +1909,11 @@ def uz9zu_L11_C6_B2_17():
     m=random.randint(2,4)
     n=random.randint(2,8)
 
-    kq3_T=f"* $\\log_{{{k**m}}} {a}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {k}}}={phan_so(1/m+n)}\\log_{k} {a}$" 
-    kq3_F=f"$\\log_{{{k**m}}} {a}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {k}}}={m+n}\\log_{k} {a}$"
+    kq3_T=f"* $\\log_{{{k**m}}} {{{a}}}+{n}\\dfrac{{\\log_{t} {{{a}}} }}{{\\log_{t} {{{k}}} }}={phan_so(1/m+n)}\\log_{k} {a}$" 
+    kq3_F=f"$\\log_{{{k**m}}} {{{a}}}+{n}\\dfrac{{\\log_{t} {{{a}}} }}{{\\log_{t} {{{k}}}}}={m+n}\\log_{k} {a}$"
     
-    HDG=(f"$\\log_{{{k**m}}} {a}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {k}}}={phan_so(1/m)}\\log_{k}{a}+{n}\\log_{k}{a}$"
-        f" $={phan_so(1/m+n)}\\log_{k} {a}$.")
+    HDG=(f"$\\log_{{{k**m}}} {{{a}}}+{n}\\dfrac{{\\log_{t} {a}}}{{\\log_{t} {{{k}}} }}={phan_so(1/m)}\\log_{k} {{{a}}}+{n}\\log_{k} {{{a}}}$"
+        f" $={phan_so(1/m+n)}\\log_{k} {{{a}}}$.")
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
@@ -1996,14 +1996,14 @@ def uz9zu_L11_C6_B2_18():
 
     chon=random.randint(1,2)    
     if chon==1:
-        kq1_T=f"* $\\dfrac{{1}}{{\\log_{a}{b}}}=\\log_{b}{a}$" 
-        kq1_F=f"$\\dfrac{{1}}{{\\log_{a}{b}}}=\\log_{a}{phan_so(1/b)}$"    
-        HDG=f"$\\dfrac{{1}}{{\\log_{a}{b}}}=\\log_{b}{a}$."
+        kq1_T=f"* $\\dfrac{{1}}{{\\log_{a} {{{b}}} }}=\\log_{b} {{{a}}}$" 
+        kq1_F=f"$\\dfrac{{1}}{{\\log_{a} {{{b}}} }}=\\log_{a} {{{phan_so(1/b)}}}$"    
+        HDG=f"$\\dfrac{{1}}{{\\log_{a} {{{b}}} }}=\\log_{b} {{{a}}}$."
     
     if chon==2:
-        kq1_T=f"* $\\dfrac{{1}}{{\\log_{a}{c}}}=\\log_{c}{a}$" 
-        kq1_F=f"$\\dfrac{{1}}{{\\log_{a}{c}}}=\\log_{a}{phan_so(1/c)}$"    
-        HDG=f"$\\dfrac{{1}}{{\\log_{a}{c}}}=\\log_{c}{a}$."
+        kq1_T=f"* $\\dfrac{{1}}{{\\log_{a} {{{c}}} }}=\\log_{c} {{{a}}}$" 
+        kq1_F=f"$\\dfrac{{1}}{{\\log_{a} {{{c}}} }}=\\log_{a} {{{phan_so(1/c)}}}$"    
+        HDG=f"$\\dfrac{{1}}{{\\log_{a} {{{c}}} }}=\\log_{c} {{{a}}}$."
         
     kq1=random.choice([kq1_T, kq1_F])
     loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -2012,14 +2012,14 @@ def uz9zu_L11_C6_B2_18():
 
     chon=random.randint(1,2)
     if chon==1:
-        kq2_T=f"* $\\dfrac{{a}}{{b}}=\\log_{c}{b}$"
-        kq2_F=f"$\\dfrac{{a}}{{b}}=\\log_{b}{c}$"    
-        HDG=f"$\\dfrac{{a}}{{b}}=\\dfrac{{\\log_{a}{b}}}{{\\log_{a}{c}}}=\\log_{c}{b}$."
+        kq2_T=f"* $\\dfrac{{a}}{{b}}=\\log_{c} {{{b}}}$"
+        kq2_F=f"$\\dfrac{{a}}{{b}}=\\log_{b} {{{c}}}$"    
+        HDG=f"$\\dfrac{{a}}{{b}}=\\dfrac{{\\log_{a} {{{b}}} }}{{\\log_{a} {{{c}}} }}=\\log_{c} {{{b}}}$."
     
     if chon==2:
-        kq2_T=f"* $\\dfrac{{b}}{{a}}=\\log_{b}{c}$"
-        kq2_F=f"$\\dfrac{{b}}{{a}}=\\log_{c}{b}$"    
-        HDG=f"$\\dfrac{{b}}{{a}}=\\dfrac{{\\log_{a}{c}}}{{\\log_{a}{b}}}=\\log_{b}{c}$."
+        kq2_T=f"* $\\dfrac{{b}}{{a}}=\\log_{b} {{{c}}}$"
+        kq2_F=f"$\\dfrac{{b}}{{a}}=\\log_{c} {{{b}}}$"    
+        HDG=f"$\\dfrac{{b}}{{a}}=\\dfrac{{\\log_{a} {{{c}}} }}{{\\log_{a}{{{b}}} }} =\\log_{b} {{{c}}}$."
     
     kq2=random.choice([kq2_T, kq2_F])
     loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
@@ -2028,10 +2028,10 @@ def uz9zu_L11_C6_B2_18():
 
     k=random.randint(2,10)
 
-    kq3_T=f"* $\\log_{{{b*c}}}{a**k}=\\dfrac{{{k}}}{{a+b}}$" 
-    kq3_F=f"$\\log_{{{b*c}}}{a**k}=\\dfrac{{{k+random.randint(1,2)}}}{{a+b}}$"    
-    HDG=(f"$\\log_{{{b*c}}}{a**k}={k}\\log_{{{b*c}}}{a}={k}\\dfrac{{1}}{{\\log_{a} {b*c} }}$"
-    f"$=\\dfrac{{{k}}}{{\\log_{a}{b}+\\log_{a}{c}}}=\\dfrac{{{k}}}{{a+b}}$.")
+    kq3_T=f"* $\\log_{{{b*c}}} {{{a**k}}}=\\dfrac{{{k}}}{{a+b}}$" 
+    kq3_F=f"$\\log_{{{b*c}}} {{{a**k}}}=\\dfrac{{{k+random.randint(1,2)}}}{{a+b}}$"    
+    HDG=(f"$\\log_{{{b*c}}} {{{a**k}}}={k}\\log_{{{b*c}}} {{{a}}}={k}\\dfrac{{1}}{{\\log_{a} {{{b*c}}} }}$"
+    f"$=\\dfrac{{{k}}}{{\\log_{a} {{{b}}}+\\log_{a} {{{c}}}}} =\\dfrac{{{k}}}{{a+b}}$.")
     kq3=random.choice([kq3_T, kq3_F])
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
@@ -2046,7 +2046,7 @@ def uz9zu_L11_C6_B2_18():
     kq4_T=f"* Biết $\\log_{a}{latex(a**m*b**n*c**p)}=m+na+pb$. Khi đó ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$"
     kq4_F=f"Biết $\\log_{a}{latex(a**m*b**n*c**p)}=m+na+pb$. Khi đó ${latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an+random.randint(1,3)}$" 
     
-    HDG=(f"$\\log_{a}{latex(a**m*b**n*c**p)}=\\log_{a}({a}^{m}.{b}^{n}.{c}^{p})={m}+{n}\\log_{a}{b}+{p}\\log_{a}{c}$.\n\n"
+    HDG=(f"$\\log_{a} {{{latex(a**m*b**n*c**p)}}}=\\log_{a}({a}^{m}.{b}^{n}.{c}^{p})={m}+{n}\\log_{a} {{{b}}}+{p}\\log_{a} {{{c}}}$.\n\n"
     f"$\\Rightarrow {latex(t_1*s_m+t_2*s_n+t_3*s_p)}={dap_an}$.") 
 
     kq4=random.choice([kq4_T, kq4_F])
@@ -2114,12 +2114,12 @@ def uz9zu_L11_C6_B2_19():
 
     kq=random.choice([
         
-f"\\log_{a}({x}.{y})=\\log_{a}{x}+\\log_{a}{y}",
-f"\\log_{a}\\left(\\frac{{x}}{{y}}\\right)=\\log_{a}{x}-\\log_{a}{y}",
-f"\\log_{a}({x}^k)=k\\log_{a}{x}",
-f"\\log_{a}1=0",
-f"\\log_{a}{a}=1",
-f"{a}^{{\\log_{a}{x}}}={x}",
+f"\\log_{a}({x}.{y})=\\log_{a} {{{x}}}+\\log_{a} {{{y}}}",
+f"\\log_{a}\\left(\\frac{{x}}{{y}}\\right)=\\log_{a} {{{x}}}-\\log_{a} {{{y}}}",
+f"\\log_{a}({x}^k)=k\\log_{a} {{{x}}}",
+f"\\log_{a} {{1}}=0",
+f"\\log_{a} {{{a}}}=1",
+f"{a}^{{\\log_{a} {{{x}}} }}={x}",
 f"\\log_{a}({a}^{x})={x}",
 f"\\log_{a}{x}=\\dfrac{{\\ln {x}}}{{\\ln {a}}}",
 f"\\log_{a}{x}=\\dfrac{{\\log_{b}{x}}}{{\\log_{b}{a}}}, ({b}>0,{b}\\ne 1)",
@@ -2127,10 +2127,10 @@ f"\\log_{a}{x}=\\dfrac{{1}}{{\\log_{x}{a}}}"
         ])
 
     kq_false=[
-f"\\log_{a}({x}+{y})=\\log_{a}{x}+\\log_{a}{y}",
-f"\\log_{a}({x}-{y})=\\log_{a}{x}-\\log_{a}{y}",
-f"\\log_{a}({x}.{y})=\\log_{a}{x}.\\log_{a}{y}",
-f"\\log_{a}\\left(\\dfrac{{x}}{{y}}\\right)=\\frac{{\\log_{a}{x}}}{{\\log_{a}{y}}}",
+f"\\log_{a}({x}+{y})=\\log_{a} {{{x}}}+\\log_{a} {{{y}}}",
+f"\\log_{a}({x}-{y})=\\log_{a} {{{x}}}-\\log_{a} {{{y}}}",
+f"\\log_{a}({x}.{y})=\\log_{a} {{{x}}}.\\log_{a} {{{y}}}",
+f"\\log_{a}\\left(\\dfrac{{x}}{{y}}\\right)=\\frac{{\\log_{a} {{{x}}}}} {{\\log_{a} {{{y}}}}}",
 f"\\log_{a}({x}^k)=\\log_{a}{x}^k",
 f"\\log_{a}({x}^k)=k+\\log_{a}{x}",
 f"\\log_{a}{x}=\\dfrac{{\\ln {a}}}{{\\ln {x}}}",
@@ -2555,7 +2555,7 @@ def uz9zu_L11_C6_B3_06():
     random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
     noi_dung= f"Tìm tập xác định của hàm số $y=\\log_{{{n}}}({latex(f)})$."
     debai= f"{noi_dung}\n"
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     dap_an=my_module.tra_ve_dap_an(list_PA)
 
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -6346,6 +6346,68 @@ def uz9zu_L11_C6_B4_25():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C6_B4_26]-SA-M2. Giải phương trình m^(ax^2+bx+c)=m^(dx+e)
+def uz9zu_L11_C6_B4_26():
+    x=sp.symbols("x")
+    while True:
+        m=random.randint(2,5)
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.choice([i for i in range(-5, 6) if i!=0])
+        d = random.choice([i for i in range(-5, 6) if i!=0])
+        e = random.choice([i for i in range(-5, 6) if i!=0])
+        if b-d==0 or c-e==0:
+            continue
+
+        f_1 = a*x**2+b*x+c
+        f_2 = d*x+e
+
+        a1, b1, c1 = a, b-d, c-e
+        delta = b1**2-4*a1*c1
+        if delta<=0:
+            continue
+        x_1, x_2= sorted([(-b1-sqrt(delta))/(2*a1), (-b1+sqrt(delta))/(2*a1)])
+
+        p = random.choice([i for i in range(-3, 4) if i!=0])
+        q = random.choice([i for i in range(-3, 4) if i!=0])
+        tong=p*x_1+q*x_2
+
+        if tong>-5:
+            break
+
+
+    T=f"{p}x_1+{q}x_2".replace("1x","x").replace("+-","-")
+    
+    
+
+    dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung = (
+    f"Gọi $x_1,x_2 (x_1<x_2)$ là các nghiệm của phương trình ${latex(m**f_1)}={latex(m**f_2)}$. "
+    f"Tính ${T}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+ 
+
+    noi_dung_loigiai=(
+    f"${latex(m**f_1)}={latex(m**f_2)}\\Rightarrow {latex(f_1)}={latex(f_2)} \\Rightarrow {latex(a1*x**2+b1*x+c1)}=0$\n\n"
+    f"$\\Rightarrow x_1={latex(x_1)}, x_2={latex(x_2)}$.\n\n"
+    f"${T}={dap_an}$."
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 
 
 
@@ -8064,7 +8126,181 @@ def uz9zu_L11_C6_B5_20():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C6_B5_21]-TF-M2. Cho y=log_a(mx+n). Đ-S: TXD, Tính đơn điệu, log_a(mx+n)=b, log_a(mx+n)<c
+def uz9zu_L11_C6_B5_21():
+    x=sp.symbols("x")
+    a=random.randint(2,7)
+    m = random.choice([i for i in range(-5, 6) if i!=0])
+    n = random.choice([i for i in range(-5, 6) if i!=0])
 
+    f=n*x-m
+
+    noi_dung = (
+    f"Cho hàm số $y=\\log_{a} {{({latex(f)})}}$."
+    f" Xét tính đúng-sai của các khẳng định sau:")    
+
+    if n>0:
+        D=f"({phan_so(m/n)};+\\infty)"
+        nghiem=f"x>{phan_so(m/n)}"
+
+        D_f=random.choice([
+        f"(-\\infty;{phan_so(m/n)})",
+        f"\\mathbb{{R}} \\backslash \\left\\{{{phan_so(m/n)}\\right\\}}" ,
+        f"[{phan_so(m/n)};+\\infty)"])
+
+    else:
+        D=f"(-\\infty;{phan_so(m/n)})"
+        nghiem=f"x<{phan_so(m/n)}"
+
+        D_f=random.choice([
+        f"(-\\infty;{phan_so(m/n)}]",
+        f"({phan_so(m/n)};+\\infty)",
+        f"\\mathbb{{R}} \\backslash \\left\\{{{phan_so(m/n)}\\right\\}}" ,
+        f"[{phan_so(m/n)};+\\infty)"])
+
+    
+    kq1_T=f"* Tập xác định của hàm số là $D={D}$" 
+    kq1_F=f"Tập xác định của hàm số là $D={D_f}$"
+    
+    HDG=(f"Hàm số xác định khi ${latex(n*x-m)}>0 \\Rightarrow {nghiem}$.\n\n"
+        f"Tập xác định: $D={D}$.")
+    kq1=random.choice([kq1_T, kq1_F])
+    loigiai_1=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1==kq1_F:
+        loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    if n>0:
+        kq2_T=f"* Hàm số đồng biến trên khoảng $({phan_so(m/n)};+\\infty)$"
+        kq2_F=f"Hàm số nghịch biến trên khoảng $({phan_so(m/n)};+\\infty)$"
+        HDG=f"Hàm số đồng biến trên khoảng $({phan_so(m/n)};+\\infty)$."
+    else:
+        kq2_T=f"* Hàm số nghịch biến trên khoảng $(-\\infty;{phan_so(m/n)})$"
+        kq2_F=f"Hàm số đồng biến trên khoảng $(-\\infty;{phan_so(m/n)})$"
+        HDG=f"Hàm số nghịch biến trên khoảng $(-\\infty;{phan_so(m/n)})$."    
+    
+    kq2=random.choice([kq2_T, kq2_F])
+    loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2==kq2_F:
+        loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    b=random.randint(-2,4)
+    x_0=(a**b+m)/n
+    S=f"\\left\\{{{phan_so(x_0)} \\right\\}}"
+
+    S_f=random.choice([
+        f"\\mathbb{{R}} \\backslash \\left\\{{{phan_so(x_0)} \\right\\}}",
+        f"\\left({phan_so(x_0)};+\\infty \\right)",
+        f"\\left(-\\infty; {phan_so(x_0)}\\right)"
+         ])
+    kq3_T=f"* Tập nghiệm của phương trình $\\log_{a} {{({latex(f)})}}={b}$ là $S={S}$" 
+    kq3_F=f"Tập nghiệm của phương trình $\\log_{a} {{({latex(f)})}}={b}$ là $S={S_f}$"
+    
+    HDG=(f"$\\log_{a} {{({latex(f)})}}={b} \\Rightarrow x={phan_so(x_0)}$.\n\n"
+        f"Tập nghiệm: $S={S}$.")
+    kq3=random.choice([kq3_T, kq3_F])
+    loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3==kq3_F:
+        loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    while True:
+        b=random.randint(1,5)
+        x_0=(a**b+m)/n
+        if x_0 != m/n:
+            break
+    if n>0:
+        nghiem=f"$x<{phan_so(x_0)}$"
+        if x_0>m/n:
+            
+            S=f"({phan_so(m/n)};{phan_so(x_0)})"
+
+            S_f=random.choice([
+                f"({phan_so(x_0)};+\\infty)",
+                "\\emptyset",
+                f"(\\infty;{phan_so(x_0)})",
+                 f"({phan_so(m/n)};+\\infty)", ])
+        else:
+            S="\\emptyset"
+            S_f=random.choice([
+                f"({phan_so(x_0)};+\\infty)",
+                f"({phan_so(m/n)};+\\infty)",
+                f"(\\infty;{phan_so(x_0)})", ])
+    else:
+        nghiem=f"$x>{phan_so(x_0)}$"
+        if x_0<m/n:
+            S=f"({phan_so(x_0)};{phan_so(m/n)})"
+            S_f=random.choice([
+                f"({phan_so(x_0)};+\\infty)",
+                "\\emptyset",
+                f"(\\infty;{phan_so(x_0)})",
+                 f"({phan_so(m/n)};+\\infty)", ])
+        else:
+            S="\\emptyset"
+            S_f=random.choice([
+                f"({phan_so(x_0)};+\\infty)",
+                f"({phan_so(m/n)};+\\infty)",
+                f"(\\infty;{phan_so(x_0)})", ])
+
+
+    kq4_T=f"* Tập nghiệm của phương trình $\\log_{a} {{({latex(f)})}}<{b}$ là $S={S}$"
+    kq4_F=f"Tập nghiệm của phương trình $\\log_{a} {{({latex(f)})}}<{b}$ là $S={S_f}$"      
+
+
+    
+    HDG=(f"$\\log_{a} {{({latex(f)})}}<{b} \\Rightarrow$ {nghiem}.\n\n"
+        f"Kết hợp điều kiện ta được tập nghiệm: $S={S}$.")
+    kq4=random.choice([kq4_T, kq4_F])
+    loigiai_4=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4==kq4_F:
+        loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    #Trộn các phương án
+    list_PA =[kq1, kq2, kq3, kq4]
+    #random.shuffle(list_PA)
+    list_TF=my_module.tra_ve_TF(list_PA)
+
+    debai= f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+    loigiai=[]
+    for pa in list_PA:
+        if pa==kq1:
+            loigiai.append(loigiai_1)
+        if pa==kq2:
+            loigiai.append(loigiai_2)
+        if pa==kq3:
+            loigiai.append(loigiai_3)
+        if pa==kq4:
+            loigiai.append(loigiai_4)
+
+
+    noi_dung_loigiai=(f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+    f"\n\n a) {loigiai[0]}\n"
+    f"b) {loigiai[1]}\n"
+    f"c) {loigiai[2]}\n"
+    f"d) {loigiai[3]}\n")
+
+    loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex=(f"\n\n a) {loigiai[0]}\n\n"
+    f"b) {loigiai[1]}\n\n"
+    f"c) {loigiai[2]}\n\n"
+    f"d) {loigiai[3]}\n\n")
+
+    #Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n")
+
+    dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
+
+    return debai,debai_latex,loigiai_word,dap_an
     
 
 
@@ -8671,8 +8907,8 @@ def uz9zu_L11_C6_B6_08():
     s_a=f"{round_half_up(a,2):.2f}".replace(".",",")
     s_a_f=f"{round_half_up(a+random.randint(2,5),2):.2f}".replace(".",",")
 
-    kq4_T=f"* Để nhận được số tiền {b} triệu sau {n_thang} với lãi suất như trên thì ban đầu {ten_thuong} cần gửi ít nhất {s_a} triệu"
-    kq4_F=f"Để nhận được số tiền {b} triệu sau {n_thang} với lãi suất như trên thì ban đầu {ten_thuong} cần gửi ít nhất {s_a_f} triệu"
+    kq4_T=f"* Để nhận được số tiền {b} triệu sau {n_thang} tháng với lãi suất như trên thì ban đầu {ten_thuong} cần gửi ít nhất {s_a} triệu"
+    kq4_F=f"Để nhận được số tiền {b} triệu sau {n_thang} tháng với lãi suất như trên thì ban đầu {ten_thuong} cần gửi ít nhất {s_a_f} triệu"
     
     HDG=(f"Gọi ${{a}}$ là số tiền ban đầu cần gửi.\n\n"
         f"$a(1+{s_r_quy})^{{{n_quy}}}={b}\\Rightarrow a= \\dfrac{{{b}}}{{(1+{s_r_quy})^{{{n_quy}}}}}={s_a}$ triệu đồng.")

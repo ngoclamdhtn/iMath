@@ -483,21 +483,24 @@ def newy25_L12_C6_B1_06():
 
 #[D12_C6_B1_07]-SA-M3. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)|B)
 def newy25_L12_C6_B1_07():
+    while True:
 
-    p_a=random.randint(10,80)/100
-    st_p_a=f"{round(p_a,2):.2f}".replace(".",",")
+        p_a=random.randint(10,80)/100
+        st_p_a=f"{round(p_a,2):.2f}".replace(".",",")
 
-    b=random.randint(50,80)
-    p_b=b/100
-    while p_b==p_a:
-        p_b=random.randint(10,80)/100        
-    st_p_b=f"{round(p_b,2):.2f}".replace(".",",")
+        b=random.randint(50,80)
+        p_b=b/100
+        while p_b==p_a:
+            p_b=random.randint(10,80)/100        
+        st_p_b=f"{round(p_b,2):.2f}".replace(".",",")
 
-    p_ab=(b-random.randint(5,30))/100
-    st_p_ab=f"{round(p_ab,2):.2f}".replace(".",",")
+        p_ab=(b-random.randint(5,30))/100
+        st_p_ab=f"{round(p_ab,2):.2f}".replace(".",",")
 
-    p_a_dk_b=p_ab/p_b
-    st_p_a_dk_b=f"{round(p_a_dk_b,2):.2f}".replace(".",",")
+        p_a_dk_b=p_ab/p_b
+        st_p_a_dk_b=f"{round(p_a_dk_b,2):.2f}".replace(".",",")
+        if p_ab<p_a and p_ab<p_b:
+            break
 
 
     noi_dung=(

@@ -4364,7 +4364,8 @@ def aaa_pry_L10_C7_B3_08():
         a = random.choice([i for i in range(-8, 8) if i!=0])
         b = random.choice([i for i in range(-8, 8) if i!=0])            
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=1,2*d-a,d**2-b        
+        a1, b1, c1=1, 2*d-a, d**2-b   
+
         delta=b1**2-4*a1*c1
         if delta<=0:
             continue
@@ -4446,8 +4447,9 @@ def aaa_pry_L10_C7_B3_09():
         a = random.choice([i for i in range(-8, 8) if i!=0])
         b = random.choice([i for i in range(-8, 8) if i!=0])            
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=1, 2*d-a, d**2-b        
+        a1,b1,c1= 1, 2*d-a, d**2-b        
         delta = b1**2-4*a1*c1
+
         if delta<=0:
             continue
         x_1=(-b1-sqrt(delta))/(2*a1)
@@ -4531,8 +4533,9 @@ def aaa_pry_L10_C7_B3_10():
         a = random.choice([i for i in range(-8, 8) if i!=0])
         b = random.choice([i for i in range(-8, 8) if i!=0])            
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=1,2*d-a,d**2-b        
+        a1, b1, c1= 1, 2*d-a, d**2-b        
         delta=b1**2-4*a1*c1
+
         if delta<=0:
             continue
         x_1=(-b1-sqrt(delta))/(2*a1)
@@ -4661,16 +4664,18 @@ def aaa_pry_L10_C7_B3_11():
         b = random.choice([i for i in range(-8, 8) if i!=0])
         c = random.choice([i for i in range(-4, 5) if i!=0])         
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=c, 2*c*d-a, d**2-b      
+        a1, b1, c1 = c**2, 2*c*d-a, d**2-b 
+
         delta=b1**2-4*a1*c1
+
         if delta<=0:
             continue
-        x_1=(-b1-sqrt(delta))/(2*a1)
-        x_2=(-b1+sqrt(delta))/(2*a1)
+        x_1,x_2=sorted([(-b1-sqrt(delta))/(2*a1), (-b1+sqrt(delta))/(2*a1)])
+
         f,g = a*x+b, c*x+d
         g_1,g_2=g.subs(x,x_1), g.subs(x,x_2)
 
-        if all([delta>0,g_1>=0,g_2>=0]):
+        if all([g_1>=0,g_2>=0]):
             break  
      
 
@@ -4680,12 +4685,20 @@ def aaa_pry_L10_C7_B3_11():
         
     noi_dung=noi_dung.replace("--","+")
 
-    noi_dung+=  f"Xét tính đúng-sai của các khẳng định sau:"  
+    chon=random.randint(1,2)
+    if chon==1:
+        kq1_T=f"* Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$" 
+        kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\le 0$"
+        
+        HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$."
     
-    kq1_T=f"* Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$" 
-    kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\le 0$"
-    
-    HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${c}x_0+{d}\\ge 0$."
+    if chon==2:
+        kq1_T=f"* Nếu $x_0$ là một nghiệm của phương trình (1) thì ${a}x_0+{b}\\ge 0$" 
+        kq1_F=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${a}x_0+{b}\\le 0$"
+        
+        HDG=f"Nếu $x_0$ là một nghiệm của phương trình (1) thì ${a}x_0+{b}\\ge 0$."
+            
+
     HDG=thay_dau_congtru(HDG)
     kq1=random.choice([kq1_T, kq1_F])
     kq1=thay_dau_congtru(kq1)
@@ -4791,8 +4804,9 @@ def aaa_pry_L10_C7_B3_12():
         b = random.choice([i for i in range(-8, 8) if i!=0])
         c = random.choice([i for i in range(-4, 5) if i!=0])         
         d = random.choice([i for i in range(-8, 8) if i!=0])       
-        a1,b1,c1=c, 2*c*d-a, d**2-b      
+        a1, b1, c1=c**2, 2*c*d-a, d**2-b      
         delta=b1**2-4*a1*c1
+
         if delta<=0:
             continue
         x_1=(-b1-sqrt(delta))/(2*a1)

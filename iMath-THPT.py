@@ -7442,6 +7442,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_26]-SA-M2. Giải phương trình m^(ax^2+bx+c)=m^(dx+e)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_14]-SA-M2. Giải phương trình a^nx-a^m=0"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7542,6 +7546,10 @@ class Ui_MainWindow(object):
                 L11_C6_B5_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_10]-TF-M2. Tạo câu Đ-S: BPT chứa a^x"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B5_2, ["[D11_C6_B5_21]-TF-M2. Cho y=log_a(mx+n). Đ-S: TXD, Tính đơn điệu, log_a(mx+n)=b, log_a(mx+n)<c"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8112,7 +8120,15 @@ class Ui_MainWindow(object):
 
                 L11_C8_B2_TN = QTreeWidgetItem(L11_C8_B2, ["Trắc nghiệm"])
                 L11_C8_B2_TN.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C8_B2_TN.setCheckState(0, Qt.CheckState.PartiallyChecked)             
+                L11_C8_B2_TN.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C8_B2_0 = QTreeWidgetItem(L11_C8_B2_TN, ["0. Câu hỏi lý thuyết"])
+                L11_C8_B2_0.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C8_B2_0.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B2_0, ["[D11_C8_B2_27]-M2. Tìm khẳng định đúng về quan hệ vuông góc và song song."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)         
 
                 L11_C8_B2_2 = QTreeWidgetItem(L11_C8_B2_TN, ["1. Xác định đường thẳng vuông góc với mặt phẳng"])
                 L11_C8_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -8151,6 +8167,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C8_B2_3, ["[D11_C8_B2_23]-M2.  Cho hình lập phương. Tìm cặp đường thẳng vuông góc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B2_3, ["[D11_C8_B2_24]-M2.  Cho hình hộp chữ nhật. Tìm cặp đường thẳng vuông góc."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8223,6 +8243,18 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C8_B2_1, ["[D11_C8_B2_21]-TF-M2. S.ABCD: ABCD h.vuông. Xét Đ-S: Hình chiếu của đường lên mặt, đường vuông góc đường, đường vuông góc mặt, góc giữa 2 đường."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C8_B2_3 = QTreeWidgetItem(L11_C8_B2, ["Trả lời ngắn"])
+                L11_C8_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C8_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B2_3, ["[D11_C8_B2_25]-SA-M2. H. chóp đều S.ABCD. Tính diện tích hình chiếu của SAB lên (ABCD)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B2_3, ["[D11_C8_B2_26]-SA-M3. H. chóp đều S.ABCD. Tính diện tích hình chiếu của OBC lên (SBC)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8395,7 +8427,7 @@ class Ui_MainWindow(object):
 
 
 
-                L11_C8_B5 = QTreeWidgetItem(L11_C8, ["Bài 5 - Góc."])
+                L11_C8_B5 = QTreeWidgetItem(L11_C8, ["Bài 5 - Góc"])
                 L11_C8_B5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B5.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8452,7 +8484,23 @@ class Ui_MainWindow(object):
                 L11_C8_B5_3_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B5_3_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B5_3_3, ["[D11_C8_B5_10]-SA-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng."])
+                item = QTreeWidgetItem(L11_C8_B5_3_3, ["[D11_C8_B5_10]-SA-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng (TH1)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B5_3_3, ["[D11_C8_B5_11]-SA-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng (TH2)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B5_3_3, ["[D11_C8_B5_12]-SA-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng (TH3)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B5_3_3, ["[D11_C8_B5_13]-SA-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng (TH4)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B5_3_3, ["[D11_C8_B5_14]-SA-M3. Ltr xiên, tam giác vuông. Tìm góc giữa 2 đường thẳng AA' và B'C'."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
         
@@ -11544,7 +11592,7 @@ class Ui_MainWindow(object):
                 L12_C6_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C6_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_07]-SA-M3. Cho P(A),P(B) và P(A|B). Tính xác suất P(ngang(A)|B)"])
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_07]-SA-M3. Cho P(A),P(B) và P(AB). Tính xác suất P(A_|B)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16629,7 +16677,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N.
                                             if dang_toan == "[D11_C6_B4_25]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_25()                              
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_25()
+
+                                            #[D11_C6_B4_26]-SA-M2. Giải phương trình m^(ax^2+bx+c)=m^(dx+e)
+                                            if dang_toan == "[D11_C6_B4_26]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_26()                              
                                                 
 
                                 #BÀI 5 - BẤT PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT
@@ -16721,6 +16773,10 @@ class Ui_MainWindow(object):
                                             #[D11_C6_B5_20]. Bất phương trình e^x>b
                                             if dang_toan == "[D11_C6_B5_20]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B5_20()
+
+                                            #[D11_C6_B5_21]-TF-M2. Cho y=log_a(mx+n). Đ-S: TXD, Tính đơn điệu, log_a(mx+n)=b, log_a(mx+n)<c
+                                            if dang_toan == "[D11_C6_B5_21]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D11_C6.uz9zu_L11_C6_B5_21()
                               
 
 
@@ -16911,7 +16967,23 @@ class Ui_MainWindow(object):
 
                                             #[D11_C8_B2_23]-M2.  Cho hình lập phương. Tìm cặp đường thẳng vuông góc.
                                             if dang_toan == "[D11_C8_B2_23]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_23()                                  
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_23()
+
+                                            #[D11_C8_B2_24]-M2.  Cho hình hộp chữ nhật. Tìm cặp đường thẳng vuông góc.
+                                            if dang_toan == "[D11_C8_B2_24]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_24()
+
+                                            #[D11_C8_B2_25]-SA-M2. Cho hình chóp đều S.ABCD. Tính diện tích hình chiếu của SAB lên (ABCD).
+                                            if dang_toan == "[D11_C8_B2_25]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B2_25()
+
+                                            #[D11_C8_B2_26]-SA-M2. Cho hình chóp đều S.ABCD. Tính diện tích hình chiếu của OBC lên (SBC).
+                                            if dang_toan == "[D11_C8_B2_26]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B2_26()
+
+                                            #[D11_C8_B2_27]-M2.   Lý thuyết: Tìm khẳng định đúng về quan hệ vuông góc và song song.
+                                            if dang_toan == "[D11_C8_B2_27]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B2_27()                              
                                 
                                             
 
@@ -17151,9 +17223,25 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C8_B5_09]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B5_09()
 
-                                            #[D11_C8_B5_10]-M2. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
+                                            #[D11_C8_B5_10]-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH1
                                             if dang_toan == "[D11_C8_B5_10]":                                       
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B5_10()
+
+                                            #[D11_C8_B5_11]-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH2
+                                            if dang_toan == "[D11_C8_B5_11]":                                       
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B5_11()
+
+                                            #[D11_C8_B5_12]-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH3
+                                            if dang_toan == "[D11_C8_B5_12]":                                       
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B5_12()
+
+                                            #[D11_C8_B5_13]-M2. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH4
+                                            if dang_toan == "[D11_C8_B5_13]":                                       
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B5_13()
+
+                                            #[D11_C8_B5_14]-M2. Ltr xiên, tam giác vuông. Tìm góc giữa 2 đường thẳng AA' và B'C'
+                                            if dang_toan == "[D11_C8_B5_14]":                                       
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B5_14()
 
                                                 
                                             #Bài 6: THỂ TÍCH
@@ -21641,6 +21729,9 @@ class Ui_MainWindow(object):
         
         #Tao ma tran
         def get_chi_muc(self, item, column):
+                if item.childCount() > 0:
+                        return
+                text = item.text(0)
                 if item.checkState(0) == Qt.CheckState.Checked:
                     name = item.text(0)  # Lấy nội dung cột 0 (tên)
                     if name[0]=="[":
@@ -21747,10 +21838,17 @@ class Ui_MainWindow(object):
                                 item.setTextAlignment(Qt.AlignCenter)
                                 self.tableWidget.setItem(row_count, 2, item)
 
+                else:  # bỏ tick
+                        for row in range(self.tableWidget.rowCount()):
+                            it = self.tableWidget.item(row, 0)
+                            if it and it.text() == text:
+                                self.tableWidget.removeRow(row)
+                                break
 
-                    for row in range(self.tableWidget.rowCount()):
-                        item = self.tableWidget.item(row, 0)
-                        item.setBackground(QtGui.QColor(251, 243, 221))               
+
+                for row in range(self.tableWidget.rowCount()):
+                    item = self.tableWidget.item(row, 0)
+                    item.setBackground(QtGui.QColor(251, 243, 221))               
                     self.thongke()                 
                 return
                             
@@ -23258,73 +23356,10 @@ class Ui_MainWindow(object):
                         show_msg_box.exec_()
                 return
 
-        #Chọn các thư mục con khi thư mục mẹ được chọn        
-        # def handleItemChanged(self, item, column):
-        #         if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:
-        #             # If the item is user checkable, update its children
-        #             self.updateChildren(item)
-        #         return
-
-        #Chọn ngẫu nhiên mục con khi chọn mục mẹ
-        # def handleItemChanged(self, item, column):
-        #     if self.checkbox_tree_random is check:                
-        #         text, ok = QInputDialog.getText(None, "Nhập số lượng dạng toán", "Nhập số lượng dạng toán ngẫu nhiên cần chọn")
-                
-        #         if ok:                
-                
-
-        #         if text.count(",") == 1:
-        #     if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:
-        #         # Kiểm tra xem mục mẹ có được chọn hay không
-        #         if item.checkState(0) == Qt.Checked:
-        #             # Lấy danh sách tất cả các mục con
-        #             child_count = item.childCount()
-                    
-        #             if child_count > 0:
-        #                 # Lựa chọn ngẫu nhiên 5 mục con từ danh sách các mục con
-        #                 list_child_count=[i for i in range(child_count)]
-        #                 selected_children = random.sample(list_child_count, 3)
-        #                 for i in range(child_count):
-        #                     child = item.child(i)
-        #                     # Nếu mục con nằm trong danh sách chọn ngẫu nhiên, đánh dấu mục đó là được chọn
-        #                     if i in selected_children:
-        #                         child.setCheckState(0, Qt.Checked)
-        #                     else:
-        #                         child.setCheckState(0, Qt.Unchecked)
-        #         else:
-        #             # Nếu mục mẹ không được chọn, bỏ chọn tất cả các mục con
-        #             for i in range(item.childCount()):
-        #                 child = item.child(i)
-        #                 child.setCheckState(0, Qt.Unchecked)
-        #     return
+        
 
         def handleItemChanged(self, item, column):
-                # if  self.soluong_dangtoan.toPlainText()!="":
-                           
-                #     n=int(self.soluong_dangtoan.toPlainText())
-                #     if n>0:
-                #         if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:                            
-                #         # Kiểm tra xem mục mẹ có được chọn hay không
-                #                 if item.checkState(0) == Qt.Checked:
-                #                     # Lấy tất cả các mục con từ tất cả các cấp
-                #                     all_children = []
-                #                     self.collectAllChildren(item, all_children)
-
-                #                     # Chọn ngẫu nhiên 5 mục từ tất cả các mục con
-                #                     selected_children = random.sample(all_children, min(n, len(all_children)))                             
-                                    
-
-                #                     # Đánh dấu 5 mục con ngẫu nhiên là được chọn
-                #                     for child in all_children:
-                #                         if child in selected_children:
-                #                             child.setCheckState(0, Qt.Checked)
-                #                         else:
-                #                             child.setCheckState(0, Qt.Unchecked)
-                #                     self.uncheckAllChildren(item)
-                #                 else:
-                #                     # Nếu mục mẹ không được chọn, bỏ chọn tất cả các mục con
-                #                     self.uncheckAllChildren(item)
-                # else:
+                
                 if item.flags() & Qt.ItemFlag.ItemIsUserCheckable:        
                     self.updateChildren(item)
 

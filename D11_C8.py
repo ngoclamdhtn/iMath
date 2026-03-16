@@ -110,6 +110,22 @@ def code_hinh_langtrudung_tamgiac(a,b,c,a1,b1,c1):
 \\end{{tikzpicture}} \n"
     return code
 
+def code_hinhchop_tugiac_deu(S,A,B,C,D):
+    code=f"\\begin{{tikzpicture}}[line join=round, line cap=round,thick,scale=0.6]\n\
+\\coordinate ({A}) at (0,0);\n\
+\\coordinate ({B}) at (2,-2);\n\
+\\coordinate ({D}) at (5,0);\n\
+\\coordinate ({C}) at ($({B})+({D})-({A})$);\n\
+\\coordinate (O) at ($({A})!0.5!({C})$);\n\
+\\coordinate ({S}) at ($(O)+(0,7)$);\n\
+\\draw({S})--({A}) ({S})--({B}) ({S})--({C}) ({A})--({B}) ({B})--({C});\n\
+\\draw[dashed,thin]({A})--({C}) ({A})--({D}) ({C})--({D}) ({S})--({D}) ({S})--(O) ({B})--({D});\n\
+\\pic[draw,thin,angle radius=2mm] {{right angle = {S}--O--{D}}};\n\
+\\pic[draw,thin,angle radius=2mm] {{right angle = {S}--O--{A}}};\n\
+\\foreach \\i/\\g in {{{S}/90,{A}/180,{B}/-90,{C}/-90,{D}/0,O/-90}}{{\\draw[fill=white](\\i) circle (1.5pt) ($(\\i)+(\\g:3mm)$) node[scale=1]{{$\\i$}};}}\n\
+\\end{{tikzpicture}}"
+    return code
+
 #Bài 1- Hai đường thẳng vuông góc
 #[D11_C8_B1_01]-M1. Cho hình lập phương. Xác định góc giữa hai đường thẳng.
 def uvxy9_L11_C8_B1_01():   	
@@ -640,7 +656,7 @@ def uvxy9_L11_C8_B2_01():
 	kq3=random.choice([f"${B1}{C1}\\bot (S{A1}{C1})$", f"${B1}{C1}\\bot (S{C1}{D1})$", f"${B1}{D1}\\bot (S{A1}{D1})$"])
 	kq4=random.choice([f"${C1}{D1}\\bot (S{B1}{D1})$", f"${C1}{D1}\\bot (S{B1}{C1})$", f"${B1}{D1}\\bot (S{B1}{C1})$"])
 
-	noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $S{A1}\\bot (ABCD)$. Tìm khẳng định đúng?"
+	noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình vuông, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Tìm khẳng định đúng?"
 
     #Tạo các phương án
 	pa_A= f"*{kq}"
@@ -700,19 +716,19 @@ def uvxy9_L11_C8_B2_02():
 	duong, mat = duong[i], mat[i]
 
 	if duong==f"{B1}{C1}" and mat==f"S{A1}{B1}":
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Tìm khẳng định đúng?"
 		noi_dung_loigiai=f"Ta có: ${{{B1}{C1}\\bot {A1}{B1}}}$ và ${{{B1}{C1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABCD))$ nên ${B1}{C1}\\bot (S{A1}{B1})$."
-		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1}{D1}))$ nên ${B1}{C1}\\bot (S{A1}{B1})$."
+		debai_TL=f"Câu 1: Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Chứng minh: ${B1}{C1}\\bot (S{A1}{B1})$."
 
 	if duong==f"{C1}{D1}" and mat==f"S{A1}{D1}":
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Tìm khẳng định đúng?"
 		noi_dung_loigiai=f"Ta có: ${{{C1}{D1}\\bot {A1}{D1}}}$ và ${{{C1}{D1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABCD))$ nên ${C1}{D1}\\bot (S{A1}{D1})$."
-		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1}{D1}))$ nên ${C1}{D1}\\bot (S{A1}{D1})$."
+		debai_TL=f"Câu 1: Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Chứng minh: ${C1}{D1}\\bot (S{A1}{D1})$."
 		
 	if duong==f"{B1}{D1}" and mat==f"S{A1}{M1}":
@@ -720,9 +736,9 @@ def uvxy9_L11_C8_B2_02():
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{A1}}}$ trên đường thẳng ${{{B1}{D1}}}$. Tìm khẳng định đúng?"
 
 		noi_dung_loigiai=f"Ta có: ${{{B1}{D1}\\bot {A1}{M1}}}$ và ${{{B1}{D1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABCD))$ nên ${B1}{D1}\\bot (S{A1}{M1})$."
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1}{D1}))$ nên ${B1}{D1}\\bot (S{A1}{M1})$."
 
-		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$."\
+		debai_TL=f"Câu 1: Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Chứng minh: ${B1}{D1}\\bot (S{A1}{M1})$."		
 	
 	kq = f"${{{duong} \\bot ({mat})}}$"
@@ -787,15 +803,15 @@ def uvxy9_L11_C8_B2_03():
 	duong, mat = duong[i], mat[i]
 
 	if duong==f"{C1}{M1}" and mat==f"S{A1}{B1}":
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình thoi, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{B1}}}$."\
 			f" ${{{N1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{D1}}}$. Tìm khẳng định đúng?"
-		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
+		debai_TL=f"Câu 1: Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình thoi, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{B1}}}$."\
 			f" Chứng minh: ${C1}{M1}\\bot (S{A1}{B1})$."
 
 		noi_dung_loigiai=f"Ta có: ${{{C1}{M1}\\bot {A1}{B1}}}$ và ${{{C1}{M1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABCD))$ nên ${C1}{M1}\\bot (S{A1}{B1})$."
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1}{D1}))$ nên ${C1}{M1}\\bot (S{A1}{B1})$."
 
 		kq = f"${{{duong} \\bot ({mat})}}$"
 		kq2=random.choice([f"$S{A1}\\bot (S{B1}{C1})$",f"$S{A1}\\bot (S{B1}{D1})$",f"$S{A1}\\bot (S{C1}{D1})$",f"${A1}{C1}\\bot (S{B1}{D1})$" ])
@@ -803,10 +819,10 @@ def uvxy9_L11_C8_B2_03():
 		kq4=random.choice([f"${C1}{N1}\\bot (S{B1}{D1})$",f"${C1}{N1}\\bot (S{A1}{B1})$"])
 
 	if duong==f"{C1}{N1}" and mat==f"S{A1}{D1}":
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình thoi, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{B1}}}$."\
 			f" ${{{N1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{D1}}}$. Tìm khẳng định đúng?"
-		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
+		debai_TL=f"Câu 1: Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình thoi, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 			f" Gọi ${{{N1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{{A1}{D1}}}$."\
 			f" Chứng minh: ${C1}{N1}\\bot (S{A1}{D1})$."
 
@@ -818,14 +834,14 @@ def uvxy9_L11_C8_B2_03():
 		kq4=random.choice([f"${C1}{M1}\\bot (S{B1}{D1})$", f"${C1}{M1}\\bot (S{A1}{C1})$"])	
 		
 	if duong==f"{B1}{D1}" and mat==f"S{A1}{C1}":
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình thoi, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 		f" Tìm khẳng định đúng?"
 
-		debai_TL=f"Câu 1: Cho hình chóp ${{S.ABCD}}$ có đáy là hình thoi, $S{A1}\\bot (ABCD)$."\
+		debai_TL=f"Câu 1: Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình thoi, $S{A1}\\bot ({A1}{B1}{C1}{D1})$."\
 		f" Chứng minh: ${B1}{D1}\\bot (S{A1}{C1})$."
 
 		noi_dung_loigiai=f"Ta có: ${{{B1}{D1}\\bot {A1}{C1}}}$ và ${{{B1}{D1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABCD))$ nên ${B1}{D1}\\bot (S{A1}{C1})$."	
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1}{D1}))$ nên ${B1}{D1}\\bot (S{A1}{C1})$."	
 		kq = f"${{{duong} \\bot ({mat})}}$"
 		kq2=random.choice([f"$S{A1}\\bot (S{B1}{C1})$",f"$S{A1}\\bot (S{B1}{D1})$",f"$S{A1}\\bot (S{C1}{D1})$",f"${A1}{C1}\\bot (S{B1}{D1})$" ])
 		kq3=random.choice([f"${B1}{C1}\\bot (S{A1}{C1})$", f"${B1}{C1}\\bot (S{C1}{D1})$", f"${B1}{D1}\\bot (S{A1}{D1})$"])
@@ -904,7 +920,7 @@ def uvxy9_L11_C8_B2_04():
 	kq3=random.choice([f"${A1}{B1}\\bot (S{A1}{M1})$", f"${A1}{B1}\\bot (S{B1}{C1})$"])
 	kq4=random.choice([f"${A1}{C1}\\bot (S{A1}{M1})$", f"${A1}{C1}\\bot (S{B1}{C1})$"])
 
-	noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông tại ${{{A1}}}$, $S{A1}\\bot (ABC)$."\
+	noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác vuông tại ${{{A1}}}$, $S{A1}\\bot ({A1}{B1}{C1})$."\
 			f" Gọi ${{{M1}}}$ là hình chiếu vuông góc của ${{{A1}}}$ trên đường thẳng ${{{B1}{C1}}}$. Tìm khẳng định đúng?"
 
     #Tạo các phương án
@@ -982,7 +998,7 @@ def uvxy9_L11_C8_B2_05():
 	kq3=random.choice([f"${A1}{B1}\\bot (S{A1}{M1})$", f"${A1}{B1}\\bot (S{A1}{C1})$"])
 	kq4=random.choice([f"${A1}{C1}\\bot (S{A1}{M1})$", f"${A1}{C1}\\bot (S{A1}{B1})$"])
 
-	noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$."\
+	noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều, $S{A1}\\bot ({A1}{B1}{C1})$."\
 			f" Gọi ${{{M1}, {N1},{P1}}}$ lần lượt là trung điểm của ${{{B1}{C1}, {A1}{C1}, {A1}{B1}}}$. Tìm khẳng định đúng?"
 
     #Tạo các phương án
@@ -1051,7 +1067,7 @@ def uvxy9_L11_C8_B2_06():
 		kq3=random.choice([f"${A1}{B1}\\bot (S{A1}{M1})$", f"${A1}{B1}\\bot (S{A1}{C1})$"])
 		kq4=random.choice([f"${A1}{C1}\\bot (S{A1}{M1})$", f"${A1}{C1}\\bot (S{A1}{B1})$"])
 
-		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều, $S{A1}\\bot ({A1}{B1}{C1})$."\
 				f" Gọi ${{{M1}, {N1},{P1}}}$ lần lượt là trung điểm của ${{{B1}{C1}, {A1}{C1}, {A1}{B1}}}$."\
 				f" Gọi ${{{H1}}}$ là hình chiếu vuông góc của ${{{A1}}}$ trên đường thẳng ${{S{M1}}}$. Tìm khẳng định đúng?"
 
@@ -1080,7 +1096,7 @@ def uvxy9_L11_C8_B2_06():
 		kq3=random.choice([f"${A1}{B1}\\bot (S{A1}{M1})$", f"${A1}{B1}\\bot (S{A1}{C1})$", f"${A1}{B1}\\bot (S{C1}{P1})$"])
 		kq4=random.choice([f"${A1}{C1}\\bot (S{A1}{M1})$", f"${A1}{C1}\\bot (S{A1}{B1})$", f"${A1}{C1}\\bot (S{B1}{N1})$"])
 
-		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều, $S{A1}\\bot ({A1}{B1}{C1})$."\
 				f" Gọi ${{{M1}, {N1},{P1}}}$ lần lượt là trung điểm của ${{{B1}{C1}, {A1}{C1}, {A1}{B1}}}$."\
 				f" Gọi ${{{H1}}}$ là hình chiếu vuông góc của ${{{B1}}}$ trên đường thẳng ${{S{C1}}}$. Tìm khẳng định đúng?"
 		code_hinhloigiai=f"\\begin{{tikzpicture}}\n\
@@ -1099,7 +1115,7 @@ def uvxy9_L11_C8_B2_06():
 		file_name_loigiai = my_module.pdftoimage_timename(code)
 
 		noi_dung_loigiai=f" Ta có: ${{{B1}{N1}\\bot {A1}{C1}}}$ và ${{{B1}{N1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABC))$ nên ${B1}{N1}\\bot (S{A1}{C1})$.\n\nSuy ra $S{C1}\\bot {B1}{N1}\\subset ({H1}{B1}{N1})$."\
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1})$ nên ${B1}{N1}\\bot (S{A1}{C1})$.\n\nSuy ra $S{C1}\\bot {B1}{N1}\\subset ({H1}{B1}{N1})$."\
 						f" Theo giả thiết ta có: $S{C1} \\bot {B1}{H1} \\subset ({H1}{B1}{N1})$. Vậy $S{C1}\\bot ({H1}{B1}{N1})$."
 
 	if duong==f"S{B1}" and mat==f"({H1}{C1}{P1})":
@@ -1108,7 +1124,7 @@ def uvxy9_L11_C8_B2_06():
 		kq3=random.choice([f"${A1}{B1}\\bot (S{A1}{M1})$", f"${A1}{B1}\\bot (S{A1}{C1})$", f"${A1}{B1}\\bot (S{C1}{P1})$"])
 		kq4=random.choice([f"${A1}{C1}\\bot (S{A1}{M1})$", f"${A1}{C1}\\bot (S{A1}{B1})$", f"${A1}{C1}\\bot (S{B1}{N1})$"])
 
-		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều, $S{A1}\\bot ({A1}{B1}{C1})$."\
 				f" Gọi ${{{M1}, {N1},{P1}}}$ lần lượt là trung điểm của ${{{B1}{C1}, {A1}{C1}, {A1}{B1}}}$."\
 				f" Gọi ${{{H1}}}$ là hình chiếu vuông góc của ${{{C1}}}$ trên đường thẳng ${{S{B1}}}$. Tìm khẳng định đúng?"
 		code_hinhloigiai=f"\\begin{{tikzpicture}}\n\
@@ -1199,7 +1215,7 @@ def uvxy9_L11_C8_B2_07():
 		kq3=random.choice([f"${A1}{B1}\\bot S{B1}$", f"${A1}{B1}\\bot S{C1}$",f"$S{N1}\\bot {B1}{C1}$"])
 		kq4=random.choice([f"$S{P1}\\bot {A1}{B1}$", f"$S{P1}\\bot {A1}{C1}$"])
 
-		noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều, $S{A1}\\bot ({A1}{B1}{C1})$."\
 				f" Gọi ${{{M1}, {N1},{P1}}}$ lần lượt là trung điểm của ${{{B1}{C1}, {A1}{C1}, {A1}{B1}}}$."\
 				f" Gọi ${{{H1}}}$ là hình chiếu vuông góc của ${{{A1}}}$ trên đường thẳng ${{S{M1}}}$. Tìm khẳng định đúng?"
 		code_hinhloigiai=f"\\begin{{tikzpicture}}\n\
@@ -1218,7 +1234,7 @@ def uvxy9_L11_C8_B2_07():
 		file_name_loigiai = my_module.pdftoimage_timename(code)
 
 		noi_dung_loigiai=f" Ta có: ${{{B1}{C1}\\bot {A1}{M1}}}$ và ${{{B1}{C1}\\bot S{A1}}}$"\
-						f" (Do $S{A1}\\bot (ABC))$ nên ${B1}{C1}\\bot (S{A1}{M1})$.\n\nSuy ra ${A1}{H1}\\bot {B1}{C1}\\subset (S{B1}{C1})$."\
+						f" (Do $S{A1}\\bot ({A1}{B1}{C1})$ nên ${B1}{C1}\\bot (S{A1}{M1})$.\n\nSuy ra ${A1}{H1}\\bot {B1}{C1}\\subset (S{B1}{C1})$."\
 						f" Theo giả thiết ta có: ${A1}{H1} \\bot S{M1} \\subset (S{B1}{C1})$. \n\n"\
 						f"Suy ra ${A1}{H1}\\bot (S{B1}{C1})$."\
 						f" Vì ${duong_2}\\subset (S{B1}{C1})$ nên ${A1}{H1}\\bot {duong_2}$."	
@@ -1296,7 +1312,7 @@ def uvxy9_L11_C8_B2_08():
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name = my_module.pdftoimage_timename(code)
 				
-	noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $S{A1}\\bot (ABCD)$. Xét tính đúng sai của các khẳng định sau?\n\n"		
+	noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình vuông, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Xét tính đúng sai của các khẳng định sau?\n\n"		
 	
 	kq1=random.choice([kq1_T, kq1_F])
 	kq2=random.choice([kq2_T, kq2_F])
@@ -1392,7 +1408,7 @@ def uvxy9_L11_C8_B2_09():
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name = my_module.pdftoimage_timename(code)
 				
-	noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $S{A1}\\bot (ABCD)$. Xét tính đúng sai của các khẳng định sau?\n\n"		
+	noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình vuông, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Xét tính đúng sai của các khẳng định sau?\n\n"		
 	
 	kq1=random.choice([kq1_T, kq1_F])
 	kq2=random.choice([kq2_T, kq2_F])
@@ -3034,6 +3050,292 @@ def uvxy9_L11_C8_B2_23():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C8_B2_24]-M2. Cho hình hộp chữ nhật. Tìm cặp đường thẳng vuông góc.
+def uvxy9_L11_C8_B2_24():
+	A1=["A'","A_1","E"]
+	B1=["B'","B_1","F"]
+	C1=["C'","C_1","G"]
+	D1=["D'","D_1","H"]
+	i=random.randint(0,2)
+	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+	code_hinh = my_module.code_hinh_hop("A","B","C","D",A1,B1,C1,D1)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name = my_module.pdftoimage_timename(code)
+
+	
+	noi_dung=(
+	f"Cho hình hộp đứng ${{ABCD.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật."
+	f" Khẳng định nào sau đây đúng?")	
+
+	kq=random.choice([
+	
+	f"$B{C1}\\bot {A1}{B1}$",f"$B{C1}\\bot {C1}{D1}$",
+	 f"${B1}C\\bot AB$", f"${B1}C\\bot {C1}{D1}$",
+	f"$C{D1}\\bot AD$", f"$C{D1}\\bot BC$",
+	f"$A{D1}\\bot {C1}{D1}$", f"$A{D1}\\bot CD$", f"$A{D1}\\bot {A1}{B1}$",
+	f"$A{D1}\\bot AB$", 
+
+	])
+	kq_false=[
+	f"${B1}{D1}\\bot AC$", f"$BD\\bot {A1}{C1}$",
+	f"$A{A1}\\bot C{C1}$", f"$A{A1}\\bot {B1}C$", f"$A{A1}\\bot C{C1}$",
+	f"$AC\\bot A{C1}$", f"$BD\\bot {A1}{D1}$", 
+	f"$D{B1}\\bot A{D1}$", f"$B{D1}\\bot BD$",  f"${A1}{C1}\\bot CD$",
+	f"${B1}C\\bot {A1}D$", f"${B1}C\\bot {B1}{D1}$",
+	f"${B1}{C1}\\bot AC$", f"${B1}{C1}\\bot AD$",
+	f"${A1}C\\bot {B1}D$",f"$B{D1}\\bot {B1}D$", 
+	f"${D1}C\\bot {B1}{D1}$",
+	f"$D{A1}\\bot {A1}B$",
+	f"$B{C1}\\bot {C1}D$",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(f"{kq} là khẳng định đúng.")
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}\n{file_name}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B2_25]-SA-M2. Cho hình chóp đều S.ABCD. Tính diện tích hình chiếu của SAB lên (ABCD).
+def uvxy9_L11_C8_B2_25():
+	a=sqrt(random.randint(1,9))
+	b=random.randint(1,7)
+	dap_an=f"{round_half_up(a**2/4,1):.1f}".replace(".",",")
+	lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+		lam_tron=""
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông cạnh bằng ${{{latex(a)}}}$, các cạnh bên đều bằng ${{{b}}}$."
+	f" Tính diện tích hình chiếu vuông góc của tam giác ${{SAB}}$ trên mặt phẳng $(ABCD)${lam_tron}."
+	)
+	
+	code_hinh=code_hinhchop_tugiac_deu("S","A","B","C","D")
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+	
+
+	noi_dung_loigiai=(
+	f"Gọi $O=AC \\cap BD$. Khi đó $SO \\bot (ABCD)$.\n\n"
+	f"Hình chiếu của tam giác ${{SAB}}$ trên mặt phẳng (ABCD) là tam giác ${{OAB}}$.\n\n"
+	f"${{OAB}}$ làm tam giác vuông cân tại ${{O}}$ nên:\n\n"
+	f"$S_{{OAB}}=\\dfrac{{AB^2}}{{4}}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {file_name} \n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B2_26]-SA-M3. Cho hình chóp đều S.ABCD. Tính diện tích hình chiếu của OBC lên (SBC).
+def uvxy9_L11_C8_B2_26():
+	while True:
+		a=sqrt(random.randint(3,25))
+		b=random.randint(2,5)
+		if b**2-a**2/4<=0:
+			continue
+		OM=a/2
+		SM=sqrt(b**2-a**2/4)
+		HM=OM**2/SM
+		S=1/2*a*HM
+		if all([b>a,S>1]):
+			break
+
+	dap_an=f"{round_half_up(S,1):.1f}".replace(".",",")
+	lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông cạnh bằng ${{{latex(a)}}}$, các cạnh bên đều bằng ${{{b}}}$."
+	f" Gọi ${{O}}$ là giao điểm của ${{AC}}$ và ${{BD}}$."
+	f" Tính diện tích hình chiếu vuông góc của tam giác ${{OBC}}$ trên mặt phẳng $(SBC)${lam_tron}."
+	)
+	
+	code_hinh=code_hinhchop_tugiac_deu("S","A","B","C","D")
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+	
+
+	noi_dung_loigiai=(
+	f"Ta có: $SO \\bot (ABCD)$.\n\n"
+	f"Gọi ${{M}}$ là trung điểm của ${{BC}}$."
+	f" Kẻ $OH \\bot SM \\Rightarrow OH \\bot (SBC)$.\n\n"
+	f"Hình chiếu của tam giác ${{OBC}}$ trên mặt phẳng (SBC) là tam giác ${{HBC}}$.\n\n"
+	f"$OM={latex(OM)}, SM=\\sqrt{{SB^2-MB^2}}={latex(nsimplify(SM))}$.\n\n"
+	f"$\\cos \\widehat{{OMH}}=\\dfrac{{HM}}{{OM}}=\\dfrac{{OM}}{{SM}}$"
+	f"$\\Rightarrow HM=\\dfrac{{OM^2}}{{SM}}={latex(nsimplify(HM))}$.\n\n"
+	f"$S_{{HBC}}={phan_so(1/2)}.BC.HM={phan_so(1/2)}.{latex(a)}.{latex(nsimplify(HM))}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {file_name} \n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B2_27]-TF-M2.Tìm khẳng định đúng về quan hệ vuông góc và song song.
+def uvxy9_L11_C8_B2_27():
+	noi_dung=(
+	f"Tìm khẳng định đúng trong các khẳng định sau"
+	)
+	
+
+	kq=random.choice([
+	f"Hai đường thẳng phân biệt cùng vuông góc với một mặt phẳng thì song song với nhau",
+	f"Đường thẳng nào vuông góc với một trong hai mặt phẳng song song với nhau thì cũng vuông góc với mặt phẳng còn lại",
+	f"Mặt phẳng nào vuông góc với một trong hai đường thẳng song song với nhau thì cũng vuông góc với đường thẳng còn lại",
+	f"Hai mặt phẳng phân biệt cùng vuông góc với một đường thẳng thì song song với nhau",
+	])
+	kq_false=[
+	f"Hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thì song song với nhau",
+	f"Hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thì vuông góc với nhau",
+	f"Hai đường thẳng không cắt nhau và không song song với nhau thì vuông góc nhau",
+	f"Hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thì song song với nhau",
+	f"Hai mặt phẳng phân biệt cùng vuông góc với một mặt phẳng thì cắt nhau",
+
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B2_28]-M2. Cho hai đường thẳng a, b và mặt phẳng (P). Tìm quan hệ vuông góc, song song	
+def uvxy9_L11_C8_B2_28():
+	a,b = random.sample(["a","b","c","d"],2)
+	P=random.choice(["P", "Q", "\\alpha", "\\beta", "\\gamma"])
+	noi_dung=(
+	f"Cho hai đường thẳng phân biệt ${{{a}, {b}}}$ và mặt phẳng ${P}$ trong đó ${a} \\bot ({P})$."
+	f" Tìm khẳng định đúng trong các khẳng định sau:"
+	)
+	
+
+	kq=random.choice([
+		f"Nếu ${b} \\bot ({P})$ thì ${a} // {b}$",
+		f"Nếu ${b} // ({P})$ thì ${a} \\bot {b}$",
+		f"Nếu ${b} // {a}$ thì ${b} \\bot {b}$",
+		f"Nếu ${b} \\subset ({P})$ thì ${b} \\bot {a}$",
+		])
+	kq_false=[
+	f"Nếu ${a} \\bot {b}$ thì ${b} // ({P})$",
+	f"Nếu ${b} \\subset ({P})$ thì ${b} // {a}$",
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f" "
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 #BÀI 3 - HAI MẶT PHẲNG VUÔNG GÓC
 #[D11_C8_B3_01]-M2. S.ABCD: ABCD h.vuông. Xác định 2 mặt phẳng vuông góc.
 def uvxy9_L11_C8_B3_01(): 
@@ -4505,23 +4807,18 @@ def uvxy9_L11_C8_B6_09():
 #[D11_C8_B4_01]-M2. S.ABCD: ABCD h.chữ nhật. Tính k.c từ điểm đến mặt đứng.
 def uvxy9_L11_C8_B4_01(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
+	A1,B1,C1,D1="A","B","C","D"
 	M1=random.choice(["M", "E", "I"])
 	N1=random.choice(["N", "F", "K"])
 	P1=random.choice(["P", "G", "L"])
 	Q1=random.choice(["Q", "H"])
 
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
 	chon=random.randint(1,6)
 
 	if chon==1:
 		AB=random.randint(1,9)
 		AD=AB + random.randint(1,6)
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$.\n\n"\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$.\n\n"\
 		f" Tính khoảng cách từ điểm ${{{D1}}}$ đến mặt phẳng $(S{A1}{B1})$?"
 		kq= thay_hinh_hoc(f"${{{AD}a}}$")
 		kq2=thay_hinh_hoc(f"${{{AB}a}}$")
@@ -4533,7 +4830,7 @@ def uvxy9_L11_C8_B4_01():
 	if chon==2:
 		AB=random.randint(1,9)
 		AD=AB + random.randint(1,6)
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
 		f" Tính khoảng cách từ điểm ${{{B1}}}$ đến mặt phẳng $(S{A1}{D1})$?"
 		kq=thay_hinh_hoc( f"${{{AB}a}}$")
 		kq2= thay_hinh_hoc(f"${{{AD}a}}$")
@@ -4545,7 +4842,7 @@ def uvxy9_L11_C8_B4_01():
 	if chon==3:
 		AB=random.randint(1,9)
 		AD=AB + random.randint(1,6)
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
 		f" Tính khoảng cách từ điểm ${{{C1}}}$ đến mặt phẳng $(S{A1}{D1})$?"
 		kq= thay_hinh_hoc(f"${{{AB}a}}$")
 		kq2= thay_hinh_hoc(f"${{{AD}a}}$")
@@ -4557,7 +4854,7 @@ def uvxy9_L11_C8_B4_01():
 	if chon==4:
 		AB=random.randint(1,9)
 		AD=AB + random.randint(1,6)
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, $S{A1}\\bot (ABCD)$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
 		f" Tính khoảng cách từ điểm ${{{C1}}}$ đến mặt phẳng $(S{A1}{B1})$?"
 		kq= thay_hinh_hoc(f"${{{AD}a}}$")
 		kq2= thay_hinh_hoc(f"${{{AB}a}}$")
@@ -4569,7 +4866,7 @@ def uvxy9_L11_C8_B4_01():
 	if chon==5:
 		AB=random.randint(1,9)
 		AD=AB + random.randint(1,6)
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật tâm ${{O}}$, $S{A1}\\bot (ABCD)$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật tâm ${{O}}$, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
 		f" Tính khoảng cách từ điểm ${{O}}$ đến mặt phẳng $(S{A1}{B1})$?"
 		kq= thay_hinh_hoc(f"${{{latex(my_module.hien_phan_so(AD/2))}a}}$")
 		kq2=random.choice([thay_hinh_hoc(f"${{{AB}a}}$"), f"${{{latex(my_module.hien_phan_so(AB/2))}a}}$"])
@@ -4582,7 +4879,7 @@ def uvxy9_L11_C8_B4_01():
 	if chon==6:
 		AB=random.randint(1,9)
 		AD=AB + random.randint(1,6)
-		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật tâm ${{O}}$, $S{A1}\\bot (ABCD)$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
+		noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}{D1}}}$ có đáy là hình chữ nhật tâm ${{O}}$, $S{A1}\\bot ({A1}{B1}{C1}{D1})$. Biết ${A1}{B1}={AB}a,{A1}{D1}={AD}a$."\
 		f" Tính khoảng cách từ điểm ${{O}}$ đến mặt phẳng $(S{A1}{D1})$?"
 		kq= thay_hinh_hoc(f"${{{latex(my_module.hien_phan_so(AB/2))}a}}$")
 		kq2=random.choice([thay_hinh_hoc(f"${{{AB}a}}$"), f"${{{latex(my_module.hien_phan_so(AD/2))}a}}$"])
@@ -4636,14 +4933,9 @@ def uvxy9_L11_C8_B4_01():
 #[D11_C8_B4_02]-M3. S.ABCD: ABCD h.chữ nhật. Tính k.c từ điểm đến mặt đứng.
 def uvxy9_L11_C8_B4_02(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
+	A1,B1,C1,D1="A","B","C","D"
 	M1=random.choice(["M", "E", "I", "N", "F", "K", "P", "G"])
 
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
 	chon=random.randint(1,4)
 	t=random.randint(1,4)
 	if t==1:
@@ -6310,7 +6602,7 @@ def uvxy9_L11_C8_B4_18():
 
 #[D11_C8_B4_19]-SA-M2. H.chóp S.ABCD, đáy h.vuông, có AB, SA. Tính d(A,(SBC)) hoặc d(A,(SCD)) 
 def uvxy9_L11_C8_B4_19():
-	A,B,C,D=random.sample(["A","B","C","D"],4)
+	A,B,C,D="A","B","C","D"
 	AB=sqrt(random.randint(1,9))
 	SA=sqrt(random.randint(1,10))
 	AH=(SA*AB)/sqrt(SA**2+AB**2)
@@ -6382,7 +6674,7 @@ def uvxy9_L11_C8_B4_19():
 
 #[D11_C8_B4_20]-SA-M2. H.chóp S.ABCD, đáy h.vuông, có AB, SA. Tính d(M,(SBC)) hoặc d(M,(SCD)) 
 def uvxy9_L11_C8_B4_20():
-	A,B,C,D=random.sample(["A","B","C","D"],4)
+	A,B,C,D="A","B","C","D"
 	AB=sqrt(random.randint(1,9))
 	SA=sqrt(random.randint(1,10))
 	AH=(SA*AB)/sqrt(SA**2+AB**2)
@@ -6404,7 +6696,7 @@ def uvxy9_L11_C8_B4_20():
 
 			noi_dung = (
 			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
-			f" Gọi ${{{I}}}$ là điểm thuộc cạnh ${A}{D}$ sao cho ${A}{I}={t}{A}{D}$."
+			f" Gọi ${{{I}}}$ là điểm thuộc cạnh ${{{A}{D}}}$ sao cho ${A}{I}={t}{A}{D}$."
 			f" Tính khoảng cách từ điểm ${{{I}}}$ đến mặt phẳng $(S{B}{C})$ (kết quả làm tròn đến hàng phần mười)."
 			)
 			dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6432,7 +6724,7 @@ def uvxy9_L11_C8_B4_20():
 
 			noi_dung = (
 			f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là hình vuông cạnh bằng ${{{latex(AB)}}}$, $S{A}\\bot (ABCD), S{A}={latex(SA)}$."
-			f" Gọi ${{{I}}}$ là điểm thuộc cạnh ${A}{B}$ sao cho ${A}{I}={t}{A}{B}$."
+			f" Gọi ${{{I}}}$ là điểm thuộc cạnh ${{{A}{B}}}$ sao cho ${A}{I}={t}{A}{B}$."
 			f" Tính khoảng cách từ điểm ${{{I}}}$ đến mặt phẳng $(S{C}{D})$ (kết quả làm tròn đến hàng phần mười)."
 			)
 			dap_an=f"{round_half_up(AH,1):.1f}".replace(".",",")
@@ -6462,7 +6754,7 @@ def uvxy9_L11_C8_B4_20():
 
 #[D11_C8_B4_21]-SA-M2. H.chóp S.ABCD, đáy h.chữ nhật, có AB,AD SA. Tính d(A,(SBC)) hoặc d(A,(SCD)) 
 def uvxy9_L11_C8_B4_21():
-	A,B,C,D=random.sample(["A","B","C","D"],4)
+	A,B,C,D="A","B","C","D"
 	while True:
 		AB=sqrt(random.randint(1,9))
 		AD=sqrt(random.randint(1,9))
@@ -6614,7 +6906,7 @@ def uvxy9_L11_C8_B4_23():
 
 
 	noi_dung = (
-	f"Cho hình chóp $S.ABCD$ có đáy là hình vuông và ${{SA}}$ vuông góc đáy, $SA={SA}, AB={AB}$."
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông và ${{SA}}$ vuông góc đáy, $SA={SA}, AB={AB}$."
 	f" Tính khoảng cách từ điểm ${{C}}$ đến mặt phẳng $(SBD)$ (kết quả làm tròn đến hàng phần trăm)."
 	)
 	
@@ -6643,17 +6935,13 @@ def uvxy9_L11_C8_B4_23():
 #[D11_C8_B5_01]-M1. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
 def uvxy9_L11_C8_B5_01(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
+
 	M1=random.choice(["M", "E", "I"])
 	N1=random.choice(["N", "F", "K"])
 	P1=random.choice(["P", "G", "L"])
 	Q1=random.choice(["Q", "H"])
 
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
+	A1, B1, C1, D1 = "A","B","C","D"
 	chon=random.randint(1,3)
 	if chon==1:
 		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $S{A1}\\bot (ABCD)$. Góc giữa đường thẳng $S{{{B1}}}$ và mặt phẳng $(ABCD)$ là"
@@ -6731,17 +7019,14 @@ def uvxy9_L11_C8_B5_01():
 #[D11_C8_B5_02]-M2. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
 def uvxy9_L11_C8_B5_02(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
+
 	M1=random.choice(["M", "E", "I"])
 	N1=random.choice(["N", "F", "K"])
 	P1=random.choice(["P", "G", "L"])
 	Q1=random.choice(["Q", "H"])
 
 	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
+	A1, B1, C1, D1 = A1, B1, C1, D1 = "A","B","C","D"
 	chon=random.randint(1,6)	
 	if chon==1:
 		noi_dung=f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $S{A1}\\bot (ABCD)$. Góc giữa đường thẳng $S{{{B1}}}$ và mặt phẳng $(S{{{A1}}}{{{D1}}})$ là"
@@ -6848,17 +7133,12 @@ def uvxy9_L11_C8_B5_02():
 #[D11_C8_B5_03]-M2. S.ABCD: ABCD h.chữ nhật. Xác định góc giữa đường thẳng và mặt phẳng.
 def uvxy9_L11_C8_B5_03(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
 	M1=random.choice(["M", "E", "I"])
 	N1=random.choice(["N", "F", "K"])
 	P1=random.choice(["P", "G", "L"])
 	Q1=random.choice(["Q", "H"])
 
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
+	A1, B1, C1, D1 = "A","B","C","D"
 	chon=random.randint(1,6)
 	
 	if chon==1:
@@ -6965,11 +7245,8 @@ def uvxy9_L11_C8_B5_03():
 
 #[D11_C8_B5_04]-M1. S.ABC: ABC tam giác vuông. Xác định góc giữa đường thẳng và mặt phẳng.
 def uvxy9_L11_C8_B5_04(): 	
-	A1=["A","B","C"]
-	B1=["B","C","A"]
-	C1=["C","A","B"]
-	i=random.randint(0,2)
-	A1, B1, C1 = A1[i], B1[i], C1[i]
+
+	A1, B1, C1 = "A", "B", "C"
 	M1=random.choice(["M", "I", "P", "E"])
 	N1=random.choice(["N", "H", "Q", "F"])
 	chon=random.randint(1,6)
@@ -7087,11 +7364,9 @@ def uvxy9_L11_C8_B5_04():
 
 #[D11_C8_B5_05]-M2. S.ABC: ABC tam giác vuông. Xác định góc giữa đường thẳng và mặt bên.
 def uvxy9_L11_C8_B5_05(): 	
-	A1=["A","B","C"]
-	B1=["B","C","A"]
-	C1=["C","A","B"]
+
 	i=random.randint(0,2)
-	A1, B1, C1 = A1[i], B1[i], C1[i]
+	A1, B1, C1 = "A", "B", "C"
 	M1=random.choice(["M", "I", "P", "E"])
 	N1=random.choice(["N", "H", "Q", "F"])
 	chon=random.randint(1,6)	
@@ -7216,12 +7491,8 @@ def uvxy9_L11_C8_B5_05():
 #[D11_C8_B5_06]-M2. S.ABCD, đáy h.c.n. Tính số đo góc phẳng nhị diện tạo bởi mặt nghiêng và đáy.
 def uvxy9_L11_C8_B5_06(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+
+	A1, B1, C1, D1 = "A","B","C","D"
 
 	canh_SA1 =random.choice([sqrt(2),sqrt(3),sqrt(5),random.randint(3,8)])
 	canh_A1B1 = random.randint(1,7)	
@@ -7336,12 +7607,8 @@ def uvxy9_L11_C8_B5_06():
 #[D11_C8_B5_07]-M3. S.ABCD, đáy h.c.n. Tính số đo góc phẳng nhị diện tạo bởi mặt nghiêng và đáy.
 def uvxy9_L11_C8_B5_07(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]
+
+	A1, B1, C1, D1 = "A","B","C","D"
 
 	canh_SA1 =random.choice([sqrt(2),sqrt(3),sqrt(5),random.randint(3,8)])
 	canh_A1B1 = random.randint(1,7)	
@@ -7410,17 +7677,14 @@ def uvxy9_L11_C8_B5_07():
 #[D11_C8_B5_08]-M2. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
 def uvxy9_L11_C8_B5_08(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
+
 	M1=random.choice(["M", "E", "I"])
 	N1=random.choice(["N", "F", "K"])
 	P1=random.choice(["P", "G", "L"])
 	Q1=random.choice(["Q", "H"])
 
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
+
+	A1, B1, C1, D1 = "A","B","C","D"	
 	chon=random.randint(1,3)
 	
 	if chon==1:
@@ -7537,17 +7801,14 @@ def uvxy9_L11_C8_B5_08():
 #[D11_C8_B5_09]-M3. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.
 def uvxy9_L11_C8_B5_09(): 
 	a=sp.symbols("a")  	
-	A1=["A","B","C","D"]
-	B1=["B","C","D","A"]
-	C1=["C","D","A","B"]
-	D1=["D","A","B","C"]
+
 	M1=random.choice(["M", "E", "I"])
 	N1=random.choice(["N", "F", "K"])
 	P1=random.choice(["P", "G", "L"])
 	Q1=random.choice(["Q", "H"])
 
-	i=random.randint(0,3)
-	A1, B1, C1, D1 = A1[i], B1[i], C1[i], D1[i]	
+
+	A1, B1, C1, D1 = "A","B","C","D"	
 	
 	
 	AB= random.choice([sqrt(i) for i in range(1,64)])
@@ -7620,7 +7881,7 @@ def uvxy9_L11_C8_B5_09():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C8_B5_10]-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng
+#[D11_C8_B5_10]-SA-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH1
 def uvxy9_L11_C8_B5_10():
 	A,B,C="A","B","C"
 	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
@@ -7632,94 +7893,87 @@ def uvxy9_L11_C8_B5_10():
 	h=sqrt(random.randint(1,7))
 	ten_h=random.choice([f"A{D}", f"B{E}", f"C{F}"])
 
-	chon=random.randint(1,2)
-	chon=2
-	if chon==1:
-		MN=a/2
-		AN=a/2
-		AM=a*sqrt(3)/2
-		DN=sqrt(h**2+AN**2)
-		DM=sqrt(h**2+AM**2)
-		cos_val=abs((DM**2+MN**2-DN**2)/(2*DM*MN))
-		s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
-		goc=acos(cos_val)*180/pi
-
-		dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
-		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
-		if dap_an.endswith(",0"):   
-			dap_an = dap_an[:-2]
-			lam_tron=""
-		noi_dung = (
-		f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
-		f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{BC}}$. Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{AB}}${lam_tron}."
-		)
-		
-		noi_dung_loigiai=(
-		f"Gọi ${{{N}}}$ là trung điểm của ${{AC}}$.\n\n"
-		f" Góc $({D}{M},AB)=({D}{M}, {M}{N})$.\n\n"
-		f"${M}{N}={phan_so(MN)}, A{M}={latex(AM)}$.\n\n"
-		f"${D}{N}=\\sqrt{{A{D}^2+A{N}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AN**2)}}}={latex(nsimplify(DN))}$.\n\n"
-		f"${D}{M}=\\sqrt{{A{D}^2+A{M}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AM**2)}}}={latex(nsimplify(DM))}$.\n\n"
-		f"$\\cos({D}{M}, {M}{N})=\\dfrac{{{D}{M}^2+{M}{N}^2-{D}{N}^2}}{{2.{D}{M}.{M}{N}}}={s_cos_val}$.\n\n"
-		f"$\\Rightarrow ({D}{M}, {M}{N})={dap_an}^\\circ$."
-
-		)	
 	
-	if chon==2:
-		BM=a/2
-		BD=sqrt(a**2+h**2)
-		cos_val=BM/BD
-		s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
-		goc=acos(cos_val)*180/pi
+	MN=a/2
+	AN=a/2
+	AM=a*sqrt(3)/2
+	DN=sqrt(h**2+AN**2)
+	DM=sqrt(h**2+AM**2)
+	cos_val=abs((DM**2+MN**2-DN**2)/(2*DM*MN))
+	s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+	goc=acos(cos_val)*180/pi
 
-		dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
-		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
-		if dap_an.endswith(",0"):   
-			dap_an = dap_an[:-2]
-			lam_tron=""
-		noi_dung = (
-		f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
-		f" Tính góc giữa hai đường thẳng ${{{D}{B}}}$ và ${{{E}{F}}}${lam_tron}.")
-		
-		noi_dung_loigiai=(
-		f"Gọi ${{{M}}}$ là trung điểm của ${{BC}}$.\n\n"
-		f"${B}{M}={phan_so(BM)}$.\n\n"
-		f"${B}{D}=\\sqrt{{AB^2+A{D}^2}}={latex(nsimplify(BD))}$.\n\n"
+	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
 
-		f"$\\cos({D}{B}, {E}{F})=\\cos({D}{B}, {B}{C})=\\cos \\widehat{{{D}{B}{M}}}=\\dfrac{{B{M}}}{{{B}{D}}}"
-		f"=\\dfrac{{{phan_so(BM)}}}{{{latex(nsimplify(BD))}}}={s_cos_val}$.\n\n"
-		f"$\\Rightarrow ({D}{B}, {E}{F})={dap_an}^\\circ$.")
-
-	if chon==3:
-		AM=a/2
-		BD=sqrt(a**2+h**2)
-		cos_val=BM/BD
-		s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
-		goc=acos(cos_val)*180/pi
-
-		dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
-		lam_tron=" (kết quả làm tròn đến hàng phần mười)"
-		if dap_an.endswith(",0"):   
-			dap_an = dap_an[:-2]
-			lam_tron=""
-		noi_dung = (
-		f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
-		f" Gọi ${{{M}}}$ là trung điểm của ${{AB}}$."
-		f" Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{{E}{F}}}${lam_tron}.")
-		
-		noi_dung_loigiai=(
-		f"Gọi ${{{N}}}$ là trung điểm của ${{AC}}$.\n\n"
-		f"Gọi ${{I}}$ là trung điểm của ${{{M}{N}}}$.\n\n"
-
-		f"${B}{M}={phan_so(BM)}$.\n\n"
-		f"${B}{D}=\\sqrt{{AB^2+A{D}^2}}={latex(nsimplify(BD))}$.\n\n"
-
-		f"$\\cos({D}{B}, {E}{F})=\\cos({D}{B}, {B}{C})=\\cos \\widehat{{{D}{B}{M}}}=\\dfrac{{B{M}}}{{{B}{D}}}"
-		f"=\\dfrac{{{phan_so(BM)}}}{{{latex(nsimplify(BD))}}}={s_cos_val}$.\n\n"
-		f"$\\Rightarrow ({D}{B}, {E}{F})={dap_an}^\\circ$.")	
+	noi_dung = (
+	f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+	f" Gọi ${{{M}}}$ là trung điểm của cạnh ${{BC}}$. Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{AB}}${lam_tron}."
+	)
 	
+	noi_dung_loigiai=(
+	f"Gọi ${{{N}}}$ là trung điểm của ${{AC}}$.\n\n"
+	f" Góc $({D}{M},AB)=({D}{M}, {M}{N})$.\n\n"
+	f"${M}{N}={phan_so(MN)}, A{M}={latex(AM)}$.\n\n"
+	f"${D}{N}=\\sqrt{{A{D}^2+A{N}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AN**2)}}}={latex(nsimplify(DN))}$.\n\n"
+	f"${D}{M}=\\sqrt{{A{D}^2+A{M}^2}}=\\sqrt{{{phan_so(h**2)}+{phan_so(AM**2)}}}={latex(nsimplify(DM))}$.\n\n"
+	f"$\\cos({D}{M}, {M}{N})=\\dfrac{{{D}{M}^2+{M}{N}^2-{D}{N}^2}}{{2.{D}{M}.{M}{N}}}={s_cos_val}$.\n\n"
+	f"$\\Rightarrow ({D}{M}, {M}{N})={dap_an}^\\circ$."
+
+	)	
+	
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B5_11]-SA-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH2
+def uvxy9_L11_C8_B5_11():
+	A,B,C="A","B","C"
+	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
+	#D,E,F=["D","E","F"]
+	M,N =random.sample(["M", "N", "P", "Q"], 2)
+	#M,N="M","N"
+
+	a=random.randint(1,5)
+	h=sqrt(random.randint(1,7))
+	ten_h=random.choice([f"A{D}", f"B{E}", f"C{F}"])
 
 	
+	BM=a/2
+	BD=sqrt(a**2+h**2)
+	cos_val=BM/BD
+	s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+	goc=acos(cos_val)*180/pi
+
+	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = (
+	f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+	f" Tính góc giữa hai đường thẳng ${{{D}{B}}}$ và ${{{E}{F}}}${lam_tron}.")
+	
+	noi_dung_loigiai=(
+	f"Gọi ${{{M}}}$ là trung điểm của ${{BC}}$.\n\n"
+	f"${B}{M}={phan_so(BM)}$.\n\n"
+	f"${B}{D}=\\sqrt{{AB^2+A{D}^2}}={latex(nsimplify(BD))}$.\n\n"
+
+	f"$\\cos({D}{B}, {E}{F})=\\cos({D}{B}, {B}{C})=\\cos \\widehat{{{D}{B}{M}}}=\\dfrac{{B{M}}}{{{B}{D}}}"
+	f"=\\dfrac{{{phan_so(BM)}}}{{{latex(nsimplify(BD))}}}={s_cos_val}$.\n\n"
+	f"$\\Rightarrow ({D}{B}, {E}{F})={dap_an}^\\circ$.")
+
 		
 	debai_word= f"{noi_dung}\n"
 
@@ -7731,6 +7985,189 @@ def uvxy9_L11_C8_B5_10():
 	f"\\shortans[4]{{{dap_an}}}\n\n"
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B5_12]-SA-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH3
+def uvxy9_L11_C8_B5_12():
+	A,B,C="A","B","C"
+	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
+	#D,E,F=["D","E","F"]
+	M,N =random.sample(["M", "N", "P", "Q"], 2)
+	#M,N="M","N"
+
+	a=random.randint(1,5)
+	h=sqrt(random.randint(1,7))
+	ten_h=random.choice([f"A{D}", f"B{E}", f"C{F}"])
+
+	AM=a/2
+	MI=a/4
+	DM=sqrt(a**2/4+h**2)
+	cos_val=MI/DM
+	s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+	goc=acos(cos_val)*180/pi
+
+	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = (
+	f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+	f" Gọi ${{{M}}}$ là trung điểm của ${{AB}}$."
+	f" Tính góc giữa hai đường thẳng ${{{D}{M}}}$ và ${{{E}{F}}}${lam_tron}.")
+	
+	noi_dung_loigiai=(
+	f"Gọi ${{{N}}}$ là trung điểm của ${{AC}}$.\n\n"
+	f"Gọi ${{I}}$ là trung điểm của ${{{M}{N}}}$.\n\n"
+
+	f"${A}{M}={phan_so(AM)},{M}I={phan_so(MI)}$.\n\n"
+	f"${D}{M}=\\sqrt{{A{M}^2+A{D}^2}}={latex(nsimplify(DM))}$.\n\n"
+
+	f"$\\cos({D}{M}, {E}{F})=\\cos({D}{M}, {M}{N})=\\cos \\widehat{{{D}{M}I}}=\\dfrac{{{M}I}}{{{D}{M}}}"
+	f"=\\dfrac{{{phan_so(MI)}}}{{{latex(nsimplify(DM))}}}={s_cos_val}$.\n\n"
+	f"$\\Rightarrow ({D}{M}, {E}{F})={dap_an}^\\circ$.")
+
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B5_13]-SA-M3. Ltr đứng tam giác đều. Tìm góc giữa 2 đường thẳng - TH4
+def uvxy9_L11_C8_B5_13():
+	A,B,C="A","B","C"
+	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
+	#D,E,F=["D","E","F"]
+	M,N =random.sample(["M", "N", "P", "Q"], 2)
+	#M,N="M","N"
+
+	a=random.randint(1,5)
+	h=sqrt(random.randint(1,7))
+	ten_h=random.choice([f"A{D}", f"B{E}", f"C{F}"])
+
+	AE=sqrt(a**2+h**2)
+	EC=sqrt(a**2+h**2)
+	AC=a
+
+	cos_val=abs((AE**2+EC**2-AC**2)/(2*AE*EC))
+	s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+	goc=acos(cos_val)*180/pi
+
+	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = (
+	f"Cho lăng trụ đứng ${{ABC.{D}{E}{F}}}$ có đáy là tam giác đều, ${{AB={a}, {ten_h}={latex(h)}}}$."
+	f" Gọi ${{{M},{N}}}$ lần lượt là trung điểm của ${{B{E},BC}}$."
+	f" Tính góc giữa hai đường thẳng ${{A{E}}}$ và ${{{M}{N}}}${lam_tron}.")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{I}}$ là trung điểm của ${{AC}}$.\n\n"
+	f"${A}{E}=\\sqrt{{AB^2+B{E}^2}}={latex(nsimplify(AE))}={E}C$.\n\n"
+
+	f"$\\cos(A{E}, {M}{N})=\\cos(A{E}, {E}{C})=\\dfrac{{A{E}^2+{E}C^2-AC^2}}{{2.A{E}.{E}C}}"
+	f"=\\dfrac{{{AE**2}+{EC**2}-{AC**2}}}{{2.{latex(nsimplify(AE))}.{latex(nsimplify(EC))}}}={s_cos_val}$.\n\n"
+	f"$\\Rightarrow (A{E}, {M}{N})={dap_an}^\\circ$.")
+
+	
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B5_14]-SA-M3. Ltr xiên, tam giác vuông. Tìm góc giữa 2 đường thẳng AA' và B'C'
+def uvxy9_L11_C8_B5_14():
+	A,B,C="A","B","C"
+	D,E,F=random.choice([["D","E","F"], ["A'","B'","C'"], ["A_1","B_1","C_1"] ])
+	#D,E,F=["D","E","F"]
+
+
+	while True:
+		AB=random.randint(1,5)
+		AC=sqrt(random.randint(1,9))
+		BC=sqrt(AB**2+AC**2)
+		AH=BC/2
+		AD=random.randint(1,7)
+		if AD>AH:
+			break
+	BH=BC/2
+
+	DH=sqrt(AD**2-AH**2)
+	EH=sqrt(AB**2+DH**2)
+
+	cos_val=abs((AD**2+BH**2-EH**2)/(2*AD*BH))
+	s_cos_val=f"{round_half_up(cos_val,4):.4f}".replace(".",",")
+	goc=acos(cos_val)*180/pi
+
+	dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+	lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = (
+	f"Cho hình lăng trụ ${{ABC.{D}{E}{F}}}$ có đáy là tam giác vuông tại ${{A}}$, ${{AB={AB}, AC={latex(AC)}}}$, "
+	f" độ dài cạnh bên bằng ${{{AD}}}$."
+	f" Hình chiếu vuông góc của điểm ${{{D}}}$ trên mặt phẳng $(ABC)$ là trung điểm của cạnh ${{BC}}$."
+	f" Tính góc giữa hai đường thẳng ${{{A}{D}}}$ và ${{{E}{F}}}${lam_tron}."
+	)
+
+	a,b,c,a1,b1,c1=A,B,C,D,E,F
+	code_LG=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}} \n\
+    \\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}}; \n\
+    \\coordinate ({b}) at (2,-1) node at ({b}) [below] {{${b}$}}; \n\
+    \\coordinate ({c}) at (4,0)  node at ({c}) [below] {{${c}$}}; \n\
+    \\coordinate ({a1}) at (1,4)   node at ({a1}) [above] {{${a1}$}}; \n\
+    \\coordinate ({b1}) at (3,3)   node at ({b1}) [above] {{${b1}$}}; \n\
+    \\coordinate ({c1}) at (5,4)   node at ({c1}) [above] {{${c1}$}};\n\
+    \\coordinate (H) at ($(B)!0.5!(C)$) node at (H) [below] {{$H$}};\
+    \\draw [dashed] ({a})--({c}) ({a})--(H) ({a1})--(H) ({b1})--(H); \n\
+    \\draw ({a})--({b})--({b1})--({a1})--({a}); \n\
+    \\draw ({b1})--({c1})--({c})--({b}) ({a1})--({c1})--({c}); \n\
+\\end{{scriptsize}} \n\
+\\end{{tikzpicture}} \n"
+
+	code_hinh=code_LG
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+	
+	noi_dung_loigiai=(
+	f"Gọi ${{H}}$ là trung điểm của ${{BC}}$.\n\n"
+	f"$BC=\\sqrt{{AB^2+AC^2}}=\\sqrt{{{AB**2}+{AC**2}}}={latex(BC)}$.\n\n"
+	f"$AH=\\dfrac{{BC}}{{2}}={{{latex(nsimplify(AH))}}}=BH$.\n\n"
+	f"${D}H=\\sqrt{{A{D}^2-AH^2}}=\\sqrt{{{AD**2}-{phan_so(AH**2)}}}={latex(nsimplify(DH))}$.\n\n"
+	f"${E}H=\\sqrt{{{E}{D}^2+{D}H^2}}=\\sqrt{{{AB**2}+{phan_so(DH**2)}}}={latex(nsimplify(EH))}$.\n\n"
+	f"$\\cos({A}{D},{E}{F})=\\cos(B{E},BH)=\\dfrac{{|B{E}^2+BH^2-{E}H^2|}}{{2.B{E}.BH}}={s_cos_val}$.\n\n"	
+	f"$\\Rightarrow ({A}{D}, {E}{F})={dap_an}^\\circ$."
+
+	)		
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \\begin{{center}}\n{code_hinh}\n\\end{{center}}\n{noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
 ###################################################
@@ -8156,8 +8593,8 @@ def uvxy9_L11_C8_B6_17():
 	A,B,C=random.sample(["A","B","C"],3)
 
 	noi_dung=(
-	f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác vuông cân tại ${{{A}}}$ với ${B}{C}={latex(BC)}$."
-	f" Biết $S{A}\\bot (ABC)$ và $S{A}={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là")	
+	f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác vuông cân tại ${{{A}}}$ với ${B}{C}={latex(BC)}$."
+	f" Biết $S{A}\\bot ({A}{B}{C})$ và $S{A}={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABC}}$ là")	
 	
 	S=1/4*BC**2
 	V=1/3*S*SA
@@ -8216,8 +8653,8 @@ def uvxy9_L11_C8_B6_18():
 
 
 	noi_dung=(
-	f"Cho hình chóp ${{S.ABCD}}$ có đáy là chữ nhật với ${A}{B}={latex(AB)}, {A}{D}={latex(AD)}$."
-	f" Biết $S{A}\\bot (ABCD)$ và $S{B}={latex(SB)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là"
+	f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là chữ nhật với ${A}{B}={latex(AB)}, {A}{D}={latex(AD)}$."
+	f" Biết $S{A}\\bot ({A}{B}{C}{D})$ và $S{B}={latex(SB)}$. Thể tích ${{V}}$ của khối chóp ${{S.{A}{B}{C}{D}}}$ là"
 	)	
 	
 	S=AB*AD
@@ -8230,8 +8667,8 @@ def uvxy9_L11_C8_B6_18():
 
 	noi_dung_loigiai=(
 	f"$S{A}=\\sqrt{{S{B}^2-{A}{B}^2}}={latex(SA)}$.\n\n"
-	f"$S_{{ABCD}}={A}{B}.{A}{D}={latex(nsimplify(S))}$.\n\n"		
-	f" $V=\\dfrac{{1}}{{3}}.{{S_{{ABCD}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$.")
+	f"$S_{{{A}{B}{C}{D}}}={A}{B}.{A}{D}={latex(nsimplify(S))}$.\n\n"		
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{{A}{B}{C}{D}}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$.")
 
 	pa_A= f"*$V={kq}$"
 	pa_B= f"$V={kq2}$"
@@ -8283,7 +8720,7 @@ def uvxy9_L11_C8_B7_01():
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name = my_module.pdftoimage_timename(code)
 
-	noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có $S{A1}\\bot (ABC), {A1}{B1}={AB}a,S{A1}={latex(SA)}a$.\n\n"\
+	noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều có $S{A1}\\bot ({A1}{B1}{C1}), {A1}{B1}={AB}a,S{A1}={latex(SA)}a$.\n\n"\
 	f"{file_name}\n"\
 	f" Xét tính đúng sai của các khẳng định sau")
 		
@@ -8295,10 +8732,10 @@ def uvxy9_L11_C8_B7_01():
 	kq1_F=f"Thể tích của khối chóp đã cho bằng ${latex(rutgon_can(S*SA))}a^3$"
 	kq1=random.choice([kq1_T, kq1_F])
 	loigiai_1=f"Khẳng định đã cho là đúng.\n\n"\
-	f"$V=\\dfrac{{1}}{{3}}S_{{ABC}}.S{A1}=\\dfrac{{1}}{{3}}.\\dfrac{{{AB**2}\\sqrt{{3}}}}{{4}}a^2.{latex(SA)}a={latex(rutgon_can(V))}a^3$"
+	f"$V=\\dfrac{{1}}{{3}}S_{{{A1}{B1}{C1}}}.S{A1}=\\dfrac{{1}}{{3}}.\\dfrac{{{AB**2}\\sqrt{{3}}}}{{4}}a^2.{latex(SA)}a={latex(rutgon_can(V))}a^3$"
 	if kq1==kq1_F:
 	    loigiai_1=f"Khẳng định đã cho là sai\n\n"\
-	f"$V=\\dfrac{{1}}{{3}}S_{{ABC}}.S{A1}=\\dfrac{{1}}{{3}}.\\dfrac{{{AB**2}\\sqrt{{3}}}}{{4}}a^2.{latex(SA)}a={latex(rutgon_can(V))}a^3$"
+	f"$V=\\dfrac{{1}}{{3}}S_{{{A1}{B1}{C1}}}.S{A1}=\\dfrac{{1}}{{3}}.\\dfrac{{{AB**2}\\sqrt{{3}}}}{{4}}a^2.{latex(SA)}a={latex(rutgon_can(V))}a^3$"
 	
 	chon=random.randint(1,2)
 	ten_goc=random.choice([f"$\\widehat{{S{B1}{C1}}}$", f"$\\widehat{{{A1}{B1}{C1}}}$", f"$\\widehat{{{C1}{B1}{A1}}}$"])
@@ -8430,7 +8867,7 @@ def uvxy9_L11_C8_B7_02():
 	code = my_module.moi_truong_anh_latex(code_hinh)
 	file_name = my_module.pdftoimage_timename(code)
 
-	noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều có $S{A1}\\bot (ABC), {A1}{B1}={AB}a,S{A1}={latex(SA)}a$.\n\n"\
+	noi_dung=thay_hinh_hoc(f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều có $S{A1}\\bot ({A1}{B1}{C1}), {A1}{B1}={AB}a,S{A1}={latex(SA)}a$.\n\n"\
 	f"{file_name}\n"\
 	f" Xét tính đúng sai của các khẳng định sau")
 		
@@ -8534,7 +8971,7 @@ def uvxy9_L11_C8_B7_02():
 	#Tạo đề latex
 	for i in range(len(list_PA)):
 	    list_PA[i]=list_PA[i].replace("*","\\True ")
-	noi_dung=f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$. Biết ${A1}{B1}={AB}a,S{A1}={latex(SA)}a$.\n\n"\
+	noi_dung=f"Cho hình chóp ${{S.{A1}{B1}{C1}}}$ có đáy là tam giác đều, $S{A1}\\bot (ABC)$. Biết ${A1}{B1}={AB}a,S{A1}={latex(SA)}a$.\n\n"\
 	f"{code_hinh}\n"\
 	f" Xét tính đúng sai của các khẳng định sau"
 

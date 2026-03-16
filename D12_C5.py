@@ -4976,7 +4976,7 @@ def htd_25_xyz_L12_C5_B3_11():
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    eq=Eq(a*(x_0+a*t)+b*(y_0+b*t)+c*(z_0+c*t),0)
+    eq=Eq(a*(x_0+a*t)+b*(y_0+b*t)+c*(z_0+c*t)+d,0)
     solution=solve(eq,t)
     t_0=solution[0]
     x_H,y_H,z_H=phan_so(x_0+a*t_0),phan_so(y_0+b*t_0),phan_so(z_0+c*t_0)
@@ -4994,7 +4994,7 @@ def htd_25_xyz_L12_C5_B3_11():
         \\end{{array}} \\right.$\n\n"
         f"Gọi $H({latex(x_0+a*t)};{latex(y_0+b*t)};{latex(z_0+c*t)})$.\n\n"
         f"Thay tọa độ ${{H}}$ vào phương trình mặt phẳng $(P)$ ta được:\n\n"
-        f"${a}({latex(x_0+a*t)})+{b}({latex(y_0+b*t)})+{c}({latex(z_0+c*t)})=0$"
+        f"${a}({latex(x_0+a*t)})+{b}({latex(y_0+b*t)})+{c}({latex(z_0+c*t)})+{d}=0$"
         f"$\\Leftrightarrow t={phan_so(t_0)}$.\n\n"
         f"$\\Rightarrow H\\left({x_H};{y_H};{z_H}\\right)$"
         )
@@ -9245,14 +9245,14 @@ def htd_25_xyz_L12_C5_B2_37():
     b1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
     c1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])   
 
-    t_uc=ucln_ba_so(a1,b1,c1)
+    t_uc=abs(ucln_ba_so(a1,b1,c1))
     a1,b1,c1=int(a1/t_uc),int(b1/t_uc),int(c1/t_uc)
 
     a2 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
     b2 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
     c2 = random.choice([random.randint(-5, -1), random.randint(1, 5)])   
 
-    t_uc=ucln_ba_so(a2,b2,c2)
+    t_uc=abs(ucln_ba_so(a2,b2,c2))
     a2,b2,c2=int(a2/t_uc),int(b2/t_uc),int(c2/t_uc)
 
     while True:
@@ -9344,14 +9344,14 @@ def htd_25_xyz_L12_C5_B2_38():
     b1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
     c1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])   
 
-    t_uc=ucln_ba_so(a1,b1,c1)
+    t_uc=abs(ucln_ba_so(a1,b1,c1))
     a1,b1,c1=int(a1/t_uc),int(b1/t_uc),int(c1/t_uc)
 
     a2 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
     b2 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
     c2 = random.choice([random.randint(-5, -1), random.randint(1, 5)])   
 
-    t_uc=ucln_ba_so(a2,b2,c2)
+    t_uc=abs(ucln_ba_so(a2,b2,c2))
     a2,b2,c2=int(a2/t_uc),int(b2/t_uc),int(c2/t_uc)
 
     while True:

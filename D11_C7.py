@@ -4733,8 +4733,8 @@ def ui5io_L11_C7_B3_08():
     f" Tính $|b_1+b_2|$."
     )
     noi_dung=noi_dung.replace("+-","-").replace("1x","x")
-    tong=(-k*x_0+y_0)+(-k*x_1+y_1)
-    dap_an=phan_so(tong)
+    tong=abs(-k*x_0+y_0)+(-k*x_1+y_1)
+    dap_an=int(tong)
 
     noi_dung_loigiai=(
     f"Xét phương trình:\n\n"
@@ -4744,7 +4744,7 @@ def ui5io_L11_C7_B3_08():
 
     f" Với $x={phan_so(x_1)}\\Rightarrow y=f({phan_so(x_1)})={phan_so(y_1)}$.\n\n"
     f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_1)})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$.\n\n"
-    f" Do đó: $|b_1+b_2|=|{phan_so(-k*x_0+y_0)}+{phan_so(-k*x_1+y_1)}|={phan_so(abs(tong))}$.")
+    f" Do đó: $|b_1+b_2|=|{phan_so(-k*x_0+y_0)}+{phan_so(-k*x_1+y_1)}|={dap_an}$.")
     noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-").replace("1x","x")  
         
     debai_word= f"{noi_dung}\n"

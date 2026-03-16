@@ -2298,6 +2298,7 @@ def codelatex_hinhchop_tamgiac_canhvg(s,a,b,c):
 \\draw ({a})--({b}) ({b})--({c}) ({s})--({a}) ({s})--({b}) ({s})--({c}); \n\
 \\end{{tikzpicture}}\n"
     return code
+    
 # Vẽ hình phẳng
 def code_latex_hinhbinhhanh(a,b,c,d):
     code=rf"""\begin{{tikzpicture}}[line join=round, line cap=round,thick]

@@ -1407,7 +1407,7 @@ def ut9kq_L11_C9_B1_17():
 	p=f"{round_half_up(p_1*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
 	while True:
 		p_f=random.choice([random.randint(10,50)/100, p_1])
-		if p_f!=p:
+		if p_f!=p_1*p_2_ngang*p_3_ngang:
 			break
 	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
 
@@ -1420,10 +1420,11 @@ def ut9kq_L11_C9_B1_17():
 	if kq2==kq2_F:
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
+
 	p=f"{round_half_up(p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3,2):.2f}".replace(".",",")
 	while True:
 		p_f=random.randint(10,60)/100
-		if p_f!=p:
+		if p_f!=p_1*p_2*p_3_ngang+p_1_ngang*p_2*p_3+p_1*p_2_ngang*p_3:
 			break
 	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
 
@@ -1440,7 +1441,7 @@ def ut9kq_L11_C9_B1_17():
 	p=f"{round_half_up(1-p_1_ngang*p_2_ngang*p_3_ngang,2):.2f}".replace(".",",")
 	while True:
 		p_f=random.randint(10,60)/100
-		if p_f!=p:
+		if p_f!=1-p_1_ngang*p_2_ngang*p_3_ngang:
 			break
 	p_f=f"{round_half_up(p_f,2):.2f}".replace(".",",")
 	kq4_T=f"* Xác suất để ít nhất một bác sĩ chẩn đoán đúng bệnh là ${{{p}}}$"
