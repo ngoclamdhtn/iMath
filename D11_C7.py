@@ -4727,12 +4727,13 @@ def ui5io_L11_C7_B3_08():
     
     y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
 
+    ham=f"$y=\\dfrac{{{a}x+{b}}}{{{c}x+{d}}}$".replace("+-","-").replace("1x","x")
 
     noi_dung = (
-    f"Cho hàm số $y=\\dfrac{{{a}x+{b}}}{{{c}x+{d}}}$. Biết các tiếp tuyến của đồ thị hàm số có hệ số góc $k={k}$ có các phương trình lần lượt là $y=a_1x+b_1$ và $y=a_2x+b_2$."
+    f"Cho hàm số {ham}. Biết các tiếp tuyến của đồ thị hàm số có hệ số góc $k={k}$ có các phương trình lần lượt là $y=a_1x+b_1$ và $y=a_2x+b_2$."
     f" Tính $|b_1+b_2|$."
     )
-    noi_dung=noi_dung.replace("+-","-").replace("1x","x")
+  
     tong=abs(-k*x_0+y_0)+(-k*x_1+y_1)
     dap_an=int(tong)
 

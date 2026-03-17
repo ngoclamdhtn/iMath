@@ -230,6 +230,15 @@ def tich_co_huong(a,b):
     c3= a1*b2-a2*b1    
     return c1,c2,c3
 
+#Tìm tích có hướng
+def toa_do_vecto(a,b):
+    a1, a2, a3=a[0], a[1], a[2]
+    b1, b2, b3=b[0], b[1], b[2]
+    c1= b1-a1
+    c2= b2-a2
+    c3= b3-a3   
+    return (c1,c2,c3)
+
 def generate_random_vector():
     return [random.randint(-10, 10) for _ in range(3)]
 
@@ -238,6 +247,8 @@ def check_cross_product_nonzero(vec1, vec2):
                      vec1[2]*vec2[0] - vec1[0]*vec2[2],
                      vec1[0]*vec2[1] - vec1[1]*vec2[0]]
     return all(cross_product)
+
+
 
 # Tạo vector ngẫu nhiên cho đến khi tích vô hướng với vec1 bằng 0
 def generate_orthogonal_vector(vec1):
@@ -10076,4 +10087,63 @@ def htd_25_xyz_L12_C5_B2_45():
     f"\\end{{ex}}\n"
 
     return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#---------------------------------------------------------------->
+
+#BÀI 4: Ứng dụng vào tính khoảng cách, góc
+
+#[D12_C5_B4_01]-SA-M3. 
+def htd_25_xyz_L12_C5_B4_01():
+    h=random.randint(1,6)
+    a=random.randint(1,6)
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =a,0,h
+    vec_BD, vec_CD1=vec("BD"), vec("CD'")
+    vec_BC=vec("BC")
+
+    xBD,yBD,zBD=toa_do_vecto((xB,yB,zB), (xD,yD,zD))
+    xCD1,yCD1,zCD1=toa_do_vecto((xC,yC,zC), (xD1,yD1,zD1))
+    xBC,yBC,zBC=toa_do_vecto((xB,yB,zB), (xC,yC,zC))
+
+    MT_BD=Matrix([xBD,yBD,zBD])
+    MT_CD1=Matrix([xCD1,yCD1,zCD1])
+    MT_BC=Matrix([xBC,yBC,zBC])
+
+
+    cross_uv = MT_BD.cross(MT_CD1) # Tích có hướng
+    norm_uv = cross_uv.norm() # Độ dài
+    tich_vh=cross_uv.dot(MT_BC)
+    d=abs(tich_vh)/norm_uv
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính khoảng cách giữa hai đường thẳng ${{BD}}$ và ${{CD'}}$."
+    )
+    dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), C({xC};{yC};{zC}), D({xD};{yD};{zD}), D'({xD1};{yD1};{zD1})$.\n\n"
+    f" ${vec_BD}=({xBD},{yBD},{zBD}), {vec_CD1}=({xCD1},{yCD1},{zCD1})$.\n\n"
+    f" ${vec_BC}=({xBC},{yBC},{zBC})$.\n\n"
+    f"$d(BD,CD')=\\dfrac{{|[{vec_BD},{vec_CD1}].{vec_BC}|}}{{|[{vec_BD},{vec_CD1}]|}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
