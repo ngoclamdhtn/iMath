@@ -10855,6 +10855,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_53]-TF-M2. Vật thay đổi với gia tốc a(t)=mt+n. Xét Đ-S:a(t0), v(t), v(t0), quãng đường"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_34]-TF-M3. 2 chất điểm chuyển động. Xét Đ-S: hàm số quãng đường, quãng đường đi được, k.c giữa 2 chất điểm"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -14056,6 +14060,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_52]-SA-M3. Tìm vận tốc khi khí cầu tiếp đất.
                                             if dang_toan == "[D12_C4_B5_52]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C4.ckz_L12C4_B5_52()
+
+                                            #[D12_C4_B5_53]-TF-M3. Vật thay đổi với gia tốc a(t)=mt+n. Xét Đ-S:a(t0), v(t), v(t0), quãng đường
+                                            if dang_toan == "[D12_C4_B5_53]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_53()
                                                 
 
                                             ##################################################################
