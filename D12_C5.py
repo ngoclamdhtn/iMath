@@ -10437,3 +10437,271 @@ def htd_25_xyz_L12_C5_B4_04():
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C5_B4_05]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(BD,CD')
+def htd_25_xyz_L12_C5_B4_05():
+    
+    h=random.randint(1,6)
+    a=random.randint(1,6)
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =0,a,h
+    vec_BD, vec_CD1=vec("BD"), vec("CD'")
+
+    xBD,yBD,zBD=toa_do_vecto((xB,yB,zB), (xD,yD,zD))
+    xCD1,yCD1,zCD1=toa_do_vecto((xC,yC,zC), (xD1,yD1,zD1))
+
+
+    MT_BD=Matrix([xBD,yBD,zBD])
+    MT_CD1=Matrix([xCD1,yCD1,zCD1])
+
+
+    dot_uv = MT_BD.dot(MT_CD1) # Tích có hướng
+    norm_u = MT_BD.norm() # Độ dài
+    norm_v = MT_CD1.norm() # Độ dài
+    
+    cos_value=abs(dot_uv)/(norm_u*norm_v)
+    s_cos=f"{round_half_up(cos_value,4):.4f}".replace(".",",")
+    goc=acos(cos_value)*180/pi
+        
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính góc giữa hai đường thẳng ${{BD}}$ và ${{CD'}}$ (đơn vị độ, kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), C({xC};{yC};{zC}), D({xD};{yD};{zD}), D'({xD1};{yD1};{zD1})$.\n\n"
+    f" ${vec_BD}=({xBD},{yBD},{zBD}), {vec_CD1}=({xCD1},{yCD1},{zCD1})$.\n\n"   
+    f"$\\cos(BD,CD')=\\dfrac{{|{vec_BD}.{vec_CD1}|}}{{|{vec_BD}|.|{vec_CD1}]|}}={s_cos}$.\n\n"
+    f"$\\Rightarrow (BD,CD')={dap_an}^\\circ$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_06]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(AC,BC')
+def htd_25_xyz_L12_C5_B4_06():
+    
+    h=random.randint(1,6)
+    a=random.randint(1,6)
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =0,a,h
+    vec_AC, vec_BC1=vec("AC"), vec("BC'")
+
+    xAC,yAC,zAC=toa_do_vecto((0,0,0), (xC,yC,zC))
+    xBC1,yBC1,zBC1=toa_do_vecto((xB,yB,zB), (xC1,yC1,zC1))
+
+
+    MT_AC=Matrix([xAC,yAC,zAC])
+    MT_BC1=Matrix([xBC1,yBC1,zBC1])
+
+
+    dot_uv = MT_AC.dot(MT_BC1) # Tích có hướng
+    norm_u = MT_AC.norm() # Độ dài
+    norm_v = MT_BC1.norm() # Độ dài
+    
+    cos_value=abs(dot_uv)/(norm_u*norm_v)
+    s_cos=f"{round_half_up(cos_value,4):.4f}".replace(".",",")
+    goc=acos(cos_value)*180/pi
+        
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính góc giữa hai đường thẳng ${{AC}}$ và ${{BC'}}$ (đơn vị độ, kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), C({xC};{yC};{zC}), C'({xC1};{yC1};{zC1})$.\n\n"
+    f" ${vec_AC}=({xAC},{yAC},{zAC}), {vec_BC1}=({xBC1},{yBC1},{zBC1})$.\n\n"   
+    f"$\\cos(AC,BC')=\\dfrac{{|{vec_AC}.{vec_BC1}|}}{{|{vec_AC}|.|{vec_BC1}|}}={s_cos}$.\n\n"
+    f"$\\Rightarrow (AC,BC')={dap_an}^\\circ$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_07]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(A'B,B'D)
+def htd_25_xyz_L12_C5_B4_07():
+    
+    h=random.randint(1,6)
+    a=random.randint(1,6)
+
+    xA, yA, zA=0,0,0
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+
+    xA1, yA1, zA1 =0,0,h
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =0,a,h
+
+    vec_A1B, vec_B1D=vec("A'B"), vec("B'D")
+
+    xA1B,yA1B,zA1B=toa_do_vecto((xA1,yA1,zA1), (xB,yB,zB))
+    xB1D,yB1D,zB1D=toa_do_vecto((xB1,yB1,zB1), (xD,yD,zD))
+
+
+    MT_A1B=Matrix([xA1B,yA1B,zA1B])
+    MT_B1D=Matrix([xB1D,yB1D,zB1D])
+
+
+    dot_uv = MT_A1B.dot(MT_B1D) # Tích có hướng
+    norm_u = MT_A1B.norm() # Độ dài
+    norm_v = MT_B1D.norm() # Độ dài
+    
+    cos_value=abs(dot_uv)/(norm_u*norm_v)
+    s_cos=f"{round_half_up(cos_value,4):.4f}".replace(".",",")
+    goc=acos(cos_value)*180/pi
+        
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính góc giữa hai đường thẳng ${{A'B}}$ và ${{B'D}}$ (đơn vị độ, kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), D({xD};{yD};{zD}), A'(0;0;{h}), B'({xB1};{yB1};{zB1})$.\n\n"
+    f" ${vec_A1B}=({xA1B},{yA1B},{zA1B}), {vec_B1D}=({xB1D},{yB1D},{zB1D})$.\n\n"   
+    f"$\\cos(A'B,B'D)=\\dfrac{{|{vec_A1B}.{vec_B1D}|}}{{|{vec_A1B}|.|{vec_B1D}|}}={s_cos}$.\n\n"
+    f"$\\Rightarrow (A'B,B'D)={dap_an}^\\circ$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_08]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(C'D,BD')
+def htd_25_xyz_L12_C5_B4_08():
+    
+    h=random.randint(1,6)
+    a=random.randint(1,6)
+
+    xA, yA, zA=0,0,0
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+
+    xA1, yA1, zA1 =0,0,h
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =0,a,h
+
+    vec_C1D, vec_BD1=vec("C'D"), vec("BD'")
+
+    xC1D,yC1D,zC1D=toa_do_vecto((xC1,yC1,zC1), (xD,yD,zD))
+    xBD1,yBD1,zBD1=toa_do_vecto((xB,yB,zB), (xD1,yD1,zD1))
+
+
+    MT_C1D=Matrix([xC1D,yC1D,zC1D])
+    MT_BD1=Matrix([xBD1,yBD1,zBD1])
+
+
+    dot_uv = MT_C1D.dot(MT_BD1) # Tích có hướng
+    norm_u = MT_C1D.norm() # Độ dài
+    norm_v = MT_BD1.norm() # Độ dài
+    
+    cos_value=abs(dot_uv)/(norm_u*norm_v)
+    s_cos=f"{round_half_up(cos_value,4):.4f}".replace(".",",")
+    goc=acos(cos_value)*180/pi
+        
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính góc giữa hai đường thẳng ${{C'D}}$ và ${{BD'}}$ (đơn vị độ, kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$.\n\n"
+    f" $B({xB};{yB};{zB}), D({xD};{yD};{zD}), C'({xC1};{yC1};{zC1}), D'({xD1};{yD1};{zD1})$.\n\n"
+    f" ${vec_C1D}=({xC1D},{yC1D},{zC1D}), {vec_BD1}=({xBD1},{yBD1},{zBD1})$.\n\n"   
+    f"$\\cos(C'D,BD')=\\dfrac{{|{vec_C1D}.{vec_BD1}|}}{{|{vec_C1D}|.|{vec_BD1}|}}={s_cos}$.\n\n"
+    f"$\\Rightarrow (C'D,BD')={dap_an}^\\circ$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an

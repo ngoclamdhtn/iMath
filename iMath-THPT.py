@@ -11521,6 +11521,22 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_05]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (BD,CD')"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_06]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (AC,BC')"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_07]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (A'B,B'D)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_08]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (C'D,BD')"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
         #Chương 6 - Một số yếu tố xác suất
                 L12_C6 = QTreeWidgetItem(L12, ["Chương 6 - Một số yếu tố xác suất"])
                 L12_C6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -14510,6 +14526,22 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B4_04]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính d(C'D,BD')
                                             if dang_toan == "[D12_C5_B4_04]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_04()
+
+                                            #[D12_C5_B4_05]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (BD,CD')
+                                            if dang_toan == "[D12_C5_B4_05]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_05()
+
+                                            #[D12_C5_B4_06]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (AC,BC')
+                                            if dang_toan == "[D12_C5_B4_06]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_06()
+
+                                            #[D12_C5_B4_07]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (A'B,B'D)
+                                            if dang_toan == "[D12_C5_B4_07]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_07()
+
+                                            #[D12_C5_B4_08]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (C'D,BD')
+                                            if dang_toan == "[D12_C5_B4_08]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_08()
                                             
 
                                             #Chương 6 - Một số yếu tố xác suất
