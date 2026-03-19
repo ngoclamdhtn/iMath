@@ -11537,6 +11537,26 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_09]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((A'BC'),(B'CD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_10]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((A'BC),(B'AD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_11]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((AB'C'),(BCD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_12]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((AB'D'),(ABD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_13]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h.  Tính góc(AC',(A'BD))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
         #Chương 6 - Một số yếu tố xác suất
                 L12_C6 = QTreeWidgetItem(L12, ["Chương 6 - Một số yếu tố xác suất"])
                 L12_C6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -14542,6 +14562,26 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B4_08]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc (C'D,BD')
                                             if dang_toan == "[D12_C5_B4_08]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_08()
+
+                                            #[D12_C5_B4_09]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((A'BC'),(B'CD))
+                                            if dang_toan == "[D12_C5_B4_09]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_09()
+
+                                            #[D12_C5_B4_10]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((A'BC),(B'AD))
+                                            if dang_toan == "[D12_C5_B4_10]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_10()
+
+                                            #[D12_C5_B4_11]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((AB'C'),(BCD))
+                                            if dang_toan == "[D12_C5_B4_11]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_11()
+
+                                            #[D12_C5_B4_12]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc ((AB'D'),(ABD))
+                                            if dang_toan == "[D12_C5_B4_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_12()
+
+                                            #[D12_C5_B4_13]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(AC',(A'BD))
+                                            if dang_toan == "[D12_C5_B4_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_13()
                                             
 
                                             #Chương 6 - Một số yếu tố xác suất
