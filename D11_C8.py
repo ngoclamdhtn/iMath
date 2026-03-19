@@ -6454,6 +6454,7 @@ def uvxy9_L11_C8_B4_13():
 #[D11_C8_B4_14]-SA-M3. H.chóp S.ABC, đáy tam giác đều. Tính d(A,(SBC))
 def uvxy9_L11_C8_B4_14():
 	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 	AB=sqrt(random.randint(1,9))
 	SA=sqrt(random.randint(1,10))
 	AM=AB*sqrt(3)/2
@@ -6500,6 +6501,7 @@ def uvxy9_L11_C8_B4_14():
 #[D11_C8_B4_15]-SA-M3. H.chóp S.ABC, đáy t.giác vuông. Tính d(A,(SBC))
 def uvxy9_L11_C8_B4_15():
 	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 	AB=sqrt(random.randint(1,9))
 	AC=sqrt(random.randint(1,9))
 	SA=sqrt(random.randint(1,10))
@@ -6546,6 +6548,7 @@ def uvxy9_L11_C8_B4_15():
 #[D11_C8_B4_16]-SA-M3. H.chóp S.ABC, đáy t.giác vuông cân. Tính d(A,(SBC))
 def uvxy9_L11_C8_B4_16():
 	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 	AB=sqrt(random.randint(1,9))
 	AC=AB
 	BC=sqrt(AB**2+AB**2)
@@ -6596,6 +6599,7 @@ def uvxy9_L11_C8_B4_16():
 #[D11_C8_B4_17]-SA-M3. H.chóp S.ABC, đáy tam giác đều, trọng tâm G. Tính d(G,(SBC))
 def uvxy9_L11_C8_B4_17():
 	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 	AB=sqrt(random.randint(1,9))
 	SA=sqrt(random.randint(1,10))
 	AM=AB*sqrt(3)/2
@@ -6647,6 +6651,7 @@ def uvxy9_L11_C8_B4_17():
 #[D11_C8_B4_18]-SA-M3. H.chóp S.ABC, đáy tam giác đều, I thuộc AB(AC). Tính d(I,(SBC))
 def uvxy9_L11_C8_B4_18():
 	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 	AB=sqrt(random.randint(1,9))
 	SA=sqrt(random.randint(1,10))
 	AM=AB*sqrt(3)/2

@@ -282,6 +282,45 @@ def tim_vecto_vuong_goc(a1, a2, a3):
     b1, b2, b3 = ketqua      
     return b1,b2,b3
 
+def code_hinh_hop(a,b,c,d,e,f,g,h):
+    code=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}}\n\
+\\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
+\\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\
+\\coordinate ({c}) at (3,-1)  node at ({c}) [right] {{${c}$}};\n\
+\\coordinate ({d}) at (4,0)   node at ({d}) [below] {{${d}$}};\n\
+\\coordinate ({e}) at (0,2)   node at ({e}) [left] {{${e}$}};\n\
+\\coordinate ({f}) at (-1,1) node at ({f}) [left] {{${f}$}};\n\
+\\coordinate ({g}) at (3,1)  node at ({g}) [right] {{${g}$}};\n\
+\\coordinate ({h}) at (4,2)   node at ({h}) [right] {{${h}$}};\n\
+\\draw [dashed] ({b})--({a})--({d}) ({e})--({a});\n\
+\\draw ({e})--({f})--({g})--({h})--({e}) ({f})--({b}) ({g})--({c}) ({h})--({d});\n\
+\\draw ({b})--({c})--({d});\n\
+\\end{{scriptsize}}\n\
+\\end{{tikzpicture}}\n"
+    return code
+
+def code_hinh_hop_hetruc(a,b,c,d,e,f,g,h):
+    code=f"\\begin{{tikzpicture}}[scale=0.7] \n\
+\\begin{{scriptsize}}\n\
+\\coordinate ({a}) at (0,0)   node at ({a}) [left] {{${a}$}};\n\
+\\coordinate ({b}) at (-1,-1) node at ({b}) [left] {{${b}$}};\n\
+\\coordinate ({c}) at (3,-1)  node at ({c}) [right] {{${c}$}};\n\
+\\coordinate ({d}) at (4,0)   node at ({d}) [below] {{${d}$}};\n\
+\\coordinate ({e}) at (0,2)   node at ({e}) [left] {{${e}$}};\n\
+\\coordinate ({f}) at (-1,1) node at ({f}) [left] {{${f}$}};\n\
+\\coordinate ({g}) at (3,1)  node at ({g}) [right] {{${g}$}};\n\
+\\coordinate ({h}) at (4,2)   node at ({h}) [right] {{${h}$}};\n\
+\\draw [dashed] ({b})--({a})--({d}) ({e})--({a});\n\
+\\draw ({e})--({f})--({g})--({h})--({e}) ({f})--({b}) ({g})--({c}) ({h})--({d});\n\
+\\draw ({b})--({c})--({d});\n\
+\\draw[->] ({a})--($({a})!1.5!({b})$) node[below left] {{$x$}};\n\
+\\draw[->] ({a})--($({a})!1.3!({d})$) node[right] {{$y$}};\n\
+\\draw[->] ({a})--($({a})!1.5!({e})$) node[left] {{$z$}};\n\
+\\end{{scriptsize}}\n\
+\\end{{tikzpicture}}\n"
+    return code
+
 #BÀI 1 - PHƯƠNG TRÌNH MẶT PHẲNG
 #[D12_C5_B1_01]-M1. Viết PTMP qua điểm và có véctơ pháp tuyến
 def htd_25_xyz_L12_C5_B1_01():
@@ -3393,21 +3432,23 @@ def generate_non_coplanar_points():
 def htd_25_xyz_L12_C5_B1_34():
     #Tạo bậc ngẫu nhiên
     x,y,z=sp.symbols("x y z")
-    A,B,C,D=generate_non_coplanar_points()
-    x_A,y_A,z_A=A
-    x_B,y_B,z_B=B
-    x_C,y_C,z_C=C
-    x_D,y_D,z_D=D
-    
-    ten_diem=["A","B","C","D","E", "F","M", "N", "G","H","I","K"]
-    random.shuffle(ten_diem)
-    A,B,C,D=ten_diem[0:4]
-    mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
+    while True:
+        A,B,C,D=generate_non_coplanar_points()
+        x_A,y_A,z_A=A
+        x_B,y_B,z_B=B
+        x_C,y_C,z_C=C
+        x_D,y_D,z_D=D
+        
+        ten_diem=["A","B","C","D","E", "F", "G","H","I","K", "M", "N",]  
+        A,B,C,D=random.sample(ten_diem,4)
+        mp_P=random.choice(["P","Q", "R", "\\alpha","\\beta", "\\gamma"])
 
-    
-    x_1,y_1,z_1=x_B-x_A,y_B-y_A,z_B-z_A
-    x_2,y_2,z_2=x_D-x_C,y_D-y_C,z_D-z_C
-    a,b,c=tich_co_huong([x_1,y_1,z_1],[x_2,y_2,z_2])   
+        
+        x_1,y_1,z_1=x_B-x_A,y_B-y_A,z_B-z_A
+        x_2,y_2,z_2=x_D-x_C,y_D-y_C,z_D-z_C
+        a,b,c=tich_co_huong([x_1,y_1,z_1],[x_2,y_2,z_2])
+        if all([a!=0,b!=0,c!=0]):
+            break
 
     t=ucln_ba_so(a,b,c)
     a1,b1,c1=int(a/t),int(b/t),int(c/t)
@@ -3415,7 +3456,7 @@ def htd_25_xyz_L12_C5_B1_34():
 
     noi_dung = (
     f"Trong không gian ${{Oxyz}}$, mặt phẳng $({mp_P})$ qua điểm ${A}({x_A};{y_A};{z_A}),{B}({x_B};{y_B};{z_B})$"
-    f" và song song với đường thẳng đi qua hai điểm ${C}({x_C};{y_C};{z_C}),{B}({x_D};{y_D};{z_D})$"
+    f" và song song với đường thẳng đi qua hai điểm ${C}({x_C};{y_C};{z_C}),{D}({x_D};{y_D};{z_D})$"
     f" có phương trình dạng ${a1}x+ay+bz+c=0$. Tính $a+b+c$."
     )
     dap_an=b1+c1-d1
@@ -7537,8 +7578,8 @@ def htd_25_xyz_L12_C5_B2_24():
     ten_diem2=["B","F","N"]
     i=random.randint(0,2)
     ten_dt1, ten_dt2, ten_diem1, ten_diem2 = ten_dt1[i], ten_dt2[i], ten_diem1[i], ten_diem2[i]
-    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ và đường thẳng ${{{ten_dt1}}}:{dt1}$.\n\n"\
-                f"Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}}}$ cắt và vuông góc với đường thẳng ${{{ten_dt1}}}$ có phương trình là")
+    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ và đường thẳng ${{{ten_dt1}}}:{dt1}$."
+        f" Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}}}$ cắt và vuông góc với đường thẳng ${{{ten_dt1}}}$ có phương trình là")
 
     kq=f"\\dfrac{{{latex(x-x_0)}}}{{{a}}}=\\dfrac{{{latex(y-y_0)}}}{{{b}}}=\\dfrac{{{latex(z-z_0)}}}{{{c}}}"
 
@@ -7635,8 +7676,8 @@ def htd_25_xyz_L12_C5_B2_25():
     i=random.randint(0,2)
     ten_dt1, ten_dt2, ten_diem1, ten_diem2 = ten_dt1[i], ten_dt2[i], ten_diem1[i], ten_diem2[i]
     ten_mp=random.choice(["P", "Q", f"\\alpha", f"\\beta", f"\\gamma"])
-    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ và đường thẳng ${{{ten_dt1}}}:{dt1}$.\n\n"\
-                f"Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}}}$ cắt đường thẳng ${{{ten_dt1}}}$ và song song với mặt phẳng $({{{ten_mp}}}):{mp}=0$ có phương trình là")
+    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ và đường thẳng ${{{ten_dt1}}}:{dt1}$."
+                f" Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}}}$ cắt đường thẳng ${{{ten_dt1}}}$ và song song với mặt phẳng $({{{ten_mp}}}):{mp}=0$ có phương trình là")
 
     kq=f"\\dfrac{{{latex(x-x_0)}}}{{{a}}}=\\dfrac{{{latex(y-y_0)}}}{{{b}}}=\\dfrac{{{latex(z-z_0)}}}{{{c}}}"
 
@@ -10092,38 +10133,47 @@ def htd_25_xyz_L12_C5_B2_45():
 
 #BÀI 4: Ứng dụng vào tính khoảng cách, góc
 
-#[D12_C5_B4_01]-SA-M3. 
+#[D12_C5_B4_01]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính d(BD,CD')
 def htd_25_xyz_L12_C5_B4_01():
-    h=random.randint(1,6)
-    a=random.randint(1,6)
-    xB, yB, zB=a,0,0
-    xC, yC, zC=a,a,0
-    xD, yD, zD=0,a,0
-    xB1, yB1, zB1 =a,0,h
-    xC1, yC1, zC1 =a,a,h
-    xD1, yD1, zD1 =a,0,h
-    vec_BD, vec_CD1=vec("BD"), vec("CD'")
-    vec_BC=vec("BC")
+    while True:
+        h=random.randint(1,6)
+        a=random.randint(1,6)
+        xB, yB, zB=a,0,0
+        xC, yC, zC=a,a,0
+        xD, yD, zD=0,a,0
+        xB1, yB1, zB1 =a,0,h
+        xC1, yC1, zC1 =a,a,h
+        xD1, yD1, zD1 =0,a,h
+        vec_BD, vec_CD1=vec("BD"), vec("CD'")
+        vec_BC=vec("BC")
 
-    xBD,yBD,zBD=toa_do_vecto((xB,yB,zB), (xD,yD,zD))
-    xCD1,yCD1,zCD1=toa_do_vecto((xC,yC,zC), (xD1,yD1,zD1))
-    xBC,yBC,zBC=toa_do_vecto((xB,yB,zB), (xC,yC,zC))
+        xBD,yBD,zBD=toa_do_vecto((xB,yB,zB), (xD,yD,zD))
+        xCD1,yCD1,zCD1=toa_do_vecto((xC,yC,zC), (xD1,yD1,zD1))
+        xBC,yBC,zBC=toa_do_vecto((xB,yB,zB), (xC,yC,zC))
 
-    MT_BD=Matrix([xBD,yBD,zBD])
-    MT_CD1=Matrix([xCD1,yCD1,zCD1])
-    MT_BC=Matrix([xBC,yBC,zBC])
+        MT_BD=Matrix([xBD,yBD,zBD])
+        MT_CD1=Matrix([xCD1,yCD1,zCD1])
+        MT_BC=Matrix([xBC,yBC,zBC])
 
 
-    cross_uv = MT_BD.cross(MT_CD1) # Tích có hướng
-    norm_uv = cross_uv.norm() # Độ dài
-    tich_vh=cross_uv.dot(MT_BC)
-    d=abs(tich_vh)/norm_uv
+        cross_uv = MT_BD.cross(MT_CD1) # Tích có hướng
+        norm_uv = cross_uv.norm() # Độ dài
+        tich_vh=cross_uv.dot(MT_BC)
+        d=abs(tich_vh)/norm_uv
+        if 0.5<d<100:
+            break
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
 
     noi_dung = (
     f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
-    f" Tính khoảng cách giữa hai đường thẳng ${{BD}}$ và ${{CD'}}$."
+    f" Tính khoảng cách giữa hai đường thẳng ${{BD}}$ và ${{CD'}}$ (kết quả làm tròn đến hàng phần mười)."
     )
     dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
 
     noi_dung_loigiai=(
     f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
@@ -10137,11 +10187,251 @@ def htd_25_xyz_L12_C5_B4_01():
         
     debai_word= f"{noi_dung}\n"
 
-    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
         f"Đáp án: {dap_an}\n")
 
 
     latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_02]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính d(AC,BC')
+def htd_25_xyz_L12_C5_B4_02():
+    while True:
+        h=random.randint(1,6)
+        a=random.randint(1,6)
+
+        xA, yA, zA=0,0,0
+        xB, yB, zB=a,0,0
+        xC, yC, zC=a,a,0
+        xD, yD, zD=0,a,0
+        xB1, yB1, zB1 =a,0,h
+        xC1, yC1, zC1 =a,a,h
+        xD1, yD1, zD1 =0,a,h
+
+        vec_BD, vec_CD1=vec("BD"), vec("CD'")
+        vec_AB, vec_AC, vec_BC=vec("AB"), vec("AC"), vec("BC")
+        vec_BC1=vec("BC'")
+
+        xBD,yBD,zBD=toa_do_vecto((xB,yB,zB), (xD,yD,zD))
+        xCD1,yCD1,zCD1=toa_do_vecto((xC,yC,zC), (xD1,yD1,zD1))
+        xBC,yBC,zBC=toa_do_vecto((xB,yB,zB), (xC,yC,zC))
+
+        xAC, yAC, zAC = toa_do_vecto((xA, yA, zA), (xC, yC, zC))
+        xBC1, yBC1, zBC1 = toa_do_vecto((xB, yB, zB), (xC1, yC1, zC1))
+        xAB, yAB, zAB = toa_do_vecto((xA, yA, zA), (xB, yB, zB))
+
+        MT_AC  = Matrix([xAC,  yAC,  zAC])
+        MT_BC1 = Matrix([xBC1, yBC1, zBC1])
+        MT_AB  = Matrix([xAB,  yAB,  zAB])
+
+
+        cross_uv = MT_AC.cross(MT_BC1) # Tích có hướng
+        norm_uv = cross_uv.norm() # Độ dài
+        tich_vh=cross_uv.dot(MT_AB)
+        d=abs(tich_vh)/norm_uv
+        if 0.5<d<100:
+            break
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính khoảng cách giữa hai đường thẳng ${{AC}}$ và ${{BC'}}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), C({xC};{yC};{zC}), C'({xC1};{yC1};{zC1})$.\n\n"
+    f" ${vec_AC}=({xAC},{yAC},{zAC}), {vec_BC1}=({xBC1},{yBC1},{zBC1})$.\n\n"
+    f" ${vec_AB}=({xAB},{yAB},{zAB})$.\n\n"
+    f"$d(AC,BC')=\\dfrac{{|[{vec_AC},{vec_BC1}].{vec_AB}|}}{{|[{vec_AC},{vec_BC1}]|}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_03]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính d(A'B,B'D)
+def htd_25_xyz_L12_C5_B4_03():
+    while True:
+        h=random.randint(1,6)
+        a=random.randint(1,6)
+
+        xA, yA, zA=0,0,0
+        xB, yB, zB=a,0,0
+        xC, yC, zC=a,a,0
+        xD, yD, zD=0,a,0
+        xA1, yA1, zA1 =0,0,h
+        xB1, yB1, zB1 =a,0,h
+        xC1, yC1, zC1 =a,a,h
+        xD1, yD1, zD1 =0,a,h
+
+        vec_CD1=vec("BD")
+        vec_AB, vec_AC, vec_AD = vec("AB"), vec("AC"), vec("AD")
+        vec_BC, vec_BD, vec_BA = vec("BC"),  vec("BD"),  vec("BA")
+
+        vec_A1B, vec_A1C, vec_A1D, vec_A1B1, vec_A1C1, vec_A1D1 = \
+        vec("A'B"), vec("A'C"), vec("A'D"), vec("A'B'"), vec("A'C'"), vec("A'D'")
+
+        vec_B1A, vec_B1B, vec_B1C, vec_B1D, vec_B1A1, vec_B1C1, vec_B1D1 = \
+        vec("B'A"), vec("B'B"), vec("B'C"), vec("B'D"), vec("B'A'"), vec("B'C'"), vec("B'D'")
+
+
+        xA1B, yA1B, zA1B = toa_do_vecto((xA1, yA1, zA1), (xB, yB, zB))
+        xB1D, yB1D, zB1D = toa_do_vecto((xB1, yB1, zB1), (xD, yD, zD))
+        xBD,  yBD,  zBD  = toa_do_vecto((xB,  yB,  zB),  (xD, yD, zD))
+
+
+        MT_A1B = Matrix([xA1B, yA1B, zA1B])
+        MT_B1D = Matrix([xB1D, yB1D, zB1D])
+        MT_BD  = Matrix([xBD,  yBD,  zBD])
+
+
+        cross_uv = MT_A1B.cross(MT_B1D) # Tích có hướng
+        norm_uv = cross_uv.norm() # Độ dài
+        tich_vh=cross_uv.dot(MT_BD)
+        d=abs(tich_vh)/norm_uv
+        if 0.5<d<100:
+            break
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính khoảng cách giữa hai đường thẳng ${{A'B}}$ và ${{B'D}}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), D({xD};{yD};{zD}), A'({xA1};{yA1};{zA1})$.\n\n"
+    f" ${vec_A1B}=({xA1B},{yA1B},{zA1B}), {vec_B1D}=({xB1D},{yB1D},{zB1D})$.\n\n"
+    f" ${vec_BD}=({xBD},{yBD},{zBD})$.\n\n"
+    f"$d(A'B,B'D)=\\dfrac{{|[{vec_A1B},{vec_B1D}].{vec_BD}|}}{{|[{vec_A1B},{vec_B1D}]|}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_04]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính d(C'D,BD')
+def htd_25_xyz_L12_C5_B4_04():
+    while True:
+        h=random.randint(1,6)
+        a=random.randint(1,6)
+
+        xA, yA, zA=0,0,0
+        xB, yB, zB=a,0,0
+        xC, yC, zC=a,a,0
+        xD, yD, zD=0,a,0
+        xA1, yA1, zA1 =0,0,h
+        xB1, yB1, zB1 =a,0,h
+        xC1, yC1, zC1 =a,a,h
+        xD1, yD1, zD1 =0,a,h
+
+        vec_CD1=vec("CD'")
+        vec_AB, vec_AC, vec_AD=vec("AB"), vec("AC"), vec("AD")
+        vec_AA1, vec_AB1, vec_AC1, vec_AD1 = \
+        vec("AA'"), vec("AB'"), vec("AC'"), vec("AD'")
+
+        vec_BC, vec_BD, vec_BA= vec("BC"),  vec("BD"),  vec("BA")
+        vec_BA1, vec_BB1, vec_BC1, vec_BD1 = \
+        vec("BA'"), vec("BB'"), vec("BC'"), vec("BD'")
+
+        vec_A1A, vec_A1B, vec_A1C, vec_A1D, vec_A1B1, vec_A1C1, vec_A1D1 = \
+        vec("A'A"), vec("A'B"), vec("A'C"), vec("A'D"), vec("A'B'"), vec("A'C'"), vec("A'D'")
+
+        vec_B1A, vec_B1B, vec_B1C, vec_B1D, vec_B1A1, vec_B1C1, vec_B1D1 = \
+        vec("B'A"), vec("B'B"), vec("B'C"), vec("B'D"), vec("B'A'"), vec("B'C'"), vec("B'D'")
+
+        vec_C1A, vec_C1B, vec_C1C, vec_C1D = \
+        vec("C'A"), vec("C'B"), vec("C'C"), vec("C'D")
+        vec_C1A1, vec_C1B1, vec_C1D1 = \
+        vec("C'A'"), vec("C'B'"), vec("C'D'")
+
+
+        xC1D, yC1D, zC1D = toa_do_vecto((xC1, yC1, zC1), (xD,  yD,  zD))
+        xBD1, yBD1, zBD1 = toa_do_vecto((xB,  yB,  zB),  (xD1, yD1, zD1))
+        xBD,  yBD,  zBD  = toa_do_vecto((xB,  yB,  zB),  (xD,  yD,  zD))
+
+
+        MT_C1D = Matrix([xC1D, yC1D, zC1D])
+        MT_BD1 = Matrix([xBD1, yBD1, zBD1])
+        MT_BD  = Matrix([xBD,  yBD,  zBD])
+
+
+        cross_uv = MT_C1D.cross(MT_BD1) # Tích có hướng
+        norm_uv = cross_uv.norm() # Độ dài
+        tich_vh=cross_uv.dot(MT_BD)
+        d=abs(tich_vh)/norm_uv
+        if 0.5<d<100:
+            break
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính khoảng cách giữa hai đường thẳng ${{C'D}}$ và ${{BD'}}$ (kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Chọn hệ trục tọa độ ${{Axyz}}$ sao cho ${{B}}$ thuộc tia ${{Ax}}$,"
+    f" ${{D}}$ thuộc tia ${{Ay}}$, ${{A'}}$ thuộc tia ${{Az}}$.\n\n"
+    f" $A(0;0;0), B({xB};{yB};{zB}), D({xD};{yD};{zD}), C'({xC1};{yC1};{zC1}), D'({xD1};{yD1};{zD1})$.\n\n"
+    f" ${vec_C1D}=({xC1D},{yC1D},{zC1D}), {vec_BD1}=({xBD1},{yBD1},{zBD1})$.\n\n"
+    f" ${vec_BD}=({xBD},{yBD},{zBD})$.\n\n"
+    f"$d(C'D,BD')=\\dfrac{{|[{vec_C1D},{vec_BD1}].{vec_BD}|}}{{|[{vec_C1D},{vec_BD1}]|}}={dap_an}$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
     f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"

@@ -1772,12 +1772,15 @@ def uz9zu_L11_C6_B2_16():
     loigiai_3=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
     if kq3==kq3_F:
         loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
-    k=random.randint(3,9)
-    m=[i for i in range(3,10) if i !=k]
+
+    
+    #m=[i for i in range(3,10) if i !=k]
 
     chon=random.randint(1,2)
+    chon=1
 
     if chon==1:
+        k=random.randint(4,9)
         kq4_T=f"* Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={phan_so(1/2)}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$"
         kq4_F=random.choice([
             f"Nếu ${a}^2+{b}^2={k-2}{a}{b}$ thì $\\log_{k}({a}+{b})={random.randint(2,5)}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$",
@@ -1790,6 +1793,7 @@ def uz9zu_L11_C6_B2_16():
             f" $\\log_{k} {{({a}+{b})}}={phan_so(1/2)}(1+\\log_{k}{{{a}}}+\\log_{k}{{{b}}})$.")
     
     if chon==2:
+        k=random.randint(2,7)
         kq4_T=f"* Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={phan_so(1/2)}(1+\\log_{k}{a}+\\log_{k}{b})$"
         kq4_F=random.choice([
             f"Nếu ${a}^2+{b}^2={k+2}{a}{b}$ thì $\\log_{k}({a}-{b})={random.randint(2,5)}(1+\\log_{k} {{{a}}}+\\log_{k} {{{b}}})$",

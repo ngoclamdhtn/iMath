@@ -6766,7 +6766,7 @@ def ckz_L12C4_B4_33():
         n = random.choice([i for i in range(-5, 6) if i!=0])
         p = random.choice([i for i in range(-5, 6) if i!=0])
         q = random.choice([i for i in range(-5, 6) if i!=0])
-        if m!=p and n!=q:
+        if m*q-n*p!=0:
             break
 
 
@@ -11640,7 +11640,7 @@ def ckz_L12C4_B5_31():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
-    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần mười)."        
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau:"        
     debai_word= f"{noi_dung}\n"
     a=random.randint(-5,2)
     b=a+random.randint(1,4)
@@ -11828,7 +11828,7 @@ def ckz_L12C4_B5_32():
     x=sp.symbols("x")
     d_x=f"\\mathrm{{\\,d}}x"
 
-    noi_dung = f"Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần mười)."        
+    noi_dung = f"Xét tính đúng-sai của các khẳng định sau:"        
     debai_word= f"{noi_dung}\n"
     a=random.randint(-5,2)
     b=a+random.randint(1,4)

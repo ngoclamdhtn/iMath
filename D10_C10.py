@@ -15664,7 +15664,6 @@ def gghik_L10_CX_B4_25():
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
-
 #[D10_CX_B4_26]-TF-M2. Cho pt elip, tìm tiêu cự, tiêu điểm, điểm thuộc
 def gghik_L10_CX_B4_26():
 	x,y=sp.symbols("x y")
@@ -15683,8 +15682,8 @@ def gghik_L10_CX_B4_26():
 	if kq1==kq1_F:
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq2_T=random.choice([  f"*$A(0;{b}) \\in (E)$ ", f"*$A(0;{-b}) \\in (E)$ ", f"*$A({a}; 0) \\in (E)$"])
-	kq2_F=random.choice([  f"*$A({b};0) \\in (E)$ ", f"*$A({-b};0) \\in (E)$ ", f"*$A(0;{a}) \\in (E)$"])
+	kq2_T=random.choice([  f"*$A(0;{b}) \\in (E)$ ", f"*$A(0;{-b}) \\in (E)$ ", f"*$A({a}; 0) \\in (E)$", f"*$A({-a}; 0) \\in (E)$"])
+	kq2_F=random.choice([  f"$A({b};0) \\in (E)$ ", f"$A({-b};0) \\in (E)$ ", f"$A(0;{a}) \\in (E)$", f"$A(0;{-a}) \\in (E)$"])
 	kq2=random.choice([kq2_T, kq2_F])
 	HDG=f"Thay toạ độ điểm đã cho vào phương trình elip."
 	loigiai_2=f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
