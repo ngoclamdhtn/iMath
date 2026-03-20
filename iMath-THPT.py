@@ -11561,6 +11561,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_14]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h.  Tính góc(B'D,(A'BC))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C5_B4_3, ["[D12_C5_B4_15]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h.  Tính góc(CD',(A'B'D))"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
         #Chương 6 - Một số yếu tố xác suất
                 L12_C6 = QTreeWidgetItem(L12, ["Chương 6 - Một số yếu tố xác suất"])
                 L12_C6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -14590,6 +14598,14 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B4_13]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(AC',(A'BD))
                                             if dang_toan == "[D12_C5_B4_13]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_13()
+
+                                            #[D12_C5_B4_14]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(B'D,(A'BC))
+                                            if dang_toan == "[D12_C5_B4_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_14()
+
+                                            #[D12_C5_B4_15]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(CD',(A'B'D))
+                                            if dang_toan == "[D12_C5_B4_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B4_15()
                                             
 
                                             #Chương 6 - Một số yếu tố xác suất

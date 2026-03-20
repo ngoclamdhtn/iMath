@@ -11131,3 +11131,167 @@ def htd_25_xyz_L12_C5_B4_13():
     f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
     f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_14]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(B'D,(A'BC))
+def htd_25_xyz_L12_C5_B4_14():
+    while True:    
+        h=random.randint(1,7)
+        a=random.randint(1,6)
+        if a!=h:
+            break
+
+
+    xA, yA, zA=0,0,0
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+
+    xA1, yA1, zA1 =0,0,h
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =0,a,h
+
+    vec_A1B, vec_BC, vec_B1D= \
+    vec("A'B"), vec("BC"), vec("B'D")
+
+    vec_n, vec_u=vec("n"), vec("u") 
+
+    xA1B, yA1B, zA1B = toa_do_vecto((xA1, yA1, zA1), (xB,  yB,  zB))
+    xBC,  yBC,  zBC  = toa_do_vecto((xB,  yB,  zB),  (xC,  yC,  zC))
+    xB1D, yB1D, zB1D = toa_do_vecto((xB1, yB1, zB1), (xD,  yD,  zD))
+
+    MT_A1B = Matrix([xA1B, yA1B, zA1B])
+    MT_BC  = Matrix([xBC,  yBC,  zBC])
+    MT_B1D = Matrix([xB1D, yB1D, zB1D])
+
+    n = MT_A1B.cross(MT_BC)
+    u = MT_B1D
+
+    tich_vh = n.dot(u)
+    n_norm = n.norm()
+    u_norm = u.norm()
+    
+    sin_value=abs(tich_vh)/(n_norm*u_norm)
+    s_sin=f"{round_half_up(sin_value,4):.4f}".replace(".",",")
+    goc=asin(sin_value)*180/pi
+        
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính góc giữa đường thẳng ${{B'D}}$ và mặt phẳng $(A'BC)$ (đơn vị độ, kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Gọi $\\alpha$ là góc cần tìm.\n\n"
+    f"Chọn hệ trục tọa độ ${{Axyz}}$.\n\n"
+    f" $A'({xA1};{yA1};{zA1}), B({xB};{yB};{zB}), C({xC};{yC};{zC}), B'({xB1};{yB1};{zB1}), D({xD};{yD};{zD})$.\n\n"    
+    f" ${vec_A1B}=({xA1B},{yA1B},{zA1B}),{vec_BC}=({xBC},{yBC},{zBC}), {vec_B1D}=({xB1D},{yB1D},{zB1D})$.\n\n"
+    f" ${vec_n}=[{vec_A1B},{vec_BC}]=({n[0]};{n[1]};{n[2]})$.\n\n"
+    f" ${vec_u}=({xB1D},{yB1D},{zB1D})$.\n\n"  
+    f" $\\sin \\alpha=\\dfrac{{|{vec_n}.{vec_u}|}}{{|{vec_n}|.|{vec_u}|}}={s_sin}$.\n\n"
+    f" $\\Rightarrow \\alpha={dap_an}^\\circ$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C5_B4_15]-SA-M3. H.hộp chữ nhật đáy h.vuông, AB=a, AA'=h. Tính góc(CD',(A'B'D))
+def htd_25_xyz_L12_C5_B4_15():
+    while True:    
+        h=random.randint(1,7)
+        a=random.randint(1,6)
+        if a!=h:
+            break
+
+
+    xA, yA, zA=0,0,0
+    xB, yB, zB=a,0,0
+    xC, yC, zC=a,a,0
+    xD, yD, zD=0,a,0
+
+    xA1, yA1, zA1 =0,0,h
+    xB1, yB1, zB1 =a,0,h
+    xC1, yC1, zC1 =a,a,h
+    xD1, yD1, zD1 =0,a,h
+
+    vec_A1B1, vec_B1D, vec_CD1= \
+    vec("A'B'"), vec("B'D"), vec("CD'")
+
+    vec_n, vec_u=vec("n"), vec("u") 
+
+    xA1B1, yA1B1, zA1B1 = toa_do_vecto((xA1, yA1, zA1), (xB1, yB1, zB1))
+    xB1D,  yB1D,  zB1D  = toa_do_vecto((xB1, yB1, zB1), (xD,  yD,  zD))
+    xCD1,  yCD1,  zCD1  = toa_do_vecto((xC,  yC,  zC),  (xD1, yD1, zD1))
+
+    MT_A1B1 = Matrix([xA1B1, yA1B1, zA1B1])
+    MT_B1D  = Matrix([xB1D,  yB1D,  zB1D])
+    MT_CD1  = Matrix([xCD1,  yCD1,  zCD1])
+
+    n = MT_A1B1.cross(MT_B1D)
+    u = MT_CD1
+
+    tich_vh = n.dot(u)
+    n_norm = n.norm()
+    u_norm = u.norm()
+    
+    sin_value=abs(tich_vh)/(n_norm*u_norm)
+    s_sin=f"{round_half_up(sin_value,4):.4f}".replace(".",",")
+    goc=asin(sin_value)*180/pi
+        
+
+    code_hinh=code_hinh_hop_hetruc("A","B","C","D","A'","B'","C'","D'")
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+    
+
+    noi_dung = (
+    f"Cho hình hộp chữ nhật ${{ABCD.A'B'C'D'}}$ có đáy là hình vuông cạnh bằng ${{{a}}}$, $AA'={h}$."
+    f" Tính góc giữa đường thẳng ${{CD'}}$ và mặt phẳng $(A'B'D)$ (đơn vị độ, kết quả làm tròn đến hàng phần mười)."
+    )
+    dap_an=f"{round_half_up(goc,1):.1f}".replace(".",",")
+    if dap_an.endswith(",0"):   
+        dap_an = dap_an[:-2]
+
+    noi_dung_loigiai=(
+    f"Gọi $\\alpha$ là góc cần tìm.\n\n"
+    f"Chọn hệ trục tọa độ ${{Axyz}}$.\n\n"
+    f" $A'({xA1};{yA1};{zA1}), B'({xB1};{yB1};{zB1}), D({xD};{yD};{zD}), C({xC};{yC};{zC}), D'({xD1};{yD1};{zD1})$.\n\n"    
+    f" ${vec_A1B1}=({xA1B1},{yA1B1},{zA1B1}),{vec_B1D}=({xB1D},{yB1D},{zB1D}), {vec_CD1}=({xCD1},{yCD1},{zCD1})$.\n\n"
+    f" ${vec_n}=[{vec_A1B1},{vec_B1D}]=({n[0]};{n[1]};{n[2]})$.\n\n"
+    f" ${vec_u}=({xCD1},{yCD1},{zCD1})$.\n\n"  
+    f" $\\sin \\alpha=\\dfrac{{|{vec_n}.{vec_u}|}}{{|{vec_n}|.|{vec_u}|}}={s_sin}$.\n\n"
+    f" $\\Rightarrow \\alpha={dap_an}^\\circ$."
+
+    )    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {file_name}\n{noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
