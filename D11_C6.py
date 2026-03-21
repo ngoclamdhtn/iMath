@@ -2180,6 +2180,60 @@ f"\\log_{a}1=1"
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C6_B2_20]-M2. Tính kết quả của log_a(a^m) +log_√a (a^n)
+def uz9zu_L11_C6_B2_19():
+    a=random.choice(["a","b","c","d" ])
+    m=random.randint(2,8)
+    n=random.randint(3,5)
+    p=random.randint(2,6)
+    can_a=f"\\sqrt[{n}]{{{a}}}"
+    noi_dung=(
+    f"Cho ${a}>0,{a}\\ne 1$."
+    f" Tính giá trị biểu thức $P=log_{a} {{{a}^{m}}} +\\log_{{{can_a}}}{{{a}^{p}}}$."
+    )
+    
+
+    kq=m+n*p
+
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${kq}$ là khẳng định đúng."
+    )
+
+    pa_A= f"*${kq}$"
+    pa_B= f"${kq2}$"
+    pa_C= f"${kq3}$"
+    pa_D= f"${kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
 
 
 ################ Bài 3: HÀM SỐ MŨ- HÀM SỐ LOGARIT #################
