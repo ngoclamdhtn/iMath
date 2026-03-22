@@ -2181,32 +2181,38 @@ f"\\log_{a}1=1"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D11_C6_B2_20]-M2. Tính kết quả của log_a(a^m) +log_√a (a^n)
-def uz9zu_L11_C6_B2_19():
+def uz9zu_L11_C6_B2_20():
     a=random.choice(["a","b","c","d" ])
-    m=random.randint(2,8)
+    m= random.choice([i for i in range(-5, 8) if i!=0])
     n=random.randint(3,5)
-    p=random.randint(2,6)
+    p=random.choice([i for i in range(-6, 8) if i!=0])
     can_a=f"\\sqrt[{n}]{{{a}}}"
     noi_dung=(
     f"Cho ${a}>0,{a}\\ne 1$."
-    f" Tính giá trị biểu thức $P=log_{a} {{{a}^{m}}} +\\log_{{{can_a}}}{{{a}^{p}}}$."
+    f" Tính giá trị biểu thức $P=\\log_{a} {{{a}^{{{m}}}}} +\\log_{{{can_a}}} {{{a}^{{{p}}}}}$."
     )
     
 
     kq=m+n*p
 
-
+    s = {x for x in range(kq-10, kq+ 10) if x != a}
+    kq_false=list(s)
     random.shuffle(kq_false)
     kq2,kq3,kq4=kq_false[0:3]
 
     noi_dung_loigiai=(
-    f"${kq}$ là khẳng định đúng."
+    f"$P=log_{a} {{{a}^{{{m}}}}} +\\log_{{{can_a}}}{{{a}^{{{p}}}}}={m}+{n}.{p}={kq}$."
     )
+    if p<0:
+        noi_dung_loigiai=(
+        f"$P=log_{a} {{{a}^{{{m}}}}} +\\log_{{{can_a}}}{{{a}^{{{p}}}}}={m}+{n}.({p})={kq}$."
+        )
 
-    pa_A= f"*${kq}$"
-    pa_B= f"${kq2}$"
-    pa_C= f"${kq3}$"
-    pa_D= f"${kq4}$"
+
+    pa_A= f"*${{{kq}}}$"
+    pa_B= f"${{{kq2}}}$"
+    pa_C= f"${{{kq3}}}$"
+    pa_D= f"${{{kq4}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -2214,7 +2220,67 @@ def uz9zu_L11_C6_B2_19():
 
     debai= f"{noi_dung}"
 
-    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B2_21]-M1. Tính log_a (√a^n)
+def uz9zu_L11_C6_B2_21():
+    a=random.choice(["a","b","c","d" ])
+    m= random.randint(2,15)
+    n=random.randint(3,5)
+
+    can_a=f"\\sqrt[{n}]{{{a}^{m}}}"
+    noi_dung=(
+    f"Cho ${a}>0,{a}\\ne 1$."
+    f" Tính giá trị biểu thức $P=\\log_{a} {{{can_a}}}$."
+    )
+    
+
+    kq=m/n
+
+    tap = set()
+    while len(tap) < 5:
+        x = round(random.uniform(-5, 5), 1)  # số thập phân 2 chữ số
+        if x != kq:
+            tap.add(x)
+    kq_false=list(tap)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$P=\\log_{a} {{{can_a}}}={phan_so(kq)}$."
+    )
+
+
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"

@@ -7136,13 +7136,21 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_21]-M1. Tìm khẳng định đúng về log_a (√a^n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(a^m.b^n)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked) 
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_20]-M2. Tính log_a(a^m) +log_√a (a^n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
 
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -16183,7 +16191,15 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B2_19]-M2. Tìm tính chất đúng về logarit
                                             if dang_toan == "[D11_C6_B2_19]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_19()                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_19()
+
+                                            #[D11_C6_B2_20]-M2. Tính kết quả của log_a(a^m) +log_√a (a^n)
+                                            if dang_toan == "[D11_C6_B2_20]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_20()
+
+                                            #[D11_C6_B2_21]-M2. Tính log_a (√a^n)
+                                            if dang_toan == "[D11_C6_B2_21]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_21()                     
                                                 
 
                                 
