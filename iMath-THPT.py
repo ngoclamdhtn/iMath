@@ -7128,15 +7128,23 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_01]-M1. Tìm khẳng định đúng về log_a (a^m)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_01]-M1. Tính log_a (a^m)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_02]-M1. Tìm khẳng định đúng về log_a (1/a^m)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_02]-M1. Tính log_a (1/a^m)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_21]-M1. Tìm khẳng định đúng về log_a (√a^n)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_21]-M1. Tính log_a (√a^n)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_22]-M1. Tính log_(1/a^n) (a^m)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_23]-M1. Tính Tính log_m (ma)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16199,7 +16207,17 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B2_21]-M2. Tính log_a (√a^n)
                                             if dang_toan == "[D11_C6_B2_21]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_21()                     
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_21()
+
+                                            #[D11_C6_B2_22]-M1. Tính log_(1/a^n) (a^m)
+                                            if dang_toan == "[D11_C6_B2_22]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_22()
+
+                                            #[D11_C6_B2_23]-M1. Tính log_m (ma)
+                                            if dang_toan == "[D11_C6_B2_23]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_23()
+
+
                                                 
 
                                 
