@@ -7057,23 +7057,27 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_15]-M1. Rút gọn (a^p.ⁿ√a^m)."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_02]-M2. Rút gọn (a^m.a^n)/a^p với m,n,p là phân số."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_03]-M1. Biểu diễn căn bậc thành lũy thừa."])
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_03]-M1. Biểu diễn ⁿ√a^m thành lũy thừa."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_04]-M2. Biểu diễn tích chứa 2 căn thành lũy thừa."])
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_04]-M2. Biểu diễn ⁿ√a.ᵐ√a thành lũy thừa."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_05]-M3. Biểu diễn tích chứa 3 căn thành lũy thừa."])
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_05]-M3. Biểu diễn ⁿ√a.ᵐ√a.ᵖ√a thành lũy thừa."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_06]-M3. Tìm k để tích 3 căn = x^m."])
+                item = QTreeWidgetItem(L11_C6_B1_1, ["[D11_C6_B1_06]-M3. Tìm k để tích ⁿ√x.ᵐ√x.ᵖ√x = x^m."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7148,6 +7152,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_24]-M1. Tính Tính log_m (m/a)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -7158,7 +7166,11 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_20]-M2. Tính log_a(a^m) +log_√a (a^n)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)               
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)  
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_25]-M2. Tính log_a^m (b^n)-log_ab^p"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
 
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7452,11 +7464,7 @@ class Ui_MainWindow(object):
 
                 L11_C6_B4_3 = QTreeWidgetItem(L11_C6_B4, ["Trả lời ngắn"])
                 L11_C6_B4_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
-
-                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N."])
-                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L11_C6_B4_3.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_26]-SA-M2. Giải phương trình m^(ax^2+bx+c)=m^(dx+e)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7475,6 +7483,14 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_17]-SA-M3. Giải phương trình log_m(ax+b) - log_m(cx+d) = e"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_25]-SA-M2. Số lượng vi khuẩn dạng m^(ax^2+bx+c). Tìm ngày để số lượng đạt bằng N."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B4_3, ["[D11_C6_B4_27]-SA-M2. Tính áp suất không khí ứng với độ cao a=15500(5-log p)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16113,7 +16129,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B1_14]-M2. Tìm khẳng định đúng về tính chất lũy thừa                
                                             if dang_toan == "[D11_C6_B1_14]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_14()                                            
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_14()
+
+                                            #[D11_C6_B1_15]-M2. Rút gọn (a^p.ⁿ√a^m)                
+                                            if dang_toan == "[D11_C6_B1_15]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B1_15()                                            
 
 
 
@@ -16216,6 +16236,14 @@ class Ui_MainWindow(object):
                                             #[D11_C6_B2_23]-M1. Tính log_m (ma)
                                             if dang_toan == "[D11_C6_B2_23]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_23()
+
+                                            #[D11_C6_B2_24]-M1. Tính log_m (m/a)
+                                            if dang_toan == "[D11_C6_B2_24]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_24()
+
+                                            #[D11_C6_B2_25]-M2. Tính log_a^m (b^n)-log_ab^p
+                                            if dang_toan == "[D11_C6_B2_25]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_25()
 
 
                                                 
@@ -16866,7 +16894,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C6_B4_26]-SA-M2. Giải phương trình m^(ax^2+bx+c)=m^(dx+e)
                                             if dang_toan == "[D11_C6_B4_26]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_26()                              
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_26()
+
+                                            #[D11_C6_B4_27]-SA-M2.  Tính áp suất không khí ứng với độ cao a=15500(5-log p)
+                                            if dang_toan == "[D11_C6_B4_27]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B4_27()                             
                                                 
 
                                 #BÀI 5 - BẤT PHƯƠNG TRÌNH MŨ - PHƯƠNG TRÌNH LOGARIT

@@ -970,19 +970,17 @@ def uz9zu_L11_C6_B1_14():
         f"\\end{{ex}}\n")
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D11_C6_B1_15]-M2. Rút gọn (ⁿ√a^m.a^p)
+#[D11_C6_B1_15]-M2. Rút gọn (a^p.ⁿ√a^m)
 def uz9zu_L11_C6_B1_15():
     a= random.choice(["a", "b", "c", "x", "y" ])
-    n=random.randint(2,5)
+    n=random.randint(3,6)
     m=random.randint(2,9)
-    p= random.choice([i for i in range(-4, 5) if i!=0])
+    p= random.randint(2,9)
     can_a=f"\\sqrt[{n}]{{{a}^{m}}}"
     noi_dung=(
-    f"Cho số thực dương ${a}>0, a\\ne 1$ và biểu thức $P={can_a}.{a}^{{{p}}}$."
+    f"Cho số thực dương ${a}>0, {a}\\ne 1$ và biểu thức $P={a}^{{{p}}}{can_a}$."
     f" Tìm khẳng định đúng."
-    )
-
-    
+    )    
 
     kq=m/n+p
 
@@ -997,13 +995,72 @@ def uz9zu_L11_C6_B1_15():
 
 
     noi_dung_loigiai=(
-    f"$P={can_a}.{a}^{{{p}}}={a}^{{{phan_so(kq)}}}$."
+    f"$P={a}^{{{p}}}{can_a}={a}^{{{phan_so(kq)}}}$."
     )
 
-    pa_A= f"*$a^{{{phan_so(kq)}}}$"
-    pa_B= f"$a^{{{phan_so(kq2)}}}$"
-    pa_C= f"$a^{{{phan_so(kq3)}}}$"
-    pa_D= f"$a^{{{phan_so(kq4)}}}$"
+    pa_A= f"*${a}^{{{phan_so(kq)}}}$"
+    pa_B= f"${a}^{{{phan_so(kq2)}}}$"
+    pa_C= f"${a}^{{{phan_so(kq3)}}}$"
+    pa_D= f"${a}^{{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B1_15]-M2. Rút gọn (a^p.ⁿ√a^m)
+def uz9zu_L11_C6_B1_15():
+    a= random.choice(["a", "b", "c", "x", "y" ])
+    n=random.randint(3,6)
+    m=random.randint(2,9)
+    p= random.randint(2,9)
+    can_a=f"\\sqrt[{n}]{{{a}^{m}}}"
+    noi_dung=(
+    f"Cho số thực dương ${a}>0, {a}\\ne 1$ và biểu thức $P={a}^{{{p}}}{can_a}$."
+    f" Tìm khẳng định đúng."
+    )    
+
+    kq=m/n+p
+
+    tap = set()
+    while len(tap) < 5:
+        x = round(random.uniform(-5, 5), 1)  # số thập phân 2 chữ số
+        if x != kq:
+            tap.add(x)
+    kq_false=list(tap)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f"$P={a}^{{{p}}}{can_a}={a}^{{{phan_so(kq)}}}$."
+    )
+
+    pa_A= f"*${a}^{{{phan_so(kq)}}}$"
+    pa_B= f"${a}^{{{phan_so(kq2)}}}$"
+    pa_C= f"${a}^{{{phan_so(kq3)}}}$"
+    pa_D= f"${a}^{{{phan_so(kq4)}}}$"
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -2441,13 +2498,142 @@ def uz9zu_L11_C6_B2_23():
     kq2,kq3,kq4=kq_false[0:3]
 
     noi_dung_loigiai=(
-    f"$P=P=\\log_{m} {{{m}{a}}}={kq}$."
+    f"$P=\\log_{m} {{{m}{a}}}={kq}$."
     )
 
     pa_A= f"*$P={kq}$"
     pa_B= f"$P={kq2}$"
     pa_C= f"$P={kq3}$"
     pa_D= f"$P={kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B2_24]-M1. Tính log_m (ma)
+def uz9zu_L11_C6_B2_24():
+    a = random.choice(["a","b","c","d"])
+    m = random.randint(2,9)
+
+    noi_dung=(
+    f"Cho ${a}>0,{a}\\ne 1$."
+    f" Cho biểu thức $P=\\log_{m} {{\\dfrac{{{m}}}{{{a}}}}}$. Tìm khẳng định đúng."
+    )    
+
+    kq=f"1-\\log_{m} {{{a}}}"
+
+
+    kq_false=[
+    f"1+\\log_{m} {{{a}}}",
+    f"{m}-\\log_{m} {{{a}}}",
+    f"{m}+\\log_{m} {{{a}}}",
+    f"{m}\\log_{m} {{{a}}}",
+    f"{m}-{a}"]
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$P=\\log_{m} {{\\dfrac{{{m}}}{{{a}}}}}={kq}$."
+    )
+
+    pa_A= f"*$P={kq}$"
+    pa_B= f"$P={kq2}$"
+    pa_C= f"$P={kq3}$"
+    pa_D= f"$P={kq4}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B2_25]-M2. Tính log_a^m (b^n)-log_ab^p
+def uz9zu_L11_C6_B2_25():
+    a,b = sorted(random.sample(["a","b","c","d", "x", "y"],2))
+    while True:
+        n=random.randint(2,6)
+        m=n*random.randint(2,4)
+        p=random.randint(2,8)
+        if m/n-p!=0:
+            break
+
+
+    noi_dung=(
+    f"Cho ${{{a},{b}}}$ các số thực dương khác ${{1}}$."
+    f" Cho biểu thức $P=\\log_{{{a}^{n}}}{{{b}^{{{m}}}}}-\\log_{a} {{{b}^{p}}}$. Tìm khẳng định đúng."
+    )    
+
+    kq=f"{int(m/n)-p}\\log_{a} {{{b}}}".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+
+
+    tap = set()
+    while len(tap) < 5:
+    
+        numbers =  random.choice([i for i in range(-10, 10) if i!=0])
+        if numbers!=int(m/n)-p:
+            tap.add(numbers)
+    tap=list(tap)
+
+    kq_false=[
+    f"{tap[0]}\\log_{a} {{{b}}}",
+    f"{tap[1]}\\log_{a} {{{b}}}",
+    f"{tap[2]}\\log_{a} {{{b}}}",
+    f"{tap[3]}\\log_{a} {{{b}}}",]
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$P={kq}$."
+    )
+
+    pa_A= f"*$P={kq}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_B= f"$P={kq2}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_C= f"$P={kq3}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_D= f"$P={kq4}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
@@ -6708,7 +6894,46 @@ def uz9zu_L11_C6_B4_26():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
+#[D11_C6_B4_27]-SA-M2. Tính áp suất không khí ứng với độ cao a=15500(5-log p)
+def uz9zu_L11_C6_B4_27():
 
+    m = random.randint(1, 8)
+    log_p = 4 + m/10
+    a = int(15500*(5 - log_p))
+    p = 10**log_p
+    dap_an = str(round(p/1000))
+
+    noi_dung = (
+    f"Biết rằng khi độ cao tăng lên, áp suất không khí sẽ giảm và công thức tính áp suất dựa trên độ cao là "
+    f"$a=15500(5-\\log p)$, "
+    f"trong đó ${{a}}$ là độ cao so với mực nước biển (tính bằng mét) và ${{p}}$ là áp suất không khí (tính bằng pascal). "
+    f"Tính áp suất không khí ở một đỉnh núi có độ cao ${a}\\,\\mathrm{{m}}$ so với mực nước biển "
+    f"(đơn vị kPa, làm tròn đến hàng đơn vị)."
+    )
+    dap_an = dap_an
+
+    st1=f"$ {a}=15500(5-\\log p) \\Rightarrow 5-\\log p=\\dfrac{{{a}}}{{15500}}={5-log_p:.1f}$\n\n".replace(".",",")
+    st2=f"$\\Rightarrow \\log p={log_p:.1f}$\n\n".replace(".",",")
+    st3=f"Suy ra $p=10^{{{log_p:.1f}}}\\approx {p:.0f}\\,\\mathrm{{Pa}}={p/1000:.1f}\\,\\mathrm{{kPa}}$.\n\n".replace(".",",")
+
+    noi_dung_loigiai=(
+    f"{st1}"
+    f"{st2}"
+    f"{st3}" 
+    f"Làm tròn đến hàng đơn vị, ta được ${dap_an}\\,\\mathrm{{kPa}}$."
+    )   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 
