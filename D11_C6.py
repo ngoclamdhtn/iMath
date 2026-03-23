@@ -2662,6 +2662,167 @@ def uz9zu_L11_C6_B2_25():
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 
+#[D11_C6_B2_26]-M2. Cho aᵐ.bⁿ=p. Tìm logarit 2 vế
+def uz9zu_L11_C6_B2_26():
+    a,b = sorted(random.sample(["a","b","c","d", "x", "y"],2))
+    while True:
+        m,n=random.sample(range(2,7),2)
+        p=random.choice([2,3,5])
+        k=random.randint(1,3)
+        if m!=n:
+            break
+
+    noi_dung=(
+    f"Cho các số thực dương ${{{a},{b}}}$ thỏa mãn ${a}^{m}{b}^{n}={p**k}$."
+    f" Mệnh đề nào sau đây đúng?"
+    )    
+
+    kq=f"{m}\\log_{p} {{{a}}}+{n}\\log_{p} {{{b}}}={k}"
+
+    kq_false=[
+    f"{m}\\log_{p} {{{a}}}+{n}\\log_{p} {{{b}}}={p**k}",
+    f"{m}\\log_{p} {{{a}}}-{n}\\log_{p} {{{b}}}={k}",
+    f"{n}\\log_{p} {{{a}}}+{m}\\log_{p} {{{b}}}={k}"]
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"${a}^{m}{b}^{n}={p**k}\\Rightarrow {m}\\log_{p} {{{a}}}+{n}\\log_{p} {{{b}}}={k}$."
+    )
+
+    pa_A= f"*$P={kq}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_B= f"$P={kq2}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_C= f"$P={kq3}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_D= f"$P={kq4}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B2_27]-M2. Cho aᵐ/bⁿ=p. Tìm logarit 2 vế
+def uz9zu_L11_C6_B2_27():
+    a,b = sorted(random.sample(["a","b","c","d", "x", "y"],2))
+    while True:
+        m,n=random.sample(range(2,7),2)
+        p=random.choice([2,3,5])
+        k=random.randint(1,3)
+        if m!=n:
+            break
+
+    noi_dung=(
+    f"Cho các số thực dương ${{{a},{b}}}$ thỏa mãn $\\dfrac{{{a}^{m}}}{{{b}^{n}}}={p**k}$."
+    f" Mệnh đề nào sau đây đúng?"
+    )    
+
+    kq=f"{m}\\log_{p} {{{a}}}-{n}\\log_{p} {{{b}}}={k}"
+
+    kq_false=[
+    f"{m}\\log_{p} {{{a}}}-{n}\\log_{p} {{{b}}}={p**k}",
+    f"{m}\\log_{p} {{{a}}}+{n}\\log_{p} {{{b}}}={k}",
+    f"{n}\\log_{p} {{{a}}}+{m}\\log_{p} {{{b}}}={k}"]
+
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+    noi_dung_loigiai=(
+    f"$\\dfrac{{{a}^{m}}}{{{b}^{n}}}={p**k}\\Rightarrow{m}\\log_{p} {{{a}}}-{n}\\log_{p} {{{b}}}={k}$."
+    )
+
+    pa_A= f"*$P={kq}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_B= f"$P={kq2}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_C= f"$P={kq3}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    pa_D= f"$P={kq4}$".replace("=1\\log","=\\log").replace("=-1\\log","=-\\log")
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
+#[D11_C6_B2_28]-SA-M2. Cho logₐb=m, logₐc=n. Tính log_b (a√c)
+def uz9zu_L11_C6_B2_28():
+
+    m = random.randint(2,9)
+    n = m + random.randint(1,5)
+
+    M = float(1/m + n/(2*m))
+    if M.is_integer():
+        dap_an=int(M)
+        lam_tron=""
+    else:
+        dap_an = f"{round_half_up(M,2):.2f}".replace(".",",")
+        lam_tron=" (kết quả làm tròn đến hàng phần trăm)"
+        if dap_an.endswith("0"):   
+            dap_an = dap_an[:-1]
+
+    noi_dung = (
+    f"Cho các số thực dương ${{a, b, c}}$ thỏa mãn $\\log_a b={m}$, $\\log_a c={n}$. "
+    f"Tính $M=\\log_b\\left(a\\sqrt{{c}}\\right)${lam_tron}."
+    )
+
+    noi_dung_loigiai=(
+    f"Ta có $\\log_a b={m} \\Rightarrow b=a^{m}$, $\\log_a c={n} \\Rightarrow c=a^{{{n}}}$.\n\n"
+    f"$M=\\log_b\\left(a\\sqrt{{c}}\\right)=\\log_b\\left(a\\cdot a^{{{n}/2}}\\right)=\\log_{{a^{m}}}\\left(a^{{1+{n}/2}}\\right)$.\n\n"
+    f"$=\\dfrac{{1+{n}/2}}{{{m}}}={dap_an}.$"
+    )   
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
 
 ################ Bài 3: HÀM SỐ MŨ- HÀM SỐ LOGARIT #################
 

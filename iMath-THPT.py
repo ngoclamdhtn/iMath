@@ -7132,19 +7132,19 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_01]-M1. Tính log_a (a^m)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_01]-M1. Tính log_a (aᵐ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_02]-M1. Tính log_a (1/a^m)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_02]-M1. Tính log_a (1/aᵐ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_21]-M1. Tính log_a (√a^n)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_21]-M1. Tính log_a (√aᵐ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_22]-M1. Tính log_(1/a^n) (a^m)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_22]-M1. Tính log_(1/aⁿ) (aᵐ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7156,21 +7156,29 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_can[n](a) (1/a^m)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_03]-M2. Tìm khẳng định đúng về log_ⁿ√a (1/aᵐ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(a^m.b^n)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_06]-M2. Tìm khẳng định đúng của log_a(aᵐ.bⁿ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked) 
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_20]-M2. Tính log_a(a^m) +log_√a (a^n)"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_20]-M2. Tính log_a(aᵐ) +log_√a (aⁿ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)  
 
-                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_25]-M2. Tính log_a^m (b^n)-log_ab^p"])
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_25]-M2. Tính log_aᵐ (bⁿ)-log_abᵖ"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)             
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_26]-M2. Cho aᵐ.bⁿ=p. Tìm logarit 2 vế"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_27]-M2. Cho aᵐ/bⁿ=p. Tìm logarit 2 vế"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)          
 
                 item = QTreeWidgetItem(L11_C6_B2_1, ["[D11_C6_B2_04]-M1. Tính giá trị biểu thức chứa logarit bằng máy tính"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -7188,7 +7196,7 @@ class Ui_MainWindow(object):
                 L11_C6_B2_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B2_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_16]-TF-M2. Xét Đ-S: log_a^n b, log(a.b), log(a+b)."])
+                item = QTreeWidgetItem(L11_C6_B2_2, ["[D11_C6_B2_16]-TF-M2. Xét Đ-S: log_aⁿ b, log(a.b), log(a+b)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7204,23 +7212,27 @@ class Ui_MainWindow(object):
                 L11_C6_B2_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C6_B2_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_08]-SA-M2. Cho log_a(b), log_a(c). Tính P=log_a(b^m.c^n)+p"])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_28]-SA-M2. Cho logₐb=m, logₐc=n. Tính log_b (a√c)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_09]-SA-M2. Cho log_a(b), log_a(c). Tính log_a(a^m.b^n/c^p)"])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_08]-SA-M2. Cho logₐb, logₐc. Tính P=log_a(bᵐ.cⁿ)+p"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_10]-SA-M2. Biểu diễn log_a(M) theo log_a(b) và log_a(c)."])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_09]-SA-M2. Cho logₐb, logₐc. Tính log_a(aᵐ.bⁿ/cᵖ)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_11]-SA-M3. Biểu diễn log_a(M/N) theo log_a(b) và log_a(c)."])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_10]-SA-M2. Biểu diễn logₐM theo logₐb và logₐc."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_12]-SA-M3. Biểu diễn log_a(M) theo log(b) và log(c)."])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_11]-SA-M3. Biểu diễn logₐ(M/N) theo logₐb và logₐc."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_12]-SA-M3. Biểu diễn logₐ(M) theo log(b) và log(c)."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -7228,7 +7240,7 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_14]-SA-M3. Tính tổng log_a (n/n+1) +...log_a (m/m+1)"])
+                item = QTreeWidgetItem(L11_C6_B2_3, ["[D11_C6_B2_14]-SA-M3. Tính tổng logₐ (n/n+1) +...logₐ (m/m+1)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16244,6 +16256,18 @@ class Ui_MainWindow(object):
                                             #[D11_C6_B2_25]-M2. Tính log_a^m (b^n)-log_ab^p
                                             if dang_toan == "[D11_C6_B2_25]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_25()
+
+                                            #[D11_C6_B2_26]-M2. Cho aᵐ.bⁿ=p. Tìm logarit 2 vế
+                                            if dang_toan == "[D11_C6_B2_26]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_26()
+
+                                            #[D11_C6_B2_27]-M2. Cho aᵐ/bⁿ=p. Tìm logarit 2 vế
+                                            if dang_toan == "[D11_C6_B2_27]":                                        
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C6.uz9zu_L11_C6_B2_27()
+
+                                            #[D11_C6_B2_28]-SA-M2. Cho logₐb=m, logₐc=n. Tính log_b (a√c) 
+                                            if dang_toan == "[D11_C6_B2_28]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C6.uz9zu_L11_C6_B2_28()
 
 
                                                 
