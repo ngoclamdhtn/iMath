@@ -781,8 +781,9 @@ def htd_25_xyz_L12_C5_B1_07():
 
     kq=abs(a*x_0+b*y_0+c*z_0+d)/sqrt(a**2+b**2+c**2)
     kq2=abs(a*x_0+b*y_0+c*z_0)/sqrt(a**2+b**2+c**2)
-    kq3=abs(a*x_0+b*y_0+c*z_0+d)/(a**2+b**2+c**2)+random.randint(1,5)
-    kq4=abs(a*x_0+b*y_0+c*z_0+d)/(a**2+b**2+c**2)
+    kq3=abs(a*x_0+b*y_0+c*z_0+d)/(a**2+b**2+c**2)
+    tap = [sqrt(i) for i in range(1, 21) if i not in (kq, kq2, kq3)]
+    kq4=random.choice(tap)
 
     noi_dung_loigiai=my_module.thay_dau_congtru(f"Khoảng cách từ điểm ${{{ten_diem}}}$ đến mặt phẳng $({ten_mp})$ bằng:\n\n"\
         f"$d({ten_diem},({ten_mp})=\\dfrac{{|{show_tich(a,x_0)}+{show_tich(b,y_0)}+{show_tich(c,z_0)}+{d}|}} {{\\sqrt{{ {a**2}+{b**2}+{c**2}}} }}={latex(kq)}$")
@@ -792,7 +793,7 @@ def htd_25_xyz_L12_C5_B1_07():
     pa_A= f"*${latex(kq)}$"
     pa_B= f"${latex(kq2)}$"
     pa_C= f"${phan_so(kq3)}$"
-    pa_D= f"${phan_so(kq4)}$"
+    pa_D= f"${latex(kq4)}$"
 
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -1256,11 +1257,9 @@ def htd_25_xyz_L12_C5_B1_13():
 
     kq=abs(t3/(t2*sqrt(a**2+b**2+c**2)))
     kq2=abs((t3+1)/(t2*sqrt(a**2+b**2+c**2)))
-    while True:        
-        kq3=random.randint(1,10)/random.randint(12,20)
-        kq4=random.randint(1,7)
-        if all([kq3!=kq, kq3!=kq2, kq4!=kq, kq4!=kq2, kq4!=kq3]):
-            break
+
+    tap = [sqrt(i)/sqrt(a**2+b**2+c**2) for i in range(1, 21) if i not in (kq, kq2)]
+    kq3,kq4=random.sample(tap,2)
 
 
     noi_dung_loigiai=my_module.thay_dau_congtru(
@@ -1273,8 +1272,8 @@ def htd_25_xyz_L12_C5_B1_13():
     #Tạo các phương án
     pa_A= f"*${latex(kq)}$"
     pa_B= f"${latex(kq2)}$"
-    pa_C= f"${phan_so(kq3)}$"
-    pa_D= f"${phan_so(kq4)}$"
+    pa_C= f"${latex(kq3)}$"
+    pa_D= f"${latex(kq4)}$"
 
     #Trộn các phương án
     list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -5587,7 +5586,7 @@ def htd_25_xyz_L12_C5_B3_18():
             loigiai_4=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}" 
 
     #Trộn các phương án
-    list_PA =[kq1, kq2, kq4, kq3]
+    list_PA =[kq1, kq2, kq3, kq4]
     #random.shuffle(list_PA)
     list_TF=my_module.tra_ve_TF(list_PA)
 
@@ -7578,8 +7577,8 @@ def htd_25_xyz_L12_C5_B2_24():
     ten_diem2=["B","F","N"]
     i=random.randint(0,2)
     ten_dt1, ten_dt2, ten_diem1, ten_diem2 = ten_dt1[i], ten_dt2[i], ten_diem1[i], ten_diem2[i]
-    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ và đường thẳng ${{{ten_dt1}}}:{dt1}$."
-        f" Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}}}$ cắt và vuông góc với đường thẳng ${{{ten_dt1}}}$ có phương trình là")
+    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho đường thẳng ${{{ten_dt1}}}:{dt1}$."
+        f" Đường thẳng ${{{ten_dt2}}}$ đi qua ${ten_diem1}({x_0};{y_0};{z_0})$ cắt và vuông góc với đường thẳng ${{{ten_dt1}}}$ có phương trình là")
 
     kq=f"\\dfrac{{{latex(x-x_0)}}}{{{a}}}=\\dfrac{{{latex(y-y_0)}}}{{{b}}}=\\dfrac{{{latex(z-z_0)}}}{{{c}}}"
 
@@ -7618,13 +7617,13 @@ def htd_25_xyz_L12_C5_B2_24():
     for i in range(4):
         list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n \n"\
+    debai_latex= f"\\begin{{ex}}\n {noi_dung}\n "\
         f"\\choice\n"\
         f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
         f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
 
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n "\
         f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
@@ -7676,8 +7675,9 @@ def htd_25_xyz_L12_C5_B2_25():
     i=random.randint(0,2)
     ten_dt1, ten_dt2, ten_diem1, ten_diem2 = ten_dt1[i], ten_dt2[i], ten_diem1[i], ten_diem2[i]
     ten_mp=random.choice(["P", "Q", f"\\alpha", f"\\beta", f"\\gamma"])
-    noi_dung= my_module.thay_dau_congtru(f"Trong không gian ${{Oxyz}}$, cho điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ và đường thẳng ${{{ten_dt1}}}:{dt1}$."
-                f" Đường thẳng ${{{ten_dt2}}}$ đi qua ${{{ten_diem1}}}$ cắt đường thẳng ${{{ten_dt1}}}$ và song song với mặt phẳng $({{{ten_mp}}}):{mp}=0$ có phương trình là")
+    noi_dung= my_module.thay_dau_congtru(
+        f"Trong không gian ${{Oxyz}}$, cho đường thẳng ${{{ten_dt1}}}:{dt1}$."
+        f" Đường thẳng ${{{ten_dt2}}}$ đi qua điểm ${{{ten_diem1}({x_0};{y_0};{z_0})}}$ cắt đường thẳng ${{{ten_dt1}}}$ và song song với mặt phẳng $({{{ten_mp}}}):{mp}=0$ có phương trình là")
 
     kq=f"\\dfrac{{{latex(x-x_0)}}}{{{a}}}=\\dfrac{{{latex(y-y_0)}}}{{{b}}}=\\dfrac{{{latex(z-z_0)}}}{{{c}}}"
 
@@ -7723,8 +7723,8 @@ def htd_25_xyz_L12_C5_B2_25():
         f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
         f"\\end{{ex}}\n"
 
-    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n \n"\
-        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n}}"\
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
         

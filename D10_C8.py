@@ -6497,7 +6497,7 @@ def mcn__L10_C8_B2_54():
 
 	s3=s-2*m
 
-	kq3_T=f"* Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $A^{m}_{{{s3}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ hai" 
+	kq3_T=f"* Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $A^{m}_{{{s3}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba" 
 	kq3_F=random.choice([
 	f"Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $C^{m}_{{{s3}}}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba",
 	f"Sau khi sắp xếp xong hai hàng ghế đầu tiên, có $P_{m}$ cách sắp xếp {m} người ngồi vào hàng ghế thứ ba",

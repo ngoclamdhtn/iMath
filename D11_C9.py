@@ -3436,7 +3436,7 @@ def ut9kq_L11_C9_B2_14():
 	f"• {nu_lon} người phụ nữ có số tuổi không nhỏ hơn {tuoi};\n\n"
 	f"• {nu_nho} người phụ nữ có số tuổi nhỏ hơn {tuoi}.\n\n"
 	f"Chọn ngẫu nhiên một người trong buổi tiệc để trao quà. "
-	f"Tính xác suất để người đó là phụ nữ hoặc có số tuổi nhỏ hơn 21 (kết quả làm tròn đến hàng phần trăm)."
+	f"Tính xác suất để người đó là phụ nữ hoặc có số tuổi nhỏ hơn {tuoi} (kết quả làm tròn đến hàng phần trăm)."
 	)
 
 	noi_dung_loigiai = (

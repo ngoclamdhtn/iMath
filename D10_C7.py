@@ -2355,7 +2355,7 @@ def aaa_pry_L10_C7_B2_06():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_C7_B2_07]-M3. Tìm m để ax^2 +bx+c>0 (<0) vô nghiệm.
+#[D10_C7_B2_07]-M3. Tìm m để ax^2 +bx+c <=0 vô nghiệm.
 def aaa_pry_L10_C7_B2_07(): 
     x=sp.symbols("x")
     m=sp.symbols("m")
@@ -2418,7 +2418,7 @@ def aaa_pry_L10_C7_B2_07():
         f"\\end{{ex}}\n"
     return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_C7_B2_08]-M3. Tìm m để ax^2 +bx+c>=0 (<=0) vô nghiệm.
+#[D10_C7_B2_08]-M3. Tìm m để ax^2 +bx+c <0 vô nghiệm.
 def aaa_pry_L10_C7_B2_08(): 
     x=sp.symbols("x")
     m=sp.symbols("m")
@@ -3556,7 +3556,7 @@ def aaa_pry_L10_C7_B2_20():
     f" nghiệm đúng với mọi $x\\in \\mathbb{{R}}$ là {dem+random.randint(1,3)}")
     
     HDG=(        
-    f"${latex(x**2)}-({latex(a*m+b)})x+{c}\\le 0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
+    f"YCBT: ${latex(x**2)}-({latex(a*m+b)})x+{c}\\ge 0$ có nghiệm đúng với mọi $x\\in \\mathbb{{R}}$\n\n"
     f"$\\Leftrightarrow \\Delta \\le 0 \\Leftrightarrow {latex((a*m+b)**2-4*c)}\\le 0$\n\n"
     f"$\\Leftrightarrow {latex(a1*m**2+b1*m+c1)}\\le 0$\n\n"
     f"$\\Leftrightarrow {latex(x_1)}\\le m \\le {latex(x_2)}$.\n\n"
@@ -3618,139 +3618,84 @@ def aaa_pry_L10_C7_B2_20():
 #Bài 3: Phương trình quy về bậc hai
 #[D10_C7_B3_01]-M2. Giải PT căn(ax^2 + bx^2 + c)=căn(dx^2 + ex + f)
 def aaa_pry_L10_C7_B3_01():
-	x=sp.symbols("x")
-	m1 = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	n1 = random.randint(-5,5)
-	p1 = random.randint(1,10)	
+    x=sp.symbols("x")
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i!=0])
+        b = random.choice([i for i in range(-5, 6) if i!=0])
+        c = random.randint(-6,7)
 
-	m2 = random.randint(-5, -1)
-	n2 = random.randint(-5,5)
-	p2 = random.randint(1,10)
+        d = random.choice([i for i in range(-5, 5) if i!=0])
+        e = random.choice([i for i in range(-7, 7) if i!=0])
+        f = random.choice([i for i in range(-7, 7) if i!=0])
 
-	if all([m1==m2,n1==n2,p1==p2]):
-		n1=n1+random(1,3)
+        f1=a*x**2+b*x+c
+        f2=d*x**2+d*x+e
+        if a==d:
+            continue
 
-	if m1==-m2: m1=-m2+random.randint(1,3)
+        a1, b1, c1 = a-d, b-d, c-e
+        delta=b1**2-4*a1*c1
+        if delta<=0:
+            continue
 
-	a, b, c=m1+m2, n1+n2, p1+p2			
+        x1, x2=sorted([(-b1-sqrt(delta))/(2*a1), (-b1+sqrt(delta))/(2*a1)])
+        y1, y2= f2.subs(x,x1), f2.subs(x,x2)
+        if all([y1>=0, y2>=0]):
+            break
+        
+        
+    kq=x1+x2
+    kq_false = set()
+    while len(kq_false) < 5:
+        numbers = round(random.uniform(-3, 3),1)
+        if numbers!=kq:
+                kq_false.add(numbers)
+    kq_false=list(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
 
-	f=a*x**2+b*x+c	
-	
-	f_trai=latex(sp.sqrt(m1*x**2+n1*x+p1))
-	f_phai=latex(sp.sqrt(-m2*x**2-n2*x-p2))
-	f_thu=m1*x**2+n1*x+p1
+    noi_dung = (
+    f"Tính tổng các nghiệm của phương trình ${latex(sqrt(f1))}={latex(sqrt(f2))}$."
+    )
 
-	delta,x_1,x_2=tinh_va_dau_delta(a,b,c)
-
-	#Tạo phương án và lời giải
-	if delta==">0":
-		x_1_round=round(x_1,3)
-		x_2_round=round(x_2,3)
-		y_1=f_thu.subs(x,x_1_round)
-		y_2=f_thu.subs(x,x_2_round)
-		if check_so_nguyen(x_1):
-			x_1=latex(my_module.hien_phan_so(x_1))
-			x_2=latex(my_module.hien_phan_so(x_2))
-		else:
-			x_1=latex(x_1)
-			x_2=latex(x_2)
-
-		if y_1>=0 and y_2>=0:
-			kq=f"${{2}}$"
-			kq2=f"${{1}}$"
-			kq3=f"${{0}}$"
-			kq4=f"${{3}}$"
-			noi_dung_loigiai=f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}$\n"\
-				   f"$\\Rightarrow {latex(f)}=0 \\Rightarrow x_1={x_1},x_2={x_2}$.\n"\
-				   f"Thử lại $x_1,x_2$ vào phương trình đầu ta thấy $x_1,x_2$ đều thỏa mãn.\n Vậy số nghiệm là: {kq}."
-		elif y_1>=0 and y_2<0:
-			kq=f"${{1}}$"
-			kq2=f"${{2}}$"
-			kq3=f"${{0}}$"
-			kq4=f"${{3}}$"
-			noi_dung_loigiai=f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}$\n"\
-				   f"$\\Rightarrow {latex(f)}=0 \\Rightarrow x_1={x_1},x_2={x_2}$.\n"\
-				   f"Thử lại $x_1,x_2$ vào phương trình đầu ta nhận $x_1$, loại $x_2$.\n Vậy số nghiệm là: {kq}."
-		elif y_1<0 and y_2>=0:
-			kq=f"${{1}}$"
-			kq2=f"${{2}}$"
-			kq3=f"${{0}}$"
-			kq4=f"${{3}}$"
-			noi_dung_loigiai=f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}$\n"\
-				   f"$\\Rightarrow {latex(f)}=0 \\Rightarrow x_1={x_1},x_2={x_2}$.\n"\
-				   f"Thử lại $x_1,x_2$ vào phương trình đầu ta thấy nhận $x_2$, loại $x_1$.\n Vậy số nghiệm là: {kq}."
-		else:
-			kq=f"${{0}}$"
-			kq2=f"${{2}}$"
-			kq3=f"${{1}}$"
-			kq4=f"${{3}}$"
-			noi_dung_loigiai=f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}$\n "\
-				   f"$\\Rightarrow {latex(f)}=0 \\Rightarrow x_1={x_1},x_2={x_2}$.\n"\
-				   f"Thử lại $x_1,x_2$ vào phương trình đầu ta thấy $x_1,x_2$ không thỏa mãn.\n Vậy số nghiệm là: {kq}."
-
-	if delta=="=0":
-		y_0=f_thu.subs(x,x_1)
-		if y_0>=0:		
-			kq=f"${{1}}$"
-			kq2=f"${{0}}$"
-			kq3=f"${{2}}$"
-			kq4=f"${{3}}$"
-			noi_dung_loigiai=f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}$\n "\
-				   f"$\\Rightarrow {latex(f)}=0 \\Rightarrow x={x_1}$.\n"\
-				   f"Thử lại $x_1,x_2$ vào phương trình đầu ta thấy $x={x_1}$ thỏa mãn. Vậy số nghiệm là: {kq}." 
-		else:
-			kq=f"${{0}}$"
-			kq2=f"${{1}}$"
-			kq3=f"${{2}}$"
-			kq4=f"${{3}}$"
-			noi_dung_loigiai=f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}$\n "\
-				   f"$\\Rightarrow {latex(f)}=0 \\Rightarrow x={x_1}$.\n"\
-				   f"Thử lại $x_1,x_2$ vào phương trình đầu ta thấy $x={x_1}$ không thỏa mãn. Vậy số nghiệm là: {kq}." 
-
-	if delta=="<0":
-		kq=f"${{0}}$"
-		kq2=f"${{1}}$"
-		kq3=f"${{2}}$"
-		kq4=f"${{3}}$"
-
-		noi_dung_loigiai=my_module.frac_to_dfrac(f"${f_trai}={f_phai}\\Rightarrow {latex(m1*x**2+n1*x+p1)}={latex(-m2*x**2-n2*x-p2)}\n "\
-			   f"\\Rightarrow {latex(f)}=0$(Vô nghiệm).\n Vậy số nghiệm là: {kq}.")
+    noi_dung_loigiai=(
+    f"${latex(sqrt(f1))}={latex(sqrt(f2))} \\Rightarrow {latex(f1)}={latex(f2)}$\n\n"
+    f"$\\Rightarrow {latex(f1-f2)}=0\\Rightarrow x_1={latex(x1)}, x_2={latex(x2)}$ (thỏa mãn).\n\n"
+    f"$x_1+x_2={phan_so(kq)}$."
+    ) 
 
 		
-	#Tạo các phương án
-	pa_A= f"*{kq}"
-	pa_B= f"{kq2}"
-	pa_C= f"{kq3}"
-	pa_D= f"{kq4}"
+    #Tạo các phương án
+    pa_A= f"*${{{phan_so(kq)}}}$"
+    pa_B= f"${{{phan_so(kq2)}}}$"
+    pa_C= f"${{{phan_so(kq3)}}}$"
+    pa_D= f"${{{phan_so(kq4)}}}$"
 
-	#Trộn các phương án
-	list_PA =[pa_A, pa_B, pa_C, pa_D]
-	random.shuffle(list_PA)
-	dap_an=my_module.tra_ve_dap_an(list_PA)   
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)   
 
-	noi_dung=f"Số nghiệm của phương trình ${{{f_trai}={f_phai}}}$."
+    debai= f"{noi_dung}\n"
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
 
-	debai= f"{noi_dung}\n"
-	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}.\n" 
-
-	 
-	loigiai_word=my_module.frac_to_dfrac(f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n")
-	loigiai_traloingan=my_module.frac_to_dfrac(f"Lời giải:\n {noi_dung_loigiai} \n")
+     
+    loigiai_word=my_module.frac_to_dfrac(f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n")
+    loigiai_traloingan=my_module.frac_to_dfrac(f"Lời giải:\n {noi_dung_loigiai} \n")
     #Tạo đề latex
 
-	for i in range(4):
-	    list_PA[i]=list_PA[i].replace("*","\\True ")    
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
 
-	debai_latex= my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\choice\n"\
-	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
-	    f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
-	    f"\\end{{ex}}\n")
+    debai_latex= my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\choice\n"\
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+        f"\\loigiai{{ \n\n {noi_dung_loigiai} \n }}"\
+        f"\\end{{ex}}\n")
 
-	latex_tuluan=my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
-	    f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
-	    f"\\end{{ex}}\n")
-	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+    latex_tuluan=my_module.frac_to_dfrac(f"\\begin{{ex}}\n {noi_dung}\n \n"\
+        f"\\loigiai{{ \n\n  {noi_dung_loigiai} \n\n }}"\
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #[D10_C7_B3_02]-M2. Giải PT căn(ax^2 + bx^2 + c)=dx+e
 def aaa_pry_L10_C7_B3_02(): 
@@ -4041,7 +3986,7 @@ def aaa_pry_L10_C7_B3_04():
         f"Khoảng cách từ nhà {ten} ở vị trí ${{N}}$ đến cột điện ${{C}}$ là {NC} m. "
         f"Từ nhà, {ten} đi ${{x}}$ mét theo phương tạo với ${{NC}}$ một góc $60^\\circ$ đến vị trí ${{A}}$, "
         f"sau đó đi tiếp {s_k} m theo cùng phương đó đến vị trí ${{B}}$ (như hình bên). "
-        f"Tìm ${{x}}$ để $AC = {phan_so(t)}BC$ (kết quả làm tròn đến hàng phần mười mét)."
+        f"Tìm giá trị ${{x}}$ nhỏ nhất để $AC = {phan_so(t)}BC$ (kết quả làm tròn đến hàng phần mười mét)."
     )
 
     # ----------------- LỜI GIẢI -----------------
@@ -4148,7 +4093,7 @@ def aaa_pry_L10_C7_B3_05():
         f"Khoảng cách từ nhà {ten} ở vị trí ${{N}}$ đến cột điện ${{C}}$ là {NC} m. "
         f"Từ nhà, {ten} đi ${{x}}$ mét theo phương tạo với ${{NC}}$ một góc $60^\\circ$ đến vị trí ${{A}}$, "
         f"sau đó đi tiếp {s_k} m theo cùng phương đó đến vị trí ${{B}}$ (như hình bên). "
-        f"Tìm $x$ để $BC = {s_t}AN$ (kết quả làm tròn đến hàng phần mười mét)."
+        f"Tìm giá trị ${{x}}$ nhỏ nhất để $BC = {s_t}AN$ (kết quả làm tròn đến hàng phần mười mét)."
     )
 
     noi_dung_loigiai = (

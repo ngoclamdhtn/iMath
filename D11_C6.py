@@ -6955,7 +6955,7 @@ def uz9zu_L11_C6_B4_25():
         d=b**2-4*a*c1
         if d<=0:
             continue
-        x_1, x_2=(-b-sqrt(d))/2*a, (-b+sqrt(d))/2*a
+        x_1, x_2=(-b-sqrt(d))/(2*a), (-b+sqrt(d))/(2*a)
         if all([x_1<0,x_2>0]):
             break
     noi_dung = (
@@ -8703,8 +8703,8 @@ def uz9zu_L11_C6_B5_19():
 
         noi_dung_loigiai=(
         f"Điều kiện: ${latex(a*x**2+b*x+c)}>0\\Leftrightarrow x<{phan_so(x_1)}$ hoặc $x>{phan_so(x_2)}$.\n\n"
-        f"$\\log_{m}({latex(a*x**2+b*x+c)})>{n} \\Leftrightarrow {latex(a*x**2+b*x+c)}>{m**n}$.\n\n"
-        f"$\\Leftrightarrow {latex(a1*x**2+b1*x+c1)}>0$\n\n"
+        f"$\\log_{m}({latex(a*x**2+b*x+c)})<{n} \\Leftrightarrow {latex(a*x**2+b*x+c)}<{m**n}$.\n\n"
+        f"$\\Leftrightarrow {latex(a1*x**2+b1*x+c1)}<0$\n\n"
         f"$\\Leftrightarrow {phan_so(x_3)}<x<{phan_so(x_4)}$ .\n\n"
         f"Kết hợp điều kiện ta được nghiệm: ${phan_so(x_3)}<x<{phan_so(x_1)}$ hoặc ${phan_so(x_2)}<x<{phan_so(x_4)}$.\n\n"
         f"Số nghiệm nguyên thuộc đoạn $[{u};{v}]$ là: ${{{dem}}}$."
@@ -9404,7 +9404,7 @@ def uz9zu_L11_C6_B6_07():
     n=float(log(b/a)/log(1+r_thang/100))
     s_n=f"{round_half_up(n,2):.2f}".replace(".",",")
     dem=0
-    for i in range(0,100):
+    for i in range(0,int(n)+20):
         if i<n:
             dem+=1
     kq2_T=f"* Sau ít nhất {dem} tháng , {ten_thuong} nhận được tổng số tiền nhiều hơn {b} triệu"
@@ -9871,14 +9871,15 @@ def uz9zu_L11_C6_B6_12():
 def uz9zu_L11_C6_B6_13():
     X,Y=random.choice([("X","Y"), ("Y","Z"), ("X","Z"), ])
     while True:
-        M_x=random.randint(30,85)/10
-        M_y=random.randint(30,85)/10
+        M_x=random.randint(10,80)/10
+        M_y=random.randint(10,80)/10
         if all([M_x>M_y, M_x-M_y>1.3]):
             break
     s_Mx=f"{round_half_up(M_x,1):.1f}".replace(".",",")
     s_My=f"{round_half_up(M_y,1):.1f}".replace(".",",")
     k=M_x-M_y
     s_hieu=f"{round_half_up(k,1):.1f}".replace(".",",")
+    dap_an=f"{round_half_up(10**k/100,0):.0f}".replace(".",",")
 
 
     noi_dung = (
@@ -9886,10 +9887,11 @@ def uz9zu_L11_C6_B6_13():
     f" với ${{A}}$ là biên độ rung chấn tối đa và $A_0$ là một biên độ chuẩn (hằng số)."
     f" Một trận động đất ở khu vực {X} có cường độ {s_Mx} (Richte)."
     f" Một trận động đất ở khu vực {Y} có cường độ {s_My} (Richte)."
-    f" Hỏi trận động đất ở khu vực {X} có biên độ rung chấn mạnh gấp bao nhiêu lần biên độ rung chấn trận động đất ở khu vực {Y}"
+    f" Biết trận động đất ở khu vực {X} có biên độ rung chấn mạnh gấp ${{k}}$ lần biên độ rung chấn trận động đất ở khu vực {Y}."
+    f" Tính tỉ số $\\dfrac{{k}}{{100}}$"
     f" (kết quả làm tròn đến hàng đơn vị)?"
     )
-    dap_an=f"{round_half_up(10**k,0):.0f}".replace(".",",")
+    
 
     noi_dung_loigiai=(
     f"Gọi $A_{X},M_{X}$ là biên độ rung chấn và cường độ của trận động đất ở khu vực {X}.\n\n"
@@ -9899,8 +9901,8 @@ def uz9zu_L11_C6_B6_13():
     f"$M_{Y}=\\log A_{Y}-\\log A_0={s_My}$.\n\n"
     f"$M_{X}-M_{Y}=\\log A_{X}-\\log A_{Y}={s_Mx}-{s_My}={s_hieu}$.\n\n"
     f"$\\Rightarrow \\log \\dfrac{{A_{X}}}{{A_{Y}}}={s_hieu}$.\n\n"
-    f"$\\Rightarrow \\dfrac{{A_{X}}}{{A_{Y}}}=10^{{{s_hieu}}}={dap_an}$"
-    f"$\\Rightarrow A_{X}={dap_an}.A_{Y}$."
+    f"$\\Rightarrow \\dfrac{{A_{X}}}{{A_{Y}}}=10^{{{s_hieu}}}"
+    f"\\Rightarrow \\dfrac{{k}}{{100}}={dap_an}$."
 
 
     )    

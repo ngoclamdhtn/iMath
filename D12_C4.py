@@ -7296,7 +7296,7 @@ def ckz_L12C4_B4_37():
     debai_word= f"{noi_dung}\n"
     
     kq1_T=f"* ${tphan(a,b)}{f}{d_x}=-{tphan(b,a)}{f}{d_x}$" 
-    kq1_F=f"${tphan(a,b)}{f}{d_x}=-{tphan(b,a)}{f}{d_x}$"
+    kq1_F=f"${tphan(a,b)}{f}{d_x}={tphan(b,a)}{f}{d_x}$"
     
     HDG=f"${tphan(a,b)}{f}{d_x}=-{tphan(b,a)}{f}{d_x}$"
     kq1=random.choice([kq1_T, kq1_F])
@@ -10261,15 +10261,15 @@ def ckz_L12C4_B5_13():
     random.shuffle(list_PA)
     dap_an=my_module.tra_ve_dap_an(list_PA)   
 
-    noi_dung=f"Một ô tô đang chạy với tốc độ với tốc độ ${v_0}{km_h}$  thì tăng tốc với gia tốc"\
-    f"  $a(t)={latex(f)}{km_h_2}$. Tính quãng đường ô tô đi được trong vòng ${{{str_t_2}}}$ giờ kể từ khi tăng tốc."
+    noi_dung=f"Một vật đang chuyển động với tốc độ với tốc độ ${v_0}{km_h}$ thì tăng tốc với gia tốc"\
+    f"  $a(t)={latex(f)}{km_h_2}$. Tính quãng đường vật đi được trong vòng ${{{str_t_2}}}$ giờ kể từ khi tăng tốc."
  
     debai= f"{noi_dung}"
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t     C. { list_PA[2]}.\t     D. { list_PA[3]}."
 
-    noi_dung_loigiai=f"Vận tốc của  ô tô dừng hẳn là: $  \\int\\limits {{\\left({latex(f)}\\right){d_t}}}={latex(a*t**2/2)}+{latex(v_0*t)}+C$,\n\n"\
+    noi_dung_loigiai=f"Vận tốc của vật là: $  \\int\\limits {{\\left({latex(f)}\\right){d_t}}}={latex(a*t**2/2)}+{latex(v_0*t)}+C$,\n\n"\
     f"Theo giả thiết ta có: $v(0)={v_0} \\Rightarrow C={v_0}$.\n\n"\
-    f"Quãng đường ôtô đi được là: $  \\int\\limits_{{{t_1}}}^{{{str_t_2}}} {{\\left({latex(a*t**2/2)}+{latex(v_0*t)}+{v_0}\\right){d_t}}}=${kq}."    
+    f"Quãng đường vật đi được là: $  \\int\\limits_{{{t_1}}}^{{{str_t_2}}} {{\\left({latex(a*t**2/2)}+{latex(v_0*t)}+{v_0}\\right){d_t}}}=${kq}."    
     dap_an=my_module.tra_ve_dap_an(list_PA)
 
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -12284,10 +12284,11 @@ def ckz_L12C4_B5_35():
     s_round=f"{round_half_up(s_tong,1):.1f}".replace(".",",")
 
     noi_dung = (
-        f"Một người điều khiển ô tô với tốc độ không đổi của ô tô là {v} km/h trên quãng đường dài {s_tong}m."
-        f" Sau {t1} giây thì ô tô bắt đầu tăng tốc với gia tốc không đổi $a(a\\in \\mathbb{{R}}, a>0)$"
-        f" trong đó ${{t}}$ là thời gian tính bằng giây kể từ khi bắt đầu tăng tốc."
-        f" Biết rằng ô tô đi hết quãng đường trên trong {t2} giây."
+        f"Một ô tô chuyển động thẳng trên quãng đường dài {s_tong}m."
+        f" Trong {t1} giây đầu tiên, ô tô chuyển động với tốc độ không đổi là {v} km/h."
+        f" Sau đó, ô tô bắt đầu tăng tốc với gia tốc không đổi $a(a>0)$."
+        f" Gọi ${{{t}}}$ (giây) là thời gian tính từ lúc bắt đầu tăng tốc."
+        f" Biết rằng kể từ lúc bắt đầu tăng tốc, ô tô đi hết quãng đường trên trong tổng thời gian {t2} giây."
         f" Xét tính đúng-sai của các khẳng định sau. "  )      
     debai_word= f"{noi_dung}\n"
     

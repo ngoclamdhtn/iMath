@@ -4163,11 +4163,11 @@ def ui5io_L11_C7_B2_58():
     noi_dung=(
     f"Đạo hàm của hàm số $y=\\dfrac{{{k}}}{{\\sin {a}x}}$ là"
     )
-    noi_dung_loigiai=(f"$y'={k}\\dfrac{{(\\sin {a}x)'}}{{\\sin^2 {a}x}}={k}\\dfrac{{({a}\\cos {a}x)'}}{{\\sin^2 {a}x}}=\\dfrac{{{k*a}\\cos {a}x}}{{\\sin^2 {a}x}}.$")
+    noi_dung_loigiai=(f"$y'={-k}\\dfrac{{(\\sin {a}x)'}}{{\\sin^2 {a}x}}={-k}\\dfrac{{({a}\\cos {a}x)'}}{{\\sin^2 {a}x}}=\\dfrac{{{-k*a}\\cos {a}x}}{{\\sin^2 {a}x}}.$")
     
 
-    kq=f"$y'=\\dfrac{{{k*a}\\cos {a}x}}{{\\sin^2 {a}x}}$"
-    kq2=f"$y'=\\dfrac{{{k}\\cos {a}x}}{{\\sin^2 {a}x}}$"
+    kq=f"$y'=\\dfrac{{{-k*a}\\cos {a}x}}{{\\sin^2 {a}x}}$"
+    kq2=f"$y'=\\dfrac{{{-k}\\cos {a}x}}{{\\sin^2 {a}x}}$"
     kq3=f"$y'=\\dfrac{{{k*a}}}{{\\sin^2 {a}x}}$"
     kq4=f"$y'=\\dfrac{{{k}\\cos {a}x}}{{\\sin {a}x}}$"
 
@@ -4210,12 +4210,12 @@ def ui5io_L11_C7_B2_59():
     noi_dung=(
     f"Đạo hàm của hàm số $y=\\dfrac{{{k}}}{{\\cos {a}x}}$ là"
     )
-    noi_dung_loigiai=(f"$y'={k}\\dfrac{{(\\cos {a}x)'}}{{\\cos^2 {a}x}}={k}\\dfrac{{({-a}\\sin {a}x)'}}{{\\cos^2 {a}x}}=\\dfrac{{{-k*a}\\sin {a}x}}{{\\cos^2 {a}x}}.$")
+    noi_dung_loigiai=(f"$y'={-k}\\dfrac{{(\\cos {a}x)'}}{{\\cos^2 {a}x}}={-k}\\dfrac{{({-a}\\sin {a}x)'}}{{\\cos^2 {a}x}}=\\dfrac{{{k*a}\\sin {a}x}}{{\\cos^2 {a}x}}.$")
     
 
-    kq=f"$y'=\\dfrac{{{-k*a}\\sin {a}x}}{{\\cos^2 {a}x}}$"
+    kq=f"$y'=\\dfrac{{{k*a}\\sin {a}x}}{{\\cos^2 {a}x}}$"
     kq2=f"$y'=\\dfrac{{{k}\\sin {a}x}}{{\\cos^2 {a}x}}$"
-    kq3=f"$y'=\\dfrac{{{k*a}\\sin {a}x}}{{\\cos^2 {a}x}}$"
+    kq3=f"$y'=\\dfrac{{{-k*a}\\sin {a}x}}{{\\cos^2 {a}x}}$"
     kq4=f"$y'=\\dfrac{{{k}\\sin {a}x}}{{\\cos {a}x}}$"
 
 

@@ -6182,18 +6182,17 @@ def gghik_L10_CX_B1_16():
 
 	vecto_n="\\overrightarrow{{n}}"
 	vecto_u="\\overrightarrow{{u}}"
-	ten_d=random.choice(["d","d_1","\\Delta"])	
+	ten_d=random.choice(["d","d_1","\\Delta"])
+
+	while True:
 	
-	a=random.randint(-10,10)
-	b=random.randint(-10,10)
-	x_0=random.randint(-10,10)
-	y_0=random.randint(-10,10)
-	if a==x_0 and b==y_0:
-		x_0=a+random.randint(1,5)
-		y_0=b+random.randint(1,5)
-	if a==b==0:
-		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	if x_0==y_0: y_0=x_0+random.randint(1,3)
+		a=random.choice([i for i in range(-5, 6) if i!=0])
+		b=random.choice([i for i in range(-5, 6) if i!=0])
+		x_0= random.choice([i for i in range(-5, 6) if i!=0])
+		y_0=random.choice([i for i in range(-5, 6) if i!=0])
+		if all([a!=x_0, b!=y_0, a!=b, x_0!=y_0]):
+			break
+
 	
 
 	f=f"\\left\\{{ \\begin{{array}}{{l}}\
@@ -6211,9 +6210,9 @@ y = {show_ptts(y_0,-a)}\
 	x_1,y_1=int(x_0/ucln),int(y_0/ucln)
 
 	kq=f"{latex(a*(x-x_0)+b*(y-y_0))}=0"
-	kq2=f"{latex(a*(x+x_0)+b*(y+y_0))}=0"
-	kq3=f"{latex(b*x-a*y+b*x_0+a*y_0)}=0"
-	kq4=f"{latex(b*x-a*y+b*x_0+a*y_0+random.randint(1,2))}=0"
+	kq2=f"{latex(a*(x-x_0)-b*(y-y_0))}=0"	
+	kq3=f"{latex(b*x-a*y+random.randint(1,5))}=0"
+	kq4=f"{latex(b*x-a*y-random.randint(1,5))}=0"
 
 	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, cho đường thẳng ${{{ten_d}}}$ có phương trình tham số là ${f}$."\
 			 f" Viết phương trình tổng quát của đường thẳng ${{{ten_d}}}$."
@@ -6232,8 +6231,8 @@ y = {show_ptts(y_0,-a)}\
 	debai= f"{noi_dung}\n"
 	phuongan= f"A. { list_PA[0]}.   B. { list_PA[1]}.    C. { list_PA[2]}.     D. { list_PA[3]}.\n"
 	
-	noi_dung_loigiai=f"Theo đề bài ta có ${{{ten_d}}}$ qua điểm ${{A({x_0};{y_0})}}$ và nhận vectơ ${vecto_u}=({-b};{a})$ làm véctơ chỉ phương.\n"\
-	f"Suy ra ${{{ten_d}}}$ nhận vectơ ${vecto_n}=({a};{b})$ làm véctơ pháp tuyến.\n"\
+	noi_dung_loigiai=f"Theo đề bài ta có ${{{ten_d}}}$ qua điểm ${{A({x_0};{y_0})}}$ và nhận vectơ ${vecto_u}=({-b};{a})$ làm véctơ chỉ phương.\n\n"\
+	f"Suy ra ${{{ten_d}}}$ nhận vectơ ${vecto_n}=({a};{b})$ làm véctơ pháp tuyến.\n\n"\
 	f"Phương trình tổng quát của ${{{ten_d}}}:{a}\\left({my_module.show_hieu('x',x_0)}\\right){b1}\\left({my_module.show_hieu('y',y_0)}\\right)=0$\n"\
 					f"suy ra: ${kq}$.\n"
 	loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -7252,7 +7251,7 @@ def gghik_L10_CX_B1_26():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
@@ -7376,7 +7375,7 @@ def gghik_L10_CX_B1_27():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
@@ -7496,7 +7495,7 @@ def gghik_L10_CX_B1_28():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
@@ -7613,7 +7612,7 @@ def gghik_L10_CX_B1_29():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
@@ -7759,7 +7758,7 @@ def gghik_L10_CX_B1_30():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
@@ -11496,7 +11495,7 @@ def gghik_L10_CX_B3_12():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
@@ -11667,7 +11666,7 @@ def gghik_L10_CX_B3_13():
 	    list_PA[i]=list_PA[i].replace("*","\\True ")    
 
 	debai_latex= f"\\begin{{ex}}\n {noi_dung}\n"\
-	    f"\\choiceTF\n"\
+	    f"\\choiceTFt\n"\
 	    f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
 	    f"\\loigiai{{ \n {loigiai_latex} \n }}"\
 	    f"\\end{{ex}}\n"        
