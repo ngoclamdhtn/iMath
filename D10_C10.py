@@ -6788,7 +6788,7 @@ def gghik_L10_CX_B1_23():
 	c1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 	
 	a2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
-	b2= random.randint(-6, 6)
+	b2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
 	c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 
 	t=abs(a1*a2+b1*b2)/(sqrt(a1**2+b1**2)*sqrt(a2**2+b2**2))
@@ -6818,8 +6818,8 @@ y = {show_ptts(y_1,a1)}\
 	y_2= random.randint(-10, 10)
 
 	f2=f"\\left\\{{ \\begin{{array}}{{l}}\
-x = {show_ptts(x_2,b2)} \\\\ \
-y = {show_ptts(y_2,-a2)}\
+x = {show_ptts(x_2,-b2)} \\\\ \
+y = {show_ptts(y_2,a2)}\
 \\end{{array}} \\right."
 	
     #Tạo các phương án
@@ -6877,7 +6877,7 @@ def gghik_L10_CX_B1_24():
 	c1= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 	
 	a2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
-	b2= random.randint(-6, 6)
+	b2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
 	c2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
 
 	t=abs(a1*a2+b1*b2)/(sqrt(a1**2+b1**2)*sqrt(a2**2+b2**2))
@@ -8260,25 +8260,29 @@ f"$ C\\left( {x_C}, {y_C}   \\right)$")
 
 
 
-
 #[D10_CX_B1_35]-TF-M3. CHo tam giác ABC, biết toạ độ A,2 phân giác BD, CE. Viết pt BC
 def gghik_L10_CX_B1_35():
 	# Tạo tam giác hợp lệ
-	A, M, N = tao_3dinh_tamgiac()
 
-	# Lấy giá trị tọa độ các điểm
-	x1, y1 = A
-	x2, y2 = M
-	x3, y3 = N
-	x_A, y_A = A
-	x_M, y_M = M
-	x_N, y_N = N
-	x_I,y_I=2*x_M-x_A,2*y_M-y_A
-	x_J,y_J=2*x_N-x_A,2*y_N-y_A
-	x_IJ,y_IJ=x_J-x_I,y_J-y_I
+	while True:
+		A, M, N = tao_3dinh_tamgiac()
 
-	x_AI,y_AI=x_I-x_A,y_I-y_A
-	x_AJ,y_AJ=x_J-x_A,y_J-y_A
+		# Lấy giá trị tọa độ các điểm
+		x1, y1 = A
+		x2, y2 = M
+		x3, y3 = N
+		x_A, y_A = A
+		x_M, y_M = M
+		x_N, y_N = N
+		x_I,y_I = 2*x_M-x_A, 2*y_M-y_A
+		x_J,y_J = 2*x_N-x_A, 2*y_N-y_A
+		x_IJ, y_IJ = x_J-x_I, y_J-y_I
+
+		x_AI,y_AI=x_I-x_A,y_I-y_A
+		x_AJ,y_AJ=x_J-x_A,y_J-y_A
+		if all([x_AI*(x_A-x_M)+y_AI*(y_A-y_M)!=0,
+			x_AJ*(x_A-x_N)+y_AJ*(y_A-y_N)!=0]):
+			break
 	
 	x,y=sp.symbols("x y")
 	# Khai báo các phương trình
@@ -8295,7 +8299,7 @@ def gghik_L10_CX_B1_35():
 	# Khai báo các phương trình
 
  # Giữ nguyên nếu không phải số nguyên
-	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, Cho tam giác ${{ABC}}$ với $A({x1};{y1})$, phương trình đường phân giác kẻ từ đỉnh ${{B}}$ là ${{BD: {latex(expand(x_AI*(x-x_M)+y_AI*(y-y_M)))}=0 }} $ , phương trình đường phân giác kẻ từ đỉnh ${{C}}$ là ${{CE: {latex(expand(y_AJ*(x-x_N)-x_AJ*(y-y_N)))}=0}} $. Xét tính đúng-sai của các khẳng định sau. "
+	noi_dung=f"Trong mặt phẳng tọa độ ${{Oxy}}$, Cho tam giác ${{ABC}}$ với $A({x1};{y1})$, phương trình đường phân giác kẻ từ đỉnh ${{B}}$ là ${{BD: {latex(expand(x_AI*(x-x_M)+y_AI*(y-y_M)))}=0 }} $ , phương trình đường phân giác kẻ từ đỉnh ${{C}}$ là ${{CE: {latex(expand(x_AJ*(x-x_N)+y_AJ*(y-y_N)))}=0}} $. Xét tính đúng-sai của các khẳng định sau. "
 
 	debai_word= f"{noi_dung}\n"
 	
@@ -8327,8 +8331,8 @@ f"$ M\\left( {x_M}, {y_M}   \\right)$ suy ra ${{I}} \\left( {x_I}, {y_I}   \\rig
 	if kq3==kq3_F:
 		loigiai_3=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-	kq4_T=f"* ${{BC: {latex(expand((y_IJ)*(x-x_I)+(-x_IJ)*(y-y_I))) }=0}}$ "
-	kq4_F=f"  ${{BC: {latex(expand((y_IJ)*(x-x_I)+(-x_IJ)*(y-y_I)+random.randint(1,5))) }=0}}$" 
+	kq4_T=f"* Phương trình ${{BC: {latex(expand((y_IJ)*(x-x_I)+(-x_IJ)*(y-y_I))) }=0}}$ "
+	kq4_F=f"  Phương trình ${{BC: {latex(expand((y_IJ)*(x-x_I)+(-x_IJ)*(y-y_I)+random.randint(1,5))) }=0}}$" 
 	kq4=random.choice([kq4_T, kq4_F])
 	HDG=(f"Có ${{I}} \\left( {x_I}, {y_I}   \\right)$; ${{J}} \\left( {x_J}, {y_J}   \\right)$ mà đường thẳng ${{IJ}}$ cũng chính là đường thẳng ${{BC}}$ nên \n\n "
 	f" ${{BC: {latex(expand((y_IJ)*(x-x_I)+(-x_IJ)*(y-y_I))) }=0}}$")
