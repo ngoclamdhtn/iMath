@@ -182,10 +182,10 @@ def uz9zu_L11_C6_B1_01():
 def uz9zu_L11_C6_B1_02():     
     m1 = random.randint(1,9)
     n1 = random.randint(10,15)
-    m2=random.randint(1,9)
-    n2=random.randint(10,16)
-    m3=random.randint(1,9)
-    n3=random.randint(10,16)
+    m2=random.randint(1,5)
+    n2=random.randint(7,12)
+    m3=random.randint(1,6)
+    n3=random.randint(8,12)
     m, n, p = m1/n1, m2/n2, m3/n3
     if m==n: m=n+random.randint(1,4)
     if p==m or p ==n: p=p+random.randint(1,4)
@@ -217,17 +217,16 @@ def uz9zu_L11_C6_B1_02():
     list_PA =[pa_A, pa_B, pa_C, pa_D]
     random.shuffle(list_PA)
     dap_an=my_module.tra_ve_dap_an(list_PA) 
-    a_mu_m= f"{co_so}^{{{latex(my_module.hien_phan_so(m))}}}"
-    a_mu_n= f"{co_so}^{{{latex(my_module.hien_phan_so(n))}}}"
-    a_mu_p= f"{co_so}^{{{latex(my_module.hien_phan_so(p))}}}"
+    a_mu_m= f"{co_so}^{{{phan_so(m)}}}"
+    a_mu_n= f"{co_so}^{{{phan_so(n)}}}"
+    a_mu_p= f"{co_so}^{{{phan_so(p)}}}"
 
-    noi_dung=f"Rút gọn biểu thức $P=\\dfrac{{{a_mu_m}.{a_mu_n}}} {{{a_mu_p}}}$ với ${co_so}>0$." 
-    noi_dung=noi_dung.replace("\\dfrac","\\tfrac")
-    noi_dung=noi_dung.replace("\\frac","\\tfrac")           
+    noi_dung=f"Rút gọn biểu thức $P=\\dfrac{{{a_mu_m}.{a_mu_n}}}{{{a_mu_p}}}$ với ${co_so}>0$." 
+       
 
     debai= f"{noi_dung}\n"
     
-    noi_dung_loigiai=f"$P=\\dfrac{{{a_mu_m}.{a_mu_n}}}{{{a_mu_p}}}={co_so}^{{{latex(my_module.hien_phan_so(m))} + {latex(my_module.hien_phan_so(n))}-{latex(my_module.hien_phan_so(p))}}}=$ {kq}."    
+    noi_dung_loigiai=f"$P=\\dfrac{{{a_mu_m}.{a_mu_n}}}{{{a_mu_p}}}={co_so}^{{{phan_so(m)} + {phan_so(n)}-{phan_so(p)}}}=$ {kq}."    
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
    
     loigiai_word=f"Lời giải:\n Chọn {dap_an}\n{noi_dung_loigiai} \n"
@@ -952,6 +951,67 @@ def uz9zu_L11_C6_B1_14():
     debai= f"{noi_dung}"
 
     phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+    
+    loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+    loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    #Tạo đề latex
+    for i in range(4):
+        list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+    debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\choice\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n")
+    return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C6_B1_15]-M2. Rút gọn (ⁿ√a^m.a^p)
+def uz9zu_L11_C6_B1_15():
+    a= random.choice(["a", "b", "c", "x", "y" ])
+    n=random.randint(2,5)
+    m=random.randint(2,9)
+    p= random.choice([i for i in range(-4, 5) if i!=0])
+    can_a=f"\\sqrt[{n}]{{{a}^{m}}}"
+    noi_dung=(
+    f"Cho số thực dương ${a}>0, a\\ne 1$ và biểu thức $P={can_a}.{a}^{{{p}}}$."
+    f" Tìm khẳng định đúng."
+    )
+
+    
+
+    kq=m/n+p
+
+    tap = set()
+    while len(tap) < 5:
+        x = round(random.uniform(-5, 5), 1)  # số thập phân 2 chữ số
+        if x != kq:
+            tap.add(x)
+    kq_false=list(tap)
+    random.shuffle(kq_false)
+    kq2,kq3,kq4=kq_false[0:3]
+
+
+    noi_dung_loigiai=(
+    f"$P={can_a}.{a}^{{{p}}}={a}^{{{phan_so(kq)}}}$."
+    )
+
+    pa_A= f"*$a^{{{phan_so(kq)}}}$"
+    pa_B= f"$a^{{{phan_so(kq2)}}}$"
+    pa_C= f"$a^{{{phan_so(kq3)}}}$"
+    pa_D= f"$a^{{{phan_so(kq4)}}}$"
+    #Trộn các phương án
+    list_PA =[pa_A, pa_B, pa_C, pa_D]
+    random.shuffle(list_PA)
+    dap_an=my_module.tra_ve_dap_an(list_PA)
+
+    debai= f"{noi_dung}\n"
+
+    phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
     
     loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
     loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
