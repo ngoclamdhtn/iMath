@@ -5176,17 +5176,13 @@ def gghik_L10_CX_B1_04():
 	ten_diem=random.choice(["A","B","C","D","E","M","N","P"])
 	vecto_n="\\overrightarrow{{n}}"
 	
-	a=random.randint(-10,10)
-	b=random.randint(-10,10)
-	x_0=random.randint(-10,10)
-	y_0=random.randint(-10,10)
-	if a==x_0 and b==y_0:
-		x_0=a+random.randint(1,5)
-		y_0=b+random.randint(1,5)
-	if a==b: b=b+random.randint(1,5)
-	if a==-b: b=b+random.randint(1,5)
-	if a==b==0:
-		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+	while True:	
+		a = random.choice([i for i in range(-5, 6) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])
+		x_0 = random.choice([i for i in range(-5, 7) if i!=0])
+		y_0 = random.choice([i for i in range(-5, 7) if i!=0])
+		if all([a!=b, x_0!=y_0, a!=x_0, b!=y_0]):
+			break
 	x=sp.symbols("x")
 	y=sp.symbols("y")
 
@@ -5244,26 +5240,22 @@ def gghik_L10_CX_B1_04():
 	    f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
-#[D10_CX_B1_05]-M1. Cho tọa độ điểm và véctơ pháp tuyến, viết phương trình tổng quát
+#[D10_CX_B1_05]-M1. Cho tọa độ điểm và véctơ chỉ phương, viết phương trình tổng quát
 def gghik_L10_CX_B1_05():   
 	#Tạo bậc ngẫu nhiên
 	ten_diem=random.choice(["A","B","C","D","E","M","N","P"])
 	vecto_u="\\overrightarrow{{u}}"
 	vecto_n="\\overrightarrow{{n}}"
+
+	while True:	
+		a = random.choice([i for i in range(-5, 6) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])
+		x_0 = random.choice([i for i in range(-5, 7) if i!=0])
+		y_0 = random.choice([i for i in range(-5, 7) if i!=0])
+		if all([a!=b, x_0!=y_0, a!=x_0, b!=y_0]):
+			break
 	
-	a=random.randint(-10,10)
-	b=random.randint(-10,10)
-	x_0=random.randint(-10,10)
-	y_0=random.randint(-10,10)
-	
-	if a==x_0 and b==y_0:
-		x_0=a+random.randint(1,5)
-		y_0=b+random.randint(1,5)
-	if x_0==y_0: y_0=x_0+random.randint(1,3)
-	if a==b: b=b+random.randint(1,5)
-	if a==-b: b=b+random.randint(1,5)
-	if a==b==0:
-		b= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+
 	x=sp.symbols("x")
 	y=sp.symbols("y")
 

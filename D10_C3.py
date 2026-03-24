@@ -1789,26 +1789,28 @@ def npl_mk_L10_C3_B2_05():
 #[D10_C3_B2_06]. Cho đồ thị. Tìm hàm số bậc 2.
 def npl_mk_L10_C3_B2_06():
     x = sp.symbols('x')
-    a = random.randint(-3,3)
-    if a==0:
-        a = random.randint(1,3)              
-    b = random.randint(-5,5)
-    if b==0:
-        b = random.randint(-5,-1)   
-    c = random.randint(-4,4)
+    while True:
+        a = random.choice([i for i in range(-3, 3) if i!=0])
+        b = random.choice([i for i in range(-5, 5) if i!=0])
+        c = random.choice([i for i in range(-4, 4) if i!=0])    
+        f=a*x**2 + b*x + c       
+        f2=a*x**2 - b*x + c
+        f3=-a*x**2 + b*x + c
+        f4=-a*x**2 + b*x - c
+        
+        ds_f = [sp.expand(f), sp.expand(f2), sp.expand(f3), sp.expand(f4)]
+        # kiểm tra 4 biểu thức đôi một khác nhau
+        if len(set(map(str, ds_f))) == 4:
+            break
 
-    code = my_module.codelatex_dothi_bac_2(a,b,c)
-    file_name = my_module.pdftoimage_timename(code)
-    code_latex=my_module.codelatex_dothi_bac_2_no_header(a,b,c)
-
-    f=a*x**2 + b*x + c       
-    f2=a*x**2 - b*x + c
-    f3=-a*x**2 + b*x + c
-    f4=-a*x**2 + b*x - c  
     pa_A= f"*$y={latex(f)}$"
     pa_B= f"$y={latex(f2)}$"
     pa_C= f"$y={latex(f3)}$"
     pa_D= f"$y={latex(f4)}$"
+
+    code = my_module.codelatex_dothi_bac_2(a,b,c)
+    file_name = my_module.pdftoimage_timename(code)
+    code_latex=my_module.codelatex_dothi_bac_2_no_header(a,b,c)
 
     noi_dung = f"Đồ thị như hình bên là của hàm số nào trong các hàm số sau?"
 

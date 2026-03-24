@@ -13,7 +13,7 @@ import pyperclip
 #Test trắc nghiệm
 test, test_latex="",""
 for i in range(1):
-	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C7.aaa_pry_L10_C7_B3_01()
+	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_06()
 	#print(debai)\\log {d}
 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
 	test_latex=test_latex + f"{debai_latex}\n"
