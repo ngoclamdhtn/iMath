@@ -8824,6 +8824,212 @@ def uvxy9_L11_C8_B6_18():
 		f"\\end{{ex}}\n")
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C8_B6_19]-SA-M2. Tính khối lượng phomat hình lăng trụ tam giác vuông cân
+def uvxy9_L11_C8_B6_19():
+	while True:
+	
+		# Sinh dữ liệu
+		a = random.randint(6, 20)      # cạnh góc vuông đáy
+		h = random.randint(5, 15)      # chiều cao
+		rho = random.choice([2, 2.5, 3, 3.5, 4])  # khối lượng riêng
+		
+		# Tính toán
+		S_day = a*a/2
+		V = S_day * h
+		m = rho * V
+		if m<9000:
+			break
+		
+	dap_an=f"{round_half_up(m,0):.0f}".replace(".",",")
+
+	noi_dung = (
+	f"Một miếng pho mát có dạng khối lăng trụ đứng với chiều cao ${{{h}\\,\\text{{cm}}}}$ "
+	f"và đáy là tam giác vuông cân có cạnh góc vuông bằng ${{{a}\\,\\text{{cm}}}}$. "
+	f"Tính khối lượng của miếng pho mát theo đơn vị gam, biết khối lượng riêng của loại pho mát đó là "
+	f"${{{rho}\\,\\text{{g/cm}}^3}}$ (kết quả làm tròn đến hàng đơn vị)."
+	)
+
+	noi_dung_loigiai=(
+	f"Diện tích đáy: $S_{{\\text{{đáy}}}}=\\dfrac{{1}}{{2}}\\cdot {a}\\cdot {a}={S_day}\\,\\text{{cm}}^2$.\n\n"
+	f"Thể tích: $V=S_{{\\text{{đáy}}}}\\cdot h={S_day}\\cdot {h}={V}\\,\\text{{cm}}^3$.\n\n"
+	f"Khối lượng: $m=\\rho V={rho}\\cdot {V}={dap_an}\\,\\text{{g}}$."
+	)
+
+	code_hinh=f"\\begin{{tikzpicture}}[scale=0.7, line join=round, line cap=round]\n\
+	%======================\n\
+	% Các đỉnh của đáy dưới\n\
+	%======================\n\
+	\\coordinate (A) at (0,0);\n\
+	\\coordinate (B) at (5,0);\n\
+	\\coordinate (C) at (0,5);	\n\
+	%======================\n\
+	% Vector chiều cao lăng trụ\n\
+	%======================\n\
+	\\coordinate (v) at (3,2);	\n\
+	%======================\n\
+	% Các đỉnh của đáy trên\n\
+	%======================\n\
+	\\coordinate (A') at ($(A)+(v)$);\n\
+	\\coordinate (B') at ($(B)+(v)$);\n\
+	\\coordinate (C') at ($(C)+(v)$);	\n\
+	%======================\n\
+	% Tô màu các mặt\n\
+	%======================\n\
+	\\fill[yellow!60] (A) -- (B) -- (B') -- (A') -- cycle;      % mặt bên 1\n\
+	\\fill[yellow!45] (A) -- (C) -- (C') -- (A') -- cycle;      % mặt bên 2\n\
+	\\fill[yellow!30] (A') -- (B') -- (C') -- cycle;            % mặt trên\n\
+	\\fill[yellow!20] (A) -- (B) -- (C) -- cycle;               % mặt đáy	\n\
+	%======================\n\
+	% Các lỗ trên phomat\n\
+	%======================\n\
+	\\fill[orange!60] (1.2,1.1) circle (0.28);\n\
+	\\fill[orange!60] (2.0,0.8) circle (0.22);\n\
+	\\fill[orange!60] ($(A')!0.35!(B')+(0,0.2)$) circle (0.25);\n\
+	\\fill[orange!60] ($(A')!0.45!(C')$) circle (0.2);\n\
+	\\fill[orange!60] ($(A)!0.45!(C)+(0.4,0.3)$) circle (0.18);	\n\
+	%======================\n\
+	% Nét vẽ các cạnh\n\
+	%======================\n\
+	\\draw[thick] (A) -- (B) -- (B') -- (A') -- cycle;\n\
+	\\draw[thick] (A) -- (C) -- (C') -- (A') -- cycle;\n\
+	\\draw[thick] (B') -- (C') -- cycle;\n\
+	\\draw[thick] (B) -- (C);	\n\
+	%======================\n\
+	% Kí hiệu vuông góc ở đáy\n\
+	%======================\n\
+	\\draw ($(A)+(0.35,0)$) -- ++(0,0.35) -- ++(-0.35,0);	\n\
+	%======================\n\
+	% Ghi kích thước minh họa\n\
+	%======================\n\
+	\\draw[<->] ($(A)+(0,-0.8)$) -- ($(B)+(0,-0.8)$);\n\
+	\\node at ($(A)!0.5!(B)+(0,-1.2)$) {{${a}\\,\\mathrm{{cm}}$}};\n\
+	\\draw[<->] ($(A)+(-0.8,0)$) -- ($(C)+(-0.8,0)$);\n\
+	\\node[rotate=90] at ($(A)!0.5!(C)+(-1.2,0)$) {{${a}\\,\\mathrm{{cm}}$}};\n\
+\\end{{tikzpicture}}\n" 
+
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B6_20]-SA-M2. Tính khối lượng phomat hình lăng trụ tam giác đều
+def uvxy9_L11_C8_B6_20():
+	
+	while True:
+		a = random.randint(4, 15)      # cạnh tam giác đều
+		h = random.randint(5, 20)      # chiều cao lăng trụ
+		rho = random.choice([2, 2.5, 3, 3.5, 4])  # khối lượng riêng
+		
+		# Tính toán
+		S_day = (a**2 * (3**0.5)) / 4
+		V = S_day * h
+		m = rho * V
+		if m<9000:
+			break
+	
+	# Làm tròn
+	dap_an = f"{round_half_up(m,0):.0f}".replace(".",",")
+
+
+	noi_dung = (
+	f"Một miếng pho mát có dạng khối lăng trụ đứng với chiều cao ${{{h}\\,\\text{{cm}}}}$ "
+	f"và đáy là tam giác đều có cạnh bằng ${{{a}\\,\\text{{cm}}}}$. "
+	f"Tính khối lượng của miếng pho mát theo đơn vị gam, biết khối lượng riêng của loại pho mát đó là "
+	f"${{{rho}\\,\\text{{g/cm}}^3}}$ (kết quả làm tròn đến hàng đơn vị)."
+	)
+
+	noi_dung_loigiai=(
+	f"Diện tích đáy: $S_{{\\text{{đáy}}}}=\\dfrac{{\\sqrt{{3}}}}{{4}}\\cdot {a}^2={round(S_day,2)}\\,\\text{{cm}}^2$.\n\n"
+	f"Thể tích: $V=S_{{\\text{{đáy}}}}\\cdot h={latex(S_day)}\\cdot {h}={latex(nsimplify(V))}\\,\\text{{cm}}^3$.\n\n"
+	f"Khối lượng: $m=\\rho V={rho}\\cdot {latex(nsimplify(V))}={dap_an}\\,\\text{{g}}$."
+	)
+	code_hinh=(f" \\begin{{tikzpicture}}[scale=0.9, line join=round, line cap=round]\n\
+	%======================\n\
+	% Đáy dưới: tam giác đều\n\
+	%======================\n\
+	\\coordinate (A) at (0,0);\n\
+	\\coordinate (B) at (6,0);\n\
+	\\coordinate (C) at (3,{{3*sqrt(3)}});\n\
+	%======================\n\
+	% Vector chiều cao lăng trụ\n\
+	%======================\n\
+	\\coordinate (v) at (2.2,2.8);\n\
+	%======================\n\
+	% Đáy trên\n\
+	%======================\n\
+	\\coordinate (A') at ($(A)+(v)$);\n\
+	\\coordinate (B') at ($(B)+(v)$);\n\
+	\\coordinate (C') at ($(C)+(v)$);\n\
+	%======================\n\
+	% Tô màu các mặt\n\
+	%======================\n\
+	\\fill[yellow!25] (A) -- (B) -- (C) -- cycle;      % đáy dưới\n\
+	\\fill[yellow!35] (A') -- (B') -- (C') -- cycle;   % đáy trên\n\
+	\\fill[yellow!50] (A) -- (B) -- (B') -- (A') -- cycle; % mặt bên 1\n\
+	\\fill[yellow!45] (B) -- (C) -- (C') -- (B') -- cycle; % mặt bên 2\n\
+	\\fill[yellow!40] (C) -- (A) -- (A') -- (C') -- cycle; % mặt bên 3\n\
+	%======================\n\
+	% Các lỗ trên bánh phomat\n\
+	%======================\n\
+	\\fill[orange!70] ($(A)!0.35!(B)+(0,0.5)$) circle (0.28);\n\
+	\\fill[orange!70] ($(A)!0.65!(B)+(0,0.35)$) circle (0.22);\n\
+	\\fill[orange!70] ($(B)!0.45!(C)+(-0.15,-0.1)$) circle (0.25);\n\
+	\\fill[orange!70] ($(C)!0.5!(A)+(0.25,-0.15)$) circle (0.2);\n\
+	\\fill[orange!70] ($(A')!0.45!(B')+(0,0.15)$) circle (0.22);\n\
+	\\fill[orange!70] ($(B')!0.5!(C')+(-0.1,0)$) circle (0.18);\n\
+	%======================\n\
+	% Vẽ các cạnh\n\
+	%======================\n\
+	\\draw[thick] (A) -- (B) -- (C) -- cycle;\n\
+	\\draw[thick, dashed] (A) -- (A') (A')--(C') (A')--(B');\n\
+	\\draw[thick] (B) -- (B') (B')--(C');\n\
+	\\draw[thick] (C) -- (C');\n\
+	%======================\n\
+	% Ghi nhãn đỉnh\n\
+	%======================\n\
+%	\\node[below left] at (A) {{$A$}};\n\
+%	\\node[below right] at (B) {{$B$}};\n\
+%	\\node[above] at (C) {{$C$}};	\n\
+%	\\node[above left] at (A') {{$A'$}};\n\
+%	\\node[above right] at (B') {{$B'$}};\n\
+%	\\node[above] at (C') {{$C'$}};\n\
+	%======================\n\
+	% Ghi kích thước minh họa\n\
+	%======================\n\
+	\\draw[<->] ($(A)+(0,-0.8)$) -- ($(B)+(0,-0.8)$);\n\
+	\\node at ($(A)!0.5!(B)+(0,-1.2)$) {{${a}$}};\n\
+	\\draw[<->] ($(B)+(0.7,0.2)$) -- ($(B')+(0.7,0.2)$);\n\
+	\\node[right] at ($(B)!0.5!(B')+(0.8,0)$) {{${h}$}};\n\
+\\end{{tikzpicture}}\n\
+ " 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+		
+	debai_word= f"{noi_dung}\n{file_name}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\\shortans[4]{{{dap_an}}}\n\n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+	f"\\end{{ex}}\n")
+	
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #BÀI 7 -  GÓC
 
 #[D11_C8_B7_01]-TF-M2. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Đường vuông góc mặt

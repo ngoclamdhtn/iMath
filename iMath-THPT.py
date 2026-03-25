@@ -8566,89 +8566,108 @@ class Ui_MainWindow(object):
                 L11_C8_B6.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B6.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C8_B6_1 = QTreeWidgetItem(L11_C8_B6, ["6.1 Thể tích của khối chóp"])
+                L11_C8_B6_1 = QTreeWidgetItem(L11_C8_B6, ["Trắc nghiệm"])
                 L11_C8_B6_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B6_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_01]-M1. H.chóp có S_đáy và h. Tính V."])
+                L11_C8_B6_1_1 = QTreeWidgetItem(L11_C8_B6_1, ["1. Thể tích của khối chóp"])
+                L11_C8_B6_1_1.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C8_B6_1_1.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_01]-M1. H.chóp có S_đáy và h. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_02]-M2. H.chóp có đáy tam giác đều và h. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_02]-M2. H.chóp có đáy tam giác đều và h. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_03]-M2. H.chóp đáy t.giác vuông và h. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_03]-M2. H.chóp đáy t.giác vuông và h. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_17]-M2. H.chóp đáy t.giác vuông cân, cạnh bên v.g đáy. Tính V"])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_17]-M2. H.chóp đáy t.giác vuông cân, cạnh bên v.g đáy. Tính V"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_13]-M2. H.chóp đáy t.giác vuông cân, mặt bên v.g đáy. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_13]-M2. H.chóp đáy t.giác vuông cân, mặt bên v.g đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_14]-M2. H.chóp đáy t.giác đều, mặt bên v.g đáy. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_14]-M2. H.chóp đáy t.giác đều, mặt bên v.g đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_15]-M2. H.chóp đáy h.vuông, cạnh bên v.g đáy. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_15]-M2. H.chóp đáy h.vuông, cạnh bên v.g đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_16]-M2. H.chóp đáy h.chữ nhật, cạnh bên v.g đáy. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_16]-M2. H.chóp đáy h.chữ nhật, cạnh bên v.g đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_18]-M2. H.chóp đáy h.chữ nhật có cạnh đáy và cạnh bên SB. Tính V"])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_18]-M2. H.chóp đáy h.chữ nhật có cạnh đáy và cạnh bên SB. Tính V"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_04]-M3. H.chóp đáy t.giác đều và góc(cạnh bên, đáy). Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_04]-M3. H.chóp đáy t.giác đều và góc(cạnh bên, đáy). Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_1, ["[D11_C8_B6_09]-M3. H.chóp đáy h.chữ nhật có góc giữa 2 đường thẳng. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_1, ["[D11_C8_B6_09]-M3. H.chóp đáy h.chữ nhật có góc giữa 2 đường thẳng. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)  
 
-                L11_C8_B6_2 = QTreeWidgetItem(L11_C8_B6, ["6.2 Thể tích của khối lăng trụ, khối hộp"])
-                L11_C8_B6_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                L11_C8_B6_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                L11_C8_B6_1_2 = QTreeWidgetItem(L11_C8_B6_1, ["2. Thể tích của khối lăng trụ, khối hộp"])
+                L11_C8_B6_1_2.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C8_B6_1_2.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_2, ["[D11_C8_B6_05]-M1. H.lăng trụ có S_đáy và h Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_2, ["[D11_C8_B6_05]-M1. H.lăng trụ có S_đáy và h Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_2, ["[D11_C8_B6_06]-M2. H.lăng trụ có đáy tam giác đều và h. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_2, ["[D11_C8_B6_06]-M2. H.lăng trụ có đáy tam giác đều và h. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_2, ["[D11_C8_B6_07]-M1. H.lăng trụ có đáy tam giác vuông và h. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_2, ["[D11_C8_B6_07]-M1. H.lăng trụ có đáy tam giác vuông và h. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_2, ["[D11_C8_B6_08]-M1. H.lăng trụ có đáy h.vuông, h.chữ nhật và h. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_2, ["[D11_C8_B6_08]-M1. H.lăng trụ có đáy h.vuông, h.chữ nhật và h. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_2, ["[D11_C8_B6_11]-M1. Cho hình lập phương có độ dài cạnh. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_2, ["[D11_C8_B6_11]-M1. Cho hình lập phương có độ dài cạnh. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_2, ["[D11_C8_B6_12]-M1. Cho hình hộp chữ nhật có độ dài cạnh. Tính V."])
+                item = QTreeWidgetItem(L11_C8_B6_1_2, ["[D11_C8_B6_12]-M1. Cho hình hộp chữ nhật có độ dài cạnh. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                L11_C8_B6_3 = QTreeWidgetItem(L11_C8_B6, ["6.3 Nhận dạng tính chất khối chóp, khối lăng trụ, khối hộp"])
+                L11_C8_B6_1_3 = QTreeWidgetItem(L11_C8_B6_1, ["3. Nhận dạng tính chất khối chóp, khối lăng trụ, khối hộp"])
+                L11_C8_B6_1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                L11_C8_B6_1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_1_3, ["[D11_C8_B6_10]-M1. Nhận dạng tính chất của lăng trụ đều."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                L11_C8_B6_3 = QTreeWidgetItem(L11_C8_B6, ["Trả lời ngắn"])
                 L11_C8_B6_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L11_C8_B6_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_10]-M1. Nhận dạng tính chất của lăng trụ đều."])
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_19]-SA-M2. Tính khối lượng phomat hình lăng trụ tam giác vuông cân."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_20]-SA-M2. Tính khối lượng phomat hình lăng trụ tam giác đều."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
+                #-------TỔNG HỢP CHƯƠNG
 
                 L11_C8_B7 = QTreeWidgetItem(L11_C8, ["Đúng-Sai(TH)"])
                 L11_C8_B7.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -17534,8 +17553,17 @@ class Ui_MainWindow(object):
 
                                             #[D11_C8_B6_18]-M2. H.chóp đáy h.chữ nhật có cạnh đáy và cạnh bên SB. Tính V
                                             if dang_toan == "[D11_C8_B6_18]":                                        
-                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B6_18()                                     
-                                                
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C8.uvxy9_L11_C8_B6_18()
+
+                                            #[D11_C8_B6_19]-SA-M2. Tính khối lượng phomat hình lăng trụ tam giác vuông cân
+                                            if dang_toan == "[D11_C8_B6_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_19()
+
+                                            #[D11_C8_B6_20]-SA-M2. Tính khối lượng phomat hình lăng trụ tam giác đều
+                                            if dang_toan == "[D11_C8_B6_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_20()
+
+                                            #-----------TỔNG HỢP---------->
                                             #Đúng-Sai
                                             #[D11_C8_B7_01]-TF-M3. S.ABC: đáy tam giác. Xét Đ-S: Thể tích, Góc đường mặt, Góc mặt mặt, Hai mặt vuông góc
                                             if dang_toan == "[D11_C8_B7_01]": 

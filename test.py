@@ -10,16 +10,16 @@ from docx import Document
 
 import pyperclip
 
-#Test trắc nghiệm
-test, test_latex="",""
-for i in range(1):
-	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_06()
-	#print(debai)\\log {d}
-	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
-	test_latex=test_latex + f"{debai_latex}\n"
-	#print(test)
-	print(test_latex)
-	pyperclip.copy(test_latex)
+# #Test trắc nghiệm
+# test, test_latex="",""
+# for i in range(1):
+# 	debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D10_C3.npl_mk_L10_C3_B2_06()
+# 	#print(debai)\\log {d}
+# 	test=test + f"{debai_word}\n{phuongan}\n{loigiai_word}\n"
+# 	test_latex=test_latex + f"{debai_latex}\n"
+# 	#print(test)
+# 	print(test_latex)
+# 	pyperclip.copy(test_latex)
 
 
 
@@ -35,17 +35,15 @@ for i in range(1):
 # pyperclip.copy(test_latex)
 
 #Test tự luận
-# test, test_latex="",""
-# for i in range(1):
-# 	debai_word,loigiai_word,latex_tuluan,dap_an =D10_C7.aaa_pry_L10_C7_B3_01()
-# 	#print(debai)\\log {d}
-# 	#print(loigiai_word)
-# 	test=test + f"{debai_word}\n{loigiai_word}\n"
-# 	test_latex=test_latex + f"{latex_tuluan}\n"
-# 	print(test_latex)
-# pyperclip.copy(test_latex)
-
-
+test, test_latex="",""
+for i in range(1):
+	debai_word,loigiai_word,latex_tuluan,dap_an =D11_C8.uvxy9_L11_C8_B6_20()
+	#print(debai)\\log {d}
+	#print(loigiai_word)
+	test=test + f"{debai_word}\n{loigiai_word}\n"
+	test_latex=test_latex + f"{latex_tuluan}\n"
+	print(test_latex)
+pyperclip.copy(test_latex)
 
 
 
