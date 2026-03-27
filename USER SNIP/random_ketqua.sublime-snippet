@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+kq_false = set()
+while len(kq_false) < 5:
+
+    numbers = round(random.uniform(x+y-random.randint(1,2), x+y+random.randint(1,2)),1)
+    if numbers!=kq:
+        kq_false.add(numbers)
+kq_false=list(kq_false)
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>random_ketqua</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

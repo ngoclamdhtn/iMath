@@ -1,8 +1,11 @@
 {
-	"font_size": 16,
+	"font_size": 10,
+	"word_wrap":true,
 	"ignored_packages":
 	[
 		"Vintage",
 	],
 	"index_files": true,
+	"theme": "Default.sublime-theme",
+	"color_scheme": "Mariana.sublime-color-scheme",
 }

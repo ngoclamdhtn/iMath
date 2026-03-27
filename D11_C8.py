@@ -4265,6 +4265,184 @@ def uvxy9_L11_C8_B3_09():
 		f"\\end{{ex}}\n"
 	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
+#[D11_C8_B3_10]-M2. Cho các đường thẳng và mp. Chọn khẳng định đúng về quan hệ ⟂.
+def uvxy9_L11_C8_B3_10():
+	a,b,c=random.sample(["a","b","c","d","l", "\\Delta"],3)
+
+	noi_dung=(
+	f"Cho ${{{a},{b},{c}}}$ là các đường thẳng. Hãy chọn mệnh đề đúng trong các mệnh đề sau đây?"
+	)
+	
+
+	kq=random.choice([
+		f"Cho ${a}\\bot {b},{a}\\subset \\left( \\alpha  \\right)$. Mọi mặt phẳng $\\left( \\beta  \\right)$ chứa ${b}$ và vuông góc với ${a}$ thì $\\left( \\beta  \\right)\\bot \\left( \\alpha  \\right)$",
+		])
+	kq_false=[
+	f"Nếu ${a}\\bot {b}$ và mặt phẳng $\\left( \\alpha  \\right)$ chứa ${a}$, mặt phẳng $\\left( \\beta  \\right)$ chứa ${b}$ thì $\\left( \\alpha  \\right)\\bot \\left( \\beta  \\right)$",
+	f"Cho ${a}\\bot {b}$. Mọi mặt phẳng chứa ${b}$ đều vuông góc với ${a}$",
+	f"Cho ${{{a},{b}}}$. Mọi mặt phẳng $\\left( \\alpha  \\right)$ chứa ${c}$ trong đó ${c}\\bot {a},{c}\\bot {b}$ thì đều vuông góc với mặt phẳng $\\left( {a},{b} \\right)$"
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B3_11]-M2. Chọn khẳng định đúng về quan hệ ∥ và ⟂.
+def uvxy9_L11_C8_B3_11():
+	a,b,c=random.sample(["a","b","c","d","l", "\\Delta"], 3)
+	P, Q, R= random.sample(["P","Q", "\\alpha", "\\beta", "\\gamma"], 3)
+
+	noi_dung=(
+	f"Hãy chọn mệnh đề đúng trong các mệnh đề sau đây?"
+	)
+	
+
+	kq=random.choice([
+
+		f"Một mặt phẳng $({P})$ và một đường thẳng ${{{a}}}$ không thuộc $({P})$ cùng vuông góc với đường thẳng ${{{b}}}$ thì $({P})$ song song với ${{{a}}}$",
+		f"Hai mặt phẳng $({Q})$ và $({R})$ phân biệt cùng vuông góc với đường thẳng ${{{b}}}$ thì $({P})$ và $({Q})$ song song",
+		f"Cho $({P})\\bot ({Q})$ và $({P})\\cap ({Q})={c}}}$. Đường thẳng ${{{b}}}$ nằm trong $({P})$ và ${b}\\bot {c}$ \
+		thì ${a}\\bot ({Q})$",
+		])
+	kq_false=[
+	f"Hai đường thẳng ${{{a},{b}}}$ phân biệt cùng vuông góc với đường thẳng ${{{c}}}$ thì ${{{a}}}$ song song ${{{b}}}$",
+	f"Hai mặt phẳng $({P})$ và $({Q})$ cùng vuông góc với mặt phẳng $({R})$ thì $({P})$ và $({Q})$ cắt nhau",
+	f"Hai mặt phẳng $({P})$ và $({Q})$ cùng vuông góc với mặt phẳng $({R})$ thì $({P})$ và $({Q})$ song song",
+	f"Hai mặt phẳng $({P})$ và $({Q})$ cùng vuông góc với đường thẳng ${{{a}}}$ thì $({P})$ và $({Q})$ song song",
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B3_12]-M2. Chọn khẳng định đúng về quan hệ ⟂.
+def uvxy9_L11_C8_B3_12():
+	a,b,c=sorted(random.sample(["a","b","c","d","l", "\\Delta"], 3))
+	P, Q, R= sorted(random.sample(["P","Q", "\\alpha", "\\beta", "\\gamma"], 3))
+
+	noi_dung=(
+	f"Cho các đường thẳng ${{{a},{b},{c}}}$ và các mặt phẳng $({P}), ({Q}), ({R})$ phân biệt."
+	f" Hãy chọn mệnh đề đúng trong các mệnh đề sau đây?"
+	)
+	
+	kq=random.choice([
+	f"Nếu ${b}\\subset ({P})$ và ${b}\\bot ({Q})$ thì $({P})\\bot ({Q})$",
+	f"Nếu $({P})//({Q}),({P})\\bot({R})$ thì $({Q}) \\bot ({R})$",	
+		
+
+		])
+	kq_false=[
+	f"Nếu ${a}\\bot {b}$ và ${b} \\subset ({P})$ thì ${a} \\bot ({P})$",
+	f"Nếu ${a}\\subset({P}), {b}\\subset ({Q})$ và ${a}\\bot {b}$ thì $({P})\\bot ({Q})$",
+	f"Nếu ${a}// ({P}),{a} \\bot ({Q})$ thì $({P}) \\bot ({Q})$",
+
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\n   B. { list_PA[1]}.\n    C. { list_PA[2]}.\n     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+
 
 #Bài 4- Khoảng cách trong không gian
 #[D11_C8_B6_01]. Cho hình chóp có diện tích đáy và chiều cao. Tính thể tích.
@@ -9029,6 +9207,328 @@ def uvxy9_L11_C8_B6_20():
 	f"\\end{{ex}}\n")
 	
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B6_21]-M2. Nhận dạng tính chất hình chóp tam giác đều
+def uvxy9_L11_C8_B6_21():
+	O=random.choice(["O","G", "I"])
+
+	noi_dung=(
+	f"Cho hình chóp đều ${{S.ABC}}$, điểm ${{{O}}}$ là trọng tâm của tam giác ${{ABC}}$."
+	f" Tìm mệnh đề đúng trong các mệnh đề sau?"
+	)
+	
+
+	kq=random.choice([
+		f"Các cạnh bên của hình chóp là bằng nhau",
+		f"Tam giác ${{ABC}}$ là tam giác đều",
+		f"$SA=SB=SC$",
+		f"$S{O}\\bot (ABC)$",
+		f"${O}A={O}B={O}C$"
+
+		f""])
+	kq_false=[
+	f"Tam giác ${{ABC}}$ là tam giác vuông cân",
+	f"Độ dài của cạnh bên bằng độ dài của cạnh đáy",
+	f"$SA\\bot(ABC)$",
+	f"$S{O} \\subset (ABC)$",
+	f"$SA=SB=SC=S{O}$",
+	f"$(SAB) \\bot (ABC)$"
+	]
+	random.shuffle(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
+
+	noi_dung_loigiai=(
+	f"{kq} là khẳng định đúng."
+	)
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+
+	debai= f"{noi_dung}"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\n    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= (f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\choice\n"
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+
+	latex_tuluan=(f"\\begin{{ex}}\n {noi_dung} \n"
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n")
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
+
+#[D11_C8_B6_22]-M2. H.chóp đáy h.chữ nhật có cạnh đáy và cạnh bên SB. Tính V
+def uvxy9_L11_C8_B6_22():
+	while True:
+
+		SA=sqrt(random.randint(1,10))
+		while True:
+			AB=sqrt(random.randint(1,10))	
+			AD=sqrt(random.randint(1,10))
+			if AB!=AD:
+				break
+		S=AB*AD
+		V=1/3*S*SA
+		if V<100:
+			break
+	
+	SB=sqrt(SA**2+AB**2)
+	A,B,C,D="A","B","C","D"
+
+
+	noi_dung=(
+	f"Cho hình chóp ${{S.{A}{B}{C}{D}}}$ có đáy là chữ nhật với ${A}{B}={latex(AB)}, {A}{D}={latex(AD)}$."
+	f" Biết $S{A}\\bot ({A}{B}{C}{D})$ và $S{B}={latex(SB)}$. Tính thể tích của khối chóp ${{S.{A}{B}{C}{D}}}$ (kết quả làm tròn đến hàng phần mười)"
+	)	
+	
+
+	dap_an=f"{round_half_up(V,1):.1f}".replace(".",",")
+	dap_an=f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+
+	noi_dung_loigiai=(
+	f"$S{A}=\\sqrt{{S{B}^2-{A}{B}^2}}={latex(SA)}$.\n\n"
+	f"$S_{{{A}{B}{C}{D}}}={A}{B}.{A}{D}={latex(nsimplify(S))}$.\n\n"		
+	f" $V=\\dfrac{{1}}{{3}}.{{S_{{{A}{B}{C}{D}}}}}.S{A}=\\dfrac{{1}}{{3}}.{latex(nsimplify(S))}.{latex(SA)}={{{latex(nsimplify(V))}}}$={dap_an}.")
+
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C8_B6_23]-M2. H.c có đáy △ đều và góc giữa cạnh bên và đáy. Tính V.
+def uvxy9_L11_C8_B6_23():
+	canh_ben =random.choice(["SB","SC"])
+	while True:
+		a = random.randint(1,10)
+		goc = random.choice([30,45,60])
+		h=a*my_module.hien_tan(goc)	
+		if goc in [30,60]:		
+			S_day=a**2*sqrt(3)/4
+			V=1/3*S_day*h
+
+		else:
+			S_day=a**2/4
+			h==a
+			V=1/3*S_day*h
+		if V<100:
+			break	
+
+	dap_an=f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+	noi_dung = thay_hinh_hoc(f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều cạnh bằng ${{{a}}}$, $SA\\bot(ABC)$."
+		f" Góc giữa cạnh ${{{canh_ben}}}$ và đáy bằng ${goc}^\\circ$. Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười).")
+
+	noi_dung_loigiai=thay_hinh_hoc(f"$SA={canh_ben}.\\tan {goc}^\\circ ={latex(h)}.$\n\n"\
+	f"$V=\\dfrac{{1}}{{3}}.{latex(a**2*sqrt(3)/4)}.{latex(h)}={latex(nsimplify(V))}={dap_an}$.")	
+		
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D11_C8_B6_24]-M2. Hình chóp có đáy △ đều, cho chiều cao SA và góc giữa cạnh bên và đáy. Tính V.
+def uvxy9_L11_C8_B6_24():
+	canh_ben = random.choice(["SB", "SC"])
+	while True:
+		a = random.randint(1,10)
+		goc = random.choice([30,45,60])
+
+		# SA là chiều cao
+		h = a * my_module.hien_tan(goc)
+
+		S_day = a**2 * sqrt(3) / 4
+		V = Rational(1,3) * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp ${{S.ABC}}$ có đáy là tam giác đều, $SA\\bot(ABC)$ và "
+		f"${{SA={latex(h)}}}$. Góc giữa cạnh ${{{canh_ben}}}$ và đáy bằng "
+		f"${goc}^\\circ$. Tính thể tích của khối chóp đã cho "
+		f"(kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(	
+		f"Góc giữa cạnh ${{{canh_ben}}}$ và đáy là "
+		f"$\\widehat{{{canh_ben}A}}={goc}^\\circ$.\n\n"
+		f"$\\tan {goc}^\\circ=\\dfrac{{SA}}{{{canh_ben[1]}A}}"
+		f"=\\dfrac{{{latex(h)}}}{{{canh_ben[1]}A}}"
+		f"\\Rightarrow {canh_ben[1]}A=\\dfrac{{{latex(h)}}}{{\\tan {goc}^\\circ}}={latex(a)}.$\n\n"	
+		f"$S_{{ABC}}=\\dfrac{{{latex(a)}^2\\sqrt3}}{{4}}={latex(S_day)}.$\n\n"
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABC}}\\cdot SA"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)	
+		
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_25]-M3. Hình chóp đều cạnh đáy a, biết góc giữa cạnh bên và đáy. Tính V.
+def uvxy9_L11_C8_B6_25():
+	canh_ben = random.choice(["SA","SB","SC"])
+	dinh_day = canh_ben[1]   # A, B hoặc C
+
+	while True:
+		a = random.randint(1,10)
+		goc = random.choice([30,45,60])
+
+		# Với tam giác đều ABC cạnh a, G là trọng tâm thì GA = GB = GC = a*sqrt(3)/3
+		GA = a*sqrt(3)/3
+		h = GA * my_module.hien_tan(goc)   # SG
+
+		S_day = a**2*sqrt(3)/4
+		V = Rational(1,3) * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp đều ${{S.ABC}}$ có ${{AB={a}}}$. "
+		f"Góc giữa cạnh ${{{canh_ben}}}$ và đáy bằng ${goc}^\\circ$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Vì $ABC$ là tam giác đều cạnh ${{{a}}}$, $G$ là trọng tâm nên "
+		f"${{G{dinh_day}=\\dfrac{{{a}\\sqrt3}}{{3}}={latex(GA)}}}$.\n\n"	
+		f"Góc giữa ${{{canh_ben}}}$ và đáy là $\\widehat{{S{dinh_day}G}}={goc}^\\circ$.\n\n"
+		f"$\\tan {goc}^\\circ=\\dfrac{{SG}}{{G{dinh_day}}}"
+		f"\\Rightarrow SG=G{dinh_day}\\tan {goc}^\\circ"
+		f"={latex(GA)}\\tan {goc}^\\circ={latex(h)}.$\n\n"
+		f"$S_{{ABC}}=\\dfrac{{{a}^2\\sqrt3}}{{4}}={latex(S_day)}.$\n\n"
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABC}}\\cdot SG"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)	
+		
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_26]-M2. Hình chóp △ đều, cho SA và góc giữa SA với đáy. Tính V.
+def uvxy9_L11_C8_B6_26():
+	canh_ben = random.choice(["SA","SB","SC"])
+	dinh_day = canh_ben[1]   # A, B hoặc C
+
+	while True:
+		a = random.randint(2,12)   # cạnh bên
+		goc = random.choice([30,45,60])
+
+		GA = a * cos(goc*pi/180)
+		h = a * sin(goc*pi/180)
+		canh_day = sqrt(3) * GA
+
+		S_day = canh_day**2 * sqrt(3) / 4
+		V = 1/3 * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp đều ${{S.ABC}}$ có "
+		f"góc giữa cạnh ${{{canh_ben}}}$ và đáy bằng ${goc}^\\circ$, biết ${{{canh_ben}= {a}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"$SG\\bot(ABC)$ với $G$ là trọng tâm tam giác ${{ABC}}$.\n\n"
+		f"Góc giữa ${{{canh_ben}}}$ và đáy là $\\widehat{{S{dinh_day}G}}={goc}^\\circ$.\n\n"
+		f"Xét tam giác vuông ${{S G {dinh_day}}}$, có:\n"
+		f"$G{dinh_day}={canh_ben}\\cos {goc}^\\circ={a}\\cos {goc}^\\circ={latex(GA)}.$\n\n"
+		f"$SG={canh_ben}\\sin {goc}^\\circ={a}\\sin {goc}^\\circ={latex(h)}.$\n\n"
+		f"$G{dinh_day}=\\dfrac{{AB\\sqrt3}}{{3}}\\Rightarrow$"
+		f"$AB=\\sqrt3\\,G{dinh_day}=\\sqrt3\\cdot {latex(GA)}={latex(canh_day)}.$\n\n"
+		f"$S_{{ABC}}=\\dfrac{{AB^2\\sqrt3}}{{4}}={latex(S_day)}.$\n\n"
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABC}}\\cdot SG"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 #BÀI 7 -  GÓC
 

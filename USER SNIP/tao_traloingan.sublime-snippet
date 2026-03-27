@@ -1,30 +1,31 @@
 <snippet>
 	<content><![CDATA[
-#[D12_C1_B1_01]-TL-M3. 
+#[D12_C1_B1_01]-SA-M3. 
 def D12_C1_B1_01():
 
 	noi_dung = (
 	f""
 	)
-	
+	dap_an=
 
 	noi_dung_loigiai=(
 	f""
-	)
-
+	)	
 		
-	debai_word= f"{noi_dung}"
-	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n")
-	dap_an=""
+	debai_word= f"{noi_dung}\n"
+
+	loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
 
 
-	latex_tuluan=(f"\\\\begin{{ex}}\n {noi_dung}\n"
-	f"\\\\loigiai{{ \n {noi_dung_loigiai} \n Đáp án: {dap_an}.}}"
-	f"\\\\end{{ex}}\n")
+	latex_tuluan=f"\\\\begin{{ex}}\n {noi_dung}\n"\
+	f"\n\n\\\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-<tabTrigger>tao_tuluan</tabTrigger> 
+<tabTrigger>tao_traloingan</tabTrigger> 
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[
-f"{round_half_up(,1):.1f}".replace(".",",")
+	random.sample([""], )
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>round_so</tabTrigger>
+<tabTrigger>r_sample</tabTrigger> -->
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

@@ -12,7 +12,6 @@ def D10_C1_B1_07():
 	random.shuffle(kq_false)
 	kq2,kq3,kq4=kq_false[0:3]
 
-
 	noi_dung_loigiai=(
 	f" "
 	)
@@ -26,7 +25,7 @@ def D10_C1_B1_07():
 	random.shuffle(list_PA)
 	dap_an=my_module.tra_ve_dap_an(list_PA)
 
-	debai= f"{noi_dung}\n"
+	debai= f"{noi_dung}"
 
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	

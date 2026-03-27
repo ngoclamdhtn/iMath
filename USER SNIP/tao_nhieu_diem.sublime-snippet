@@ -1,9 +1,11 @@
 <snippet>
 	<content><![CDATA[
-f"{round_half_up(,1):.1f}".replace(".",",")
+letters = [chr(i) for i in range(ord('A'), ord('N') + 1)]
+random.shuffle(letters)
+A,B,C=letters[0:3]
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>round_so</tabTrigger>
+	<tabTrigger>r_name</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

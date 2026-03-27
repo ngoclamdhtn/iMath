@@ -1,9 +1,13 @@
 <snippet>
 	<content><![CDATA[
-f"{round_half_up(,1):.1f}".replace(".",",")
+points = [chr(i) for i in range(ord('A'), ord('F') + 1)]
+random.shuffle(points)
+points=points[0:3]
+points.sort()
+A,B,C=points
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>round_so</tabTrigger>
+	 <tabTrigger>tao_list_ten_diem</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

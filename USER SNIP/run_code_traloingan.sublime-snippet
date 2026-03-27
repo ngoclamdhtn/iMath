@@ -1,9 +1,11 @@
 <snippet>
 	<content><![CDATA[
-f"{round_half_up(,1):.1f}".replace(".",",")
+#[D11_C1_B2_05]-SA-M3. 
+	if dang_toan == "[D11_C1_B2_05]": 
+		debai_word,loigiai_word,latex_tuluan,dap_an=D11_C1.D11_C1_B2_05()
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>round_so</tabTrigger>
+	<tabTrigger>run_code_traloingan</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

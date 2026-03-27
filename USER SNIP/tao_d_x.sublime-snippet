@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[
-f"{round_half_up(,1):.1f}".replace(".",",")
+d_x=f"\\\\mathrm{{\\\\,d}}x"
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>round_so</tabTrigger>
+	 <tabTrigger>d_x</tabTrigger> 
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

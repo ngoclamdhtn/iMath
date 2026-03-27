@@ -30,4 +30,5 @@ pyarmor gen --output dist D12_C7.py
 pyarmor gen --output dist license.py
 pyarmor gen --output dist my_module.py
 pyarmor gen --output dist imath-thpt.py
+
 echo Mission Completed.

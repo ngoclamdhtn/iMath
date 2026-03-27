@@ -134,7 +134,7 @@ def kiemtra_banquyen_new():
         dayLicense =dayLicense.days
 
         #Trả về kết quả kiểm tra        
-        if dayLicense<=365:
+        if dayLicense<=366:
             ketqua = True        
     except Exception as e:
         ketqua = False        
@@ -153,7 +153,7 @@ def check_banquyen_new(key):
         dayLicense =dayLicense.days
 
         #Trả về kết quả kiểm tra        
-        if dayLicense <=365:
+        if dayLicense <=366:
             ketqua = True         
     except Exception as e:
         ketqua = False        
@@ -173,8 +173,8 @@ def so_ngay_banquyen():
         dayLicense =dayLicense.days
 
         #Trả về kết quả kiểm tra        
-        if dayLicense<=365:
-            so_ngay = 365-dayLicense
+        if dayLicense<=366:
+            so_ngay = 366-dayLicense
     except Exception as e:
         so_ngay = 0       
     return so_ngay
