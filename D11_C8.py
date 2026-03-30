@@ -9530,6 +9530,326 @@ def uvxy9_L11_C8_B6_26():
 	)
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D11_C8_B6_27]-SA-M2. H.chóp đáy h.vuông, cho SC và góc giữa SC với đáy. Tính V.
+def uvxy9_L11_C8_B6_27():
+	canh_ben = random.choice(["SA","SB","SC"])
+	dinh_day = canh_ben[1]   # A, B hoặc C
+
+	while True:
+		a = random.randint(2,12)   # cạnh bên
+		goc = random.choice([30,45,60])
+
+		AC = a * cos(goc*pi/180)
+		h = a * sin(goc*pi/180)
+		AB = AC/sqrt(2)
+
+		S_day = AB**2
+		V = 1/3 * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $SA\\bot(ABCD)$, "
+		f"góc giữa cạnh ${{SC}}$ và đáy bằng ${goc}^\\circ$, biết ${{SC= {a}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		
+		f"Góc giữa ${{SC}}$ và đáy là $\\widehat{{SCA}}={goc}^\\circ$.\n\n"
+		f"$SA=SC\\sin {goc}^\\circ={a}\\sin {goc}^\\circ={latex(h)}.$\n\n"
+		f"$AC=SC\\cos {goc}^\\circ={a}\\cos {goc}^\\circ={latex(AC)}$.\n\n"	
+		f"$AB=\\dfrac{{AC}}{{\\sqrt 2}}={latex(AB)}.$\n\n"
+		f"$S_{{ABCD}}=AB^2={latex(S_day)}.$\n\n"
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SA"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_28]-SA-M2. H.chóp đáy h.vuông, cho SC và góc giữa SC với (SAD). Tính V.
+def uvxy9_L11_C8_B6_28():
+	while True:
+		a = random.randint(2, 12)   # SC = a
+		goc = 30                    # chỉ chọn 30 độ để hình chóp tồn tại
+
+		# Gọi cạnh hình vuông là x, chiều cao SA = h
+		# Góc giữa SC và (SAD) là góc giữa SC và SD
+		# Trong tam giác vuông SCD (vuông tại D):
+		# CD = x = SC.sin(goc)
+		# SD = SC.cos(goc)
+		# Mà SD^2 = SA^2 + AD^2 = h^2 + x^2
+		# => h = sqrt(SD^2 - x^2)
+
+		AB = a * sin(goc*pi/180)              # AB = CD
+		SD = a * cos(goc*pi/180)
+		h = sqrt(SD**2 - AB**2)               # SA
+		S_day = AB**2
+		V = Rational(1, 3) * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $SA\\bot(ABCD)$, "
+		f"góc giữa cạnh ${{SC}}$ và mặt phẳng ${{(SAD)}}$ bằng ${goc}^\\circ$, biết ${{SC={a}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Góc giữa ${{SC}}$ và $(SAD)$ là $\\widehat{{CSD}}={goc}^\\circ$.\n\n"
+		f"Xét tam giác ${{SCD}}$ vuông tại ${{D}}$:\n\n"
+		f"$CD=SC\\sin {goc}^\\circ={a}\\sin {goc}^\\circ={latex(AB)}.$\n\n"
+		f"$SD=SC\\cos {goc}^\\circ={a}\\cos {goc}^\\circ={latex(SD)}.$\n\n"
+
+		f"$AB=CD={latex(AB)}$.\n\n"
+		
+		f"$SA=\\sqrt{{SD^2-AD^2}}=\\sqrt{{{latex(SD)}^2-{latex(AB)}^2}}={latex(h)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB^2={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SA"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_29]-SA-M2. H.chóp đáy h.vuông, cho SB và góc giữa SB với (SAC). Tính V.
+def uvxy9_L11_C8_B6_29():
+	while True:
+		a = random.randint(2, 12)   # SB = a
+		goc = 30                    # chỉ chọn góc hợp lệ
+
+		# Gọi cạnh hình vuông là x, chiều cao SA = h
+		# H là hình chiếu vuông góc của B lên (SAC), khi đó H là trung điểm của AC
+		# Trong tam giác vuông SBH:
+		# BH = SB.sin(goc), SH = SB.cos(goc)
+		# Mà BH = AB/sqrt(2), AH = AB/sqrt(2)
+
+		AB = a * sqrt(2) * sin(goc*pi/180)
+		BH = a * sin(goc*pi/180)
+		AH = AB / sqrt(2)
+		SH = a * cos(goc*pi/180)
+		h = sqrt(SH**2 - AH**2)      # SA
+
+		S_day = AB**2
+		V = Rational(1, 3) * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông, $SA\\bot(ABCD)$, "
+		f"góc giữa cạnh ${{SB}}$ và mặt phẳng ${{(SAC)}}$ bằng ${goc}^\\circ$, biết ${{SB={a}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Gọi ${{H}}$ là trung điểm của ${{AC}}$.\n\n"
+		f"Góc giữa ${{SB}}$ và $(SAC)$ là $\\widehat{{BSH}}={goc}^\\circ$.\n\n"
+
+		f"Xét tam giác vuông ${{SBH}}$ tại ${{H}}$:\n\n"
+		f"$BH=SB\\sin {goc}^\\circ={a}\\sin {goc}^\\circ={latex(BH)}.$\n\n"
+		f"$SH=SB\\cos {goc}^\\circ={a}\\cos {goc}^\\circ={latex(SH)}.$\n\n"
+
+		f"Vì $BH=\\dfrac{{AB}}{{\\sqrt 2}}$ nên\n\n"
+		f"$AB=BH\\sqrt 2={latex(BH)}\\sqrt 2={latex(AB)}.$\n\n"
+		
+		f"$AH=\\dfrac{{AC}}{{2}}=\\dfrac{{AB\\sqrt 2}}{{2}}=\\dfrac{{AB}}{{\\sqrt 2}}={latex(AH)}.$\n\n"
+		
+		f"$SA=\\sqrt{{SH^2-AH^2}}=\\sqrt{{{latex(SH)}^2-{latex(AH)}^2}}={latex(h)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB^2={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SA"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_30]-SA-M2. H.chóp đáy h.chữ nhật, SA ⟂ đáy, cho AC, SD, góc SD với đáy. Tính V.
+def uvxy9_L11_C8_B6_30():
+	while True:
+		a = random.randint(4, 10)   # AC = a
+		b = random.randint(2, 10)   # SD = b
+		goc = random.choice([30, 45, 60])
+
+		AD = b * cos(goc*pi/180)
+		SA = b * sin(goc*pi/180)
+
+		# Vì AC là đường chéo hình chữ nhật nên cần AC > AD
+		if a > AD:
+			AB = sqrt(a**2 - AD**2)
+			S_day = AB * AD
+			V = Rational(1, 3) * S_day * SA
+
+			if V < 100:
+				break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, ${{SA}}\\bot(ABCD)$, "
+		f"góc giữa cạnh ${{SD}}$ và mặt phẳng $(ABCD)$ bằng ${goc}^\\circ$, "
+		f"biết ${{AC={a}}}$, ${{SD={b}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Vì thế góc giữa ${{SD}}$ và $(ABCD)$ là $\\widehat{{SDA}}={goc}^\\circ$.\n\n"
+
+		f"Xét tam giác vuông ${{SAD}}$ tại ${{A}}$:\n\n"
+		f"$SA=SD\\sin {goc}^\\circ={b}\\sin {goc}^\\circ={latex(SA)}.$\n\n"
+		f"$AD=SD\\cos {goc}^\\circ={b}\\cos {goc}^\\circ={latex(AD)}.$\n\n"
+
+		f"$AB=\\sqrt{{AC^2-AD^2}}=\\sqrt{{{a}^2-({latex(AD)})^2}}={latex(AB)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB\\cdot AD={latex(AB)}\\cdot {latex(AD)}={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SA"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(SA)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_31]-SA-M2. H.chóp đáy h.chữ nhật, cho AB, SC và góc giữa SC với đáy. Tính V.
+def uvxy9_L11_C8_B6_31():
+	while True:
+		a = random.randint(2, 10)   # AB = a
+		b = random.randint(4, 15)   # SC = b
+		goc = random.choice([30, 45, 60])
+
+		AC = b * cos(goc*pi/180)
+		SA = b * sin(goc*pi/180)
+
+		# Điều kiện để tồn tại hình chữ nhật: AC > AB
+		if AC > a:
+			BC = sqrt(AC**2 - a**2)
+			S_day = a * BC
+			V = Rational(1, 3) * S_day * SA
+
+			if V < 100:
+				break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".",",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình chữ nhật, ${{SA}}\\bot(ABCD)$, "
+		f"góc giữa cạnh ${{SC}}$ và mặt phẳng $(ABCD)$ bằng ${goc}^\\circ$, "
+		f"biết ${{AB={a}}}$, ${{SC={b}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Do ${{SA}}\\bot(ABCD)$ nên hình chiếu vuông góc của ${{SC}}$ lên mặt phẳng $(ABCD)$ là ${{AC}}$.\n\n"
+		f"Vì thế góc giữa ${{SC}}$ và $(ABCD)$ là $\\widehat{{SCA}}={goc}^\\circ$.\n\n"
+
+		f"Xét tam giác vuông ${{SAC}}$ tại ${{A}}$:\n\n"
+		f"${{SA}}=SC\\sin {goc}^\\circ={b}\\sin {goc}^\\circ={latex(SA)}.$\n\n"
+		f"${{AC}}=SC\\cos {goc}^\\circ={b}\\cos {goc}^\\circ={latex(AC)}.$\n\n"
+
+		f"Vì ${{ABCD}}$ là hình chữ nhật nên\n\n"
+		f"${{AC}}^2={{AB}}^2+{{BC}}^2$.\n\n"
+		f"Suy ra\n\n"
+		f"${{BC}}=\\sqrt{{AC^2-AB^2}}=\\sqrt{{({latex(AC)})^2-{a}^2}}={latex(BC)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB\\cdot BC={a}\\cdot {latex(BC)}={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SA"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(SA)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
 #BÀI 7 -  GÓC
 
 #[D11_C8_B7_01]-TF-M2. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Đường vuông góc mặt

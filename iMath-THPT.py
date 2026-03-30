@@ -8695,6 +8695,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_27]-SA-M2. H.chóp đáy h.vuông, cho SC và góc giữa SC với đáy. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_25]-SA-M3. Hình chóp △ đều, cạnh đáy a, biết góc giữa cạnh bên và đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8702,6 +8706,24 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_26]-SA-M3. Hình chóp △ đều, cho SA và góc giữa SA với đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_28]-SA-M3. H.chóp đáy h.vuông, cho SC và góc giữa SC với (SAD). Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_29]-SA-M3. H.chóp đáy h.vuông, cho SB và góc giữa SB với (SAC). Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_30]-SA-M3. H.chóp đáy h.chữ nhật, SA ⟂ đáy, cho AC, SD, góc SD với đáy. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_31]-SA-M2. H.chóp đáy h.chữ nhật, cho AB, SC và góc giữa SC với đáy. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                
 
 
                 #-------TỔNG HỢP CHƯƠNG
@@ -17635,6 +17657,26 @@ class Ui_MainWindow(object):
                                             #[D11_C8_B6_26]-SA-M2. Hình chóp △ đều, cho SA và góc giữa SA với đáy. Tính V.
                                             if dang_toan == "[D11_C8_B6_26]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_26()
+
+                                            #[D11_C8_B6_27]-SA-M2. H.chóp đáy h.vuông, cho SC và góc giữa SC với đáy. Tính V.
+                                            if dang_toan == "[D11_C8_B6_27]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_27()
+
+                                            #[D11_C8_B6_28]-SA-M2. H.chóp đáy h.vuông, cho SC và góc giữa SC với (SAD). Tính V.
+                                            if dang_toan == "[D11_C8_B6_28]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_28()
+
+                                            #[D11_C8_B6_29]-SA-M2. H.chóp đáy h.vuông, cho SB và góc giữa SB với (SAC). Tính V.
+                                            if dang_toan == "[D11_C8_B6_29]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_29()
+
+                                            #[D11_C8_B6_30]-SA-M2. H.chóp đáy h.chữ nhật, SA ⟂ đáy, cho AC, SD, góc SD với đáy. Tính V.
+                                            if dang_toan == "[D11_C8_B6_30]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_30()
+
+                                            #[D11_C8_B6_31]-SA-M2. H.chóp đáy h.chữ nhật, cho AB, SC và góc giữa SC với đáy. Tính V.
+                                            if dang_toan == "[D11_C8_B6_31]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_31()
 
                                             #-----------TỔNG HỢP---------->
                                             #Đúng-Sai
