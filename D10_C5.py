@@ -4086,49 +4086,33 @@ def y7y7u_L10_C5_B4_01():
 	ten_vtb=random.choice(["b","n","v","d"])
 	vt_a=f"\\overrightarrow{{{ten_vta}}}"
 	vt_b=f"\\overrightarrow{{{ten_vtb}}}"
-	dodai_a=random.randint(1,12)
-	dodai_b=dodai_a+random.randint(5,10)
-	goc=random.choice([30,45,60,90,120,135,150,180])
+	while True:
+		len_a=random.randint(1,10)
+		len_b=random.randint(1,10)
+		if len_a!=len_b:
+			break
+	goc=random.choice([30,60,120,135,150,180])
+
+
+
+	while True:
+		kq=len_a*len_b*cos(goc*pi/180)	
+		kq2=len_a*len_b*sin(goc*pi/180)
+		kq3=len_a*len_b
+		kq4=len_a+len_b
+		if kq4 not in [kq,kq2,kq3]:
+			break	
 	
-	tich_vh=dodai_a*dodai_b*my_module.hien_sin_cos(goc,"cos")
-
-	kq=tich_vh
-	kq2=dodai_a*dodai_b
-	if goc!= 45:
-		kq3=dodai_a*dodai_b*my_module.hien_sin_cos(goc,"sin")
-	else:
-		kq3=(dodai_a+dodai_b)*my_module.hien_sin_cos(goc,"cos")
-	kq4=dodai_a+dodai_b*my_module.hien_sin_cos(goc,"cos")
-
-	if my_module.check_so_nguyen(kq):
-		kq=latex(my_module.hien_phan_so(kq))
-	else:
-		kq=latex(kq)
-
-	if my_module.check_so_nguyen(kq2):
-		kq2=latex(my_module.hien_phan_so(kq2))
-	else:
-		kq2=latex(kq2)
-
-	if my_module.check_so_nguyen(kq3):
-		kq3=latex(my_module.hien_phan_so(kq3))
-	else:
-		kq3=latex(kq3)
-
-	if my_module.check_so_nguyen(kq4):
-		kq4=latex(my_module.hien_phan_so(kq4))
-	else:
-		kq4=latex(kq4)
 
 		#Tạo các phương án
-	pa_A= f"*${{{vt_a}.{vt_b}={kq}}}$"
-	pa_B= f"${{{vt_a}.{vt_b}={kq2}}}$"
-	pa_C= f"${{{vt_a}.{vt_b}={kq3}}}$"
-	pa_D= f"${{{vt_a}.{vt_b}={kq4}}}$"
+	pa_A= f"*${{{vt_a}.{vt_b}={latex(kq)}}}$"
+	pa_B= f"${{{vt_a}.{vt_b}={latex(kq2)}}}$"
+	pa_C= f"${{{vt_a}.{vt_b}={latex(kq3)}}}$"
+	pa_D= f"${{{vt_a}.{vt_b}={latex(kq4)}}}$"
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
 	random.shuffle(list_PA)  # Xáo trộn danh sách đáp án
-	noi_dung= f"Trong hệ trục ${{Oxy}}$, cho hai véctơ ${vt_a}$ và ${vt_b}$ có $|{vt_a}|={dodai_a}$, $|{vt_b}|={dodai_b}$ và góc $({vt_a},{vt_b})={goc}^\\circ$. Tính tích vô hướng ${vt_a}.{vt_b}$."
+	noi_dung= f"Trong hệ trục ${{Oxy}}$, cho hai véctơ ${vt_a}$ và ${vt_b}$ có $|{vt_a}|={len_a}$, $|{vt_b}|={len_b}$ và góc $({vt_a},{vt_b})={goc}^\\circ$. Tính tích vô hướng ${vt_a}.{vt_b}$."
 	debai= f"{noi_dung} \n"
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
 	dap_an=my_module.tra_ve_dap_an(list_PA) 

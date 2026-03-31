@@ -10814,13 +10814,14 @@ def prt_34_L12_C1_B3_21():
 
 #[D12_C1_B3_22]-M1. Đọc tiệm cận đứng của đồ thị y=(ax+b)/(cx+d)
 def prt_34_L12_C1_B3_22():
-	a = random.choice([i for i in range(-7, 7) if i!=0])
-	b = random.choice([i for i in range(-5, 6) if i!=0])
-	c = random.choice([i for i in range(-5, 6) if i!=0])
-	d = random.choice([i for i in range(-5, 6) if i!=0])	
+	while True:
+		a = random.choice([i for i in range(-7, 7) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])
+		c = random.choice([i for i in range(-5, 6) if i!=0])
+		d = random.choice([i for i in range(-5, 6) if i!=0])	
 
-	if a*d-b*c==0:
-		d = d+1
+		if a*d-b*c!=0:
+			break
 	x=sp.symbols("x")
 
 	f=(a*x+b)/(c*x+d)
@@ -11044,7 +11045,7 @@ def prt_34_L12_C1_B3_26():
 		v_0=random.randint(5,15)
 		b=k*n_0/v_0-1
 		a=n_0*(b+1)
-		if all([n_0>v_0,b>0]):
+		if all([n_0>v_0, b>0]):
 			break
 
 	#k.n_0/v_0=-1
@@ -11076,6 +11077,65 @@ def prt_34_L12_C1_B3_26():
 	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
 	f"\\end{{ex}}\n")
 	return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D12_C1_B3_27]-M1. Đọc tiệm cận đứng của đồ thị y=(ax+b)/(x+d)
+def prt_34_L12_C1_B3_27():
+	while True:
+		a = random.choice([i for i in range(-7, 7) if i!=0])
+		b = random.choice([i for i in range(-5, 6) if i!=0])
+		c = random.choice([i for i in range(-5, 6) if i!=0])
+		d = random.choice([i for i in range(-5, 6) if i!=0])	
+
+		if all([a*d-b!=0, a!=d]):
+			break
+	x=sp.symbols("x")
+
+	f=(a*x+b)/(x+d)
+
+	duong_tiem_can="đường tiệm cận đứng"
+
+
+
+	kq=f"$x={-d}$"
+	kq2=f"$x={a}$"
+	kq3=f"$y={-d}$"
+	kq4=f"$ y={a}$"
+
+
+
+	pa_A= f"*{kq}"
+	pa_B= f"{kq2}"
+	pa_C= f"{kq3}"
+	pa_D= f"{kq4}"
+	#Trộn các phương án
+	list_PA =[pa_A, pa_B, pa_C, pa_D]
+	random.shuffle(list_PA)
+
+	noi_dung = f"Tìm {duong_tiem_can} của đồ thị hàm số $\\displaystyle y={latex(f)}$."
+	dap_an=my_module.tra_ve_dap_an(list_PA)
+	noi_dung_loigiai=f"{duong_tiem_can} của đồ thị hàm số $\\displaystyle y={latex(f)}$ là {kq}."
+
+	debai= f"{noi_dung}\n"
+
+	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"
+	
+	loigiai_word=f"Lời giải:\n Chọn {dap_an} \n {noi_dung_loigiai} \n"
+	loigiai_traloingan=f"Lời giải:\n {noi_dung_loigiai} \n"
+
+	#Tạo đề latex
+	for i in range(4):
+		list_PA[i]=list_PA[i].replace("*","\\True ")    
+
+	debai_latex= f"\\begin{{ex}}\n {noi_dung} \n"\
+	f"\\choice\n"\
+		f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ { list_PA[2]} }}\n    {{ { list_PA[3]} }}\n"\
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung} \n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+		f"\\end{{ex}}\n"
+	return debai,debai_latex,loigiai_word,phuongan,latex_tuluan, loigiai_traloingan,dap_an
 
 #BÀI 5 - ĐỒ THỊ HÀM SỐ
 

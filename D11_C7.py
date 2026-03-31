@@ -4889,6 +4889,65 @@ def ui5io_L11_C7_B3_11():
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
+#[D11_C7_B3_12]-SA-M3. Cho hàm số bậc 3. Tìm hệ số góc lớn nhất
+def ui5io_L11_C7_B3_12():
+
+    x=sp.symbols('x')
+    while True:
+
+        # sinh hệ số ngẫu nhiên (đảm bảo a<0 để có GTLN)
+        a = random.choice([i for i in range(-5,0)])
+        b = random.choice([i for i in range(-6,7) if i!=0])
+        c = random.choice([i for i in range(-6,7)])
+        d = random.choice([i for i in range(-5,6)])
+
+        # hàm số
+        f = a*x**3 + b*x**2 + c*x + d
+
+        # đạo hàm (hệ số góc tiếp tuyến)
+        f_prime = sp.diff(f,x)
+
+        # tìm GTLN của f'
+        x0 = -b/(3*a)   # đỉnh của parabol f'
+        k_max = float(f_prime.subs(x,x0))
+        if k_max<90:
+            break
+
+    if k_max.is_integer():
+        dap_an=int(k_max)
+        lam_tron=""
+    else:
+        dap_an=f"{round_half_up(k_max,1):.1f}".replace(".",",")
+        lam_tron="(kết quả làm tròn đến hàng phần mười)"
+
+
+    noi_dung = (
+    f"Cho hàm số $y={sp.latex(f)}$ có đồ thị là $\\left(C\\right)$. "
+    f"Tìm hệ số góc lớn nhất của tiếp tuyến tại một điểm ${{M}}$ trên đồ thị $\\left(C\\right)${lam_tron}."
+    )
+
+
+    noi_dung_loigiai = (
+    f"Ta có đạo hàm: $y'={sp.latex(f_prime)}$.\n\n"
+    f"Hệ số góc tiếp tuyến là: $k=y'$.\n\n"
+    f"Xét $k={sp.latex(f_prime)}$ là tam thức bậc hai, "
+    f"có hệ số $a={a*3}<0$ nên đạt giá trị lớn nhất tại\n"
+    f"$x=\\dfrac{{-{2*b}}}{{2\\cdot {3*a}}}={phan_so(x0)}$.\n\n"
+    f"Khi đó:\n"
+    f"$k_{{max}}={phan_so(k_max)}={dap_an}$."
+    )
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
+    f"\\shortans[4]{{{dap_an}}}\n\n"
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+    f"\\end{{ex}}\n")
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #Bài 4
 

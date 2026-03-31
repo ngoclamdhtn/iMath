@@ -9850,6 +9850,127 @@ def uvxy9_L11_C8_B6_31():
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D11_C8_B6_32]-SA-M2. H.chóp tứ giác đều, cho AB và góc giữa cạnh bên với đáy. Tính V.
+def uvxy9_L11_C8_B6_32():
+	canh_ben = random.choice(["SA", "SB", "SC", "SD"])
+	dinh_day = canh_ben[1]   # A, B, C, D
+
+	while True:
+		a = random.randint(2, 12)   # AB = a
+		goc = random.choice([30, 45, 60])
+
+		OA = a / sqrt(2)
+		h = OA * tan(goc*pi/180)
+		S_day = a**2
+		V = 1/3 * S_day * h
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".", ",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp tứ giác đều ${{S.ABCD}}$, "
+		f"${{{{AB={a}}}}}$, "
+		f"góc giữa cạnh bên và mặt phẳng $(ABCD)$ bằng ${goc}^\\circ$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Gọi ${{O}}$ là tâm hình vuông ${{ABCD}}$.\n\n"
+		f"Góc giữa ${{{canh_ben}}}$ và $(ABCD)$ là $\\widehat{{S{dinh_day}O}}={goc}^\\circ$.\n\n"
+		f"${{AC}}=AB\\sqrt{{2}}={a}\\sqrt{{2}}$ nên\n\n"
+		f"${{OA}}=\\dfrac{{AC}}{{2}}=\\dfrac{{{a}\\sqrt{{2}}}}{{2}}={latex(OA)}.$\n\n"
+
+		f"Xét tam giác vuông ${{S{dinh_day}O}}$ vuông tại ${{O}}$:\n\n"
+		f"${{SO}}={{{dinh_day}O}}\\tan {goc}^\\circ={latex(OA)}\\tan {goc}^\\circ={latex(h)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB^2={a}^2={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SO"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(h)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_33]-SA-M2. H.chóp tứ giác đều, cho cạnh bên và góc giữa cạnh bên với đáy. Tính V
+def uvxy9_L11_C8_B6_33():
+	canh_ben = random.choice(["SA", "SB", "SC", "SD"])
+	dinh_day = canh_ben[1]   # A, B, C, D
+
+	while True:
+		a = random.randint(2, 12)   # cạnh bên = a
+		goc = random.choice([30, 45, 60])
+
+		SO = a * sin(goc*pi/180)
+		OA = a * cos(goc*pi/180)
+		AB = OA * sqrt(2)
+		S_day = AB**2
+		V = Rational(1, 3) * S_day * SO
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".", ",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp tứ giác đều ${{S.ABCD}}$ "
+		f"có góc giữa cạnh bên ${{{canh_ben}}}$ và mặt phẳng $(ABCD)$ bằng ${goc}^\\circ$, "
+		f"${{{canh_ben}={a}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Gọi ${{O}}$ là tâm hình vuông ${{ABCD}}$.\n\n"		
+		f"Góc giữa cạnh bên ${{{canh_ben}}}$ và $(ABCD)$ là $\\widehat{{S{dinh_day}O}}={goc}^\\circ$.\n\n"
+
+		f"Xét tam giác vuông ${{S{dinh_day}O}}$ vuông tại ${{O}}$:\n\n"
+		f"${{SO}}={canh_ben}\\sin {goc}^\\circ={a}\\sin {goc}^\\circ={latex(SO)}.$\n\n"
+		f"${{{dinh_day}O}}={canh_ben}\\cos {goc}^\\circ={a}\\cos {goc}^\\circ={latex(OA)}.$\n\n"
+
+		f"${{{dinh_day}O}}=\\dfrac{{AB\\sqrt{{2}}}}{{2}}$.\n\n"
+		f"${{AB}}={dinh_day}O\\sqrt{{2}}={latex(OA)}\\sqrt{{2}}={latex(AB)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB^2={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SO"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(SO)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
 #BÀI 7 -  GÓC
 
 #[D11_C8_B7_01]-TF-M2. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Đường vuông góc mặt

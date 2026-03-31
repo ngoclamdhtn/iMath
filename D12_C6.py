@@ -6,6 +6,13 @@ from fractions import Fraction
 import my_module
 from decimal import Decimal, ROUND_HALF_UP
 
+#Cắt đuôi 0
+def cat_0(st):
+    if st.endswith("0"):   
+        return st[:-1]
+    else:
+        return st
+
 #Kí hiệu biến cố đối
 def ngang(A):
     return f"\\overline{{{A}}}"
@@ -2088,22 +2095,25 @@ def newy25_L12_C6_B1_20():
 
     a=random.randint(15,75)
     p_a=a/100
-    st_a=f"{round_half_up(p_a,2)}".replace(".",",")
+
+    st_a=f"{round_half_up(p_a,2):.2f}".replace(".",",")
+
 
     p_a_ngang=1-p_a
-    st_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_a_ngang=f"{round_half_up(p_a_ngang,2):.2f}".replace(".",",")
+  
     while True:
         x = random.random()
         if x!=p_a_ngang:
             break
-    st_a_ngang_f=f"{round_half_up(x,2)}".replace(".",",")
+    st_a_ngang_f=f"{round_half_up(x,2):.2f}".replace(".",",")
 
     b_dk_a=random.randint(40,70)
     p_b_dk_a=b_dk_a/100
-    st_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+    st_b_dk_a=f"{round_half_up(p_b_dk_a,2):.2f}".replace(".",",")
 
     p_ba=p_b_dk_a*p_a
-    st_ba=f"{round_half_up(p_ba,2)}".replace(".",",")
+    st_ba=f"{round_half_up(p_ba,2):.2f}".replace(".",",")
     while True:
         x = random.random()
         if x!=p_ba:
@@ -2111,12 +2121,15 @@ def newy25_L12_C6_B1_20():
     st_ba_f=f"{round_half_up(x,2)}".replace(".",",")
 
     p_a_ngangb=p_a-p_ba
-    st_a_ngangb=f"{round_half_up(p_a_ngangb,2)}".replace(".",",")
+    st_a_ngangb=f"{round_half_up(p_a_ngangb,2):.2f}".replace(".",",")
     while True:
         x = random.random()
         if x!=p_a_ngangb:
             break
-    st_a_ngangb_f=f"{round_half_up(x,2)}".replace(".",",")
+    st_a_ngangb_f=f"{round_half_up(x,2):.2f}".replace(".",",")
+
+    st_a, st_a_ngang,st_a_ngang_f, st_b_dk_a, st_ba, st_ba_f, st_a_ngangb = \
+    map(cat_0, (st_a, st_a_ngang,st_a_ngang_f, st_b_dk_a, st_ba,st_ba_f, st_a_ngangb))
 
 
 
@@ -4867,25 +4880,25 @@ def newy25_L12_C6_B2_24():
 def newy25_L12_C6_B2_25():
     a=random.randint(60,75)
     p_a=a/100
-    st_p_a=f"{round_half_up(p_a,2)}".replace(".",",")
+    st_p_a=f"{round_half_up(p_a,2):.2f}".replace(".",",")
 
     b=100-a
     p_a_ngang=1-p_a
     p_b=1-p_a
-    st_p_a_ngang=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
-    st_p_b=f"{round_half_up(p_a_ngang,2)}".replace(".",",")
+    st_p_a_ngang=f"{round_half_up(p_a_ngang,2):.2f}".replace(".",",")
+    st_p_b=f"{round_half_up(p_a_ngang,2):.2f}".replace(".",",")
 
 
     b_dk_a=random.randint(65,90)
     p_b_dk_a=b_dk_a/100
-    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2)}".replace(".",",")
+    st_p_b_dk_a=f"{round_half_up(p_b_dk_a,2):.2f}".replace(".",",")
 
     b_dk_a_ngang=random.randint(45,65)
     p_b_dk_a_ngang=b_dk_a_ngang/100
-    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2)}".replace(".",",")
+    st_p_b_dk_a_ngang=f"{round_half_up(p_b_dk_a_ngang,2):.2f}".replace(".",",")
 
     p_not_d_dk_nu=1-p_b_dk_a_ngang
-    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2)}".replace(".",",")
+    st_p_not_d_dk_nu=f"{round_half_up(p_not_d_dk_nu,2):.2f}".replace(".",",")
 
     noi_dung = f" Trong một đợt tuyển dụng của công ty, có ${a}\\%$ ứng viên có kinh nghiệm. Biết rằng ${b_dk_a}\\%$ ứng viên có kinh nghiệm và ${b_dk_a_ngang}\\% $ ứng viên chưa có kinh nghiệm vượt qua vòng phỏng vấn. Chọn ngẫu nhiên một ứng viên trong đợt tuyển dụng. Xét tính đúng-sai của các khẳng định sau (các kết quả làm tròn đến hàng phần trăm)."        
     debai_word= f"{noi_dung}\n"
@@ -4900,7 +4913,7 @@ def newy25_L12_C6_B2_25():
     if kq1==kq1_F:
         loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
-    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2)}".replace(".",",")
+    p_d_nam=f"{round_half_up(p_b_dk_a*p_a,2):.2f}".replace(".",",")
     kq_false = []
     while len(kq_false) < 3:
         num = round(random.random(), 2)
@@ -4947,7 +4960,7 @@ def newy25_L12_C6_B2_25():
             kq_false.append(num)
 
     kq_false=random.choice(kq_false)
-    st_p_b_false=f"{round_half_up(kq_false,2)}".replace(".",",")
+    st_p_b_false=f"{round_half_up(kq_false,2):.2f}".replace(".",",")
 
     kq4_T=f"* Xác suất chọn được một ứng viên vượt qua phỏng vấn là ${{{st_p_b}}}$"
     kq4_F=f"Xác suất chọn được một ứng viên vượt qua phỏng vấn là ${{{st_p_b_false}}}$" 

@@ -8068,6 +8068,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_12]-SA-M2. Cho hàm số bậc ba. Tìm hệ số góc lớn nhất của tiếp tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_08]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT biết hệ số góc"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8723,6 +8727,14 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_32]-SA-M2. H.chóp tứ giác đều, cho AB và góc giữa cạnh bên với đáy. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_33]-SA-M3. H.chóp tứ giác đều, cho cạnh bên và góc giữa cạnh bên với đáy. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 
 
 
@@ -9342,7 +9354,11 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_22]-M1. Tìm tiệm cận đứng của đồ thị y=(ax+b)/(cx+d)"])
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_27]-M2. Tìm tiệm cận đứng của đồ thị y=(ax+b)/(x+d)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked) 
+
+                item = QTreeWidgetItem(L12_C1_B3_1, ["[D12_C1_B3_22]-M2. Tìm tiệm cận đứng của đồ thị y=(ax+b)/(cx+d)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
@@ -12706,6 +12722,10 @@ class Ui_MainWindow(object):
                                             #[D12_C1_B3_26]-SA-M3. Tìm số lượng học sinh tối đa khi thời gian tăng lên vô hạn.
                                             if dang_toan == "[D12_C1_B3_26]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B3_26()
+
+                                            #[D12_C1_B3_27]-M1. Đọc tiệm cận đứng của đồ thị y=(ax+b)/(x+d)
+                                            if dang_toan == "[D12_C1_B3_27]": 
+                                                debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C1.prt_34_L12_C1_B3_27()
 
 
 
@@ -16576,57 +16596,57 @@ class Ui_MainWindow(object):
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_09()                                     
                                                 
 
-                                            #[D11_C7_B3_10]. Tìm đạo hàm của y=m/(ax+b)
+                                            #[D11_C7_B2_10]. Tìm đạo hàm của y=m/(ax+b)
                                             if dang_toan == "[D11_C7_B2_10]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_10()                                     
                                                 
 
-                                            #[D11_C7_B3_11]. Tìm đạo hàm của y=(mx^2+nx+p)/(ax+b)
+                                            #[D11_C7_B2_11]. Tìm đạo hàm của y=(mx^2+nx+p)/(ax+b)
                                             if dang_toan == "[D11_C7_B2_11]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_11()                                     
                                                 
 
-                                            #[D11_C7_B3_12]. Tìm đạo hàm của y = đa thức + e^x.
+                                            #[D11_C7_B2_12]. Tìm đạo hàm của y = đa thức + e^x.
                                             if dang_toan == "[D11_C7_B2_12]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_12()                                     
                                                 
 
-                                            #[D11_C7_B3_13]. Tìm đạo hàm của y = e^(đa thức).
+                                            #[D11_C7_B2_13]. Tìm đạo hàm của y = e^(đa thức).
                                             if dang_toan == "[D11_C7_B2_13]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_13()                                     
                                                 
 
-                                            #[D11_C7_B3_14]. Tìm đạo hàm của y=atanx + bcotx
+                                            #[D11_C7_B2_14]. Tìm đạo hàm của y=atanx + bcotx
                                             if dang_toan == "[D11_C7_B2_14]":                                        
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_14()                                     
                                                 
 
-                                            #[D11_C7_B3_15]. Tìm đạo hàm của y=atanu
+                                            #[D11_C7_B2_15]. Tìm đạo hàm của y=atanu
                                             if dang_toan == "[D11_C7_B2_15]":          
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_15()                                     
                                                 
 
-                                            #[D11_C7_B3_16]. Tìm đạo hàm của y=acotu
+                                            #[D11_C7_B2_16]. Tìm đạo hàm của y=acotu
                                             if dang_toan == "[D11_C7_B2_16]":          
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_16()                                     
                                                 
 
-                                            #[D11_C7_B3_17]. Tìm đạo hàm y=(ax+b).căn(x)
+                                            #[D11_C7_B2_17]. Tìm đạo hàm y=(ax+b).căn(x)
                                             if dang_toan == "[D11_C7_B2_17]":          
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_17()                                     
                                                 
 
-                                            #[D11_C7_B3_18]. Tìm đạo hàm y=(ax+b).sin(x)
+                                            #[D11_C7_B2_18]. Tìm đạo hàm y=(ax+b).sin(x)
                                             if dang_toan == "[D11_C7_B2_18]":          
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_18()                                     
                                                 
 
-                                            #[D11_C7_B3_19]. Tìm đạo hàm y=(ax+b).cos(x)
+                                            #[D11_C7_B2_19]. Tìm đạo hàm y=(ax+b).cos(x)
                                             if dang_toan == "[D11_C7_B2_19]":          
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_19()                                     
                                                 
 
-                                            #[D11_C7_B3_20]. Tìm đạo hàm y=(ax+b).cos(x)
+                                            #[D11_C7_B2_20]. Tìm đạo hàm y=(ax+b).cos(x)
                                             if dang_toan == "[D11_C7_B2_20]":          
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D11_C7.ui5io_L11_C7_B2_20()                                     
                                                 
@@ -16856,7 +16876,13 @@ class Ui_MainWindow(object):
 
                                             #[D11_C7_B3_11]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết tiếp tuyến biết hệ số góc
                                             if dang_toan == "[D11_C7_B3_11]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_11()                               
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_11()
+
+                                            #[D11_C7_B3_12]-SA-M3. Cho hàm số bậc 3. Tìm hệ số góc lớn nhất
+                                            if dang_toan == "[D11_C7_B3_12]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_12() 
+
+
                                                 
                                             #Câu hỏi đúng sai
                                             #[D11_C7_B4_01]-TF-M2. Xét Đ-S: Đạo hàm của hàm số đa thức  
@@ -17677,6 +17703,14 @@ class Ui_MainWindow(object):
                                             #[D11_C8_B6_31]-SA-M2. H.chóp đáy h.chữ nhật, cho AB, SC và góc giữa SC với đáy. Tính V.
                                             if dang_toan == "[D11_C8_B6_31]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_31()
+
+                                            #[D11_C8_B6_32]-SA-M2. H.chóp tứ giác đều, cho AB và góc giữa cạnh bên với đáy. Tính V.
+                                            if dang_toan == "[D11_C8_B6_32]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_32()
+
+                                            #[D11_C8_B6_33]-SA-M2. H.chóp tứ giác đều, cho AB và góc giữa cạnh bên với đáy. Tính V.
+                                            if dang_toan == "[D11_C8_B6_33]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_33()
 
                                             #-----------TỔNG HỢP---------->
                                             #Đúng-Sai
