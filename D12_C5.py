@@ -1323,7 +1323,7 @@ def htd_25_xyz_L12_C5_B1_14():
 
         noi_dung= f"Trong không gian ${{Oxyz}}$, cho mặt phẳng ${{({ten_mp})}}$ có phương trình ${mp}=0$."\
                     f" Mặt phẳng ${{({ten_mp})}}$ nhận vectơ nào trong các vectơ sau làm véctơ pháp tuyến."
-        t1 = random.choice([random.randint(-4, -1), random.randint(1, 4)])
+        t1 = 1
         n=["n_1", "n_2", "n_3", "n_4"]
         random.shuffle(n)
 
@@ -6558,7 +6558,7 @@ z = {show_ptts(z_0,c)}\
                 f" Đường thẳng ${{{ten_dt}}}$ nhận vectơ nào sau đây làm véctơ chỉ phương?"
     u=["u_1","u_2","u_3","u_4"]
     random.shuffle(u)
-    t1 = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    t1 = 1
 
     kq=f"\\overrightarrow{{{u[0]}}}=({a*t1};{b*t1};{c*t1})"
     kq2=f"\\overrightarrow{{{u[1]}}}=({x_0};{y_0};{z_0})"
@@ -6703,7 +6703,7 @@ z = {show_ptts(z_0,c)}\
                 f" Đường thẳng ${{{ten_dt}}}$ nhận vectơ nào sau đây làm véctơ chỉ phương?")
     u=["u_1","u_2","u_3","u_4"]
     random.shuffle(u)
-    t1 = random.choice([random.randint(-3, -1), random.randint(1, 3)])
+    t1 = 1
 
     kq=f"\\overrightarrow{{{u[0]}}}=({a*t1};{b*t1};{c*t1})"
     kq2=f"\\overrightarrow{{{u[1]}}}=({x_0};{y_0};{z_0})"
@@ -9330,7 +9330,7 @@ def htd_25_xyz_L12_C5_B2_37():
 
     cos_goc=abs(tich_vh)/(dodai_1*dodai_2)
     goc_rad=math.acos(cos_goc)
-    goc_deg=math.degrees(goc_rad)    
+    goc_deg=goc_rad*180/pi  
 
     kq=goc_deg
     kq_false=generate_random_goc(goc_deg)
@@ -9438,7 +9438,7 @@ z = {show_ptts(z_2,c2)}\
 
     cos_goc=abs(tich_vh)/(dodai_1*dodai_2)
     goc_rad=math.acos(cos_goc)
-    goc_deg=math.degrees(goc_rad)    
+    goc_deg=goc_rad*180/pi   
 
     kq=goc_deg
     kq_false=generate_random_goc(goc_deg)
@@ -9522,6 +9522,7 @@ def htd_25_xyz_L12_C5_B2_39():
     chon=random.randint(1,2)
     if chon==1:
         pt_d1=f"\\dfrac{{{latex(x-x_1)}}}{{{a1}}}=\\dfrac{{{latex(y-y_1)}}}{{{b1}}}=\\dfrac{{{latex(z-z_1)}}}{{{c1}}}"
+
         pt_d2= f"\\left\\{{ \\begin{{array}}{{l}}\
             x = {show_ptts(x_2,a2)}\\\\ \
             y = {show_ptts(y_2,b2)}\\\\\
@@ -9550,8 +9551,8 @@ def htd_25_xyz_L12_C5_B2_39():
     dodai_2=sqrt(a2**2+b2**2+c2**2)
 
     cos_goc=abs(tich_vh)/(dodai_1*dodai_2)
-    goc_rad=math.acos(cos_goc)
-    goc_deg=math.degrees(goc_rad)    
+    goc_rad=acos(cos_goc)
+    goc_deg=goc_rad*180/pi
 
     kq=goc_deg
     kq_false=generate_random_goc(goc_deg)

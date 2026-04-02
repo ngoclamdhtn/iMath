@@ -9971,6 +9971,113 @@ def uvxy9_L11_C8_B6_33():
 	)
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D11_C8_B6_34]-SA-M2. H.chóp tứ giác đều, tất cả các cạnh bằng nhau. Tính V.
+def uvxy9_L11_C8_B6_34():
+	while True:
+		a = random.randint(2, 10)
+
+		OA = a * sqrt(2) / 2
+		SO = sqrt(a**2 - OA**2)
+		S_day = a**2
+		V = Rational(1, 3) * S_day * SO
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".", ",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp tứ giác đều ${{S.ABCD}}$ có "
+		f" tất cả các cạnh đều bằng ${{{a}}}$. "
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Gọi ${{O}}$ là tâm hình vuông ${{ABCD}}$  $\\Rightarrow {{OA}}=\\dfrac{{AC}}{{2}}$.\n\n"
+		f"Mà ${{AC}}=AB\\sqrt{{2}}={a}\\sqrt{{2}}$ nên\n\n"
+		f"${{OA}}=\\dfrac{{AC}}{{2}}=\\dfrac{{{a}\\sqrt{{2}}}}{{2}}={latex(OA)}.$\n\n"
+
+		f"Xét tam giác vuông ${{SAO}}$ tại ${{O}}$:\n\n"
+		f"${{SO}}=\\sqrt{{SA^2-OA^2}}=\\sqrt{{{a}^2-({latex(OA)})^2}}={latex(SO)}.$\n\n"
+
+		f"$S_{{ABCD}}=AB^2={a}^2={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABCD}}\\cdot SO"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(SO)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C8_B6_35]-SA-M2. H.chóp tam giác đều, tất cả các cạnh bằng nhau. Tính V.
+def uvxy9_L11_C8_B6_35():
+	while True:
+		a = random.randint(2, 12)
+
+		AO = a * sqrt(3) / 3
+		SO = sqrt(a**2 - AO**2)
+		S_day = a**2 * sqrt(3) / 4
+		V = Rational(1, 3) * S_day * SO
+
+		if V < 100:
+			break	
+
+	dap_an = f"{round_half_up(V,1):.1f}".replace(".", ",")
+	if dap_an.endswith(",0"):   
+		dap_an = dap_an[:-2]
+
+	noi_dung = thay_hinh_hoc(
+		f"Cho hình chóp đều ${{S.ABC}}$ có tất cả các cạnh đều bằng ${{{a}}}$. "	
+		f"Tính thể tích của khối chóp đã cho (kết quả làm tròn đến hàng phần mười)."
+	)
+
+	noi_dung_loigiai = thay_hinh_hoc(
+		f"Gọi ${{M}}$ là trung điểm của ${{BC}}$ thì\n\n"
+		f"${{AM}}=\\dfrac{{AB\\sqrt{{3}}}}{{2}}=\\dfrac{{{a}\\sqrt{{3}}}}{{2}}.$\n\n"
+
+		f"Gọi ${{O}}$ là trọng tâm tam giác ${{ABC}}$ nên\n\n"
+		f"${{AO}}=\\dfrac{{2}}{{3}}{{AM}}=\\dfrac{{2}}{{3}}\\cdot \\dfrac{{{a}\\sqrt{{3}}}}{{2}}={latex(AO)}.$\n\n"
+
+		f"Xét tam giác vuông ${{SAO}}$ tại ${{O}}$:\n\n"
+		f"${{SO}}=\\sqrt{{SA^2-AO^2}}=\\sqrt{{{a}^2-({latex(AO)})^2}}={latex(SO)}.$\n\n"
+
+		f"$S_{{ABC}}=\\dfrac{{AB^2\\sqrt{{3}}}}{{4}}=\\dfrac{{{a}^2\\sqrt{{3}}}}{{4}}={latex(S_day)}.$\n\n"
+
+		f"$V=\\dfrac{{1}}{{3}}S_{{ABC}}\\cdot SO"
+		f"=\\dfrac{{1}}{{3}}\\cdot {latex(S_day)}\\cdot {latex(SO)}"
+		f"={latex(nsimplify(V))}\\approx {dap_an}$."
+	)
+
+	debai_word = f"{noi_dung}\n"
+
+	loigiai_word = (
+		f"Lời giải:\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n"
+	)
+
+	latex_tuluan = (
+		f"\\begin{{ex}}\n {noi_dung}\n"
+		f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+		f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+		f"\\end{{ex}}\n"
+	)
+	return debai_word, loigiai_word, latex_tuluan, dap_an
+
 #BÀI 7 -  GÓC
 
 #[D11_C8_B7_01]-TF-M2. S.ABC: đáy tam giác. Tạo câu đúng-sai: Thể tích, Góc đường mặt, Góc mặt mặt, Đường vuông góc mặt

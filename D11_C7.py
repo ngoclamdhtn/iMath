@@ -4949,6 +4949,736 @@ def ui5io_L11_C7_B3_12():
 
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C7_B3_13]-SA-M3. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) với Ox 
+def ui5io_L11_C7_B3_13():
+
+    x = sp.symbols('x')
+
+    # Sinh hệ số thỏa điều kiện
+    while True:
+        a = random.choice([i for i in range(-5,6) if i!=0])
+        b = random.randint(-5,5)
+        c = random.choice([i for i in range(-5,6) if i!=0])
+        d = random.randint(-5,5)
+
+        # nghiệm giao Ox
+        x_0 = -b/a
+
+        # điều kiện mẫu khác 0 tại x0
+        if all([a*d-b*c!=0, c*x_0 + d != 0]):
+            break
+
+    # Hàm số
+    f = (a*x + b)/(c*x + d)
+
+    # Đạo hàm
+    f_prime = sp.diff(f, x)
+
+    # Hệ số góc tiếp tuyến
+    k = f_prime.subs(x, x_0)
+
+    # tung độ tại điểm tiếp xúc (luôn =0)
+    y0 = 0
+
+    # hệ số b của tiếp tuyến
+    b_tiep = -k*x_0
+
+    # kết quả cần tìm
+    tong = float(k + b_tiep)
+    if tong.is_integer():
+        dap_an=int(tong)
+        lam_tron=""
+    else:
+        dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+        if dap_an.endswith(",0"):   
+            dap_an = dap_an[:-2]
+
+
+    # Nội dung đề
+    noi_dung = (
+    f"Cho đường cong $(C):y={latex(f)}$. "
+    f"Phương trình tiếp tuyến của $(C)$ tại giao điểm của $(C)$ với trục hoành "
+    f"có dạng $y=ax+b$. Tính $a+b${lam_tron}."
+    )
+
+    # Lời giải
+    noi_dung_loigiai = (
+    f"Ta có $y=0 \\Rightarrow {a}x+{b}=0 \\Rightarrow x_0={phan_so(x_0)}$.\n\n"
+    f"Đạo hàm: $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)} }}$. \n\n"
+    f"$y'({phan_so(x_0)})={phan_so(k)}$. \n\n"
+    f"Tiếp tuyến: $y={phan_so(k)}(x-{phan_so(x_0)})$. \n\n"
+    f"$\\Rightarrow y={phan_so(k)}x+{phan_so(b_tiep)}$. \n\n"
+    f"$a+b={dap_an}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_14]-SA-M3. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) với Oy 
+def ui5io_L11_C7_B3_14():
+
+    x = sp.symbols('x')
+
+    # Sinh hệ số thỏa điều kiện
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i != 0])
+        b = random.randint(-5, 5)
+        c = random.choice([i for i in range(-5, 6) if i != 0])
+        d = random.choice([i for i in range(-5, 6) if i != 0])
+
+        # điều kiện hàm số xác định tại x=0 và là phân thức bậc nhất trên bậc nhất thực sự
+        if all([d != 0, a*d - b*c != 0]):
+            break
+
+    # Hàm số
+    f = (a*x + b)/(c*x + d)
+
+    # Giao điểm với trục tung: x=0
+    x_0 = 0
+    y_0 = f.subs(x, x_0)
+
+    # Đạo hàm
+    f_prime = sp.diff(f, x)
+
+    # Hệ số góc tiếp tuyến
+    k = f_prime.subs(x, x_0)
+
+    # hệ số tự do của tiếp tuyến y = kx + b_tiep
+    b_tiep = y_0
+
+    # kết quả cần tìm
+    tong = float(k + b_tiep)
+    if tong.is_integer():
+        dap_an = int(tong)
+        lam_tron = ""
+    else:
+        dap_an = f"{round_half_up(tong,1):.1f}".replace(".", ",")
+        lam_tron = f" (kết quả làm tròn đến hàng phần mười)"
+        if dap_an.endswith(",0"):
+            dap_an = dap_an[:-2]
+
+    # Nội dung đề
+    noi_dung = (
+    f"Cho đường cong $(C):y={latex(f)}$. "
+    f"Phương trình tiếp tuyến của $(C)$ tại giao điểm của $(C)$ với trục tung "
+    f"có dạng $y=ax+b$. Tính $a+b${lam_tron}."
+    )
+
+    # Lời giải
+    noi_dung_loigiai = (
+    f"Giao điểm của $(C)$ với trục tung là điểm có hoành độ bằng $0$.\n\n"
+    f"Ta có $y(0)={phan_so(y_0)}$ nên tọa độ giao điểm là $A(0;{phan_so(y_0)})$.\n\n"
+    f"Đạo hàm: $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)} }}$. \n\n"
+    f"$y'(0)={phan_so(k)}$. \n\n"
+    f"Phương trình tiếp tuyến của $(C)$ tại $A$ là:\n\n"
+    f"$y={phan_so(k)}(x-0)+{phan_so(y_0)}$.\n\n"
+    f"$\\Rightarrow y={phan_so(k)}x+{phan_so(b_tiep)}$.\n\n"
+    f"$a+b={dap_an}$."
+    )
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-", "-").replace("--", "+")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C7_B3_15]-SA-M3. Diện tích △ tạo bởi tiếp tuyến của y=(ax+b)/(cx+d) và hai trục tọa độ.
+def ui5io_L11_C7_B3_15():
+    x = sp.symbols('x')
+
+    # Sinh hệ số thỏa điều kiện
+    while True:
+        a = random.choice([i for i in range(-5, 6) if i != 0])
+        b = random.randint(-5, 5)
+        c = random.choice([i for i in range(-5, 6) if i != 0])
+        d = random.choice([i for i in range(-5, 6) if i != 0])
+        x_0 = random.choice([i for i in range(-4, 5) if i != 0])
+
+        # Hàm số
+        f = (a*x + b)/(c*x + d)
+
+        # Tung độ tiếp điểm
+        y_0 = sp.simplify(f.subs(x, x_0))
+
+        # Đạo hàm
+        f_prime = sp.diff(f, x)
+
+        # Hệ số góc tiếp tuyến
+        k = sp.simplify(f_prime.subs(x, x_0))
+
+        # Hệ số tự do của tiếp tuyến: y = kx + n
+        n = sp.simplify(y_0 - k*x_0)
+
+        # Điều kiện để tiếp tuyến cùng với hai trục tọa độ tạo thành tam giác
+        # <=> không song song trục Ox, không đi qua gốc tọa độ
+        if k == 0 or n == 0:
+            return ui5io_L11_C7_B3_15()
+
+        # Giao điểm với các trục tọa độ
+        x_A = sp.simplify(-n/k)   # giao với Ox
+        y_B = n                   # giao với Oy
+
+        # Diện tích tam giác
+        S = sp.simplify(abs(x_A*y_B)/2)
+        if all([a*d - b*c != 0, c*x_0 + d != 0, S<99]):
+            break
+
+    
+
+    # Đáp án
+    tong = float(S)
+    if tong.is_integer():
+        dap_an = int(tong)
+        lam_tron = ""
+    else:
+        dap_an = f"{round_half_up(tong,1):.1f}".replace(".", ",")
+        lam_tron = f" (kết quả làm tròn đến hàng phần mười)"
+        if dap_an.endswith(",0"):
+            dap_an = dap_an[:-2]
+
+    # Nội dung đề
+    noi_dung = (
+    f"Cho đường cong $(C):y={latex(f)}$. "
+    f"Tính diện tích tam giác tạo bởi tiếp tuyến của $(C)$ tại điểm có hoành độ $x_0={x_0}$ và hai trục tọa độ{lam_tron}."
+    )
+
+    # Lời giải
+    noi_dung_loigiai = (
+    f"Ta có $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)}}}$. \n\n"
+    f"Tại $x_0={x_0}$, ta có:\n\n"
+    f"$y_0={phan_so(y_0)}$, $k=y'({x_0})={phan_so(k)}$. \n\n"
+    f"Phương trình tiếp tuyến của $(C)$ tại điểm có hoành độ $x_0={x_0}$ là:\n\n"
+    f"$y={phan_so(k)}(x-{x_0})+{phan_so(y_0)}$. \n\n"
+    f"$\\Rightarrow y={phan_so(k)}x+{phan_so(n)}$. \n\n"
+    f"Cho $y=0$ ta được giao điểm với trục hoành là $A\\left({phan_so(x_A)};0\\right)$. \n\n"
+    f"Cho $x=0$ ta được giao điểm với trục tung là $B\\left(0;{phan_so(y_B)}\\right)$. \n\n"
+    f"Diện tích tam giác tạo bởi tiếp tuyến và hai trục tọa độ là:\n\n"
+    f"$S=\\dfrac{{1}}{{2}}\\cdot OA\\cdot OB=\\dfrac{{1}}{{2}}\\cdot \\left|{phan_so(x_A)}\\right|\\cdot \\left|{phan_so(y_B)}\\right|={dap_an}$."
+    )
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-", "-").replace("--", "+")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C7_B3_16]-SA-M2. Tiếp tuyến của hàm bậc ba tại điểm có hoành độ x_0
+def ui5io_L11_C7_B3_16():
+    x = sp.symbols('x')
+
+    # Sinh hệ số ngẫu nhiên
+    while True:
+        a = random.choice([i for i in range(-4, 5) if i != 0])
+        b = random.randint(-5, 5)
+        c = random.choice([i for i in range(-5, 5) if i != 0])
+        d = random.randint(-5, 5)
+        x_0 = random.choice([i for i in range(-4, 5) if i != 0])
+
+        # Hàm số
+        f = a*x**3 + b*x**2 + c*x + d
+
+        # Đạo hàm
+        f_prime = sp.diff(f, x)
+
+        # Tọa độ tiếp điểm
+        y_0 = sp.expand(f.subs(x, x_0))
+
+        # Hệ số góc tiếp tuyến
+        m = sp.expand(f_prime.subs(x, x_0))
+
+        # Hệ số tự do
+        n = sp.expand(y_0 - m*x_0)
+
+        # Kết quả cần tìm
+        tong = float(m + n)
+        if all([-9<tong<99]):
+            break
+
+    
+    if tong.is_integer():
+        dap_an = int(tong)
+        lam_tron = ""
+    else:
+        dap_an = f"{round_half_up(tong,1):.1f}".replace(".", ",")
+        lam_tron = f" (kết quả làm tròn đến hàng phần mười)"
+        if dap_an.endswith(",0"):   
+            dap_an = dap_an[:-2]
+
+    # Nội dung đề
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$ có đồ thị $(C)$. "
+    f"Tiếp tuyến của $(C)$ tại điểm có hoành độ $x_0={x_0}$ "
+    f"có phương trình dạng $y=ax+b$. Tính $a+b${lam_tron}."
+    )
+
+    # Lời giải
+    noi_dung_loigiai = (
+    f"Ta có $y'={latex(f_prime)}$.\n\n"
+    f"Tại $x_0={x_0}$, ta có:\n\n"
+    f"$y'({x_0})={phan_so(m)}$.\n\n"
+    f"$y_0=f({x_0})={phan_so(y_0)}$.\n\n"
+    f"Phương trình tiếp tuyến của $(C)$ tại điểm có hoành độ $x_0={x_0}$ là:\n\n"
+    f"$y={phan_so(m)}(x-{x_0})+{phan_so(y_0)}$.\n\n"
+    f"$\\Rightarrow y={phan_so(m)}x+{phan_so(n)}$.\n\n"
+    f"Suy ra $a+b={dap_an}$."
+    )
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-", "-").replace("--", "+")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C7_B3_17]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết tiếp tuyến biết tiếp tuyến // y=mx+n
+def ui5io_L11_C7_B3_17():
+    x,s_a,s_b=sp.symbols("x a b")
+    while True:    
+        a= random.choice([i for i in range(-3, 3) if i!=0])
+        b= random.choice([i for i in range(-4, 5) if i!=0])
+        c= random.choice([i for i in range(-2, 2) if i!=0])
+        d= random.choice([i for i in range(-3, 3) if i!=0])
+        if a*d-b*c==0:
+            continue
+        f=(a*x+b)/(c*x+d)
+        k=a*d-b*c
+        f_dh=(a*d-b*c)/(c*x+d)**2
+
+        x_0,x_1=(1-d)/c,(-1-d)/c
+        
+        y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
+        tong=k+k*x_0+y_0
+        if tong>-9:
+            break
+
+    ham=f"$y=\\dfrac{{{a}x+{b}}}{{{c}x+{d}}}$".replace("+-","-").replace("1x","x")
+
+    tt1=f"{k}x+{phan_so(-k*x_1+y_1)}".replace("1x","x").replace("+-","-")
+    noi_dung = (
+    f"Cho hàm số {ham} có đồ thị $(C)$. Biết tiếp tuyến của đồ thị $(C)$ song song với đường thẳng $y={tt1}$ có phương trình dạng $y=ax+b$."
+    f" Tính $a+b$."
+    )
+    noi_dung=noi_dung.replace("+-","-")
+  
+    
+    dap_an=int(tong)
+
+    noi_dung_loigiai=(
+    f"Tiếp tuyến song song với đường thẳng $y={tt1}$ nên có hệ số góc $k={k}$:\n\n"
+    f" $y'={k}\\Leftrightarrow \\dfrac{{{a*d-b*c}}}{{({c}x+{d})^2}}={k} \\Leftrightarrow ({c}x+{d})^2=1 \\Rightarrow x={phan_so(x_0)},x={phan_so(x_1)}$.\n\n"
+    f" Với $x={phan_so(x_0)}\\Rightarrow y=f({phan_so(x_0)})={phan_so(y_0)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_0)})+{phan_so(y_0)}\\Leftrightarrow y={k}x+{phan_so(-k*x_0+y_0)}$.\n\n"
+
+    f" Với $x={phan_so(x_1)}\\Rightarrow y=f({phan_so(x_1)})={phan_so(y_1)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{phan_so(x_1)})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$ (loại).\n\n"
+    f" Do đó: $a+b={dap_an}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-").replace("1x","x")  
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_18]-SA-M3. Cho hàm số bậc ba. Viết tiếp tuyến biết tiếp tuyến // y=mx+n
+def ui5io_L11_C7_B3_18():
+    x,s_a,s_b=sp.symbols("x a b")
+
+    while True:  
+    
+        x_0=random.randint(-3,3)
+        x_1=x_0+random.randint(1,3)
+        k=random.randint(-5,5)
+
+        a1, b1, c1 = 1, -(x_0+x_1), x_0*x_1+k
+        f_dh=a1*x**2+b1*x+c1
+
+        a,b,c = Rational(a1, 3),Rational(b1, 2),c1
+        d = random.randint(-2,2)    
+        f=a*x**3+b*x**2+c*x+d
+        
+        y_0,y_1=f.subs(x,x_0),f.subs(x,x_1)
+
+        tt1=f"{k}x+{phan_so(-k*x_1+y_1)}".replace("1x","x").replace("+-","-")
+
+        
+        tong=k+k*x_0+y_0
+        if tong>-9:
+            break
+    if tong.is_integer:
+        dap_an=int(tong)
+        lam_tron=""
+    else:
+        dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+        lam_tron=" (kết quả làm tròn đến hàng phần mười)"
+
+    noi_dung = (
+    f"Cho hàm số $y={latex(f)}$ có đồ thị $(C)$. "
+    f"Biết tiếp tuyến của đồ thị $(C)$ song song với đường thẳng $y={tt1}$ có phương trình dạng $y=ax+b$."
+    f" Tính $a+b${lam_tron}."
+    )
+
+
+    noi_dung_loigiai=(
+    f"Xét phương trình:\n\n"
+    f" $y'={k}\\Leftrightarrow {latex(f_dh)}={k} \\Leftrightarrow {latex(f_dh-k)}=0 \\Rightarrow x={x_0},x={x_1}$.\n\n"
+    f" Với $x={x_0}\\Rightarrow y=f({x_0})={phan_so(y_0)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_0})+{phan_so(y_0)}\\Leftrightarrow y={k}x+{phan_so(-k*x_0+y_0)}$.\n\n"
+
+    f" Với $x={x_1}\\Rightarrow y=f({x_1})={phan_so(y_1)}$.\n\n"
+    f" Phương trình tiếp tuyến là: $y={k}(x-{x_1})+{phan_so(y_1)}\\Leftrightarrow y={k}x+{phan_so(-k*x_1+y_1)}$ (loại).\n\n"
+    f" Do đó: $a+b={dap_an}$.")
+    noi_dung_loigiai=noi_dung_loigiai.replace("--","+").replace("+-","-").replace("=1x","x").replace("=-1x","-x")    
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_19]-SA-M3. Cho hàm số bậc 3. Tìm m để tiếp tuyến có hệ số góc nhỏ nhất vuông góc với đường thẳng
+def ui5io_L11_C7_B3_19():
+
+    x=sp.symbols("x")
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+
+    while True:
+        a = random.choice([i for i in range(-4,5) if i!=0])
+        b = random.choice([i for i in range(-6,6) if i!=0])
+        k = random.choice([-2,-1,1,2])
+
+        # Hàm số dạng y=x^3+3ax^2+(m+b)x+c
+        # y' = 3x^2+6ax+(m+b)
+        # k_min = m+b-3a^2
+        k_vuong_goc = -sp.Rational(1,k)
+        m_val = float(k_vuong_goc - b + 3*a**2)
+
+        if m_val >-5:
+            break
+
+    f = x**3 + 3*a*x**2 + (sp.Symbol("m")+b)*x + random.randint(-5,5)
+    m = sp.Symbol("m")
+
+    # Hoành độ tại đó y' nhỏ nhất
+    x0 = -a
+
+    # Hệ số góc nhỏ nhất của tiếp tuyến
+    k_min = m + b - 3*a**2
+    if m_val.is_integer():
+        dap_an=int(m_val)
+        lam_tron=""
+    else:
+        dap_an=f"{round_half_up(m_val,1):.1f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+
+    noi_dung = (
+    f"Cho hàm số $y=x^3+{latex(3*a*x**2, order='lex')}+(m+{b})x+{latex(expand(f - (x**3 + 3*a*x**2 + (m+b)*x)), order='lex')}$ có đồ thị là $(C_m)$ với ${{m}}$ là tham số. "
+    f"Tìm ${{m}}$ để tiếp tuyến của $(C_m)$ có hệ số góc nhỏ nhất vuông góc với đường thẳng $y={latex(k*x+n)}${lam_tron}."
+    )
+    noi_dung=noi_dung.replace("+-","-")
+
+    
+
+    noi_dung_loigiai = (
+    f"Ta có $y'=3x^2+{sp.latex(6*a*x)}+m"
+    f"{'+' if b>0 else ''}{b}$.\n\n"
+    f"Tiếp tuyến có hệ số góc nhỏ nhất ứng với\n\n"
+
+    f"$x_0=\\dfrac{{-{latex(6*a)}}}{{2\\cdot 3}}={latex(x0)}$.\n\n"
+
+    f"$k_{{\\min}}=y'({latex(x0)})={sp.latex(k_min)}$.\n\n"
+
+    f"Tiếp tuyến vuông góc với đường thẳng $y={latex(k*x+n)}$ nên hệ số góc của tiếp tuyến bằng "
+    f"$-\\dfrac{{1}}{{{latex(k)}}}={sp.latex(k_vuong_goc)}$.\n\n"
+
+    f"${latex(k_min)}={latex(k_vuong_goc)}\\Rightarrow m={phan_so(m_val)}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","") 
+        
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+
+#[D11_C7_B3_20]-SA-M3. Cho hàm số bậc 3. Tìm m để tiếp tuyến có hệ số góc lớn nhất vuông góc với đường thẳng
+def ui5io_L11_C7_B3_20():
+    x=sp.symbols("x")
+    n = random.choice([i for i in range(-5, 6) if i!=0])
+
+    while True:
+        a = random.choice([i for i in range(-4,5) if i!=0])
+        b = random.choice([i for i in range(-6,6) if i!=0])
+        k = random.choice([-2,-1,1,2])
+
+        # Hàm số dạng y=-x^3+3ax^2+(m+b)x+c
+        # y' = -3x^2+6ax+(m+b)
+        # k_max = m+b+3a^2
+        k_vuong_goc = -sp.Rational(1,k)
+        m_val = float(k_vuong_goc - b - 3*a**2)
+
+        if m_val > -5:
+            break
+
+    f = -x**3 + 3*a*x**2 + (sp.Symbol("m")+b)*x + random.randint(-5,5)
+    m = sp.Symbol("m")
+
+    # Hoành độ tại đó y' lớn nhất
+    x0 = a
+
+    # Hệ số góc lớn nhất của tiếp tuyến
+    k_max = m + b + 3*a**2
+
+    if m_val.is_integer():
+        dap_an = int(m_val)
+        lam_tron = ""
+    else:
+        dap_an = f"{round_half_up(m_val,1):.1f}".replace(".",",")
+        lam_tron = f" (kết quả làm tròn đến hàng phần mười)"
+
+    noi_dung = (
+    f"Cho hàm số $y=-x^3+{latex(3*a*x**2, order='lex')}+(m+{b})x+{latex(expand(f - (-x**3 + 3*a*x**2 + (m+b)*x)), order='lex')}$ có đồ thị là $(C_m)$ với ${{m}}$ là tham số. "
+    f"Tìm ${{m}}$ để tiếp tuyến của $(C_m)$ có hệ số góc lớn nhất vuông góc với đường thẳng $y={latex(k*x+n)}${lam_tron}."
+    )
+    noi_dung = noi_dung.replace("+-","-").replace("--","")
+
+    noi_dung_loigiai = (
+    f"Ta có $y'=-3x^2+{sp.latex(6*a*x)}+m"
+    f"{'+' if b>0 else ''}{b}$.\n\n"
+    f"Tiếp tuyến có hệ số góc lớn nhất ứng với\n\n"
+
+    f"$x_0=\\dfrac{{-{latex(6*a)}}}{{2\\cdot(-3)}}={latex(x0)}$.\n\n"
+
+    f"$k_{{\\max}}=y'({latex(x0)})={sp.latex(k_max)}$.\n\n"
+
+    f"Tiếp tuyến vuông góc với đường thẳng $y={latex(k*x+n)}$ nên hệ số góc của tiếp tuyến bằng "
+    f"$-\\dfrac{{1}}{{{latex(k)}}}={sp.latex(k_vuong_goc)}$.\n\n"
+
+    f"${latex(k_max)}={latex(k_vuong_goc)}\\Rightarrow m={phan_so(m_val)}$."
+    )
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-","-").replace("--","")
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_21]-SA-M3. Cho hàm số bậc 3. Tìm m để tiếp tuyến tại điểm có hoành độ x_0 đi qua điểm A
+def ui5io_L11_C7_B3_21():
+    x, m = sp.symbols("x m")
+
+    while True:
+        x0 = random.choice([i for i in range(-3,4) if i!=0])
+        xA = random.choice([i for i in range(-3,4) if i!=x0])
+        b = random.choice([i for i in range(-4,5) if i!=0])
+        c = random.choice([i for i in range(-4,5) if i!=0])
+        m0 = random.choice([i for i in range(-4,5) if i!=0])
+
+        # Hàm số dạng y=x^3+3mx^2+(m+b)x+c
+        f_num = x**3 + 3*m0*x**2 + (m0+b)*x + c
+        f_prime_num = expand(sp.diff(f_num, x))
+
+        y0_num = f_num.subs(x, x0)
+        k_num = f_prime_num.subs(x, x0)
+
+        # Chọn A thuộc tiếp tuyến ứng với m=m0 để đáp án đẹp
+        yA = expand(k_num*(xA-x0) + y0_num)
+
+        # Kiểm tra hệ số của m khác 0 để phương trình có nghiệm duy nhất
+        he_so_m = (6*x0+1)*(xA-x0) + 3*x0**2 + x0
+        if he_so_m != 0 and abs(yA) <= 40:
+            break
+
+    # Hàm số tổng quát
+    f = x**3 + 3*m*x**2 + (m+b)*x + c
+    f_prime = expand(sp.diff(f, x))
+
+    # Tung độ tiếp điểm và hệ số góc tiếp tuyến tại x0
+    y0 = expand(f.subs(x, x0))
+    k = expand(f_prime.subs(x, x0))
+
+    # Phương trình tiếp tuyến
+    pt_tiep_tuyen = expand(k*(x-x0) + y0)
+
+    # Điều kiện đi qua A(xA;yA)
+    eq = sp.Eq(pt_tiep_tuyen.subs(x, xA), yA)
+    m_val = sp.solve(eq, m)[0]
+
+    dap_an = f"{phan_so(m_val)}"
+
+    noi_dung = (
+    f"Cho hàm số $y=x^3+3mx^2+(m+{b})x"
+    f"{'+' if c>=0 else ''}{c}$. "
+    f"Tìm $m$ để tiếp tuyến của đồ thị hàm số tại điểm có hoành độ $x_0={x0}$ "
+    f"đi qua điểm $A\\left({xA};{yA}\\right)$."
+    )
+    noi_dung = noi_dung.replace("+-","-").replace("--","+")
+
+    noi_dung_loigiai = (
+    f"Ta có $y'={latex(f_prime)}$.\n\n"
+    f"Tại điểm có hoành độ $x_0={x0}$, ta có:\n\n"
+    f"$y'({x0})={latex(k)}$,\n\n"
+    f"$y({x0})={latex(y0)}$.\n\n"
+    f"Phương trình tiếp tuyến tại điểm có hoành độ $x_0={x0}$ là\n\n"
+    f"$y=({latex(k)})(x-{latex(x0)})+{latex(y0)}$.\n\n"
+    f"Vì tiếp tuyến đi qua điểm $A\\left({xA};{yA}\\right)$ nên\n\n"
+    f"${yA}=({latex(k)})\\left({xA}-{latex(x0)}\\right)+{latex(y0)}$.\n\n"
+    f" $\\Rightarrow m={phan_so(m_val)}$."
+    )
+    noi_dung_loigiai = noi_dung_loigiai.replace("+-","-").replace("--","+")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\n\n\\shortans[4]{{{dap_an}}}\n\n"
+        f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"
+        f"\\end{{ex}}\n"
+    )
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+#[D11_C7_B3_22]-SA-M2. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) tại điểm có hoành độ x_0
+def ui5io_L11_C7_B3_22():
+
+    x = sp.symbols('x')
+
+    # Sinh hệ số thỏa điều kiện
+    while True:
+        a = random.choice([i for i in range(-5,6) if i!=0])
+        b = random.randint(-5,5)
+        c = random.choice([i for i in range(-5,6) if i!=0])
+        d = random.randint(-5,5)
+
+        # nghiệm giao Ox
+        x_0 =  random.choice([i for i in range(-5, 6) if i!=0])
+
+        # điều kiện mẫu khác 0 tại x0
+        if all([a*d-b*c!=0, c*x_0 + d != 0]):
+            break
+
+    # Hàm số
+    f = (a*x + b)/(c*x + d)
+
+    # Đạo hàm
+    f_prime = sp.diff(f, x)
+
+    # Hệ số góc tiếp tuyến
+    k = f_prime.subs(x, x_0)
+
+    # tung độ tại điểm tiếp xúc (luôn =0)
+    y_0 = f.subs(x,x_0)
+
+    # hệ số b của tiếp tuyến
+    b_tiep = y_0-k*x_0
+
+    # kết quả cần tìm
+    tong = float(k + b_tiep)
+    if tong.is_integer():
+        dap_an=int(tong)
+        lam_tron=""
+    else:
+        dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+        if dap_an.endswith(",0"):   
+            dap_an = dap_an[:-2]
+
+
+    # Nội dung đề
+    noi_dung = (
+    f"Cho đường cong $(C):y={latex(f)}$. "
+    f"Phương trình tiếp tuyến của $(C)$ tại điểm có hoành độ $x={x_0}$"
+    f"có dạng $y=ax+b$. Tính $a+b${lam_tron}."
+    )
+
+    # Lời giải
+    noi_dung_loigiai = (
+    f"Với $x={x_0}\\Rightarrow y_0={phan_so(y_0)}$.\n\n"
+    f"Đạo hàm: $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)} }}$. \n\n"
+    f"$y'({phan_so(x_0)})={phan_so(k)}$. \n\n"
+    f"Tiếp tuyến: $y={phan_so(k)}(x-{x_0})+{phan_so(y_0)}$. \n\n"
+    f"$\\Rightarrow y={phan_so(k)}x+{phan_so(b_tiep)}$. \n\n"
+    f"$a+b={dap_an}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #Bài 4
 
 #[D11_C7_B4_01]-TF-M2. Tạo câu đúng-sai: Đạo hàm của hàm số đa thức 

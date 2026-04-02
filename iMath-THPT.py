@@ -8068,11 +8068,51 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_12]-SA-M2. Cho hàm số bậc ba. Tìm hệ số góc lớn nhất của tiếp tuyến"])
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_16]-SA-M2. Cho hàm số bậc ba. Viết PTTT tại điểm có hoành độ x_0"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_08]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT biết hệ số góc"])
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_12]-SA-M2. Cho hàm số bậc ba. Tìm hệ số góc lớn nhất của tiếp tuyến"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_22]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT tại điểm có hoành độ x_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_13]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT tại giao điểm với Ox"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_14]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT tại giao điểm với Oy"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_08]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT biết hệ số góc"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_17]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT biết tiếp tuyến // y=mx+n"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_18]-SA-M3. Cho hàm số bậc 3. Viết PTTT biết tiếp tuyến // y=mx+n"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_15]-SA-M3. Diện tích △ tạo bởi tiếp tuyến của y=(ax+b)/(cx+d) và hai trục tọa độ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_19]-SA-M3. Cho hàm bậc 3. Tìm m để tiếp tuyến có hệ số góc nhỏ nhất vuông góc với đường thẳng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_20]-SA-M3. Cho hàm  bậc 3. Tìm m để tiếp tuyến có hệ số góc lớn nhất vuông góc với đường thẳng"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_21]-SA-M3. Tìm m để tiếp tuyến tại điểm có hoành độ x_0 đi qua điểm A(x_A;y_A)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -8711,6 +8751,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_35]-SA-M3. H.chóp tam giác đều, tất cả các cạnh bằng nhau. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_28]-SA-M3. H.chóp đáy h.vuông, cho SC và góc giữa SC với (SAD). Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8734,6 +8778,12 @@ class Ui_MainWindow(object):
                 item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_33]-SA-M3. H.chóp tứ giác đều, cho cạnh bên và góc giữa cạnh bên với đáy. Tính V."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B6_3, ["[D11_C8_B6_34]-SA-M3. H.chóp tứ giác đều, tất cả các cạnh bằng nhau. Tính V."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+
 
                 
 
@@ -16880,7 +16930,47 @@ class Ui_MainWindow(object):
 
                                             #[D11_C7_B3_12]-SA-M3. Cho hàm số bậc 3. Tìm hệ số góc lớn nhất
                                             if dang_toan == "[D11_C7_B3_12]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_12() 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_12()
+
+                                            #[D11_C7_B3_13]-SA-M3. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) với Ox 
+                                            if dang_toan == "[D11_C7_B3_13]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_13()
+
+                                            #[D11_C7_B3_14]-SA-M3. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) với Oy
+                                            if dang_toan == "[D11_C7_B3_14]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_14()
+
+                                            #[D11_C7_B3_15]-SA-M3. Diện tích △ tạo bởi tiếp tuyến của y=(ax+b)/(cx+d) và hai trục tọa độ.
+                                            if dang_toan == "[D11_C7_B3_15]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_15()
+
+                                            #[D11_C7_B3_16]-SA-M3. Tiếp tuyến của hàm bậc ba tại điểm có hoành độ x_0
+                                            if dang_toan == "[D11_C7_B3_16]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_16()
+
+                                            #[D11_C7_B3_17]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết tiếp tuyến biết tiếp tuyến // y=mx+n
+                                            if dang_toan == "[D11_C7_B3_17]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_17()
+
+                                            #[D11_C7_B3_18]-SA-M3. Cho hàm số y=(ax+b)/(cx+d). Viết tiếp tuyến biết tiếp tuyến // y=mx+n
+                                            if dang_toan == "[D11_C7_B3_18]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_18()
+
+                                            #[D11_C7_B3_19]-SA-M3. Cho hàm số bậc 3. Tìm m để tiếp tuyến có hệ số góc nhỏ nhất vuông góc với đường thẳng
+                                            if dang_toan == "[D11_C7_B3_19]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_19()
+
+                                            #[D11_C7_B3_20]-SA-M3. Cho hàm số bậc 3. Tìm m để tiếp tuyến có hệ số góc lớn nhất vuông góc với đường thẳng
+                                            if dang_toan == "[D11_C7_B3_20]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_20()
+
+                                            #[D11_C7_B3_21]-SA-M3. Cho hàm số bậc 3. Tìm m để tiếp tuyến tại điểm có hoành độ x_0 đi qua điểm A
+                                            if dang_toan == "[D11_C7_B3_21]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_21()
+
+                                            #[D11_C7_B3_22]-SA-M3. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) tại điểm có hoành độ x_0
+                                            if dang_toan == "[D11_C7_B3_22]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_22()
 
 
                                                 
@@ -17711,6 +17801,14 @@ class Ui_MainWindow(object):
                                             #[D11_C8_B6_33]-SA-M2. H.chóp tứ giác đều, cho AB và góc giữa cạnh bên với đáy. Tính V.
                                             if dang_toan == "[D11_C8_B6_33]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_33()
+
+                                            #[D11_C8_B6_34]-SA-M2. H.chóp tứ giác đều, tất cả các cạnh bằng nhau. Tính V.
+                                            if dang_toan == "[D11_C8_B6_34]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_34()
+
+                                            #[D11_C8_B6_35]-SA-M2. H.chóp tam giác đều, tất cả các cạnh bằng nhau. Tính V.
+                                            if dang_toan == "[D11_C8_B6_35]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B6_35()
 
                                             #-----------TỔNG HỢP---------->
                                             #Đúng-Sai
