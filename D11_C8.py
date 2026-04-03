@@ -7231,6 +7231,59 @@ def uvxy9_L11_C8_B4_23():
 	f"\\end{{ex}}\n"
 	return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D11_C8_B4_24]-SA-M3. H.chóp S.ABCD, đáy h.v, (SAB)⟂(ABCD). Tính d(BC,SA)
+def uvxy9_L11_C8_B4_24():
+	
+	a=sqrt(random.randint(1,16))
+	d=a*sqrt(2)/4
+
+	noi_dung = (
+	f"Cho hình chóp ${{S.ABCD}}$ có đáy là hình vuông cạnh bằng ${{{latex(a)}}}$, tam giác ${{SAB}}$ vuông"
+	f" cân tại ${{S}}$ và nằm trong mặt phẳng vuông góc với $(ABCD)$."
+	f" Tính khoảng cách giữa hai đường thẳng ${{BC}}$ và ${{SA}}$ (kết quả làm tròn đến hàng phần mười)."
+	)
+	dap_an=f"{round_half_up(d,1):.1f}".replace(".",",")
+
+	noi_dung_loigiai=(
+	f"Gọi ${{H}}$ là trung điểm của ${{AB}}\\Rightarrow SH \\bot (ABCD)$.\n\n"
+	f"Kẻ $HI\\bot SA \\Rightarrow BC \\bot HI$.\n\n"
+	f"Tam giác ${{SAB}}$ vuông cân nên $SH=HA=\\dfrac{{AB}}{{2}}={latex(a/2)}$.\n\n"
+	f"$SA=SH\\sqrt {{2}}= {latex(a/2)}\\sqrt {{2}}={latex(a*sqrt(2)/2)}$.\n\n"
+	f"$d(BC,SA)=HI=\\dfrac{{SA}}{{2}}={latex(a*sqrt(2)/4)}={dap_an}$."
+	)	
+		
+	debai_word= f"{noi_dung}\n"
+
+	code_hinh=(f"\\begin{{tikzpicture}}\n\
+				\\coordinate (A) at (0,0);\n\
+				\\coordinate (B) at (-2,-2);\n\
+				\\coordinate (C) at (4,-2);\n\
+				\\coordinate (D) at (6,0);\n\
+				\\coordinate (H) at ($(A)!1/2!(B)$);\n\
+				\\coordinate (S) at ($(H)+(0,5)$);\n\
+				\\coordinate (I) at ($(A)!1/3!(S)$);\n\
+				\n\
+				\\draw (S)--(B)--(C)--(D)--(S)--(C);\n\
+				\\draw [dashed] (S)--(A)--(B) (A)--(D) (S)--(H)--(I);\n\
+				\\foreach \\x/\\g in{{A/60,B/-90,C/-90,D/0,H/-90,I/60,S/90}}\n\
+				\\fill[black](\\x) circle (2pt)\n\
+				($(\\x)+(\\g:5mm)$) node{{\\small $\\x$}};\n\
+		\\end{{tikzpicture}}" 
+)
+	code = my_module.moi_truong_anh_latex(code_hinh)
+	file_name=my_module.pdftoimage_timename(code)
+
+	loigiai_word=(f"Lời giải:\n {file_name}\n {noi_dung_loigiai} \n"
+		f"Đáp án: {dap_an}\n")
+
+
+	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+	f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+	f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+	f"\\end{{ex}}\n"
+	return debai_word,loigiai_word,latex_tuluan,dap_an
+
 #BÀI 5 - GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG
 
 #[D11_C8_B5_01]-M1. S.ABCD: ABCD h.vuông. Xác định góc giữa đường thẳng và mặt phẳng.

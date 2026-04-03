@@ -5610,13 +5610,13 @@ def ui5io_L11_C7_B3_22():
 
     # Sinh hệ số thỏa điều kiện
     while True:
-        a = random.choice([i for i in range(-5,6) if i!=0])
+        a = random.choice([i for i in range(-5,5) if i!=0])
         b = random.randint(-5,5)
-        c = random.choice([i for i in range(-5,6) if i!=0])
+        c = random.choice([i for i in range(-5,5) if i!=0])
         d = random.randint(-5,5)
 
         # nghiệm giao Ox
-        x_0 =  random.choice([i for i in range(-5, 6) if i!=0])
+        x_0 =  random.choice([i for i in range(-5, 5) if i!=0])
 
         # điều kiện mẫu khác 0 tại x0
         if all([a*d-b*c!=0, c*x_0 + d != 0]):
@@ -5659,6 +5659,82 @@ def ui5io_L11_C7_B3_22():
     # Lời giải
     noi_dung_loigiai = (
     f"Với $x={x_0}\\Rightarrow y_0={phan_so(y_0)}$.\n\n"
+    f"Đạo hàm: $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)} }}$. \n\n"
+    f"$y'({phan_so(x_0)})={phan_so(k)}$. \n\n"
+    f"Tiếp tuyến: $y={phan_so(k)}(x-{x_0})+{phan_so(y_0)}$. \n\n"
+    f"$\\Rightarrow y={phan_so(k)}x+{phan_so(b_tiep)}$. \n\n"
+    f"$a+b={dap_an}$."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("+-","-").replace("--","+")
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
+
+#[D11_C7_B3_23]-SA-M2. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) tại điểm có tung độ y_0
+def ui5io_L11_C7_B3_23():
+
+    x = sp.symbols('x')
+
+    # Sinh hệ số thỏa điều kiện
+    while True:
+        a = random.choice([i for i in range(-5,4) if i!=0])
+        b = random.randint(-5,5)
+        c = random.choice([i for i in range(-5,4) if i!=0])
+        d = random.randint(-5,5)
+
+        # nghiệm giao Ox
+        x_0 =  random.choice([i for i in range(-5, 5) if i!=0])
+
+        # điều kiện mẫu khác 0 tại x0
+        if all([a*d-b*c!=0, c*x_0 + d != 0]):
+            break
+
+    # Hàm số
+    f = (a*x + b)/(c*x + d)
+
+    # Đạo hàm
+    f_prime = sp.diff(f, x)
+
+    # Hệ số góc tiếp tuyến
+    k = f_prime.subs(x, x_0)
+
+    # tung độ tại điểm tiếp xúc (luôn =0)
+    y_0 = f.subs(x,x_0)
+
+    # hệ số b của tiếp tuyến
+    b_tiep = y_0-k*x_0
+
+    # kết quả cần tìm
+    tong = float(k + b_tiep)
+    if tong.is_integer():
+        dap_an=int(tong)
+        lam_tron=""
+    else:
+        dap_an=f"{round_half_up(tong,1):.1f}".replace(".",",")
+        lam_tron=f" (kết quả làm tròn đến hàng phần mười)"
+        if dap_an.endswith(",0"):   
+            dap_an = dap_an[:-2]
+
+
+    # Nội dung đề
+    noi_dung = (
+    f"Cho đường cong $(C):y={latex(f)}$. "
+    f"Phương trình tiếp tuyến của $(C)$ tại điểm có tung độ bằng ${phan_so(y_0)}$"
+    f" có dạng $y=ax+b$. Tính $a+b${lam_tron}."
+    )
+
+    # Lời giải
+    noi_dung_loigiai = (
+    f"Với $y={phan_so(y_0)}\\Rightarrow {latex(f)}={phan_so(y_0)}\\Rightarrow x_0={x_0}$.\n\n"
     f"Đạo hàm: $y'=\\dfrac{{{a*d-b*c}}}{{{latex((c*x+d)**2)} }}$. \n\n"
     f"$y'({phan_so(x_0)})={phan_so(k)}$. \n\n"
     f"Tiếp tuyến: $y={phan_so(k)}(x-{x_0})+{phan_so(y_0)}$. \n\n"

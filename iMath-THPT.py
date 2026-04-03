@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 23.03.2026")
+                self.label.setText(f"iMath\u00A92026 ver 03.04.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -8080,6 +8080,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_23]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT tại điểm có tung độ y_0"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L11_C7_B3_3, ["[D11_C7_B3_13]-SA-M2. Cho hàm số y=(ax+b)/(cx+d). Viết PTTT tại giao điểm với Ox"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -8534,6 +8538,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_22]-SA-M3. H.chóp S.ABCD, đáy h.thoi, góc A=60. Tính d(AC,SD)"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L11_C8_B4_SA, ["[D11_C8_B4_24]-SA-M3. H.chóp S.ABCD, đáy h.v, (SAB)⟂(ABCD). Tính d(BC,SA)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -16972,6 +16980,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D11_C7_B3_22]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_22()
 
+                                            #[D11_C7_B3_23]-SA-M3. Tiếp tuyến tại giao điểm của y=(ax+b)/(cx+d) tại điểm có tung độ y_0
+                                            if dang_toan == "[D11_C7_B3_23]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C7.ui5io_L11_C7_B3_23()
+
 
                                                 
                                             #Câu hỏi đúng sai
@@ -17635,7 +17647,11 @@ class Ui_MainWindow(object):
 
                                             #[D11_C8_B4_23]-M2. H.chóp S.ABCD, đáy h.v có SA,AB. Tính d(C,(SBD))
                                             if dang_toan == "[D11_C8_B4_23]": 
-                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_23()     
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_23()
+
+                                            #[D11_C8_B4_24]-M3. H.chóp S.ABCD, đáy h.v, (SAB)⟂(ABCD). Tính d(BC,SA)
+                                            if dang_toan == "[D11_C8_B4_24]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D11_C8.uvxy9_L11_C8_B4_24()     
                                                 
 
                                         #BÀI 5-GÓC GIỮA ĐƯỜNG THẲNG VÀ MẶT PHẲNG.
