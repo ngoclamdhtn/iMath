@@ -8703,7 +8703,7 @@ def uvxy9_L11_C8_B6_12():
 def uvxy9_L11_C8_B6_13():
 	a=sp.symbols("a")
 	AB=sqrt(random.randint(1,10))*a
-	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 
 
 	noi_dung=(
@@ -8763,7 +8763,7 @@ def uvxy9_L11_C8_B6_13():
 def uvxy9_L11_C8_B6_14():
 	a=sp.symbols("a")
 	AB=sqrt(random.randint(1,10))*a
-	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 
 
 	noi_dung=(
@@ -8827,7 +8827,7 @@ def uvxy9_L11_C8_B6_15():
 		SA=sqrt(random.randint(1,10))*a
 		if AB!=SA:
 			break
-	A,B,C,D=random.sample(["A","B","C","D"],4)
+	A,B,C,D="A","B","C","D"
 
 
 	noi_dung=(
@@ -8887,12 +8887,12 @@ def uvxy9_L11_C8_B6_16():
 		AD=sqrt(random.randint(1,10))*a
 		if AB!=AD:
 			break
-	A,B,C,D=random.sample(["A","B","C","D"],4)
+	A,B,C,D="A","B","C","D"
 
 
 	noi_dung=(
 	f"Cho hình chóp ${{S.ABCD}}$ có đáy là chữ nhật với ${A}{B}={latex(AB)}, {A}{D}={latex(AD)}$."
-	f" Biết $S{A}\\bot (ABCD)$ và $S{A}={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là"
+	f" Biết $SA\\bot (ABCD)$ và $SA={latex(SA)}$. Thể tích ${{V}}$ của khối chóp ${{S.ABCD}}$ là"
 	)	
 	
 	S=AB*AD
@@ -8944,7 +8944,7 @@ def uvxy9_L11_C8_B6_17():
 	SA=sqrt(random.randint(1,10))*a
 	BC=sqrt(random.randint(1,10))*a
 
-	A,B,C=random.sample(["A","B","C"],3)
+	A,B,C="A","B","C"
 
 	noi_dung=(
 	f"Cho hình chóp ${{S.{A}{B}{C}}}$ có đáy là tam giác vuông cân tại ${{{A}}}$ với ${B}{C}={latex(BC)}$."
@@ -9003,7 +9003,7 @@ def uvxy9_L11_C8_B6_18():
 		if AB!=AD:
 			break
 	SB=sqrt(SA**2+AB**2)
-	A,B,C,D=random.sample(["A","B","C","D"],4)
+	A,B,C,D="A","B","C", "D"
 
 
 	noi_dung=(

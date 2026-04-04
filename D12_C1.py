@@ -18452,5 +18452,110 @@ def prt_34_L12_C1_B5_43():
 
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
+#[D12_C1_B5_44]-SA-M3. Lợi nhuận P(x)=ax^3+bx+c.Tìm lợi nhuận sau thuế lớn nhất.
+def prt_34_L12_C1_B5_44():
+    x = sp.symbols("x")
+
+    while True:
+        # Chọn trước điểm đạt cực đại để nghiệm đẹp
+        x0 = random.choice([20, 25, 30, 35, 40, 45, 50, 55, 60])
+
+        # Giới hạn sản lượng tối đa
+        xmax = random.choice([80, 90, 100, 110, 120])
+        if x0 >= xmax:
+            continue
+
+        # Giá bán p(x)=a-bx^2
+        a = random.randint(85, 120)
+        b = random.choice([sp.Rational(1,100), sp.Rational(3,200), sp.Rational(1,50)])  
+        # tương ứng 0.01; 0.015; 0.02
+
+        # Thuế VAT
+        thue = random.choice([sp.Rational(1,20), sp.Rational(2,25), sp.Rational(1,10)])
+        # tương ứng 5%, 8%, 10%
+
+        # Chi phí C(x)=c0+c1*x
+        c0 = random.randint(80, 180)
+
+        # Ép x0 là điểm cực trị:
+        # L(x)=(1-thue)*(ax-bx^3) - (c0+c1x)
+        # L'(x)=(1-thue)*(a-3bx^2)-c1
+        # Cho L'(x0)=0 => c1=(1-thue)*(a-3bx0^2)
+        c1 = sp.simplify((1 - thue) * (a - 3*b*x0**2))
+
+        # Điều kiện chi phí biến đổi dương, hợp lí
+        if c1 <= 0:
+            continue
+        if c1 < 8 or c1 > 35:
+            continue
+
+        # Lợi nhuận tại x0 phải dương
+        L = sp.expand((1 - thue) * (a*x - b*x**3) - (c0 + c1*x))
+        L_x0 = sp.N(L.subs(x, x0))
+        if L_x0 <= 200:
+            continue
+
+        # Giá bán tại mức tối đa vẫn dương
+        if sp.N(a - b*xmax**2) <= 0:
+            continue
+
+        break
+
+    # Đáp án
+    dap_an = f"{round_half_up(L_x0,0):.0f}".replace(".",",")
+
+    # Viết nội dung đề
+    b_de = float(b)
+    thue_phan_tram = int(thue * 100)
+
+    noi_dung = (
+        f"Nhà máy ${{A}}$ chuyên sản xuất một loại sản phẩm cho nhà máy ${{B}}$. "
+        f"Hai nhà máy thỏa thuận rằng, hàng tháng nhà máy ${{A}}$ cung cấp cho nhà máy B "
+        f"số lượng sản phẩm theo đơn đặt hàng của nhà máy ${{B}}$ (tối đa {xmax} tấn sản phẩm). "
+        f"Nếu số lượng đặt hàng là ${{x}}$ tấn sản phẩm thì giá bán cho mỗi tấn sản phẩm là "
+        f"$p\\left(x\\right)={a}-{b_de}x^2$ (đơn vị triệu đồng). "
+        f"Chi phí để nhà máy A sản xuất ${{x}}$ tấn sản phẩm trong một tháng là "
+        f"$C\\left(x\\right)={sp.latex(c0 + c1*x)}$ (đơn vị triệu đồng), "
+        f"thuế giá trị gia tăng mà nhà máy ${{A}}$ phải đóng cho nhà nước là "
+        f"${thue_phan_tram}\\%$ tổng doanh thu mỗi tháng. "
+        f"Hỏi mỗi tháng nhà máy ${{A}}$ thu được lợi nhuận cao nhất bao nhiêu triệu đồng "
+        f"(sau khi đã trừ thuế giá trị gia tăng, kết quả làm tròn đến hàng đơn vị)?"
+    )
+    noi_dung=noi_dung.replace("0.0","0,0")
+
+    # Lời giải
+    noi_dung_loigiai = (
+        f"Doanh thu của nhà máy A là:\n\n"
+        f"$R\\left(x\\right)=x\\cdot p\\left(x\\right)=x\\left({a}-{b_de}x^2\\right)"
+        f"={a}x-{b_de}x^3$ (triệu đồng).\n\n"
+        f"Do thuế giá trị gia tăng bằng ${thue_phan_tram}\\%$ doanh thu nên số tiền còn lại sau thuế là\n\n"
+        f"$\\left(1-{sp.latex(thue)}\\right)R\\left(x\\right)={sp.latex(1-thue)}\\left({a}x-{b_de}x^3\\right)$.\n\n"
+        f"Vậy lợi nhuận của nhà máy A là\n\n"
+        f"$L\\left(x\\right)={sp.latex(1-thue)}\\left({a}x-{b_de}x^3\\right)-\\left({sp.latex(c0 + c1*x)}\\right)"
+        f"={sp.latex(sp.expand(L))}$.\n\n"
+        f"Ta có\n\n"
+        f"$L'\\left(x\\right)={sp.latex(sp.diff(L,x))}$.\n\n"
+        f"Giải phương trình $L'\\left(x\\right)=0$ được $x={x0}$.\n\n"
+        f"Lại có $L''\\left(x\\right)={sp.latex(sp.diff(L,x,2))}$ nên $L''\\left({x0}\\right)<0$. \n\n"
+        f"Suy ra $L\\left(x\\right)$ đạt giá trị lớn nhất tại $x={x0}$.\n\n"
+        f"Khi đó\n"
+        f"$L\\left({x0}\\right)={dap_an}$ (triệu đồng).\n\n"
+        f"Vậy lợi nhuận cao nhất nhà máy A thu được mỗi tháng là {dap_an} triệu đồng."
+    )
+    noi_dung_loigiai=noi_dung_loigiai.replace("0.0","0,0")
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
 
 

@@ -8426,18 +8426,22 @@ def ckz_L12C4_B4_50():
 
     noi_dung_loigiai=thay_dau_congtru(noi_dung_loigiai)
 
-    # Đáp án đúng và nhiễu
-    kq  = sp.latex(I)
+    kq  = I
+    kq2=sp.simplify(I+random.randint(1,2))
 
-    kq2 = sp.latex(sp.simplify(n - m * sp.integrate(sp.sin(x), (x, a, b))))          
-    kq3 = sp.latex(sp.simplify(m + n * sp.integrate(sp.sin(x), (x, a, b))))          
-    kq4 = sp.latex(sp.simplify(m - n * sp.integrate(sp.sin(x), (x, a, b))))  
+    kq_false = set()
+    while len(kq_false) < 5:
+    
+        numbers = round(random.uniform(-5, 5),1)
+        if numbers not in [kq, kq2]:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    kq3,kq4=random.sample(kq_false,2)
 
-
-    pa_A = f"*${{{kq}}}$"
-    pa_B = f"${{{kq2}}}$"
-    pa_C = f"${{{kq3}}}$"
-    pa_D = f"${{{kq4}}}$"
+    pa_A = f"*${{{latex(kq)}}}$"
+    pa_B = f"${{{latex(kq2)}}}$"
+    pa_C = f"${{{phan_so(kq3)}}}$"
+    pa_D = f"${{{phan_so(kq4)}}}$"
 
     # Trộn các phương án
     list_PA = [pa_A, pa_B, pa_C, pa_D]
@@ -8473,8 +8477,6 @@ def ckz_L12C4_B4_50():
 
 #[D12_C4_B4_51]-M2. Tính tích phân [f(x)+mcosx]
 def ckz_L12C4_B4_51():
-    import random
-    import sympy as sp
 
     x = sp.Symbol('x')
 
@@ -8511,15 +8513,22 @@ def ckz_L12C4_B4_51():
     # Đáp án đúng và các phương án nhiễu
     int_cos = sp.simplify(sp.integrate(sp.cos(x), (x, a, b)))  # sin(b)-sin(a)
 
-    kq  = sp.latex(I)
-    kq2 = sp.latex(sp.simplify(m - n * int_cos))               # sai dấu phần cos
-    kq3 = sp.latex(sp.simplify(n + m * int_cos))               # tráo vai m,n
-    kq4 = sp.latex(sp.simplify(m + m * int_cos))               # dùng m thay cho n
+    kq  = I
+    kq2=sp.simplify(I+random.randint(1,2))
 
-    pa_A = f"*${{{kq}}}$"
-    pa_B = f"${{{kq2}}}$"
-    pa_C = f"${{{kq3}}}$"
-    pa_D = f"${{{kq4}}}$"
+    kq_false = set()
+    while len(kq_false) < 5:
+    
+        numbers = round(random.uniform(-5, 5),1)
+        if numbers not in [kq, kq2]:
+            kq_false.add(numbers)
+    kq_false=list(kq_false)
+    kq3,kq4=random.sample(kq_false,2)
+
+    pa_A = f"*${{{latex(kq)}}}$"
+    pa_B = f"${{{latex(kq2)}}}$"
+    pa_C = f"${{{phan_so(kq3)}}}$"
+    pa_D = f"${{{phan_so(kq4)}}}$"
 
     # Trộn các phương án
     list_PA = [pa_A, pa_B, pa_C, pa_D]
@@ -8735,7 +8744,7 @@ def ckz_L12C4_B4_53():
     can_3=latex(sqrt(3))
 
     chon=random.randint(1,5)
-    chon=3
+
     
     if chon==1:
         # Tính I = ∫_0^{pi/3} (a + bcos x) dx
@@ -14102,3 +14111,196 @@ def ckz_L12C4_B5_53():
 
     return debai,debai_latex,loigiai_word,dap_an
 
+#[D12_C4_B5_54]-TF-M2. Dân số theo hàm N(t)=a.e^(-bt). Xét Đ-S: Tìm a,b, Dân số năm thứ t, Thời gian để dân số gấp đôi, Giới hạn
+def ckz_L12C4_B5_54():
+
+    def fmt(x, so_cs=2):
+        s = f"{x:.{so_cs}f}"
+        if "." in s:
+            s = s.rstrip("0").rstrip(".")
+        return s.replace(".", ",")
+
+    # Chọn dữ liệu
+    while True:
+        N0 = random.randint(45, 80)                    # dân số ban đầu (triệu người)
+        a = random.choice([0.8, 0.9, 1.0, 1.1, 1.2, 1.4, 1.5, 1.6])   # tốc độ tăng trưởng ban đầu
+        b = random.choice([0.008, 0.010, 0.012, 0.015, 0.018, 0.020, 0.025])
+        t1 = random.choice([4, 5, 6, 8])              # mốc thời gian cho tốc độ tăng trưởng lần 2
+
+        v1 = a * math.exp(-b * t1)
+        v1_round = round(v1, 3)
+
+        # Để có ý c) thú vị hơn, cần giới hạn bão hòa lớn hơn 2N0
+        L = N0 + a / b
+        if L > 2 * N0 + 5:
+            break
+
+    # Tính các đại lượng
+    b_tinh = -math.log(v1_round / a) / t1
+    N = lambda t: N0 + a * (1 - math.exp(-b_tinh * t)) / b_tinh
+    L_tinh = N0 + a / b_tinh
+
+    t2 = random.choice([8, 10, 12, 15])
+    N_t2 = N(t2)
+
+    # Thời điểm gần đạt gấp đôi dân số
+    t_double = -math.log(1 - N0 * b_tinh / a) / b_tinh
+    t3 = max(20, int(round(t_double + random.choice([-8, -5, -3, 3, 5, 8]))))
+    N_t3 = N(t3)
+
+    # =========================
+    # a) Khẳng định về a, b
+    # =========================
+    b_dung = round(b_tinh, 2)
+    if random.choice([True, False]):
+        b_sai = round(b_dung + random.choice([0.01, -0.01, 0.02]), 2)
+        if b_sai <= 0:
+            b_sai = round(b_dung + 0.01, 2)
+    else:
+        b_sai = round(b_dung + 0.01, 2)
+        if b_sai <= 0:
+            b_sai = round(b_dung + 0.02, 2)
+
+    kq1_T = f"* Xác định được $a={fmt(a,1)}$ và $b={fmt(b_dung,2)}$ (làm tròn kết quả đến hàng phần trăm)."
+    kq1_F = f" Xác định được $a={fmt(a,1)}$ và $b={fmt(b_sai,2)}$ (làm tròn kết quả đến hàng phần trăm)."
+
+    HDG = (
+        f"Ta có $N'(0)=a={fmt(a,1)}$.\n\n"
+        f"Mặt khác, $N'({t1})=a.e^{{-b.{t1}}}={fmt(v1_round,3)}$ nên\n"
+        f"$e^{{-b.{t1}}}=\\dfrac{{{fmt(v1_round,3)}}}{{{fmt(a,1)}}}$.\n\n"
+        f"Suy ra $b=-\\dfrac{{\\ln\\left(\\dfrac{{{fmt(v1_round,3)}}}{{{fmt(a,1)}}}\\right)}}{{{t1}}}\\approx {fmt(b_tinh,4)}$.\n\n"
+        f"Làm tròn đến hàng phần trăm: $b\\approx {fmt(b_dung,2)}$."
+    )
+    kq1 = random.choice([kq1_T, kq1_F])
+    loigiai_1 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1 == kq1_F:
+        loigiai_1 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =========================
+    # b) Khẳng định về dân số năm thứ t2
+    # =========================
+    moc_b = round(N_t2)
+    kieu_b = random.choice(["nho_hon", "lon_hon"])
+
+    if kieu_b == "nho_hon":
+        kq2_T = f"* Vào năm thứ {t2} thì dân số của quốc gia đó nhỏ hơn {moc_b+1} triệu dân."
+        kq2_F = f" Vào năm thứ {t2} thì dân số của quốc gia đó nhỏ hơn {moc_b-1} triệu dân."
+    else:
+        kq2_T = f"* Vào năm thứ {t2} thì dân số của quốc gia đó lớn hơn {moc_b-1} triệu dân."
+        kq2_F = f" Vào năm thứ {t2} thì dân số của quốc gia đó lớn hơn {moc_b+1} triệu dân."
+
+    HDG = (
+        f"Vì $N'(t)=a.e^{{-bt}}$ nên\n"
+        f"$N(t)=N(0)+\\displaystyle\\int_0^t a.e^{{-bx}}\\,dx={N0}+\\dfrac{{{fmt(a,1)}}}{{{fmt(b_tinh,4)}}}\\left(1-e^{{-{fmt(b_tinh,4)}t}}\\right)$.\n\n"
+        f"Suy ra\n"
+        f"$N({t2})={N0}+\\dfrac{{{fmt(a,1)}}}{{{fmt(b_tinh,4)}}}\\left(1-e^{{-{fmt(b_tinh,4)}\\cdot {t2}}}\\right)\\approx {fmt(N_t2,3)}$ (triệu người)."
+    )
+    kq2 = random.choice([kq2_T, kq2_F])
+    loigiai_2 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2 == kq2_F:
+        loigiai_2 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =========================
+    # c) Khẳng định về việc dân số tăng gấp đôi
+    # =========================
+    if N_t3 < 2 * N0:
+        kq3_T = f"* Sau {t3} năm thì dân số của quốc gia đó vẫn chưa tăng gấp đôi."
+        kq3_F = f" Sau {t3} năm thì dân số của quốc gia đó tăng gấp đôi."
+    else:
+        kq3_T = f"* Sau {t3} năm thì dân số của quốc gia đó đã tăng gấp đôi."
+        kq3_F = f" Sau {t3} năm thì dân số của quốc gia đó vẫn chưa tăng gấp đôi."
+
+    HDG = (
+        f"Ban đầu dân số là {N0} triệu người nên mức gấp đôi là {2*N0} triệu người.\n\n"
+        f"Ta có $N({t3})\\approx {fmt(N_t3,3)}$ (triệu người).\n\n"
+        f"So sánh {fmt(N_t3,3)} với {2*N0}, suy ra kết luận của khẳng định đã cho."
+    )
+    kq3 = random.choice([kq3_T, kq3_F])
+    loigiai_3 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3 == kq3_F:
+        loigiai_3 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =========================
+    # d) Khẳng định về giới hạn bão hòa
+    # =========================
+    L_round = round(L_tinh)
+    L_sai = L_round + random.choice([8, 10, -8, -10])
+    if L_sai <= 0:
+        L_sai = L_round + 10
+
+    kq4_T = f"* Về lâu dài dân số tiến gần đến giới hạn bão hòa là {L_round} triệu dân."
+    kq4_F = f" Về lâu dài dân số tiến gần đến giới hạn bão hòa là {L_sai} triệu dân."
+
+    HDG = (
+        f"Ta có\n"
+        f"$N(t)={N0}+\\dfrac{{{fmt(a,1)}}}{{{fmt(b_tinh,4)}}}\\left(1-e^{{-{fmt(b_tinh,4)}t}}\\right)$.\n\n"
+        f"Khi $t\\to +\\infty$ thì $e^{{-{fmt(b_tinh,4)}t}}\\to 0$, do đó\n"
+        f"$\\lim\\limits_{{t\\to +\\infty}}N(t)={N0}+\\dfrac{{{fmt(a,1)}}}{{{fmt(b_tinh,4)}}}\\approx {fmt(L_tinh,3)}$.\n\n"
+        f"Vậy dân số tiến gần đến giới hạn bão hòa khoảng {fmt(L_tinh,3)} triệu người, tức xấp xỉ {L_round} triệu người."
+    )
+    kq4 = random.choice([kq4_T, kq4_F])
+    loigiai_4 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4 == kq4_F:
+        loigiai_4 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # Nội dung đề
+    noi_dung = (
+        f"Một quốc gia có ${{{N0}}}$ triệu dân. Tốc độ tăng trưởng tại thời điểm đầu là "
+        f"${{{fmt(a,1)}}}$ triệu người/năm và sau ${{{t1}}}$ năm là ${{{fmt(v1_round,3)}}}$ triệu người/năm. "
+        f"Giả sử rằng tốc độ tăng trưởng được cho bởi hàm $N'(t)=a\\cdot e^{{-b\\cdot t}}$. \n"
+        f"Xét tính đúng-sai của các khẳng định sau:"
+    )
+
+    # Trộn các phương án
+    list_PA = [kq1, kq2, kq3, kq4]
+    list_TF = my_module.tra_ve_TF(list_PA)
+
+    debai = f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+
+    loigiai = []
+    for pa in list_PA:
+        if pa == kq1:
+            loigiai.append(loigiai_1)
+        if pa == kq2:
+            loigiai.append(loigiai_2)
+        if pa == kq3:
+            loigiai.append(loigiai_3)
+        if pa == kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai = (
+        f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+        f"\n\n a) {loigiai[0]}\n"
+        f"b) {loigiai[1]}\n"
+        f"c) {loigiai[2]}\n"
+        f"d) {loigiai[3]}\n"
+    )
+
+    loigiai_word = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex = (
+        f"\n\n a) {loigiai[0]}\n\n"
+        f"b) {loigiai[1]}\n\n"
+        f"c) {loigiai[2]}\n\n"
+        f"d) {loigiai[3]}\n\n"
+    )
+
+    # Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ {list_PA[2]} }}\n    {{ {list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    dap_an = f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng", "Đ").replace("sai", "S")
+
+    return debai, debai_latex, loigiai_word, dap_an

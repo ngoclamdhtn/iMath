@@ -1828,88 +1828,104 @@ def mcn__L10_C8_B1_23():
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
-
-
-#[D10_C8_B1_24]-SA-M3. B.toán tạo số chẵn có các chữ số khác nhau (ds có chứa cso 0)
+#[D10_C8_B1_24]-SA-M3. Đếm số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn
 def mcn__L10_C8_B1_24(): 
-	le=[1,3,5,7,9]
-	
-	chan=[2,4,6,8]
+    while True:
+        # Chọn ngẫu nhiên tập chữ số đầu vào
+        tap_so = sorted(random.sample(range(10), random.randint(6, 9)))
 
-	chon =random.randint(1,6)
-	if chon ==1:
-		a1,b1,c1=random.sample(chan,3)
-		a,b,c,d=random.sample(le,4)
-		kq=phan_so(7*6*5+3*6*6*5)
-		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1};{d}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và là số chẵn."
-		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcd}}$ $(a \\ne 0; a \\ne b \\ne c\\ne d)$ \n\n"
-		f" TH1: ${{d=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 \\cdot 5 ={phan_so(7*6*5)}}}$ số \n\n"
-		f" TH2: ${{d \\ne 0}}$ \n\n d có ${{3}}$ cách chọn \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n c có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 6 \\cdot 6 \\cdot 5 ={phan_so(3*6*6*5)}}}$ số \n\n"
-		f" Vậy có ${{{phan_so(7*6*5)} + {phan_so(3*6*6*5)}= {phan_so(7*6*5+3*6*6*5)} }}$ số ")
-	if chon ==2:
-		a1,b1,c1=random.sample(chan,3)
-		a,b,c=random.sample(le,3)
-		kq=phan_so(4*6*5+3*5*4*5)
-		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và là số chẵn."
-		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abcd}}$ $(a \\ne 0; a \\ne b \\ne c\\ne d)$ \n\n"
-		f" TH1: ${{d=0}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n c có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{6 \\cdot 5 \\cdot 4 ={phan_so(4*6*5)}}}$ số \n\n"
-		f" TH2: ${{d \\ne 0}}$ \n\n d có ${{3}}$ cách chọn \n\n a có ${{5}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n c có ${{4}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 5 \\cdot 5 \\cdot 4 ={phan_so(3*5*5*4)}}}$ số \n\n"
-		f" Vậy có ${{{phan_so(4*6*5)} + {phan_so(3*5*5*4)}= {phan_so(4*6*5+3*5*4*5)} }}$ số ")
+        # Điều kiện để bài toán có nghĩa
+        if len(tap_so) < 3:
+            continue
+        ds_chan = [d for d in tap_so if d % 2 == 0]
+        ds_khac_0 = [d for d in tap_so if d != 0]
+        if len(ds_chan) == 0 or len(ds_khac_0) == 0:
+            continue
 
+        dem = 0
+        for a in tap_so:
+            for b in tap_so:
+                for c in tap_so:
+                    if a != b and b != c and a != c:
+                        if a != 0 and c % 2 == 0:
+                            dem += 1
+        if dem > 0:
+            break
 
-	if chon ==3:
-		a1,b1,c1=random.sample(chan,3)
-		a,b,c,d=random.sample(le,4)
-		kq=phan_so(7*6+3*6*6)
-		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1};{d}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
-		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
-		f" TH1: ${{c=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn  \n\n Theo quy tắc nhân có ${{7 \\cdot 6={phan_so(7*6)}}}$ số \n\n"
-		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{3}}$ cách chọn \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 6 \\cdot 6 ={phan_so(3*6*6)}}}$ số \n\n"
-		f" Vậy có ${{{phan_so(7*6)} + {phan_so(3*6*6)}= {phan_so(7*6+3*6*6)} }}$ số ")
-	if chon ==4:
-		a1,b1,c1=random.sample(chan,3)
-		a,b,c=random.sample(le,3)
-		kq=phan_so(6*5+3*5*5)
-		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
-		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
-		f" TH1: ${{c=0}}$ \n\n a có ${{6}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{6 \\cdot 5 ={phan_so(6*5)}}}$ số \n\n"
-		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{3}}$ cách chọn \n\n a có ${{5}}$ cách chọn \n\n b có ${{5}}$ cách chọn \n\n Theo quy tắc nhân có ${{3 \\cdot 5 \\cdot 5  ={phan_so(3*5*5)}}}$ số \n\n"
-		f" Vậy có ${{{phan_so(6*5)} + {phan_so(3*5*5)}= {phan_so(6*5+3*5*5)} }}$ số ")
+    # Viết tập chữ số
+    tap_so_str = ",".join(str(x) for x in tap_so)
 
+    # Tách các trường hợp để trình bày lời giải
+    if 0 in tap_so:
+        so_chan_khac_0 = len([d for d in tap_so if d % 2 == 0 and d != 0])
+        so_khac_0 = len([d for d in tap_so if d != 0])
+        n = len(tap_so)
 
+        # TH1: chữ số hàng đơn vị là 0
+        th1 = (so_khac_0) * (n - 2)
 
-	if chon ==5:
-		a1,b1,c1, d1=random.sample(chan,4)
-		a,b,c,d=random.sample(le,4)
-		kq=phan_so(7*8+4*7*7)
-		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1};{d}; {d1}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
-		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
-		f" TH1: ${{c=0}}$ \n\n a có ${{8}}$ cách chọn \n\n b có ${{7}}$ cách chọn  \n\n Theo quy tắc nhân có ${{8 \\cdot 7={phan_so(7*8)}}}$ số \n\n"
-		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{4}}$ cách chọn \n\n a có ${{7}}$ cách chọn \n\n b có ${{7}}$ cách chọn \n\n Theo quy tắc nhân có ${{4 \\cdot 7 \\cdot 7 ={phan_so(4*7*7)}}}$ số \n\n"
-		f" Vậy có ${{{phan_so(7*8)} + {phan_so(4*7*7)}= {phan_so(7*8+4*7*7)} }}$ số ")
-	if chon ==6:
-		a1,b1,c1, d1=random.sample(chan,4)
-		a,b,c,d=random.sample(le,4)
-		kq=phan_so(6*5+3*5*5)
-		noi_dung=f" Từ các chữ số ${{0;{a};{a1};{b};{b1};{c};{c1}; {d}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau và là số chẵn."
-		noi_dung_loigiai=(f" Gọi số cần lập là $\\overline{{abc}}$ $(a \\ne 0; a \\ne b \\ne c)$ \n\n"
-		f" TH1: ${{c=0}}$ \n\n a có ${{7}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{7 \\cdot 6 ={phan_so(6*7)}}}$ số \n\n"
-		f" TH2: ${{c \\ne 0}}$ \n\n c có ${{4}}$ cách chọn \n\n a có ${{6}}$ cách chọn \n\n b có ${{6}}$ cách chọn \n\n Theo quy tắc nhân có ${{4 \\cdot 6 \\cdot 6  ={phan_so(4*6*6)}}}$ số \n\n"
-		f" Vậy có ${{{phan_so(6*7)} + {phan_so(4*6*6)}= {phan_so(6*7+4*6*6)} }}$ số ")
+        # TH2: chữ số hàng đơn vị là chữ số chẵn khác 0
+        th2 = so_chan_khac_0 * (so_khac_0 - 1) * (n - 2)
 
+        dap_an = f"{dem}"
 
-	debai_word= f"{noi_dung}\n"
+        noi_dung = (
+        f"Từ các chữ số ${{{tap_so_str}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số "
+        f"đôi một khác nhau và là số chẵn?"
+        )
 
-	loigiai_word=f"Lời giải:\n {noi_dung_loigiai} \n"
+        noi_dung_loigiai = (
+        f"Gọi số cần lập có dạng $\\overline{{abc}}$.\n\n"
+        f"Vì số đã cho là số tự nhiên có ba chữ số nên $a\\ne 0$ và ba chữ số ${{a,b,c}}$ đôi một khác nhau.\n"
+        f"Vì số cần tìm là số chẵn nên chữ số hàng đơn vị phải là chữ số chẵn.\n\n"
+        f"Xét hai trường hợp:\n\n"
+        f"TH1: $c=0$.\n\n"
+        f"Khi đó có ${so_khac_0}$ cách chọn ${{a}}$.\n\n"
+        f"Sau khi chọn $a$, còn ${n-2}$ cách chọn ${{b}}$.\n\n"
+        f"Sau khi chọn $a$, còn ${n-2}$ cách chọn ${{b}}$.\n\n"
+        f"Suy ra trường hợp này có ${so_khac_0}\\cdot {n-2}={th1}$ số.\n\n"
+        f"TH2: ${{c}}$ là chữ số chẵn khác.\n\n"
+        f"Có ${so_chan_khac_0}$ cách chọn ${{c}}$.\n\n"
+        f"Sau khi chọn ${{c}}$, có {so_khac_0-1} cách chọn ${{a}}$ "
+        f"(do $a\\ne 0$ và $a\\ne c$).\n\n"
+        f"Sau đó còn {n-2} cách chọn $b$.\n\n"
+        f"Suy ra trường hợp này có: \n\n"
+        f"${so_chan_khac_0}\\cdot {so_khac_0-1}\\cdot {n-2}={th2}$ số.\n\n"
+        f"Vậy có tất cả ${th1}+{th2}={dem}$ số."
+        )
+    else:
+        so_chan = len([d for d in tap_so if d % 2 == 0])
+        n = len(tap_so)
 
-	latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
-	f"\\shortans[4]{{{kq}}}\n\n"\
-	f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
-	f"\\end{{ex}}\n"
-	dap_an= kq
+        dem = so_chan * (n - 1) * (n - 2)
+        dap_an = f"{dem}"
 
-	return debai_word, loigiai_word, latex_tuluan, dap_an
+        noi_dung = (
+        f"Từ các chữ số ${{{tap_so_str}}}$ tạo được bao nhiêu số tự nhiên có ba chữ số "
+        f"đôi một khác nhau và là số chẵn?"
+        )
 
+        noi_dung_loigiai = (
+        f"Gọi số cần lập có dạng $\\overline{{abc}}$.\n\n"
+        f"Vì số cần tìm là số chẵn nên chữ số hàng đơn vị ${{c}}$ phải là chữ số chẵn.\n\n"
+        f"Có {so_chan} cách chọn ${{c}}$.\n\n"
+        f"Sau khi chọn $c$, còn {n-1} cách chọn chữ số hàng trăm ${{a}}$.\n\n"
+        f"Tiếp theo còn {n-2} cách chọn chữ số hàng chục ${{b}}$.\n\n"
+        f"Vậy có tất cả "
+        f"${so_chan}\\cdot {n-1}\\cdot {n-2}={dem}$ số."
+        )
+
+    debai_word= f"{noi_dung}\n"
+
+    loigiai_word=(f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n")
+
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word,loigiai_word,latex_tuluan,dap_an
 
 
 
@@ -2253,7 +2269,105 @@ def mcn__L10_C8_B1_30():
 	return debai_word, loigiai_word, latex_tuluan, dap_an
 
 
+#[D10_C8_B1_31]-SA-M3. Đếm số tự nhiên có bốn chữ số đôi một khác nhau và là số chẵn
+def mcn__L10_C8_B1_31(): 
+    while True:
+        # Chọn ngẫu nhiên tập chữ số đầu vào
+        tap_so = sorted(random.sample(range(10), random.randint(6, 9)))
+        n = len(tap_so)
 
+        # Điều kiện để lập được số có bốn chữ số chẵn
+        if n < 4:
+            continue
+        ds_chan = [d for d in tap_so if d % 2 == 0]
+        ds_khac_0 = [d for d in tap_so if d != 0]
+        if len(ds_chan) == 0 or len(ds_khac_0) == 0:
+            continue
+
+        dem = 0
+        for a in tap_so:
+            for b in tap_so:
+                for c in tap_so:
+                    for d in tap_so:
+                        if len({a,b,c,d}) == 4 and a != 0 and d % 2 == 0:
+                            dem += 1
+        if dem > 0:
+            break
+
+    tap_so_str = ",".join(str(x) for x in tap_so)
+
+    if 0 in tap_so:
+        so_chan_khac_0 = len([d for d in tap_so if d % 2 == 0 and d != 0])
+        so_khac_0 = len([d for d in tap_so if d != 0])
+
+        # TH1: chữ số hàng đơn vị là 0
+        th1 = so_khac_0 * (n - 2) * (n - 3)
+
+        # TH2: chữ số hàng đơn vị là chữ số chẵn khác 0
+        th2 = so_chan_khac_0 * (so_khac_0 - 1) * (n - 2) * (n - 3)
+
+        dap_an = f"{dem}"
+
+        noi_dung = (
+        f"Từ các chữ số ${{{tap_so_str}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số "
+        f"đôi một khác nhau và là số chẵn?"
+        )
+
+        noi_dung_loigiai = (
+        f"Gọi số cần lập có dạng $\\overline{{abcd}}$.\n\n"
+        f"Vì số đã cho là số tự nhiên có bốn chữ số nên $a\\ne 0$ và bốn chữ số ${{a,b,c,d}}$ đôi một khác nhau.\n\n"
+        f"Vì số cần tìm là số chẵn nên chữ số hàng đơn vị phải là chữ số chẵn.\n\n"
+        f"Xét hai trường hợp:\n\n"
+        f"TH1: $d=0$.\n\n"
+        f"Khi đó có ${so_khac_0}$ cách chọn ${{a}}$.\n\n"
+        f"Sau khi chọn $a$, còn ${n-2}$ cách chọn ${{b}}$.\n\n"
+        f"Sau khi chọn $a,b$, còn ${n-3}$ cách chọn ${{c}}$.\n\n"
+        f"Vậy trường hợp này có ${so_khac_0}\\cdot {n-2}\\cdot {n-3}={th1}$ số.\n\n"
+        f"TH2: $d$ là chữ số chẵn khác 0.\n"
+        f"Có {so_chan_khac_0} cách chọn ${{d}}$.\n\n"
+        f"Sau khi chọn ${{d}}$, có {so_khac_0-1} cách chọn ${{a}}$ "
+        f"(do $a\\ne 0$ và $a\\ne d$).\n\n"
+        f"Tiếp theo có {n-2} cách chọn ${{b}}$.\n\n"
+        f"Sau đó có {n-3} cách chọn ${{c}}$.\n\n"
+        f"Vậy trường hợp này có "
+        f"${so_chan_khac_0}\\cdot {so_khac_0-1}\\cdot {n-2}\\cdot {n-3}={th2}$ số.\n\n"
+        f"Vậy có tất cả ${th1}+{th2}={dem}$ số."
+        )
+    else:
+        so_chan = len([d for d in tap_so if d % 2 == 0])
+
+        dem = so_chan * (n - 1) * (n - 2) * (n - 3)
+        dap_an = f"{dem}"
+
+        noi_dung = (
+        f"Từ các chữ số ${{{tap_so_str}}}$ tạo được bao nhiêu số tự nhiên có bốn chữ số "
+        f"đôi một khác nhau và là số chẵn?"
+        )
+
+        noi_dung_loigiai = (
+        f"Gọi số cần lập có dạng $\\overline{{abcd}}$.\n\n"
+        f"Vì số cần tìm là số chẵn nên chữ số hàng đơn vị $d$ phải là chữ số chẵn.\n\n"
+        f"Có ${so_chan}$ cách chọn ${{d}}$.\n\n"
+        f"Sau khi chọn ${{d}}$, còn ${{{n-1}}}$ cách chọn chữ số hàng nghìn ${{a}}$.\n\n"
+        f"Tiếp theo còn {n-2} cách chọn chữ số hàng trăm ${{b}}$.\n\n"
+        f"Sau đó còn {n-3} cách chọn chữ số hàng chục ${{c}}$.\n\n"
+        f"Vậy có tất cả "
+        f"${so_chan}\\cdot {n-1}\\cdot {n-2}\\cdot {n-3}={dem}$ số."
+        )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
 
 #8.2.1 Hoán vị
 #[D10_C8_B2_01]-M1. Xếp k bạn vào một hàng

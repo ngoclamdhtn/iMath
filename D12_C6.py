@@ -3105,6 +3105,397 @@ def newy25_L12_C6_B1_32():
 
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
+#[D12_C6_B1_33]-SA-M3. X.s giao: X.S để bạn A lấy 1 bi đỏ và bạn B lấy được 1 xanh + 1 đỏ
+def newy25_L12_C6_B1_33():
+
+    # Sinh dữ liệu
+    xanh = random.randint(4,10)
+    do = random.randint(5,12)
+    tong = xanh + do
+
+    # Xác suất Phú lấy đỏ
+    P1 = sp.Rational(do, tong)
+
+    # Sau khi lấy đỏ
+    xanh_con = xanh
+    do_con = do - 1
+    tong_con = tong - 1
+
+    # Trí lấy 2 viên: 1 xanh + 1 đỏ
+    so_thuan_loi = xanh_con * do_con
+    tong_cach = sp.binomial(tong_con, 2)
+
+    P2 = sp.Rational(so_thuan_loi, tong_cach)
+
+    # Xác suất tổng
+    P = sp.simplify(P1 * P2)
+
+    dap_an =f"{round_half_up(P,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+
+    Phu, Tri =random.sample(["Phú", "Trí", "Minh", "Phương", "Thảo", "Linh"], 2)
+
+    noi_dung = (
+    f"Một hộp có chứa {xanh} viên bi màu xanh và {do} viên bi màu đỏ "
+    f"(các viên bi có cùng kích thước và khối lượng, được đánh số khác nhau). "
+    f"Bạn {Phu} lấy ngẫu nhiên 1 viên bi từ trong hộp và không hoàn lại, "
+    f"tiếp đó bạn {Tri} lấy ngẫu nhiên 2 viên bi từ trong hộp.\n\n"
+    f"Tính xác suất để bạn {Phu} lấy được 1 viên bi màu đỏ và "
+    f"bạn {Tri} lấy được 1 viên bi màu xanh và 1 viên bi màu đỏ (kết quả làm tròn đến hàng phần trăm)."
+    )
+
+    noi_dung_loigiai = (
+    f"Xác suất để {Phu} lấy được bi đỏ là\n"
+    f"$P_1=\\dfrac{{{do}}}{{{tong}}}$.\n\n"
+    f"Sau khi {Phu} lấy 1 bi đỏ, trong hộp còn {xanh_con} bi xanh và {do_con} bi đỏ.\n\n"
+    f"Số cách {Tri} lấy 2 viên có 1 xanh và 1 đỏ là\n\n"
+    f"$C_{{{xanh_con}}}^1 \\cdot C_{{{do_con}}}^1={xanh_con}\\cdot{do_con}={xanh_con*do_con}$.\n\n"
+    f"Tổng số cách lấy 2 viên là\n\n"
+    f"$C_{{{tong_con}}}^2={latex(tong_cach)}$.\n\n"
+    f"Xác suất để {Tri} lấy được 1 xanh và 1 đỏ là\n"
+    f"$P_2=\\dfrac{{{xanh_con*do_con}}}{{{latex(tong_cach)}}}$.\n\n"
+    f"Vậy xác suất cần tìm là\n"
+    f"$P=P_1\\cdot P_2={latex(P)}={dap_an}$."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+
+#[D12_C6_B1_34]-SA-M4. X.s A|B: Bạn A lấy 1 bi, bạn B lấy 2 bi. Biết bạn B lấy ít nhất 1 bi đỏ, tính xác suất bạn A lấy bi đỏ.
+def newy25_L12_C6_B1_34():
+    while True:
+        # ===== DANH SÁCH TÊN =====
+        ds_ten = ["An", "Bình", "Chi", "Dũng", "Hà", "Huy", "Khánh", "Lan", "Minh", "Nam", "Phúc", "Quân", "Trang", "Vy"]
+        ten1, ten2 = random.sample(ds_ten, 2)
+
+        # ===== DANH SÁCH MÀU =====
+        ds_mau = ["xanh", "đỏ", "vàng", "đen", "trắng", "tím", "cam"]
+        mau1, mau2 = random.sample(ds_mau, 2)
+
+        # Gán:
+        mau_can = mau2   # màu cần tính xác suất (giống "đỏ")
+        mau_khac = mau1  # màu còn lại
+
+        # ===== SỐ LƯỢNG =====
+        n_khac = random.randint(4, 10)
+        n_can = random.randint(5, 12)
+        tong = n_khac + n_can
+
+        # ===== XÁC SUẤT =====
+        x = sp.symbols("x")
+
+        # A: ten1 lấy màu cần
+        P_A = sp.Rational(n_can, tong)
+
+        # B|A
+        P_B_A = 1 - sp.Rational(sp.binomial(n_khac, 2), sp.binomial(tong - 1, 2))
+
+        # B|A_ngang
+        P_A_ngang = sp.Rational(n_khac, tong)
+        P_B_A_ngang = 1 - sp.Rational(sp.binomial(n_khac - 1, 2), sp.binomial(tong - 1, 2))
+
+        # P(B)
+        P_B = sp.simplify(P_A * P_B_A + P_A_ngang * P_B_A_ngang)
+
+        # P(A|B)
+        P = sp.simplify(P_A * P_B_A / P_B)
+
+        if 0 < P < 1:
+            break
+
+    dap_an = f"{round_half_up(P,2):.2f}".replace(".",",")
+    if dap_an.endswith("0"):   
+        dap_an = dap_an[:-1]
+
+    # ===== ĐỀ =====
+    noi_dung = (
+    f"Một hộp có chứa {n_khac} viên bi màu {mau_khac} và {n_can} viên bi màu {mau_can} "
+    f"(các viên bi có cùng kích thước và khối lượng, được đánh số khác nhau). "
+    f"Bạn {ten1} lấy ngẫu nhiên 1 viên bi từ trong hộp và không hoàn lại, "
+    f"tiếp đó bạn {ten2} lấy ngẫu nhiên 2 viên bi từ trong hộp. "
+    f"Biết rằng bạn {ten2} lấy được ít nhất một viên bi màu {mau_can}, "
+    f"tính xác suất bạn {ten1} lấy được một viên bi màu {mau_can}."
+    )
+
+    # ===== LỜI GIẢI =====
+    noi_dung_loigiai = (
+    f"Gọi A là biến cố: “{ten1} lấy được 1 viên bi màu {mau_can}”, "
+    f"B là biến cố: “{ten2} lấy được ít nhất một viên bi màu {mau_can}”.\n\n"
+    f"$P(A)=\\dfrac{{{n_can}}}{{{tong}}}={sp.latex(P_A)}$.\n\n"
+    f"Nếu {ten1} lấy màu {mau_can} thì còn {n_khac} bi {mau_khac} và {n_can-1} bi {mau_can}.\n\n"
+    f"$P(B|A)=1-\\dfrac{{\\mathrm{{C}}_{{{n_khac}}}^2}}{{\\mathrm{{C}}_{{{tong-1}}}^2}}={sp.latex(P_B_A)}$.\n\n"
+    f"$P(\\overline A)=\\dfrac{{{n_khac}}}{{{tong}}}={sp.latex(P_A_ngang)}$.\n\n"
+    f"Nếu {ten1} lấy màu {mau_khac} thì còn {n_khac-1} bi {mau_khac} và {n_can} bi {mau_can}.\n\n"
+    f"$P(B|\\overline A)=1-\\dfrac{{\\mathrm{{C}}_{{{n_khac-1}}}^2}}{{\\mathrm{{C}}_{{{tong-1}}}^2}}={sp.latex(P_B_A_ngang)}$.\n\n"
+    f"$P(B)={sp.latex(P_B)}$.\n\n"
+    f"$P(A|B)=\\dfrac{{P(A)P(B|A)}}{{P(B)}}={sp.latex(P)}={dap_an}$."
+    )
+
+    debai_word = f"{noi_dung}\n"
+
+    loigiai_word = (
+        f"Lời giải:\n {noi_dung_loigiai} \n"
+        f"Đáp án: {dap_an}\n"
+    )
+
+    latex_tuluan = f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{ \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
+
+    return debai_word, loigiai_word, latex_tuluan, dap_an
+
+
+#[D12_C6_B1_35]-TF-M3. A lấy 1 bi, B lấy 2 bi. Xét Đ-S: A lấy được xanh, B lấy được 2 xanh biết A lấy được đỏ, A lấy đỏ và B lấy khác màu
+def newy25_L12_C6_B1_35():
+
+    def phan_so(t):
+        return sp.latex(sp.Rational(t).limit_denominator())
+
+    # =======================
+    # Sinh dữ liệu
+    # =======================
+    while True:
+        xanh = random.randint(4, 8)
+        do = random.randint(5, 9)
+        if xanh != do:
+            break
+
+    tong = xanh + do
+
+    ten1, ten2 = random.sample(
+        ["Phú", "Trí", "Nam", "Minh", "An", "Bình", "Khôi", "Long"], 2
+    )
+
+    # =======================
+    # Các xác suất đúng
+    # =======================
+    # a) Người 1 lấy 1 bi xanh
+    p_a = Rational(xanh, tong)
+
+    # b) Người 2 lấy 2 bi xanh, biết người 1 đã lấy 1 bi đỏ
+    p_b = Rational(xanh, tong - 1) * Rational(xanh - 1, tong - 2)
+
+    # c) Người 1 lấy đỏ, người 2 lấy 1 xanh 1 đỏ
+    p_c = Rational(do, tong) * Rational(2 * xanh * (do - 1), (tong - 1) * (tong - 2))
+
+    # d) Biết người 2 lấy được ít nhất một bi đỏ, xác suất người 1 lấy đỏ
+    # P(A|B)=P(A∩B)/P(B)
+    # A: người 1 lấy đỏ
+    # B: người 2 lấy ít nhất 1 đỏ
+    p_A = Rational(do, tong)
+    p_B_khi_A = 1 - Rational(xanh * (xanh - 1), (tong - 1) * (tong - 2))
+    p_AgiaoB = p_A * p_B_khi_A
+
+    # P(B)=1-P(người 2 lấy 2 xanh)
+    p_2xanh = (
+        Rational(xanh, tong) * Rational(xanh - 1, tong - 1) * Rational(xanh - 2, tong - 2)
+        + Rational(do, tong) * Rational(xanh, tong - 1) * Rational(xanh - 1, tong - 2)
+    )
+    p_B = 1 - p_2xanh
+    p_d = sp.simplify(p_AgiaoB / p_B)
+
+    # =======================
+    # Tạo các phương án đúng/sai
+    # =======================
+    # a
+    kq1_T = f"* Xác suất để bạn {ten1} lấy được 1 viên bi màu xanh là $\\dfrac{{{xanh}}}{{{tong}}}$"
+    mau_sai_a = random.choice([
+        Rational(do, tong),
+        Rational(xanh, tong - 1),
+        Rational(xanh - 1, tong)
+    ])
+    if mau_sai_a == p_a or mau_sai_a <= 0:
+        mau_sai_a = Rational(do, tong)
+    kq1_F = f" Xác suất để bạn {ten1} lấy được 1 viên bi màu xanh là ${phan_so(mau_sai_a)}$"
+
+    HDG = (
+        f"Tổng số viên bi là {tong}.\n\n"
+        f"Số cách để bạn {ten1} lấy được 1 viên bi màu xanh là {xanh}.\n\n"
+        f"Xác suất cần tìm là $\\dfrac{{{xanh}}}{{{tong}}}={phan_so(p_a)}$."
+    )
+
+    kq1 = random.choice([kq1_T, kq1_F])
+    loigiai_1 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1 == kq1_F:
+        loigiai_1 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # b
+    kq2_T = (
+        f"* Xác suất bạn {ten2} lấy được 2 viên bi màu xanh, "
+        f"biết rằng bạn {ten1} đã lấy được 1 viên bi màu đỏ là ${phan_so(p_b)}$"
+    )
+    mau_sai_b = random.choice([
+        Rational(xanh, tong - 1) * Rational(xanh - 1, tong - 1),
+        Rational(xanh - 1, tong - 1) * Rational(xanh - 2, tong - 2),
+        Rational(xanh, tong - 1) * Rational(xanh - 1, tong - 2)
+    ])
+    if mau_sai_b == p_b or mau_sai_b <= 0:
+        mau_sai_b = Rational(xanh - 1, tong - 1) * Rational(xanh - 2, tong - 2)
+    kq2_F = (
+        f" Xác suất bạn {ten2} lấy được 2 viên bi màu xanh, "
+        f"biết rằng bạn {ten1} đã lấy được 1 viên bi màu đỏ là ${phan_so(mau_sai_b)}$"
+    )
+
+    HDG = (
+        f"Vì bạn {ten1} đã lấy 1 viên bi màu đỏ nên trong hộp còn {xanh} viên bi màu xanh và {tong-1} viên bi.\n\n"
+        f"Do đó xác suất để bạn {ten2} lấy được 2 viên bi màu xanh là\n\n"
+        f"$\\dfrac{{{xanh}}}{{{tong-1}}}\\cdot \\dfrac{{{xanh-1}}}{{{tong-2}}}={phan_so(p_b)}$."
+    )
+
+    kq2 = random.choice([kq2_T, kq2_F])
+    loigiai_2 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2 == kq2_F:
+        loigiai_2 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # c
+    kq3_T = (
+        f"* Xác suất để bạn {ten1} lấy được 1 viên bi màu đỏ và bạn {ten2} lấy được "
+        f"1 viên bi màu xanh và 1 viên bi màu đỏ là ${phan_so(p_c)}$"
+    )
+    mau_sai_c = random.choice([
+        Rational(do, tong) * Rational(xanh, tong - 1) * Rational(do - 1, tong - 2),
+        Rational(do, tong) * Rational(2 * xanh * do, (tong - 1) * (tong - 2)),
+        Rational(do - 1, tong) * Rational(2 * xanh * (do - 1), (tong - 1) * (tong - 2))
+    ])
+    if mau_sai_c == p_c or mau_sai_c <= 0:
+        mau_sai_c = Rational(do, tong) * Rational(xanh * (do - 1), (tong - 1) * (tong - 2))
+    kq3_F = (
+        f" Xác suất để bạn {ten1} lấy được 1 viên bi màu đỏ và bạn {ten2} lấy được "
+        f"$1$ viên bi màu xanh và 1 viên bi màu đỏ là ${phan_so(mau_sai_c)}$"
+    )
+
+    HDG = (
+        f"Xác suất để bạn {ten1} lấy được 1 viên bi màu đỏ là $\\dfrac{{{do}}}{{{tong}}}$.\n\n"
+        f"Khi đó còn {xanh} viên bi màu xanh và {do-1} viên bi màu đỏ trong {tong-1} viên bi.\n\n"
+        f"Xác suất để bạn {ten2} lấy được 1 viên xanh và 1 viên đỏ là\n\n"
+        f"$\\dfrac{{2\\cdot {xanh}\\cdot {do-1}}}{{{tong-1}\\cdot {tong-2}}}$.\n\n"
+        f"Vậy xác suất cần tìm là\n\n"
+        f"$\\dfrac{{{do}}}{{{tong}}}\\cdot \\dfrac{{2\\cdot {xanh}\\cdot {do-1}}}{{{tong-1}\\cdot {tong-2}}}={phan_so(p_c)}$."
+    )
+
+    kq3 = random.choice([kq3_T, kq3_F])
+    loigiai_3 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3 == kq3_F:
+        loigiai_3 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # d
+    kq4_T = (
+        f"* Biết rằng bạn {ten2} lấy được ít nhất một viên bi màu đỏ, "
+        f"xác suất bạn {ten1} lấy được một viên bi màu đỏ là ${phan_so(p_d)}$"
+    )
+    mau_sai_d = random.choice([
+        p_A,
+        p_B,
+        p_AgiaoB,
+        Rational(do, tong - 1)
+    ])
+    if mau_sai_d == p_d or mau_sai_d <= 0:
+        mau_sai_d = p_A
+    kq4_F = (
+        f" Biết rằng bạn {ten2} lấy được ít nhất một viên bi màu đỏ, "
+        f"xác suất bạn {ten1} lấy được một viên bi màu đỏ là ${phan_so(mau_sai_d)}$"
+    )
+
+    HDG = (
+        f"Gọi A là biến cố: “bạn {ten1} lấy được 1 viên bi màu đỏ”.\n\n"
+        f"Gọi B là biến cố: “bạn {ten2} lấy được ít nhất một viên bi màu đỏ”.\n\n"
+        f"Khi đó\n\n"
+        f"$P(A)=\\dfrac{{{do}}}{{{tong}}}$.\n\n"
+        f"Nếu $A$ xảy ra thì còn ${xanh}$ viên xanh, ${do-1}$ viên đỏ.\n\n"
+        f"Suy ra\n\n"
+        f"$P(B|A)=1-\\dfrac{{{xanh}\\cdot {xanh-1}}}{{{tong-1}\\cdot {tong-2}}}$.\n\n"
+        f"Do đó\n\n"
+        f"$P(A\\cap B)=P(A)P(B|A)={phan_so(p_AgiaoB)}$.\n\n"
+        f"Mặt khác,\n\n"
+        f"$P(B)=1-P(\\text{{{ten2} lấy 2 viên xanh}})={phan_so(p_B)}$.\n\n"
+        f"Vậy\n\n"
+        f"$P(A|B)=\\dfrac{{P(A\\cap B)}}{{P(B)}}={phan_so(p_d)}$."
+    )
+
+    kq4 = random.choice([kq4_T, kq4_F])
+    loigiai_4 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4 == kq4_F:
+        loigiai_4 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =======================
+    # Nội dung đề
+    # =======================
+    noi_dung = (
+        f"Một hộp có chứa {xanh} viên bi màu xanh và {do} viên bi màu đỏ "
+        f"(các viên bi có cùng kích thước và khối lượng, được đánh số khác nhau). "
+        f"Bạn {ten1} lấy ngẫu nhiên 1 viên bi từ trong hộp và không hoàn lại, "
+        f"tiếp đó bạn {ten2} lấy ngẫu nhiên 2 viên bi từ trong hộp.\n"
+        f"Xét tính đúng-sai các khẳng định sau:"
+    )
+
+    # Trộn các phương án
+    list_PA = [kq1, kq2, kq3, kq4]
+    list_TF = my_module.tra_ve_TF(list_PA)
+
+    debai = f"{noi_dung}\n\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+
+    loigiai = []
+    for pa in list_PA:
+        if pa == kq1:
+            loigiai.append(loigiai_1)
+        if pa == kq2:
+            loigiai.append(loigiai_2)
+        if pa == kq3:
+            loigiai.append(loigiai_3)
+        if pa == kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai = (
+        f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+        f"\n\n a) {loigiai[0]}\n"
+        f"b) {loigiai[1]}\n"
+        f"c) {loigiai[2]}\n"
+        f"d) {loigiai[3]}\n"
+    )
+
+    loigiai_word = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex = (
+        f"\n\n a) {loigiai[0]}\n\n"
+        f"b) {loigiai[1]}\n\n"
+        f"c) {loigiai[2]}\n\n"
+        f"d) {loigiai[3]}\n\n"
+    )
+
+    # Tạo đề latex
+    for i in range(len(list_PA)):
+        list_PA[i] = list_PA[i].replace("*", "\\True ")
+
+    debai_latex = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\choiceTFt\n"
+        f"{{ {list_PA[0]} }}\n   {{ {list_PA[1]} }}\n     {{ {list_PA[2]} }}\n    {{ {list_PA[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    dap_an = f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng", "Đ").replace("sai", "S")
+
+    return debai, debai_latex, loigiai_word, dap_an
 
 #------------------------Bài 2: Công thức xác suất toàn phần-------------------------------------------------------->
 #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)

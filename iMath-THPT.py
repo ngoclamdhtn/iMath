@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
                 self.label= QtWidgets.QLabel(parent=self.tab_ban_quyen)               
                 self.label.setGeometry(QtCore.QRect(600, 100, 250, 20))                
                 self.label.setFont(font_12)        
-                self.label.setText(f"iMath\u00A92026 ver 03.04.2026")
+                self.label.setText(f"iMath\u00A92026 ver 04.04.2026")
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
@@ -1443,7 +1443,7 @@ class Ui_MainWindow(object):
                 self.label.setFont(font_tieude)
                 self.label.setStyleSheet("color: #C4083E;")
                 self.label.setObjectName("label_socau")   
-                self.label.setText(f"iMath\u00A92026 ver 23.03.2026")
+                self.label.setText(f"iMath\u00A92026 ver 04.04.2026")
 
                 self.label= QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
                 self.label.setGeometry(QtCore.QRect(le_trai+700, letop_hd, 600, 30))
@@ -3952,11 +3952,15 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_24]-SA-M3. B.toán tạo số có các chữ số khác nhau và là số chẵn (ds có chứa cso 0)"])
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_24]-SA-M3. Số có 3 chữ số khác nhau và là số chẵn"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
-                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_25]-SA-M3. B.toán tạo số các c.số khác nhau và chia hết cho 5 (ds có chứa cso 0)"])
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_31]-SA-M3. Số có 4 chữ số khác nhau và là số chẵn"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item=QTreeWidgetItem(D10_C8_B1_3, ["[D10_C8_B1_25]-SA-M3. B.toán tạo số các c.số khác nhau và chia hết cho 5 (có chứa cso 0)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -9818,6 +9822,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_44]-SA-M3. Lợi nhuận P(x)=ax^3+bx+c.Tìm lợi nhuận sau thuế lớn nhất."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C1_B5_3, ["[D12_C1_B5_38]-SA-M4. Tìm tổng độ dài ngắn nhất nối 2 chiếc cọc qua 1 chốt."])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -10835,7 +10843,7 @@ class Ui_MainWindow(object):
 
                 item = QTreeWidgetItem(L12_C4_B4_4, ["[D12_C4_B4_36]-TF-M2. Cho f'(x)=m/(ax+b), f(x_1), f(x_2). Xét Đ-S: Tích phân f'(x), f(x_3), x(x_4)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
-                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)                
 
                 L12_C4_B4_5 = QTreeWidgetItem(L12_C4_B4, ["Trả lời ngắn"])
                 L12_C4_B4_5.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -11076,6 +11084,10 @@ class Ui_MainWindow(object):
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_46]-TF-M3. Quãng trường hình tròn + 2 parabol. Xét Đ-S: Tọa độ các điểm thuộc (P), phương trình (P), diện tích, chi phí"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
+                item = QTreeWidgetItem(L12_C4_B5_2, ["[D12_C4_B5_54]-TF-M2. Tốc độ tăng dân số N'(t)=a.e^(-bt). Xét Đ-S: Tìm a,b, Dân số năm thứ t, Thời gian để dân số gấp đôi, Giới hạn"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
@@ -11563,6 +11575,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C5_B2_TF, ["[D12_C5_B2_46]-TF-M3. Máy bay hạ cánh từ A xuống B. Xét Đ-S: thời gian bay từ A đến B, Góc tiếp cận mặt đất, tầm nhìn phi công, độ cao máy bay"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C5_B2_SA = QTreeWidgetItem(L12_C5_B2, ["Trả lời ngắn"])
                 L12_C5_B2_SA.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C5_B2_SA.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -11868,6 +11884,10 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B1_2, ["[D12_C6_B1_35]-TF-M3. A lấy 1 bi, B lấy 2 bi. Xét Đ-S: A lấy được xanh, B lấy được 2 xanh biết A lấy được đỏ, A lấy đỏ và B lấy khác màu"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 L12_C6_B1_3 = QTreeWidgetItem(L12_C6_B1, ["Trả lời ngắn"])
                 L12_C6_B1_3.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 L12_C6_B1_3.setCheckState(0, Qt.CheckState.PartiallyChecked)
@@ -11900,10 +11920,17 @@ class Ui_MainWindow(object):
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_34]-SA-M4. x.s A|B: Bạn A lấy 1 bi, bạn B lấy 2 bi. Biết bạn B lấy ít nhất 1 bi đỏ, tính xác suất bạn A lấy bi đỏ."])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
+
                 item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_13]-SA-M2. x.s giao: x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
                 item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
+                item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_33]-SA-M3. x.s giao: X.S để bạn A lấy 1 bi đỏ và bạn B lấy được 1 xanh + 1 đỏ"])
+                item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
+                item.setCheckState(0, Qt.CheckState.PartiallyChecked)
 
                 item = QTreeWidgetItem(L12_C6_B1_3, ["[D12_C6_B1_28]-SA-M3. x.s giá gạo và giá thịt heo: Cho P(A|B), P(B|A), P(AB). Tính xác suất P(AUB)"])
                 item.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)
@@ -13064,6 +13091,10 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C1_B5_43]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_43()
 
+                                            #[D12_C1_B5_44]-SA-M3. Lợi nhuận P(x)=ax^3+bx+c.Tìm lợi nhuận sau thuế lớn nhất.
+                                            if dang_toan == "[D12_C1_B5_44]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C1.prt_34_L12_C1_B5_44()
+
 
                                             
                                                 
@@ -14044,6 +14075,8 @@ class Ui_MainWindow(object):
                                             if dang_toan == "[D12_C4_B4_59]":
                                                 debai_word,debai_latex,loigiai_word,phuongan,latex_tuluan,loigiai_traloingan,dap_an=D12_C4.ckz_L12C4_B4_59()
 
+                                            
+
                                         #Bài 5. Ứng dụng tích phân
                                             #[D12_C4_B5_03]. Tìm công thức tính diện tích từ hình vẽ có 1 đồ thị.
                                             if dang_toan == "[D12_C4_B5_03]":                                        
@@ -14272,6 +14305,10 @@ class Ui_MainWindow(object):
                                             #[D12_C4_B5_53]-TF-M3. Vật thay đổi với gia tốc a(t)=mt+n. Xét Đ-S:a(t0), v(t), v(t0), quãng đường
                                             if dang_toan == "[D12_C4_B5_53]": 
                                                 debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_53()
+
+                                            #[D12_C4_B5_54]-TF-M2. Dân số theo hàm N(t)=a.e^(-bt). Xét Đ-S: Tìm a,b, Dân số năm thứ t, Thời gian để dân số gấp đôi, Giới hạn
+                                            if dang_toan == "[D12_C4_B5_54]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C4.ckz_L12C4_B5_54()
                                                 
 
                                             ##################################################################
@@ -14665,6 +14702,10 @@ class Ui_MainWindow(object):
                                             #[D12_C5_B2_45]-SA-M2. Tính vận tốc đào hầm Y để 2 hầm X,Y gặp nhau tại E.
                                             if dang_toan == "[D12_C5_B2_45]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_45()
+
+                                            #[D12_C5_B2_46]-SA-M3. Máy bay hạ cánh từ A xuống B. Xét Đ-S: thời gian bay từ A đến B, Góc tiếp cận mặt đất, tầm nhìn phi công, độ cao máy bay
+                                            if dang_toan == "[D12_C5_B2_46]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C5.htd_25_xyz_L12_C5_B2_46()
                                                 
 
                                         #BÀI 3 - PHƯƠNG TRÌNH MẶT CẦU
@@ -14937,6 +14978,18 @@ class Ui_MainWindow(object):
                                             #[D12_C6_B1_32]-SA-M2.  Cho bảng về chữa bệnh. Tính x.s bệnh nhân uống thuốc M biết bệnh nhân khỏi bệnh.
                                             if dang_toan == "[D12_C6_B1_32]": 
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_32()
+
+                                            #[D12_C6_B1_33]-SA-M3.  X.s giao: X.S để bạn A lấy 1 bi đỏ và bạn B lấy được 1 xanh + 1 đỏ
+                                            if dang_toan == "[D12_C6_B1_33]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_33()
+
+                                            #[D12_C6_B1_34]-SA-M3.  X.s giao: X.S để bạn A lấy 1 bi đỏ và bạn B lấy được 1 xanh + 1 đỏ
+                                            if dang_toan == "[D12_C6_B1_34]": 
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D12_C6.newy25_L12_C6_B1_34()
+
+                                            #[D12_C6_B1_35]-TF-M3. Bạn A lấy 1 bi, bạn B lấy 2 bi. Xét Đ-S: A lấy được màu xanh, B lấy được 2 xanh biết A lấy được đỏ, A lấy đỏ và B lấy khác màu 
+                                            if dang_toan == "[D12_C6_B1_35]": 
+                                                debai_word,debai_latex,loigiai_word,dap_an=D12_C6.newy25_L12_C6_B1_35()
 
                                             #----------------------Toán 12 - Chương 6 - Bài 2-------------------->
                                             #[D12_C6_B2_01]-SA-M2. Cho P(B), P(A|B), P(A|B_ngang). Tính P(A)
@@ -20128,6 +20181,10 @@ class Ui_MainWindow(object):
                                             #[D10_C8_B1_30]-SA-M4. Đếm các số chẵn(lẻ) có các c.số khác nhau và nhỏ hơn(lớn hơn) m
                                             if dang_toan =="[D10_C8_B1_30]":
                                                 debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_30()
+
+                                            #[D10_C8_B1_31]-SA-M4. Đếm số tự nhiên có bốn chữ số đôi một khác nhau và là số chẵn
+                                            if dang_toan =="[D10_C8_B1_31]":
+                                                debai_word,loigiai_word,latex_tuluan,dap_an=D10_C8.mcn__L10_C8_B1_31()
 
 
 

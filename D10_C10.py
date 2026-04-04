@@ -5731,7 +5731,7 @@ def gghik_L10_CX_B1_11():
 		y_3=2*y_I-y_2
 
 		a, b =y_I-y_1, -(x_I-x_1)
-		if all([a!=b, a!=-b]):
+		if all([a!=b, a!=-b, a!=0, b!=0]):
 			break
 
 	#Tìm UCLN của véctơ pháp tuyến:	
@@ -5740,9 +5740,9 @@ def gghik_L10_CX_B1_11():
 	b1=show_dau_value(b)
 
 	kq=f"{latex(a*(x-x_I)+b*(y-y_I))}=0"
-	kq2=f"{latex(a*(x+x_I)+b*(y+y_I))}=0"
-	kq3=f"{latex(b*(x-x_I)-a*(y-y_1))}=0"
-	kq4=f"{latex(b*(x+x_I)-a*(y+y_1))}=0"
+	kq2=f"{latex(a*(x-x_I)+b*(y-y_I)+random.randint(1,3))}=0"
+	kq3=f"{latex(b*(x-x_I)-a*(y-y_I))}=0"
+	kq4=f"{latex(b*(x+x_I)-a*(y+y_I)+random.randint(1,2))}=0"
 
 	ABC=f"{ten_diem_1}{ten_diem_2}{ten_diem_3}"
 
@@ -6542,30 +6542,38 @@ def gghik_L10_CX_B1_20():
 	d2=["d'","d_2","\\Delta_2"]
 	i=random.randint(0,2)
 	d1, d2 = d1[i], d2[i]
-	
 
-	a1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	b1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	c1= random.randint(-10, 10)
-	
-	a2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
-	b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
-	c2= random.randint(-10, 10)
+	while True:	
+
+		a1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+		b1= random.choice([random.randint(-5, -1), random.randint(1, 5)])
+		c1= random.randint(-10, 10)
+		
+		a2= random.choice([random.randint(-6, -1), random.randint(1, 7)])
+		b2= random.choice([random.randint(-10, -1), random.randint(1, 10)])
+		c2= random.randint(-10, 10)
+
+		if a1*a2+b1*b2!=0:
+			break
 
 	t=abs(a1*a2+b1*b2)/(sqrt(a1**2+b1**2)*sqrt(a2**2+b2**2))
-	t2=abs(a1+a2+b1+b2)/(sqrt(abs(a1)+abs(b1))*sqrt(abs(a2)+abs(b2)))
-	t3=abs(a1+a2-b1-b2)/(sqrt(a1**2+b1**2)*sqrt(a2**2+b2**2))
-	t4=abs(a1*b1+a2*b2)/(sqrt(a1**2+a2**2+b1**2+b2**2))
+	t2=-(a1*a2+b1*b2)/(sqrt(a1**2+b1**2)*sqrt(a2**2+b2**2))
+	kq_false = set()
 
-	pa_kotrung=my_module.khong_trung_so(t,t2,t3,t4)
-	t2=pa_kotrung[1]
-	t3=pa_kotrung[2]
-	t4=pa_kotrung[3]
+	while len(kq_false) < 5:
+	
+	    numbers = round(random.uniform(-1, 1),1)
+	    if numbers not in [t,t2]:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	t3,t4=kq_false[0:2]
+	
+
 
 	kq=f"${{{latex(t)}}}$"
 	kq2=f"${{{latex(t2)}}}$"
-	kq3=f"${{{latex(t3)}}}$"
-	kq4=f"${{{latex(t4)}}}$"
+	kq3=f"${{{phan_so(t3)}}}$"
+	kq4=f"${{{phan_so(t4)}}}$"
 	noi_dung_loigiai=f"$ \\cos ({d1},{d2})=\\dfrac{{|{show_tich(a1,a2)}+{show_tich(b1,b2)}|}}{{\\sqrt{{{a1**2}+{b1**2}}}.\\sqrt{{{a2**2}+{b2**2}}}}}=$ {kq}.".replace("+-","-").replace("\\frac","\\dfrac")
 
 	f1=latex(a1*x+b1*y+c1)
@@ -6630,19 +6638,21 @@ def gghik_L10_CX_B1_21():
 	
 	t=abs(a1*x_0+b1*y_0+c1)/sqrt(a1**2+b1**2)
 	t2=abs(a1*x_0+b1*y_0+c1+random.randint(1,4))/sqrt(abs(a1)+abs(b1))
-	t3=abs(a1+x_0+b1+y_0)/sqrt(a1**2+b1**2)
-	t4=abs(x_0+y_0)/(a1**2+b1**2)
 
+	kq_false=set()
+	while len(kq_false) < 2:	
+	    numbers = round(random.uniform(1, 10),1)
+	    if numbers not in [t,t2]:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	t3,t4=kq_false[0:2]
 
 	kq=t
 	kq2=t2
 	kq3=t3
 	kq4=t4
 
-	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-	kq2=pa_kotrung[1]
-	kq3=pa_kotrung[2]
-	kq4=pa_kotrung[3]
+
 	noi_dung_loigiai=f"$ d({diem},{d})=\\dfrac{{|{show_tich(a1,x_0)}+{show_tich(b1,y_0)}+{c1}|}} {{\\sqrt{{{a1**2}+{b1**2}}}}}={latex(kq)}$.".replace("+-","-").replace("\\frac","\\dfrac")\
 	
 
@@ -6652,8 +6662,8 @@ def gghik_L10_CX_B1_21():
     #Tạo các phương án
 	pa_A= f"*${{ {latex(kq)}}}$"
 	pa_B= f"${{ {latex(kq2)}}}$"
-	pa_C= f"${{ {latex(kq3)}}}$"
-	pa_D= f"${{ {latex(my_module.hien_phan_so(kq4))}}}$"
+	pa_C= f"${{ {phan_so(kq3)}}}$"
+	pa_D= f"${{ {phan_so(kq4)}}}$"
 
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -7786,22 +7796,23 @@ def gghik_L10_CX_B1_31():
 		x_0=min(tap_nghiem[0],tap_nghiem[1])
 		nghiem=f"x={phan_so(tap_nghiem[0])},x={phan_so(tap_nghiem[1])}"
 	
-	kq= m*x_0+n*y_0
-	kq2=m*x_0-n*y_0
-	kq3=kq+random.randint(1,5)
-	kq4=kq2-random.randint(1,5)
+	kq= x_0+y_0
+	kq_false = set()
 
-	pa_kotrung=my_module.khong_trung_so(kq,kq2,kq3,kq4)
-	kq2=pa_kotrung[1]
-	kq3=pa_kotrung[2]
-	kq4=pa_kotrung[3]
+	while len(kq_false) < 5:
+	
+	    numbers = round(random.uniform(kq-random.randint(1,2), kq+random.randint(1,2)),1)
+	    if numbers!=kq:
+	        kq_false.add(numbers)
+	kq_false=list(kq_false)
+	kq2,kq3,kq4=kq_false[0:3]
 
 
 	#Tạo các phương án
-	pa_A= f"*${{{kq}}}$"
-	pa_B= f"${{{kq2}}}$"
-	pa_C= f"${{{kq3}}}$"
-	pa_D= f"${{{kq4}}}$"
+	pa_A= f"*${{{phan_so(kq)}}}$"
+	pa_B= f"${{{phan_so(kq2)}}}$"
+	pa_C= f"${{{phan_so(kq3)}}}$"
+	pa_D= f"${{{phan_so(kq4)}}}$"
 
 	#Trộn các phương án
 	list_PA =[pa_A, pa_B, pa_C, pa_D]
@@ -7812,12 +7823,12 @@ def gghik_L10_CX_B1_31():
 	
 
 	noi_dung=thay_dau_congtru(f"Trong các điểm thuộc đường thẳng $d:{latex(a*x-y+b)}=0$ cho khoảng cách từ điểm đó đến điểm ${{{diem_B}}}$ bằng ${latex(r)}$ với ${diem_B}({x_1};{y_1})$,"\
-	f" gọi ${diem_A}(a;b)$ là điểm có hoành độ nhỏ nhất. Tính $P={m}a+{n}b$.")
+	f" gọi ${diem_A}(a;b)$ là điểm có hoành độ nhỏ nhất. Tính $P=a+b$.")
 	noi_dung_loigiai=thay_dau_congtru(f"${latex(a*x-y+b)}=0\\Leftrightarrow y={latex(a*x+b)}$. Gọi ${diem_A}(x;{latex(a*x+b)})\\in d$.\n\n"\
 	f" Khi đó: ${diem_A}{diem_B}={latex(sqrt((x_1-x)**2+(y_1-a*x-b)**2))}={latex(r)}$"\
 	f"$\\Leftrightarrow {latex((x_1-x)**2+(y_1-a*x-b)**2)}={r**2}$\n\n"\
 	f"$\\Rightarrow {nghiem}$. Do ${{{diem_A}}}$ có hoành độ nhỏ nhất nên $x={phan_so(x_0)} \\Rightarrow A({phan_so(x_0)};{phan_so(a*x_0+b)})$.\n\n"\
-	f"Do đó: $P={m}a+{n}b={kq}$.")
+	f"Do đó: $P=a+b={phan_so(kq)}$.")
 
 	debai= f"{noi_dung}\n"	   
 	phuongan= f"A. { list_PA[0]}.\t   B. { list_PA[1]}.\t    C. { list_PA[2]}.\t     D. { list_PA[3]}.\n"	
@@ -11726,13 +11737,16 @@ def gghik_L10_CX_B3_14():
 #[D10_CX_B3_15]. Viết phương trình đường tròn có tâm và đi qua điểm
 def gghik_L10_CX_B3_15():
     #Tạo bậc ngẫu nhiên
-	x,y,z=sp.symbols("x y z")   
-	x_0,y_0=[random.randint(-10,10) for i in range(2)]
-	ten_tam=random.choice(["A","B","I","H","E","M","N"])
-	a = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	b = random.choice([random.randint(-5, -1), random.randint(1, 5)])
-	c=random.randint(-7,7)
-	r=abs(a*x_0+b*y_0+c)/sqrt(a**2+b**2)
+	x,y,z=sp.symbols("x y z") 
+	while True:  
+		x_0,y_0=[random.randint(-10,10) for i in range(2)]
+		ten_tam=random.choice(["A","B","I","H","E","M","N"])
+		a = random.choice([random.randint(-3, -1), random.randint(1, 5)])
+		b = random.choice([random.randint(-3, -1), random.randint(1, 5)])
+		c=random.randint(-7,7)
+		r=abs(a*x_0+b*y_0+c)/sqrt(a**2+b**2)
+		if r>0 and r!=1:
+			break
           
 
 	noi_dung= f"Trong mặt phẳng ${{Oxy}}$, cho đường thẳng $\\Delta: {latex(a*x+b*y+c)}=0$ và điểm ${{{ten_tam}({x_0};{y_0})}}$."\
@@ -11740,8 +11754,8 @@ def gghik_L10_CX_B3_15():
 
 	kq= f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={latex(r**2)}"
 	kq2=f"{latex((x+x_0)**2)}+{latex((y+y_0)**2)}={latex(r**2)}"
-	kq3=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={latex(r)}"
-	kq4=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={(a*x_0+b*y_0+c)**2}"
+	kq3=f"{latex((x+x_0)**2)}+{latex((y+y_0)**2)}={latex(r)}"
+	kq4=f"{latex((x-x_0)**2)}+{latex((y-y_0)**2)}={latex(r**2+random.randint(1,2))}"
 
 	noi_dung_loigiai=thay_dau_congtru(f"Đường tròn ${{(C)}}$ có bán kính là:"\
 	f" $R=d({ten_tam},\\Delta)=\\dfrac{{|{show_tich(a,x_0)}+{show_tich(b,y_0)}+{c}|}}{{ \\sqrt{{{a**2}+{b**2}}} }}={latex(r)}$.\n\n"\
@@ -12447,9 +12461,6 @@ def gghik_L10_CX_B3_21():
 		loigiai_2=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 
-
-
-
 	ten_diem=random.choice(["A","B","M","N"])
 
 	a1=random.randint(-5,5)
@@ -12557,14 +12568,6 @@ def gghik_L10_CX_B3_21():
 	dap_an=f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng","Đ").replace("sai","S")
 
 	return debai,debai_latex,loigiai_word,dap_an
-
-
-
-
-
-
-
-
 
 
 
@@ -13926,8 +13929,8 @@ def gghik_L10_CX_B3_30():
 		loigiai_1=f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
 
 
-	kq2_T=f"* Tâm ${{I}}$ của đường tròn $(C)$ có toạ độ là ${{{x_I}}}$"
-	kq2_F=f" Tâm ${{I}}$ của đường tròn $(C)$ có toạ độ là ${{{x_I+1}}}$"
+	kq2_T=f"* Tâm ${{I}}$ của đường tròn $(C)$ có toạ độ là $({x_I};{y_I})$"
+	kq2_F=f" Tâm ${{I}}$ của đường tròn $(C)$ có toạ độ là $({x_I+random.randint(1,2)};{y_I+random.randint(-2,2)})$"
 	kq2=random.choice([kq2_T, kq2_F])	
 	HDG=(f"  Ta có ${{IA=IB}}$ nên ${{I}}$ thuộc đường trung trực của đoạn thẳng ${{AB}}$, phương trình trung trực là ${latex(a2*(x-x_I)+b2*(y-y_I))}=0$ \n\n"
 				f"${{I}}$ là giao điểm của $\\Delta'$ và đường trung trực của đoạn thẳng ${{AB}}$ suy ra $I({x_I}; {y_I})$ ")
