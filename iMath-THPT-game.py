@@ -27,6 +27,8 @@ import qrcode
 from cryptography.fernet import Fernet
 from datetime import datetime
 from PIL import Image
+import html as html_lib
+import json
 
 class ShowMessageBox(QMessageBox):
     def __init__(self,icon, title, text):
@@ -1515,10 +1517,17 @@ class Ui_MainWindow(object):
                 self.btn_taode.clicked.connect(self.tao_de)
                 self.btn_taode.setStyleSheet(style_taode_button)
 
+                self.btn_taogame = QtWidgets.QPushButton(parent=self.tab_thongtin_dethi)
+                self.btn_taogame.setGeometry(QtCore.QRect(le_trai+110, le_top+300, 100, 30))
+                self.btn_taogame.setFont(font_12)
+                self.btn_taogame.setObjectName("btn_taogame")
+                self.btn_taogame.setText("🎮Tạo Game")
+                self.btn_taogame.clicked.connect(self.tao_game)
+                self.btn_taogame.setStyleSheet(style_taode_button)
 
                 #Thanh Progress bar                
                 self.progress_bar = QProgressBar(parent=self.tab_thongtin_dethi)
-                self.progress_bar.setGeometry(le_trai+200, le_top+300, 305, 15) 
+                self.progress_bar.setGeometry(le_trai+220, le_top+300, 305, 15) 
 
                 #Tạo label đang xử lí
                 self.label_dangxuli = QtWidgets.QLabel(parent=self.tab_thongtin_dethi)
@@ -12219,9 +12228,216 @@ class Ui_MainWindow(object):
 
         
 #begin
+        def tao_game(self):
+                self._game_mode = True
+                try:
+                    self.tao_de()
+                finally:
+                    self._game_mode = False
+                return
+
+        def _game_strip_question_prefix(self, text):
+            if text is None:
+                return ""
+            text = str(text).replace("\r", "").strip()
+
+            # bỏ "Câu 1:", "Câu 2."...
+            text = re.sub(r'^\s*Câu\s*\d+\s*[\.:)]\s*', '', text, flags=re.IGNORECASE)
+
+            # 🔥 QUAN TRỌNG: loại bỏ dấu *
+            text = re.sub(r"\*", "", text)
+
+            return text.strip()
+
+        def _game_render_text(self, text):
+            text = self._game_strip_question_prefix(text)
+
+            # 🔥 đảm bảo không còn *
+            text = text.replace("*", "")
+
+            text = html_lib.escape(text, quote=False)
+            return text.replace("\n", "<br>")
+
+        def _game_parse_mc_options(self, phuongan):
+                s = (phuongan or "").replace("\r", "").replace("\t", " ").strip()
+                pattern = re.compile(r'(?<![A-Za-z0-9])([ABCD])[\.\):]\s*')
+                matches = list(pattern.finditer(s))
+                options = []
+                if len(matches) >= 4:
+                    for i, m in enumerate(matches[:4]):
+                        start = m.end()
+                        end = matches[i+1].start() if i + 1 < len(matches[:4]) else len(s)
+                        options.append({"label": m.group(1), "text": s[start:end].strip()})
+                else:
+                    lines = [ln.strip() for ln in s.splitlines() if ln.strip()]
+                    labels = ["A", "B", "C", "D"]
+                    for i, ln in enumerate(lines[:4]):
+                        options.append({"label": labels[i], "text": re.sub(r'^[A-D][\.\):]\s*', '', ln).strip()})
+                while len(options) < 4:
+                    labels = ["A", "B", "C", "D"]
+                    options.append({"label": labels[len(options)], "text": ""})
+                return options[:4]
+
+        def _game_parse_tf_statements(self, debai_word):
+                s = self._game_strip_question_prefix(debai_word or "")
+                pattern = re.compile(r'(?:(?<=\n)|^|\s)([abcd])[\)\.:]\s*')
+                matches = list(pattern.finditer(s))
+                rows = []
+                if len(matches) >= 4:
+                    for i, m in enumerate(matches[:4]):
+                        start = m.end()
+                        end = matches[i+1].start() if i + 1 < len(matches[:4]) else len(s)
+                        rows.append({"label": f"{m.group(1)})", "text": s[start:end].strip()})
+                else:
+                    lines = [ln.strip() for ln in s.splitlines() if ln.strip()]
+                    labels = ["a)", "b)", "c)", "d)"]
+                    for i, ln in enumerate(lines[-4:]):
+                        rows.append({"label": labels[i], "text": re.sub(r'^[abcd][\)\.:]\s*', '', ln).strip()})
+                return rows[:4]
+
+        def _game_part_title(self, part):
+                return {
+                    1: "PHẦN I (Trắc nghiệm)",
+                    2: "PHẦN II (Đúng-Sai)",
+                    3: "PHẦN III (Trả lời ngắn)",
+                    4: "PHẦN IV (Tự luận)",
+                }.get(part, "CÂU HỎI")
+
+        def _game_build_slides(self, list_tracnghiem, list_tracnghiem_HDG, list_dapan_TN,
+                               list_dungsai, list_dungsai_HDG, list_dapan_TF,
+                               list_traloingan, list_traloingan_HDG, list_dapan_SA):
+                slides = []
+                for idx, item in enumerate(list_tracnghiem):
+                    options = self._game_parse_mc_options(item)
+                    content = self._game_strip_question_prefix(item)
+                    pos_list = [content.find(f"{opt['label']}.") for opt in options if opt.get('text')]
+                    pos_list += [content.find(f"{opt['label']})") for opt in options if opt.get('text')]
+                    pos_list = [p for p in pos_list if p >= 0]
+                    if pos_list:
+                        content = content[:min(pos_list)].strip()
+                    answer = list_dapan_TN[idx].strip().upper() if idx < len(list_dapan_TN) else ""
+                    slides.append({
+                        "title": f"Câu {idx+1}",
+                        "part": 1,
+                        "type": "mc",
+                        "content": content,
+                        "explanation": list_tracnghiem_HDG[idx] if idx < len(list_tracnghiem_HDG) else "",
+                        "options": [
+                            {"label": opt["label"], "text": opt["text"], "is_correct": opt["label"].upper() == answer}
+                            for opt in options
+                        ],
+                        "correct_answer": "",
+                    })
+
+                for idx, item in enumerate(list_dungsai):
+                    rows = self._game_parse_tf_statements(item)
+                    answer = list(list_dapan_TF[idx].strip()) if idx < len(list_dapan_TF) else []
+                    opts = []
+                    for j, row in enumerate(rows):
+                        is_correct = j < len(answer) and answer[j].upper() in ["Đ", "D"]
+                        opts.append({"label": row["label"], "text": row["text"], "is_correct": is_correct})
+                    slides.append({
+                        "title": f"Câu {idx+1}",
+                        "part": 2,
+                        "type": "tf",
+                        "content": "",
+                        "explanation": list_dungsai_HDG[idx] if idx < len(list_dungsai_HDG) else "",
+                        "options": opts,
+                        "correct_answer": "",
+                    })
+
+                for idx, item in enumerate(list_traloingan):
+                    slides.append({
+                        "title": f"Câu {idx+1}",
+                        "part": 3,
+                        "type": "short",
+                        "content": self._game_strip_question_prefix(item),
+                        "explanation": list_traloingan_HDG[idx] if idx < len(list_traloingan_HDG) else "",
+                        "options": [],
+                        "correct_answer": list_dapan_SA[idx].strip() if idx < len(list_dapan_SA) else "",
+                    })
+                return slides
+
+        def _game_render_slide_html(self, slide, index, part_count_map):
+                part = slide.get("part", 1)
+                local_index = part_count_map.get(part, 0) + 1
+                part_count_map[part] = local_index
+                part_title = self._game_part_title(part)
+                content_html = self._game_render_text(slide.get("content", ""))
+                explanation_html = self._game_render_text(slide.get("explanation", ""))
+                if slide.get("type") == "mc":
+                    options_html = []
+                    for opt in slide.get("options", []):
+                        is_corr = "true" if opt.get("is_correct") else "false"
+                        click_bool = str(bool(opt.get("is_correct"))).lower()
+                        label = html_lib.escape(opt.get("label", ""))
+                        txt = self._game_render_text(opt.get("text", ""))
+                        options_html.append(
+                            f'<div class="btn-option" data-correct="{is_corr}" onclick="checkChoice(this, {click_bool})"><div class="opt-badge">{label}</div> <div class="opt-text">{txt}</div></div>'
+                        )
+                    body = (
+                        f'<div class="question-content"><span class="q-label">Câu {local_index}:</span> {content_html}</div>'
+                        f'<div class="options-grid-4">{"".join(options_html)}</div>'
+                        f'<div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerMC(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-{index}">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div>'
+                    )
+                elif slide.get("type") == "tf":
+                    tf_rows = []
+                    for opt in slide.get("options", []):
+                        label = html_lib.escape(opt.get("label", ""))
+                        txt = self._game_render_text(opt.get("text", ""))
+                        is_corr = "true" if opt.get("is_correct") else "false"
+                        tf_rows.append(
+                            f'<div class="tf-row" data-correct="{is_corr}"><div class="tf-content"><b>{label}</b> {txt}</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div>'
+                        )
+                    body = (
+                        f'<div class="tf-container">{"".join(tf_rows)}</div>'
+                        f'<div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerTF(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-{index}">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div>'
+                    )
+                else:
+                    b64 = __import__("base64").b64encode((slide.get("correct_answer", "") or "").encode("utf-8")).decode("ascii")
+                    body = (
+                        f'<div class="question-content"><span class="q-label">Câu {local_index}:</span> {content_html}</div>'
+                        f'<div class="short-answer-area"><div class="input-group"><input type="text" class="answer-input" id="input-{index}" placeholder="Nhập kết quả..." onkeyup="handleEnter(event, {index}, \'{b64}\')"></div></div>'
+                        f'<div class="actions-area"><button class="btn-action btn-check" id="btn-chk-{index}" onclick="checkShort(this, \'{b64}\')">✓ KIỂM TRA</button><button class="btn-action btn-reveal" onclick="revealShort(this, \'{b64}\')">👁 ĐÁP ÁN</button><div class="slide-counter" id="counter-{index}">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div>'
+                    )
+                return (
+                    f'<div class="slide-container" id="slide-{index}"><div class="q-header">'
+                    f'<div class="header-left"><div class="part-badge">{part_title}</div></div>'
+                    f'<div class="header-right"><button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button><button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button><div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div><button class="btn-exit-html" onclick="document.title=\'EXIT_FULL_SCREEN\'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button></div>'
+                    f'</div><div class="content-wrapper">{body}<div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">{explanation_html}</div></div></div></div>'
+                )
+
+        def _game_write_html(self, slides, output_path):
+                current_directory = os.path.dirname(os.path.abspath(__file__))
+                template_path = os.path.join(current_directory, 'Game_template.html')
+                if os.path.exists(template_path):
+                    with open(template_path, 'r', encoding='utf-8') as f:
+                        html_text = f.read()
+                else:
+                    html_text = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body><script>const data = [];</script></body></html>'
+                part_count_map = {}
+                slides_html = ''.join(self._game_render_slide_html(slide, idx, part_count_map) for idx, slide in enumerate(slides))
+                html_text = re.sub(
+                    r'<div class="slide-container".*?(?=\s*<script>)',
+                    lambda _m: slides_html,
+                    html_text,
+                    flags=re.S
+                )
+                html_text = re.sub(
+                    r'const data = \[.*?\];',
+                    lambda _m: 'const data = ' + json.dumps(slides, ensure_ascii=False) + ';',
+                    html_text,
+                    flags=re.S
+                )
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write(html_text)
+                return
+
         def tao_de(self):
                 try:
                     if license.kiemtra_banquyen_new():                
+                        game_mode = getattr(self, "_game_mode", False)
+                        game_saved_files = []
                         self.text_taode.clear()
                         self.save_thongtin_dethi()                            
                         current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -12239,7 +12455,7 @@ class Ui_MainWindow(object):
                         self.timer.start(100)
 
                         #Đặt tên thư mục chứa file                            
-                        if self.combo_taode.currentText() in ["Tạo đề Word - Equation", "Tạo đề Word - MathType", "Tạo đề Latex - PDF"]:
+                        if game_mode or self.combo_taode.currentText() in ["Tạo đề Word - Equation", "Tạo đề Word - MathType", "Tạo đề Latex - PDF"]:
                             #desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
                             current_directory = os.path.dirname(os.path.abspath(__file__))
                             doc_folder_path = os.path.join(current_directory, 'DOC')
@@ -12346,7 +12562,7 @@ class Ui_MainWindow(object):
                                 f"\\setcounter{{page}}{{1}}\n"                                
 
 
-                            if self.combo_taode.currentText() == "Tạo đề Word - Equation":
+                            if (not game_mode) and self.combo_taode.currentText() == "Tạo đề Word - Equation":
 
                                 list_noi_dung+=f"\\begin{{tabular}}{{cc}}\n"\
                                 f"{{\\bf {self.ten_sogd.toPlainText()}}} & {{\\bf {self.ten_kythi.toPlainText()}}}\\\\ \n"\
@@ -21451,7 +21667,7 @@ class Ui_MainWindow(object):
                                                                            
                                         #Xử lí xuất câu hỏi                                                
                                             if loai_cau=="TN":
-                                                if self.combo_taode.currentText() in ["Tạo đề Word - Equation",  "Tạo đề Word - MathType"]:
+                                                if game_mode or self.combo_taode.currentText() in ["Tạo đề Word - Equation",  "Tạo đề Word - MathType"]:
                                                     list_tracnghiem.append(f'{debai_word}\n{phuongan}')
                                                     list_tracnghiem_HDG.append(f'{debai_word}\n{phuongan}\n{loigiai_word}\n')                                                                                                            
                                                     
@@ -21463,7 +21679,7 @@ class Ui_MainWindow(object):
                                                     
 
                                             if loai_cau=="Đ-S":
-                                                if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                          
+                                                if (not game_mode) and self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                          
                                                     list_dungsai.append(debai_latex)
                                                     list_dungsai_HDG.append(debai_latex)                                                        
                                                 else:                                                           
@@ -21474,7 +21690,7 @@ class Ui_MainWindow(object):
                                                 
                                        
                                             if loai_cau=="SA":
-                                                if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
+                                                if (not game_mode) and self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
                                                     list_traloingan.append(latex_tuluan)
                                                     list_traloingan_HDG.append(latex_tuluan)
                                                     
@@ -21485,7 +21701,7 @@ class Ui_MainWindow(object):
 
 
                                             if loai_cau=="TL":
-                                                if self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
+                                                if (not game_mode) and self.combo_taode.currentText() in ["Tạo đề Latex - PDF", "Tạo code Latex"]:                                                        
                                                     list_tuluan.append(latex_tuluan)
                                                     list_tuluan_HDG.append(latex_tuluan)
                                                     
@@ -21573,7 +21789,7 @@ class Ui_MainWindow(object):
                             # Xuất đề                         
  
                                                                           
-                            if self.combo_taode.currentText() == "Tạo đề Word - Equation":
+                            if (not game_mode) and self.combo_taode.currentText() == "Tạo đề Word - Equation":
                                 if len(list_tracnghiem)>0:                                        
                                     list_noi_dung+=f"{{\\bf PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.}}\n"
                                     list_noi_dung_HDG+=f"{{\\bf PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.}}\n" 
@@ -21657,7 +21873,7 @@ class Ui_MainWindow(object):
                                 self.export_msword(name_thu_muc, name_de, list_noi_dung, list_noi_dung_HDG, phieu_to)                                    
                                 
 
-                            if self.combo_taode.currentText() == "Tạo đề Word - MathType":
+                            if (not game_mode) and self.combo_taode.currentText() == "Tạo đề Word - MathType":
                                 if len(list_tracnghiem)>0:                                        
                                     list_noi_dung+=f"PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.\n"
                                     list_noi_dung_HDG+=f"PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn.\n" 
@@ -21739,7 +21955,7 @@ class Ui_MainWindow(object):
                                 self.text_taode_HDG.append(list_noi_dung_HDG)                                    
                                 self.export_msword_latex(name_thu_muc, name_de, phieu_to)
 
-                            if self.combo_taode.currentText() == "Tạo đề Latex - PDF":
+                            if (not game_mode) and self.combo_taode.currentText() == "Tạo đề Latex - PDF":
 
                                 if len(list_tracnghiem)>0:
                                     ghep_tracnghiem='\n'.join(list_tracnghiem)
@@ -21869,7 +22085,7 @@ class Ui_MainWindow(object):
                                 self.text_taode.append(list_noi_dung)
                                 self.open_latex_pdf(name_thu_muc, name_de, list_noi_dung)
 
-                            if self.combo_taode.currentText() == "Tạo code Latex":
+                            if (not game_mode) and self.combo_taode.currentText() == "Tạo code Latex":
                                 if len(list_tracnghiem)>0:
                                     ghep_tracnghiem='\n'.join(list_tracnghiem)
                                     list_noi_dung+= f"{ghep_tracnghiem}"
@@ -21889,6 +22105,17 @@ class Ui_MainWindow(object):
                                 list_tonghop+=f"{list_noi_dung}"
 
                                 self.text_taode.append(list_noi_dung)
+
+                            if game_mode:
+                                slides = self._game_build_slides(
+                                    list_tracnghiem, list_tracnghiem_HDG, list_dapan_TN,
+                                    list_dungsai, list_dungsai_HDG, list_dapan_TF,
+                                    list_traloingan, list_traloingan_HDG, list_dapan_SA
+                                )
+                                ten_file_game = 'Game.html' if self.spin_soluong_de.value() == 1 else f'Game_{name_de}.html'
+                                duong_dan_game = os.path.join(name_thu_muc, ten_file_game)
+                                self._game_write_html(slides, duong_dan_game)
+                                game_saved_files.append(duong_dan_game)
 
                             #Kết thúc đáp án của mã đề hiện tại cho chuỗi QR
                             chuoi_QR+='",'
@@ -21915,6 +22142,18 @@ class Ui_MainWindow(object):
                         #Tạo ảnh QRcode TNmaker                      
 
                         
+                        if game_mode:
+                            self.text_taode.clear()
+                            if game_saved_files:
+                                self.text_taode.append("\n".join(game_saved_files))
+                                try:
+                                    subprocess.Popen(['explorer', name_thu_muc.replace('/', '\\')])
+                                except Exception:
+                                    pass
+                                show_msg_box = ShowMessageBox(QMessageBox.Information, 'Tạo Game', f'Đã tạo xong {len(game_saved_files)} file Game HTML.')
+                                show_msg_box.exec_()
+                            return
+
                         #Xuất file excel đáp án Cham thi
                         data=chuoi_dapan_all                  
                         wb = Workbook()

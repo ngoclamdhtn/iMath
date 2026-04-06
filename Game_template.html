@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset='UTF-8'>
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; font-src * data: blob: 'unsafe-inline';">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#16a34a">
+        
+            <style>
+                :root { --base-size: 34px; --opt-size: 30px; --badge-size: 50px; --math-scale: 115%; }
+                body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0fdf4; display: flex; flex-direction: column; align-items: center; height: 100dvh; margin: 0; overflow-x: hidden; overflow-y: auto; user-select: none; -webkit-tap-highlight-color: transparent; }
+                .slide-container { width: 95%; max-width: 1400px; height: 96vh; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 20px 30px; margin-top: 10px; display: none; flex-direction: column; position: relative; }
+                .slide-container.active { display: flex; animation: slideIn 0.3s ease-out; }
+                .q-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 10px; }
+                .header-left { display: flex; align-items: center; gap: 15px; }
+                .part-badge { background: #1e3a8a; color: white; padding: 10px 25px; border-radius: 30px; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+                .header-right { display: flex; align-items: center; gap: 15px; }
+                .zoom-btn { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #cbd5e1; background: white; color: #334155; font-size: 24px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; touch-action: manipulation; }
+                .zoom-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+                .zoom-btn:active { transform: scale(0.95); }
+                .timer { font-size: 24px; color: #64748b; font-weight: 800; background: #f1f5f9; padding: 10px 25px; border-radius: 30px; cursor: pointer; border: 3px solid transparent; transition: 0.3s; display: flex; align-items: center; gap: 8px; min-width: 180px; justify-content: center; touch-action: manipulation; }
+                .timer:hover { background: #e2e8f0; }
+                .timer.running { color: #dc2626; background: #fee2e2; border-color: #fca5a5; animation: pulse 1s infinite; }
+                
+                .btn-exit-html { background: #ef4444; color: white; border: none; padding: 10px 25px; border-radius: 30px; font-size: 20px; font-weight: 900; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.15); margin-left: 10px; display: flex; align-items: center; justify-content: center; touch-action: manipulation; }
+                .btn-exit-html:hover { background: #dc2626; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.2); }
+                
+                .content-wrapper { flex-grow: 1; overflow-y: auto; padding-right: 15px; padding-bottom: 30px; display: flex; flex-direction: column; }
+                .question-content { font-size: var(--base-size); font-weight: 600; color: #1e293b; margin-bottom: 5px; line-height: 1.5; text-align: justify; }
+                .q-label { color: #d97706; font-weight: 900; margin-right: 10px; }
+                mjx-container { font-size: var(--math-scale) !important; margin: 0 4px !important; }
+                .img-container { text-align: center; margin: 5px 0; width: 100%; }
+                .real-image { display: inline-block; max-width: 90%; height: auto; max-height: 400px; border-radius: 12px; border: 2px solid #cbd5e1; box-shadow: 0 6px 10px rgba(0,0,0,0.1); cursor: ns-resize; }
+                .img-hint { font-size: 14px; color: #64748b; font-style: italic; margin-top: 5px; opacity: 0.8; }
+                
+                /* 🌟 BẢNG SỐ LIỆU ĐỒNG BỘ CHUẨN SGK TỪ WORD */
+                .table-container { width: 100%; overflow-x: auto; margin: 20px 0; display: flex; justify-content: center; }
+                .styled-table { border-collapse: collapse; background-color: #fff; border: 2px solid #0f172a; min-width: 60%; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+                .styled-table th, .styled-table td { border: 1px solid #cbd5e1; padding: 12px 20px; font-size: var(--base-size); color: #1e293b; }
+                .styled-table th { background-color: #f8fafc; font-weight: 800; border-bottom: 2px solid #0f172a; }
+
+                .options-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px; }
+                .options-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px; }
+                .options-grid-1 { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; }
+                
+                .btn-option { background: #fff; border: 3px solid #cbd5e1; padding: 15px; font-size: var(--opt-size); border-radius: 16px; cursor: pointer; text-align: left; font-weight: 600; color: #334155; transition: 0.2s; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 0 #cbd5e1; touch-action: manipulation; }
+                .btn-option:active { transform: translateY(4px); box-shadow: none; }
+                .btn-option:hover { border-color: #94a3b8; background-color: #f8fafc; }
+                .opt-badge { width: var(--badge-size); height: var(--badge-size); background-color: #15803d; color: white; border-radius: 12px; display: flex; justify-content: center; align-items: center; font-weight: 900; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+                .btn-option.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #14532d !important; box-shadow: 0 4px 0 #22c55e; }
+                .btn-option.correct .opt-badge { background-color: #166534; }
+                .btn-option.wrong { opacity: 0.6; background: #fee2e2 !important; border-color: #ef4444 !important; }
+                .btn-option.wrong .opt-badge { background-color: #991b1b; }
+                .btn-option.disabled { pointer-events: none; }
+                
+                .tf-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+                .tf-row { display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px 25px; border-radius: 16px; border: 2px solid #e2e8f0; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
+                .tf-content { font-size: var(--opt-size); font-weight: 600; color: #334155; flex-grow: 1; margin-right: 30px; }
+                .tf-buttons { display: flex; gap: 15px; min-width: 180px; }
+                .btn-tf { border: 3px solid #cbd5e1; background: #f8fafc; padding: 10px 0; border-radius: 10px; font-weight: 800; cursor: pointer; flex: 1; transition: 0.2s; color: #64748b; text-align: center; font-size: 24px; touch-action: manipulation; }
+                .btn-tf:hover { background: #e2e8f0; }
+                .btn-tf.user-correct { background: #22c55e !important; color: white !important; border-color: #16a34a !important; }
+                .btn-tf.user-wrong { background: #ef4444 !important; color: white !important; border-color: #dc2626 !important; }
+                .btn-tf.reveal-true { border: 4px solid #22c55e !important; color: #16a34a !important; background: #dcfce7 !important; }
+                .btn-tf.reveal-false { border: 4px solid #ef4444 !important; color: #dc2626 !important; background: #fee2e2 !important; }
+                
+                .short-answer-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; width: 100%; }
+                .input-group { position: relative; width: 70%; }
+                input.answer-input { width: 100%; padding: 20px 30px; font-size: 32px; border: 4px solid #cbd5e1; border-radius: 16px; outline: none; text-align: center; font-weight: 800; color: #334155; background: #f8fafc; transition: 0.3s; touch-action: manipulation; }
+                input.answer-input:focus { border-color: #3b82f6; background: white; box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15); }
+                .explanation-box { display: none; margin-top: 20px; padding: 25px; background: #f0f9ff; border-left: 8px solid #0ea5e9; border-radius: 12px; animation: fadeIn 0.4s; }
+                .explanation-title { font-weight: 900; color: #0284c7; margin-bottom: 12px; font-size: 28px; display: flex; align-items: center; gap: 10px; }
+                .explanation-content { font-size: var(--opt-size); color: #334155; line-height: 1.6; }
+                
+                .actions-area { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: auto; padding-top: 15px; border-top: 3px solid #f1f5f9; }
+                .btn-action { color: white; border: none; padding: 12px 25px; font-size: 20px; font-weight: 800; border-radius: 12px; cursor: pointer; transition: 0.2s; min-width: 180px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 0 rgba(0,0,0,0.2); touch-action: manipulation; }
+                .btn-action:active { transform: translateY(6px); box-shadow: none; }
+                .btn-reveal { background: #f59e0b; } .btn-check { background: #3b82f6; } .btn-explain { background: #10b981; } 
+                .slide-counter { font-size: 20px; font-weight: 900; color: #475569; background: #e2e8f0; padding: 10px 25px; border-radius: 30px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+                
+                .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 60px; height: 80px; background: rgba(51, 65, 89, 0.2); color: white; font-size: 40px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; z-index: 100; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(5px); touch-action: manipulation; }
+                .nav-arrow:hover { background: rgba(51, 65, 89, 0.9); scale: 1.1; }
+                .nav-prev { left: 10px; }
+                .nav-next { right: 10px; }
+                
+                .feedback-popup { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%) scale(0); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; z-index: 9999; pointer-events: none; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3)); background: rgba(255, 255, 255, 0.95); padding: 20px 50px; border-radius: 30px; text-align: center; border: 5px solid transparent; }
+                .feedback-popup.correct { border-color: #22c55e; color: #15803d; }
+                .feedback-popup.wrong { border-color: #ef4444; color: #991b1b; }
+                .feedback-popup .emoji { font-size: 100px; line-height: 1; margin-bottom: 10px; }
+                .feedback-popup .message { font-size: 40px; font-weight: 900; white-space: nowrap; }
+                .feedback-popup.pop { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                
+                @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+                /* --- NÂNG CẤP GIAO DIỆN MOBILE (RESPONSIVE) --- */
+                @media (max-width: 768px) {
+                    :root { --base-size: 20px; --opt-size: 18px; --badge-size: 35px; --math-scale: 100%; }
+                    .slide-container { width: 100%; height: 98dvh; padding: 15px; border-radius: 0; margin-top: 0; box-shadow: none; }
+                    .q-header { flex-direction: column; gap: 10px; align-items: stretch; }
+                    .header-left, .header-right { justify-content: space-between; width: 100%; }
+                    .part-badge { font-size: 16px; padding: 5px 15px; }
+                    .btn-exit-html, .timer { font-size: 16px; padding: 8px 15px; min-width: 120px; }
+                    .zoom-btn { width: 35px; height: 35px; font-size: 18px; }
+                    
+                    /* Responsive Table */
+                    .table-container { justify-content: flex-start; }
+                    .styled-table { min-width: 100%; }
+                    .styled-table th, .styled-table td { padding: 8px 10px; }
+
+                    .options-grid-4, .options-grid-2 { grid-template-columns: 1fr; gap: 10px; margin-bottom: 10px; }
+                    .btn-option { padding: 10px; }
+                    .nav-arrow { display: none; }
+                    input.answer-input { font-size: 24px; padding: 15px; }
+                    .actions-area { flex-wrap: wrap; gap: 10px; }
+                    .btn-action { flex: 1; min-width: 130px; font-size: 16px; padding: 10px; }
+                    .slide-counter { font-size: 16px; width: 100%; text-align: center; order: 3; margin-top: 5px; }
+                    .slide-counter::after { content: "👈 Vuốt ngang màn hình để chuyển câu 👉"; display: block; font-size: 14px; font-weight: 600; color: #dc2626; margin-top: 5px; }
+                }
+            </style>
+        
+        <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']], processEscapes: true }, chtml: { scale: 1, matchFontHeight: false } };
+        </script>
+        <script defer src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js'></script>
+        </head><body>
+        
+            <button class="nav-arrow nav-prev" onclick="prevSlide()" title="Câu trước (Mũi tên trái)">❮</button>
+            <button class="nav-arrow nav-next" onclick="nextSlide()" title="Câu sau (Mũi tên phải hoặc Enter)">❯</button>
+        
+        <div class="slide-container" id="slide-0"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN I (Trắc nghiệm)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 1:</span> Trong không gian với hệ tọa độ \(Oxyz\), cho hai đường thẳng \(d_1: \frac{x - 1}{1} = \frac{y - 2}{2} = \frac{z - 3}{3}\) và \(d_2: \frac{x - 2}{1} = \frac{y - 4}{m} = \frac{z - 5}{2}\). Giá trị của tham số \(m\) để hai đường thẳng \(d_1\) và \(d_2\) cắt nhau là</div><div class="options-grid-4"><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">A</div> <div class="opt-text">\(m = -2\).</div></div><div class="btn-option" data-correct="true" onclick="checkChoice(this, true)"><div class="opt-badge">B</div> <div class="opt-text">\(m = 2\).</div></div><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">C</div> <div class="opt-text">\(m = 4\).</div></div><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">D</div> <div class="opt-text">\(m = 0\).</div></div></div><div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerMC(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-0">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">Đáp án B đúng. Học sinh dễ mắc bẫy khi chỉ giải hệ phương trình tọa độ mà quên kiểm tra điều kiện hai véc tơ chỉ phương không cùng phương, hoặc tính sai tích hỗn tạp \([\vec{u_1}, \vec{u_2}] \cdot \overrightarrow{M_1M_2} = 0\). Với \(m = 2\), hai đường thẳng cắt nhau tại điểm \(M(1; 2; 3)\).</div></div></div></div><div class="slide-container" id="slide-1"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN I (Trắc nghiệm)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 2:</span> Trong không gian với hệ tọa độ \(Oxyz\), gọi \(H\) là hình chiếu vuông góc của điểm \(A(3; 1; 5)\) trên đường thẳng \(d: x = y = z\). Tổng các tọa độ của điểm \(H\) bằng</div><div class="options-grid-4"><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">A</div> <div class="opt-text">\(3\).</div></div><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">B</div> <div class="opt-text">\(5\).</div></div><div class="btn-option" data-correct="true" onclick="checkChoice(this, true)"><div class="opt-badge">C</div> <div class="opt-text">\(9\).</div></div><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">D</div> <div class="opt-text">\(0\).</div></div></div><div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerMC(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-1">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">Đáp án C đúng. Gọi \(H(t; t; t) \in d\). Ta có \(\overrightarrow{AH} = (t - 3; t - 1; t - 5)\). Vì \(AH \perp d\) nên \(\overrightarrow{AH} \cdot \overrightarrow{u_d} = 0 \Leftrightarrow (t - 3) + (t - 1) + (t - 5) = 0 \Leftrightarrow 3t - 9 = 0 \Leftrightarrow t = 3\). Vậy \(H(3; 3; 3)\), tổng tọa độ là \(3 + 3 + 3 = 9\). Bẫy ở đây là học sinh có thể nhầm lẫn sang tính khoảng cách hoặc chỉ lấy một giá trị tọa độ.</div></div></div></div><div class="slide-container" id="slide-2"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN I (Trắc nghiệm)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 3:</span> Trong không gian với hệ tọa độ \(Oxyz\), tính góc giữa đường thẳng \(d: \frac{x - 1}{1} = \frac{y - 2}{-1} = \frac{z}{\sqrt{2}}\) và mặt phẳng \((P): x + y + \sqrt{2}z - 5 = 0\).</div><div class="options-grid-4"><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">A</div> <div class="opt-text">\(60^\circ\).</div></div><div class="btn-option" data-correct="true" onclick="checkChoice(this, true)"><div class="opt-badge">B</div> <div class="opt-text">\(30^\circ\).</div></div><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">C</div> <div class="opt-text">\(45^\circ\).</div></div><div class="btn-option" data-correct="false" onclick="checkChoice(this, false)"><div class="opt-badge">D</div> <div class="opt-text">\(90^\circ\).</div></div></div><div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerMC(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-2">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">Đáp án B đúng. Véc tơ chỉ phương của \(d\) là \(\vec{u} = (1; -1; \sqrt{2})\), véc tơ pháp tuyến của \((P)\) là \(\vec{n} = (1; 1; \sqrt{2})\). Gọi \(\alpha\) là góc giữa đường thẳng và mặt phẳng, ta có \(\sin \alpha = \frac{|\vec{u} \cdot \vec{n}|}{|\vec{u}| \cdot |\vec{n}|} = \frac{|1 - 1 + 2|}{\sqrt{4} \cdot \sqrt{4}} = \frac{2}{4} = \frac{1}{2}\). Suy ra \(\alpha = 30^\circ\). Bẫy tư duy phổ biến là học sinh sử dụng công thức \(\cos\) (nhầm với góc giữa hai đường thẳng hoặc hai mặt phẳng) dẫn đến kết quả \(60^\circ\).</div></div></div></div><div class="slide-container" id="slide-3"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN II (Đúng/Sai)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 1:</span> Trong không gian \(Oxyz\), cho hai đường thẳng \(d_1: \frac{x - 1}{2} = \frac{y + 2}{1} = \frac{z - 3}{-1}\) và đường thẳng \(d_2: \begin{cases} x = 1 + t \\ y = -2 + 2t \\ z = 3 - t \end{cases}\), \(t \in \mathbb{R}\).</div><div class="tf-container"><div class="tf-row" data-correct="true"><div class="tf-content"><b>a)</b> Đường thẳng \(d_1\) đi qua điểm \(M(1; -2; 3)\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="false"><div class="tf-content"><b>b)</b> Hai đường thẳng \(d_1\) và \(d_2\) chéo nhau.</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="true"><div class="tf-content"><b>c)</b> Véc tơ chỉ phương của \(d_1\) là \(\vec{u_1} = (2; 1; -1)\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="false"><div class="tf-content"><b>d)</b> Hai đường thẳng \(d_1\) và \(d_2\) vuông góc với nhau.</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div></div><div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerTF(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-3">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">a) Đúng vì thay tọa độ \(M(1; -2; 3)\) vào phương trình \(d_1\) ta được \(\frac{0}{2} = \frac{0}{1} = \frac{0}{-1} = 0\) (thỏa mãn).
+b) Sai vì cả \(d_1\) và \(d_2\) đều đi qua điểm \(M(1; -2; 3)\). Véc tơ chỉ phương của chúng là \(\vec{u_1} = (2; 1; -1)\) và \(\vec{u_2} = (1; 2; -1)\) không cùng phương, nên chúng cắt nhau tại \(M\).
+c) Đúng vì theo phương trình chính tắc của \(d_1\), các mẫu số tương ứng là tọa độ véc tơ chỉ phương.
+d) Sai vì tích vô hướng \(\vec{u_1} \cdot \vec{u_2} = 2 \cdot 1 + 1 \cdot 2 + (-1) \cdot (-1) = 5 \neq 0\).</div></div></div></div><div class="slide-container" id="slide-4"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN II (Đúng/Sai)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 2:</span> Trong không gian \(Oxyz\), cho điểm \(A(1; 2; 1)\) và đường thẳng \(\Delta: \frac{x - 1}{2} = \frac{y}{1} = \frac{z + 1}{-2}\).</div><div class="tf-container"><div class="tf-row" data-correct="true"><div class="tf-content"><b>a)</b> Đường thẳng \(\Delta\) có một véc tơ chỉ phương là \(\vec{u} = (2; 1; -2)\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="false"><div class="tf-content"><b>b)</b> Điểm \(H(1; 0; -1)\) là hình chiếu vuông góc của \(A\) trên đường thẳng \(\Delta\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="true"><div class="tf-content"><b>c)</b> Khoảng cách từ điểm \(A\) đến đường thẳng \(\Delta\) bằng \(\frac{2\sqrt{17}}{3}\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="false"><div class="tf-content"><b>d)</b> Phương trình mặt phẳng đi qua \(A\) và vuông góc với đường thẳng \(\Delta\) là \(2x + y - 2z + 2 = 0\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div></div><div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerTF(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-4">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">a) Đúng vì đây là các hệ số ở mẫu số của phương trình chính tắc.
+b) Sai vì mặc dù \(H(1; 0; -1) \in \Delta\), nhưng véc tơ \(\overrightarrow{AH} = (0; -2; -2)\) có tích vô hướng với \(\vec{u}\) là \(0 \cdot 2 + (-2) \cdot 1 + (-2) \cdot (-2) = 2 \neq 0\), nên \(AH\) không vuông góc với \(\Delta\).
+c) Đúng vì sử dụng công thức khoảng cách từ điểm đến đường thẳng: \(d(A, \Delta) = \frac{\left| [\overrightarrow{M_0A}, \vec{u}] \right|}{\left| \vec{u} \right|}\) với \(M_0(1; 0; -1)\).
+d) Sai vì mặt phẳng vuông góc với \(\Delta\) nhận \(\vec{u} = (2; 1; -2)\) làm véc tơ pháp tuyến. Phương trình là \(2(x - 1) + 1(y - 2) - 2(z - 1) = 0 \Leftrightarrow 2x + y - 2z - 2 = 0\).</div></div></div></div><div class="slide-container" id="slide-5"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN II (Đúng/Sai)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 3:</span> Trong không gian \(Oxyz\), cho đường thẳng \(d: \frac{x - 1}{1} = \frac{y - 2}{2} = \frac{z - m}{1}\) và mặt phẳng \((P): x + y + z - 3 = 0\), với \(m\) là tham số thực.</div><div class="tf-container"><div class="tf-row" data-correct="true"><div class="tf-content"><b>a)</b> Khi \(m = 0\), đường thẳng \(d\) cắt mặt phẳng \((P)\) tại điểm \(M(1; 2; 0)\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="false"><div class="tf-content"><b>b)</b> Có giá trị của \(m\) để đường thẳng \(d\) song song với mặt phẳng \((P)\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="true"><div class="tf-content"><b>c)</b> Khi \(m = 4\), giao điểm của đường thẳng \(d\) và mặt phẳng \((P)\) là \(N(0; 0; 3)\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div><div class="tf-row" data-correct="false"><div class="tf-content"><b>d)</b> Đường thẳng \(d\) vuông góc với mặt phẳng \((P)\) khi \(m = 1\).</div><div class="tf-buttons"><div class="btn-tf" onclick="checkTF(this, true)">Đ</div><div class="btn-tf" onclick="checkTF(this, false)">S</div></div></div></div><div class="actions-area"><button class="btn-action btn-reveal" onclick="revealAnswerTF(this)">👁 HIỆN ĐÁP ÁN</button><div class="slide-counter" id="counter-5">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">a) Đúng vì khi \(m = 0\), thay tọa độ \(M(1; 2; 0)\) vào \(d\) và \((P)\) đều thỏa mãn.
+b) Sai vì véc tơ chỉ phương \(\vec{u} = (1; 2; 1)\) và véc tơ pháp tuyến \(\vec{n} = (1; 1; 1)\) có tích vô hướng \(\vec{u} \cdot \vec{n} = 4 \neq 0\), nên \(d\) luôn cắt \((P)\) với mọi \(m\).
+c) Đúng vì khi \(m = 4\), phương trình tham số của \(d\) là \(x = 1 + t, y = 2 + 2t, z = 4 + t\). Thay vào \((P)\) ta có \((1 + t) + (2 + 2t) + (4 + t) - 3 = 0 \Leftrightarrow 4t + 4 = 0 \Leftrightarrow t = -1\). Suy ra giao điểm là \(N(0; 0; 3)\).
+d) Sai vì \(\vec{u} = (1; 2; 1)\) và \(\vec{n} = (1; 1; 1)\) không cùng phương, nên \(d\) không thể vuông góc với \((P)\) bất kể giá trị của \(m\).</div></div></div></div><div class="slide-container" id="slide-6"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN III (Trả lời ngắn)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 1:</span> Trong không gian với hệ tọa độ \(Oxyz\), cho điểm \(A(0; 1; 2)\) và đường thẳng \(d: \frac{x - 1}{2} = \frac{y + 1}{1} = \frac{z - 2}{-1}\). Gọi \(M(x_0; y_0; z_0)\) là điểm thuộc đường thẳng \(d\) sao cho độ dài đoạn thẳng \(AM = \sqrt{11}\). Biết \(x_0 > 0\), tính giá trị của biểu thức \(P = x_0 + y_0 + z_0\).</div><div class="short-answer-area"><div class="input-group"><input type="text" class="answer-input" id="input-6" placeholder="Nhập kết quả..." onkeyup="handleEnter(event, 6, 'NA==')"></div></div><div class="actions-area"><button class="btn-action btn-check" id="btn-chk-6" onclick="checkShort(this, 'NA==')">✓ KIỂM TRA</button><button class="btn-action btn-reveal" onclick="revealShort(this, 'NA==')">👁 ĐÁP ÁN</button><div class="slide-counter" id="counter-6">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">Điểm \(M \in d \Rightarrow M(1 + 2t; -1 + t; 2 - t)\). Ta có \(\overrightarrow{AM} = (1 + 2t; t - 2; -t)\). Theo giả thiết \(AM^2 = 11 \Leftrightarrow (1 + 2t)^2 + (t - 2)^2 + (-t)^2 = 11 \Leftrightarrow 6t^2 + 5 = 11 \Leftrightarrow t^2 = 1\). Do \(x_0 = 1 + 2t > 0\) nên chọn \(t = 1\), suy ra \(M(3; 0; 1)\). Vậy \(P = 3 + 0 + 1 = 4\).</div></div></div></div><div class="slide-container" id="slide-7"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN III (Trả lời ngắn)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 2:</span> Trong không gian với hệ tọa độ \(Oxyz\), cho hai đường thẳng \(d_1: \begin{cases} x = 1 + t \\ y = 2 \\ z = 3 - t \end{cases}\), \(t \in \mathbb{R}\) và \(d_2: \frac{x}{1} = \frac{y - 1}{1}, z = 0\). Tính số đo góc giữa hai đường thẳng \(d_1\) và \(d_2\) (đơn vị: độ).</div><div class="short-answer-area"><div class="input-group"><input type="text" class="answer-input" id="input-7" placeholder="Nhập kết quả..." onkeyup="handleEnter(event, 7, 'NjA=')"></div></div><div class="actions-area"><button class="btn-action btn-check" id="btn-chk-7" onclick="checkShort(this, 'NjA=')">✓ KIỂM TRA</button><button class="btn-action btn-reveal" onclick="revealShort(this, 'NjA=')">👁 ĐÁP ÁN</button><div class="slide-counter" id="counter-7">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">Đường thẳng \(d_1\) có vectơ chỉ phương \(\vec{u_1} = (1; 0; -1)\). Đường thẳng \(d_2\) có vectơ chỉ phương \(\vec{u_2} = (1; 1; 0)\). Gọi \(\varphi\) là góc giữa hai đường thẳng, ta có \(\cos \varphi = \frac{\left| 1 \cdot 1 + 0 \cdot 1 + (-1) \cdot 0 \right|}{\sqrt{1^2 + 0^2 + (-1)^2} \cdot \sqrt{1^2 + 1^2 + 0^2}} = \frac{1}{2}\). Suy ra \(\varphi = 60^\circ\).</div></div></div></div><div class="slide-container" id="slide-8"><div class="q-header">
+                <div class="header-left">
+                    <div class="part-badge">PHẦN III (Trả lời ngắn)</div>
+                </div>
+                <div class="header-right">
+                    <button class="zoom-btn" onclick="changeFontSize(-2)" title="Giảm cỡ chữ">A-</button>
+                    <button class="zoom-btn" onclick="changeFontSize(2)" title="Tăng cỡ chữ">A+</button>
+                    <div class="timer" onclick="startTimer(this)" ondblclick="editTimer(this)" data-time="60" title="Click: Chạy/Dừng. Click đúp: Sửa thời gian.">⏳ Bắt đầu (01:00)</div>
+                    <button class="btn-exit-html" onclick="document.title='EXIT_FULL_SCREEN'" title="Thoát chế độ trình chiếu (Phím Esc)">❌ Thoát</button>
+                </div>
+            </div><div class="content-wrapper"><div class="question-content"><span class="q-label">Câu 3:</span> Trong không gian với hệ tọa độ \(Oxyz\), cho điểm \(A(1; 2; -1)\) và đường thẳng \(d: \frac{x - 2}{2} = \frac{y + 1}{1} = \frac{z - 1}{2}\). Gọi \(H(x_H; y_H; z_H)\) là hình chiếu vuông góc của điểm \(A\) trên đường thẳng \(d\). Tính giá trị của biểu thức \(T = 3(x_H + y_H + z_H)\).</div><div class="short-answer-area"><div class="input-group"><input type="text" class="answer-input" id="input-8" placeholder="Nhập kết quả..." onkeyup="handleEnter(event, 8, 'MQ==')"></div></div><div class="actions-area"><button class="btn-action btn-check" id="btn-chk-8" onclick="checkShort(this, 'MQ==')">✓ KIỂM TRA</button><button class="btn-action btn-reveal" onclick="revealShort(this, 'MQ==')">👁 ĐÁP ÁN</button><div class="slide-counter" id="counter-8">Câu ? / ?</div><button class="btn-action btn-explain" onclick="toggleExpl(this)">💡 XEM LỜI GIẢI</button></div><div class="explanation-box"><div class="explanation-title">📝 LỜI GIẢI CHI TIẾT:</div><div class="explanation-content">Điểm \(H \in d \Rightarrow H(2 + 2t; -1 + t; 1 + 2t)\). Vectơ \(\overrightarrow{AH} = (1 + 2t; t - 3; 2 + 2t)\). Vì \(AH \perp d\) nên \(\overrightarrow{AH} \cdot \overrightarrow{u_d} = 0 \Leftrightarrow 2(1 + 2t) + 1(t - 3) + 2(2 + 2t) = 0 \Leftrightarrow 9t + 3 = 0 \Leftrightarrow t = -\frac{1}{3}\). Suy ra \(H\left( \frac{4}{3}; -\frac{4}{3}; \frac{1}{3} \right)\). Khi đó \(x_H + y_H + z_H = \frac{1}{3}\), do đó \(T = 3 \cdot \frac{1}{3} = 1\).</div></div></div></div>
+        
+            <script>
+                let currentSlide = 0; let slides = []; let timerInterval;
+                
+                let audioCtx = null;
+                function getAudioCtx(){
+                    if(!audioCtx){
+                        const Ctx = window.AudioContext || window.webkitAudioContext;
+                        if(Ctx) audioCtx = new Ctx();
+                    }
+                    return audioCtx;
+                }
+
+                function playSound(type) {
+                    const ctx = getAudioCtx();
+                    if (!ctx) return;
+                    if (ctx.state === 'suspended') ctx.resume();
+                    const oscillator = ctx.createOscillator();
+                    const gainNode = ctx.createGain();
+                    oscillator.connect(gainNode);
+                    gainNode.connect(ctx.destination);
+                    const now = ctx.currentTime;
+                    
+                    if (type === 'correct') { 
+                        if(navigator.vibrate) navigator.vibrate([100, 50, 100]); // Rung 2 nhịp vui vẻ
+                        oscillator.type = 'sine';
+                        oscillator.frequency.setValueAtTime(800, now);
+                        oscillator.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+                        gainNode.gain.setValueAtTime(1.5, now);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                        oscillator.start(now); oscillator.stop(now + 0.3);
+                    } else if (type === 'wrong') { 
+                        if(navigator.vibrate) navigator.vibrate(200); // Rung 1 nhịp dài cảnh báo
+                        oscillator.type = 'sawtooth';
+                        oscillator.frequency.setValueAtTime(150, now);
+                        oscillator.frequency.exponentialRampToValueAtTime(100, now + 0.2);
+                        gainNode.gain.setValueAtTime(1.2, now);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                        oscillator.start(now); oscillator.stop(now + 0.3);
+                    } else if (type === 'timeup') { 
+                        oscillator.type = 'square';
+                        oscillator.frequency.setValueAtTime(400, now);
+                        gainNode.gain.setValueAtTime(1.5, now);
+                        gainNode.gain.setValueAtTime(1.5, now + 0.1);
+                        gainNode.gain.setValueAtTime(0, now + 0.15);
+                        gainNode.gain.setValueAtTime(1.5, now + 0.2);
+                        gainNode.gain.setValueAtTime(1.5, now + 0.3);
+                        gainNode.gain.setValueAtTime(0, now + 0.35);
+                        gainNode.gain.setValueAtTime(1.5, now + 0.4);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 1.0);
+                        oscillator.start(now); oscillator.stop(now + 1.0);
+                    } else if (type === 'tick') { 
+                        oscillator.type = 'triangle';
+                        oscillator.frequency.setValueAtTime(1000, now);
+                        gainNode.gain.setValueAtTime(0.8, now);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                        oscillator.start(now); oscillator.stop(now + 0.1);
+                    }
+                }
+                
+                const msgCorrect = ["Tuyệt vời!", "Chính xác!", "Quá đỉnh!", "Xuất sắc!", "Giỏi quá!", "10 Điểm!"];
+                const msgWrong = ["Cố lên nhé!", "Chưa chính xác!", "Hãy thử lại!", "Cẩn thận hơn!", "Đừng nản chí!", "Suýt nữa thì đúng!"];
+
+                function showFeedback(isCorrect, slideElement) {
+                    let popup = document.createElement('div');
+                    popup.className = 'feedback-popup ' + (isCorrect ? 'correct' : 'wrong');
+                    let emoji = isCorrect ? '😄' : '😢';
+                    let textArr = isCorrect ? msgCorrect : msgWrong;
+                    let randomText = textArr[Math.floor(Math.random() * textArr.length)];
+                    popup.innerHTML = '<div class="emoji">' + emoji + '</div><div class="message">' + randomText + '</div>';
+                    slideElement.appendChild(popup);
+                    setTimeout(() => popup.classList.add('pop'), 10);
+                    setTimeout(() => { popup.classList.remove('pop'); setTimeout(() => popup.remove(), 400); }, 1500);
+                }
+
+                function changeFontSize(delta) {
+                    const root = document.documentElement; const style = getComputedStyle(root);
+                    let baseSize = parseInt(style.getPropertyValue('--base-size'));
+                    let optSize = parseInt(style.getPropertyValue('--opt-size'));
+                    let badgeSize = parseInt(style.getPropertyValue('--badge-size'));
+                    if ((delta < 0 && baseSize <= 24) || (delta > 0 && baseSize >= 60)) return;
+                    root.style.setProperty('--base-size', (baseSize + delta) + 'px');
+                    root.style.setProperty('--opt-size', (optSize + delta) + 'px');
+                    root.style.setProperty('--badge-size', (badgeSize + (delta > 0 ? 2 : -2)) + 'px');
+                }
+                function formatTime(seconds) {
+                    let m = Math.floor(seconds / 60); let s = seconds % 60;
+                    return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+                }
+                function parseTime(input) {
+                    if (!input) return null; input = input.toString().trim();
+                    if (input.includes(":")) {
+                        let parts = input.split(":"); return (parseInt(parts[0]) || 0) * 60 + (parseInt(parts[1]) || 0);
+                    }
+                    return parseInt(input);
+                }
+                window.addEventListener("load", function(){ 
+                    document.addEventListener('keydown', function(e) {
+                        const tag = document.activeElement.tagName;
+                        if(tag === "INPUT" || tag === "TEXTAREA") return;
+                        if(e.key === "ArrowRight") nextSlide(); if(e.key === "ArrowLeft") prevSlide();
+                    });
+                });
+                function renderSlide(index) {
+                    document.querySelectorAll('.slide-container').forEach(el => el.classList.remove('active'));
+                    const activeSlide = document.getElementById('slide-' + index);
+                    if (activeSlide) {
+                        activeSlide.classList.add('active'); currentSlide = index;
+                        document.querySelectorAll('.slide-counter').forEach(el => el.innerText = `Câu ${index + 1} / ${slides.length}`);
+                        
+                        if (window.MathJax && !activeSlide.dataset.typeset) {
+                            MathJax.typesetPromise([activeSlide]).then(() => { activeSlide.dataset.typeset = "true"; }).catch((err) => console.log('MJ Error:', err));
+                        }
+                        clearInterval(timerInterval); const timerEl = activeSlide.querySelector('.timer');
+                        if(timerEl) { let def = 60; timerEl.dataset.time = def; timerEl.innerText = '⏳ Bắt đầu (' + formatTime(def) + ')'; timerEl.classList.remove('running'); }
+                    }
+                }
+                function startTimer(el) {
+                    if (el.classList.contains('running')) { clearInterval(timerInterval); el.classList.remove('running'); el.innerText = "⏳ Bắt đầu (" + formatTime(parseInt(el.dataset.time)) + ")"; return; }
+                    let timeLeft = parseInt(el.dataset.time); el.classList.add('running'); el.innerText = formatTime(timeLeft);
+                    clearInterval(timerInterval);
+                    timerInterval = setInterval(() => { 
+                        timeLeft--; el.innerText = formatTime(timeLeft); 
+                        if (timeLeft <= 5 && timeLeft > 0) { playSound('tick'); } 
+                        else if (timeLeft <= 0) { clearInterval(timerInterval); el.classList.remove('running'); el.innerText = "Hết giờ!"; playSound('timeup'); } 
+                    }, 1000);
+                }
+                function editTimer(el) {
+                    if (el.classList.contains('running')) { clearInterval(timerInterval); el.classList.remove('running'); }
+                    let newTime = parseTime(prompt("Nhập thời gian (Ví dụ: 5:00 hoặc 300 giây):", formatTime(parseInt(el.dataset.time))));
+                    if (newTime != null && !isNaN(newTime) && newTime > 0) { el.dataset.time = newTime; el.innerText = "⏳ Bắt đầu (" + formatTime(newTime) + ")"; }
+                }
+                function nextSlide() { if (currentSlide < slides.length - 1) renderSlide(currentSlide + 1); }
+                function prevSlide() { if (currentSlide > 0) renderSlide(currentSlide - 1); }
+                function openImage(src) { const w = window.open(""); w.document.write('<img src="' + src + '" style="max-width:100%;">'); }
+                
+                function checkChoice(btn, isCorrect) {
+                    if (btn.classList.contains('checked')) return; const slide = btn.closest('.slide-container');
+                    if (isCorrect) { 
+                        playSound('correct'); showFeedback(true, slide);
+                        btn.classList.add('correct', 'checked'); slide.querySelectorAll('.btn-option').forEach(b => b.classList.add('disabled')); slide.querySelector('.btn-reveal').style.display='none'; 
+                    } else { 
+                        playSound('wrong'); showFeedback(false, slide); btn.classList.add('wrong', 'checked'); 
+                    }
+                }
+                function revealAnswerMC(btn) {
+                    const slide = btn.closest('.slide-container'); const corr = slide.querySelector('.btn-option[data-correct="true"]');
+                    if(corr) corr.classList.add('correct', 'checked'); slide.querySelectorAll('.btn-option').forEach(b => b.classList.add('disabled')); btn.style.display='none';
+                }
+                
+                function checkTF(btn, userChoice) {
+                    const row = btn.closest('.tf-row'); row.querySelectorAll('.btn-tf').forEach(b => b.classList.remove('user-correct', 'user-wrong'));
+                    const slideContainer = btn.closest('.slide-container');
+                    if (userChoice === (row.getAttribute('data-correct') === 'true')) { 
+                        playSound('correct'); showFeedback(true, slideContainer); btn.classList.add('user-correct'); 
+                    } else { 
+                        playSound('wrong'); showFeedback(false, slideContainer); btn.classList.add('user-wrong'); 
+                    }
+                }
+                function revealAnswerTF(btn) {
+                    const slide = btn.closest('.slide-container');
+                    slide.querySelectorAll('.tf-row').forEach(row => {
+                        const isTrue = row.getAttribute('data-correct') === 'true';
+                        row.querySelectorAll('.btn-tf').forEach(b => {
+                            if(b.innerText==='Đ' && isTrue) b.classList.add('reveal-true');
+                            if(b.innerText==='S' && !isTrue) b.classList.add('reveal-false');
+                        });
+                    }); btn.style.display='none';
+                }
+                
+                function checkShort(btn, b64) {
+                    const slide = btn.closest('.slide-container'); const inp = slide.querySelector('input');
+                    let val = inp.value.trim().toLowerCase().replace(',', '.').replace(/\s+/g, '');
+                    let ans = decodeURIComponent(escape(atob(b64))).trim().toLowerCase().replace(',', '.');
+                    if (ans === "") { inp.style.borderColor='#f59e0b'; alert('Câu này không tìm thấy đáp án chuẩn.'); return; }
+                    if(val === ans) { 
+                        playSound('correct'); showFeedback(true, slide); inp.style.borderColor='#22c55e'; inp.style.color='#15803d'; 
+                    } else { 
+                        playSound('wrong'); showFeedback(false, slide); inp.style.borderColor='#ef4444'; 
+                    }
+                }
+                function revealShort(btn, b64) {
+                    const slide = btn.closest('.slide-container'); const input = slide.querySelector('input');
+                    let decoded = decodeURIComponent(escape(atob(b64)));
+                    input.value = decoded; btn.style.display='none';
+                }
+                function toggleExpl(btn) { const box = btn.closest('.slide-container').querySelector('.explanation-box'); box.style.display = box.style.display==='block' ? 'none' : 'block'; }
+                function handleEnter(e, id, b64) { if (e.key === "Enter") checkShort(document.getElementById('btn-chk-'+id), b64); }
+                function initSlides(data) { slides = data; renderSlide(0); }
+                function initImageZoom() {
+                    const images = document.querySelectorAll('.real-image');
+                    images.forEach(img => {
+                        img.addEventListener('wheel', function(e) {
+                            e.preventDefault(); let currentHeight = img.clientHeight; let delta = e.deltaY < 0 ? 40 : -40; let newHeight = currentHeight + delta;
+                            if (newHeight >= 150 && newHeight <= 1200) { img.style.maxHeight = 'none'; img.style.height = newHeight + 'px'; img.style.width = 'auto'; }
+                        });
+                    });
+                }
+
+                // --- NÂNG CẤP VUỐT TRÊN MOBILE (SWIPE) ---
+                let touchStartX = 0; let touchEndX = 0;
+                document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+                document.addEventListener('touchend', e => {
+                    if(document.activeElement.tagName === "INPUT") return; // Chặn vuốt khi đang chạm vào ô nhập đáp án
+                    touchEndX = e.changedTouches[0].screenX;
+                    let diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > 60) { if (diff > 0) nextSlide(); else prevSlide(); }
+                }, {passive: true});
+            </script>
+        
+        <script>
+            window.addEventListener("DOMContentLoaded", function(){
+                // 🟢 HỆ THỐNG TỰ BÁO LỖI VÀ CHUYỂN HƯỚNG UX
+                try {
+                    const data = [{"title": "C\u00e2u 1", "part": 1, "type": "mc", "explanation": "\u0110\u00e1p \u00e1n B \u0111\u00fang. H\u1ecdc sinh d\u1ec5 m\u1eafc b\u1eaby khi ch\u1ec9 gi\u1ea3i h\u1ec7 ph\u01b0\u01a1ng tr\u00ecnh t\u1ecda \u0111\u1ed9 m\u00e0 qu\u00ean ki\u1ec3m tra \u0111i\u1ec1u ki\u1ec7n hai v\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng kh\u00f4ng c\u00f9ng ph\u01b0\u01a1ng, ho\u1eb7c t\u00ednh sai t\u00edch h\u1ed7n t\u1ea1p \\([\\vec{u_1}, \\vec{u_2}] \\cdot \\overrightarrow{M_1M_2} = 0\\). V\u1edbi \\(m = 2\\), hai \u0111\u01b0\u1eddng th\u1eb3ng c\u1eaft nhau t\u1ea1i \u0111i\u1ec3m \\(M(1; 2; 3)\\).", "options": [{"label": "A", "text": "\\(m = -2\\).", "is_correct": false}, {"label": "B", "text": "\\(m = 2\\).", "is_correct": true}, {"label": "C", "text": "\\(m = 4\\).", "is_correct": false}, {"label": "D", "text": "\\(m = 0\\).", "is_correct": false}], "correct_answer": "", "content": "Trong kh\u00f4ng gian v\u1edbi h\u1ec7 t\u1ecda \u0111\u1ed9 \\(Oxyz\\), cho hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1: \\frac{x - 1}{1} = \\frac{y - 2}{2} = \\frac{z - 3}{3}\\) v\u00e0 \\(d_2: \\frac{x - 2}{1} = \\frac{y - 4}{m} = \\frac{z - 5}{2}\\). Gi\u00e1 tr\u1ecb c\u1ee7a tham s\u1ed1 \\(m\\) \u0111\u1ec3 hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1\\) v\u00e0 \\(d_2\\) c\u1eaft nhau l\u00e0"}, {"title": "C\u00e2u 2", "part": 1, "type": "mc", "explanation": "\u0110\u00e1p \u00e1n C \u0111\u00fang. G\u1ecdi \\(H(t; t; t) \\in d\\). Ta c\u00f3 \\(\\overrightarrow{AH} = (t - 3; t - 1; t - 5)\\). V\u00ec \\(AH \\perp d\\) n\u00ean \\(\\overrightarrow{AH} \\cdot \\overrightarrow{u_d} = 0 \\Leftrightarrow (t - 3) + (t - 1) + (t - 5) = 0 \\Leftrightarrow 3t - 9 = 0 \\Leftrightarrow t = 3\\). V\u1eady \\(H(3; 3; 3)\\), t\u1ed5ng t\u1ecda \u0111\u1ed9 l\u00e0 \\(3 + 3 + 3 = 9\\). B\u1eaby \u1edf \u0111\u00e2y l\u00e0 h\u1ecdc sinh c\u00f3 th\u1ec3 nh\u1ea7m l\u1eabn sang t\u00ednh kho\u1ea3ng c\u00e1ch ho\u1eb7c ch\u1ec9 l\u1ea5y m\u1ed9t gi\u00e1 tr\u1ecb t\u1ecda \u0111\u1ed9.", "options": [{"label": "A", "text": "\\(3\\).", "is_correct": false}, {"label": "B", "text": "\\(5\\).", "is_correct": false}, {"label": "C", "text": "\\(9\\).", "is_correct": true}, {"label": "D", "text": "\\(0\\).", "is_correct": false}], "correct_answer": "", "content": "Trong kh\u00f4ng gian v\u1edbi h\u1ec7 t\u1ecda \u0111\u1ed9 \\(Oxyz\\), g\u1ecdi \\(H\\) l\u00e0 h\u00ecnh chi\u1ebfu vu\u00f4ng g\u00f3c c\u1ee7a \u0111i\u1ec3m \\(A(3; 1; 5)\\) tr\u00ean \u0111\u01b0\u1eddng th\u1eb3ng \\(d: x = y = z\\). T\u1ed5ng c\u00e1c t\u1ecda \u0111\u1ed9 c\u1ee7a \u0111i\u1ec3m \\(H\\) b\u1eb1ng"}, {"title": "C\u00e2u 3", "part": 1, "type": "mc", "explanation": "\u0110\u00e1p \u00e1n B \u0111\u00fang. V\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng c\u1ee7a \\(d\\) l\u00e0 \\(\\vec{u} = (1; -1; \\sqrt{2})\\), v\u00e9c t\u01a1 ph\u00e1p tuy\u1ebfn c\u1ee7a \\((P)\\) l\u00e0 \\(\\vec{n} = (1; 1; \\sqrt{2})\\). G\u1ecdi \\(\\alpha\\) l\u00e0 g\u00f3c gi\u1eefa \u0111\u01b0\u1eddng th\u1eb3ng v\u00e0 m\u1eb7t ph\u1eb3ng, ta c\u00f3 \\(\\sin \\alpha = \\frac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|} = \\frac{|1 - 1 + 2|}{\\sqrt{4} \\cdot \\sqrt{4}} = \\frac{2}{4} = \\frac{1}{2}\\). Suy ra \\(\\alpha = 30^\\circ\\). B\u1eaby t\u01b0 duy ph\u1ed5 bi\u1ebfn l\u00e0 h\u1ecdc sinh s\u1eed d\u1ee5ng c\u00f4ng th\u1ee9c \\(\\cos\\) (nh\u1ea7m v\u1edbi g\u00f3c gi\u1eefa hai \u0111\u01b0\u1eddng th\u1eb3ng ho\u1eb7c hai m\u1eb7t ph\u1eb3ng) d\u1eabn \u0111\u1ebfn k\u1ebft qu\u1ea3 \\(60^\\circ\\).", "options": [{"label": "A", "text": "\\(60^\\circ\\).", "is_correct": false}, {"label": "B", "text": "\\(30^\\circ\\).", "is_correct": true}, {"label": "C", "text": "\\(45^\\circ\\).", "is_correct": false}, {"label": "D", "text": "\\(90^\\circ\\).", "is_correct": false}], "correct_answer": "", "content": "Trong kh\u00f4ng gian v\u1edbi h\u1ec7 t\u1ecda \u0111\u1ed9 \\(Oxyz\\), t\u00ednh g\u00f3c gi\u1eefa \u0111\u01b0\u1eddng th\u1eb3ng \\(d: \\frac{x - 1}{1} = \\frac{y - 2}{-1} = \\frac{z}{\\sqrt{2}}\\) v\u00e0 m\u1eb7t ph\u1eb3ng \\((P): x + y + \\sqrt{2}z - 5 = 0\\)."}, {"title": "C\u00e2u 1", "part": 2, "type": "tf", "explanation": "a) \u0110\u00fang v\u00ec thay t\u1ecda \u0111\u1ed9 \\(M(1; -2; 3)\\) v\u00e0o ph\u01b0\u01a1ng tr\u00ecnh \\(d_1\\) ta \u0111\u01b0\u1ee3c \\(\\frac{0}{2} = \\frac{0}{1} = \\frac{0}{-1} = 0\\) (th\u1ecfa m\u00e3n).\nb) Sai v\u00ec c\u1ea3 \\(d_1\\) v\u00e0 \\(d_2\\) \u0111\u1ec1u \u0111i qua \u0111i\u1ec3m \\(M(1; -2; 3)\\). V\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng c\u1ee7a ch\u00fang l\u00e0 \\(\\vec{u_1} = (2; 1; -1)\\) v\u00e0 \\(\\vec{u_2} = (1; 2; -1)\\) kh\u00f4ng c\u00f9ng ph\u01b0\u01a1ng, n\u00ean ch\u00fang c\u1eaft nhau t\u1ea1i \\(M\\).\nc) \u0110\u00fang v\u00ec theo ph\u01b0\u01a1ng tr\u00ecnh ch\u00ednh t\u1eafc c\u1ee7a \\(d_1\\), c\u00e1c m\u1eabu s\u1ed1 t\u01b0\u01a1ng \u1ee9ng l\u00e0 t\u1ecda \u0111\u1ed9 v\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng.\nd) Sai v\u00ec t\u00edch v\u00f4 h\u01b0\u1edbng \\(\\vec{u_1} \\cdot \\vec{u_2} = 2 \\cdot 1 + 1 \\cdot 2 + (-1) \\cdot (-1) = 5 \\neq 0\\).", "options": [{"label": "a)", "text": "\u0110\u01b0\u1eddng th\u1eb3ng \\(d_1\\) \u0111i qua \u0111i\u1ec3m \\(M(1; -2; 3)\\).", "is_correct": true}, {"label": "b)", "text": "Hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1\\) v\u00e0 \\(d_2\\) ch\u00e9o nhau.", "is_correct": false}, {"label": "c)", "text": "V\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng c\u1ee7a \\(d_1\\) l\u00e0 \\(\\vec{u_1} = (2; 1; -1)\\).", "is_correct": true}, {"label": "d)", "text": "Hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1\\) v\u00e0 \\(d_2\\) vu\u00f4ng g\u00f3c v\u1edbi nhau.", "is_correct": false}], "correct_answer": "", "content": "Trong kh\u00f4ng gian \\(Oxyz\\), cho hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1: \\frac{x - 1}{2} = \\frac{y + 2}{1} = \\frac{z - 3}{-1}\\) v\u00e0 \u0111\u01b0\u1eddng th\u1eb3ng \\(d_2: \\begin{cases} x = 1 + t \\\\ y = -2 + 2t \\\\ z = 3 - t \\end{cases}\\), \\(t \\in \\mathbb{R}\\)."}, {"title": "C\u00e2u 2", "part": 2, "type": "tf", "explanation": "a) \u0110\u00fang v\u00ec \u0111\u00e2y l\u00e0 c\u00e1c h\u1ec7 s\u1ed1 \u1edf m\u1eabu s\u1ed1 c\u1ee7a ph\u01b0\u01a1ng tr\u00ecnh ch\u00ednh t\u1eafc.\nb) Sai v\u00ec m\u1eb7c d\u00f9 \\(H(1; 0; -1) \\in \\Delta\\), nh\u01b0ng v\u00e9c t\u01a1 \\(\\overrightarrow{AH} = (0; -2; -2)\\) c\u00f3 t\u00edch v\u00f4 h\u01b0\u1edbng v\u1edbi \\(\\vec{u}\\) l\u00e0 \\(0 \\cdot 2 + (-2) \\cdot 1 + (-2) \\cdot (-2) = 2 \\neq 0\\), n\u00ean \\(AH\\) kh\u00f4ng vu\u00f4ng g\u00f3c v\u1edbi \\(\\Delta\\).\nc) \u0110\u00fang v\u00ec s\u1eed d\u1ee5ng c\u00f4ng th\u1ee9c kho\u1ea3ng c\u00e1ch t\u1eeb \u0111i\u1ec3m \u0111\u1ebfn \u0111\u01b0\u1eddng th\u1eb3ng: \\(d(A, \\Delta) = \\frac{\\left| [\\overrightarrow{M_0A}, \\vec{u}] \\right|}{\\left| \\vec{u} \\right|}\\) v\u1edbi \\(M_0(1; 0; -1)\\).\nd) Sai v\u00ec m\u1eb7t ph\u1eb3ng vu\u00f4ng g\u00f3c v\u1edbi \\(\\Delta\\) nh\u1eadn \\(\\vec{u} = (2; 1; -2)\\) l\u00e0m v\u00e9c t\u01a1 ph\u00e1p tuy\u1ebfn. Ph\u01b0\u01a1ng tr\u00ecnh l\u00e0 \\(2(x - 1) + 1(y - 2) - 2(z - 1) = 0 \\Leftrightarrow 2x + y - 2z - 2 = 0\\).", "options": [{"label": "a)", "text": "\u0110\u01b0\u1eddng th\u1eb3ng \\(\\Delta\\) c\u00f3 m\u1ed9t v\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng l\u00e0 \\(\\vec{u} = (2; 1; -2)\\).", "is_correct": true}, {"label": "b)", "text": "\u0110i\u1ec3m \\(H(1; 0; -1)\\) l\u00e0 h\u00ecnh chi\u1ebfu vu\u00f4ng g\u00f3c c\u1ee7a \\(A\\) tr\u00ean \u0111\u01b0\u1eddng th\u1eb3ng \\(\\Delta\\).", "is_correct": false}, {"label": "c)", "text": "Kho\u1ea3ng c\u00e1ch t\u1eeb \u0111i\u1ec3m \\(A\\) \u0111\u1ebfn \u0111\u01b0\u1eddng th\u1eb3ng \\(\\Delta\\) b\u1eb1ng \\(\\frac{2\\sqrt{17}}{3}\\).", "is_correct": true}, {"label": "d)", "text": "Ph\u01b0\u01a1ng tr\u00ecnh m\u1eb7t ph\u1eb3ng \u0111i qua \\(A\\) v\u00e0 vu\u00f4ng g\u00f3c v\u1edbi \u0111\u01b0\u1eddng th\u1eb3ng \\(\\Delta\\) l\u00e0 \\(2x + y - 2z + 2 = 0\\).", "is_correct": false}], "correct_answer": "", "content": "Trong kh\u00f4ng gian \\(Oxyz\\), cho \u0111i\u1ec3m \\(A(1; 2; 1)\\) v\u00e0 \u0111\u01b0\u1eddng th\u1eb3ng \\(\\Delta: \\frac{x - 1}{2} = \\frac{y}{1} = \\frac{z + 1}{-2}\\)."}, {"title": "C\u00e2u 3", "part": 2, "type": "tf", "explanation": "a) \u0110\u00fang v\u00ec khi \\(m = 0\\), thay t\u1ecda \u0111\u1ed9 \\(M(1; 2; 0)\\) v\u00e0o \\(d\\) v\u00e0 \\((P)\\) \u0111\u1ec1u th\u1ecfa m\u00e3n.\nb) Sai v\u00ec v\u00e9c t\u01a1 ch\u1ec9 ph\u01b0\u01a1ng \\(\\vec{u} = (1; 2; 1)\\) v\u00e0 v\u00e9c t\u01a1 ph\u00e1p tuy\u1ebfn \\(\\vec{n} = (1; 1; 1)\\) c\u00f3 t\u00edch v\u00f4 h\u01b0\u1edbng \\(\\vec{u} \\cdot \\vec{n} = 4 \\neq 0\\), n\u00ean \\(d\\) lu\u00f4n c\u1eaft \\((P)\\) v\u1edbi m\u1ecdi \\(m\\).\nc) \u0110\u00fang v\u00ec khi \\(m = 4\\), ph\u01b0\u01a1ng tr\u00ecnh tham s\u1ed1 c\u1ee7a \\(d\\) l\u00e0 \\(x = 1 + t, y = 2 + 2t, z = 4 + t\\). Thay v\u00e0o \\((P)\\) ta c\u00f3 \\((1 + t) + (2 + 2t) + (4 + t) - 3 = 0 \\Leftrightarrow 4t + 4 = 0 \\Leftrightarrow t = -1\\). Suy ra giao \u0111i\u1ec3m l\u00e0 \\(N(0; 0; 3)\\).\nd) Sai v\u00ec \\(\\vec{u} = (1; 2; 1)\\) v\u00e0 \\(\\vec{n} = (1; 1; 1)\\) kh\u00f4ng c\u00f9ng ph\u01b0\u01a1ng, n\u00ean \\(d\\) kh\u00f4ng th\u1ec3 vu\u00f4ng g\u00f3c v\u1edbi \\((P)\\) b\u1ea5t k\u1ec3 gi\u00e1 tr\u1ecb c\u1ee7a \\(m\\).", "options": [{"label": "a)", "text": "Khi \\(m = 0\\), \u0111\u01b0\u1eddng th\u1eb3ng \\(d\\) c\u1eaft m\u1eb7t ph\u1eb3ng \\((P)\\) t\u1ea1i \u0111i\u1ec3m \\(M(1; 2; 0)\\).", "is_correct": true}, {"label": "b)", "text": "C\u00f3 gi\u00e1 tr\u1ecb c\u1ee7a \\(m\\) \u0111\u1ec3 \u0111\u01b0\u1eddng th\u1eb3ng \\(d\\) song song v\u1edbi m\u1eb7t ph\u1eb3ng \\((P)\\).", "is_correct": false}, {"label": "c)", "text": "Khi \\(m = 4\\), giao \u0111i\u1ec3m c\u1ee7a \u0111\u01b0\u1eddng th\u1eb3ng \\(d\\) v\u00e0 m\u1eb7t ph\u1eb3ng \\((P)\\) l\u00e0 \\(N(0; 0; 3)\\).", "is_correct": true}, {"label": "d)", "text": "\u0110\u01b0\u1eddng th\u1eb3ng \\(d\\) vu\u00f4ng g\u00f3c v\u1edbi m\u1eb7t ph\u1eb3ng \\((P)\\) khi \\(m = 1\\).", "is_correct": false}], "correct_answer": "", "content": "Trong kh\u00f4ng gian \\(Oxyz\\), cho \u0111\u01b0\u1eddng th\u1eb3ng \\(d: \\frac{x - 1}{1} = \\frac{y - 2}{2} = \\frac{z - m}{1}\\) v\u00e0 m\u1eb7t ph\u1eb3ng \\((P): x + y + z - 3 = 0\\), v\u1edbi \\(m\\) l\u00e0 tham s\u1ed1 th\u1ef1c."}, {"title": "C\u00e2u 1", "part": 3, "type": "short", "explanation": "\u0110i\u1ec3m \\(M \\in d \\Rightarrow M(1 + 2t; -1 + t; 2 - t)\\). Ta c\u00f3 \\(\\overrightarrow{AM} = (1 + 2t; t - 2; -t)\\). Theo gi\u1ea3 thi\u1ebft \\(AM^2 = 11 \\Leftrightarrow (1 + 2t)^2 + (t - 2)^2 + (-t)^2 = 11 \\Leftrightarrow 6t^2 + 5 = 11 \\Leftrightarrow t^2 = 1\\). Do \\(x_0 = 1 + 2t > 0\\) n\u00ean ch\u1ecdn \\(t = 1\\), suy ra \\(M(3; 0; 1)\\). V\u1eady \\(P = 3 + 0 + 1 = 4\\).", "options": [], "correct_answer": "4", "content": "Trong kh\u00f4ng gian v\u1edbi h\u1ec7 t\u1ecda \u0111\u1ed9 \\(Oxyz\\), cho \u0111i\u1ec3m \\(A(0; 1; 2)\\) v\u00e0 \u0111\u01b0\u1eddng th\u1eb3ng \\(d: \\frac{x - 1}{2} = \\frac{y + 1}{1} = \\frac{z - 2}{-1}\\). G\u1ecdi \\(M(x_0; y_0; z_0)\\) l\u00e0 \u0111i\u1ec3m thu\u1ed9c \u0111\u01b0\u1eddng th\u1eb3ng \\(d\\) sao cho \u0111\u1ed9 d\u00e0i \u0111o\u1ea1n th\u1eb3ng \\(AM = \\sqrt{11}\\). Bi\u1ebft \\(x_0 > 0\\), t\u00ednh gi\u00e1 tr\u1ecb c\u1ee7a bi\u1ec3u th\u1ee9c \\(P = x_0 + y_0 + z_0\\)."}, {"title": "C\u00e2u 2", "part": 3, "type": "short", "explanation": "\u0110\u01b0\u1eddng th\u1eb3ng \\(d_1\\) c\u00f3 vect\u01a1 ch\u1ec9 ph\u01b0\u01a1ng \\(\\vec{u_1} = (1; 0; -1)\\). \u0110\u01b0\u1eddng th\u1eb3ng \\(d_2\\) c\u00f3 vect\u01a1 ch\u1ec9 ph\u01b0\u01a1ng \\(\\vec{u_2} = (1; 1; 0)\\). G\u1ecdi \\(\\varphi\\) l\u00e0 g\u00f3c gi\u1eefa hai \u0111\u01b0\u1eddng th\u1eb3ng, ta c\u00f3 \\(\\cos \\varphi = \\frac{\\left| 1 \\cdot 1 + 0 \\cdot 1 + (-1) \\cdot 0 \\right|}{\\sqrt{1^2 + 0^2 + (-1)^2} \\cdot \\sqrt{1^2 + 1^2 + 0^2}} = \\frac{1}{2}\\). Suy ra \\(\\varphi = 60^\\circ\\).", "options": [], "correct_answer": "60", "content": "Trong kh\u00f4ng gian v\u1edbi h\u1ec7 t\u1ecda \u0111\u1ed9 \\(Oxyz\\), cho hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1: \\begin{cases} x = 1 + t \\\\ y = 2 \\\\ z = 3 - t \\end{cases}\\), \\(t \\in \\mathbb{R}\\) v\u00e0 \\(d_2: \\frac{x}{1} = \\frac{y - 1}{1}, z = 0\\). T\u00ednh s\u1ed1 \u0111o g\u00f3c gi\u1eefa hai \u0111\u01b0\u1eddng th\u1eb3ng \\(d_1\\) v\u00e0 \\(d_2\\) (\u0111\u01a1n v\u1ecb: \u0111\u1ed9)."}, {"title": "C\u00e2u 3", "part": 3, "type": "short", "explanation": "\u0110i\u1ec3m \\(H \\in d \\Rightarrow H(2 + 2t; -1 + t; 1 + 2t)\\). Vect\u01a1 \\(\\overrightarrow{AH} = (1 + 2t; t - 3; 2 + 2t)\\). V\u00ec \\(AH \\perp d\\) n\u00ean \\(\\overrightarrow{AH} \\cdot \\overrightarrow{u_d} = 0 \\Leftrightarrow 2(1 + 2t) + 1(t - 3) + 2(2 + 2t) = 0 \\Leftrightarrow 9t + 3 = 0 \\Leftrightarrow t = -\\frac{1}{3}\\). Suy ra \\(H\\left( \\frac{4}{3}; -\\frac{4}{3}; \\frac{1}{3} \\right)\\). Khi \u0111\u00f3 \\(x_H + y_H + z_H = \\frac{1}{3}\\), do \u0111\u00f3 \\(T = 3 \\cdot \\frac{1}{3} = 1\\).", "options": [], "correct_answer": "1", "content": "Trong kh\u00f4ng gian v\u1edbi h\u1ec7 t\u1ecda \u0111\u1ed9 \\(Oxyz\\), cho \u0111i\u1ec3m \\(A(1; 2; -1)\\) v\u00e0 \u0111\u01b0\u1eddng th\u1eb3ng \\(d: \\frac{x - 2}{2} = \\frac{y + 1}{1} = \\frac{z - 1}{2}\\). G\u1ecdi \\(H(x_H; y_H; z_H)\\) l\u00e0 h\u00ecnh chi\u1ebfu vu\u00f4ng g\u00f3c c\u1ee7a \u0111i\u1ec3m \\(A\\) tr\u00ean \u0111\u01b0\u1eddng th\u1eb3ng \\(d\\). T\u00ednh gi\u00e1 tr\u1ecb c\u1ee7a bi\u1ec3u th\u1ee9c \\(T = 3(x_H + y_H + z_H)\\)."}];
+                    initSlides(data);
+                    initImageZoom(); 
+                } catch(err) {
+                    document.body.innerHTML = "<div style='padding:30px; text-align:center; font-family: sans-serif;'><h2 style='color:#dc2626; font-size:24px;'>⚠️ LỖI HIỂN THỊ TRÊN ZALO/MESSENGER</h2><p style='font-size:18px; color:#334155;'>Trình duyệt nội bộ đang chặn hệ thống Toán học.</p><p style='font-size:16px; color:#004b87; font-weight:bold; background:#e0f2fe; padding:15px; border-radius:10px;'>👉 Vui lòng bấm nút [Chia sẻ] (Góc trên bên phải) ➔ Chọn [Mở bằng Safari] (hoặc Chrome) để làm bài bình thường nhé!</p></div>";
+                }
+            });
+        </script>
+        </body></html>

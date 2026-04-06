@@ -14304,3 +14304,252 @@ def ckz_L12C4_B5_54():
     dap_an = f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng", "Đ").replace("sai", "S")
 
     return debai, debai_latex, loigiai_word, dap_an
+
+#[D12_C4_B5_55]-TF-M2. Cổng parabol chia làm 3 phần bằng nhau. Xét Đ-S: Phương trình parabol, diện tích các phần, tỉ số CD/AB
+def ckz_L12C4_B5_55():
+
+    x = sp.symbols("x")
+
+    def dinh_dang_so(a):
+        if isinstance(a, (int, sp.Integer)):
+            return str(a)
+        a = float(a)
+        if abs(a-round(a)) < 1e-9:
+            return str(int(round(a)))
+        s = f"{a:.2f}".rstrip("0").rstrip(".")
+        return s.replace(".", ",")
+
+    def tao_code_tikz(a, h, x1_val, x2_val):
+        x1f = float(x1_val)
+        x2f = float(x2_val)
+
+        y1 = -h*(x1f**2)/(a**2)
+        y2 = -h*(x2f**2)/(a**2)
+
+        code = f"""
+\\begin{{tikzpicture}}[scale=0.8, line cap=round, line join=round, >=stealth]
+    \\clip (-{a+1.2},-{h+1.2}) rectangle ({a+2.2},1.2);
+
+    % Trục tọa độ
+    \\draw[->] (-{a+0.8},0)--({a+1.8},0) node[above]{{$x$}};
+    \\draw[->] (0,-{h+0.8})--(0,1) node[right]{{$y$}};
+
+    % Parabol
+    \\draw[smooth,domain=-{a}:{a},samples=200] plot(\\x,{{-({h}/{a**2})*(\\x)^2}});
+
+    % Hai dây AB, CD
+    \\draw (-{x1f:.3f},{y1:.3f})--({x1f:.3f},{y1:.3f});
+    \\draw (-{x2f:.3f},{y2:.3f})--({x2f:.3f},{y2:.3f});
+
+    % Nét đứt
+    \\draw[dashed] (-{a},0)--(-{a},-{h});
+    \\draw[dashed] ({x1f:.3f},0)--({x1f:.3f},{y1:.3f});
+    \\draw[dashed] ({x2f:.3f},0)--({x2f:.3f},{y2:.3f});
+
+    % Ghi điểm
+    \\node[above right] at (0,0) {{$O$}};
+    \\node[left] at (-{x1f:.3f},{y1:.3f}) {{$A$}};
+    \\node[right] at ({x1f:.3f},{y1:.3f}) {{$B$}};
+    \\node[left] at (-{x2f:.3f},{y2:.3f}) {{$C$}};
+    \\node[right] at ({x2f:.3f},{y2:.3f}) {{$D$}};
+
+    % Ghi số
+    \\node[above] at (-{a},0) {{$-{a}$}};
+    \\node[below left] at (0,-{h}) {{$-{h}$}};
+    \\node[above] at ({x1f:.3f},0) {{$x_1$}};
+    \\node[above] at ({x2f:.3f},0) {{$x_2$}};
+
+    % Kích thước chiều rộng
+    \\draw[<->] (-{a},-{h+0.5})--({a},-{h+0.5});
+    \\node[below] at (0,-{h+0.5}) {{$ {2*a}\\,\\text{{  m}} $}};
+
+    % Kích thước chiều cao
+    \\draw[<->] ({a+0.6},-{h})--({a+0.6},0);
+    \\node[right] at ({a+0.6},-{h/2}) {{$ {h}\\,\\text{{m}} $}};
+\\end{{tikzpicture}}
+"""
+        return code
+
+    # =======================
+    # Sinh dữ liệu
+    # =======================
+    while True:
+        a = random.randint(3, 6)     # nửa chiều rộng chân đế
+        h = random.randint(6, 12)    # chiều cao
+        if h % a != 0:
+            break
+
+    # Parabol: y = -(h/a^2)x^2
+    hs = sp.Rational(h, a**2)
+
+    # Điều kiện chia 3 phần, 2 phần trên bằng nhau
+    # x2^3 = 2x1^3, đồng thời S_CD = 2/3 S_toàn bộ
+    x1 = a * sp.real_root(sp.Rational(1, 3), 3)
+    x2 = a * sp.real_root(sp.Rational(2, 3), 3)
+
+    AB = 2 * x1
+    CD = 2 * x2
+    ti_so = sp.N(CD / AB)
+    ti_so_round = round(float(ti_so), 2)
+
+    code_hinh = tao_code_tikz(a, h, x1, x2)
+        
+    code = my_module.moi_truong_anh_latex(code_hinh)
+    file_name=my_module.pdftoimage_timename(code)
+
+    # =======================
+    # a) Phương trình parabol
+    # =======================
+    kq1_T = f"* Phương trình parabol là $y=-{phan_so(hs)}x^2$"
+
+    hs_sai = hs
+    while hs_sai == hs:
+        hs_sai = random.choice([
+            sp.Rational(h, 2*a**2),
+            sp.Rational(h+1, a**2),
+            sp.Rational(h, a**2 + 1),
+            sp.Rational(h, a**2 - 1) if a**2 - 1 > 0 else sp.Rational(h+1, a**2)
+        ])
+    kq1_F = f" Phương trình parabol là $y=-{phan_so(hs_sai)}x^2$"
+
+    HDG = (
+        f"Vì đỉnh parabol là $O(0;0)$ và trục đối xứng là trục ${{Oy}}$ nên parabol có dạng $y=ax^2$ với $a<0$.\n\n"
+        f"Parabol đi qua điểm $({a};-{h})$ nên $-{h}=a\\cdot {a**2}$.\n\n"
+        f"Suy ra $a=-\\dfrac{{{h}}}{{{a**2}}}=-{phan_so(hs)}$.\n\n"
+        f"Vậy phương trình parabol là $y=-{phan_so(hs)}x^2$."
+    )
+
+    kq1 = random.choice([kq1_T, kq1_F])
+    loigiai_1 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq1 == kq1_F:
+        loigiai_1 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =======================
+    # b) Diện tích phần giới hạn bởi parabol và AB
+    # =======================
+    kq2_T = f"* Diện tích hình phẳng giới hạn bởi parabol và đường thẳng ${{AB}}$ là ${phan_so(2*h/(3*a**2))}x_1^3\\,\\text{{m}}^2$"
+    kq2_F = f" Diện tích hình phẳng giới hạn bởi parabol và đường thẳng ${{AB}}$ là ${phan_so(h/(3*a**2))}x_1^3\\,\\text{{m}}^2$"
+
+    HDG = (
+        f"Đường thẳng ${{AB}}$ có phương trình $y=-{phan_so(hs)}x_1^2$.\n\n"
+        f"Diện tích phần hình phẳng giới hạn bởi parabol và đường thẳng ${{AB}}$ là\n\n"
+        f"$S_{{AB}}=\\displaystyle\\int_{{-x_1}}^{{x_1}}\\left[\\left(-{phan_so(hs)}x^2\\right)-\\left(-{phan_so(hs)}x_1^2\\right)\\right]dx$.\n\n"
+        f"Suy ra $S_{{AB}}={phan_so(2*h/(3*a**2))}x_1^3\\,\\text{{m}}^2$."
+    )
+
+    kq2 = random.choice([kq2_T, kq2_F])
+    loigiai_2 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq2 == kq2_F:
+        loigiai_2 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =======================
+    # c) Diện tích phần giới hạn bởi parabol và CD
+    # =======================
+    kq3_T = f"* Diện tích hình phẳng giới hạn bởi parabol và đường thẳng ${{CD}}$ là ${phan_so(2*h/(3*a**2))}x_2^3\\,\\text{{m}}^2$"
+    kq3_F = f" Diện tích hình phẳng giới hạn bởi parabol và đường thẳng ${{CD}}$ là ${phan_so(h/(3*a**2))}x_2^3\\,\\text{{m}}^2$"
+
+    HDG = (
+        f"Đường thẳng $CD$ có phương trình $y=-{phan_so(hs)}x_2^2$.\n\n"
+        f"Diện tích phần hình phẳng giới hạn bởi parabol và đường thẳng $CD$ là\n\n"
+        f"$S_{{CD}}=\\displaystyle\\int_{{-x_2}}^{{x_2}}\\left[\\left(-{phan_so(hs)}x^2\\right)-\\left(-{phan_so(hs)}x_2^2\\right)\\right]dx$.\n\n"
+        f"Suy ra $S_{{CD}}={phan_so(2*h/(3*a**2))}x_2^3\\,\\text{{m}}^2$."
+    )
+
+    kq3 = random.choice([kq3_T, kq3_F])
+    loigiai_3 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq3 == kq3_F:
+        loigiai_3 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =======================
+    # d) Tỉ số CD/AB
+    # =======================
+    ti_so_sai = ti_so_round
+    while abs(ti_so_sai - ti_so_round) < 0.01:
+        ti_so_sai = round(ti_so_round + random.choice([-0.12, -0.08, 0.08, 0.12]), 2)
+
+    kq4_T = f"* Tỉ số $\\dfrac{{CD}}{{AB}}$ gần bằng {dinh_dang_so(ti_so_round)} \\text{{ (làm tròn kết quả đến hàng phần trăm)}}"
+    kq4_F = f" Tỉ số $\\dfrac{{CD}}{{AB}}$ gần bằng {dinh_dang_so(ti_so_sai)} \\text{{ (làm tròn kết quả đến hàng phần trăm)}}"
+
+    HDG = (
+        f"Theo đề bài, hai phần phía trên có diện tích bằng nhau nên\n\n"
+        f"$S_{{AB}}=S_{{CD}}-S_{{AB}}$.\n\n"
+        f"Thay các công thức diện tích vào, ta được\n\n"
+        f"$\\dfrac{{2{h}}}{{3\\cdot {a**2}}}x_1^3=\\dfrac{{2{h}}}{{3\\cdot {a**2}}}(x_2^3-x_1^3)$.\n\n"
+        f"Suy ra $x_2^3=2x_1^3$, do đó $\\dfrac{{x_2}}{{x_1}}=\\sqrt[3]{{2}}$.\n\n"
+        f"Vì $AB=2x_1,\\ CD=2x_2$ nên\n\n"
+        f"$\\dfrac{{CD}}{{AB}}=\\dfrac{{x_2}}{{x_1}}=\\sqrt[3]{{2}}\\approx {dinh_dang_so(ti_so_round)}$."
+    )
+
+    kq4 = random.choice([kq4_T, kq4_F])
+    loigiai_4 = f"Khẳng định đã cho là khẳng định đúng.\n\n {HDG}"
+    if kq4 == kq4_F:
+        loigiai_4 = f"Khẳng định đã cho là khẳng định sai.\n\n {HDG}"
+
+    # =======================
+    # Nội dung đề
+    # =======================
+    noi_dung = (
+        f"Một cổng có dạng hình parabol với chiều cao {h} m, chiều rộng chân đế {2*a} m. "
+        f"Người ta căng hai sợi dây trang trí ${{AB,CD}}$ nằm ngang, đồng thời chia cổng thành ba phần sao cho hai phần ở phía trên có diện tích bằng nhau. "
+        f"Gắn hệ trục tọa độ như hình vẽ bên, với đỉnh parabol là gốc tọa độ và đơn vị trên các trục tọa độ là mét.\n"
+        f"Xét tính đúng-sai các khẳng định sau:"
+    )
+
+    # Trộn các phương án
+    list_PA = [kq1, kq2, kq3, kq4]
+    list_TF = my_module.tra_ve_TF(list_PA)
+
+    debai = f"{noi_dung}\n{file_name}\n"\
+    f"a) {list_PA[0]}.\n"\
+    f"b) {list_PA[1]}.\n"\
+    f"c) {list_PA[2]}.\n"\
+    f"d) {list_PA[3]}.\n"
+
+    loigiai = []
+    for pa in list_PA:
+        if pa == kq1:
+            loigiai.append(loigiai_1)
+        if pa == kq2:
+            loigiai.append(loigiai_2)
+        if pa == kq3:
+            loigiai.append(loigiai_3)
+        if pa == kq4:
+            loigiai.append(loigiai_4)
+
+    noi_dung_loigiai = (
+        f"a-{list_TF[0]}, b-{list_TF[1]}, c-{list_TF[2]}, d-{list_TF[3]}.\n"
+        f"\n\n a) {loigiai[0]}\n"
+        f"b) {loigiai[1]}\n"
+        f"c) {loigiai[2]}\n"
+        f"d) {loigiai[3]}\n"
+    )
+
+    loigiai_word = f"Lời giải:\n {noi_dung_loigiai} \n"
+
+    loigiai_latex = (
+        f"\n\n a) {loigiai[0]}\n\n"
+        f"b) {loigiai[1]}\n\n"
+        f"c) {loigiai[2]}\n\n"
+        f"d) {loigiai[3]}\n\n"
+    )
+
+    # Tạo đề latex
+    list_PA_latex = list_PA[:]
+    for i in range(len(list_PA_latex)):
+        list_PA_latex[i] = list_PA_latex[i].replace("*", "\\True ")
+
+    debai_latex = (
+        f"\\begin{{ex}}\n {noi_dung}\n"
+        f"\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n"\
+        f"\\choiceTFt\n"
+        f"{{ {list_PA_latex[0]} }}\n"
+        f"{{ {list_PA_latex[1]} }}\n"
+        f"{{ {list_PA_latex[2]} }}\n"
+        f"{{ {list_PA_latex[3]} }}\n"
+        f"\\loigiai{{ \n {loigiai_latex} \n }}"
+        f"\\end{{ex}}\n"
+    )
+
+    dap_an = f"{list_TF[0]}{list_TF[1]}{list_TF[2]}{list_TF[3]}".replace("đúng", "Đ").replace("sai", "S")
+
+    return debai, debai_latex, loigiai_word, dap_an

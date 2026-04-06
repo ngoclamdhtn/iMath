@@ -861,11 +861,10 @@ def newy25_L12_C6_B1_11():
     loigiai_word=(f"Lời giải:\n {file_name} {noi_dung_loigiai} \n")
     
 
-
-    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"
-   
-    f"\\loigiai{{ \\begin{{center}}\n {code_hinh}\n \\end{{center}}\n {noi_dung_loigiai} \n }}"
-    f"\\end{{ex}}\n")
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{\\begin{{center}}\n{code_hinh}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C6_B1_12]-SA-M2. Lấy 1 bi hộp I bỏ vào hộp II, rồi lấy 1 bi từ hộp II. Tính xác suất hai bi khác màu 
@@ -936,9 +935,10 @@ def newy25_L12_C6_B1_12():
     
 
 
-    latex_tuluan=(f"\\begin{{ex}}\n {noi_dung}\n"    
-    f"\\loigiai{{\\begin{{center}}\n{code_hinh}\n\\end{{center}}\n \n {noi_dung_loigiai} \n }}"
-    f"\\end{{ex}}\n")
+    latex_tuluan=f"\\begin{{ex}}\n {noi_dung}\n"\
+    f"\n\n\\shortans[4]{{{dap_an}}}\n\n"\
+    f"\\loigiai{{\\begin{{center}}\n{code_hinh}\n\\end{{center}} \n {noi_dung_loigiai} \n }}"\
+    f"\\end{{ex}}\n"
     return debai_word,loigiai_word,latex_tuluan,dap_an
 
 #[D12_C6_B1_13]-SA-M2. x.s giao: Tính x.s sinh viên không tốt nghiệp loại X và làm việc đúng chuyên ngành
